@@ -14,7 +14,7 @@ const scaffold = `
 
 export const blueFlameButtonHover: Specimen = {
   id: 'blue-flame-button-hover',
-  ref: 'SPX-TODO',
+  ref: 'SPX-521',
   title: 'Blue Flame Button Hover',
   blurb:
     'Five graphic blue energy polygons rise from the upper edge of a static OPEN RECORD button on hover and focus, with a 3px label shift and a brightened lower edge.',
