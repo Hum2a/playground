@@ -1,38 +1,185 @@
-/* Netflix specimen — portable */
-.nf{--ink:#0c0c0f;--panel:#14141a;--rule:#2a2a33;--pewter:#8b8b96;--chalk:#ececf1;--accent:#e8a45a;box-sizing:border-box;width:min(100%,440px);margin:0 auto;padding:14px;font-family:system-ui,sans-serif;color:var(--chalk);background:var(--panel);border:1px solid var(--rule)}
-.nf *,.nf *::before,.nf *::after{box-sizing:border-box}
-.nf__eyebrow{margin:0 0 12px;font:11px/1.2 ui-monospace,monospace;letter-spacing:.12em;color:var(--pewter)}
-.nf__rail,.nf__actions{display:flex;gap:10px;align-items:center;justify-content:center}
-.nf__card,.nf__feature{border:1px solid var(--rule);background:var(--ink);color:inherit;cursor:pointer}
-.nf__card{flex:0 0 100px;height:132px;padding:8px;font-size:12px;transition:transform 200ms ease}
-.nf__btn{margin-top:12px;padding:8px 12px;font:11px/1 ui-monospace,monospace;letter-spacing:.1em;border:1px solid var(--chalk);background:var(--chalk);color:var(--ink);cursor:pointer}
-.nf__btn:focus-visible,.nf__card:focus-visible,.nf__feature:focus-visible,.nf__skip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.nf__rail.is-push .nf__card[data-i="0"]{transform:translateX(-28px)}
-.nf__rail.is-push .nf__card[data-i="1"]{transform:scale(1.12);border-color:var(--accent);z-index:2}
-.nf__rail.is-push .nf__card[data-i="2"]{transform:translateX(28px)}
-.nf__rail.is-open .nf__card.is-origin{transform:scale(1.2);border-color:var(--accent)}
-.nf__rail.is-open .nf__card[data-i="0"]{transform:translateX(-24px)}
-.nf__rail.is-open .nf__card[data-i="2"]{transform:translateX(24px)}
-.nf__viewport{overflow:hidden;width:100%;max-width:336px;margin:0 auto;border:1px solid var(--rule)}
-.nf__track{display:flex;gap:8px;padding:8px;transform:translateX(0);transition:transform 280ms cubic-bezier(.22,.61,.36,1)}
-.nf__track .nf__card{flex:0 0 100px;display:grid;place-items:center}
-.nf__meta{margin:8px 0 0;font-size:11px;color:var(--pewter);text-align:center}
-.nf__feature{display:flex;gap:12px;align-items:center;width:100%;padding:10px;text-align:left}
-.nf__poster{width:56px;height:72px;background:linear-gradient(145deg,#2a3344,#1a2030)}
-.nf__panel{margin-top:10px;padding:12px;border:1px solid var(--accent);background:var(--ink)}
-.nf__panel[hidden]{display:none}
-.nf__panel-title{margin:0 0 6px;font-weight:600}
-.nf__panel-body{margin:0 0 10px;font-size:12px;color:var(--pewter)}
-.nf__stage{position:relative;height:160px;border:1px solid var(--rule);background:var(--ink);display:grid;place-items:center}
-.nf__chrome{display:flex;gap:24px;opacity:0;transition:opacity 180ms ease;font:12px/1 ui-monospace,monospace}
-.nf__stage.is-live .nf__chrome{opacity:1}
-.nf__thumb{position:absolute;bottom:36px;left:0;width:72px;height:42px;border:1px solid var(--accent);background:#1c2430;display:grid;place-items:center;font-size:10px;transform:translateX(-50%)}
-.nf__thumb[hidden]{display:none}
-.nf__range{position:absolute;left:12px;right:12px;bottom:12px;width:auto}
-.nf__skip{position:absolute;right:12px;bottom:12px;padding:8px 12px;border:1px solid var(--chalk);background:rgba(20,20,26,.92);color:var(--chalk);font:11px/1 ui-monospace,monospace;letter-spacing:.08em}
-.nf__skip[hidden]{display:none}
-.nf__clock,.nf__ep,.nf__count{margin:0;font:12px/1.4 ui-monospace,monospace}
-.nf__count[hidden]{display:none}
-@media (prefers-reduced-motion:reduce){.nf__card,.nf__track,.nf__chrome{transition:none!important}}
-[data-force-reduced-motion="true"] .nf__card,[data-force-reduced-motion="true"] .nf__track,[data-force-reduced-motion="true"] .nf__chrome{transition:none!important}
+/* Next Episode Countdown — portable specimen CSS (iframe-isolated). */
 
+.nec {
+  --nec-ink: #0c0c0f;
+  --nec-panel: #16161d;
+  --nec-panel-2: #1e1e26;
+  --nec-rule: #2a2a34;
+  --nec-pewter: #8a8e9b;
+  --nec-chalk: #eceef2;
+  --nec-amber: #e8a45a;
+  --nec-teal: #4ecdc4;
+
+  box-sizing: border-box;
+  width: min(100%, 360px);
+  margin: 0 auto;
+  padding: 18px 16px;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
+  color: var(--nec-chalk);
+}
+
+.nec *,
+.nec *::before,
+.nec *::after {
+  box-sizing: border-box;
+}
+
+.nec__scene {
+  height: 96px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--nec-rule);
+  background: radial-gradient(circle at 65% 30%, rgba(139, 142, 155, 0.14), var(--nec-ink) 70%);
+}
+
+.nec__scene-label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--nec-pewter);
+  text-align: center;
+  padding: 0 10px;
+}
+
+.nec__nextup {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid var(--nec-rule);
+  background: var(--nec-panel);
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.nec.is-dismissed .nec__nextup {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+.nec__nextup-kicker {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--nec-pewter);
+}
+
+.nec__nextup-title {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.nec__ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(
+    var(--nec-amber) calc(var(--nec-progress, 0) * 360deg),
+    var(--nec-rule) 0
+  );
+}
+
+.nec__count {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--nec-ink);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+}
+
+.nec__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.nec__cancel,
+.nec__play {
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.nec__cancel {
+  color: var(--nec-chalk);
+  background: transparent;
+  border: 1px solid var(--nec-rule);
+}
+
+.nec__cancel:hover {
+  border-color: var(--nec-amber);
+  color: var(--nec-amber);
+}
+
+.nec__play {
+  color: var(--nec-ink);
+  background: var(--nec-chalk);
+  border: 1px solid var(--nec-chalk);
+}
+
+.nec__play:hover {
+  background: #fff;
+}
+
+.nec__cancel:focus-visible,
+.nec__play:focus-visible,
+.nec__replay:focus-visible {
+  outline: 2px solid var(--nec-amber);
+  outline-offset: 2px;
+}
+
+.nec__status {
+  margin: 12px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--nec-pewter);
+}
+
+.nec__replay {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--nec-ink);
+  background: var(--nec-chalk);
+  border: 1px solid var(--nec-chalk);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.nec__replay:hover {
+  background: #fff;
+}
+
+.nec__replay[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nec__nextup {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .nec__nextup {
+  transition: none !important;
+}

@@ -1,12 +1,43 @@
 {
   "name": "skip-intro-appear",
-  "intent": "During a skippable intro window a SKIP INTRO control fades in; outside that window it is gone.",
-  "ref": "SPX-3178",
-  "nf": "NF-069",
+  "intent": "A contextual SKIP INTRO action fades in only while the simulated intro segment is skippable, and disappears the moment it ends.",
+  "primitives": ["skip", "contextual"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "timing": {
+    "introDurationMs": 3000,
+    "appearDelayMs": 400,
+    "tickMs": 1000,
+    "transitionMs": 180,
+    "easing": "ease",
+    "translateYPx": 4
+  },
+  "phases": {
+    "intro": "skip button appears at 400ms, clock ticks 00:00-00:03",
+    "episode": "entered on skip click or automatically at 3000ms; button hidden and non-interactive"
+  },
+  "triggers": {
+    "skip": "SKIP INTRO button, only while phase is intro",
+    "replay": "REPLAY button restarts the whole sequence"
+  },
+  "a11y": {
+    "skipHiddenState": { "ariaHidden": true, "tabIndex": -1 },
+    "skipVisibleState": { "ariaHidden": false, "tabIndex": 0 },
+    "liveStatus": "polite text reporting phase and elapsed time"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Skip button still appears/disappears on the same schedule with no transition"
   }
 }

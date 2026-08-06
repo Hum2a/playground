@@ -1,12 +1,46 @@
 {
   "name": "next-episode-countdown",
-  "intent": "A timed next-episode handoff counts down then advances; CANCEL keeps the current end card.",
-  "ref": "SPX-3184",
-  "nf": "NF-075",
+  "intent": "A next-up card counts down visibly from 5 to 0 then hands off to the next episode automatically; CANCEL stops it and restores the end-state.",
+  "primitives": ["next-up", "countdown"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "countdown": {
+    "start": 5,
+    "tickMs": 700,
+    "totalMs": 3500
+  },
+  "states": {
+    "counting": "END OF EPISODE scene, next-up card visible, ring filling",
+    "playing": "automatic hand-off at count 0, next-up dismissed",
+    "cancelled": "CANCEL stops the countdown, next-up dismissed, scene stays END OF EPISODE"
+  },
+  "timing": {
+    "dismissTransitionMs": 200,
+    "easing": "ease",
+    "translateYPx": 8
+  },
+  "triggers": {
+    "cancel": "CANCEL button",
+    "playNow": "PLAY NOW button (immediate hand-off)",
+    "replay": "REPLAY button restarts the whole sequence"
+  },
+  "a11y": {
+    "liveStatus": "polite text reporting remaining seconds and final outcome",
+    "ringAriaHidden": true
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Same countdown/hand-off/cancel states occur with the dismiss transition removed"
   }
 }

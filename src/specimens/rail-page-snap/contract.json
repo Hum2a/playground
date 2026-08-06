@@ -1,12 +1,45 @@
 {
   "name": "rail-page-snap",
-  "intent": "A multi-card row translates to the next group and settles on exact card boundaries — no fractional overhang after snap.",
-  "ref": "SPX-3136",
-  "nf": "NF-027",
+  "intent": "A multi-card rail always settles precisely on a card boundary, whether paged by button or scrolled manually.",
+  "primitives": ["rail", "snap"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "layout": {
+    "cardCount": 6,
+    "cardWidthPx": 120,
+    "gapPx": 12,
+    "stepPx": 132
+  },
+  "snap": {
+    "type": "x mandatory",
+    "align": "start"
+  },
+  "triggers": {
+    "next": "NEXT button",
+    "prev": "PREV button",
+    "manual": "drag / trackpad scroll, settles 120ms after scroll stops"
+  },
+  "constraints": {
+    "prevDisabledAtFirstCard": true,
+    "nextDisabledAtLastCard": true
+  },
+  "a11y": {
+    "viewportAriaHidden": true,
+    "liveStatus": "polite text: Card X of 6"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "scrollTo uses behavior: 'auto' instead of 'smooth'"
   }
 }

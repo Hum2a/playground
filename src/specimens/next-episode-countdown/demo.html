@@ -1,11 +1,18 @@
-<div class="nf" data-nf data-kind="next">
-  <p class="nf__eyebrow">NEXT EPISODE</p>
-  <div class="nf__stage" data-stage>
-    <p class="nf__ep" data-ep>S1 E3 · Still Water</p>
-    <p class="nf__count" data-count hidden>Next in <span data-n>5</span>…</p>
+<div class="nec" data-next-episode-countdown data-state="counting">
+  <div class="nec__scene" aria-hidden="true">
+    <p class="nec__scene-label" data-nec-scene-label>END OF EPISODE</p>
   </div>
-  <div class="nf__actions">
-    <button type="button" class="nf__btn" data-start>START COUNTDOWN</button>
-    <button type="button" class="nf__btn" data-cancel>CANCEL</button>
+  <div class="nec__nextup" data-nec-nextup>
+    <p class="nec__nextup-kicker">NEXT EPISODE</p>
+    <p class="nec__nextup-title">EP. 05 — SIGNAL DRIFT</p>
+    <div class="nec__ring" data-nec-ring style="--nec-progress:0" aria-hidden="true">
+      <span class="nec__count" data-nec-count>5</span>
+    </div>
+    <div class="nec__actions">
+      <button type="button" class="nec__cancel" data-nec-cancel>CANCEL</button>
+      <button type="button" class="nec__play" data-nec-play>PLAY NOW</button>
+    </div>
   </div>
+  <p class="nec__status" data-nec-status aria-live="polite">Next episode in 5 seconds</p>
+  <button type="button" class="nec__replay" data-nec-replay hidden>REPLAY</button>
 </div>

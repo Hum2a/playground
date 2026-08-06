@@ -1,12 +1,49 @@
 {
   "name": "neighbour-push-out",
-  "intent": "Adjacent cards translate away from an expanding selection while keeping their size — room is made without shrinking neighbours.",
-  "ref": "SPX-3147",
-  "nf": "NF-038",
+  "intent": "Selecting a card expands it while its immediate neighbours translate away to make room, keeping their own size — emphasis on translation, not scaling, of the neighbours.",
+  "primitives": ["preview", "layout"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "cards": {
+    "count": 5,
+    "width": 76,
+    "height": 116,
+    "cursorStartIndex": 2
+  },
+  "states": {
+    "selectedScale": 1.3,
+    "selectedLiftPx": 8,
+    "neighbourPushPx": 46,
+    "neighbourScaleUnchanged": true
+  },
+  "timing": {
+    "transitionMs": 200,
+    "easing": "cubic-bezier(.4,0,.2,1)"
+  },
+  "triggers": {
+    "moveCursor": ["prev button", "next button"],
+    "select": "SELECT / DESELECT toggle button"
+  },
+  "constraints": {
+    "cursorMoveDisabledWhileSelected": true
+  },
+  "a11y": {
+    "rowAriaHidden": true,
+    "liveStatus": "polite text reporting cursor index and selection state"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Same states apply instantly with no transition"
   }
 }

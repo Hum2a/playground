@@ -1,46 +1,22 @@
 {
   "name": "preview-card-hover-expand",
-  "intent": "Hovering or focusing a content card previews it in place while its neighbour(s) translate outward to make room, without overlap.",
+  "intent": "Focused rail card expands while neighbours translate outward without overlapping.",
   "primitives": ["preview", "hover", "expand"],
-  "colours": {
-    "ink": "#0c0c0f",
-    "panel": "#16161d",
-    "panel2": "#1e1e26",
-    "rule": "#2a2a34",
-    "pewter": "#8a8e9b",
-    "chalk": "#eceef2",
-    "amber": "#e8a45a",
-    "teal": "#4ecdc4"
-  },
-  "cards": {
-    "count": 3,
-    "width": 118,
-    "height": 168,
-    "titles": ["SIGNAL DRIFT", "AMBER FIELD", "NIGHT ROUTE"]
-  },
-  "states": {
+  "geometry": {
+    "cardPx": [112, 148],
     "expandScale": 1.18,
-    "neighbourPushPx": 18,
-    "neighbourScaleUnchanged": true
+    "neighbourTranslatePx": 22,
+    "expandMs": 220
   },
-  "timing": {
-    "transitionMs": 220,
-    "easing": "cubic-bezier(.4,0,.2,1)"
-  },
-  "triggers": {
-    "expand": ["mouseenter", "focus"],
-    "collapse": ["mouseleave row", "focusout past row"]
-  },
-  "a11y": {
-    "cardElement": "button",
-    "ariaExpanded": true,
-    "liveHint": "polite text naming previewed title"
+  "api": {
+    "expand": "runPreviewExpand(index?)",
+    "collapse": "runPreviewCollapse()"
   },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "Expand/push states still apply instantly with no transition"
+    "behaviour": "Geometry changes apply without timed transitions"
   }
 }

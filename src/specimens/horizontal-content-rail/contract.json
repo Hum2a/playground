@@ -1,12 +1,49 @@
 {
   "name": "horizontal-content-rail",
-  "intent": "A row of cards moves by one viewport group with clear directional continuity — PREV/NEXT pages three titles at a time.",
-  "ref": "SPX-3134",
-  "nf": "NF-025",
+  "intent": "NEXT/PREV move a row of cards by one full viewport group at a time, with identical directional easing so the rail always feels continuous.",
+  "primitives": ["rail", "carousel"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "layout": {
+    "cardCount": 6,
+    "cardsPerPage": 3,
+    "pageCount": 2,
+    "trackWidthPercent": 200
+  },
+  "states": {
+    "page0Transform": "translateX(0%)",
+    "page1Transform": "translateX(-50%)"
+  },
+  "timing": {
+    "transitionMs": 260,
+    "easing": "cubic-bezier(.4,0,.2,1)",
+    "sameEasingBothDirections": true
+  },
+  "triggers": {
+    "next": "NEXT button",
+    "prev": "PREV button"
+  },
+  "constraints": {
+    "prevDisabledAtPage0": true,
+    "nextDisabledAtLastPage": true
+  },
+  "a11y": {
+    "liveStatus": "polite text: Page X of Y",
+    "cardsAriaHidden": true
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Page changes apply instantly with no transition"
   }
 }

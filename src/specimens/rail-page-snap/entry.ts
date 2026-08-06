@@ -4,17 +4,33 @@ export const railPageSnap: Specimen = {
   id: 'rail-page-snap',
   ref: 'SPX-3136',
   title: 'Rail Page Snap',
-  blurb: "A multi-card row translates to the next group and settles on exact card boundaries — no fractional overhang after snap.",
-  origin: { project: 'Original', surface: 'Streaming UI / Netflix-inspired interaction' },
-  facets: { kind: 'interaction', tech: 'tiny-js', scope: 'inline', intensity: 'subtle' },
-  inspiredBy: { franchise: 'netflix' },
-  tags: ["rail","snap"],
+  blurb:
+    'A six-card scroll-snap rail always lands on a card boundary — by button or by manual drag scroll, it never stops mid-card.',
+  origin: {
+    project: 'Original',
+    surface: 'Netflix-inspired streaming content rail (abstract)',
+  },
+  facets: {
+    kind: 'interaction',
+    tech: 'tiny-js',
+    scope: 'inline',
+    intensity: 'subtle',
+  },
+  inspiredBy: {
+    franchise: 'netflix',
+  },
+  tags: ['rail', 'snap'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote: 'Motion transitions are skipped; semantic end states remain available.',
+    reducedMotionNote: 'All scrollTo calls use instant behavior instead of smooth scrolling.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
-  preview: { width: 440, height: 300, background: 'dark', label: 'Rail Page Snap demo' },
+  preview: {
+    width: 480,
+    height: 220,
+    background: 'dark',
+    label: 'Rail page snap demo',
+  },
 }

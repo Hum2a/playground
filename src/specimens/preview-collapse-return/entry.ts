@@ -4,17 +4,33 @@ export const previewCollapseReturn: Specimen = {
   id: 'preview-collapse-return',
   ref: 'SPX-3149',
   title: 'Preview Collapse Return',
-  blurb: "Expanded content returns exactly to its rail slot without layout residue — expand then RETURN settles on the origin geometry.",
-  origin: { project: 'Original', surface: 'Streaming UI / Netflix-inspired interaction' },
-  facets: { kind: 'interaction', tech: 'tiny-js', scope: 'inline', intensity: 'subtle' },
-  inspiredBy: { franchise: 'netflix' },
-  tags: ["preview","collapse"],
+  blurb:
+    'An expanded rail card collapses back to exactly its original slot transform on RETURN — no residual offset, scale, or shadow left behind.',
+  origin: {
+    project: 'Original',
+    surface: 'Netflix-inspired streaming rail preview collapse (abstract)',
+  },
+  facets: {
+    kind: 'interaction',
+    tech: 'tiny-js',
+    scope: 'inline',
+    intensity: 'subtle',
+  },
+  inspiredBy: {
+    franchise: 'netflix',
+  },
+  tags: ['preview', 'collapse'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote: 'Motion transitions are skipped; semantic end states remain available.',
+    reducedMotionNote: 'Expand/return states still apply instantly with no transition.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
-  preview: { width: 440, height: 300, background: 'dark', label: 'Preview Collapse Return demo' },
+  preview: {
+    width: 480,
+    height: 260,
+    background: 'dark',
+    label: 'Preview collapse return demo',
+  },
 }

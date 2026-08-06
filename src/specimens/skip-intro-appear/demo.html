@@ -1,8 +1,14 @@
-<div class="nf" data-nf data-kind="skip">
-  <p class="nf__eyebrow">SKIP INTRO</p>
-  <div class="nf__stage">
-    <p class="nf__clock">INTRO <span data-t>0.0</span>s</p>
-    <button type="button" class="nf__skip" data-skip hidden>SKIP INTRO</button>
+<div class="sia" data-skip-intro-appear data-phase="intro">
+  <div class="sia__scene" aria-hidden="true">
+    <p class="sia__scene-label" data-sia-label>INTRO</p>
+    <button
+      type="button"
+      class="sia__skip"
+      data-sia-skip
+      aria-hidden="true"
+      tabindex="-1"
+    >SKIP INTRO</button>
   </div>
-  <button type="button" class="nf__btn" data-play>PLAY INTRO</button>
+  <p class="sia__status" data-sia-status aria-live="polite">Intro playing — 00:00</p>
+  <button type="button" class="sia__replay" data-sia-replay>REPLAY</button>
 </div>

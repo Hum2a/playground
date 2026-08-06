@@ -1,9 +1,15 @@
-<div class="nf" data-nf data-kind="push">
-  <p class="nf__eyebrow">NEIGHBOUR PUSH-OUT</p>
-  <div class="nf__rail" data-rail>
-    <button type="button" class="nf__card" data-i="0">Alpha</button>
-    <button type="button" class="nf__card" data-i="1">Bravo</button>
-    <button type="button" class="nf__card" data-i="2">Charlie</button>
+<div class="npo" data-neighbour-push-out>
+  <div class="npo__row" data-npo-row aria-hidden="true">
+    <div class="npo__card" data-npo-card="0"><span class="npo__art" aria-hidden="true"></span></div>
+    <div class="npo__card" data-npo-card="1"><span class="npo__art npo__art--b" aria-hidden="true"></span></div>
+    <div class="npo__card" data-npo-card="2"><span class="npo__art npo__art--c" aria-hidden="true"></span></div>
+    <div class="npo__card" data-npo-card="3"><span class="npo__art npo__art--d" aria-hidden="true"></span></div>
+    <div class="npo__card" data-npo-card="4"><span class="npo__art npo__art--e" aria-hidden="true"></span></div>
   </div>
-  <button type="button" class="nf__btn" data-select>SELECT MIDDLE</button>
+  <div class="npo__controls">
+    <button type="button" class="npo__nav" data-npo-prev aria-label="Move cursor to previous card">←</button>
+    <button type="button" class="npo__select" data-npo-select>SELECT</button>
+    <button type="button" class="npo__nav" data-npo-next aria-label="Move cursor to next card">→</button>
+  </div>
+  <p class="npo__status" data-npo-status aria-live="polite">Cursor on card 3 of 5</p>
 </div>

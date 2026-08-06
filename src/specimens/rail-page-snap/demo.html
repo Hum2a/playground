@@ -1,15 +1,15 @@
-<div class="nf" data-nf data-kind="snap">
-  <p class="nf__eyebrow">RAIL PAGE SNAP</p>
-  <div class="nf__viewport" data-viewport>
-    <div class="nf__track" data-track>
-      <div class="nf__card" data-card="1">Card 1</div>
-      <div class="nf__card" data-card="2">Card 2</div>
-      <div class="nf__card" data-card="3">Card 3</div>
-      <div class="nf__card" data-card="4">Card 4</div>
-      <div class="nf__card" data-card="5">Card 5</div>
-      <div class="nf__card" data-card="6">Card 6</div>
-    </div>
+<div class="rps" data-rail-page-snap>
+  <div class="rps__viewport" data-rps-viewport aria-hidden="true">
+    <div class="rps__card">01</div>
+    <div class="rps__card">02</div>
+    <div class="rps__card">03</div>
+    <div class="rps__card">04</div>
+    <div class="rps__card">05</div>
+    <div class="rps__card">06</div>
   </div>
-  <p class="nf__meta">Page <span data-page>1</span> / 2 · offset <span data-offset>0</span>px</p>
-  <button type="button" class="nf__btn" data-snap>SNAP NEXT</button>
+  <div class="rps__nav">
+    <button type="button" class="rps__btn" data-rps-prev disabled>PREV</button>
+    <p class="rps__status" data-rps-status aria-live="polite">Card 1 of 6</p>
+    <button type="button" class="rps__btn" data-rps-next>NEXT</button>
+  </div>
 </div>

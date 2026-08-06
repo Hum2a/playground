@@ -1,12 +1,33 @@
-<div class="nf" data-nf data-kind="collapse">
-  <p class="nf__eyebrow">PREVIEW COLLAPSE RETURN</p>
-  <div class="nf__rail" data-rail>
-    <button type="button" class="nf__card" data-i="0">Dock A</button>
-    <button type="button" class="nf__card is-origin" data-i="1">Origin</button>
-    <button type="button" class="nf__card" data-i="2">Dock B</button>
+<div class="pcr" data-preview-collapse-return>
+  <div class="pcr__rail" data-pcr-rail>
+    <div class="pcr__slot">
+      <button type="button" class="pcr__card" data-pcr-card="0" aria-pressed="false">
+        <span class="pcr__art" aria-hidden="true"></span>
+        <span class="pcr__face-label">REEL 01</span>
+        <span class="pcr__return" aria-hidden="true">RETURN</span>
+      </button>
+    </div>
+    <div class="pcr__slot">
+      <button type="button" class="pcr__card" data-pcr-card="1" aria-pressed="false">
+        <span class="pcr__art pcr__art--b" aria-hidden="true"></span>
+        <span class="pcr__face-label">REEL 02</span>
+        <span class="pcr__return" aria-hidden="true">RETURN</span>
+      </button>
+    </div>
+    <div class="pcr__slot">
+      <button type="button" class="pcr__card" data-pcr-card="2" aria-pressed="false">
+        <span class="pcr__art pcr__art--c" aria-hidden="true"></span>
+        <span class="pcr__face-label">REEL 03</span>
+        <span class="pcr__return" aria-hidden="true">RETURN</span>
+      </button>
+    </div>
+    <div class="pcr__slot">
+      <button type="button" class="pcr__card" data-pcr-card="3" aria-pressed="false">
+        <span class="pcr__art pcr__art--d" aria-hidden="true"></span>
+        <span class="pcr__face-label">REEL 04</span>
+        <span class="pcr__return" aria-hidden="true">RETURN</span>
+      </button>
+    </div>
   </div>
-  <div class="nf__actions">
-    <button type="button" class="nf__btn" data-expand>EXPAND</button>
-    <button type="button" class="nf__btn" data-return>RETURN</button>
-  </div>
+  <p class="pcr__status" data-pcr-status aria-live="polite">Idle</p>
 </div>

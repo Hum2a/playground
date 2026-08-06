@@ -1,12 +1,26 @@
-<div class="nf" data-nf data-kind="details">
-  <p class="nf__eyebrow">DETAILS PANEL EXPAND</p>
-  <button type="button" class="nf__feature" data-open>
-    <span class="nf__poster" aria-hidden="true"></span>
-    <span>Midnight Circuit</span>
-  </button>
-  <div class="nf__panel" data-panel hidden>
-    <p class="nf__panel-title">Midnight Circuit</p>
-    <p class="nf__panel-body">Match 94% · 8 episodes · Drama</p>
-    <button type="button" class="nf__btn" data-close>CLOSE</button>
+<div class="dpe" data-details-panel-expand>
+  <div class="dpe__card">
+    <div class="dpe__art" aria-hidden="true"></div>
+    <div class="dpe__meta">
+      <p class="dpe__title">SIGNAL DRIFT</p>
+      <button
+        type="button"
+        class="dpe__toggle"
+        data-dpe-toggle
+        aria-expanded="false"
+        aria-controls="dpe-panel"
+      >DETAILS</button>
+    </div>
+  </div>
+  <div class="dpe__panel-wrap" data-dpe-panel-wrap>
+    <div class="dpe__panel" id="dpe-panel">
+      <p class="dpe__desc">A dormant relay wakes mid-transmission, tracing a signal back through six abandoned stations.</p>
+      <ul class="dpe__tags" aria-label="Tags">
+        <li>Mystery</li>
+        <li>Slow Burn</li>
+        <li>2 Seasons</li>
+      </ul>
+      <button type="button" class="dpe__close" data-dpe-close>CLOSE</button>
+    </div>
   </div>
 </div>

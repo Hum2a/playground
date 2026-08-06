@@ -1,12 +1,50 @@
 {
   "name": "preview-collapse-return",
-  "intent": "Expanded content returns exactly to its rail slot without layout residue — expand then RETURN settles on the origin geometry.",
-  "ref": "SPX-3149",
-  "nf": "NF-040",
+  "intent": "Expanding a rail card and then collapsing it returns the card to exactly its original slot transform, with no residual offset, scale, or shadow.",
+  "primitives": ["preview", "collapse"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "cards": {
+    "count": 4,
+    "slotWidth": 96,
+    "slotHeight": 140
+  },
+  "states": {
+    "expandTranslateYPx": -18,
+    "expandScale": 1.28,
+    "transformOrigin": "bottom center",
+    "baseTransform": "translateY(0) scale(1)"
+  },
+  "timing": {
+    "transitionMs": 200,
+    "easing": "cubic-bezier(.4,0,.2,1)"
+  },
+  "triggers": {
+    "expand": "click/activate card",
+    "return": "activate the same expanded card again"
+  },
+  "constraints": {
+    "otherCardsDisabledWhileExpanded": true,
+    "returnIsClassRemovalOnly": true
+  },
+  "a11y": {
+    "cardElement": "button",
+    "ariaPressed": true,
+    "liveStatus": "polite text naming previewed reel and return availability"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Same two states apply instantly with no transition"
   }
 }

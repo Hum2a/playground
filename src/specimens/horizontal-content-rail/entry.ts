@@ -4,17 +4,33 @@ export const horizontalContentRail: Specimen = {
   id: 'horizontal-content-rail',
   ref: 'SPX-3134',
   title: 'Horizontal Content Rail',
-  blurb: "A row of cards moves by one viewport group with clear directional continuity — PREV/NEXT pages three titles at a time.",
-  origin: { project: 'Original', surface: 'Streaming UI / Netflix-inspired interaction' },
-  facets: { kind: 'interaction', tech: 'tiny-js', scope: 'inline', intensity: 'subtle' },
-  inspiredBy: { franchise: 'netflix' },
-  tags: ["rail","carousel"],
+  blurb:
+    'NEXT/PREV move a six-card rail by exactly one three-card viewport group, with identical easing in both directions.',
+  origin: {
+    project: 'Original',
+    surface: 'Netflix-inspired streaming content rail (abstract)',
+  },
+  facets: {
+    kind: 'interaction',
+    tech: 'tiny-js',
+    scope: 'inline',
+    intensity: 'subtle',
+  },
+  inspiredBy: {
+    franchise: 'netflix',
+  },
+  tags: ['rail', 'carousel'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote: 'Motion transitions are skipped; semantic end states remain available.',
+    reducedMotionNote: 'Page changes apply instantly with no transition.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
-  preview: { width: 440, height: 300, background: 'dark', label: 'Horizontal Content Rail demo' },
+  preview: {
+    width: 480,
+    height: 260,
+    background: 'dark',
+    label: 'Horizontal content rail demo',
+  },
 }

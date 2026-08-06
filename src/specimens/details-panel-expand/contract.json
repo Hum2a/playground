@@ -1,12 +1,36 @@
 {
   "name": "details-panel-expand",
-  "intent": "A compact card opens a details panel without navigating away — CLOSE returns to the compact rail state.",
-  "ref": "SPX-3198",
-  "nf": "NF-089",
+  "intent": "A compact card grows a details panel beneath it in place, without navigating away; CLOSE returns it to the collapsed card.",
+  "primitives": ["details", "expand"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "technique": "grid-template-rows 0fr -> 1fr",
+  "timing": {
+    "transitionMs": 220,
+    "easing": "cubic-bezier(.4,0,.2,1)"
+  },
+  "triggers": {
+    "open": "DETAILS toggle",
+    "close": ["CLOSE button in panel", "toggle again (becomes HIDE DETAILS)"]
+  },
+  "a11y": {
+    "toggleAriaExpanded": true,
+    "toggleAriaControls": "dpe-panel",
+    "panelVisibilityHiddenWhenClosed": true
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Open/close states still apply instantly with no transition"
   }
 }
