@@ -1,0 +1,1 @@
+export function runSeekRipple(){const d=document.querySelector('[data-delta]');d.style.opacity='1';window.setTimeout(()=>{d.style.opacity='0'},500)};document.querySelector('[data-seek]')?.addEventListener('click',()=>runSeekRipple())

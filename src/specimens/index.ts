@@ -379,6 +379,7 @@ import { techniqueMasteryTree } from './technique-mastery-tree/entry'
 import { teleportCardTransfer } from './teleport-card-transfer/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { temporalUndo } from './temporal-undo/entry'
+import { tenSecondSeekRipple } from './ten-second-seek-ripple/entry'
 import { threatLevelEscalation } from './threat-level-escalation/entry'
 import { threePersonCellFormation } from './three-person-cell-formation/entry'
 import { timeSkip } from './time-skip/entry'
@@ -841,6 +842,7 @@ export const specimens: Specimen[] = [
   teleportCardTransfer,
   temporalFreeze,
   temporalUndo,
+  tenSecondSeekRipple,
   threatLevelEscalation,
   threePersonCellFormation,
   timeSkip,
