@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **47 / 417** complete.
+- Progress: **48 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 47 |
-| Open | 370 |
+| Done | 48 |
+| Open | 369 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-083 | `SPX-1640` | `notification-stack-expansion` | Notification Stack Expansion |
 | AND-091 | `SPX-1648` | `quick-settings-expansion` | Quick Settings Expansion |
 | AND-279 | `SPX-1836` | `keyboard-rise-content-avoidance` | Keyboard Rise & Content Avoidance |
 | AND-285 | `SPX-1842` | `permission-prompt-materialise` | Permission Prompt Materialise |
@@ -226,7 +227,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification surface follows direct downward gesture from top edge.
 - [ ] **AND-081** · `SPX-1638` · **Shade Partial-to-Full Expansion** — compact shade becomes fully expanded shade at a second detent.
 - [ ] **AND-082** · `SPX-1639` · **Shade Dismiss Upward** — shade follows upward gesture and returns to application.
-- [ ] **AND-083** · `SPX-1640` · **Notification Stack Expansion** — compressed notifications separate into readable cards.
+- [x] **AND-083** · `SPX-1640` · **Notification Stack Expansion** — compressed notifications separate into readable cards.
 - [ ] **AND-084** · `SPX-1641` · **Notification Stack Compression** — expanded notifications condense into layered groups.
 - [ ] **AND-085** · `SPX-1642` · **Shade Header Compression** — status/header geometry changes between shade detents.
 - [ ] **AND-086** · `SPX-1643` · **Notification Group Expand** — one grouped notification opens its child events.

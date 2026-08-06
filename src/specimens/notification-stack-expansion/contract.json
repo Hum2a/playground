@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/notification-stack-expansion.schema.json",
+  "title": "NotificationStackExpansion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "card", "stack", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "notification-stack-expansion" },
+    "card": {
+      "type": "object",
+      "required": ["widthPx", "heightPx", "gapPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 336 },
+        "heightPx": { "type": "number", "const": 74 },
+        "gapPx": { "type": "number", "const": 10 }
+      }
+    },
+    "stack": {
+      "type": "object",
+      "required": ["heightPx", "offsetPx"],
+      "properties": {
+        "heightPx": { "type": "number", "const": 150 },
+        "offsetPx": { "type": "number", "const": 8 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["expandMs"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 320 }
+      }
+    }
+  }
+}

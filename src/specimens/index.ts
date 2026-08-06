@@ -154,6 +154,7 @@ import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
 import { notificationShadePullDown } from './notification-shade-pull-down/entry'
 import { notificationStackCompression } from './notification-stack-compression/entry'
+import { notificationStackExpansion } from './notification-stack-expansion/entry'
 import { notificationSwipeDismiss } from './notification-swipe-dismiss/entry'
 import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
@@ -437,6 +438,7 @@ export const specimens: Specimen[] = [
   notificationExpand,
   notificationShadePullDown,
   notificationStackCompression,
+  notificationStackExpansion,
   notificationSwipeDismiss,
   nowPlayingExpansion,
   objectiveAcquired,
