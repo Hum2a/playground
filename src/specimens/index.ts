@@ -168,6 +168,7 @@ import { scrollRubberBand } from './scroll-rubber-band/entry'
 import { searchFieldActivation } from './search-field-activation/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
+import { sharedXAxisNavigation } from './shared-x-axis-navigation/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
 import { spotlightMaterialise } from './spotlight-materialise/entry'
 import { springSelectionPill } from './spring-selection-pill/entry'
@@ -411,6 +412,7 @@ export const specimens: Specimen[] = [
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,
   sharedResourcePool,
+  sharedXAxisNavigation,
   sheetRubberBandLimit,
   spotlightMaterialise,
   springSelectionPill,

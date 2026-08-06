@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/shared-x-axis-navigation.schema.json",
+  "title": "SharedXAxisNavigation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "preview", "panels", "timing", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "shared-x-axis-navigation" },
+    "intent": {
+      "type": "string",
+      "const": "Three panels with 300ms shared-axis transitions: outgoing ±30px, scale 1→0.92, opacity 1→0; incoming mirrors; progress chrome static."
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "heightPx": { "type": "number", "const": 480 }
+      }
+    },
+    "panels": {
+      "type": "array",
+      "const": ["Overview", "Details", "Confirm"]
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "offsetPx", "scaleMin"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 300 },
+        "offsetPx": { "type": "number", "const": 30 },
+        "scaleMin": { "type": "number", "const": 0.92 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["opacityOnly", "triggers"],
+      "properties": {
+        "opacityOnly": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "viewport", "panel", "progress"],
+      "properties": {
+        "root": { "type": "string", "const": "sxan" },
+        "viewport": { "type": "string", "const": "sxan__viewport" },
+        "panel": { "type": "string", "const": "sxan__panel" },
+        "progress": { "type": "string", "const": "sxan__progress" }
+      }
+    }
+  }
+}

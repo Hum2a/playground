@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 417** complete.
+- Progress: **7 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 411 |
+| Done | 7 |
+| Open | 410 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-011 | `SPX-1568` | `shared-x-axis-navigation` | Shared X-Axis Navigation |
 | AND-020 | `SPX-1577` | `fade-through` | Fade Through |
 | AND-036 | `SPX-1593` | `bounded-touch-ripple` | Bounded Touch Ripple |
 | AND-002 | `SPX-1559` | `fab-to-composer-transform` | FAB-to-Composer Transform |
@@ -48,7 +49,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-001** · `SPX-1558` · **Card-to-Detail Container Transform** — material-container-transform
 - [x] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — material-container-transform
 - [x] **AND-020** · `SPX-1577` · **Fade Through** — material-fade-patterns
-- [ ] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — shared-axis-transitions
+- [x] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — shared-axis-transitions
 - [x] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
 - [ ] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher-home-screen
 - [ ] **AND-054** · `SPX-1611` · **Home Swipe Up** — gesture-navigation
@@ -89,7 +90,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Shared Axis Transitions
 
-- [ ] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — outgoing content leaves left while incoming content enters right with depth/opacity hierarchy.
+- [x] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — outgoing content leaves left while incoming content enters right with depth/opacity hierarchy.
 - [ ] **AND-012** · `SPX-1569` · **Shared X-Axis Back** — reverse navigation restores previous spatial context.
 - [ ] **AND-013** · `SPX-1570` · **Shared Y-Axis Advance** — vertical hierarchy transition for sequential steps or stacked content.
 - [ ] **AND-014** · `SPX-1571` · **Shared Y-Axis Return** — reverse vertical hierarchy restoration.
