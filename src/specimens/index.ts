@@ -6,6 +6,7 @@ import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
+import { inkSplatTransition } from './ink-splat-transition/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
@@ -62,6 +63,7 @@ export const specimens: Specimen[] = [
   corruptedAccessLock,
   achievementEncounter,
   tacticalAlertPing,
+  inkSplatTransition,
   victoryResultsTally,
 ]
 
