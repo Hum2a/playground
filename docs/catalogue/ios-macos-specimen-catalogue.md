@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 258** complete.
+- Progress: **22 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 237 |
+| Done | 22 |
+| Open | 236 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-194 | `SPX-1493` | `handoff-continuation` | Handoff Continuation |
 | IOS-188 | `SPX-1487` | `airdrop-transfer-arc` | AirDrop Transfer Arc |
 | IOS-172 | `SPX-1471` | `control-centre-module-expansion` | Control Centre Module Expansion |
 | IOS-160 | `SPX-1459` | `quick-look-expansion` | Quick Look Expansion |
@@ -81,7 +82,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
 - [x] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
 - [x] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
-- [ ] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
+- [x] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
 - [ ] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
 - [ ] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
 - [ ] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
@@ -344,7 +345,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Continuity / Cross-Device Concepts
 
-- [ ] **IOS-194** · `SPX-1493` · **Handoff Continuation** — active task representation transfers from one device frame to another while retaining state.
+- [x] **IOS-194** · `SPX-1493` · **Handoff Continuation** — active task representation transfers from one device frame to another while retaining state.
 - [ ] **IOS-195** · `SPX-1494` · **Universal Clipboard Transfer** — copied object becomes a temporary shared token then materialises on another device.
 - [ ] **IOS-196** · `SPX-1495` · **Continuity Camera Acquisition** — desktop placeholder discovers and binds to a nearby camera source.
 - [ ] **IOS-197** · `SPX-1496` · **Sidecar Workspace Extension** — secondary display region attaches to the primary workspace and receives moved content.

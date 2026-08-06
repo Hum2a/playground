@@ -81,6 +81,7 @@ import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
+import { handoffContinuation } from './handoff-continuation/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
@@ -288,6 +289,7 @@ export const specimens: Specimen[] = [
   fusionSelectionMerge,
   glassFractureReveal,
   graphicBurstHover,
+  handoffContinuation,
   highSpeedDashNavigation,
   holdToChargeButton,
   hoverCutout,

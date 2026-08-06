@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/handoff-continuation.schema.json",
+  "title": "HandoffContinuation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "task", "bridge", "progress", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "handoff-continuation" },
+    "intent": {
+      "type": "string",
+      "const": "Transfer ownership of an in-progress task between device representations while preserving exact progress."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deviceA", "deviceB", "task", "initialProgress"],
+      "properties": {
+        "deviceA": { "type": "string", "const": "DESKTOP" },
+        "deviceB": { "type": "string", "const": "TABLET" },
+        "task": { "type": "string", "const": "EDIT // REPORT" },
+        "initialProgress": { "type": "number", "const": 68 }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fullWidthPx", "fullHeightPx", "tokenWidthPx", "tokenHeightPx"],
+      "properties": {
+        "fullWidthPx": { "type": "number", "const": 180 },
+        "fullHeightPx": { "type": "number", "const": 92 },
+        "tokenWidthPx": { "type": "number", "const": 92 },
+        "tokenHeightPx": { "type": "number", "const": 48 }
+      }
+    },
+    "bridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segments"],
+      "properties": {
+        "segments": { "type": "number", "const": 6 }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startPct", "endPct"],
+      "properties": {
+        "startPct": { "type": "number", "const": 68 },
+        "endPct": { "type": "number", "const": 74 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantHandoff", "triggers"],
+      "properties": {
+        "instantHandoff": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "task", "bridge"],
+      "properties": {
+        "root": { "type": "string", "const": "hfc" },
+        "task": { "type": "string", "const": "hfc__task" },
+        "bridge": { "type": "string", "const": "hfc__bridge" }
+      }
+    }
+  }
+}
