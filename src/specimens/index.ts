@@ -576,6 +576,8 @@ import { halfFoldOpen } from './half-fold-open/entry'
 
 import { paperPeelReveal } from './paper-peel-reveal/entry'
 
+import { pressRollReveal } from './press-roll-reveal/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1092,6 +1094,7 @@ export const specimens: Specimen[] = [
   broadsheetPageTurn,
   halfFoldOpen,
   paperPeelReveal,
+  pressRollReveal,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

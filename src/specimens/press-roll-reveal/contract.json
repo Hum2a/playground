@@ -1,0 +1,8 @@
+{
+  "name": "press-roll-reveal",
+  "ref": "SPX-3575",
+  "title": "Press Roll Reveal",
+  "mode": "replate",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
