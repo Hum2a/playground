@@ -33,7 +33,7 @@ export const matchedCardExpansion: Specimen = {
     franchise: 'apple',
     works: ['ios'],
   },
-  tags: ['expansion', 'shared-element', 'navigation', 'card'],
+  tags: ['expansion', 'shared-element', 'navigation'],
   deps: 'none',
   motion: {
     loops: false,
