@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/cross-out-replacement.schema.json",
+  "title": "CrossOutReplacement",
+  "description": "Portable contract for an aggressive cross-out then value replacement. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "strikes",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "cross-out-replacement" },
+    "intent": {
+      "type": "string",
+      "const": "Old value is crossed out by irregular graphic strokes, then the replacement attacks into the canonical position."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "oldValue", "newValue", "suffix", "trigger", "status"],
+      "properties": {
+        "label": { "type": "string", "const": "MONTHLY PLAN" },
+        "oldValue": { "type": "string", "const": "£49" },
+        "newValue": { "type": "string", "const": "£29" },
+        "suffix": { "type": "string", "const": "/ MONTH" },
+        "trigger": { "type": "string", "const": "APPLY CHANGE" },
+        "status": {
+          "type": "string",
+          "const": "Monthly plan changed to £29 per month."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "red", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "strikes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["red", "ink"],
+      "description": "Physical polygon strokes relative to the old-value wrapper — not text-decoration.",
+      "properties": {
+        "red": {
+          "type": "object",
+          "const": {
+            "widthPercent": 108,
+            "heightPx": 11,
+            "rotateDeg": -4,
+            "direction": "ltr",
+            "clipPath": "polygon(0% 35%, 4% 0%, 100% 18%, 98% 100%, 0% 82%)"
+          }
+        },
+        "ink": {
+          "type": "object",
+          "const": {
+            "widthPercent": 108,
+            "heightPx": 7,
+            "rotateDeg": 2,
+            "direction": "rtl",
+            "clipPath": "polygon(0% 20%, 100% 0%, 100% 78%, 2% 100%)"
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "strikeMs",
+        "impactAtMs",
+        "invalidateAtMs",
+        "replaceAtMs",
+        "exitAtMs",
+        "newValueKeyframes"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 560 },
+        "strikeMs": { "type": "number", "const": 180 },
+        "impactAtMs": { "type": "number", "const": 150 },
+        "invalidateAtMs": { "type": "number", "const": 180 },
+        "replaceAtMs": { "type": "number", "const": 260 },
+        "exitAtMs": { "type": "number", "const": 420 },
+        "oldImpact": {
+          "type": "object",
+          "const": { "translateXPx": 3, "rotateDeg": 1 }
+        },
+        "newValueKeyframes": {
+          "type": "object",
+          "const": {
+            "from": {
+              "translate": "26px 32px",
+              "rotate": "7deg",
+              "scale": 1.18
+            },
+            "impact": {
+              "translate": "-2px -2px",
+              "rotate": "-2deg",
+              "scale": 0.96
+            },
+            "to": { "translate": "0 0", "rotate": "-1deg", "scale": 1 }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["singleStatusAnnouncement", "strikesDecorative"],
+      "properties": {
+        "singleStatusAnnouncement": { "type": "boolean", "const": true },
+        "strikesDecorative": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinalValue", "triggers"],
+      "properties": {
+        "immediateFinalValue": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "old", "new", "strikeRed", "strikeInk", "trigger"],
+      "properties": {
+        "root": { "type": "string", "const": "cor" },
+        "old": { "type": "string", "const": "cor__old" },
+        "new": { "type": "string", "const": "cor__new" },
+        "strikeRed": { "type": "string", "const": "cor__strike--red" },
+        "strikeInk": { "type": "string", "const": "cor__strike--ink" },
+        "trigger": { "type": "string", "const": "cor__trigger" },
+        "stateSettled": { "type": "string", "const": "cor--settled" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "cross-out-replacement",
+      "intent": "Old value is crossed out by irregular graphic strokes, then the replacement attacks into the canonical position.",
+      "copy": {
+        "label": "MONTHLY PLAN",
+        "oldValue": "£49",
+        "newValue": "£29",
+        "suffix": "/ MONTH",
+        "trigger": "APPLY CHANGE",
+        "status": "Monthly plan changed to £29 per month."
+      },
+      "colours": {
+        "ink": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "strikes": {
+        "red": {
+          "widthPercent": 108,
+          "heightPx": 11,
+          "rotateDeg": -4,
+          "direction": "ltr",
+          "clipPath": "polygon(0% 35%, 4% 0%, 100% 18%, 98% 100%, 0% 82%)"
+        },
+        "ink": {
+          "widthPercent": 108,
+          "heightPx": 7,
+          "rotateDeg": 2,
+          "direction": "rtl",
+          "clipPath": "polygon(0% 20%, 100% 0%, 100% 78%, 2% 100%)"
+        }
+      },
+      "animation": {
+        "totalMs": 560,
+        "strikeMs": 180,
+        "impactAtMs": 150,
+        "invalidateAtMs": 180,
+        "replaceAtMs": 260,
+        "exitAtMs": 420
+      },
+      "a11y": {
+        "singleStatusAnnouncement": true,
+        "strikesDecorative": true
+      },
+      "reducedMotion": {
+        "immediateFinalValue": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "cor",
+        "old": "cor__old",
+        "new": "cor__new",
+        "strikeRed": "cor__strike--red",
+        "strikeInk": "cor__strike--ink",
+        "trigger": "cor__trigger"
+      }
+    }
+  ]
+}

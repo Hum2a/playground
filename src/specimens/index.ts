@@ -8,6 +8,7 @@ import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
+import { crossOutReplacement } from './cross-out-replacement/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
@@ -103,6 +104,7 @@ export const specimens: Specimen[] = [
   comicCardSelection,
   redactedContentLock,
   comicPanelScrollReveal,
+  crossOutReplacement,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

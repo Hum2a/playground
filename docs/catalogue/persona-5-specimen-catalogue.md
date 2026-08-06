@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 301** complete.
+- Progress: **11 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 291 |
+| Done | 11 |
+| Open | 290 |
 
 ## Shipped (mapped to live specimens)
 
@@ -28,6 +28,7 @@
 | P5-165 | `SPX-176` | `comic-card-selection` | Comic Card Selection |
 | P5-185 | `SPX-196` | `decision-showdown` | Decision Showdown |
 | P5-201 | `SPX-212` | `comic-panel-scroll-reveal` | Comic Panel Scroll Reveal |
+| P5-044 | `SPX-055` | `cross-out-replacement` | Cross-Out Replacement |
 
 ## Core first-wave
 
@@ -40,7 +41,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-014** · `SPX-025` · **Panel Collapse Navigation** — navigation
 - [ ] **P5-015** · `SPX-026` · **Panel Explosion Reveal** — reveal
 - [ ] **P5-029** · `SPX-040` · **Typographic Impact** — emphasis
-- [ ] **P5-044** · `SPX-055` · **Cross-Out Replacement** — value change
+- [x] **P5-044** · `SPX-055` · **Cross-Out Replacement** — value change
 - [x] **P5-045** · `SPX-056` · **Crooked Menu Stack** — navigation
 - [ ] **P5-046** · `SPX-057` · **Radial Command Snap** — selection
 - [ ] **P5-065** · `SPX-076` · **Graphic Burst Hover** — hover
@@ -110,7 +111,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-041** · `SPX-052` · **Scrambled Heading Resolve** — Decorative letter fragments resolve into readable text.
 - [ ] **P5-042** · `SPX-053` · **Word Stack Shuffle** — Alternative labels rapidly slide over one another.
 - [ ] **P5-043** · `SPX-054` · **Impact Underline** — Thick irregular underline shoots underneath selected text.
-- [ ] **P5-044** · `SPX-055` · **Cross-Out Replacement** — Old value gets aggressively struck out and replaced.
+- [x] **P5-044** · `SPX-055` · **Cross-Out Replacement** — Old value gets aggressively struck out and replaced.
 
 ## Menu and navigation interactions
 
