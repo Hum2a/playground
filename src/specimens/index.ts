@@ -365,6 +365,7 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { redactionReveal } from './redaction-reveal/entry'
 import { removeFromListUndo } from './remove-from-list-undo/entry'
 import { resumeActivityHandoff } from './resume-activity-handoff/entry'
+import { resumeFromRestWake } from './resume-from-rest-wake/entry'
 import { resumePlaybackHandoff } from './resume-playback-handoff/entry'
 import { retryToBufferTransition } from './retry-to-buffer-transition/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
@@ -882,6 +883,7 @@ export const specimens: Specimen[] = [
   redactionReveal,
   removeFromListUndo,
   resumeActivityHandoff,
+  resumeFromRestWake,
   resumePlaybackHandoff,
   retryToBufferTransition,
   ripplePortalTransition,
