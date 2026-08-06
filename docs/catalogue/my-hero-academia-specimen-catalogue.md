@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **0 / 369** complete.
+- Progress: **1 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 0 |
-| Open | 369 |
+| Done | 1 |
+| Open | 368 |
 
 ## Visual grammar
 
@@ -32,13 +32,13 @@
 
 | MHA | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
-| — | — | — | *(none yet)* |
+| MHA-001 | `SPX-1975` | `impact-frame-slam` | Impact Frame Slam |
 
 ## Core first-wave
 
 Curated implementation priority (former Top 30 Recommended First Builds). Same checkbox as the master list — checking either counts.
 
-- [ ] **MHA-001** · `SPX-1975` · **Impact Frame Slam** — manga-impact-language
+- [x] **MHA-001** · `SPX-1975` · **Impact Frame Slam** — manga-impact-language
 - [ ] **MHA-002** · `SPX-1976` · **Speed-Line Action Reveal** — manga-impact-language
 - [ ] **MHA-003** · `SPX-1977` · **Panel Break Transition** — manga-impact-language
 - [ ] **MHA-013** · `SPX-1987` · **Hero Name Slam** — hero-introduction-cards
@@ -71,7 +71,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Manga Impact Language
 
-- [ ] **MHA-001** · `SPX-1975` · **Impact Frame Slam** — a normal interface is interrupted for 180ms by oversized angular impact geometry, then resolves into a status message.
+- [x] **MHA-001** · `SPX-1975` · **Impact Frame Slam** — a normal interface is interrupted for 180ms by oversized angular impact geometry, then resolves into a status message.
 - [ ] **MHA-002** · `SPX-1976` · **Speed-Line Action Reveal** — converging comic speed lines pull attention toward a newly revealed action or result.
 - [ ] **MHA-003** · `SPX-1977` · **Panel Break Transition** — current page fractures into irregular comic panels that move apart to reveal the next state.
 - [ ] **MHA-004** · `SPX-1978` · **Diagonal Panel Wipe** — two or three hard diagonal comic planes slice across the viewport to exchange content.

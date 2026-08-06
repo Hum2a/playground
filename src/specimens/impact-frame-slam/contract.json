@@ -1,0 +1,34 @@
+{
+  "name": "impact-frame-slam",
+  "intent": "Comic impact-frame flash plus status slam STANDBY → ALERT with corner wedges inside a clipped panel.",
+  "catalogue": {
+    "mha": "MHA-001",
+    "ref": "SPX-1975"
+  },
+  "copy": {
+    "from": "STANDBY",
+    "to": "ALERT",
+    "eyebrow": "SYSTEM // FEEDBACK",
+    "noteIdle": "Awaiting trigger.",
+    "noteDone": "Impact registered."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "flashMs": 90,
+    "slamMs": 500,
+    "settleMs": 280
+  },
+  "api": {
+    "run": "runImpactFrameSlam()",
+    "reset": "resetImpactFrameSlam()",
+    "replay": "replayImpactFrameSlam()"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show ALERT with static wedges; no flash or slam"
+  }
+}
