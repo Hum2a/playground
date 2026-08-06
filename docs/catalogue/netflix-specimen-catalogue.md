@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **39 / 197** complete.
+- Progress: **40 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 39 |
-| Open | 158 |
+| Done | 40 |
+| Open | 157 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-159 | `SPX-3268` | `back-navigation-return` | Back Navigation Return |
 | NF-093 | `SPX-3202` | `details-close-return` | Details Close Return |
 | NF-118 | `SPX-3227` | `continue-watching-progress-bar` | Continue-Watching Progress Bar |
 | NF-117 | `SPX-3226` | `resume-playback-handoff` | Resume Playback Handoff |
@@ -128,7 +129,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-117** · `SPX-3226` · **Resume Playback Handoff** — `resume-playback-handoff`
 - [x] **NF-118** · `SPX-3227` · **Continue-Watching Progress Bar** — `continue-watching-progress-bar`
 - [x] **NF-093** · `SPX-3202` · **Details Close Return** — `details-close-return`
-- [ ] **NF-159** · `SPX-3268` · **Back Navigation Return** — `back-navigation-return`
+- [x] **NF-159** · `SPX-3268` · **Back Navigation Return** — `back-navigation-return`
 
 ### Wave E — Errors, mobile and cinematic polish
 
@@ -345,7 +346,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-156** · `SPX-3265` · **Directional Focus Travel** — Focus moves between cards with spatial continuity that mirrors arrow direction
 - [ ] **NF-157** · `SPX-3266` · **Focus Row-to-Row Jump** — Moving vertically preserves approximate horizontal intent
 - [ ] **NF-158** · `SPX-3267` · **Nav Pill Expand** — A compact navigation item widens to reveal its label on focus
-- [ ] **NF-159** · `SPX-3268` · **Back Navigation Return** — Returning from details restores the exact previously focused card
+- [x] **NF-159** · `SPX-3268` · **Back Navigation Return** — Returning from details restores the exact previously focused card
 - [ ] **NF-160** · `SPX-3269` · **Focus Boundary Resist** — Directional input at a grid edge produces restrained no-op feedback
 - [ ] **NF-161** · `SPX-3270` · **Remote Long-Press State** — A held remote action visibly enters a secondary interaction mode
 ## 23. Dark Cinematic Transitions
