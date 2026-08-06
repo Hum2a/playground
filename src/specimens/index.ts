@@ -16,6 +16,7 @@ import { authenticationFailureReset } from './authentication-failure-reset/entry
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
+import { badgeEarned } from './badge-earned/entry'
 import { barrierBreachAlert } from './barrier-breach-alert/entry'
 import { bindingWrapLock } from './binding-wrap-lock/entry'
 import { biometricScanAcquisition } from './biometric-scan-acquisition/entry'
@@ -157,6 +158,7 @@ import { impactFrameSlam } from './impact-frame-slam/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { incidentDispatchCard } from './incident-dispatch-card/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
+import { instantFullRecovery } from './instant-full-recovery/entry'
 import { instantTransmissionNavigation } from './instant-transmission-navigation/entry'
 import { interactiveBackSwipe } from './interactive-back-swipe/entry'
 import { invalidDropReturn } from './invalid-drop-return/entry'
@@ -188,6 +190,7 @@ import { maximumOutputBreakthrough } from './maximum-output-breakthrough/entry'
 import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
+import { midnightChannelSignalAcquisition } from './midnight-channel-signal-acquisition/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { missionBoardDispatch } from './mission-board-dispatch/entry'
@@ -404,6 +407,7 @@ export const specimens: Specimen[] = [
   authenticationSuccessMorph,
   azureShardTransition,
   badgeCaseInsert,
+  badgeEarned,
   barrierBreachAlert,
   bindingWrapLock,
   biometricScanAcquisition,
@@ -545,6 +549,7 @@ export const specimens: Specimen[] = [
   impactFreezeFrame,
   incidentDispatchCard,
   inkSplatTransition,
+  instantFullRecovery,
   instantTransmissionNavigation,
   interactiveBackSwipe,
   invalidDropReturn,
@@ -576,6 +581,7 @@ export const specimens: Specimen[] = [
   measurementOverload,
   memoryFragmentReveal,
   menuBarActiveTransfer,
+  midnightChannelSignalAcquisition,
   midnightClockTransition,
   misprintNotification,
   missionBoardDispatch,
@@ -729,7 +735,8 @@ export const specimens: Specimen[] = [
   windowSnapPreview,
   windSliceTransition,
   winnerAdvance,
-  winnerBannerBreakthrough,  wireConnectionDraw,
+  winnerBannerBreakthrough,
+  wireConnectionDraw,
 
 ]
 

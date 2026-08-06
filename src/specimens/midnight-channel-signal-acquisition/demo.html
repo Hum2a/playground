@@ -1,0 +1,20 @@
+<div class="mcsa" data-mcsa data-phase="idle">
+  <p class="mcsa__live" data-mcsa-live aria-live="polite">Signal idle. Tune to acquire.</p>
+
+  <div class="mcsa__crt" data-mcsa-crt>
+    <div class="mcsa__scanlines" aria-hidden="true"></div>
+    <div class="mcsa__static" data-mcsa-static aria-hidden="true"></div>
+    <div class="mcsa__content" data-mcsa-content>
+      <p class="mcsa__eyebrow">MIDNIGHT CHANNEL</p>
+      <p class="mcsa__signal" data-mcsa-signal>SIGNAL LOCK</p>
+      <p class="mcsa__detail" data-mcsa-detail>Hidden broadcast stabilised.</p>
+    </div>
+    <div class="mcsa__lock" data-mcsa-lock aria-hidden="true">READY</div>
+  </div>
+
+  <div class="mcsa__controls">
+    <label class="mcsa__label" for="mcsa-tune">Tune</label>
+    <input type="range" id="mcsa-tune" class="mcsa__range" data-mcsa-tune min="0" max="100" value="0" />
+    <button type="button" class="mcsa__btn" data-mcsa-reset>Reset</button>
+  </div>
+</div>

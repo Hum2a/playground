@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **0 / 191** complete.
+- Progress: **1 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 0 |
-| Open | 191 |
+| Done | 1 |
+| Open | 190 |
 
 ## Visual grammar
 
@@ -34,13 +34,13 @@
 
 | P4 | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
-| — | — | — | *(none yet)* |
+| P4-001 | `SPX-2919` | `midnight-channel-signal-acquisition` | Midnight Channel Signal Acquisition |
 
 ## Core first-wave
 
 Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **False Lead Strikeout** instead of duplicate Shadow Self Reveal). Same checkbox as the master list — checking either counts.
 
-- [ ] **P4-001** · `SPX-2919` · **Midnight Channel Signal Acquisition** — midnight-channel-crt-broadcast
+- [x] **P4-001** · `SPX-2919` · **Midnight Channel Signal Acquisition** — midnight-channel-crt-broadcast
 - [ ] **P4-002** · `SPX-2920` · **CRT Power-On Reveal** — midnight-channel-crt-broadcast
 - [ ] **P4-013** · `SPX-2931` · **TV Screen Dive Transition** — tv-world-screen-portals
 - [ ] **P4-021** · `SPX-2939` · **Fog-Clearing Data Reveal** — fog-hidden-information
@@ -94,7 +94,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Midnight Channel / CRT Broadcast
 
-- [ ] **P4-001** · `SPX-2919` · **Midnight Channel Signal Acquisition** — Tune through analogue noise until hidden content locks into a stable broadcast.
+- [x] **P4-001** · `SPX-2919` · **Midnight Channel Signal Acquisition** — Tune through analogue noise until hidden content locks into a stable broadcast.
 - [ ] **P4-002** · `SPX-2920` · **CRT Power-On Reveal** — A dead screen collapses to a bright line, blooms, and resolves into UI.
 - [ ] **P4-003** · `SPX-2921` · **Channel Tuning Scrub** — Dragging a tuning dial moves through unstable fragments before acquiring a target state.
 - [ ] **P4-004** · `SPX-2922` · **Lost Signal Collapse** — Stable content progressively loses sync and collapses into a no-signal state.
