@@ -20,6 +20,7 @@ import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
 import { badgeEarned } from './badge-earned/entry'
 import { barrierBreachAlert } from './barrier-breach-alert/entry'
+import { battleResultTally } from './battle-result-tally/entry'
 import { bindingWrapLock } from './binding-wrap-lock/entry'
 import { biometricScanAcquisition } from './biometric-scan-acquisition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
@@ -448,6 +449,7 @@ export const specimens: Specimen[] = [
   badgeCaseInsert,
   badgeEarned,
   barrierBreachAlert,
+  battleResultTally,
   bindingWrapLock,
   biometricScanAcquisition,
   blackoutLoader,

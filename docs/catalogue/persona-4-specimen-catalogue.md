@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **38 / 191** complete.
+- Progress: **39 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 153 |
+| Done | 39 |
+| Open | 152 |
 
 ## Visual grammar
 
@@ -72,6 +72,7 @@
 | P4-078 | `SPX-2996` | `multi-fusion-assembly` | Multi-Fusion Assembly |
 | P4-079 | `SPX-2997` | `weakness-discovered` | Weakness Discovered |
 | P4-080 | `SPX-2998` | `knockdown-chain` | Knockdown Chain |
+| P4-087 | `SPX-3005` | `battle-result-tally` | Battle Result Tally |
 
 ## Core first-wave
 
@@ -115,7 +116,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-078** · `SPX-2996` · **Multi-Fusion Assembly** — persona-fusion-compendium
 - [x] **P4-079** · `SPX-2997` · **Weakness Discovered** — battle-weakness-advantage
 - [x] **P4-080** · `SPX-2998` · **Knockdown Chain** — battle-weakness-advantage
-- [ ] **P4-087** · `SPX-3005` · **Battle Result Tally** — battle-weakness-advantage
+- [x] **P4-087** · `SPX-3005` · **Battle Result Tally** — battle-weakness-advantage
 - [ ] **P4-089** · `SPX-3007` · **Level-Up Burst** — battle-weakness-advantage
 - [ ] **P4-092** · `SPX-3010` · **Map Construction** — dungeon-exploration
 - [ ] **P4-094** · `SPX-3012` · **Danger Meter Escalation** — dungeon-exploration
@@ -241,7 +242,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [ ] **P4-084** · `SPX-3002` · **Critical Hit Impact** — A result value lands with oversized finite impact geometry.
 - [ ] **P4-085** · `SPX-3003` · **Guard State Lock** — A character/card compresses into a protected defensive treatment.
 - [ ] **P4-086** · `SPX-3004` · **Status Effect Acquire** — A compact state token snaps onto a profile.
-- [ ] **P4-087** · `SPX-3005` · **Battle Result Tally** — XP/reward values count into fixed result rows.
+- [x] **P4-087** · `SPX-3005` · **Battle Result Tally** — XP/reward values count into fixed result rows.
 - [ ] **P4-088** · `SPX-3006` · **Skill Acquired Reveal** — A new capability emerges from the result panel.
 - [ ] **P4-089** · `SPX-3007` · **Level-Up Burst** — A level value rolls upward and reorganises stat presentation.
 - [ ] **P4-090** · `SPX-3008` · **Escape Transition** — Battle surface tears away into exploration state.
