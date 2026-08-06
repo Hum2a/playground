@@ -190,6 +190,7 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
+import { screenshotExpandToEditor } from './screenshot-expand-to-editor/entry'
 import { screenshotThumbnailArrival } from './screenshot-thumbnail-arrival/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
 import { searchBarToViewTransform } from './search-bar-to-view-transform/entry'
@@ -467,6 +468,7 @@ export const specimens: Specimen[] = [
   ripplePortalTransition,
   scannerSearch,
   scouterScan,
+  screenshotExpandToEditor,
   screenshotThumbnailArrival,
   scrollRubberBand,
   searchBarToViewTransform,

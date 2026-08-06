@@ -1,0 +1,38 @@
+<div class="ste" data-screenshot-expand-to-editor data-phase="idle">
+  <div class="ste__app" data-ste-app>
+    <header class="ste__header">Gallery</header>
+    <div class="ste__content">
+      <div class="ste__block"></div>
+      <div class="ste__block ste__block--short"></div>
+    </div>
+    <button type="button" class="ste__capture" data-ste-capture>Capture</button>
+  </div>
+
+  <button
+    type="button"
+    class="ste__thumb"
+    data-ste-thumb
+    hidden
+    aria-label="Screenshot thumbnail — open editor"
+  >
+    <div class="ste__thumb-preview" data-ste-thumb-preview>
+      <div class="ste__mini-header"></div>
+      <div class="ste__mini-body"></div>
+    </div>
+  </button>
+
+  <div class="ste__editor" data-ste-editor hidden aria-hidden="true">
+    <div class="ste__editor-preview" data-ste-editor-preview>
+      <div class="ste__editor-header"></div>
+      <div class="ste__editor-body"></div>
+    </div>
+    <div class="ste__editor-controls" data-ste-controls hidden>
+      <button type="button" class="ste__ctrl">Crop</button>
+      <button type="button" class="ste__ctrl">Draw</button>
+      <button type="button" class="ste__ctrl ste__ctrl--primary">Share</button>
+    </div>
+    <button type="button" class="ste__close" data-ste-close aria-label="Close editor">Close</button>
+  </div>
+
+  <p class="ste__status" role="status" aria-live="polite" data-ste-status>Tap Capture or thumbnail.</p>
+</div>

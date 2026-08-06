@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **41 / 417** complete.
+- Progress: **42 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 41 |
-| Open | 376 |
+| Done | 42 |
+| Open | 375 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-384 | `SPX-1941` | `screenshot-expand-to-editor` | Screenshot Expand to Editor |
 | AND-343 | `SPX-1900` | `android-invalid-drop-return` | Invalid Drop Return |
 | AND-340 | `SPX-1897` | `android-drag-proxy-formation` | Drag Proxy Formation |
 | AND-345 | `SPX-1902` | `grid-reorder-gap` | Grid Reorder Gap |
@@ -659,7 +660,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Screenshot / Selection Inspired
 
 - [x] **AND-383** · `SPX-1940` · **Screenshot Thumbnail Arrival** — captured screen condenses into temporary corner thumbnail.
-- [ ] **AND-384** · `SPX-1941` · **Screenshot Expand to Editor** — thumbnail expands into annotation/editor surface.
+- [x] **AND-384** · `SPX-1941` · **Screenshot Expand to Editor** — thumbnail expands into annotation/editor surface.
 - [ ] **AND-385** · `SPX-1942` · **Screenshot Dismiss Fling** — thumbnail follows a strong dismissal gesture.
 - [ ] **AND-386** · `SPX-1943` · **Crop Handle Acquisition** — crop region handles become active under drag.
 - [ ] **AND-387** · `SPX-1944` · **Share Screenshot Handoff** — captured thumbnail becomes outgoing share proxy.

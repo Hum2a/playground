@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/screenshot-expand-to-editor.schema.json",
+  "title": "ScreenshotExpandToEditor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "thumb", "editor", "timing", "reducedMotion"],
+  "properties": {
+    "name": { "type": "string", "const": "screenshot-expand-to-editor" },
+    "thumb": {
+      "type": "object",
+      "required": ["widthPx", "heightPx", "radiusPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 116 },
+        "heightPx": { "type": "number", "const": 206 },
+        "radiusPx": { "type": "number", "const": 18 }
+      }
+    },
+    "editor": {
+      "type": "object",
+      "required": ["widthPx", "heightPx", "radiusPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 358 },
+        "heightPx": { "type": "number", "const": 620 },
+        "radiusPx": { "type": "number", "const": 26 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["expandMs", "controlsDelayMs"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 380 },
+        "controlsDelayMs": { "type": "number", "const": 180 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "required": ["instantSwitch"],
+      "properties": {
+        "instantSwitch": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

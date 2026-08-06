@@ -1,0 +1,261 @@
+/* screenshot-expand-to-editor — portable specimen styles. Do not restyle to host tokens. */
+
+.ste {
+  --ste-ink: #12141a;
+  --ste-panel: #1e232d;
+  --ste-line: #2e3644;
+  --ste-muted: #8a939f;
+  --ste-cream: #eceff4;
+  --ste-accent: #6fa8dc;
+  --ste-thumb-w: 116px;
+  --ste-thumb-h: 206px;
+  --ste-editor-w: 358px;
+  --ste-editor-h: 620px;
+  --ste-expand-ms: 380ms;
+  --ste-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  width: 390px;
+  max-width: 100%;
+  height: 700px;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--ste-cream);
+  background: var(--ste-ink);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ste *,
+.ste *::before,
+.ste *::after {
+  box-sizing: border-box;
+}
+
+.ste__app {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  transition: opacity 200ms ease;
+}
+
+.ste[data-phase='expanded'] .ste__app {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.ste__header {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.ste__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ste__block {
+  height: 120px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2a3340 0%, var(--ste-panel) 100%);
+}
+
+.ste__block--short {
+  height: 80px;
+}
+
+.ste__capture {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--ste-line);
+  border-radius: 20px;
+  background: var(--ste-panel);
+  color: var(--ste-cream);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.ste__capture:focus-visible,
+.ste__thumb:focus-visible,
+.ste__close:focus-visible,
+.ste__ctrl:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.ste__thumb {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: var(--ste-thumb-w);
+  height: var(--ste-thumb-h);
+  padding: 0;
+  border: 2px solid var(--ste-line);
+  border-radius: 18px;
+  background: var(--ste-panel);
+  cursor: pointer;
+  z-index: 3;
+  transition:
+    width var(--ste-expand-ms) var(--ste-ease),
+    height var(--ste-expand-ms) var(--ste-ease),
+    left var(--ste-expand-ms) var(--ste-ease),
+    bottom var(--ste-expand-ms) var(--ste-ease),
+    border-radius var(--ste-expand-ms) var(--ste-ease),
+    transform var(--ste-expand-ms) var(--ste-ease);
+}
+
+.ste__thumb-preview {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ste__mini-header {
+  height: 12px;
+  border-radius: 4px;
+  background: var(--ste-accent);
+  opacity: 0.7;
+}
+
+.ste__mini-body {
+  flex: 1;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #2a3340 0%, #1a1f28 100%);
+}
+
+.ste[data-phase='expanded'] .ste__thumb {
+  left: calc((390px - var(--ste-editor-w)) / 2);
+  bottom: calc((700px - var(--ste-editor-h)) / 2);
+  width: var(--ste-editor-w);
+  height: var(--ste-editor-h);
+  border-radius: 26px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ste__editor {
+  position: absolute;
+  left: calc((390px - var(--ste-editor-w)) / 2);
+  top: calc((700px - var(--ste-editor-h)) / 2);
+  width: var(--ste-editor-w);
+  height: var(--ste-editor-h);
+  padding: 1rem;
+  border: 1px solid var(--ste-line);
+  border-radius: 26px;
+  background: var(--ste-panel);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.ste[data-phase='expanded'] .ste__editor {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ste__editor-preview {
+  flex: 1;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #2a3340 0%, #1a1f28 100%);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ste__editor-header {
+  height: 20px;
+  width: 40%;
+  border-radius: 6px;
+  background: var(--ste-accent);
+  opacity: 0.75;
+}
+
+.ste__editor-body {
+  flex: 1;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--ste-ink) 40%, transparent);
+}
+
+.ste__editor-controls {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.ste__editor-controls.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ste__ctrl {
+  flex: 1;
+  padding: 0.45rem;
+  border: 1px solid var(--ste-line);
+  border-radius: 10px;
+  background: var(--ste-ink);
+  color: var(--ste-cream);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.ste__ctrl--primary {
+  border-color: var(--ste-accent);
+  color: var(--ste-accent);
+}
+
+.ste__close {
+  align-self: flex-end;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--ste-line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ste-muted);
+  font-size: 0.65rem;
+  cursor: pointer;
+}
+
+.ste__status {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1rem;
+  right: 1rem;
+  font-size: 0.62rem;
+  color: var(--ste-muted);
+  z-index: 12;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ste__thumb,
+  .ste__editor,
+  .ste__editor-controls,
+  .ste__app {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ste__thumb,
+[data-force-reduced-motion='true'] .ste__editor,
+[data-force-reduced-motion='true'] .ste__editor-controls,
+[data-force-reduced-motion='true'] .ste__app {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}
