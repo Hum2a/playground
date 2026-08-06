@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **43 / 216** complete.
+- Progress: **44 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 43 |
-| Open | 173 |
+| Done | 44 |
+| Open | 172 |
 
 ## Visual grammar
 
@@ -75,6 +75,7 @@
 | PS-011 | `SPX-3317` | `four-shape-orbit-loader` | Four-Shape Orbit Loader |
 | PS-013 | `SPX-3319` | `shape-scatter-transition` | Shape Scatter Transition |
 | PS-046 | `SPX-3352` | `platinum-style-completion` | Platinum-Style Completion |
+| PS-071 | `SPX-3377` | `back-navigation-restore` | Back Navigation Restore |
 
 ## Core first-wave
 
@@ -123,7 +124,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-011** · `SPX-3317` · **Four-Shape Orbit Loader** — playstation-shapes-geometry
 - [x] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — playstation-shapes-geometry
 - [x] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — trophies-achievements
-- [ ] **PS-071** · `SPX-3377` · **Back Navigation Restore** — remote-tv-focus-navigation
+- [x] **PS-071** · `SPX-3377` · **Back Navigation Restore** — remote-tv-focus-navigation
 - [ ] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
 - [ ] **PS-096** · `SPX-3402` · **Party Join Handoff** — friends-parties-social
 - [ ] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — notifications
@@ -228,7 +229,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-068** · `SPX-3374` · **Row-to-Row Focus Jump** — Vertical navigation preserves approximate horizontal position.
 - [ ] **PS-069** · `SPX-3375` · **Edge Resistance** — Input against a grid boundary produces restrained spatial resistance.
 - [ ] **PS-070** · `SPX-3376` · **Focus Scale Lift** — Selected object grows slightly while retaining surrounding layout.
-- [ ] **PS-071** · `SPX-3377` · **Back Navigation Restore** — Returning from details restores the exact previous focus target.
+- [x] **PS-071** · `SPX-3377` · **Back Navigation Restore** — Returning from details restores the exact previous focus target.
 - [ ] **PS-072** · `SPX-3378` · **Long-Press Secondary Action** — Holding a controller action reveals an anchored secondary state.
 
 ## Cards / Media Tiles

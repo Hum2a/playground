@@ -1,0 +1,14 @@
+{
+  "name": "back-navigation-restore",
+  "intent": "Returning from details restores the exact previous focus target.",
+  "primitives": [
+    "navigation",
+    "focus"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  }
+}

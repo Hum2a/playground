@@ -25,6 +25,7 @@ import { authenticationFailureReset } from './authentication-failure-reset/entry
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { autoplayPreviewCountdown } from './autoplay-preview-countdown/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
+import { backNavigationRestore } from './back-navigation-restore/entry'
 import { backNavigationReturn } from './back-navigation-return/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
 import { badgeEarned } from './badge-earned/entry'
@@ -555,6 +556,7 @@ export const specimens: Specimen[] = [
   authenticationSuccessMorph,
   autoplayPreviewCountdown,
   azureShardTransition,
+  backNavigationRestore,
   backNavigationReturn,
   badgeCaseInsert,
   badgeEarned,
