@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/butterfly-entry.schema.json",
+  "title": "ButterflyEntry",
+  "description": "Portable contract for six abstract CSS butterflies that arrive, orbit once, converge, and resolve into a record card.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "butterflies",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "butterfly-entry" },
+    "intent": {
+      "type": "string",
+      "const": "Six geometric butterfly forms drift in from frozen edge points, partial-orbit, converge, and resolve into an arriving record card."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger",
+        "dismiss",
+        "eyebrow",
+        "title",
+        "meta",
+        "status"
+      ],
+      "properties": {
+        "trigger": { "type": "string", "const": "RECEIVE RECORD" },
+        "dismiss": { "type": "string", "const": "DISMISS" },
+        "eyebrow": { "type": "string", "const": "NEW RECORD" },
+        "title": { "type": "string", "const": "SPECIMEN // 043" },
+        "meta": { "type": "string", "const": "Archive entry received." },
+        "status": {
+          "type": "string",
+          "const": "New record received. Specimen 043."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "deepBlue", "blue", "bright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020912" },
+        "deepBlue": { "type": "string", "const": "#071f3d" },
+        "blue": { "type": "string", "const": "#176fa8" },
+        "bright": { "type": "string", "const": "#4dbce8" },
+        "pale": { "type": "string", "const": "#d9f7ff" }
+      }
+    },
+    "butterflies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "entryPoints", "sizePx"],
+      "properties": {
+        "count": { "type": "number", "const": 6 },
+        "sizePx": { "type": "array", "const": [12, 22] },
+        "entryPoints": {
+          "type": "array",
+          "const": [
+            { "id": 1, "x": "12%", "y": "82%" },
+            { "id": 2, "x": "25%", "y": "18%" },
+            { "id": 3, "x": "82%", "y": "24%" },
+            { "id": 4, "x": "91%", "y": "72%" },
+            { "id": 5, "x": "48%", "y": "8%" },
+            { "id": 6, "x": "8%", "y": "45%" }
+          ]
+        },
+        "staggerMs": {
+          "type": "array",
+          "const": [48, 56, 64, 72, 40, 80]
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arriveMs",
+        "orbitAtMs",
+        "orbitMs",
+        "convergeAtMs",
+        "convergeMs",
+        "constructAtMs",
+        "constructMs",
+        "settleAtMs",
+        "orbitDegrees",
+        "convergeScale",
+        "cardScale",
+        "loops"
+      ],
+      "properties": {
+        "arriveMs": { "type": "number", "const": 500 },
+        "orbitAtMs": { "type": "number", "const": 450 },
+        "orbitMs": { "type": "number", "const": 200 },
+        "convergeAtMs": { "type": "number", "const": 620 },
+        "convergeMs": { "type": "number", "const": 140 },
+        "constructAtMs": { "type": "number", "const": 760 },
+        "constructMs": { "type": "number", "const": 260 },
+        "settleAtMs": { "type": "number", "const": 1020 },
+        "orbitDegrees": { "type": "number", "const": 150 },
+        "convergeScale": { "type": "array", "const": [1, 0.35] },
+        "cardScale": { "type": "array", "const": [0.88, 1.03, 1] },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["swarmDecorative", "politeStatus"],
+      "properties": {
+        "swarmDecorative": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateCard", "triggers"],
+      "properties": {
+        "immediateCard": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "swarm", "bf", "card"],
+      "properties": {
+        "root": { "type": "string", "const": "butterfly-entry" },
+        "swarm": { "type": "string", "const": "butterfly-entry__swarm" },
+        "bf": { "type": "string", "const": "bf" },
+        "card": { "type": "string", "const": "butterfly-entry__card" }
+      }
+    }
+  }
+}

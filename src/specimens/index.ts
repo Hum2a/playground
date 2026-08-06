@@ -26,6 +26,7 @@ import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
+import { energyTransferSync } from './energy-transfer-sync/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { failureShatter } from './failure-shatter/entry'
@@ -37,6 +38,7 @@ import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
+import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
@@ -137,6 +139,7 @@ export const specimens: Specimen[] = [
   decisionShowdown,
   deletionGuillotine,
   discoveryTearOpen,
+  energyTransferSync,
   errorCorrectionRewrite,
   failureShatter,
   fusionSelectionMerge,
@@ -146,6 +149,7 @@ export const specimens: Specimen[] = [
   letterScatterAssemble,
   lockedChainBreak,
   mangaCutInNotification,
+  memoryFragmentReveal,
   misprintNotification,
   moonPhaseProgress,
   newspaperHeadlineDrop,

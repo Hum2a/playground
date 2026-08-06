@@ -130,6 +130,8 @@ export const SUGGESTED_FREE_TAGS = [
   'detection',
   'ping',
   'reveal',
+  'arrival',
+  'ephemeral',
   'impact',
   'paper',
   'peel',

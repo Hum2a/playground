@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **12 / 238** complete.
+- Progress: **14 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 226 |
+| Done | 14 |
+| Open | 224 |
 
 ## Visual grammar
 
@@ -45,6 +45,8 @@
 | P3-107 | `SPX-504` | `butterfly-entry` | Butterfly Entry |
 | P3-001 | `SPX-400` | `waterline-page-wipe` | Waterline Page Wipe |
 | P3-083 | `SPX-480` | `tactical-target-lock` | Tactical Target Lock |
+| P3-221 | `SPX-618` | `energy-transfer-sync` | Energy Transfer Sync |
+| P3-225 | `SPX-622` | `memory-fragment-reveal` | Memory Fragment Reveal |
 
 ## Core first-wave
 
@@ -62,14 +64,14 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
 - [ ] **P3-145** · `SPX-542` · **Social Link Rank Up** — progression
 - [x] **P3-224** · `SPX-621` · **Blue Door Discovery** — discovery
-- [ ] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — reveal
+- [x] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — reveal
 - [x] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transition
 - [x] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transition
 - [ ] **P3-020** · `SPX-418` · **Glass Fracture Reveal** — reveal
 - [x] **P3-107** · `SPX-504` · **Butterfly Entry** — arrival
 - [ ] **P3-134** · `SPX-531` · **Midnight Clock Transition** — transition
 - [ ] **P3-207** · `SPX-604` · **Scanner Search** — search
-- [ ] **P3-221** · `SPX-618` · **Energy Transfer Sync** — sync
+- [x] **P3-221** · `SPX-618` · **Energy Transfer Sync** — sync
 
 ## Water / liquid UI
 
@@ -374,7 +376,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ### Sync
 
-- [ ] **P3-221** · `SPX-618` · **Energy Transfer Sync** — sync.
+- [x] **P3-221** · `SPX-618` · **Energy Transfer Sync** — sync.
 - [ ] **P3-222** · `SPX-619` · **Connection Sync Pulse** — sync.
 - [ ] **P3-223** · `SPX-620` · **Sync Complete Merge** — sync.
 

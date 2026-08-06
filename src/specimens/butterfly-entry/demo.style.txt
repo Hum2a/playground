@@ -1,0 +1,817 @@
+/* SPX-504 Butterfly Entry — portable contract. Do not restyle to host tokens. */
+
+.butterfly-entry {
+  --bf-bg: #020912;
+  --bf-deep: #071f3d;
+  --bf-blue: #176fa8;
+  --bf-bright: #4dbce8;
+  --bf-pale: #d9f7ff;
+
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--bf-bg);
+  color: var(--bf-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.butterfly-entry *,
+.butterfly-entry *::before,
+.butterfly-entry *::after {
+  box-sizing: border-box;
+}
+
+.butterfly-entry__stage {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid rgb(23 111 168 / 0.35);
+  background: radial-gradient(ellipse at 50% 42%, #041525 0%, var(--bf-bg) 70%);
+}
+
+.butterfly-entry__swarm {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* —— Abstract butterfly (12–22px) —— */
+.bf {
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+  transform-origin: center center;
+  will-change: left, top, transform, opacity;
+}
+
+.bf__wing {
+  position: absolute;
+  top: 1px;
+  width: 9px;
+  height: 11px;
+  background: var(--bf-bright);
+  transform-origin: center center;
+}
+
+.bf__wing--l {
+  left: 0;
+  clip-path: polygon(100% 45%, 0% 0%, 8% 100%);
+  background: linear-gradient(135deg, var(--bf-pale), var(--bf-bright) 55%, var(--bf-blue));
+}
+
+.bf__wing--r {
+  right: 0;
+  clip-path: polygon(0% 45%, 100% 0%, 92% 100%);
+  background: linear-gradient(225deg, var(--bf-pale), var(--bf-bright) 55%, var(--bf-blue));
+}
+
+.bf__body {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  width: 2px;
+  height: 10px;
+  background: var(--bf-pale);
+  transform: translateX(-50%);
+  border-radius: 1px;
+}
+
+.bf--1 { width: 16px; height: 12px; left: 12%; top: 82%; }
+.bf--2 { width: 20px; height: 15px; left: 25%; top: 18%; }
+.bf--3 { width: 14px; height: 11px; left: 82%; top: 24%; }
+.bf--4 { width: 22px; height: 16px; left: 91%; top: 72%; }
+.bf--5 { width: 17px; height: 13px; left: 48%; top: 8%; }
+.bf--6 { width: 19px; height: 14px; left: 8%; top: 45%; }
+
+.bf--1 .bf__wing,
+.bf--3 .bf__wing,
+.bf--5 .bf__wing {
+  width: 8px;
+  height: 10px;
+}
+
+/* —— Arrive 0–500ms (staggered) —— */
+.butterfly-entry--arrive .bf {
+  opacity: 1;
+}
+
+.butterfly-entry--arrive .bf--1 {
+  animation:
+    bf-1-arrive 500ms cubic-bezier(0.33, 0.1, 0.25, 1) 48ms both,
+    bf-wing 500ms ease-in-out 48ms both;
+}
+.butterfly-entry--arrive .bf--2 {
+  animation:
+    bf-2-arrive 500ms cubic-bezier(0.33, 0.1, 0.25, 1) 56ms both,
+    bf-wing 500ms ease-in-out 56ms both;
+}
+.butterfly-entry--arrive .bf--3 {
+  animation:
+    bf-3-arrive 500ms cubic-bezier(0.33, 0.1, 0.25, 1) 64ms both,
+    bf-wing 500ms ease-in-out 64ms both;
+}
+.butterfly-entry--arrive .bf--4 {
+  animation:
+    bf-4-arrive 500ms cubic-bezier(0.33, 0.1, 0.25, 1) 72ms both,
+    bf-wing 500ms ease-in-out 72ms both;
+}
+.butterfly-entry--arrive .bf--5 {
+  animation:
+    bf-5-arrive 500ms cubic-bezier(0.33, 0.1, 0.25, 1) 40ms both,
+    bf-wing 500ms ease-in-out 40ms both;
+}
+.butterfly-entry--arrive .bf--6 {
+  animation:
+    bf-6-arrive 500ms cubic-bezier(0.33, 0.1, 0.25, 1) 80ms both,
+    bf-wing 500ms ease-in-out 80ms both;
+}
+
+@keyframes bf-wing {
+  0%,
+  100% {
+    /* wings at rest via child transform */
+  }
+  45% {
+  }
+}
+
+.butterfly-entry--arrive .bf__wing--l,
+.butterfly-entry--orbit .bf__wing--l {
+  animation: bf-wing-l 420ms ease-in-out both;
+}
+
+.butterfly-entry--arrive .bf__wing--r,
+.butterfly-entry--orbit .bf__wing--r {
+  animation: bf-wing-r 420ms ease-in-out both;
+}
+
+@keyframes bf-wing-l {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes bf-wing-r {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+/* Waypoints: start → mid arcs → near centre (left/top %) */
+@keyframes bf-1-arrive {
+  0% {
+    left: 12%;
+    top: 82%;
+    transform: translate(-50%, -50%) scale(0.7) rotate(-18deg);
+    opacity: 0;
+  }
+  35% {
+    left: 28%;
+    top: 64%;
+    transform: translate(-50%, -50%) scale(0.92) rotate(-8deg);
+    opacity: 1;
+  }
+  70% {
+    left: 40%;
+    top: 52%;
+    transform: translate(-50%, -50%) scale(1.05) rotate(6deg);
+  }
+  100% {
+    left: 44%;
+    top: 48%;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes bf-2-arrive {
+  0% {
+    left: 25%;
+    top: 18%;
+    transform: translate(-50%, -50%) scale(0.75) rotate(22deg);
+    opacity: 0;
+  }
+  30% {
+    left: 34%;
+    top: 30%;
+    transform: translate(-50%, -50%) scale(0.95) rotate(10deg);
+    opacity: 1;
+  }
+  65% {
+    left: 42%;
+    top: 40%;
+    transform: translate(-50%, -50%) scale(1.1) rotate(-4deg);
+  }
+  100% {
+    left: 46%;
+    top: 44%;
+    transform: translate(-50%, -50%) scale(1.05) rotate(0deg);
+  }
+}
+
+@keyframes bf-3-arrive {
+  0% {
+    left: 82%;
+    top: 24%;
+    transform: translate(-50%, -50%) scale(0.7) rotate(-30deg);
+    opacity: 0;
+  }
+  35% {
+    left: 68%;
+    top: 34%;
+    transform: translate(-50%, -50%) scale(0.9) rotate(-12deg);
+    opacity: 1;
+  }
+  70% {
+    left: 58%;
+    top: 42%;
+    transform: translate(-50%, -50%) scale(1.08) rotate(8deg);
+  }
+  100% {
+    left: 54%;
+    top: 46%;
+    transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
+  }
+}
+
+@keyframes bf-4-arrive {
+  0% {
+    left: 91%;
+    top: 72%;
+    transform: translate(-50%, -50%) scale(0.8) rotate(16deg);
+    opacity: 0;
+  }
+  30% {
+    left: 74%;
+    top: 62%;
+    transform: translate(-50%, -50%) scale(1) rotate(4deg);
+    opacity: 1;
+  }
+  65% {
+    left: 62%;
+    top: 54%;
+    transform: translate(-50%, -50%) scale(1.12) rotate(-10deg);
+  }
+  100% {
+    left: 56%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.08) rotate(0deg);
+  }
+}
+
+@keyframes bf-5-arrive {
+  0% {
+    left: 48%;
+    top: 8%;
+    transform: translate(-50%, -50%) scale(0.72) rotate(0deg);
+    opacity: 0;
+  }
+  35% {
+    left: 50%;
+    top: 22%;
+    transform: translate(-50%, -50%) scale(0.95) rotate(-6deg);
+    opacity: 1;
+  }
+  70% {
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%, -50%) scale(1.15) rotate(4deg);
+  }
+  100% {
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+  }
+}
+
+@keyframes bf-6-arrive {
+  0% {
+    left: 8%;
+    top: 45%;
+    transform: translate(-50%, -50%) scale(0.78) rotate(28deg);
+    opacity: 0;
+  }
+  35% {
+    left: 22%;
+    top: 46%;
+    transform: translate(-50%, -50%) scale(0.98) rotate(12deg);
+    opacity: 1;
+  }
+  70% {
+    left: 36%;
+    top: 48%;
+    transform: translate(-50%, -50%) scale(1.06) rotate(-6deg);
+  }
+  100% {
+    left: 42%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.98) rotate(0deg);
+  }
+}
+
+/* —— Orbit 450–650ms (~150deg partial sweep around 70×50 region) —— */
+.butterfly-entry--orbit .bf {
+  opacity: 1;
+  animation-duration: 200ms;
+  animation-timing-function: cubic-bezier(0.4, 0.05, 0.2, 1);
+  animation-fill-mode: forwards;
+}
+
+.butterfly-entry--orbit .bf--1 { animation-name: bf-1-orbit; }
+.butterfly-entry--orbit .bf--2 { animation-name: bf-2-orbit; }
+.butterfly-entry--orbit .bf--3 { animation-name: bf-3-orbit; }
+.butterfly-entry--orbit .bf--4 { animation-name: bf-4-orbit; }
+.butterfly-entry--orbit .bf--5 { animation-name: bf-5-orbit; }
+.butterfly-entry--orbit .bf--6 { animation-name: bf-6-orbit; }
+
+@keyframes bf-1-orbit {
+  from {
+    left: 44%;
+    top: 48%;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  to {
+    left: 38%;
+    top: 40%;
+    transform: translate(-50%, -50%) scale(0.95) rotate(-40deg);
+  }
+}
+
+@keyframes bf-2-orbit {
+  from {
+    left: 46%;
+    top: 44%;
+    transform: translate(-50%, -50%) scale(1.05) rotate(0deg);
+  }
+  to {
+    left: 42%;
+    top: 36%;
+    transform: translate(-50%, -50%) scale(1) rotate(-55deg);
+  }
+}
+
+@keyframes bf-3-orbit {
+  from {
+    left: 54%;
+    top: 46%;
+    transform: translate(-50%, -50%) scale(0.95) rotate(0deg);
+  }
+  to {
+    left: 60%;
+    top: 38%;
+    transform: translate(-50%, -50%) scale(0.9) rotate(50deg);
+  }
+}
+
+@keyframes bf-4-orbit {
+  from {
+    left: 56%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.08) rotate(0deg);
+  }
+  to {
+    left: 62%;
+    top: 54%;
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+}
+
+@keyframes bf-5-orbit {
+  from {
+    left: 50%;
+    top: 42%;
+    transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+  }
+  to {
+    left: 54%;
+    top: 34%;
+    transform: translate(-50%, -50%) scale(1.05) rotate(35deg);
+  }
+}
+
+@keyframes bf-6-orbit {
+  from {
+    left: 42%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.98) rotate(0deg);
+  }
+  to {
+    left: 36%;
+    top: 56%;
+    transform: translate(-50%, -50%) scale(0.92) rotate(-50deg);
+  }
+}
+
+/* —— Converge 620–760ms —— */
+.butterfly-entry--converge .bf {
+  opacity: 1;
+  animation: bf-converge 140ms cubic-bezier(0.55, 0.05, 0.35, 1) forwards;
+}
+
+.butterfly-entry--converge .bf--1 { --bf-end-x: 42%; --bf-end-y: 52%; }
+.butterfly-entry--converge .bf--2 { --bf-end-x: 50%; --bf-end-y: 46%; }
+.butterfly-entry--converge .bf--3 { --bf-end-x: 58%; --bf-end-y: 50%; }
+.butterfly-entry--converge .bf--4 { --bf-end-x: 56%; --bf-end-y: 56%; }
+.butterfly-entry--converge .bf--5 { --bf-end-x: 48%; --bf-end-y: 44%; }
+.butterfly-entry--converge .bf--6 { --bf-end-x: 44%; --bf-end-y: 54%; }
+
+.butterfly-entry--converge .bf--1 { animation-name: bf-1-converge; }
+.butterfly-entry--converge .bf--2 { animation-name: bf-2-converge; }
+.butterfly-entry--converge .bf--3 { animation-name: bf-3-converge; }
+.butterfly-entry--converge .bf--4 { animation-name: bf-4-converge; }
+.butterfly-entry--converge .bf--5 { animation-name: bf-5-converge; }
+.butterfly-entry--converge .bf--6 { animation-name: bf-6-converge; }
+
+@keyframes bf-1-converge {
+  from {
+    left: 38%;
+    top: 40%;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 1;
+  }
+  to {
+    left: 42%;
+    top: 52%;
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.85;
+  }
+}
+
+@keyframes bf-2-converge {
+  from {
+    left: 42%;
+    top: 36%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.5;
+  }
+}
+
+@keyframes bf-3-converge {
+  from {
+    left: 60%;
+    top: 38%;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  to {
+    left: 58%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.85;
+  }
+}
+
+@keyframes bf-4-converge {
+  from {
+    left: 62%;
+    top: 54%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    left: 54%;
+    top: 56%;
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.5;
+  }
+}
+
+@keyframes bf-5-converge {
+  from {
+    left: 54%;
+    top: 34%;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  to {
+    left: 50%;
+    top: 44%;
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.5;
+  }
+}
+
+@keyframes bf-6-converge {
+  from {
+    left: 36%;
+    top: 56%;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  to {
+    left: 44%;
+    top: 54%;
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.85;
+  }
+}
+
+/* —— Card —— */
+.butterfly-entry__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  width: min(78%, 240px);
+  transform: translate(-50%, -50%) scale(0.88);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.butterfly-entry__card[hidden] {
+  display: none;
+}
+
+.butterfly-entry__card:not([hidden]) {
+  display: block;
+}
+
+.butterfly-entry__backing {
+  position: absolute;
+  z-index: 0;
+  background: var(--bf-blue);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.butterfly-entry__backing--1 {
+  width: 28px;
+  height: 22px;
+  left: -10px;
+  top: -8px;
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+  background: var(--bf-bright);
+}
+
+.butterfly-entry__backing--2 {
+  width: 24px;
+  height: 18px;
+  right: -12px;
+  top: 12px;
+  clip-path: polygon(0% 0%, 100% 40%, 20% 100%);
+  background: var(--bf-blue);
+}
+
+.butterfly-entry__backing--3 {
+  width: 26px;
+  height: 16px;
+  left: 18%;
+  bottom: -10px;
+  clip-path: polygon(0% 0%, 100% 0%, 55% 100%);
+  background: var(--bf-deep);
+  box-shadow: 0 0 0 1px var(--bf-bright);
+}
+
+.butterfly-entry__card-face {
+  position: relative;
+  z-index: 1;
+  padding: 0.95rem 1rem 1rem;
+  border: 2px solid var(--bf-bright);
+  background: var(--bf-deep);
+}
+
+.butterfly-entry__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bf-bright);
+}
+
+.butterfly-entry__title {
+  margin: 0.4rem 0 0;
+  font-size: clamp(1rem, 4.5vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--bf-pale);
+}
+
+.butterfly-entry__meta {
+  margin: 0.45rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgb(217 247 255 / 0.7);
+}
+
+.butterfly-entry--construct .butterfly-entry__card {
+  animation: bf-card-in 260ms cubic-bezier(0.33, 0.9, 0.35, 1) forwards;
+  pointer-events: auto;
+}
+
+.butterfly-entry--construct .butterfly-entry__backing--1 {
+  animation: bf-back-1 260ms cubic-bezier(0.33, 0.9, 0.35, 1) forwards;
+}
+
+.butterfly-entry--construct .butterfly-entry__backing--2 {
+  animation: bf-back-2 260ms cubic-bezier(0.33, 0.9, 0.35, 1) 30ms forwards;
+}
+
+.butterfly-entry--construct .butterfly-entry__backing--3 {
+  animation: bf-back-3 260ms cubic-bezier(0.33, 0.9, 0.35, 1) 50ms forwards;
+}
+
+.butterfly-entry--construct .bf--1,
+.butterfly-entry--construct .bf--3,
+.butterfly-entry--construct .bf--6 {
+  opacity: 0.55;
+  animation: none;
+  transform: translate(-50%, -50%) scale(0.3);
+}
+
+.butterfly-entry--construct .bf--1 {
+  left: 36%;
+  top: 58%;
+}
+.butterfly-entry--construct .bf--3 {
+  left: 64%;
+  top: 42%;
+}
+.butterfly-entry--construct .bf--6 {
+  left: 40%;
+  top: 62%;
+}
+
+.butterfly-entry--construct .bf--2,
+.butterfly-entry--construct .bf--4,
+.butterfly-entry--construct .bf--5 {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes bf-card-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes bf-back-1 {
+  from {
+    opacity: 0;
+    transform: translate(8px, 8px) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes bf-back-2 {
+  from {
+    opacity: 0;
+    transform: translate(-10px, 4px) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes bf-back-3 {
+  from {
+    opacity: 0;
+    transform: translate(0, -8px) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* —— Settled: static card; tuck 3 forms under edges then freeze —— */
+.butterfly-entry--settled .butterfly-entry__card {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.butterfly-entry--settled .butterfly-entry__backing {
+  opacity: 1;
+  transform: none;
+}
+
+.butterfly-entry--settled .bf--1,
+.butterfly-entry--settled .bf--3,
+.butterfly-entry--settled .bf--6 {
+  opacity: 0;
+  animation: none;
+}
+
+.butterfly-entry--settled .bf--2,
+.butterfly-entry--settled .bf--4,
+.butterfly-entry--settled .bf--5 {
+  opacity: 0;
+  animation: none;
+}
+
+.butterfly-entry--settled .butterfly-entry__swarm {
+  visibility: hidden;
+}
+
+.butterfly-entry--reduced.butterfly-entry--settled .butterfly-entry__swarm {
+  display: none;
+}
+
+.butterfly-entry__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.butterfly-entry__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.butterfly-entry__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--bf-pale);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bf-pale);
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.butterfly-entry__btn:hover:not(:disabled) {
+  background: var(--bf-pale);
+  color: var(--bf-bg);
+}
+
+.butterfly-entry__btn:focus-visible {
+  outline: 2px solid var(--bf-bright);
+  outline-offset: 3px;
+}
+
+.butterfly-entry__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.butterfly-entry__btn--ghost {
+  border-color: rgb(217 247 255 / 0.4);
+  color: rgb(217 247 255 / 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bf,
+  .bf__wing,
+  .butterfly-entry__card,
+  .butterfly-entry__backing {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .bf,
+[data-force-reduced-motion='true'] .bf__wing,
+[data-force-reduced-motion='true'] .butterfly-entry__card,
+[data-force-reduced-motion='true'] .butterfly-entry__backing {
+  animation: none !important;
+  transition: none !important;
+}
