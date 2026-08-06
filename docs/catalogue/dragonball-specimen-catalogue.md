@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **17 / 244** complete.
+- Progress: **20 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 17 |
-| Open | 227 |
+| Done | 20 |
+| Open | 224 |
 
 ## Visual grammar
 
@@ -34,6 +34,8 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-159 | `SPX-1124` | `irreversible-threshold` | Irreversible Threshold |
+| DB-192 | `SPX-1157` | `processing-time-skip` | Processing Time Skip |
 | DB-046 | `SPX-1011` | `instant-transmission-navigation` | Instant Transmission Navigation |
 | DB-231 | `SPX-1196` | `collective-ci-deployment` | Collective CI Deployment |
 | DB-057 | `SPX-1022` | `linked-fusion-merge` | Linked Fusion Merge |
@@ -51,6 +53,7 @@
 | DB-122 | `SPX-1087` | `impact-freeze-frame` | Impact Freeze Frame |
 | DB-123 | `SPX-1088` | `propagated-shockwave` | Propagated Shockwave |
 | DB-095 | `SPX-1060` | `sector-radar-search` | Sector Radar Search |
+| DB-163 | `SPX-1128` | `core-seed-regeneration` | Core Seed Regeneration |
 
 ## Core first-wave
 
@@ -81,8 +84,9 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? capsule-corp-compact-storage
 - [ ] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? destruction-deletion
 - [ ] **DB-162** ?? `SPX-1127` ?? **Namekian Regeneration** ??? regeneration-recovery
+- [x] **DB-163** ?? `SPX-1128` ?? **Cell Regeneration** ??? regeneration-recovery
 - [ ] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? time-manipulation
-- [ ] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? time-manipulation
+- [x] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? time-manipulation
 - [ ] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? tournament-ranking
 - [ ] **DB-230** ?? `SPX-1195` ?? **Git Fusion Merge** ??? data-developer-tool-specimens
 - [ ] **DB-234** ?? `SPX-1199` ?? **Over-9000 Metric Overflow** ??? data-developer-tool-specimens
@@ -292,7 +296,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Regeneration / Recovery
 
 - [ ] **DB-162** ?? `SPX-1127` ?? **Namekian Regeneration** ??? missing portion of a component reconstructs outward from surviving structure.
-- [ ] **DB-163** ?? `SPX-1128` ?? **Cell Regeneration** ??? tiny surviving core progressively reconstructs the entire entity.
+- [x] **DB-163** ?? `SPX-1128` ?? **Cell Regeneration** ??? tiny surviving core progressively reconstructs the entire entity.
 - [ ] **DB-164** ?? `SPX-1129` ?? **Partial Recovery** ??? damaged structural regions rebuild while unavailable regions remain absent.
 - [ ] **DB-165** ?? `SPX-1130` ?? **Self-Healing Service** ??? failed system visibly reconstructs without external intervention.
 - [ ] **DB-166** ?? `SPX-1131` ?? **Recovery From Snapshot** ??? small canonical state expands into restored full component.
@@ -333,7 +337,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Time Manipulation
 
-- [ ] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? an operation skips its expected intermediate animation frames and appears further ahead.
+- [x] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? an operation skips its expected intermediate animation frames and appears further ahead.
 - [ ] **DB-193** ?? `SPX-1158` ?? **Time Freeze Interaction** ??? surrounding interface pauses while one selected operation remains active.
 - [ ] **DB-194** ?? `SPX-1159` ?? **Temporal Snapshot** ??? current system state freezes and becomes a restorable checkpoint.
 - [ ] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? recent destructive action visibly reverses through its exact previous states.

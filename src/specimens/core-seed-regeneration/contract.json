@@ -1,0 +1,69 @@
+{
+  "name": "core-seed-regeneration",
+  "intent": "Tiny angular canonical core (Worker 09) verifies, grows six skeleton lines, reconstructs six body regions by clip-expansion, then restores metadata to HEALTHY / STATE RESTORED.",
+  "catalogue": {
+    "db": "DB-163",
+    "ref": "SPX-1128",
+    "catalogueTitle": "Cell Regeneration"
+  },
+  "core": {
+    "sizePx": [18, 18],
+    "shape": "angular pentagon clip-path",
+    "identity": "ID // 09",
+    "checksum": "CHECKSUM // VALID",
+    "persistsThroughout": true
+  },
+  "phases": {
+    "verify": {
+      "durationMs": 140,
+      "brackets": 4,
+      "sweep": true,
+      "status": "CORE VALID"
+    },
+    "skeleton": {
+      "startMs": 140,
+      "durationMs": 220,
+      "lines": 6,
+      "lengthsPx": { "cardinal": 88, "diagonal": 72 }
+    },
+    "regions": {
+      "startMs": 360,
+      "count": 6,
+      "order": ["central", "top", "left", "right", "bottom-left", "bottom-right"],
+      "staggerMs": 45,
+      "expandMs": 160,
+      "technique": "clip-path expansion from connection points — no fade"
+    },
+    "fields": {
+      "startMs": 745,
+      "order": ["role", "queue", "region", "status"],
+      "intervalMs": 110,
+      "values": {
+        "ROLE": "PROCESSOR",
+        "QUEUE": "0",
+        "REGION": "EU-WEST",
+        "STATUS": "HEALTHY"
+      }
+    },
+    "complete": {
+      "startMs": 1185,
+      "bracketsExpandPx": 4,
+      "durationMs": 140,
+      "status": "STATE RESTORED"
+    }
+  },
+  "doneAtMs": 1325,
+  "api": {
+    "execute": "runCoreSeedRegeneration()",
+    "reset": "resetCoreSeedRegeneration()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show rebuilt Worker 09 HEALTHY / STATE RESTORED"
+  },
+  "constraints": {
+    "noLooping": true,
+    "noFadeInRegions": true,
+    "identityContinuity": "ID // 09 / core gem visible throughout"
+  }
+}

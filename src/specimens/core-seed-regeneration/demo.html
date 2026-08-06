@@ -1,0 +1,92 @@
+<div class="csr-demo" data-csr-demo>
+  <p class="csr-demo__live" data-csr-live aria-live="polite">
+    Worker 09 core survived — ready to rebuild
+  </p>
+
+  <div class="csr" data-csr data-phase="idle">
+    <div class="csr__stage" data-csr-stage>
+      <!-- Canonical core — always present (identity continuity) -->
+      <div class="csr__core" data-csr-core aria-hidden="true">
+        <div class="csr__core-gem">
+          <span class="csr__core-facet csr__core-facet--a"></span>
+          <span class="csr__core-facet csr__core-facet--b"></span>
+          <span class="csr__core-facet csr__core-facet--c"></span>
+        </div>
+        <div class="csr__core-meta">
+          <span class="csr__core-id">ID // 09</span>
+          <span class="csr__core-check">CHECKSUM // VALID</span>
+        </div>
+      </div>
+
+      <!-- Phase 1: verification brackets + sweep -->
+      <div class="csr__brackets" data-csr-brackets aria-hidden="true">
+        <span class="csr__bracket csr__bracket--tl"></span>
+        <span class="csr__bracket csr__bracket--tr"></span>
+        <span class="csr__bracket csr__bracket--bl"></span>
+        <span class="csr__bracket csr__bracket--br"></span>
+      </div>
+      <span class="csr__sweep" data-csr-sweep aria-hidden="true"></span>
+
+      <!-- Phase 2: six skeleton lines -->
+      <div class="csr__skeleton" data-csr-skeleton aria-hidden="true">
+        <span class="csr__bone csr__bone--0"></span>
+        <span class="csr__bone csr__bone--1"></span>
+        <span class="csr__bone csr__bone--2"></span>
+        <span class="csr__bone csr__bone--3"></span>
+        <span class="csr__bone csr__bone--4"></span>
+        <span class="csr__bone csr__bone--5"></span>
+      </div>
+
+      <!-- Phase 3–4: worker shell -->
+      <div class="csr__worker" data-csr-worker aria-hidden="true">
+        <div
+          class="csr__region csr__region--central"
+          data-csr-region="central"
+        ></div>
+        <div class="csr__region csr__region--top" data-csr-region="top">
+          <span class="csr__worker-title">WORKER // 09</span>
+        </div>
+        <div class="csr__region csr__region--left" data-csr-region="left"></div>
+        <div class="csr__region csr__region--right" data-csr-region="right"></div>
+        <div
+          class="csr__region csr__region--bl"
+          data-csr-region="bottom-left"
+        ></div>
+        <div
+          class="csr__region csr__region--br"
+          data-csr-region="bottom-right"
+        ></div>
+
+        <dl class="csr__fields" data-csr-fields>
+          <div class="csr__field" data-csr-field="role">
+            <dt>ROLE</dt>
+            <dd>PROCESSOR</dd>
+          </div>
+          <div class="csr__field" data-csr-field="queue">
+            <dt>QUEUE</dt>
+            <dd>0</dd>
+          </div>
+          <div class="csr__field" data-csr-field="region">
+            <dt>REGION</dt>
+            <dd>EU-WEST</dd>
+          </div>
+          <div class="csr__field" data-csr-field="status">
+            <dt>STATUS</dt>
+            <dd>HEALTHY</dd>
+          </div>
+        </dl>
+      </div>
+
+      <p class="csr__banner" data-csr-banner>CORE SURVIVED</p>
+    </div>
+  </div>
+
+  <div class="csr-demo__controls">
+    <button type="button" class="csr-demo__btn csr-demo__btn--primary" data-csr-rebuild>
+      Rebuild
+    </button>
+    <button type="button" class="csr-demo__btn" data-csr-reset>
+      Reset
+    </button>
+  </div>
+</div>

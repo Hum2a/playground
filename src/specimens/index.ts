@@ -25,6 +25,7 @@ import { completionStrike } from './completion-strike/entry'
 import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
+import { coreSeedRegeneration } from './core-seed-regeneration/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { criticalCapture } from './critical-capture/entry'
 import { criticalThresholdWarning } from './critical-threshold-warning/entry'
@@ -63,6 +64,7 @@ import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
+import { irreversibleThreshold } from './irreversible-threshold/entry'
 import { itemObtained } from './item-obtained/entry'
 import { instantTransmissionNavigation } from './instant-transmission-navigation/entry'
 import { kiChargeMeter } from './ki-charge-meter/entry'
@@ -95,6 +97,7 @@ import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
+import { processingTimeSkip } from './processing-time-skip/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { propagatedShockwave } from './propagated-shockwave/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
@@ -183,6 +186,7 @@ export const specimens: Specimen[] = [
   tacticalAlertPing,
   inkSplatTransition,
   instantTransmissionNavigation,
+  irreversibleThreshold,
   itemObtained,
   kiChargeMeter,
   victoryResultsTally,
@@ -204,6 +208,7 @@ export const specimens: Specimen[] = [
   completionStrike,
   concentratedEnergyCharge,
   connectionSevered,
+  coreSeedRegeneration,
   criticalCapture,
   criticalWeaknessHit,
   crookedMenuStack,
@@ -262,6 +267,7 @@ export const specimens: Specimen[] = [
   permissionRejection,
   personaAwakeningReveal,
   printRegistrationHover,
+  processingTimeSkip,
   progressMilestoneBreakthrough,
   propagatedShockwave,
   radarPulseDiscovery,
