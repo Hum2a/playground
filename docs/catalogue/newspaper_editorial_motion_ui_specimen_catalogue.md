@@ -131,7 +131,7 @@ chronology and information priority.
     headline settles.
 - [ ] **NEWS-038** · `SPX-3560` · ★★★★☆ **Byline Acquisition** — Author/date metadata resolves
     beneath the article header.
-- [ ] **NEWS-039** · `SPX-3561` · ★★★★★ **Reading Progress Rule** — A thin rule advances through
+- [x] **NEWS-039** · `SPX-3561` · ★★★★★ **Reading Progress Rule** — A thin rule advances through
     the article as the reader progresses.
 - [ ] **NEWS-040** · `SPX-3562` · ★★★★☆ **Paragraph Focus Margin** — The active paragraph gains
     a subtle margin marker for guided reading.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-039 | SPX-3561 | `reading-progress-rule` | Reading Progress Rule |
 | NEWS-036 | SPX-3558 | `article-open-from-teaser` | Article Open from Teaser |
 | NEWS-033 | SPX-3555 | `grid-collapse-to-mobile` | Grid Collapse to Mobile |
 | NEWS-030 | SPX-3552 | `modular-page-replate` | Modular Page Replate |
@@ -695,12 +696,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **16 / 237** complete.
+- Progress: **17 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 221 |
+| Done | 17 |
+| Open | 220 |
 
 ## Core first-wave / build queue
 
@@ -720,7 +721,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-030** · `SPX-3552` · **Modular Page Replate** · `modular-page-replate`
 - [x] **NEWS-033** · `SPX-3555` · **Grid Collapse to Mobile** · `grid-collapse-to-mobile`
 - [x] **NEWS-036** · `SPX-3558` · **Article Open from Teaser** · `article-open-from-teaser`
-- [ ] **NEWS-039** · `SPX-3561` · **Reading Progress Rule** · scaffold `reading-progress-rule`
+- [x] **NEWS-039** · `SPX-3561` · **Reading Progress Rule** · `reading-progress-rule`
 - [ ] **NEWS-041** · `SPX-3563` · **Article Close Return** · scaffold `article-close-return`
 - [ ] **NEWS-045** · `SPX-3567` · **Broadsheet Page Turn** · scaffold `broadsheet-page-turn`
 - [ ] **NEWS-046** · `SPX-3568` · **Half-Fold Open** · scaffold `half-fold-open`

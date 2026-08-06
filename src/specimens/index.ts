@@ -566,6 +566,8 @@ import { gridCollapseToMobile } from './grid-collapse-to-mobile/entry'
 
 import { articleOpenFromTeaser } from './article-open-from-teaser/entry'
 
+import { readingProgressRule } from './reading-progress-rule/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1077,6 +1079,7 @@ export const specimens: Specimen[] = [
   modularPageReplate,
   gridCollapseToMobile,
   articleOpenFromTeaser,
+  readingProgressRule,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

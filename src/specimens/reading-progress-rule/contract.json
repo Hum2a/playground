@@ -1,0 +1,8 @@
+{
+  "name": "reading-progress-rule",
+  "ref": "SPX-3561",
+  "title": "Reading Progress Rule",
+  "mode": "edit",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
