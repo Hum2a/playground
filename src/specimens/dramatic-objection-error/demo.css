@@ -1,0 +1,384 @@
+/* SPX-004 Dramatic Objection Error — portable contract. Do not restyle to host tokens. */
+
+.dramatic-objection {
+  --do-red: #c91420;
+  --do-paper: #fff6df;
+  --do-black: #111111;
+  --do-orange: #f08a24;
+  --do-ease-slam: cubic-bezier(0.18, 1.45, 0.32, 1);
+  --do-ease-snap: cubic-bezier(0.2, 0.9, 0.25, 1.15);
+
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 260px;
+  height: 100%;
+  overflow: hidden;
+  background: #16181f;
+  color: var(--do-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.dramatic-objection *,
+.dramatic-objection *::before,
+.dramatic-objection *::after {
+  box-sizing: border-box;
+}
+
+.dramatic-objection__form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  max-width: 16rem;
+  margin: 0 auto;
+  padding: 1.35rem 1.1rem 1.5rem;
+}
+
+.dramatic-objection__label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #a8b0bd;
+}
+
+.dramatic-objection__input {
+  appearance: none;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 2px solid #3a4150;
+  border-radius: 0;
+  background: #0e1016;
+  color: var(--do-paper);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dramatic-objection__input:focus-visible {
+  outline: 2px solid var(--do-orange);
+  outline-offset: 2px;
+}
+
+.dramatic-objection__input[aria-invalid='true'] {
+  border-color: var(--do-red);
+}
+
+.dramatic-objection__error {
+  margin: 0;
+  min-height: 1.1em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--do-orange);
+}
+
+.dramatic-objection__error[hidden] {
+  display: none;
+}
+
+.dramatic-objection__submit {
+  appearance: none;
+  margin-top: 0.35rem;
+  padding: 0.65rem 0.9rem;
+  border: 2px solid var(--do-paper);
+  border-radius: 0;
+  background: transparent;
+  color: var(--do-paper);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dramatic-objection__submit:focus-visible {
+  outline: 2px solid var(--do-orange);
+  outline-offset: 3px;
+}
+
+.dramatic-objection__submit:hover {
+  background: var(--do-paper);
+  color: var(--do-black);
+}
+
+/* —— Overlay —— */
+.dramatic-objection__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dramatic-objection--burst .dramatic-objection__overlay,
+.dramatic-objection--shout .dramatic-objection__overlay,
+.dramatic-objection--strip .dramatic-objection__overlay,
+.dramatic-objection--hold .dramatic-objection__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dramatic-objection__burst {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+}
+
+.dramatic-objection__wedge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  border-style: solid;
+}
+
+.dramatic-objection__wedge--1 {
+  border-width: 0 14px 48px 14px;
+  border-color: transparent transparent var(--do-red) transparent;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.dramatic-objection__wedge--2 {
+  border-width: 0 12px 42px 12px;
+  border-color: transparent transparent var(--do-orange) transparent;
+  transform: translate(-50%, -50%) rotate(60deg);
+}
+
+.dramatic-objection__wedge--3 {
+  border-width: 0 14px 48px 14px;
+  border-color: transparent transparent var(--do-black) transparent;
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.dramatic-objection__wedge--4 {
+  border-width: 0 12px 40px 12px;
+  border-color: transparent transparent var(--do-red) transparent;
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.dramatic-objection__wedge--5 {
+  border-width: 0 14px 46px 14px;
+  border-color: transparent transparent var(--do-orange) transparent;
+  transform: translate(-50%, -50%) rotate(240deg);
+}
+
+.dramatic-objection__wedge--6 {
+  border-width: 0 12px 42px 12px;
+  border-color: transparent transparent var(--do-black) transparent;
+  transform: translate(-50%, -50%) rotate(300deg);
+}
+
+.dramatic-objection__shout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 130%;
+  max-width: none;
+  opacity: 0;
+  transform: scale(2.4) rotate(-7deg);
+}
+
+.dramatic-objection__shout-ink,
+.dramatic-objection__shout-face {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-size: clamp(2.6rem, 18vw, 3.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.dramatic-objection__shout-ink {
+  color: var(--do-black);
+  transform: translate(5px, 6px);
+}
+
+.dramatic-objection__shout-face {
+  color: var(--do-red);
+  text-shadow:
+    0 0 0 var(--do-paper),
+    2px 0 0 var(--do-paper),
+    -1px 0 0 var(--do-paper),
+    0 2px 0 var(--do-paper);
+  -webkit-text-stroke: 1px var(--do-paper);
+}
+
+.dramatic-objection__strip {
+  position: absolute;
+  z-index: 3;
+  bottom: 18%;
+  left: 50%;
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  border: 3px solid var(--do-black);
+  background: var(--do-paper);
+  color: var(--do-black);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 12px) scale(0.85) rotate(-2deg);
+}
+
+/* —— Phases —— */
+.dramatic-objection--burst .dramatic-objection__burst {
+  animation: do-burst 80ms ease-out forwards;
+}
+
+.dramatic-objection--shout .dramatic-objection__burst,
+.dramatic-objection--strip .dramatic-objection__burst,
+.dramatic-objection--hold .dramatic-objection__burst {
+  opacity: 0;
+}
+
+.dramatic-objection--shout .dramatic-objection__shout {
+  opacity: 1;
+  animation: do-shout 220ms var(--do-ease-slam) forwards;
+}
+
+.dramatic-objection--strip .dramatic-objection__shout,
+.dramatic-objection--hold .dramatic-objection__shout {
+  opacity: 1;
+  animation: none;
+  transform: scale(1) rotate(-1deg);
+}
+
+.dramatic-objection--strip .dramatic-objection__strip {
+  opacity: 1;
+  animation: do-strip 220ms var(--do-ease-snap) forwards;
+}
+
+.dramatic-objection--hold .dramatic-objection__strip {
+  opacity: 1;
+  animation: none;
+  transform: translate(-50%, 0) scale(1) rotate(-2deg);
+}
+
+.dramatic-objection--inline .dramatic-objection__overlay {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes do-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes do-shout {
+  0% {
+    opacity: 1;
+    transform: scale(2.4) rotate(-7deg);
+  }
+  72% {
+    transform: scale(0.92) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(-1deg);
+  }
+}
+
+@keyframes do-strip {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 14px) scale(0.8) rotate(-4deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -2px) scale(1.04) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1) rotate(-2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dramatic-objection__burst,
+  .dramatic-objection__shout,
+  .dramatic-objection__strip {
+    animation: none !important;
+  }
+
+  .dramatic-objection--burst .dramatic-objection__overlay,
+  .dramatic-objection--shout .dramatic-objection__overlay,
+  .dramatic-objection--strip .dramatic-objection__overlay,
+  .dramatic-objection--hold .dramatic-objection__overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .dramatic-objection--burst .dramatic-objection__burst,
+  .dramatic-objection--shout .dramatic-objection__burst,
+  .dramatic-objection--strip .dramatic-objection__burst,
+  .dramatic-objection--hold .dramatic-objection__burst {
+    opacity: 0;
+  }
+
+  .dramatic-objection--shout .dramatic-objection__shout,
+  .dramatic-objection--strip .dramatic-objection__shout,
+  .dramatic-objection--hold .dramatic-objection__shout {
+    opacity: 1;
+    transform: scale(1) rotate(-1deg);
+  }
+
+  .dramatic-objection--strip .dramatic-objection__strip,
+  .dramatic-objection--hold .dramatic-objection__strip {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1) rotate(-2deg);
+  }
+}
+
+[data-force-reduced-motion='true'] .dramatic-objection__burst,
+[data-force-reduced-motion='true'] .dramatic-objection__shout,
+[data-force-reduced-motion='true'] .dramatic-objection__strip {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .dramatic-objection--burst .dramatic-objection__burst,
+[data-force-reduced-motion='true'] .dramatic-objection--shout .dramatic-objection__burst,
+[data-force-reduced-motion='true'] .dramatic-objection--strip .dramatic-objection__burst,
+[data-force-reduced-motion='true'] .dramatic-objection--hold .dramatic-objection__burst {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .dramatic-objection--shout .dramatic-objection__shout,
+[data-force-reduced-motion='true'] .dramatic-objection--strip .dramatic-objection__shout,
+[data-force-reduced-motion='true'] .dramatic-objection--hold .dramatic-objection__shout {
+  opacity: 1;
+  transform: scale(1) rotate(-1deg);
+}
+
+[data-force-reduced-motion='true'] .dramatic-objection--strip .dramatic-objection__strip,
+[data-force-reduced-motion='true'] .dramatic-objection--hold .dramatic-objection__strip {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1) rotate(-2deg);
+}

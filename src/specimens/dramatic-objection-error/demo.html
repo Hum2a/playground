@@ -1,0 +1,41 @@
+<div class="dramatic-objection" data-dramatic-objection>
+  <form class="dramatic-objection__form" data-do-form novalidate>
+    <label class="dramatic-objection__label" for="do-access-code">ACCESS CODE</label>
+    <input
+      class="dramatic-objection__input"
+      id="do-access-code"
+      name="access-code"
+      type="text"
+      autocomplete="off"
+      spellcheck="false"
+      aria-describedby="do-access-error"
+      data-do-input
+    />
+    <p
+      class="dramatic-objection__error"
+      id="do-access-error"
+      role="alert"
+      data-do-error
+      hidden
+    ></p>
+    <button class="dramatic-objection__submit" type="submit" data-do-submit>
+      SUBMIT
+    </button>
+  </form>
+
+  <div class="dramatic-objection__overlay" data-do-overlay aria-hidden="true">
+    <div class="dramatic-objection__burst" data-do-burst>
+      <span class="dramatic-objection__wedge dramatic-objection__wedge--1"></span>
+      <span class="dramatic-objection__wedge dramatic-objection__wedge--2"></span>
+      <span class="dramatic-objection__wedge dramatic-objection__wedge--3"></span>
+      <span class="dramatic-objection__wedge dramatic-objection__wedge--4"></span>
+      <span class="dramatic-objection__wedge dramatic-objection__wedge--5"></span>
+      <span class="dramatic-objection__wedge dramatic-objection__wedge--6"></span>
+    </div>
+    <div class="dramatic-objection__shout">
+      <span class="dramatic-objection__shout-ink">HOLD IT!</span>
+      <span class="dramatic-objection__shout-face">HOLD IT!</span>
+    </div>
+    <p class="dramatic-objection__strip">That code isn't valid.</p>
+  </div>
+</div>

@@ -1,0 +1,417 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/dramatic-objection-error.schema.json",
+  "title": "DramaticObjectionError",
+  "description": "Portable visual/component contract for an Ace Attorney–adjacent HOLD IT validation interruption. Original copy only — not copyrighted OBJECTION art. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "typography",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "dramatic-objection-error"
+    },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Huge typographic HOLD IT! burst for a major form/validation failure."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "submit",
+        "shout",
+        "errorMessage",
+        "validCode"
+      ],
+      "properties": {
+        "label": { "type": "string", "const": "ACCESS CODE" },
+        "submit": { "type": "string", "const": "SUBMIT" },
+        "shout": { "type": "string", "const": "HOLD IT!" },
+        "errorMessage": {
+          "type": "string",
+          "const": "That code isn't valid."
+        },
+        "validCode": {
+          "type": "string",
+          "const": "ARCHIVE",
+          "description": "Demo-only accepted code; any other value triggers the interruption."
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minHeightPx",
+        "shoutInkOffset",
+        "pointerEventsOverlay",
+        "parentRequirements"
+      ],
+      "properties": {
+        "minHeightPx": { "type": "number", "const": 260 },
+        "shoutWidthPercent": { "type": "number", "const": 130 },
+        "shoutInkOffset": {
+          "type": "object",
+          "required": ["xPx", "yPx"],
+          "properties": {
+            "xPx": { "type": "number", "const": 5 },
+            "yPx": { "type": "number", "const": 6 }
+          }
+        },
+        "finalShoutRotateDeg": { "type": "number", "const": -1 },
+        "pointerEventsOverlay": { "type": "string", "const": "none" },
+        "parentRequirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "examples": [["position:relative", "overflow:hidden"]]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["red", "paper", "black", "orange"],
+      "properties": {
+        "red": { "type": "string", "const": "#c91420" },
+        "paper": { "type": "string", "const": "#fff6df" },
+        "black": { "type": "string", "const": "#111111" },
+        "orange": { "type": "string", "const": "#f08a24" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontFamily", "shoutWeight", "textTransform"],
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "const": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        },
+        "shoutWeight": { "type": "integer", "const": 900 },
+        "shoutSize": {
+          "type": "string",
+          "const": "clamp(2.6rem, 18vw, 3.6rem)"
+        },
+        "textTransform": { "type": "string", "const": "uppercase" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "burstMs",
+        "shoutStartMs",
+        "shoutEndMs",
+        "stripAtMs",
+        "holdAtMs",
+        "inlineAtMs",
+        "shoutEasing",
+        "stripEasing",
+        "shoutKeyframes",
+        "exitMode"
+      ],
+      "properties": {
+        "burstMs": { "type": "number", "const": 80 },
+        "shoutStartMs": { "type": "number", "const": 80 },
+        "shoutEndMs": { "type": "number", "const": 300 },
+        "stripAtMs": { "type": "number", "const": 300 },
+        "holdAtMs": { "type": "number", "const": 520 },
+        "inlineAtMs": { "type": "number", "const": 900 },
+        "shoutEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.18, 1.45, 0.32, 1)"
+        },
+        "stripEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.2, 0.9, 0.25, 1.15)"
+        },
+        "shoutKeyframes": {
+          "type": "object",
+          "required": ["start", "overshoot", "final"],
+          "properties": {
+            "start": {
+              "type": "object",
+              "properties": {
+                "scale": { "type": "number", "const": 2.4 },
+                "rotateDeg": { "type": "number", "const": -7 }
+              }
+            },
+            "overshoot": {
+              "type": "object",
+              "properties": {
+                "scale": { "type": "number", "const": 0.92 },
+                "rotateDeg": { "type": "number", "const": 2 },
+                "atPercent": { "type": "number", "const": 72 }
+              }
+            },
+            "final": {
+              "type": "object",
+              "properties": {
+                "scale": { "type": "number", "const": 1 },
+                "rotateDeg": { "type": "number", "const": -1 }
+              }
+            }
+          }
+        },
+        "exitMode": {
+          "type": "string",
+          "const": "collapse-to-inline-error",
+          "description": "After hold, hide overlay; keep semantic field error."
+        },
+        "keyframeNames": {
+          "type": "object",
+          "properties": {
+            "burst": { "type": "string", "const": "do-burst" },
+            "shout": { "type": "string", "const": "do-shout" },
+            "strip": { "type": "string", "const": "do-strip" }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "dramatic-objection" },
+            "dataAttr": { "type": "string", "const": "data-dramatic-objection" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": { "type": "string" },
+              "className": { "type": "string" },
+              "ariaHidden": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decorativeShout",
+        "fieldErrorAssociated",
+        "doNotDuplicateAnnouncement"
+      ],
+      "properties": {
+        "decorativeShout": { "type": "boolean", "const": true },
+        "fieldErrorAssociated": {
+          "type": "boolean",
+          "const": true,
+          "description": "Input uses aria-describedby + aria-invalid; error has role=alert."
+        },
+        "doNotDuplicateAnnouncement": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticThenInline", "triggers"],
+      "properties": {
+        "showStaticThenInline": {
+          "type": "boolean",
+          "const": true,
+          "description": "No scale/rotation slam; brief static HOLD IT + strip, then inline error."
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "form",
+        "label",
+        "input",
+        "submit",
+        "error",
+        "overlay",
+        "burst",
+        "shout",
+        "shoutInk",
+        "shoutFace",
+        "strip",
+        "phaseBurst",
+        "phaseShout",
+        "phaseStrip",
+        "phaseHold",
+        "phaseInline"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "dramatic-objection" },
+        "form": { "type": "string", "const": "dramatic-objection__form" },
+        "label": { "type": "string", "const": "dramatic-objection__label" },
+        "input": { "type": "string", "const": "dramatic-objection__input" },
+        "submit": { "type": "string", "const": "dramatic-objection__submit" },
+        "error": { "type": "string", "const": "dramatic-objection__error" },
+        "overlay": { "type": "string", "const": "dramatic-objection__overlay" },
+        "burst": { "type": "string", "const": "dramatic-objection__burst" },
+        "shout": { "type": "string", "const": "dramatic-objection__shout" },
+        "shoutInk": {
+          "type": "string",
+          "const": "dramatic-objection__shout-ink"
+        },
+        "shoutFace": {
+          "type": "string",
+          "const": "dramatic-objection__shout-face"
+        },
+        "strip": { "type": "string", "const": "dramatic-objection__strip" },
+        "phaseBurst": {
+          "type": "string",
+          "const": "dramatic-objection--burst"
+        },
+        "phaseShout": {
+          "type": "string",
+          "const": "dramatic-objection--shout"
+        },
+        "phaseStrip": {
+          "type": "string",
+          "const": "dramatic-objection--strip"
+        },
+        "phaseHold": {
+          "type": "string",
+          "const": "dramatic-objection--hold"
+        },
+        "phaseInline": {
+          "type": "string",
+          "const": "dramatic-objection--inline"
+        }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "runDramaticObjection" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "noDomAccumulation": { "type": "boolean", "const": true }
+      }
+    },
+    "exampleInstance": {
+      "type": "object"
+    }
+  },
+  "examples": [
+    {
+      "name": "dramatic-objection-error",
+      "intent": "Huge typographic HOLD IT! burst for a major form/validation failure.",
+      "copy": {
+        "label": "ACCESS CODE",
+        "submit": "SUBMIT",
+        "shout": "HOLD IT!",
+        "errorMessage": "That code isn't valid.",
+        "validCode": "ARCHIVE"
+      },
+      "layout": {
+        "minHeightPx": 260,
+        "shoutWidthPercent": 130,
+        "shoutInkOffset": { "xPx": 5, "yPx": 6 },
+        "finalShoutRotateDeg": -1,
+        "pointerEventsOverlay": "none",
+        "parentRequirements": ["position:relative", "overflow:hidden"]
+      },
+      "colours": {
+        "red": "#c91420",
+        "paper": "#fff6df",
+        "black": "#111111",
+        "orange": "#f08a24"
+      },
+      "typography": {
+        "fontFamily": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+        "shoutWeight": 900,
+        "shoutSize": "clamp(2.6rem, 18vw, 3.6rem)",
+        "textTransform": "uppercase"
+      },
+      "animation": {
+        "burstMs": 80,
+        "shoutStartMs": 80,
+        "shoutEndMs": 300,
+        "stripAtMs": 300,
+        "holdAtMs": 520,
+        "inlineAtMs": 900,
+        "shoutEasing": "cubic-bezier(0.18, 1.45, 0.32, 1)",
+        "stripEasing": "cubic-bezier(0.2, 0.9, 0.25, 1.15)",
+        "shoutKeyframes": {
+          "start": { "scale": 2.4, "rotateDeg": -7 },
+          "overshoot": { "scale": 0.92, "rotateDeg": 2, "atPercent": 72 },
+          "final": { "scale": 1, "rotateDeg": -1 }
+        },
+        "exitMode": "collapse-to-inline-error"
+      },
+      "a11y": {
+        "decorativeShout": true,
+        "fieldErrorAssociated": true,
+        "doNotDuplicateAnnouncement": true
+      },
+      "reducedMotion": {
+        "showStaticThenInline": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "dramatic-objection",
+        "form": "dramatic-objection__form",
+        "label": "dramatic-objection__label",
+        "input": "dramatic-objection__input",
+        "submit": "dramatic-objection__submit",
+        "error": "dramatic-objection__error",
+        "overlay": "dramatic-objection__overlay",
+        "burst": "dramatic-objection__burst",
+        "shout": "dramatic-objection__shout",
+        "shoutInk": "dramatic-objection__shout-ink",
+        "shoutFace": "dramatic-objection__shout-face",
+        "strip": "dramatic-objection__strip",
+        "phaseBurst": "dramatic-objection--burst",
+        "phaseShout": "dramatic-objection--shout",
+        "phaseStrip": "dramatic-objection--strip",
+        "phaseHold": "dramatic-objection--hold",
+        "phaseInline": "dramatic-objection--inline"
+      },
+      "behaviour": {
+        "run": "runDramaticObjection",
+        "restartMessageType": "restart",
+        "noDomAccumulation": true
+      }
+    }
+  ]
+}
