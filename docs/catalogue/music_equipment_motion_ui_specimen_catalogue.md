@@ -504,7 +504,7 @@ specimens can feel tactile without needing sound.
     optionally returns the playhead to a stored start point.
 - [ ] **MUSIC-178** · `SPX-3937` · ★★★★★ **Record Count-In** — A visible count-in leads into
     recording and turns the transport into an armed red state.
-- [ ] **MUSIC-179** · `SPX-3938` · ★★★★★ **Loop Brace Clamp** — Loop handles close around a
+- [x] **MUSIC-179** · `SPX-3938` · ★★★★★ **Loop Brace Clamp** — Loop handles close around a
     timeline range and playback cycles within it.
 - [ ] **MUSIC-180** · `SPX-3939` · ★★★★★ **Playhead Scrub** — Dragging the playhead updates
     timecode and inspection state continuously.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-179 | SPX-3938 | `loop-brace-clamp` | Loop Brace Clamp |
 | MUSIC-176 | SPX-3935 | `transport-play-engage` | Transport Play Engage |
 | MUSIC-170 | SPX-3929 | `auto-gain-scan` | Auto Gain Scan |
 | MUSIC-165 | SPX-3924 | `recording-waveform-grow` | Recording Waveform Grow |
@@ -908,12 +909,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **45 / 310** complete.
+- Progress: **46 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 45 |
-| Open | 265 |
+| Done | 46 |
+| Open | 264 |
 
 ## Core first-wave / build queue
 
@@ -961,7 +962,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · `recording-waveform-grow`
 - [x] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · `auto-gain-scan`
 - [x] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · `transport-play-engage`
-- [ ] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · scaffold `loop-brace-clamp`
+- [x] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · `loop-brace-clamp`
 - [ ] **MUSIC-185** · `SPX-3944` · **Waveform Trim Handles** · scaffold `waveform-trim-handles`
 - [ ] **MUSIC-189** · `SPX-3948` · **Crossfade Overlap** · scaffold `crossfade-overlap`
 - [ ] **MUSIC-197** · `SPX-3956` · **Quantize Sweep** · scaffold `quantize-sweep`

@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { loopBraceClamp } from '../../library/music-equipment/loop-brace-clamp/entry'
 import { transportPlayEngage } from '../../library/music-equipment/transport-play-engage/entry'
 import { autoGainScan } from '../../library/music-equipment/auto-gain-scan/entry'
 import { recordingWaveformGrow } from '../../library/music-equipment/recording-waveform-grow/entry'
@@ -46,6 +47,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  loopBraceClamp,
   transportPlayEngage,
   autoGainScan,
   recordingWaveformGrow,

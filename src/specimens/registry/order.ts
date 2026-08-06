@@ -592,4 +592,5 @@ export const specimenOrder: string[] = [
   'recording-waveform-grow',
   'auto-gain-scan',
   'transport-play-engage',
+  'loop-brace-clamp',
 ]

@@ -1,0 +1,8 @@
+{
+  "name": "loop-brace-clamp",
+  "ref": "SPX-3938",
+  "title": "Loop Brace Clamp",
+  "mode": "sequence",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
