@@ -87,6 +87,7 @@ import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { confrontationCardSlam } from './confrontation-card-slam/entry'
 import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
+import { contextBackgroundCrossfade } from './context-background-crossfade/entry'
 import { contextMenuBloom } from './context-menu-bloom/entry'
 import { contextualVanishReappear } from './contextual-vanish-reappear/entry'
 import { continueWatchingProgressBar } from './continue-watching-progress-bar/entry'
@@ -580,6 +581,7 @@ export const specimens: Specimen[] = [
   confrontationCardSlam,
   connectionSevered,
   contentDeclassification,
+  contextBackgroundCrossfade,
   contextMenuBloom,
   contextualVanishReappear,
   continueWatchingProgressBar,

@@ -1,0 +1,17 @@
+{
+  "name": "context-background-crossfade",
+  "intent": "Dual background layers crossfade on focus change.",
+  "catalogue": {
+    "ps": "PS-005",
+    "ref": "SPX-3311"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "reducedMotion": {
+    "behaviour": "Active layer swaps instantly"
+  }
+}
