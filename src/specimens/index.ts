@@ -199,6 +199,7 @@ import { highSpeedCardRelocation } from './high-speed-card-relocation/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { holdToMaximumButton } from './hold-to-maximum-button/entry'
+import { homeGameFocusShift } from './home-game-focus-shift/entry'
 import { homeSwipeUp } from './home-swipe-up/entry'
 import { horizontalContentRail } from './horizontal-content-rail/entry'
 import { hoverCutout } from './hover-cutout/entry'
@@ -691,6 +692,7 @@ export const specimens: Specimen[] = [
   highSpeedDashNavigation,
   holdToChargeButton,
   holdToMaximumButton,
+  homeGameFocusShift,
   homeSwipeUp,
   horizontalContentRail,
   hoverCutout,
