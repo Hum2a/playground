@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { arpeggiatorStepChase } from '../../library/music-equipment/arpeggiator-step-chase/entry'
 import { oscillatorWaveMorph } from '../../library/music-equipment/oscillator-wave-morph/entry'
 import { pedalboardSignalChain } from '../../library/music-equipment/pedalboard-signal-chain/entry'
 import { stompSwitchPress } from '../../library/music-equipment/stomp-switch-press/entry'
@@ -12,6 +13,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  arpeggiatorStepChase,
   oscillatorWaveMorph,
   pedalboardSignalChain,
   stompSwitchPress,

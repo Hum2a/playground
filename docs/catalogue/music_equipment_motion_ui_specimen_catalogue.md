@@ -186,7 +186,7 @@ specimens can feel tactile without needing sound.
     a new note replaces the oldest active voice.
 - [ ] **MUSIC-059** · `SPX-3818` · ★★★★☆ **Octave Shift** — Keyboard range labels slide by one
     octave while the physical keybed remains anchored.
-- [ ] **MUSIC-060** · `SPX-3819` · ★★★★★ **Arpeggiator Step Chase** — A row of note steps lights
+- [x] **MUSIC-060** · `SPX-3819` · ★★★★★ **Arpeggiator Step Chase** — A row of note steps lights
     sequentially at a deterministic tempo.
 - [ ] **MUSIC-061** · `SPX-3820` · ★★★★☆ **Aftertouch Pressure** — A held key gains a secondary
     pressure meter after initial depression.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-060 | SPX-3819 | `arpeggiator-step-chase` | Arpeggiator Step Chase |
 | MUSIC-057 | SPX-3816 | `oscillator-wave-morph` | Oscillator Wave Morph |
 | MUSIC-048 | SPX-3807 | `pedalboard-signal-chain` | Pedalboard Signal Chain |
 | MUSIC-044 | SPX-3803 | `stomp-switch-press` | Stomp Switch Press |
@@ -874,12 +875,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **11 / 310** complete.
+- Progress: **12 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 11 |
-| Open | 299 |
+| Done | 12 |
+| Open | 298 |
 
 ## Core first-wave / build queue
 
@@ -900,7 +901,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · `pedalboard-signal-chain`
 - [ ] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · scaffold `tap-tempo-pulse`
 - [x] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · `oscillator-wave-morph`
-- [ ] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · scaffold `arpeggiator-step-chase`
+- [x] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · `arpeggiator-step-chase`
 - [ ] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · scaffold `16-step-sequencer-chase`
 - [ ] **MUSIC-066** · `SPX-3825` · **Swing Offset** · scaffold `swing-offset`
 - [ ] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · scaffold `velocity-pad-hit`

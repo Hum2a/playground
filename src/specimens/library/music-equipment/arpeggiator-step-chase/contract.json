@@ -1,0 +1,8 @@
+{
+  "name": "arpeggiator-step-chase",
+  "ref": "SPX-3819",
+  "title": "Arpeggiator Step Chase",
+  "mode": "tape",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
