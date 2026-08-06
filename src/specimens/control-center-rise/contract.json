@@ -1,0 +1,23 @@
+{
+  "name": "control-center-rise",
+  "intent": "Compact control strip rises from the bottom while the active game remains visually present.",
+  "catalogue": { "ps": "PS-001", "ref": "SPX-3307" },
+  "copy": {
+    "game": "TITLE A",
+    "strip": "READY"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "api": {
+    "open": "openControlCenter()",
+    "dismiss": "dismissControlCenter()",
+    "toggle": "toggleControlCenter()"
+  },
+  "reducedMotion": {
+    "behaviour": "Strip appears at final position instantly; no slide animation"
+  }
+}

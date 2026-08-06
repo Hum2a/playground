@@ -91,6 +91,7 @@ import { contextualVanishReappear } from './contextual-vanish-reappear/entry'
 import { continueWatchingProgressBar } from './continue-watching-progress-bar/entry'
 import { contractConfirmation } from './contract-confirmation/entry'
 import { contradictionFound } from './contradiction-found/entry'
+import { controlCenterRise } from './control-center-rise/entry'
 import { controlCentreModuleExpansion } from './control-centre-module-expansion/entry'
 import { controlModuleCollapse } from './control-module-collapse/entry'
 import { controlsIdleDissolve } from './controls-idle-dissolve/entry'
@@ -581,6 +582,7 @@ export const specimens: Specimen[] = [
   continueWatchingProgressBar,
   contractConfirmation,
   contradictionFound,
+  controlCenterRise,
   controlCentreModuleExpansion,
   controlModuleCollapse,
   controlsIdleDissolve,

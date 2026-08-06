@@ -1,0 +1,159 @@
+/* SPX-3307 Control Center Rise — portable contract. */
+
+.ccr {
+  --primary: #2e90ff;
+  --ink: #0b0f14;
+  --paper: #f4f6f8;
+  --soft: #7eb6ff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.85rem 0.65rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ccr__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ccr__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 360px);
+  height: 200px;
+  border: 1px solid rgb(126 182 255 / 0.25);
+  border-radius: 6px;
+  background: var(--ink);
+}
+
+.ccr__game {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #15202c 0%, var(--ink) 55%, #1a2840 100%);
+}
+
+.ccr__game-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+.ccr__game-geo {
+  width: 72px;
+  height: 72px;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0.35;
+}
+
+.ccr__strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  transform: translateY(100%);
+  transition: transform 420ms cubic-bezier(0.2, 1, 0.3, 1);
+  background: rgb(11 15 20 / 0.92);
+  border-top: 1px solid var(--primary);
+  backdrop-filter: blur(6px);
+}
+
+.ccr[data-phase='open'] .ccr__strip {
+  transform: translateY(0);
+}
+
+.ccr__strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.ccr__chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--primary), var(--soft));
+  opacity: 0.85;
+}
+
+.ccr__chip--b {
+  border-radius: 50%;
+  opacity: 0.65;
+}
+
+.ccr__chip--c {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  opacity: 0.5;
+}
+
+.ccr__chip-label {
+  margin-left: auto;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.ccr__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ccr__btn {
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--soft);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ccr__btn--primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--ink);
+}
+
+.ccr__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ccr__strip {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ccr__strip {
+  animation: none !important;
+  transition: none !important;
+}
