@@ -1,0 +1,8 @@
+{
+  "name": "beatgrid-lock",
+  "ref": "SPX-3849",
+  "title": "Beatgrid Lock",
+  "mode": "tape",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

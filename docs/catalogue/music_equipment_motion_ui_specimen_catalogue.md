@@ -266,7 +266,7 @@ specimens can feel tactile without needing sound.
 
 - [x] **MUSIC-089** · `SPX-3848` · ★★★★★ **Scrolling DJ Waveform** — A detailed abstract waveform
     moves beneath a fixed central playhead.
-- [ ] **MUSIC-090** · `SPX-3849` · ★★★★★ **Beatgrid Lock** — Misaligned beat markers slide until
+- [x] **MUSIC-090** · `SPX-3849` · ★★★★★ **Beatgrid Lock** — Misaligned beat markers slide until
     they snap onto waveform transients.
 - [ ] **MUSIC-091** · `SPX-3850` · ★★★★☆ **Downbeat Marker Slam** — A stronger first-beat marker
     enters at each phrase boundary.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-090 | SPX-3849 | `beatgrid-lock` | Beatgrid Lock |
 | MUSIC-089 | SPX-3848 | `scrolling-dj-waveform` | Scrolling DJ Waveform |
 | MUSIC-087 | SPX-3846 | `crossfader-blend` | Crossfader Blend |
 | MUSIC-086 | SPX-3845 | `deck-sync-lock` | Deck Sync Lock |
@@ -888,12 +889,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **25 / 310** complete.
+- Progress: **26 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 25 |
-| Open | 285 |
+| Done | 26 |
+| Open | 284 |
 
 ## Core first-wave / build queue
 
@@ -924,7 +925,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · `deck-sync-lock`
 - [x] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · `crossfader-blend`
 - [x] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · `scrolling-dj-waveform`
-- [ ] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · scaffold `beatgrid-lock`
+- [x] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · `beatgrid-lock`
 - [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`
 - [x] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · `patch-cable-connect`
 - [x] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · `signal-flow-pulse`

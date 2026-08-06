@@ -572,4 +572,5 @@ export const specimenOrder: string[] = [
   'deck-sync-lock',
   'crossfader-blend',
   'scrolling-dj-waveform',
+  'beatgrid-lock',
 ]
