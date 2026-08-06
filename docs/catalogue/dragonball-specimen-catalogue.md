@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-046 | `SPX-1011` | `instant-transmission-navigation` | Instant Transmission Navigation |
 | DB-231 | `SPX-1196` | `collective-ci-deployment` | Collective CI Deployment |
 | DB-057 | `SPX-1022` | `linked-fusion-merge` | Linked Fusion Merge |
 | DB-105 | `SPX-1070` | `seven-part-prerequisite-collection` | Seven-Part Prerequisite Collection |
