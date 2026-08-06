@@ -1,0 +1,8 @@
+{
+  "name": "lead-column-expansion",
+  "ref": "SPX-3550",
+  "title": "Lead Column Expansion",
+  "mode": "replate",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
