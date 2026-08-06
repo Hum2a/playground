@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **11 / 369** complete.
+- Progress: **12 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 11 |
-| Open | 358 |
+| Done | 12 |
+| Open | 357 |
 
 ## Visual grammar
 
@@ -43,6 +43,7 @@
 | MHA-034 | `SPX-2008` | `branching-energy-surge` | Branching Energy Surge |
 | MHA-043 | `SPX-2017` | `analysis-scribble-reveal` | Analysis Scribble Reveal |
 | MHA-044 | `SPX-2018` | `weakness-highlight-sweep` | Weakness Highlight Sweep |
+| MHA-053 | `SPX-2027` | `training-simulation-start` | Training Simulation Start |
 
 ## Core first-wave
 
@@ -59,7 +60,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-034** · `SPX-2008` · **Branching Energy Surge** — one-for-all-style-energy-language
 - [x] **MHA-043** · `SPX-2017` · **Analysis Scribble Reveal** — hero-analysis-notebook-ui
 - [x] **MHA-044** · `SPX-2018` · **Weakness Highlight Sweep** — hero-analysis-notebook-ui
-- [ ] **MHA-053** · `SPX-2027` · **Training Simulation Start** — u-a-style-training-interface
+- [x] **MHA-053** · `SPX-2027` · **Training Simulation Start** — u-a-style-training-interface
 - [ ] **MHA-056** · `SPX-2030` · **Performance Meter Burst** — u-a-style-training-interface
 - [ ] **MHA-063** · `SPX-2037` · **Versus Card Collision** — sports-festival-tournament
 - [ ] **MHA-064** · `SPX-2038` · **Bracket Winner Advance** — sports-festival-tournament
@@ -148,7 +149,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## U.A.-Style Training Interface
 
-- [ ] **MHA-053** · `SPX-2027` · **Training Simulation Start** — READY state counts down and explodes into active telemetry.
+- [x] **MHA-053** · `SPX-2027` · **Training Simulation Start** — READY state counts down and explodes into active telemetry.
 - [ ] **MHA-054** · `SPX-2028` · **Training Target Acquisition** — target cards become tracked with brackets and confidence meters.
 - [ ] **MHA-055** · `SPX-2029` · **Exercise Complete Stamp** — completion state receives an oversized PASS/CLEAR-style original stamp.
 - [ ] **MHA-056** · `SPX-2030` · **Performance Meter Burst** — result bars race to final values and one standout metric breaks beyond the graph boundary.
