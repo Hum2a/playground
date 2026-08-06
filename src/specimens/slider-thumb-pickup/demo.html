@@ -1,0 +1,22 @@
+<div class="stp" data-slider-thumb-pickup>
+  <label class="stp__label" for="stp-range">Volume</label>
+  <div class="stp__wrap" data-stp-wrap>
+    <input
+      class="stp__range"
+      id="stp-range"
+      type="range"
+      min="0"
+      max="100"
+      step="5"
+      value="45"
+      data-stp-range
+      aria-valuetext="45"
+    />
+    <div class="stp__fill" data-stp-fill aria-hidden="true"></div>
+    <div class="stp__bubble" data-stp-bubble hidden aria-hidden="true">45</div>
+  </div>
+  <output class="stp__value" for="stp-range" data-stp-output>45</output>
+  <p class="stp__status" role="status" aria-live="polite" data-stp-status>
+    Drag or use arrow keys — values snap to multiples of 5.
+  </p>
+</div>

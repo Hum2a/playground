@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/slider-thumb-pickup.schema.json",
+  "title": "SliderThumbPickup",
+  "description": "Portable contract for slider thumb pickup with value bubble.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "slider", "thumb", "bubble", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "slider-thumb-pickup" },
+    "intent": {
+      "type": "string",
+      "const": "Thumb enlarges and exposes precision feedback while dragging."
+    },
+    "slider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "min", "max", "step"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 280 },
+        "min": { "type": "number", "const": 0 },
+        "max": { "type": "number", "const": 100 },
+        "step": { "type": "number", "const": 5 }
+      }
+    },
+    "thumb": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["idlePx", "activePx", "growMs"],
+      "properties": {
+        "idlePx": { "type": "number", "const": 20 },
+        "activePx": { "type": "number", "const": 28 },
+        "growMs": { "type": "number", "const": 120 }
+      }
+    },
+    "bubble": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "hideAfterMs"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 44 },
+        "heightPx": { "type": "number", "const": 32 },
+        "hideAfterMs": { "type": "number", "const": 180 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantThumb", "triggers"],
+      "properties": {
+        "instantThumb": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nativeRange", "keyboardArrows"],
+      "properties": {
+        "nativeRange": { "type": "boolean", "const": true },
+        "keyboardArrows": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "range", "bubble", "fill"],
+      "properties": {
+        "root": { "type": "string", "const": "stp" },
+        "range": { "type": "string", "const": "stp__range" },
+        "bubble": { "type": "string", "const": "stp__bubble" },
+        "fill": { "type": "string", "const": "stp__fill" }
+      }
+    }
+  }
+}

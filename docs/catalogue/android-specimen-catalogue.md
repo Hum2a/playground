@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **36 / 417** complete.
+- Progress: **37 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 36 |
-| Open | 381 |
+| Done | 37 |
+| Open | 380 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-163 | `SPX-1720` | `slider-thumb-pickup` | Slider Thumb Pickup |
 | AND-218 | `SPX-1775` | `dialog-materialise` | Dialog Materialise |
 | AND-170 | `SPX-1727` | `floating-label-lift` | Floating Label Lift |
 | AND-162 | `SPX-1719` | `material-switch-toggle` | Material Switch Toggle |
@@ -328,7 +329,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Switches, Sliders & Selection Controls
 
 - [x] **AND-162** · `SPX-1719` · **Material Switch Toggle** — thumb and track change together through one state transition.
-- [ ] **AND-163** · `SPX-1720` · **Slider Thumb Pickup** — thumb enlarges and exposes precision feedback while dragging.
+- [x] **AND-163** · `SPX-1720` · **Slider Thumb Pickup** — thumb enlarges and exposes precision feedback while dragging.
 - [ ] **AND-164** · `SPX-1721` · **Slider Tick Acquisition** — thumb snaps onto discrete tick positions.
 - [ ] **AND-165** · `SPX-1722` · **Checkbox Draw** — selection mark constructs inside persistent checkbox geometry.
 - [ ] **AND-166** · `SPX-1723` · **Radio Ownership Transfer** — active centre transfers between mutually exclusive options.

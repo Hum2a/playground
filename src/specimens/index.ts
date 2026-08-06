@@ -196,6 +196,7 @@ import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sharedXAxisNavigation } from './shared-x-axis-navigation/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
 import { singleToDualPaneTransform } from './single-to-dual-pane-transform/entry'
+import { sliderThumbPickup } from './slider-thumb-pickup/entry'
 import { snackbarRise } from './snackbar-rise/entry'
 import { spotlightMaterialise } from './spotlight-materialise/entry'
 import { springSelectionPill } from './spring-selection-pill/entry'
@@ -469,6 +470,7 @@ export const specimens: Specimen[] = [
   sharedXAxisNavigation,
   sheetRubberBandLimit,
   singleToDualPaneTransform,
+  sliderThumbPickup,
   snackbarRise,
   spotlightMaterialise,
   springSelectionPill,
