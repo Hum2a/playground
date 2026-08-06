@@ -1,0 +1,17 @@
+{
+  "name": "shadow-self-reveal",
+  "intent": "Polished profile fractures to expose shadow DENIED SIGNAL state.",
+  "catalogue": { "p4": "P4-044", "ref": "SPX-2962" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "fractureMs": 520 },
+  "api": {
+    "run": "runShadowSelfReveal()",
+    "reset": "resetShadowSelfReveal()"
+  },
+  "reducedMotion": { "behaviour": "Shadow layer visible immediately" }
+}

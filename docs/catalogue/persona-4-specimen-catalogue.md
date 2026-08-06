@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 191** complete.
+- Progress: **7 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 185 |
+| Done | 7 |
+| Open | 184 |
 
 ## Visual grammar
 
@@ -40,6 +40,7 @@
 | P4-021 | `SPX-2939` | `fog-clearing-data-reveal` | Fog-Clearing Data Reveal |
 | P4-029 | `SPX-2947` | `evidence-connection-draw` | Evidence Connection Draw |
 | P4-030 | `SPX-2948` | `contradiction-found` | Contradiction Found |
+| P4-044 | `SPX-2962` | `shadow-self-reveal` | Shadow Self Reveal |
 
 ## Core first-wave
 
@@ -51,7 +52,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-021** · `SPX-2939` · **Fog-Clearing Data Reveal** — fog-hidden-information
 - [x] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — investigation-evidence
 - [x] **P4-030** · `SPX-2948` · **Contradiction Found** — investigation-evidence
-- [ ] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — shadow-identity-confrontation
+- [x] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — shadow-identity-confrontation
 - [ ] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — social-links-bonds
 - [ ] **P4-110** · `SPX-3028` · **KEEP OUT Tape Marquee** — yellow-black-graphic-language
 - [ ] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — persona-fusion-compendium
@@ -154,7 +155,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Shadow / Identity / Confrontation
 
-- [ ] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — A polished profile fractures to expose a darker underlying state.
+- [x] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — A polished profile fractures to expose a darker underlying state.
 - [ ] **P4-045** · `SPX-2963` · **Identity Distortion** — Profile typography and geometry become unstable before resolving into truth state.
 - [ ] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — A hidden issue interrupts the interface with a high-impact challenge card.
 - [ ] **P4-047** · `SPX-2965` · **Denial-to-Acceptance Morph** — A rejected state visually fights the transition before settling into accepted status.

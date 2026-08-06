@@ -286,6 +286,7 @@ import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { shadowBindSelection } from './shadow-bind-selection/entry'
 import { shadowCloneFanOut } from './shadow-clone-fan-out/entry'
+import { shadowSelfReveal } from './shadow-self-reveal/entry'
 import { shapeMorphButtonToCard } from './shape-morph-button-to-card/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sharedXAxisNavigation } from './shared-x-axis-navigation/entry'
@@ -682,6 +683,7 @@ export const specimens: Specimen[] = [
   sevenPartPrerequisiteCollection,
   shadowBindSelection,
   shadowCloneFanOut,
+  shadowSelfReveal,
   shapeMorphButtonToCard,
   sharedResourcePool,
   sharedXAxisNavigation,
