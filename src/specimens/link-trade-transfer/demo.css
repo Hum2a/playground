@@ -1,0 +1,544 @@
+/* SPX-829 Link Trade Transfer — portable contract. Do not restyle to host tokens. */
+
+.ltt {
+  --ltt-bg: #0e1218;
+  --ltt-card: #161c26;
+  --ltt-ink: #e6eef5;
+  --ltt-mute: #7a8a9a;
+  --ltt-line: #3d4f5e;
+  --ltt-link: #6ec8b8;
+  --ltt-vector: #e8a04a;
+  --ltt-prism: #7aa8e0;
+  --ltt-ease: cubic-bezier(0.33, 0.9, 0.35, 1);
+  --ltt-card-w: 150px;
+  --ltt-card-h: 170px;
+  --ltt-gap: 120px;
+  /* Frozen path offsets from central axis */
+  --ltt-path-up: -10px;
+  --ltt-path-down: 10px;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--ltt-bg);
+  color: var(--ltt-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ltt *,
+.ltt *::before,
+.ltt *::after {
+  box-sizing: border-box;
+}
+
+.ltt__kicker {
+  margin: 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--ltt-link);
+}
+
+.ltt__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ltt-gap);
+  width: min(100%, 460px);
+  min-height: calc(var(--ltt-card-h) + 24px);
+  flex: 1;
+}
+
+.ltt__node {
+  position: relative;
+  z-index: 2;
+  width: var(--ltt-card-w);
+  height: var(--ltt-card-h);
+  margin: 0;
+  padding: 0.75rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--ltt-card);
+  border: 1px solid rgb(230 238 245 / 0.18);
+  transform-origin: center center;
+}
+
+.ltt[data-state='arrive'] .ltt__node.is-recv {
+  animation: ltt-recv 180ms var(--ltt-ease) both;
+}
+
+@keyframes ltt-recv {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.ltt__node-title {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--ltt-mute);
+}
+
+.ltt__pad {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.ltt__glyph {
+  display: block;
+  width: 56px;
+  height: 56px;
+  transition: opacity 80ms linear;
+}
+
+.ltt__glyph--vector {
+  background: linear-gradient(145deg, #f0c078, var(--ltt-vector));
+  clip-path: polygon(15% 0%, 100% 50%, 15% 100%, 0% 78%, 55% 50%, 0% 22%);
+}
+
+.ltt__glyph--prism {
+  background: linear-gradient(160deg, #c8e0f8, var(--ltt-prism) 55%, #3a5a88);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.ltt[data-state='shrink'] .ltt__glyph,
+.ltt[data-state='depart'] .ltt__glyph,
+.ltt[data-state='cross'] .ltt__glyph,
+.ltt[data-state='arrive'] .ltt__glyph:not(.is-arrived) {
+  opacity: 0;
+}
+
+.ltt__own {
+  margin: 0;
+  height: 1.1rem;
+  overflow: hidden;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.ltt__own-slot {
+  display: block;
+  position: relative;
+  height: 1.1rem;
+}
+
+.ltt__own-from,
+.ltt__own-to {
+  display: block;
+  line-height: 1.1rem;
+  text-align: center;
+}
+
+.ltt__own-to {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  color: var(--ltt-link);
+}
+
+.ltt[data-state='swap'] .ltt__own-from,
+.ltt[data-state='teardown'] .ltt__own-from,
+.ltt[data-state='done'] .ltt__own-from {
+  transform: translateY(-100%);
+  transition: transform 160ms steps(1, end);
+}
+
+.ltt[data-state='swap'] .ltt__own-to,
+.ltt[data-state='teardown'] .ltt__own-to,
+.ltt[data-state='done'] .ltt__own-to {
+  transform: translateY(0);
+  transition: transform 160ms steps(1, end);
+}
+
+.ltt[data-state='done'] .ltt__own-from,
+.ltt[data-state='done'] .ltt__own-to {
+  transition: none;
+}
+
+/* —— Link segments —— */
+.ltt__link {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--ltt-gap);
+  height: 2px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ltt__seg {
+  display: block;
+  height: 2px;
+  width: 14%;
+  background: var(--ltt-line);
+  opacity: 0.85;
+}
+
+.ltt[data-state='link'] .ltt__seg,
+.ltt[data-state='shrink'] .ltt__seg,
+.ltt[data-state='depart'] .ltt__seg,
+.ltt[data-state='cross'] .ltt__seg,
+.ltt[data-state='arrive'] .ltt__seg,
+.ltt[data-state='swap'] .ltt__seg {
+  background: var(--ltt-link);
+  opacity: 1;
+  width: 100%;
+  flex: 1;
+  margin: 0;
+  animation: ltt-join 160ms var(--ltt-ease) both;
+}
+
+.ltt[data-state='link'] .ltt__seg--2 {
+  animation-delay: 20ms;
+}
+.ltt[data-state='link'] .ltt__seg--3 {
+  animation-delay: 40ms;
+}
+.ltt[data-state='link'] .ltt__seg--4 {
+  animation-delay: 60ms;
+}
+.ltt[data-state='link'] .ltt__seg--5 {
+  animation-delay: 80ms;
+}
+
+.ltt[data-state='shrink'] .ltt__seg,
+.ltt[data-state='depart'] .ltt__seg,
+.ltt[data-state='cross'] .ltt__seg,
+.ltt[data-state='arrive'] .ltt__seg,
+.ltt[data-state='swap'] .ltt__seg {
+  animation: none;
+  width: 20%;
+  flex: 1 1 auto;
+  background: var(--ltt-link);
+  /* continuous joined look: no gaps */
+  margin: 0 -1px;
+  width: auto;
+  flex: 1;
+}
+
+.ltt[data-state='teardown'] .ltt__seg,
+.ltt[data-state='done'] .ltt__seg {
+  animation: none;
+  background: var(--ltt-line);
+  opacity: 0.85;
+  flex: 0 0 14%;
+  width: 14%;
+  margin: 0;
+  transition:
+    flex-basis 180ms var(--ltt-ease),
+    width 180ms var(--ltt-ease),
+    background 180ms linear;
+}
+
+@keyframes ltt-join {
+  from {
+    flex: 0 0 14%;
+    background: var(--ltt-line);
+  }
+  to {
+    flex: 1 1 0;
+    background: var(--ltt-link);
+  }
+}
+
+/* —— Flight —— */
+.ltt__flight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ltt__flyer {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+}
+
+.ltt__flyer--vector {
+  background: linear-gradient(145deg, #f0c078, var(--ltt-vector));
+  clip-path: polygon(15% 0%, 100% 50%, 15% 100%, 0% 78%, 55% 50%, 0% 22%);
+  /* Start at left node centre; path y = axis - 10px */
+  --ltt-x0: calc(50% - var(--ltt-gap) / 2 - var(--ltt-card-w) / 2);
+  --ltt-x1: 50%;
+  --ltt-x2: calc(50% + var(--ltt-gap) / 2 + var(--ltt-card-w) / 2);
+  --ltt-y: calc(50% + var(--ltt-path-up));
+}
+
+.ltt__flyer--prism {
+  background: linear-gradient(160deg, #c8e0f8, var(--ltt-prism) 55%, #3a5a88);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  --ltt-x0: calc(50% + var(--ltt-gap) / 2 + var(--ltt-card-w) / 2);
+  --ltt-x1: 50%;
+  --ltt-x2: calc(50% - var(--ltt-gap) / 2 - var(--ltt-card-w) / 2);
+  --ltt-y: calc(50% + var(--ltt-path-down));
+}
+
+.ltt[data-state='shrink'] .ltt__flyer {
+  opacity: 1;
+  left: var(--ltt-x0);
+  top: var(--ltt-y);
+  transform: scale(0.72);
+  transition:
+    transform 120ms var(--ltt-ease),
+    opacity 60ms linear;
+}
+
+.ltt[data-state='depart'] .ltt__flyer {
+  opacity: 1;
+  left: var(--ltt-x0);
+  top: var(--ltt-y);
+  transform: scale(0.72);
+  animation: ltt-to-mid 260ms var(--ltt-ease) forwards;
+}
+
+.ltt[data-state='cross'] .ltt__flyer {
+  opacity: 1;
+  left: var(--ltt-x1);
+  top: var(--ltt-y);
+  transform: scale(0.72);
+}
+
+.ltt[data-state='arrive'] .ltt__flyer {
+  opacity: 1;
+  animation: ltt-to-end 260ms var(--ltt-ease) forwards;
+}
+
+@keyframes ltt-to-mid {
+  from {
+    left: var(--ltt-x0);
+    top: var(--ltt-y);
+    transform: scale(0.72);
+  }
+  to {
+    left: var(--ltt-x1);
+    top: var(--ltt-y);
+    transform: scale(0.72);
+  }
+}
+
+@keyframes ltt-to-end {
+  0% {
+    left: var(--ltt-x1);
+    top: var(--ltt-y);
+    transform: scale(0.72);
+  }
+  78% {
+    left: var(--ltt-x2);
+    top: var(--ltt-y);
+    transform: scale(1.06);
+  }
+  100% {
+    left: var(--ltt-x2);
+    top: var(--ltt-y);
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.ltt__cross {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  background: var(--ltt-link);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0;
+  transform: scale(0.4);
+  pointer-events: none;
+}
+
+.ltt[data-state='cross'] .ltt__cross {
+  animation: ltt-flash 160ms var(--ltt-ease) both;
+}
+
+@keyframes ltt-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.ltt__done {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--ltt-link);
+  opacity: 0;
+}
+
+.ltt[data-state='done'] .ltt__done {
+  display: block;
+  opacity: 1;
+}
+
+.ltt__done[hidden] {
+  display: none !important;
+}
+
+.ltt__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ltt__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.48rem 0.85rem;
+  border: 1px solid rgb(230 238 245 / 0.45);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ltt-ink);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ltt__btn:hover:not(:disabled) {
+  background: rgb(110 200 184 / 0.12);
+}
+
+.ltt__btn:focus-visible {
+  outline: 2px solid var(--ltt-link);
+  outline-offset: 3px;
+}
+
+.ltt__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ltt__btn--ghost {
+  border-color: rgb(230 238 245 / 0.25);
+}
+
+.ltt__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 420px) {
+  .ltt {
+    --ltt-card-w: 118px;
+    --ltt-card-h: 150px;
+    --ltt-gap: 72px;
+    min-height: 300px;
+  }
+
+  .ltt__glyph,
+  .ltt__flyer {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ltt__flyer {
+    margin: -22px 0 0 -22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ltt__flyer,
+  .ltt__seg,
+  .ltt__cross,
+  .ltt__node,
+  .ltt__own-from,
+  .ltt__own-to,
+  .ltt__glyph {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ltt[data-state='done'] .ltt__own-from {
+    transform: translateY(-100%);
+  }
+
+  .ltt[data-state='done'] .ltt__own-to {
+    transform: translateY(0);
+  }
+
+  .ltt[data-state='done'] .ltt__glyph--vector[data-ltt-home='a'],
+  .ltt[data-state='done'] .ltt__glyph--prism[data-ltt-home='b'] {
+    display: none;
+  }
+
+  .ltt[data-state='done'] .ltt__done {
+    display: block !important;
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .ltt__flyer,
+[data-force-reduced-motion='true'] .ltt__seg,
+[data-force-reduced-motion='true'] .ltt__cross,
+[data-force-reduced-motion='true'] .ltt__node,
+[data-force-reduced-motion='true'] .ltt__own-from,
+[data-force-reduced-motion='true'] .ltt__own-to,
+[data-force-reduced-motion='true'] .ltt__glyph {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .ltt[data-state='done'] .ltt__own-from {
+  transform: translateY(-100%);
+}
+
+[data-force-reduced-motion='true'] .ltt[data-state='done'] .ltt__own-to {
+  transform: translateY(0);
+}
+
+[data-force-reduced-motion='true'] .ltt[data-state='done'] .ltt__done {
+  display: block !important;
+  opacity: 1;
+}

@@ -1,0 +1,73 @@
+<div class="ltt" data-link-trade data-state="idle">
+  <p class="ltt__kicker" id="ltt-label">LINK CHANNEL</p>
+
+  <div class="ltt__stage" data-ltt-stage>
+    <article
+      class="ltt__node ltt__node--a"
+      data-ltt-node="a"
+      aria-labelledby="ltt-node-a-title ltt-node-a-own"
+    >
+      <p class="ltt__node-title" id="ltt-node-a-title">NODE // A</p>
+      <div class="ltt__pad" data-ltt-pad="a">
+        <span class="ltt__glyph ltt__glyph--vector" data-ltt-home="a" aria-hidden="true"></span>
+      </div>
+      <p class="ltt__own" id="ltt-node-a-own" data-ltt-own="a">
+        <span class="ltt__own-slot">
+          <span class="ltt__own-from">VECTOR</span>
+          <span class="ltt__own-to">PRISM</span>
+        </span>
+      </p>
+    </article>
+
+    <div class="ltt__link" data-ltt-link aria-hidden="true">
+      <span class="ltt__seg ltt__seg--1"></span>
+      <span class="ltt__seg ltt__seg--2"></span>
+      <span class="ltt__seg ltt__seg--3"></span>
+      <span class="ltt__seg ltt__seg--4"></span>
+      <span class="ltt__seg ltt__seg--5"></span>
+    </div>
+
+    <article
+      class="ltt__node ltt__node--b"
+      data-ltt-node="b"
+      aria-labelledby="ltt-node-b-title ltt-node-b-own"
+    >
+      <p class="ltt__node-title" id="ltt-node-b-title">NODE // B</p>
+      <div class="ltt__pad" data-ltt-pad="b">
+        <span class="ltt__glyph ltt__glyph--prism" data-ltt-home="b" aria-hidden="true"></span>
+      </div>
+      <p class="ltt__own" id="ltt-node-b-own" data-ltt-own="b">
+        <span class="ltt__own-slot">
+          <span class="ltt__own-from">PRISM</span>
+          <span class="ltt__own-to">VECTOR</span>
+        </span>
+      </p>
+    </article>
+
+    <!-- Flight layer: entities travel here during transfer -->
+    <div class="ltt__flight" data-ltt-flight aria-hidden="true">
+      <span
+        class="ltt__flyer ltt__flyer--vector"
+        data-ltt-flyer="vector"
+      ></span>
+      <span
+        class="ltt__flyer ltt__flyer--prism"
+        data-ltt-flyer="prism"
+      ></span>
+      <span class="ltt__cross" data-ltt-cross></span>
+    </div>
+  </div>
+
+  <p class="ltt__done" data-ltt-done hidden>TRADE COMPLETE</p>
+
+  <div class="ltt__controls">
+    <button type="button" class="ltt__btn" data-ltt-trade>TRADE</button>
+    <button type="button" class="ltt__btn ltt__btn--ghost" data-ltt-reset>
+      RESET
+    </button>
+  </div>
+
+  <p class="ltt__status" role="status" aria-live="polite" data-ltt-status>
+    Node A owns VECTOR. Node B owns PRISM.
+  </p>
+</div>

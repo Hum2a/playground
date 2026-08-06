@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 266** complete.
+- Progress: **12 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 256 |
+| Done | 12 |
+| Open | 254 |
 
 ## Visual grammar
 
@@ -43,6 +43,9 @@
 | PK-063 | `SPX-762` | `level-up-overflow` | Level Up Overflow |
 | PK-160 | `SPX-859` | `pixel-hp-drain` | Pixel HP Drain |
 
+| PK-130 | `SPX-829` | `link-trade-transfer` | Link Trade Transfer |
+| PK-145 | `SPX-844` | `badge-case-insert` | Badge Case Insert |
+
 ## Core first-wave
 
 Curated implementation priority (from the former Tier S / S+ queues). Same checkbox as the master list — checking either counts.
@@ -54,7 +57,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-237** · `SPX-936` · **Raid Ready Check** — multiplayer-collective
 - [x] **PK-063** · `SPX-762` · **Level Up Overflow** — hp-xp
 - [ ] **PK-225** · `SPX-924` · **Terastallization Crystallise** — scarlet-violet
-- [ ] **PK-130** · `SPX-829` · **Link Trade Transfer** — trading-transfer
+- [x] **PK-130** · `SPX-829` · **Link Trade Transfer** — trading-transfer
 - [ ] **PK-178** · `SPX-877` · **Poké Radar Pulse** — sinnoh-ds
 - [x] **PK-001** · `SPX-700` · **Wild Encounter Transition** — encounters-arrivals
 - [x] **PK-012** · `SPX-711` · **Critical Capture** — capture-uncertainty
@@ -66,7 +69,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-116** · `SPX-815` · **Move Learned** — moves-abilities
 - [ ] **PK-117** · `SPX-816` · **Forget a Move** — moves-abilities
 - [ ] **PK-144** · `SPX-843` · **Gym Badge Earned** — gym-badges
-- [ ] **PK-145** · `SPX-844` · **Badge Case Insert** — gym-badges
+- [x] **PK-145** · `SPX-844` · **Badge Case Insert** — gym-badges
 
 ## 1. Encounters & arrivals
 
@@ -226,7 +229,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 10. Trading, transfer & storage
 
-- [ ] **PK-130** · `SPX-829` · **Link Trade Transfer** — Two entities travel through opposing communication paths and exchange positions.
+- [x] **PK-130** · `SPX-829` · **Link Trade Transfer** — Two entities travel through opposing communication paths and exchange positions.
 - [ ] **PK-131** · `SPX-830` · **Trade Complete** — Outgoing identity leaves ownership while incoming identity becomes registered.
 - [ ] **PK-132** · `SPX-831` · **Wonder Trade Mystery** — A known outgoing entity exchanges for an initially unknown incoming one.
 - [ ] **PK-133** · `SPX-832` · **PC Box Transfer** — An active entity shrinks into a rigid indexed storage slot.
@@ -244,7 +247,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 ## 11. Gym, badges & achievements
 
 - [ ] **PK-144** · `SPX-843` · **Gym Badge Earned** — An incomplete badge abstraction assembles into a permanent achievement.
-- [ ] **PK-145** · `SPX-844` · **Badge Case Insert** — A newly earned achievement physically docks into an empty collection slot.
+- [x] **PK-145** · `SPX-844` · **Badge Case Insert** — A newly earned achievement physically docks into an empty collection slot.
 - [ ] **PK-146** · `SPX-845` · **Badge Polish** — A subdued achievement responds to interaction by revealing its completed visual state.
 - [ ] **PK-147** · `SPX-846` · **Gym Victory Stamp** — A completion mark physically stamps itself onto a record.
 - [ ] **PK-148** · `SPX-847` · **Elite Four Progress** — Four sequential challenges become structural checkpoints.

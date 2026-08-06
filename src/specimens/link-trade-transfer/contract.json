@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/link-trade-transfer.schema.json",
+  "title": "LinkTradeTransfer",
+  "description": "Portable contract for two-endpoint ownership exchange through a link channel. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "paths",
+    "phases",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "link-trade-transfer" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "VECTOR and PRISM cross on offset paths through a joined link; ownership updates only after arrival."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeA",
+        "nodeB",
+        "vector",
+        "prism",
+        "trade",
+        "reset",
+        "complete",
+        "statusIdle",
+        "statusDone"
+      ],
+      "properties": {
+        "nodeA": { "type": "string", "const": "NODE // A" },
+        "nodeB": { "type": "string", "const": "NODE // B" },
+        "vector": { "type": "string", "const": "VECTOR" },
+        "prism": { "type": "string", "const": "PRISM" },
+        "trade": { "type": "string", "const": "TRADE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "complete": { "type": "string", "const": "TRADE COMPLETE" },
+        "statusIdle": {
+          "type": "string",
+          "const": "Node A owns VECTOR. Node B owns PRISM."
+        },
+        "statusDone": {
+          "type": "string",
+          "const": "Node A owns PRISM. Node B owns VECTOR. Trade complete."
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardWidthPx", "cardHeightPx", "gapPx"],
+      "properties": {
+        "cardWidthPx": { "type": "number", "const": 150 },
+        "cardHeightPx": { "type": "number", "const": 170 },
+        "gapPx": { "type": "number", "const": 120 }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vectorOffsetYPx", "prismOffsetYPx", "crossFlash"],
+      "properties": {
+        "vectorOffsetYPx": { "type": "number", "const": -10 },
+        "prismOffsetYPx": { "type": "number", "const": 10 },
+        "crossFlash": { "type": "boolean", "const": true }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "linkMs",
+        "shrinkMs",
+        "toMidMs",
+        "toEndMs",
+        "teardownMs"
+      ],
+      "properties": {
+        "linkMs": { "type": "number", "const": 160 },
+        "shrinkMs": { "type": "number", "const": 120 },
+        "toMidMs": { "type": "number", "const": 260 },
+        "toEndMs": { "type": "number", "const": 260 },
+        "teardownMs": { "type": "number", "const": 180 },
+        "shrinkScale": { "type": "number", "const": 0.72 },
+        "arrivalScale": {
+          "type": "array",
+          "const": [0.72, 1.06, 1]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceOwnership", "noMidTransferSpam"],
+      "properties": {
+        "announceOwnership": { "type": "boolean", "const": true },
+        "noMidTransferSpam": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "showComplete", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "showComplete": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "node", "link", "flyer"],
+      "properties": {
+        "root": { "type": "string", "const": "ltt" },
+        "node": { "type": "string", "const": "ltt__node" },
+        "link": { "type": "string", "const": "ltt__link" },
+        "flyer": { "type": "string", "const": "ltt__flyer" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "linkTradeTransfer" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "link-trade-transfer",
+      "intent": "VECTOR and PRISM cross on offset paths through a joined link; ownership updates only after arrival.",
+      "copy": {
+        "nodeA": "NODE // A",
+        "nodeB": "NODE // B",
+        "vector": "VECTOR",
+        "prism": "PRISM",
+        "trade": "TRADE",
+        "reset": "RESET",
+        "complete": "TRADE COMPLETE",
+        "statusIdle": "Node A owns VECTOR. Node B owns PRISM.",
+        "statusDone": "Node A owns PRISM. Node B owns VECTOR. Trade complete."
+      },
+      "layout": {
+        "cardWidthPx": 150,
+        "cardHeightPx": 170,
+        "gapPx": 120
+      },
+      "paths": {
+        "vectorOffsetYPx": -10,
+        "prismOffsetYPx": 10,
+        "crossFlash": true
+      },
+      "phases": {
+        "linkMs": 160,
+        "shrinkMs": 120,
+        "toMidMs": 260,
+        "toEndMs": 260,
+        "teardownMs": 180,
+        "shrinkScale": 0.72,
+        "arrivalScale": [0.72, 1.06, 1]
+      },
+      "a11y": {
+        "announceOwnership": true,
+        "noMidTransferSpam": true
+      },
+      "reducedMotion": {
+        "instantSwap": true,
+        "showComplete": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "ltt",
+        "node": "ltt__node",
+        "link": "ltt__link",
+        "flyer": "ltt__flyer"
+      },
+      "behaviour": {
+        "api": "linkTradeTransfer"
+      }
+    }
+  ]
+}

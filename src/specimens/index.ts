@@ -1,5 +1,6 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
+import { badgeCaseInsert } from './badge-case-insert/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
@@ -144,6 +145,7 @@ export const specimens: Specimen[] = [
   callingCardPeel,
   dramaticObjectionError,
   azureShardTransition,
+  badgeCaseInsert,
   precisionMenuSnap,
   evokerMenuSnap,
   truthShotNotification,
