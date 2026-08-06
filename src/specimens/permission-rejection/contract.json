@@ -1,0 +1,67 @@
+{
+  "name": "permission-rejection",
+  "intent": "Restricted control lunges forward, hits a diagonal red/black barrier, compresses once, recoils once, and ACCESS DENIED stamps above while the action stays locked.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "copy": {
+    "title": "ADMIN ARCHIVE",
+    "action": "OPEN ARCHIVE",
+    "state": "RESTRICTED",
+    "denied": "ACCESS DENIED",
+    "srAnnounce": "Access denied. Admin Archive is restricted.",
+    "srIdle": "Admin Archive is restricted."
+  },
+  "transforms": {
+    "attemptTranslateXPx": 8,
+    "collideScaleX": 0.96,
+    "recoilTranslateXPx": -10,
+    "settleTranslateXPx": 0,
+    "barrierWidthPx": 14,
+    "barrierHeightPercent": 130,
+    "barrierRotateDeg": 12,
+    "deniedRotateDeg": -6
+  },
+  "timing": {
+    "attemptMs": 80,
+    "barrierSlamMs": 70,
+    "barrierSlamDelayMs": 20,
+    "collideMs": 60,
+    "recoilMs": 140,
+    "deniedInMs": 180,
+    "deniedHoldMs": 800,
+    "clearMs": 160,
+    "impactMarkCount": 3,
+    "recoilCount": 1,
+    "loops": false
+  },
+  "a11y": {
+    "actionRemainsUnavailable": true,
+    "announceDenial": "Access denied. Admin Archive is restricted.",
+    "doNotImplySuccess": true,
+    "decorativeBarrierAndMarks": true
+  },
+  "reducedMotion": {
+    "immediateStaticDenied": true,
+    "noCollisionTravel": true,
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ]
+  },
+  "constraints": {
+    "noRepeatedShake": true,
+    "noExternalAssets": true,
+    "noFontFace": true,
+    "noNetwork": true
+  },
+  "classNames": {
+    "root": "perm-reject",
+    "action": "perm-reject__action",
+    "barrier": "perm-reject__barrier",
+    "mark": "perm-reject__mark",
+    "denied": "perm-reject__denied"
+  }
+}

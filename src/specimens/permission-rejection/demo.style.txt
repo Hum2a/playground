@@ -1,0 +1,551 @@
+/* permission-rejection — portable specimen styles. Do not restyle to host tokens. */
+
+.perm-reject {
+  --pr-black: #090909;
+  --pr-red: #e60012;
+  --pr-paper: #f5f1e8;
+  --pr-attempt-ms: 80ms;
+  --pr-collide-ms: 60ms;
+  --pr-recoil-ms: 140ms;
+  --pr-denied-in-ms: 180ms;
+  --pr-denied-hold-ms: 800ms;
+  --pr-denied-out-ms: 160ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  padding: 0.7rem 0.7rem 2.7rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--pr-black);
+}
+
+.perm-reject *,
+.perm-reject *::before,
+.perm-reject *::after {
+  box-sizing: border-box;
+}
+
+.perm-reject__card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 188px;
+  padding: 1.05rem 1rem 1.2rem;
+  background: var(--pr-paper);
+  border: 3px solid var(--pr-black);
+}
+
+.perm-reject__state {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pr-red);
+}
+
+.perm-reject__title {
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.15rem, 5vw, 1.45rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.perm-reject__stage {
+  position: relative;
+  margin-top: 1.1rem;
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.perm-reject__action {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid var(--pr-black);
+  border-radius: 0;
+  background: var(--pr-black);
+  color: var(--pr-paper);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: not-allowed;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.perm-reject__action:focus-visible {
+  outline: 2px solid var(--pr-red);
+  outline-offset: 3px;
+}
+
+.perm-reject__action[aria-disabled='true'] {
+  pointer-events: none;
+}
+
+/* Barrier — red/black diagonal ahead of movement */
+
+.perm-reject__barrier {
+  position: absolute;
+  left: 9.4rem;
+  top: 50%;
+  z-index: 3;
+  width: 14px;
+  height: 130%;
+  margin-top: -65%;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: rotate(12deg) translateY(-18%) scaleY(0.2);
+  transform-origin: center center;
+}
+
+.perm-reject__barrier-black,
+.perm-reject__barrier-red {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(8% 0%, 100% 4%, 92% 100%, 0% 96%);
+}
+
+.perm-reject__barrier-black {
+  background: var(--pr-black);
+  transform: translate(3px, 4px);
+}
+
+.perm-reject__barrier-red {
+  background: var(--pr-red);
+  border: 2px solid var(--pr-black);
+}
+
+/* Impact marks */
+
+.perm-reject__mark {
+  position: absolute;
+  z-index: 4;
+  width: 18px;
+  height: 4px;
+  background: var(--pr-red);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 70%);
+}
+
+.perm-reject__mark--1 {
+  left: 8.55rem;
+  top: 0.35rem;
+  transform: rotate(-28deg);
+}
+
+.perm-reject__mark--2 {
+  left: 8.85rem;
+  top: 1.25rem;
+  width: 14px;
+  transform: rotate(18deg);
+}
+
+.perm-reject__mark--3 {
+  left: 8.4rem;
+  top: 2.15rem;
+  width: 16px;
+  transform: rotate(-8deg);
+}
+
+/* ACCESS DENIED label */
+
+.perm-reject__denied {
+  position: absolute;
+  left: 0.15rem;
+  top: -1.55rem;
+  z-index: 5;
+  width: 9.2rem;
+  height: 1.55rem;
+  margin: 0;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: rotate(-6deg) translate(-12%, -40%) scale(1.15);
+  transform-origin: left bottom;
+}
+
+.perm-reject__denied-back,
+.perm-reject__denied-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  clip-path: polygon(1% 12%, 98% 0%, 100% 88%, 0% 100%);
+}
+
+.perm-reject__denied-back {
+  background: var(--pr-black);
+  transform: translate(4px, 5px);
+}
+
+.perm-reject__denied-face {
+  background: var(--pr-red);
+  color: var(--pr-paper);
+  border: 2px solid var(--pr-black);
+}
+
+/* Phase: attempt — forward 8px / 80ms */
+
+.perm-reject[data-phase='attempt'] .perm-reject__action {
+  animation: pr-attempt var(--pr-attempt-ms) cubic-bezier(0.3, 0.1, 0.7, 1) both;
+}
+
+.perm-reject[data-phase='attempt'] .perm-reject__barrier {
+  visibility: visible;
+  animation: pr-barrier-slam 70ms cubic-bezier(0.15, 0.9, 0.2, 1) 20ms both;
+}
+
+/* Phase: collide — compress + marks + denied in */
+
+.perm-reject[data-phase='collide'] .perm-reject__action {
+  animation: pr-collide var(--pr-collide-ms) cubic-bezier(0.4, 0, 0.6, 1) both;
+}
+
+.perm-reject[data-phase='collide'] .perm-reject__barrier {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(12deg) translateY(0) scaleY(1);
+}
+
+.perm-reject[data-phase='collide'] .perm-reject__mark {
+  visibility: visible;
+  animation: pr-mark-flash var(--pr-collide-ms) steps(2, end) both;
+}
+
+.perm-reject[data-phase='collide'] .perm-reject__denied {
+  visibility: visible;
+  animation: pr-denied-in var(--pr-denied-in-ms) cubic-bezier(0.15, 0.9, 0.25, 1) both;
+}
+
+/* Phase: recoil — one -10px then settle */
+
+.perm-reject[data-phase='recoil'] .perm-reject__action {
+  animation: pr-recoil var(--pr-recoil-ms) cubic-bezier(0.25, 0.85, 0.35, 1) both;
+}
+
+.perm-reject[data-phase='recoil'] .perm-reject__barrier {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(12deg) translateY(0) scaleY(1);
+}
+
+.perm-reject[data-phase='recoil'] .perm-reject__denied {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(-6deg) translate(0, 0) scale(1);
+}
+
+.perm-reject[data-phase='recoil'] .perm-reject__mark {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Phase: hold — settled, denied visible */
+
+.perm-reject[data-phase='hold'] .perm-reject__action {
+  transform: translateX(0) scaleX(1);
+}
+
+.perm-reject[data-phase='hold'] .perm-reject__barrier {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(12deg) translateY(0) scaleY(1);
+}
+
+.perm-reject[data-phase='hold'] .perm-reject__denied {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(-6deg) translate(0, 0) scale(1);
+}
+
+/* Phase: clear — denied + barrier retract */
+
+.perm-reject[data-phase='clear'] .perm-reject__denied {
+  visibility: visible;
+  animation: pr-denied-out var(--pr-denied-out-ms) cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.perm-reject[data-phase='clear'] .perm-reject__barrier {
+  visibility: visible;
+  animation: pr-barrier-out var(--pr-denied-out-ms) cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.perm-reject[data-phase='idle'] .perm-reject__barrier,
+.perm-reject[data-phase='idle'] .perm-reject__denied,
+.perm-reject[data-phase='idle'] .perm-reject__mark {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.perm-reject[data-phase='idle'] .perm-reject__action {
+  transform: translateX(0) scaleX(1);
+}
+
+@keyframes pr-attempt {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  100% {
+    transform: translateX(8px) scaleX(1);
+  }
+}
+
+@keyframes pr-barrier-slam {
+  0% {
+    visibility: visible;
+    opacity: 0;
+    transform: rotate(12deg) translateY(-28%) scaleY(0.15);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(12deg) translateY(0) scaleY(1);
+  }
+}
+
+@keyframes pr-collide {
+  0% {
+    transform: translateX(8px) scaleX(1);
+  }
+  100% {
+    transform: translateX(8px) scaleX(0.96);
+  }
+}
+
+@keyframes pr-recoil {
+  0% {
+    transform: translateX(8px) scaleX(0.96);
+  }
+  45% {
+    transform: translateX(-10px) scaleX(1);
+  }
+  100% {
+    transform: translateX(0) scaleX(1);
+  }
+}
+
+@keyframes pr-mark-flash {
+  0% {
+    opacity: 0;
+  }
+  40%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pr-denied-in {
+  0% {
+    visibility: visible;
+    opacity: 0;
+    transform: rotate(-18deg) translate(-18%, -55%) scale(1.2);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(-6deg) translate(0, 0) scale(1);
+  }
+}
+
+@keyframes pr-denied-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(-6deg) translate(0, 0) scale(1);
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: rotate(-6deg) translate(8%, -30%) scale(0.92);
+  }
+}
+
+@keyframes pr-barrier-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(12deg) translateY(0) scaleY(1);
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: rotate(12deg) translateY(-18%) scaleY(0.2);
+  }
+}
+
+/* Demo controls */
+
+.perm-reject__controls {
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0.45rem;
+  z-index: 6;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.perm-reject__try,
+.perm-reject__reset {
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  border: 2px solid var(--pr-black);
+  border-radius: 0;
+  font: 800 0.58rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.perm-reject__try {
+  background: var(--pr-red);
+  color: var(--pr-paper);
+}
+
+.perm-reject__reset {
+  background: transparent;
+  color: #e6e8ec;
+  border-color: #e6e8ec;
+}
+
+.perm-reject__try:focus-visible,
+.perm-reject__reset:focus-visible {
+  outline: 2px solid var(--pr-red);
+  outline-offset: 2px;
+}
+
+.perm-reject__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion — static ACCESS DENIED, no collision travel */
+
+@media (prefers-reduced-motion: reduce) {
+  .perm-reject[data-phase='attempt'] .perm-reject__action,
+  .perm-reject[data-phase='collide'] .perm-reject__action,
+  .perm-reject[data-phase='recoil'] .perm-reject__action,
+  .perm-reject[data-phase='attempt'] .perm-reject__barrier,
+  .perm-reject[data-phase='clear'] .perm-reject__barrier,
+  .perm-reject[data-phase='clear'] .perm-reject__denied,
+  .perm-reject[data-phase='collide'] .perm-reject__denied,
+  .perm-reject[data-phase='collide'] .perm-reject__mark {
+    animation: none !important;
+  }
+
+  .perm-reject[data-phase='attempt'] .perm-reject__action,
+  .perm-reject[data-phase='collide'] .perm-reject__action,
+  .perm-reject[data-phase='recoil'] .perm-reject__action,
+  .perm-reject[data-phase='hold'] .perm-reject__action {
+    transform: translateX(0) scaleX(1);
+  }
+
+  .perm-reject[data-phase='attempt'] .perm-reject__barrier,
+  .perm-reject[data-phase='collide'] .perm-reject__barrier,
+  .perm-reject[data-phase='recoil'] .perm-reject__barrier,
+  .perm-reject[data-phase='hold'] .perm-reject__barrier {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(12deg) translateY(0) scaleY(1);
+  }
+
+  .perm-reject[data-phase='attempt'] .perm-reject__denied,
+  .perm-reject[data-phase='collide'] .perm-reject__denied,
+  .perm-reject[data-phase='recoil'] .perm-reject__denied,
+  .perm-reject[data-phase='hold'] .perm-reject__denied {
+    visibility: visible;
+    opacity: 1;
+    transform: rotate(-6deg) translate(0, 0) scale(1);
+  }
+
+  .perm-reject[data-phase='collide'] .perm-reject__mark,
+  .perm-reject[data-phase='attempt'] .perm-reject__mark {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .perm-reject[data-phase='attempt'] .perm-reject__action,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__action,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='recoil'] .perm-reject__action,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='attempt'] .perm-reject__barrier,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='clear'] .perm-reject__barrier,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='clear'] .perm-reject__denied,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__denied,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__mark {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .perm-reject[data-phase='attempt'] .perm-reject__action,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__action,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='recoil'] .perm-reject__action,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='hold'] .perm-reject__action {
+  transform: translateX(0) scaleX(1);
+}
+
+[data-force-reduced-motion='true'] .perm-reject[data-phase='attempt'] .perm-reject__barrier,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__barrier,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='recoil'] .perm-reject__barrier,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='hold'] .perm-reject__barrier {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(12deg) translateY(0) scaleY(1);
+}
+
+[data-force-reduced-motion='true'] .perm-reject[data-phase='attempt'] .perm-reject__denied,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__denied,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='recoil'] .perm-reject__denied,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='hold'] .perm-reject__denied {
+  visibility: visible;
+  opacity: 1;
+  transform: rotate(-6deg) translate(0, 0) scale(1);
+}
+
+[data-force-reduced-motion='true'] .perm-reject[data-phase='collide'] .perm-reject__mark,
+[data-force-reduced-motion='true'] .perm-reject[data-phase='attempt'] .perm-reject__mark {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (max-width: 360px) {
+  .perm-reject__barrier {
+    left: 8.2rem;
+  }
+
+  .perm-reject__mark--1 {
+    left: 7.4rem;
+  }
+
+  .perm-reject__mark--2 {
+    left: 7.7rem;
+  }
+
+  .perm-reject__mark--3 {
+    left: 7.25rem;
+  }
+
+  .perm-reject__denied {
+    width: 8.4rem;
+  }
+}

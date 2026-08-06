@@ -1,0 +1,49 @@
+<div class="perm-reject" data-permission-rejection>
+  <article class="perm-reject__card" data-pr-card>
+    <p class="perm-reject__state">RESTRICTED</p>
+    <h2 class="perm-reject__title">ADMIN ARCHIVE</h2>
+
+    <div class="perm-reject__stage" data-pr-stage>
+      <button
+        type="button"
+        class="perm-reject__action"
+        data-pr-action
+        aria-disabled="true"
+      >
+        OPEN ARCHIVE
+      </button>
+
+      <div class="perm-reject__barrier" data-pr-barrier aria-hidden="true">
+        <span class="perm-reject__barrier-black"></span>
+        <span class="perm-reject__barrier-red"></span>
+      </div>
+
+      <span class="perm-reject__mark perm-reject__mark--1" aria-hidden="true"></span>
+      <span class="perm-reject__mark perm-reject__mark--2" aria-hidden="true"></span>
+      <span class="perm-reject__mark perm-reject__mark--3" aria-hidden="true"></span>
+
+      <p class="perm-reject__denied" data-pr-denied aria-hidden="true">
+        <span class="perm-reject__denied-back" aria-hidden="true"></span>
+        <span class="perm-reject__denied-face">ACCESS DENIED</span>
+      </p>
+    </div>
+  </article>
+
+  <div class="perm-reject__controls">
+    <button type="button" class="perm-reject__try" data-pr-try>
+      ATTEMPT OPEN
+    </button>
+    <button type="button" class="perm-reject__reset" data-pr-reset>
+      RESET
+    </button>
+  </div>
+
+  <p
+    class="perm-reject__status"
+    role="status"
+    aria-live="polite"
+    data-pr-status
+  >
+    Admin Archive is restricted.
+  </p>
+</div>
