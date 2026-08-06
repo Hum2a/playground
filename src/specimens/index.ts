@@ -366,6 +366,7 @@ import { recentsCardRestore } from './recents-card-restore/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { redactionReveal } from './redaction-reveal/entry'
 import { removeFromListUndo } from './remove-from-list-undo/entry'
+import { restModeDim } from './rest-mode-dim/entry'
 import { resumeActivityHandoff } from './resume-activity-handoff/entry'
 import { resumeFromRestWake } from './resume-from-rest-wake/entry'
 import { resumePlaybackHandoff } from './resume-playback-handoff/entry'
@@ -886,6 +887,7 @@ export const specimens: Specimen[] = [
   redactedContentLock,
   redactionReveal,
   removeFromListUndo,
+  restModeDim,
   resumeActivityHandoff,
   resumeFromRestWake,
   resumePlaybackHandoff,

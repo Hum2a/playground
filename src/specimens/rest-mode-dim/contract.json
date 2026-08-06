@@ -1,0 +1,25 @@
+{
+  "name": "rest-mode-dim",
+  "ref": "SPX-3435",
+  "ps": "PS-129",
+  "title": "Rest Mode Dim",
+  "palette": {
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "blue": "#2E90FF",
+    "blueLight": "#7EB6FF",
+    "panel": "#121820",
+    "panel2": "#1a2330",
+    "rule": "#243044",
+    "pewter": "#8a9bb0"
+  },
+  "behaviour": "Active → dimming (55% brightness) → rest (18%) with REST label.",
+  "trigger": "ENTER REST MODE / WAKE",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "End states remain; transitions and animations removed"
+  }
+}
