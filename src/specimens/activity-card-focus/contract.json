@@ -1,0 +1,17 @@
+{
+  "name": "activity-card-focus",
+  "intent": "Focused activity card scales and reveals progress.",
+  "catalogue": {
+    "ps": "PS-002",
+    "ref": "SPX-3308"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "reducedMotion": {
+    "behaviour": "Focus and metadata appear instantly without scale transition"
+  }
+}

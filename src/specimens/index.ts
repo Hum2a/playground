@@ -1,5 +1,6 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { activeBottomNavPillTransfer } from './active-bottom-nav-pill-transfer/entry'
+import { activityCardFocus } from './activity-card-focus/entry'
 import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { addToListConfirmation } from './add-to-list-confirmation/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
@@ -491,6 +492,7 @@ export {
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
+  activityCardFocus,
   adaptiveRecovery,
   addToListConfirmation,
   afterimageNavigation,
