@@ -152,6 +152,8 @@ export const SUGGESTED_FREE_TAGS = [
   'manga',
   'cut-in',
   'threshold',
+  'warning',
+  'metric',
   'disconnect',
   'unlink',
   'relationship',

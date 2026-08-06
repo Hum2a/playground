@@ -15,7 +15,7 @@ const scaffold = `
 
 export const criticalThresholdWarning: Specimen = {
   id: 'critical-threshold-warning',
-  ref: 'SPX-TODO',
+  ref: 'SPX-025',
   title: 'Critical Threshold Warning',
   blurb:
     'System load climbs past a 90% limit: the marker tenses, clamps trap the threshold, fill turns red, and CRITICAL locks in — restrictive, not celebratory.',
