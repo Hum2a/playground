@@ -299,6 +299,7 @@ import { presenceRadarSweep } from './presence-radar-sweep/entry'
 import { pressedControlCompression } from './pressed-control-compression/entry'
 import { previewCardHoverExpand } from './preview-card-hover-expand/entry'
 import { previewCollapseReturn } from './preview-collapse-return/entry'
+import { previewStartCrossfade } from './preview-start-crossfade/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { processingTimeSkip } from './processing-time-skip/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
@@ -760,6 +761,7 @@ export const specimens: Specimen[] = [
   pressedControlCompression,
   previewCardHoverExpand,
   previewCollapseReturn,
+  previewStartCrossfade,
   printRegistrationHover,
   processingTimeSkip,
   progressMilestoneBreakthrough,

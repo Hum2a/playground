@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 197** complete.
+- Progress: **22 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 176 |
+| Done | 22 |
+| Open | 175 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-045 | `SPX-3154` | `preview-start-crossfade` | Preview Start Crossfade |
 | NF-044 | `SPX-3153` | `autoplay-preview-countdown` | Autoplay Preview Countdown |
 | NF-156 | `SPX-3265` | `directional-focus-travel` | Directional Focus Travel |
 | NF-124 | `SPX-3233` | `rank-change-slide` | Rank Change Slide |
@@ -89,7 +90,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ### Wave C — Playback
 
 - [x] **NF-044** · `SPX-3153` · **Autoplay Preview Countdown** — `autoplay-preview-countdown`
-- [ ] **NF-045** · `SPX-3154` · **Preview Start Crossfade** — `preview-start-crossfade`
+- [x] **NF-045** · `SPX-3154` · **Preview Start Crossfade** — `preview-start-crossfade`
 - [ ] **NF-054** · `SPX-3163` · **Ten-Second Seek Ripple** — `ten-second-seek-ripple`
 - [ ] **NF-059** · `SPX-3168` · **Controls Idle Dissolve** — `controls-idle-dissolve`
 - [ ] **NF-062** · `SPX-3171` · **Timeline Hover Preview** — `timeline-hover-preview`
@@ -181,7 +182,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 6. Autoplay / Preview States
 
 - [x] **NF-044** · `SPX-3153` · **Autoplay Preview Countdown** — A focused card shows a finite intent delay before its preview state activates
-- [ ] **NF-045** · `SPX-3154` · **Preview Start Crossfade** — Static artwork placeholder transitions into a moving-preview surface
+- [x] **NF-045** · `SPX-3154` · **Preview Start Crossfade** — Static artwork placeholder transitions into a moving-preview surface
 - [ ] **NF-046** · `SPX-3155` · **Preview Stop Settle** — Leaving focus returns the card to a stable static state without flashing
 - [ ] **NF-047** · `SPX-3156` · **Muted Preview State** — Preview begins with a persistent compact mute indicator
 - [ ] **NF-048** · `SPX-3157` · **Preview Progress Strip** — A tiny determinate strip communicates the current preview segment

@@ -1,0 +1,1 @@
+export function runPreviewStart(){document.querySelector('[data-static]').hidden=true;document.querySelector('[data-motion]').hidden=false};document.querySelector('[data-go]')?.addEventListener('click',()=>runPreviewStart())
