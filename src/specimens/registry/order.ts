@@ -550,4 +550,5 @@ export const specimenOrder: string[] = [
   'motorised-fader-recall',
   'scene-recall-sweep',
   'analog-vu-needle',
+  'led-ladder-meter',
 ]

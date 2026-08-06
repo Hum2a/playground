@@ -1,0 +1,8 @@
+{
+  "name": "led-ladder-meter",
+  "ref": "SPX-3771",
+  "title": "LED Ladder Meter",
+  "mode": "switch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
