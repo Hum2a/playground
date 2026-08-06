@@ -1,0 +1,94 @@
+{
+  "name": "tartarus-floor-ascension",
+  "intent": "Vertical floor stack: current slab rises past the viewer while next rises from below and locks; future advances one depth step.",
+  "colours": {
+    "nearBlack": "#030a12",
+    "deepBlue": "#071b30",
+    "blue": "#125d8c",
+    "pale": "#c9efff",
+    "white": "#f4fbff"
+  },
+  "panel": {
+    "widthPx": 300,
+    "heightPx": 150,
+    "edges": "angular-slab"
+  },
+  "stack": {
+    "current": { "translateYPx": 0, "scale": 1, "opacity": 1 },
+    "next": { "translateYPx": 125, "scale": 0.88, "opacity": 0.65 },
+    "future": { "translateYPx": 205, "scale": 0.76, "opacity": 0.3 }
+  },
+  "floors": [
+    { "id": 41, "status": "cleared" },
+    { "id": 42, "status": "cleared" },
+    { "id": 43, "status": "unknown", "discovery": true },
+    { "id": 44, "status": "cleared" }
+  ],
+  "timing": {
+    "anticipateMs": 120,
+    "travelEndMs": 480,
+    "lockStartMs": 430,
+    "lockEndMs": 600,
+    "glassRetractMs": 180,
+    "totalMs": 600
+  },
+  "ascend": {
+    "anticipate": {
+      "current": { "translateYPx": [0, -8], "scale": [1, 1.02] },
+      "line": true
+    },
+    "travel": {
+      "current": { "translateYPx": [-8, -190], "scale": [1.02, 1.12] },
+      "next": { "translateYPx": [125, 0], "scale": [0.88, 1] },
+      "future": { "translateYPx": [205, 125], "scale": [0.76, 0.88] }
+    },
+    "lock": {
+      "overshootTranslateYPx": [0, -4, 0],
+      "brackets": true,
+      "labelExample": "FLOOR // 042"
+    }
+  },
+  "descend": {
+    "notes": "Complementary downward travel; not animation-direction:reverse",
+    "anticipate": { "current": { "translateYPx": [0, 6], "scale": [1, 0.99] } },
+    "travel": {
+      "incoming": { "translateYPx": [-190, 0], "scale": [1.1, 1] },
+      "current": { "translateYPx": [6, 125], "scale": [0.99, 0.88] },
+      "next": { "translateYPx": [125, 205], "scale": [0.88, 0.76] }
+    }
+  },
+  "discovery": {
+    "floorId": 43,
+    "glassUntilLock": true,
+    "retractMs": 180,
+    "revealsAs": "DISCOVERED"
+  },
+  "api": {
+    "ascend": "ascendTartarusFloor()",
+    "descend": "descendTartarusFloor()",
+    "reset": "resetTartarusFloor()",
+    "testRepeatedAscension": "testRepeatedAscension(times?)",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart",
+    "noCumulativeDrift": true
+  },
+  "a11y": {
+    "liveRegion": true,
+    "announceExample": "Floor 42, discovered.",
+    "decorativeStackAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately rebuild active floor and stack positions; no vertical travel"
+  },
+  "constraints": {
+    "noImages": true,
+    "noNetwork": true,
+    "noLibraries": true,
+    "worksAt320px": true
+  }
+}
