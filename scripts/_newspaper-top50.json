@@ -1,0 +1,302 @@
+[
+  {
+    "id": "NEWS-001",
+    "ref": "SPX-3523",
+    "title": "Breaking News Banner Slam",
+    "slug": "breaking-news-banner-slam"
+  },
+  {
+    "id": "NEWS-002",
+    "ref": "SPX-3524",
+    "title": "Front Page Replate",
+    "slug": "front-page-replate"
+  },
+  {
+    "id": "NEWS-003",
+    "ref": "SPX-3525",
+    "title": "Late Edition Stamp",
+    "slug": "late-edition-stamp"
+  },
+  {
+    "id": "NEWS-005",
+    "ref": "SPX-3527",
+    "title": "Lead Story Promotion",
+    "slug": "lead-story-promotion"
+  },
+  {
+    "id": "NEWS-010",
+    "ref": "SPX-3532",
+    "title": "Masthead Assemble",
+    "slug": "masthead-assemble"
+  },
+  {
+    "id": "NEWS-011",
+    "ref": "SPX-3533",
+    "title": "Section Flag Drop",
+    "slug": "section-flag-drop"
+  },
+  {
+    "id": "NEWS-018",
+    "ref": "SPX-3540",
+    "title": "Headline Typeset Reveal",
+    "slug": "headline-typeset-reveal"
+  },
+  {
+    "id": "NEWS-019",
+    "ref": "SPX-3541",
+    "title": "Headline Reflow",
+    "slug": "headline-reflow"
+  },
+  {
+    "id": "NEWS-021",
+    "ref": "SPX-3543",
+    "title": "Kicker-to-Headline Cascade",
+    "slug": "kicker-to-headline-cascade"
+  },
+  {
+    "id": "NEWS-022",
+    "ref": "SPX-3544",
+    "title": "Headline Correction Strike",
+    "slug": "headline-correction-strike"
+  },
+  {
+    "id": "NEWS-027",
+    "ref": "SPX-3549",
+    "title": "Column Reflow",
+    "slug": "column-reflow"
+  },
+  {
+    "id": "NEWS-028",
+    "ref": "SPX-3550",
+    "title": "Lead Column Expansion",
+    "slug": "lead-column-expansion"
+  },
+  {
+    "id": "NEWS-029",
+    "ref": "SPX-3551",
+    "title": "Grid Rule Construction",
+    "slug": "grid-rule-construction"
+  },
+  {
+    "id": "NEWS-030",
+    "ref": "SPX-3552",
+    "title": "Modular Page Replate",
+    "slug": "modular-page-replate"
+  },
+  {
+    "id": "NEWS-033",
+    "ref": "SPX-3555",
+    "title": "Grid Collapse to Mobile",
+    "slug": "grid-collapse-to-mobile"
+  },
+  {
+    "id": "NEWS-036",
+    "ref": "SPX-3558",
+    "title": "Article Open from Teaser",
+    "slug": "article-open-from-teaser"
+  },
+  {
+    "id": "NEWS-039",
+    "ref": "SPX-3561",
+    "title": "Reading Progress Rule",
+    "slug": "reading-progress-rule"
+  },
+  {
+    "id": "NEWS-041",
+    "ref": "SPX-3563",
+    "title": "Article Close Return",
+    "slug": "article-close-return"
+  },
+  {
+    "id": "NEWS-045",
+    "ref": "SPX-3567",
+    "title": "Broadsheet Page Turn",
+    "slug": "broadsheet-page-turn"
+  },
+  {
+    "id": "NEWS-046",
+    "ref": "SPX-3568",
+    "title": "Half-Fold Open",
+    "slug": "half-fold-open"
+  },
+  {
+    "id": "NEWS-047",
+    "ref": "SPX-3569",
+    "title": "Paper Peel Reveal",
+    "slug": "paper-peel-reveal"
+  },
+  {
+    "id": "NEWS-053",
+    "ref": "SPX-3575",
+    "title": "Press Roll Reveal",
+    "slug": "press-roll-reveal"
+  },
+  {
+    "id": "NEWS-054",
+    "ref": "SPX-3576",
+    "title": "Ink Registration Align",
+    "slug": "ink-registration-align"
+  },
+  {
+    "id": "NEWS-056",
+    "ref": "SPX-3578",
+    "title": "Plate Swap Transition",
+    "slug": "plate-swap-transition"
+  },
+  {
+    "id": "NEWS-059",
+    "ref": "SPX-3581",
+    "title": "Proof-to-Final Toggle",
+    "slug": "proof-to-final-toggle"
+  },
+  {
+    "id": "NEWS-061",
+    "ref": "SPX-3583",
+    "title": "Typewriter Headline Entry",
+    "slug": "typewriter-headline-entry"
+  },
+  {
+    "id": "NEWS-064",
+    "ref": "SPX-3586",
+    "title": "Copy Edit Strike-and-Replace",
+    "slug": "copy-edit-strike-and-replace"
+  },
+  {
+    "id": "NEWS-065",
+    "ref": "SPX-3587",
+    "title": "Proofreader Mark Reveal",
+    "slug": "proofreader-mark-reveal"
+  },
+  {
+    "id": "NEWS-069",
+    "ref": "SPX-3591",
+    "title": "Correction Notice Insert",
+    "slug": "correction-notice-insert"
+  },
+  {
+    "id": "NEWS-070",
+    "ref": "SPX-3592",
+    "title": "Inline Correction Replace",
+    "slug": "inline-correction-replace"
+  },
+  {
+    "id": "NEWS-073",
+    "ref": "SPX-3595",
+    "title": "Retraction Takeover",
+    "slug": "retraction-takeover"
+  },
+  {
+    "id": "NEWS-077",
+    "ref": "SPX-3599",
+    "title": "Black-Bar Redaction Reveal",
+    "slug": "black-bar-redaction-reveal"
+  },
+  {
+    "id": "NEWS-078",
+    "ref": "SPX-3600",
+    "title": "Redaction Apply",
+    "slug": "redaction-apply"
+  },
+  {
+    "id": "NEWS-079",
+    "ref": "SPX-3601",
+    "title": "Document Declassification",
+    "slug": "document-declassification"
+  },
+  {
+    "id": "NEWS-082",
+    "ref": "SPX-3604",
+    "title": "Evidence Annotation",
+    "slug": "evidence-annotation"
+  },
+  {
+    "id": "NEWS-083",
+    "ref": "SPX-3605",
+    "title": "Document Compare Split",
+    "slug": "document-compare-split"
+  },
+  {
+    "id": "NEWS-085",
+    "ref": "SPX-3607",
+    "title": "Margin Note Slide-In",
+    "slug": "margin-note-slide-in"
+  },
+  {
+    "id": "NEWS-086",
+    "ref": "SPX-3608",
+    "title": "Editorial Bracket Draw",
+    "slug": "editorial-bracket-draw"
+  },
+  {
+    "id": "NEWS-093",
+    "ref": "SPX-3615",
+    "title": "Pull Quote Extraction",
+    "slug": "pull-quote-extraction"
+  },
+  {
+    "id": "NEWS-094",
+    "ref": "SPX-3616",
+    "title": "Stat Callout Rise",
+    "slug": "stat-callout-rise"
+  },
+  {
+    "id": "NEWS-100",
+    "ref": "SPX-3622",
+    "title": "Breaking Ticker Crawl",
+    "slug": "breaking-ticker-crawl"
+  },
+  {
+    "id": "NEWS-101",
+    "ref": "SPX-3623",
+    "title": "Live Blog Entry Insert",
+    "slug": "live-blog-entry-insert"
+  },
+  {
+    "id": "NEWS-104",
+    "ref": "SPX-3626",
+    "title": "Ticker Pause on Focus",
+    "slug": "ticker-pause-on-focus"
+  },
+  {
+    "id": "NEWS-108",
+    "ref": "SPX-3630",
+    "title": "Election Needle Sweep",
+    "slug": "election-needle-sweep"
+  },
+  {
+    "id": "NEWS-109",
+    "ref": "SPX-3631",
+    "title": "Seat Count Tally",
+    "slug": "seat-count-tally"
+  },
+  {
+    "id": "NEWS-110",
+    "ref": "SPX-3632",
+    "title": "Map Result Fill",
+    "slug": "map-result-fill"
+  },
+  {
+    "id": "NEWS-111",
+    "ref": "SPX-3633",
+    "title": "Race Called Stamp",
+    "slug": "race-called-stamp"
+  },
+  {
+    "id": "NEWS-117",
+    "ref": "SPX-3639",
+    "title": "Market Ticker",
+    "slug": "market-ticker"
+  },
+  {
+    "id": "NEWS-124",
+    "ref": "SPX-3646",
+    "title": "Photo Lead Expand",
+    "slug": "photo-lead-expand"
+  },
+  {
+    "id": "NEWS-126",
+    "ref": "SPX-3648",
+    "title": "Contact Sheet Focus",
+    "slug": "contact-sheet-focus"
+  }
+]

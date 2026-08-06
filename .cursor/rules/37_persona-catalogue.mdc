@@ -1,5 +1,5 @@
 ---
-description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / MHA / Naruto / Persona 4 / Netflix / PlayStation catalogue checklists when a listed specimen ships
+description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / MHA / Naruto / Persona 4 / Netflix / PlayStation / Newspaper catalogue checklists when a listed specimen ships
 alwaysApply: true
 ---
 
@@ -18,6 +18,7 @@ alwaysApply: true
 | Persona 4 | [`docs/catalogue/persona-4-specimen-catalogue.md`](docs/catalogue/persona-4-specimen-catalogue.md) |
 | Netflix | [`docs/catalogue/netflix-specimen-catalogue.md`](docs/catalogue/netflix-specimen-catalogue.md) |
 | PlayStation | [`docs/catalogue/playstation-specimen-catalogue.md`](docs/catalogue/playstation-specimen-catalogue.md) |
+| Newspaper & Editorial | [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md) |
 
 ## IDs
 
@@ -34,6 +35,7 @@ alwaysApply: true
 | `P4-NNN` | Stable idea id in the Persona 4 checklist (001–191) |
 | `NF-NNN` | Stable idea id in the Netflix checklist (001–197) |
 | `PS-NNN` | Stable idea id in the PlayStation checklist (001–216) |
+| `NEWS-NNN` | Stable idea id in the Newspaper & Editorial checklist (001–237) |
 | `SPX-NNN` | Registry `ref` in `entry.ts` / `index.ts` |
 
 ### Persona 5 refs
@@ -89,15 +91,19 @@ alwaysApply: true
 - Unbuilt PS ideas are **pre-assigned** `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Legacy path [`docs/catalogue/playstation_motion_ui_specimen_catalogue.md`](docs/catalogue/playstation_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
 
+### Newspaper & Editorial refs
+
+- Unbuilt Newspaper & Editorial ideas are pre-assigned `SPX-3523`…`SPX-3759` — use that ref when implementing; do not invent a different number.
+
 ### Outside these catalogues
 
-Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, MHA, NR, P4, NF, or PS row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
+Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, MHA, NR, P4, NF, PS, or NEWS row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210`–`SPX-1299`.
 
 ## When a specimen ships
 
 After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
 
-1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / `NR-NNN` / `P4-NNN` / `NF-NNN` / `PS-NNN` / title / assigned `SPX-NNN`).
+1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / `NR-NNN` / `P4-NNN` / `NF-NNN` / `PS-NNN` / `NEWS-NNN` / title / assigned `SPX-NNN`).
 2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
 3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / total`).
 4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
@@ -107,4 +113,4 @@ Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
 
 ## Scope
 
-Only applies to ideas listed in these twelve catalogue files. Other inspiration lineages do not use them.
+Only applies to ideas listed in these thirteen catalogue files. Other inspiration lineages do not use them.

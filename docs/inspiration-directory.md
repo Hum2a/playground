@@ -137,6 +137,12 @@ Works: `ps5`, `ps4`.
 
 Backlog: [`docs/catalogue/playstation-specimen-catalogue.md`](catalogue/playstation-specimen-catalogue.md) (`PS-NNN` / `SPX-3307`…`SPX-3522`).
 
+### Newspaper & Editorial (`editorial`)
+
+*(editorial hierarchy, paper, print production, copy desks, live news, archives, and data desks; fictional publications only — no real mastheads, proprietary fonts, article text, photography, or logos)*
+
+Backlog: [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md) (`NEWS-NNN` / `SPX-3523`…`SPX-3759`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

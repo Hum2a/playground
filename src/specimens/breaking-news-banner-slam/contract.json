@@ -1,0 +1,8 @@
+{
+  "name": "breaking-news-banner-slam",
+  "ref": "SPX-3523",
+  "title": "Breaking News Banner Slam",
+  "mode": "slam",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

@@ -102,6 +102,10 @@ export const INSPIRATION_DIRECTORY = {
       ps4: { label: 'PlayStation 4' },
     },
   },
+  editorial: {
+    label: 'Newspaper & Editorial',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},
