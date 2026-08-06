@@ -64,7 +64,9 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
+import { temporalFreeze } from './temporal-freeze/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
+import { temporalFreeze } from './temporal-freeze/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
@@ -179,6 +181,7 @@ export const specimens: Specimen[] = [
   ripplePortalTransition,
   tacticalTargetLock,
   tartarusFloorAscension,
+  temporalFreeze,
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,

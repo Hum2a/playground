@@ -1,0 +1,338 @@
+/* SPX-429 Crystallised Selection — portable contract. Do not restyle to host tokens. */
+
+.crystallised-selection {
+  --cs-navy: #071525;
+  --cs-deep: #0b2f52;
+  --cs-glass: #49a9e8;
+  --cs-pale: #b9e7ff;
+  --cs-white: #eef8ff;
+  --cs-ink: #d7ecf8;
+  --cs-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --cs-assemble: 165ms;
+  --cs-separate: 120ms;
+  --cs-sweep: 90ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  overflow: hidden;
+  background: var(--cs-navy);
+  color: var(--cs-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.crystallised-selection *,
+.crystallised-selection *::before,
+.crystallised-selection *::after {
+  box-sizing: border-box;
+}
+
+.crystallised-selection__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cs-pale) 55%, transparent);
+}
+
+.crystallised-selection__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 16.5rem;
+}
+
+.crystallised-selection__option {
+  position: relative;
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--cs-glass) 28%, transparent);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--cs-deep) 42%, transparent);
+  color: var(--cs-ink);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.crystallised-selection__option:focus-visible {
+  outline: 2px solid var(--cs-pale);
+  outline-offset: 3px;
+}
+
+.crystallised-selection__label {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+  transform: translateX(0) scale(1);
+  transform-origin: left center;
+  transition: transform var(--cs-assemble) var(--cs-ease);
+}
+
+.crystallised-selection__option.is-selected .crystallised-selection__label,
+.crystallised-selection__option.is-assembling .crystallised-selection__label {
+  transform: translateX(5px) scale(1.025);
+}
+
+.crystallised-selection__crystal {
+  position: absolute;
+  inset: -0.55rem -0.7rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.crystallised-selection__facet {
+  position: absolute;
+  opacity: 0;
+  background: color-mix(in srgb, var(--cs-glass) 28%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cs-pale) 45%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cs-white) 12%, transparent);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Frozen polygons + rest poses (final lock positions) */
+.crystallised-selection__facet--1 {
+  left: -0.15rem;
+  top: -0.2rem;
+  width: 58%;
+  height: 72%;
+  clip-path: polygon(0% 8%, 100% 0%, 88% 100%, 6% 92%);
+  /* approach: UL */
+  --from: translate(-32px, -28px) scale(0.68);
+  --to: translate(0, 0) scale(1);
+}
+
+.crystallised-selection__facet--2 {
+  right: -0.25rem;
+  top: -0.35rem;
+  width: 52%;
+  height: 64%;
+  clip-path: polygon(12% 0%, 100% 14%, 94% 100%, 0% 86%);
+  background: color-mix(in srgb, var(--cs-pale) 18%, transparent);
+  --from: translate(36px, -24px) scale(0.72);
+  --to: translate(0, 0) scale(1);
+}
+
+.crystallised-selection__facet--3 {
+  left: -0.4rem;
+  bottom: -0.15rem;
+  width: 48%;
+  height: 58%;
+  clip-path: polygon(0% 18%, 100% 0%, 82% 100%, 8% 100%);
+  background: color-mix(in srgb, var(--cs-deep) 55%, var(--cs-glass));
+  opacity: 0;
+  --from: translate(-40px, 22px) scale(0.64);
+  --to: translate(0, 0) scale(1);
+}
+
+.crystallised-selection__facet--4 {
+  right: -0.1rem;
+  bottom: -0.3rem;
+  width: 62%;
+  height: 55%;
+  clip-path: polygon(18% 0%, 100% 22%, 100% 100%, 0% 78%);
+  --from: translate(28px, 34px) scale(0.76);
+  --to: translate(0, 0) scale(1);
+}
+
+.crystallised-selection__facet--5 {
+  left: 18%;
+  top: 12%;
+  width: 64%;
+  height: 70%;
+  clip-path: polygon(8% 0%, 100% 12%, 90% 100%, 0% 88%);
+  background: color-mix(in srgb, var(--cs-glass) 22%, transparent);
+  /* overlaps 1 and 2 */
+  --from: translate(0, -42px) scale(0.7);
+  --to: translate(0, 0) scale(1);
+}
+
+.crystallised-selection__facet {
+  transform: var(--from);
+}
+
+/* Assemble: stagger 0 / 25 / 45 / 70 / 95ms, settle by ~260ms */
+.crystallised-selection__option.is-assembling .crystallised-selection__facet--1,
+.crystallised-selection__option.is-selected:not(.is-separating) .crystallised-selection__facet--1 {
+  animation: cs-lock var(--cs-assemble) var(--cs-ease) 0ms forwards;
+}
+
+.crystallised-selection__option.is-assembling .crystallised-selection__facet--2,
+.crystallised-selection__option.is-selected:not(.is-separating) .crystallised-selection__facet--2 {
+  animation: cs-lock var(--cs-assemble) var(--cs-ease) 25ms forwards;
+}
+
+.crystallised-selection__option.is-assembling .crystallised-selection__facet--3,
+.crystallised-selection__option.is-selected:not(.is-separating) .crystallised-selection__facet--3 {
+  animation: cs-lock var(--cs-assemble) var(--cs-ease) 45ms forwards;
+}
+
+.crystallised-selection__option.is-assembling .crystallised-selection__facet--4,
+.crystallised-selection__option.is-selected:not(.is-separating) .crystallised-selection__facet--4 {
+  animation: cs-lock var(--cs-assemble) var(--cs-ease) 70ms forwards;
+}
+
+.crystallised-selection__option.is-assembling .crystallised-selection__facet--5,
+.crystallised-selection__option.is-selected:not(.is-separating) .crystallised-selection__facet--5 {
+  animation: cs-lock var(--cs-assemble) var(--cs-ease) 95ms forwards;
+}
+
+@keyframes cs-lock {
+  from {
+    opacity: 0.55;
+    transform: var(--from);
+  }
+  to {
+    opacity: 1;
+    transform: var(--to);
+  }
+}
+
+/* Locked static end */
+.crystallised-selection__option.is-locked .crystallised-selection__facet {
+  animation: none;
+  opacity: 1;
+  transform: var(--to);
+}
+
+/* Separate outgoing crystal (~120ms) — reverse offsets, no teleport */
+.crystallised-selection__option.is-separating .crystallised-selection__facet--1 {
+  animation: cs-separate var(--cs-separate) var(--cs-ease) 0ms forwards;
+}
+.crystallised-selection__option.is-separating .crystallised-selection__facet--2 {
+  animation: cs-separate var(--cs-separate) var(--cs-ease) 10ms forwards;
+}
+.crystallised-selection__option.is-separating .crystallised-selection__facet--3 {
+  animation: cs-separate var(--cs-separate) var(--cs-ease) 18ms forwards;
+}
+.crystallised-selection__option.is-separating .crystallised-selection__facet--4 {
+  animation: cs-separate var(--cs-separate) var(--cs-ease) 28ms forwards;
+}
+.crystallised-selection__option.is-separating .crystallised-selection__facet--5 {
+  animation: cs-separate var(--cs-separate) var(--cs-ease) 36ms forwards;
+}
+
+.crystallised-selection__option.is-separating .crystallised-selection__label {
+  transform: translateX(0) scale(1);
+}
+
+@keyframes cs-separate {
+  from {
+    opacity: 1;
+    transform: var(--to);
+  }
+  to {
+    opacity: 0;
+    transform: var(--from);
+  }
+}
+
+/* Pale diagonal highlight sweep — 90ms then gone */
+.crystallised-selection__sweep {
+  position: absolute;
+  left: -10%;
+  top: 10%;
+  z-index: 4;
+  width: 120%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cs-pale) 35%,
+    var(--cs-white) 55%,
+    transparent
+  );
+  transform: rotate(-18deg) translateX(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.crystallised-selection__option.is-sweeping .crystallised-selection__sweep {
+  animation: cs-sweep var(--cs-sweep) var(--cs-ease) forwards;
+}
+
+@keyframes cs-sweep {
+  0% {
+    opacity: 0;
+    transform: rotate(-18deg) translateX(-120%);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-18deg) translateX(40%);
+  }
+}
+
+.crystallised-selection__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crystallised-selection__option.is-assembling .crystallised-selection__facet,
+  .crystallised-selection__option.is-selected .crystallised-selection__facet,
+  .crystallised-selection__option.is-separating .crystallised-selection__facet,
+  .crystallised-selection__option.is-sweeping .crystallised-selection__sweep,
+  .crystallised-selection__label {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .crystallised-selection__option.is-selected .crystallised-selection__facet,
+  .crystallised-selection__option.is-locked .crystallised-selection__facet {
+    opacity: 1;
+    transform: var(--to);
+  }
+
+  .crystallised-selection__option.is-selected .crystallised-selection__label {
+    transform: translateX(5px) scale(1.025);
+  }
+
+  .crystallised-selection__sweep {
+    display: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-assembling .crystallised-selection__facet,
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-selected .crystallised-selection__facet,
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-separating .crystallised-selection__facet,
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-sweeping .crystallised-selection__sweep,
+[data-force-reduced-motion='true'] .crystallised-selection__label {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-selected .crystallised-selection__facet,
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-locked .crystallised-selection__facet {
+  opacity: 1;
+  transform: var(--to);
+}
+
+[data-force-reduced-motion='true'] .crystallised-selection__option.is-selected .crystallised-selection__label {
+  transform: translateX(5px) scale(1.025);
+}
+
+[data-force-reduced-motion='true'] .crystallised-selection__sweep {
+  display: none;
+}

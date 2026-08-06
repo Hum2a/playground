@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **18 / 238** complete.
+- Progress: **20 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 220 |
+| Done | 20 |
+| Open | 218 |
 
 ## Visual grammar
 
@@ -49,7 +49,9 @@
 | P3-221 | `SPX-618` | `energy-transfer-sync` | Energy Transfer Sync |
 | P3-134 | `SPX-531` | `midnight-clock-transition` | Midnight Clock Transition |
 | P3-225 | `SPX-622` | `memory-fragment-reveal` | Memory Fragment Reveal |
+| P3-054 | `SPX-451` | `temporal-freeze` | Temporal Freeze |
 | P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
+| P3-031 | `SPX-429` | `crystallised-selection` | Crystallised Selection |
 
 ## Core first-wave
 
@@ -150,7 +152,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-051** · `SPX-448` · **Environmental Colour Drain** — dark-hour.
 - [ ] **P3-052** · `SPX-449` · **Dark Hour Scan** — dark-hour.
 - [ ] **P3-053** · `SPX-450` · **Midnight Pulse** — dark-hour.
-- [ ] **P3-054** · `SPX-451` · **Temporal Freeze** — dark-hour.
+- [x] **P3-054** · `SPX-451` · **Temporal Freeze** — dark-hour.
 - [ ] **P3-055** · `SPX-452` · **Dark Hour Exit** — dark-hour.
 - [ ] **P3-056** · `SPX-453` · **Dark Hour Approaching** — dark-hour.
 - [ ] **P3-057** · `SPX-454` · **Temporal Anomaly Warning** — dark-hour.

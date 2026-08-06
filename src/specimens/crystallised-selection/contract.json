@@ -1,0 +1,56 @@
+{
+  "name": "crystallised-selection",
+  "intent": "Selecting an item assembles five translucent blue glass regions around it, crystallising the choice into a locked composition.",
+  "choices": ["motion", "structure", "depth"],
+  "defaultChoice": null,
+  "regions": {
+    "count": 5,
+    "approachOffsetsPx": [20, 45],
+    "approachScale": [0.6, 0.8],
+    "polygons": {
+      "1": "polygon(0% 8%, 100% 0%, 88% 100%, 6% 92%)",
+      "2": "polygon(12% 0%, 100% 14%, 94% 100%, 0% 86%)",
+      "3": "polygon(0% 18%, 100% 0%, 82% 100%, 8% 100%)",
+      "4": "polygon(18% 0%, 100% 22%, 100% 100%, 0% 78%)",
+      "5": "polygon(8% 0%, 100% 12%, 90% 100%, 0% 88%)"
+    },
+    "approaches": ["UL", "UR", "LL", "LR", "top"],
+    "overlap": "regions 5 overlaps 1 and 2"
+  },
+  "label": {
+    "translateXPx": 5,
+    "scale": 1.025
+  },
+  "timing": {
+    "totalMs": 260,
+    "staggerMs": [0, 25, 45, 70, 95],
+    "assembleMs": 165,
+    "separateMs": 120,
+    "sweepMs": 90,
+    "sweepAtMs": 200,
+    "easing": "cubic-bezier(0.33, 0, 0.2, 1)",
+    "noSpring": true
+  },
+  "colours": {
+    "navy": "#071525",
+    "deep": "#0b2f52",
+    "glass": "#49a9e8",
+    "pale": "#b9e7ff",
+    "white": "#eef8ff"
+  },
+  "api": {
+    "export": ["selectCrystallised(choice)"],
+    "handoffOverlap": true,
+    "noTeleportBetweenItems": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "radiogroup": true,
+    "defaultNone": true,
+    "facetsAriaHidden": true,
+    "status": "{Choice} selected."
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately render final five-region locked composition; no sweep"
+  }
+}

@@ -125,6 +125,8 @@ export const SUGGESTED_FREE_TAGS = [
   'ink',
   'splat',
   'liquid',
+  'water',
+  'split',
   'achievement',
   'alert',
   'detection',
@@ -167,7 +169,10 @@ export const SUGGESTED_FREE_TAGS = [
   'state-change',
   'transformation',
   'temporal',
+  'state',
+  'freeze',
   'glass',
+  'crystallise',
   'disclosure',
 ] as const
 
