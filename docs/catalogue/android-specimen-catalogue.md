@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **43 / 417** complete.
+- Progress: **44 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 43 |
-| Open | 374 |
+| Done | 44 |
+| Open | 373 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-297 | `SPX-1854` | `wi-fi-searching-to-connected-morph` | Wi-Fi Searching-to-Connected Morph |
 | AND-291 | `SPX-1848` | `volume-slider-hud` | Volume Slider HUD |
 | AND-384 | `SPX-1941` | `screenshot-expand-to-editor` | Screenshot Expand to Editor |
 | AND-343 | `SPX-1900` | `android-invalid-drop-return` | Invalid Drop Return |
@@ -532,7 +533,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Connectivity & Status
 
-- [ ] **AND-297** · `SPX-1854` · **Wi-Fi Searching-to-Connected Morph** — acquisition geometry resolves into stable connection.
+- [x] **AND-297** · `SPX-1854` · **Wi-Fi Searching-to-Connected Morph** — acquisition geometry resolves into stable connection.
 - [ ] **AND-298** · `SPX-1855` · **Bluetooth Device Acquisition** — discovered device becomes connected state.
 - [ ] **AND-299** · `SPX-1856` · **Airplane Mode State Sweep** — connectivity indicators collectively transition to unavailable.
 - [ ] **AND-300** · `SPX-1857` · **Hotspot Active Pulse** — finite state change establishes broadcasting status; avoid infinite decorative pulse under reduced motion.

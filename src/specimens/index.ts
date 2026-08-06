@@ -232,6 +232,7 @@ import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { volumeSliderHud } from './volume-slider-hud/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
+import { wiFiSearchingToConnectedMorph } from './wi-fi-searching-to-connected-morph/entry'
 import { windowMinimiseFunnel } from './window-minimise-funnel/entry'
 import { windowSnapPreview } from './window-snap-preview/entry'
 import { winnerAdvance } from './winner-advance/entry'
@@ -511,6 +512,7 @@ export const specimens: Specimen[] = [
   volumeSliderHud,
   waterlinePageWipe,
   widgetResizeMorph,
+  wiFiSearchingToConnectedMorph,
   wildEncounterTransition,
   windowMinimiseFunnel,
   windowSnapPreview,

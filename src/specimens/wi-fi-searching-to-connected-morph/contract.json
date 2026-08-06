@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/wi-fi-searching-to-connected-morph.schema.json",
+  "title": "WiFiSearchingToConnectedMorph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "card", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "wi-fi-searching-to-connected-morph" },
+    "card": {
+      "type": "object",
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 300 },
+        "heightPx": { "type": "number", "const": 180 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["arcIntervalMs", "searchMs"],
+      "properties": {
+        "arcIntervalMs": { "type": "number", "const": 180 },
+        "searchMs": { "type": "number", "const": 900 }
+      }
+    }
+  }
+}

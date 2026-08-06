@@ -1,0 +1,176 @@
+/* wi-fi-searching-to-connected-morph — portable specimen styles. Do not restyle to host tokens. */
+
+.wscm {
+  --wscm-ink: #12141a;
+  --wscm-panel: #1e232d;
+  --wscm-line: #2e3644;
+  --wscm-muted: #8a939f;
+  --wscm-cream: #eceff4;
+  --wscm-accent: #6fa8dc;
+  --wscm-success: #5cb88a;
+  --wscm-fail: #d46a5a;
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--wscm-cream);
+  background: var(--wscm-ink);
+  box-sizing: border-box;
+}
+
+.wscm *,
+.wscm *::before,
+.wscm *::after {
+  box-sizing: border-box;
+}
+
+.wscm__card {
+  width: 300px;
+  height: 180px;
+  padding: 1.25rem;
+  border: 1px solid var(--wscm-line);
+  border-radius: 16px;
+  background: var(--wscm-panel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wscm__signal {
+  position: relative;
+  width: 80px;
+  height: 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.wscm__arc {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border: 3px solid var(--wscm-line);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  opacity: 0.35;
+  transition: border-color 180ms ease, opacity 180ms ease;
+}
+
+.wscm__arc--1 {
+  width: 24px;
+  height: 24px;
+  bottom: 8px;
+}
+
+.wscm__arc--2 {
+  width: 44px;
+  height: 44px;
+  bottom: 4px;
+}
+
+.wscm__arc--3 {
+  width: 64px;
+  height: 64px;
+  bottom: 0;
+}
+
+.wscm__arc.is-lit {
+  border-bottom-color: var(--wscm-accent);
+  opacity: 1;
+}
+
+.wscm[data-phase='connected'] .wscm__arc.is-lit {
+  border-bottom-color: var(--wscm-success);
+}
+
+.wscm__dot {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: var(--wscm-line);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.wscm[data-phase='searching'] .wscm__dot {
+  animation: wscm-pulse 540ms ease-in-out infinite;
+}
+
+.wscm[data-phase='connected'] .wscm__dot {
+  background: var(--wscm-success);
+  animation: none;
+  transform: scale(1.1);
+}
+
+.wscm[data-phase='failed'] .wscm__dot {
+  background: var(--wscm-fail);
+  animation: none;
+}
+
+@keyframes wscm-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+.wscm__label {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.wscm__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.wscm__btn {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--wscm-line);
+  border-radius: 10px;
+  background: var(--wscm-ink);
+  color: var(--wscm-cream);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.wscm__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.wscm__btn--primary {
+  border-color: var(--wscm-accent);
+  color: var(--wscm-accent);
+}
+
+.wscm__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.62rem;
+  color: var(--wscm-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wscm__arc,
+  .wscm__dot,
+  .wscm[data-phase='searching'] .wscm__dot {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .wscm__arc,
+[data-force-reduced-motion='true'] .wscm__dot,
+[data-force-reduced-motion='true'] .wscm[data-phase='searching'] .wscm__dot {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}
