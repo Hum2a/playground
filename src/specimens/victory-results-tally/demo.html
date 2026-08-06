@@ -1,0 +1,35 @@
+<div class="victory-tally" data-victory-tally>
+  <button type="button" class="victory-tally__trigger" data-vt-trigger>
+    FINISH ACTIVITY
+  </button>
+
+  <div class="victory-tally__plate" data-vt-plate aria-hidden="true">
+    <h2 class="victory-tally__header">RESULTS</h2>
+
+    <div class="victory-tally__rows">
+      <div class="victory-tally__row" data-vt-row="score">
+        <span class="victory-tally__label">SCORE</span>
+        <span class="victory-tally__value" data-vt-value="score" aria-hidden="true">00000</span>
+      </div>
+      <div class="victory-tally__row" data-vt-row="bonus">
+        <span class="victory-tally__label">BONUS</span>
+        <span class="victory-tally__value" data-vt-value="bonus" aria-hidden="true">+0000</span>
+      </div>
+      <div class="victory-tally__row" data-vt-row="time">
+        <span class="victory-tally__label">TIME</span>
+        <span class="victory-tally__value" data-vt-value="time" aria-hidden="true">00:00</span>
+      </div>
+      <div class="victory-tally__row victory-tally__row--total" data-vt-row="total">
+        <span class="victory-tally__label">TOTAL</span>
+        <span class="victory-tally__value" data-vt-value="total" aria-hidden="true">00000</span>
+      </div>
+    </div>
+
+    <div class="victory-tally__finale" data-vt-finale>
+      <span class="victory-tally__flare" aria-hidden="true"></span>
+      <p class="victory-tally__level-up">LEVEL UP</p>
+    </div>
+  </div>
+
+  <p class="victory-tally__live" data-vt-live aria-live="polite"></p>
+</div>

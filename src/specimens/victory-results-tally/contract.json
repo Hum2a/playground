@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/victory-results-tally.schema.json",
+  "title": "VictoryResultsTally",
+  "description": "Portable visual/component contract for a JRPG-adjacent victory results tally. Original copy — not Final Fantasy assets. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "targets",
+    "layout",
+    "colours",
+    "typography",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "victory-results-tally" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Elegant post-completion results plate with sequential reveals and deterministic count-up tallies ending in LEVEL UP."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "header", "levelUp"],
+      "properties": {
+        "trigger": { "type": "string", "const": "FINISH ACTIVITY" },
+        "header": { "type": "string", "const": "RESULTS" },
+        "labels": {
+          "type": "object",
+          "properties": {
+            "score": { "type": "string", "const": "SCORE" },
+            "bonus": { "type": "string", "const": "BONUS" },
+            "time": { "type": "string", "const": "TIME" },
+            "total": { "type": "string", "const": "TOTAL" }
+          }
+        },
+        "levelUp": { "type": "string", "const": "LEVEL UP" }
+      }
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "bonus", "time", "total"],
+      "properties": {
+        "score": { "type": "string", "const": "02450" },
+        "bonus": { "type": "string", "const": "+0350" },
+        "time": { "type": "string", "const": "01:42" },
+        "total": {
+          "type": "string",
+          "const": "02800",
+          "description": "SCORE 2450 + BONUS 350; shown only after both settle."
+        },
+        "scoreValue": { "type": "integer", "const": 2450 },
+        "bonusValue": { "type": "integer", "const": 350 },
+        "timeSeconds": { "type": "integer", "const": 102 },
+        "totalValue": { "type": "integer", "const": 2800 }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["borderRadius", "parentRequirements"],
+      "properties": {
+        "minHeightPx": { "type": "number", "const": 300 },
+        "borderRadius": { "type": "number", "const": 0 },
+        "ruleColor": { "type": "string", "const": "#153c78" },
+        "parentRequirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "examples": [["position:relative", "overflow:hidden"]]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["midnight", "blue", "white", "gold"],
+      "properties": {
+        "midnight": { "type": "string", "const": "#081329" },
+        "blue": { "type": "string", "const": "#153c78" },
+        "white": { "type": "string", "const": "#f5f8ff" },
+        "gold": { "type": "string", "const": "#e9c45c" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontFamily", "tabularNums", "textTransform"],
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "const": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+        },
+        "tabularNums": { "type": "boolean", "const": true },
+        "textTransform": { "type": "string", "const": "uppercase" },
+        "valueAlign": { "type": "string", "const": "right" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plateEnterMs",
+        "rowStaggerMs",
+        "tallyMs",
+        "totalAfterScoreAndBonus",
+        "levelUpLast"
+      ],
+      "properties": {
+        "plateEnterMs": { "type": "number", "const": 300 },
+        "rowStaggerMs": { "type": "number", "const": 180 },
+        "tallyMs": { "type": "number", "const": 500 },
+        "totalAfterScoreAndBonus": { "type": "boolean", "const": true },
+        "levelUpLast": { "type": "boolean", "const": true },
+        "flareMs": { "type": "number", "const": 480 },
+        "easingCount": {
+          "type": "string",
+          "const": "ease-out-quad",
+          "description": "Deterministic; final frame snaps exactly to target."
+        },
+        "keyframeNames": {
+          "type": "object",
+          "properties": {
+            "plateEnter": { "type": "string", "const": "vt-plate-enter" },
+            "flare": { "type": "string", "const": "vt-flare" }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "victory-tally" },
+            "dataAttr": { "type": "string", "const": "data-victory-tally" }
+          }
+        },
+        "children": { "type": "array", "minItems": 2 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceFinalsOnly", "countingValuesAriaHidden"],
+      "properties": {
+        "announceFinalsOnly": { "type": "boolean", "const": true },
+        "countingValuesAriaHidden": { "type": "boolean", "const": true },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showFinalsImmediately", "triggers"],
+      "properties": {
+        "showFinalsImmediately": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "trigger",
+        "plate",
+        "header",
+        "row",
+        "label",
+        "value",
+        "flare",
+        "levelUp",
+        "live",
+        "phaseEnter",
+        "phaseRunning",
+        "phaseDone"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "victory-tally" },
+        "trigger": { "type": "string", "const": "victory-tally__trigger" },
+        "plate": { "type": "string", "const": "victory-tally__plate" },
+        "header": { "type": "string", "const": "victory-tally__header" },
+        "row": { "type": "string", "const": "victory-tally__row" },
+        "label": { "type": "string", "const": "victory-tally__label" },
+        "value": { "type": "string", "const": "victory-tally__value" },
+        "flare": { "type": "string", "const": "victory-tally__flare" },
+        "levelUp": { "type": "string", "const": "victory-tally__level-up" },
+        "live": { "type": "string", "const": "victory-tally__live" },
+        "phaseEnter": { "type": "string", "const": "victory-tally--enter" },
+        "phaseRunning": { "type": "string", "const": "victory-tally--running" },
+        "phaseDone": { "type": "string", "const": "victory-tally--done" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "runVictoryResultsTally" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "noDomAccumulation": { "type": "boolean", "const": true },
+        "noRandomFinals": { "type": "boolean", "const": true }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "victory-results-tally",
+      "intent": "Elegant post-completion results plate with sequential reveals and deterministic count-up tallies ending in LEVEL UP.",
+      "copy": {
+        "trigger": "FINISH ACTIVITY",
+        "header": "RESULTS",
+        "levelUp": "LEVEL UP"
+      },
+      "targets": {
+        "score": "02450",
+        "bonus": "+0350",
+        "time": "01:42",
+        "total": "02800",
+        "scoreValue": 2450,
+        "bonusValue": 350,
+        "timeSeconds": 102,
+        "totalValue": 2800
+      },
+      "layout": {
+        "minHeightPx": 300,
+        "borderRadius": 0,
+        "ruleColor": "#153c78",
+        "parentRequirements": ["position:relative", "overflow:hidden"]
+      },
+      "colours": {
+        "midnight": "#081329",
+        "blue": "#153c78",
+        "white": "#f5f8ff",
+        "gold": "#e9c45c"
+      },
+      "typography": {
+        "fontFamily": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+        "tabularNums": true,
+        "textTransform": "uppercase",
+        "valueAlign": "right"
+      },
+      "animation": {
+        "plateEnterMs": 300,
+        "rowStaggerMs": 180,
+        "tallyMs": 500,
+        "totalAfterScoreAndBonus": true,
+        "levelUpLast": true,
+        "flareMs": 480
+      },
+      "a11y": {
+        "announceFinalsOnly": true,
+        "countingValuesAriaHidden": true,
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "showFinalsImmediately": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "victory-tally",
+        "trigger": "victory-tally__trigger",
+        "plate": "victory-tally__plate",
+        "header": "victory-tally__header",
+        "row": "victory-tally__row",
+        "label": "victory-tally__label",
+        "value": "victory-tally__value",
+        "flare": "victory-tally__flare",
+        "levelUp": "victory-tally__level-up",
+        "live": "victory-tally__live",
+        "phaseEnter": "victory-tally--enter",
+        "phaseRunning": "victory-tally--running",
+        "phaseDone": "victory-tally--done"
+      },
+      "behaviour": {
+        "run": "runVictoryResultsTally",
+        "restartMessageType": "restart",
+        "noDomAccumulation": true,
+        "noRandomFinals": true
+      }
+    }
+  ]
+}

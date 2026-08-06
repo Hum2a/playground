@@ -7,6 +7,7 @@ import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
+import { victoryResultsTally } from './victory-results-tally/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -57,6 +58,7 @@ export const specimens: Specimen[] = [
   truthShotNotification,
   diagnosticBootSequence,
   corruptedAccessLock,
+  victoryResultsTally,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

@@ -1,0 +1,270 @@
+/* SPX-014 Victory Results Tally — portable contract. Do not restyle to host tokens. */
+
+.victory-tally {
+  --vt-midnight: #081329;
+  --vt-blue: #153c78;
+  --vt-white: #f5f8ff;
+  --vt-gold: #e9c45c;
+  --vt-ease-enter: cubic-bezier(0.22, 0.85, 0.28, 1);
+
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  background: var(--vt-midnight);
+  color: var(--vt-white);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.victory-tally *,
+.victory-tally *::before,
+.victory-tally *::after {
+  box-sizing: border-box;
+}
+
+.victory-tally__trigger {
+  appearance: none;
+  position: relative;
+  z-index: 2;
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--vt-white);
+  border-radius: 0;
+  background: transparent;
+  color: var(--vt-white);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.victory-tally__trigger:focus-visible {
+  outline: 2px solid var(--vt-gold);
+  outline-offset: 3px;
+}
+
+.victory-tally__trigger:hover {
+  background: var(--vt-white);
+  color: var(--vt-midnight);
+}
+
+.victory-tally--running .victory-tally__trigger,
+.victory-tally--done .victory-tally__trigger {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.victory-tally__plate {
+  position: absolute;
+  inset: 1.1rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.15rem;
+  padding: 1.35rem 1.4rem 1.5rem;
+  border: 1px solid var(--vt-blue);
+  border-radius: 0;
+  background: rgb(8 19 41 / 0.92);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+.victory-tally--enter .victory-tally__plate,
+.victory-tally--running .victory-tally__plate,
+.victory-tally--done .victory-tally__plate {
+  opacity: 1;
+  transform: translateY(0);
+  animation: vt-plate-enter 300ms var(--vt-ease-enter) both;
+}
+
+.victory-tally__header {
+  margin: 0;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--vt-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--vt-gold);
+}
+
+.victory-tally__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.victory-tally__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 0.2rem 0;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.victory-tally__row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.victory-tally__row--total {
+  margin-top: 0.35rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--vt-blue);
+}
+
+.victory-tally__label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(245 248 255 / 0.72);
+}
+
+.victory-tally__value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  text-align: right;
+  color: var(--vt-white);
+}
+
+.victory-tally__row--total .victory-tally__label,
+.victory-tally__row--total .victory-tally__value {
+  color: var(--vt-gold);
+  font-weight: 700;
+}
+
+.victory-tally__finale {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 2rem;
+  margin-top: 0.35rem;
+  opacity: 0;
+}
+
+.victory-tally__finale.is-visible {
+  opacity: 1;
+}
+
+.victory-tally__level-up {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--vt-gold);
+}
+
+.victory-tally__flare {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--vt-gold) 35%,
+    var(--vt-white) 50%,
+    var(--vt-gold) 65%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.victory-tally__finale.is-visible .victory-tally__flare {
+  animation: vt-flare 480ms ease-out both;
+}
+
+.victory-tally__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes vt-plate-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-flare {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  35% {
+    width: 88%;
+    opacity: 1;
+  }
+  100% {
+    width: 72%;
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .victory-tally--enter .victory-tally__plate,
+  .victory-tally--running .victory-tally__plate,
+  .victory-tally--done .victory-tally__plate {
+    animation: none;
+  }
+
+  .victory-tally__row,
+  .victory-tally__finale {
+    transition: none;
+  }
+
+  .victory-tally__finale.is-visible .victory-tally__flare {
+    animation: none;
+    width: 72%;
+    opacity: 0.45;
+  }
+}
+
+[data-force-reduced-motion='true'] .victory-tally--enter .victory-tally__plate,
+[data-force-reduced-motion='true'] .victory-tally--running .victory-tally__plate,
+[data-force-reduced-motion='true'] .victory-tally--done .victory-tally__plate {
+  animation: none;
+}
+
+[data-force-reduced-motion='true'] .victory-tally__row,
+[data-force-reduced-motion='true'] .victory-tally__finale {
+  transition: none;
+}
+
+[data-force-reduced-motion='true'] .victory-tally__finale.is-visible .victory-tally__flare {
+  animation: none;
+  width: 72%;
+  opacity: 0.45;
+}
