@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/android-drag-proxy-formation.schema.json",
+  "title": "AndroidDragProxyFormation",
+  "description": "Portable contract for Android-style drag proxy condensation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "source", "proxy", "drag", "drop", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "android-drag-proxy-formation" },
+    "intent": {
+      "type": "string",
+      "const": "Complex source condenses into portable representation while placeholder preserves layout."
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 300 },
+        "heightPx": { "type": "number", "const": 92 }
+      }
+    },
+    "proxy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "scale", "pointerOffsetPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 156 },
+        "heightPx": { "type": "number", "const": 48 },
+        "scale": { "type": "number", "const": 1.03 },
+        "pointerOffsetPx": { "type": "number", "const": 8 }
+      }
+    },
+    "drag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["movementThresholdPx"],
+      "properties": {
+        "movementThresholdPx": { "type": "number", "const": 7 }
+      }
+    },
+    "drop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hitTest", "returnMs"],
+      "properties": {
+        "hitTest": { "type": "string", "const": "proxy centre within drop bounds" },
+        "returnMs": { "type": "number", "const": 220 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFormation", "triggers"],
+      "properties": {
+        "instantFormation": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "sourceFocusable"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "sourceFocusable": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "row", "proxy", "drop"],
+      "properties": {
+        "root": { "type": "string", "const": "adpf" },
+        "row": { "type": "string", "const": "adpf__row" },
+        "proxy": { "type": "string", "const": "adpf__proxy" },
+        "drop": { "type": "string", "const": "adpf__drop" }
+      }
+    }
+  }
+}

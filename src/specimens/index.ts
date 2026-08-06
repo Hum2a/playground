@@ -4,6 +4,7 @@ import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
 import { airdropTransferArc } from './airdrop-transfer-arc/entry'
 import { androidBottomSheetDetentSnap } from './android-bottom-sheet-detent-snap/entry'
+import { androidDragProxyFormation } from './android-drag-proxy-formation/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
 import { appLaunchFromIcon } from './app-launch-from-icon/entry'
 import { appToRecentsShrink } from './app-to-recents-shrink/entry'
@@ -279,6 +280,7 @@ export const specimens: Specimen[] = [
   afterimageNavigation,
   airdropTransferArc,
   androidBottomSheetDetentSnap,
+  androidDragProxyFormation,
   appLaunchExpansion,
   appLaunchFromIcon,
   appToRecentsShrink,
