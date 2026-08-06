@@ -52,6 +52,7 @@ import { chakraChargeField } from './chakra-charge-field/entry'
 import { chakraControlBalance } from './chakra-control-balance/entry'
 import { chakraSignatureMatch } from './chakra-signature-match/entry'
 import { championResolution } from './champion-resolution/entry'
+import { channelTuningScrub } from './channel-tuning-scrub/entry'
 import { characterFreezeIntroduction } from './character-freeze-introduction/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
@@ -462,6 +463,7 @@ export const specimens: Specimen[] = [
   chakraControlBalance,
   chakraSignatureMatch,
   championResolution,
+  channelTuningScrub,
   characterFreezeIntroduction,
   chargeRelease,
   choiceExecutionSlash,

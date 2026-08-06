@@ -1,0 +1,183 @@
+/* channel-tuning-scrub — portable specimen styles. Do not restyle to host tokens. */
+
+.cts {
+  --cts-yellow: #f5c400;
+  --cts-ink: #101010;
+  --cts-paper: #f7f3e8;
+  --cts-gray: #e8e8e8;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--cts-ink);
+  color: var(--cts-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.cts *,
+.cts *::before,
+.cts *::after {
+  box-sizing: border-box;
+}
+
+.cts__live {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.65);
+}
+
+.cts__screen {
+  position: relative;
+  flex: 1;
+  min-height: 160px;
+  overflow: hidden;
+  border: 3px solid var(--cts-yellow);
+  background: var(--cts-ink);
+}
+
+.cts__static {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgb(232 232 232 / 0.08) 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(245 196 0 / 0.12) 0 3px,
+      transparent 3px 7px
+    ),
+    var(--cts-ink);
+  animation: cts-static-flicker 0.12s steps(2) infinite;
+}
+
+.cts__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+.cts__channel {
+  padding: 0.15rem 0.45rem;
+  border: 2px solid var(--cts-yellow);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--cts-yellow);
+}
+
+.cts__title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cts__scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgb(0 0 0 / 0.18) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: 0.35;
+}
+
+.cts__dial {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cts__dial-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cts-gray);
+}
+
+.cts__range {
+  width: 100%;
+  accent-color: var(--cts-yellow);
+  cursor: pointer;
+}
+
+.cts__range:focus-visible {
+  outline: 2px solid var(--cts-yellow);
+  outline-offset: 2px;
+}
+
+.cts[data-phase='partial'] .cts__static {
+  opacity: 0.55;
+  animation-duration: 0.08s;
+}
+
+.cts[data-phase='partial'] .cts__content {
+  opacity: 0.45;
+  transform: scale(1.02);
+}
+
+.cts[data-phase='locked'] .cts__static {
+  opacity: 0;
+  animation: none;
+}
+
+.cts[data-phase='locked'] .cts__content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cts[data-phase='locked'] .cts__scanlines {
+  opacity: 0.15;
+}
+
+@keyframes cts-static-flicker {
+  0% {
+    filter: contrast(1.4) brightness(1.1);
+    transform: translateX(0);
+  }
+  100% {
+    filter: contrast(1.8) brightness(0.9);
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cts__static {
+    animation: none;
+  }
+
+  .cts__content {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .cts__static {
+  animation: none;
+}
+
+[data-force-reduced-motion='true'] .cts__content {
+  transition: none;
+}

@@ -1,0 +1,28 @@
+<div class="cts" data-cts data-phase="noise">
+  <p class="cts__live" data-cts-live aria-live="polite">Signal unstable. Adjust tuning.</p>
+
+  <div class="cts__screen" data-cts-screen aria-hidden="true">
+    <div class="cts__static" data-cts-static></div>
+    <div class="cts__content" data-cts-content>
+      <span class="cts__channel">CH 08</span>
+      <p class="cts__title">Midnight Broadcast</p>
+    </div>
+    <div class="cts__scanlines" aria-hidden="true"></div>
+  </div>
+
+  <label class="cts__dial">
+    <span class="cts__dial-label">Tuning</span>
+    <input
+      type="range"
+      class="cts__range"
+      data-cts-range
+      min="0"
+      max="100"
+      value="12"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="12"
+      aria-label="Channel tuning dial"
+    />
+  </label>
+</div>

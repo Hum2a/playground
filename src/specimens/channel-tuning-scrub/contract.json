@@ -1,0 +1,20 @@
+{
+  "name": "channel-tuning-scrub",
+  "ref": "SPX-2921",
+  "catalogueId": "P4-003",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "gray": "#E8E8E8"
+  },
+  "thresholds": {
+    "partial": 42,
+    "locked": 78
+  },
+  "phases": ["noise", "partial", "locked"],
+  "reducedMotion": {
+    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"],
+    "disable": ["cts-static-flicker", "content transition"]
+  }
+}
