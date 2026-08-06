@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { quantizeSweep } from '../../library/music-equipment/quantize-sweep/entry'
 import { crossfadeOverlap } from '../../library/music-equipment/crossfade-overlap/entry'
 import { waveformTrimHandles } from '../../library/music-equipment/waveform-trim-handles/entry'
 import { loopBraceClamp } from '../../library/music-equipment/loop-brace-clamp/entry'
@@ -49,6 +50,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  quantizeSweep,
   crossfadeOverlap,
   waveformTrimHandles,
   loopBraceClamp,

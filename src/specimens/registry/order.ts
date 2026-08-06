@@ -595,4 +595,5 @@ export const specimenOrder: string[] = [
   'loop-brace-clamp',
   'waveform-trim-handles',
   'crossfade-overlap',
+  'quantize-sweep',
 ]

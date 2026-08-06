@@ -550,7 +550,7 @@ specimens can feel tactile without needing sound.
     changes note intensity.
 - [ ] **MUSIC-196** · `SPX-3955` · ★★★★★ **Chord Block Move** — Several selected notes travel
     together while retaining intervals.
-- [ ] **MUSIC-197** · `SPX-3956` · ★★★★★ **Quantize Sweep** — Off-grid notes slide simultaneously
+- [x] **MUSIC-197** · `SPX-3956` · ★★★★★ **Quantize Sweep** — Off-grid notes slide simultaneously
     toward exact rhythmic divisions.
 - [ ] **MUSIC-198** · `SPX-3957` · ★★★☆☆ **Humanise Scatter** — Notes shift by small
     predetermined offsets to demonstrate timing looseness.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-197 | SPX-3956 | `quantize-sweep` | Quantize Sweep |
 | MUSIC-189 | SPX-3948 | `crossfade-overlap` | Crossfade Overlap |
 | MUSIC-185 | SPX-3944 | `waveform-trim-handles` | Waveform Trim Handles |
 | MUSIC-179 | SPX-3938 | `loop-brace-clamp` | Loop Brace Clamp |
@@ -911,12 +912,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **48 / 310** complete.
+- Progress: **49 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 48 |
-| Open | 262 |
+| Done | 49 |
+| Open | 261 |
 
 ## Core first-wave / build queue
 
@@ -967,7 +968,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · `loop-brace-clamp`
 - [x] **MUSIC-185** · `SPX-3944` · **Waveform Trim Handles** · `waveform-trim-handles`
 - [x] **MUSIC-189** · `SPX-3948` · **Crossfade Overlap** · `crossfade-overlap`
-- [ ] **MUSIC-197** · `SPX-3956` · **Quantize Sweep** · scaffold `quantize-sweep`
+- [x] **MUSIC-197** · `SPX-3956` · **Quantize Sweep** · `quantize-sweep`
 - [ ] **MUSIC-201** · `SPX-3960` · **Automation Point Draw** · scaffold `automation-point-draw`
 - [x] **MUSIC-213** · `SPX-3972` · **Loop Record Ring** · `loop-record-ring`
 

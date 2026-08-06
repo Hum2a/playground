@@ -1,0 +1,8 @@
+{
+  "name": "quantize-sweep",
+  "ref": "SPX-3956",
+  "title": "Quantize Sweep",
+  "mode": "tape",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
