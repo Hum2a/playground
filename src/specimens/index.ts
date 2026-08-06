@@ -47,6 +47,7 @@ import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { cardToDetailContainerTransform } from './card-to-detail-container-transform/entry'
 import { caseBreakthrough } from './case-breakthrough/entry'
+import { caseSolvedCompletion } from './case-solved-completion/entry'
 import { chakraChargeField } from './chakra-charge-field/entry'
 import { chakraControlBalance } from './chakra-control-balance/entry'
 import { chakraSignatureMatch } from './chakra-signature-match/entry'
@@ -455,6 +456,7 @@ export const specimens: Specimen[] = [
   cardBreakSummon,
   cardToDetailContainerTransform,
   caseBreakthrough,
+  caseSolvedCompletion,
   chakraChargeField,
   chakraControlBalance,
   chakraSignatureMatch,

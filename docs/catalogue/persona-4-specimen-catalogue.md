@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **18 / 191** complete.
+- Progress: **19 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 173 |
+| Done | 19 |
+| Open | 172 |
 
 ## Visual grammar
 
@@ -52,6 +52,7 @@
 | P4-156 | `SPX-3074` | `classified-dossier-reveal` | Classified Dossier Reveal |
 | P4-157 | `SPX-3075` | `fingerprint-scan-match` | Fingerprint Scan Match |
 | P4-043 | `SPX-2961` | `redaction-reveal` | Redaction Reveal |
+| P4-170 | `SPX-3088` | `case-solved-completion` | Case Solved Completion |
 
 ## Core first-wave
 
@@ -75,7 +76,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-156** · `SPX-3074` · **Classified Dossier Reveal** — mystery-thriller
 - [x] **P4-157** · `SPX-3075` · **Fingerprint Scan Match** — mystery-thriller
 - [x] **P4-043** · `SPX-2961` · **Redaction Reveal** — investigation-evidence
-- [ ] **P4-170** · `SPX-3088` · **Case Solved Completion** — notifications-errors-success
+- [x] **P4-170** · `SPX-3088` · **Case Solved Completion** — notifications-errors-success
 - [ ] **P4-037** · `SPX-2955` · **False Lead Strikeout** — investigation-evidence
 - [ ] **P4-003** · `SPX-2921` · **Channel Tuning Scrub** — midnight-channel-crt-broadcast
 - [ ] **P4-005** · `SPX-2923` · **Broadcast Interruption** — midnight-channel-crt-broadcast
@@ -334,7 +335,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [ ] **P4-167** · `SPX-3085` · **Weakness Found Notification** — Newly discovered property receives a permanent knowledge marker.
 - [ ] **P4-168** · `SPX-3086` · **Signal Lost Error** — Active content destabilises into a clear disconnected state.
 - [ ] **P4-169** · `SPX-3087` · **Contradiction Error** — Conflicting values receive a hard investigative warning.
-- [ ] **P4-170** · `SPX-3088` · **Case Solved Completion** — Multiple clues collapse into a clean solved-state title card.
+- [x] **P4-170** · `SPX-3088` · **Case Solved Completion** — Multiple clues collapse into a clean solved-state title card.
 - [ ] **P4-171** · `SPX-3089` · **Dungeon Cleared Result** — Exploration UI reorganises into a finite reward/result panel.
 - [ ] **P4-172** · `SPX-3090` · **Deadline Missed Alert** — Calendar state locks into failure treatment.
 
