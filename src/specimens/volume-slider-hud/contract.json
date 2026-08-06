@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/volume-slider-hud.schema.json",
+  "title": "VolumeSliderHud",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "hud", "timing", "level"],
+  "properties": {
+    "name": { "type": "string", "const": "volume-slider-hud" },
+    "hud": {
+      "type": "object",
+      "required": ["widthPx", "heightPx", "expandedWidthPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 72 },
+        "heightPx": { "type": "number", "const": 280 },
+        "expandedWidthPx": { "type": "number", "const": 240 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["entranceMs", "dwellMs"],
+      "properties": {
+        "entranceMs": { "type": "number", "const": 220 },
+        "dwellMs": { "type": "number", "const": 2200 }
+      }
+    },
+    "level": {
+      "type": "object",
+      "required": ["min", "max", "step"],
+      "properties": {
+        "min": { "type": "number", "const": 0 },
+        "max": { "type": "number", "const": 100 },
+        "step": { "type": "number", "const": 10 }
+      }
+    }
+  }
+}

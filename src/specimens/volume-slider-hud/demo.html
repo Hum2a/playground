@@ -1,0 +1,30 @@
+<div class="vsh" data-volume-slider-hud data-phase="hidden">
+  <div class="vsh__media">
+    <p class="vsh__title">Now playing</p>
+    <div class="vsh__art" aria-hidden="true"></div>
+    <p class="vsh__track">Signal Drift — Unit 4</p>
+    <div class="vsh__vol-btns">
+      <button type="button" class="vsh__btn" data-vsh-down aria-label="Volume down">−</button>
+      <button type="button" class="vsh__btn" data-vsh-up aria-label="Volume up">+</button>
+      <button type="button" class="vsh__btn vsh__btn--expand" data-vsh-expand aria-label="Expand HUD">More</button>
+    </div>
+  </div>
+
+  <aside class="vsh__hud" data-vsh-hud aria-hidden="true" aria-label="Volume HUD">
+    <div class="vsh__hud-inner" data-vsh-hud-inner>
+      <span class="vsh__glyph" data-vsh-glyph aria-hidden="true"></span>
+      <div class="vsh__track-wrap" data-vsh-track-wrap>
+        <div class="vsh__track-fill" data-vsh-fill></div>
+        <div class="vsh__thumb" data-vsh-thumb></div>
+      </div>
+      <span class="vsh__level" data-vsh-level>50</span>
+      <div class="vsh__expanded-sliders" data-vsh-expanded hidden>
+        <div class="vsh__mini-slider"><span>Media</span><div class="vsh__mini-bar"></div></div>
+        <div class="vsh__mini-slider"><span>Ring</span><div class="vsh__mini-bar"></div></div>
+        <div class="vsh__mini-slider"><span>Alarm</span><div class="vsh__mini-bar"></div></div>
+      </div>
+    </div>
+  </aside>
+
+  <p class="vsh__status" role="status" aria-live="polite" data-vsh-status>Press + or − to show volume HUD.</p>
+</div>

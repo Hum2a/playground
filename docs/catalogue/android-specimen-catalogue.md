@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **42 / 417** complete.
+- Progress: **43 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 375 |
+| Done | 43 |
+| Open | 374 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-291 | `SPX-1848` | `volume-slider-hud` | Volume Slider HUD |
 | AND-384 | `SPX-1941` | `screenshot-expand-to-editor` | Screenshot Expand to Editor |
 | AND-343 | `SPX-1900` | `android-invalid-drop-return` | Invalid Drop Return |
 | AND-340 | `SPX-1897` | `android-drag-proxy-formation` | Drag Proxy Formation |
@@ -522,7 +523,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Volume / System HUD
 
-- [ ] **AND-291** · `SPX-1848` · **Volume Slider HUD Arrival** — temporary level control enters from edge.
+- [x] **AND-291** · `SPX-1848` · **Volume Slider HUD Arrival** — temporary level control enters from edge.
 - [ ] **AND-292** · `SPX-1849` · **Volume Level Segment Update** — scalar level changes through persistent geometry.
 - [ ] **AND-293** · `SPX-1850` · **Output Device Expansion** — compact volume HUD expands into route selection.
 - [ ] **AND-294** · `SPX-1851` · **Mute State Morph** — active level control becomes muted state.

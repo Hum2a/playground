@@ -229,6 +229,7 @@ import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { verticalContentStretch } from './vertical-content-stretch/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
+import { volumeSliderHud } from './volume-slider-hud/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
 import { windowMinimiseFunnel } from './window-minimise-funnel/entry'
@@ -507,6 +508,7 @@ export const specimens: Specimen[] = [
   verticalContentStretch,
   victoryResultsTally,
   volumeBrightnessHud,
+  volumeSliderHud,
   waterlinePageWipe,
   widgetResizeMorph,
   wildEncounterTransition,
