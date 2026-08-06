@@ -12,6 +12,7 @@ import { angularFocusBrackets } from './angular-focus-brackets/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
 import { appLaunchFromIcon } from './app-launch-from-icon/entry'
 import { appToRecentsShrink } from './app-to-recents-shrink/entry'
+import { arcanaRankUp } from './arcana-rank-up/entry'
 import { authenticationFailureReset } from './authentication-failure-reset/entry'
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
@@ -409,6 +410,7 @@ export const specimens: Specimen[] = [
   appLaunchExpansion,
   appLaunchFromIcon,
   appToRecentsShrink,
+  arcanaRankUp,
   authenticationFailureReset,
   authenticationSuccessMorph,
   azureShardTransition,

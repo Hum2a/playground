@@ -1,0 +1,15 @@
+{
+  "name": "arcana-rank-up",
+  "intent": "Bond card rises; rank increments with RANK UP flourish.",
+  "catalogue": { "p4": "P4-052", "ref": "SPX-2970" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "ranks": { "start": 3, "end": 4 },
+  "timing": { "riseMs": 520, "flourishMs": 360 },
+  "api": { "run": "runArcanaRankUp()", "reset": "resetArcanaRankUp()" },
+  "reducedMotion": { "behaviour": "New rank and flourish immediately" }
+}

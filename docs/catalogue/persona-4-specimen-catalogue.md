@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **7 / 191** complete.
+- Progress: **8 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 184 |
+| Done | 8 |
+| Open | 183 |
 
 ## Visual grammar
 
@@ -41,6 +41,7 @@
 | P4-029 | `SPX-2947` | `evidence-connection-draw` | Evidence Connection Draw |
 | P4-030 | `SPX-2948` | `contradiction-found` | Contradiction Found |
 | P4-044 | `SPX-2962` | `shadow-self-reveal` | Shadow Self Reveal |
+| P4-052 | `SPX-2970` | `arcana-rank-up` | Arcana Rank-Up |
 
 ## Core first-wave
 
@@ -53,7 +54,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — investigation-evidence
 - [x] **P4-030** · `SPX-2948` · **Contradiction Found** — investigation-evidence
 - [x] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — shadow-identity-confrontation
-- [ ] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — social-links-bonds
+- [x] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — social-links-bonds
 - [ ] **P4-110** · `SPX-3028` · **KEEP OUT Tape Marquee** — yellow-black-graphic-language
 - [ ] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — persona-fusion-compendium
 - [ ] **P4-031** · `SPX-2949` · **Case Breakthrough** — investigation-evidence
@@ -166,7 +167,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Social Links / Bonds
 
-- [ ] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — A relationship/progression card rises to a new rank with a finite card flourish.
+- [x] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — A relationship/progression card rises to a new rank with a finite card flourish.
 - [ ] **P4-053** · `SPX-2971` · **Social Link Milestone** — Bond nodes converge into a newly unlocked capability.
 - [ ] **P4-054** · `SPX-2972` · **Bond Progress Ring** — Relationship progress accumulates around a symbolic card.
 - [ ] **P4-055** · `SPX-2973` · **Relationship Node Connect** — Two profiles gain a persistent connection line after interaction.

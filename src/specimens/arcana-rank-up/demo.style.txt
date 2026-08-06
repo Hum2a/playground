@@ -1,0 +1,209 @@
+/* SPX-2970 Arcana Rank-Up — portable contract. */
+
+.aru {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.aru__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.aru__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 280px);
+  min-height: 200px;
+  display: grid;
+  place-items: center;
+}
+
+.aru__card {
+  position: relative;
+  box-sizing: border-box;
+  width: 200px;
+  min-height: 180px;
+  padding: 1rem;
+  border: 3px solid var(--yellow);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  transform: translateY(0) rotate(0deg);
+  transition: transform 320ms cubic-bezier(0.2, 1.1, 0.3, 1);
+}
+
+.aru[data-phase='rise'] .aru__card {
+  animation: aru-rise 520ms cubic-bezier(0.2, 1.2, 0.3, 1) forwards;
+}
+
+@keyframes aru-rise {
+  0% { transform: translateY(24px) rotate(-2deg) scale(0.96); }
+  45% { transform: translateY(-18px) rotate(3deg) scale(1.04); }
+  70% { transform: translateY(4px) rotate(-1deg) scale(0.98); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
+.aru[data-phase='done'] .aru__card {
+  animation: none;
+  transform: translateY(0) rotate(0deg) scale(1);
+}
+
+.aru__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.aru__bond {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aru__rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0.5rem 0;
+}
+
+.aru__rank-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.aru__rank-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  padding: 0.15rem 0.35rem;
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  font-size: 1.4rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.aru[data-phase='rise'] .aru__rank-num {
+  animation: aru-rank-pop 520ms ease-out forwards;
+}
+
+@keyframes aru-rank-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); color: var(--ink); background: var(--yellow); }
+  100% { transform: scale(1); }
+}
+
+.aru__flourish {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  margin: 0;
+  padding: 0.2rem 0.45rem;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--yellow);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+}
+
+.aru[data-phase='flourish'] .aru__flourish,
+.aru[data-phase='done'] .aru__flourish {
+  animation: aru-flourish 360ms ease-out forwards;
+}
+
+@keyframes aru-flourish {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.aru[data-phase='done'] .aru__flourish {
+  animation: none;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.aru__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.aru__btn {
+  box-sizing: border-box;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.aru__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.aru__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.aru__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aru__card,
+  .aru__rank-num,
+  .aru__flourish {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .aru__card,
+[data-force-reduced-motion='true'] .aru__rank-num,
+[data-force-reduced-motion='true'] .aru__flourish {
+  animation: none !important;
+  transition: none !important;
+}
