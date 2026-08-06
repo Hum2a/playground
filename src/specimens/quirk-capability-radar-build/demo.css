@@ -1,0 +1,144 @@
+/* SPX-2283 Quirk Capability Radar Build — portable contract. */
+
+.qcrd {
+  --qcrd-primary: #38a3ff;
+  --qcrd-ink: #101820;
+  --qcrd-paper: #f4f7fa;
+  --qcrd-accent: #ff4d35;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  background: var(--qcrd-ink);
+  color: var(--qcrd-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.qcrd *,
+.qcrd *::before,
+.qcrd *::after {
+  box-sizing: border-box;
+}
+
+.qcrd__trigger {
+  appearance: none;
+  border: 2px solid var(--qcrd-primary);
+  background: transparent;
+  color: var(--qcrd-paper);
+  padding: 0.4rem 1rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.qcrd__trigger:focus-visible {
+  outline: 2px solid var(--qcrd-primary);
+  outline-offset: 3px;
+}
+
+.qcrd__frame {
+  position: relative;
+  width: min(100%, 280px);
+  aspect-ratio: 1;
+}
+
+.qcrd__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.qcrd__grid {
+  fill: none;
+  stroke: rgba(244, 247, 250, 0.35);
+  stroke-width: 2;
+}
+
+.qcrd__axis {
+  stroke: rgba(244, 247, 250, 0.25);
+  stroke-width: 1.5;
+}
+
+.qcrd__fill {
+  fill: rgba(56, 163, 255, 0.45);
+  stroke: var(--qcrd-primary);
+  stroke-width: 3;
+  transition: fill 200ms ease;
+}
+
+.qcrd--built .qcrd__fill {
+  fill: rgba(255, 77, 53, 0.35);
+  stroke: var(--qcrd-accent);
+}
+
+.qcrd__labels {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.qcrd__labels li:nth-child(1) {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.qcrd__labels li:nth-child(2) {
+  position: absolute;
+  top: 28%;
+  right: 0;
+}
+
+.qcrd__labels li:nth-child(3) {
+  position: absolute;
+  bottom: 8%;
+  right: 12%;
+}
+
+.qcrd__labels li:nth-child(4) {
+  position: absolute;
+  bottom: 8%;
+  left: 12%;
+}
+
+.qcrd__labels li:nth-child(5) {
+  position: absolute;
+  top: 28%;
+  left: 0;
+}
+
+.qcrd__readout {
+  position: absolute;
+  left: 50%;
+  bottom: -1.6rem;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qcrd__fill {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .qcrd__fill {
+  transition: none !important;
+}

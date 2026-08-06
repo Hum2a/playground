@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QuirkCapabilityRadarBuild",
+  "type": "object",
+  "required": ["name", "values"],
+  "properties": {
+    "name": { "type": "string", "const": "quirk-capability-radar-build" },
+    "values": {
+      "type": "array",
+      "const": [0.82, 0.64, 0.48, 0.71, 0.9]
+    },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 580 }
+      }
+    }
+  }
+}

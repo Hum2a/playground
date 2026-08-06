@@ -214,6 +214,7 @@ import { quickLookExpansion } from './quick-look-expansion/entry'
 import { quickSettingsExpansion } from './quick-settings-expansion/entry'
 import { quickSettingsTileToggle } from './quick-settings-tile-toggle/entry'
 import { quirkActivationBurst } from './quirk-activation-burst/entry'
+import { quirkCapabilityRadarBuild } from './quirk-capability-radar-build/entry'
 import { quirkCooldownRing } from './quirk-cooldown-ring/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankPromotion } from './rank-promotion/entry'
@@ -538,6 +539,7 @@ export const specimens: Specimen[] = [
   quickSettingsExpansion,
   quickSettingsTileToggle,
   quirkActivationBurst,
+  quirkCapabilityRadarBuild,
   quirkCooldownRing,
   radarPulseDiscovery,
   rankPromotion,

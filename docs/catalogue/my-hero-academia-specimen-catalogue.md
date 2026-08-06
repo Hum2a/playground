@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **36 / 369** complete.
+- Progress: **37 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 36 |
-| Open | 333 |
+| Done | 37 |
+| Open | 332 |
 
 ## Visual grammar
 
@@ -68,6 +68,7 @@
 | MHA-237 | `SPX-2211` | `panel-to-panel-route` | Panel-to-Panel Route |
 | MHA-243 | `SPX-2217` | `episode-title-card-interrupt` | Episode Title Card Interrupt |
 | MHA-244 | `SPX-2218` | `eyecatch-transition` | Eyecatch Transition |
+| MHA-309 | `SPX-2283` | `quirk-capability-radar-build` | Quirk Capability Radar Build |
 
 ## Core first-wave
 
@@ -537,7 +538,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Data Visualisation
 
-- [ ] **MHA-309** · `SPX-2283` · **Quirk Capability Radar Build** — radar polygon draws to fixed values.
+- [x] **MHA-309** · `SPX-2283` · **Quirk Capability Radar Build** — radar polygon draws to fixed values.
 - [ ] **MHA-310** · `SPX-2284` · **Hero Stat Bars Impact Fill** — bars hit final values with staggered force.
 - [ ] **MHA-311** · `SPX-2285` · **Threat Map Propagation** — incident intensity spreads across schematic regions.
 - [ ] **MHA-312** · `SPX-2286` · **Training Performance Timeline** — events punch into a running performance line.
