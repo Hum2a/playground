@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **27 / 238** complete.
+- Progress: **28 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 211 |
+| Done | 28 |
+| Open | 210 |
 
 ## Visual grammar
 
@@ -59,6 +59,7 @@
 | P3-089 | `SPX-486` | `tactical-command-wheel` | Tactical Command Wheel |
 | P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
 | P3-170 | `SPX-567` | `blue-focus-brackets` | Blue Focus Brackets |
+| P3-153 | `SPX-550` | `max-rank-completion` | Max Rank Completion |
 
 ## Core first-wave
 
@@ -285,7 +286,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-150** · `SPX-547` · **Connection Broken** — social-link.
 - [ ] **P3-151** · `SPX-548` · **New Relationship Discovery** — social-link.
 - [ ] **P3-152** · `SPX-549` · **Relationship Selection** — social-link.
-- [ ] **P3-153** · `SPX-550` · **Max Rank Completion** — social-link.
+- [x] **P3-153** · `SPX-550` · **Max Rank Completion** — social-link.
 
 ## School / calendar / daily life
 

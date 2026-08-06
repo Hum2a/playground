@@ -47,6 +47,7 @@ import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
+import { maxRankCompletion } from './max-rank-completion/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
@@ -172,6 +173,7 @@ export const specimens: Specimen[] = [
   liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
+  maxRankCompletion,
   memoryFragmentReveal,
   midnightClockTransition,
   misprintNotification,

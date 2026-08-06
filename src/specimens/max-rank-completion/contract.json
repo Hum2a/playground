@@ -1,0 +1,64 @@
+{
+  "name": "max-rank-completion",
+  "intent": "Terminal Social Link completion: inward energy, 09→10 reel, four-path diamond circuit reconnecting YOU and ALLY, pale outline settle, MAX badge — static finale.",
+  "colours": {
+    "ink": "#020b16",
+    "deep": "#0a2540",
+    "mid": "#1568a0",
+    "bright": "#4eb8e8",
+    "pale": "#d8f4ff",
+    "white": "#f4fbff"
+  },
+  "entities": {
+    "left": "YOU",
+    "right": "ALLY",
+    "initialRank": "09",
+    "finalRank": "10",
+    "badge": "MAX",
+    "trigger": "MAX LINK"
+  },
+  "bond": {
+    "style": "double-line",
+    "energyFrom": ["you", "ally"],
+    "energyDirection": "inward"
+  },
+  "circuit": {
+    "paths": ["ul", "ur", "lr", "ll"],
+    "shape": "diamond",
+    "outlineExpandPxApprox": 6
+  },
+  "timing": {
+    "energyMs": 300,
+    "rankMs": 180,
+    "circuitMs": 420,
+    "lockMs": 160,
+    "totalMs": 1060,
+    "easing": "cubic-bezier(0.33, 0.1, 0.2, 1) / cubic-bezier(0.2, 0.85, 0.25, 1)"
+  },
+  "api": {
+    "complete": "completeMaxRank()",
+    "reset": "resetMaxRank()",
+    "busyGuard": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "before": "Social link rank 09.",
+    "after": "Social link max rank. Rank 10.",
+    "stageAriaHidden": true,
+    "focusVisible": "2px solid #4eb8e8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate Rank 10, completed diamond circuit, outline, and MAX"
+  },
+  "constraints": {
+    "noParticles": true,
+    "noLoopingGlow": true,
+    "noConfetti": true,
+    "finalStatic": true,
+    "noExternalAssets": true
+  }
+}
