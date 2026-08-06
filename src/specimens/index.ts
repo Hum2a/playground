@@ -53,6 +53,7 @@ import { decisionShowdown } from './decision-showdown/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
+import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
 import { dualActivitySplit } from './dual-activity-split/entry'
 import { erasureDelete } from './erasure-delete/entry'
@@ -247,6 +248,7 @@ export const specimens: Specimen[] = [
   deletionGuillotine,
   diagnosticBootSequence,
   discoveryTearOpen,
+  dockLaunchBounce,
   dockMagnification,
   dramaticObjectionError,
   dualActivitySplit,

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/dock-launch-bounce.schema.json",
+  "title": "DockLaunchBounce",
+  "description": "Portable contract for finite dock launch bounce resolving into a running indicator beneath APP // 03.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "geometry",
+    "bounces",
+    "hold",
+    "running",
+    "controls",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "dock-launch-bounce" },
+    "intent": {
+      "type": "string",
+      "const": "APP // 03 performs exactly three decreasing vertical bounces over ~820ms, holds 80ms, then shows a 5×5 running indicator and RUNNING status."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "items",
+        "target",
+        "trigger",
+        "replay",
+        "statusClosed",
+        "statusRunning"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "const": [
+            "APP // 01",
+            "APP // 02",
+            "APP // 03",
+            "APP // 04",
+            "APP // 05"
+          ]
+        },
+        "target": { "type": "string", "const": "APP // 03" },
+        "trigger": { "type": "string", "const": "LAUNCH 03" },
+        "replay": { "type": "string", "const": "REPLAY" },
+        "statusClosed": { "type": "string", "const": "CLOSED" },
+        "statusRunning": { "type": "string", "const": "RUNNING" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tilePx", "gapPx", "itemCount", "indicatorPx"],
+      "properties": {
+        "tilePx": { "type": "number", "const": 44 },
+        "gapPx": { "type": "number", "const": 10 },
+        "itemCount": { "type": "number", "const": 5 },
+        "indicatorPx": { "type": "number", "const": 5 }
+      }
+    },
+    "bounces": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "peaksPx", "durationsMs", "totalMs"],
+      "properties": {
+        "count": { "type": "number", "const": 3 },
+        "peaksPx": {
+          "type": "array",
+          "const": [34, 24, 14]
+        },
+        "durationsMs": {
+          "type": "array",
+          "const": [320, 240, 260]
+        },
+        "totalMs": { "type": "number", "const": 820 }
+      }
+    },
+    "hold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["afterFinalLandingMs"],
+      "properties": {
+        "afterFinalLandingMs": { "type": "number", "const": 80 }
+      }
+    },
+    "running": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["onlyTargetMoves", "indicatorAfterLanding", "finalStatic"],
+      "properties": {
+        "onlyTargetMoves": { "type": "boolean", "const": true },
+        "indicatorAfterLanding": { "type": "boolean", "const": true },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["disabledDuringSequence", "noStacking"],
+      "properties": {
+        "disabledDuringSequence": { "type": "boolean", "const": true },
+        "noStacking": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loops"],
+      "properties": {
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noBounce", "immediateRunning", "triggers"],
+      "properties": {
+        "noBounce": { "type": "boolean", "const": true },
+        "immediateRunning": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "target", "indicator"],
+      "properties": {
+        "root": { "type": "string", "const": "dlbounce" },
+        "target": { "type": "string", "const": "dlbounce__tile--target" },
+        "indicator": { "type": "string", "const": "dlbounce__indicator" }
+      }
+    }
+  }
+}
