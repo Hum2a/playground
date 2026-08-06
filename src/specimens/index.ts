@@ -90,7 +90,6 @@ import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
-import { wildEncounterTransition } from './wild-encounter-transition/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -224,7 +223,6 @@ export const specimens: Specimen[] = [
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,
-  wildEncounterTransition,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
