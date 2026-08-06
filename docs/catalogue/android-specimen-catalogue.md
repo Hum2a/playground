@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **38 / 417** complete.
+- Progress: **39 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 379 |
+| Done | 39 |
+| Open | 378 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-345 | `SPX-1902` | `grid-reorder-gap` | Grid Reorder Gap |
 | AND-157 | `SPX-1714` | `button-loading-morph` | Button Loading Morph |
 | AND-163 | `SPX-1720` | `slider-thumb-pickup` | Slider Thumb Pickup |
 | AND-218 | `SPX-1775` | `dialog-materialise` | Dialog Materialise |
@@ -596,7 +597,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [ ] **AND-342** · `SPX-1899` · **Drop Commit Absorption** — proxy becomes part of destination.
 - [ ] **AND-343** · `SPX-1900` · **Invalid Drop Return** — rejected proxy returns deterministically to source.
 - [ ] **AND-344** · `SPX-1901` · **Multi-Item Drag Stack** — several selected items become counted stack.
-- [ ] **AND-345** · `SPX-1902` · **Grid Reorder Gap** — one insertion gap travels through grid.
+- [x] **AND-345** · `SPX-1902` · **Grid Reorder Gap** — one insertion gap travels through grid.
 - [ ] **AND-346** · `SPX-1903` · **Cross-Container Drag Handoff** — object changes ownership between lists.
 
 ## Haptics-Inspired Visual Responses

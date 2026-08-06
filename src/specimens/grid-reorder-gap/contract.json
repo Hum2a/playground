@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/grid-reorder-gap.schema.json",
+  "title": "GridReorderGap",
+  "description": "Portable contract for grid reorder with travelling gap.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "grid", "drag", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "grid-reorder-gap" },
+    "intent": {
+      "type": "string",
+      "const": "One insertion gap travels through grid while dragged tile follows pointer."
+    },
+    "grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cols", "rows", "tilePx", "gapPx"],
+      "properties": {
+        "cols": { "type": "number", "const": 4 },
+        "rows": { "type": "number", "const": 3 },
+        "tilePx": { "type": "number", "const": 64 },
+        "gapPx": { "type": "number", "const": 12 }
+      }
+    },
+    "drag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["longPressMs", "thresholdPx", "proxyScale", "moveMs"],
+      "properties": {
+        "longPressMs": { "type": "number", "const": 240 },
+        "thresholdPx": { "type": "number", "const": 6 },
+        "proxyScale": { "type": "number", "const": 1.06 },
+        "moveMs": { "type": "number", "const": 160 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantTiles", "triggers"],
+      "properties": {
+        "instantTiles": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gridLabel", "politeStatus"],
+      "properties": {
+        "gridLabel": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "grid", "tile", "proxy"],
+      "properties": {
+        "root": { "type": "string", "const": "grg" },
+        "grid": { "type": "string", "const": "grg__grid" },
+        "tile": { "type": "string", "const": "grg__tile" },
+        "proxy": { "type": "string", "const": "grg__proxy" }
+      }
+    }
+  }
+}
