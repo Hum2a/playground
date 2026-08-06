@@ -1,0 +1,8 @@
+{
+  "name": "ticker-pause-on-focus",
+  "ref": "SPX-3626",
+  "title": "Ticker Pause on Focus",
+  "mode": "typeset",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

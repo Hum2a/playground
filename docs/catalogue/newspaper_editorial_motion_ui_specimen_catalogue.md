@@ -301,7 +301,7 @@ chronology and information priority.
     updates are actively arriving.
 - [ ] **NEWS-103** · `SPX-3625` · ★★★★☆ **Latest Update Flash** — The newest live entry receives
     one brief emphasis then settles.
-- [ ] **NEWS-104** · `SPX-3626` · ★★★★★ **Ticker Pause on Focus** — Keyboard/pointer focus
+- [x] **NEWS-104** · `SPX-3626` · ★★★★★ **Ticker Pause on Focus** — Keyboard/pointer focus
     freezes the crawl for readability.
 - [ ] **NEWS-105** · `SPX-3627` · ★★★★☆ **Live Timeline Advance** — A vertical timeline grows as
     new updates are added.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-104 | SPX-3626 | `ticker-pause-on-focus` | Ticker Pause on Focus |
 | NEWS-101 | SPX-3623 | `live-blog-entry-insert` | Live Blog Entry Insert |
 | NEWS-100 | SPX-3622 | `breaking-ticker-crawl` | Breaking Ticker Crawl |
 | NEWS-094 | SPX-3616 | `stat-callout-rise` | Stat Callout Rise |
@@ -721,12 +722,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **42 / 237** complete.
+- Progress: **43 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 195 |
+| Done | 43 |
+| Open | 194 |
 
 ## Core first-wave / build queue
 
@@ -772,7 +773,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-094** · `SPX-3616` · **Stat Callout Rise** · `stat-callout-rise`
 - [x] **NEWS-100** · `SPX-3622` · **Breaking Ticker Crawl** · `breaking-ticker-crawl`
 - [x] **NEWS-101** · `SPX-3623` · **Live Blog Entry Insert** · `live-blog-entry-insert`
-- [ ] **NEWS-104** · `SPX-3626` · **Ticker Pause on Focus** · scaffold `ticker-pause-on-focus`
+- [x] **NEWS-104** · `SPX-3626` · **Ticker Pause on Focus** · `ticker-pause-on-focus`
 - [ ] **NEWS-108** · `SPX-3630` · **Election Needle Sweep** · scaffold `election-needle-sweep`
 - [ ] **NEWS-109** · `SPX-3631` · **Seat Count Tally** · scaffold `seat-count-tally`
 - [ ] **NEWS-110** · `SPX-3632` · **Map Result Fill** · scaffold `map-result-fill`

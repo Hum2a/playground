@@ -618,6 +618,8 @@ import { breakingTickerCrawl } from './breaking-ticker-crawl/entry'
 
 import { liveBlogEntryInsert } from './live-blog-entry-insert/entry'
 
+import { tickerPauseOnFocus } from './ticker-pause-on-focus/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1155,6 +1157,7 @@ export const specimens: Specimen[] = [
   statCalloutRise,
   breakingTickerCrawl,
   liveBlogEntryInsert,
+  tickerPauseOnFocus,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
