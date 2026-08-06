@@ -17,7 +17,7 @@ export const confrontationCardSlam: Specimen = {
     franchise: 'persona',
     works: ['persona-4'],
   },
-  tags: ["confrontation","card","slam","interrupt"],
+  tags: ["confrontation","slam","interrupt"],
   deps: 'none',
   motion: {
     loops: false,
