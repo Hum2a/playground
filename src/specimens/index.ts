@@ -105,6 +105,7 @@ import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
+import { postBurstRecovery } from './post-burst-recovery/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
@@ -194,6 +195,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   badgeCaseInsert,
+  postBurstRecovery,
   powerLevelReadout,
   powerStateTransformation,
   precisionMenuSnap,
