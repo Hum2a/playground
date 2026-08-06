@@ -1,0 +1,8 @@
+{
+  "name": "gain-reduction-slam",
+  "ref": "SPX-3798",
+  "title": "Gain Reduction Slam",
+  "mode": "meter",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

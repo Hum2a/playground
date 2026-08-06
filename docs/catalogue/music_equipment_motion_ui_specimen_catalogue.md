@@ -133,7 +133,7 @@ specimens can feel tactile without needing sound.
     clicks between fixed compression ratios.
 - [ ] **MUSIC-038** · `SPX-3797` · ★★★★★ **Attack Release Envelope** — An envelope visual
     tightens or relaxes as timing controls change.
-- [ ] **MUSIC-039** · `SPX-3798` · ★★★★★ **Gain Reduction Slam** — A transient produces a
+- [x] **MUSIC-039** · `SPX-3798` · ★★★★★ **Gain Reduction Slam** — A transient produces a
     decisive reduction-meter impact followed by recovery.
 - [ ] **MUSIC-040** · `SPX-3799` · ★★★★★ **Limiter Ceiling Lock** — Peaks hit a hard ceiling and
     flatten while the limiter state acquires.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-039 | SPX-3798 | `gain-reduction-slam` | Gain Reduction Slam |
 | MUSIC-032 | SPX-3791 | `spectrogram-waterfall` | Spectrogram Waterfall |
 | MUSIC-030 | SPX-3789 | `oscilloscope-trace` | Oscilloscope Trace |
 | MUSIC-028 | SPX-3787 | `spectrum-bar-dance` | Spectrum Bar Dance |
@@ -896,12 +897,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **33 / 310** complete.
+- Progress: **34 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 33 |
-| Open | 277 |
+| Done | 34 |
+| Open | 276 |
 
 ## Core first-wave / build queue
 
@@ -916,7 +917,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · `oscilloscope-trace`
 - [x] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · `spectrogram-waterfall`
 - [x] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · `compressor-threshold-crush`
-- [ ] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · scaffold `gain-reduction-slam`
+- [x] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · `gain-reduction-slam`
 - [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
 - [x] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · `stomp-switch-press`
 - [x] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · `pedalboard-signal-chain`
