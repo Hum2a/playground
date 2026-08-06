@@ -57,6 +57,7 @@ import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
+import { itemObtained } from './item-obtained/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
@@ -156,6 +157,7 @@ export const specimens: Specimen[] = [
   achievementEncounter,
   tacticalAlertPing,
   inkSplatTransition,
+  itemObtained,
   victoryResultsTally,
   blackoutLoader,
   blueDoorDiscovery,
