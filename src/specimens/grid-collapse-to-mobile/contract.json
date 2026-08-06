@@ -1,0 +1,8 @@
+{
+  "name": "grid-collapse-to-mobile",
+  "ref": "SPX-3555",
+  "title": "Grid Collapse to Mobile",
+  "mode": "paper",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

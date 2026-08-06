@@ -562,6 +562,8 @@ import { gridRuleConstruction } from './grid-rule-construction/entry'
 
 import { modularPageReplate } from './modular-page-replate/entry'
 
+import { gridCollapseToMobile } from './grid-collapse-to-mobile/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1071,6 +1073,7 @@ export const specimens: Specimen[] = [
   leadColumnExpansion,
   gridRuleConstruction,
   modularPageReplate,
+  gridCollapseToMobile,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
