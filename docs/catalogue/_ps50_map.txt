@@ -1,0 +1,50 @@
+01|PS-001|SPX-3307|control-center-rise|Control Center Rise
+02|PS-002|SPX-3308|activity-card-focus|Activity Card Focus
+03|PS-003|SPX-3309|home-game-focus-shift|Home Game Focus Shift
+04|PS-005|SPX-3311|context-background-crossfade|Context Background Crossfade
+05|PS-009|SPX-3315|home-to-game-handoff|Home-to-Game Handoff
+06|PS-019|SPX-3325|system-boot-glow|System Boot Glow
+07|PS-026|SPX-3332|game-launch-zoom|Game Launch Zoom
+08|PS-027|SPX-3333|resume-activity-handoff|Resume Activity Handoff
+09|PS-066|SPX-3372|directional-focus-travel|Directional Focus Travel
+10|PS-067|SPX-3373|focus-halo-settle|Focus Halo Settle
+11|PS-033|SPX-3339|activity-progress-fill|Activity Progress Fill
+12|PS-034|SPX-3340|activity-complete-burst|Activity Complete Burst
+13|PS-035|SPX-3341|objective-step-advance|Objective Step Advance
+14|PS-038|SPX-3344|activity-expand-details|Activity Expand Details
+15|PS-073|SPX-3379|media-card-focus-expand|Media Card Focus Expand
+16|PS-074|SPX-3380|card-to-details-morph|Card-to-Details Morph
+17|PS-076|SPX-3382|neighbour-push-out|Neighbour Push-Out
+18|PS-077|SPX-3383|card-collapse-return|Card Collapse Return
+19|PS-041|SPX-3347|trophy-unlock-pop|Trophy Unlock Pop
+20|PS-042|SPX-3348|rare-trophy-reveal|Rare Trophy Reveal
+21|PS-049|SPX-3355|download-progress-ring|Download Progress Ring
+22|PS-050|SPX-3356|download-queue-advance|Download Queue Advance
+23|PS-051|SPX-3357|install-phase-transition|Install Phase Transition
+24|PS-053|SPX-3359|download-complete-morph|Download Complete Morph
+25|PS-058|SPX-3364|adaptive-trigger-meter|Adaptive Trigger Meter
+26|PS-059|SPX-3365|haptic-pulse-visualizer|Haptic Pulse Visualizer
+27|PS-063|SPX-3369|trigger-breakpoint-confirm|Trigger Breakpoint Confirm
+28|PS-140|SPX-3446|cloud-sync-progress|Cloud Sync Progress
+29|PS-146|SPX-3452|save-conflict-compare|Save Conflict Compare
+30|PS-083|SPX-3389|purchase-confirm-hold|Purchase Confirm Hold
+31|PS-021|SPX-3327|resume-from-rest-wake|Resume-from-Rest Wake
+32|PS-030|SPX-3336|quick-resume-snapshot|Quick Resume Snapshot
+33|PS-031|SPX-3337|game-close-return|Game Close Return
+34|PS-129|SPX-3435|rest-mode-dim|Rest Mode Dim
+35|PS-130|SPX-3436|wake-from-rest|Wake from Rest
+36|PS-135|SPX-3441|network-lost-takeover|Network Lost Takeover
+37|PS-149|SPX-3455|game-crash-recovery|Game Crash Recovery
+38|PS-102|SPX-3408|system-notification-slide|System Notification Slide
+39|PS-110|SPX-3416|screenshot-capture-flash|Screenshot Capture Flash
+40|PS-111|SPX-3417|capture-thumbnail-flyout|Capture Thumbnail Flyout
+41|PS-011|SPX-3317|four-shape-orbit-loader|Four-Shape Orbit Loader
+42|PS-013|SPX-3319|shape-scatter-transition|Shape Scatter Transition
+43|PS-046|SPX-3352|platinum-style-completion|Platinum-Style Completion
+44|PS-071|SPX-3377|back-navigation-restore|Back Navigation Restore
+45|PS-088|SPX-3394|library-grid-focus|Library Grid Focus
+46|PS-096|SPX-3402|party-join-handoff|Party Join Handoff
+47|PS-109|SPX-3415|controller-disconnected-alert|Controller Disconnected Alert
+48|PS-157|SPX-3463|dwell-to-select-ring|Dwell-to-Select Ring
+49|PS-181|SPX-3487|horizon-style-focus-scan|Horizon-Style Focus Scan
+50|PS-184|SPX-3490|ratchet-style-rift-transition|Ratchet-Style Rift Transition

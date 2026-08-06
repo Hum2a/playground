@@ -95,6 +95,13 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Netflix / streaming UI',
     works: {},
   },
+  playstation: {
+    label: 'PlayStation',
+    works: {
+      ps5: { label: 'PlayStation 5' },
+      ps4: { label: 'PlayStation 4' },
+    },
+  },
   original: {
     label: 'Original',
     works: {},

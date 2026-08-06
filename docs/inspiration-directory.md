@@ -129,6 +129,14 @@ Backlog: [`docs/catalogue/naruto-specimen-catalogue.md`](catalogue/naruto-specim
 
 Backlog: [`docs/catalogue/netflix-specimen-catalogue.md`](catalogue/netflix-specimen-catalogue.md) (`NF-NNN` / `SPX-3110`…`SPX-3306`).
 
+### PlayStation (`playstation`)
+
+*(PS5-style home/control center, geometric system motion, activities, trophies, downloads, DualSense-style feedback; no PlayStation logos, fonts, or game assets)*
+
+Works: `ps5`, `ps4`.
+
+Backlog: [`docs/catalogue/playstation-specimen-catalogue.md`](catalogue/playstation-specimen-catalogue.md) (`PS-NNN` / `SPX-3307`…`SPX-3522`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.
