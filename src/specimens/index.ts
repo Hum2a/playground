@@ -193,6 +193,7 @@ import { fusionPreview } from './fusion-preview/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { gadgetDeployment } from './gadget-deployment/entry'
 import { gameCloseReturn } from './game-close-return/entry'
+import { gameCrashRecovery } from './game-crash-recovery/entry'
 import { gameLaunchZoom } from './game-launch-zoom/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
@@ -716,6 +717,7 @@ export const specimens: Specimen[] = [
   fusionSelectionMerge,
   gadgetDeployment,
   gameCloseReturn,
+  gameCrashRecovery,
   gameLaunchZoom,
   glassFractureReveal,
   graphicBurstHover,

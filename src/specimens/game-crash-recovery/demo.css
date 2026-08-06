@@ -1,0 +1,187 @@
+/* PlayStation specimen — portable iframe-isolated CSS */
+
+.ps {
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-blue: #2E90FF;
+  --ps-blue-light: #7EB6FF;
+  --ps-panel: #121820;
+  --ps-panel-2: #1a2330;
+  --ps-rule: #243044;
+  --ps-pewter: #8a9bb0;
+
+  box-sizing: border-box;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  padding: 14px;
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  color: var(--ps-chalk);
+}
+
+.ps *,
+.ps *::before,
+.ps *::after {
+  box-sizing: border-box;
+}
+
+.ps__eyebrow {
+  margin: 0 0 10px;
+  font: 10px/1.2 ui-monospace, 'Cascadia Code', monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ps-pewter);
+}
+
+.ps__stage {
+  position: relative;
+  min-height: 200px;
+  border: 1px solid var(--ps-rule);
+  border-radius: 4px;
+  background: var(--ps-panel);
+  overflow: hidden;
+}
+
+.ps__btn {
+  margin-top: 12px;
+  padding: 8px 14px;
+  font: 10px/1 ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ps-ink);
+  background: var(--ps-chalk);
+  border: 1px solid var(--ps-chalk);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.ps__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.ps__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ps__status {
+  margin: 10px 0 0;
+  font: 10px/1.4 ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  color: var(--ps-pewter);
+}
+
+.ps__grid {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 12px;
+  transition: opacity 600ms ease, filter 600ms ease;
+}
+
+.ps__card {
+  width: 72px;
+  height: 96px;
+  border: 1px solid var(--ps-rule);
+  border-radius: 3px;
+  background: linear-gradient(155deg, var(--ps-panel-2), var(--ps-rule));
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms ease, box-shadow 280ms ease;
+}
+
+.ps__card.is-focus {
+  border-color: var(--ps-blue);
+  box-shadow: 0 0 0 2px rgba(46, 144, 255, 0.35);
+}
+
+.ps__halo {
+  position: absolute;
+  inset: auto;
+  pointer-events: none;
+  border: 2px solid var(--ps-blue);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 400ms ease, box-shadow 400ms ease;
+  box-shadow: 0 0 18px rgba(46, 144, 255, 0.45);
+}
+
+.ps [hidden] {
+  display: none !important;
+}
+
+
+.gcr2__game {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #243858, var(--ps-panel));
+  font: 10px/1 ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  color: var(--ps-blue-light);
+  transition: transform 320ms ease, opacity 320ms ease;
+}
+.ps__error {
+  position: absolute;
+  inset: 16px;
+  padding: 16px;
+  border: 1px solid var(--ps-rule);
+  border-radius: 4px;
+  background: var(--ps-panel-2);
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity 280ms ease, transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gcr2__code { margin: 0; font: 10px/1 ui-monospace, monospace; color: var(--ps-blue); letter-spacing: 0.08em; }
+.gcr2__msg { margin: 0; font-size: 12px; color: var(--ps-chalk); }
+.gcr2__actions { display: flex; gap: 8px; margin-top: 4px; }
+.gcr2__act {
+  padding: 7px 10px;
+  font: 9px/1 ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--ps-blue);
+  background: var(--ps-blue);
+  color: var(--ps-ink);
+  border-radius: 2px;
+  cursor: pointer;
+}
+.gcr2__act--ghost { background: transparent; color: var(--ps-blue-light); }
+.gcr2__act:focus-visible { outline: 2px solid var(--ps-blue-light); outline-offset: 2px; }
+.gcr2__stage[data-phase="crashed"] .gcr2__game { transform: scale(0.9); opacity: 0.15; }
+.gcr2__stage[data-phase="crashed"] .ps__error { opacity: 1; transform: translateY(0) scale(1); }
+.gcr2__stage[data-phase="crashed"] .ps__error[hidden] { display: flex !important; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ps__stage,
+  .ps__card,
+  .ps__flash,
+  .ps__thumb,
+  .ps__notify,
+  .ps__overlay,
+  .ps__game,
+  .ps__grid,
+  .ps__halo,
+  .ps__error,
+  .ps__offline {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+[data-force-reduced-motion="true"] .ps__stage,
+[data-force-reduced-motion="true"] .ps__card,
+[data-force-reduced-motion="true"] .ps__flash,
+[data-force-reduced-motion="true"] .ps__thumb,
+[data-force-reduced-motion="true"] .ps__notify,
+[data-force-reduced-motion="true"] .ps__overlay,
+[data-force-reduced-motion="true"] .ps__game,
+[data-force-reduced-motion="true"] .ps__grid,
+[data-force-reduced-motion="true"] .ps__halo,
+[data-force-reduced-motion="true"] .ps__error,
+[data-force-reduced-motion="true"] .ps__offline {
+  transition: none !important;
+  animation: none !important;
+}

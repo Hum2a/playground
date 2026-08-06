@@ -1,0 +1,25 @@
+{
+  "name": "game-crash-recovery",
+  "ref": "SPX-3455",
+  "ps": "PS-149",
+  "title": "Game Crash Recovery",
+  "palette": {
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "blue": "#2E90FF",
+    "blueLight": "#7EB6FF",
+    "panel": "#121820",
+    "panel2": "#1a2330",
+    "rule": "#243044",
+    "pewter": "#8a9bb0"
+  },
+  "behaviour": "Game opacity 0.15; error panel rises with CE code and two actions.",
+  "trigger": "SIMULATE CRASH / RETRY / CLOSE APP",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "End states remain; transitions and animations removed"
+  }
+}

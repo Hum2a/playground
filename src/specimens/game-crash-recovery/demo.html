@@ -1,0 +1,16 @@
+<div class="ps" data-ps="game-crash-recovery">
+  <p class="ps__eyebrow">Game Crash Recovery</p>
+  <div class="ps__stage gcr2__stage" data-gcr2-stage data-phase="playing">
+    <div class="ps__game gcr2__game" aria-hidden="true"><span>PLAYING</span></div>
+    <div class="ps__error gcr2__error" data-gcr2-error hidden>
+      <p class="gcr2__code">CE-34878-0</p>
+      <p class="gcr2__msg">Something went wrong with this application.</p>
+      <div class="gcr2__actions">
+        <button type="button" class="gcr2__act" data-gcr2-retry>RETRY</button>
+        <button type="button" class="gcr2__act gcr2__act--ghost" data-gcr2-close>CLOSE APP</button>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="ps__btn" data-gcr2-crash>SIMULATE CRASH</button>
+  <p class="ps__status" data-gcr2-status aria-live="polite">Game running normally.</p>
+</div>
