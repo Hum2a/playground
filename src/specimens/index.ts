@@ -256,6 +256,7 @@ import { neighbourPushOut } from './neighbour-push-out/entry'
 import { networkScan360 } from './network-scan-360/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { nextEpisodeCountdown } from './next-episode-countdown/entry'
+import { nextUpCancel } from './next-up-cancel/entry'
 import { noSignalCard } from './no-signal-card/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
@@ -722,6 +723,7 @@ export const specimens: Specimen[] = [
   networkScan360,
   newspaperHeadlineDrop,
   nextEpisodeCountdown,
+  nextUpCancel,
   noSignalCard,
   notificationBannerDrop,
   notificationExpand,
