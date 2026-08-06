@@ -152,6 +152,9 @@ export const SUGGESTED_FREE_TAGS = [
   'manga',
   'cut-in',
   'threshold',
+  'disconnect',
+  'unlink',
+  'relationship',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]
