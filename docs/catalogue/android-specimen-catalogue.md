@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **7 / 417** complete.
+- Progress: **8 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 410 |
+| Done | 8 |
+| Open | 409 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-061 | `SPX-1618` | `app-launch-from-icon` | App Launch from Icon |
 | AND-011 | `SPX-1568` | `shared-x-axis-navigation` | Shared X-Axis Navigation |
 | AND-020 | `SPX-1577` | `fade-through` | Fade Through |
 | AND-036 | `SPX-1593` | `bounded-touch-ripple` | Bounded Touch Ripple |
@@ -51,7 +52,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-020** · `SPX-1577` · **Fade Through** — material-fade-patterns
 - [x] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — shared-axis-transitions
 - [x] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
-- [ ] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher-home-screen
+- [x] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher-home-screen
 - [ ] **AND-054** · `SPX-1611` · **Home Swipe Up** — gesture-navigation
 - [ ] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — android-recents-overview
 - [ ] **AND-248** · `SPX-1805` · **Recents Card Restore** — android-recents-overview
@@ -158,7 +159,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Launcher / Home Screen
 
-- [ ] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher tile expands into application surface from exact grid coordinates.
+- [x] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher tile expands into application surface from exact grid coordinates.
 - [ ] **AND-062** · `SPX-1619` · **App Close to Icon** — application contracts back into its originating launcher position.
 - [ ] **AND-063** · `SPX-1620` · **Launcher Page Swipe** — app-grid pages move as coherent spatial planes.
 - [ ] **AND-064** · `SPX-1621` · **Icon Reorder Gap** — dragged launcher item creates one moving insertion gap.

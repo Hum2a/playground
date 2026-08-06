@@ -1,0 +1,179 @@
+/* app-launch-from-icon — portable specimen styles. */
+
+.alf {
+  --alf-ink: #12141a;
+  --alf-panel: #1a1e26;
+  --alf-line: #2c323c;
+  --alf-muted: #727a88;
+  --alf-text: #e8ecf4;
+  --alf-accent: #6b8fd4;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--alf-text);
+  background: var(--alf-ink);
+}
+
+.alf *,
+.alf *::before,
+.alf *::after {
+  box-sizing: border-box;
+}
+
+.alf__scaffold {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+  border: 1px solid var(--alf-line);
+  background: linear-gradient(180deg, #1a2030 0%, #12141a 100%);
+}
+
+.alf__launcher {
+  position: absolute;
+  inset: 0;
+  padding: 2.5rem 1.25rem 1.5rem;
+}
+
+.alf__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 56px);
+  gap: 1.25rem 1.5rem;
+  justify-content: center;
+}
+
+.alf__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  color: var(--alf-text);
+}
+
+.alf__tile:focus-visible {
+  outline: 2px solid var(--alf-accent);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.alf__tile-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--alf-line) 80%, #fff);
+}
+
+.alf__tile-icon--a { background: linear-gradient(135deg, #4a6fa5, #2d4568); }
+.alf__tile-icon--b { background: linear-gradient(135deg, #5a8f6b, #2d5a3e); }
+.alf__tile-icon--c { background: linear-gradient(135deg, #8f6b5a, #5a3e2d); }
+.alf__tile-icon--d { background: linear-gradient(135deg, #6b5a8f, #3e2d5a); }
+.alf__tile-icon--e { background: linear-gradient(135deg, #5a7a8f, #2d455a); }
+.alf__tile-icon--f { background: linear-gradient(135deg, #8f8f5a, #5a5a2d); }
+.alf__tile-icon--g { background: linear-gradient(135deg, #8f5a7a, #5a2d45); }
+.alf__tile-icon--h { background: linear-gradient(135deg, #5a8f8f, #2d5a5a); }
+.alf__tile-icon--i { background: linear-gradient(135deg, #7a6b5a, #453a2d); }
+.alf__tile-icon--j { background: linear-gradient(135deg, #6b6b8f, #3e3e5a); }
+.alf__tile-icon--k { background: linear-gradient(135deg, #8f7a5a, #5a4a2d); }
+.alf__tile-icon--l { background: linear-gradient(135deg, #5a6b8f, #2d3e5a); }
+.alf__tile-icon--m { background: linear-gradient(135deg, #7a5a8f, #452d5a); }
+.alf__tile-icon--n { background: linear-gradient(135deg, #5a8f7a, #2d5a4a); }
+.alf__tile-icon--o { background: linear-gradient(135deg, #8f5a5a, #5a2d2d); }
+.alf__tile-icon--p { background: linear-gradient(135deg, #6b8f5a, #3e5a2d); }
+
+.alf__tile-label {
+  font-size: 0.62rem;
+  color: var(--alf-muted);
+}
+
+.alf__app {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--alf-panel);
+  overflow: hidden;
+  will-change: transform;
+}
+
+.alf__app-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--alf-line);
+}
+
+.alf__close {
+  appearance: none;
+  border: 1px solid var(--alf-line);
+  background: transparent;
+  color: var(--alf-muted);
+  font: inherit;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.alf__close:focus-visible {
+  outline: 2px solid var(--alf-accent);
+  outline-offset: 2px;
+}
+
+.alf__app-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.alf__app-body {
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+.alf__app.is-internals-visible .alf__app-body,
+.alf[data-alf-state='app'] .alf__app-body {
+  opacity: 1;
+}
+
+.alf__app-line {
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  color: var(--alf-muted);
+}
+
+.alf__app-block {
+  height: 64px;
+  border-radius: 8px;
+  border: 1px solid var(--alf-line);
+  background: color-mix(in srgb, var(--alf-line) 30%, transparent);
+  margin-bottom: 0.65rem;
+}
+
+.alf__app-block--short {
+  height: 44px;
+  width: 68%;
+}
+
+.alf__status {
+  margin: 0.5rem 0 0;
+  font-size: 0.62rem;
+  color: var(--alf-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alf__app-body {
+    transition-duration: 80ms !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .alf__app-body {
+  transition-duration: 80ms !important;
+}

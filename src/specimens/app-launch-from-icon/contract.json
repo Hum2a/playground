@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/app-launch-from-icon.schema.json",
+  "title": "AppLaunchFromIcon",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "preview", "launcher", "launch", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "app-launch-from-icon" },
+    "intent": {
+      "type": "string",
+      "const": "56×56 tile launches to 390×700 app from tile centre at scale 0.12 over 420ms; radius 18→0; internals after 45% progress."
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 390 },
+        "heightPx": { "type": "number", "const": 700 }
+      }
+    },
+    "launcher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gridCols", "gridRows", "tileSizePx"],
+      "properties": {
+        "gridCols": { "type": "number", "const": 4 },
+        "gridRows": { "type": "number", "const": 4 },
+        "tileSizePx": { "type": "number", "const": 56 }
+      }
+    },
+    "launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "startScale", "radiusStartPx", "internalsThreshold"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 420 },
+        "startScale": { "type": "number", "const": 0.12 },
+        "radiusStartPx": { "type": "number", "const": 18 },
+        "internalsThreshold": { "type": "number", "const": 0.45 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateSwitch", "fadeMs", "triggers"],
+      "properties": {
+        "immediateSwitch": { "type": "boolean", "const": true },
+        "fadeMs": { "type": "number", "const": 100 },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "scaffold", "launcher", "app", "tile"],
+      "properties": {
+        "root": { "type": "string", "const": "alf" },
+        "scaffold": { "type": "string", "const": "alf__scaffold" },
+        "launcher": { "type": "string", "const": "alf__launcher" },
+        "app": { "type": "string", "const": "alf__app" },
+        "tile": { "type": "string", "const": "alf__tile" }
+      }
+    }
+  }
+}
