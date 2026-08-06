@@ -13,6 +13,7 @@ import { callingCardSlam } from './calling-card-slam/entry'
 import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
+import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
@@ -184,6 +185,7 @@ export const specimens: Specimen[] = [
   captureShake,
   captureBreakout,
   cardBreakSummon,
+  chargeRelease,
   choiceExecutionSlash,
   clockHandWipe,
   comicCardSelection,

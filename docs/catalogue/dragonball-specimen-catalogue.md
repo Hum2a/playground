@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **8 / 244** complete.
+- Progress: **9 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 8 |
-| Open | 236 |
+| Done | 9 |
+| Open | 235 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-004 | `SPX-969` | `charge-release` | Charge Release |
 | DB-016 | `SPX-981` | `power-state-transformation` | Power State Transformation |
 | DB-027 | `SPX-992` | `ultra-state-optimisation` | Ultra State Optimisation |
 | DB-031 | `SPX-996` | `scouter-scan` | Scouter Scan |
@@ -52,7 +53,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-034** · `SPX-999` · **Scouter Break** — scouter-scanning-analytics
 - [x] **DB-001** · `SPX-966` · **Ki Charge Meter** — ki-charging-progress
 - [x] **DB-003** · `SPX-968` · **Kamehameha Charge** — ki-charging-progress
-- [ ] **DB-004** · `SPX-969` · **Charge → Release** — ki-charging-progress
+- [x] **DB-004** · `SPX-969` · **Charge → Release** — ki-charging-progress
 - [ ] **DB-005** · `SPX-970` · **Overcharge Warning** — ki-charging-progress
 - [x] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — transformation
 - [x] **DB-027** · `SPX-992` · **Ultra Instinct Activation** — transformation
@@ -82,7 +83,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-001** · `SPX-966` · **Ki Charge Meter** — scattered energy particles accelerate inward as progress approaches completion.
 - [ ] **DB-002** · `SPX-967` · **Power-Up Threshold** — an ordinary progress state becomes increasingly unstable before snapping into READY at 100%.
 - [x] **DB-003** · `SPX-968` · **Kamehameha Charge** — several small energy streams converge into one concentrated action node.
-- [ ] **DB-004** · `SPX-969` · **Charge → Release** — holding builds potential energy, releasing converts the stored state into a travelling action.
+- [x] **DB-004** · `SPX-969` · **Charge → Release** — holding builds potential energy, releasing converts the stored state into a travelling action.
 - [ ] **DB-005** · `SPX-970` · **Overcharge Warning** — progress safely reaches 100%, then enters an increasingly unstable overflow region.
 - [ ] **DB-006** · `SPX-971` · **Ki Reserve Drain** — a stored resource continuously depletes while an enhanced feature remains active.
 - [ ] **DB-007** · `SPX-972` · **Charge Interrupted** — accumulated progress violently disperses when an operation is cancelled.

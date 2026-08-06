@@ -1,0 +1,45 @@
+<div class="crl" data-charge-release data-state="idle">
+  <p class="crl__op" id="crl-op">DEPLOY</p>
+
+  <div class="crl__stage" data-crl-stage>
+    <article class="crl__card crl__card--source" data-crl-source>
+      <p class="crl__role">SOURCE</p>
+      <h2 class="crl__name">LOCAL</h2>
+      <div class="crl__node-slot">
+        <span class="crl__node" data-crl-node aria-hidden="true"></span>
+      </div>
+      <p class="crl__charge">
+        <span class="crl__charge-label">CHARGE</span>
+        <span class="crl__charge-value" data-crl-charge>0%</span>
+      </p>
+    </article>
+
+    <div class="crl__lane" data-crl-lane aria-hidden="true">
+      <span class="crl__beam" data-crl-beam></span>
+      <span class="crl__ghost crl__ghost--1" data-crl-ghost="1"></span>
+      <span class="crl__ghost crl__ghost--2" data-crl-ghost="2"></span>
+      <span class="crl__ghost crl__ghost--3" data-crl-ghost="3"></span>
+    </div>
+
+    <article class="crl__card crl__card--target" data-crl-target>
+      <p class="crl__role">TARGET</p>
+      <h2 class="crl__name">PRODUCTION</h2>
+      <p class="crl__target-status" data-crl-target-status>WAITING</p>
+      <span class="crl__ring" data-crl-ring aria-hidden="true"></span>
+    </article>
+  </div>
+
+  <p class="crl__gate" data-crl-gate>INSUFFICIENT CHARGE</p>
+  <p class="crl__meta">
+    <span class="crl__meta-label">STATE</span>
+    <span class="crl__meta-value" data-crl-meta>REVERSIBLE</span>
+  </p>
+
+  <div class="crl__controls">
+    <button type="button" class="crl__btn" data-crl-charge>CHARGE</button>
+    <button type="button" class="crl__btn crl__btn--release" data-crl-release disabled>RELEASE</button>
+    <button type="button" class="crl__btn crl__btn--ghost" data-crl-reset hidden>RESET</button>
+  </div>
+
+  <p class="crl__announce" data-crl-announce role="status" aria-live="polite"></p>
+</div>
