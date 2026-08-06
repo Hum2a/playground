@@ -1,0 +1,32 @@
+<div class="ft" data-fade-through data-ft-state="a">
+  <div class="ft__scaffold">
+    <div class="ft__chrome">
+      <span class="ft__label">Content state</span>
+      <button type="button" class="ft__toggle" data-ft-toggle>Toggle</button>
+    </div>
+
+    <div class="ft__viewport" data-ft-viewport>
+      <div class="ft__panel ft__panel--a" data-ft-panel="a">
+        <h2 class="ft__title">Overview</h2>
+        <p class="ft__copy">Three active routes this week. Weather stable.</p>
+        <div class="ft__metric" aria-hidden="true">
+          <span>12</span>
+          <span>stops</span>
+        </div>
+      </div>
+
+      <div class="ft__panel ft__panel--b" data-ft-panel="b" hidden>
+        <h2 class="ft__title">Schedule</h2>
+        <p class="ft__copy">Next departure in 18 minutes. Platform B.</p>
+        <div class="ft__metric" aria-hidden="true">
+          <span>18</span>
+          <span>min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="ft__status" role="status" aria-live="polite" data-ft-status>
+    Showing overview state.
+  </p>
+</div>

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **5 / 417** complete.
+- Progress: **6 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 412 |
+| Done | 6 |
+| Open | 411 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-020 | `SPX-1577` | `fade-through` | Fade Through |
 | AND-036 | `SPX-1593` | `bounded-touch-ripple` | Bounded Touch Ripple |
 | AND-002 | `SPX-1559` | `fab-to-composer-transform` | FAB-to-Composer Transform |
 | AND-001 | `SPX-1558` | `card-to-detail-container-transform` | Card-to-Detail Container Transform |
@@ -46,7 +47,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-045** · `SPX-1602` · **Predictive Back App Shrink** — android-back-gesture
 - [x] **AND-001** · `SPX-1558` · **Card-to-Detail Container Transform** — material-container-transform
 - [x] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — material-container-transform
-- [ ] **AND-020** · `SPX-1577` · **Fade Through** — material-fade-patterns
+- [x] **AND-020** · `SPX-1577` · **Fade Through** — material-fade-patterns
 - [ ] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — shared-axis-transitions
 - [x] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
 - [ ] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher-home-screen
@@ -100,7 +101,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Material Fade Patterns
 
-- [ ] **AND-020** · `SPX-1577` · **Fade Through** — outgoing content fades first, then incoming content establishes itself after a short gap.
+- [x] **AND-020** · `SPX-1577` · **Fade Through** — outgoing content fades first, then incoming content establishes itself after a short gap.
 - [ ] **AND-021** · `SPX-1578` · **Fade Through with Scale** — content replacement uses opacity plus restrained scale hierarchy.
 - [ ] **AND-022** · `SPX-1579` · **Crossfade with Persistent Header** — body content swaps while header remains anchored.
 - [ ] **AND-023** · `SPX-1580` · **Staggered Fade Through** — child elements enter in deterministic groups after parent transition.

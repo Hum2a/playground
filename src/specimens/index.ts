@@ -86,6 +86,7 @@ import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { fabToComposerTransform } from './fab-to-composer-transform/entry'
+import { fadeThrough } from './fade-through/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
@@ -327,6 +328,7 @@ export const specimens: Specimen[] = [
   evolutionComplete,
   evolutionSilhouetteTransformation,
   fabToComposerTransform,
+  fadeThrough,
   failureShatter,
   forgetAMove,
   fullMoonMilestone,
