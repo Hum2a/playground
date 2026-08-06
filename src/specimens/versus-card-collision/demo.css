@@ -1,0 +1,275 @@
+/* SPX-2037 Versus Card Collision — portable specimen. */
+
+.vcc {
+  --vcc-primary: #38a3ff;
+  --vcc-ink: #101820;
+  --vcc-paper: #f4f7fa;
+  --vcc-accent: #ff4d35;
+  --vcc-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1rem;
+  background: var(--vcc-ink);
+  color: var(--vcc-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.vcc *,
+.vcc *::before,
+.vcc *::after {
+  box-sizing: border-box;
+}
+
+.vcc__arena {
+  position: relative;
+  width: min(100%, 340px);
+  height: 200px;
+  overflow: hidden;
+  border: 4px solid var(--vcc-paper);
+  background: rgb(244 247 250 / 0.04);
+  clip-path: polygon(2% 0%, 100% 3%, 98% 100%, 0% 97%);
+}
+
+.vcc__card {
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  min-height: 88px;
+  margin-top: -44px;
+  padding: 0.65rem 0.75rem;
+  background: var(--vcc-paper);
+  color: var(--vcc-ink);
+  border: 3px solid var(--vcc-ink);
+  clip-path: polygon(4% 0%, 100% 6%, 96% 100%, 0% 94%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.vcc__card strong {
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.vcc__rank {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--vcc-primary);
+}
+
+.vcc__card--left {
+  left: -48%;
+}
+
+.vcc__card--right {
+  right: -48%;
+}
+
+.vcc__vs {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--vcc-accent);
+  opacity: 0.35;
+  z-index: 1;
+}
+
+.vcc__impact {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -40px;
+  background: var(--vcc-accent);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  opacity: 0;
+  transform: scale(0.3);
+  z-index: 2;
+}
+
+.vcc__run {
+  margin: 0;
+  padding: 0.55rem 1.2rem;
+  border: 3px solid var(--vcc-primary);
+  background: var(--vcc-ink);
+  color: var(--vcc-paper);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+.vcc__run:focus-visible {
+  outline: 2px solid var(--vcc-primary);
+  outline-offset: 3px;
+}
+
+.vcc__status {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgb(244 247 250 / 0.7);
+}
+
+.vcc[data-phase="rush"] .vcc__card--left {
+  animation: vcc-left-rush 740ms var(--vcc-ease) forwards;
+}
+
+.vcc[data-phase="rush"] .vcc__card--right {
+  animation: vcc-right-rush 740ms var(--vcc-ease) forwards;
+}
+
+.vcc[data-phase="rush"] .vcc__vs {
+  animation: vcc-vs-pop 280ms ease-out 520ms forwards;
+}
+
+.vcc[data-phase="rush"] .vcc__impact {
+  animation: vcc-impact 320ms ease-out 560ms forwards;
+}
+
+.vcc[data-phase="clash"] .vcc__card--left {
+  left: 8%;
+  transform: rotate(-3deg);
+}
+
+.vcc[data-phase="clash"] .vcc__card--right {
+  right: 8%;
+  transform: rotate(3deg);
+}
+
+.vcc[data-phase="clash"] .vcc__vs {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.vcc[data-phase="clash"] .vcc__impact {
+  opacity: 0;
+}
+
+@keyframes vcc-left-rush {
+  0% {
+    left: -48%;
+    transform: rotate(0deg);
+  }
+  75% {
+    left: 6%;
+    transform: rotate(-5deg);
+  }
+  100% {
+    left: 8%;
+    transform: rotate(-3deg);
+  }
+}
+
+@keyframes vcc-right-rush {
+  0% {
+    right: -48%;
+    transform: rotate(0deg);
+  }
+  75% {
+    right: 6%;
+    transform: rotate(5deg);
+  }
+  100% {
+    right: 8%;
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes vcc-vs-pop {
+  from {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+@keyframes vcc-impact {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vcc[data-phase="rush"] .vcc__card--left,
+  .vcc[data-phase="rush"] .vcc__card--right,
+  .vcc[data-phase="rush"] .vcc__vs,
+  .vcc[data-phase="rush"] .vcc__impact {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--left,
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--right,
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__vs,
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__impact {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vcc[data-phase="rush"] .vcc__card--left,
+  .vcc[data-phase="clash"] .vcc__card--left {
+    left: 8%;
+    transform: rotate(-3deg);
+  }
+
+  .vcc[data-phase="rush"] .vcc__card--right,
+  .vcc[data-phase="clash"] .vcc__card--right {
+    right: 8%;
+    transform: rotate(3deg);
+  }
+
+  .vcc[data-phase="rush"] .vcc__vs,
+  .vcc[data-phase="clash"] .vcc__vs {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  .vcc[data-phase="rush"] .vcc__impact {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--left,
+[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__card--left {
+  left: 8%;
+  transform: rotate(-3deg);
+}
+
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--right,
+[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__card--right {
+  right: 8%;
+  transform: rotate(3deg);
+}
+
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__vs,
+[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__vs {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__impact {
+  opacity: 0;
+}

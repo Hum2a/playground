@@ -244,6 +244,7 @@ import { truthShotNotification } from './truth-shot-notification/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { universalClipboardTransfer } from './universal-clipboard-transfer/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
+import { versusCardCollision } from './versus-card-collision/entry'
 import { verticalContentStretch } from './vertical-content-stretch/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
@@ -545,6 +546,7 @@ export const specimens: Specimen[] = [
   ultraStateOptimisation,
   universalClipboardTransfer,
   velvetDoorTransition,
+  versusCardCollision,
   verticalContentStretch,
   victoryResultsTally,
   volumeBrightnessHud,
