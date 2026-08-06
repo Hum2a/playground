@@ -394,6 +394,7 @@ import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { suspectCardReveal } from './suspect-card-reveal/entry'
 import { swipeFullCommit } from './swipe-full-commit/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
+import { systemBootGlow } from './system-boot-glow/entry'
 import { tabIndicatorStretch } from './tab-indicator-stretch/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
@@ -889,6 +890,7 @@ export const specimens: Specimen[] = [
   suspectCardReveal,
   swipeFullCommit,
   synchronousFusionMerge,
+  systemBootGlow,
   tabIndicatorStretch,
   tacticalAlertPing,
   tacticalCommandWheel,

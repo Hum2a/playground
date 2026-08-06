@@ -1,0 +1,21 @@
+{
+  "name": "system-boot-glow",
+  "intent": "Glow builds then UI resolves.",
+  "catalogue": {
+    "ps": "PS-019",
+    "ref": "SPX-3325"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "api": {
+    "run": "runSystemBootGlow()",
+    "reset": "resetSystemBootGlow()"
+  },
+  "reducedMotion": {
+    "behaviour": "READY UI shown immediately without glow build"
+  }
+}
