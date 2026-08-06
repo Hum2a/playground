@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/invalid-drop-return.schema.json",
+  "title": "InvalidDropReturn",
+  "description": "Portable contract for invalid drop rejection and source return.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "rejection",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "invalid-drop-return" },
+    "intent": {
+      "type": "string",
+      "const": "Rejected drag returns along quadratic path to source; one 3px refusal on READ ONLY."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "invalidTarget", "validTarget", "rejectedStatus"],
+      "properties": {
+        "source": { "type": "string", "const": "CONFIG.JSON" },
+        "invalidTarget": { "type": "string", "const": "READ ONLY" },
+        "validTarget": { "type": "string", "const": "ARCHIVE" },
+        "rejectedStatus": { "type": "string", "const": "DROP REJECTED" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent", "danger"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0f1218" },
+        "panel": { "type": "string", "const": "#1a1f28" },
+        "line": { "type": "string", "const": "#2d3542" },
+        "muted": { "type": "string", "const": "#7c8696" },
+        "cream": { "type": "string", "const": "#e9edf3" },
+        "accent": { "type": "string", "const": "#6fa3d8" },
+        "danger": { "type": "string", "const": "#c46a6a" }
+      }
+    },
+    "rejection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["refusalPx", "pauseMs", "returnMs", "mergeScale", "rejectedHoldMs"],
+      "properties": {
+        "refusalPx": { "type": "number", "const": 3 },
+        "pauseMs": { "type": "number", "const": 70 },
+        "returnMs": { "type": "number", "const": 360 },
+        "mergeScale": { "type": "object", "const": { "from": 1.04, "to": 1 } },
+        "rejectedHoldMs": { "type": "number", "const": 700 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantRestore", "triggers"],
+      "properties": {
+        "instantRestore": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "source", "invalid", "proxy"],
+      "properties": {
+        "root": { "type": "string", "const": "idr" },
+        "source": { "type": "string", "const": "idr__source" },
+        "invalid": { "type": "string", "const": "idr__target--invalid" },
+        "proxy": { "type": "string", "const": "idr__proxy" }
+      }
+    }
+  }
+}

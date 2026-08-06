@@ -1,0 +1,174 @@
+/* invalid-drop-return — portable specimen styles. Do not restyle to host tokens. */
+
+.idr {
+  --idr-ink: #0f1218;
+  --idr-panel: #1a1f28;
+  --idr-line: #2d3542;
+  --idr-muted: #7c8696;
+  --idr-cream: #e9edf3;
+  --idr-accent: #6fa3d8;
+  --idr-danger: #c46a6a;
+  --idr-proxy-w: 120px;
+  --idr-proxy-h: 52px;
+  --idr-return-ms: 360ms;
+  --idr-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  width: 380px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 1.1rem 2.2rem;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--idr-cream);
+  background: var(--idr-ink);
+  border: 1px solid var(--idr-line);
+  border-radius: 14px;
+}
+
+.idr *,
+.idr *::before,
+.idr *::after {
+  box-sizing: border-box;
+}
+
+.idr__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: var(--idr-muted);
+}
+
+.idr__stage {
+  position: relative;
+  min-height: 200px;
+}
+
+.idr__source {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.5rem 0.65rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--idr-line);
+  border-radius: 8px;
+  background: var(--idr-panel);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.idr[data-phase='dragging'] .idr__source .idr__name,
+.idr[data-phase='returning'] .idr__source .idr__name {
+  opacity: 0;
+}
+
+.idr__placeholder {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--idr-muted);
+  border-radius: 8px;
+  background: rgba(26, 31, 40, 0.5);
+}
+
+.idr[data-phase='dragging'] .idr__placeholder,
+.idr[data-phase='returning'] .idr__placeholder {
+  display: block !important;
+}
+
+.idr__glyph {
+  width: 18px;
+  height: 22px;
+  border: 1px solid #b8a86a;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #2a3342 0%, #1e2530 100%);
+}
+
+.idr__targets {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.idr__target {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  height: 64px;
+  border: 1px dashed var(--idr-line);
+  border-radius: 10px;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: var(--idr-muted);
+  transition: transform 80ms ease;
+}
+
+.idr__target--valid {
+  border-color: var(--idr-accent);
+  color: var(--idr-accent);
+}
+
+.idr__target--invalid {
+  border-color: var(--idr-danger);
+  color: var(--idr-danger);
+}
+
+.idr__target--invalid.is-refusing {
+  transform: translateX(3px);
+}
+
+.idr__proxy {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--idr-proxy-w);
+  height: var(--idr-proxy-h);
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--idr-line);
+  border-radius: 8px;
+  background: linear-gradient(165deg, #222833 0%, var(--idr-panel) 100%);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  cursor: grab;
+  z-index: 5;
+  touch-action: none;
+}
+
+.idr__proxy.is-grabbing {
+  cursor: grabbing;
+}
+
+.idr[data-phase='merging'] .idr__proxy {
+  animation: idr-merge 120ms var(--idr-ease) forwards;
+}
+
+@keyframes idr-merge {
+  from { transform: scale(1.04); }
+  to { transform: scale(1); }
+}
+
+.idr__status {
+  margin: 0.85rem 0 0;
+  font-size: 0.65rem;
+  color: var(--idr-muted);
+  text-align: center;
+}
+
+.idr[data-phase='rejected'] .idr__status {
+  color: var(--idr-danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .idr__target,
+  .idr__proxy,
+  .idr[data-phase='merging'] .idr__proxy {
+    transition: none;
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .idr__target,
+[data-force-reduced-motion='true'] .idr__proxy,
+[data-force-reduced-motion='true'] .idr[data-phase='merging'] .idr__proxy {
+  transition: none;
+  animation: none;
+}

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **36 / 258** complete.
+- Progress: **37 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 36 |
-| Open | 222 |
+| Done | 37 |
+| Open | 221 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-156 | `SPX-1455` | `invalid-drop-return` | Invalid Drop Return |
 | IOS-153 | `SPX-1452` | `multi-item-drag-stack` | Multi-Item Drag Stack |
 | IOS-143 | `SPX-1442` | `search-field-activation` | Search Field Activation |
 | IOS-127 | `SPX-1426` | `biometric-scan-acquisition` | Biometric Scan Acquisition |
@@ -306,7 +307,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-153** · `SPX-1452` · **Multi-Item Drag Stack** — additional selected items join the drag proxy as layered countable objects.
 - [x] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — approaching a valid destination subtly pulls/reorients the proxy.
 - [ ] **IOS-155** · `SPX-1454` · **Drop Commit Absorption** — proxy is structurally absorbed into the destination rather than simply disappearing.
-- [ ] **IOS-156** · `SPX-1455` · **Invalid Drop Return** — rejected item follows a deterministic return path to its source.
+- [x] **IOS-156** · `SPX-1455` · **Invalid Drop Return** — rejected item follows a deterministic return path to its source.
 - [ ] **IOS-157** · `SPX-1456` · **Spring-Loaded Folder Hover** — sustained hover over a container causes it to open for deeper drop navigation.
 - [ ] **IOS-158** · `SPX-1457` · **Drag Count Increment** — newly added dragged item visibly joins the existing stack and increments count.
 - [ ] **IOS-159** · `SPX-1458` · **Cross-Column Drag Handoff** — item changes layout ownership while pointer remains continuous.
