@@ -20,6 +20,7 @@ import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { completionStrike } from './completion-strike/entry'
+import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
@@ -66,6 +67,7 @@ import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
+import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
@@ -182,6 +184,7 @@ export const specimens: Specimen[] = [
   comicCardSelection,
   comicPanelScrollReveal,
   completionStrike,
+  concentratedEnergyCharge,
   connectionSevered,
   criticalCapture,
   criticalWeaknessHit,

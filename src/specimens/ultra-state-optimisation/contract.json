@@ -1,0 +1,60 @@
+{
+  "name": "ultra-state-optimisation",
+  "intent": "Noisy high-activity runtime optimises into a calmer high-performance state by subtracting wasted motion and overhead while keeping useful work (TASKS=42) constant.",
+  "catalogue": {
+    "db": "DB-027",
+    "ref": "SPX-992",
+    "checklistTitle": "Ultra Instinct Activation",
+    "specimenTitle": "Ultra State Optimisation"
+  },
+  "counts": {
+    "activityMarkers": 12,
+    "markerGroups": 3,
+    "markersPerGroup": 4,
+    "rotatingIndicators": 2,
+    "activityBarsInitial": 3,
+    "activityBarsFinal": 1,
+    "peripheralStructuresInitial": 6,
+    "peripheralStructuresFinal": 2,
+    "finalDiamond": 1
+  },
+  "timing": {
+    "pauseMs": 90,
+    "subtractMs": 360,
+    "groupStaggerMs": 90
+  },
+  "metrics": {
+    "cpuSequence": [84, 67, 49, 38, 31],
+    "queueSequence": [17, 11, 6, 2, 0],
+    "tasksConstant": 42
+  },
+  "geometry": {
+    "coreScaleFinal": 0.92,
+    "vibrationMaxPx": 1,
+    "diamondPx": 8,
+    "diamondLiftPx": 4
+  },
+  "mode": {
+    "from": "STANDARD",
+    "to": "ULTRA",
+    "technique": "clipped replacement"
+  },
+  "palette": {
+    "initialWarm": ["#c45c26", "#e0a15a", "#8b3a1a", "#ebe6dc", "#1a1c22"],
+    "finalDominant": ["#1e2430", "#c8d0dc", "#6a7a90"]
+  },
+  "constraints": {
+    "noFranchiseNamesInUi": true,
+    "noLoopingInFinal": true,
+    "noGlowAura": true,
+    "noSeizureMotion": true
+  },
+  "api": {
+    "optimise": "runUltraOptimise()",
+    "reset": "resetUltraOptimise()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show final ULTRA state"
+  }
+}

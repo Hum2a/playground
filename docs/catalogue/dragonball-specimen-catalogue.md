@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 244** complete.
+- Progress: **7 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 238 |
+| Done | 7 |
+| Open | 237 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-016 | `SPX-981` | `power-state-transformation` | Power State Transformation |
 | DB-027 | `SPX-992` | `ultra-state-optimisation` | Ultra State Optimisation |
 | DB-031 | `SPX-996` | `scouter-scan` | Scouter Scan |
 | DB-032 | `SPX-997` | `power-level-readout` | Power Level Readout |
@@ -52,7 +53,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-003** · `SPX-968` · **Kamehameha Charge** — ki-charging-progress
 - [ ] **DB-004** · `SPX-969` · **Charge → Release** — ki-charging-progress
 - [ ] **DB-005** · `SPX-970` · **Overcharge Warning** — ki-charging-progress
-- [ ] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — transformation
+- [x] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — transformation
 - [x] **DB-027** · `SPX-992` · **Ultra Instinct Activation** — transformation
 - [ ] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — fusion
 - [ ] **DB-057** · `SPX-1022` · **Potara Fusion** — fusion
@@ -95,7 +96,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Transformation
 
-- [ ] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — calm component accumulates instability before violently resolving into an enhanced state.
+- [x] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — calm component accumulates instability before violently resolving into an enhanced state.
 - [ ] **DB-017** · `SPX-982` · **Transformation Aura Burst** — a new state becomes active and its boundary expands outward.
 - [ ] **DB-018** · `SPX-983` · **Hair-Raise Silhouette Morph** — simple silhouette geometry progressively becomes sharper and more vertical.
 - [ ] **DB-019** · `SPX-984` · **Transformation Stage Ladder** — Base → Stage I → Stage II → Stage III as explicit progressive states.

@@ -1,0 +1,61 @@
+<div class="cec" data-concentrated-charge data-state="idle">
+  <p class="cec__op" id="cec-op">DEPLOY // PRODUCTION</p>
+
+  <div class="cec__stage" data-cec-stage>
+    <svg
+      class="cec__svg"
+      viewBox="0 0 400 300"
+      width="400"
+      height="300"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <!-- Frozen path geometry — do not reshape to fit chrome. -->
+      <path
+        class="cec__path"
+        data-cec-path="build"
+        d="M 48 40 C 100 88, 168 132, 232 150"
+        fill="none"
+      />
+      <path
+        class="cec__path"
+        data-cec-path="test"
+        d="M 48 260 C 100 212, 168 168, 232 150"
+        fill="none"
+      />
+      <path
+        class="cec__path"
+        data-cec-path="package"
+        d="M 352 40 C 300 88, 268 132, 232 150"
+        fill="none"
+      />
+      <path
+        class="cec__path"
+        data-cec-path="sign"
+        d="M 352 260 C 300 212, 268 168, 232 150"
+        fill="none"
+      />
+    </svg>
+
+    <span class="cec__source cec__source--build" data-cec-source="build">BUILD</span>
+    <span class="cec__source cec__source--test" data-cec-source="test">TEST</span>
+    <span class="cec__source cec__source--package" data-cec-source="package">PACKAGE</span>
+    <span class="cec__source cec__source--sign" data-cec-source="sign">SIGN</span>
+
+    <div class="cec__node" data-cec-node aria-hidden="true">
+      <span class="cec__ring" data-cec-ring></span>
+      <span class="cec__core" data-cec-core></span>
+    </div>
+
+    <div class="cec__packets" data-cec-packets aria-hidden="true"></div>
+  </div>
+
+  <p class="cec__status" data-cec-status aria-live="polite">UNARMED</p>
+
+  <div class="cec__controls">
+    <button type="button" class="cec__btn" data-cec-action>CHARGE</button>
+    <button type="button" class="cec__btn cec__btn--ghost" data-cec-reset hidden>RESET</button>
+  </div>
+
+  <p class="cec__announce" data-cec-announce role="status" aria-live="polite"></p>
+</div>

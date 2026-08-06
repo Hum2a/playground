@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/concentrated-energy-charge.schema.json",
+  "title": "ConcentratedEnergyCharge",
+  "description": "Four sources converge twelve packets into a central node that arms without releasing. Dragon Ball DB-003 / SPX-968. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "concentrated-energy-charge" },
+    "intent": {
+      "type": "string",
+      "const": "BUILD TEST PACKAGE SIGN send three packets each along four frozen paths into a central node (26→72px); after stabilisation the deploy action sits ARMED without auto-release."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "sources",
+        "statusIdle",
+        "statusArmed",
+        "charge",
+        "release",
+        "announceArmed"
+      ],
+      "properties": {
+        "operation": {
+          "type": "string",
+          "const": "DEPLOY // PRODUCTION"
+        },
+        "sources": {
+          "type": "array",
+          "const": ["BUILD", "TEST", "PACKAGE", "SIGN"]
+        },
+        "statusIdle": { "type": "string", "const": "UNARMED" },
+        "statusArmed": { "type": "string", "const": "ARMED" },
+        "charge": { "type": "string", "const": "CHARGE" },
+        "release": { "type": "string", "const": "RELEASE" },
+        "announceArmed": {
+          "type": "string",
+          "const": "Deploy action armed. Prepared but not executed."
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["#071018", "#0e1822", "#dcefff", "#3db8ff", "#f0c14a"]
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "viewBox",
+        "nodeAnchor",
+        "nodeMinPx",
+        "nodeMaxPx",
+        "pathCount",
+        "paths"
+      ],
+      "properties": {
+        "viewBox": { "type": "string", "const": "0 0 400 300" },
+        "nodeAnchor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["left", "top"],
+          "properties": {
+            "left": { "type": "string", "const": "58%" },
+            "top": { "type": "string", "const": "50%" }
+          }
+        },
+        "nodeMinPx": { "type": "number", "const": 26 },
+        "nodeMaxPx": { "type": "number", "const": 72 },
+        "pathCount": { "type": "integer", "const": 4 },
+        "paths": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["build", "test", "package", "sign"],
+          "properties": {
+            "build": {
+              "type": "string",
+              "const": "M 48 40 C 100 88, 168 132, 232 150"
+            },
+            "test": {
+              "type": "string",
+              "const": "M 48 260 C 100 212, 168 168, 232 150"
+            },
+            "package": {
+              "type": "string",
+              "const": "M 352 40 C 300 88, 268 132, 232 150"
+            },
+            "sign": {
+              "type": "string",
+              "const": "M 352 260 C 300 212, 268 168, 232 150"
+            }
+          }
+        },
+        "sourcePositions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["build", "test", "package", "sign"],
+          "properties": {
+            "build": { "type": "string", "const": "top-left" },
+            "test": { "type": "string", "const": "bottom-left" },
+            "package": { "type": "string", "const": "top-right" },
+            "sign": { "type": "string", "const": "bottom-right" }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceDelaysMs",
+        "packetsPerSource",
+        "totalPackets",
+        "packetTravelMs",
+        "packetSpacingMs",
+        "stabiliseMs",
+        "stabiliseScale"
+      ],
+      "properties": {
+        "sourceDelaysMs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["build", "test", "package", "sign"],
+          "properties": {
+            "build": { "type": "integer", "const": 0 },
+            "test": { "type": "integer", "const": 80 },
+            "package": { "type": "integer", "const": 160 },
+            "sign": { "type": "integer", "const": 240 }
+          }
+        },
+        "packetsPerSource": { "type": "integer", "const": 3 },
+        "totalPackets": { "type": "integer", "const": 12 },
+        "packetTravelMs": { "type": "integer", "const": 300 },
+        "packetSpacingMs": { "type": "integer", "const": 55 },
+        "stabiliseMs": { "type": "integer", "const": 220 },
+        "stabiliseScale": {
+          "type": "array",
+          "const": [1, 1.08, 0.96, 1.03, 1]
+        },
+        "noAutoRelease": { "type": "boolean", "const": true },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["liveStatus", "preparedNotExecuted"],
+      "properties": {
+        "liveStatus": { "type": "boolean", "const": true },
+        "preparedNotExecuted": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion='true']"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate 72px node, subdued provenance paths, ARMED / RELEASE; no packet travel."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "charging", "stabilising", "armed"],
+      "properties": {
+        "root": { "type": "string", "const": "cec" },
+        "charging": { "type": "string", "const": "is-charging" },
+        "stabilising": { "type": "string", "const": "is-stabilising" },
+        "armed": { "type": "string", "const": "is-armed" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset", "releaseNoOp"],
+      "properties": {
+        "run": { "type": "string", "const": "runConcentratedCharge" },
+        "reset": { "type": "string", "const": "resetConcentratedCharge" },
+        "releaseNoOp": {
+          "type": "boolean",
+          "const": true,
+          "description": "RELEASE does not execute a beam; specimen ends armed and static."
+        }
+      }
+    }
+  }
+}

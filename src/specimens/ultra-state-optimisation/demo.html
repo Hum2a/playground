@@ -1,0 +1,76 @@
+<div class="uso-demo" data-uso-demo>
+  <p class="uso-demo__live" data-uso-live aria-live="polite">Runtime in standard mode</p>
+
+  <div class="uso" data-uso data-phase="noisy">
+    <div class="uso__stage">
+      <div class="uso__core" data-uso-core>
+        <p class="uso__runtime">RUNTIME // 08</p>
+
+        <div class="uso__mode" data-uso-mode>
+          <span class="uso__mode-slot uso__mode-slot--from" data-uso-mode-from>MODE     STANDARD</span>
+          <span class="uso__mode-slot uso__mode-slot--to" data-uso-mode-to aria-hidden="true">MODE     ULTRA</span>
+        </div>
+
+        <dl class="uso__metrics" data-uso-metrics>
+          <div class="uso__metric">
+            <dt>CPU</dt>
+            <dd data-uso-cpu>84%</dd>
+          </div>
+          <div class="uso__metric">
+            <dt>QUEUE</dt>
+            <dd data-uso-queue>17</dd>
+          </div>
+          <div class="uso__metric">
+            <dt>TASKS</dt>
+            <dd data-uso-tasks>42</dd>
+          </div>
+        </dl>
+
+        <div class="uso__bars" data-uso-bars aria-hidden="true">
+          <span class="uso__bar uso__bar--a" data-uso-bar></span>
+          <span class="uso__bar uso__bar--b" data-uso-bar></span>
+          <span class="uso__bar uso__bar--c" data-uso-bar></span>
+        </div>
+
+        <span class="uso__diamond" data-uso-diamond aria-hidden="true"></span>
+
+        <!-- 6 peripheral decorative structures; 4 retract on optimise -->
+        <span class="uso__peri uso__peri--1 uso__peri--drop" aria-hidden="true"></span>
+        <span class="uso__peri uso__peri--2 uso__peri--drop" aria-hidden="true"></span>
+        <span class="uso__peri uso__peri--3 uso__peri--keep" aria-hidden="true"></span>
+        <span class="uso__peri uso__peri--4 uso__peri--drop" aria-hidden="true"></span>
+        <span class="uso__peri uso__peri--5 uso__peri--keep" aria-hidden="true"></span>
+        <span class="uso__peri uso__peri--6 uso__peri--drop" aria-hidden="true"></span>
+
+        <!-- Exactly 2 rotating indicators -->
+        <span class="uso__spin uso__spin--a" data-uso-spin aria-hidden="true"></span>
+        <span class="uso__spin uso__spin--b" data-uso-spin aria-hidden="true"></span>
+
+        <!-- Exactly 12 activity markers -->
+        <div class="uso__markers" data-uso-markers aria-hidden="true">
+          <span class="uso__mark" data-group="1"></span>
+          <span class="uso__mark" data-group="1"></span>
+          <span class="uso__mark" data-group="1"></span>
+          <span class="uso__mark" data-group="1"></span>
+          <span class="uso__mark" data-group="2"></span>
+          <span class="uso__mark" data-group="2"></span>
+          <span class="uso__mark" data-group="2"></span>
+          <span class="uso__mark" data-group="2"></span>
+          <span class="uso__mark" data-group="3"></span>
+          <span class="uso__mark" data-group="3"></span>
+          <span class="uso__mark" data-group="3"></span>
+          <span class="uso__mark" data-group="3"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uso-demo__controls">
+    <button type="button" class="uso-demo__btn uso-demo__btn--primary" data-uso-optimise>
+      Optimise
+    </button>
+    <button type="button" class="uso-demo__btn" data-uso-reset>
+      Reset
+    </button>
+  </div>
+</div>
