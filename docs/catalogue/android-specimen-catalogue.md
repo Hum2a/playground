@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **40 / 417** complete.
+- Progress: **41 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 40 |
-| Open | 377 |
+| Done | 41 |
+| Open | 376 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-343 | `SPX-1900` | `android-invalid-drop-return` | Invalid Drop Return |
 | AND-340 | `SPX-1897` | `android-drag-proxy-formation` | Drag Proxy Formation |
 | AND-345 | `SPX-1902` | `grid-reorder-gap` | Grid Reorder Gap |
 | AND-157 | `SPX-1714` | `button-loading-morph` | Button Loading Morph |
@@ -596,7 +597,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-340** · `SPX-1897` · **Drag Proxy Formation** — complex source condenses into portable representation.
 - [ ] **AND-341** · `SPX-1898` · **Drop Target Acquisition** — valid target changes geometry as proxy approaches.
 - [ ] **AND-342** · `SPX-1899` · **Drop Commit Absorption** — proxy becomes part of destination.
-- [ ] **AND-343** · `SPX-1900` · **Invalid Drop Return** — rejected proxy returns deterministically to source.
+- [x] **AND-343** · `SPX-1900` · **Invalid Drop Return** — rejected proxy returns deterministically to source.
 - [ ] **AND-344** · `SPX-1901` · **Multi-Item Drag Stack** — several selected items become counted stack.
 - [x] **AND-345** · `SPX-1902` · **Grid Reorder Gap** — one insertion gap travels through grid.
 - [ ] **AND-346** · `SPX-1903` · **Cross-Container Drag Handoff** — object changes ownership between lists.

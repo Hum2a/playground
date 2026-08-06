@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/android-invalid-drop-return.schema.json",
+  "title": "AndroidInvalidDropReturn",
+  "description": "Portable contract for rejected drag return with overshoot physics.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "card", "return", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "android-invalid-drop-return" },
+    "intent": {
+      "type": "string",
+      "const": "Animate rejected drag proxy from release coordinates back to source with capped overshoot."
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 220 },
+        "heightPx": { "type": "number", "const": 70 }
+      }
+    },
+    "return": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "overshootMaxPx", "invalidFlashMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 260 },
+        "overshootMaxPx": { "type": "number", "const": 6 },
+        "invalidFlashMs": { "type": "number", "const": 90 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantReturn", "triggers"],
+      "properties": {
+        "instantReturn": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root"],
+      "properties": {
+        "root": { "type": "string", "const": "aidr" }
+      }
+    }
+  }
+}
