@@ -315,6 +315,7 @@ import { springSelectionPill } from './spring-selection-pill/entry'
 import { stageManagerStackShift } from './stage-manager-stack-shift/entry'
 import { stateFieldTransfer } from './state-field-transfer/entry'
 import { stateIntensityField } from './state-intensity-field/entry'
+import { staticPortalMaterialise } from './static-portal-materialise/entry'
 import { substitutionSwap } from './substitution-swap/entry'
 import { summoningSealMaterialise } from './summoning-seal-materialise/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
@@ -727,6 +728,7 @@ export const specimens: Specimen[] = [
   stageManagerStackShift,
   stateFieldTransfer,
   stateIntensityField,
+  staticPortalMaterialise,
   substitutionSwap,
   summoningSealMaterialise,
   surfaceBreakReveal,
