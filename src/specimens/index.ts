@@ -218,6 +218,7 @@ import { impactFrameSlam } from './impact-frame-slam/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { incidentDispatchCard } from './incident-dispatch-card/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
+import { installPhaseTransition } from './install-phase-transition/entry'
 import { instantFullRecovery } from './instant-full-recovery/entry'
 import { instantTransmissionNavigation } from './instant-transmission-navigation/entry'
 import { interactiveBackSwipe } from './interactive-back-swipe/entry'
@@ -728,6 +729,7 @@ export const specimens: Specimen[] = [
   impactFreezeFrame,
   incidentDispatchCard,
   inkSplatTransition,
+  installPhaseTransition,
   instantFullRecovery,
   instantTransmissionNavigation,
   interactiveBackSwipe,
