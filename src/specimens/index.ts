@@ -94,6 +94,7 @@ import { deadlineClock } from './deadline-clock/entry'
 import { deadlinePanic } from './deadline-panic/entry'
 import { decayDelete } from './decay-delete/entry'
 import { decisionShowdown } from './decision-showdown/entry'
+import { deductionLockIn } from './deduction-lock-in/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
@@ -497,6 +498,7 @@ export const specimens: Specimen[] = [
   deadlinePanic,
   decayDelete,
   decisionShowdown,
+  deductionLockIn,
   delayedDamageBar,
   deletionGuillotine,
   desktopSpaceSwipe,
