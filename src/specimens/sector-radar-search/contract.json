@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SectorRadarSearch",
+  "type": "object",
+  "required": ["name", "field", "candidates", "sweep", "result", "reducedMotion"],
+  "properties": {
+    "name": { "const": "sector-radar-search" },
+    "field": { "const": { "widthPx": 320, "heightPx": 320, "radialDivisions": 8, "distanceBands": 4, "originPx": [8, 8] } },
+    "candidates": { "const": [
+      { "id": "A", "coordinate": ["32%", "26%"], "strength": 0.31 },
+      { "id": "B", "coordinate": ["72%", "34%"], "strength": 0.46 },
+      { "id": "C", "coordinate": ["28%", "71%"], "strength": 0.58 },
+      { "id": "D", "coordinate": ["66%", "67%"], "strength": 0.92 }
+    ] },
+    "sweep": { "const": { "rotationsMaximum": 2, "rotationMs": 1200, "timing": "linear", "firstOrder": ["B", "D", "C", "A"] } },
+    "result": { "const": { "signals": 4, "target": "NODE D", "distance": 2.4, "brackets": 4, "triangulationLines": 3 } },
+    "reducedMotion": { "const": { "immediateFinal": true } }
+  }
+}
