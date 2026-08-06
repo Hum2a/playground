@@ -3,6 +3,7 @@ import { azureShardTransition } from './azure-shard-transition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
+import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
@@ -65,7 +66,6 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
-import { temporalFreeze } from './temporal-freeze/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
@@ -134,6 +134,7 @@ export const specimens: Specimen[] = [
   blackoutLoader,
   blueDoorDiscovery,
   butterflyEntry,
+  butterflySuccessState,
   choiceExecutionSlash,
   comicCardSelection,
   comicPanelScrollReveal,

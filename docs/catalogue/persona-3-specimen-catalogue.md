@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 238** complete.
+- Progress: **22 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 217 |
+| Done | 22 |
+| Open | 216 |
 
 ## Visual grammar
 
@@ -54,6 +54,7 @@
 | P3-031 | `SPX-429` | `crystallised-selection` | Crystallised Selection |
 | P3-009 | `SPX-408` | `surface-break-reveal` | Surface Break Reveal |
 
+| P3-121 | `SPX-518` | `butterfly-success-state` | Butterfly Success State |
 ## Core first-wave
 
 Curated implementation priority. Same checkbox as the master list — checking either counts.
@@ -238,7 +239,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-118** · `SPX-515` · **Butterfly Departure** — butterfly.
 - [ ] **P3-119** · `SPX-516` · **Butterfly Hover Trail** — butterfly.
 - [ ] **P3-120** · `SPX-517` · **Butterfly Loading Orbit** — butterfly.
-- [ ] **P3-121** · `SPX-518` · **Butterfly Success State** — butterfly.
+- [x] **P3-121** · `SPX-518` · **Butterfly Success State** — butterfly.
 - [ ] **P3-122** · `SPX-519` · **Butterfly Unlock** — butterfly.
 - [ ] **P3-123** · `SPX-520` · **Butterfly Breadcrumb** — butterfly.
 
