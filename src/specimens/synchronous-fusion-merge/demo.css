@@ -1,0 +1,710 @@
+/* SPX-1021 Synchronous Fusion Merge — portable contract. Do not restyle to host tokens. */
+
+.sfm {
+  --sfm-ink: #0a0a0c;
+  --sfm-panel: #16161c;
+  --sfm-rule: #2c2c36;
+  --sfm-a: #c45c26;
+  --sfm-b: #2a6f9e;
+  --sfm-c: #8b6bb5;
+  --sfm-pale: #e8e4f0;
+  --sfm-white: #f7f5fa;
+  --sfm-sync-ms: 280ms;
+  --sfm-converge-ms: 300ms;
+  --sfm-hold-ms: 80ms;
+  --sfm-compress-ms: 100ms;
+  --sfm-expand-ms: 220ms;
+  --sfm-ease: cubic-bezier(0.33, 0.1, 0.22, 1);
+  --sfm-snap: cubic-bezier(0.2, 0.85, 0.25, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 0.7rem;
+  overflow: hidden;
+  background: var(--sfm-ink);
+  color: var(--sfm-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.sfm *,
+.sfm *::before,
+.sfm *::after {
+  box-sizing: border-box;
+}
+
+.sfm__toolbar {
+  z-index: 2;
+}
+
+.sfm__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--sfm-pale);
+  border-radius: 0;
+  background: var(--sfm-panel);
+  color: var(--sfm-white);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sfm__btn:focus {
+  outline: none;
+}
+
+.sfm__btn:focus-visible {
+  outline: 2px solid #6ec9a8;
+  outline-offset: 3px;
+}
+
+.sfm__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sfm__status {
+  min-height: 1.2em;
+  margin: 0;
+  color: rgb(232 228 240 / 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+.sfm__host {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 260px;
+}
+
+.sfm__stage {
+  position: relative;
+  width: min(100%, 340px);
+  height: 220px;
+}
+
+/* —— Sync connector: exactly 8 segments —— */
+.sfm__sync {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  z-index: 1;
+  display: flex;
+  gap: 5px;
+  width: 120px;
+  margin-left: -60px;
+  margin-top: -1px;
+  pointer-events: none;
+}
+
+.sfm__seg {
+  flex: 1;
+  height: 2px;
+  background: rgb(232 228 240 / 0.35);
+  transform: translateY(var(--sy, 0));
+}
+
+.sfm__seg--1,
+.sfm__seg--3,
+.sfm__seg--5,
+.sfm__seg--7 {
+  --sy: -3px;
+}
+
+.sfm__seg--2,
+.sfm__seg--4,
+.sfm__seg--6,
+.sfm__seg--8 {
+  --sy: 3px;
+}
+
+/* —— Entities —— */
+.sfm__ent {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 90px;
+  height: 110px;
+  margin-top: -55px;
+  padding: 0.65rem 0.55rem;
+  border: 1.5px solid var(--sfm-rule);
+  background: var(--sfm-panel);
+  transform-origin: center center;
+}
+
+.sfm__ent--a {
+  left: 18px;
+  border-color: var(--sfm-a);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.sfm__ent--b {
+  right: 18px;
+  border-color: var(--sfm-b);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  text-align: center;
+  align-items: center;
+}
+
+.sfm__ent--c {
+  left: 50%;
+  z-index: 4;
+  width: 108px;
+  height: 118px;
+  margin-left: -54px;
+  margin-top: -59px;
+  border-color: var(--sfm-c);
+  /* Hybrid: diamond crown + rect body */
+  clip-path: polygon(
+    12% 0%,
+    88% 0%,
+    100% 18%,
+    100% 100%,
+    0% 100%,
+    0% 18%
+  );
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.62);
+  pointer-events: none;
+}
+
+.sfm__kicker {
+  margin: 0;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(232 228 240 / 0.7);
+}
+
+.sfm__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--sfm-white);
+}
+
+.sfm__meta {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgb(232 228 240 / 0.65);
+}
+
+.sfm__meta--merged {
+  color: var(--sfm-c);
+}
+
+.sfm__ent--a .sfm__kicker {
+  color: var(--sfm-a);
+}
+.sfm__ent--b .sfm__kicker {
+  color: var(--sfm-b);
+}
+.sfm__ent--c .sfm__kicker {
+  color: var(--sfm-c);
+}
+
+/* —— Merge rays (exactly 6) —— */
+.sfm__merge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sfm__ray {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 42px;
+  margin-left: -1px;
+  background: var(--sfm-pale);
+  transform-origin: top center;
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.sfm__ray--1 {
+  transform: rotate(0deg) scaleY(0);
+}
+.sfm__ray--2 {
+  transform: rotate(60deg) scaleY(0);
+}
+.sfm__ray--3 {
+  transform: rotate(120deg) scaleY(0);
+}
+.sfm__ray--4 {
+  transform: rotate(180deg) scaleY(0);
+}
+.sfm__ray--5 {
+  transform: rotate(240deg) scaleY(0);
+}
+.sfm__ray--6 {
+  transform: rotate(300deg) scaleY(0);
+}
+
+/* —— Provenance markers —— */
+.sfm__prov {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.4rem;
+  width: 100px;
+  margin-left: -50px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sfm__mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--sfm-rule);
+  font-size: 0.55rem;
+  font-weight: 900;
+  color: var(--sfm-pale);
+}
+
+.sfm__mark--a {
+  border-color: var(--sfm-a);
+  color: var(--sfm-a);
+}
+
+.sfm__mark--b {
+  border-color: var(--sfm-b);
+  color: var(--sfm-b);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.sfm__stem {
+  position: absolute;
+  bottom: 18px;
+  width: 1px;
+  height: 28px;
+  background: rgb(232 228 240 / 0.45);
+}
+
+.sfm__stem--a {
+  left: 28px;
+  transform: rotate(-18deg);
+  transform-origin: bottom center;
+}
+
+.sfm__stem--b {
+  right: 28px;
+  transform: rotate(18deg);
+  transform-origin: bottom center;
+}
+
+/* —— Phase 1: synchronisation (280ms) —— */
+.sfm[data-state='sync'] .sfm__ent--a {
+  animation: sfm-sync-a var(--sfm-sync-ms) var(--sfm-ease) forwards;
+}
+
+.sfm[data-state='sync'] .sfm__ent--b {
+  animation: sfm-sync-b var(--sfm-sync-ms) var(--sfm-ease) forwards;
+}
+
+.sfm[data-state='sync'] .sfm__seg {
+  animation: sfm-seg-align var(--sfm-sync-ms) var(--sfm-ease) forwards;
+  background: rgb(232 228 240 / 0.75);
+}
+
+.sfm[data-state='sync'] .sfm__sync {
+  gap: 0;
+  transition: gap var(--sfm-sync-ms) var(--sfm-ease);
+}
+
+@keyframes sfm-sync-a {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  28% {
+    transform: translateY(-6px) rotate(0deg);
+  }
+  48% {
+    transform: translateY(0) rotate(0deg);
+  }
+  72% {
+    transform: translateY(0) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes sfm-sync-b {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  28% {
+    transform: translateY(6px) rotate(0deg);
+  }
+  48% {
+    transform: translateY(0) rotate(0deg);
+  }
+  72% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes sfm-seg-align {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* After sync: continuous line */
+.sfm[data-state='converge'] .sfm__sync,
+.sfm[data-state='hold'] .sfm__sync,
+.sfm[data-state='compress'] .sfm__sync {
+  gap: 0;
+}
+
+.sfm[data-state='converge'] .sfm__seg,
+.sfm[data-state='hold'] .sfm__seg,
+.sfm[data-state='compress'] .sfm__seg {
+  transform: translateY(0);
+  background: var(--sfm-pale);
+}
+
+/* —— Phase 2: convergence (300ms) —— */
+.sfm[data-state='converge'] .sfm__ent--a {
+  animation: sfm-converge-a var(--sfm-converge-ms) var(--sfm-ease) forwards;
+}
+
+.sfm[data-state='converge'] .sfm__ent--b {
+  animation: sfm-converge-b var(--sfm-converge-ms) var(--sfm-ease) forwards;
+}
+
+/* Hold position: ~12px gap between inner edges.
+   Stage 340px; A width 90 at left 18 → right edge 108.
+   B left edge from right: 340-18-90=232.
+   Mid gap centre ~170. For 12px gap: A right at 164, B left at 176.
+   A translateX: 164-108 = 56px; B translateX: -(232-176)= -56px.
+*/
+@keyframes sfm-converge-a {
+  from {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translate(56px, 0) rotate(12deg) scale(0.82);
+  }
+}
+
+@keyframes sfm-converge-b {
+  from {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translate(-56px, 0) rotate(-12deg) scale(0.82);
+  }
+}
+
+.sfm[data-state='hold'] .sfm__ent--a {
+  transform: translate(56px, 0) rotate(12deg) scale(0.82);
+}
+
+.sfm[data-state='hold'] .sfm__ent--b {
+  transform: translate(-56px, 0) rotate(-12deg) scale(0.82);
+}
+
+/* —— Compress —— */
+.sfm[data-state='compress'] .sfm__ent--a {
+  animation: sfm-compress-a var(--sfm-compress-ms) var(--sfm-snap) forwards;
+}
+
+.sfm[data-state='compress'] .sfm__ent--b {
+  animation: sfm-compress-b var(--sfm-compress-ms) var(--sfm-snap) forwards;
+}
+
+.sfm[data-state='compress'] .sfm__merge {
+  opacity: 1;
+}
+
+.sfm[data-state='compress'] .sfm__ray {
+  opacity: 1;
+  animation: sfm-ray 100ms var(--sfm-snap) forwards;
+}
+
+.sfm[data-state='compress'] .sfm__ray--1 {
+  animation-delay: 20ms;
+}
+.sfm[data-state='compress'] .sfm__ray--2 {
+  animation-delay: 28ms;
+}
+.sfm[data-state='compress'] .sfm__ray--3 {
+  animation-delay: 36ms;
+}
+.sfm[data-state='compress'] .sfm__ray--4 {
+  animation-delay: 44ms;
+}
+.sfm[data-state='compress'] .sfm__ray--5 {
+  animation-delay: 52ms;
+}
+.sfm[data-state='compress'] .sfm__ray--6 {
+  animation-delay: 60ms;
+}
+
+.sfm[data-state='compress'] .sfm__sync {
+  opacity: 0;
+  transition: opacity 60ms linear;
+}
+
+@keyframes sfm-compress-a {
+  from {
+    transform: translate(56px, 0) rotate(12deg) scale(0.82);
+  }
+  to {
+    transform: translate(78px, 0) rotate(12deg) scaleX(0.25) scaleY(0.82);
+    opacity: 0;
+  }
+}
+
+@keyframes sfm-compress-b {
+  from {
+    transform: translate(-56px, 0) rotate(-12deg) scale(0.82);
+  }
+  to {
+    transform: translate(-78px, 0) rotate(-12deg) scaleX(0.25) scaleY(0.82);
+    opacity: 0;
+  }
+}
+
+@keyframes sfm-ray {
+  from {
+    transform: rotate(var(--r, 0deg)) scaleY(0);
+    opacity: 0.3;
+  }
+  to {
+    transform: rotate(var(--r, 0deg)) scaleY(1);
+    opacity: 0.9;
+  }
+}
+
+.sfm__ray--1 {
+  --r: 0deg;
+}
+.sfm__ray--2 {
+  --r: 60deg;
+}
+.sfm__ray--3 {
+  --r: 120deg;
+}
+.sfm__ray--4 {
+  --r: 180deg;
+}
+.sfm__ray--5 {
+  --r: 240deg;
+}
+.sfm__ray--6 {
+  --r: 300deg;
+}
+
+/* Fix ray animation to use --r */
+.sfm[data-state='compress'] .sfm__ray--1 {
+  animation-name: sfm-ray-1;
+}
+.sfm[data-state='compress'] .sfm__ray--2 {
+  animation-name: sfm-ray-2;
+}
+.sfm[data-state='compress'] .sfm__ray--3 {
+  animation-name: sfm-ray-3;
+}
+.sfm[data-state='compress'] .sfm__ray--4 {
+  animation-name: sfm-ray-4;
+}
+.sfm[data-state='compress'] .sfm__ray--5 {
+  animation-name: sfm-ray-5;
+}
+.sfm[data-state='compress'] .sfm__ray--6 {
+  animation-name: sfm-ray-6;
+}
+
+@keyframes sfm-ray-1 {
+  from {
+    transform: rotate(0deg) scaleY(0);
+  }
+  to {
+    transform: rotate(0deg) scaleY(1);
+  }
+}
+@keyframes sfm-ray-2 {
+  from {
+    transform: rotate(60deg) scaleY(0);
+  }
+  to {
+    transform: rotate(60deg) scaleY(1);
+  }
+}
+@keyframes sfm-ray-3 {
+  from {
+    transform: rotate(120deg) scaleY(0);
+  }
+  to {
+    transform: rotate(120deg) scaleY(1);
+  }
+}
+@keyframes sfm-ray-4 {
+  from {
+    transform: rotate(180deg) scaleY(0);
+  }
+  to {
+    transform: rotate(180deg) scaleY(1);
+  }
+}
+@keyframes sfm-ray-5 {
+  from {
+    transform: rotate(240deg) scaleY(0);
+  }
+  to {
+    transform: rotate(240deg) scaleY(1);
+  }
+}
+@keyframes sfm-ray-6 {
+  from {
+    transform: rotate(300deg) scaleY(0);
+  }
+  to {
+    transform: rotate(300deg) scaleY(1);
+  }
+}
+
+/* —— Expand C —— */
+.sfm[data-state='expand'] .sfm__ent--a,
+.sfm[data-state='expand'] .sfm__ent--b,
+.sfm[data-state='complete'] .sfm__ent--a,
+.sfm[data-state='complete'] .sfm__ent--b,
+.sfm--reduced .sfm__ent--a,
+.sfm--reduced .sfm__ent--b {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.sfm[data-state='expand'] .sfm__ent--c,
+.sfm[data-state='complete'] .sfm__ent--c,
+.sfm--reduced .sfm__ent--c {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sfm[data-state='expand'] .sfm__ent--c {
+  animation: sfm-expand var(--sfm-expand-ms) var(--sfm-snap) forwards;
+}
+
+.sfm[data-state='complete'] .sfm__ent--c,
+.sfm--reduced .sfm__ent--c {
+  transform: scale(1);
+}
+
+.sfm[data-state='expand'] .sfm__merge,
+.sfm[data-state='complete'] .sfm__merge,
+.sfm--reduced .sfm__merge {
+  opacity: 0;
+}
+
+.sfm[data-state='expand'] .sfm__prov,
+.sfm[data-state='complete'] .sfm__prov,
+.sfm--reduced .sfm__prov {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sfm[data-state='expand'] .sfm__prov {
+  animation: sfm-prov 140ms var(--sfm-ease) 80ms forwards;
+  opacity: 0;
+}
+
+.sfm[data-state='complete'] .sfm__prov,
+.sfm--reduced .sfm__prov {
+  opacity: 1;
+}
+
+.sfm[data-state='expand'] .sfm__sync,
+.sfm[data-state='complete'] .sfm__sync,
+.sfm--reduced .sfm__sync {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes sfm-expand {
+  0% {
+    transform: scale(0.62);
+  }
+  55% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sfm-prov {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 360px) {
+  .sfm__stage {
+    transform: scale(0.9);
+    transform-origin: center center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sfm__ent,
+  .sfm__seg,
+  .sfm__ray,
+  .sfm__prov,
+  .sfm__sync {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .sfm__ent,
+[data-force-reduced-motion='true'] .sfm__seg,
+[data-force-reduced-motion='true'] .sfm__ray,
+[data-force-reduced-motion='true'] .sfm__prov,
+[data-force-reduced-motion='true'] .sfm__sync {
+  animation: none !important;
+  transition: none !important;
+}

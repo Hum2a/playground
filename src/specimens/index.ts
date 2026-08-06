@@ -60,6 +60,7 @@ import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { itemObtained } from './item-obtained/entry'
+import { kiChargeMeter } from './ki-charge-meter/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
@@ -95,6 +96,7 @@ import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
+import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
@@ -168,6 +170,7 @@ export const specimens: Specimen[] = [
   tacticalAlertPing,
   inkSplatTransition,
   itemObtained,
+  kiChargeMeter,
   victoryResultsTally,
   blackoutLoader,
   blueDoorDiscovery,
@@ -224,6 +227,7 @@ export const specimens: Specimen[] = [
   lockedChainBreak,
   mangaCutInNotification,
   maxRankCompletion,
+  measurementOverload,
   memoryFragmentReveal,
   midnightClockTransition,
   misprintNotification,
@@ -248,6 +252,7 @@ export const specimens: Specimen[] = [
   scannerSearch,
   scouterScan,
   surfaceBreakReveal,
+  synchronousFusionMerge,
   tacticalCommandWheel,
   tacticalTargetLock,
   tartarusFloorAscension,

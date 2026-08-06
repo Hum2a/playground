@@ -1,0 +1,69 @@
+{
+  "name": "synchronous-fusion-merge",
+  "intent": "Two distinct source entities synchronise with mirrored motion, converge, hold ~12px apart, compress through six radial lines, and resolve as hybrid MODEL C with A/B provenance.",
+  "colours": {
+    "ink": "#0a0a0c",
+    "panel": "#16161c",
+    "rule": "#2c2c36",
+    "sourceA": "#c45c26",
+    "sourceB": "#2a6f9e",
+    "modelC": "#8b6bb5",
+    "pale": "#e8e4f0",
+    "white": "#f7f5fa"
+  },
+  "geometry": {
+    "a": { "w": 90, "h": 110, "shape": "rectangle" },
+    "b": { "w": 90, "h": 110, "shape": "diamond" },
+    "c": { "w": 108, "h": 118, "shape": "hybrid-rect-diamond-crown" },
+    "preMergeGapPx": 12,
+    "syncSegments": 8,
+    "mergeRays": 6
+  },
+  "copy": {
+    "a": { "kicker": "SOURCE // A", "title": "DATA", "meta": "12 FIELDS" },
+    "b": { "kicker": "SOURCE // B", "title": "RULES", "meta": "8 RULES" },
+    "c": { "kicker": "MODEL // C", "title": "20 INPUTS", "meta": "MERGED" },
+    "trigger": "FUSE"
+  },
+  "timing": {
+    "syncMs": 280,
+    "convergeMs": 300,
+    "holdMs": 80,
+    "compressMs": 100,
+    "expandMs": 220,
+    "totalMs": 980,
+    "syncTranslateYPx": [0, -6, 0],
+    "syncRotateDeg": [0, 5, 0],
+    "convergeRotateDeg": 12,
+    "convergeScale": 0.82,
+    "compressScaleX": 0.25,
+    "expandScale": [0.62, 1.08, 1]
+  },
+  "api": {
+    "fuse": "fuseSyncMerge()",
+    "reset": "resetSyncMerge()",
+    "busyGuard": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "before": "Source A and Source B are independent.",
+    "after": "Source A and Source B merged into Model C.",
+    "stageAriaHidden": true,
+    "focusVisible": "2px solid #6ec9a8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate MODEL C with A/B provenance markers"
+  },
+  "constraints": {
+    "noCharacters": true,
+    "noFranchiseSymbols": true,
+    "noAura": true,
+    "noLoopingPulse": true,
+    "finalStatic": true,
+    "noExternalAssets": true
+  }
+}

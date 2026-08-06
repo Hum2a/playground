@@ -55,7 +55,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-005** · `SPX-970` · **Overcharge Warning** — ki-charging-progress
 - [x] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — transformation
 - [x] **DB-027** · `SPX-992` · **Ultra Instinct Activation** — transformation
-- [ ] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — fusion
+- [x] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — fusion
 - [ ] **DB-057** · `SPX-1022` · **Potara Fusion** — fusion
 - [ ] **DB-046** · `SPX-1011` · **Instant Transmission Navigation** — instant-transmission-navigation
 - [ ] **DB-070** · `SPX-1035` · **Beam Clash** — energy-attacks-actions
@@ -145,7 +145,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Fusion
 
-- [ ] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — two entities mirror one another, approach and combine into a new identity.
+- [x] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — two entities mirror one another, approach and combine into a new identity.
 - [ ] **DB-057** · `SPX-1022` · **Potara Fusion** — two objects become linked by a shared constraint, then accelerate into a central merge.
 - [ ] **DB-058** · `SPX-1023` · **Data Fusion** — two records enter from opposite sides and produce one enriched record.
 - [ ] **DB-059** · `SPX-1024` · **Branch Merge** — two development branches visually converge into one canonical branch.
