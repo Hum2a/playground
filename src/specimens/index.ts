@@ -265,6 +265,7 @@ import { objectiveAcquired } from './objective-acquired/entry'
 import { objectiveChainAdvance } from './objective-chain-advance/entry'
 import { objectiveUpdateSlash } from './objective-update-slash/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
+import { oversizedRankNumeral } from './oversized-rank-numeral/entry'
 import { overuseWarning } from './overuse-warning/entry'
 import { p4MaxRankCompletion } from './p4-max-rank-completion/entry'
 import { panelBreakTransition } from './panel-break-transition/entry'
@@ -722,6 +723,7 @@ export const specimens: Specimen[] = [
   objectiveChainAdvance,
   objectiveUpdateSlash,
   overchargeWarning,
+  oversizedRankNumeral,
   overuseWarning,
   p4MaxRankCompletion,
   panelBreakTransition,
