@@ -1,0 +1,28 @@
+<div class="etr" data-energy-transfer data-phase="idle">
+  <div class="etr__row">
+    <article class="etr__node etr__node--from" aria-label="Source node charged">
+      <p class="etr__role">SOURCE</p>
+      <h2 class="etr__name">NODE A</h2>
+      <p class="etr__badge">CHARGED</p>
+    </article>
+
+    <div class="etr__link" aria-hidden="true">
+      <span class="etr__seg etr__seg--1"></span>
+      <span class="etr__seg etr__seg--2"></span>
+      <span class="etr__packet" data-etr-packet></span>
+    </div>
+
+    <article class="etr__node etr__node--to" aria-label="Target node">
+      <p class="etr__role">TARGET</p>
+      <h2 class="etr__name">NODE B</h2>
+      <p class="etr__badge etr__badge--idle" data-etr-status>IDLE</p>
+    </article>
+  </div>
+
+  <div class="etr__controls">
+    <button type="button" class="etr__btn" data-etr-run>TRANSFER</button>
+    <button type="button" class="etr__btn etr__btn--ghost" data-etr-reset hidden>RESET</button>
+  </div>
+
+  <p class="etr__live" role="status" aria-live="polite" data-etr-live>Source charged. Target idle.</p>
+</div>

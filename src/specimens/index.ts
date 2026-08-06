@@ -95,6 +95,7 @@ import { dualActivitySplit } from './dual-activity-split/entry'
 import { emergencyScreenTakeover } from './emergency-screen-takeover/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
+import { energyTransfer } from './energy-transfer/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
 import { enhancedStateReversion } from './enhanced-state-reversion/entry'
 import { entryRegistration } from './entry-registration/entry'
@@ -423,6 +424,7 @@ export const specimens: Specimen[] = [
   emergencyScreenTakeover,
   enemyScanReveal,
   energyChargeConfirmation,
+  energyTransfer,
   energyTransferSync,
   enhancedStateReversion,
   entryRegistration,

@@ -1,0 +1,26 @@
+{
+  "name": "energy-transfer",
+  "intent": "Luminous energy packet travels from charged source node to idle target; target becomes TRANSFERRED on arrival.",
+  "catalogue": { "mha": "MHA-037", "ref": "SPX-2011" },
+  "copy": {
+    "sourceBadge": "CHARGED",
+    "targetIdle": "IDLE",
+    "targetDone": "TRANSFERRED",
+    "trigger": "TRANSFER"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "pathMs": 280, "travelMs": 500, "hitMs": 320 },
+  "api": {
+    "run": "runEnergyTransfer()",
+    "reset": "resetEnergyTransfer()",
+    "replay": "replayEnergyTransfer()"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediate TRANSFERRED target with lit path; no packet or hit animation"
+  }
+}

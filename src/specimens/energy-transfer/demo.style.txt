@@ -1,0 +1,261 @@
+/* SPX-2011 Energy Transfer — portable contract. */
+
+.etr {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 1rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.etr *,
+.etr *::before,
+.etr *::after {
+  box-sizing: border-box;
+}
+
+.etr__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.etr__node {
+  flex: 0 0 auto;
+  width: 108px;
+  padding: 0.55rem 0.45rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  text-align: center;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.etr__node--from {
+  border-color: var(--primary);
+}
+
+.etr__node--to.is-received {
+  border-color: var(--accent);
+  background: rgb(56 163 255 / 0.12);
+}
+
+.etr__role {
+  margin: 0;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: rgb(244 247 250 / 0.65);
+}
+
+.etr__name {
+  margin: 0.2rem 0 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.etr__badge {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+}
+
+.etr__badge--idle {
+  color: rgb(244 247 250 / 0.5);
+}
+
+.etr__node--to.is-received .etr__badge {
+  color: var(--accent);
+}
+
+.etr__link {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 72px;
+  max-width: 120px;
+  height: 36px;
+}
+
+.etr__seg {
+  position: absolute;
+  height: 3px;
+  background: rgb(56 163 255 / 0.35);
+  transform-origin: left center;
+}
+
+.etr__seg--1 {
+  left: 0;
+  top: 14px;
+  width: 55%;
+  transform: rotate(-8deg) scaleX(0);
+}
+
+.etr__seg--2 {
+  left: 48%;
+  top: 8px;
+  width: 52%;
+  transform: rotate(12deg) scaleX(0);
+  transform-origin: left center;
+}
+
+.etr[data-phase='path'] .etr__seg,
+.etr[data-phase='travel'] .etr__seg,
+.etr[data-phase='done'] .etr__seg {
+  transform: rotate(var(--rot, 0)) scaleX(1);
+  transition: transform 280ms var(--ease);
+}
+
+.etr__seg--1 { --rot: -8deg; }
+.etr__seg--2 { --rot: 12deg; }
+
+.etr__packet {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 14px;
+  height: 10px;
+  margin-top: -5px;
+  background: var(--primary);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.etr[data-phase='travel'] .etr__packet {
+  opacity: 1;
+  animation: etr-packet 500ms var(--ease) forwards;
+}
+
+.etr[data-phase='done'] .etr__packet {
+  opacity: 0;
+}
+
+@keyframes etr-packet {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(calc(100vw - 50%)); opacity: 1; }
+}
+
+.etr__link {
+  --etr-travel: 100px;
+}
+
+.etr[data-phase='travel'] .etr__packet {
+  animation: etr-packet-local 500ms var(--ease) forwards;
+}
+
+@keyframes etr-packet-local {
+  0% { left: 0; opacity: 1; }
+  100% { left: calc(100% - 14px); opacity: 1; }
+}
+
+.etr[data-phase='done'] .etr__node--to {
+  animation: etr-hit 320ms var(--ease) forwards;
+}
+
+@keyframes etr-hit {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06); border-color: var(--accent); }
+  100% { transform: scale(1); }
+}
+
+.etr__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.etr__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.etr__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.etr__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.etr__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.etr__live {
+  margin: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgb(244 247 250 / 0.6);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etr[data-phase='travel'] .etr__packet,
+  .etr[data-phase='done'] .etr__node--to {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .etr[data-phase='travel'] .etr__packet,
+[data-force-reduced-motion='true'] .etr[data-phase='done'] .etr__node--to {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etr[data-phase='done'] .etr__seg,
+  .etr[data-phase='travel'] .etr__seg {
+    transform: rotate(var(--rot, 0)) scaleX(1);
+    transition: none;
+  }
+
+  .etr[data-phase='done'] .etr__node--to,
+  .etr[data-phase='travel'] .etr__node--to.is-received {
+    transform: none;
+  }
+
+  .etr[data-phase='travel'] .etr__packet {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .etr[data-phase='done'] .etr__seg,
+[data-force-reduced-motion='true'] .etr[data-phase='travel'] .etr__seg {
+  transform: rotate(var(--rot, 0)) scaleX(1);
+  transition: none;
+}
+
+[data-force-reduced-motion='true'] .etr[data-phase='done'] .etr__node--to,
+[data-force-reduced-motion='true'] .etr[data-phase='travel'] .etr__node--to.is-received {
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .etr[data-phase='travel'] .etr__packet {
+  opacity: 0;
+}

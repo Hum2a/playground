@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **40 / 369** complete.
+- Progress: **41 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 40 |
-| Open | 329 |
+| Done | 41 |
+| Open | 328 |
 
 ## Visual grammar
 
@@ -72,6 +72,7 @@
 | MHA-324 | `SPX-2298` | `angular-focus-brackets` | Angular Focus Brackets |
 | MHA-330 | `SPX-2304` | `hero-assignment-drag` | Hero Assignment Drag |
 | MHA-007 | `SPX-1981` | `halftone-expansion` | Halftone Expansion |
+| MHA-037 | `SPX-2011` | `energy-transfer` | Energy Transfer |
 
 ## Core first-wave
 
@@ -155,7 +156,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-034** · `SPX-2008` · **Branching Energy Surge** — bright angular branches travel across a surface and converge on an action.
 - [ ] **MHA-035** · `SPX-2009` · **Charge Percentage Ramp** — 0→100% charge changes line density, scale and typography intensity.
 - [ ] **MHA-036** · `SPX-2010` · **Full-Power Commit** — crossing 100% causes the entire control to lock into a high-energy completion state.
-- [ ] **MHA-037** · `SPX-2011` · **Energy Transfer** — luminous signal visibly travels from one profile/node to another.
+- [x] **MHA-037** · `SPX-2011` · **Energy Transfer** — luminous signal visibly travels from one profile/node to another.
 - [ ] **MHA-038** · `SPX-2012` · **Stored Power Accumulation** — repeated actions add persistent energy segments around a central meter.
 - [ ] **MHA-039** · `SPX-2013` · **Power Release Recoil** — accumulated visual energy collapses outward after activation.
 - [ ] **MHA-040** · `SPX-2014` · **Controlled Output Dial** — percentage selector changes the density of energy around its target.
