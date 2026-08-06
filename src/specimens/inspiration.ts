@@ -153,6 +153,8 @@ export const SUGGESTED_FREE_TAGS = [
   'propagation',
   'dependency',
   'recovery',
+  'adaptation',
+  'improvement',
   'reconstruction',
   'canonical-state',
   'feedback',
