@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **31 / 369** complete.
+- Progress: **32 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 31 |
-| Open | 338 |
+| Done | 32 |
+| Open | 337 |
 
 ## Visual grammar
 
@@ -63,6 +63,7 @@
 | MHA-158 | `SPX-2132` | `ice-wipe-transition` | Ice Wipe Transition |
 | MHA-169 | `SPX-2143` | `explosive-notification-burst` | Explosive Notification Burst |
 | MHA-180 | `SPX-2154` | `binding-wrap-lock` | Binding Wrap Lock |
+| MHA-226 | `SPX-2200` | `team-formation-snap` | Team Formation Snap |
 
 ## Core first-wave
 
@@ -96,7 +97,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-158** · `SPX-2132` · **Ice Wipe Transition** — ice-freeze-inspired-effects
 - [x] **MHA-169** · `SPX-2143` · **Explosive Notification Burst** — explosion-inspired-effects
 - [x] **MHA-180** · `SPX-2154` · **Binding Wrap Lock** — capture-binding-effects
-- [ ] **MHA-226** · `SPX-2200` · **Team Formation Snap** — team-up-cooperative-effects
+- [x] **MHA-226** · `SPX-2200` · **Team Formation Snap** — team-up-cooperative-effects
 - [ ] **MHA-324** · `SPX-2298` · **Angular Focus Brackets** — selection-focus
 
 ## Manga Impact Language
@@ -416,7 +417,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Team-Up / Cooperative Effects
 
-- [ ] **MHA-226** · `SPX-2200` · **Team Formation Snap** — individual profile cards fly into fixed formation slots.
+- [x] **MHA-226** · `SPX-2200` · **Team Formation Snap** — individual profile cards fly into fixed formation slots.
 - [ ] **MHA-227** · `SPX-2201` · **Combo Chain** — one member's completed action sends a pulse to the next.
 - [ ] **MHA-228** · `SPX-2202` · **Assist Ready Indicator** — teammate card gains a compact ready state when conditions are met.
 - [ ] **MHA-229** · `SPX-2203` · **Role Assignment Transfer** — role tokens move into selected team members.

@@ -1,0 +1,10 @@
+{
+  "name": "team-formation-snap",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "animation": { "snapMs": 580, "totalMs": 1230 }
+}

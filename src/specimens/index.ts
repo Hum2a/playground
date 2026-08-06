@@ -249,6 +249,7 @@ import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
+import { teamFormationSnap } from './team-formation-snap/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { temporalUndo } from './temporal-undo/entry'
 import { threatLevelEscalation } from './threat-level-escalation/entry'
@@ -568,6 +569,7 @@ export const specimens: Specimen[] = [
   tacticalCommandWheel,
   tacticalTargetLock,
   tartarusFloorAscension,
+  teamFormationSnap,
   temporalFreeze,
   temporalUndo,
   threatLevelEscalation,
