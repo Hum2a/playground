@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **22 / 244** complete.
+- Progress: **23 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 22 |
-| Open | 222 |
+| Done | 23 |
+| Open | 221 |
 
 ## Visual grammar
 
@@ -56,6 +56,7 @@
 | DB-095 | `SPX-1060` | `sector-radar-search` | Sector Radar Search |
 | DB-184 | `SPX-1149` | `capsule-collapse` | Capsule Collapse |
 | DB-163 | `SPX-1128` | `core-seed-regeneration` | Core Seed Regeneration |
+| DB-195 | `SPX-1160` | `temporal-undo` | Temporal Undo |
 
 ## Core first-wave
 
@@ -83,11 +84,11 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-105** ?? `SPX-1070` ?? **Seven-Item Collection** ??? dragon-balls-collection-completion
 - [ ] **DB-106** ?? `SPX-1071` ?? **Final Item Acquired** ??? dragon-balls-collection-completion
 - [x] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? capsule-corp-compact-storage
-- [ ] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? capsule-corp-compact-storage
+- [x] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? capsule-corp-compact-storage
 - [ ] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? destruction-deletion
 - [ ] **DB-162** ?? `SPX-1127` ?? **Namekian Regeneration** ??? regeneration-recovery
 - [x] **DB-163** ?? `SPX-1128` ?? **Cell Regeneration** ??? regeneration-recovery
-- [ ] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? time-manipulation
+- [x] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? time-manipulation
 - [x] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? time-manipulation
 - [ ] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? tournament-ranking
 - [ ] **DB-230** ?? `SPX-1195` ?? **Git Fusion Merge** ??? data-developer-tool-specimens
@@ -329,7 +330,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Capsule Corp / Compact Storage
 
 - [x] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? large complex object compresses into a tiny portable representation.
-- [ ] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? tiny token expands into a complete functional component.
+- [x] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? tiny token expands into a complete functional component.
 - [ ] **DB-186** ?? `SPX-1151` ?? **Component Packing** ??? complex UI collapses into a compact stored state.
 - [ ] **DB-187** ?? `SPX-1152` ?? **Capsule Inventory** ??? several large potential objects represented as tiny indexed tokens.
 - [ ] **DB-188** ?? `SPX-1153` ?? **Deploy From Capsule** ??? selected stored object rapidly reconstructs into its usable state.
@@ -342,7 +343,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? an operation skips its expected intermediate animation frames and appears further ahead.
 - [x] **DB-193** ?? `SPX-1158` ?? **Time Freeze Interaction** ??? surrounding interface pauses while one selected operation remains active.
 - [ ] **DB-194** ?? `SPX-1159` ?? **Temporal Snapshot** ??? current system state freezes and becomes a restorable checkpoint.
-- [ ] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? recent destructive action visibly reverses through its exact previous states.
+- [x] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? recent destructive action visibly reverses through its exact previous states.
 - [ ] **DB-196** ?? `SPX-1161` ?? **Three-Minute Rewind** ??? timeline scrub reconstructs a previous state.
 - [ ] **DB-197** ?? `SPX-1162` ?? **Time Chamber Acceleration** ??? long-running operation is represented as accelerated internal time.
 - [ ] **DB-198** ?? `SPX-1163` ?? **Skipped Processing Steps** ??? expected pipeline stages disappear because an optimisation bypassed them.
