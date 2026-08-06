@@ -1,0 +1,56 @@
+<div class="pixel-hp" data-pixel-hp data-state="idle" data-tone="high">
+  <p class="pixel-hp__unit">UNIT // A</p>
+
+  <div class="pixel-hp__panel">
+    <div class="pixel-hp__header">
+      <p
+        class="pixel-hp__value"
+        data-php-value
+        aria-live="polite"
+      >
+        HP <span data-php-current>18</span> / <span data-php-max>20</span>
+      </p>
+      <span class="pixel-hp__low" data-php-low hidden>LOW</span>
+      <span class="pixel-hp__delta" data-php-delta aria-hidden="true">-11</span>
+    </div>
+
+    <div
+      class="pixel-hp__bar"
+      data-php-bar
+      role="meter"
+      aria-label="Unit A hit points"
+      aria-valuemin="0"
+      aria-valuemax="20"
+      aria-valuenow="18"
+      aria-valuetext="18 of 20"
+    >
+      <span class="pixel-hp__block is-filled" data-php-block data-i="0"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="1"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="2"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="3"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="4"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="5"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="6"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="7"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="8"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="9"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="10"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="11"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="12"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="13"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="14"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="15"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="16"></span>
+      <span class="pixel-hp__block is-filled" data-php-block data-i="17"></span>
+      <span class="pixel-hp__block" data-php-block data-i="18"></span>
+      <span class="pixel-hp__block" data-php-block data-i="19"></span>
+    </div>
+  </div>
+
+  <div class="pixel-hp__actions">
+    <button type="button" class="pixel-hp__btn" data-php-damage>DAMAGE</button>
+    <button type="button" class="pixel-hp__btn pixel-hp__btn--ghost" data-php-reset>
+      RESET
+    </button>
+  </div>
+</div>

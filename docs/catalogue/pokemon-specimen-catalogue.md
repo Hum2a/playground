@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 266** complete.
+- Progress: **10 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 257 |
+| Done | 10 |
+| Open | 256 |
 
 ## Visual grammar
 
@@ -41,6 +41,7 @@
 | PK-027 | `SPX-726` | `evolution-complete` | Evolution Complete |
 | PK-014 | `SPX-713` | `capture-breakout` | Capture Breakout |
 | PK-063 | `SPX-762` | `level-up-overflow` | Level Up Overflow |
+| PK-160 | `SPX-859` | `pixel-hp-drain` | Pixel HP Drain |
 
 ## Core first-wave
 
@@ -261,7 +262,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-157** · `SPX-856` · **Game Boy Screen Transition** — A four-tone pixel wipe replaces one state with another.
 - [ ] **PK-158** · `SPX-857` · **Pixel Encounter Flash** — Alternating monochrome regions interrupt the current interface.
 - [ ] **PK-159** · `SPX-858` · **RPG Text Box Typewriter** — Restrained low-resolution message progression.
-- [ ] **PK-160** · `SPX-859` · **Pixel HP Drain** — Segmented low-resolution resource depletion.
+- [x] **PK-160** · `SPX-859` · **Pixel HP Drain** — Segmented low-resolution resource depletion.
 - [ ] **PK-161** · `SPX-860` · **Sprite Flicker Defeat** — An entity alternates visibility before dropping out of its occupied space.
 - [ ] **PK-162** · `SPX-861` · **Four-Tone Selection Cursor** — A rigid pixel cursor moves between menu options.
 - [ ] **PK-163** · `SPX-862` · **Pixel Menu Open** — A hard-edged command box constructs from corners.

@@ -1,0 +1,196 @@
+/* SPX-859 Pixel HP Drain — portable contract. Do not restyle to host tokens. */
+
+.pixel-hp {
+  --php-0: #101b16;
+  --php-1: #40513d;
+  --php-2: #8c9c69;
+  --php-3: #d8dfb4;
+  --php-block-w: 10px;
+  --php-block-h: 14px;
+  --php-gap: 2px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  overflow: hidden;
+  background: var(--php-0);
+  color: var(--php-3);
+  font-family: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Menlo, Consolas, monospace;
+  image-rendering: pixelated;
+}
+
+.pixel-hp *,
+.pixel-hp *::before,
+.pixel-hp *::after {
+  box-sizing: border-box;
+}
+
+.pixel-hp__unit {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--php-2);
+}
+
+.pixel-hp__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  width: min(100%, 280px);
+  padding: 0.85rem 0.9rem;
+  border: 2px solid var(--php-1);
+  background: var(--php-0);
+}
+
+.pixel-hp__header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  min-height: 1.1rem;
+}
+
+.pixel-hp__value {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--php-3);
+}
+
+.pixel-hp__low {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--php-2);
+}
+
+.pixel-hp__low[hidden] {
+  display: none;
+}
+
+.pixel-hp__delta {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--php-2);
+  opacity: 0;
+}
+
+.pixel-hp__delta.is-on {
+  opacity: 1;
+}
+
+.pixel-hp__bar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--php-gap);
+  width: 100%;
+  /* Impact is stepped translate — no smooth transition */
+  transform: translateX(0);
+}
+
+.pixel-hp.is-impact .pixel-hp__bar {
+  transform: translateX(2px);
+}
+
+.pixel-hp.is-impact-back .pixel-hp__bar {
+  transform: translateX(0);
+}
+
+.pixel-hp__block {
+  flex: 1 1 0;
+  min-width: 0;
+  height: var(--php-block-h);
+  max-width: var(--php-block-w);
+  background: var(--php-1);
+  /* No width/opacity transitions — discrete only */
+  transition: none;
+}
+
+@media (min-width: 300px) {
+  .pixel-hp__block {
+    flex: 0 0 var(--php-block-w);
+  }
+}
+
+.pixel-hp__block.is-filled {
+  background: var(--php-3);
+}
+
+.pixel-hp[data-tone='mid'] .pixel-hp__block.is-filled {
+  background: var(--php-2);
+}
+
+.pixel-hp[data-tone='low'] .pixel-hp__block.is-filled {
+  background: var(--php-1);
+}
+
+.pixel-hp[data-tone='low'] .pixel-hp__value {
+  color: var(--php-2);
+}
+
+.pixel-hp__actions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.pixel-hp__btn {
+  appearance: none;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--php-2);
+  border-radius: 0;
+  background: var(--php-1);
+  color: var(--php-3);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pixel-hp__btn--ghost {
+  background: transparent;
+  border-color: var(--php-1);
+  color: var(--php-2);
+}
+
+.pixel-hp__btn:focus-visible {
+  outline: 2px solid var(--php-3);
+  outline-offset: 2px;
+}
+
+.pixel-hp__btn:hover:not(:disabled) {
+  background: var(--php-2);
+  color: var(--php-0);
+}
+
+.pixel-hp__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Reduced motion: no impact travel */
+@media (prefers-reduced-motion: reduce) {
+  .pixel-hp.is-impact .pixel-hp__bar,
+  .pixel-hp.is-impact-back .pixel-hp__bar {
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .pixel-hp.is-impact .pixel-hp__bar,
+[data-force-reduced-motion='true'] .pixel-hp.is-impact-back .pixel-hp__bar {
+  transform: none;
+}

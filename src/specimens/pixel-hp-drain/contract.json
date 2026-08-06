@@ -1,0 +1,58 @@
+{
+  "name": "pixel-hp-drain",
+  "intent": "Retro segmented HP drain: 20 discrete blocks deplete right-to-left one at a time with stepped numeric updates — no smooth width animation.",
+  "colours": {
+    "tone0": "#101b16",
+    "tone1": "#40513d",
+    "tone2": "#8c9c69",
+    "tone3": "#d8dfb4"
+  },
+  "copy": {
+    "unit": "UNIT // A",
+    "initial": "HP 18 / 20",
+    "damage": "-11",
+    "final": "HP 7 / 20",
+    "trigger": "DAMAGE",
+    "low": "LOW"
+  },
+  "geometry": {
+    "blockCount": 20,
+    "blockPx": [10, 14],
+    "gapPx": 2,
+    "startFilled": 18,
+    "damageBlocks": 11,
+    "endFilled": 7,
+    "impactTranslatePx": 2,
+    "direction": "right-to-left"
+  },
+  "thresholds": {
+    "midAtFilled": 10,
+    "midTone": "#8c9c69",
+    "lowAtFilled": 5,
+    "lowTone": "#40513d",
+    "lowLabel": "LOW",
+    "canonicalFinalCrossesMidNotLow": true
+  },
+  "timing": {
+    "impactStepMs": 45,
+    "blockMs": 45,
+    "noWidthTransition": true,
+    "steppedOnly": true
+  },
+  "api": {
+    "damage": "runPixelHpDrain()",
+    "reset": "runPixelHpReset()",
+    "busyGuard": true
+  },
+  "a11y": {
+    "numericExposure": "HP N / 20 via text + role=meter",
+    "blocksSupplementary": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show seven filled blocks and HP 7/20"
+  }
+}
