@@ -156,7 +156,7 @@ specimens can feel tactile without needing sound.
     printed pointer and numeric value.
 - [ ] **MUSIC-047** · `SPX-3806` · ★★★★★ **Expression Pedal Sweep** — A treadle moves heel-to-toe
     while a linked parameter fills.
-- [ ] **MUSIC-048** · `SPX-3807` · ★★★★★ **Pedalboard Signal Chain** — Several pedals connect
+- [x] **MUSIC-048** · `SPX-3807` · ★★★★★ **Pedalboard Signal Chain** — Several pedals connect
     with a glowing signal path that reroutes when bypassed.
 - [ ] **MUSIC-049** · `SPX-3808` · ★★★★☆ **True Bypass Route** — Disabling a pedal visibly
     redirects the signal around its processing block.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-048 | SPX-3807 | `pedalboard-signal-chain` | Pedalboard Signal Chain |
 | MUSIC-044 | SPX-3803 | `stomp-switch-press` | Stomp Switch Press |
 | MUSIC-036 | SPX-3795 | `compressor-threshold-crush` | Compressor Threshold Crush |
 | MUSIC-025 | SPX-3784 | `eq-bypass-flatten` | EQ Bypass Flatten |
@@ -872,12 +873,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **9 / 310** complete.
+- Progress: **10 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 301 |
+| Done | 10 |
+| Open | 300 |
 
 ## Core first-wave / build queue
 
@@ -895,7 +896,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · scaffold `gain-reduction-slam`
 - [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
 - [x] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · `stomp-switch-press`
-- [ ] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · scaffold `pedalboard-signal-chain`
+- [x] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · `pedalboard-signal-chain`
 - [ ] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · scaffold `tap-tempo-pulse`
 - [ ] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · scaffold `oscillator-wave-morph`
 - [ ] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · scaffold `arpeggiator-step-chase`

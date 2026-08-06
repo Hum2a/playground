@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { pedalboardSignalChain } from '../../library/music-equipment/pedalboard-signal-chain/entry'
 import { stompSwitchPress } from '../../library/music-equipment/stomp-switch-press/entry'
 import { compressorThresholdCrush } from '../../library/music-equipment/compressor-threshold-crush/entry'
 import { eqBypassFlatten } from '../../library/music-equipment/eq-bypass-flatten/entry'
@@ -10,6 +11,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  pedalboardSignalChain,
   stompSwitchPress,
   compressorThresholdCrush,
   eqBypassFlatten,

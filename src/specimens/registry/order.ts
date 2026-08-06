@@ -556,4 +556,5 @@ export const specimenOrder: string[] = [
   'eq-bypass-flatten',
   'compressor-threshold-crush',
   'stomp-switch-press',
+  'pedalboard-signal-chain',
 ]
