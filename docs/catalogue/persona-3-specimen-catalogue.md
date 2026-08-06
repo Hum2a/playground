@@ -59,7 +59,6 @@
 | P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
 | P3-089 | `SPX-486` | `tactical-command-wheel` | Tactical Command Wheel |
 
-| P3-064 | SPX-461 | ull-moon-milestone | Full Moon Milestone |
 
 | P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
 | P3-170 | `SPX-567` | `blue-focus-brackets` | Blue Focus Brackets |
