@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const scrubPreviewThumbnail: Specimen = {
   id: 'scrub-preview-thumbnail',

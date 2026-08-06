@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const translucentMaterialLift: Specimen = {
   id: 'translucent-material-lift',
   ref: 'SPX-1536',

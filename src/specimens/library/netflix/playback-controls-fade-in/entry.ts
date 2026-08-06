@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const playbackControlsFadeIn: Specimen = {
   id: 'playback-controls-fade-in',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const volumeBrightnessHud: Specimen = {
   id: 'volume-brightness-hud',
   ref: 'SPX-1474',

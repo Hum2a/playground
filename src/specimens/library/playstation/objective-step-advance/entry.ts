@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const objectiveStepAdvance: Specimen = {
   id: 'objective-step-advance',

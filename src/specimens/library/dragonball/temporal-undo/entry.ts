@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const temporalUndo: Specimen = {
   id: 'temporal-undo',
   ref: 'SPX-1160',

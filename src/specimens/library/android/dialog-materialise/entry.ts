@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dialogMaterialise: Specimen = {
   id: 'dialog-materialise',
   ref: 'SPX-1775',

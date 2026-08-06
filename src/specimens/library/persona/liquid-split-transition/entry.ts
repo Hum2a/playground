@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const liquidSplitTransition: Specimen = {
   id: 'liquid-split-transition',
   ref: 'SPX-402',

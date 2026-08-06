@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const angularFocusBrackets: Specimen = {
   id: 'angular-focus-brackets',
   ref: 'SPX-2298',

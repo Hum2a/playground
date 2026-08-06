@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const glassFractureReveal: Specimen = {
   id: 'glass-fracture-reveal',
   ref: 'SPX-026',

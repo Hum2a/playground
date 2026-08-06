@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const discoveryTearOpen: Specimen = {
   id: 'discovery-tear-open',
   ref: 'SPX-322',

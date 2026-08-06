@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const contextualVanishReappear: Specimen = {
   id: 'contextual-vanish-reappear',
   ref: 'SPX-1101',

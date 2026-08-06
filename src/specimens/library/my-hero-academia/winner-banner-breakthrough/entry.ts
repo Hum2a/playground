@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const winnerBannerBreakthrough: Specimen = {
   id: 'winner-banner-breakthrough',
   ref: 'SPX-2041',

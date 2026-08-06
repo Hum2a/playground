@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const tacticalCommandWheel: Specimen = {
   id: 'tactical-command-wheel',
   ref: 'SPX-486',

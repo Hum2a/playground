@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const kiChargeMeter: Specimen = {
   id: 'ki-charge-meter',
   ref: 'SPX-966',

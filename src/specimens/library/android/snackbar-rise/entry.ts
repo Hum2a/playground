@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const snackbarRise: Specimen = {
   id: 'snackbar-rise',
   ref: 'SPX-1666',

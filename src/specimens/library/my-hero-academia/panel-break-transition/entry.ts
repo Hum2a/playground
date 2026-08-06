@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const panelBreakTransition: Specimen = {
   id: 'panel-break-transition',
   ref: 'SPX-1977',

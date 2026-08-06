@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const propagatedShockwave: Specimen = {
   id: 'propagated-shockwave',
   ref: 'SPX-1088',

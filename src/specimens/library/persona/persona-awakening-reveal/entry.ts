@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const personaAwakeningReveal: Specimen = {
   id: 'persona-awakening-reveal',
   ref: 'SPX-493',

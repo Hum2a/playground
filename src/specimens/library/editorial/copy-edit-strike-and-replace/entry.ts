@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const copyEditStrikeAndReplace: Specimen = {
   id: 'copy-edit-strike-and-replace',

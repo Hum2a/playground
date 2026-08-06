@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const nextEpisodeCountdown: Specimen = {
   id: 'next-episode-countdown',

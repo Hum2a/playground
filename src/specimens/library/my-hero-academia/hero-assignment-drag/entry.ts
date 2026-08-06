@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const heroAssignmentDrag: Specimen = {
   id: 'hero-assignment-drag',
   ref: 'SPX-2304',

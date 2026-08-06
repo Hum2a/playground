@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const powerStateTransformation: Specimen = {
   id: 'power-state-transformation',
   ref: 'SPX-981',

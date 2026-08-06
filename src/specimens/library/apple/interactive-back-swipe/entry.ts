@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const interactiveBackSwipe: Specimen = {
   id: 'interactive-back-swipe',
   ref: 'SPX-1302',

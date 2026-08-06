@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const fingerprintAcquisitionField: Specimen = {
   id: 'fingerprint-acquisition-field',
   ref: 'SPX-1830',

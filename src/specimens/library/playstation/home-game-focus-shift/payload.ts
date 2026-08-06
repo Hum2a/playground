@@ -1,4 +1,4 @@
-import type { SpecimenPayload } from '../types'
+import type { SpecimenPayload } from '../../../types'
 import html from './demo.html?raw'
 import css from './demo.style.txt?raw'
 import js from './demo.js?raw'

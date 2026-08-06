@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const fabToComposerTransform: Specimen = {
   id: 'fab-to-composer-transform',
   ref: 'SPX-1559',

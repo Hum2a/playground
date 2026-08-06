@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const energyTransfer: Specimen = {
   id: 'energy-transfer',
   ref: 'SPX-2011',

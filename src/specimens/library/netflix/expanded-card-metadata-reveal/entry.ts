@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const expandedCardMetadataReveal: Specimen = {
   id: 'expanded-card-metadata-reveal',

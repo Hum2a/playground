@@ -79,7 +79,7 @@ function buildEntryTs(input: ExportInput): string {
   const jsField = input.js.trim() ? `\n    js,` : ''
   const tags = parseTags(input.tags)
 
-  return `import type { Specimen } from '../types'
+  return `import type { Specimen } from '../../../types'
 import html from './demo.html?raw'
 import css from './demo.style.txt?raw'
 ${jsImport}import spec from './spec.md?raw'
@@ -182,8 +182,8 @@ export function buildSpecimenZip(input: ExportInput): Uint8Array {
 
 ## Manual steps
 
-1. Drop this folder into \`src/specimens/\`.
-2. Add one import line for \`entry.ts\` in \`src/specimens/index.ts\` and push the specimen into the \`specimens\` array.
+1. Drop this folder into \`src/specimens/library/<franchise>/\` (franchise matches \`inspiredBy\`, or \`original\`).
+2. Import \`entry.ts\` in \`src/specimens/registry/shards/<franchise>.ts\` and append the id to \`registry/order.ts\` (or run \`npm run spec:ship\`).
 `,
     ),
   }

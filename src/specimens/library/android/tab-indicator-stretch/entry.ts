@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const tabIndicatorStretch: Specimen = {
   id: 'tab-indicator-stretch',
   ref: 'SPX-1704',

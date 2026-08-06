@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const tacticalAlertPing: Specimen = {
   id: 'tactical-alert-ping',
   ref: 'SPX-011',

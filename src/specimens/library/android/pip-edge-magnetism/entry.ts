@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const pipEdgeMagnetism: Specimen = {
   id: 'pip-edge-magnetism',
   ref: 'SPX-1816',

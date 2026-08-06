@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const eyecatchTransition: Specimen = {
   id: 'eyecatch-transition',
   ref: 'SPX-2218',

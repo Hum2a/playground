@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const spotlightMaterialise: Specimen = {
   id: 'spotlight-materialise',
   ref: 'SPX-1444',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const keyboardRiseContentAvoidance: Specimen = {
   id: 'keyboard-rise-content-avoidance',
   ref: 'SPX-1836',

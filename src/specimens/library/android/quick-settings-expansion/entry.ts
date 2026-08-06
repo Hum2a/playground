@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const quickSettingsExpansion: Specimen = {
   id: 'quick-settings-expansion',
   ref: 'SPX-1648',

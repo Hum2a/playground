@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const precisionMenuSnap: Specimen = {
   id: 'precision-menu-snap',
   ref: 'SPX-006',

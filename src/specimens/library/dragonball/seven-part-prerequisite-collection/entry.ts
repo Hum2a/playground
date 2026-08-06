@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const sevenPartPrerequisiteCollection: Specimen = {
   id:'seven-part-prerequisite-collection',ref:'SPX-1070',title:'Seven-Part Prerequisite Collection',
   blurb:'Six fixed release requirements form an asymmetric constellation; APPROVAL docks as the seventh, then the complete set connects and unlocks publishing.',

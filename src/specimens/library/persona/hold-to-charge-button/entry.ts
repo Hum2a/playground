@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const holdToChargeButton: Specimen = {
   id: 'hold-to-charge-button',
   ref: 'SPX-024',

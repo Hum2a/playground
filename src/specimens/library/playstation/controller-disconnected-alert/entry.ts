@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const controllerDisconnectedAlert: Specimen = {
   id: 'controller-disconnected-alert',

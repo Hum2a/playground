@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const controlCentreModuleExpansion: Specimen = {
   id: 'control-centre-module-expansion',
   ref: 'SPX-1471',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const singleToDualPaneTransform: Specimen = {
   id: 'single-to-dual-pane-transform',
   ref: 'SPX-1955',

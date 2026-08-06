@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const capacityDrain: Specimen = {
   id: 'capacity-drain',
   ref: 'SPX-1210',

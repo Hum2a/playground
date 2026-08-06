@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const evolutionSilhouetteTransformation: Specimen = {
   id: 'evolution-silhouette-transformation',
   ref: 'SPX-724',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const postBurstRecovery: Specimen = {
   id: 'post-burst-recovery',
   ref: 'SPX-1212',

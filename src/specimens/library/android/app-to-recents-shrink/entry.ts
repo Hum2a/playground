@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const appToRecentsShrink: Specimen = {
   id: 'app-to-recents-shrink',
   ref: 'SPX-1802',

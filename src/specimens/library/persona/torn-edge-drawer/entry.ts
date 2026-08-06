@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const tornEdgeDrawer: Specimen = {
   id: 'torn-edge-drawer',
   ref: 'SPX-017',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const newspaperHeadlineDrop: Specimen = {
   id: 'newspaper-headline-drop',
   ref: 'SPX-018',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const headlineReflow: Specimen = {
   id: 'headline-reflow',

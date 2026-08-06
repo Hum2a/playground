@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const graphicBurstHover: Specimen = {
   id: 'graphic-burst-hover',
   ref: 'SPX-023',

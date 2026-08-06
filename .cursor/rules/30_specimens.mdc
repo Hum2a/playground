@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Specimens
 
-One folder per specimen under `src/specimens/<id>/`:
+One folder per specimen under `src/specimens/library/<franchise>/<id>/`:
 
 | File | Role |
 | --- | --- |
@@ -18,6 +18,16 @@ One folder per specimen under `src/specimens/<id>/`:
 | `demo.js` | Optional |
 | `spec.md` | Human portable spec |
 | `contract.json` | Machine-readable contract |
+
+`entry.ts` / `payload.ts` import types from `../../../types` (three levels up from `library/<franchise>/<id>/`).
+
+## Registration
+
+1. Scaffold: `npm run spec:new -- <id> --franchise <key>`
+2. Prefer authoring under `.wip-aside/<id>/` then `npm run spec:ship -- <id> --franchise <key> --export <camelName>` (optional `--commit`)
+3. Or manually: add import to `registry/shards/<franchise>.ts` + append `'<id>'` to `registry/order.ts`
+
+Bucket must match `inspiredBy.franchise` (or `original` when absent).
 
 ## Imports in `payload.ts`
 
@@ -31,7 +41,7 @@ Do **not** put `?raw` imports in `entry.ts` — that would re-inflate the catalo
 
 ## Metadata
 
-- `id` = URL slug; `ref` = `SPX-NNN`
+- `id` = URL slug (= folder name); `ref` = `SPX-NNN`
 - Required `facets` + optional `inspiredBy` + free `tags` — see `35_taxonomy` / `inspiration.ts`
 - `deps: 'none'` means plain HTML+CSS
 - Overlays need `preview.scaffold` with `{{specimen}}` and a relative + overflow-clipped host

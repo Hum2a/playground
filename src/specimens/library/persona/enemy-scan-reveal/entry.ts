@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const enemyScanReveal: Specimen = {
   id: 'enemy-scan-reveal',
   ref: 'SPX-482',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const windowMinimiseFunnel: Specimen = {
   id: 'window-minimise-funnel',
   ref: 'SPX-1350',

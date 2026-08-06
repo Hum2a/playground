@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const maximumOutputBreakthrough: Specimen = {
   id: 'maximum-output-breakthrough',
   ref: 'SPX-2111',

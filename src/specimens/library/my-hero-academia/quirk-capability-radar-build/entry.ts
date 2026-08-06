@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const quirkCapabilityRadarBuild: Specimen = {
   id: 'quirk-capability-radar-build',
   ref: 'SPX-2283',

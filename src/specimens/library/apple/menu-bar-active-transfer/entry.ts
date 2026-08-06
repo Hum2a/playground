@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const menuBarActiveTransfer: Specimen = {
   id: 'menu-bar-active-transfer',
   ref: 'SPX-1470',

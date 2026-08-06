@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const processingTimeSkip: Specimen = {
   id: 'processing-time-skip',
   ref: 'SPX-1157',

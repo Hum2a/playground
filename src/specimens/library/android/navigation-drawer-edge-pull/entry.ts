@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const navigationDrawerEdgePull: Specimen = {
   id: 'navigation-drawer-edge-pull',
   ref: 'SPX-1683',

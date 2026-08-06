@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const activeBottomNavPillTransfer: Specimen = {
   id: 'active-bottom-nav-pill-transfer',
   ref: 'SPX-1691',

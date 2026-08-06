@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const scannerSearch: Specimen = {
   id: 'scanner-search',
   ref: 'SPX-604',

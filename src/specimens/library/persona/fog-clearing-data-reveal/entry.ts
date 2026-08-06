@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const fogClearingDataReveal: Specimen = {
   id: 'fog-clearing-data-reveal',
   ref: 'SPX-TODO',

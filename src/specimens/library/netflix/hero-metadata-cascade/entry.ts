@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const heroMetadataCascade: Specimen = {
   id: 'hero-metadata-cascade',

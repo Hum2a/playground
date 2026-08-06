@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const nearbyDeviceDiscovery: Specimen = {
   id: 'nearby-device-discovery',
   ref: 'SPX-1866',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const materialSwitchToggle: Specimen = {
   id: 'material-switch-toggle',
   ref: 'SPX-1719',

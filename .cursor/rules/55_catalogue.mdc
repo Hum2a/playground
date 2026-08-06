@@ -13,7 +13,7 @@ alwaysApply: false
 - Everything around it stays grey so the sheet lands
 - Content is near full-bleed (`--content-max: none`); `--plate-min` / `--sheet-min` densify above `90rem` / `120rem`
 - Filters sync to the URL (`?kind=&q=`…); sticky filter bar + skip link; result count + clear
-- Contact sheet cells lazy-mount via IntersectionObserver (`useFrameVisibility` starts `false`, sync-checks above-fold, then observes with ~`50%` rootMargin) and link to `/s/:id`
+- Contact sheet cells and plate cards use a **windowed grid** (`useGridWindow`) so off-screen React nodes are not mounted; within the window, iframes still lazy-mount via IntersectionObserver (`useFrameVisibility`) and link to `/s/:id`
 - Placeholders and `PreviewFrame` reserve the specimen aspect-ratio; frame scale uses CSS `cqw`/`cqi` (no post-paint JS resize)
 - Previews call `resolvePayload` only when visible — HTML/CSS/JS chunks are not in the initial catalogue graph
 

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const ransomNoteReveal: Specimen = {
   id: 'ransom-note-reveal',
   ref: 'SPX-019',

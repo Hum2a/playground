@@ -1,13 +1,48 @@
-import { mkdirSync, writeFileSync, existsSync } from 'node:fs'
+import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-const slug = process.argv[2]
+const args = process.argv.slice(2)
+const slug = args.find((a) => !a.startsWith('--'))
+const franchiseArg = args.find((a) => a.startsWith('--franchise='))
+const franchiseFlagIdx = args.indexOf('--franchise')
+const franchise =
+  franchiseArg?.slice('--franchise='.length) ??
+  (franchiseFlagIdx >= 0 ? args[franchiseFlagIdx + 1] : 'original')
+
 if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
-  console.error('Usage: npm run spec:new -- <slug>')
+  console.error('Usage: npm run spec:new -- <slug> [--franchise <key>]')
   process.exit(1)
 }
 
-const dir = join(process.cwd(), 'src', 'specimens', slug)
+const inspirationSrc = readFileSync(
+  join(process.cwd(), 'src', 'specimens', 'inspiration.ts'),
+  'utf8',
+)
+const franchises = new Set(
+  [
+    ...inspirationSrc.matchAll(
+      /(?:^|\n)\s*(?:'([^']+)'|([a-z0-9-]+))\s*:\s*\{\s*$/gm,
+    ),
+  ]
+    .map((m) => m[1] || m[2])
+    .filter((k) => k && k !== 'works' && k !== 'label'),
+)
+
+if (!franchises.has(franchise)) {
+  console.error(
+    `Unknown franchise "${franchise}". Valid: ${[...franchises].sort().join(', ')}`,
+  )
+  process.exit(1)
+}
+
+const dir = join(
+  process.cwd(),
+  'src',
+  'specimens',
+  'library',
+  franchise,
+  slug,
+)
 if (existsSync(dir)) {
   console.error(`Folder already exists: ${dir}`)
   process.exit(1)
@@ -74,7 +109,7 @@ writeFileSync(
 )
 writeFileSync(
   join(dir, 'payload.ts'),
-  `import type { SpecimenPayload } from '../types'
+  `import type { SpecimenPayload } from '../../../types'
 import html from './demo.html?raw'
 // Vitest's CSS pipeline returns "" for \`*.css?raw\`; keep demo.css as the portable
 // artifact and import the twin \`.txt\` for the in-app string.
@@ -91,9 +126,15 @@ const payload: SpecimenPayload = {
 export default payload
 `,
 )
+
+const inspiredLine =
+  franchise === 'original'
+    ? `  // inspiredBy: { franchise: 'persona', works: ['persona-5'] },`
+    : `  inspiredBy: { franchise: '${franchise}' },`
+
 writeFileSync(
   join(dir, 'entry.ts'),
-  `import type { Specimen } from '../types'
+  `import type { Specimen } from '../../../types'
 
 export const specimen: Specimen = {
   id: '${slug}',
@@ -101,14 +142,14 @@ export const specimen: Specimen = {
   title: '${slug}',
   blurb: 'TODO',
   origin: { project: 'TODO' },
-  // TODO: set facets / inspiredBy (see taxonomy.ts + inspiration.ts / docs/inspiration-directory.md)
+  // TODO: set facets (see taxonomy.ts + inspiration.ts / docs/inspiration-directory.md)
   facets: {
     kind: 'overlay',
     tech: 'css-only',
     scope: 'card',
     intensity: 'subtle',
   },
-  // inspiredBy: { franchise: 'persona', works: ['persona-5'] },
+${inspiredLine}
   tags: [],
   deps: 'none',
   motion: { loops: true, respectsReducedMotion: true },
@@ -124,4 +165,7 @@ export const specimen: Specimen = {
 )
 
 console.log(`Scaffolded ${dir}`)
-console.log('Add one import line to src/specimens/index.ts')
+console.log(
+  `Register: import in src/specimens/registry/shards/${franchise}.ts and append '${slug}' to registry/order.ts`,
+)
+console.log(`Or: npm run spec:ship -- ${slug} --franchise ${franchise}`)

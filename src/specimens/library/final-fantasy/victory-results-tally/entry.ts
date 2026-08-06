@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const victoryResultsTally: Specimen = {
   id: 'victory-results-tally',
   ref: 'SPX-014',

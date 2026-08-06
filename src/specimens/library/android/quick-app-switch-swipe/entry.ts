@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const quickAppSwitchSwipe: Specimen = {
   id: 'quick-app-switch-swipe',
   ref: 'SPX-1613',

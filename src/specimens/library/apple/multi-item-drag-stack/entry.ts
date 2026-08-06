@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const multiItemDragStack: Specimen = {
   id: 'multi-item-drag-stack',
   ref: 'SPX-1452',

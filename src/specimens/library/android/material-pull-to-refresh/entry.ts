@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const materialPullToRefresh: Specimen = {
   id: 'material-pull-to-refresh',
   ref: 'SPX-1750',

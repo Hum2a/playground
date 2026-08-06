@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const achievementEncounter: Specimen = {
   id: 'achievement-encounter',
   ref: 'SPX-010',

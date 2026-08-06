@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const coreSeedRegeneration: Specimen = {
   id: 'core-seed-regeneration',
   ref: 'SPX-1128',

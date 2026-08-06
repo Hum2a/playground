@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "analyze": "npm run build && node scripts/analyze-bundle.mjs",
+    "loc": "node scripts/loc.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -15,6 +16,7 @@
     "lint": "oxlint",
     "spec:new": "node scripts/spec-new.mjs",
     "spec:check": "node scripts/spec-check.mjs",
+    "spec:ship": "node scripts/spec-ship.mjs",
     "deploy:preview": "npm run build && wrangler pages deploy --branch=preview",
     "deploy:prod": "npm run build && wrangler pages deploy"
   },

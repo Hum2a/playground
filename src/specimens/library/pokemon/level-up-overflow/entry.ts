@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const levelUpOverflow: Specimen = {
   id: 'level-up-overflow',
   ref: 'SPX-762',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const tournamentBracketActivation: Specimen = {
   id: 'tournament-bracket-activation',
   ref: 'SPX-1141',

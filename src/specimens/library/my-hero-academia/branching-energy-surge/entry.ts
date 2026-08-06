@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const branchingEnergySurge: Specimen = {
   id: 'branching-energy-surge',
   ref: 'SPX-2008',

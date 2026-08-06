@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const midnightChannelSignalAcquisition: Specimen = {
   id: 'midnight-channel-signal-acquisition',
   ref: 'SPX-2919',

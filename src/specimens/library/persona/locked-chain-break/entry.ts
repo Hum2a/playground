@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const lockedChainBreak: Specimen = {
   id: 'locked-chain-break',
   ref: 'SPX-314',

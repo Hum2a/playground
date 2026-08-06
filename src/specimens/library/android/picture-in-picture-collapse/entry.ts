@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const pictureInPictureCollapse: Specimen = {
   id: 'picture-in-picture-collapse',
   ref: 'SPX-1814',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const fullMoonMilestone: Specimen = {
   id: 'full-moon-milestone',
   ref: 'SPX-461',

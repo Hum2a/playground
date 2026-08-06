@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const stateIntensityField: Specimen={
   id:'state-intensity-field',ref:'SPX-1110',title:'State Intensity Field',
   blurb:'A structural field around ENGINE // 04 communicates four measured load levels through fixed contour, fragment, and radius changes.',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const analysisScribbleReveal: Specimen = {
   id: 'analysis-scribble-reveal',
   ref: 'SPX-2017',

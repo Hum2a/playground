@@ -2,9 +2,19 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 
 const specimensDir = join(process.cwd(), 'src', 'specimens')
-const indexPath = join(specimensDir, 'index.ts')
-const indexSrc = readFileSync(indexPath, 'utf8')
+const libraryDir = join(specimensDir, 'library')
+const orderPath = join(specimensDir, 'registry', 'order.ts')
+const shardsDir = join(specimensDir, 'registry', 'shards')
+const orderSrc = readFileSync(orderPath, 'utf8')
 const inspirationSrc = readFileSync(join(specimensDir, 'inspiration.ts'), 'utf8')
+
+/** Concatenate all shard sources for "is registered" checks. */
+const registrySrc =
+  orderSrc +
+  readdirSync(shardsDir)
+    .filter((f) => f.endsWith('.ts'))
+    .map((f) => readFileSync(join(shardsDir, f), 'utf8'))
+    .join('\n')
 
 const KINDS = new Set(['overlay', 'transition', 'loop', 'interaction'])
 const TECHS = new Set(['css-only', 'tiny-js'])
@@ -21,9 +31,21 @@ const ALL_INSPIRATION_IDS = new Set(
   ]),
 )
 
-const folders = readdirSync(specimensDir, { withFileTypes: true })
-  .filter((d) => d.isDirectory())
-  .map((d) => d.name)
+/** Specimen folders: library/<franchise>/<id> */
+const folders = []
+for (const franchise of readdirSync(libraryDir, { withFileTypes: true })) {
+  if (!franchise.isDirectory()) continue
+  const franchiseDir = join(libraryDir, franchise.name)
+  for (const spec of readdirSync(franchiseDir, { withFileTypes: true })) {
+    if (!spec.isDirectory()) continue
+    folders.push({
+      folder: spec.name,
+      franchise: franchise.name,
+      dir: join(franchiseDir, spec.name),
+      rel: `library/${franchise.name}/${spec.name}`,
+    })
+  }
+}
 
 const ids = new Set()
 const refs = new Set()
@@ -136,8 +158,7 @@ function readInspiredBy(folder, entry) {
   return { franchise, works }
 }
 
-for (const folder of folders) {
-  const dir = join(specimensDir, folder)
+for (const { folder, franchise: bucket, dir, rel } of folders) {
   const htmlPath = join(dir, 'demo.html')
   const cssPath = join(dir, 'demo.css')
   const styleTxt = join(dir, 'demo.style.txt')
@@ -145,13 +166,14 @@ for (const folder of folders) {
   const contractPath = join(dir, 'contract.json')
   const entryPath = join(dir, 'entry.ts')
   const jsPath = join(dir, 'demo.js')
+  const label = rel
 
   if (!existsSync(entryPath)) {
-    console.warn(`⚠ ${folder}: no entry.ts yet — skipped`)
+    console.warn(`⚠ ${label}: no entry.ts yet — skipped`)
     continue
   }
 
-  for (const [label, path] of [
+  for (const [name, path] of [
     ['demo.html', htmlPath],
     ['demo.css', cssPath],
     ['spec.md', specPath],
@@ -159,11 +181,11 @@ for (const folder of folders) {
     ['entry.ts', entryPath],
   ]) {
     if (!existsSync(path)) {
-      fail(`${folder}: missing ${label}`)
+      fail(`${label}: missing ${name}`)
       continue
     }
     const text = readFileSync(path, 'utf8').trim()
-    if (!text) fail(`${folder}: ${label} is empty`)
+    if (!text) fail(`${label}: ${name} is empty`)
   }
 
   const payloadPath = join(dir, 'payload.ts')
@@ -174,11 +196,10 @@ for (const folder of folders) {
       existsSync(entryPath) &&
       /ref:\s*['"]SPX-TODO['"]/.test(readFileSync(entryPath, 'utf8'))
     if (a !== b && !isTodo) {
-      fail(`${folder}: demo.css and demo.style.txt diverge`)
+      fail(`${label}: demo.css and demo.style.txt diverge`)
     }
   }
 
-  if (!existsSync(entryPath)) continue
   const entry = readFileSync(entryPath, 'utf8')
   const idMatch = entry.match(/id:\s*['"]([^'"]+)['"]/)
   const refMatch = entry.match(/ref:\s*['"]([^'"]+)['"]/)
@@ -186,26 +207,29 @@ for (const folder of folders) {
 
   if (!isTodo) {
     if (!existsSync(payloadPath)) {
-      fail(`${folder}: missing payload.ts (lazy specimen body)`)
+      fail(`${label}: missing payload.ts (lazy specimen body)`)
     } else {
       const payload = readFileSync(payloadPath, 'utf8')
-      if (!payload.trim()) fail(`${folder}: payload.ts is empty`)
+      if (!payload.trim()) fail(`${label}: payload.ts is empty`)
       if (!/export\s+default/.test(payload)) {
-        fail(`${folder}: payload.ts must default-export SpecimenPayload`)
+        fail(`${label}: payload.ts must default-export SpecimenPayload`)
       }
     }
     if (!/\bloadPayload\s*:/.test(entry)) {
-      fail(`${folder}: entry.ts missing loadPayload`)
+      fail(`${label}: entry.ts missing loadPayload`)
     }
   }
 
-  if (!idMatch) fail(`${folder}: could not read id from entry.ts`)
+  if (!idMatch) fail(`${label}: could not read id from entry.ts`)
   else {
     const id = idMatch[1]
+    if (id !== folder) {
+      fail(`${label}: folder name "${folder}" must match id "${id}"`)
+    }
     if (ids.has(id)) fail(`duplicate id: ${id}`)
     ids.add(id)
   }
-  if (!refMatch) fail(`${folder}: could not read ref from entry.ts`)
+  if (!refMatch) fail(`${label}: could not read ref from entry.ts`)
   else {
     const ref = refMatch[1]
     if (ref !== 'SPX-TODO') {
@@ -213,54 +237,64 @@ for (const folder of folders) {
       refs.add(ref)
       if (
         idMatch &&
-        !indexSrc.includes(idMatch[1]) &&
-        !indexSrc.includes(folder)
+        !registrySrc.includes(`'${idMatch[1]}'`) &&
+        !registrySrc.includes(`/${folder}/entry`)
       ) {
-        // Concurrent WIP folders may ship entry.ts before the registry line.
-        console.warn(`⚠ ${folder}: not referenced from index.ts`)
+        console.warn(`⚠ ${label}: not referenced from registry shards/order`)
       }
     }
   }
 
+  const inspired = readInspiredBy(label, entry)
+  if (inspired && inspired.franchise !== bucket) {
+    fail(
+      `${label}: library bucket "${bucket}" does not match inspiredBy.franchise "${inspired.franchise}"`,
+    )
+  }
+  if (!inspired && bucket !== 'original') {
+    fail(
+      `${label}: no inspiredBy but library bucket is "${bucket}" (expected original)`,
+    )
+  }
+
   if (!/\bfacets\s*:/.test(entry)) {
-    fail(`${folder}: entry.ts missing facets block`)
+    fail(`${label}: entry.ts missing facets block`)
   } else {
-    const kind = readFacet(folder, entry, 'kind', KINDS)
-    const tech = readFacet(folder, entry, 'tech', TECHS)
-    readFacet(folder, entry, 'scope', SCOPES)
-    readFacet(folder, entry, 'intensity', INTENSITIES)
+    const kind = readFacet(label, entry, 'kind', KINDS)
+    const tech = readFacet(label, entry, 'tech', TECHS)
+    readFacet(label, entry, 'scope', SCOPES)
+    readFacet(label, entry, 'intensity', INTENSITIES)
 
     const hasJs =
       existsSync(jsPath) && readFileSync(jsPath, 'utf8').trim().length > 0
     const payloadSrc = existsSync(payloadPath)
       ? readFileSync(payloadPath, 'utf8')
       : ''
-    const jsInPayload = /\bjs\b/.test(payloadSrc) && /files:\s*\{[^}]*\bjs\b/.test(payloadSrc)
+    const jsInPayload =
+      /\bjs\b/.test(payloadSrc) && /files:\s*\{[^}]*\bjs\b/.test(payloadSrc)
     if (!isTodo) {
       if (tech === 'css-only' && (hasJs || jsInPayload)) {
-        fail(`${folder}: tech is css-only but demo.js / payload files.js is present`)
+        fail(`${label}: tech is css-only but demo.js / payload files.js is present`)
       }
       if (tech === 'tiny-js' && !hasJs && !jsInPayload) {
-        fail(`${folder}: tech is tiny-js but no demo.js / payload files.js found`)
+        fail(`${label}: tech is tiny-js but no demo.js / payload files.js found`)
       }
     }
     void kind
   }
 
-  readInspiredBy(folder, entry)
-
   for (const tag of readTags(entry)) {
     if (ALL_FACET_VALUES.has(tag)) {
-      fail(`${folder}: free tag "${tag}" duplicates a facet value — remove it from tags`)
+      fail(`${label}: free tag "${tag}" duplicates a facet value — remove it from tags`)
     }
     if (ALL_INSPIRATION_IDS.has(tag)) {
       fail(
-        `${folder}: free tag "${tag}" is an inspiration id — use inspiredBy instead`,
+        `${label}: free tag "${tag}" is an inspiration id — use inspiredBy instead`,
       )
     }
     if (tag === 'persona-inspired' || /-inspired$/.test(tag)) {
       fail(
-        `${folder}: free tag "${tag}" looks like lineage — use inspiredBy.franchise / works`,
+        `${label}: free tag "${tag}" looks like lineage — use inspiredBy.franchise / works`,
       )
     }
   }
@@ -268,7 +302,7 @@ for (const folder of folders) {
   try {
     JSON.parse(readFileSync(contractPath, 'utf8'))
   } catch {
-    fail(`${folder}: contract.json is not valid JSON`)
+    fail(`${label}: contract.json is not valid JSON`)
   }
 }
 

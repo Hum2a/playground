@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dockLaunchBounce: Specimen = {
   id: 'dock-launch-bounce',
   ref: 'SPX-1339',

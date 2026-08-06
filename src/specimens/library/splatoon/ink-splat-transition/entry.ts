@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const inkSplatTransition: Specimen = {
   id: 'ink-splat-transition',
   ref: 'SPX-013',

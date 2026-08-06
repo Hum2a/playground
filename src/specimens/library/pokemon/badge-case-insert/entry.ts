@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const badgeCaseInsert: Specimen = {
   id: 'badge-case-insert',
   ref: 'SPX-844',

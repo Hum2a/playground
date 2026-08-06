@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const bottomSheetDetentSnap: Specimen = {
   id: 'bottom-sheet-detent-snap',
   ref: 'SPX-1314',

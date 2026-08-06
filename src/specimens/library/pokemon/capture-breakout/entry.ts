@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const captureBreakout: Specimen = {
   id: 'capture-breakout',
   ref: 'SPX-713',

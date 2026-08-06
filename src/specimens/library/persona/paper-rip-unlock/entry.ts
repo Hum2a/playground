@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const paperRipUnlock: Specimen = {
   id: 'paper-rip-unlock',
   ref: 'SPX-020',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const chargeRelease: Specimen = {
   id: 'charge-release',
   ref: 'SPX-969',

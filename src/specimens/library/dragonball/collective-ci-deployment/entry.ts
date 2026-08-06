@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const collectiveCiDeployment: Specimen = {
   id: 'collective-ci-deployment',
   ref: 'SPX-1196',

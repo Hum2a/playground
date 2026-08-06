@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const mangaCutInNotification: Specimen = {
   id: 'manga-cut-in-notification',
   ref: 'SPX-104',

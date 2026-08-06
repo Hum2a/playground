@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const editorialBracketDraw: Specimen = {
   id: 'editorial-bracket-draw',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const blackoutLoader: Specimen = {
   id: 'blackout-loader',
   ref: 'SPX-126',

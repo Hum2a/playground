@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const diagnosticBootSequence: Specimen = {
   id: 'diagnostic-boot-sequence',
   ref: 'SPX-008',

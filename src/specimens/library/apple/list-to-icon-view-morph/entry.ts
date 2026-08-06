@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const listToIconViewMorph: Specimen = {
   id: 'list-to-icon-view-morph',
   ref: 'SPX-1463',

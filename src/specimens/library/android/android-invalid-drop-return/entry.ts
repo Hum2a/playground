@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const androidInvalidDropReturn: Specimen = {
   id: 'android-invalid-drop-return',
   ref: 'SPX-1900',

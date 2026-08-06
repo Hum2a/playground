@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const choiceExecutionSlash: Specimen = {
   id: 'choice-execution-slash',
   ref: 'SPX-316',

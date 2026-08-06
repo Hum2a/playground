@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const crossOutReplacement: Specimen = {
   id: 'cross-out-replacement',
   ref: 'SPX-055',

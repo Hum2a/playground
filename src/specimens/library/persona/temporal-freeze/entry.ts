@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const temporalFreeze: Specimen = {
   id: 'temporal-freeze',
   ref: 'SPX-451',

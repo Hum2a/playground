@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const sectorRadarSearch: Specimen = {
   id: 'sector-radar-search',
   ref: 'SPX-1060',

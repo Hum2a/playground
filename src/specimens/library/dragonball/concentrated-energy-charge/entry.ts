@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const concentratedEnergyCharge: Specimen = {
   id: 'concentrated-energy-charge',
   ref: 'SPX-968',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const erasureDelete: Specimen = {
   id:'erasure-delete',ref:'SPX-1119',title:'Erasure Delete',
   blurb:'A fixed diagonal void crosses an angular record from bottom-right to top-left, clipping its metadata in spatial order until only an erased confirmation remains.',

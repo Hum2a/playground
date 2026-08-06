@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const summoningSealMaterialise: Specimen = {
   id: 'summoning-seal-materialise',

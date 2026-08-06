@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const widgetResizeMorph: Specimen = {
   id: 'widget-resize-morph',
   ref: 'SPX-1874',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dualActivitySplit: Specimen = {
   id: 'dual-activity-split',
   ref: 'SPX-1328',

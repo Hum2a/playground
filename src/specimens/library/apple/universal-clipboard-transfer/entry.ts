@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const universalClipboardTransfer: Specimen = {
   id: 'universal-clipboard-transfer',
   ref: 'SPX-1494',

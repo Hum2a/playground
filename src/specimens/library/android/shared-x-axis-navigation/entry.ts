@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const sharedXAxisNavigation: Specimen = {
   id: 'shared-x-axis-navigation',
   ref: 'SPX-1568',

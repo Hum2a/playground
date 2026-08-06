@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const powerThresholdBreak: Specimen = {
   id: 'power-threshold-break',
   ref: 'SPX-2001',

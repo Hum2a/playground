@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const waterWavePageTransition: Specimen = {
   id: 'water-wave-page-transition',

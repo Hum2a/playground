@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const holdToMaximumButton: Specimen = {
   id: 'hold-to-maximum-button',

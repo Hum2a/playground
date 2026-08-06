@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const corruptedAccessLock: Specimen = {
   id: 'corrupted-access-lock',
   ref: 'SPX-009',

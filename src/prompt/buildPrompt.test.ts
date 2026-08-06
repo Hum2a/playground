@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { comingSoonTape } from '../specimens/coming-soon-tape/entry'
+import { comingSoonTape } from '../specimens/library/persona/coming-soon-tape/entry'
 import { resolveSpecimen } from '../specimens/resolvePayload'
 import { buildPrompt } from './buildPrompt'
 

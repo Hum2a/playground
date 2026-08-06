@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const darkHourConversion: Specimen = {
   id: 'dark-hour-conversion',
   ref: 'SPX-444',

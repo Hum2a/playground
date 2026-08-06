@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const sliderThumbPickup: Specimen = {
   id: 'slider-thumb-pickup',
   ref: 'SPX-1720',

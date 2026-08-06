@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const branchEvolutionChoice: Specimen = {
   id: 'branch-evolution-choice',
   ref: 'SPX-731',

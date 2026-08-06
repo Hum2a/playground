@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const powerLevelReadout: Specimen = {
   id: 'power-level-readout',
   ref: 'SPX-997',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dropTargetMagnetism: Specimen = {
   id: 'drop-target-magnetism',
   ref: 'SPX-1453',

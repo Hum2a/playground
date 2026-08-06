@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const quirkCooldownRing: Specimen = {
   id: 'quirk-cooldown-ring',
   ref: 'SPX-2000',

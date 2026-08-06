@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const emergencyScreenTakeover: Specimen = {
   id: 'emergency-screen-takeover',
   ref: 'SPX-2065',

@@ -18,7 +18,7 @@ Do not deviate without flagging it.
 
 ## Scripts
 
-Prefer `<domain>:<action>` where applicable: `spec:new`, `spec:check`, `analyze`, `deploy:preview`, `deploy:prod`.
+Prefer `<domain>:<action>` where applicable: `spec:new`, `spec:check`, `spec:ship`, `analyze`, `deploy:preview`, `deploy:prod`.
 
 ## Do not add
 

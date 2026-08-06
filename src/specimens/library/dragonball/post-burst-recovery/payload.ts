@@ -1,4 +1,4 @@
-import type { SpecimenPayload } from '../types'
+import type { SpecimenPayload } from '../../../types'
 import html from './demo.html?raw'
 // Vitest's CSS pipeline returns "" for `*.css?raw`; keep demo.css as the portable
 // artifact and import the twin `.txt` for the in-app string.

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const stateFieldTransfer: Specimen = {
   id: 'state-field-transfer',
   ref: 'SPX-1115',

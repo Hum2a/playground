@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const linkTradeTransfer: Specimen = {
   id: 'link-trade-transfer',
   ref: 'SPX-829',

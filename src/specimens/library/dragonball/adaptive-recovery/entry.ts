@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const adaptiveRecovery: Specimen = {
   id: 'adaptive-recovery',
   ref: 'SPX-1211',

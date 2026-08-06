@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const predictiveBackAppShrink: Specimen = {
   id: 'predictive-back-app-shrink',
   ref: 'SPX-1602',

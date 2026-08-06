@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const panelToPanelRoute: Specimen = {
   id: 'panel-to-panel-route',
   ref: 'SPX-2211',

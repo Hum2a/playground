@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const progressMilestoneBreakthrough: Specimen = {
   id: 'progress-milestone-breakthrough',
   ref: 'SPX-167',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const evidenceConnectionDraw: Specimen = {
   id: 'evidence-connection-draw',
   ref: 'SPX-TODO',

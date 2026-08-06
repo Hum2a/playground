@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dockMagnification: Specimen = {
   id: 'dock-magnification',
   ref: 'SPX-1338',

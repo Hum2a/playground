@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const biometricScanAcquisition: Specimen = {
   id: 'biometric-scan-acquisition',
   ref: 'SPX-1426',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const electionNeedleSweep: Specimen = {
   id: 'election-needle-sweep',

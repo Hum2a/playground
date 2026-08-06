@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const midnightClockTransition: Specimen = {
   id: 'midnight-clock-transition',
   ref: 'SPX-531',

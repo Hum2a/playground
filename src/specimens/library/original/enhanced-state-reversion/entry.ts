@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const enhancedStateReversion: Specimen = {
   id: 'enhanced-state-reversion',
   ref: 'SPX-029',

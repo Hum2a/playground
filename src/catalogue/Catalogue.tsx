@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
   INSPIRATION_DIRECTORY,
@@ -20,6 +20,7 @@ import {
   type CatalogueFilters,
 } from './FilterBar'
 import { SpecimenPlate } from './SpecimenPlate'
+import { useGridWindow } from './useGridWindow'
 import './catalogue.css'
 
 function isFranchiseId(value: string): value is InspirationFranchiseId {
@@ -229,6 +230,28 @@ export function Catalogue() {
     return () => window.cancelAnimationFrame(id)
   }, [])
 
+  const platesRef = useRef<HTMLDivElement>(null)
+  const [plateMin, setPlateMin] = useState(280)
+  useEffect(() => {
+    const el = platesRef.current
+    if (!el) return
+    const raw = getComputedStyle(el).getPropertyValue('--plate-min').trim()
+    const px = Number.parseFloat(raw)
+    if (Number.isFinite(px) && px > 0) setPlateMin(px)
+  }, [platesReady])
+
+  const plateWin = useGridWindow({
+    containerRef: platesRef,
+    itemCount: platesReady ? filtered.length : 0,
+    minTrackPx: plateMin,
+    gapPx: 16,
+    estimateRowHeight: 420,
+    overscanRows: 2,
+  })
+  const plateSlice = platesReady
+    ? filtered.slice(plateWin.start, plateWin.end)
+    : []
+
   return (
     <div className="catalogue">
       <ContactSheet specimens={specimens} />
@@ -248,24 +271,34 @@ export function Catalogue() {
         onQueryChange={onQueryChange}
         onClear={onClear}
       />
-      <div className="catalogue__plates" id="catalogue-plates">
-        {platesReady
-          ? filtered.map((specimen) => (
-              <SpecimenPlate
-                key={specimen.id}
-                specimen={specimen}
-                onFacetClick={(key, value) => {
-                  if ((FACET_KEYS as readonly string[]).includes(key)) {
-                    onFacetChange(key as FacetKey, value)
-                  }
-                }}
-                onFranchiseClick={(franchise) => {
-                  if (isFranchiseId(franchise)) onFranchiseChange(franchise)
-                }}
-                onTagClick={(tag) => onQueryChange(tag)}
-              />
-            ))
-          : null}
+      <div
+        ref={platesRef}
+        className="catalogue__plates"
+        id="catalogue-plates"
+        style={
+          platesReady
+            ? {
+                paddingTop: plateWin.padTop,
+                paddingBottom: plateWin.padBottom,
+              }
+            : undefined
+        }
+      >
+        {plateSlice.map((specimen) => (
+          <SpecimenPlate
+            key={specimen.id}
+            specimen={specimen}
+            onFacetClick={(key, value) => {
+              if ((FACET_KEYS as readonly string[]).includes(key)) {
+                onFacetChange(key as FacetKey, value)
+              }
+            }}
+            onFranchiseClick={(franchise) => {
+              if (isFranchiseId(franchise)) onFranchiseChange(franchise)
+            }}
+            onTagClick={(tag) => onQueryChange(tag)}
+          />
+        ))}
       </div>
       {platesReady && filtered.length === 0 ? (
         <div className="catalogue__empty" role="status">

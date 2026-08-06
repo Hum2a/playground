@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const nearbyFileTransfer: Specimen = {
   id: 'nearby-file-transfer',
   ref: 'SPX-1868',

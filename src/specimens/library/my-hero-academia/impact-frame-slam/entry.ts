@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const impactFrameSlam: Specimen = {
   id: 'impact-frame-slam',
   ref: 'SPX-1975',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const monochromeBattleSlideIn: Specimen = {
   id: 'monochrome-battle-slide-in',
   ref: 'SPX-855',

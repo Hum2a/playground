@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const missionIncoming: Specimen = {
   id: 'mission-incoming',
   ref: 'SPX-2102',

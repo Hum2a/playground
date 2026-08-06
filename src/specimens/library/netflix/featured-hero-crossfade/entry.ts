@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const featuredHeroCrossfade: Specimen = {
   id: 'featured-hero-crossfade',

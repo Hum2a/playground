@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const butterflySuccessState: Specimen = {
   id: 'butterfly-success-state',
   ref: 'SPX-518',

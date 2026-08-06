@@ -36,7 +36,7 @@ alwaysApply: true
 | `NF-NNN` | Stable idea id in the Netflix checklist (001–197) |
 | `PS-NNN` | Stable idea id in the PlayStation checklist (001–216) |
 | `NEWS-NNN` | Stable idea id in the Newspaper & Editorial checklist (001–237) |
-| `SPX-NNN` | Registry `ref` in `entry.ts` / `index.ts` |
+| `SPX-NNN` | Registry `ref` in `entry.ts` / shard + `order.ts` |
 
 ### Persona 5 refs
 
@@ -110,6 +110,8 @@ After a new specimen is registered with a real `ref` (same bar as `36_specimen-c
 5. Include the checklist edit in the specimen commit (or the same change set).
 
 Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
+
+Library folder franchise must match the checklist’s inspiration key (`persona`, `pokemon`, `netflix`, `editorial`, …) — see `20_structure`.
 
 ## Scope
 

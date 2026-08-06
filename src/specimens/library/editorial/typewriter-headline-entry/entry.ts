@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const typewriterHeadlineEntry: Specimen = {
   id: 'typewriter-headline-entry',

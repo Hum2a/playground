@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const panelExplosionReveal: Specimen = {
   id: 'panel-explosion-reveal',
   ref: 'SPX-105',

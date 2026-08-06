@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const capsuleDeploy: Specimen={
  id:'capsule-deploy',ref:'SPX-1150',title:'Capsule Deploy',
  blurb:'Stored API-07 extracts, decodes through four structural lines, and constructively rebuilds into a HEALTHY service.',

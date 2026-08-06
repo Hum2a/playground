@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const cardToDetailContainerTransform: Specimen = {
   id: 'card-to-detail-container-transform',
   ref: 'SPX-1558',

@@ -109,9 +109,12 @@ inspiredBy: { franchise: 'persona', works: ['persona-5'] }
 Franchise = category (Persona); works = specific titles (Persona 5). `tech` must match whether
 the specimen ships `demo.js` / `files.js`.
 
-Registry is a plain array in `src/specimens/index.ts`. Adding a specimen = add a folder, add one
-import. No dynamic loading, no magic globs — the explicit list keeps ordering and ref numbers
-under your control.
+Registry is sharded under `src/specimens/registry/`: franchise `shards/<franchise>.ts` plus
+canonical `order.ts`, assembled by `assemble.ts`. Specimens live in
+`library/<franchise>/<id>/`. Adding a specimen = add that folder, import in the franchise
+shard, append the id to `order.ts` (or use `npm run spec:ship`). No dynamic loading, no magic
+globs — the explicit shard list keeps ordering and ref numbers under your control. `index.ts`
+is a thin barrel only.
 
 ## 4. The prompt builder
 

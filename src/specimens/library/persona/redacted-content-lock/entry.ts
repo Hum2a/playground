@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const redactedContentLock: Specimen = {
   id: 'redacted-content-lock',
   ref: 'SPX-133',

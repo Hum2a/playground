@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const notificationStackCompression: Specimen = {
   id: 'notification-stack-compression',
   ref: 'SPX-1412',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const highSpeedDashNavigation: Specimen = {
   id: 'high-speed-dash-navigation',
   ref: 'SPX-1099',

@@ -5,15 +5,17 @@ alwaysApply: true
 
 # Auto-commit new specimens
 
-When you **finish adding a new specimen** (new `src/specimens/<id>/` folder + registry line in `src/specimens/index.ts` with a real `ref: 'SPX-NNN'`), **create a git commit without waiting for the user to ask**.
+When you **finish adding a new specimen** (new `src/specimens/library/<franchise>/<id>/` + shard import + `order.ts` id with a real `ref: 'SPX-NNN'`), **create a git commit without waiting for the user to ask**.
 
 This is an intentional project exception to “only commit when asked.” It applies **only** to new-specimen additions, not routine edits.
+
+Prefer `npm run spec:ship -- … --commit` after authoring under `.wip-aside/<id>/` so registry edits are atomic and parallel-agent-safe.
 
 ## When to commit
 
 Do commit after all of the following:
 
-1. Specimen folder + `entry.ts` registered in `index.ts`
+1. Specimen folder under `library/<franchise>/<id>/` + registered in `registry/shards/<franchise>.ts` + `registry/order.ts`
 2. `ref` is assigned (`SPX-NNN`, not `SPX-TODO`)
 3. Verification you would normally run has passed (`npm run build`, `npm run spec:check`, and `npm run test` when practical)
 
@@ -30,7 +32,7 @@ Follow the user’s git safety rules:
 
 - Never update git config; never `--no-verify`; never force-push; do not push unless asked
 - Parallel: `git status`, `git diff`, `git log -5 --oneline` (match message style)
-- Stage **only** the new specimen folder, the `index.ts` registry line, and files that are strictly part of that specimen add (include the Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / My Hero Academia / Naruto / Persona 4 / Netflix / PlayStation checklist mark-off when the specimen is on that backlog — see `37_persona-catalogue`)
+- Stage **only** `library/<franchise>/<id>/`, the matching `registry/shards/<franchise>.ts`, `registry/order.ts`, and checklist mark-off when applicable (`37_persona-catalogue`) — **not** unrelated shards or a regenerated mega-file
 - Message: concise, why-focused; prefer `Add SPX-NNN <title>` (1–2 sentences max)
 - Use a HEREDOC for the message; run `git status` after to confirm
 - If a hook fails, fix and make a **new** commit — do not amend unless the user’s amend rules all apply

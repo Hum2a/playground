@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const fogOfWarCard: Specimen = {
   id: 'fog-of-war-card',

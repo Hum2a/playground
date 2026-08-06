@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const printRegistrationHover: Specimen = {
   id: 'print-registration-hover',
   ref: 'SPX-045',

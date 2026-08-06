@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const arcanaCardDraw: Specimen = {
   id: 'arcana-card-draw',

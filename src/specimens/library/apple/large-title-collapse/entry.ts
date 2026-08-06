@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const largeTitleCollapse: Specimen = {
   id: 'large-title-collapse',
   ref: 'SPX-1371',

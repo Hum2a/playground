@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const comicPanelWipe: Specimen = {
   id: 'comic-panel-wipe',
   ref: 'SPX-002',

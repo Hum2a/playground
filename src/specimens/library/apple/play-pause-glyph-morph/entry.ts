@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const playPauseGlyphMorph: Specimen = {
   id: 'play-pause-glyph-morph',
   ref: 'SPX-1477',

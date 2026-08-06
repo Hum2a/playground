@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const incidentDispatchCard: Specimen = {
   id: 'incident-dispatch-card',
   ref: 'SPX-2056',

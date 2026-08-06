@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const azureShardTransition: Specimen = {
   id: 'azure-shard-transition',
   ref: 'SPX-005',

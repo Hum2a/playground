@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const airdropTransferArc: Specimen = {
   id: 'airdrop-transfer-arc',
   ref: 'SPX-1487',

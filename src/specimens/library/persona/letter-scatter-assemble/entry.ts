@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const letterScatterAssemble: Specimen = {
   id: 'letter-scatter-assemble',
   ref: 'SPX-042',

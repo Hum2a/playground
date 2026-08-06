@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dragProxyFormation: Specimen = {
   id: 'drag-proxy-formation',
   ref: 'SPX-1451',

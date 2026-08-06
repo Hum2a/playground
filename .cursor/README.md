@@ -10,7 +10,7 @@ detail here. Deeper product text lives in `docs/design-spec.md`.
 | --- | --- |
 | `00_core.mdc` | Always — product invariants |
 | `10_stack.mdc` | Always — stack and tooling |
-| `20_structure.mdc` | Always — folder map and registry |
+| `20_structure.mdc` | Always — folder map and sharded registry |
 | `30_specimens.mdc` | `src/specimens/**` |
 | `35_taxonomy.mdc` | `src/specimens/**` — facets, tags, inspiration directory |
 | `36_specimen-commits.mdc` | Always — auto-commit after adding a new specimen |

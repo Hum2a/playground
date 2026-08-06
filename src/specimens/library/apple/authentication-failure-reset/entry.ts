@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const authenticationFailureReset: Specimen = {
   id: 'authentication-failure-reset',
   ref: 'SPX-1428',

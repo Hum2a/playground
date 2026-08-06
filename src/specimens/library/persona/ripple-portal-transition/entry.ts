@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const ripplePortalTransition: Specimen = {
   id: 'ripple-portal-transition',
   ref: 'SPX-406',

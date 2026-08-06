@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const permissionPromptMaterialise: Specimen = {
   id: 'permission-prompt-materialise',
   ref: 'SPX-1842',

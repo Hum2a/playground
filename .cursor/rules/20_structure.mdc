@@ -1,5 +1,5 @@
 ---
-description: Source folder map and explicit specimen registry
+description: Source folder map and sharded specimen registry
 alwaysApply: true
 ---
 
@@ -12,16 +12,28 @@ src/
   playground/   editor, drafts, export
   harness/      composeSrcDoc, PreviewFrame, ControlStrip
   prompt/       buildPrompt, CopyButton
-  specimens/    one folder per specimen + index.ts
+  specimens/
+    types.ts, taxonomy.ts, inspiration.ts, resolvePayload.ts
+    index.ts                 # thin barrel (re-exports only)
+    registry/
+      order.ts               # canonical id order
+      shards/<franchise>.ts  # explicit imports per franchise
+      assemble.ts            # merges shards → specimens + Maps
+    library/<franchise>/<id>/  # demo files (entry, payload, …)
   styles/       tokens.css, base.css
-docs/           design-spec.md, ideation/ (external LLM briefs)
+docs/           design-spec.md, ideation/, catalogue/
 public/         _redirects, _headers, favicon
+scripts/
+  spec-new.mjs / spec-check.mjs / spec-ship.mjs
+  ephemeral/    # disposable one-shot gens (not supported surface)
 ```
 
 ## Registry
 
-- Specimens register in an **explicit array** in `src/specimens/index.ts`.
-- Adding a specimen = add a folder + one import + one array entry.
-- No dynamic `import.meta.glob`, no magic directory scanning for catalogue content.
-- Refs (`SPX-001`, …) and order stay under human control.
+- Specimens live under `library/<franchise>/<id>/` where `<franchise>` matches `inspiredBy.franchise` (or `original`).
+- Register by: import in `registry/shards/<franchise>.ts` **and** append `id` to `registry/order.ts`.
+- `index.ts` is a **barrel only** — never a mega import list.
+- `assemble.ts` enumerates shards with **static imports** (no `import.meta.glob`, no directory scanning).
+- Lookups use `specimensById` / `getSpecimen` Maps — do not reintroduce linear `.find` scans.
+- Refs (`SPX-001`, …) and display order stay under human control via `order.ts`.
 - Each folder splits **light** `entry.ts` (metadata + `loadPayload`) from **`payload.ts`** (`?raw` HTML/CSS/JS + spec + contract). Catalogue ships meta only; previews/detail/copy await `loadPayload` / `resolvePayload`.

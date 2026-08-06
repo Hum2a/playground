@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const notificationSwipeDismiss: Specimen = {
   id: 'notification-swipe-dismiss',
   ref: 'SPX-1658',

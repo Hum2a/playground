@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const objectiveUpdateSlash: Specimen = {
   id: 'objective-update-slash',
   ref: 'SPX-2103',

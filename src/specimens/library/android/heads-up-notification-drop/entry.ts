@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const headsUpNotificationDrop: Specimen = {
   id: 'heads-up-notification-drop',
   ref: 'SPX-1656',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const hoverCutout: Specimen = {
   id: 'hover-cutout',
   ref: 'SPX-068',

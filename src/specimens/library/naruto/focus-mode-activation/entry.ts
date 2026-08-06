@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const focusModeActivation: Specimen = {
   id: 'focus-mode-activation',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const networkScan360: Specimen = {
   id: 'network-scan-360',

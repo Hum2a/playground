@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const quickLookExpansion: Specimen = {
   id: 'quick-look-expansion',
   ref: 'SPX-1459',

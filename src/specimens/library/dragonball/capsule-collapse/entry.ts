@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const capsuleCollapse: Specimen = {
   id:'capsule-collapse', ref: 'SPX-1149', title:'Capsule Collapse',
   blurb:'SERVICE // API-07 structurally folds, encodes, and docks as a small stored token without losing identity.',

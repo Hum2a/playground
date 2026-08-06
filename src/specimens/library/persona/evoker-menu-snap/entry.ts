@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const evokerMenuSnap: Specimen = {
   id: 'evoker-menu-snap',
   ref: 'SPX-636',

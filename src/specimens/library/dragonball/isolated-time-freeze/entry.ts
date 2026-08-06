@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const isolatedTimeFreeze: Specimen = {
   id: 'isolated-time-freeze',
   ref: 'SPX-1158',

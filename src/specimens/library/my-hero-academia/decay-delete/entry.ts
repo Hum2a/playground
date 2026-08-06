@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const decayDelete: Specimen = {
   id: 'decay-delete',
   ref: 'SPX-2076',

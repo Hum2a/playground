@@ -25,4 +25,4 @@ alwaysApply: false
 - Zip via **fflate** (not jszip)
 - Form validates slug id uniqueness against the registry
 - Include `demo.css` + `demo.style.txt`, scaffolded `spec.md` / `contract.json` with TODOs
-- Zip README lists the two manual steps: drop folder + one `index.ts` line
+- Zip README lists: drop under `library/<franchise>/<id>/`, import in `registry/shards/<franchise>.ts`, append id to `registry/order.ts` (or use `spec:ship`)

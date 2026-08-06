@@ -21,13 +21,19 @@ Specimen CSS is never edited to fit the site. It stays verbatim and portable —
 
 Every specimen needs required `facets` (kind / tech / scope / intensity) plus optional free `tags`. Game lineage uses optional `inspiredBy` from the inspiration directory (`src/specimens/inspiration.ts`, `docs/inspiration-directory.md`). See `.cursor/rules/35_taxonomy.mdc`.
 
+## Specimen layout
+
+- Demos live under `src/specimens/library/<franchise>/<id>/` (franchise matches `inspiredBy`, else `original`).
+- Registry is **sharded**: `registry/shards/<franchise>.ts` + canonical `registry/order.ts`, assembled in `registry/assemble.ts`. `index.ts` is a thin barrel only — never a mega import list. No `import.meta.glob`.
+- Prefer `npm run spec:ship` from `.wip-aside/<id>/` when adding specimens (parallel-agent safe). See `.cursor/rules/20_structure.mdc` / `30_specimens.mdc`.
+
 ## New specimen commits
 
 After a new specimen is registered and verified, agents auto-commit it (`Add SPX-NNN …`) without waiting to be asked. See `.cursor/rules/36_specimen-commits.mdc`.
 
 ## Load performance
 
-Catalogue registry entries are **metadata only**. HTML/CSS/JS/spec/contract live in each folder’s `payload.ts` and load via explicit `loadPayload` (never `import.meta.glob`). Routes are code-split so Shell paints before specimen meta; contact-sheet/plate iframes start unmounted until near the viewport. See `.cursor/rules/20_structure.mdc` / `55_catalogue.mdc` / `60_testing.mdc`.
+Catalogue registry entries are **metadata only**. HTML/CSS/JS/spec/contract live in each folder’s `payload.ts` and load via explicit `loadPayload` (never `import.meta.glob`). Routes are code-split so Shell paints before specimen meta; contact-sheet/plate lists are windowed and iframes start unmounted until near the viewport. See `.cursor/rules/20_structure.mdc` / `55_catalogue.mdc` / `60_testing.mdc`.
 
 ## Inspiration checklists
 

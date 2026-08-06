@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const controlModuleCollapse: Specimen = {
   id: 'control-module-collapse',
   ref: 'SPX-1472',

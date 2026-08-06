@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const fourShapeOrbitLoader: Specimen = {
   id: 'four-shape-orbit-loader',

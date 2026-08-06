@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const teamFormationSnap: Specimen = {
   id: 'team-formation-snap',
   ref: 'SPX-2200',

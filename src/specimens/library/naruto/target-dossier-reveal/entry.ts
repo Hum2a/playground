@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const targetDossierReveal: Specimen = {
   id: 'target-dossier-reveal',

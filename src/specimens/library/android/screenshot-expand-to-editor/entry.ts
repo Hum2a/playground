@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const screenshotExpandToEditor: Specimen = {
   id: 'screenshot-expand-to-editor',
   ref: 'SPX-1941',

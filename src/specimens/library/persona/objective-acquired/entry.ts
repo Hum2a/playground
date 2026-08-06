@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const objectiveAcquired: Specimen = {
   id: 'objective-acquired',
   ref: 'SPX-319',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const weaknessHighlightSweep: Specimen = {
   id: 'weakness-highlight-sweep',
   ref: 'SPX-2018',

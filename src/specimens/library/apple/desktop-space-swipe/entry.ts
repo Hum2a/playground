@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const desktopSpaceSwipe: Specimen = {
   id: 'desktop-space-swipe',
   ref: 'SPX-1352',

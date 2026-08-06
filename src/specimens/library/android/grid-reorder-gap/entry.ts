@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const gridReorderGap: Specimen = {
   id: 'grid-reorder-gap',
   ref: 'SPX-1902',

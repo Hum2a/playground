@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const broadsheetPageTurn: Specimen = {
   id: 'broadsheet-page-turn',

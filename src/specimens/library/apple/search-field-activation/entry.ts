@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const searchFieldActivation: Specimen = {
   id: 'search-field-activation',
   ref: 'SPX-1442',

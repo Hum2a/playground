@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const blueFocusBrackets: Specimen = {
   id: 'blue-focus-brackets',
   ref: 'SPX-567',

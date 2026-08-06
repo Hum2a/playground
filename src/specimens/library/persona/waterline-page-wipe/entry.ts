@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const waterlinePageWipe: Specimen = {
   id: 'waterline-page-wipe',
   ref: 'SPX-400',

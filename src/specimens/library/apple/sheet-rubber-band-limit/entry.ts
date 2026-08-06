@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const sheetRubberBandLimit: Specimen = {
   id: 'sheet-rubber-band-limit',
   ref: 'SPX-1315',

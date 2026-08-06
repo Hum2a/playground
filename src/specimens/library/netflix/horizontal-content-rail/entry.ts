@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const horizontalContentRail: Specimen = {
   id: 'horizontal-content-rail',

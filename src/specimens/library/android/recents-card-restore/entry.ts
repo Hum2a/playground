@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const recentsCardRestore: Specimen = {
   id: 'recents-card-restore',
   ref: 'SPX-1805',

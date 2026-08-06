@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const memoryFragmentReveal: Specimen = {
   id: 'memory-fragment-reveal',
   ref: 'SPX-622',

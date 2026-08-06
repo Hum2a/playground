@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const searchBarToViewTransform: Specimen = {
   id: 'search-bar-to-view-transform',
   ref: 'SPX-1736',

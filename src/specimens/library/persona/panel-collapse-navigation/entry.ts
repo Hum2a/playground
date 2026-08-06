@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const panelCollapseNavigation: Specimen = {
   id: 'panel-collapse-navigation',
   ref: 'SPX-021',

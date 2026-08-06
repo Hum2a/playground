@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const circularProgressCompletionMorph: Specimen = {
   id: 'circular-progress-completion-morph',
   ref: 'SPX-1523',

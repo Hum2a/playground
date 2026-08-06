@@ -18,11 +18,12 @@ Smoke floor: catalogue plate count, clipboard copy non-empty, detail five tabs, 
 
 ## CLI
 
-- `spec:check` — non-empty html/css/spec/contract, unique id/ref, css twin sync, required facets + inspiration directory checks, no tag/facet/inspiration collisions, tech↔js consistency
-- `spec:new <slug>` — scaffold folder matching section 3 of the design spec
+- `spec:check` — walks `library/<franchise>/<id>/`; non-empty html/css/spec/contract, unique id/ref, css twin sync, required facets + inspiration directory checks, bucket↔`inspiredBy` match, no tag/facet/inspiration collisions, tech↔js consistency; registration checked against `registry/shards` + `order.ts`
+- `spec:new <slug> [--franchise <key>]` — scaffold under `library/<franchise>/<slug>/`
+- `spec:ship <id> --franchise <key> --export <camelName>` — copy `.wip-aside/<id>` → library, patch one shard + `order.ts` (optional `--commit`)
 
 ## Performance
 
-Lighthouse mobile `/` with sheet paused (reduced motion) ≥ **90**. Fix frame mounting before bundle size.
+Lighthouse mobile `/` with sheet paused (reduced motion) ≥ **90**. Fix frame mounting before bundle size. Catalogue sheet/plates are windowed (`useGridWindow`) in addition to viewport-gated iframes.
 
 Specimen HTML/CSS/JS/spec/contract live in per-folder `payload.ts` chunks loaded via explicit `loadPayload` (never `import.meta.glob`). Routes are `React.lazy`-split so Shell paints before specimen meta (entry `modulePreload` skips Catalogue/harness/payloads). PreviewFrame sizes with CSS container queries (no post-paint JS scale). Fonts load after first paint. Use `npm run analyze` after build to inspect chunk sizes.

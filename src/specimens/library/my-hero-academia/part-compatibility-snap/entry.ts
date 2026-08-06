@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const partCompatibilitySnap: Specimen = {
   id: 'part-compatibility-snap',
   ref: 'SPX-2086',

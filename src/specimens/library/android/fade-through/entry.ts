@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const fadeThrough: Specimen = {
   id: 'fade-through',
   ref: 'SPX-1577',

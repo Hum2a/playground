@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const rankUpImpact: Specimen = {
   id: 'rank-up-impact',
   ref: 'SPX-022',

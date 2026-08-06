@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const crossDeviceCursorHandoff: Specimen = {
   id: 'cross-device-cursor-handoff',
   ref: 'SPX-1497',

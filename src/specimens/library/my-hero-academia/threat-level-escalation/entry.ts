@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const threatLevelEscalation: Specimen = {
   id: 'threat-level-escalation',
   ref: 'SPX-2066',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const multiKeySeal: Specimen = {
   id: 'multi-key-seal',

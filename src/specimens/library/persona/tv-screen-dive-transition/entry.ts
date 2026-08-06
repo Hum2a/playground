@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const tvScreenDiveTransition: Specimen = {
   id: 'tv-screen-dive-transition',
   ref: 'SPX-TODO',

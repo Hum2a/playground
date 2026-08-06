@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const dayChangeTear: Specimen = {
   id: 'day-change-tear',
   ref: 'SPX-304',

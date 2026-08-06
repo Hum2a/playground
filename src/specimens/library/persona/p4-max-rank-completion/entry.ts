@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const p4MaxRankCompletion: Specimen = {
   id: 'p4-max-rank-completion',

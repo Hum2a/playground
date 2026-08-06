@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const halftoneExpansion: Specimen = {
   id: 'halftone-expansion',
   ref: 'SPX-1981',

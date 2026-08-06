@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const overuseWarning: Specimen = {
   id: 'overuse-warning',
   ref: 'SPX-2004',

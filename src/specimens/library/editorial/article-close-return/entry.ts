@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 
 export const articleCloseReturn: Specimen = {
   id: 'article-close-return',

@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const collapsingAppBar: Specimen = {
   id: 'collapsing-app-bar',
   ref: 'SPX-1762',

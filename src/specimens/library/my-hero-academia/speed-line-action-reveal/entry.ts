@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const speedLineActionReveal: Specimen = {
   id: 'speed-line-action-reveal',
   ref: 'SPX-1976',

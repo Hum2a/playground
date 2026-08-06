@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const paperStackShuffle: Specimen = {
   id: 'paper-stack-shuffle',
   ref: 'SPX-015',

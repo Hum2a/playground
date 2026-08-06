@@ -1,4 +1,4 @@
-import type { Specimen } from '../types'
+import type { Specimen } from '../../../types'
 export const predictiveBackEdgePull: Specimen = {
   id: 'predictive-back-edge-pull',
   ref: 'SPX-1601',
