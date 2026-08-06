@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **48 / 191** complete.
+- Progress: **49 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 48 |
-| Open | 143 |
+| Done | 49 |
+| Open | 142 |
 
 ## Visual grammar
 
@@ -82,6 +82,7 @@
 | P4-049 | `SPX-2967` | `boss-introduction-freeze` | Boss Introduction Freeze |
 | P4-046 | `SPX-2964` | `confrontation-card-slam` | Confrontation Card Slam |
 | P4-150 | `SPX-3068` | `contract-confirmation` | Contract Confirmation |
+| P4-059 | `SPX-2977` | `p4-max-rank-completion` | Max Rank Completion |
 
 ## Core first-wave
 
@@ -135,7 +136,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-049** · `SPX-2967` · **Boss Introduction Freeze** — shadow-identity-confrontation
 - [x] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — shadow-identity-confrontation
 - [x] **P4-150** · `SPX-3068` · **Contract Confirmation** — velvet-room-inspired-elegance
-- [ ] **P4-059** · `SPX-2977` · **Max Rank Completion** — social-links-bonds
+- [x] **P4-059** · `SPX-2977` · **Max Rank Completion** — social-links-bonds
 - [ ] **P4-083** · `SPX-3001` · **All-Out Completion Burst** — battle-weakness-advantage
 
 
@@ -214,7 +215,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [ ] **P4-056** · `SPX-2974` · **Bond Deepened Stamp** — A milestone receives a bold but elegant confirmation mark.
 - [x] **P4-057** · `SPX-2975` · **Rank Threshold Unlock** — Progress crossing a fixed threshold unlocks a new interaction.
 - [ ] **P4-058** · `SPX-2976` · **Social Link Card Flip** — A card flips from unknown relationship to established bond.
-- [ ] **P4-059** · `SPX-2977` · **Max Rank Completion** — The final rank transforms the entire progression card into a completed state.
+- [x] **P4-059** · `SPX-2977` · **Max Rank Completion** — The final rank transforms the entire progression card into a completed state.
 - [ ] **P4-060** · `SPX-2978` · **Broken Link Warning** — A relationship connector visibly weakens or breaks after a state change.
 - [ ] **P4-061** · `SPX-2979` · **Multi-Bond Overview** — Several compact relationship cards orbit/stack around a central profile.
 

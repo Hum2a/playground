@@ -1,0 +1,25 @@
+/* SPX-2977 Max Rank Completion (P4) */
+.pmrc {
+  --pmrc-yellow: #F5C400; --pmrc-ink: #101010; --pmrc-paper: #F7F3E8; --pmrc-gray: #E8E8E8;
+  box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  width: 100%; min-height: 280px; padding: 0.75rem; background: var(--pmrc-ink); font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.pmrc__live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.pmrc__card { width: min(100%, 260px); padding: 0.9rem; border: 3px solid var(--pmrc-gray); background: var(--pmrc-paper); color: var(--pmrc-ink); transition: border-color 500ms, background 500ms, box-shadow 500ms; }
+.pmrc[data-phase='transform'] .pmrc__card { animation: pmrc-glow 700ms ease-out forwards; }
+.pmrc[data-phase='max'] .pmrc__card { border-color: var(--pmrc-yellow); background: var(--pmrc-ink); color: var(--pmrc-paper); box-shadow: 0 0 0 3px var(--pmrc-yellow); }
+.pmrc__arcana { margin: 0; font-size: 0.58rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; }
+.pmrc__rank { margin: 0.35rem 0 0.65rem; font-size: 1.4rem; font-weight: 900; letter-spacing: 0.1em; }
+.pmrc__bar { height: 10px; border: 2px solid currentColor; background: var(--pmrc-gray); }
+.pmrc__fill { height: 100%; width: 88%; background: var(--pmrc-yellow); transition: width 500ms ease-out; }
+.pmrc[data-phase='max'] .pmrc__fill { width: 100%; }
+.pmrc__controls { display: flex; gap: 0.5rem; }
+.pmrc__btn { padding: 0.4rem 0.7rem; border: 2px solid var(--pmrc-paper); background: transparent; color: var(--pmrc-paper); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+.pmrc__btn--primary { border-color: var(--pmrc-yellow); background: var(--pmrc-yellow); color: var(--pmrc-ink); }
+.pmrc__btn:focus-visible { outline: 2px solid var(--pmrc-yellow); outline-offset: 2px; }
+@keyframes pmrc-glow { 50% { box-shadow: 0 0 24px var(--pmrc-yellow); } 100% { box-shadow: 0 0 0 3px var(--pmrc-yellow); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pmrc [data-phase="transform"] .pmrc__card { animation: none !important; transition: none !important; }
+}
+[data-force-reduced-motion="true"] .pmrc [data-phase="transform"] .pmrc__card { animation: none !important; transition: none !important; }
