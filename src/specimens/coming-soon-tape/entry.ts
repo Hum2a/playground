@@ -30,7 +30,11 @@ export const comingSoonTape: Specimen = {
     scope: 'card',
     intensity: 'graphic',
   },
-  tags: ['marquee', 'bilingual'],
+  inspiredBy: {
+    franchise: 'persona',
+    works: ['persona-4'],
+  },
+  tags: ['caution', 'stripe', 'marquee', 'bilingual', 'locked'],
   deps: 'none',
   motion: {
     loops: true,
