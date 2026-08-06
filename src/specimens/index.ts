@@ -84,7 +84,6 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
-import { superEffectiveHit } from './super-effective-hit/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
@@ -227,7 +226,6 @@ export const specimens: Specimen[] = [
   ripplePortalTransition,
   scannerSearch,
   surfaceBreakReveal,
-  superEffectiveHit,
   tacticalCommandWheel,
   tacticalTargetLock,
   tartarusFloorAscension,
