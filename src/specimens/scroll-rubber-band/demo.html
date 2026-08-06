@@ -1,0 +1,34 @@
+<div class="srb" data-scroll-rubber-band data-phase="idle">
+  <div class="srb__viewport" data-srb-viewport tabindex="0" aria-label="Activity log list">
+    <div class="srb__boundary" data-srb-boundary aria-hidden="true">
+      <span class="srb__boundary-line"></span>
+      <span class="srb__release" data-srb-release>RELEASE</span>
+    </div>
+
+    <div class="srb__inner" data-srb-inner>
+      <header class="srb__header">
+        <h2 class="srb__title">ACTIVITY LOG</h2>
+        <p class="srb__subtitle">12 fixed rows · pull down at top to rubber-band</p>
+      </header>
+
+      <ol class="srb__list" aria-label="Activity entries">
+        <li class="srb__row"><span class="srb__time">09:01</span><span class="srb__event">Session opened</span></li>
+        <li class="srb__row"><span class="srb__time">09:04</span><span class="srb__event">Cache warmed</span></li>
+        <li class="srb__row"><span class="srb__time">09:11</span><span class="srb__event">Index rebuilt</span></li>
+        <li class="srb__row"><span class="srb__time">09:18</span><span class="srb__event">Replica synced</span></li>
+        <li class="srb__row"><span class="srb__time">09:26</span><span class="srb__event">Policy applied</span></li>
+        <li class="srb__row"><span class="srb__time">09:33</span><span class="srb__event">Batch queued</span></li>
+        <li class="srb__row"><span class="srb__time">09:41</span><span class="srb__event">Batch committed</span></li>
+        <li class="srb__row"><span class="srb__time">09:48</span><span class="srb__event">Alert cleared</span></li>
+        <li class="srb__row"><span class="srb__time">09:55</span><span class="srb__event">Snapshot saved</span></li>
+        <li class="srb__row"><span class="srb__time">10:02</span><span class="srb__event">Lease renewed</span></li>
+        <li class="srb__row"><span class="srb__time">10:09</span><span class="srb__event">Heartbeat ok</span></li>
+        <li class="srb__row"><span class="srb__time">10:16</span><span class="srb__event">Idle threshold</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <p class="srb__status" role="status" aria-live="polite" data-srb-status>
+    At scroll top. Pull down to test rubber-band resistance.
+  </p>
+</div>

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **2 / 258** complete.
+- Progress: **3 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 2 |
-| Open | 256 |
+| Done | 3 |
+| Open | 255 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-062 | `SPX-1361` | `scroll-rubber-band` | Scroll Rubber Band |
 | IOS-015 | `SPX-1314` | `bottom-sheet-detent-snap` | Bottom Sheet Detent Snap |
 | IOS-003 | `SPX-1302` | `interactive-back-swipe` | Interactive Back Swipe |
 
@@ -49,7 +50,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-040** · `SPX-1339` · **Dock Launch Bounce** — dock-macos-application-launching
 - [ ] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
 - [ ] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
-- [ ] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — spring-rubber-banding-physical-response
+- [x] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — spring-rubber-banding-physical-response
 - [ ] **IOS-072** · `SPX-1371` · **Large Title Collapse** — scroll-content-physics
 - [ ] **IOS-092** · `SPX-1391` · **Long-Press Lift** — context-menus-long-press-interaction
 - [ ] **IOS-093** · `SPX-1392` · **Context Menu Bloom** — context-menus-long-press-interaction
@@ -148,7 +149,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Spring, Rubber-Banding & Physical Response
 
-- [ ] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — overscroll distance is compressed non-linearly and springs back to the valid boundary.
+- [x] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — overscroll distance is compressed non-linearly and springs back to the valid boundary.
 - [ ] **IOS-063** · `SPX-1362` · **Edge Resistance Drag** — draggable object becomes progressively harder to move outside allowed bounds.
 - [ ] **IOS-064** · `SPX-1363` · **Spring Toggle** — binary control crosses its midpoint and settles into the new state with restrained spring response.
 - [ ] **IOS-065** · `SPX-1364` · **Spring Selection Pill** — active selection marker moves between options with velocity-sensitive settling.

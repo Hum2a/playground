@@ -122,6 +122,7 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
+import { scrollRubberBand } from './scroll-rubber-band/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { stateFieldTransfer } from './state-field-transfer/entry'
@@ -310,6 +311,7 @@ export const specimens: Specimen[] = [
   ripplePortalTransition,
   scannerSearch,
   scouterScan,
+  scrollRubberBand,
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,
   sharedResourcePool,

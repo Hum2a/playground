@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/scroll-rubber-band.schema.json",
+  "title": "ScrollRubberBand",
+  "description": "Portable contract for non-linear top overscroll resistance and spring return on a fixed activity log list.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "viewport",
+    "rows",
+    "overscroll",
+    "boundary",
+    "release",
+    "settle",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "scroll-rubber-band" },
+    "intent": {
+      "type": "string",
+      "const": "Demonstrate non-linear resistance when content is pulled beyond its valid scroll boundary at scrollTop 0, followed by a spring return without refresh."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "releaseMarker", "rowCount"],
+      "properties": {
+        "title": { "type": "string", "const": "ACTIVITY LOG" },
+        "releaseMarker": { "type": "string", "const": "RELEASE" },
+        "rowCount": { "type": "number", "const": 12 }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "startAtTop"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "heightPx": { "type": "number", "const": 440 },
+        "startAtTop": { "type": "boolean", "const": true }
+      }
+    },
+    "rows": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "fixed"],
+      "properties": {
+        "count": { "type": "number", "const": 12 },
+        "fixed": { "type": "boolean", "const": true }
+      }
+    },
+    "overscroll": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formula", "maxDisplayPx", "resistDivisor"],
+      "properties": {
+        "formula": {
+          "type": "string",
+          "const": "displayOffset = 90 * (1 - exp(-dragDistance / 120))"
+        },
+        "maxDisplayPx": { "type": "number", "const": 90 },
+        "resistDivisor": { "type": "number", "const": 120 }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stretchMinPx", "stretchMaxPx"],
+      "properties": {
+        "stretchMinPx": { "type": "number", "const": 0 },
+        "stretchMaxPx": { "type": "number", "const": 24 }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["markerAtDisplayPx", "triggersRefresh"],
+      "properties": {
+        "markerAtDisplayPx": { "type": "number", "const": 60 },
+        "triggersRefresh": { "type": "boolean", "const": false }
+      }
+    },
+    "settle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "maxOvershootPx"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 420 },
+        "maxOvershootPx": { "type": "number", "const": 4 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxDisplayPx", "immediateReturn", "triggers"],
+      "properties": {
+        "maxDisplayPx": { "type": "number", "const": 12 },
+        "immediateReturn": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "viewportFocusable"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "viewportFocusable": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "viewport", "boundary", "inner", "release"],
+      "properties": {
+        "root": { "type": "string", "const": "srb" },
+        "viewport": { "type": "string", "const": "srb__viewport" },
+        "boundary": { "type": "string", "const": "srb__boundary" },
+        "inner": { "type": "string", "const": "srb__inner" },
+        "release": { "type": "string", "const": "srb__release" }
+      }
+    }
+  }
+}
