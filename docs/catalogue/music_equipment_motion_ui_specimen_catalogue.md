@@ -314,7 +314,7 @@ specimens can feel tactile without needing sound.
     at the selected rate and stops under reduced motion.
 - [ ] **MUSIC-108** · `SPX-3867` · ★★★★☆ **CV Attenuator Sweep** — Control voltage strength
     scales down as an attenuator rotates.
-- [ ] **MUSIC-109** · `SPX-3868` · ★★★★★ **Clock Divider Cascade** — One master pulse generates
+- [x] **MUSIC-109** · `SPX-3868` · ★★★★★ **Clock Divider Cascade** — One master pulse generates
     slower subordinate clock indicators.
 - [ ] **MUSIC-110** · `SPX-3869` · ★★★★☆ **Gate Trigger Flash** — A short trigger creates a crisp
     pulse while a gate remains high for its duration.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-109 | SPX-3868 | `clock-divider-cascade` | Clock Divider Cascade |
 | MUSIC-106 | SPX-3865 | `envelope-generator-cycle` | Envelope Generator Cycle |
 | MUSIC-073 | SPX-3832 | `sample-slice-markers` | Sample Slice Markers |
 | MUSIC-071 | SPX-3830 | `velocity-pad-hit` | Velocity Pad Hit |
@@ -880,12 +881,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **17 / 310** complete.
+- Progress: **18 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 17 |
-| Open | 293 |
+| Done | 18 |
+| Open | 292 |
 
 ## Core first-wave / build queue
 
@@ -922,7 +923,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · scaffold `signal-flow-pulse`
 - [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
 - [x] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · `envelope-generator-cycle`
-- [ ] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · scaffold `clock-divider-cascade`
+- [x] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · `clock-divider-cascade`
 - [ ] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · scaffold `rack-unit-power-on`
 - [ ] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · scaffold `reel-spin-up`
 - [ ] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · scaffold `tape-thread-route`

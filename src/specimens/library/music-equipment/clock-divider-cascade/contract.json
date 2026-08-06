@@ -1,0 +1,8 @@
+{
+  "name": "clock-divider-cascade",
+  "ref": "SPX-3868",
+  "title": "Clock Divider Cascade",
+  "mode": "switch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
