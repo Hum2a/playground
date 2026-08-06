@@ -1,0 +1,37 @@
+<div class="ndd" data-nearby-device-discovery data-phase="idle">
+  <div class="ndd__surface">
+    <div class="ndd__rings" aria-hidden="true">
+      <span class="ndd__ring ndd__ring--inner"></span>
+      <span class="ndd__ring ndd__ring--outer"></span>
+    </div>
+
+    <div class="ndd__source" data-ndd-source aria-label="This device">
+      <span class="ndd__source-icon" aria-hidden="true"></span>
+    </div>
+
+    <div class="ndd__recipients" data-ndd-recipients>
+      <div class="ndd__node" data-ndd-node="top" data-index="0" hidden>
+        <span class="ndd__node-icon" aria-hidden="true"></span>
+        <span class="ndd__node-label">NODE A</span>
+      </div>
+      <div class="ndd__node" data-ndd-node="right" data-index="1" hidden>
+        <span class="ndd__node-icon" aria-hidden="true"></span>
+        <span class="ndd__node-label">NODE B</span>
+      </div>
+      <div class="ndd__node" data-ndd-node="lower-right" data-index="2" hidden>
+        <span class="ndd__node-icon" aria-hidden="true"></span>
+        <span class="ndd__node-label">NODE C</span>
+      </div>
+      <div class="ndd__node" data-ndd-node="lower-left" data-index="3" hidden>
+        <span class="ndd__node-icon" aria-hidden="true"></span>
+        <span class="ndd__node-label">NODE D</span>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="ndd__discover" data-ndd-discover>DISCOVER</button>
+
+  <p class="ndd__status" role="status" aria-live="polite" data-ndd-status>
+    Tap DISCOVER to scan for nearby recipients.
+  </p>
+</div>

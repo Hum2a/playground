@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **24 / 417** complete.
+- Progress: **25 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 393 |
+| Done | 25 |
+| Open | 392 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-309 | `SPX-1866` | `nearby-device-discovery` | Nearby Device Discovery |
 | AND-259 | `SPX-1816` | `pip-edge-magnetism` | PiP Edge Magnetism |
 | AND-257 | `SPX-1814` | `picture-in-picture-collapse` | Picture-in-Picture Collapse |
 | AND-273 | `SPX-1830` | `fingerprint-acquisition-field` | Fingerprint Acquisition Field |
@@ -84,7 +85,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
 - [x] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — biometric-unlock-inspired
 - [x] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
-- [ ] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
+- [x] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
 - [ ] **AND-311** · `SPX-1868` · **File Transfer Arc** — nearby-share-quick-share-inspired
 - [ ] **AND-317** · `SPX-1874` · **Widget Resize Morph** — widgets
 - [ ] **AND-323** · `SPX-1880` · **Shape Morph Button-to-Card** — material-you-dynamic-shape-ideas
@@ -531,7 +532,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Nearby Share / Quick Share Inspired
 
-- [ ] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — recipient nodes construct around source in deterministic positions.
+- [x] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — recipient nodes construct around source in deterministic positions.
 - [ ] **AND-310** · `SPX-1867` · **Recipient Acquisition** — selected nearby device gains explicit ready state.
 - [ ] **AND-311** · `SPX-1868` · **File Transfer Arc** — outgoing object follows a visible transfer path.
 - [ ] **AND-312** · `SPX-1869` · **Transfer Acceptance Handoff** — pending state becomes active transfer only after acceptance.

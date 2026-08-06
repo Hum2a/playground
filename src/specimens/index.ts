@@ -139,6 +139,7 @@ import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { multiItemDragStack } from './multi-item-drag-stack/entry'
 import { navigationDrawerEdgePull } from './navigation-drawer-edge-pull/entry'
+import { nearbyDeviceDiscovery } from './nearby-device-discovery/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
@@ -399,6 +400,7 @@ export const specimens: Specimen[] = [
   moveLearned,
   multiItemDragStack,
   navigationDrawerEdgePull,
+  nearbyDeviceDiscovery,
   newspaperHeadlineDrop,
   notificationBannerDrop,
   notificationExpand,

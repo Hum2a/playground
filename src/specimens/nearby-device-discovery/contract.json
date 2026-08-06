@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/nearby-device-discovery.schema.json",
+  "title": "NearbyDeviceDiscovery",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "layout", "discovery", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "nearby-device-discovery" },
+    "intent": {
+      "type": "string",
+      "const": "Simulate nearby device discovery with deterministic radial nodes and a finite ready state."
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surfaceWidthPx", "surfaceHeightPx", "sourceNodePx", "recipientCount"],
+      "properties": {
+        "surfaceWidthPx": { "type": "number", "const": 360 },
+        "surfaceHeightPx": { "type": "number", "const": 420 },
+        "sourceNodePx": { "type": "number", "const": 64 },
+        "recipientCount": { "type": "number", "const": 4 }
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["staggerMs", "settleMs", "readyDelayMs"],
+      "properties": {
+        "staggerMs": { "type": "number", "const": 120 },
+        "settleMs": { "type": "number", "const": 260 },
+        "readyDelayMs": { "type": "number", "const": 900 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantAppear", "triggers"],
+      "properties": {
+        "instantAppear": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "source", "node"],
+      "properties": {
+        "root": { "type": "string", "const": "ndd" },
+        "source": { "type": "string", "const": "ndd__source" },
+        "node": { "type": "string", "const": "ndd__node" }
+      }
+    }
+  }
+}
