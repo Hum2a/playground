@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **33 / 417** complete.
+- Progress: **34 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 33 |
-| Open | 384 |
+| Done | 34 |
+| Open | 383 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-162 | `SPX-1719` | `material-switch-toggle` | Material Switch Toggle |
 | AND-179 | `SPX-1736` | `search-bar-to-view-transform` | Search Bar-to-View Transform |
 | AND-101 | `SPX-1658` | `notification-swipe-dismiss` | Notification Swipe Dismiss |
 | AND-056 | `SPX-1613` | `quick-app-switch-swipe` | Quick App Switch Swipe |
@@ -324,7 +325,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Switches, Sliders & Selection Controls
 
-- [ ] **AND-162** · `SPX-1719` · **Material Switch Toggle** — thumb and track change together through one state transition.
+- [x] **AND-162** · `SPX-1719` · **Material Switch Toggle** — thumb and track change together through one state transition.
 - [ ] **AND-163** · `SPX-1720` · **Slider Thumb Pickup** — thumb enlarges and exposes precision feedback while dragging.
 - [ ] **AND-164** · `SPX-1721` · **Slider Tick Acquisition** — thumb snaps onto discrete tick positions.
 - [ ] **AND-165** · `SPX-1722` · **Checkbox Draw** — selection mark constructs inside persistent checkbox geometry.

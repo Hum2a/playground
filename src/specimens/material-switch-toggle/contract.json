@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/material-switch-toggle.schema.json",
+  "title": "MaterialSwitchToggle",
+  "description": "Portable contract for Material-style switch with checkbox semantics.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "track", "thumb", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "material-switch-toggle" },
+    "intent": {
+      "type": "string",
+      "const": "Thumb and track change together through one state transition driven by a native checkbox."
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "transitionMs"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 52 },
+        "heightPx": { "type": "number", "const": 32 },
+        "transitionMs": { "type": "number", "const": 180 }
+      }
+    },
+    "thumb": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizePx", "travelPx", "pulseScale"],
+      "properties": {
+        "sizePx": { "type": "number", "const": 24 },
+        "travelPx": { "type": "number", "const": 20 },
+        "pulseScale": { "type": "number", "const": 1.08 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantThumb", "triggers"],
+      "properties": {
+        "instantThumb": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nativeCheckbox", "keyboardSpace"],
+      "properties": {
+        "nativeCheckbox": { "type": "boolean", "const": true },
+        "keyboardSpace": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "switch", "track", "thumb"],
+      "properties": {
+        "root": { "type": "string", "const": "mst" },
+        "switch": { "type": "string", "const": "mst__switch" },
+        "track": { "type": "string", "const": "mst__track" },
+        "thumb": { "type": "string", "const": "mst__thumb" }
+      }
+    }
+  }
+}

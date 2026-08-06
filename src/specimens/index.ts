@@ -127,6 +127,7 @@ import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { materialPullToRefresh } from './material-pull-to-refresh/entry'
+import { materialSwitchToggle } from './material-switch-toggle/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
 import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
@@ -396,6 +397,7 @@ export const specimens: Specimen[] = [
   mangaCutInNotification,
   matchedCardExpansion,
   materialPullToRefresh,
+  materialSwitchToggle,
   maxRankCompletion,
   measurementOverload,
   memoryFragmentReveal,
