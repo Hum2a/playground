@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **48 / 216** complete.
+- Progress: **49 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 48 |
-| Open | 168 |
+| Done | 49 |
+| Open | 167 |
 
 ## Visual grammar
 
@@ -80,6 +80,7 @@
 | PS-096 | `SPX-3402` | `party-join-handoff` | Party Join Handoff |
 | PS-109 | `SPX-3415` | `controller-disconnected-alert` | Controller Disconnected Alert |
 | PS-157 | `SPX-3463` | `dwell-to-select-ring` | Dwell-to-Select Ring |
+| PS-181 | `SPX-3487` | `horizon-style-focus-scan` | Horizon-Style Focus Scan |
 
 ## Core first-wave
 
@@ -133,7 +134,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-096** · `SPX-3402` · **Party Join Handoff** — friends-parties-social
 - [x] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — notifications
 - [x] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — psvr-spatial-ui
-- [ ] **PS-181** · `SPX-3487` · **Horizon-Style Focus Scan** — game-specific-system-like-inspirations
+- [x] **PS-181** · `SPX-3487` · **Horizon-Style Focus Scan** — game-specific-system-like-inspirations
 - [ ] **PS-184** · `SPX-3490` · **Ratchet-Style Rift Transition** — game-specific-system-like-inspirations
 
 
@@ -391,7 +392,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-178** · `SPX-3484` · **Gran-Turismo-Style Precision Gauge** — A technical circular gauge sweeps to an exact value with instrument-like restraint.
 - [ ] **PS-179** · `SPX-3485` · **Ghost-Style Wind Navigation** — Directional particles/lines guide attention toward the next action.
 - [ ] **PS-180** · `SPX-3486` · **God-of-War-Style Rune Lock** — Original angular marks align around a protected action.
-- [ ] **PS-181** · `SPX-3487` · **Horizon-Style Focus Scan** — A scanning reticle reveals metadata around a selected target.
+- [x] **PS-181** · `SPX-3487` · **Horizon-Style Focus Scan** — A scanning reticle reveals metadata around a selected target.
 - [ ] **PS-182** · `SPX-3488` · **Spider-Style Web Connection** — Abstract connecting strands build between related nodes.
 - [ ] **PS-183** · `SPX-3489` · **Returnal-Style Loop Reset** — A failed sequence snaps back to its initial state while preserving one learned marker.
 - [ ] **PS-184** · `SPX-3490` · **Ratchet-Style Rift Transition** — Content is pulled through a dimensional slit and reconstructs elsewhere.
