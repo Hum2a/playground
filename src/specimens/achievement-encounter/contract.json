@@ -1,0 +1,74 @@
+{
+  "name": "achievement-encounter",
+  "intent": "Achievement unlock staged as a rare creature-battle encounter: streaks, arena, badge flash, then message box — without Pokémon assets.",
+  "colours": {
+    "grass": "#65a85b",
+    "sky": "#9bd7ef",
+    "ink": "#20252a",
+    "paper": "#f7f4df",
+    "gold": "#e9b83f",
+    "platform": "#4f8748"
+  },
+  "dimensions": {
+    "minHeightPx": 240,
+    "badgeSizePx": 96,
+    "streakCount": 8,
+    "messageInsetPercent": 8
+  },
+  "copy": {
+    "trigger": "UNLOCK ACHIEVEMENT",
+    "message": "A RARE ACHIEVEMENT APPEARED!",
+    "title": "EARLY ADOPTER",
+    "badgeCode": "ACHV-07",
+    "badgeGlyph": "★",
+    "statusAnnounce": "Achievement unlocked: Early Adopter"
+  },
+  "classes": {
+    "root": "ae",
+    "active": "ae--active",
+    "streaks": "ae--streaks",
+    "arena": "ae--arena",
+    "badge": "ae--badge",
+    "message": "ae--message",
+    "settled": "ae--settled",
+    "reduced": "ae--reduced"
+  },
+  "timing": {
+    "totalMs": 1250,
+    "streakMs": 350,
+    "arenaMs": 250,
+    "badgeMs": 400,
+    "messageMs": 250,
+    "easing": "steps(2–4, end)"
+  },
+  "api": {
+    "run": "runAchievementEncounter()",
+    "reset": "resetAchievementEncounter()",
+    "replay": "replayAchievementEncounter()",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": true
+  },
+  "a11y": {
+    "trigger": "button",
+    "decorativeAriaHidden": ["streaks", "arena", "badge", "message"],
+    "statusRole": "status",
+    "ariaLive": "polite",
+    "announceOnceOnSettle": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Skip streaks; immediately show arena + badge + message; still announce once"
+  },
+  "constraints": {
+    "noPokemonAssets": true,
+    "noCreatureImagery": true,
+    "noExternalAssets": true,
+    "noInfiniteMotion": true,
+    "noNetwork": true,
+    "widthRangePx": [320, 768]
+  }
+}

@@ -60,6 +60,14 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Cyberpunk',
     works: {},
   },
+  splatoon: {
+    label: 'Splatoon',
+    works: {},
+  },
+  pokemon: {
+    label: 'Pokémon',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},
@@ -114,6 +122,13 @@ export const SUGGESTED_FREE_TAGS = [
   'terminal',
   'monospace',
   'lock',
+  'ink',
+  'splat',
+  'liquid',
+  'achievement',
+  'alert',
+  'detection',
+  'ping',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

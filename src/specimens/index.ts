@@ -1,3 +1,4 @@
+import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
@@ -6,7 +7,6 @@ import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
-import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import type { Specimen } from './types'
 
@@ -58,7 +58,7 @@ export const specimens: Specimen[] = [
   truthShotNotification,
   diagnosticBootSequence,
   corruptedAccessLock,
-  tacticalAlertPing,
+  achievementEncounter,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
