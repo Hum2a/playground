@@ -1,0 +1,1 @@
+export function runSkipCommit(){document.querySelector('[data-state]').textContent='Scene 1 · 01:42';document.querySelector('[data-skip]').hidden=true};document.querySelector('[data-skip]')?.addEventListener('click',()=>runSkipCommit())

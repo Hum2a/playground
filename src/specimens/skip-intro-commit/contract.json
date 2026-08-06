@@ -1,0 +1,6 @@
+{
+  "name": "skip-intro-commit",
+  "ref": "SPX-3179",
+  "nf": "NF-070",
+  "title": "Skip Intro Commit"
+}

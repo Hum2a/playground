@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **25 / 197** complete.
+- Progress: **26 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 25 |
-| Open | 172 |
+| Done | 26 |
+| Open | 171 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-070 | `SPX-3179` | `skip-intro-commit` | Skip Intro Commit |
 | NF-062 | `SPX-3171` | `timeline-hover-preview` | Timeline Hover Preview |
 | NF-059 | `SPX-3168` | `controls-idle-dissolve` | Controls Idle Dissolve |
 | NF-054 | `SPX-3163` | `ten-second-seek-ripple` | Ten-Second Seek Ripple |
@@ -97,7 +98,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-054** · `SPX-3163` · **Ten-Second Seek Ripple** — `ten-second-seek-ripple`
 - [x] **NF-059** · `SPX-3168` · **Controls Idle Dissolve** — `controls-idle-dissolve`
 - [x] **NF-062** · `SPX-3171` · **Timeline Hover Preview** — `timeline-hover-preview`
-- [ ] **NF-070** · `SPX-3179` · **Skip Intro Commit** — `skip-intro-commit`
+- [x] **NF-070** · `SPX-3179` · **Skip Intro Commit** — `skip-intro-commit`
 - [ ] **NF-076** · `SPX-3185` · **Next-Up Cancel** — `next-up-cancel`
 - [ ] **NF-081** · `SPX-3190` · **Binge Continuation Transition** — `binge-continuation-transition`
 - [ ] **NF-082** · `SPX-3191` · **Minimal Buffer Spinner** — `minimal-buffer-spinner`
@@ -216,7 +217,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 9. Skip / Contextual Actions
 
 - [x] **NF-069** · `SPX-3178` · **Skip Intro Appear** — A contextual Skip Intro action fades/slides in only during the relevant segment
-- [ ] **NF-070** · `SPX-3179` · **Skip Intro Commit** — Activating the contextual action rapidly advances the timeline and dismisses itself
+- [x] **NF-070** · `SPX-3179` · **Skip Intro Commit** — Activating the contextual action rapidly advances the timeline and dismisses itself
 - [ ] **NF-071** · `SPX-3180` · **Skip Recap Action** — A temporary skip control appears for recap content and vanishes after use
 - [ ] **NF-072** · `SPX-3181` · **Skip Credits Prompt** — Credits trigger a compact action group for continuing or staying
 - [ ] **NF-073** · `SPX-3182` · **Context Button Timeout** — A temporary playback action expires cleanly when its window closes

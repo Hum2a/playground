@@ -351,6 +351,7 @@ import { shurikenRadialMenu } from './shuriken-radial-menu/entry'
 import { singleToDualPaneTransform } from './single-to-dual-pane-transform/entry'
 import { skillInheritanceSelect } from './skill-inheritance-select/entry'
 import { skipIntroAppear } from './skip-intro-appear/entry'
+import { skipIntroCommit } from './skip-intro-commit/entry'
 import { sliderThumbPickup } from './slider-thumb-pickup/entry'
 import { smokeMaskTransition } from './smoke-mask-transition/entry'
 import { snackbarRise } from './snackbar-rise/entry'
@@ -816,6 +817,7 @@ export const specimens: Specimen[] = [
   singleToDualPaneTransform,
   skillInheritanceSelect,
   skipIntroAppear,
+  skipIntroCommit,
   sliderThumbPickup,
   smokeMaskTransition,
   snackbarRise,
