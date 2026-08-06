@@ -1,0 +1,69 @@
+{
+  "name": "dark-hour-conversion-loader",
+  "intent": "Determinate loader where progress percentage is the share of the host converted by a travelling Dark Hour boundary; at 100% a pale resolve line restores a completed normal interface.",
+  "colours": {
+    "paper": "#edf1f4",
+    "ink": "#18212b",
+    "nearBlack": "#030b14",
+    "deep": "#071c32",
+    "cold": "#0d4d73",
+    "spectral": "#2d9bd3",
+    "pale": "#d7f5ff",
+    "anomaly": "#49bce3"
+  },
+  "progress": {
+    "cssVar": "--dhcl-p",
+    "mapping": "percent 0–100 maps 1:1 to converted layer clip-path inset right edge",
+    "demoDurationMs": 3000,
+    "numeric": "same rounded value as boundary (00%–100%)",
+    "checkpoints": [0, 10, 25, 50, 75, 90, 100]
+  },
+  "boundary": {
+    "direction": "left-to-right",
+    "widthPx": 2,
+    "anomalyStreaks": 2,
+    "streakOffsets": ["28%", "68%"]
+  },
+  "convertedStructuralDiffs": [
+    "left vertical spectral rule",
+    "angular clipped status chips",
+    "angled metric rows",
+    "corner glyph block"
+  ],
+  "completion": {
+    "holdFullyConvertedMs": 180,
+    "resolveLineMs": 320,
+    "resolveLine": "pale horizontal scaleX 0→1",
+    "finalCopy": "INDEX COMPLETE",
+    "announce": "Archive indexing complete."
+  },
+  "api": {
+    "start": "startDarkHourConversionLoad()",
+    "reset": "resetDarkHourConversionLoad()",
+    "inspect": "setDarkHourConversionProgress(pct)",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart",
+    "noIndefiniteLoop": true,
+    "noSpinner": true
+  },
+  "a11y": {
+    "progressbar": true,
+    "ariaValueNowTracksBoundary": true,
+    "noPerPercentLiveSpam": true,
+    "completionLive": "Archive indexing complete."
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "No travelling boundary; jump to 100% hold then completed normal state"
+  },
+  "constraints": {
+    "noImages": true,
+    "noNetwork": true,
+    "noLibraries": true,
+    "worksAt320px": true
+  }
+}

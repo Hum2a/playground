@@ -1,0 +1,69 @@
+<div class="dhcl-demo" data-dhcl-demo>
+  <div
+    class="dhcl"
+    data-dhcl
+    data-phase="idle"
+    style="--dhcl-p: 0%"
+  >
+    <div class="dhcl__stage" data-dhcl-stage>
+      <div class="dhcl__layer dhcl__layer--normal" data-dhcl-normal>
+        <p class="dhcl__op" data-dhcl-op>INDEXING ARCHIVE</p>
+        <div class="dhcl__meta">
+          <span class="dhcl__chip">LIGHT // OPEN</span>
+          <span class="dhcl__chip dhcl__chip--muted">QUEUE 04</span>
+        </div>
+        <div class="dhcl__rows" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="dhcl__hint">Awaiting conversion</p>
+      </div>
+
+      <div class="dhcl__layer dhcl__layer--converted" data-dhcl-converted aria-hidden="true">
+        <span class="dhcl__vrule" aria-hidden="true"></span>
+        <p class="dhcl__op">INDEXING ARCHIVE</p>
+        <div class="dhcl__meta">
+          <span class="dhcl__chip dhcl__chip--dark">DARK HOUR</span>
+          <span class="dhcl__chip dhcl__chip--dark">QUEUE 04</span>
+        </div>
+        <div class="dhcl__rows dhcl__rows--dark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="dhcl__glyph" aria-hidden="true"></div>
+        <p class="dhcl__hint">Temporal rewrite in progress</p>
+      </div>
+
+      <div class="dhcl__boundary" data-dhcl-boundary aria-hidden="true">
+        <span class="dhcl__edge"></span>
+        <span class="dhcl__streak dhcl__streak--a"></span>
+        <span class="dhcl__streak dhcl__streak--b"></span>
+      </div>
+
+      <div class="dhcl__resolve" data-dhcl-resolve aria-hidden="true"></div>
+    </div>
+
+    <div class="dhcl__readout">
+      <div
+        class="dhcl__progress"
+        role="progressbar"
+        aria-label="Archive indexing progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        data-dhcl-bar
+      >
+        <span class="dhcl__pct" data-dhcl-pct>00%</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="dhcl-demo__live" data-dhcl-live aria-live="polite"></p>
+
+  <div class="dhcl-demo__controls">
+    <button type="button" class="dhcl-demo__btn dhcl-demo__btn--primary" data-dhcl-start>
+      Start
+    </button>
+    <button type="button" class="dhcl-demo__btn" data-dhcl-reset>
+      Reset
+    </button>
+  </div>
+</div>

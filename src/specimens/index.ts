@@ -3,6 +3,7 @@ import { azureShardTransition } from './azure-shard-transition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
+import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
@@ -19,6 +20,7 @@ import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { criticalThresholdWarning } from './critical-threshold-warning/entry'
+import { criticalWeaknessHit } from './critical-weakness-hit/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
@@ -76,6 +78,7 @@ import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
+import { timeSkip } from './time-skip/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
@@ -135,6 +138,7 @@ export const specimens: Specimen[] = [
   diagnosticBootSequence,
   corruptedAccessLock,
   criticalThresholdWarning,
+  criticalWeaknessHit,
   achievementEncounter,
   tacticalAlertPing,
   inkSplatTransition,
@@ -142,6 +146,7 @@ export const specimens: Specimen[] = [
   blackoutLoader,
   blueDoorDiscovery,
   blueFocusBrackets,
+  blueFlameButtonHover,
   butterflyEntry,
   butterflySuccessState,
   cardBreakSummon,
@@ -202,6 +207,7 @@ export const specimens: Specimen[] = [
   tacticalTargetLock,
   tartarusFloorAscension,
   temporalFreeze,
+  timeSkip,
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,

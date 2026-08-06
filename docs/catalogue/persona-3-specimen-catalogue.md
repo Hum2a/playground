@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **29 / 238** complete.
+- Progress: **32 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 209 |
+| Done | 32 |
+| Open | 206 |
 
 ## Visual grammar
 
@@ -60,8 +60,11 @@
 | P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
 | P3-170 | `SPX-567` | `blue-focus-brackets` | Blue Focus Brackets |
 | P3-153 | `SPX-550` | `max-rank-completion` | Max Rank Completion |
+| P3-186 | `SPX-583` | `dark-hour-conversion-loader` | Dark Hour Conversion Loader |
 | P3-138 | `SPX-535` | `deadline-clock` | Deadline Clock |
+| P3-092 | `SPX-489` | `critical-weakness-hit` | Critical Weakness Hit |
 
+| P3-124 | `SPX-521` | `blue-flame-button-hover` | Blue Flame Button Hover |
 ## Core first-wave
 
 Curated implementation priority. Same checkbox as the master list — checking either counts.
@@ -208,7 +211,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P3-089** · `SPX-486` · **Tactical Command Wheel** — tactical.
 - [ ] **P3-090** · `SPX-487` · **Command Confirmation Snap** — tactical.
 - [ ] **P3-091** · `SPX-488` · **Status Scanline** — tactical.
-- [ ] **P3-092** · `SPX-489` · **Critical Weakness Hit** — tactical.
+- [x] **P3-092** · `SPX-489` · **Critical Weakness Hit** — tactical.
 - [ ] **P3-093** · `SPX-490` · **Target Lost** — tactical.
 - [ ] **P3-094** · `SPX-491` · **Target Reacquired** — tactical.
 - [ ] **P3-095** · `SPX-492` · **Battle Initiative Strip** — tactical.
@@ -252,7 +255,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Blue flame / energy
 
-- [ ] **P3-124** · `SPX-521` · **Blue Flame Button Hover** — energy.
+- [x] **P3-124** · `SPX-521` · **Blue Flame Button Hover** — energy.
 - [ ] **P3-125** · `SPX-522` · **Energy Charge Confirmation** — energy.
 - [ ] **P3-126** · `SPX-523` · **Flame Selection Marker** — energy.
 - [ ] **P3-127** · `SPX-524` · **Energy Overflow Warning** — energy.
@@ -329,7 +332,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-183** · `SPX-580` · **Glass Refraction Loader** — loading.
 - [ ] **P3-184** · `SPX-581` · **Energy Charge Loader** — loading.
 - [ ] **P3-185** · `SPX-582` · **Velvet Curtain Loader** — loading.
-- [ ] **P3-186** · `SPX-583` · **Dark Hour Conversion Loader** — loading.
+- [x] **P3-186** · `SPX-583` · **Dark Hour Conversion Loader** — loading.
 - [ ] **P3-187** · `SPX-584` · **Fusion Processing Loader** — loading.
 
 ## Error / failure
