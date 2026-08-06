@@ -1,0 +1,8 @@
+{
+  "name": "oscilloscope-trace",
+  "ref": "SPX-3789",
+  "title": "Oscilloscope Trace",
+  "mode": "tuner",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

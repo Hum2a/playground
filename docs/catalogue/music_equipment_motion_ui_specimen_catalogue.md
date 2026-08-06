@@ -110,7 +110,7 @@ specimens can feel tactile without needing sound.
     deterministic signal loop and freeze under reduced motion.
 - [ ] **MUSIC-029** · `SPX-3788` · ★★★★★ **Spectral Peak Trail** — Falling frequency peaks leave
     short-lived markers above the current spectrum.
-- [ ] **MUSIC-030** · `SPX-3789` · ★★★★★ **Oscilloscope Trace** — A waveform draws continuously
+- [x] **MUSIC-030** · `SPX-3789` · ★★★★★ **Oscilloscope Trace** — A waveform draws continuously
     across a bounded instrument screen.
 - [ ] **MUSIC-031** · `SPX-3790` · ★★★★☆ **Vectorscope Orbit** — A deterministic stereo/phase
     trace moves around a central scope.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-030 | SPX-3789 | `oscilloscope-trace` | Oscilloscope Trace |
 | MUSIC-028 | SPX-3787 | `spectrum-bar-dance` | Spectrum Bar Dance |
 | MUSIC-105 | SPX-3864 | `feedback-loop-warning` | Feedback Loop Warning |
 | MUSIC-213 | SPX-3972 | `loop-record-ring` | Loop Record Ring |
@@ -894,12 +895,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **31 / 310** complete.
+- Progress: **32 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 31 |
-| Open | 279 |
+| Done | 32 |
+| Open | 278 |
 
 ## Core first-wave / build queue
 
@@ -911,7 +912,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · `parametric-eq-node-drag`
 - [x] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · `eq-bypass-flatten`
 - [x] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · `spectrum-bar-dance`
-- [ ] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · scaffold `oscilloscope-trace`
+- [x] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · `oscilloscope-trace`
 - [ ] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · scaffold `spectrogram-waterfall`
 - [x] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · `compressor-threshold-crush`
 - [ ] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · scaffold `gain-reduction-slam`

@@ -578,4 +578,5 @@ export const specimenOrder: string[] = [
   'loop-record-ring',
   'feedback-loop-warning',
   'spectrum-bar-dance',
+  'oscilloscope-trace',
 ]
