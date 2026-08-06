@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **46 / 191** complete.
+- Progress: **47 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 46 |
-| Open | 145 |
+| Done | 47 |
+| Open | 144 |
 
 ## Visual grammar
 
@@ -80,6 +80,7 @@
 | P4-103 | `SPX-3021` | `deadline-pressure-meter` | Deadline Pressure Meter |
 | P4-105 | `SPX-3023` | `fog-forecast-warning` | Fog Forecast Warning |
 | P4-049 | `SPX-2967` | `boss-introduction-freeze` | Boss Introduction Freeze |
+| P4-046 | `SPX-2964` | `confrontation-card-slam` | Confrontation Card Slam |
 
 ## Core first-wave
 
@@ -131,7 +132,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-103** · `SPX-3021` · **Deadline Pressure Meter** — calendar-time-deadlines
 - [x] **P4-105** · `SPX-3023` · **Fog Forecast Warning** — calendar-time-deadlines
 - [x] **P4-049** · `SPX-2967` · **Boss Introduction Freeze** — shadow-identity-confrontation
-- [ ] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — shadow-identity-confrontation
+- [x] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — shadow-identity-confrontation
 - [ ] **P4-150** · `SPX-3068` · **Contract Confirmation** — velvet-room-inspired-elegance
 - [ ] **P4-059** · `SPX-2977` · **Max Rank Completion** — social-links-bonds
 - [ ] **P4-083** · `SPX-3001` · **All-Out Completion Burst** — battle-weakness-advantage
@@ -196,7 +197,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 - [x] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — A polished profile fractures to expose a darker underlying state.
 - [ ] **P4-045** · `SPX-2963` · **Identity Distortion** — Profile typography and geometry become unstable before resolving into truth state.
-- [ ] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — A hidden issue interrupts the interface with a high-impact challenge card.
+- [x] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — A hidden issue interrupts the interface with a high-impact challenge card.
 - [ ] **P4-047** · `SPX-2965` · **Denial-to-Acceptance Morph** — A rejected state visually fights the transition before settling into accepted status.
 - [ ] **P4-048** · `SPX-2966` · **Shadow Encounter Warning** — A hostile presence is acquired through warning brackets and rising threat.
 - [x] **P4-049** · `SPX-2967` · **Boss Introduction Freeze** — The interface freezes while an oversized threat identity card cuts across it.

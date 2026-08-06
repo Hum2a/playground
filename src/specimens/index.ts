@@ -75,6 +75,7 @@ import { comingSoonTape } from './coming-soon-tape/entry'
 import { compactActivityExpansion } from './compact-activity-expansion/entry'
 import { completionStrike } from './completion-strike/entry'
 import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
+import { confrontationCardSlam } from './confrontation-card-slam/entry'
 import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { contextMenuBloom } from './context-menu-bloom/entry'
@@ -511,6 +512,7 @@ export const specimens: Specimen[] = [
   compactActivityExpansion,
   completionStrike,
   concentratedEnergyCharge,
+  confrontationCardSlam,
   connectionSevered,
   contentDeclassification,
   contextMenuBloom,
