@@ -1,0 +1,33 @@
+<div class="energy-charge" data-energy-charge data-state="idle">
+  <p class="energy-charge__action" data-ecc-action>PURGE CACHE</p>
+
+  <button
+    type="button"
+    class="energy-charge__btn"
+    data-ecc-btn
+    aria-describedby="energy-charge-hint"
+  >
+    <span class="energy-charge__frame" aria-hidden="true" data-ecc-frame>
+      <span class="ecc-seg ecc-seg--bottom" data-ecc-seg="bottom"></span>
+      <span class="ecc-seg ecc-seg--left" data-ecc-seg="left"></span>
+      <span class="ecc-seg ecc-seg--top" data-ecc-seg="top"></span>
+      <span class="ecc-seg ecc-seg--right" data-ecc-seg="right"></span>
+    </span>
+    <span class="energy-charge__label" data-ecc-label>HOLD TO CONFIRM</span>
+  </button>
+
+  <p id="energy-charge-hint" class="energy-charge__sr">
+    Hold for about nine hundred milliseconds to confirm. Release early to cancel.
+  </p>
+
+  <p
+    class="energy-charge__status"
+    data-ecc-status
+    role="status"
+    aria-live="polite"
+  ></p>
+
+  <button type="button" class="energy-charge__reset" data-ecc-reset hidden>
+    RESET
+  </button>
+</div>

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/energy-charge-confirmation.schema.json",
+  "title": "EnergyChargeConfirmation",
+  "description": "Portable contract for a 900ms hold-to-confirm control with four blue energy frame segments filling bottom → left → top → right.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "hold",
+    "frame",
+    "completion",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "energy-charge-confirmation" },
+    "intent": {
+      "type": "string",
+      "const": "Hold-to-confirm where blue energy accumulates around PURGE CACHE over 900ms before CONFIRMED."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "idle", "confirmed", "reset"],
+      "properties": {
+        "action": { "type": "string", "const": "PURGE CACHE" },
+        "idle": { "type": "string", "const": "HOLD TO CONFIRM" },
+        "confirmed": { "type": "string", "const": "CONFIRMED" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "deepBlue", "blue", "bright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020912" },
+        "deepBlue": { "type": "string", "const": "#071f3d" },
+        "blue": { "type": "string", "const": "#176fa8" },
+        "bright": { "type": "string", "const": "#4dbce8" },
+        "pale": { "type": "string", "const": "#d9f7ff" }
+      }
+    },
+    "hold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "compressScale", "drainMaxMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 900 },
+        "compressScale": { "type": "array", "const": [1, 0.97] },
+        "drainMaxMs": { "type": "number", "const": 250 }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segmentCount", "fillOrder"],
+      "properties": {
+        "segmentCount": { "type": "number", "const": 4 },
+        "fillOrder": {
+          "type": "array",
+          "const": ["bottom", "left", "top", "right"]
+        }
+      }
+    },
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flashMaxMs", "snapScale"],
+      "properties": {
+        "flashMaxMs": { "type": "number", "const": 80 },
+        "flashMs": { "type": "number", "const": 70 },
+        "snapScale": { "type": "array", "const": [0.97, 1.025, 1] }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pointerAndKeyboard", "politeStatus"],
+      "properties": {
+        "pointerAndKeyboard": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["holdStillRequired", "steppedProgress", "triggers"],
+      "properties": {
+        "holdStillRequired": { "type": "boolean", "const": true },
+        "steppedProgress": {
+          "type": "array",
+          "const": [0, 0.25, 0.5, 0.75, 1]
+        },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "btn", "frame", "seg"],
+      "properties": {
+        "root": { "type": "string", "const": "energy-charge" },
+        "btn": { "type": "string", "const": "energy-charge__btn" },
+        "frame": { "type": "string", "const": "energy-charge__frame" },
+        "seg": { "type": "string", "const": "ecc-seg" }
+      }
+    }
+  }
+}

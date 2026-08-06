@@ -36,6 +36,7 @@ import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
+import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
@@ -169,6 +170,7 @@ export const specimens: Specimen[] = [
   deletionGuillotine,
   discoveryTearOpen,
   enemyScanReveal,
+  energyChargeConfirmation,
   energyTransferSync,
   errorCorrectionRewrite,
   failureShatter,

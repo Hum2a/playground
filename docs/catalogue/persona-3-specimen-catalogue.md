@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **32 / 238** complete.
+- Progress: **33 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 32 |
-| Open | 206 |
+| Done | 33 |
+| Open | 205 |
 
 ## Visual grammar
 
@@ -65,6 +65,7 @@
 | P3-092 | `SPX-489` | `critical-weakness-hit` | Critical Weakness Hit |
 
 | P3-124 | `SPX-521` | `blue-flame-button-hover` | Blue Flame Button Hover |
+| P3-125 | `SPX-522` | `energy-charge-confirmation` | Energy Charge Confirmation |
 ## Core first-wave
 
 Curated implementation priority. Same checkbox as the master list — checking either counts.
@@ -256,7 +257,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Blue flame / energy
 
 - [x] **P3-124** · `SPX-521` · **Blue Flame Button Hover** — energy.
-- [ ] **P3-125** · `SPX-522` · **Energy Charge Confirmation** — energy.
+- [x] **P3-125** · `SPX-522` · **Energy Charge Confirmation** — energy.
 - [ ] **P3-126** · `SPX-523` · **Flame Selection Marker** — energy.
 - [ ] **P3-127** · `SPX-524` · **Energy Overflow Warning** — energy.
 - [ ] **P3-128** · `SPX-525` · **Power-Up Completion** — energy.
