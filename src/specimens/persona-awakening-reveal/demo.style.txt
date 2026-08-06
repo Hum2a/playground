@@ -1,0 +1,922 @@
+/* persona-awakening-reveal — portable specimen styles. Do not restyle to host tokens. */
+
+.par {
+  --par-near-black: #020a14;
+  --par-deep-blue: #08213a;
+  --par-energy: #168ac2;
+  --par-bright: #59c8f2;
+  --par-pale: #d9f7ff;
+  --par-white: #f6fcff;
+  --par-pressure-ms: 220ms;
+  --par-fracture-ms: 240ms;
+  --par-breach-ms: 180ms;
+  --par-separate-ms: 300ms;
+  --par-reveal-ms: 260ms;
+  --par-frame-ms: 80ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  padding: 0.7rem 0.7rem 2.75rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--par-white);
+}
+
+.par *,
+.par *::before,
+.par *::after {
+  box-sizing: border-box;
+}
+
+.par__stage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 210px;
+  background: var(--par-near-black);
+  border: 2px solid rgb(8 33 58 / 0.9);
+  transform-origin: 50% 50%;
+}
+
+.par__identity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 210px;
+  padding: 1.25rem 1.15rem;
+  transform-origin: 50% 50%;
+}
+
+.par__eyebrow {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--par-bright);
+}
+
+.par__title {
+  margin: 0;
+  font-size: clamp(1.45rem, 6.5vw, 1.95rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--par-white);
+}
+
+.par__sig {
+  margin: 0.15rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--par-pale);
+  opacity: 0.85;
+}
+
+/* Idle unknown: identity visible but trapped under shell */
+.par[data-phase='idle'] .par__identity,
+.par[data-phase='pressure'] .par__identity,
+.par[data-phase='fracture'] .par__identity,
+.par[data-phase='breach'] .par__identity {
+  filter: brightness(0.55);
+}
+
+.par[data-phase='separate'] .par__identity {
+  filter: brightness(0.85);
+  animation: par-reveal var(--par-reveal-ms) cubic-bezier(0.2, 0.85, 0.25, 1) 80ms both;
+}
+
+.par[data-phase='settled'] .par__identity {
+  filter: none;
+  transform: scale(1);
+}
+
+/* Shell panels — 5 coherent dark-blue glass regions */
+
+.par__shell {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.par__panel {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    145deg,
+    rgb(8 33 58 / 0.97) 0%,
+    rgb(2 10 20 / 0.94) 55%,
+    rgb(8 33 58 / 0.98) 100%
+  );
+  border: 1px solid rgb(22 138 194 / 0.18);
+  transform-origin: 47% 54%;
+  will-change: transform;
+}
+
+.par__panel--1 {
+  clip-path: polygon(0% 0%, 52% 0%, 48% 38%, 0% 46%);
+}
+
+.par__panel--2 {
+  clip-path: polygon(52% 0%, 100% 0%, 100% 42%, 58% 36%, 48% 38%);
+}
+
+.par__panel--3 {
+  clip-path: polygon(0% 46%, 48% 38%, 44% 68%, 0% 78%);
+}
+
+.par__panel--4 {
+  clip-path: polygon(48% 38%, 58% 36%, 100% 42%, 100% 76%, 54% 70%, 44% 68%);
+}
+
+.par__panel--5 {
+  clip-path: polygon(0% 78%, 44% 68%, 54% 70%, 100% 76%, 100% 100%, 0% 100%);
+}
+
+/* Pressure seams — explicit narrow blue shapes (not box-shadow) */
+
+.par__seam {
+  position: absolute;
+  z-index: 4;
+  background: var(--par-pale);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.par__seam--1 {
+  left: 46%;
+  top: 2%;
+  width: 2px;
+  height: 36%;
+  transform: rotate(8deg);
+}
+
+.par__seam--2 {
+  left: 4%;
+  top: 44%;
+  width: 42%;
+  height: 2px;
+  transform: rotate(-4deg);
+}
+
+.par__seam--3 {
+  left: 50%;
+  top: 36%;
+  width: 46%;
+  height: 2px;
+  transform: rotate(3deg);
+}
+
+/* Fracture lines — graphic/angular from 47% 54% */
+
+.par__fracture {
+  position: absolute;
+  left: 47%;
+  top: 54%;
+  z-index: 5;
+  width: 42%;
+  height: 2px;
+  background: var(--par-bright);
+  opacity: 0;
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+.par__fracture--1 {
+  width: 48%;
+  transform: rotate(-38deg) scaleX(0);
+}
+
+.par__fracture--2 {
+  width: 40%;
+  transform: rotate(12deg) scaleX(0);
+}
+
+.par__fracture--3 {
+  width: 36%;
+  transform: rotate(118deg) scaleX(0);
+}
+
+.par__fracture--4 {
+  width: 44%;
+  transform: rotate(210deg) scaleX(0);
+}
+
+/* Energy breach — pale-blue central shape behind shell panels visually under streaks */
+
+.par__breach {
+  position: absolute;
+  left: 47%;
+  top: 54%;
+  z-index: 2;
+  width: 120%;
+  height: 120%;
+  margin-left: -60%;
+  margin-top: -60%;
+  background: radial-gradient(
+    closest-side,
+    var(--par-pale) 0%,
+    var(--par-bright) 28%,
+    var(--par-energy) 55%,
+    transparent 72%
+  );
+  clip-path: polygon(
+    42% 18%,
+    62% 22%,
+    78% 40%,
+    74% 62%,
+    58% 78%,
+    38% 74%,
+    22% 56%,
+    26% 34%
+  );
+  opacity: 0;
+  transform: scale(0.2);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+/* Energy streaks — exactly 5 */
+
+.par__streak {
+  position: absolute;
+  left: 47%;
+  top: 54%;
+  z-index: 6;
+  width: 55%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--par-pale), transparent);
+  opacity: 0;
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+.par__streak--1 {
+  transform: rotate(-52deg) scaleX(0);
+}
+.par__streak--2 {
+  transform: rotate(-8deg) scaleX(0);
+}
+.par__streak--3 {
+  transform: rotate(48deg) scaleX(0);
+}
+.par__streak--4 {
+  transform: rotate(128deg) scaleX(0);
+}
+.par__streak--5 {
+  transform: rotate(198deg) scaleX(0);
+}
+
+/* Angular frame — 4 segments */
+
+.par__frame {
+  position: absolute;
+  inset: 0.7rem;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.par__frame-seg {
+  position: absolute;
+  background: var(--par-bright);
+  opacity: 0;
+}
+
+.par__frame-seg--t {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  clip-path: polygon(0% 0%, 100% 0%, 97% 100%, 3% 100%);
+  transform: translateY(-8px);
+}
+
+.par__frame-seg--r {
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  clip-path: polygon(0% 3%, 100% 0%, 100% 100%, 0% 97%);
+  transform: translateX(8px);
+}
+
+.par__frame-seg--b {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  clip-path: polygon(3% 0%, 97% 0%, 100% 100%, 0% 100%);
+  transform: translateY(8px);
+}
+
+.par__frame-seg--l {
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  clip-path: polygon(0% 0%, 100% 3%, 100% 97%, 0% 100%);
+  transform: translateX(-8px);
+}
+
+/* ---- Phases ---- */
+
+.par[data-phase='pressure'] .par__stage {
+  animation: par-pressure-scale var(--par-pressure-ms) ease-out both;
+}
+
+.par[data-phase='pressure'] .par__seam {
+  animation: par-seam-leak var(--par-pressure-ms) ease-out both;
+}
+
+.par[data-phase='pressure'] .par__seam--2 {
+  animation-delay: 30ms;
+}
+
+.par[data-phase='pressure'] .par__seam--3 {
+  animation-delay: 55ms;
+}
+
+.par[data-phase='fracture'] .par__stage {
+  transform: scale(1.015);
+}
+
+.par[data-phase='fracture'] .par__seam {
+  opacity: 1;
+  background: var(--par-bright);
+  box-shadow: none;
+}
+
+.par[data-phase='fracture'] .par__seam--1 {
+  width: 3px;
+  height: 42%;
+}
+
+.par[data-phase='fracture'] .par__seam--2 {
+  height: 3px;
+  width: 48%;
+}
+
+.par[data-phase='fracture'] .par__seam--3 {
+  height: 3px;
+  width: 50%;
+}
+
+.par[data-phase='fracture'] .par__fracture--1 {
+  animation: par-fx1 180ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.par[data-phase='fracture'] .par__fracture--2 {
+  animation: par-fx2 180ms cubic-bezier(0.2, 0.8, 0.3, 1) 25ms both;
+}
+
+.par[data-phase='fracture'] .par__fracture--3 {
+  animation: par-fx3 180ms cubic-bezier(0.2, 0.8, 0.3, 1) 45ms both;
+}
+
+.par[data-phase='fracture'] .par__fracture--4 {
+  animation: par-fx4 180ms cubic-bezier(0.2, 0.8, 0.3, 1) 65ms both;
+}
+
+.par[data-phase='breach'] .par__stage {
+  transform: scale(1.015);
+}
+
+.par[data-phase='breach'] .par__seam,
+.par[data-phase='breach'] .par__fracture {
+  opacity: 1;
+}
+
+.par[data-phase='breach'] .par__fracture--1 {
+  transform: rotate(-38deg) scaleX(1);
+}
+.par[data-phase='breach'] .par__fracture--2 {
+  transform: rotate(12deg) scaleX(1);
+}
+.par[data-phase='breach'] .par__fracture--3 {
+  transform: rotate(118deg) scaleX(1);
+}
+.par[data-phase='breach'] .par__fracture--4 {
+  transform: rotate(210deg) scaleX(1);
+}
+
+.par[data-phase='breach'] .par__breach {
+  animation: par-breach-expand var(--par-breach-ms) cubic-bezier(0.15, 0.85, 0.25, 1) both;
+}
+
+.par[data-phase='separate'] .par__breach {
+  opacity: 0.85;
+  transform: scale(1.1);
+}
+
+.par[data-phase='separate'] .par__panel--1 {
+  animation: par-fly-1 var(--par-separate-ms) cubic-bezier(0.35, 0.05, 0.7, 0.2) both;
+}
+
+.par[data-phase='separate'] .par__panel--2 {
+  animation: par-fly-2 var(--par-separate-ms) cubic-bezier(0.35, 0.05, 0.7, 0.2) both;
+}
+
+.par[data-phase='separate'] .par__panel--3 {
+  animation: par-fly-3 var(--par-separate-ms) cubic-bezier(0.35, 0.05, 0.7, 0.2) both;
+}
+
+.par[data-phase='separate'] .par__panel--4 {
+  animation: par-fly-4 var(--par-separate-ms) cubic-bezier(0.35, 0.05, 0.7, 0.2) both;
+}
+
+.par[data-phase='separate'] .par__panel--5 {
+  animation: par-fly-5 var(--par-separate-ms) cubic-bezier(0.35, 0.05, 0.7, 0.2) both;
+}
+
+.par[data-phase='separate'] .par__seam,
+.par[data-phase='separate'] .par__fracture {
+  opacity: 0;
+}
+
+.par[data-phase='separate'] .par__streak {
+  animation: par-streak 220ms ease-out both;
+}
+
+.par[data-phase='separate'] .par__streak--2 {
+  animation-delay: 20ms;
+}
+.par[data-phase='separate'] .par__streak--3 {
+  animation-delay: 35ms;
+}
+.par[data-phase='separate'] .par__streak--4 {
+  animation-delay: 50ms;
+}
+.par[data-phase='separate'] .par__streak--5 {
+  animation-delay: 65ms;
+}
+
+.par[data-phase='settled'] .par__shell {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.par[data-phase='settled'] .par__breach,
+.par[data-phase='settled'] .par__streak {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.par[data-phase='settled'] .par__frame {
+  opacity: 1;
+}
+
+.par[data-phase='settled'] .par__frame-seg {
+  opacity: 1;
+  transform: none;
+}
+
+.par[data-phase='separate'] .par__frame {
+  opacity: 1;
+}
+
+.par[data-phase='separate'] .par__frame-seg--t {
+  animation: par-frame-t var(--par-frame-ms) ease-out 180ms both;
+}
+
+.par[data-phase='separate'] .par__frame-seg--r {
+  animation: par-frame-r var(--par-frame-ms) ease-out 220ms both;
+}
+
+.par[data-phase='separate'] .par__frame-seg--b {
+  animation: par-frame-b var(--par-frame-ms) ease-out 260ms both;
+}
+
+.par[data-phase='separate'] .par__frame-seg--l {
+  animation: par-frame-l var(--par-frame-ms) ease-out 300ms both;
+}
+
+@keyframes par-pressure-scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.015);
+  }
+}
+
+@keyframes par-seam-leak {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes par-fx1 {
+  from {
+    opacity: 0;
+    transform: rotate(-38deg) scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-38deg) scaleX(1);
+  }
+}
+@keyframes par-fx2 {
+  from {
+    opacity: 0;
+    transform: rotate(12deg) scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(12deg) scaleX(1);
+  }
+}
+@keyframes par-fx3 {
+  from {
+    opacity: 0;
+    transform: rotate(118deg) scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(118deg) scaleX(1);
+  }
+}
+@keyframes par-fx4 {
+  from {
+    opacity: 0;
+    transform: rotate(210deg) scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(210deg) scaleX(1);
+  }
+}
+
+@keyframes par-breach-expand {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes par-fly-1 {
+  to {
+    transform: translate(-70px, -55px) rotate(-10deg);
+    opacity: 0;
+  }
+}
+@keyframes par-fly-2 {
+  to {
+    transform: translate(65px, -60px) rotate(9deg);
+    opacity: 0;
+  }
+}
+@keyframes par-fly-3 {
+  to {
+    transform: translate(-95px, 4px) rotate(-6deg);
+    opacity: 0;
+  }
+}
+@keyframes par-fly-4 {
+  to {
+    transform: translate(90px, 8px) rotate(8deg);
+    opacity: 0;
+  }
+}
+@keyframes par-fly-5 {
+  to {
+    transform: translate(5px, 85px) rotate(4deg);
+    opacity: 0;
+  }
+}
+
+@keyframes par-streak {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.par[data-phase='separate'] .par__streak--1 {
+  animation-name: par-streak-1;
+}
+.par[data-phase='separate'] .par__streak--2 {
+  animation-name: par-streak-2;
+}
+.par[data-phase='separate'] .par__streak--3 {
+  animation-name: par-streak-3;
+}
+.par[data-phase='separate'] .par__streak--4 {
+  animation-name: par-streak-4;
+}
+.par[data-phase='separate'] .par__streak--5 {
+  animation-name: par-streak-5;
+}
+
+@keyframes par-streak-1 {
+  0% {
+    opacity: 0;
+    transform: rotate(-52deg) scaleX(0);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(-52deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-52deg) scaleX(1.05);
+  }
+}
+@keyframes par-streak-2 {
+  0% {
+    opacity: 0;
+    transform: rotate(-8deg) scaleX(0);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(-8deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-8deg) scaleX(1.05);
+  }
+}
+@keyframes par-streak-3 {
+  0% {
+    opacity: 0;
+    transform: rotate(48deg) scaleX(0);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(48deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(48deg) scaleX(1.05);
+  }
+}
+@keyframes par-streak-4 {
+  0% {
+    opacity: 0;
+    transform: rotate(128deg) scaleX(0);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(128deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(128deg) scaleX(1.05);
+  }
+}
+@keyframes par-streak-5 {
+  0% {
+    opacity: 0;
+    transform: rotate(198deg) scaleX(0);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(198deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(198deg) scaleX(1.05);
+  }
+}
+
+@keyframes par-reveal {
+  0% {
+    transform: scale(0.96);
+    filter: brightness(0.9);
+  }
+  55% {
+    transform: scale(1.03);
+    filter: none;
+  }
+  100% {
+    transform: scale(1);
+    filter: none;
+  }
+}
+
+@keyframes par-frame-t {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes par-frame-r {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes par-frame-b {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes par-frame-l {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Controls */
+
+.par__controls {
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0.45rem;
+  z-index: 8;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.par__awaken,
+.par__reset {
+  margin: 0;
+  padding: 0.32rem 0.55rem;
+  border: 2px solid var(--par-bright);
+  border-radius: 0;
+  font: 800 0.58rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.par__awaken {
+  background: var(--par-energy);
+  color: var(--par-white);
+  border-color: var(--par-near-black);
+}
+
+.par__reset {
+  background: transparent;
+  color: #c5d4de;
+  border-color: #c5d4de;
+}
+
+.par__awaken:focus-visible,
+.par__reset:focus-visible {
+  outline: 2px solid var(--par-bright);
+  outline-offset: 2px;
+}
+
+.par__awaken:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.par__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion — immediate AWAKENED + static frame */
+
+@media (prefers-reduced-motion: reduce) {
+  .par[data-phase='pressure'] .par__stage,
+  .par[data-phase='pressure'] .par__seam,
+  .par[data-phase='fracture'] .par__fracture,
+  .par[data-phase='breach'] .par__breach,
+  .par[data-phase='separate'] .par__panel,
+  .par[data-phase='separate'] .par__streak,
+  .par[data-phase='separate'] .par__identity,
+  .par[data-phase='separate'] .par__frame-seg {
+    animation: none !important;
+  }
+
+  .par[data-phase='pressure'] .par__shell,
+  .par[data-phase='fracture'] .par__shell,
+  .par[data-phase='breach'] .par__shell,
+  .par[data-phase='separate'] .par__shell {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .par[data-phase='pressure'] .par__identity,
+  .par[data-phase='fracture'] .par__identity,
+  .par[data-phase='breach'] .par__identity,
+  .par[data-phase='separate'] .par__identity,
+  .par[data-phase='settled'] .par__identity {
+    filter: none;
+    transform: none;
+  }
+
+  .par[data-phase='pressure'] .par__frame,
+  .par[data-phase='fracture'] .par__frame,
+  .par[data-phase='breach'] .par__frame,
+  .par[data-phase='separate'] .par__frame,
+  .par[data-phase='settled'] .par__frame {
+    opacity: 1;
+  }
+
+  .par[data-phase='pressure'] .par__frame-seg,
+  .par[data-phase='fracture'] .par__frame-seg,
+  .par[data-phase='breach'] .par__frame-seg,
+  .par[data-phase='separate'] .par__frame-seg,
+  .par[data-phase='settled'] .par__frame-seg {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .par[data-phase='pressure'] .par__stage,
+[data-force-reduced-motion='true'] .par[data-phase='pressure'] .par__seam,
+[data-force-reduced-motion='true'] .par[data-phase='fracture'] .par__fracture,
+[data-force-reduced-motion='true'] .par[data-phase='breach'] .par__breach,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__panel,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__streak,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__identity,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__frame-seg {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .par[data-phase='pressure'] .par__shell,
+[data-force-reduced-motion='true'] .par[data-phase='fracture'] .par__shell,
+[data-force-reduced-motion='true'] .par[data-phase='breach'] .par__shell,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__shell {
+  visibility: hidden;
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .par[data-phase='pressure'] .par__identity,
+[data-force-reduced-motion='true'] .par[data-phase='fracture'] .par__identity,
+[data-force-reduced-motion='true'] .par[data-phase='breach'] .par__identity,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__identity,
+[data-force-reduced-motion='true'] .par[data-phase='settled'] .par__identity {
+  filter: none;
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .par[data-phase='pressure'] .par__frame,
+[data-force-reduced-motion='true'] .par[data-phase='fracture'] .par__frame,
+[data-force-reduced-motion='true'] .par[data-phase='breach'] .par__frame,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__frame,
+[data-force-reduced-motion='true'] .par[data-phase='settled'] .par__frame {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .par[data-phase='pressure'] .par__frame-seg,
+[data-force-reduced-motion='true'] .par[data-phase='fracture'] .par__frame-seg,
+[data-force-reduced-motion='true'] .par[data-phase='breach'] .par__frame-seg,
+[data-force-reduced-motion='true'] .par[data-phase='separate'] .par__frame-seg,
+[data-force-reduced-motion='true'] .par[data-phase='settled'] .par__frame-seg {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 360px) {
+  .par__identity {
+    padding: 1rem 0.9rem;
+  }
+
+  .par__frame {
+    inset: 0.5rem;
+  }
+}

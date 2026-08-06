@@ -1,0 +1,103 @@
+{
+  "name": "persona-awakening-reveal",
+  "intent": "Dark-blue glass shell traps UNKNOWN until pressure, fracture, and energy breach separate five panels to reveal a still AWAKENED identity with an angular blue frame.",
+  "colours": {
+    "nearBlack": "#020a14",
+    "deepBlue": "#08213a",
+    "energy": "#168ac2",
+    "bright": "#59c8f2",
+    "pale": "#d9f7ff",
+    "white": "#f6fcff"
+  },
+  "copy": {
+    "eyebrow": "IDENTITY",
+    "initialTitle": "UNKNOWN",
+    "finalTitle": "AWAKENED",
+    "initialSig": "SIGNATURE // ???",
+    "finalSig": "SIGNATURE // BLUE",
+    "trigger": "AWAKEN",
+    "srInitial": "Identity unknown.",
+    "srFinal": "Identity awakened. Signature Blue."
+  },
+  "shell": {
+    "panelCount": 5,
+    "polygons": {
+      "1": "polygon(0% 0%, 52% 0%, 48% 38%, 0% 46%)",
+      "2": "polygon(52% 0%, 100% 0%, 100% 42%, 58% 36%, 48% 38%)",
+      "3": "polygon(0% 46%, 48% 38%, 44% 68%, 0% 78%)",
+      "4": "polygon(48% 38%, 58% 36%, 100% 42%, 100% 76%, 54% 70%, 44% 68%)",
+      "5": "polygon(0% 78%, 44% 68%, 54% 70%, 100% 76%, 100% 100%, 0% 100%)"
+    },
+    "separation": {
+      "1": { "xPx": -70, "yPx": -55, "rotateDeg": -10 },
+      "2": { "xPx": 65, "yPx": -60, "rotateDeg": 9 },
+      "3": { "xPx": -95, "yPx": 4, "rotateDeg": -6 },
+      "4": { "xPx": 90, "yPx": 8, "rotateDeg": 8 },
+      "5": { "xPx": 5, "yPx": 85, "rotateDeg": 4 }
+    }
+  },
+  "fracture": {
+    "origin": { "xPercent": 47, "yPercent": 54 },
+    "newLineCount": 4,
+    "seamCount": 3
+  },
+  "breach": {
+    "scaleFrom": 0.2,
+    "scaleTo": 1.1,
+    "durationMs": 180,
+    "startsApproxMs": 360
+  },
+  "energyStreaks": {
+    "count": 5,
+    "clearWhenSettled": true
+  },
+  "reveal": {
+    "scaleKeyframes": [0.96, 1.03, 1],
+    "durationMs": 260
+  },
+  "frame": {
+    "segmentCount": 4,
+    "segmentMs": [60, 90]
+  },
+  "timing": {
+    "pressureMs": 220,
+    "fractureAtMs": 180,
+    "breachAtMs": 360,
+    "separateAtMs": 420,
+    "settleAtMs": 720,
+    "totalMs": 1000,
+    "hostScaleMax": 1.015,
+    "loops": false,
+    "stillWhenSettled": true
+  },
+  "a11y": {
+    "shellDecorative": true,
+    "srInitial": "Identity unknown.",
+    "srFinal": "Identity awakened. Signature Blue."
+  },
+  "reducedMotion": {
+    "immediateAwakenedWithStaticFrame": true,
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ]
+  },
+  "constraints": {
+    "noCharacterImagery": true,
+    "noPersonaCards": true,
+    "noMasks": true,
+    "noGameLogos": true,
+    "noCopiedSummonImagery": true,
+    "noPerpetualAura": true,
+    "noParticlesAsPrimaryReveal": true,
+    "noExternalAssets": true,
+    "noNetwork": true
+  },
+  "classNames": {
+    "root": "par",
+    "shell": "par__shell",
+    "panel": "par__panel",
+    "frame": "par__frame",
+    "identity": "par__identity"
+  }
+}

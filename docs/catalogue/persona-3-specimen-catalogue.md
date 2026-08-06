@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **3 / 238** complete.
+- Progress: **5 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 235 |
+| Done | 5 |
+| Open | 233 |
 
 ## Visual grammar
 
@@ -32,9 +32,11 @@
 
 | P3 | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
-| P3-019 | `SPX-005` | `azure-shard-transition` | Azure Shard Transition |
+| P3-019 | `SPX-005` | `azure-shard-transition` | Blue Glass Shard Transition |
 | P3-037 | `SPX-006` | `precision-menu-snap` | Precision Menu Snap |
+| P3-112 | `SPX-509` | `fusion-selection-merge` | Fusion Selection Merge |
 | P3-105 | `SPX-502` | `velvet-door-transition` | Velvet Door Transition |
+| P3-096 | `SPX-493` | `persona-awakening-reveal` | Persona Awakening Reveal |
 
 ## Core first-wave
 
@@ -45,9 +47,9 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-047** · `SPX-444` · **Dark Hour Conversion** — transformation
 - [ ] **P3-062** · `SPX-459` · **Eclipse Transition** — transition
 - [ ] **P3-071** · `SPX-468` · **Tartarus Floor Ascension** — progress
-- [ ] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — reveal
+- [x] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — reveal
 - [x] **P3-105** · `SPX-502` · **Velvet Door Transition** — transition
-- [ ] **P3-112** · `SPX-509` · **Fusion Selection Merge** — fusion
+- [x] **P3-112** · `SPX-509` · **Fusion Selection Merge** — fusion
 - [ ] **P3-083** · `SPX-480` · **Tactical Target Lock** — selection
 - [ ] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
 - [ ] **P3-145** · `SPX-542` · **Social Link Rank Up** — progression
@@ -189,7 +191,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Persona summoning / awakening
 
-- [ ] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — summon.
+- [x] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — summon.
 - [ ] **P3-097** · `SPX-494` · **Summoning Burst** — summon.
 - [ ] **P3-098** · `SPX-495` · **Card Break Summon** — summon.
 - [ ] **P3-099** · `SPX-496` · **Identity Breakthrough** — summon.
@@ -208,7 +210,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-109** · `SPX-506` · **Velvet Selection Glow** — velvet.
 - [ ] **P3-110** · `SPX-507` · **Contract Signature Reveal** — velvet.
 - [ ] **P3-111** · `SPX-508` · **Compendium Entry Acquired** — velvet.
-- [ ] **P3-112** · `SPX-509` · **Fusion Selection Merge** — velvet.
+- [x] **P3-112** · `SPX-509` · **Fusion Selection Merge** — velvet.
 - [ ] **P3-113** · `SPX-510` · **Fusion Result Reveal** — velvet.
 - [ ] **P3-114** · `SPX-511` · **Velvet Loading Curtain** — velvet.
 - [ ] **P3-115** · `SPX-512` · **Compendium Search Reveal** — velvet.
