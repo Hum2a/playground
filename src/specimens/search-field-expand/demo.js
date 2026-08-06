@@ -1,0 +1,1 @@
+const s=document.querySelector('[data-search]');export function runSearchExpand(){s.classList.add('is-open');document.querySelector('[data-input]')?.focus()};export function runSearchCollapse(){s.classList.remove('is-open')};document.querySelector('[data-toggle]')?.addEventListener('click',()=>s.classList.toggle('is-open'))

@@ -330,6 +330,7 @@ import { sealReleaseSequence } from './seal-release-sequence/entry'
 import { sealStampConfirmation } from './seal-stamp-confirmation/entry'
 import { searchBarToViewTransform } from './search-bar-to-view-transform/entry'
 import { searchFieldActivation } from './search-field-activation/entry'
+import { searchFieldExpand } from './search-field-expand/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { shadowBindSelection } from './shadow-bind-selection/entry'
@@ -785,6 +786,7 @@ export const specimens: Specimen[] = [
   sealStampConfirmation,
   searchBarToViewTransform,
   searchFieldActivation,
+  searchFieldExpand,
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,
   shadowBindSelection,
