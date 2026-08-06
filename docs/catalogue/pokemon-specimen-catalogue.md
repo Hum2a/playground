@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 266** complete.
+- Progress: **7 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 260 |
+| Done | 7 |
+| Open | 259 |
 
 ## Visual grammar
 
@@ -36,6 +36,7 @@
 | PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
 | PK-032 | `SPX-731` | `branch-evolution-choice` | Branch Evolution Choice |
 | PK-025 | `SPX-724` | `evolution-silhouette-transformation` | Evolution Silhouette Transformation |
+| PK-087 | `SPX-786` | `entry-registration` | Entry Registration |
 | PK-061 | `SPX-760` | `delayed-damage-bar` | Delayed Damage Bar |
 | PK-027 | `SPX-726` | `evolution-complete` | Evolution Complete |
 
@@ -46,7 +47,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — capture-uncertainty
 - [x] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — evolution-transformation
 - [x] **PK-032** · `SPX-731` · **Branch Evolution Choice** — evolution-transformation
-- [ ] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — pok-dex
+- [x] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — pok-dex
 - [ ] **PK-237** · `SPX-936` · **Raid Ready Check** — multiplayer-collective
 - [ ] **PK-063** · `SPX-762` · **Level Up Overflow** — hp-xp
 - [ ] **PK-225** · `SPX-924` · **Terastallization Crystallise** — scarlet-violet
@@ -170,7 +171,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 7. Pokédex & data interfaces
 
-- [ ] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — An unknown silhouette becomes identified, numbered and permanently indexed.
+- [x] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — An unknown silhouette becomes identified, numbered and permanently indexed.
 - [ ] **PK-088** · `SPX-787` · **Pokédex Scan** — A scanner traverses an entity and progressively reveals structured metadata.
 - [ ] **PK-089** · `SPX-788` · **New Species Discovered** — An empty catalogue slot transforms into a populated permanent record.
 - [ ] **PK-090** · `SPX-789` · **Pokédex Number Roll** — An index rapidly advances before locking onto the newly discovered entry.

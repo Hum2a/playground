@@ -42,6 +42,7 @@ import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
+import { entryRegistration } from './entry-registration/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
@@ -183,6 +184,7 @@ export const specimens: Specimen[] = [
   enemyScanReveal,
   energyChargeConfirmation,
   energyTransferSync,
+  entryRegistration,
   errorCorrectionRewrite,
   evolutionComplete,
   evolutionSilhouetteTransformation,

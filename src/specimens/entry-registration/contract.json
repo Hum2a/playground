@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/entry-registration.schema.json",
+  "title": "EntryRegistration",
+  "description": "Portable contract for scan→index→register catalogue entry. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "scan",
+    "thresholds",
+    "indexCycle",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "entry-registration" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Scan resolves unknown entry; metadata swaps at thresholds; seven indices cycle; lock ENTRY // 086."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entryUnknown",
+        "entryFinal",
+        "nameUnknown",
+        "nameFinal",
+        "classUnknown",
+        "classFinal",
+        "statusUnknown",
+        "statusFinal",
+        "register",
+        "reset"
+      ],
+      "properties": {
+        "entryUnknown": { "type": "string", "const": "ENTRY // ???" },
+        "entryFinal": { "type": "string", "const": "ENTRY // 086" },
+        "nameUnknown": { "type": "string", "const": "UNKNOWN" },
+        "nameFinal": { "type": "string", "const": "VECTOR BLOOM" },
+        "classUnknown": { "type": "string", "const": "UNKNOWN" },
+        "classFinal": { "type": "string", "const": "TRANSITION" },
+        "statusUnknown": { "type": "string", "const": "UNREGISTERED" },
+        "statusFinal": { "type": "string", "const": "REGISTERED" },
+        "register": { "type": "string", "const": "REGISTER" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["panel", "paper", "coral", "gold", "sage"],
+      "properties": {
+        "panel": { "type": "string", "const": "#19252a" },
+        "paper": { "type": "string", "const": "#e8eadf" },
+        "coral": { "type": "string", "const": "#cf5a47" },
+        "gold": { "type": "string", "const": "#e5b24b" },
+        "sage": { "type": "string", "const": "#78a88c" }
+      }
+    },
+    "scan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "widthPx", "direction"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 620 },
+        "widthPx": { "type": "number", "const": 2 },
+        "direction": { "type": "string", "const": "left-to-right" }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "class"],
+      "properties": {
+        "name": { "type": "number", "const": 0.3 },
+        "class": { "type": "number", "const": 0.55 }
+      }
+    },
+    "indexCycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values", "stepMs", "final"],
+      "properties": {
+        "values": {
+          "type": "array",
+          "const": ["014", "038", "051", "072", "083", "085", "086"]
+        },
+        "stepMs": { "type": "number", "const": 45 },
+        "final": { "type": "string", "const": "086" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceFinalOnly", "semanticRecord"],
+      "properties": {
+        "announceFinalOnly": { "type": "boolean", "const": true },
+        "semanticRecord": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantRegistered", "triggers"],
+      "properties": {
+        "instantRegistered": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "scan", "entry", "field"],
+      "properties": {
+        "root": { "type": "string", "const": "er" },
+        "scan": { "type": "string", "const": "er__scan" },
+        "entry": { "type": "string", "const": "er__entry" },
+        "field": { "type": "string", "const": "er__val" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "entryRegistration" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "entry-registration",
+      "intent": "Scan resolves unknown entry; metadata swaps at thresholds; seven indices cycle; lock ENTRY // 086.",
+      "copy": {
+        "entryUnknown": "ENTRY // ???",
+        "entryFinal": "ENTRY // 086",
+        "nameUnknown": "UNKNOWN",
+        "nameFinal": "VECTOR BLOOM",
+        "classUnknown": "UNKNOWN",
+        "classFinal": "TRANSITION",
+        "statusUnknown": "UNREGISTERED",
+        "statusFinal": "REGISTERED",
+        "register": "REGISTER",
+        "reset": "RESET"
+      },
+      "colours": {
+        "panel": "#19252a",
+        "paper": "#e8eadf",
+        "coral": "#cf5a47",
+        "gold": "#e5b24b",
+        "sage": "#78a88c"
+      },
+      "scan": {
+        "durationMs": 620,
+        "widthPx": 2,
+        "direction": "left-to-right"
+      },
+      "thresholds": {
+        "name": 0.3,
+        "class": 0.55
+      },
+      "indexCycle": {
+        "values": ["014", "038", "051", "072", "083", "085", "086"],
+        "stepMs": 45,
+        "final": "086"
+      },
+      "a11y": {
+        "announceFinalOnly": true,
+        "semanticRecord": true
+      },
+      "reducedMotion": {
+        "instantRegistered": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "er",
+        "scan": "er__scan",
+        "entry": "er__entry",
+        "field": "er__val"
+      },
+      "behaviour": {
+        "api": "entryRegistration"
+      }
+    }
+  ]
+}

@@ -1,0 +1,451 @@
+/* SPX-786 Entry Registration — portable contract. Do not restyle to host tokens. */
+
+.er {
+  --er-panel: #19252a;
+  --er-paper: #e8eadf;
+  --er-coral: #cf5a47;
+  --er-gold: #e5b24b;
+  --er-sage: #78a88c;
+  --er-ease: cubic-bezier(0.33, 0.9, 0.35, 1);
+  --er-scan: 0%;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 360px;
+  height: 100%;
+  padding: 1.1rem 1rem 1rem;
+  overflow: hidden;
+  background: var(--er-panel);
+  color: var(--er-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.er *,
+.er *::before,
+.er *::after {
+  box-sizing: border-box;
+}
+
+.er__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.er__entry {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  color: var(--er-gold);
+}
+
+.er__body {
+  display: grid;
+  grid-template-columns: minmax(110px, 140px) 1fr;
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+}
+
+.er__viz {
+  position: relative;
+  width: 120px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.er__entity {
+  position: absolute;
+  inset: 12px 10px;
+  overflow: hidden;
+}
+
+.er__unknown,
+.er__known {
+  position: absolute;
+  inset: 0;
+}
+
+/* Soft unknown silhouette */
+.er__unknown {
+  background: rgb(232 234 223 / 0.18);
+  clip-path: polygon(
+    42% 8%,
+    62% 14%,
+    78% 36%,
+    74% 62%,
+    58% 88%,
+    36% 92%,
+    18% 70%,
+    16% 40%,
+    28% 18%
+  );
+  filter: blur(0.4px);
+}
+
+/* Structured “vector bloom” geometry revealed behind scanner */
+.er__known {
+  clip-path: inset(0 calc(100% - var(--er-scan)) 0 0);
+}
+
+.er__petal {
+  position: absolute;
+  background: var(--er-sage);
+}
+
+.er__petal--1 {
+  inset: 18% 28% 42% 28%;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transform: translateY(-6px);
+}
+
+.er__petal--2 {
+  inset: 36% 12% 22% 48%;
+  clip-path: polygon(0% 20%, 100% 0%, 70% 100%, 0% 80%);
+  background: var(--er-gold);
+}
+
+.er__petal--3 {
+  inset: 36% 48% 22% 12%;
+  clip-path: polygon(0% 0%, 100% 20%, 100% 80%, 30% 100%);
+  background: var(--er-coral);
+}
+
+.er__core {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  background: var(--er-paper);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.er__scan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--er-scan);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--er-coral);
+  opacity: 0;
+  box-shadow: 0 0 8px rgb(207 90 71 / 0.65);
+  pointer-events: none;
+}
+
+.er[data-state='scan'] .er__scan {
+  opacity: 1;
+}
+
+.er__brackets {
+  position: absolute;
+  inset: 4px 2px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.er__bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--er-gold);
+  transform: translate(12px, 12px);
+  opacity: 0;
+}
+
+.er__bracket--tl {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  transform: translate(-10px, -10px);
+}
+
+.er__bracket--tr {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+  transform: translate(10px, -10px);
+}
+
+.er__bracket--bl {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+  transform: translate(-10px, 10px);
+}
+
+.er__bracket--br {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+  transform: translate(10px, 10px);
+}
+
+.er[data-state='lock'] .er__brackets,
+.er[data-state='done'] .er__brackets {
+  opacity: 1;
+}
+
+.er[data-state='lock'] .er__bracket,
+.er[data-state='done'] .er__bracket {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: transform 180ms var(--er-ease);
+}
+
+.er[data-state='done'] .er__bracket {
+  transition: none;
+}
+
+.er__meta {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.er__row {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.er__key {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: rgb(232 234 223 / 0.55);
+}
+
+.er__val {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  overflow: hidden;
+  height: 1.15rem;
+}
+
+.er__slot {
+  display: block;
+  position: relative;
+  height: 1.15rem;
+}
+
+.er__from,
+.er__to {
+  display: block;
+  line-height: 1.15rem;
+  white-space: nowrap;
+}
+
+.er__from {
+  color: rgb(232 234 223 / 0.45);
+}
+
+.er__to {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--er-paper);
+  transform: translateY(100%);
+}
+
+.er__val.is-revealed .er__from {
+  transform: translateY(-100%);
+  transition: transform 140ms steps(1, end);
+}
+
+.er__val.is-revealed .er__to {
+  transform: translateY(0);
+  transition: transform 140ms steps(1, end);
+}
+
+.er[data-state='done'] .er__val.is-revealed .er__from,
+.er[data-state='done'] .er__val.is-revealed .er__to {
+  transition: none;
+}
+
+.er__rule {
+  height: 1.5px;
+  width: 0;
+  background: var(--er-sage);
+  align-self: stretch;
+  opacity: 0;
+}
+
+.er[data-state='lock'] .er__rule,
+.er[data-state='done'] .er__rule {
+  opacity: 1;
+  width: 100%;
+  transition: width 220ms var(--er-ease);
+}
+
+.er[data-state='done'] .er__rule {
+  transition: none;
+  width: 100%;
+}
+
+.er__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.er__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgb(232 234 223 / 0.5);
+  border-radius: 0;
+  background: transparent;
+  color: var(--er-paper);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.er__btn:hover:not(:disabled) {
+  background: rgb(120 168 140 / 0.14);
+}
+
+.er__btn:focus-visible {
+  outline: 2px solid var(--er-gold);
+  outline-offset: 3px;
+}
+
+.er__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.er__btn--ghost {
+  border-color: rgb(232 234 223 / 0.28);
+}
+
+.er__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.er__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 380px) {
+  .er__body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .er__meta {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .er__scan,
+  .er__bracket,
+  .er__rule,
+  .er__from,
+  .er__to,
+  .er__known {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .er[data-state='done'] {
+    --er-scan: 100%;
+  }
+
+  .er[data-state='done'] .er__scan {
+    opacity: 0;
+  }
+
+  .er[data-state='done'] .er__val .er__from {
+    transform: translateY(-100%);
+  }
+
+  .er[data-state='done'] .er__val .er__to {
+    transform: translateY(0);
+  }
+
+  .er[data-state='done'] .er__brackets,
+  .er[data-state='done'] .er__bracket {
+    opacity: 1;
+    transform: none;
+  }
+
+  .er[data-state='done'] .er__rule {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .er__scan,
+[data-force-reduced-motion='true'] .er__bracket,
+[data-force-reduced-motion='true'] .er__rule,
+[data-force-reduced-motion='true'] .er__from,
+[data-force-reduced-motion='true'] .er__to,
+[data-force-reduced-motion='true'] .er__known {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .er[data-state='done'] {
+  --er-scan: 100%;
+}
+
+[data-force-reduced-motion='true'] .er[data-state='done'] .er__scan {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .er[data-state='done'] .er__val .er__from {
+  transform: translateY(-100%);
+}
+
+[data-force-reduced-motion='true'] .er[data-state='done'] .er__val .er__to {
+  transform: translateY(0);
+}
+
+[data-force-reduced-motion='true'] .er[data-state='done'] .er__brackets,
+[data-force-reduced-motion='true'] .er[data-state='done'] .er__bracket {
+  opacity: 1;
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .er[data-state='done'] .er__rule {
+  width: 100%;
+  opacity: 1;
+}

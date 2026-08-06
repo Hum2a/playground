@@ -1,0 +1,77 @@
+<div class="er" data-entry-registration data-state="idle">
+  <header class="er__head">
+    <p class="er__entry" data-er-entry aria-hidden="true">ENTRY // ???</p>
+  </header>
+
+  <div class="er__body">
+    <div class="er__viz" aria-hidden="true" data-er-viz>
+      <div class="er__entity" data-er-entity>
+        <span class="er__unknown" data-er-unknown></span>
+        <span class="er__known" data-er-known>
+          <span class="er__petal er__petal--1"></span>
+          <span class="er__petal er__petal--2"></span>
+          <span class="er__petal er__petal--3"></span>
+          <span class="er__core"></span>
+        </span>
+        <span class="er__scan" data-er-scan></span>
+      </div>
+      <span class="er__brackets" data-er-brackets>
+        <span class="er__bracket er__bracket--tl"></span>
+        <span class="er__bracket er__bracket--tr"></span>
+        <span class="er__bracket er__bracket--bl"></span>
+        <span class="er__bracket er__bracket--br"></span>
+      </span>
+    </div>
+
+    <dl class="er__meta" data-er-meta>
+      <div class="er__row">
+        <dt class="er__key">NAME</dt>
+        <dd class="er__val" data-er-field="name">
+          <span class="er__slot">
+            <span class="er__from">UNKNOWN</span>
+            <span class="er__to">VECTOR BLOOM</span>
+          </span>
+        </dd>
+      </div>
+      <div class="er__row">
+        <dt class="er__key">CLASS</dt>
+        <dd class="er__val" data-er-field="class">
+          <span class="er__slot">
+            <span class="er__from">UNKNOWN</span>
+            <span class="er__to">TRANSITION</span>
+          </span>
+        </dd>
+      </div>
+      <div class="er__row">
+        <dt class="er__key">STATUS</dt>
+        <dd class="er__val" data-er-field="status">
+          <span class="er__slot">
+            <span class="er__from">UNREGISTERED</span>
+            <span class="er__to">REGISTERED</span>
+          </span>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="er__rule" data-er-rule aria-hidden="true"></div>
+
+  <div class="er__controls">
+    <button type="button" class="er__btn" data-er-register>REGISTER</button>
+    <button type="button" class="er__btn er__btn--ghost" data-er-reset>
+      RESET
+    </button>
+  </div>
+
+  <!-- Semantic final/live copy: only announce idle + final, never index flicker -->
+  <div class="er__live" data-er-live>
+    <p class="er__title" data-er-title>ENTRY // ???</p>
+    <p class="er__summary" data-er-summary>
+      Unregistered entry. Name unknown. Class unknown.
+    </p>
+  </div>
+
+  <p class="er__status" role="status" aria-live="polite" data-er-status>
+    Unregistered entry. Name unknown. Class unknown.
+  </p>
+</div>
