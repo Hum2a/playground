@@ -180,6 +180,7 @@ import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
+import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { windowMinimiseFunnel } from './window-minimise-funnel/entry'
 import { windowSnapPreview } from './window-snap-preview/entry'
@@ -408,6 +409,7 @@ export const specimens: Specimen[] = [
   ultraStateOptimisation,
   velvetDoorTransition,
   victoryResultsTally,
+  volumeBrightnessHud,
   waterlinePageWipe,
   wildEncounterTransition,
   windowMinimiseFunnel,

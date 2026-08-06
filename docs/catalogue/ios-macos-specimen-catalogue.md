@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **42 / 258** complete.
+- Progress: **43 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 216 |
+| Done | 43 |
+| Open | 215 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-175 | `SPX-1474` | `volume-brightness-hud` | Volume/Brightness HUD |
 | IOS-179 | `SPX-1478` | `now-playing-expansion` | Now Playing Expansion |
 | IOS-178 | `SPX-1477` | `play-pause-glyph-morph` | Play/Pause Glyph Morph |
 | IOS-053 | `SPX-1352` | `desktop-space-swipe` | Desktop Space Swipe |
@@ -337,7 +338,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — compact system-control module expands into detailed controls.
 - [ ] **IOS-173** · `SPX-1472` · **Control Centre Module Collapse** — detailed control contracts back into its compact summary.
 - [ ] **IOS-174** · `SPX-1473` · **Menu Check State** — selecting an option transfers a persistent check marker between mutually exclusive items.
-- [ ] **IOS-175** · `SPX-1474` · **Volume/Brightness HUD** — temporary system-value overlay appears, updates magnitude and retreats.
+- [x] **IOS-175** · `SPX-1474` · **Volume/Brightness HUD** — temporary system-value overlay appears, updates magnitude and retreats.
 - [ ] **IOS-176** · `SPX-1475` · **Status Item Activity** — menu-bar item gains a compact finite activity state while background work runs.
 - [ ] **IOS-177** · `SPX-1476` · **Submenu Aim Corridor** — nested menu remains open while pointer travels through the geometric corridor toward its submenu.
 

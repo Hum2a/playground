@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/volume-brightness-hud.schema.json",
+  "title": "VolumeBrightnessHud",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "hud", "segments", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "volume-brightness-hud" },
+    "intent": {
+      "type": "string",
+      "const": "A temporary system-value overlay for a changing scalar such as volume or brightness."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric", "initial", "target"],
+      "properties": {
+        "metric": { "type": "string", "const": "OUTPUT LEVEL" },
+        "initial": { "type": "number", "const": 42 },
+        "target": { "type": "number", "const": 68 }
+      }
+    },
+    "hud": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 220 },
+        "heightPx": { "type": "number", "const": 86 }
+      }
+    },
+    "segments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count"],
+      "properties": {
+        "count": { "type": "number", "const": 10 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entranceMs", "segmentMs", "dwellMs", "exitMs"],
+      "properties": {
+        "entranceMs": { "type": "number", "const": 140 },
+        "segmentMs": { "type": "number", "const": 180 },
+        "dwellMs": { "type": "number", "const": 900 },
+        "exitMs": { "type": "number", "const": 120 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noScaleMovement", "triggers"],
+      "properties": {
+        "noScaleMovement": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "hud"],
+      "properties": {
+        "root": { "type": "string", "const": "vbh" },
+        "hud": { "type": "string", "const": "vbh__hud" }
+      }
+    }
+  }
+}
