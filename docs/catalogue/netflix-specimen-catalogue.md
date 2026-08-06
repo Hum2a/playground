@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 197** complete.
+- Progress: **11 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 187 |
+| Done | 11 |
+| Open | 186 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-036 | `SPX-3145` | `delayed-preview-expansion` | Delayed Preview Expansion |
 | NF-075 | `SPX-3184` | `next-episode-countdown` | Next Episode Countdown |
 | NF-069 | `SPX-3178` | `skip-intro-appear` | Skip Intro Appear |
 | NF-061 | `SPX-3170` | `scrub-preview-thumbnail` | Scrub Preview Thumbnail |
@@ -64,7 +65,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 
 ### Wave B — Browse / discovery
 
-- [ ] **NF-036** · `SPX-3145` · **Delayed Preview Expansion** — `delayed-preview-expansion`
+- [x] **NF-036** · `SPX-3145` · **Delayed Preview Expansion** — `delayed-preview-expansion`
 - [ ] **NF-037** · `SPX-3146` · **Expanded Card Metadata Reveal** — `expanded-card-metadata-reveal`
 - [ ] **NF-041** · `SPX-3150` · **Keyboard Focus Expansion** — `keyboard-focus-expansion`
 - [ ] **NF-017** · `SPX-3126` · **Featured Hero Crossfade** — `featured-hero-crossfade`
@@ -159,7 +160,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 5. Hover / Focus Expansion
 
 - [x] **NF-035** · `SPX-3144` · **Preview Card Hover Expand** — Focused content expands while adjacent cards move outward rather than overlap
-- [ ] **NF-036** · `SPX-3145` · **Delayed Preview Expansion** — A short focus dwell triggers a larger information card only after intent is clear
+- [x] **NF-036** · `SPX-3145` · **Delayed Preview Expansion** — A short focus dwell triggers a larger information card only after intent is clear
 - [ ] **NF-037** · `SPX-3146` · **Expanded Card Metadata Reveal** — An enlarged card exposes actions, match-like metadata and tags beneath the visual
 - [x] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — Adjacent cards translate away from an expanding selection while keeping their size
 - [ ] **NF-039** · `SPX-3148` · **Card Focus Lift** — A selected card gains scale and depth without starting a full preview

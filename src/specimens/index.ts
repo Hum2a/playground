@@ -109,6 +109,7 @@ import { decayDelete } from './decay-delete/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { deductionLockIn } from './deduction-lock-in/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
+import { delayedPreviewExpansion } from './delayed-preview-expansion/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
 import { detailsPanelExpand } from './details-panel-expand/entry'
@@ -559,6 +560,7 @@ export const specimens: Specimen[] = [
   decisionShowdown,
   deductionLockIn,
   delayedDamageBar,
+  delayedPreviewExpansion,
   deletionGuillotine,
   desktopSpaceSwipe,
   detailsPanelExpand,
