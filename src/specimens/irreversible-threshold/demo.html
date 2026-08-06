@@ -1,0 +1,50 @@
+<div class="irt" data-irreversible-threshold data-phase="idle" data-region="reversible" data-progress="0">
+  <p class="irt__op">PURGE // CACHE-04</p>
+
+  <div class="irt__readout">
+    <p class="irt__pct" data-irt-pct aria-live="off">0%</p>
+    <p class="irt__region" data-irt-region>REVERSIBLE</p>
+  </div>
+
+  <div
+    class="irt__rail"
+    data-irt-rail
+    role="progressbar"
+    aria-label="Purge progress"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+    aria-valuetext="0 percent, reversible"
+  >
+    <div class="irt__track">
+      <div class="irt__fill" data-irt-fill></div>
+      <div class="irt__hatch" aria-hidden="true"></div>
+    </div>
+
+    <div class="irt__threshold" data-irt-threshold aria-hidden="true">
+      <span class="irt__threshold-mark"></span>
+      <span class="irt__threshold-label">COMMIT</span>
+      <span class="irt__approach" data-irt-approach></span>
+    </div>
+  </div>
+
+  <div class="irt__controls">
+    <button type="button" class="irt__btn" data-irt-begin>BEGIN PURGE</button>
+
+    <div class="irt__cancel-wrap" data-irt-cancel-wrap>
+      <span class="irt__bracket irt__bracket--tl" aria-hidden="true"></span>
+      <span class="irt__bracket irt__bracket--tr" aria-hidden="true"></span>
+      <span class="irt__bracket irt__bracket--bl" aria-hidden="true"></span>
+      <span class="irt__bracket irt__bracket--br" aria-hidden="true"></span>
+      <button type="button" class="irt__btn irt__btn--cancel" data-irt-cancel>
+        CANCEL
+      </button>
+    </div>
+
+    <button type="button" class="irt__btn irt__btn--ghost" data-irt-replay>REPLAY</button>
+  </div>
+
+  <p class="irt__status" role="status" aria-live="polite" data-irt-status>
+    Purge idle. Operation reversible. Cancel available.
+  </p>
+</div>

@@ -1,0 +1,356 @@
+/* irreversible-threshold — portable specimen styles. Do not restyle to host tokens. */
+
+.irt {
+  --irt-ink: #12151a;
+  --irt-cream: #e6e8ec;
+  --irt-muted: #8b919a;
+  --irt-line: #2a3038;
+  --irt-fill: #c8ccd2;
+  --irt-commit: #d8dde4;
+  --irt-warn: #c45c48;
+  --irt-progress: 0%;
+  --irt-fill-ms: 180ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 300px;
+  padding: 0.85rem 0.85rem 2.4rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  color: var(--irt-cream);
+  background: var(--irt-ink);
+}
+
+.irt *,
+.irt *::before,
+.irt *::after {
+  box-sizing: border-box;
+}
+
+.irt__op {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--irt-cream);
+}
+
+.irt__readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.irt__pct {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.irt__region {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--irt-muted);
+}
+
+.irt[data-region='committed'] .irt__region,
+.irt[data-region='purged'] .irt__region {
+  color: var(--irt-cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.irt[data-region='cancelled'] .irt__region {
+  color: var(--irt-muted);
+  font-style: italic;
+}
+
+/* Rail */
+
+.irt__rail {
+  position: relative;
+  width: 100%;
+  padding: 1.1rem 0 1.35rem;
+}
+
+.irt__track {
+  position: relative;
+  height: 14px;
+  border: 2px solid var(--irt-line);
+  background: #0a0c10;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+.irt__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--irt-progress);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--irt-fill),
+    var(--irt-fill) 4px,
+    color-mix(in srgb, var(--irt-fill) 70%, #9aa0a8) 4px,
+    color-mix(in srgb, var(--irt-fill) 70%, #9aa0a8) 8px
+  );
+  transition: width var(--irt-fill-ms) linear;
+}
+
+.irt.irt--snap .irt__fill {
+  transition: none;
+}
+
+.irt.irt--committed .irt__fill {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--irt-commit) 0 3px,
+    #9aa3ae 3px 6px
+  );
+}
+
+.irt__hatch {
+  display: none;
+}
+
+.irt.irt--committed .irt__hatch {
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    -55deg,
+    transparent 0 5px,
+    rgb(18 21 26 / 0.35) 5px 6px
+  );
+  clip-path: inset(0 calc(100% - var(--irt-progress)) 0 0);
+}
+
+.irt.irt--compress .irt__track {
+  animation: irt-compress 100ms ease-in-out both;
+}
+
+@keyframes irt-compress {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.7);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Threshold marker — always present */
+
+.irt__threshold {
+  position: absolute;
+  left: 65%;
+  top: 0.35rem;
+  bottom: 0.2rem;
+  width: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.irt__threshold-mark {
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 2px;
+  height: 22px;
+  background: var(--irt-cream);
+  transform: translateX(-50%);
+}
+
+.irt__threshold-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--irt-cream);
+  white-space: nowrap;
+}
+
+.irt.irt--committed .irt__threshold-mark {
+  background: color-mix(in srgb, var(--irt-cream) 45%, var(--irt-line));
+  height: 14px;
+  top: 1.1rem;
+}
+
+.irt.irt--committed .irt__threshold-label {
+  color: var(--irt-muted);
+}
+
+/* Approach indicator just before COMMIT */
+
+.irt__approach {
+  position: absolute;
+  left: -10px;
+  top: 1.15rem;
+  width: 6px;
+  height: 6px;
+  background: var(--irt-cream);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.irt.irt--approach .irt__approach {
+  opacity: 1;
+}
+
+.irt.irt--committed .irt__approach {
+  opacity: 0;
+}
+
+/* Controls + four CANCEL brackets */
+
+.irt__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+}
+
+.irt__btn {
+  appearance: none;
+  border: 2px solid var(--irt-cream);
+  background: transparent;
+  color: var(--irt-cream);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.42rem 0.75rem;
+  cursor: pointer;
+}
+
+.irt__btn:hover:not(:disabled) {
+  background: var(--irt-cream);
+  color: var(--irt-ink);
+}
+
+.irt__btn:focus-visible {
+  outline: 2px solid var(--irt-cream);
+  outline-offset: 2px;
+}
+
+.irt__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+.irt__btn--ghost {
+  border-color: var(--irt-line);
+  color: var(--irt-muted);
+}
+
+.irt__btn--ghost:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--irt-line) 45%, transparent);
+  color: var(--irt-cream);
+}
+
+.irt__cancel-wrap {
+  position: relative;
+  display: inline-flex;
+  padding: 4px;
+}
+
+.irt__bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--irt-cream);
+  border-style: solid;
+  opacity: 1;
+  transition:
+    opacity 90ms ease,
+    transform 90ms ease;
+}
+
+.irt__bracket--tl {
+  left: 0;
+  top: 0;
+  border-width: 2px 0 0 2px;
+}
+.irt__bracket--tr {
+  right: 0;
+  top: 0;
+  border-width: 2px 2px 0 0;
+}
+.irt__bracket--bl {
+  left: 0;
+  bottom: 0;
+  border-width: 0 0 2px 2px;
+}
+.irt__bracket--br {
+  right: 0;
+  bottom: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.irt.irt--brackets-retract .irt__bracket--tl {
+  transform: translate(-6px, -6px);
+  opacity: 0;
+}
+.irt.irt--brackets-retract .irt__bracket--tr {
+  transform: translate(6px, -6px);
+  opacity: 0;
+}
+.irt.irt--brackets-retract .irt__bracket--bl {
+  transform: translate(-6px, 6px);
+  opacity: 0;
+}
+.irt.irt--brackets-retract .irt__bracket--br {
+  transform: translate(6px, 6px);
+  opacity: 0;
+}
+
+.irt.irt--committed .irt__btn--cancel {
+  text-decoration: line-through;
+}
+
+.irt__status {
+  margin: 0.65rem 0 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  color: var(--irt-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .irt__fill {
+    transition: none !important;
+  }
+
+  .irt.irt--compress .irt__track,
+  .irt.irt--brackets-retract .irt__bracket {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .irt__fill {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .irt.irt--compress .irt__track,
+[data-force-reduced-motion='true'] .irt.irt--brackets-retract .irt__bracket {
+  animation: none !important;
+  transition: none !important;
+}

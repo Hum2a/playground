@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/irreversible-threshold.schema.json",
+  "title": "IrreversibleThreshold",
+  "description": "Portable contract for a destructive purge that remains cancellable until a fixed 65% COMMIT threshold, then accelerates to PURGED with CANCEL unavailable.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "progress",
+    "threshold",
+    "cancel",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "irreversible-threshold" },
+    "intent": {
+      "type": "string",
+      "const": "Destructive purge with a fixed 65% COMMIT boundary: CANCEL works while REVERSIBLE (0–64%), four brackets retract on crossing, then accelerated progress to PURGED with CANCEL unavailable."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operation",
+        "regionReversible",
+        "regionCommitted",
+        "regionPurged",
+        "regionCancelled",
+        "thresholdLabel",
+        "begin",
+        "cancel",
+        "replay"
+      ],
+      "properties": {
+        "operation": { "type": "string", "const": "PURGE // CACHE-04" },
+        "regionReversible": { "type": "string", "const": "REVERSIBLE" },
+        "regionCommitted": { "type": "string", "const": "COMMITTED" },
+        "regionPurged": { "type": "string", "const": "PURGED" },
+        "regionCancelled": { "type": "string", "const": "CANCELLED" },
+        "thresholdLabel": { "type": "string", "const": "COMMIT" },
+        "begin": { "type": "string", "const": "BEGIN PURGE" },
+        "cancel": { "type": "string", "const": "CANCEL" },
+        "replay": { "type": "string", "const": "REPLAY" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "muted", "line", "fill", "warn"],
+      "properties": {
+        "ink": { "type": "string", "const": "#12151a" },
+        "cream": { "type": "string", "const": "#e6e8ec" },
+        "muted": { "type": "string", "const": "#8b919a" },
+        "line": { "type": "string", "const": "#2a3038" },
+        "fill": { "type": "string", "const": "#c8ccd2" },
+        "warn": { "type": "string", "const": "#c45c48" }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values", "preStepMs", "postStepMs"],
+      "properties": {
+        "values": {
+          "type": "array",
+          "const": [0, 18, 34, 51, 64, 65, 78, 91, 100]
+        },
+        "preStepMs": {
+          "type": "array",
+          "const": [200, 200, 200, 220]
+        },
+        "postStepMs": {
+          "type": "array",
+          "const": [120, 90, 70]
+        }
+      }
+    },
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "percent",
+        "label",
+        "holdAt64Ms",
+        "crossMs",
+        "bracketCount",
+        "visibleBeforeStart"
+      ],
+      "properties": {
+        "percent": { "type": "number", "const": 65 },
+        "label": { "type": "string", "const": "COMMIT" },
+        "holdAt64Ms": { "type": "number", "const": 140 },
+        "crossMs": { "type": "number", "const": 90 },
+        "bracketCount": { "type": "number", "const": 4 },
+        "visibleBeforeStart": { "type": "boolean", "const": true }
+      }
+    },
+    "cancel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["availableBelow", "disabledAtOrAbove", "returnsToZero"],
+      "properties": {
+        "availableBelow": { "type": "number", "const": 65 },
+        "disabledAtOrAbove": { "type": "number", "const": 65 },
+        "returnsToZero": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compressMs", "compressScale", "loops"],
+      "properties": {
+        "compressMs": { "type": "number", "const": 100 },
+        "compressScale": { "type": "array", "const": [1, 0.7, 1] },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "progressbar", "irreversibleAnnouncement"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "progressbar": { "type": "boolean", "const": true },
+        "irreversibleAnnouncement": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preserveCancelSemantics", "triggers"],
+      "properties": {
+        "preserveCancelSemantics": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "rail", "threshold", "cancelWrap", "bracket"],
+      "properties": {
+        "root": { "type": "string", "const": "irt" },
+        "rail": { "type": "string", "const": "irt__rail" },
+        "threshold": { "type": "string", "const": "irt__threshold" },
+        "cancelWrap": { "type": "string", "const": "irt__cancel-wrap" },
+        "bracket": { "type": "string", "const": "irt__bracket" }
+      }
+    }
+  }
+}
