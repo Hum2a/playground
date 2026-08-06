@@ -390,6 +390,7 @@ import { temporalUndo } from './temporal-undo/entry'
 import { tenSecondSeekRipple } from './ten-second-seek-ripple/entry'
 import { threatLevelEscalation } from './threat-level-escalation/entry'
 import { threePersonCellFormation } from './three-person-cell-formation/entry'
+import { thumbRatingFeedback } from './thumb-rating-feedback/entry'
 import { timeSkip } from './time-skip/entry'
 import { timelineHoverPreview } from './timeline-hover-preview/entry'
 import { timelineReconstruction } from './timeline-reconstruction/entry'
@@ -863,6 +864,7 @@ export const specimens: Specimen[] = [
   tenSecondSeekRipple,
   threatLevelEscalation,
   threePersonCellFormation,
+  thumbRatingFeedback,
   timeSkip,
   timelineHoverPreview,
   timelineReconstruction,

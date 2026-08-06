@@ -1,0 +1,1 @@
+export function runThumb(up=true){document.querySelector('[data-msg]').textContent=up?'Thanks — more like this':'Noted — fewer like this'};document.querySelector('[data-up]')?.addEventListener('click',()=>runThumb(true));document.querySelector('[data-down]')?.addEventListener('click',()=>runThumb(false))
