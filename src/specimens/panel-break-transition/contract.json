@@ -1,0 +1,20 @@
+{
+  "name": "panel-break-transition",
+  "intent": "ANALYSIS panel shatters into four shards revealing COMPLETE underneath.",
+  "catalogue": { "mha": "MHA-003", "ref": "SPX-1977" },
+  "copy": { "overlay": "ANALYSIS", "reveal": "COMPLETE", "eyebrow": "STATUS // OUTPUT" },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "breakMs": 480, "settleMs": 260 },
+  "shards": 4,
+  "api": {
+    "run": "runPanelBreak()",
+    "reset": "resetPanelBreak()",
+    "replay": "replayPanelBreak()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show COMPLETE; hide shards" }
+}

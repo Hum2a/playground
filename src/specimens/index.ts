@@ -161,6 +161,7 @@ import { notificationSwipeDismiss } from './notification-swipe-dismiss/entry'
 import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
+import { panelBreakTransition } from './panel-break-transition/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
@@ -449,6 +450,7 @@ export const specimens: Specimen[] = [
   nowPlayingExpansion,
   objectiveAcquired,
   overchargeWarning,
+  panelBreakTransition,
   panelCollapseNavigation,
   panelExplosionReveal,
   paperRipUnlock,
