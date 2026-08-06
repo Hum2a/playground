@@ -320,6 +320,7 @@ import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { parallelWorkerClones } from './parallel-worker-clones/entry'
 import { partCompatibilitySnap } from './part-compatibility-snap/entry'
+import { partyJoinHandoff } from './party-join-handoff/entry'
 import { performanceMeterBurst } from './performance-meter-burst/entry'
 import { permissionPromptMaterialise } from './permission-prompt-materialise/entry'
 import { permissionRejection } from './permission-rejection/entry'
@@ -852,6 +853,7 @@ export const specimens: Specimen[] = [
   paperStackShuffle,
   parallelWorkerClones,
   partCompatibilitySnap,
+  partyJoinHandoff,
   performanceMeterBurst,
   permissionPromptMaterialise,
   permissionRejection,

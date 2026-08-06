@@ -1,0 +1,216 @@
+/* Portable specimen CSS (iframe-isolated). */
+
+.pjh {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  --ps-panel: #121820;
+  --ps-rule: #1e2a38;
+  --ps-pewter: #8a9aad;
+
+  box-sizing: border-box;
+  width: min(100%, 480px);
+  margin: 0 auto;
+  padding: 16px;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
+  color: var(--ps-chalk);
+}
+
+.pjh *,
+.pjh *::before,
+.pjh *::after {
+  box-sizing: border-box;
+}
+
+.pjh__btn {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ps-ink);
+  background: var(--ps-chalk);
+  border: 1px solid var(--ps-chalk);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.pjh__btn:hover:not(:disabled) {
+  background: #fff;
+}
+
+.pjh__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.pjh__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pjh__status {
+  margin: 10px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--ps-pewter);
+}
+
+.pjh__shape {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.pjh__shape--circle {
+  border-radius: 50%;
+  background: var(--ps-sky);
+}
+
+.pjh__shape--square {
+  border-radius: 2px;
+  background: var(--ps-blue);
+}
+
+.pjh__shape--cross {
+  position: relative;
+  background: transparent;
+}
+
+.pjh__shape--cross::before,
+.pjh__shape--cross::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 3px;
+  margin: -1.5px 0 0 -6px;
+  background: var(--ps-chalk);
+  border-radius: 1px;
+}
+
+.pjh__shape--cross::before {
+  transform: rotate(45deg);
+}
+
+.pjh__shape--cross::after {
+  transform: rotate(-45deg);
+}
+
+.pjh__shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid var(--ps-blue);
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pjh__anim,
+  .pjh__orbit,
+  .pjh__shape,
+  .pjh__scan,
+  .pjh__rift,
+  .pjh__ring,
+  .pjh__tile,
+  .pjh__card,
+  .pjh__slab,
+  .pjh__token,
+  .pjh__panel,
+  .pjh__overlay {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .pjh__anim,
+[data-force-reduced-motion='true'] .pjh__orbit,
+[data-force-reduced-motion='true'] .pjh__shape,
+[data-force-reduced-motion='true'] .pjh__scan,
+[data-force-reduced-motion='true'] .pjh__rift,
+[data-force-reduced-motion='true'] .pjh__ring,
+[data-force-reduced-motion='true'] .pjh__tile,
+[data-force-reduced-motion='true'] .pjh__card,
+[data-force-reduced-motion='true'] .pjh__slab,
+[data-force-reduced-motion='true'] .pjh__token,
+[data-force-reduced-motion='true'] .pjh__panel,
+[data-force-reduced-motion='true'] .pjh__overlay {
+  animation: none !important;
+  transition: none !important;
+}
+
+.pjh__card,
+.pjh__session {
+  padding: 16px;
+  border: 1px solid var(--ps-rule);
+  border-radius: 4px;
+  background: var(--ps-panel);
+  transition: opacity 350ms ease, transform 350ms ease;
+}
+
+.pjh__card-title,
+.pjh__session-title {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.pjh__card-meta {
+  margin: 0 0 14px;
+  font-size: 10px;
+  color: var(--ps-pewter);
+}
+
+.pjh.is-active .pjh__card {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.pjh {
+  position: relative;
+  min-height: 160px;
+}
+
+.pjh__session {
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  border-color: var(--ps-sky);
+}
+
+.pjh.is-active .pjh__session {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.pjh__roster {
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  font-size: 10px;
+}
+
+.pjh__roster li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.pjh__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ps-blue);
+  animation: pjh-pulse 1.4s ease infinite;
+}
+
+@keyframes pjh-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
