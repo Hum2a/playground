@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/power-state-transformation.schema.json",
+  "title": "PowerStateTransformation",
+  "description": "Portable contract for an abstract engine upgrade: pressure marks, compression, structural geometry swap with burst rays and boundary field, then clipped metric updates from BASE to ASCENDED.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "pressure",
+    "compression",
+    "burst",
+    "metrics",
+    "settling",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "power-state-transformation" },
+    "intent": {
+      "type": "string",
+      "const": "Same component identity accumulates pressure, compresses, structurally transforms from Base to Ascended geometry, then updates capability metrics — no character imagery and no looping aura."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "stateFrom",
+        "stateTo",
+        "throughputFrom",
+        "throughputTo",
+        "channelsFrom",
+        "channelsTo",
+        "trigger",
+        "replay",
+        "statusFrom",
+        "statusTo"
+      ],
+      "properties": {
+        "id": { "type": "string", "const": "ENGINE // 04" },
+        "stateFrom": { "type": "string", "const": "BASE" },
+        "stateTo": { "type": "string", "const": "ASCENDED" },
+        "throughputFrom": { "type": "string", "const": "1.0×" },
+        "throughputTo": { "type": "string", "const": "3.0×" },
+        "channelsFrom": { "type": "string", "const": "2" },
+        "channelsTo": { "type": "string", "const": "6" },
+        "trigger": { "type": "string", "const": "TRANSFORM" },
+        "replay": { "type": "string", "const": "REPLAY" },
+        "statusFrom": { "type": "string", "const": "Engine 04. State base." },
+        "statusTo": { "type": "string", "const": "Engine 04. State ascended." }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "gold", "pale", "ember"],
+      "properties": {
+        "ink": { "type": "string", "const": "#171b20" },
+        "cream": { "type": "string", "const": "#f2eddb" },
+        "gold": { "type": "string", "const": "#e5b33e" },
+        "pale": { "type": "string", "const": "#f2d968" },
+        "ember": { "type": "string", "const": "#d86349" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base", "ascended", "swapMethod"],
+      "properties": {
+        "base": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthPx", "heightPx", "parts"],
+          "properties": {
+            "widthPx": { "type": "number", "const": 90 },
+            "heightPx": { "type": "number", "const": 110 },
+            "parts": {
+              "type": "array",
+              "const": ["core", "lateral-l", "lateral-r", "foot"]
+            }
+          }
+        },
+        "ascended": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthPx", "heightPx", "heightDeltaPercent", "spikeCount", "parts"],
+          "properties": {
+            "widthPx": { "type": "number", "const": 86 },
+            "heightPx": { "type": "number", "const": 136 },
+            "heightDeltaPercent": { "type": "number", "const": 24 },
+            "spikeCount": { "type": "number", "const": 6 },
+            "parts": {
+              "type": "array",
+              "const": ["core", "spike-0", "spike-1", "spike-2", "spike-3", "spike-4", "spike-5", "foot"]
+            }
+          }
+        },
+        "swapMethod": { "type": "string", "const": "structural-visibility-swap" }
+      }
+    },
+    "pressure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "markCount", "maxShiftPx", "deterministic"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 420 },
+        "markCount": { "type": "number", "const": 10 },
+        "maxShiftPx": { "type": "number", "const": 2 },
+        "deterministic": { "type": "boolean", "const": true }
+      }
+    },
+    "compression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scaleX", "scaleY", "durationMs", "holdMs"],
+      "properties": {
+        "scaleX": { "type": "number", "const": 0.94 },
+        "scaleY": { "type": "number", "const": 1.04 },
+        "durationMs": { "type": "number", "const": 100 },
+        "holdMs": { "type": "number", "const": 70 }
+      }
+    },
+    "burst": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "rayCount", "fieldFrom", "fieldPeak", "fieldSettle"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 180 },
+        "rayCount": { "type": "number", "const": 8 },
+        "fieldFrom": { "type": "string", "const": "110%" },
+        "fieldPeak": { "type": "string", "const": "165%" },
+        "fieldSettle": { "type": "string", "const": "118%" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "stateOffsetMs", "throughputOffsetMs", "channelsOffsetMs"],
+      "properties": {
+        "method": { "type": "string", "const": "clipped-translateY" },
+        "stateOffsetMs": { "type": "number", "const": 0 },
+        "throughputOffsetMs": { "type": "number", "const": 60 },
+        "channelsOffsetMs": { "type": "number", "const": 120 }
+      }
+    },
+    "settling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scaleFrom", "scaleTo", "durationMs", "staticOutline", "noLoopingAura"],
+      "properties": {
+        "scaleFrom": { "type": "number", "const": 1.06 },
+        "scaleTo": { "type": "number", "const": 1 },
+        "durationMs": { "type": "number", "const": 150 },
+        "staticOutline": { "type": "boolean", "const": true },
+        "noLoopingAura": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "pressureMs",
+        "compressAtMs",
+        "burstAtMs",
+        "settleAtMs",
+        "loops",
+        "noCrossfade"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 920 },
+        "pressureMs": { "type": "number", "const": 420 },
+        "compressAtMs": { "type": "number", "const": 420 },
+        "burstAtMs": { "type": "number", "const": 590 },
+        "settleAtMs": { "type": "number", "const": 770 },
+        "loops": { "type": "boolean", "const": false },
+        "noCrossfade": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "readableMetrics", "decorativeMotion"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "readableMetrics": { "type": "boolean", "const": true },
+        "decorativeMotion": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateAscended", "triggers"],
+      "properties": {
+        "immediateAscended": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "host", "engine", "field", "marks", "rays", "metrics"],
+      "properties": {
+        "root": { "type": "string", "const": "pst" },
+        "host": { "type": "string", "const": "pst__host" },
+        "engine": { "type": "string", "const": "pst__engine" },
+        "field": { "type": "string", "const": "pst__field" },
+        "marks": { "type": "string", "const": "pst__marks" },
+        "rays": { "type": "string", "const": "pst__rays" },
+        "metrics": { "type": "string", "const": "pst__metrics" }
+      }
+    }
+  }
+}
