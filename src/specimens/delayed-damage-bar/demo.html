@@ -1,0 +1,46 @@
+<div class="ddb" data-delayed-damage-bar data-state="idle">
+  <div class="ddb__panel">
+    <p class="ddb__label" id="ddb-label">SYSTEM HEALTH</p>
+
+    <div class="ddb__readout">
+      <p class="ddb__value" data-ddb-value aria-live="polite">
+        <span data-ddb-current>164</span>
+        <span class="ddb__sep">/</span>
+        <span data-ddb-max>200</span>
+      </p>
+      <span class="ddb__delta" data-ddb-delta aria-hidden="true">-68</span>
+    </div>
+
+    <div
+      class="ddb__track"
+      data-ddb-track
+      role="meter"
+      aria-labelledby="ddb-label"
+      aria-valuemin="0"
+      aria-valuemax="200"
+      aria-valuenow="164"
+      aria-valuetext="164 of 200"
+    >
+      <div class="ddb__trail" data-ddb-trail style="width: 82%"></div>
+      <div class="ddb__fill" data-ddb-fill style="width: 82%"></div>
+    </div>
+
+    <p class="ddb__hint" data-ddb-hint>Healthy</p>
+  </div>
+
+  <div class="ddb__actions">
+    <button type="button" class="ddb__btn ddb__btn--damage" data-ddb-damage>
+      DAMAGE
+    </button>
+    <button type="button" class="ddb__btn ddb__btn--reset" data-ddb-reset>
+      RESET
+    </button>
+  </div>
+
+  <div
+    class="ddb__status"
+    role="status"
+    aria-live="polite"
+    data-ddb-status
+  ></div>
+</div>

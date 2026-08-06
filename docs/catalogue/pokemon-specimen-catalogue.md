@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **2 / 266** complete.
+- Progress: **3 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 2 |
-| Open | 264 |
+| Done | 3 |
+| Open | 263 |
 
 ## Visual grammar
 
@@ -33,6 +33,7 @@
 | PK | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
 | PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
+| PK-032 | `SPX-731` | `branch-evolution-choice` | Branch Evolution Choice |
 | PK-025 | `SPX-724` | `evolution-silhouette-transformation` | Evolution Silhouette Transformation |
 
 ## Core first-wave
@@ -41,7 +42,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 - [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — capture-uncertainty
 - [x] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — evolution-transformation
-- [ ] **PK-032** · `SPX-731` · **Branch Evolution Choice** — evolution-transformation
+- [x] **PK-032** · `SPX-731` · **Branch Evolution Choice** — evolution-transformation
 - [ ] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — pok-dex
 - [ ] **PK-237** · `SPX-936` · **Raid Ready Check** — multiplayer-collective
 - [ ] **PK-063** · `SPX-762` · **Level Up Overflow** — hp-xp
@@ -99,7 +100,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-029** · `SPX-728` · **Item Evolution** — An external object reaches a component and causes its structure to transform.
 - [ ] **PK-030** · `SPX-729` · **Trade Evolution** — An entity enters a transfer process and returns transformed.
 - [ ] **PK-031** · `SPX-730` · **Level Evolution** — Progress crosses an exact threshold and automatically initiates identity transformation.
-- [ ] **PK-032** · `SPX-731` · **Branch Evolution Choice** — One current state physically branches into several possible future forms.
+- [x] **PK-032** · `SPX-731` · **Branch Evolution Choice** — One current state physically branches into several possible future forms.
 - [ ] **PK-033** · `SPX-732` · **Mega Evolution Burst** — A component temporarily restructures into a stronger enhanced state.
 - [ ] **PK-034** · `SPX-733` · **Terastal Crystallisation** — Translucent crystalline facets progressively propagate across an existing component.
 - [ ] **PK-035** · `SPX-734` · **Dynamax Expansion** — An ordinary component temporarily expands into a dominant presentation state.

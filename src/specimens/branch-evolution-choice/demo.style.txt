@@ -1,0 +1,540 @@
+/* SPX-731 Branch Evolution Choice — portable contract. Do not restyle to host tokens. */
+
+.bec {
+  --bec-bg: #0b0f14;
+  --bec-ink: #e8f0f4;
+  --bec-mute: #8aa0ac;
+  --bec-line: #5a7a88;
+  --bec-bright: #7ed0c0;
+  --bec-dim: #2a3a44;
+  --bec-ease: cubic-bezier(0.33, 0.9, 0.35, 1);
+  /* Frozen layout anchors (% of stage) */
+  --bec-src-x: 50%;
+  --bec-src-y: 68%;
+  --bec-dest-y: 18%;
+  --bec-left-x: 17.5%;
+  --bec-mid-x: 50%;
+  --bec-right-x: 82.5%;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 380px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--bec-bg);
+  color: var(--bec-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.bec *,
+.bec *::before,
+.bec *::after {
+  box-sizing: border-box;
+}
+
+.bec__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--bec-bright);
+}
+
+.bec__stage {
+  position: relative;
+  width: min(100%, 400px);
+  height: 300px;
+  flex: 1;
+}
+
+.bec__svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: visible;
+}
+
+.bec__path {
+  stroke: var(--bec-line);
+  stroke-width: 2;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+.bec[data-state='grow'] .bec__path--stem,
+.bec[data-state='choose'] .bec__path--stem,
+.bec[data-state='confirm'] .bec__path--stem,
+.bec[data-state='done'] .bec__path--stem {
+  opacity: 1;
+}
+
+.bec[data-state='grow'] .bec__path--stem {
+  animation: bec-draw 180ms var(--bec-ease) forwards;
+}
+
+.bec[data-state='choose'] .bec__path--stem,
+.bec[data-state='confirm'] .bec__path--stem,
+.bec[data-state='done'] .bec__path--stem {
+  stroke-dashoffset: 0;
+}
+
+.bec[data-state='grow'] .bec__path--branch {
+  opacity: 1;
+  animation: bec-draw 260ms var(--bec-ease) 180ms forwards;
+}
+
+.bec[data-state='grow'] .bec__path--0 {
+  animation-delay: 180ms;
+}
+
+.bec[data-state='grow'] .bec__path--1 {
+  animation-delay: 200ms;
+}
+
+.bec[data-state='grow'] .bec__path--2 {
+  animation-delay: 220ms;
+}
+
+.bec[data-state='choose'] .bec__path--branch {
+  opacity: 1;
+  stroke-dashoffset: 0;
+}
+
+.bec[data-state='choose'] .bec__path--branch,
+.bec[data-state='confirm'] .bec__path--branch {
+  transition:
+    stroke 160ms var(--bec-ease),
+    stroke-width 160ms var(--bec-ease),
+    opacity 160ms var(--bec-ease);
+}
+
+/* Selection emphasis travels along the chosen branch */
+.bec[data-state='choose'][data-selected='0'] .bec__path--0,
+.bec[data-state='choose'][data-selected='1'] .bec__path--1,
+.bec[data-state='choose'][data-selected='2'] .bec__path--2 {
+  stroke: var(--bec-bright);
+  stroke-width: 3.25;
+}
+
+.bec[data-state='choose'][data-selected='0'] .bec__path--1,
+.bec[data-state='choose'][data-selected='0'] .bec__path--2,
+.bec[data-state='choose'][data-selected='1'] .bec__path--0,
+.bec[data-state='choose'][data-selected='1'] .bec__path--2,
+.bec[data-state='choose'][data-selected='2'] .bec__path--0,
+.bec[data-state='choose'][data-selected='2'] .bec__path--1 {
+  stroke: var(--bec-dim);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+
+.bec[data-state='confirm'] .bec__path--stem {
+  stroke: var(--bec-bright);
+  stroke-width: 3;
+}
+
+.bec[data-state='confirm'] .bec__path--branch.is-kept,
+.bec[data-state='done'] .bec__path--branch.is-kept {
+  stroke: var(--bec-bright);
+  stroke-width: 3.5;
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.bec[data-state='confirm'] .bec__path--branch.is-retract {
+  animation: bec-retract 220ms var(--bec-ease) forwards;
+}
+
+.bec[data-state='done'] .bec__path--branch.is-retract,
+.bec[data-state='done'] .bec__path--stem {
+  opacity: 0;
+}
+
+.bec[data-state='done'] .bec__path--branch.is-kept {
+  opacity: 0;
+}
+
+@keyframes bec-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bec-retract {
+  from {
+    stroke-dashoffset: 0;
+    opacity: 0.55;
+  }
+  to {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+}
+
+.bec__current {
+  position: absolute;
+  left: var(--bec-src-x);
+  top: var(--bec-src-y);
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 2;
+  transition: none;
+}
+
+.bec[data-state='confirm'] .bec__current.is-travel {
+  transition:
+    left 320ms var(--bec-ease),
+    top 320ms var(--bec-ease);
+  z-index: 4;
+}
+
+.bec[data-state='done'] .bec__current {
+  left: var(--bec-src-x);
+  top: var(--bec-src-y);
+}
+
+.bec__options {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bec__options[hidden] {
+  display: none !important;
+}
+
+.bec__option {
+  appearance: none;
+  position: absolute;
+  top: var(--bec-dest-y);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  pointer-events: auto;
+  outline: none;
+}
+
+.bec__option--0 {
+  left: var(--bec-left-x);
+}
+
+.bec__option--1 {
+  left: var(--bec-mid-x);
+}
+
+.bec__option--2 {
+  left: var(--bec-right-x);
+}
+
+.bec[data-state='grow'] .bec__option,
+.bec[data-state='choose'] .bec__option {
+  animation: bec-node-in 180ms var(--bec-ease) forwards;
+}
+
+.bec[data-state='grow'] .bec__option--0,
+.bec[data-state='choose'] .bec__option--0 {
+  animation-delay: 400ms;
+}
+
+.bec[data-state='grow'] .bec__option--1,
+.bec[data-state='choose'] .bec__option--1 {
+  animation-delay: 360ms;
+}
+
+.bec[data-state='grow'] .bec__option--2,
+.bec[data-state='choose'] .bec__option--2 {
+  animation-delay: 400ms;
+}
+
+.bec[data-state='choose'] .bec__option {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.92);
+  animation: none;
+}
+
+.bec[data-state='choose'] .bec__option[aria-checked='true'] {
+  transform: translate(-50%, -50%) scale(1.08);
+  opacity: 1;
+}
+
+.bec[data-state='choose'] .bec__option[aria-checked='false'] {
+  opacity: 0.45;
+  transform: translate(-50%, -50%) scale(0.88);
+}
+
+.bec[data-state='confirm'] .bec__option.is-kept,
+.bec[data-state='done'] .bec__option.is-kept {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bec[data-state='confirm'] .bec__option.is-retract {
+  animation: bec-node-out 200ms var(--bec-ease) forwards;
+  pointer-events: none;
+}
+
+.bec[data-state='done'] .bec__option {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes bec-node-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+}
+
+@keyframes bec-node-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.6);
+  }
+}
+
+.bec__node {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+}
+
+.bec__option[aria-checked='true'] .bec__node {
+  filter: drop-shadow(0 0 6px rgb(126 208 192 / 0.35));
+}
+
+.bec__glyph {
+  display: block;
+  width: 36px;
+  height: 36px;
+  background: var(--bec-bright);
+}
+
+/* Distinct abstract geometries */
+.bec__glyph--standard {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background: linear-gradient(145deg, #9fd0c4, #3d6a72);
+}
+
+.bec__glyph--perf {
+  clip-path: polygon(50% 0%, 90% 35%, 70% 100%, 30% 100%, 10% 35%);
+  background: linear-gradient(160deg, #f0c878, #c45a3a);
+}
+
+.bec__glyph--bal {
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e8f4f8 0%, #5a9ab0 55%, #1e3a48 100%);
+  box-shadow: inset 0 0 0 3px rgb(11 15 20 / 0.55);
+}
+
+.bec__glyph--port {
+  clip-path: polygon(12% 0%, 88% 0%, 100% 50%, 88% 100%, 12% 100%, 0% 50%);
+  background: linear-gradient(180deg, #8ec8e8, #3a6a9a);
+}
+
+.bec__brackets {
+  position: absolute;
+  inset: -4px -10px auto;
+  height: 56px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bec__option[aria-checked='true'] .bec__brackets {
+  opacity: 1;
+}
+
+.bec__bracket {
+  position: absolute;
+  top: 8px;
+  width: 10px;
+  height: 38px;
+  border: 2px solid var(--bec-bright);
+}
+
+.bec__bracket--l {
+  left: 0;
+  border-right: 0;
+}
+
+.bec__bracket--r {
+  right: 0;
+  border-left: 0;
+}
+
+.bec__caption {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  color: var(--bec-mute);
+}
+
+.bec__option[aria-checked='true'] .bec__caption,
+.bec__current .bec__caption {
+  color: var(--bec-ink);
+}
+
+.bec__option:focus-visible .bec__node {
+  outline: 2px solid var(--bec-bright);
+  outline-offset: 4px;
+}
+
+.bec__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+}
+
+.bec__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.48rem 0.8rem;
+  border: 1px solid rgb(232 240 244 / 0.45);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bec-ink);
+  font: inherit;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bec__btn:hover:not(:disabled) {
+  background: rgb(126 208 192 / 0.12);
+}
+
+.bec__btn:focus-visible {
+  outline: 2px solid var(--bec-bright);
+  outline-offset: 3px;
+}
+
+.bec__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.bec__btn--ghost {
+  border-color: rgb(232 240 244 / 0.25);
+}
+
+.bec__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 380px) {
+  .bec {
+    min-height: 340px;
+  }
+
+  .bec__stage {
+    height: 270px;
+  }
+
+  .bec__node {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bec__glyph {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bec__path,
+  .bec__option,
+  .bec__current {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .bec[data-state='choose'] .bec__path,
+  .bec[data-state='grow'] .bec__path,
+  .bec[data-state='confirm'] .bec__path--stem,
+  .bec[data-state='confirm'] .bec__path--branch.is-kept {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .bec[data-state='choose'] .bec__option,
+  .bec[data-state='grow'] .bec__option {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+
+  .bec[data-state='choose'] .bec__option[aria-checked='true'] {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  .bec[data-state='done'] .bec__path,
+  .bec[data-state='done'] .bec__option {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .bec__path,
+[data-force-reduced-motion='true'] .bec__option,
+[data-force-reduced-motion='true'] .bec__current {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .bec[data-state='choose'] .bec__path,
+[data-force-reduced-motion='true'] .bec[data-state='grow'] .bec__path {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .bec[data-state='choose'] .bec__option,
+[data-force-reduced-motion='true'] .bec[data-state='grow'] .bec__option {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+[data-force-reduced-motion='true']
+  .bec[data-state='choose']
+  .bec__option[aria-checked='true'] {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+[data-force-reduced-motion='true'] .bec[data-state='done'] .bec__path,
+[data-force-reduced-motion='true'] .bec[data-state='done'] .bec__option {
+  opacity: 0;
+}

@@ -1,0 +1,136 @@
+<div class="bec" data-branch-evolution data-state="idle" data-selected="1">
+  <p class="bec__kicker" id="bec-label">IDENTITY BRANCH</p>
+
+  <div class="bec__stage" data-bec-stage>
+    <svg
+      class="bec__svg"
+      viewBox="0 0 400 320"
+      width="100%"
+      height="100%"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <!-- Frozen geometry: source (200,250) → fork (200,205) → destinations -->
+      <g class="bec__paths" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path
+          class="bec__path bec__path--stem"
+          data-bec-stem
+          d="M 200 250 L 200 205"
+          pathLength="100"
+        />
+        <path
+          class="bec__path bec__path--branch bec__path--0"
+          data-bec-branch="0"
+          d="M 200 205 C 200 160 120 110 70 72"
+          pathLength="100"
+        />
+        <path
+          class="bec__path bec__path--branch bec__path--1"
+          data-bec-branch="1"
+          d="M 200 205 L 200 58"
+          pathLength="100"
+        />
+        <path
+          class="bec__path bec__path--branch bec__path--2"
+          data-bec-branch="2"
+          d="M 200 205 C 200 160 280 110 330 72"
+          pathLength="100"
+        />
+      </g>
+    </svg>
+
+    <div
+      class="bec__current"
+      data-bec-current
+      aria-hidden="true"
+    >
+      <span class="bec__node bec__node--current">
+        <span class="bec__glyph bec__glyph--standard"></span>
+      </span>
+      <span class="bec__caption" data-bec-current-label>BUILD // STANDARD</span>
+    </div>
+
+    <div
+      class="bec__options"
+      role="radiogroup"
+      aria-labelledby="bec-label"
+      data-bec-options
+      hidden
+    >
+      <button
+        type="button"
+        class="bec__option bec__option--0"
+        role="radio"
+        aria-checked="false"
+        tabindex="-1"
+        data-bec-option
+        data-index="0"
+        data-name="PERFORMANCE"
+        data-build="BUILD // PERFORMANCE"
+      >
+        <span class="bec__brackets" aria-hidden="true">
+          <span class="bec__bracket bec__bracket--l"></span>
+          <span class="bec__bracket bec__bracket--r"></span>
+        </span>
+        <span class="bec__node bec__node--perf" aria-hidden="true">
+          <span class="bec__glyph bec__glyph--perf"></span>
+        </span>
+        <span class="bec__caption">PERFORMANCE</span>
+      </button>
+
+      <button
+        type="button"
+        class="bec__option bec__option--1"
+        role="radio"
+        aria-checked="true"
+        tabindex="0"
+        data-bec-option
+        data-index="1"
+        data-name="BALANCED"
+        data-build="BUILD // BALANCED"
+      >
+        <span class="bec__brackets" aria-hidden="true">
+          <span class="bec__bracket bec__bracket--l"></span>
+          <span class="bec__bracket bec__bracket--r"></span>
+        </span>
+        <span class="bec__node bec__node--bal" aria-hidden="true">
+          <span class="bec__glyph bec__glyph--bal"></span>
+        </span>
+        <span class="bec__caption">BALANCED</span>
+      </button>
+
+      <button
+        type="button"
+        class="bec__option bec__option--2"
+        role="radio"
+        aria-checked="false"
+        tabindex="-1"
+        data-bec-option
+        data-index="2"
+        data-name="PORTABLE"
+        data-build="BUILD // PORTABLE"
+      >
+        <span class="bec__brackets" aria-hidden="true">
+          <span class="bec__bracket bec__bracket--l"></span>
+          <span class="bec__bracket bec__bracket--r"></span>
+        </span>
+        <span class="bec__node bec__node--port" aria-hidden="true">
+          <span class="bec__glyph bec__glyph--port"></span>
+        </span>
+        <span class="bec__caption">PORTABLE</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="bec__controls">
+    <button type="button" class="bec__btn" data-bec-evolve>EVOLVE</button>
+    <button type="button" class="bec__btn" data-bec-choose disabled>CHOOSE</button>
+    <button type="button" class="bec__btn bec__btn--ghost" data-bec-reset>
+      RESET
+    </button>
+  </div>
+
+  <p class="bec__status" role="status" aria-live="polite" data-bec-status>
+    Current build STANDARD. Evolve to reveal branch futures.
+  </p>
+</div>

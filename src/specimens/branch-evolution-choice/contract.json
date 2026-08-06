@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/branch-evolution-choice.schema.json",
+  "title": "BranchEvolutionChoice",
+  "description": "Portable contract for stem→three-branch evolution choice. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "geometry",
+    "phases",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "branch-evolution-choice" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Shared stem grows into three futures; choose one; unselected retract; current becomes chosen."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current",
+        "performance",
+        "balanced",
+        "portable",
+        "evolve",
+        "choose",
+        "reset"
+      ],
+      "properties": {
+        "current": { "type": "string", "const": "BUILD // STANDARD" },
+        "performance": { "type": "string", "const": "PERFORMANCE" },
+        "balanced": { "type": "string", "const": "BALANCED" },
+        "portable": { "type": "string", "const": "PORTABLE" },
+        "evolve": { "type": "string", "const": "EVOLVE" },
+        "choose": { "type": "string", "const": "CHOOSE" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "viewBox",
+        "source",
+        "fork",
+        "stemPx",
+        "destinations",
+        "paths"
+      ],
+      "properties": {
+        "viewBox": { "type": "string", "const": "0 0 400 320" },
+        "source": { "type": "string", "const": "200,250" },
+        "fork": { "type": "string", "const": "200,205" },
+        "stemPx": { "type": "number", "const": 45 },
+        "destinations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["performance", "balanced", "portable"],
+          "properties": {
+            "performance": { "type": "string", "const": "70,72" },
+            "balanced": { "type": "string", "const": "200,58" },
+            "portable": { "type": "string", "const": "330,72" }
+          }
+        },
+        "paths": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["stem", "left", "mid", "right"],
+          "properties": {
+            "stem": { "type": "string", "const": "M 200 250 L 200 205" },
+            "left": {
+              "type": "string",
+              "const": "M 200 205 C 200 160 120 110 70 72"
+            },
+            "mid": { "type": "string", "const": "M 200 205 L 200 58" },
+            "right": {
+              "type": "string",
+              "const": "M 200 205 C 200 160 280 110 330 72"
+            }
+          }
+        }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stemMs",
+        "branchMs",
+        "nodeStaggerMs",
+        "retractMs",
+        "travelMs"
+      ],
+      "properties": {
+        "stemMs": { "type": "number", "const": 180 },
+        "branchMs": { "type": "number", "const": 260 },
+        "nodeStaggerMs": { "type": "number", "const": 40 },
+        "retractMs": { "type": "number", "const": 220 },
+        "travelMs": { "type": "number", "const": 320 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radiogroup", "textLabels", "liveStatus"],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "textLabels": { "type": "boolean", "const": true },
+        "liveStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantStructure", "instantConfirm", "triggers"],
+      "properties": {
+        "instantStructure": { "type": "boolean", "const": true },
+        "instantConfirm": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "path", "option", "current"],
+      "properties": {
+        "root": { "type": "string", "const": "bec" },
+        "path": { "type": "string", "const": "bec__path" },
+        "option": { "type": "string", "const": "bec__option" },
+        "current": { "type": "string", "const": "bec__current" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "branchEvolutionChoice" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "branch-evolution-choice",
+      "intent": "Shared stem grows into three futures; choose one; unselected retract; current becomes chosen.",
+      "copy": {
+        "current": "BUILD // STANDARD",
+        "performance": "PERFORMANCE",
+        "balanced": "BALANCED",
+        "portable": "PORTABLE",
+        "evolve": "EVOLVE",
+        "choose": "CHOOSE",
+        "reset": "RESET"
+      },
+      "geometry": {
+        "viewBox": "0 0 400 320",
+        "source": "200,250",
+        "fork": "200,205",
+        "stemPx": 45,
+        "destinations": {
+          "performance": "70,72",
+          "balanced": "200,58",
+          "portable": "330,72"
+        },
+        "paths": {
+          "stem": "M 200 250 L 200 205",
+          "left": "M 200 205 C 200 160 120 110 70 72",
+          "mid": "M 200 205 L 200 58",
+          "right": "M 200 205 C 200 160 280 110 330 72"
+        }
+      },
+      "phases": {
+        "stemMs": 180,
+        "branchMs": 260,
+        "nodeStaggerMs": 40,
+        "retractMs": 220,
+        "travelMs": 320
+      },
+      "a11y": {
+        "radiogroup": true,
+        "textLabels": true,
+        "liveStatus": true
+      },
+      "reducedMotion": {
+        "instantStructure": true,
+        "instantConfirm": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "bec",
+        "path": "bec__path",
+        "option": "bec__option",
+        "current": "bec__current"
+      },
+      "behaviour": {
+        "api": "branchEvolutionChoice"
+      }
+    }
+  ]
+}

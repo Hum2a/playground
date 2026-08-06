@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/delayed-damage-bar.schema.json",
+  "title": "DelayedDamageBar",
+  "description": "Primary HP bar and numeric value respond immediately; warm trailing layer holds then catches up. Pokemon-inspired resource feedback. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "dimensions",
+    "values",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "delayed-damage-bar" },
+    "intent": {
+      "type": "string",
+      "const": "Numeric value and primary bar move to the new resource immediately; a trailing damage layer remains at the previous value then catches up after a delay."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "damage", "reset", "delta", "status"],
+      "properties": {
+        "label": { "type": "string", "const": "SYSTEM HEALTH" },
+        "damage": { "type": "string", "const": "DAMAGE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "delta": { "type": "string", "const": "-68" },
+        "status": { "type": "string", "const": "96 of 200." },
+        "hintHealthy": { "type": "string", "const": "Healthy" },
+        "hintLow": { "type": "string", "const": "Low resource" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["track", "trail", "fill", "fillLow", "damage"],
+      "properties": {
+        "track": { "type": "string", "const": "#2c3036" },
+        "trail": { "type": "string", "const": "#e6c27a" },
+        "fill": { "type": "string", "const": "#3d9e55" },
+        "fillLow": { "type": "string", "const": "#d9773a" },
+        "damage": { "type": "string", "const": "#c94a3a" }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 280 },
+        "heightPx": { "type": "number", "const": 18 },
+        "cornerRadiusPx": { "type": "number", "const": 1 }
+      }
+    },
+    "values": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max",
+        "start",
+        "end",
+        "startPercent",
+        "endPercent",
+        "lowThresholdPercent"
+      ],
+      "properties": {
+        "max": { "type": "number", "const": 200 },
+        "start": { "type": "number", "const": 164 },
+        "end": { "type": "number", "const": 96 },
+        "damageAmount": { "type": "number", "const": 68 },
+        "startPercent": { "type": "number", "const": 82 },
+        "endPercent": { "type": "number", "const": 48 },
+        "lowThresholdPercent": { "type": "number", "const": 50 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primaryMs",
+        "trailHoldMs",
+        "trailDrainMs",
+        "impactMs",
+        "deltaMs",
+        "numericRollMs"
+      ],
+      "properties": {
+        "primaryMs": { "type": "number", "const": 180 },
+        "trailHoldMs": { "type": "number", "const": 320 },
+        "trailDrainMs": { "type": "number", "const": 420 },
+        "impactMs": { "type": "number", "const": 100 },
+        "impactOffsetsPx": {
+          "type": "array",
+          "const": [0, 3, -2, 0]
+        },
+        "deltaMs": { "type": "number", "const": 500 },
+        "deltaRisePx": { "type": "number", "const": 6 },
+        "numericRollMs": { "type": "number", "const": 80 },
+        "totalMs": { "type": "number", "const": 920 },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["meterRole", "valueText", "textHintWithColour"],
+      "properties": {
+        "meterRole": { "type": "boolean", "const": true },
+        "valueText": { "type": "string", "const": "96 of 200" },
+        "textHintWithColour": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinal", "triggers"],
+      "properties": {
+        "immediateFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "track", "fill", "trail", "damage"],
+      "properties": {
+        "root": { "type": "string", "const": "ddb" },
+        "track": { "type": "string", "const": "ddb__track" },
+        "fill": { "type": "string", "const": "ddb__fill" },
+        "trail": { "type": "string", "const": "ddb__trail" },
+        "damage": { "type": "string", "const": "ddb__btn--damage" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "delayed-damage-bar",
+      "values": {
+        "max": 200,
+        "start": 164,
+        "end": 96,
+        "startPercent": 82,
+        "endPercent": 48,
+        "lowThresholdPercent": 50
+      },
+      "animation": {
+        "primaryMs": 180,
+        "trailHoldMs": 320,
+        "trailDrainMs": 420,
+        "impactMs": 100,
+        "deltaMs": 500,
+        "numericRollMs": 80,
+        "totalMs": 920
+      }
+    }
+  ]
+}
