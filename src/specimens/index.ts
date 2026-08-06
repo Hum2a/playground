@@ -290,6 +290,7 @@ import { notificationSwipeDismiss } from './notification-swipe-dismiss/entry'
 import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
 import { objectiveChainAdvance } from './objective-chain-advance/entry'
+import { objectiveStepAdvance } from './objective-step-advance/entry'
 import { objectiveUpdateSlash } from './objective-update-slash/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
 import { oversizedRankNumeral } from './oversized-rank-numeral/entry'
@@ -791,6 +792,7 @@ export const specimens: Specimen[] = [
   nowPlayingExpansion,
   objectiveAcquired,
   objectiveChainAdvance,
+  objectiveStepAdvance,
   objectiveUpdateSlash,
   overchargeWarning,
   oversizedRankNumeral,

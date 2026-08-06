@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **12 / 216** complete.
+- Progress: **13 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 204 |
+| Done | 13 |
+| Open | 203 |
 
 ## Visual grammar
 
@@ -44,6 +44,7 @@
 | PS-067 | `SPX-3373` | `focus-halo-settle` | Focus Halo Settle |
 | PS-033 | `SPX-3339` | `activity-progress-fill` | Activity Progress Fill |
 | PS-034 | `SPX-3340` | `activity-complete-burst` | Activity Complete Burst |
+| PS-035 | `SPX-3341` | `objective-step-advance` | Objective Step Advance |
 
 ## Core first-wave
 
@@ -61,7 +62,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-067** · `SPX-3373` · **Focus Halo Settle** — remote-tv-focus-navigation
 - [x] **PS-033** · `SPX-3339` · **Activity Progress Fill** — activity-cards-progress
 - [x] **PS-034** · `SPX-3340` · **Activity Complete Burst** — activity-cards-progress
-- [ ] **PS-035** · `SPX-3341` · **Objective Step Advance** — activity-cards-progress
+- [x] **PS-035** · `SPX-3341` · **Objective Step Advance** — activity-cards-progress
 - [ ] **PS-038** · `SPX-3344` · **Activity Expand Details** — activity-cards-progress
 - [ ] **PS-073** · `SPX-3379` · **Media Card Focus Expand** — cards-media-tiles
 - [ ] **PS-074** · `SPX-3380` · **Card-to-Details Morph** — cards-media-tiles
@@ -149,7 +150,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 - [x] **PS-033** · `SPX-3339` · **Activity Progress Fill** — A card shows objective progress filling toward a fixed completion boundary.
 - [x] **PS-034** · `SPX-3340` · **Activity Complete Burst** — A completed activity receives a concise celebratory geometric burst.
-- [ ] **PS-035** · `SPX-3341` · **Objective Step Advance** — One completed step sends focus/progress into the next objective.
+- [x] **PS-035** · `SPX-3341` · **Objective Step Advance** — One completed step sends focus/progress into the next objective.
 - [ ] **PS-036** · `SPX-3342` · **Activity Time Estimate Tick** — Estimated time updates with a small finite numeric transition.
 - [ ] **PS-037** · `SPX-3343` · **Activity Pin** — A selected objective becomes persistently attached to a compact tracking surface.
 - [ ] **PS-038** · `SPX-3344` · **Activity Expand Details** — A compact objective card expands to expose tasks, rewards and actions.
