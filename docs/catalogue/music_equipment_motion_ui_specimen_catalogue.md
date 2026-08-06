@@ -264,7 +264,7 @@ specimens can feel tactile without needing sound.
 
 # 11. DJ Waveforms / Beatgrids
 
-- [ ] **MUSIC-089** · `SPX-3848` · ★★★★★ **Scrolling DJ Waveform** — A detailed abstract waveform
+- [x] **MUSIC-089** · `SPX-3848` · ★★★★★ **Scrolling DJ Waveform** — A detailed abstract waveform
     moves beneath a fixed central playhead.
 - [ ] **MUSIC-090** · `SPX-3849` · ★★★★★ **Beatgrid Lock** — Misaligned beat markers slide until
     they snap onto waveform transients.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-089 | SPX-3848 | `scrolling-dj-waveform` | Scrolling DJ Waveform |
 | MUSIC-087 | SPX-3846 | `crossfader-blend` | Crossfader Blend |
 | MUSIC-086 | SPX-3845 | `deck-sync-lock` | Deck Sync Lock |
 | MUSIC-085 | SPX-3844 | `scratch-recoil` | Scratch Recoil |
@@ -887,12 +888,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **24 / 310** complete.
+- Progress: **25 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 286 |
+| Done | 25 |
+| Open | 285 |
 
 ## Core first-wave / build queue
 
@@ -922,7 +923,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · `scratch-recoil`
 - [x] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · `deck-sync-lock`
 - [x] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · `crossfader-blend`
-- [ ] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · scaffold `scrolling-dj-waveform`
+- [x] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · `scrolling-dj-waveform`
 - [ ] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · scaffold `beatgrid-lock`
 - [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`
 - [x] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · `patch-cable-connect`

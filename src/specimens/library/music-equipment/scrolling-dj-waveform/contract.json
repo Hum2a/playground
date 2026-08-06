@@ -1,0 +1,8 @@
+{
+  "name": "scrolling-dj-waveform",
+  "ref": "SPX-3848",
+  "title": "Scrolling DJ Waveform",
+  "mode": "patch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
