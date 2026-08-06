@@ -554,4 +554,5 @@ export const specimenOrder: string[] = [
   'peak-hold-marker',
   'parametric-eq-node-drag',
   'eq-bypass-flatten',
+  'compressor-threshold-crush',
 ]

@@ -1,0 +1,8 @@
+{
+  "name": "compressor-threshold-crush",
+  "ref": "SPX-3795",
+  "title": "Compressor Threshold Crush",
+  "mode": "fader",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

@@ -127,7 +127,7 @@ specimens can feel tactile without needing sound.
 
 # 5. Compressors / Dynamics
 
-- [ ] **MUSIC-036** · `SPX-3795` · ★★★★★ **Compressor Threshold Crush** — Signal peaks visibly
+- [x] **MUSIC-036** · `SPX-3795` · ★★★★★ **Compressor Threshold Crush** — Signal peaks visibly
     compress after crossing a movable threshold.
 - [ ] **MUSIC-037** · `SPX-3796` · ★★★★☆ **Ratio Dial Snap** — A large rotary ratio control
     clicks between fixed compression ratios.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-036 | SPX-3795 | `compressor-threshold-crush` | Compressor Threshold Crush |
 | MUSIC-025 | SPX-3784 | `eq-bypass-flatten` | EQ Bypass Flatten |
 | MUSIC-019 | SPX-3778 | `parametric-eq-node-drag` | Parametric EQ Node Drag |
 | MUSIC-013 | SPX-3772 | `peak-hold-marker` | Peak Hold Marker |
@@ -870,12 +871,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **7 / 310** complete.
+- Progress: **8 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 303 |
+| Done | 8 |
+| Open | 302 |
 
 ## Core first-wave / build queue
 
@@ -889,7 +890,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · scaffold `spectrum-bar-dance`
 - [ ] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · scaffold `oscilloscope-trace`
 - [ ] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · scaffold `spectrogram-waterfall`
-- [ ] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · scaffold `compressor-threshold-crush`
+- [x] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · `compressor-threshold-crush`
 - [ ] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · scaffold `gain-reduction-slam`
 - [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
 - [ ] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · scaffold `stomp-switch-press`
