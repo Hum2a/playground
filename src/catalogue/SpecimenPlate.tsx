@@ -27,7 +27,11 @@ export function SpecimenPlate({ specimen }: SpecimenPlateProps) {
         </span>
       </header>
 
-      <div className="specimen-plate__preview">
+      <div
+        className="specimen-plate__preview"
+        tabIndex={0}
+        aria-label={`Preview: ${specimen.preview.label}`}
+      >
         {visible ? (
           <PreviewFrame
             html={specimen.files.html}

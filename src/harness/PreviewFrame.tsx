@@ -116,6 +116,7 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
             title={`Preview: ${label}`}
             sandbox="allow-scripts"
             loading="lazy"
+            tabIndex={-1}
             srcDoc={srcDoc}
             style={{
               width: frameWidth,
