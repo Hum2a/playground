@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"ErasureDelete",
+  "type":"object",
+  "required":["name","record","boundary","fragments","identity","final","reducedMotion"],
+  "properties":{
+    "name":{"const":"erasure-delete"},
+    "record":{"const":{"id":"RECORD // 028","sizePx":[280,170],"metadata":["STATUS ACTIVE","LINKS 14","VERSION 07"]}},
+    "boundary":{"const":{"direction":"bottom-right-to-top-left","angleDeg":-18,"thicknessPx":3,"durationMs":620,"mask":"stage-background-void"}},
+    "fragments":{"const":{"count":12,"distancePx":[18,42],"durationMs":[180,260],"deterministic":true}},
+    "identity":{"const":{"lastReadable":true,"holdMs":60}},
+    "final":{"const":{"status":"ERASED","largeCard":false}},
+    "reducedMotion":{"const":"Immediate Record 028 erased confirmation."}
+  }
+}
