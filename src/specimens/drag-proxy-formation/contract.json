@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/drag-proxy-formation.schema.json",
+  "title": "DragProxyFormation",
+  "description": "Portable contract for drag proxy condensation from source card to compact portable representation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "sourceCard",
+    "proxy",
+    "drag",
+    "drop",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "drag-proxy-formation" },
+    "intent": {
+      "type": "string",
+      "const": "When dragging a complex object, condense it into a portable representation rather than moving the entire original layout card."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceTitle", "pages", "charts", "updated", "dropZone"],
+      "properties": {
+        "sourceTitle": { "type": "string", "const": "REPORT // Q3" },
+        "pages": { "type": "string", "const": "18 PAGES" },
+        "charts": { "type": "string", "const": "4 CHARTS" },
+        "updated": { "type": "string", "const": "UPDATED 12:42" },
+        "dropZone": { "type": "string", "const": "ARCHIVE" }
+      }
+    },
+    "sourceCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "placeholderOnDrag"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 260 },
+        "heightPx": { "type": "number", "const": 150 },
+        "placeholderOnDrag": { "type": "boolean", "const": true }
+      }
+    },
+    "proxy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "formationMs", "pointerOffsetPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 116 },
+        "heightPx": { "type": "number", "const": 64 },
+        "formationMs": { "type": "number", "const": 140 },
+        "pointerOffsetPx": { "type": "number", "const": 8 }
+      }
+    },
+    "drag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["movementThresholdPx"],
+      "properties": {
+        "movementThresholdPx": { "type": "number", "const": 6 }
+      }
+    },
+    "drop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hitTest", "onValid", "onCancel"],
+      "properties": {
+        "hitTest": { "type": "string", "const": "proxy centre within drop bounds" },
+        "onValid": { "type": "string", "const": "absorption semantics" },
+        "onCancel": { "type": "string", "const": "proxy returns and merges with placeholder" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixedCompactProxy", "triggers"],
+      "properties": {
+        "fixedCompactProxy": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "sourceFocusable"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "sourceFocusable": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "drop", "proxy"],
+      "properties": {
+        "root": { "type": "string", "const": "dpf" },
+        "card": { "type": "string", "const": "dpf__card" },
+        "drop": { "type": "string", "const": "dpf__drop" },
+        "proxy": { "type": "string", "const": "dpf__proxy" }
+      }
+    }
+  }
+}

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 258** complete.
+- Progress: **17 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 242 |
+| Done | 17 |
+| Open | 241 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-152 | `SPX-1451` | `drag-proxy-formation` | Drag Proxy Formation |
 | IOS-145 | `SPX-1444` | `spotlight-materialise` | Spotlight Materialise |
 | IOS-113 | `SPX-1412` | `notification-stack-compression` | Notification Stack Compression |
 | IOS-100 | `SPX-1399` | `app-launch-expansion` | App Launch Expansion |
@@ -71,7 +72,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — notifications
 - [ ] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — face-id-authentication-inspired
 - [x] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — search
-- [ ] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
+- [x] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
 - [ ] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — drag-drop
 - [ ] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
 - [ ] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
@@ -282,7 +283,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 ## Drag & Drop
 
 - [ ] **IOS-151** · `SPX-1450` · **Drag Lift** — item separates from its source with scale/depth change before movement.
-- [ ] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — complex selected content condenses into a portable drag representation.
+- [x] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — complex selected content condenses into a portable drag representation.
 - [ ] **IOS-153** · `SPX-1452` · **Multi-Item Drag Stack** — additional selected items join the drag proxy as layered countable objects.
 - [ ] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — approaching a valid destination subtly pulls/reorients the proxy.
 - [ ] **IOS-155** · `SPX-1454` · **Drop Commit Absorption** — proxy is structurally absorbed into the destination rather than simply disappearing.

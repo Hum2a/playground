@@ -57,6 +57,7 @@ import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
+import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dualActivitySplit } from './dual-activity-split/entry'
 import { erasureDelete } from './erasure-delete/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
@@ -260,6 +261,7 @@ export const specimens: Specimen[] = [
   discoveryTearOpen,
   dockLaunchBounce,
   dockMagnification,
+  dragProxyFormation,
   dramaticObjectionError,
   dualActivitySplit,
   enemyScanReveal,
