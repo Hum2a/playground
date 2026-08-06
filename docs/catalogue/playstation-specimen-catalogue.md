@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **34 / 216** complete.
+- Progress: **35 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 34 |
-| Open | 182 |
+| Done | 35 |
+| Open | 181 |
 
 ## Visual grammar
 
@@ -66,6 +66,7 @@
 | PS-030 | `SPX-3336` | `quick-resume-snapshot` | Quick Resume Snapshot |
 | PS-031 | `SPX-3337` | `game-close-return` | Game Close Return |
 | PS-129 | `SPX-3435` | `rest-mode-dim` | Rest Mode Dim |
+| PS-130 | `SPX-3436` | `wake-from-rest` | Wake from Rest |
 
 ## Core first-wave
 
@@ -105,7 +106,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-030** · `SPX-3336` · **Quick Resume Snapshot** — game-launch-resume
 - [x] **PS-031** · `SPX-3337` · **Game Close Return** — game-launch-resume
 - [x] **PS-129** · `SPX-3435` · **Rest Mode Dim** — rest-mode-power-states
-- [ ] **PS-130** · `SPX-3436` · **Wake from Rest** — rest-mode-power-states
+- [x] **PS-130** · `SPX-3436` · **Wake from Rest** — rest-mode-power-states
 - [ ] **PS-135** · `SPX-3441` · **Network Lost Takeover** — network-connectivity
 - [ ] **PS-149** · `SPX-3455` · **Game Crash Recovery** — errors-recovery
 - [ ] **PS-102** · `SPX-3408` · **System Notification Slide** — notifications
@@ -305,7 +306,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 ## Rest Mode / Power States
 
 - [x] **PS-129** · `SPX-3435` · **Rest Mode Dim** — The interface gradually reduces luminance and activity into a sleeping state.
-- [ ] **PS-130** · `SPX-3436` · **Wake from Rest** — Previous state restores from darkness with focus intact.
+- [x] **PS-130** · `SPX-3436` · **Wake from Rest** — Previous state restores from darkness with focus intact.
 - [ ] **PS-131** · `SPX-3437` · **Power Menu Rise** — Power actions appear in a compact anchored strip.
 - [ ] **PS-132** · `SPX-3438` · **Shutdown Countdown** — A short finite countdown communicates imminent power-off.
 - [ ] **PS-133** · `SPX-3439` · **Controller Sleep** — Controller indicator dims separately from the main system.

@@ -460,6 +460,7 @@ import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { volumeSliderHud } from './volume-slider-hud/entry'
 import { vortexHoldToConfirm } from './vortex-hold-to-confirm/entry'
+import { wakeFromRest } from './wake-from-rest/entry'
 import { waterWavePageTransition } from './water-wave-page-transition/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { weakPointDetection } from './weak-point-detection/entry'
@@ -981,6 +982,7 @@ export const specimens: Specimen[] = [
   volumeBrightnessHud,
   volumeSliderHud,
   vortexHoldToConfirm,
+  wakeFromRest,
   waterWavePageTransition,
   waterlinePageWipe,
   weakPointDetection,
