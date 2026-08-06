@@ -1,0 +1,8 @@
+{
+  "name": "seat-count-tally",
+  "ref": "SPX-3631",
+  "title": "Seat Count Tally",
+  "mode": "paper",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

@@ -622,6 +622,8 @@ import { tickerPauseOnFocus } from './ticker-pause-on-focus/entry'
 
 import { electionNeedleSweep } from './election-needle-sweep/entry'
 
+import { seatCountTally } from './seat-count-tally/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1161,6 +1163,7 @@ export const specimens: Specimen[] = [
   liveBlogEntryInsert,
   tickerPauseOnFocus,
   electionNeedleSweep,
+  seatCountTally,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
