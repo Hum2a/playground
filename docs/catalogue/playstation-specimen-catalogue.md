@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **47 / 216** complete.
+- Progress: **48 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 47 |
-| Open | 169 |
+| Done | 48 |
+| Open | 168 |
 
 ## Visual grammar
 
@@ -79,6 +79,7 @@
 | PS-088 | `SPX-3394` | `library-grid-focus` | Library Grid Focus |
 | PS-096 | `SPX-3402` | `party-join-handoff` | Party Join Handoff |
 | PS-109 | `SPX-3415` | `controller-disconnected-alert` | Controller Disconnected Alert |
+| PS-157 | `SPX-3463` | `dwell-to-select-ring` | Dwell-to-Select Ring |
 
 ## Core first-wave
 
@@ -131,7 +132,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
 - [x] **PS-096** · `SPX-3402` · **Party Join Handoff** — friends-parties-social
 - [x] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — notifications
-- [ ] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — psvr-spatial-ui
+- [x] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — psvr-spatial-ui
 - [ ] **PS-181** · `SPX-3487` · **Horizon-Style Focus Scan** — game-specific-system-like-inspirations
 - [ ] **PS-184** · `SPX-3490` · **Ratchet-Style Rift Transition** — game-specific-system-like-inspirations
 
@@ -357,7 +358,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 ## PSVR / Spatial UI
 
 - [ ] **PS-156** · `SPX-3462` · **Gaze Focus Acquire** — A spatial card gains focus after a short gaze dwell.
-- [ ] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — A radial timer fills around a target before activation.
+- [x] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — A radial timer fills around a target before activation.
 - [ ] **PS-158** · `SPX-3464` · **Depth Card Approach** — A selected card moves closer in depth while neighbours remain back.
 - [ ] **PS-159** · `SPX-3465` · **Spatial Menu Fan** — Options spread around a central gaze target.
 - [ ] **PS-160** · `SPX-3466` · **Recenter Confirmation** — A horizon/reticle recenters with a finite snap.

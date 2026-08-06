@@ -1,0 +1,17 @@
+{
+  "name": "dwell-to-select-ring",
+  "intent": "A radial timer fills around a target before activation.",
+  "primitives": [
+    "dwell",
+    "ring"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "timing": {
+    "dwellMs": 1800
+  }
+}

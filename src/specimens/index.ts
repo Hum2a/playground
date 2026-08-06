@@ -149,6 +149,7 @@ import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { dropTargetMagnetism } from './drop-target-magnetism/entry'
 import { dualActivitySplit } from './dual-activity-split/entry'
+import { dwellToSelectRing } from './dwell-to-select-ring/entry'
 import { earthWallBlocker } from './earth-wall-blocker/entry'
 import { elementMergeRecipe } from './element-merge-recipe/entry'
 import { emergencyScreenTakeover } from './emergency-screen-takeover/entry'
@@ -683,6 +684,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   dropTargetMagnetism,
   dualActivitySplit,
+  dwellToSelectRing,
   earthWallBlocker,
   elementMergeRecipe,
   emergencyScreenTakeover,
