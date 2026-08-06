@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/biometric-scan-acquisition.schema.json",
+  "title": "BiometricScanAcquisition",
+  "description": "Portable contract for abstract identity scan acquisition sequence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "field",
+    "scan",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "biometric-scan-acquisition" },
+    "intent": {
+      "type": "string",
+      "const": "Abstract biometric acquisition: 16 nodes, two scan passes, four brackets inward 6px, VERIFIED unlocks OPEN VAULT."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locked", "scanning", "verified", "action"],
+      "properties": {
+        "locked": { "type": "string", "const": "LOCKED" },
+        "scanning": { "type": "string", "const": "SCANNING" },
+        "verified": { "type": "string", "const": "VERIFIED" },
+        "action": { "type": "string", "const": "OPEN VAULT" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0c1018" },
+        "panel": { "type": "string", "const": "#151a24" },
+        "line": { "type": "string", "const": "#2a3342" },
+        "muted": { "type": "string", "const": "#6d7a8c" },
+        "cream": { "type": "string", "const": "#e4eaf2" },
+        "accent": { "type": "string", "const": "#5ec4a8" }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "nodeCount", "bracketInsetPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 180 },
+        "heightPx": { "type": "number", "const": 180 },
+        "nodeCount": { "type": "number", "const": 16 },
+        "bracketInsetPx": { "type": "number", "const": 6 }
+      }
+    },
+    "scan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passDurationMs", "passCount", "firstPassNodes", "validationHoldMs"],
+      "properties": {
+        "passDurationMs": { "type": "number", "const": 420 },
+        "passCount": { "type": "number", "const": 2 },
+        "firstPassNodes": { "type": "number", "const": 10 },
+        "validationHoldMs": { "type": "number", "const": 120 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantVerified", "triggers"],
+      "properties": {
+        "instantVerified": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "field", "node", "bracket"],
+      "properties": {
+        "root": { "type": "string", "const": "bsa" },
+        "field": { "type": "string", "const": "bsa__field" },
+        "node": { "type": "string", "const": "bsa__node" },
+        "bracket": { "type": "string", "const": "bsa__bracket" }
+      }
+    }
+  }
+}

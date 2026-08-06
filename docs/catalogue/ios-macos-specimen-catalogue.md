@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **33 / 258** complete.
+- Progress: **34 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 33 |
-| Open | 225 |
+| Done | 34 |
+| Open | 224 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-127 | `SPX-1426` | `biometric-scan-acquisition` | Biometric Scan Acquisition |
 | IOS-111 | `SPX-1410` | `notification-expand` | Notification Expand |
 | IOS-110 | `SPX-1409` | `notification-banner-drop` | Notification Banner Drop |
 | IOS-065 | `SPX-1364` | `spring-selection-pill` | Spring Selection Pill |
@@ -86,7 +87,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-093** · `SPX-1392` · **Context Menu Bloom** — context-menus-long-press-interaction
 - [x] **IOS-100** · `SPX-1399` · **App Launch Expansion** — home-screen-app-grid
 - [x] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — notifications
-- [ ] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — face-id-authentication-inspired
+- [x] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — face-id-authentication-inspired
 - [x] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — search
 - [x] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
 - [x] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — drag-drop
@@ -265,7 +266,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Face ID / Authentication Inspired
 
-- [ ] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — abstract identity field searches, acquires and validates a user-presence target.
+- [x] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — abstract identity field searches, acquires and validates a user-presence target.
 - [ ] **IOS-128** · `SPX-1427` · **Authentication Success Morph** — scanning geometry resolves into an unlocked state.
 - [ ] **IOS-129** · `SPX-1428` · **Authentication Failure Reset** — acquisition fails, geometry rejects once, then resets to retry-ready state.
 - [ ] **IOS-130** · `SPX-1429` · **Passkey Handoff** — authentication request transfers from one device/context representation to another.

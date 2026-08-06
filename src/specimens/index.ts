@@ -5,6 +5,7 @@ import { airdropTransferArc } from './airdrop-transfer-arc/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
+import { biometricScanAcquisition } from './biometric-scan-acquisition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blinkSelection } from './blink-selection/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
@@ -224,6 +225,7 @@ export const specimens: Specimen[] = [
   appLaunchExpansion,
   azureShardTransition,
   badgeCaseInsert,
+  biometricScanAcquisition,
   blackoutLoader,
   blinkSelection,
   blueDoorDiscovery,
