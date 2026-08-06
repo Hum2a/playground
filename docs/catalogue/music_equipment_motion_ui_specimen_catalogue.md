@@ -301,7 +301,7 @@ specimens can feel tactile without needing sound.
     bypassed module.
 - [ ] **MUSIC-104** · `SPX-3863` · ★★★★☆ **Cable Bundle Fan** — Overlapping patch cables separate
     temporarily for inspection.
-- [ ] **MUSIC-105** · `SPX-3864` · ★★★★★ **Feedback Loop Warning** — A newly created circular
+- [x] **MUSIC-105** · `SPX-3864` · ★★★★★ **Feedback Loop Warning** — A newly created circular
     route triggers a clear feedback warning state.
 
 ------------------------------------------------------------------------
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-105 | SPX-3864 | `feedback-loop-warning` | Feedback Loop Warning |
 | MUSIC-213 | SPX-3972 | `loop-record-ring` | Loop Record Ring |
 | MUSIC-050 | SPX-3809 | `tap-tempo-pulse` | Tap Tempo Pulse |
 | MUSIC-093 | SPX-3852 | `loop-region-clamp` | Loop Region Clamp |
@@ -892,12 +893,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **29 / 310** complete.
+- Progress: **30 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 281 |
+| Done | 30 |
+| Open | 280 |
 
 ## Core first-wave / build queue
 
@@ -932,7 +933,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · `loop-region-clamp`
 - [x] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · `patch-cable-connect`
 - [x] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · `signal-flow-pulse`
-- [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
+- [x] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · `feedback-loop-warning`
 - [x] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · `envelope-generator-cycle`
 - [x] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · `clock-divider-cascade`
 - [ ] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · scaffold `rack-unit-power-on`

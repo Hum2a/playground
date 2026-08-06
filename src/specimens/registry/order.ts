@@ -576,4 +576,5 @@ export const specimenOrder: string[] = [
   'loop-region-clamp',
   'tap-tempo-pulse',
   'loop-record-ring',
+  'feedback-loop-warning',
 ]

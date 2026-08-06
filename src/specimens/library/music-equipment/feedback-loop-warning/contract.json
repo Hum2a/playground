@@ -1,0 +1,8 @@
+{
+  "name": "feedback-loop-warning",
+  "ref": "SPX-3864",
+  "title": "Feedback Loop Warning",
+  "mode": "meter",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
