@@ -135,6 +135,7 @@ import { multiItemDragStack } from './multi-item-drag-stack/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
+import { notificationShadePullDown } from './notification-shade-pull-down/entry'
 import { notificationStackCompression } from './notification-stack-compression/entry'
 import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
@@ -382,6 +383,7 @@ export const specimens: Specimen[] = [
   newspaperHeadlineDrop,
   notificationBannerDrop,
   notificationExpand,
+  notificationShadePullDown,
   notificationStackCompression,
   nowPlayingExpansion,
   objectiveAcquired,

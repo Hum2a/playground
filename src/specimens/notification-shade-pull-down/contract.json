@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/notification-shade-pull-down.schema.json",
+  "title": "NotificationShadePullDown",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "shade", "detents", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "notification-shade-pull-down" },
+    "intent": {
+      "type": "string",
+      "const": "Top-edge drag reveals notification shade with three detents."
+    },
+    "shade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxHeightPx", "grabZonePx"],
+      "properties": {
+        "maxHeightPx": { "type": "number", "const": 620 },
+        "grabZonePx": { "type": "number", "const": 32 }
+      }
+    },
+    "detents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["closedPx", "partialPx", "fullPx"],
+      "properties": {
+        "closedPx": { "type": "number", "const": 0 },
+        "partialPx": { "type": "number", "const": 260 },
+        "fullPx": { "type": "number", "const": 620 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSnap", "triggers"],
+      "properties": {
+        "instantSnap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "shade"],
+      "properties": {
+        "root": { "type": "string", "const": "nspd" },
+        "shade": { "type": "string", "const": "nspd__shade" }
+      }
+    }
+  }
+}

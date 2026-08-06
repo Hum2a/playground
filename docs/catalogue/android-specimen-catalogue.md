@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **11 / 417** complete.
+- Progress: **12 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 11 |
-| Open | 406 |
+| Done | 12 |
+| Open | 405 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-080 | `SPX-1637` | `notification-shade-pull-down` | Notification Shade Pull-Down |
 | AND-248 | `SPX-1805` | `recents-card-restore` | Recents Card Restore |
 | AND-245 | `SPX-1802` | `app-to-recents-shrink` | App-to-Recents Shrink |
 | AND-054 | `SPX-1611` | `home-swipe-up` | Home Swipe Up |
@@ -59,7 +60,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-054** · `SPX-1611` · **Home Swipe Up** — gesture-navigation
 - [x] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — android-recents-overview
 - [x] **AND-248** · `SPX-1805` · **Recents Card Restore** — android-recents-overview
-- [ ] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification-shade
+- [x] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification-shade
 - [ ] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — quick-settings
 - [ ] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — android-notifications
 - [ ] **AND-109** · `SPX-1666` · **Snackbar Rise** — toasts-snackbars-temporary-feedback
@@ -187,7 +188,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Notification Shade
 
-- [ ] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification surface follows direct downward gesture from top edge.
+- [x] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification surface follows direct downward gesture from top edge.
 - [ ] **AND-081** · `SPX-1638` · **Shade Partial-to-Full Expansion** — compact shade becomes fully expanded shade at a second detent.
 - [ ] **AND-082** · `SPX-1639` · **Shade Dismiss Upward** — shade follows upward gesture and returns to application.
 - [ ] **AND-083** · `SPX-1640` · **Notification Stack Expansion** — compressed notifications separate into readable cards.
