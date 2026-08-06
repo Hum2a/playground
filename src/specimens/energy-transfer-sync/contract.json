@@ -1,0 +1,84 @@
+{
+  "name": "energy-transfer-sync",
+  "intent": "READY source sends one angular blue energy packet along a three-segment path to an OUTDATED target; on arrival the target updates vertically and the link settles to SYNCED. Copy/sync — source unchanged.",
+  "colours": {
+    "nearBlack": "#020b15",
+    "deepBlue": "#07223b",
+    "blue": "#126b99",
+    "bright": "#43bce2",
+    "pale": "#d8f7ff",
+    "muted": "#647987"
+  },
+  "copy": {
+    "sourceRole": "SOURCE",
+    "sourceName": "ARCHIVE",
+    "sourceStatus": "READY",
+    "sourceVersion": "v1.4",
+    "targetRole": "TARGET",
+    "targetName": "PLAYGROUND",
+    "targetStatusInitial": "OUTDATED",
+    "targetVersionInitial": "v1.3",
+    "targetStatusFinal": "READY",
+    "targetVersionFinal": "v1.4",
+    "synced": "SYNCED",
+    "trigger": "SYNC",
+    "reset": "RESET",
+    "srIdle": "Archive ready. Playground outdated.",
+    "srSyncing": "Synchronising.",
+    "srDone": "Playground synchronised to version 1.4."
+  },
+  "path": {
+    "segmentCount": 3,
+    "baseThicknessPx": 2,
+    "syncedThicknessPx": 3,
+    "widthWide": "min(220px, 32vw)",
+    "offsetPathWide": "M 0 6 L 72 -6 L 148 16 L 220 6",
+    "offsetPathNarrow": "M 0 6 L 52 -4 L 108 14 L 160 6"
+  },
+  "packet": {
+    "count": 1,
+    "widthPx": 18,
+    "heightPx": 12,
+    "shape": "diamond-sliver"
+  },
+  "timing": {
+    "initiateMs": 140,
+    "travelMs": 480,
+    "arriveAtMs": 620,
+    "arriveMs": 160,
+    "swapMs": 200,
+    "syncedAtMs": 980,
+    "midPulseMs": 100,
+    "arrivalLineCount": 3,
+    "loops": false
+  },
+  "a11y": {
+    "pathDecorative": true,
+    "announcePacketPosition": false,
+    "announceCompletionOnce": true
+  },
+  "reducedMotion": {
+    "immediateSyncedState": true,
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ]
+  },
+  "constraints": {
+    "sourceUnchanged": true,
+    "copyNotMove": true,
+    "noChasingPackets": true,
+    "noSpinner": true,
+    "noCrossfadeStatus": true,
+    "noExternalAssets": true,
+    "noNetwork": true
+  },
+  "classNames": {
+    "root": "ets",
+    "source": "ets__card--source",
+    "target": "ets__card--target",
+    "link": "ets__link",
+    "packet": "ets__packet",
+    "synced": "ets__synced"
+  }
+}

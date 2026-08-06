@@ -1,0 +1,55 @@
+<div class="ets" data-energy-transfer data-phase="idle">
+  <div class="ets__row" data-ets-row>
+    <article class="ets__card ets__card--source" data-ets-source>
+      <p class="ets__role">SOURCE</p>
+      <h2 class="ets__name">ARCHIVE</h2>
+      <div class="ets__status-slot">
+        <p class="ets__status ets__status--ready" data-ets-source-status>READY</p>
+      </div>
+      <p class="ets__ver" data-ets-source-ver>v1.4</p>
+    </article>
+
+    <div class="ets__link" data-ets-link aria-hidden="true">
+      <span class="ets__seg ets__seg--1">
+        <span class="ets__trail ets__trail--1"></span>
+      </span>
+      <span class="ets__seg ets__seg--2">
+        <span class="ets__trail ets__trail--2"></span>
+      </span>
+      <span class="ets__seg ets__seg--3">
+        <span class="ets__trail ets__trail--3"></span>
+      </span>
+      <span class="ets__mid" data-ets-mid></span>
+      <span class="ets__packet" data-ets-packet>
+        <span class="ets__packet-back"></span>
+        <span class="ets__packet-core"></span>
+      </span>
+      <p class="ets__synced" data-ets-synced>SYNCED</p>
+    </div>
+
+    <article class="ets__card ets__card--target" data-ets-target>
+      <p class="ets__role">TARGET</p>
+      <h2 class="ets__name">PLAYGROUND</h2>
+      <div class="ets__status-slot" data-ets-status-slot>
+        <p class="ets__status ets__status--outdated" data-ets-old-status>OUTDATED</p>
+        <p class="ets__status ets__status--ready" data-ets-new-status>READY</p>
+      </div>
+      <div class="ets__ver-slot" data-ets-ver-slot>
+        <p class="ets__ver ets__ver--old" data-ets-old-ver>v1.3</p>
+        <p class="ets__ver ets__ver--new" data-ets-new-ver>v1.4</p>
+      </div>
+      <span class="ets__hit ets__hit--1" aria-hidden="true"></span>
+      <span class="ets__hit ets__hit--2" aria-hidden="true"></span>
+      <span class="ets__hit ets__hit--3" aria-hidden="true"></span>
+    </article>
+  </div>
+
+  <div class="ets__controls">
+    <button type="button" class="ets__sync" data-ets-sync>SYNC</button>
+    <button type="button" class="ets__reset" data-ets-reset>RESET</button>
+  </div>
+
+  <p class="ets__live" role="status" aria-live="polite" data-ets-live>
+    Archive ready. Playground outdated.
+  </p>
+</div>

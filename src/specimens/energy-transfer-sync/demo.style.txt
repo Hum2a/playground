@@ -1,0 +1,646 @@
+/* energy-transfer-sync — portable specimen styles. Do not restyle to host tokens. */
+
+.ets {
+  --ets-near-black: #020b15;
+  --ets-deep: #07223b;
+  --ets-blue: #126b99;
+  --ets-bright: #43bce2;
+  --ets-pale: #d8f7ff;
+  --ets-muted: #647987;
+  --ets-init-ms: 140ms;
+  --ets-travel-ms: 480ms;
+  --ets-arrive-ms: 160ms;
+  --ets-swap-ms: 200ms;
+  --ets-path-w: min(220px, 32vw);
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  padding: 0.75rem 0.6rem 2.7rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ets-pale);
+  background: transparent;
+}
+
+.ets *,
+.ets *::before,
+.ets *::after {
+  box-sizing: border-box;
+}
+
+.ets__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  min-height: 170px;
+}
+
+.ets__card {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(112px, 34vw, 140px);
+  padding: 0.75rem 0.7rem 0.8rem;
+  background: var(--ets-deep);
+  border: 2px solid var(--ets-blue);
+  clip-path: polygon(0% 4%, 96% 0%, 100% 96%, 4% 100%);
+}
+
+.ets__card--source {
+  border-color: var(--ets-bright);
+}
+
+.ets__card--target {
+  border-color: var(--ets-muted);
+}
+
+.ets__role {
+  margin: 0;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ets-muted);
+}
+
+.ets__name {
+  margin: 0.3rem 0 0;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ets-pale);
+}
+
+.ets__status-slot,
+.ets__ver-slot {
+  position: relative;
+  overflow: hidden;
+  height: 1.05em;
+  margin-top: 0.45rem;
+}
+
+.ets__ver-slot {
+  height: 0.95em;
+  margin-top: 0.25rem;
+}
+
+.ets__status,
+.ets__ver {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+.ets__status--ready {
+  color: var(--ets-bright);
+}
+
+.ets__status--outdated {
+  color: var(--ets-muted);
+}
+
+.ets__ver {
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: rgb(216 247 255 / 0.72);
+}
+
+.ets__card--source .ets__status,
+.ets__card--source .ets__ver {
+  position: relative;
+}
+
+/* Target dual layers for vertical swap */
+.ets__card--target .ets__status--outdated,
+.ets__card--target .ets__ver--old {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.ets__card--target .ets__status--ready,
+.ets__card--target .ets__ver--new {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform: translateY(110%);
+}
+
+.ets[data-phase='idle'] .ets__card--target .ets__status--ready,
+.ets[data-phase='idle'] .ets__card--target .ets__ver--new,
+.ets[data-phase='initiate'] .ets__card--target .ets__status--ready,
+.ets[data-phase='initiate'] .ets__card--target .ets__ver--new,
+.ets[data-phase='transfer'] .ets__card--target .ets__status--ready,
+.ets[data-phase='transfer'] .ets__card--target .ets__ver--new {
+  visibility: hidden;
+}
+
+.ets[data-phase='synced'] .ets__card--target,
+.ets[data-phase='arrive'] .ets__card--target,
+.ets[data-phase='settle'] .ets__card--target {
+  border-color: var(--ets-bright);
+}
+
+.ets[data-phase='synced'] .ets__card--target .ets__status--outdated,
+.ets[data-phase='synced'] .ets__card--target .ets__ver--old {
+  transform: translateY(-110%);
+  visibility: hidden;
+}
+
+.ets[data-phase='synced'] .ets__card--target .ets__status--ready,
+.ets[data-phase='synced'] .ets__card--target .ets__ver--new {
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Connection — 3 angular segments */
+
+.ets__link {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--ets-path-w);
+  height: 56px;
+  margin: 0 0.15rem;
+}
+
+.ets__seg {
+  position: absolute;
+  height: 2px;
+  background: var(--ets-blue);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+.ets__seg--1 {
+  left: 0;
+  top: 28px;
+  width: 38%;
+  transform: rotate(-12deg);
+}
+
+.ets__seg--2 {
+  left: 34%;
+  top: 18px;
+  width: 36%;
+  transform: rotate(18deg);
+}
+
+.ets__seg--3 {
+  left: 64%;
+  top: 30px;
+  width: 36%;
+  transform: rotate(-10deg);
+}
+
+.ets__trail {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--ets-bright);
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0.95;
+}
+
+.ets__mid {
+  position: absolute;
+  left: 48%;
+  top: 22px;
+  width: 8px;
+  height: 8px;
+  margin-left: -4px;
+  background: var(--ets-blue);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.7;
+}
+
+.ets__packet {
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 18px;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -9px;
+  visibility: hidden;
+  opacity: 0;
+  offset-path: path('M 0 6 L 72 -6 L 148 16 L 220 6');
+  offset-distance: 0%;
+  offset-rotate: auto;
+  offset-anchor: center;
+}
+
+.ets__packet-back,
+.ets__packet-core {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.ets__packet-back {
+  background: var(--ets-deep);
+  transform: translate(2px, 2px);
+}
+
+.ets__packet-core {
+  background: var(--ets-pale);
+  border: 1px solid var(--ets-bright);
+}
+
+.ets__synced {
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  margin: 0;
+  padding: 0.12rem 0.3rem;
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ets-near-black);
+  background: var(--ets-bright);
+  transform: translateX(-50%) translateY(6px);
+  opacity: 0;
+  clip-path: polygon(4% 0%, 100% 8%, 96% 100%, 0% 92%);
+}
+
+/* Arrival hit lines on target */
+
+.ets__hit {
+  position: absolute;
+  left: -6px;
+  width: 14px;
+  height: 2px;
+  background: var(--ets-bright);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ets__hit--1 {
+  top: 28%;
+  transform: rotate(-28deg);
+}
+.ets__hit--2 {
+  top: 48%;
+  transform: rotate(8deg);
+}
+.ets__hit--3 {
+  top: 68%;
+  transform: rotate(-12deg);
+}
+
+/* ---- Phases ---- */
+
+.ets[data-phase='initiate'] .ets__card--source {
+  animation: ets-compress var(--ets-init-ms) ease-out both;
+}
+
+.ets[data-phase='initiate'] .ets__trail--1 {
+  animation: ets-trail-partial var(--ets-init-ms) ease-out both;
+}
+
+.ets[data-phase='transfer'] .ets__packet {
+  visibility: visible;
+  opacity: 1;
+  animation: ets-travel var(--ets-travel-ms) linear both;
+}
+
+.ets[data-phase='transfer'] .ets__trail--1 {
+  animation: ets-trail-full 160ms linear both;
+}
+
+.ets[data-phase='transfer'] .ets__trail--2 {
+  animation: ets-trail-full 160ms linear 140ms both;
+}
+
+.ets[data-phase='transfer'] .ets__trail--3 {
+  animation: ets-trail-full 160ms linear 280ms both;
+}
+
+.ets[data-phase='transfer'] .ets__mid {
+  animation: ets-mid-pulse 100ms ease-out 220ms both;
+}
+
+.ets[data-phase='transfer'] .ets__status--outdated {
+  animation: ets-anticipate 120ms ease-out 360ms both;
+}
+
+.ets[data-phase='arrive'] .ets__packet {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ets[data-phase='arrive'] .ets__card--target {
+  animation: ets-arrive-scale var(--ets-arrive-ms) ease-out both;
+}
+
+.ets[data-phase='arrive'] .ets__hit {
+  animation: ets-hit 140ms ease-out both;
+}
+
+.ets[data-phase='arrive'] .ets__hit--2 {
+  animation-delay: 20ms;
+}
+.ets[data-phase='arrive'] .ets__hit--3 {
+  animation-delay: 40ms;
+}
+
+.ets[data-phase='arrive'] .ets__trail {
+  transform: scaleX(1);
+}
+
+.ets[data-phase='settle'] .ets__status--outdated,
+.ets[data-phase='settle'] .ets__ver--old {
+  visibility: visible;
+  animation: ets-out-up var(--ets-swap-ms) ease-in both;
+}
+
+.ets[data-phase='settle'] .ets__status--ready,
+.ets[data-phase='settle'] .ets__ver--new {
+  visibility: visible;
+  animation: ets-in-up var(--ets-swap-ms) ease-out both;
+}
+
+.ets[data-phase='settle'] .ets__seg {
+  height: 3px;
+  background: var(--ets-bright);
+  transition: height 160ms ease-out, background 160ms ease-out;
+}
+
+.ets[data-phase='settle'] .ets__trail {
+  opacity: 0;
+}
+
+.ets[data-phase='settle'] .ets__synced,
+.ets[data-phase='synced'] .ets__synced {
+  animation: ets-synced-in 160ms ease-out 80ms both;
+}
+
+.ets[data-phase='synced'] .ets__seg {
+  height: 3px;
+  background: var(--ets-bright);
+}
+
+.ets[data-phase='synced'] .ets__synced {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.ets[data-phase='synced'] .ets__trail {
+  transform: scaleX(0);
+  opacity: 0;
+}
+
+.ets[data-phase='synced'] .ets__packet {
+  visibility: hidden;
+}
+
+@keyframes ets-compress {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ets-trail-partial {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(0.25);
+  }
+}
+
+@keyframes ets-trail-full {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ets-travel {
+  from {
+    offset-distance: 0%;
+    opacity: 1;
+  }
+  to {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes ets-mid-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+    background: var(--ets-pale);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ets-anticipate {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes ets-arrive-scale {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ets-hit {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1.2);
+  }
+}
+
+@keyframes ets-out-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-110%);
+  }
+}
+
+@keyframes ets-in-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ets-synced-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Controls */
+
+.ets__controls {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.4rem;
+  z-index: 6;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.ets__sync,
+.ets__reset {
+  margin: 0;
+  padding: 0.3rem 0.55rem;
+  border: 2px solid var(--ets-near-black);
+  border-radius: 0;
+  font: 800 0.58rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ets__sync {
+  background: var(--ets-bright);
+  color: var(--ets-near-black);
+}
+
+.ets__reset {
+  background: transparent;
+  color: #c5d4de;
+  border-color: #c5d4de;
+}
+
+.ets__sync:focus-visible,
+.ets__reset:focus-visible {
+  outline: 2px solid var(--ets-bright);
+  outline-offset: 2px;
+}
+
+.ets__sync:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ets__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .ets[data-phase='initiate'] .ets__card--source,
+  .ets[data-phase='initiate'] .ets__trail--1,
+  .ets[data-phase='transfer'] .ets__packet,
+  .ets[data-phase='transfer'] .ets__trail,
+  .ets[data-phase='transfer'] .ets__mid,
+  .ets[data-phase='transfer'] .ets__status--outdated,
+  .ets[data-phase='arrive'] .ets__card--target,
+  .ets[data-phase='arrive'] .ets__hit,
+  .ets[data-phase='settle'] .ets__status,
+  .ets[data-phase='settle'] .ets__ver,
+  .ets[data-phase='settle'] .ets__synced {
+    animation: none !important;
+  }
+
+  .ets[data-phase='initiate'] .ets__packet,
+  .ets[data-phase='transfer'] .ets__packet,
+  .ets[data-phase='arrive'] .ets__packet {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .ets[data-phase='initiate'] .ets__card--source,
+[data-force-reduced-motion='true'] .ets[data-phase='initiate'] .ets__trail--1,
+[data-force-reduced-motion='true'] .ets[data-phase='transfer'] .ets__packet,
+[data-force-reduced-motion='true'] .ets[data-phase='transfer'] .ets__trail,
+[data-force-reduced-motion='true'] .ets[data-phase='transfer'] .ets__mid,
+[data-force-reduced-motion='true'] .ets[data-phase='transfer'] .ets__status--outdated,
+[data-force-reduced-motion='true'] .ets[data-phase='arrive'] .ets__card--target,
+[data-force-reduced-motion='true'] .ets[data-phase='arrive'] .ets__hit,
+[data-force-reduced-motion='true'] .ets[data-phase='settle'] .ets__status,
+[data-force-reduced-motion='true'] .ets[data-phase='settle'] .ets__ver,
+[data-force-reduced-motion='true'] .ets[data-phase='settle'] .ets__synced {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .ets[data-phase='initiate'] .ets__packet,
+[data-force-reduced-motion='true'] .ets[data-phase='transfer'] .ets__packet,
+[data-force-reduced-motion='true'] .ets[data-phase='arrive'] .ets__packet {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (max-width: 360px) {
+  .ets {
+    --ets-path-w: min(160px, 28vw);
+    padding: 0.55rem 0.4rem 2.5rem;
+  }
+
+  .ets__card {
+    width: clamp(100px, 32vw, 120px);
+    padding: 0.6rem 0.5rem 0.65rem;
+  }
+
+  .ets__name {
+    font-size: 0.68rem;
+  }
+
+  .ets__packet {
+    offset-path: path('M 0 6 L 52 -4 L 108 14 L 160 6');
+  }
+}
