@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/permission-prompt-materialise.schema.json",
+  "title": "PermissionPromptMaterialise",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "dialog", "scrim", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "permission-prompt-materialise" },
+    "dialog": {
+      "type": "object",
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 320 },
+        "heightPx": { "type": "number", "const": 250 }
+      }
+    },
+    "scrim": {
+      "type": "object",
+      "required": ["opacity"],
+      "properties": {
+        "opacity": { "type": "number", "const": 0.28 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["materialiseMs"],
+      "properties": {
+        "materialiseMs": { "type": "number", "const": 220 }
+      }
+    }
+  }
+}

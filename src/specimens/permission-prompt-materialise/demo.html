@@ -1,0 +1,30 @@
+<div class="ppm" data-permission-prompt-materialise data-phase="idle">
+  <div class="ppm__app">
+    <div class="ppm__feature" data-ppm-feature>
+      <span class="ppm__feature-icon" aria-hidden="true"></span>
+      <div>
+        <p class="ppm__feature-title">Voice notes</p>
+        <p class="ppm__feature-state" data-ppm-feature-state>Disabled</p>
+      </div>
+      <button type="button" class="ppm__use-btn" data-ppm-trigger>Use microphone</button>
+    </div>
+  </div>
+
+  <div class="ppm__scrim" data-ppm-scrim hidden aria-hidden="true"></div>
+  <dialog class="ppm__dialog" data-ppm-dialog aria-labelledby="ppm-title" aria-describedby="ppm-desc">
+    <div class="ppm__glyph" aria-hidden="true"></div>
+    <h2 id="ppm-title" class="ppm__title">Allow microphone?</h2>
+    <p id="ppm-desc" class="ppm__desc">Record short voice notes in this app.</p>
+    <div class="ppm__actions">
+      <button type="button" class="ppm__action ppm__action--grant" data-ppm-while>While using</button>
+      <button type="button" class="ppm__action" data-ppm-once>Only this time</button>
+      <button type="button" class="ppm__action ppm__action--deny" data-ppm-deny>Don't allow</button>
+    </div>
+  </dialog>
+
+  <div class="ppm__snackbar" data-ppm-snackbar hidden role="status" aria-live="polite">
+    Microphone permission denied.
+  </div>
+
+  <p class="ppm__status" role="status" aria-live="polite" data-ppm-status>Tap Use microphone to open prompt.</p>
+</div>

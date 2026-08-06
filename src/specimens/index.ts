@@ -161,6 +161,7 @@ import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
+import { permissionPromptMaterialise } from './permission-prompt-materialise/entry'
 import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { pictureInPictureCollapse } from './picture-in-picture-collapse/entry'
@@ -441,6 +442,7 @@ export const specimens: Specimen[] = [
   panelExplosionReveal,
   paperRipUnlock,
   paperStackShuffle,
+  permissionPromptMaterialise,
   permissionRejection,
   personaAwakeningReveal,
   pictureInPictureCollapse,
