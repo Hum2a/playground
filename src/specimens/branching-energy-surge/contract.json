@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/branching-energy-surge.schema.json",
+  "title": "BranchingEnergySurge",
+  "description": "Portable contract for corner-branch energy convergence. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "phases",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "branching-energy-surge" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Angular branches from four corners converge on a central action node."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["activate", "standby", "surge", "ready"],
+      "properties": {
+        "activate": { "type": "string", "const": "ACTIVATE" },
+        "standby": { "type": "string", "const": "STANDBY" },
+        "surge": { "type": "string", "const": "SURGE" },
+        "ready": { "type": "string", "const": "READY" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "accent"],
+      "properties": {
+        "primary": { "type": "string", "const": "#38A3FF" },
+        "ink": { "type": "string", "const": "#101820" },
+        "paper": { "type": "string", "const": "#F4F7FA" },
+        "accent": { "type": "string", "const": "#FF4D35" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["branchMs", "coreMs", "flashMs", "totalMs"],
+      "properties": {
+        "branchMs": { "type": "number", "const": 520 },
+        "coreMs": { "type": "number", "const": 740 },
+        "flashMs": { "type": "number", "const": 280 },
+        "totalMs": { "type": "number", "const": 900 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantReady", "triggers"],
+      "properties": {
+        "instantReady": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "branch", "core", "trigger"],
+      "properties": {
+        "root": { "type": "string", "const": "bes" },
+        "branch": { "type": "string", "const": "bes__branch" },
+        "core": { "type": "string", "const": "bes__core" },
+        "trigger": { "type": "string", "const": "bes__trigger" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "branchingEnergySurge" }
+      }
+    }
+  }
+}

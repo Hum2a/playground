@@ -22,6 +22,7 @@ import { blueFocusBrackets } from './blue-focus-brackets/entry'
 import { bottomSheetDetentSnap } from './bottom-sheet-detent-snap/entry'
 import { boundedTouchRipple } from './bounded-touch-ripple/entry'
 import { branchEvolutionChoice } from './branch-evolution-choice/entry'
+import { branchingEnergySurge } from './branching-energy-surge/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { buttonLoadingMorph } from './button-loading-morph/entry'
@@ -318,6 +319,7 @@ export const specimens: Specimen[] = [
   bottomSheetDetentSnap,
   boundedTouchRipple,
   branchEvolutionChoice,
+  branchingEnergySurge,
   butterflyEntry,
   butterflySuccessState,
   buttonLoadingMorph,

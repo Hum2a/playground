@@ -1,0 +1,237 @@
+/* SPX-2008 Branching Energy Surge — portable specimen. Do not restyle to host tokens. */
+
+.bes {
+  --bes-primary: #38a3ff;
+  --bes-ink: #101820;
+  --bes-paper: #f4f7fa;
+  --bes-accent: #ff4d35;
+  --bes-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1rem;
+  background: var(--bes-ink);
+  color: var(--bes-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.bes *,
+.bes *::before,
+.bes *::after {
+  box-sizing: border-box;
+}
+
+.bes__surface {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bes__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.bes__branch {
+  fill: none;
+  stroke: var(--bes-primary);
+  stroke-width: 3;
+  stroke-linecap: square;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0.35;
+}
+
+.bes__core {
+  fill: var(--bes-ink);
+  stroke: var(--bes-primary);
+  stroke-width: 3;
+  opacity: 0;
+  transform-origin: 180px 160px;
+}
+
+.bes__flash {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  margin: -60px;
+  background: var(--bes-primary);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.bes__trigger {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0.65rem 1.4rem;
+  border: 3px solid var(--bes-paper);
+  background: var(--bes-ink);
+  color: var(--bes-paper);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(4% 0%, 100% 6%, 96% 100%, 0% 94%);
+}
+
+.bes__trigger:focus-visible {
+  outline: 2px solid var(--bes-primary);
+  outline-offset: 3px;
+}
+
+.bes__label {
+  position: absolute;
+  bottom: 1.1rem;
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bes-primary);
+}
+
+.bes__status {
+  position: absolute;
+  bottom: 0.35rem;
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgb(244 247 250 / 0.65);
+}
+
+/* —— Surge choreography —— */
+.bes[data-phase="surge"] .bes__branch {
+  animation: bes-draw 520ms var(--bes-ease) forwards;
+  opacity: 1;
+}
+
+.bes[data-phase="surge"] .bes__branch--tr {
+  animation-delay: 60ms;
+}
+
+.bes[data-phase="surge"] .bes__branch--bl {
+  animation-delay: 120ms;
+}
+
+.bes[data-phase="surge"] .bes__branch--br {
+  animation-delay: 180ms;
+}
+
+.bes[data-phase="surge"] .bes__core {
+  animation: bes-core 740ms var(--bes-ease) forwards;
+}
+
+.bes[data-phase="surge"] .bes__flash {
+  animation: bes-flash 280ms ease-out 520ms forwards;
+}
+
+.bes[data-phase="ready"] .bes__branch {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.bes[data-phase="ready"] .bes__core {
+  opacity: 1;
+  fill: var(--bes-primary);
+  transform: scale(1);
+}
+
+.bes[data-phase="ready"] .bes__label {
+  color: var(--bes-accent);
+}
+
+@keyframes bes-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bes-core {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.35);
+    fill: var(--bes-accent);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    fill: var(--bes-primary);
+  }
+}
+
+@keyframes bes-flash {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .bes[data-phase="surge"] .bes__branch,
+  .bes[data-phase="surge"] .bes__core,
+  .bes[data-phase="surge"] .bes__flash {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .bes[data-phase="surge"] .bes__branch,
+[data-force-reduced-motion="true"] .bes[data-phase="surge"] .bes__core,
+[data-force-reduced-motion="true"] .bes[data-phase="surge"] .bes__flash {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bes[data-phase="ready"] .bes__branch,
+  .bes[data-phase="surge"] .bes__branch {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .bes[data-phase="ready"] .bes__core,
+  .bes[data-phase="surge"] .bes__core {
+    opacity: 1;
+    fill: var(--bes-primary);
+    transform: scale(1);
+  }
+
+  .bes[data-phase="surge"] .bes__flash {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion="true"] .bes[data-phase="ready"] .bes__branch,
+[data-force-reduced-motion="true"] .bes[data-phase="surge"] .bes__branch {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+[data-force-reduced-motion="true"] .bes[data-phase="ready"] .bes__core,
+[data-force-reduced-motion="true"] .bes[data-phase="surge"] .bes__core {
+  opacity: 1;
+  fill: var(--bes-primary);
+  transform: scale(1);
+}
+
+[data-force-reduced-motion="true"] .bes[data-phase="surge"] .bes__flash {
+  opacity: 0;
+}
