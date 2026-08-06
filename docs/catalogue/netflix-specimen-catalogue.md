@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 197** complete.
+- Progress: **10 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 188 |
+| Done | 10 |
+| Open | 187 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-075 | `SPX-3184` | `next-episode-countdown` | Next Episode Countdown |
 | NF-069 | `SPX-3178` | `skip-intro-appear` | Skip Intro Appear |
 | NF-061 | `SPX-3170` | `scrub-preview-thumbnail` | Scrub Preview Thumbnail |
 | NF-052 | `SPX-3161` | `playback-controls-fade-in` | Playback Controls Fade-In |
@@ -59,7 +60,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — `playback-controls-fade-in`
 - [x] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — `scrub-preview-thumbnail`
 - [x] **NF-069** · `SPX-3178` · **Skip Intro Appear** — `skip-intro-appear`
-- [ ] **NF-075** · `SPX-3184` · **Next Episode Countdown** — `next-episode-countdown`
+- [x] **NF-075** · `SPX-3184` · **Next Episode Countdown** — `next-episode-countdown`
 
 ### Wave B — Browse / discovery
 
@@ -207,7 +208,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [ ] **NF-074** · `SPX-3183` · **Context Action Focus** — Keyboard focus preserves a contextual action that would otherwise time out
 ## 10. Episode / Next-Up
 
-- [ ] **NF-075** · `SPX-3184` · **Next Episode Countdown** — A compact next-up card includes a visible finite countdown to automatic continuation
+- [x] **NF-075** · `SPX-3184` · **Next Episode Countdown** — A compact next-up card includes a visible finite countdown to automatic continuation
 - [ ] **NF-076** · `SPX-3185` · **Next-Up Cancel** — User interaction cancels the countdown and restores the current end-state
 - [ ] **NF-077** · `SPX-3186` · **Episode Card Progress** — Each episode card carries its own watched-progress indicator
 - [ ] **NF-078** · `SPX-3187` · **Episode Select Handoff** — Selecting another episode transforms the current card into loading/playback state

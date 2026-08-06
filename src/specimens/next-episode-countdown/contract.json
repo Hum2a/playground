@@ -1,0 +1,12 @@
+{
+  "name": "next-episode-countdown",
+  "intent": "A timed next-episode handoff counts down then advances; CANCEL keeps the current end card.",
+  "ref": "SPX-3184",
+  "nf": "NF-075",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}
