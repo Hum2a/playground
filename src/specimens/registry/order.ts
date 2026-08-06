@@ -563,4 +563,5 @@ export const specimenOrder: string[] = [
   'swing-offset',
   'velocity-pad-hit',
   'sample-slice-markers',
+  'envelope-generator-cycle',
 ]

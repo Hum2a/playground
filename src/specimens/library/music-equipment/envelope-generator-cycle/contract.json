@@ -1,0 +1,8 @@
+{
+  "name": "envelope-generator-cycle",
+  "ref": "SPX-3865",
+  "title": "Envelope Generator Cycle",
+  "mode": "scope",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

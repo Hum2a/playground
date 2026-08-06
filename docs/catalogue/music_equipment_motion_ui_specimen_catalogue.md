@@ -308,7 +308,7 @@ specimens can feel tactile without needing sound.
 
 # 13. Modular Synth / CV
 
-- [ ] **MUSIC-106** · `SPX-3865` · ★★★★★ **Envelope Generator Cycle** — Attack, decay, sustain
+- [x] **MUSIC-106** · `SPX-3865` · ★★★★★ **Envelope Generator Cycle** — Attack, decay, sustain
     and release stages draw through a compact envelope graph.
 - [ ] **MUSIC-107** · `SPX-3866` · ★★★★☆ **LFO Rate Pulse** — A modulation indicator oscillates
     at the selected rate and stops under reduced motion.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-106 | SPX-3865 | `envelope-generator-cycle` | Envelope Generator Cycle |
 | MUSIC-073 | SPX-3832 | `sample-slice-markers` | Sample Slice Markers |
 | MUSIC-071 | SPX-3830 | `velocity-pad-hit` | Velocity Pad Hit |
 | MUSIC-066 | SPX-3825 | `swing-offset` | Swing Offset |
@@ -879,12 +880,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **16 / 310** complete.
+- Progress: **17 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 294 |
+| Done | 17 |
+| Open | 293 |
 
 ## Core first-wave / build queue
 
@@ -920,7 +921,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · scaffold `patch-cable-connect`
 - [ ] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · scaffold `signal-flow-pulse`
 - [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
-- [ ] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · scaffold `envelope-generator-cycle`
+- [x] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · `envelope-generator-cycle`
 - [ ] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · scaffold `clock-divider-cascade`
 - [ ] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · scaffold `rack-unit-power-on`
 - [ ] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · scaffold `reel-spin-up`
