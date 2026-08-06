@@ -93,6 +93,7 @@ import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
 import { crtPowerOnReveal } from './crt-power-on-reveal/entry'
 import { crystallisedSelection } from './crystallised-selection/entry'
+import { dangerMeterEscalation } from './danger-meter-escalation/entry'
 import { darkHourConversion } from './dark-hour-conversion/entry'
 import { darkHourConversionLoader } from './dark-hour-conversion-loader/entry'
 import { dayChangeTear } from './day-change-tear/entry'
@@ -524,6 +525,7 @@ export const specimens: Specimen[] = [
   crossOutStatusSwap,
   crtPowerOnReveal,
   crystallisedSelection,
+  dangerMeterEscalation,
   darkHourConversion,
   darkHourConversionLoader,
   dayChangeTear,

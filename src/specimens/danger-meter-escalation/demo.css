@@ -1,0 +1,29 @@
+/* SPX-3012 Danger Meter Escalation */
+.dme {
+  --dme-yellow: #F5C400; --dme-ink: #101010; --dme-paper: #F7F3E8; --dme-gray: #E8E8E8;
+  box-sizing: border-box; width: min(100%, 300px); padding: 0.85rem;
+  border: 3px solid var(--dme-yellow); background: var(--dme-ink); color: var(--dme-paper);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+.dme__header { display: flex; justify-content: space-between; margin-bottom: 0.65rem; }
+.dme__label { font-size: 0.58rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dme-yellow); }
+.dme__level { font-size: 0.72rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
+.dme__track { display: flex; flex-direction: column; gap: 0.35rem; }
+.dme__bar { height: 14px; background: var(--dme-gray); border: 2px solid var(--dme-paper); transform-origin: left; transform: scaleX(0); }
+.dme__bar--1 { animation: dme-fill-1 6s ease-out infinite; }
+.dme__bar--2 { animation: dme-fill-2 6s ease-out infinite; }
+.dme__bar--3 { animation: dme-fill-3 6s ease-out infinite; background: var(--dme-yellow); }
+.dme__stripe { margin-top: 0.65rem; height: 6px; background: repeating-linear-gradient(-45deg, var(--dme-ink) 0 6px, var(--dme-yellow) 6px 12px); opacity: 0; animation: dme-stripe 6s steps(1) infinite; }
+.dme__sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@keyframes dme-fill-1 { 0%,15% { transform: scaleX(0); } 20%,100% { transform: scaleX(1); } }
+@keyframes dme-fill-2 { 0%,35% { transform: scaleX(0); } 40%,100% { transform: scaleX(1); } }
+@keyframes dme-fill-3 { 0%,55% { transform: scaleX(0); } 60%,100% { transform: scaleX(1); } }
+@keyframes dme-stripe { 0%,55% { opacity: 0; } 60%,100% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .dme__bar { transform: scaleX(1); animation: none; }
+  .dme__bar--3 { background: var(--dme-yellow); }
+  .dme__stripe { opacity: 1; animation: none; }
+}
+[data-force-reduced-motion="true"] .dme__bar { transform: scaleX(1); animation: none; }
+[data-force-reduced-motion="true"] .dme__bar--3 { background: var(--dme-yellow); }
+[data-force-reduced-motion="true"] .dme__stripe { opacity: 1; animation: none; }

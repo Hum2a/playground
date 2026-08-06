@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "danger-meter-escalation",
+  "description": "Threat rises through discrete structural states as exploration continues.",
+  "type": "object",
+  "required": [
+    "name",
+    "intent",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "danger-meter-escalation"
+    },
+    "intent": {
+      "type": "string",
+      "const": "Threat rises through discrete structural states as exploration continues."
+    },
+    "colours": {
+      "type": "object",
+      "properties": {
+        "yellow": {
+          "const": "#F5C400"
+        },
+        "ink": {
+          "const": "#101010"
+        },
+        "paper": {
+          "const": "#F7F3E8"
+        },
+        "gray": {
+          "const": "#E8E8E8"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
