@@ -1,0 +1,91 @@
+/* quick-app-switch-swipe — portable specimen styles. Do not restyle to host tokens. */
+
+.qas {
+  --qas-ink: #17213a;
+  --qas-panel: #1a2030;
+  --qas-line: #2d3a52;
+  --qas-muted: #8a96ab;
+  box-sizing: border-box;
+  width: 390px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: #e8ecf2;
+}
+
+.qas *,
+.qas *::before,
+.qas *::after {
+  box-sizing: border-box;
+}
+
+.qas__viewport {
+  position: relative;
+  width: 390px;
+  height: 420px;
+  border: 1px solid var(--qas-line);
+  border-radius: 16px;
+  background: var(--qas-panel);
+  overflow: hidden;
+}
+
+.qas__task {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  will-change: transform;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.qas__task--a {
+  background: #252d42;
+  z-index: 2;
+}
+
+.qas__task--b {
+  background: #1e3a4a;
+  z-index: 1;
+}
+
+.qas__task-bar {
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.qas__task-body {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--qas-muted);
+  line-height: 1.45;
+}
+
+.qas__zone {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 32px;
+  z-index: 4;
+  touch-action: none;
+}
+
+.qas__status {
+  margin: 0.65rem 0 0;
+  font-size: 0.68rem;
+  color: var(--qas-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qas__task {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .qas__task {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}

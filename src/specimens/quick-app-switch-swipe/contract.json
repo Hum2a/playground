@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/quick-app-switch-swipe.schema.json",
+  "title": "QuickAppSwitchSwipe",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "gesture", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "quick-app-switch-swipe" },
+    "intent": {
+      "type": "string",
+      "const": "Switch between two task surfaces using a bottom-zone horizontal swipe with preview and velocity commit."
+    },
+    "gesture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["zoneHeightPx", "commitPx", "velocityThreshold", "maxDragPx"],
+      "properties": {
+        "zoneHeightPx": { "type": "number", "const": 32 },
+        "commitPx": { "type": "number", "const": 96 },
+        "velocityThreshold": { "type": "number", "const": 0.6 },
+        "maxDragPx": { "type": "number", "const": 72 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapOnRelease", "triggers"],
+      "properties": {
+        "snapOnRelease": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "task", "zone"],
+      "properties": {
+        "root": { "type": "string", "const": "qas" },
+        "task": { "type": "string", "const": "qas__task" },
+        "zone": { "type": "string", "const": "qas__zone" }
+      }
+    }
+  }
+}

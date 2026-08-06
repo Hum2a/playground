@@ -171,6 +171,7 @@ import { processingTimeSkip } from './processing-time-skip/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { propagatedShockwave } from './propagated-shockwave/entry'
 import { pullToRefresh } from './pull-to-refresh/entry'
+import { quickAppSwitchSwipe } from './quick-app-switch-swipe/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
 import { quickSettingsTileToggle } from './quick-settings-tile-toggle/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
@@ -437,6 +438,7 @@ export const specimens: Specimen[] = [
   progressMilestoneBreakthrough,
   propagatedShockwave,
   pullToRefresh,
+  quickAppSwitchSwipe,
   quickLookExpansion,
   quickSettingsTileToggle,
   radarPulseDiscovery,
