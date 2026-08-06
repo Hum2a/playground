@@ -33,6 +33,7 @@ import { compactActivityExpansion } from './compact-activity-expansion/entry'
 import { completionStrike } from './completion-strike/entry'
 import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { connectionSevered } from './connection-severed/entry'
+import { contextMenuBloom } from './context-menu-bloom/entry'
 import { contextualVanishReappear } from './contextual-vanish-reappear/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { coreSeedRegeneration } from './core-seed-regeneration/entry'
@@ -232,6 +233,7 @@ export const specimens: Specimen[] = [
   concentratedEnergyCharge,
   connectionSevered,
   contentDeclassification,
+  contextMenuBloom,
   contextualVanishReappear,
   coreSeedRegeneration,
   corruptedAccessLock,

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/context-menu-bloom.schema.json",
+  "title": "ContextMenuBloom",
+  "description": "Portable contract for anchored contextual menu bloom from a source file row.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "menu",
+    "sequence",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "context-menu-bloom" },
+    "intent": {
+      "type": "string",
+      "const": "Contextual menu constructs outward from FILE // NOTES.MD trailing anchor with four actions and dismiss collapse toward anchor."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "actions"],
+      "properties": {
+        "source": { "type": "string", "const": "FILE // NOTES.MD" },
+        "actions": {
+          "type": "array",
+          "const": ["OPEN", "RENAME", "DUPLICATE", "DELETE"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101218" },
+        "panel": { "type": "string", "const": "#1a1f28" },
+        "line": { "type": "string", "const": "#2d3542" },
+        "muted": { "type": "string", "const": "#7c8696" },
+        "cream": { "type": "string", "const": "#e9edf3" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "menu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "anchorPx", "offsetPx", "actionCount"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 188 },
+        "heightPx": { "type": "number", "const": 176 },
+        "anchorPx": { "type": "number", "const": 6 },
+        "offsetPx": { "type": "number", "const": 10 },
+        "actionCount": { "type": "number", "const": 4 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anchorMs", "expandMs", "rowStaggerMs", "dismissMs"],
+      "properties": {
+        "anchorMs": { "type": "number", "const": 60 },
+        "expandMs": { "type": "number", "const": 180 },
+        "rowStaggerMs": { "type": "number", "const": 35 },
+        "dismissMs": { "type": "number", "const": 150 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["escDismiss", "focusRestore", "politeStatus"],
+      "properties": {
+        "escDismiss": { "type": "boolean", "const": true },
+        "focusRestore": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateAtAnchor", "triggers"],
+      "properties": {
+        "immediateAtAnchor": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "source", "anchor", "menu", "item"],
+      "properties": {
+        "root": { "type": "string", "const": "cmb" },
+        "source": { "type": "string", "const": "cmb__row" },
+        "anchor": { "type": "string", "const": "cmb__anchor" },
+        "menu": { "type": "string", "const": "cmb__menu" },
+        "item": { "type": "string", "const": "cmb__item" }
+      }
+    }
+  }
+}
