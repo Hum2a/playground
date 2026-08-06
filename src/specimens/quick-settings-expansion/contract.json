@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/quick-settings-expansion.schema.json",
+  "title": "QuickSettingsExpansion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "compact", "expanded", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "quick-settings-expansion" },
+    "compact": {
+      "type": "object",
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "heightPx": { "type": "number", "const": 96 }
+      }
+    },
+    "expanded": {
+      "type": "object",
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "heightPx": { "type": "number", "const": 330 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["expandMs", "extraDelayMs"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 360 },
+        "extraDelayMs": { "type": "number", "const": 162 }
+      }
+    }
+  }
+}

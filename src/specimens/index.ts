@@ -183,6 +183,7 @@ import { propagatedShockwave } from './propagated-shockwave/entry'
 import { pullToRefresh } from './pull-to-refresh/entry'
 import { quickAppSwitchSwipe } from './quick-app-switch-swipe/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
+import { quickSettingsExpansion } from './quick-settings-expansion/entry'
 import { quickSettingsTileToggle } from './quick-settings-tile-toggle/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
@@ -465,6 +466,7 @@ export const specimens: Specimen[] = [
   pullToRefresh,
   quickAppSwitchSwipe,
   quickLookExpansion,
+  quickSettingsExpansion,
   quickSettingsTileToggle,
   radarPulseDiscovery,
   rankUpImpact,

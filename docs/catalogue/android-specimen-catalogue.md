@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **46 / 417** complete.
+- Progress: **47 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 46 |
-| Open | 371 |
+| Done | 47 |
+| Open | 370 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-091 | `SPX-1648` | `quick-settings-expansion` | Quick Settings Expansion |
 | AND-279 | `SPX-1836` | `keyboard-rise-content-avoidance` | Keyboard Rise & Content Avoidance |
 | AND-285 | `SPX-1842` | `permission-prompt-materialise` | Permission Prompt Materialise |
 | AND-297 | `SPX-1854` | `wi-fi-searching-to-connected-morph` | Wi-Fi Searching-to-Connected Morph |
@@ -236,7 +237,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Quick Settings
 
 - [x] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — tile changes state through ripple, icon treatment and persistent selected backing.
-- [ ] **AND-091** · `SPX-1648` · **Quick Settings Expansion** — compact tile row becomes a larger configurable grid.
+- [x] **AND-091** · `SPX-1648` · **Quick Settings Expansion** — compact tile row becomes a larger configurable grid.
 - [ ] **AND-092** · `SPX-1649` · **Quick Settings Tile Detail** — long press/secondary action expands tile into detailed controls.
 - [ ] **AND-093** · `SPX-1650` · **Brightness Slider Pickup** — thumb enlarges and value response appears during drag.
 - [ ] **AND-094** · `SPX-1651` · **Quick Settings Reorder** — tile drag creates a deterministic insertion gap.
