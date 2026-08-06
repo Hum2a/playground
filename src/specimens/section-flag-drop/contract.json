@@ -1,0 +1,8 @@
+{
+  "name": "section-flag-drop",
+  "ref": "SPX-3533",
+  "title": "Section Flag Drop",
+  "mode": "roll",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

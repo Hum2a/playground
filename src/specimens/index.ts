@@ -544,6 +544,8 @@ import { leadStoryPromotion } from './lead-story-promotion/entry'
 
 import { mastheadAssemble } from './masthead-assemble/entry'
 
+import { sectionFlagDrop } from './section-flag-drop/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1044,6 +1046,7 @@ export const specimens: Specimen[] = [
   lateEditionStamp,
   leadStoryPromotion,
   mastheadAssemble,
+  sectionFlagDrop,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
