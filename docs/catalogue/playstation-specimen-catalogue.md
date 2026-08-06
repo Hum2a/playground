@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **23 / 216** complete.
+- Progress: **24 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 23 |
-| Open | 193 |
+| Done | 24 |
+| Open | 192 |
 
 ## Visual grammar
 
@@ -55,6 +55,7 @@
 | PS-049 | `SPX-3355` | `download-progress-ring` | Download Progress Ring |
 | PS-050 | `SPX-3356` | `download-queue-advance` | Download Queue Advance |
 | PS-051 | `SPX-3357` | `install-phase-transition` | Install Phase Transition |
+| PS-053 | `SPX-3359` | `download-complete-morph` | Download Complete Morph |
 
 ## Core first-wave
 
@@ -83,7 +84,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-049** · `SPX-3355` · **Download Progress Ring** — downloads-installs-updates
 - [x] **PS-050** · `SPX-3356` · **Download Queue Advance** — downloads-installs-updates
 - [x] **PS-051** · `SPX-3357` · **Install Phase Transition** — downloads-installs-updates
-- [ ] **PS-053** · `SPX-3359` · **Download Complete Morph** — downloads-installs-updates
+- [x] **PS-053** · `SPX-3359` · **Download Complete Morph** — downloads-installs-updates
 - [ ] **PS-058** · `SPX-3364` · **Adaptive Trigger Meter** — dualsense-controller-feedback-visuals
 - [ ] **PS-059** · `SPX-3365` · **Haptic Pulse Visualizer** — dualsense-controller-feedback-visuals
 - [ ] **PS-063** · `SPX-3369` · **Trigger Breakpoint Confirm** — dualsense-controller-feedback-visuals
@@ -184,7 +185,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-050** · `SPX-3356` · **Download Queue Advance** — Completion hands active queue status to the next item.
 - [x] **PS-051** · `SPX-3357` · **Install Phase Transition** — Download progress converts into an installation phase without resetting context.
 - [ ] **PS-052** · `SPX-3358` · **Copying/Processing Progress** — A secondary processing state uses a distinct progress treatment.
-- [ ] **PS-053** · `SPX-3359` · **Download Complete Morph** — Progress control resolves into a ready/play state.
+- [x] **PS-053** · `SPX-3359` · **Download Complete Morph** — Progress control resolves into a ready/play state.
 - [ ] **PS-054** · `SPX-3360` · **Pause Download Toggle** — Active progress freezes into a paused state and resumes cleanly.
 - [ ] **PS-055** · `SPX-3361` · **Download Error Recovery** — Failed progress becomes retry state then returns to determinate progress.
 - [ ] **PS-056** · `SPX-3362` · **Update Available Badge** — A compact update marker appears without shifting card layout.
