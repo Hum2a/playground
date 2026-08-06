@@ -15,7 +15,7 @@ const scaffold = `
 
 export const crystallisedSelection: Specimen = {
   id: 'crystallised-selection',
-  ref: 'SPX-TODO',
+  ref: 'SPX-429',
   title: 'Crystallised selection',
   blurb:
     'Choosing an item assembles five translucent blue glass regions around it, crystallising the selection into a locked composition.',
