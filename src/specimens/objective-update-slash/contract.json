@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ObjectiveUpdateSlash",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "colours", "animation"],
+  "properties": {
+    "name": { "type": "string", "const": "objective-update-slash" },
+    "colours": {
+      "type": "object",
+      "properties": {
+        "primary": { "const": "#38A3FF" },
+        "ink": { "const": "#101820" },
+        "paper": { "const": "#F4F7FA" },
+        "accent": { "const": "#FF4D35" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "slashMs": { "const": 280 },
+        "snapMs": { "const": 220 },
+        "totalMs": { "const": 1150 }
+      }
+    }
+  }
+}

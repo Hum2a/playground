@@ -172,6 +172,7 @@ import { notificationStackExpansion } from './notification-stack-expansion/entry
 import { notificationSwipeDismiss } from './notification-swipe-dismiss/entry'
 import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
+import { objectiveUpdateSlash } from './objective-update-slash/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
 import { panelBreakTransition } from './panel-break-transition/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
@@ -485,6 +486,7 @@ export const specimens: Specimen[] = [
   notificationSwipeDismiss,
   nowPlayingExpansion,
   objectiveAcquired,
+  objectiveUpdateSlash,
   overchargeWarning,
   panelBreakTransition,
   panelCollapseNavigation,
