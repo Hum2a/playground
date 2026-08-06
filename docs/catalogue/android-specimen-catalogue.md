@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **17 / 417** complete.
+- Progress: **18 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 17 |
-| Open | 400 |
+| Done | 18 |
+| Open | 399 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-134 | `SPX-1691` | `active-bottom-nav-pill-transfer` | Active Bottom-Nav Pill Transfer |
 | AND-126 | `SPX-1683` | `navigation-drawer-edge-pull` | Navigation Drawer Edge Pull |
 | AND-118 | `SPX-1675` | `android-bottom-sheet-detent-snap` | Bottom Sheet Detent Snap |
 | AND-109 | `SPX-1666` | `snackbar-rise` | Snackbar Rise |
@@ -71,7 +72,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-109** · `SPX-1666` · **Snackbar Rise** — toasts-snackbars-temporary-feedback
 - [x] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — bottom-sheets
 - [x] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — navigation-drawer
-- [ ] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — bottom-navigation
+- [x] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — bottom-navigation
 - [ ] **AND-193** · `SPX-1750` · **Material Pull-to-Refresh** — pull-to-refresh-overscroll
 - [ ] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
 - [ ] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
@@ -265,7 +266,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Bottom Navigation
 
 - [ ] **AND-133** · `SPX-1690` · **Bottom Nav Selection Transfer** — selected state moves between destinations with icon/label hierarchy.
-- [ ] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — one backing pill moves continuously between navigation items.
+- [x] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — one backing pill moves continuously between navigation items.
 - [ ] **AND-135** · `SPX-1692` · **Destination Content Fade Through** — content changes using Material-style fade-through.
 - [ ] **AND-136** · `SPX-1693` · **Label Reveal on Selection** — active destination gains label while inactive destinations simplify.
 - [ ] **AND-137** · `SPX-1694` · **Bottom Nav Hide on Scroll** — bar retreats during downward content motion and returns upward.

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/active-bottom-nav-pill-transfer.schema.json",
+  "title": "ActiveBottomNavPillTransfer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "layout", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "active-bottom-nav-pill-transfer" },
+    "intent": {
+      "type": "string",
+      "const": "Single active pill transfers between four bottom-nav destinations with fade-through content."
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["navWidthPx", "navHeightPx", "pillWidthPx", "pillHeightPx", "itemCount"],
+      "properties": {
+        "navWidthPx": { "type": "number", "const": 360 },
+        "navHeightPx": { "type": "number", "const": 72 },
+        "pillWidthPx": { "type": "number", "const": 64 },
+        "pillHeightPx": { "type": "number", "const": 32 },
+        "itemCount": { "type": "number", "const": 4 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pillMs", "contentMs"],
+      "properties": {
+        "pillMs": { "type": "number", "const": 280 },
+        "contentMs": { "type": "number", "const": 240 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantPill", "instantContent", "triggers"],
+      "properties": {
+        "instantPill": { "type": "boolean", "const": true },
+        "instantContent": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "nav", "pill", "item"],
+      "properties": {
+        "root": { "type": "string", "const": "abnpt" },
+        "nav": { "type": "string", "const": "abnpt__nav" },
+        "pill": { "type": "string", "const": "abnpt__pill" },
+        "item": { "type": "string", "const": "abnpt__item" }
+      }
+    }
+  }
+}
