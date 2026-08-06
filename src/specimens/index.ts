@@ -614,6 +614,8 @@ import { pullQuoteExtraction } from './pull-quote-extraction/entry'
 
 import { statCalloutRise } from './stat-callout-rise/entry'
 
+import { breakingTickerCrawl } from './breaking-ticker-crawl/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1149,6 +1151,7 @@ export const specimens: Specimen[] = [
   editorialBracketDraw,
   pullQuoteExtraction,
   statCalloutRise,
+  breakingTickerCrawl,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

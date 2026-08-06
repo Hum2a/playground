@@ -1,0 +1,8 @@
+{
+  "name": "breaking-ticker-crawl",
+  "ref": "SPX-3622",
+  "title": "Breaking Ticker Crawl",
+  "mode": "slam",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

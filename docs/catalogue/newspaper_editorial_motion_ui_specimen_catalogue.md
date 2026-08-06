@@ -293,7 +293,7 @@ chronology and information priority.
 
 # 13. Breaking Tickers / Live Blogs
 
-- [ ] **NEWS-100** · `SPX-3622` · ★★★★★ **Breaking Ticker Crawl** — A headline ticker moves
+- [x] **NEWS-100** · `SPX-3622` · ★★★★★ **Breaking Ticker Crawl** — A headline ticker moves
     horizontally with seamless finite or looping behaviour.
 - [ ] **NEWS-101** · `SPX-3623` · ★★★★★ **Live Blog Entry Insert** — A new timestamped update
     enters at the top and pushes older entries downward.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-100 | SPX-3622 | `breaking-ticker-crawl` | Breaking Ticker Crawl |
 | NEWS-094 | SPX-3616 | `stat-callout-rise` | Stat Callout Rise |
 | NEWS-093 | SPX-3615 | `pull-quote-extraction` | Pull Quote Extraction |
 | NEWS-086 | SPX-3608 | `editorial-bracket-draw` | Editorial Bracket Draw |
@@ -719,12 +720,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **40 / 237** complete.
+- Progress: **41 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 40 |
-| Open | 197 |
+| Done | 41 |
+| Open | 196 |
 
 ## Core first-wave / build queue
 
@@ -768,7 +769,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-086** · `SPX-3608` · **Editorial Bracket Draw** · `editorial-bracket-draw`
 - [x] **NEWS-093** · `SPX-3615` · **Pull Quote Extraction** · `pull-quote-extraction`
 - [x] **NEWS-094** · `SPX-3616` · **Stat Callout Rise** · `stat-callout-rise`
-- [ ] **NEWS-100** · `SPX-3622` · **Breaking Ticker Crawl** · scaffold `breaking-ticker-crawl`
+- [x] **NEWS-100** · `SPX-3622` · **Breaking Ticker Crawl** · `breaking-ticker-crawl`
 - [ ] **NEWS-101** · `SPX-3623` · **Live Blog Entry Insert** · scaffold `live-blog-entry-insert`
 - [ ] **NEWS-104** · `SPX-3626` · **Ticker Pause on Focus** · scaffold `ticker-pause-on-focus`
 - [ ] **NEWS-108** · `SPX-3630` · **Election Needle Sweep** · scaffold `election-needle-sweep`
