@@ -1,0 +1,65 @@
+{
+  "name": "objective-acquired",
+  "intent": "Several independent graphic pieces rapidly assemble into a persistent objective card that remains as usable UI after entrance.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "copy": {
+    "trigger": "ADD OBJECTIVE",
+    "eyebrow": "NEW OBJECTIVE",
+    "title": "BUILD THE ARCHIVE",
+    "description": "Create 50 portable specimens",
+    "progress": "0 / 50",
+    "status": "New objective: Build the Archive. Create 50 portable specimens."
+  },
+  "geometry": {
+    "cardWidth": "min(90%, 380px)",
+    "titleOvershootPx": 5,
+    "pinImpactShiftPx": 2
+  },
+  "pieces": [
+    { "id": "strip", "className": "objective-acquired__strip", "from": "left", "windowMs": [0, 160] },
+    { "id": "panel", "className": "objective-acquired__panel", "from": "right", "windowMs": [80, 260] },
+    { "id": "eyebrow", "className": "objective-acquired__eyebrow", "from": "above", "windowMs": [180, 380] },
+    { "id": "title", "className": "objective-acquired__title", "from": "below", "windowMs": [260, 480], "overshootPx": 5 },
+    { "id": "desc", "className": "objective-acquired__desc", "from": "left", "windowMs": [400, 620] },
+    { "id": "progress", "className": "objective-acquired__progress", "from": "right", "windowMs": [520, 700] },
+    { "id": "pinTl", "className": "objective-acquired__pin--tl", "from": "above", "windowMs": [680, 850] },
+    { "id": "pinTr", "className": "objective-acquired__pin--tr", "from": "above", "windowMs": [740, 850] }
+  ],
+  "timing": {
+    "easing": "cubic-bezier(0.7, 0, 0.3, 1)",
+    "totalMs": 850,
+    "persistentAfterSettle": true,
+    "noLoop": true
+  },
+  "api": {
+    "acquire": "acquireObjective()",
+    "clear": "clearObjective()",
+    "replay": "replayObjective()",
+    "busyGuard": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "statusRole": "status",
+    "ariaLive": "polite",
+    "announceOnce": "New objective: Build the Archive. Create 50 portable specimens.",
+    "visualCopyAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately display final objective card"
+  },
+  "constraints": {
+    "noDependencies": true,
+    "noExternalAssets": true,
+    "noFontFace": true,
+    "noLoopAfterSettle": true,
+    "persistentUi": true
+  }
+}

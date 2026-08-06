@@ -29,6 +29,7 @@ import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
+import { objectiveAcquired } from './objective-acquired/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
@@ -130,6 +131,7 @@ export const specimens: Specimen[] = [
   progressMilestoneBreakthrough,
   failureShatter,
   permissionRejection,
+  objectiveAcquired,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

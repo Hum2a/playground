@@ -1,0 +1,385 @@
+/* SPX-319 Objective Acquired — portable contract. Do not restyle to host tokens. */
+
+.objective-acquired-demo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  background: #161616;
+  color: #f5f1e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.objective-acquired-demo__trigger {
+  appearance: none;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid #f5f1e8;
+  border-radius: 0;
+  background: transparent;
+  color: #f5f1e8;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.objective-acquired-demo__trigger:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 3px;
+}
+
+.objective-acquired-demo__trigger:hover {
+  background: #f5f1e8;
+  color: #090909;
+}
+
+.objective-acquired {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.objective-acquired[hidden] {
+  display: none;
+}
+
+.objective-acquired__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.objective-acquired__card {
+  position: relative;
+  box-sizing: border-box;
+  width: min(90%, 380px);
+  min-height: 7.5rem;
+  transform: translate(0, 0);
+}
+
+.objective-acquired__strip {
+  position: absolute;
+  top: 0.55rem;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 10px;
+  background: #e60012;
+  clip-path: polygon(0% 0%, 100% 20%, 100% 100%, 0% 80%);
+  transform: translateX(-110%);
+}
+
+.objective-acquired__panel {
+  position: absolute;
+  inset: 0.35rem 0 0;
+  z-index: 2;
+  background: #090909;
+  clip-path: polygon(0% 4%, 98% 0%, 100% 96%, 2% 100%);
+  transform: translateX(110%);
+}
+
+.objective-acquired__content {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'eyebrow progress'
+    'title title'
+    'desc desc';
+  gap: 0.2rem 0.75rem;
+  padding: 1rem 1rem 0.9rem 1.1rem;
+  color: #f5f1e8;
+}
+
+.objective-acquired__eyebrow {
+  grid-area: eyebrow;
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e60012;
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
+.objective-acquired__title {
+  grid-area: title;
+  margin: 0;
+  font-size: clamp(1.15rem, 5.5vw, 1.65rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+.objective-acquired__desc {
+  grid-area: desc;
+  margin: 0.35rem 0 0;
+  max-width: 16rem;
+  padding: 0.28rem 0.45rem;
+  background: #f5f1e8;
+  color: #090909;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.objective-acquired__progress {
+  grid-area: progress;
+  align-self: start;
+  justify-self: end;
+  margin: 0;
+  padding: 0.2rem 0.4rem;
+  border: 1.5px solid #f5f1e8;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateX(28px) scale(0.85);
+}
+
+.objective-acquired__pin {
+  position: absolute;
+  z-index: 4;
+  width: 14px;
+  height: 14px;
+  background: #e60012;
+  opacity: 0;
+}
+
+.objective-acquired__pin--tl {
+  top: 0.15rem;
+  left: 0.45rem;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transform: translateY(-24px) rotate(-12deg);
+}
+
+.objective-acquired__pin--tr {
+  top: 0.15rem;
+  right: 0.45rem;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  background: #f5f1e8;
+  transform: translateY(-24px) rotate(10deg);
+}
+
+/* —— Assemble 850ms —— */
+.objective-acquired--assemble .objective-acquired__strip {
+  animation: oa-strip-in 160ms cubic-bezier(0.7, 0, 0.3, 1) 0ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__panel {
+  animation: oa-panel-in 180ms cubic-bezier(0.7, 0, 0.3, 1) 80ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__eyebrow {
+  animation: oa-eyebrow-in 200ms cubic-bezier(0.7, 0, 0.3, 1) 180ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__title {
+  animation: oa-title-in 220ms cubic-bezier(0.7, 0, 0.3, 1) 260ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__desc {
+  animation: oa-desc-in 220ms cubic-bezier(0.7, 0, 0.3, 1) 400ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__progress {
+  animation: oa-progress-in 180ms cubic-bezier(0.7, 0, 0.3, 1) 520ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__pin--tl {
+  animation: oa-pin-tl 170ms cubic-bezier(0.7, 0, 0.3, 1) 680ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__pin--tr {
+  animation: oa-pin-tr 170ms cubic-bezier(0.7, 0, 0.3, 1) 740ms forwards;
+}
+
+.objective-acquired--assemble .objective-acquired__card {
+  animation: oa-card-impact 170ms cubic-bezier(0.7, 0, 0.3, 1) 680ms forwards;
+}
+
+@keyframes oa-strip-in {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes oa-panel-in {
+  from {
+    transform: translateX(110%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes oa-eyebrow-in {
+  from {
+    opacity: 0;
+    transform: translateY(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes oa-title-in {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes oa-desc-in {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes oa-progress-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes oa-pin-tl {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes oa-pin-tr {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) rotate(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes oa-card-impact {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(2px, 1px);
+  }
+  55% {
+    transform: translate(-1px, 0);
+  }
+  70% {
+    transform: translate(2px, -1px);
+  }
+}
+
+/* —— Settled: persistent static UI —— */
+.objective-acquired--settled .objective-acquired__strip,
+.objective-acquired--reduced .objective-acquired__strip,
+.objective-acquired--settled .objective-acquired__panel,
+.objective-acquired--reduced .objective-acquired__panel {
+  transform: none;
+  animation: none;
+}
+
+.objective-acquired--settled .objective-acquired__eyebrow,
+.objective-acquired--reduced .objective-acquired__eyebrow,
+.objective-acquired--settled .objective-acquired__title,
+.objective-acquired--reduced .objective-acquired__title,
+.objective-acquired--settled .objective-acquired__desc,
+.objective-acquired--reduced .objective-acquired__desc,
+.objective-acquired--settled .objective-acquired__progress,
+.objective-acquired--reduced .objective-acquired__progress,
+.objective-acquired--settled .objective-acquired__pin,
+.objective-acquired--reduced .objective-acquired__pin {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.objective-acquired--settled .objective-acquired__card,
+.objective-acquired--reduced .objective-acquired__card {
+  transform: none;
+  animation: none;
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .objective-acquired--assemble .objective-acquired__strip,
+  .objective-acquired--assemble .objective-acquired__panel,
+  .objective-acquired--assemble .objective-acquired__eyebrow,
+  .objective-acquired--assemble .objective-acquired__title,
+  .objective-acquired--assemble .objective-acquired__desc,
+  .objective-acquired--assemble .objective-acquired__progress,
+  .objective-acquired--assemble .objective-acquired__pin,
+  .objective-acquired--assemble .objective-acquired__card {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__strip,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__panel,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__eyebrow,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__title,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__desc,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__progress,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__pin,
+[data-force-reduced-motion='true'] .objective-acquired--assemble .objective-acquired__card {
+  animation: none !important;
+}
