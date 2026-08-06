@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { spectrumBarDance } from '../../library/music-equipment/spectrum-bar-dance/entry'
 import { feedbackLoopWarning } from '../../library/music-equipment/feedback-loop-warning/entry'
 import { loopRecordRing } from '../../library/music-equipment/loop-record-ring/entry'
 import { tapTempoPulse } from '../../library/music-equipment/tap-tempo-pulse/entry'
@@ -31,6 +32,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  spectrumBarDance,
   feedbackLoopWarning,
   loopRecordRing,
   tapTempoPulse,

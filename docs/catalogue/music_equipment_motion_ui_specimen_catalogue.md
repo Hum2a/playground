@@ -106,7 +106,7 @@ specimens can feel tactile without needing sound.
 
 # 4. Spectrum Analysers / Scopes
 
-- [ ] **MUSIC-028** · `SPX-3787` · ★★★★★ **Spectrum Bar Dance** — Frequency bars react to a
+- [x] **MUSIC-028** · `SPX-3787` · ★★★★★ **Spectrum Bar Dance** — Frequency bars react to a
     deterministic signal loop and freeze under reduced motion.
 - [ ] **MUSIC-029** · `SPX-3788` · ★★★★★ **Spectral Peak Trail** — Falling frequency peaks leave
     short-lived markers above the current spectrum.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-028 | SPX-3787 | `spectrum-bar-dance` | Spectrum Bar Dance |
 | MUSIC-105 | SPX-3864 | `feedback-loop-warning` | Feedback Loop Warning |
 | MUSIC-213 | SPX-3972 | `loop-record-ring` | Loop Record Ring |
 | MUSIC-050 | SPX-3809 | `tap-tempo-pulse` | Tap Tempo Pulse |
@@ -893,12 +894,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **30 / 310** complete.
+- Progress: **31 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 30 |
-| Open | 280 |
+| Done | 31 |
+| Open | 279 |
 
 ## Core first-wave / build queue
 
@@ -909,7 +910,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · `peak-hold-marker`
 - [x] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · `parametric-eq-node-drag`
 - [x] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · `eq-bypass-flatten`
-- [ ] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · scaffold `spectrum-bar-dance`
+- [x] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · `spectrum-bar-dance`
 - [ ] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · scaffold `oscilloscope-trace`
 - [ ] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · scaffold `spectrogram-waterfall`
 - [x] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · `compressor-threshold-crush`
