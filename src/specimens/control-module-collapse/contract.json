@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/control-module-collapse.schema.json",
+  "title": "ControlModuleCollapse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "expanded", "compact", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "control-module-collapse" },
+    "intent": {
+      "type": "string",
+      "const": "A detailed control surface condenses into a compact summary while preserving the user's latest setting."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "status", "route", "latency", "compactLabel"],
+      "properties": {
+        "module": { "type": "string", "const": "NETWORK" },
+        "status": { "type": "string", "const": "CONNECTED" },
+        "route": { "type": "string", "const": "PRIMARY" },
+        "latency": { "type": "string", "const": "18ms" },
+        "compactLabel": { "type": "string", "const": "NETWORK // CONNECTED" }
+      }
+    },
+    "expanded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 320 },
+        "heightPx": { "type": "number", "const": 210 }
+      }
+    },
+    "compact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 142 },
+        "heightPx": { "type": "number", "const": 72 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseMs", "rowStaggerMs", "retractOrder"],
+      "properties": {
+        "collapseMs": { "type": "number", "const": 300 },
+        "rowStaggerMs": { "type": "number", "const": 35 },
+        "retractOrder": {
+          "type": "array",
+          "const": ["latency", "route", "status"]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantCollapse", "triggers"],
+      "properties": {
+        "instantCollapse": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "module"],
+      "properties": {
+        "root": { "type": "string", "const": "cmc" },
+        "module": { "type": "string", "const": "cmc__module" }
+      }
+    }
+  }
+}
