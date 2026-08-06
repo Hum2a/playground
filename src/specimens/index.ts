@@ -1,7 +1,6 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
-import { badgeEarned } from './badge-earned/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
@@ -84,6 +83,7 @@ import { pixelHpDrain } from './pixel-hp-drain/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
+import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
@@ -151,7 +151,6 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   badgeCaseInsert,
-  badgeEarned,
   precisionMenuSnap,
   evokerMenuSnap,
   truthShotNotification,
@@ -232,6 +231,7 @@ export const specimens: Specimen[] = [
   personaAwakeningReveal,
   printRegistrationHover,
   progressMilestoneBreakthrough,
+  radarPulseDiscovery,
   rankUpImpact,
   ransomNoteReveal,
   redactedContentLock,
