@@ -15,7 +15,7 @@ const scaffold = `
 
 export const deletionGuillotine: Specimen = {
   id: 'deletion-guillotine',
-  ref: 'SPX-TODO',
+  ref: 'SPX-317',
   title: 'Deletion Guillotine',
   blurb:
     'After deliberate confirmation, a black irregular blade cuts Project Nightfall along a diagonal; complementary clipped halves exit opposite ways — visual delete only, no persistence.',
