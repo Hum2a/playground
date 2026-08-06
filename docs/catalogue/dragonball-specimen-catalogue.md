@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **24 / 244** complete.
+- Progress: **27 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 220 |
+| Done | 27 |
+| Open | 217 |
 
 ## Visual grammar
 
@@ -34,6 +34,8 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-150 | `SPX-1115` | `state-field-transfer` | State Field Transfer |
+| DB-176 | `SPX-1141` | `tournament-bracket-activation` | Tournament Bracket Activation |
 | DB-193 | `SPX-1158` | `isolated-time-freeze` | Isolated Time Freeze |
 | DB-159 | `SPX-1124` | `irreversible-threshold` | Irreversible Threshold |
 | DB-192 | `SPX-1157` | `processing-time-skip` | Processing Time Skip |
@@ -92,7 +94,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-163** ?? `SPX-1128` ?? **Cell Regeneration** ??? regeneration-recovery
 - [x] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? time-manipulation
 - [x] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? time-manipulation
-- [ ] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? tournament-ranking
+- [x] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? tournament-ranking
 - [ ] **DB-230** ?? `SPX-1195` ?? **Git Fusion Merge** ??? data-developer-tool-specimens
 - [ ] **DB-234** ?? `SPX-1199` ?? **Over-9000 Metric Overflow** ??? data-developer-tool-specimens
 ## Ki Charging / Progress
@@ -282,7 +284,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-147** ?? `SPX-1112` ?? **Calm Aura** ??? extremely restrained boundary indicates stable enhanced state.
 - [ ] **DB-148** ?? `SPX-1113` ?? **Aura Collapse** ??? system loses elevated capability and boundary falls inward.
 - [ ] **DB-149** ?? `SPX-1114` ?? **Dual Aura Conflict** ??? two simultaneous states create visibly competing boundaries.
-- [ ] **DB-150** ?? `SPX-1115` ?? **State Aura Transfer** ??? active state leaves one component and attaches to another.
+- [x] **DB-150** ?? `SPX-1115` ?? **State Aura Transfer** ??? active state leaves one component and attaches to another.
 - [ ] **DB-151** ?? `SPX-1116` ?? **Hidden Power** ??? ordinary component intermittently reveals evidence of higher capability.
 - [ ] **DB-152** ?? `SPX-1117` ?? **Aura Threshold** ??? boundary appears only once metric crosses a specific value.
 - [ ] **DB-153** ?? `SPX-1118` ?? **Suppressed Aura** ??? active capability remains present but visually compressed.
@@ -320,7 +322,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Tournament / Ranking
 
-- [ ] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? competitors progress through a rigid elimination structure.
+- [x] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? competitors progress through a rigid elimination structure.
 - [ ] **DB-177** ?? `SPX-1142` ?? **Bracket Winner Advance** ??? winning entity physically moves into the next-round slot.
 - [ ] **DB-178** ?? `SPX-1143` ?? **Tournament Intro Cards** ??? two competitors slam into opposing sides before comparison.
 - [ ] **DB-179** ?? `SPX-1144` ?? **Ring-Out Result** ??? entity crosses a fixed spatial boundary and immediately loses active status.

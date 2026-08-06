@@ -112,6 +112,7 @@ import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
+import { stateFieldTransfer } from './state-field-transfer/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { stateIntensityField } from './state-intensity-field/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
@@ -123,6 +124,7 @@ import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { temporalUndo } from './temporal-undo/entry'
 import { timeSkip } from './time-skip/entry'
+import { tournamentBracketActivation } from './tournament-bracket-activation/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
@@ -288,6 +290,7 @@ export const specimens: Specimen[] = [
   scannerSearch,
   scouterScan,
   sectorRadarSearch,
+  stateFieldTransfer,
   stateIntensityField,
   sevenPartPrerequisiteCollection,
   surfaceBreakReveal,
@@ -299,6 +302,7 @@ export const specimens: Specimen[] = [
   temporalUndo,
   timeSkip,
   ultraStateOptimisation,
+  tournamentBracketActivation,
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,

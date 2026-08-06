@@ -1,0 +1,49 @@
+<div class="sft" data-state-field-transfer data-state="idle">
+  <div class="sft__stage" data-sft-stage>
+    <article class="sft__node sft__node--a" data-sft-a>
+      <p class="sft__name">NODE // A</p>
+      <p class="sft__boost" data-sft-boost-a>BOOST // ACTIVE</p>
+      <p class="sft__phase" data-sft-phase-a>ACTIVE</p>
+      <div class="sft__core" aria-hidden="true"></div>
+      <span class="sft__field sft__field--a" data-sft-field-a aria-hidden="true">
+        <span class="sft__contour sft__contour--outer"></span>
+        <span class="sft__contour sft__contour--middle"></span>
+        <span class="sft__contour sft__contour--inner"></span>
+      </span>
+    </article>
+
+    <div class="sft__channel" data-sft-channel aria-hidden="true">
+      <span class="sft__seg sft__seg--1" data-sft-seg="1"></span>
+      <span class="sft__seg sft__seg--2" data-sft-seg="2"></span>
+      <span class="sft__seg sft__seg--3" data-sft-seg="3"></span>
+      <span class="sft__seg sft__seg--4" data-sft-seg="4"></span>
+      <span class="sft__seg sft__seg--5" data-sft-seg="5"></span>
+      <span class="sft__seg sft__seg--6" data-sft-seg="6"></span>
+      <span class="sft__seg sft__seg--7" data-sft-seg="7"></span>
+      <span class="sft__token" data-sft-token>
+        <span class="sft__mark sft__mark--1"></span>
+        <span class="sft__mark sft__mark--2"></span>
+        <span class="sft__mark sft__mark--3"></span>
+      </span>
+    </div>
+
+    <article class="sft__node sft__node--b" data-sft-b>
+      <p class="sft__name">NODE // B</p>
+      <p class="sft__boost" data-sft-boost-b>BOOST // NONE</p>
+      <p class="sft__phase" data-sft-phase-b>IDLE</p>
+      <div class="sft__core" aria-hidden="true"></div>
+      <span class="sft__field sft__field--b" data-sft-field-b aria-hidden="true">
+        <span class="sft__contour sft__contour--inner"></span>
+        <span class="sft__contour sft__contour--middle"></span>
+        <span class="sft__contour sft__contour--outer"></span>
+      </span>
+    </article>
+  </div>
+
+  <div class="sft__controls">
+    <button type="button" class="sft__btn" data-sft-transfer>TRANSFER BOOST</button>
+    <button type="button" class="sft__btn sft__btn--ghost" data-sft-reset hidden>RESET</button>
+  </div>
+
+  <p class="sft__announce" data-sft-announce role="status" aria-live="polite"></p>
+</div>

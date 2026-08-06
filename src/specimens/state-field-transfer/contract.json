@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/state-field-transfer.schema.json",
+  "title": "StateFieldTransfer",
+  "description": "Three-contour boost field transfers from Node A to Node B via a seven-segment channel. Dragon Ball DB-150 / SPX-1115.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "state-field-transfer" },
+    "intent": {
+      "type": "string",
+      "const": "Node A collapses three field contours into one transfer token that travels a seven-segment channel; ownership hands off at midpoint; Node B rebuilds the field. Never ACTIVE on both."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeA",
+        "nodeB",
+        "boostActive",
+        "boostNone",
+        "boostPending",
+        "trigger",
+        "announceFinal"
+      ],
+      "properties": {
+        "nodeA": { "type": "string", "const": "NODE // A" },
+        "nodeB": { "type": "string", "const": "NODE // B" },
+        "boostActive": { "type": "string", "const": "BOOST // ACTIVE" },
+        "boostNone": { "type": "string", "const": "BOOST // NONE" },
+        "boostPending": { "type": "string", "const": "BOOST // PENDING" },
+        "trigger": { "type": "string", "const": "TRANSFER BOOST" },
+        "announceFinal": {
+          "type": "string",
+          "const": "Boost transferred from Node A to Node B."
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["#0a0c10", "#141820", "#e8edf4", "#6eb8ff", "#f0c14a"]
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gapPx",
+        "contourCount",
+        "segmentCount",
+        "tokenSizePx",
+        "collapseOrder",
+        "rebuildOrder"
+      ],
+      "properties": {
+        "gapPx": { "type": "integer", "const": 240 },
+        "contourCount": { "type": "integer", "const": 3 },
+        "segmentCount": { "type": "integer", "const": 7 },
+        "tokenSizePx": { "type": "integer", "const": 18 },
+        "collapseOrder": {
+          "type": "array",
+          "const": ["outer", "middle", "inner"]
+        },
+        "rebuildOrder": {
+          "type": "array",
+          "const": ["inner", "middle", "outer"]
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channelMs",
+        "collapseStaggerMs",
+        "travelMs",
+        "rebuildStaggerMs",
+        "tokenCompress",
+        "neverBothActive"
+      ],
+      "properties": {
+        "channelMs": { "type": "integer", "const": 160 },
+        "collapseStaggerMs": { "type": "integer", "const": 45 },
+        "travelMs": { "type": "integer", "const": 340 },
+        "rebuildStaggerMs": { "type": "integer", "const": 50 },
+        "tokenCompress": { "type": "array", "const": [1, 0.82] },
+        "midpointHandoff": { "type": "boolean", "const": true },
+        "neverBothActive": { "type": "boolean", "const": true },
+        "retractAfter": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceOwnership"],
+      "properties": {
+        "announceOwnership": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion='true']"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate A NONE / B ACTIVE with field on B only."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "channeling",
+        "collapsing",
+        "travelling",
+        "midpoint",
+        "rebuilding",
+        "complete"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "sft" },
+        "channeling": { "type": "string", "const": "is-channeling" },
+        "collapsing": { "type": "string", "const": "is-collapsing" },
+        "travelling": { "type": "string", "const": "is-travelling" },
+        "midpoint": { "type": "string", "const": "is-midpoint" },
+        "rebuilding": { "type": "string", "const": "is-rebuilding" },
+        "complete": { "type": "string", "const": "is-complete" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset"],
+      "properties": {
+        "run": { "type": "string", "const": "runStateFieldTransfer" },
+        "reset": { "type": "string", "const": "resetStateFieldTransfer" }
+      }
+    }
+  }
+}
