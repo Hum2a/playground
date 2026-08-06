@@ -204,6 +204,7 @@ import { lockdownShutter } from './lockdown-shutter/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
+import { mapConstruction } from './map-construction/entry'
 import { matchStartSlam } from './match-start-slam/entry'
 import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { materialPullToRefresh } from './material-pull-to-refresh/entry'
@@ -634,6 +635,7 @@ export const specimens: Specimen[] = [
   lockedChainBreak,
   longPressLift,
   mangaCutInNotification,
+  mapConstruction,
   matchStartSlam,
   matchedCardExpansion,
   materialPullToRefresh,
