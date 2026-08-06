@@ -12,7 +12,9 @@
     "test:e2e": "playwright test",
     "lint": "oxlint",
     "spec:new": "node scripts/spec-new.mjs",
-    "spec:check": "node scripts/spec-check.mjs"
+    "spec:check": "node scripts/spec-check.mjs",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=playground --branch=preview",
+    "deploy:prod": "npm run build && wrangler pages deploy dist --project-name=playground"
   },
   "dependencies": {
     "@codemirror/commands": "^6.10.4",
@@ -46,6 +48,7 @@
     "oxlint": "^1.75.0",
     "typescript": "~6.0.2",
     "vite": "^8.2.0",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "wrangler": "^4.119.0"
   }
 }
