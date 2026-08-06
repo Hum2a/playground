@@ -163,6 +163,8 @@ export const SUGGESTED_FREE_TAGS = [
   'cut-in',
   'threshold',
   'time',
+  'deadline',
+  'enclosure',
   'warning',
   'metric',
   'disconnect',

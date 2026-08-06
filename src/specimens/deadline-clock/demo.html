@@ -1,0 +1,44 @@
+<div class="deadline-clock" data-deadline-clock data-state="72h">
+  <p class="deadline-clock__eyebrow">SUBMISSION WINDOW</p>
+
+  <div
+    class="deadline-clock__stage"
+    role="img"
+    aria-labelledby="deadline-clock-label"
+    data-dc-stage
+  >
+    <div class="deadline-clock__ring" data-dc-ring aria-hidden="true">
+      <span class="deadline-clock__track"></span>
+      <span class="deadline-clock__arc" data-dc-arc></span>
+      <span class="deadline-clock__marks" data-dc-marks>
+        <span class="deadline-clock__mark deadline-clock__mark--1"></span>
+        <span class="deadline-clock__mark deadline-clock__mark--2"></span>
+        <span class="deadline-clock__mark deadline-clock__mark--3"></span>
+        <span class="deadline-clock__mark deadline-clock__mark--4"></span>
+      </span>
+    </div>
+
+    <div class="deadline-clock__core">
+      <p class="deadline-clock__time" id="deadline-clock-label" data-dc-time>72 HOURS</p>
+      <p class="deadline-clock__closed" data-dc-closed hidden>CLOSED</p>
+    </div>
+  </div>
+
+  <div class="deadline-clock__controls">
+    <button type="button" class="deadline-clock__btn" data-dc-advance>
+      ADVANCE
+    </button>
+    <button type="button" class="deadline-clock__btn deadline-clock__btn--ghost" data-dc-reset>
+      RESET
+    </button>
+  </div>
+
+  <p
+    class="deadline-clock__status"
+    role="status"
+    aria-live="polite"
+    data-dc-status
+  >
+    Submission window. 72 hours remaining.
+  </p>
+</div>

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **28 / 238** complete.
+- Progress: **29 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 28 |
-| Open | 210 |
+| Done | 29 |
+| Open | 209 |
 
 ## Visual grammar
 
@@ -60,6 +60,7 @@
 | P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
 | P3-170 | `SPX-567` | `blue-focus-brackets` | Blue Focus Brackets |
 | P3-153 | `SPX-550` | `max-rank-completion` | Max Rank Completion |
+| P3-138 | `SPX-535` | `deadline-clock` | Deadline Clock |
 
 ## Core first-wave
 
@@ -268,7 +269,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-135** · `SPX-532` · **Clock-Hand Wipe** — time.
 - [ ] **P3-136** · `SPX-533` · **Time Skip** — time.
 - [ ] **P3-137** · `SPX-534` · **Day Advance** — time.
-- [ ] **P3-138** · `SPX-535` · **Deadline Clock** — time.
+- [x] **P3-138** · `SPX-535` · **Deadline Clock** — time.
 - [ ] **P3-139** · `SPX-536` · **Time Frozen State** — time.
 - [ ] **P3-140** · `SPX-537` · **Time Resumed** — time.
 - [ ] **P3-141** · `SPX-538` · **Midnight Threshold** — time.

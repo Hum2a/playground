@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/deadline-clock.schema.json",
+  "title": "DeadlineClock",
+  "description": "Portable contract for a deadline enclosure clock: incomplete perimeter closes as the deadline approaches, with deterministic threshold marks.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "ring",
+    "states",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "deadline-clock" },
+    "intent": {
+      "type": "string",
+      "const": "Deadline indicator where remaining time is an incomplete circular perimeter that closes around the deadline — enclosure, not remaining-progress percentage."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "states", "trigger", "reset", "closed"],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "SUBMISSION WINDOW" },
+        "states": {
+          "type": "array",
+          "const": ["72 HOURS", "24 HOURS", "6 HOURS", "1 HOUR"]
+        },
+        "trigger": { "type": "string", "const": "ADVANCE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "closed": { "type": "string", "const": "CLOSED" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "deep", "mid", "bright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020912" },
+        "deep": { "type": "string", "const": "#071e38" },
+        "mid": { "type": "string", "const": "#155f8e" },
+        "bright": { "type": "string", "const": "#45b8df" },
+        "pale": { "type": "string", "const": "#d7f6ff" }
+      }
+    },
+    "ring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["diameterPx", "strokePx", "startAngle"],
+      "properties": {
+        "diameterPx": { "type": "number", "const": 150 },
+        "strokePx": { "type": "number", "const": 3 },
+        "startAngle": { "type": "string", "const": "-90deg" }
+      }
+    },
+    "states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["h72", "h24", "h6", "h1", "h0"],
+      "properties": {
+        "h72": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["arcPercent", "tracking", "marks"],
+          "properties": {
+            "arcPercent": { "type": "number", "const": 25 },
+            "tracking": { "type": "string", "const": "0.08em" },
+            "marks": { "type": "number", "const": 0 }
+          }
+        },
+        "h24": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["arcPercent", "tracking", "marks"],
+          "properties": {
+            "arcPercent": { "type": "number", "const": 60 },
+            "tracking": { "type": "string", "const": "0.05em" },
+            "marks": { "type": "number", "const": 1 }
+          }
+        },
+        "h6": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["arcPercent", "tracking", "marks"],
+          "properties": {
+            "arcPercent": { "type": "number", "const": 85 },
+            "tracking": { "type": "string", "const": "0.02em" },
+            "marks": { "type": "number", "const": 2 }
+          }
+        },
+        "h1": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["arcPercent", "tracking", "marks"],
+          "properties": {
+            "arcPercent": { "type": "number", "const": 96 },
+            "tracking": { "type": "string", "const": "0" },
+            "marks": { "type": "number", "const": 4 }
+          }
+        },
+        "h0": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["arcPercent", "tracking", "marks", "label"],
+          "properties": {
+            "arcPercent": { "type": "number", "const": 100 },
+            "tracking": { "type": "string", "const": "0" },
+            "marks": { "type": "number", "const": 4 },
+            "label": { "type": "string", "const": "CLOSED" }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "exactTimeVisible", "noProgressBar"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "exactTimeVisible": { "type": "boolean", "const": true },
+        "noProgressBar": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateState", "triggers"],
+      "properties": {
+        "immediateState": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "ring", "arc", "time", "mark"],
+      "properties": {
+        "root": { "type": "string", "const": "deadline-clock" },
+        "ring": { "type": "string", "const": "deadline-clock__ring" },
+        "arc": { "type": "string", "const": "deadline-clock__arc" },
+        "time": { "type": "string", "const": "deadline-clock__time" },
+        "mark": { "type": "string", "const": "deadline-clock__mark" }
+      }
+    }
+  }
+}

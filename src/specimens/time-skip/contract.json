@@ -1,0 +1,24 @@
+{
+  "id": "time-skip",
+  "ref": "SPX-028",
+  "title": "Time Skip",
+  "slices": 5,
+  "offsetsPx": {
+    "1": -18,
+    "3": 22,
+    "5": -12
+  },
+  "timeline": {
+    "offsetMs": 40,
+    "holdMs": 60,
+    "staggerMs": 40,
+    "realignMs": 120,
+    "markerAtMs": 170,
+    "markerMs": 140,
+    "totalMs": 480
+  },
+  "before": { "clock": "16:20", "phase": "AFTER SCHOOL" },
+  "after": { "clock": "19:10", "phase": "EVENING" },
+  "marker": "+02:50",
+  "reducedMotion": "immediate destination; no slice motion or marker"
+}

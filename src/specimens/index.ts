@@ -25,6 +25,7 @@ import { crossOutStatusSwap } from './cross-out-status-swap/entry'
 import { crystallisedSelection } from './crystallised-selection/entry'
 import { darkHourConversion } from './dark-hour-conversion/entry'
 import { dayChangeTear } from './day-change-tear/entry'
+import { deadlineClock } from './deadline-clock/entry'
 import { deadlinePanic } from './deadline-panic/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
@@ -155,6 +156,7 @@ export const specimens: Specimen[] = [
   crystallisedSelection,
   darkHourConversion,
   dayChangeTear,
+  deadlineClock,
   deadlinePanic,
   decisionShowdown,
   deletionGuillotine,
