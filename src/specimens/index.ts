@@ -282,6 +282,7 @@ import { quirkCooldownRing } from './quirk-cooldown-ring/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankPromotion } from './rank-promotion/entry'
 import { rankPromotionCard } from './rank-promotion-card/entry'
+import { rankThresholdUnlock } from './rank-threshold-unlock/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { recentsCardRestore } from './recents-card-restore/entry'
@@ -703,6 +704,7 @@ export const specimens: Specimen[] = [
   radarPulseDiscovery,
   rankPromotion,
   rankPromotionCard,
+  rankThresholdUnlock,
   rankUpImpact,
   ransomNoteReveal,
   recentsCardRestore,

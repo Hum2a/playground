@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **31 / 191** complete.
+- Progress: **32 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 31 |
-| Open | 160 |
+| Done | 32 |
+| Open | 159 |
 
 ## Visual grammar
 
@@ -65,6 +65,7 @@
 | P4-112 | `SPX-3030` | `yellow-impact-wipe` | Yellow Impact Wipe |
 | P4-111 | `SPX-3029` | `hazard-stripe-reveal` | Hazard Stripe Reveal |
 | P4-053 | `SPX-2971` | `social-link-milestone` | Social Link Milestone |
+| P4-057 | `SPX-2975` | `rank-threshold-unlock` | Rank Threshold Unlock |
 
 ## Core first-wave
 
@@ -101,7 +102,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-112** · `SPX-3030` · **Yellow Impact Wipe** — yellow-black-graphic-language
 - [x] **P4-111** · `SPX-3029` · **Hazard Stripe Reveal** — yellow-black-graphic-language
 - [x] **P4-053** · `SPX-2971` · **Social Link Milestone** — social-links-bonds
-- [ ] **P4-057** · `SPX-2975` · **Rank Threshold Unlock** — social-links-bonds
+- [x] **P4-057** · `SPX-2975` · **Rank Threshold Unlock** — social-links-bonds
 - [ ] **P4-062** · `SPX-2980` · **Arcana Card Draw** — tarot-arcana-cards
 - [ ] **P4-070** · `SPX-2988` · **Fusion Preview** — persona-fusion-compendium
 - [ ] **P4-071** · `SPX-2989` · **Skill Inheritance Select** — persona-fusion-compendium
@@ -195,7 +196,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [ ] **P4-054** · `SPX-2972` · **Bond Progress Ring** — Relationship progress accumulates around a symbolic card.
 - [ ] **P4-055** · `SPX-2973` · **Relationship Node Connect** — Two profiles gain a persistent connection line after interaction.
 - [ ] **P4-056** · `SPX-2974` · **Bond Deepened Stamp** — A milestone receives a bold but elegant confirmation mark.
-- [ ] **P4-057** · `SPX-2975` · **Rank Threshold Unlock** — Progress crossing a fixed threshold unlocks a new interaction.
+- [x] **P4-057** · `SPX-2975` · **Rank Threshold Unlock** — Progress crossing a fixed threshold unlocks a new interaction.
 - [ ] **P4-058** · `SPX-2976` · **Social Link Card Flip** — A card flips from unknown relationship to established bond.
 - [ ] **P4-059** · `SPX-2977` · **Max Rank Completion** — The final rank transforms the entire progression card into a completed state.
 - [ ] **P4-060** · `SPX-2978` · **Broken Link Warning** — A relationship connector visibly weakens or breaks after a state change.
