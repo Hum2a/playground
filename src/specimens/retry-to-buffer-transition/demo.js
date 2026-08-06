@@ -1,0 +1,1 @@
+export function runRetryBuffer(){document.querySelector('[data-msg]').hidden=true;document.querySelector('[data-ring]').hidden=false};document.querySelector('[data-retry]')?.addEventListener('click',()=>runRetryBuffer())
