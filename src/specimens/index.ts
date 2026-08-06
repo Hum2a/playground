@@ -87,6 +87,7 @@ import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { dropTargetMagnetism } from './drop-target-magnetism/entry'
 import { dualActivitySplit } from './dual-activity-split/entry'
+import { emergencyScreenTakeover } from './emergency-screen-takeover/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
@@ -394,6 +395,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   dropTargetMagnetism,
   dualActivitySplit,
+  emergencyScreenTakeover,
   enemyScanReveal,
   energyChargeConfirmation,
   energyTransferSync,

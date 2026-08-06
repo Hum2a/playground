@@ -1,0 +1,27 @@
+{
+  "name": "emergency-screen-takeover",
+  "intent": "Diagonal warning planes interrupt calm UI with emergency takeover.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "planeMs": 420,
+    "settleMs": 1070
+  },
+  "api": {
+    "run": "runEmergencyTakeover()",
+    "reset": "resetEmergencyTakeover()",
+    "replay": "replayEmergencyTakeover()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Planes and alert appear immediately"
+  }
+}
