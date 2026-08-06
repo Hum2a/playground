@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 244** complete.
+- Progress: **10 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 235 |
+| Done | 10 |
+| Open | 234 |
 
 ## Visual grammar
 
@@ -35,6 +35,7 @@
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
 | DB-004 | `SPX-969` | `charge-release` | Charge Release |
+| DB-005 | `SPX-970` | `overcharge-warning` | Overcharge Warning |
 | DB-016 | `SPX-981` | `power-state-transformation` | Power State Transformation |
 | DB-027 | `SPX-992` | `ultra-state-optimisation` | Ultra State Optimisation |
 | DB-031 | `SPX-996` | `scouter-scan` | Scouter Scan |
