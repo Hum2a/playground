@@ -1,0 +1,8 @@
+{
+  "name": "headline-correction-strike",
+  "ref": "SPX-3544",
+  "title": "Headline Correction Strike",
+  "mode": "tally",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

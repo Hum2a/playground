@@ -87,7 +87,7 @@ chronology and information priority.
     weight/scale while the rest of the headline holds position.
 - [x] **NEWS-021** · `SPX-3543` · ★★★★★ **Kicker-to-Headline Cascade** — Kicker, headline, deck
     and byline arrive in strict editorial hierarchy.
-- [ ] **NEWS-022** · `SPX-3544` · ★★★★★ **Headline Correction Strike** — Incorrect wording is
+- [x] **NEWS-022** · `SPX-3544` · ★★★★★ **Headline Correction Strike** — Incorrect wording is
     struck and replaced with corrected copy in place.
 - [ ] **NEWS-023** · `SPX-3545` · ★★★★☆ **Headline Update Morph** — A live headline changes
     while unchanged words retain position.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-022 | SPX-3544 | `headline-correction-strike` | Headline Correction Strike |
 | NEWS-021 | SPX-3543 | `kicker-to-headline-cascade` | Kicker-to-Headline Cascade |
 | NEWS-019 | SPX-3541 | `headline-reflow` | Headline Reflow |
 | NEWS-018 | SPX-3540 | `headline-typeset-reveal` | Headline Typeset Reveal |
@@ -688,12 +689,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **9 / 237** complete.
+- Progress: **10 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 228 |
+| Done | 10 |
+| Open | 227 |
 
 ## Core first-wave / build queue
 
@@ -706,7 +707,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-018** · `SPX-3540` · **Headline Typeset Reveal** · `headline-typeset-reveal`
 - [x] **NEWS-019** · `SPX-3541` · **Headline Reflow** · `headline-reflow`
 - [x] **NEWS-021** · `SPX-3543` · **Kicker-to-Headline Cascade** · `kicker-to-headline-cascade`
-- [ ] **NEWS-022** · `SPX-3544` · **Headline Correction Strike** · scaffold `headline-correction-strike`
+- [x] **NEWS-022** · `SPX-3544` · **Headline Correction Strike** · `headline-correction-strike`
 - [ ] **NEWS-027** · `SPX-3549` · **Column Reflow** · scaffold `column-reflow`
 - [ ] **NEWS-028** · `SPX-3550` · **Lead Column Expansion** · scaffold `lead-column-expansion`
 - [ ] **NEWS-029** · `SPX-3551` · **Grid Rule Construction** · scaffold `grid-rule-construction`
