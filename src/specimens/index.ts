@@ -56,6 +56,7 @@ import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { circularProgressCompletionMorph } from './circular-progress-completion-morph/entry'
 import { circularSealLock } from './circular-seal-lock/entry'
+import { classifiedDossierReveal } from './classified-dossier-reveal/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
 import { cloneFailurePop } from './clone-failure-pop/entry'
 import { cloneMergeResult } from './clone-merge-result/entry'
@@ -461,6 +462,7 @@ export const specimens: Specimen[] = [
   choiceExecutionSlash,
   circularProgressCompletionMorph,
   circularSealLock,
+  classifiedDossierReveal,
   clockHandWipe,
   cloneFailurePop,
   cloneMergeResult,
