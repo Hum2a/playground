@@ -1,0 +1,323 @@
+/* compact-activity-expansion — portable specimen styles. Do not restyle to host tokens. */
+
+.cae {
+  --cae-ink: #0c0d10;
+  --cae-surface: #1a1b20;
+  --cae-line: #2e3038;
+  --cae-text: #e8eaef;
+  --cae-muted: #7a808c;
+  --cae-accent: #4a9e6f;
+  --cae-node: #5b6270;
+  --cae-w-compact: 126px;
+  --cae-h-compact: 36px;
+  --cae-r-compact: 18px;
+  --cae-w-expanded: 318px;
+  --cae-h-expanded: 152px;
+  --cae-r-expanded: 24px;
+  --cae-duration: 360ms;
+  --cae-rm-duration: 100ms;
+  --cae-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  min-height: 260px;
+  padding: 0.75rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--cae-text);
+  background: var(--cae-ink);
+}
+
+.cae *,
+.cae *::before,
+.cae *::after {
+  box-sizing: border-box;
+}
+
+.cae__stage {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 1.5rem 0;
+}
+
+.cae__capsule {
+  position: relative;
+  width: var(--cae-w-compact);
+  height: var(--cae-h-compact);
+  border-radius: var(--cae-r-compact);
+  background: var(--cae-surface);
+  border: 1px solid var(--cae-line);
+  overflow: hidden;
+  transition:
+    width var(--cae-duration) var(--cae-ease),
+    height var(--cae-duration) var(--cae-ease),
+    border-radius var(--cae-duration) var(--cae-ease);
+}
+
+.cae[data-state="expanded"] .cae__capsule {
+  width: var(--cae-w-expanded);
+  height: var(--cae-h-expanded);
+  border-radius: var(--cae-r-expanded);
+}
+
+/* Progress glyph — persists and relocates */
+
+.cae__glyph {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  transition:
+    left var(--cae-duration) var(--cae-ease),
+    top var(--cae-duration) var(--cae-ease),
+    transform var(--cae-duration) var(--cae-ease);
+}
+
+.cae[data-state="expanded"] .cae__glyph {
+  left: 16px;
+  top: 22px;
+  transform: translateY(-50%);
+}
+
+.cae__glyph-track {
+  fill: none;
+  stroke: var(--cae-line);
+  stroke-width: 2.5;
+}
+
+.cae__glyph-arc {
+  fill: none;
+  stroke: var(--cae-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 47.12;
+  stroke-dashoffset: 13.17;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+/* Compact layout */
+
+.cae__compact {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px 0 32px;
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+.cae[data-state="expanded"] .cae__compact {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cae__task {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cae__pct {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--cae-accent);
+  flex-shrink: 0;
+}
+
+.cae__node {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cae-node);
+  flex-shrink: 0;
+}
+
+.cae__node:last-child {
+  background: var(--cae-accent);
+  margin-right: 2px;
+}
+
+/* Expanded layout */
+
+.cae__expanded {
+  position: absolute;
+  inset: 0;
+  padding: 14px 16px 12px 44px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cae[data-state="expanded"] .cae__expanded {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cae__header {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.cae[data-reveal-header="true"] .cae__header {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.cae__task-expanded {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.cae__rows {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.cae[data-reveal-rows="true"] .cae__rows {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.cae__row {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--cae-muted);
+}
+
+.cae__row span {
+  color: var(--cae-accent);
+}
+
+.cae__row[data-cae-row="build"],
+.cae__row[data-cae-row="test"] {
+  color: var(--cae-text);
+}
+
+.cae__eta {
+  margin: auto 0 0;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--cae-muted);
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.cae[data-reveal-eta="true"] .cae__eta {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+/* Collapse hide order — reverse hierarchy */
+
+.cae[data-collapsing="true"][data-reveal-eta="false"] .cae__eta {
+  transition-duration: 80ms;
+}
+
+.cae[data-collapsing="true"][data-reveal-rows="false"] .cae__rows {
+  transition-duration: 90ms;
+}
+
+.cae[data-collapsing="true"][data-reveal-header="false"] .cae__header {
+  transition-duration: 80ms;
+}
+
+/* Controls */
+
+.cae__controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.cae__btn {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--cae-line);
+  border-radius: 6px;
+  background: var(--cae-surface);
+  color: var(--cae-text);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.cae__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cae__btn--ghost {
+  background: transparent;
+}
+
+.cae__status {
+  margin: 0.65rem 0 0;
+  text-align: center;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  color: var(--cae-muted);
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .cae {
+    --cae-duration: var(--cae-rm-duration);
+  }
+
+  .cae__capsule,
+  .cae__glyph,
+  .cae__header,
+  .cae__rows,
+  .cae__eta,
+  .cae__compact {
+    transition-duration: var(--cae-rm-duration) !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion="true"] .cae {
+  --cae-duration: var(--cae-rm-duration);
+}
+
+[data-force-reduced-motion="true"] .cae__capsule,
+[data-force-reduced-motion="true"] .cae__glyph,
+[data-force-reduced-motion="true"] .cae__header,
+[data-force-reduced-motion="true"] .cae__rows,
+[data-force-reduced-motion="true"] .cae__eta,
+[data-force-reduced-motion="true"] .cae__compact {
+  transition-duration: var(--cae-rm-duration) !important;
+  animation: none !important;
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/compact-activity-expansion.schema.json",
+  "title": "CompactActivityExpansion",
+  "description": "Portable contract for a compact task capsule that morphs into an expanded live-status surface.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "geometry",
+    "revealOrder",
+    "compactNodes",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "compact-activity-expansion" },
+    "intent": {
+      "type": "string",
+      "const": "Compact persistent task indicator structurally expands into a richer live-status surface and contracts again with persistent progress identity."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["task", "compactPercent", "rows", "eta", "expand", "collapse"],
+      "properties": {
+        "task": { "type": "string", "const": "DEPLOY // 2.4.0" },
+        "compactPercent": { "type": "string", "const": "72%" },
+        "rows": {
+          "type": "array",
+          "const": ["BUILD PASSED", "TEST PASSED", "DEPLOY 72%"]
+        },
+        "eta": { "type": "string", "const": "ETA 00:38" },
+        "expand": { "type": "string", "const": "EXPAND" },
+        "collapse": { "type": "string", "const": "COLLAPSE" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compact", "expanded", "expansionMs"],
+      "properties": {
+        "compact": {
+          "type": "object",
+          "const": { "widthPx": 126, "heightPx": 36, "radiusPx": 18 }
+        },
+        "expanded": {
+          "type": "object",
+          "const": { "widthPx": 318, "heightPx": 152, "radiusPx": 24 }
+        },
+        "expansionMs": { "type": "number", "const": 360 }
+      }
+    },
+    "revealOrder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headerPercent", "rowsPercent", "etaPercent"],
+      "properties": {
+        "headerPercent": { "type": "number", "const": 35 },
+        "rowsPercent": { "type": "number", "const": 50 },
+        "etaPercent": { "type": "number", "const": 68 }
+      }
+    },
+    "compactNodes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count"],
+      "properties": {
+        "count": { "type": "number", "const": 2 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["progressGlyphPersists", "collapseReversesHierarchy"],
+      "properties": {
+        "progressGlyphPersists": { "type": "boolean", "const": true },
+        "collapseReversesHierarchy": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transitionMs", "nonScaling", "triggers"],
+      "properties": {
+        "transitionMs": { "type": "number", "const": 100 },
+        "nonScaling": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "capsule", "glyph", "node"],
+      "properties": {
+        "root": { "type": "string", "const": "cae" },
+        "capsule": { "type": "string", "const": "cae__capsule" },
+        "glyph": { "type": "string", "const": "cae__glyph" },
+        "node": { "type": "string", "const": "cae__node" }
+      }
+    }
+  }
+}

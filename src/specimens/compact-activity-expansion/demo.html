@@ -1,0 +1,38 @@
+<div class="cae" data-compact-activity data-state="compact">
+  <div class="cae__stage">
+    <div class="cae__capsule" data-cae-capsule>
+      <svg class="cae__glyph" data-cae-glyph viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+        <circle class="cae__glyph-track" cx="10" cy="10" r="7.5" />
+        <circle class="cae__glyph-arc" cx="10" cy="10" r="7.5" />
+      </svg>
+
+      <div class="cae__compact" data-cae-compact aria-hidden="true">
+        <span class="cae__task">DEPLOY // 2.4.0</span>
+        <span class="cae__pct">72%</span>
+        <span class="cae__node"></span>
+        <span class="cae__node"></span>
+      </div>
+
+      <div class="cae__expanded" data-cae-expanded hidden>
+        <header class="cae__header" data-cae-header>
+          <span class="cae__task-expanded">DEPLOY // 2.4.0</span>
+        </header>
+        <ul class="cae__rows" data-cae-rows>
+          <li class="cae__row" data-cae-row="build">BUILD PASSED</li>
+          <li class="cae__row" data-cae-row="test">TEST PASSED</li>
+          <li class="cae__row" data-cae-row="deploy">DEPLOY <span>72%</span></li>
+        </ul>
+        <p class="cae__eta" data-cae-eta>ETA 00:38</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cae__controls">
+    <button type="button" class="cae__btn" data-cae-expand>EXPAND</button>
+    <button type="button" class="cae__btn cae__btn--ghost" data-cae-collapse disabled>COLLAPSE</button>
+  </div>
+
+  <p class="cae__status" role="status" aria-live="polite" data-cae-status>
+    Compact deploy status at 72 percent.
+  </p>
+</div>

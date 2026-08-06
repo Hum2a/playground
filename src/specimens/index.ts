@@ -29,6 +29,7 @@ import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { collectiveCiDeployment } from './collective-ci-deployment/entry'
+import { compactActivityExpansion } from './compact-activity-expansion/entry'
 import { completionStrike } from './completion-strike/entry'
 import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { connectionSevered } from './connection-severed/entry'
@@ -219,6 +220,7 @@ export const specimens: Specimen[] = [
   comicPanelScrollReveal,
   comicPanelWipe,
   comingSoonTape,
+  compactActivityExpansion,
   completionStrike,
   concentratedEnergyCharge,
   connectionSevered,
