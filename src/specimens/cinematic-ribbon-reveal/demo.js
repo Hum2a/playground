@@ -1,0 +1,1 @@
+export function runRibbon(){document.querySelector('[data-ribbon]').classList.add('is-on');window.setTimeout(()=>{document.querySelector('[data-mark]').hidden=false},480)};document.querySelector('[data-run]')?.addEventListener('click',()=>runRibbon())

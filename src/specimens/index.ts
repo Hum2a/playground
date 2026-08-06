@@ -66,6 +66,7 @@ import { channelTuningScrub } from './channel-tuning-scrub/entry'
 import { characterFreezeIntroduction } from './character-freeze-introduction/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
+import { cinematicRibbonReveal } from './cinematic-ribbon-reveal/entry'
 import { circularProgressCompletionMorph } from './circular-progress-completion-morph/entry'
 import { circularSealLock } from './circular-seal-lock/entry'
 import { classifiedDossierReveal } from './classified-dossier-reveal/entry'
@@ -553,6 +554,7 @@ export const specimens: Specimen[] = [
   characterFreezeIntroduction,
   chargeRelease,
   choiceExecutionSlash,
+  cinematicRibbonReveal,
   circularProgressCompletionMorph,
   circularSealLock,
   classifiedDossierReveal,
