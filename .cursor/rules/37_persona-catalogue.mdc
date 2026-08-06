@@ -1,30 +1,44 @@
 ---
-description: Mark Persona 5 catalogue checklist when a P5 specimen ships
+description: Mark Persona 5 / Persona 3 catalogue checklists when a listed specimen ships
 alwaysApply: true
 ---
 
-# Persona 5 catalogue checklist
+# Persona catalogue checklists
 
-Backlog: [`docs/catalogue/persona-5-specimen-catalogue.md`](docs/catalogue/persona-5-specimen-catalogue.md).
+| Catalogue | Path |
+| --- | --- |
+| Persona 5 | [`docs/catalogue/persona-5-specimen-catalogue.md`](docs/catalogue/persona-5-specimen-catalogue.md) |
+| Persona 3 | [`docs/catalogue/persona-3-specimen-catalogue.md`](docs/catalogue/persona-3-specimen-catalogue.md) |
 
 ## IDs
 
 | Id | Role |
 | --- | --- |
-| `P5-NNN` | Stable idea id in the checklist (001–301) |
+| `P5-NNN` | Stable idea id in the P5 checklist (001–301) |
+| `P3-NNN` | Stable idea id in the P3 checklist (001–238) |
 | `SPX-NNN` | Registry `ref` in `entry.ts` / `index.ts` |
 
+### Persona 5 refs
+
 - Shipped P5 effects keep their **existing** refs (`P5-001`→`SPX-003`, `P5-002`→`SPX-012`, `P5-013`→`SPX-002`).
-- Unbuilt P5 ideas are **pre-assigned** `SPX-015`…`SPX-312` in the checklist — use that ref when implementing; do not invent a different number.
-- Non-catalogue specimens (other franchises / originals) take the next free ref **at or after `SPX-313`**, or any gap not reserved by an open `[ ]` P5 row.
+- Unbuilt P5 ideas are **pre-assigned** `SPX-015`…`SPX-312` — use that ref when implementing; do not invent a different number.
+
+### Persona 3 refs
+
+- Shipped P3 effects keep their **existing** refs (`P3-019` Blue Glass → `SPX-005`, `P3-037` Evoker Menu Snap → `SPX-006`).
+- Unbuilt P3 ideas are **pre-assigned** `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
+
+### Outside either catalogue
+
+Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5 or P3 row — typically leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 
 ## When a specimen ships
 
 After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
 
-1. Find its row in the checklist (`P5-NNN` / title / assigned `SPX-NNN`).
+1. Find its row in the matching checklist (`P5-NNN` or `P3-NNN` / title / assigned `SPX-NNN`).
 2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
-3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / 301`).
+3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / total`).
 4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
 5. Include the checklist edit in the specimen commit (or the same change set).
 
@@ -32,4 +46,4 @@ Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
 
 ## Scope
 
-Only applies to ideas in this Persona 5 checklist. Other inspiration lineages do not use this file.
+Only applies to ideas listed in these two catalogue files. Other inspiration lineages do not use them.

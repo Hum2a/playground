@@ -30,7 +30,7 @@ Follow the user’s git safety rules:
 
 - Never update git config; never `--no-verify`; never force-push; do not push unless asked
 - Parallel: `git status`, `git diff`, `git log -5 --oneline` (match message style)
-- Stage **only** the new specimen folder, the `index.ts` registry line, and files that are strictly part of that specimen add (include the Persona 5 checklist mark-off when the specimen is on that backlog — see `37_persona-catalogue`)
+- Stage **only** the new specimen folder, the `index.ts` registry line, and files that are strictly part of that specimen add (include the Persona 5 / Persona 3 checklist mark-off when the specimen is on that backlog — see `37_persona-catalogue`)
 - Message: concise, why-focused; prefer `Add SPX-NNN <title>` (1–2 sentences max)
 - Use a HEREDOC for the message; run `git status` after to confirm
 - If a hook fails, fix and make a **new** commit — do not amend unless the user’s amend rules all apply
