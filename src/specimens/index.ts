@@ -298,6 +298,7 @@ import { pipEdgeMagnetism } from './pip-edge-magnetism/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
 import { playPauseGlyphMorph } from './play-pause-glyph-morph/entry'
 import { playbackControlsFadeIn } from './playback-controls-fade-in/entry'
+import { playbackErrorTakeover } from './playback-error-takeover/entry'
 import { postBurstRecovery } from './post-burst-recovery/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
@@ -778,6 +779,7 @@ export const specimens: Specimen[] = [
   pixelHpDrain,
   playPauseGlyphMorph,
   playbackControlsFadeIn,
+  playbackErrorTakeover,
   postBurstRecovery,
   powerLevelReadout,
   powerStateTransformation,
