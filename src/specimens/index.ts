@@ -134,6 +134,7 @@ import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { multiItemDragStack } from './multi-item-drag-stack/entry'
+import { navigationDrawerEdgePull } from './navigation-drawer-edge-pull/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
@@ -386,6 +387,7 @@ export const specimens: Specimen[] = [
   moonPhaseProgress,
   moveLearned,
   multiItemDragStack,
+  navigationDrawerEdgePull,
   newspaperHeadlineDrop,
   notificationBannerDrop,
   notificationExpand,

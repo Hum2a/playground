@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 417** complete.
+- Progress: **17 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 401 |
+| Done | 17 |
+| Open | 400 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-126 | `SPX-1683` | `navigation-drawer-edge-pull` | Navigation Drawer Edge Pull |
 | AND-118 | `SPX-1675` | `android-bottom-sheet-detent-snap` | Bottom Sheet Detent Snap |
 | AND-109 | `SPX-1666` | `snackbar-rise` | Snackbar Rise |
 | AND-099 | `SPX-1656` | `heads-up-notification-drop` | Heads-Up Notification Drop |
@@ -69,7 +70,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — android-notifications
 - [x] **AND-109** · `SPX-1666` · **Snackbar Rise** — toasts-snackbars-temporary-feedback
 - [x] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — bottom-sheets
-- [ ] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — navigation-drawer
+- [x] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — navigation-drawer
 - [ ] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — bottom-navigation
 - [ ] **AND-193** · `SPX-1750` · **Material Pull-to-Refresh** — pull-to-refresh-overscroll
 - [ ] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
@@ -253,7 +254,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Navigation Drawer
 
-- [ ] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — drawer follows direct horizontal drag from screen edge.
+- [x] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — drawer follows direct horizontal drag from screen edge.
 - [ ] **AND-127** · `SPX-1684` · **Drawer Commit/Cancel** — release threshold determines open or closed state.
 - [ ] **AND-128** · `SPX-1685` · **Drawer Item Selection Transfer** — one shared selected backing moves between destinations.
 - [ ] **AND-129** · `SPX-1686` · **Drawer Content Parallax** — underlying content shifts slightly while drawer advances.
