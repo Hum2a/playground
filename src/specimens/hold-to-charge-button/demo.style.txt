@@ -1,0 +1,375 @@
+/* SPX-024 Hold-to-Charge Button — portable contract. Do not restyle to host tokens. */
+
+.hold-charge-demo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 240px;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  background: #090909;
+  color: #f5f1e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.hold-charge-demo__hint {
+  margin: 0;
+  max-width: 18rem;
+  text-align: center;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  color: rgba(245, 241, 232, 0.62);
+}
+
+.hold-charge-demo__status {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e60012;
+}
+
+.hold-charge-demo__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hold-charge-demo__reset {
+  appearance: none;
+  margin-top: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(245, 241, 232, 0.45);
+  border-radius: 0;
+  background: transparent;
+  color: #f5f1e8;
+  font: inherit;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hold-charge-demo__reset:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 3px;
+}
+
+/* —— Button —— */
+.hold-charge {
+  --hold-p: 0;
+  --cancel-ms: 260ms;
+  position: relative;
+  appearance: none;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: min(88%, 320px);
+  height: 64px;
+  margin: 0;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 0;
+  background: #090909;
+  color: #f5f1e8;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  clip-path: polygon(
+    0% 8%,
+    4% 0%,
+    96% 0%,
+    100% 10%,
+    100% 88%,
+    97% 100%,
+    6% 100%,
+    0% 90%
+  );
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 100ms cubic-bezier(0.33, 1, 0.68, 1);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hold-charge:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 4px;
+}
+
+.hold-charge--holding {
+  transform: scale(0.97);
+}
+
+.hold-charge--pulse {
+  animation: hold-charge-pulse 180ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes hold-charge-pulse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hold-charge__shock {
+  position: absolute;
+  inset: -8px;
+  z-index: 0;
+  background: #090909;
+  clip-path: polygon(
+    2% 12%,
+    8% 0%,
+    94% 2%,
+    100% 18%,
+    98% 92%,
+    90% 100%,
+    8% 98%,
+    0% 82%
+  );
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+.hold-charge--pulse .hold-charge__shock {
+  animation: hold-charge-shock 180ms ease-out forwards;
+}
+
+@keyframes hold-charge-shock {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+/* Irregular red mass — oversized jagged polygon translated by --hold-p */
+.hold-charge__fill {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  z-index: 1;
+  width: 118%;
+  height: 140%;
+  background: #e60012;
+  /* 5 peaks/notches on the leading (right) edge */
+  clip-path: polygon(
+    0% 0%,
+    86% 0%,
+    88% 10%,
+    84% 18%,
+    90% 28%,
+    85% 40%,
+    92% 52%,
+    86% 64%,
+    91% 76%,
+    85% 88%,
+    89% 100%,
+    0% 100%
+  );
+  transform: translate3d(calc(-100% + (var(--hold-p) * 100%)), 0, 0);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.hold-charge--cancel .hold-charge__fill {
+  transition: transform var(--cancel-ms) cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.hold-charge__micro {
+  position: absolute;
+  left: 12%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-2deg);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(9, 9, 9, 0.55);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hold-charge__accents {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hold-charge__accent {
+  position: absolute;
+  width: 10px;
+  height: 8px;
+  background: #f5f1e8;
+  opacity: 0;
+  clip-path: polygon(0% 50%, 100% 0%, 80% 100%);
+}
+
+.hold-charge__accent--1 {
+  top: 18%;
+  left: calc(var(--hold-p) * 100% - 6%);
+}
+
+.hold-charge__accent--2 {
+  top: 48%;
+  left: calc(var(--hold-p) * 100% - 2%);
+  background: #090909;
+}
+
+.hold-charge__accent--3 {
+  top: 72%;
+  left: calc(var(--hold-p) * 100% - 8%);
+}
+
+.hold-charge--holding[data-band='25'] .hold-charge__accent--1,
+.hold-charge--holding[data-band='50'] .hold-charge__accent--1,
+.hold-charge--holding[data-band='50'] .hold-charge__accent--2,
+.hold-charge--holding[data-band='75'] .hold-charge__accent,
+.hold-charge--near .hold-charge__accent {
+  opacity: 1;
+}
+
+.hold-charge__label {
+  position: relative;
+  z-index: 3;
+  font-size: clamp(0.78rem, 3.2vw, 0.95rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.hold-charge--holding .hold-charge__label,
+.hold-charge--near .hold-charge__label {
+  color: #f5f1e8;
+  text-shadow: 1px 0 0 rgba(9, 9, 9, 0.35);
+}
+
+.hold-charge--near .hold-charge__label {
+  transform: translate(2px, -1px);
+}
+
+.hold-charge--near .hold-charge__fill {
+  filter: drop-shadow(2px 0 0 rgba(9, 9, 9, 0.25));
+}
+
+.hold-charge--confirmed .hold-charge__label {
+  color: #f5f1e8;
+}
+
+.hold-charge--confirmed .hold-charge__fill {
+  transform: translate3d(0, 0, 0);
+}
+
+/* —— Reduced motion: stepped static fills, no continuous sweep —— */
+@media (prefers-reduced-motion: reduce) {
+  .hold-charge,
+  .hold-charge__fill,
+  .hold-charge__shock {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .hold-charge--holding {
+    transform: none;
+  }
+
+  .hold-charge--reduced .hold-charge__fill,
+  .hold-charge--holding.hold-charge--reduced .hold-charge__fill {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .hold-charge--reduced[data-rm-step='25'] .hold-charge__fill {
+    transform: translate3d(-75%, 0, 0);
+  }
+
+  .hold-charge--reduced[data-rm-step='50'] .hold-charge__fill {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  .hold-charge--reduced[data-rm-step='75'] .hold-charge__fill {
+    transform: translate3d(-25%, 0, 0);
+  }
+
+  .hold-charge--reduced[data-rm-step='100'] .hold-charge__fill,
+  .hold-charge--confirmed.hold-charge--reduced .hold-charge__fill {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .hold-charge--reduced .hold-charge__accent {
+    opacity: 0 !important;
+  }
+
+  .hold-charge--near .hold-charge__label {
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .hold-charge,
+[data-force-reduced-motion='true'] .hold-charge__fill,
+[data-force-reduced-motion='true'] .hold-charge__shock {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .hold-charge--holding {
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .hold-charge--reduced .hold-charge__fill,
+[data-force-reduced-motion='true'] .hold-charge--holding.hold-charge--reduced .hold-charge__fill {
+  transform: translate3d(-100%, 0, 0);
+}
+
+[data-force-reduced-motion='true'] .hold-charge--reduced[data-rm-step='25'] .hold-charge__fill {
+  transform: translate3d(-75%, 0, 0);
+}
+
+[data-force-reduced-motion='true'] .hold-charge--reduced[data-rm-step='50'] .hold-charge__fill {
+  transform: translate3d(-50%, 0, 0);
+}
+
+[data-force-reduced-motion='true'] .hold-charge--reduced[data-rm-step='75'] .hold-charge__fill {
+  transform: translate3d(-25%, 0, 0);
+}
+
+[data-force-reduced-motion='true'] .hold-charge--reduced[data-rm-step='100'] .hold-charge__fill,
+[data-force-reduced-motion='true'] .hold-charge--confirmed.hold-charge--reduced .hold-charge__fill {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-force-reduced-motion='true'] .hold-charge--reduced .hold-charge__accent {
+  opacity: 0 !important;
+}
+
+[data-force-reduced-motion='true'] .hold-charge--near .hold-charge__label {
+  transform: none;
+}

@@ -1,0 +1,72 @@
+{
+  "name": "hold-to-charge-button",
+  "intent": "Press-and-hold confirmation where an irregular red graphic mass consumes a clipped black button over exactly 1400ms; early release cancels.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "button": {
+    "className": "hold-charge",
+    "width": "min(88%, 320px)",
+    "heightPx": 64,
+    "borderRadius": 0,
+    "clipPath": "polygon(0% 8%, 4% 0%, 96% 0%, 100% 10%, 100% 88%, 97% 100%, 6% 100%, 0% 90%)",
+    "compressScale": 0.97
+  },
+  "fill": {
+    "className": "hold-charge__fill",
+    "colour": "#e60012",
+    "width": "118%",
+    "height": "140%",
+    "leadingPeaks": 5,
+    "clipPath": "polygon(0% 0%, 86% 0%, 88% 10%, 84% 18%, 90% 28%, 85% 40%, 92% 52%, 86% 64%, 91% 76%, 85% 88%, 89% 100%, 0% 100%)",
+    "progressProperty": "--hold-p",
+    "transform": "translate3d(calc(-100% + (var(--hold-p) * 100%)), 0, 0)",
+    "microtype": "CONFIRM · CONFIRM · CONFIRM"
+  },
+  "labels": {
+    "idle": "HOLD TO DELETE",
+    "holding": "KEEP HOLDING",
+    "near": "ALMOST THERE",
+    "confirmed": "CONFIRMED!"
+  },
+  "timing": {
+    "holdMs": 1400,
+    "compressMs": 100,
+    "nearAtMs": 1190,
+    "confirmPulseMs": 180,
+    "cancelMaxMs": 260,
+    "shockExpandPx": 8
+  },
+  "api": {
+    "reset": "resetHoldCharge()",
+    "busyGuard": true,
+    "elapsedTimeDriven": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart"
+  },
+  "a11y": {
+    "realButton": true,
+    "ariaLiveStatus": true,
+    "keyboardSpace": true,
+    "keydownRepeatIgnored": true,
+    "decorativeFillAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Stepped static fills at 0/25/50/75/100 with HOLDING N% labels; no continuous jagged sweep; confirmation still requires 1400ms hold"
+  },
+  "constraints": {
+    "noImages": true,
+    "noFontFace": true,
+    "noNetwork": true,
+    "noLibraries": true,
+    "noRectangularProgressBar": true,
+    "noRealDestructiveAction": true,
+    "releaseBeforeThresholdCancels": true
+  }
+}

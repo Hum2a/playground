@@ -1,4 +1,4 @@
-﻿import { achievementEncounter } from './achievement-encounter/entry'
+import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
@@ -7,6 +7,7 @@ import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
+import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
@@ -99,6 +100,7 @@ export const specimens: Specimen[] = [
   panelExplosionReveal,
   mangaCutInNotification,
   holdToChargeButton,
+  decisionShowdown,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

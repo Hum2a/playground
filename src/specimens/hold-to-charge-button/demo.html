@@ -1,0 +1,28 @@
+<div class="hold-charge-demo" data-hold-charge-demo>
+  <p class="hold-charge-demo__hint">Press and hold — visual specimen only, nothing is deleted.</p>
+  <p class="hold-charge-demo__status" data-hold-charge-status aria-live="polite">Ready</p>
+
+  <button
+    type="button"
+    class="hold-charge"
+    data-hold-charge
+    aria-describedby="hold-charge-hint"
+  >
+    <span class="hold-charge__shock" aria-hidden="true"></span>
+    <span class="hold-charge__fill" aria-hidden="true">
+      <span class="hold-charge__micro" aria-hidden="true">CONFIRM · CONFIRM · CONFIRM</span>
+    </span>
+    <span class="hold-charge__accents" aria-hidden="true">
+      <span class="hold-charge__accent hold-charge__accent--1"></span>
+      <span class="hold-charge__accent hold-charge__accent--2"></span>
+      <span class="hold-charge__accent hold-charge__accent--3"></span>
+    </span>
+    <span class="hold-charge__label" data-hold-charge-label>HOLD TO DELETE</span>
+  </button>
+
+  <p id="hold-charge-hint" class="hold-charge-demo__sr">
+    Hold for about one and a half seconds to confirm. Release early to cancel.
+  </p>
+
+  <button type="button" class="hold-charge-demo__reset" data-hold-charge-reset>Reset</button>
+</div>
