@@ -1,0 +1,81 @@
+{
+  "name": "temporal-undo",
+  "intent": "Undo restores RECORD // 028 by reversing Erasure Delete geometry: timeline NOW→-3, diagonal boundary TL→BR, 12 fragments return, metadata restores in reverse spatial order.",
+  "catalogue": {
+    "db": "DB-195",
+    "ref": "SPX-1160",
+    "catalogueTitle": "Whis Rewind"
+  },
+  "companion": {
+    "specimen": "erasure-delete",
+    "ref": "SPX-1119",
+    "note": "Same record geometry and -18deg boundary; rewind direction is the reverse. Independently portable."
+  },
+  "record": {
+    "id": "RECORD // 028",
+    "sizePx": [280, 170],
+    "initialStatus": "DELETED",
+    "finalStatus": "ACTIVE",
+    "metadata": {
+      "LINKS": "14",
+      "VERSION": "07",
+      "STATUS": "ACTIVE"
+    }
+  },
+  "timeline": {
+    "ticks": ["NOW", "-1", "-2", "-3"],
+    "travelMs": 650,
+    "holdAtMinus3Ms": 80,
+    "retractMs": 160
+  },
+  "boundary": {
+    "direction": "top-left-to-bottom-right",
+    "angleDeg": -18,
+    "thicknessPx": 3,
+    "durationMs": 620,
+    "voidStartRightPx": 150,
+    "voidEndRightPx": -340,
+    "boundaryStartRightPx": 292,
+    "boundaryEndRightPx": -4
+  },
+  "fragments": {
+    "count": 12,
+    "scatter": [
+      [-23, -12],
+      [21, -18],
+      [-30, 9],
+      [31, 14],
+      [-18, 24],
+      [18, 31],
+      [-42, -4],
+      [38, -8],
+      [-13, -27],
+      [27, 25],
+      [-35, 18],
+      [12, -35]
+    ],
+    "returnDurationMs": 220,
+    "deterministic": true
+  },
+  "metadataRestoreOrder": ["identity", "VERSION", "LINKS", "STATUS"],
+  "restoreStartsMs": {
+    "identity": 40,
+    "VERSION": 130,
+    "LINKS": 250,
+    "STATUS": 380
+  },
+  "final": {
+    "frameClose": true,
+    "copy": "STATE RESTORED",
+    "announce": "Record 028 restored."
+  },
+  "api": {
+    "execute": "runTemporalUndo()",
+    "reset": "resetTemporalUndo()",
+    "window": "temporalUndo.undo / .reset",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately restore record and STATE RESTORED"
+  }
+}

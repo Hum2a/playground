@@ -1,0 +1,59 @@
+<div class="tu" data-temporal-undo data-state="deleted">
+  <div class="tu__stage">
+    <!-- Deleted confirmation (initial) -->
+    <p class="tu__deleted" data-tu-deleted>
+      <span>RECORD // 028</span>
+      <b>DELETED</b>
+    </p>
+
+    <!-- Reconstruction card — hidden until rewind; revealed behind reversing boundary -->
+    <article class="tu__card" data-tu-card aria-labelledby="tu-title" hidden>
+      <div class="tu__corner tu__corner--a"></div>
+      <div class="tu__corner tu__corner--b"></div>
+      <h2 id="tu-title" class="tu__identity">RECORD // 028</h2>
+      <div class="tu__geometry"></div>
+      <p class="tu__row tu__row--status"><span>STATUS</span><b>ACTIVE</b></p>
+      <p class="tu__row tu__row--links"><span>LINKS</span><b>14</b></p>
+      <p class="tu__row tu__row--version"><span>VERSION</span><b>07</b></p>
+
+      <!-- Void mask: covers card ahead of boundary; retracts TL→BR -->
+      <div class="tu__void" data-tu-void></div>
+      <span class="tu__boundary" data-tu-boundary></span>
+
+      <div class="tu__fragments" aria-hidden="true">
+        <i style="--x:-23px;--y:-12px"></i>
+        <i style="--x:21px;--y:-18px"></i>
+        <i style="--x:-30px;--y:9px"></i>
+        <i style="--x:31px;--y:14px"></i>
+        <i style="--x:-18px;--y:24px"></i>
+        <i style="--x:18px;--y:31px"></i>
+        <i style="--x:-42px;--y:-4px"></i>
+        <i style="--x:38px;--y:-8px"></i>
+        <i style="--x:-13px;--y:-27px"></i>
+        <i style="--x:27px;--y:25px"></i>
+        <i style="--x:-35px;--y:18px"></i>
+        <i style="--x:12px;--y:-35px"></i>
+      </div>
+    </article>
+
+    <!-- Timeline: NOW → -3 -->
+    <div class="tu__timeline" data-tu-timeline aria-hidden="true">
+      <span class="tu__tick" data-tick="0">NOW</span>
+      <span class="tu__tick" data-tick="1">-1</span>
+      <span class="tu__tick" data-tick="2">-2</span>
+      <span class="tu__tick" data-tick="3">-3</span>
+      <span class="tu__needle" data-tu-needle></span>
+    </div>
+
+    <p class="tu__restored" data-tu-restored hidden>STATE RESTORED</p>
+  </div>
+
+  <div class="tu__actions">
+    <button type="button" data-tu-undo>UNDO</button>
+    <button type="button" data-tu-reset hidden>RESET</button>
+  </div>
+
+  <p class="tu__status" role="status" aria-live="polite" data-tu-status>
+    Record 028 deleted.
+  </p>
+</div>

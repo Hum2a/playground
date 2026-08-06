@@ -1,0 +1,516 @@
+/* SPX-1160 Temporal Undo — reverse of Erasure Delete (SPX-1119) geometry.
+ * Boundary travels top-left → bottom-right. 12 fragments return from frozen scatter.
+ * Portable — does not import erasure-delete. */
+
+.tu {
+  --bg: #111a21;
+  --ink: #dfe8e6;
+  --line: #71929b;
+  --mark: #c8925e;
+  --accent: #4e9e8f;
+  position: relative;
+  min-height: 360px;
+  padding: 1rem;
+  color: var(--ink);
+  background: var(--bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.tu * {
+  box-sizing: border-box;
+}
+
+.tu__stage {
+  position: relative;
+  width: 280px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+/* Initial deleted confirmation */
+.tu__deleted {
+  position: absolute;
+  left: 18px;
+  top: 72px;
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.tu__deleted b {
+  display: block;
+  margin-top: 4px;
+  color: var(--mark);
+  font-size: 11px;
+}
+
+/* Card — same angular geometry as Erasure Delete */
+.tu__card {
+  position: absolute;
+  inset: 18px 0 auto;
+  width: 280px;
+  height: 170px;
+  overflow: hidden;
+  background: #1d2a32;
+  border: 1px solid var(--line);
+  clip-path: polygon(0 0, 94% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
+}
+
+.tu__identity {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  z-index: 1;
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+
+.tu__corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--mark);
+  border-style: solid;
+  opacity: 0;
+}
+
+.tu__corner--a {
+  right: 12px;
+  top: 12px;
+  border-width: 2px 2px 0 0;
+}
+
+.tu__corner--b {
+  left: 12px;
+  bottom: 12px;
+  border-width: 0 0 2px 2px;
+}
+
+.tu__geometry {
+  position: absolute;
+  left: 18px;
+  top: 49px;
+  width: 244px;
+  height: 28px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 12% 100%);
+  opacity: 0;
+}
+
+.tu__row {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 5px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+
+.tu__row b {
+  color: var(--mark);
+}
+
+.tu__row--status {
+  top: 86px;
+}
+
+.tu__row--links {
+  top: 113px;
+}
+
+.tu__row--version {
+  top: 140px;
+}
+
+/*
+ * Void: same plate as Erasure Delete.
+ * Erasure ended at right:150px (covering card).
+ * Rewind starts covered and retracts to right:-340px (revealed).
+ */
+.tu__void {
+  position: absolute;
+  z-index: 3;
+  right: 150px;
+  bottom: -145px;
+  width: 340px;
+  height: 300px;
+  background: var(--bg);
+  transform: rotate(-18deg);
+  transform-origin: center;
+}
+
+.tu__boundary {
+  position: absolute;
+  z-index: 4;
+  right: 292px;
+  bottom: -92px;
+  width: 3px;
+  height: 300px;
+  background: var(--ink);
+  transform: rotate(-18deg);
+  transform-origin: center;
+  opacity: 0;
+}
+
+/* 12 fragments — start at scatter; return to origin */
+.tu__fragments i {
+  position: absolute;
+  z-index: 5;
+  right: 31px;
+  bottom: 24px;
+  width: 6px;
+  height: 6px;
+  background: var(--mark);
+  opacity: 0;
+  transform: rotate(45deg) translate(var(--x), var(--y));
+}
+
+.tu__fragments i:nth-child(3n) {
+  width: 9px;
+  height: 2px;
+  transform: rotate(-18deg) translate(var(--x), var(--y));
+}
+
+.tu__fragments i:nth-child(2n) {
+  background: var(--line);
+}
+
+/* Timeline */
+.tu__timeline {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 198px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 28px;
+  padding: 0 0.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.tu__tick {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
+.tu__needle {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 2px;
+  height: 14px;
+  background: var(--mark);
+  transform: translateX(0);
+}
+
+.tu__restored {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 228px;
+  margin: 0;
+  text-align: center;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+/* ——— Rewinding ——— */
+.tu[data-state='rewinding'] .tu__timeline,
+.tu[data-state='locking'] .tu__timeline {
+  opacity: 1;
+  transform: scaleY(1);
+  animation: tu-timeline-in 120ms ease-out both;
+}
+
+.tu[data-state='rewinding'] .tu__needle,
+.tu[data-state='locking'] .tu__needle {
+  animation: tu-needle 650ms linear forwards;
+}
+
+@keyframes tu-timeline-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tu-needle {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: calc(100% - 2px);
+  }
+}
+
+.tu[data-state='rewinding'] .tu__void {
+  animation: tu-void-retract 620ms linear forwards;
+}
+
+.tu[data-state='rewinding'] .tu__boundary {
+  opacity: 1;
+  animation: tu-boundary-reverse 620ms linear forwards;
+}
+
+/* Reverse of erasure: 150→-340 void, 292→-4 boundary */
+@keyframes tu-void-retract {
+  from {
+    right: 150px;
+  }
+  to {
+    right: -340px;
+  }
+}
+
+@keyframes tu-boundary-reverse {
+  from {
+    right: 292px;
+  }
+  to {
+    right: -4px;
+  }
+}
+
+/*
+ * Metadata restore — reverse spatial order of Erasure Delete.
+ * Erasure hit STATUS→LINKS→VERSION→identity (BR→TL).
+ * Rewind restores identity→VERSION→LINKS→STATUS (TL→BR).
+ */
+.tu[data-state='rewinding'] .tu__identity {
+  animation: tu-reveal 90ms linear 40ms forwards;
+}
+
+.tu[data-state='rewinding'] .tu__geometry,
+.tu[data-state='rewinding'] .tu__corner {
+  animation: tu-reveal 80ms linear 70ms forwards;
+}
+
+.tu[data-state='rewinding'] .tu__row--version {
+  animation: tu-reveal 120ms linear 130ms forwards;
+}
+
+.tu[data-state='rewinding'] .tu__row--links {
+  animation: tu-reveal 120ms linear 250ms forwards;
+}
+
+.tu[data-state='rewinding'] .tu__row--status {
+  animation: tu-reveal 120ms linear 380ms forwards;
+}
+
+@keyframes tu-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+/* Fragments return — reverse of scatter (arrive as boundary crosses) */
+.tu[data-state='rewinding'] .tu__fragments i {
+  opacity: 1;
+  animation: tu-fragment-return 220ms ease-in var(--d, 350ms) forwards;
+}
+
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(1) {
+  --d: 95ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(2) {
+  --d: 120ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(3) {
+  --d: 145ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(4) {
+  --d: 170ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(5) {
+  --d: 195ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(6) {
+  --d: 220ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(7) {
+  --d: 245ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(8) {
+  --d: 270ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(9) {
+  --d: 295ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(10) {
+  --d: 320ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(11) {
+  --d: 345ms;
+}
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(12) {
+  --d: 370ms;
+}
+
+@keyframes tu-fragment-return {
+  0% {
+    opacity: 1;
+    transform: rotate(45deg) translate(var(--x), var(--y));
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(0, 0);
+  }
+}
+
+.tu[data-state='rewinding'] .tu__fragments i:nth-child(3n) {
+  animation-name: tu-fragment-return-line;
+}
+
+@keyframes tu-fragment-return-line {
+  0% {
+    opacity: 1;
+    transform: rotate(-18deg) translate(var(--x), var(--y));
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-18deg) translate(0, 0);
+  }
+}
+
+/* Lock — reconstruction complete; hold at -3 */
+.tu[data-state='locking'] .tu__void,
+.tu[data-state='restored'] .tu__void,
+.tu[data-state='retracting'] .tu__void {
+  right: -340px;
+  animation: none;
+}
+
+.tu[data-state='locking'] .tu__boundary,
+.tu[data-state='restored'] .tu__boundary,
+.tu[data-state='retracting'] .tu__boundary {
+  opacity: 0;
+  right: -4px;
+  animation: none;
+}
+
+.tu[data-state='locking'] .tu__identity,
+.tu[data-state='locking'] .tu__geometry,
+.tu[data-state='locking'] .tu__corner,
+.tu[data-state='locking'] .tu__row,
+.tu[data-state='restored'] .tu__identity,
+.tu[data-state='restored'] .tu__geometry,
+.tu[data-state='restored'] .tu__corner,
+.tu[data-state='restored'] .tu__row,
+.tu[data-state='retracting'] .tu__identity,
+.tu[data-state='retracting'] .tu__geometry,
+.tu[data-state='retracting'] .tu__corner,
+.tu[data-state='retracting'] .tu__row {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  animation: none;
+}
+
+.tu[data-state='locking'] .tu__needle {
+  left: calc(100% - 2px);
+  animation: none;
+}
+
+.tu[data-state='locking'] .tu__card {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mark) 55%, transparent);
+}
+
+/* Retract timeline */
+.tu[data-state='retracting'] .tu__timeline {
+  animation: tu-timeline-out 160ms ease-in forwards;
+}
+
+@keyframes tu-timeline-out {
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+.tu[data-state='restored'] .tu__timeline {
+  opacity: 0;
+  transform: scaleY(0);
+}
+
+.tu[data-state='restored'] .tu__restored {
+  display: block;
+}
+
+.tu__actions {
+  margin-top: 0.35rem;
+  text-align: center;
+}
+
+.tu button {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--ink) 55%, transparent);
+  background: transparent;
+  color: var(--ink);
+  font: 700 0.68rem ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.tu button:focus-visible {
+  outline: 2px solid var(--line);
+  outline-offset: 2px;
+}
+
+.tu button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.tu__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tu * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .tu * {
+  transition: none !important;
+  animation: none !important;
+}
