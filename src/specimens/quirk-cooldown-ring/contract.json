@@ -1,0 +1,20 @@
+{
+  "name": "quirk-cooldown-ring",
+  "intent": "Stroke ring drains 100% to empty then flips to READY.",
+  "catalogue": { "mha": "MHA-026", "ref": "SPX-2000" },
+  "copy": { "cooldown": "COOLDOWN", "ready": "READY" },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "drainMs": 580, "readyMs": 320 },
+  "ring": { "circumference": 289.03, "radius": 46 },
+  "api": {
+    "run": "runQuirkCooldownRing()",
+    "reset": "resetQuirkCooldownRing()",
+    "replay": "replayQuirkCooldownRing()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show READY with empty ring" }
+}
