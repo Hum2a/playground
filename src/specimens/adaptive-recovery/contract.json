@@ -1,0 +1,74 @@
+{
+  "name": "adaptive-recovery",
+  "intent": "Post-failure improvement: a failed system recovers to its prior baseline, then adapts three metrics to a stronger new baseline while keeping the previous baseline visible for comparison.",
+  "primitives": ["recovery", "adaptation", "improvement"],
+  "colours": {
+    "ink": "#101218",
+    "panel": "#171b22",
+    "rule": "#2d3442",
+    "pewter": "#8b93a5",
+    "chalk": "#e7eaf1",
+    "fail": "#c45b5b",
+    "ok": "#5faf9a",
+    "adapt": "#d4a45a"
+  },
+  "chrome": {
+    "system": "WORKER // 06",
+    "initialStatus": "FAILED",
+    "finalStatus": "ADAPTED",
+    "trigger": "RECOVER",
+    "previousBaselineLabel": "PREVIOUS BASELINE",
+    "newBaselineLabel": "NEW BASELINE"
+  },
+  "baselines": {
+    "previous": {
+      "capacity": 100,
+      "retries": 2,
+      "latencyMs": 84
+    },
+    "next": {
+      "capacity": 128,
+      "retries": 4,
+      "latencyMs": 61
+    },
+    "deltas": {
+      "capacity": "+28 CAPACITY",
+      "retries": "+2 RETRIES",
+      "latency": "−23ms LATENCY"
+    }
+  },
+  "health": {
+    "initial": 18,
+    "sequence": [18, 36, 57, 78, 100],
+    "stepMs": 175,
+    "recoverDurationMs": 700
+  },
+  "timing": {
+    "baselineHoldMs": 120,
+    "adaptStaggerMs": [0, 140, 280],
+    "adaptClipMs": 180,
+    "adaptDoneMs": 480
+  },
+  "adaptation": {
+    "structuralElements": 3,
+    "metrics": ["capacity", "retries", "latency"],
+    "replacement": "clipped"
+  },
+  "api": {
+    "recover": "runAdaptiveRecovery()",
+    "reset": "runAdaptiveRecoveryReset()",
+    "busyGuard": true,
+    "replayViaRecover": true
+  },
+  "a11y": {
+    "exposePreviousAndNewBaseline": true,
+    "liveRegion": "polite"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show health 100%, adapted metrics, deltas, NEW BASELINE, and ADAPTED"
+  }
+}

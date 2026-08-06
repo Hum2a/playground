@@ -1,0 +1,73 @@
+<div class="ar" data-adaptive-recovery data-state="failed">
+  <header class="ar__chrome">
+    <p class="ar__id">WORKER // 06</p>
+    <p class="ar__status" data-ar-status>FAILED</p>
+  </header>
+
+  <aside class="ar__prev" data-ar-prev aria-label="Previous baseline">
+    <p class="ar__prev-label">PREVIOUS BASELINE</p>
+    <ul class="ar__prev-metrics">
+      <li>CAPACITY <span>100</span></li>
+      <li>RETRIES <span>2</span></li>
+      <li>LATENCY <span>84ms</span></li>
+    </ul>
+  </aside>
+
+  <section class="ar__worker" data-ar-worker aria-label="Current worker state">
+    <div class="ar__health">
+      <p class="ar__health-label">HEALTH</p>
+      <div class="ar__health-track" aria-hidden="true">
+        <div class="ar__health-fill" data-ar-health-fill style="width:18%"></div>
+      </div>
+      <p class="ar__health-value"><span data-ar-health>18</span>%</p>
+    </div>
+
+    <div class="ar__frame" data-ar-frame>
+      <span class="ar__seg ar__seg--1" aria-hidden="true"></span>
+      <span class="ar__seg ar__seg--2" aria-hidden="true"></span>
+      <span class="ar__seg ar__seg--3" aria-hidden="true"></span>
+      <span class="ar__seg ar__seg--4" aria-hidden="true"></span>
+
+      <p class="ar__state" data-ar-state>CRITICAL</p>
+
+      <dl class="ar__metrics">
+        <div class="ar__metric" data-ar-metric="capacity">
+          <dt>CAPACITY</dt>
+          <dd class="ar__clip">
+            <span class="ar__old" data-ar-old>100</span>
+            <span class="ar__new" data-ar-new aria-hidden="true">128</span>
+          </dd>
+          <span class="ar__strut" data-ar-strut="capacity" aria-hidden="true"></span>
+        </div>
+        <div class="ar__metric" data-ar-metric="retries">
+          <dt>RETRIES</dt>
+          <dd class="ar__clip">
+            <span class="ar__old" data-ar-old>2</span>
+            <span class="ar__new" data-ar-new aria-hidden="true">4</span>
+          </dd>
+          <span class="ar__strut" data-ar-strut="retries" aria-hidden="true"></span>
+        </div>
+        <div class="ar__metric" data-ar-metric="latency">
+          <dt>LATENCY</dt>
+          <dd class="ar__clip">
+            <span class="ar__old" data-ar-old>84ms</span>
+            <span class="ar__new" data-ar-new aria-hidden="true">61ms</span>
+          </dd>
+          <span class="ar__strut" data-ar-strut="latency" aria-hidden="true"></span>
+        </div>
+      </dl>
+    </div>
+
+    <p class="ar__baseline-tag" data-ar-baseline-tag hidden>NEW BASELINE</p>
+
+    <ul class="ar__deltas" data-ar-deltas hidden>
+      <li>+28 CAPACITY</li>
+      <li>+2 RETRIES</li>
+      <li>−23ms LATENCY</li>
+    </ul>
+  </section>
+
+  <p class="ar__announce" data-ar-announce aria-live="polite"></p>
+
+  <button type="button" class="ar__btn" data-ar-recover>RECOVER</button>
+</div>

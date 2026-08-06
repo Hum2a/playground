@@ -31,6 +31,7 @@ import { collectiveCiDeployment } from './collective-ci-deployment/entry'
 import { completionStrike } from './completion-strike/entry'
 import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { connectionSevered } from './connection-severed/entry'
+import { contextualVanishReappear } from './contextual-vanish-reappear/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { coreSeedRegeneration } from './core-seed-regeneration/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
@@ -56,6 +57,7 @@ import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
+import { enhancedStateReversion } from './enhanced-state-reversion/entry'
 import { entryRegistration } from './entry-registration/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
@@ -183,6 +185,7 @@ export const specimens: Specimen[] = [
   comingSoonTape,
   collectiveCiDeployment,
   comicPanelWipe,
+  contextualVanishReappear,
   contentDeclassification,
   callingCardSlam,
   capacityDrain,
@@ -252,6 +255,7 @@ export const specimens: Specimen[] = [
   enemyScanReveal,
   energyChargeConfirmation,
   energyTransferSync,
+  enhancedStateReversion,
   entryRegistration,
   errorCorrectionRewrite,
   evolutionComplete,
