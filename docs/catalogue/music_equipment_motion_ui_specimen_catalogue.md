@@ -426,7 +426,7 @@ specimens can feel tactile without needing sound.
 
 # 19. Guitar Tuners / Pitch
 
-- [ ] **MUSIC-150** · `SPX-3909` · ★★★★★ **Needle Tuner Centre** — A tuning needle moves from
+- [x] **MUSIC-150** · `SPX-3909` · ★★★★★ **Needle Tuner Centre** — A tuning needle moves from
     flat/sharp toward a centred in-tune target.
 - [ ] **MUSIC-151** · `SPX-3910` · ★★★★★ **Strobe Tuner Lock** — Moving strobe bands slow and
     stop as pitch reaches target.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-150 | SPX-3909 | `needle-tuner-centre` | Needle Tuner Centre |
 | MUSIC-143 | SPX-3902 | `tube-warm-up` | Tube Warm-Up |
 | MUSIC-130 | SPX-3889 | `tape-splice` | Tape Splice |
 | MUSIC-123 | SPX-3882 | `tape-thread-route` | Tape Thread Route |
@@ -903,12 +904,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **40 / 310** complete.
+- Progress: **41 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 40 |
-| Open | 270 |
+| Done | 41 |
+| Open | 269 |
 
 ## Core first-wave / build queue
 
@@ -951,7 +952,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · `tape-thread-route`
 - [x] **MUSIC-130** · `SPX-3889` · **Tape Splice** · `tape-splice`
 - [x] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · `tube-warm-up`
-- [ ] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · scaffold `needle-tuner-centre`
+- [x] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · `needle-tuner-centre`
 - [ ] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · scaffold `strobe-tuner-lock`
 - [ ] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · scaffold `recording-waveform-grow`
 - [ ] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · scaffold `auto-gain-scan`
