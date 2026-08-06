@@ -15,7 +15,7 @@ const scaffold = `
 
 export const connectionSevered: Specimen = {
   id: 'connection-severed',
-  ref: 'SPX-TODO',
+  ref: 'SPX-323',
   title: 'Connection Severed',
   blurb:
     'An irregular angular tether joins Archive to Portfolio; disconnect tensions it, snaps the centre into three fragments, and recoils both halves into independent UNLINKED cards.',
