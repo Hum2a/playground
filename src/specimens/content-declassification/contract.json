@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/content-declassification.schema.json",
+  "title": "ContentDeclassification",
+  "description": "Portable contract for progressive redaction disclosure. Not Redacted Content Lock played backward. Not a database schema. Visual redaction is not access control.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "bars",
+    "stamp",
+    "animation",
+    "a11y",
+    "security",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "content-declassification" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Progressive unlock: DECLASSIFIED stamp lands, then five redaction bars are invalidated and removed in sequence."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "header",
+        "fragments",
+        "bodyTemplate",
+        "grant",
+        "stamp",
+        "accepted",
+        "statusLocked",
+        "statusCleared"
+      ],
+      "properties": {
+        "header": { "type": "string", "const": "ARCHIVE DOCUMENT // 042" },
+        "fragments": {
+          "type": "array",
+          "const": ["NIGHTFALL", "APPROVED", "new archive", "Friday", "INTERNAL"]
+        },
+        "bodyTemplate": {
+          "type": "string",
+          "const": "The new archive will launch Friday."
+        },
+        "grant": { "type": "string", "const": "GRANT CLEARANCE" },
+        "stamp": { "type": "string", "const": "DECLASSIFIED" },
+        "accepted": { "type": "string", "const": "CLEARANCE ACCEPTED" },
+        "statusLocked": {
+          "type": "string",
+          "const": "Classified archive document. Five fields restricted."
+        },
+        "statusCleared": {
+          "type": "string",
+          "const": "Archive document 042 declassified. Project Nightfall approved. Access level internal."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper", "black", "red"],
+      "properties": {
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "bars": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "order", "behaviours", "rotationsDeg"],
+      "properties": {
+        "count": { "type": "integer", "const": 5 },
+        "order": {
+          "type": "array",
+          "const": [
+            "NIGHTFALL",
+            "APPROVED",
+            "new archive",
+            "Friday",
+            "INTERNAL"
+          ]
+        },
+        "behaviours": {
+          "type": "array",
+          "const": ["split", "strike", "peel", "split", "strike"]
+        },
+        "rotationsDeg": {
+          "type": "array",
+          "const": [-1.2, 1.6, -0.8, 2, -1.5]
+        },
+        "splitLeave": {
+          "type": "object",
+          "properties": {
+            "left": { "type": "string", "const": "-45px -8px" },
+            "right": { "type": "string", "const": "48px 6px" }
+          }
+        }
+      }
+    },
+    "stamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "impact", "settle", "corner"],
+      "properties": {
+        "initial": {
+          "type": "string",
+          "const": "translate(70px, -60px) rotate(-16deg) scale(1.7)"
+        },
+        "impact": {
+          "type": "string",
+          "const": "translate(0, 0) rotate(-8deg) scale(0.92)"
+        },
+        "settle": {
+          "type": "string",
+          "const": "translate(0, 0) rotate(-8deg) scale(1)"
+        },
+        "corner": {
+          "type": "string",
+          "const": "translate(12px, -6px) rotate(-12deg) scale(0.62)"
+        },
+        "sheetReactPx": { "type": "number", "const": 2 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "stampMs",
+        "slashMs",
+        "leaveMs",
+        "staggerMs",
+        "acceptedMs"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 1380 },
+        "stampMs": { "type": "number", "const": 260 },
+        "slashMs": { "type": "number", "const": 90 },
+        "leaveMs": { "type": "number", "const": 180 },
+        "staggerMs": { "type": "number", "const": 130 },
+        "acceptedMs": { "type": "number", "const": 160 },
+        "valueSettlePx": { "type": "number", "const": 2 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lockedStatusSummary", "sheetHiddenWhileLocked", "decorativeHidden"],
+      "properties": {
+        "lockedStatusSummary": { "type": "boolean", "const": true },
+        "sheetHiddenWhileLocked": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visualRedactionNotAccessControl", "enforcePermissionsOutsideCss"],
+      "properties": {
+        "visualRedactionNotAccessControl": { "type": "boolean", "const": true },
+        "enforcePermissionsOutsideCss": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantReveal", "staticStampAndAccepted", "triggers"],
+      "properties": {
+        "instantReveal": { "type": "boolean", "const": true },
+        "staticStampAndAccepted": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "sheet", "censor", "bar", "stamp", "accepted"],
+      "properties": {
+        "root": { "type": "string", "const": "cdc" },
+        "sheet": { "type": "string", "const": "cdc__sheet" },
+        "censor": { "type": "string", "const": "cdc__censor" },
+        "bar": { "type": "string", "const": "cdc__bar" },
+        "stamp": { "type": "string", "const": "cdc__stamp" },
+        "accepted": { "type": "string", "const": "cdc__accepted" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "grant": { "type": "string", "const": "grantClearance" },
+        "reset": { "type": "string", "const": "resetContentDeclassification" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "distinctFrom": { "type": "string", "const": "redacted-content-lock" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "content-declassification",
+      "intent": "Progressive unlock: DECLASSIFIED stamp lands, then five redaction bars are invalidated and removed in sequence.",
+      "copy": {
+        "header": "ARCHIVE DOCUMENT // 042",
+        "fragments": ["NIGHTFALL", "APPROVED", "new archive", "Friday", "INTERNAL"],
+        "bodyTemplate": "The new archive will launch Friday.",
+        "grant": "GRANT CLEARANCE",
+        "stamp": "DECLASSIFIED",
+        "accepted": "CLEARANCE ACCEPTED",
+        "statusLocked": "Classified archive document. Five fields restricted.",
+        "statusCleared": "Archive document 042 declassified. Project Nightfall approved. Access level internal."
+      },
+      "colours": {
+        "paper": "#f5f1e8",
+        "black": "#090909",
+        "red": "#e60012"
+      },
+      "bars": {
+        "count": 5,
+        "order": ["NIGHTFALL", "APPROVED", "new archive", "Friday", "INTERNAL"],
+        "behaviours": ["split", "strike", "peel", "split", "strike"],
+        "rotationsDeg": [-1.2, 1.6, -0.8, 2, -1.5]
+      },
+      "stamp": {
+        "initial": "translate(70px, -60px) rotate(-16deg) scale(1.7)",
+        "impact": "translate(0, 0) rotate(-8deg) scale(0.92)",
+        "settle": "translate(0, 0) rotate(-8deg) scale(1)",
+        "corner": "translate(12px, -6px) rotate(-12deg) scale(0.62)",
+        "sheetReactPx": 2
+      },
+      "animation": {
+        "totalMs": 1380,
+        "stampMs": 260,
+        "slashMs": 90,
+        "leaveMs": 180,
+        "staggerMs": 130,
+        "acceptedMs": 160,
+        "valueSettlePx": 2
+      },
+      "a11y": {
+        "lockedStatusSummary": true,
+        "sheetHiddenWhileLocked": true,
+        "decorativeHidden": true
+      },
+      "security": {
+        "visualRedactionNotAccessControl": true,
+        "enforcePermissionsOutsideCss": true
+      },
+      "reducedMotion": {
+        "instantReveal": true,
+        "staticStampAndAccepted": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "cdc",
+        "sheet": "cdc__sheet",
+        "censor": "cdc__censor",
+        "bar": "cdc__bar",
+        "stamp": "cdc__stamp",
+        "accepted": "cdc__accepted"
+      },
+      "behaviour": {
+        "grant": "grantClearance",
+        "reset": "resetContentDeclassification",
+        "restartMessageType": "restart",
+        "distinctFrom": "redacted-content-lock"
+      }
+    }
+  ]
+}
