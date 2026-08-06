@@ -5,9 +5,10 @@ import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
-import { cardBreakSummon } from './card-break-summon/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
+import { cardBreakSummon } from './card-break-summon/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
+import { clockHandWipe } from './clock-hand-wipe/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
@@ -29,11 +30,12 @@ import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
-import { energyTransferSync } from './energy-transfer-sync/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
+import { energyTransferSync } from './energy-transfer-sync/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { failureShatter } from './failure-shatter/entry'
+import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
@@ -41,11 +43,12 @@ import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
+import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
-import { misprintNotification } from './misprint-notification/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
+import { misprintNotification } from './misprint-notification/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
@@ -60,11 +63,12 @@ import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
-import { surfaceBreakReveal } from './surface-break-reveal/entry'
-import { scannerSearch } from './scanner-search/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
+import { scannerSearch } from './scanner-search/entry'
+import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
+import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
@@ -135,7 +139,9 @@ export const specimens: Specimen[] = [
   blueDoorDiscovery,
   butterflyEntry,
   butterflySuccessState,
+  cardBreakSummon,
   choiceExecutionSlash,
+  clockHandWipe,
   comicCardSelection,
   comicPanelScrollReveal,
   completionStrike,
@@ -150,21 +156,23 @@ export const specimens: Specimen[] = [
   decisionShowdown,
   deletionGuillotine,
   discoveryTearOpen,
-  energyTransferSync,
   enemyScanReveal,
+  energyTransferSync,
   errorCorrectionRewrite,
   failureShatter,
+  fullMoonMilestone,
   fusionSelectionMerge,
   glassFractureReveal,
   graphicBurstHover,
   holdToChargeButton,
   hoverCutout,
   letterScatterAssemble,
+  liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
   memoryFragmentReveal,
-  misprintNotification,
   midnightClockTransition,
+  misprintNotification,
   moonPhaseProgress,
   newspaperHeadlineDrop,
   objectiveAcquired,
@@ -180,15 +188,15 @@ export const specimens: Specimen[] = [
   ransomNoteReveal,
   redactedContentLock,
   ripplePortalTransition,
+  scannerSearch,
+  surfaceBreakReveal,
+  tacticalCommandWheel,
   tacticalTargetLock,
   tartarusFloorAscension,
   temporalFreeze,
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,
-  scannerSearch,
-  surfaceBreakReveal,
-  cardBreakSummon,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
@@ -202,11 +210,11 @@ export function getSpecimen(idOrRef: string): Specimen | undefined {
 }
 
 export function getSpecimenNeighbors(id: string): {
-  prev?: Specimen
-  next?: Specimen
+  prev: Specimen | undefined
+  next: Specimen | undefined
 } {
   const i = specimens.findIndex((s) => s.id === id)
-  if (i < 0) return {}
+  if (i < 0) return { prev: undefined, next: undefined }
   return {
     prev: i > 0 ? specimens[i - 1] : undefined,
     next: i < specimens.length - 1 ? specimens[i + 1] : undefined,

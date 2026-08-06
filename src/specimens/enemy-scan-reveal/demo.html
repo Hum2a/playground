@@ -1,0 +1,73 @@
+<div class="esr" data-enemy-scan-reveal data-state="idle">
+  <div class="esr__card" data-esr-card>
+    <div class="esr__outline" aria-hidden="true" data-esr-outline>
+      <span class="esr__seg esr__seg--tl"></span>
+      <span class="esr__seg esr__seg--tr"></span>
+      <span class="esr__seg esr__seg--bl"></span>
+      <span class="esr__seg esr__seg--br"></span>
+      <span class="esr__seg esr__seg--t"></span>
+      <span class="esr__seg esr__seg--b"></span>
+      <span class="esr__seg esr__seg--l"></span>
+      <span class="esr__seg esr__seg--r"></span>
+    </div>
+
+    <div class="esr__scan-layer" aria-hidden="true">
+      <div class="esr__grid" data-esr-grid></div>
+      <div class="esr__beam" data-esr-beam></div>
+    </div>
+
+    <p class="esr__entity">ENTITY // 07</p>
+
+    <dl class="esr__fields" data-esr-fields>
+      <div class="esr__row" data-field="type" data-threshold="0.22">
+        <dt class="esr__key">TYPE</dt>
+        <dd class="esr__val">
+          <span class="esr__slot">
+            <span class="esr__unknown" data-esr-unknown>???</span>
+            <span class="esr__known" data-esr-known>GLASS</span>
+          </span>
+        </dd>
+      </div>
+      <div class="esr__row" data-field="status" data-threshold="0.40">
+        <dt class="esr__key">STATUS</dt>
+        <dd class="esr__val">
+          <span class="esr__slot">
+            <span class="esr__unknown" data-esr-unknown>???</span>
+            <span class="esr__known" data-esr-known>STABLE</span>
+          </span>
+        </dd>
+      </div>
+      <div class="esr__row" data-field="risk" data-threshold="0.58">
+        <dt class="esr__key">RISK</dt>
+        <dd class="esr__val">
+          <span class="esr__slot">
+            <span class="esr__unknown" data-esr-unknown>???</span>
+            <span class="esr__known" data-esr-known>LOW</span>
+          </span>
+        </dd>
+      </div>
+      <div class="esr__row" data-field="signature" data-threshold="0.76">
+        <dt class="esr__key">SIGNATURE</dt>
+        <dd class="esr__val">
+          <span class="esr__slot">
+            <span class="esr__unknown" data-esr-unknown>???</span>
+            <span class="esr__known" data-esr-known>BLUE</span>
+          </span>
+        </dd>
+      </div>
+    </dl>
+  </div>
+
+  <p class="esr__complete" data-esr-complete hidden>ANALYSIS COMPLETE</p>
+
+  <button type="button" class="esr__btn" data-esr-analyse>
+    ANALYSE
+  </button>
+
+  <div
+    class="esr__status"
+    role="status"
+    aria-live="polite"
+    data-esr-status
+  ></div>
+</div>
