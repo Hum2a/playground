@@ -1,0 +1,40 @@
+<div class="iff-demo" data-iff-demo>
+  <p class="iff-demo__live" data-iff-live aria-live="polite">Change pending</p>
+
+  <div
+    class="iff"
+    data-iff
+    data-phase="idle"
+    style="--impact-freeze: 80ms"
+  >
+    <div class="iff__stage" data-iff-stage>
+      <div class="iff__token" data-iff-token aria-hidden="true">COMMIT</div>
+
+      <div class="iff__target" data-iff-target>
+        <p class="iff__label">CHANGE // 07</p>
+        <div class="iff__state" data-iff-state>
+          <span class="iff__state-slot iff__state-slot--from" data-iff-pending>PENDING</span>
+          <span class="iff__state-slot iff__state-slot--to" data-iff-applied aria-hidden="true">APPLIED</span>
+        </div>
+
+        <div class="iff__wedges" data-iff-wedges aria-hidden="true">
+          <span class="iff__wedge" style="--i: 0"></span>
+          <span class="iff__wedge" style="--i: 1"></span>
+          <span class="iff__wedge" style="--i: 2"></span>
+          <span class="iff__wedge" style="--i: 3"></span>
+          <span class="iff__wedge" style="--i: 4"></span>
+          <span class="iff__wedge" style="--i: 5"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="iff-demo__controls">
+    <button type="button" class="iff-demo__btn iff-demo__btn--primary" data-iff-execute>
+      Execute
+    </button>
+    <button type="button" class="iff-demo__btn" data-iff-reset>
+      Reset
+    </button>
+  </div>
+</div>

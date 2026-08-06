@@ -1,0 +1,312 @@
+/* SPX-1087 Impact Freeze Frame — portable contract. Do not restyle to host tokens. */
+/* Documented recreation value: --impact-freeze: 80ms (not catalogue-configurable). */
+
+.iff-demo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 260px;
+  height: 100%;
+  padding: 0.85rem 0.6rem;
+  background: #101218;
+  color: #e8e6e1;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.iff-demo__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.iff {
+  --impact-freeze: 80ms;
+  --ink: #16181f;
+  --panel: #eceae4;
+  --accent: #d94a2a;
+  --wedge: #f0b429;
+  --applied: #2a7a5c;
+  box-sizing: border-box;
+  width: min(100%, 340px);
+}
+
+.iff__stage {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 140px;
+  padding: 1.25rem 1rem 1.25rem 1.25rem;
+  border: 1px solid rgba(232, 230, 225, 0.2);
+  background: #0c0e14;
+}
+
+/* Action token — starts 100px left of contact; travels 90px to contact */
+.iff__token {
+  position: absolute;
+  /* Contact: token right edge flush with target left (stage right pad + target width) */
+  right: calc(1rem + 168px);
+  /* start ~90–100px left of contact; travel 90px */
+  transform: translateX(-90px);
+  z-index: 3;
+  box-sizing: border-box;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff8f5;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform-origin: 100% 50%;
+  opacity: 1;
+}
+
+.iff[data-phase='travel'] .iff__token {
+  animation: iff-travel 150ms cubic-bezier(0.55, 0.05, 0.95, 0.45) forwards;
+}
+
+/*
+ * Pre-contact acceleration: first ~60px slower, final ~30px faster.
+ * 0% → -90px; ~67% → -30px (60px); 100% → 0 (contact).
+ */
+@keyframes iff-travel {
+  0% {
+    transform: translateX(-90px);
+  }
+  67% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.iff[data-phase='freeze'] .iff__token {
+  transform: translateX(0);
+  animation: none;
+}
+
+.iff[data-phase='release'] .iff__token,
+.iff[data-phase='applied'] .iff__token {
+  animation: iff-collapse 110ms ease-in forwards;
+}
+
+@keyframes iff-collapse {
+  from {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(18px) scale(0.35);
+    opacity: 0;
+  }
+}
+
+/* Target */
+.iff__target {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 168px;
+  padding: 0.85rem 0.9rem;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid rgba(22, 24, 31, 0.35);
+  transform-origin: 50% 50%;
+}
+
+.iff[data-phase='freeze'] .iff__target {
+  transform: translateX(3px) scaleX(0.96);
+  animation: none;
+}
+
+.iff[data-phase='release'] .iff__target {
+  animation: iff-settle 130ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes iff-settle {
+  0% {
+    transform: translateX(3px) scaleX(0.96) scale(1);
+  }
+  35% {
+    transform: translateX(8px) scaleX(1) scale(1.025);
+  }
+  70% {
+    transform: translateX(-2px) scale(1);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.iff[data-phase='applied'] .iff__target {
+  transform: translateX(0) scale(1);
+  border-color: rgba(42, 122, 92, 0.55);
+}
+
+.iff__label {
+  margin: 0 0 0.45rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.iff__state {
+  position: relative;
+  overflow: hidden;
+  height: 1.2em;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.iff__state-slot {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transition: clip-path 160ms ease;
+}
+
+.iff__state-slot--to {
+  color: var(--applied);
+  clip-path: inset(100% 0 0 0);
+}
+
+.iff[data-phase='applied'] .iff__state-slot--from {
+  clip-path: inset(0 0 100% 0);
+}
+
+.iff[data-phase='applied'] .iff__state-slot--to {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iff__state-slot {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .iff__state-slot {
+  transition: none;
+}
+
+/* Exactly 6 impact wedges — static during freeze */
+.iff__wedges {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.iff[data-phase='freeze'] .iff__wedges,
+.iff[data-phase='release'] .iff__wedges {
+  opacity: 1;
+}
+
+.iff__wedge {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 3px 0 3px 8px;
+  border-color: transparent transparent transparent var(--wedge);
+  transform: rotate(calc(var(--i) * 60deg)) translateX(8px);
+  transform-origin: 0 0;
+}
+
+.iff[data-phase='freeze'] .iff__wedge {
+  /* Static hold — no animation during --impact-freeze */
+  animation: none;
+  transform: rotate(calc(var(--i) * 60deg)) translateX(8px);
+}
+
+.iff[data-phase='release'] .iff__wedge {
+  animation: iff-wedge-out 110ms ease-out forwards;
+}
+
+@keyframes iff-wedge-out {
+  from {
+    opacity: 1;
+    transform: rotate(calc(var(--i) * 60deg)) translateX(8px);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(calc(var(--i) * 60deg)) translateX(28px);
+  }
+}
+
+.iff-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.iff-demo__btn {
+  appearance: none;
+  min-width: 5.5rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(232, 230, 225, 0.4);
+  border-radius: 0;
+  background: transparent;
+  color: #e8e6e1;
+  font: inherit;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.iff-demo__btn--primary {
+  border-color: #d94a2a;
+  background: #d94a2a;
+  color: #fff8f5;
+}
+
+.iff-demo__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.iff-demo__btn:focus-visible {
+  outline: 2px solid #f0b429;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iff[data-phase='travel'] .iff__token,
+  .iff[data-phase='release'] .iff__token,
+  .iff[data-phase='release'] .iff__target,
+  .iff[data-phase='release'] .iff__wedge {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .iff[data-phase='travel'] .iff__token,
+[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__token,
+[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__target,
+[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__wedge {
+  animation: none !important;
+}

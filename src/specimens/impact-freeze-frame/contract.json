@@ -1,0 +1,58 @@
+{
+  "name": "impact-freeze-frame",
+  "intent": "Compact hit-stop feedback: action approaches target, freezes exactly 80ms at contact with static impact wedges, then exaggerated settle and PENDING→APPLIED.",
+  "catalogue": {
+    "db": "DB-122",
+    "ref": "SPX-1087"
+  },
+  "cssVariables": {
+    "--impact-freeze": "80ms"
+  },
+  "travel": {
+    "startOffsetPx": -90,
+    "distancePx": 90,
+    "durationMs": 150,
+    "contactOffsetPx": 0,
+    "acceleration": {
+      "firstPx": 60,
+      "firstKeyTime": "67%",
+      "finalPx": 30,
+      "note": "final 30px completes in remaining ~33% of travel"
+    },
+    "easing": "cubic-bezier(0.55, 0.05, 0.95, 0.45) + stepped keyframe accel"
+  },
+  "freeze": {
+    "durationMs": 80,
+    "method": "phase hold + getAnimations().pause(); not a slowdown",
+    "target": { "scaleX": 0.96, "translateXPx": 3 },
+    "wedges": { "count": 6, "lengthPx": 8, "staticDuringHold": true }
+  },
+  "release": {
+    "wedges": { "extendPx": [8, 28], "durationMs": 110 },
+    "targetSettle": {
+      "translateXPx": [3, 8, -2, 0],
+      "scale": [0.96, 1.025, 1],
+      "durationMs": 130
+    },
+    "token": "collapses into target (no bounce back)"
+  },
+  "state": {
+    "from": "PENDING",
+    "to": "APPLIED",
+    "when": "after release",
+    "technique": "vertical clip-path"
+  },
+  "api": {
+    "execute": "runImpactFreeze()",
+    "reset": "resetImpactFreeze()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show APPLIED; no travel or hit-stop"
+  },
+  "constraints": {
+    "noLooping": true,
+    "noFranchiseNamesInUi": true,
+    "portableForButtonsCards": true
+  }
+}
