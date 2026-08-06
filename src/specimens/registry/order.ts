@@ -562,4 +562,5 @@ export const specimenOrder: string[] = [
   '16-step-sequencer-chase',
   'swing-offset',
   'velocity-pad-hit',
+  'sample-slice-markers',
 ]

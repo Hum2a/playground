@@ -222,7 +222,7 @@ specimens can feel tactile without needing sound.
     blooms according to hit strength.
 - [ ] **MUSIC-072** · `SPX-3831` · ★★★★☆ **Pad Bank Switch** — A 4x4 pad grid changes sample
     labels and colours as banks switch.
-- [ ] **MUSIC-073** · `SPX-3832` · ★★★★★ **Sample Slice Markers** — Transient markers divide a
+- [x] **MUSIC-073** · `SPX-3832` · ★★★★★ **Sample Slice Markers** — Transient markers divide a
     waveform into playable slices.
 - [ ] **MUSIC-074** · `SPX-3833` · ★★★★★ **Slice Trigger Jump** — Triggering a pad moves the
     waveform playhead to its assigned slice.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-073 | SPX-3832 | `sample-slice-markers` | Sample Slice Markers |
 | MUSIC-071 | SPX-3830 | `velocity-pad-hit` | Velocity Pad Hit |
 | MUSIC-066 | SPX-3825 | `swing-offset` | Swing Offset |
 | MUSIC-062 | SPX-3821 | `16-step-sequencer-chase` | 16-Step Sequencer Chase |
@@ -878,12 +879,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **15 / 310** complete.
+- Progress: **16 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 15 |
-| Open | 295 |
+| Done | 16 |
+| Open | 294 |
 
 ## Core first-wave / build queue
 
@@ -908,7 +909,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · `16-step-sequencer-chase`
 - [x] **MUSIC-066** · `SPX-3825` · **Swing Offset** · `swing-offset`
 - [x] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · `velocity-pad-hit`
-- [ ] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · scaffold `sample-slice-markers`
+- [x] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · `sample-slice-markers`
 - [ ] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · scaffold `vinyl-spin-up`
 - [ ] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · scaffold `scratch-recoil`
 - [ ] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · scaffold `deck-sync-lock`
