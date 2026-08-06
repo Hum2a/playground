@@ -1,0 +1,122 @@
+/* pressed-control-compression — portable specimen styles */
+
+.pcc {
+  --pcc-ink: #0f1218;
+  --pcc-panel: #171c24;
+  --pcc-line: #2a3140;
+  --pcc-muted: #7a8494;
+  --pcc-cream: #e8ecf2;
+  --pcc-run: #5a9fd4;
+  box-sizing: border-box;
+  width: 220px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--pcc-cream);
+}
+
+.pcc *,
+.pcc *::before,
+.pcc *::after {
+  box-sizing: border-box;
+}
+
+.pcc__card {
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--pcc-line);
+  border-radius: 10px;
+  background: var(--pcc-panel);
+}
+
+.pcc__card-label {
+  margin: 0 0 0.25rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--pcc-muted);
+}
+
+.pcc__card-state {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.pcc[data-phase='running'] .pcc__card-state {
+  color: var(--pcc-run);
+}
+
+.pcc__btn {
+  display: block;
+  width: 180px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid var(--pcc-line);
+  border-radius: 10px;
+  background: #1e2430;
+  color: var(--pcc-cream);
+  cursor: pointer;
+  transition: transform 70ms ease;
+}
+
+.pcc__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.pcc__btn-inner {
+  display: block;
+  padding: 0 1.1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  line-height: 50px;
+  transition: padding 70ms ease;
+}
+
+.pcc__btn.is-pressed {
+  transform: scale(0.965);
+}
+
+.pcc__btn.is-pressed .pcc__btn-inner {
+  padding-left: 0.95rem;
+  padding-right: 0.95rem;
+}
+
+.pcc__btn.is-pressed-rm {
+  border-color: color-mix(in srgb, var(--pcc-run) 45%, var(--pcc-line));
+  transform: none;
+}
+
+.pcc__btn.is-release {
+  transform: scale(1.015);
+  transition-duration: 80ms;
+}
+
+.pcc__btn.is-bounce {
+  transform: scale(1);
+  transition-duration: 90ms;
+}
+
+.pcc__btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.pcc__status {
+  margin: 0.65rem 0 0;
+  font-size: 0.68rem;
+  color: var(--pcc-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pcc__btn,
+  .pcc__btn-inner {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .pcc__btn,
+[data-force-reduced-motion='true'] .pcc__btn-inner {
+  transition: none;
+}

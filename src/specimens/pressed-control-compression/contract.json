@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/pressed-control-compression.schema.json",
+  "title": "PressedControlCompression",
+  "description": "Portable contract for pressed control compression and release activation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "control",
+    "press",
+    "release",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "pressed-control-compression" },
+    "intent": {
+      "type": "string",
+      "const": "Press-state primitive where touch contact produces compression and release inside activates."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primaryLabel", "cardLabel", "stateReady", "stateRunning"],
+      "properties": {
+        "primaryLabel": { "type": "string", "const": "RUN BUILD" },
+        "cardLabel": { "type": "string", "const": "BUILD // READY" },
+        "stateReady": { "type": "string", "const": "READY" },
+        "stateRunning": { "type": "string", "const": "RUNNING" }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 180 },
+        "heightPx": { "type": "number", "const": 52 }
+      }
+    },
+    "press": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scale", "paddingCompressPx", "durationMs"],
+      "properties": {
+        "scale": { "type": "number", "const": 0.965 },
+        "paddingCompressPx": { "type": "number", "const": 3 },
+        "durationMs": { "type": "number", "const": 70 }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["upScale", "upMs", "settleMs", "cancelMs"],
+      "properties": {
+        "upScale": { "type": "number", "const": 1.015 },
+        "upMs": { "type": "number", "const": 80 },
+        "settleMs": { "type": "number", "const": 90 },
+        "cancelMs": { "type": "number", "const": 100 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["structuralBoundary", "triggers"],
+      "properties": {
+        "structuralBoundary": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["keyboardActivation", "politeStatus"],
+      "properties": {
+        "keyboardActivation": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "button"],
+      "properties": {
+        "root": { "type": "string", "const": "pcc" },
+        "button": { "type": "string", "const": "pcc__btn" }
+      }
+    }
+  }
+}
