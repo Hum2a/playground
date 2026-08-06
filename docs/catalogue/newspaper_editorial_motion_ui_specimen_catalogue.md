@@ -219,7 +219,7 @@ chronology and information priority.
     changes with a restrained numeric transition.
 - [ ] **NEWS-072** · `SPX-3594` · ★★★★☆ **Editor's Note Unfold** — An editorial note expands
     from a compact labelled rule.
-- [ ] **NEWS-073** · `SPX-3595` · ★★★★★ **Retraction Takeover** — A retracted article receives a
+- [x] **NEWS-073** · `SPX-3595` · ★★★★★ **Retraction Takeover** — A retracted article receives a
     strong but readable status treatment.
 - [ ] **NEWS-074** · `SPX-3596` · ★★★★☆ **Clarification Margin Note** — A clarification appears
     in the margin aligned with the relevant paragraph.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-073 | SPX-3595 | `retraction-takeover` | Retraction Takeover |
 | NEWS-070 | SPX-3592 | `inline-correction-replace` | Inline Correction Replace |
 | NEWS-069 | SPX-3591 | `correction-notice-insert` | Correction Notice Insert |
 | NEWS-065 | SPX-3587 | `proofreader-mark-reveal` | Proofreader Mark Reveal |
@@ -709,12 +710,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **30 / 237** complete.
+- Progress: **31 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 30 |
-| Open | 207 |
+| Done | 31 |
+| Open | 206 |
 
 ## Core first-wave / build queue
 
@@ -748,7 +749,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-065** · `SPX-3587` · **Proofreader Mark Reveal** · `proofreader-mark-reveal`
 - [x] **NEWS-069** · `SPX-3591` · **Correction Notice Insert** · `correction-notice-insert`
 - [x] **NEWS-070** · `SPX-3592` · **Inline Correction Replace** · `inline-correction-replace`
-- [ ] **NEWS-073** · `SPX-3595` · **Retraction Takeover** · scaffold `retraction-takeover`
+- [x] **NEWS-073** · `SPX-3595` · **Retraction Takeover** · `retraction-takeover`
 - [ ] **NEWS-077** · `SPX-3599` · **Black-Bar Redaction Reveal** · scaffold `black-bar-redaction-reveal`
 - [ ] **NEWS-078** · `SPX-3600` · **Redaction Apply** · scaffold `redaction-apply`
 - [ ] **NEWS-079** · `SPX-3601` · **Document Declassification** · scaffold `document-declassification`

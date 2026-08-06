@@ -1,0 +1,8 @@
+{
+  "name": "retraction-takeover",
+  "ref": "SPX-3595",
+  "title": "Retraction Takeover",
+  "mode": "slam",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
