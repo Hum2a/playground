@@ -145,6 +145,7 @@ import { fireballCommit } from './fireball-commit/entry'
 import { floatingLabelLift } from './floating-label-lift/entry'
 import { focusModeActivation } from './focus-mode-activation/entry'
 import { fogClearingDataReveal } from './fog-clearing-data-reveal/entry'
+import { fogDeadlineEscalation } from './fog-deadline-escalation/entry'
 import { fogOfWarCard } from './fog-of-war-card/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fourPointBarrierConstruct } from './four-point-barrier-construct/entry'
@@ -559,6 +560,7 @@ export const specimens: Specimen[] = [
   floatingLabelLift,
   focusModeActivation,
   fogClearingDataReveal,
+  fogDeadlineEscalation,
   fogOfWarCard,
   forgetAMove,
   fourPointBarrierConstruct,

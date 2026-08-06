@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **24 / 191** complete.
+- Progress: **25 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 167 |
+| Done | 25 |
+| Open | 166 |
 
 ## Visual grammar
 
@@ -58,6 +58,7 @@
 | P4-005 | `SPX-2923` | `broadcast-interruption` | Broadcast Interruption |
 | P4-019 | `SPX-2937` | `static-portal-materialise` | Static Portal Materialise |
 | P4-022 | `SPX-2940` | `fog-of-war-card` | Fog-of-War Card |
+| P4-025 | `SPX-2943` | `fog-deadline-escalation` | Fog Deadline Escalation |
 
 ## Core first-wave
 
@@ -87,7 +88,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-005** · `SPX-2923` · **Broadcast Interruption** — midnight-channel-crt-broadcast
 - [x] **P4-019** · `SPX-2937` · **Static Portal Materialise** — tv-world-screen-portals
 - [x] **P4-022** · `SPX-2940` · **Fog-of-War Card** — fog-hidden-information
-- [ ] **P4-025** · `SPX-2943` · **Fog Deadline Escalation** — fog-hidden-information
+- [x] **P4-025** · `SPX-2943` · **Fog Deadline Escalation** — fog-hidden-information
 - [ ] **P4-119** · `SPX-3037` · **VHS Tracking Scrub** — analogue-vhs-retro-broadcast
 - [ ] **P4-007** · `SPX-2925` · **Tracking Error Recovery** — midnight-channel-crt-broadcast
 - [ ] **P4-127** · `SPX-3045` · **No Signal Card** — analogue-vhs-retro-broadcast
@@ -147,7 +148,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-022** · `SPX-2940` · **Fog-of-War Card** — Unknown regions of a card are revealed by pointer or progress.
 - [ ] **P4-023** · `SPX-2941` · **Visibility Confidence Meter** — Fog density maps directly to certainty or data quality.
 - [ ] **P4-024** · `SPX-2942` · **Hidden Object Discovery** — A scan clears a small region and permanently exposes a hidden item.
-- [ ] **P4-025** · `SPX-2943` · **Fog Deadline Escalation** — A deadline approaching causes progressively denser obstruction and warning geometry.
+- [x] **P4-025** · `SPX-2943` · **Fog Deadline Escalation** — A deadline approaching causes progressively denser obstruction and warning geometry.
 - [ ] **P4-026** · `SPX-2944` · **Fog Lift Success** — A completed task clears an obscured interface into crisp final state.
 - [ ] **P4-027** · `SPX-2945` · **Fog Return Warning** — Previously clear content becomes uncertain again after stale data is detected.
 - [ ] **P4-028** · `SPX-2946` · **Layered Mist Transition** — Several translucent planes cross a preview to exchange content.

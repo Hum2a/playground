@@ -1,0 +1,20 @@
+{
+  "name": "fog-deadline-escalation",
+  "ref": "SPX-2943",
+  "catalogueId": "P4-025",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "gray": "#E8E8E8"
+  },
+  "phases": {
+    "calm": { "minDays": 8 },
+    "pressure": { "minDays": 4, "maxDays": 7 },
+    "critical": { "minDays": 1, "maxDays": 3 },
+    "expired": { "minDays": 0, "maxDays": 0 }
+  },
+  "reducedMotion": {
+    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+  }
+}
