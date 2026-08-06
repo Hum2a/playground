@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/measurement-overload.schema.json",
+  "title": "MeasurementOverload",
+  "description": "Portable contract for an analyser that fails representation when a measurement exceeds a fixed 0–9,999 range. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "range",
+    "sequence",
+    "timings",
+    "warning",
+    "overflow",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "measurement-overload" },
+    "intent": {
+      "type": "string",
+      "const": "When a measurement exceeds the analyser’s supported range, representation fails into a readable overflow classification instead of clamping or shrinking the value."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "supported",
+        "initial",
+        "trigger",
+        "dash",
+        "final",
+        "status",
+        "announce"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "ANALYSER // MK-4" },
+        "supported": { "type": "string", "const": "0 — 9,999" },
+        "initial": { "type": "string", "const": "0000" },
+        "trigger": { "type": "string", "const": "MEASURE" },
+        "dash": { "type": "string", "const": "----" },
+        "final": { "type": "string", "const": "> 9,999" },
+        "status": { "type": "string", "const": "RANGE EXCEEDED" },
+        "announce": {
+          "type": "string",
+          "const": "Measurement exceeds supported range of 9,999."
+        }
+      }
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "integer", "const": 0 },
+        "max": { "type": "integer", "const": 9999 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["readings", "afterMax"],
+      "properties": {
+        "readings": {
+          "type": "array",
+          "const": [
+            "0142",
+            "0721",
+            "1840",
+            "3912",
+            "5740",
+            "7182",
+            "8431",
+            "9270",
+            "9714",
+            "9938",
+            "9999"
+          ]
+        },
+        "afterMax": {
+          "type": "array",
+          "const": ["----", "> 9,999"]
+        },
+        "normalThrough": { "type": "string", "const": "8431" },
+        "semantic": {
+          "type": "string",
+          "const": "normal → approaching limit → maximum exceeded → representation failure → overflow classification"
+        }
+      }
+    },
+    "timings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tickMs", "holdAtMaxMs", "dashMs", "frameShiftMs", "fragmentMs"],
+      "properties": {
+        "tickMs": { "type": "number", "const": 90 },
+        "holdAtMaxMs": { "type": "number", "const": 180 },
+        "dashMs": { "type": "number", "const": 90 },
+        "frameShiftMs": { "type": "number", "const": 100 },
+        "fragmentMs": { "type": "number", "const": 160 },
+        "noLoop": { "type": "boolean", "const": true },
+        "noRapidFlash": { "type": "boolean", "const": true }
+      }
+    },
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edgeMarkersAt", "frameShiftAt", "vlineOffsetAt"],
+      "properties": {
+        "edgeMarkersAt": { "type": "string", "const": "9270" },
+        "edgeMarkerCount": { "type": "integer", "const": 2 },
+        "frameShiftAt": { "type": "string", "const": "9714" },
+        "frameShiftPx": { "type": "string", "const": "0 → 2px → 0" },
+        "frameShiftOnce": { "type": "boolean", "const": true },
+        "vlineOffsetAt": { "type": "string", "const": "9938" },
+        "vlineOffsetPx": { "type": "number", "const": 3 }
+      }
+    },
+    "overflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fragmentCount", "fragmentTravelPx", "fractureCount", "fractureDeg"],
+      "properties": {
+        "fragmentCount": { "type": "integer", "const": 3 },
+        "fragmentTravelPx": { "type": "string", "const": "12–24px" },
+        "fragmentOffsets": {
+          "type": "array",
+          "const": [
+            "translate(18px, -8px) rotate(8deg)",
+            "translate(24px, 2px) rotate(-4deg)",
+            "translate(12px, 10px) rotate(12deg)"
+          ]
+        },
+        "fractureCount": { "type": "integer", "const": 1 },
+        "fractureDeg": { "type": "number", "const": -18 },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announce"],
+      "properties": {
+        "announce": {
+          "type": "string",
+          "const": "Measurement exceeds supported range of 9,999."
+        },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFinal", "triggers"],
+      "properties": {
+        "instantFinal": { "type": "boolean", "const": true },
+        "staticCopy": {
+          "type": "string",
+          "const": "> 9,999 — RANGE EXCEEDED"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "frame", "digits", "status"],
+      "properties": {
+        "root": { "type": "string", "const": "mo" },
+        "frame": { "type": "string", "const": "mo__frame" },
+        "digits": { "type": "string", "const": "mo__digits" },
+        "status": { "type": "string", "const": "mo__status" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "go": { "type": "string", "const": "runMeasurement" },
+        "reset": { "type": "string", "const": "resetMeasurement" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "measurement-overload",
+      "intent": "When a measurement exceeds the analyser’s supported range, representation fails into a readable overflow classification instead of clamping or shrinking the value.",
+      "copy": {
+        "title": "ANALYSER // MK-4",
+        "supported": "0 — 9,999",
+        "initial": "0000",
+        "trigger": "MEASURE",
+        "dash": "----",
+        "final": "> 9,999",
+        "status": "RANGE EXCEEDED",
+        "announce": "Measurement exceeds supported range of 9,999."
+      },
+      "range": { "min": 0, "max": 9999 },
+      "sequence": {
+        "readings": [
+          "0142",
+          "0721",
+          "1840",
+          "3912",
+          "5740",
+          "7182",
+          "8431",
+          "9270",
+          "9714",
+          "9938",
+          "9999"
+        ],
+        "afterMax": ["----", "> 9,999"],
+        "normalThrough": "8431",
+        "semantic": "normal → approaching limit → maximum exceeded → representation failure → overflow classification"
+      },
+      "timings": {
+        "tickMs": 90,
+        "holdAtMaxMs": 180,
+        "dashMs": 90,
+        "frameShiftMs": 100,
+        "fragmentMs": 160,
+        "noLoop": true,
+        "noRapidFlash": true
+      },
+      "warning": {
+        "edgeMarkersAt": "9270",
+        "edgeMarkerCount": 2,
+        "frameShiftAt": "9714",
+        "frameShiftPx": "0 → 2px → 0",
+        "frameShiftOnce": true,
+        "vlineOffsetAt": "9938",
+        "vlineOffsetPx": 3
+      },
+      "overflow": {
+        "fragmentCount": 3,
+        "fragmentTravelPx": "12–24px",
+        "fragmentOffsets": [
+          "translate(18px, -8px) rotate(8deg)",
+          "translate(24px, 2px) rotate(-4deg)",
+          "translate(12px, 10px) rotate(12deg)"
+        ],
+        "fractureCount": 1,
+        "fractureDeg": -18,
+        "finalStatic": true
+      },
+      "a11y": {
+        "announce": "Measurement exceeds supported range of 9,999.",
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "instantFinal": true,
+        "staticCopy": "> 9,999 — RANGE EXCEEDED",
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "mo",
+        "frame": "mo__frame",
+        "digits": "mo__digits",
+        "status": "mo__status"
+      },
+      "behaviour": {
+        "go": "runMeasurement",
+        "reset": "resetMeasurement"
+      }
+    }
+  ]
+}

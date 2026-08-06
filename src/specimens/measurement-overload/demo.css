@@ -1,0 +1,361 @@
+/* measurement-overload — portable specimen styles */
+
+.mo {
+  --mo-near: #07140f;
+  --mo-deep: #0d2a1c;
+  --mo-green: #1fa86a;
+  --mo-bright: #7dffb3;
+  --mo-pale: #c8ffe0;
+  --mo-mute: #6a9a80;
+  --mo-warn: #e8b84a;
+  --mo-fail: #ff6b4a;
+
+  --mo-tick-ms: 90ms;
+  --mo-hold-ms: 180ms;
+  --mo-dash-ms: 90ms;
+  --mo-shift-ms: 100ms;
+  --mo-frag-ms: 160ms;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  padding: 1rem 0.85rem 0.85rem;
+  color: var(--mo-pale);
+  font-family: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 40%, #0f2a1e 0%, var(--mo-near) 72%);
+}
+
+.mo *,
+.mo *::before,
+.mo *::after {
+  box-sizing: border-box;
+}
+
+.mo__head {
+  width: min(100%, 280px);
+  margin: 0 auto 0.85rem;
+  text-align: center;
+}
+
+.mo__title {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--mo-bright);
+}
+
+.mo__range {
+  margin: 0.35rem 0 0;
+  color: var(--mo-mute);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+.mo__range span {
+  color: var(--mo-green);
+}
+
+.mo__stage {
+  width: min(100%, 280px);
+  margin: 0 auto;
+}
+
+.mo__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 88px;
+  padding: 1rem 1.25rem;
+  border: 2px solid color-mix(in srgb, var(--mo-green) 70%, transparent);
+  background: color-mix(in srgb, var(--mo-deep) 88%, #000);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mo-bright) 12%, transparent);
+  overflow: visible;
+}
+
+.mo--shift .mo__frame {
+  animation: mo-shift var(--mo-shift-ms) linear both;
+}
+
+@keyframes mo-shift {
+  0% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.mo__digits {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: var(--mo-bright);
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.mo[data-phase='warn'] .mo__digits,
+.mo[data-phase='max'] .mo__digits {
+  color: var(--mo-warn);
+}
+
+.mo[data-phase='dash'] .mo__digits {
+  color: var(--mo-mute);
+  letter-spacing: 0.28em;
+}
+
+.mo[data-phase='overflow'] .mo__digits,
+.mo[data-state='exceeded'] .mo__digits {
+  color: var(--mo-fail);
+  letter-spacing: 0.08em;
+  font-size: 1.55rem;
+}
+
+.mo__edge {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  background: var(--mo-warn);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.mo__edge--l {
+  left: 6px;
+}
+
+.mo__edge--r {
+  right: 6px;
+}
+
+.mo--edges .mo__edge,
+.mo[data-state='exceeded'] .mo__edge {
+  opacity: 1;
+}
+
+.mo[data-state='exceeded'] .mo__edge {
+  background: var(--mo-fail);
+}
+
+.mo__vline {
+  position: absolute;
+  left: 28%;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: color-mix(in srgb, var(--mo-green) 55%, transparent);
+  opacity: 0.85;
+  z-index: 1;
+  pointer-events: none;
+  transform: translateX(0);
+}
+
+.mo--offset .mo__vline,
+.mo[data-state='exceeded'] .mo__vline {
+  transform: translateX(3px);
+  background: var(--mo-warn);
+}
+
+.mo[data-state='exceeded'] .mo__vline {
+  background: color-mix(in srgb, var(--mo-fail) 70%, transparent);
+}
+
+.mo__fracture {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--mo-fail) 18%,
+    var(--mo-warn) 50%,
+    var(--mo-fail) 82%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: rotate(-18deg) scaleX(0.2);
+  transform-origin: center;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.mo--fracture .mo__fracture,
+.mo[data-state='exceeded'] .mo__fracture {
+  opacity: 1;
+  transform: rotate(-18deg) scaleX(1);
+  transition: transform var(--mo-frag-ms) cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 40ms linear;
+}
+
+.mo[data-state='exceeded'] .mo__fracture {
+  transition: none;
+}
+
+.mo__frag {
+  position: absolute;
+  right: -2px;
+  width: 14px;
+  height: 22px;
+  border: 2px solid var(--mo-fail);
+  background: color-mix(in srgb, var(--mo-deep) 80%, #000);
+  opacity: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.mo__frag--1 {
+  top: 10px;
+}
+
+.mo__frag--2 {
+  top: 50%;
+  margin-top: -11px;
+  height: 18px;
+}
+
+.mo__frag--3 {
+  bottom: 10px;
+}
+
+.mo--break .mo__frag,
+.mo[data-state='exceeded'] .mo__frag {
+  opacity: 1;
+}
+
+.mo--break .mo__frag--1 {
+  transform: translate(18px, -8px) rotate(8deg);
+  transition: transform var(--mo-frag-ms) cubic-bezier(0.2, 0.65, 0.25, 1),
+    opacity 40ms linear;
+}
+
+.mo--break .mo__frag--2 {
+  transform: translate(24px, 2px) rotate(-4deg);
+  transition: transform var(--mo-frag-ms) cubic-bezier(0.2, 0.65, 0.25, 1),
+    opacity 40ms linear;
+}
+
+.mo--break .mo__frag--3 {
+  transform: translate(12px, 10px) rotate(12deg);
+  transition: transform var(--mo-frag-ms) cubic-bezier(0.2, 0.65, 0.25, 1),
+    opacity 40ms linear;
+}
+
+.mo[data-state='exceeded'] .mo__frag--1 {
+  transform: translate(18px, -8px) rotate(8deg);
+  transition: none;
+}
+
+.mo[data-state='exceeded'] .mo__frag--2 {
+  transform: translate(24px, 2px) rotate(-4deg);
+  transition: none;
+}
+
+.mo[data-state='exceeded'] .mo__frag--3 {
+  transform: translate(12px, 10px) rotate(12deg);
+  transition: none;
+}
+
+.mo[data-state='exceeded'] .mo__frame {
+  border-color: color-mix(in srgb, var(--mo-fail) 65%, transparent);
+  border-right-color: transparent;
+}
+
+.mo__status {
+  min-height: 1.1rem;
+  margin: 0.55rem 0 0;
+  color: var(--mo-mute);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-align: center;
+}
+
+.mo[data-state='exceeded'] .mo__status,
+.mo--fracture .mo__status {
+  color: var(--mo-fail);
+}
+
+.mo__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mo__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.mo__btn {
+  appearance: none;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--mo-green) 55%, transparent);
+  background: color-mix(in srgb, var(--mo-deep) 88%, #000);
+  color: var(--mo-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.mo__btn:focus {
+  outline: none;
+}
+
+.mo__btn:focus-visible {
+  outline: 2px solid var(--mo-bright);
+  outline-offset: 2px;
+}
+
+.mo__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.mo__live {
+  margin: 0.7rem 0 0;
+  color: var(--mo-mute);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mo--shift .mo__frame,
+  .mo--break .mo__frag,
+  .mo--fracture .mo__fracture {
+    transition: none;
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .mo--shift .mo__frame,
+[data-force-reduced-motion='true'] .mo--break .mo__frag,
+[data-force-reduced-motion='true'] .mo--fracture .mo__fracture {
+  transition: none;
+  animation: none;
+}
