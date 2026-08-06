@@ -188,6 +188,7 @@ import { itemObtained } from './item-obtained/entry'
 import { keepOutTapeMarquee } from './keep-out-tape-marquee/entry'
 import { keyboardRiseContentAvoidance } from './keyboard-rise-content-avoidance/entry'
 import { kiChargeMeter } from './ki-charge-meter/entry'
+import { knockdownChain } from './knockdown-chain/entry'
 import { largeTitleCollapse } from './large-title-collapse/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
@@ -615,6 +616,7 @@ export const specimens: Specimen[] = [
   keepOutTapeMarquee,
   keyboardRiseContentAvoidance,
   kiChargeMeter,
+  knockdownChain,
   largeTitleCollapse,
   letterScatterAssemble,
   levelUpOverflow,
