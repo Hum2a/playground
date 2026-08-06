@@ -1,0 +1,8 @@
+{
+  "name": "scene-recall-sweep",
+  "ref": "SPX-3768",
+  "title": "Scene Recall Sweep",
+  "mode": "meter",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

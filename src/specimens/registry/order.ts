@@ -548,4 +548,5 @@ export const specimenOrder: string[] = [
   'photo-lead-expand',
   'contact-sheet-focus',
   'motorised-fader-recall',
+  'scene-recall-sweep',
 ]

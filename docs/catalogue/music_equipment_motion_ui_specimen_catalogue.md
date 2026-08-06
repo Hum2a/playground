@@ -53,7 +53,7 @@ specimens can feel tactile without needing sound.
     into detailed EQ, routing and dynamics controls.
 - [ ] **MUSIC-008** · `SPX-3767` · ★★★★☆ **Console Bank Shift** — A group of channel strips
     slides laterally to reveal the next bank.
-- [ ] **MUSIC-009** · `SPX-3768` · ★★★★★ **Scene Recall Sweep** — An entire console changes state
+- [x] **MUSIC-009** · `SPX-3768` · ★★★★★ **Scene Recall Sweep** — An entire console changes state
     as stored faders, mutes and sends return to exact values.
 - [ ] **MUSIC-010** · `SPX-3769` · ★★★☆☆ **Scribble Strip Update** — Tiny channel labels change
     with crisp segmented-display motion.
@@ -862,19 +862,20 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **1 / 310** complete.
+- Progress: **2 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 1 |
-| Open | 309 |
+| Done | 2 |
+| Open | 308 |
 
 ## Core first-wave / build queue
 
 - [x] **MUSIC-002** · `SPX-3761` · **Motorised Fader Recall** · `motorised-fader-recall`
-- [ ] **MUSIC-009** · `SPX-3768` · **Scene Recall Sweep** · scaffold `scene-recall-sweep`
+- [x] **MUSIC-009** · `SPX-3768` · **Scene Recall Sweep** · `scene-recall-sweep`
 - [ ] **MUSIC-011** · `SPX-3770` · **Analog VU Needle** · scaffold `analog-vu-needle`
 - [ ] **MUSIC-012** · `SPX-3771` · **LED Ladder Meter** · scaffold `led-ladder-meter`
 - [ ] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · scaffold `peak-hold-marker`
