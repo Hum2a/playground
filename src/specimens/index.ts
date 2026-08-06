@@ -353,6 +353,7 @@ import { rankPromotionCard } from './rank-promotion-card/entry'
 import { rankThresholdUnlock } from './rank-threshold-unlock/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
+import { rareTrophyReveal } from './rare-trophy-reveal/entry'
 import { recentsCardRestore } from './recents-card-restore/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { redactionReveal } from './redaction-reveal/entry'
@@ -861,6 +862,7 @@ export const specimens: Specimen[] = [
   rankThresholdUnlock,
   rankUpImpact,
   ransomNoteReveal,
+  rareTrophyReveal,
   recentsCardRestore,
   redactedContentLock,
   redactionReveal,

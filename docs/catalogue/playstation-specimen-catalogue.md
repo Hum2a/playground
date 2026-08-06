@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **19 / 216** complete.
+- Progress: **20 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 19 |
-| Open | 197 |
+| Done | 20 |
+| Open | 196 |
 
 ## Visual grammar
 
@@ -51,6 +51,7 @@
 | PS-076 | `SPX-3382` | `ps-neighbour-push-out` | Neighbour Push-Out |
 | PS-077 | `SPX-3383` | `card-collapse-return` | Card Collapse Return |
 | PS-041 | `SPX-3347` | `trophy-unlock-pop` | Trophy Unlock Pop |
+| PS-042 | `SPX-3348` | `rare-trophy-reveal` | Rare Trophy Reveal |
 
 ## Core first-wave
 
@@ -75,7 +76,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-076** · `SPX-3382` · **Neighbour Push-Out** — cards-media-tiles
 - [x] **PS-077** · `SPX-3383` · **Card Collapse Return** — cards-media-tiles
 - [x] **PS-041** · `SPX-3347` · **Trophy Unlock Pop** — trophies-achievements
-- [ ] **PS-042** · `SPX-3348` · **Rare Trophy Reveal** — trophies-achievements
+- [x] **PS-042** · `SPX-3348` · **Rare Trophy Reveal** — trophies-achievements
 - [ ] **PS-049** · `SPX-3355` · **Download Progress Ring** — downloads-installs-updates
 - [ ] **PS-050** · `SPX-3356` · **Download Queue Advance** — downloads-installs-updates
 - [ ] **PS-051** · `SPX-3357` · **Install Phase Transition** — downloads-installs-updates
@@ -166,7 +167,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 ## Trophies / Achievements
 
 - [x] **PS-041** · `SPX-3347` · **Trophy Unlock Pop** — A compact trophy-like achievement notification enters, shines once and settles.
-- [ ] **PS-042** · `SPX-3348` · **Rare Trophy Reveal** — A higher-tier achievement uses a more elaborate but finite reveal.
+- [x] **PS-042** · `SPX-3348` · **Rare Trophy Reveal** — A higher-tier achievement uses a more elaborate but finite reveal.
 - [ ] **PS-043** · `SPX-3349` · **Trophy Progress Ring** — Progress toward an achievement fills around a compact emblem.
 - [ ] **PS-044** · `SPX-3350` · **Trophy Tier Ascend** — Achievement treatment transforms from lower to higher tier.
 - [ ] **PS-045** · `SPX-3351` · **Trophy List Acquisition** — Newly earned entry inserts into a trophy list with clear chronology.
