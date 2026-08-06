@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/screenshot-thumbnail-arrival.schema.json",
+  "title": "ScreenshotThumbnailArrival",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "thumbnail", "timing", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "screenshot-thumbnail-arrival" },
+    "intent": {
+      "type": "string",
+      "const": "Simulate a screenshot capture flash and temporary thumbnail arrival without browser capture APIs."
+    },
+    "thumbnail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "insetPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 116 },
+        "heightPx": { "type": "number", "const": 206 },
+        "insetPx": { "type": "number", "const": 16 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flashMs", "arriveMs", "dwellMs"],
+      "properties": {
+        "flashMs": { "type": "number", "const": 70 },
+        "arriveMs": { "type": "number", "const": 300 },
+        "dwellMs": { "type": "number", "const": 4200 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inPlace", "triggers"],
+      "properties": {
+        "inPlace": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "thumb"],
+      "properties": {
+        "root": { "type": "string", "const": "sta" },
+        "thumb": { "type": "string", "const": "sta__thumb" }
+      }
+    }
+  }
+}

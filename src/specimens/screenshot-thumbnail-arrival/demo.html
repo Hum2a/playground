@@ -1,0 +1,40 @@
+<div class="sta" data-screenshot-thumbnail-arrival data-phase="idle">
+  <div class="sta__app" data-sta-app>
+    <header class="sta__bar">
+      <span class="sta__bar-title">Gallery</span>
+    </header>
+    <main class="sta__content">
+      <div class="sta__tile" aria-hidden="true"></div>
+      <div class="sta__tile" aria-hidden="true"></div>
+      <div class="sta__tile" aria-hidden="true"></div>
+      <div class="sta__tile" aria-hidden="true"></div>
+    </main>
+    <div class="sta__flash" data-sta-flash hidden aria-hidden="true"></div>
+  </div>
+
+  <div class="sta__thumb" data-sta-thumb hidden tabindex="0" role="button" aria-label="Screenshot thumbnail, tap to open editor">
+    <div class="sta__thumb-preview" aria-hidden="true">
+      <span class="sta__thumb-bar"></span>
+      <span class="sta__thumb-block"></span>
+      <span class="sta__thumb-block"></span>
+    </div>
+  </div>
+
+  <div class="sta__editor" data-sta-editor hidden>
+    <div class="sta__editor-inner">
+      <div class="sta__editor-preview" aria-hidden="true"></div>
+      <div class="sta__editor-tools">
+        <button type="button" data-sta-tool>Crop</button>
+        <button type="button" data-sta-tool>Draw</button>
+        <button type="button" data-sta-tool>Share</button>
+      </div>
+      <button type="button" class="sta__editor-close" data-sta-editor-close>Close</button>
+    </div>
+  </div>
+
+  <button type="button" class="sta__capture" data-sta-capture>Capture</button>
+
+  <p class="sta__status" role="status" aria-live="polite" data-sta-status>
+    Press Capture to simulate a screenshot thumbnail arrival.
+  </p>
+</div>
