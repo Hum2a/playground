@@ -132,6 +132,7 @@ import { fingerprintAcquisitionField } from './fingerprint-acquisition-field/ent
 import { fireballCommit } from './fireball-commit/entry'
 import { floatingLabelLift } from './floating-label-lift/entry'
 import { focusModeActivation } from './focus-mode-activation/entry'
+import { fogClearingDataReveal } from './fog-clearing-data-reveal/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fourPointBarrierConstruct } from './four-point-barrier-construct/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
@@ -525,6 +526,7 @@ export const specimens: Specimen[] = [
   fireballCommit,
   floatingLabelLift,
   focusModeActivation,
+  fogClearingDataReveal,
   forgetAMove,
   fourPointBarrierConstruct,
   fullMoonMilestone,
