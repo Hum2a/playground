@@ -1,0 +1,63 @@
+<div class="pts" data-pts data-state="idle">
+  <div class="pts__toolbar">
+    <button type="button" class="pts__btn" data-pts-execute>EXECUTE</button>
+  </div>
+
+  <p class="pts__status" role="status" aria-live="polite" data-pts-status>
+    Query 07 at REQUEST. Stages PARSE, SEARCH, and ASSEMBLE pending.
+  </p>
+
+  <header class="pts__meta">
+    <p class="pts__query">QUERY // 07</p>
+    <p class="pts__mode" data-pts-mode>MODE // IDLE</p>
+  </header>
+
+  <div class="pts__host" aria-hidden="true">
+    <div class="pts__pipeline" data-pts-pipeline>
+      <div class="pts__stage pts__stage--request" data-pts-stage="request" data-status="active">
+        <span class="pts__marker pts__marker--src" data-pts-marker-src></span>
+        <span class="pts__label" data-pts-label>REQUEST</span>
+        <span class="pts__badge" data-pts-badge></span>
+      </div>
+
+      <div class="pts__mid" data-pts-mid>
+        <span class="pts__slice pts__slice--1"></span>
+        <span class="pts__slice pts__slice--2"></span>
+        <span class="pts__slice pts__slice--3"></span>
+
+        <div class="pts__stage pts__stage--parse" data-pts-stage="parse" data-status="pending">
+          <span class="pts__label" data-pts-label>PARSE</span>
+          <span class="pts__badge" data-pts-badge></span>
+        </div>
+        <div class="pts__stage pts__stage--search" data-pts-stage="search" data-status="pending">
+          <span class="pts__label" data-pts-label>SEARCH</span>
+          <span class="pts__badge" data-pts-badge></span>
+        </div>
+        <div class="pts__stage pts__stage--assemble" data-pts-stage="assemble" data-status="pending">
+          <span class="pts__label" data-pts-label>ASSEMBLE</span>
+          <span class="pts__badge" data-pts-badge></span>
+        </div>
+      </div>
+
+      <div class="pts__stage pts__stage--result" data-pts-stage="result" data-status="pending">
+        <span class="pts__marker pts__marker--dst" data-pts-marker-dst></span>
+        <span class="pts__label" data-pts-label>RESULT</span>
+        <span class="pts__timing" data-pts-timing></span>
+        <span class="pts__badge" data-pts-badge></span>
+      </div>
+    </div>
+
+    <p class="pts__cache" data-pts-cache aria-hidden="true">CACHE HIT</p>
+
+    <dl class="pts__compare" data-pts-compare hidden>
+      <div>
+        <dt>NORMAL</dt>
+        <dd>184ms</dd>
+      </div>
+      <div>
+        <dt>ACTUAL</dt>
+        <dd>24ms</dd>
+      </div>
+    </dl>
+  </div>
+</div>

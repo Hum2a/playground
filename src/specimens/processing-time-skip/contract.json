@@ -1,0 +1,44 @@
+{
+  "name": "processing-time-skip",
+  "intent": "QUERY // 07 runs REQUEST, recognises CACHE HIT, intentionally skips PARSE/SEARCH/ASSEMBLE, and lands on RESULT in 24ms — communicating omitted process, not missing data.",
+  "catalogue": {
+    "db": "DB-192",
+    "ref": "SPX-1157",
+    "checklistTitle": "Hit Time-Skip",
+    "specimenTitle": "Processing Time Skip"
+  },
+  "counts": {
+    "stages": 5,
+    "skippedStages": 3,
+    "sliceLines": 3,
+    "operationMarkers": 1
+  },
+  "stages": ["REQUEST", "PARSE", "SEARCH", "ASSEMBLE", "RESULT"],
+  "timing": {
+    "requestMs": 180,
+    "freezeMs": 60,
+    "compressMs": 70,
+    "markerGapMs": 45,
+    "normalMs": 184,
+    "actualMs": 24
+  },
+  "geometry": {
+    "midLabelCompressScaleX": 0.1,
+    "sliceCount": 3
+  },
+  "constraints": {
+    "midStagesNeverActive": true,
+    "noMarkerTravelPath": true,
+    "skippedRemainVisible": true,
+    "noFranchiseNamesInUi": true,
+    "noLoopingInFinal": true
+  },
+  "api": {
+    "execute": "executeProcessingTimeSkip()",
+    "reset": "resetProcessingTimeSkip()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show final pipeline with stages 2–4 SKIPPED"
+  }
+}
