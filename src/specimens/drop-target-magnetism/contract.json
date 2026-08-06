@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/drop-target-magnetism.schema.json",
+  "title": "DropTargetMagnetism",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "proxy", "magnetism", "archive", "locked", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "drop-target-magnetism" },
+    "intent": {
+      "type": "string",
+      "const": "A draggable object approaching a valid destination is subtly attracted and aligned before drop."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["draggable", "validTarget", "invalidTarget"],
+      "properties": {
+        "draggable": { "type": "string", "const": "FILE // 07" },
+        "validTarget": { "type": "string", "const": "ARCHIVE" },
+        "invalidTarget": { "type": "string", "const": "LOCKED" }
+      }
+    },
+    "proxy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 92 },
+        "heightPx": { "type": "number", "const": 52 }
+      }
+    },
+    "magnetism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radiusPx", "maxAttractionPct", "acquireDistancePx"],
+      "properties": {
+        "radiusPx": { "type": "number", "const": 86 },
+        "maxAttractionPct": { "type": "number", "const": 28 },
+        "acquireDistancePx": { "type": "number", "const": 42 }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["boundaryExpandPx", "cornerTicks"],
+      "properties": {
+        "boundaryExpandPx": { "type": "number", "const": 4 },
+        "cornerTicks": { "type": "number", "const": 4 }
+      }
+    },
+    "locked": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attracts"],
+      "properties": {
+        "attracts": { "type": "boolean", "const": false }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["disableMagnetism", "triggers"],
+      "properties": {
+        "disableMagnetism": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "proxy", "archive"],
+      "properties": {
+        "root": { "type": "string", "const": "dtm" },
+        "proxy": { "type": "string", "const": "dtm__proxy" },
+        "archive": { "type": "string", "const": "dtm__target--archive" }
+      }
+    }
+  }
+}
