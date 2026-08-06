@@ -1,5 +1,12 @@
+import type { SpecimenInspiration } from './inspiration'
 import type { SpecimenFacets } from './taxonomy'
 
+export type {
+  InspirationFranchiseId,
+  InspirationWorkId,
+  SpecimenInspiration,
+  SuggestedFreeTag,
+} from './inspiration'
 export type {
   FacetKey,
   SpecimenFacets,
@@ -17,7 +24,12 @@ export interface Specimen {
   origin: { project: string; surface?: string }
   /** Required orthogonal axes — see `taxonomy.ts`. */
   facets: SpecimenFacets
-  /** Freeform flavor only; do not repeat facet values. */
+  /**
+   * Optional game/franchise lineage from the inspiration directory.
+   * Prefer this over stuffing franchise names into `tags`.
+   */
+  inspiredBy?: SpecimenInspiration
+  /** Freeform effect flavor only; do not repeat facet or inspiration ids. */
   tags: string[]
   deps: 'none' | string[]
   motion: {

@@ -1,0 +1,451 @@
+/* SPX-005 Azure Shard Transition — portable contract. Do not restyle to host tokens. */
+
+.azure-shard-demo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1.5rem;
+  background: #071b33;
+  color: #dff7ff;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.azure-shard-demo__state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 16rem;
+}
+
+.azure-shard-demo__state[hidden] {
+  display: none;
+}
+
+.azure-shard-demo__kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #41c9ff;
+}
+
+.azure-shard-demo__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 8vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #f7fcff;
+}
+
+.azure-shard-demo__btn {
+  appearance: none;
+  margin-top: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(223, 247, 255, 0.55);
+  border-radius: 0;
+  background: transparent;
+  color: #dff7ff;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.azure-shard-demo__btn:focus-visible {
+  outline: 2px solid #41c9ff;
+  outline-offset: 3px;
+}
+
+.azure-shard-demo__btn:hover {
+  background: rgba(65, 201, 255, 0.12);
+  color: #f7fcff;
+}
+
+/* —— Overlay —— */
+.azure-shard {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.azure-shard__backing {
+  position: absolute;
+  inset: -8%;
+  z-index: 0;
+  background: #071b33;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  will-change: clip-path;
+}
+
+.azure-shard__shard {
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  border: 1px solid rgba(223, 247, 255, 0.55);
+  will-change: transform;
+  overflow: hidden;
+}
+
+.azure-shard__shard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(247, 252, 255, 0.22) 0%,
+    rgba(247, 252, 255, 0) 42%
+  );
+  opacity: 0.55;
+}
+
+/* Shard 1 — long triangle from left */
+.azure-shard__shard--1 {
+  top: -18vh;
+  left: -22vw;
+  width: 58vw;
+  height: 130vh;
+  background: #0878c9;
+  opacity: 0.88;
+  clip-path: polygon(0% 0%, 100% 8%, 42% 100%);
+  transform: translate3d(-120%, 0, 0) rotate(6deg);
+}
+
+/* Shard 2 — irregular quad from bottom */
+.azure-shard__shard--2 {
+  left: -10vw;
+  bottom: -24vh;
+  width: 72vw;
+  height: 70vh;
+  background: #41c9ff;
+  opacity: 0.92;
+  clip-path: polygon(0% 12%, 88% 0%, 100% 78%, 18% 100%);
+  transform: translate3d(0, 120%, 0);
+}
+
+/* Shard 3 — narrow glass sliver from right */
+.azure-shard__shard--3 {
+  top: -10vh;
+  right: -8vw;
+  width: 28vw;
+  height: 120vh;
+  background: #dff7ff;
+  opacity: 0.78;
+  clip-path: polygon(40% 0%, 58% 0%, 72% 100%, 28% 100%);
+  transform: translate3d(130%, 0, 0) rotate(-8deg);
+}
+
+/* Shard 4 — large central crystalline plane from bottom */
+.azure-shard__shard--4 {
+  top: -12vh;
+  left: -18vw;
+  width: 130vw;
+  height: 120vh;
+  background: #0878c9;
+  opacity: 0.96;
+  clip-path: polygon(8% 0%, 100% 6%, 94% 100%, 0% 88%);
+  transform: translate3d(0, 115%, 0) rotate(4deg);
+}
+
+/* Shard 5 — long triangle from bottom-left */
+.azure-shard__shard--5 {
+  left: -28vw;
+  bottom: -20vh;
+  width: 64vw;
+  height: 90vh;
+  background: #41c9ff;
+  opacity: 0.84;
+  clip-path: polygon(0% 20%, 100% 0%, 78% 100%);
+  transform: translate3d(-40%, 120%, 0) rotate(10deg);
+}
+
+/* Shard 6 — irregular quad from left */
+.azure-shard__shard--6 {
+  top: 8vh;
+  left: -24vw;
+  width: 68vw;
+  height: 78vh;
+  background: #071b33;
+  opacity: 0.9;
+  clip-path: polygon(0% 0%, 100% 18%, 72% 100%, 0% 82%);
+  transform: translate3d(-125%, 0, 0) rotate(-5deg);
+}
+
+/* Shard 7 — narrow glass sliver from right */
+.azure-shard__shard--7 {
+  top: 5vh;
+  right: -12vw;
+  width: 34vw;
+  height: 95vh;
+  background: #f7fcff;
+  opacity: 0.72;
+  clip-path: polygon(35% 0%, 52% 0%, 65% 100%, 22% 100%);
+  transform: translate3d(140%, 10%, 0) rotate(12deg);
+}
+
+/* —— Entry (0–480ms): backing angular wipe + staggered shards —— */
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__backing {
+  animation: azure-shard-backing-in 480ms cubic-bezier(0.33, 0, 0.2, 1) 0ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--1 {
+  animation: azure-shard-in-left 250ms cubic-bezier(0.33, 0, 0.2, 1) 0ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--2 {
+  animation: azure-shard-in-bottom 250ms cubic-bezier(0.33, 0, 0.2, 1) 40ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--3 {
+  animation: azure-shard-in-right 250ms cubic-bezier(0.33, 0, 0.2, 1) 75ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--4 {
+  animation: azure-shard-in-bottom-rot 250ms cubic-bezier(0.33, 0, 0.2, 1) 110ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--5 {
+  animation: azure-shard-in-bl 250ms cubic-bezier(0.33, 0, 0.2, 1) 150ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--6 {
+  animation: azure-shard-in-left-rot 250ms cubic-bezier(0.33, 0, 0.2, 1) 190ms forwards;
+}
+
+.azure-shard--active:not(.azure-shard--exit) .azure-shard__shard--7 {
+  animation: azure-shard-in-right-rot 250ms cubic-bezier(0.33, 0, 0.2, 1) 230ms forwards;
+}
+
+@keyframes azure-shard-backing-in {
+  0% {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  }
+  35% {
+    clip-path: polygon(0% 0%, 42% 0%, 28% 100%, 0% 100%);
+  }
+  70% {
+    clip-path: polygon(0% 0%, 88% 0%, 72% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}
+
+@keyframes azure-shard-in-left {
+  from {
+    transform: translate3d(-120%, 0, 0) rotate(6deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(6deg);
+  }
+}
+
+@keyframes azure-shard-in-bottom {
+  from {
+    transform: translate3d(0, 120%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes azure-shard-in-right {
+  from {
+    transform: translate3d(130%, 0, 0) rotate(-8deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+}
+
+@keyframes azure-shard-in-bottom-rot {
+  from {
+    transform: translate3d(0, 115%, 0) rotate(4deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+}
+
+@keyframes azure-shard-in-bl {
+  from {
+    transform: translate3d(-40%, 120%, 0) rotate(10deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(10deg);
+  }
+}
+
+@keyframes azure-shard-in-left-rot {
+  from {
+    transform: translate3d(-125%, 0, 0) rotate(-5deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+}
+
+@keyframes azure-shard-in-right-rot {
+  from {
+    transform: translate3d(140%, 10%, 0) rotate(12deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(12deg);
+  }
+}
+
+/* —— Exit (650–1250ms = 600ms): upward / outward, non-mirrored —— */
+.azure-shard--exit .azure-shard__backing {
+  animation: azure-shard-backing-out 520ms cubic-bezier(0.33, 0, 0.2, 1) 40ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--1 {
+  animation: azure-shard-out-ul 480ms cubic-bezier(0.33, 0, 0.2, 1) 0ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--2 {
+  animation: azure-shard-out-up 560ms cubic-bezier(0.33, 0, 0.2, 1) 20ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--3 {
+  animation: azure-shard-out-ur 420ms cubic-bezier(0.33, 0, 0.2, 1) 60ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--4 {
+  animation: azure-shard-out-up-slow 600ms cubic-bezier(0.33, 0, 0.2, 1) 0ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--5 {
+  animation: azure-shard-out-ul-rot 500ms cubic-bezier(0.33, 0, 0.2, 1) 40ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--6 {
+  animation: azure-shard-out-left-up 460ms cubic-bezier(0.33, 0, 0.2, 1) 30ms forwards;
+}
+
+.azure-shard--exit .azure-shard__shard--7 {
+  animation: azure-shard-out-ur-rot 540ms cubic-bezier(0.33, 0, 0.2, 1) 50ms forwards;
+}
+
+@keyframes azure-shard-backing-out {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  45% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 42%, 0% 28%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
+}
+
+@keyframes azure-shard-out-ul {
+  from {
+    transform: translate3d(0, 0, 0) rotate(6deg);
+  }
+  to {
+    transform: translate3d(-30%, -125%, 0) rotate(6deg);
+  }
+}
+
+@keyframes azure-shard-out-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(6%, -130%, 0);
+  }
+}
+
+@keyframes azure-shard-out-ur {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+  to {
+    transform: translate3d(35%, -120%, 0) rotate(-4deg);
+  }
+}
+
+@keyframes azure-shard-out-up-slow {
+  from {
+    transform: translate3d(0, 0, 0) rotate(4deg);
+  }
+  to {
+    transform: translate3d(4%, -140%, 0) rotate(8deg);
+  }
+}
+
+@keyframes azure-shard-out-ul-rot {
+  from {
+    transform: translate3d(0, 0, 0) rotate(10deg);
+  }
+  to {
+    transform: translate3d(-45%, -125%, 0) rotate(18deg);
+  }
+}
+
+@keyframes azure-shard-out-left-up {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+  to {
+    transform: translate3d(-110%, -40%, 0) rotate(-5deg);
+  }
+}
+
+@keyframes azure-shard-out-ur-rot {
+  from {
+    transform: translate3d(0, 0, 0) rotate(12deg);
+  }
+  to {
+    transform: translate3d(50%, -130%, 0) rotate(20deg);
+  }
+}
+
+/* —— Reduced motion: solid blue cover, no shard travel —— */
+@media (prefers-reduced-motion: reduce) {
+  .azure-shard--active .azure-shard__backing,
+  .azure-shard--active .azure-shard__shard,
+  .azure-shard--exit .azure-shard__backing,
+  .azure-shard--exit .azure-shard__shard {
+    animation: none !important;
+  }
+
+  .azure-shard--rm-flash .azure-shard__backing {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .azure-shard--rm-flash .azure-shard__shard {
+    transform: translate3d(-200%, -200%, 0);
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .azure-shard--active .azure-shard__backing,
+[data-force-reduced-motion='true'] .azure-shard--active .azure-shard__shard,
+[data-force-reduced-motion='true'] .azure-shard--exit .azure-shard__backing,
+[data-force-reduced-motion='true'] .azure-shard--exit .azure-shard__shard {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .azure-shard--rm-flash .azure-shard__backing {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+[data-force-reduced-motion='true'] .azure-shard--rm-flash .azure-shard__shard {
+  transform: translate3d(-200%, -200%, 0);
+  opacity: 0;
+}

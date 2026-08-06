@@ -1,3 +1,4 @@
+import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import type { Specimen } from './types'
@@ -11,6 +12,12 @@ export type {
   SpecimenScope,
   SpecimenTech,
 } from './taxonomy'
+export type {
+  InspirationFranchiseId,
+  InspirationWorkId,
+  SpecimenInspiration,
+  SuggestedFreeTag,
+} from './inspiration'
 export {
   ALL_FACET_VALUES,
   FACET_KEYS,
@@ -22,9 +29,23 @@ export {
   SPECIMEN_TECHS,
   formatFacets,
 } from './taxonomy'
+export {
+  ALL_INSPIRATION_IDS,
+  INSPIRATION_DIRECTORY,
+  INSPIRATION_FRANCHISE_IDS,
+  SUGGESTED_FREE_TAGS,
+  formatInspiredBy,
+  franchiseLabel,
+  isWorkInFranchise,
+  workLabel,
+} from './inspiration'
 
 /** Explicit specimen registry. Add one import per specimen. */
-export const specimens: Specimen[] = [comingSoonTape, comicPanelWipe]
+export const specimens: Specimen[] = [
+  comingSoonTape,
+  comicPanelWipe,
+  callingCardSlam,
+]
 
 export function getSpecimen(id: string): Specimen | undefined {
   return specimens.find((s) => s.id === id)

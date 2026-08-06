@@ -1,0 +1,173 @@
+{
+  "name": "azure-shard-transition",
+  "intent": "Seven translucent crystalline shards and a solid deep-navy backing wipe elegantly cover the viewport for a content swap, then drift upward and outward in non-mirrored exits.",
+  "colours": {
+    "deepNavy": "#071b33",
+    "oceanBlue": "#0878c9",
+    "brightCyan": "#41c9ff",
+    "ice": "#dff7ff",
+    "white": "#f7fcff",
+    "border": "rgba(223,247,255,.55)"
+  },
+  "backing": {
+    "className": "azure-shard__backing",
+    "colour": "#071b33",
+    "enter": "angularClipWipe",
+    "exit": "angularClipRetractUp",
+    "enterMs": 480,
+    "exitMs": 520,
+    "exitDelayMs": 40
+  },
+  "shards": [
+    {
+      "id": 1,
+      "className": "azure-shard__shard--1",
+      "role": "long-triangle",
+      "colour": "#0878c9",
+      "opacity": 0.88,
+      "enterFrom": "left",
+      "exitTo": "up-left",
+      "delayMs": 0,
+      "rotateDeg": 6,
+      "enterMs": 250,
+      "exitMs": 480,
+      "exitDelayMs": 0,
+      "clipPath": "polygon(0% 0%, 100% 8%, 42% 100%)"
+    },
+    {
+      "id": 2,
+      "className": "azure-shard__shard--2",
+      "role": "irregular-quad",
+      "colour": "#41c9ff",
+      "opacity": 0.92,
+      "enterFrom": "bottom",
+      "exitTo": "up",
+      "delayMs": 40,
+      "rotateDeg": 0,
+      "enterMs": 250,
+      "exitMs": 560,
+      "exitDelayMs": 20,
+      "clipPath": "polygon(0% 12%, 88% 0%, 100% 78%, 18% 100%)"
+    },
+    {
+      "id": 3,
+      "className": "azure-shard__shard--3",
+      "role": "narrow-sliver",
+      "colour": "#dff7ff",
+      "opacity": 0.78,
+      "enterFrom": "right",
+      "exitTo": "up-right",
+      "delayMs": 75,
+      "rotateDeg": -8,
+      "enterMs": 250,
+      "exitMs": 420,
+      "exitDelayMs": 60,
+      "clipPath": "polygon(40% 0%, 58% 0%, 72% 100%, 28% 100%)"
+    },
+    {
+      "id": 4,
+      "className": "azure-shard__shard--4",
+      "role": "large-central-plane",
+      "colour": "#0878c9",
+      "opacity": 0.96,
+      "enterFrom": "bottom",
+      "exitTo": "up",
+      "delayMs": 110,
+      "rotateDeg": 4,
+      "enterMs": 250,
+      "exitMs": 600,
+      "exitDelayMs": 0,
+      "clipPath": "polygon(8% 0%, 100% 6%, 94% 100%, 0% 88%)"
+    },
+    {
+      "id": 5,
+      "className": "azure-shard__shard--5",
+      "role": "long-triangle",
+      "colour": "#41c9ff",
+      "opacity": 0.84,
+      "enterFrom": "bottom-left",
+      "exitTo": "up-left",
+      "delayMs": 150,
+      "rotateDeg": 10,
+      "enterMs": 250,
+      "exitMs": 500,
+      "exitDelayMs": 40,
+      "clipPath": "polygon(0% 20%, 100% 0%, 78% 100%)"
+    },
+    {
+      "id": 6,
+      "className": "azure-shard__shard--6",
+      "role": "irregular-quad",
+      "colour": "#071b33",
+      "opacity": 0.9,
+      "enterFrom": "left",
+      "exitTo": "left-up",
+      "delayMs": 190,
+      "rotateDeg": -5,
+      "enterMs": 250,
+      "exitMs": 460,
+      "exitDelayMs": 30,
+      "clipPath": "polygon(0% 0%, 100% 18%, 72% 100%, 0% 82%)"
+    },
+    {
+      "id": 7,
+      "className": "azure-shard__shard--7",
+      "role": "narrow-sliver",
+      "colour": "#f7fcff",
+      "opacity": 0.72,
+      "enterFrom": "right",
+      "exitTo": "up-right",
+      "delayMs": 230,
+      "rotateDeg": 12,
+      "enterMs": 250,
+      "exitMs": 540,
+      "exitDelayMs": 50,
+      "clipPath": "polygon(35% 0%, 52% 0%, 65% 100%, 22% 100%)"
+    }
+  ],
+  "timing": {
+    "easing": "cubic-bezier(0.33, 0, 0.2, 1)",
+    "totalMs": 1250,
+    "entryMs": 480,
+    "coveredStartMs": 480,
+    "coveredEndMs": 650,
+    "onCoveredMs": 560,
+    "exitStartMs": 650,
+    "staggerMs": [0, 40, 75, 110, 150, 190, 230],
+    "enterDurationMs": 250
+  },
+  "typography": {
+    "fontFamily": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+  },
+  "api": {
+    "export": "runShardTransition(onCovered)",
+    "busyGuard": true,
+    "swapOnlyInsideOnCovered": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "overlayAriaHidden": true,
+    "idlePointerEvents": "none",
+    "doNotFocusOverlay": true,
+    "focusAfterSwap": "newly revealed peer button"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Skip shard travel; instantly show solid deep-navy coverage, run onCovered, then reveal"
+  },
+  "constraints": {
+    "noBlur": true,
+    "noImages": true,
+    "noCanvas": true,
+    "noSvgAssets": true,
+    "noExternalTextures": true,
+    "noFontFace": true,
+    "nonMirroredExits": true,
+    "backingAngularWipe": true,
+    "fullCoverageBeforeSwap": true,
+    "subtleEdgeHighlightsOnly": true
+  }
+}
