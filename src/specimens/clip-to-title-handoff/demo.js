@@ -1,0 +1,1 @@
+export function runClipHandoff(){document.querySelector('[data-msg]').textContent='Title details · Midnight Circuit'};document.querySelector('[data-go]')?.addEventListener('click',()=>runClipHandoff())

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **44 / 197** complete.
+- Progress: **45 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 44 |
-| Open | 153 |
+| Done | 45 |
+| Open | 152 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-143 | `SPX-3252` | `clip-to-title-handoff` | Clip-to-Title Handoff |
 | NF-142 | `SPX-3251` | `vertical-clip-snap` | Vertical Clip Snap |
 | NF-137 | `SPX-3246` | `network-lost-overlay` | Network Lost Overlay |
 | NF-136 | `SPX-3245` | `retry-to-buffer-transition` | Retry-to-Buffer Transition |
@@ -141,7 +142,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-136** · `SPX-3245` · **Retry-to-Buffer Transition** — `retry-to-buffer-transition`
 - [x] **NF-137** · `SPX-3246` · **Network Lost Overlay** — `network-lost-overlay`
 - [x] **NF-142** · `SPX-3251` · **Vertical Clip Snap** — `vertical-clip-snap`
-- [ ] **NF-143** · `SPX-3252` · **Clip-to-Title Handoff** — `clip-to-title-handoff`
+- [x] **NF-143** · `SPX-3252` · **Clip-to-Title Handoff** — `clip-to-title-handoff`
 - [ ] **NF-149** · `SPX-3258` · **Download Progress Ring** — `download-progress-ring`
 - [ ] **NF-150** · `SPX-3259` · **Download Complete Morph** — `download-complete-morph`
 - [ ] **NF-001** · `SPX-3110` · **Cinematic Ribbon Reveal** — `cinematic-ribbon-reveal`
@@ -330,7 +331,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 20. Mobile / Vertical Discovery
 
 - [x] **NF-142** · `SPX-3251` · **Vertical Clip Snap** — Full-height discovery cards snap one at a time during vertical navigation
-- [ ] **NF-143** · `SPX-3252` · **Clip-to-Title Handoff** — A short-form discovery card transforms into a title detail surface
+- [x] **NF-143** · `SPX-3252` · **Clip-to-Title Handoff** — A short-form discovery card transforms into a title detail surface
 - [ ] **NF-144** · `SPX-3253` · **Vertical Action Rail** — Like/save/info controls acquire alongside the active clip
 - [ ] **NF-145** · `SPX-3254` · **Swipe-Up Next** — A vertical gesture advances to the next discovery item with strict snap
 - [ ] **NF-146** · `SPX-3255` · **Clip Progress Edge** — A subtle edge strip communicates short-form playback progress
