@@ -568,6 +568,8 @@ import { articleOpenFromTeaser } from './article-open-from-teaser/entry'
 
 import { readingProgressRule } from './reading-progress-rule/entry'
 
+import { articleCloseReturn } from './article-close-return/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1080,6 +1082,7 @@ export const specimens: Specimen[] = [
   gridCollapseToMobile,
   articleOpenFromTeaser,
   readingProgressRule,
+  articleCloseReturn,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

@@ -1,0 +1,8 @@
+{
+  "name": "article-close-return",
+  "ref": "SPX-3563",
+  "title": "Article Close Return",
+  "mode": "redact",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
