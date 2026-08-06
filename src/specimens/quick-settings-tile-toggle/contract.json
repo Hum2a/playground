@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/quick-settings-tile-toggle.schema.json",
+  "title": "QuickSettingsTileToggle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "tile", "backing", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "quick-settings-tile-toggle" },
+    "intent": {
+      "type": "string",
+      "const": "Quick settings Network tile toggles with ripple and expanding backing."
+    },
+    "tile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 148 },
+        "heightPx": { "type": "number", "const": 72 }
+      }
+    },
+    "backing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startDiameterPx", "durationMs"],
+      "properties": {
+        "startDiameterPx": { "type": "number", "const": 40 },
+        "durationMs": { "type": "number", "const": 260 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantState", "triggers"],
+      "properties": {
+        "instantState": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "tile"],
+      "properties": {
+        "root": { "type": "string", "const": "qstt" },
+        "tile": { "type": "string", "const": "qstt__tile--network" }
+      }
+    }
+  }
+}

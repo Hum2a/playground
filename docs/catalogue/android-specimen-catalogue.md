@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **12 / 417** complete.
+- Progress: **13 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 405 |
+| Done | 13 |
+| Open | 404 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-090 | `SPX-1647` | `quick-settings-tile-toggle` | Quick Settings Tile Toggle |
 | AND-080 | `SPX-1637` | `notification-shade-pull-down` | Notification Shade Pull-Down |
 | AND-248 | `SPX-1805` | `recents-card-restore` | Recents Card Restore |
 | AND-245 | `SPX-1802` | `app-to-recents-shrink` | App-to-Recents Shrink |
@@ -61,7 +62,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — android-recents-overview
 - [x] **AND-248** · `SPX-1805` · **Recents Card Restore** — android-recents-overview
 - [x] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification-shade
-- [ ] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — quick-settings
+- [x] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — quick-settings
 - [ ] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — android-notifications
 - [ ] **AND-109** · `SPX-1666` · **Snackbar Rise** — toasts-snackbars-temporary-feedback
 - [ ] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — bottom-sheets
@@ -201,7 +202,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Quick Settings
 
-- [ ] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — tile changes state through ripple, icon treatment and persistent selected backing.
+- [x] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — tile changes state through ripple, icon treatment and persistent selected backing.
 - [ ] **AND-091** · `SPX-1648` · **Quick Settings Expansion** — compact tile row becomes a larger configurable grid.
 - [ ] **AND-092** · `SPX-1649` · **Quick Settings Tile Detail** — long press/secondary action expands tile into detailed controls.
 - [ ] **AND-093** · `SPX-1650` · **Brightness Slider Pickup** — thumb enlarges and value response appears during drag.

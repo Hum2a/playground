@@ -161,6 +161,7 @@ import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough
 import { propagatedShockwave } from './propagated-shockwave/entry'
 import { pullToRefresh } from './pull-to-refresh/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
+import { quickSettingsTileToggle } from './quick-settings-tile-toggle/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
@@ -409,6 +410,7 @@ export const specimens: Specimen[] = [
   propagatedShockwave,
   pullToRefresh,
   quickLookExpansion,
+  quickSettingsTileToggle,
   radarPulseDiscovery,
   rankUpImpact,
   ransomNoteReveal,
