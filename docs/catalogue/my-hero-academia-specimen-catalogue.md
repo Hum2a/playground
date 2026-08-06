@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 369** complete.
+- Progress: **17 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 353 |
+| Done | 17 |
+| Open | 352 |
 
 ## Visual grammar
 
@@ -48,6 +48,7 @@
 | MHA-063 | `SPX-2037` | `versus-card-collision` | Versus Card Collision |
 | MHA-064 | `SPX-2038` | `bracket-winner-advance` | Bracket Winner Advance |
 | MHA-066 | `SPX-2040` | `match-start-slam` | Match Start Slam |
+| MHA-075 | `SPX-2049` | `rank-promotion` | Rank Promotion |
 
 ## Core first-wave
 
@@ -181,7 +182,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 ## Pro Hero Ranking
 
 - [ ] **MHA-074** · `SPX-2048` · **Hero Billboard Ranking Reveal** — ranked cards enter in descending order with large number ownership.
-- [ ] **MHA-075** · `SPX-2049` · **Rank Promotion** — profile physically moves upward through the list while displaced ranks move aside.
+- [x] **MHA-075** · `SPX-2049` · **Rank Promotion** — profile physically moves upward through the list while displaced ranks move aside.
 - [ ] **MHA-076** · `SPX-2050` · **Rank Drop** — profile loses visual prominence and descends to new slot.
 - [ ] **MHA-077** · `SPX-2051` · **Top Ten Cascade** — ranked entries arrive one at a time with increasing scale toward #1.
 - [ ] **MHA-078** · `SPX-2052` · **Rank Number Slam** — oversized number lands behind a profile card.

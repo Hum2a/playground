@@ -200,6 +200,7 @@ import { quickSettingsTileToggle } from './quick-settings-tile-toggle/entry'
 import { quirkActivationBurst } from './quirk-activation-burst/entry'
 import { quirkCooldownRing } from './quirk-cooldown-ring/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
+import { rankPromotion } from './rank-promotion/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { recentsCardRestore } from './recents-card-restore/entry'
@@ -504,6 +505,7 @@ export const specimens: Specimen[] = [
   quirkActivationBurst,
   quirkCooldownRing,
   radarPulseDiscovery,
+  rankPromotion,
   rankUpImpact,
   ransomNoteReveal,
   recentsCardRestore,

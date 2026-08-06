@@ -1,0 +1,28 @@
+{
+  "name": "rank-promotion",
+  "intent": "Profile at rank #4 promotes upward; displaced rank shifts down; RANK UP badge settles.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "promoteMs": 580,
+    "badgeAtMs": 680,
+    "settleMs": 1230
+  },
+  "api": {
+    "run": "runRankPromotion()",
+    "reset": "resetRankPromotion()",
+    "replay": "replayRankPromotion()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Jump rows to final positions; show badge immediately"
+  }
+}
