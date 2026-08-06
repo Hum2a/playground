@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/home-swipe-up.schema.json",
+  "title": "HomeSwipeUp",
+  "description": "Portable contract for upward home gesture shrinking app to launcher.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "frame", "gesture", "mapping", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "home-swipe-up" },
+    "intent": {
+      "type": "string",
+      "const": "Upward bottom-zone drag shrinks app toward launcher home state."
+    },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "navZonePx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 390 },
+        "heightPx": { "type": "number", "const": 700 },
+        "navZonePx": { "type": "number", "const": 28 }
+      }
+    },
+    "gesture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxDragPx", "commitDistPx", "commitVelocityPxMs"],
+      "properties": {
+        "maxDragPx": { "type": "number", "const": 240 },
+        "commitDistPx": { "type": "number", "const": 150 },
+        "commitVelocityPxMs": { "type": "number", "const": 0.6 }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["translateYPx", "scaleMin", "radiusPx", "launcherOpacityMin"],
+      "properties": {
+        "translateYPx": { "type": "number", "const": -70 },
+        "scaleMin": { "type": "number", "const": 0.72 },
+        "radiusPx": { "type": "number", "const": 30 },
+        "launcherOpacityMin": { "type": "number", "const": 0.25 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateRelease", "triggers"],
+      "properties": {
+        "immediateRelease": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "app"],
+      "properties": {
+        "root": { "type": "string", "const": "hsu" },
+        "app": { "type": "string", "const": "hsu__app" }
+      }
+    }
+  }
+}
