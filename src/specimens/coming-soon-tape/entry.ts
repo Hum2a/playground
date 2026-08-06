@@ -1,6 +1,8 @@
 import type { Specimen } from '../types'
 import html from './demo.html?raw'
-import css from './demo.css?raw'
+// Vitest's CSS pipeline returns "" for `*.css?raw`; keep demo.css as the portable
+// artifact and import the twin `.txt` for the in-app string.
+import css from './demo.style.txt?raw'
 import spec from './spec.md?raw'
 import contract from './contract.json'
 

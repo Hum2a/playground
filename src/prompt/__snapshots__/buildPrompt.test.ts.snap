@@ -1,0 +1,699 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`buildPrompt > builds a full prompt snapshot for SPX-001 1`] = `
+"# Recreate: Coming-soon caution tape (SPX-001)
+
+Add this self-contained visual effect to the current project. Reproduce it exactly from the
+contract below. Do not restyle it to match the host design system, do not rename the classes,
+and do not "improve" the values — this is a portable artifact and the numbers are the contract.
+
+## Intent
+Diagonal black-and-yellow keep-out tape with a bilingual Coming Soon marquee over a locked card.
+Originally from Buzzer, Teacher class launch pad.
+
+## Dependencies
+None. Plain HTML and CSS.
+
+## Host requirements
+Mount inside a container that satisfies:
+- \`position:relative\`
+- \`overflow:hidden\`
+
+## Markup
+\`\`\`html
+<div class="coming-soon-tape" aria-hidden="true">
+  <div class="coming-soon-tape__edge coming-soon-tape__edge--top"></div>
+  <div class="coming-soon-tape__band">
+    <div class="coming-soon-tape__track">
+      <span class="coming-soon-tape__text">COMING SOON · 近日公開 · COMING SOON · COMING SOON · 近日公開 · COMING SOON · COMING SOON · 近日公開 · COMING SOON · COMING SOON · 近日公開 · COMING SOON · </span>
+      <span class="coming-soon-tape__text" aria-hidden="true">COMING SOON · 近日公開 · COMING SOON · COMING SOON · 近日公開 · COMING SOON · COMING SOON · 近日公開 · COMING SOON · COMING SOON · 近日公開 · COMING SOON · </span>
+    </div>
+  </div>
+  <div class="coming-soon-tape__edge coming-soon-tape__edge--bottom"></div>
+</div>
+\`\`\`
+
+## Styles
+\`\`\`css
+.coming-soon-tape {
+  pointer-events: none;
+  position: absolute;
+  left: -35%;
+  top: 42%;
+  z-index: 2;
+  width: 170%;
+  transform: translateY(-50%) rotate(-28deg);
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.35));
+}
+
+.coming-soon-tape__edge {
+  height: 5px;
+  background: repeating-linear-gradient(-45deg, #111827 0 6px, #f5c518 6px 12px);
+}
+
+.coming-soon-tape__band {
+  overflow: hidden;
+  border-block: 2px solid #111827;
+  background: #f5c518;
+}
+
+.coming-soon-tape__track {
+  display: flex;
+  width: max-content;
+  animation: coming-soon-marquee 9s linear infinite;
+}
+
+.coming-soon-tape__text {
+  flex-shrink: 0;
+  padding: 0.2rem 0;
+  font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #111827;
+  white-space: nowrap;
+}
+
+@keyframes coming-soon-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon-tape__track {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .coming-soon-tape__track {
+  animation: none;
+}
+\`\`\`
+
+## Machine-readable contract
+\`\`\`json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://buzzer.lifesmart.local/docs/design/coming-soon-tape.schema.json",
+  "title": "ComingSoonCautionTape",
+  "description": "Portable visual/component contract for a Persona-adjacent diagonal caution tape overlay (Coming Soon / 近日公開 marquee). Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "typography",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "coming-soon-caution-tape"
+    },
+    "intent": {
+      "type": "string",
+      "description": "Short product intent for agents recreating the effect.",
+      "examples": [
+        "Diagonal black-and-yellow keep-out tape with bilingual Coming Soon marquee over a locked card."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit",
+        "repeatsPerSpan",
+        "spanCount"
+      ],
+      "properties": {
+        "unit": {
+          "type": "string",
+          "const": "COMING SOON · 近日公開 · COMING SOON · ",
+          "description": "Marquee unit including trailing space before repeat."
+        },
+        "repeatsPerSpan": {
+          "type": "integer",
+          "const": 4
+        },
+        "spanCount": {
+          "type": "integer",
+          "const": 2,
+          "description": "Two identical spans enable seamless translateX(-50%) loop."
+        },
+        "srOnlyLabel": {
+          "type": "string",
+          "default": "Coming soon",
+          "description": "Screen-reader label on the locked card; not inside the decorative tape root."
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "angleDegrees",
+        "leftPercent",
+        "topPercent",
+        "widthPercent",
+        "edgeHeightPx",
+        "bandBorderPx",
+        "pointerEvents",
+        "zIndex",
+        "parentRequirements"
+      ],
+      "properties": {
+        "angleDegrees": {
+          "type": "number",
+          "const": -28
+        },
+        "leftPercent": {
+          "type": "number",
+          "const": -35
+        },
+        "topPercent": {
+          "type": "number",
+          "const": 42
+        },
+        "widthPercent": {
+          "type": "number",
+          "const": 170
+        },
+        "edgeHeightPx": {
+          "type": "number",
+          "const": 5
+        },
+        "bandBorderPx": {
+          "type": "number",
+          "const": 2
+        },
+        "stripePeriodPx": {
+          "type": "number",
+          "const": 12,
+          "description": "repeating-linear-gradient period: 6px dark + 6px yellow."
+        },
+        "dropShadow": {
+          "type": "string",
+          "const": "0 2px 4px rgb(0 0 0 / 0.35)"
+        },
+        "pointerEvents": {
+          "type": "string",
+          "const": "none"
+        },
+        "zIndex": {
+          "type": "integer",
+          "const": 2
+        },
+        "parentRequirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "examples": [
+            [
+              "position:relative",
+              "overflow:hidden"
+            ]
+          ]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "band",
+        "ink"
+      ],
+      "properties": {
+        "band": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "const": "#f5c518"
+        },
+        "ink": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "const": "#111827"
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fontFamily",
+        "fontSizeRem",
+        "fontWeight",
+        "letterSpacingEm",
+        "textTransform",
+        "whiteSpace"
+      ],
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "description": "Prefer a geometric sans; Outfit in Buzzer.",
+          "examples": [
+            "Outfit, ui-sans-serif, system-ui, sans-serif"
+          ]
+        },
+        "fontSizeRem": {
+          "type": "number",
+          "const": 0.62
+        },
+        "fontWeight": {
+          "type": "integer",
+          "const": 900
+        },
+        "letterSpacingEm": {
+          "type": "number",
+          "const": 0.22
+        },
+        "lineHeight": {
+          "type": "number",
+          "const": 1.2
+        },
+        "textTransform": {
+          "type": "string",
+          "const": "uppercase"
+        },
+        "whiteSpace": {
+          "type": "string",
+          "const": "nowrap"
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "durationSeconds",
+        "timingFunction",
+        "iterationCount",
+        "keyframes"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "const": "coming-soon-marquee"
+        },
+        "durationSeconds": {
+          "type": "number",
+          "const": 9
+        },
+        "timingFunction": {
+          "type": "string",
+          "const": "linear"
+        },
+        "iterationCount": {
+          "type": "string",
+          "const": "infinite"
+        },
+        "keyframes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "from",
+            "to"
+          ],
+          "properties": {
+            "from": {
+              "type": "object",
+              "required": [
+                "translateX"
+              ],
+              "properties": {
+                "translateX": {
+                  "type": "string",
+                  "const": "0"
+                }
+              }
+            },
+            "to": {
+              "type": "object",
+              "required": [
+                "translateX"
+              ],
+              "properties": {
+                "translateX": {
+                  "type": "string",
+                  "const": "-50%",
+                  "description": "Half-track because two identical spans are concatenated."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "children"
+      ],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": [
+            "tag",
+            "className",
+            "ariaHidden"
+          ],
+          "properties": {
+            "tag": {
+              "type": "string",
+              "const": "div"
+            },
+            "className": {
+              "type": "string",
+              "const": "coming-soon-tape"
+            },
+            "ariaHidden": {
+              "type": "boolean",
+              "const": true
+            }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "role",
+              "className"
+            ],
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": [
+                  "edge-top",
+                  "band",
+                  "edge-bottom",
+                  "track",
+                  "text"
+                ]
+              },
+              "className": {
+                "type": "string"
+              },
+              "ariaHidden": {
+                "type": "boolean"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/dom/properties/children/items"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tapeDecorative",
+        "announceLockSeparately"
+      ],
+      "properties": {
+        "tapeDecorative": {
+          "type": "boolean",
+          "const": true,
+          "description": "Root and duplicate text spans use aria-hidden."
+        },
+        "announceLockSeparately": {
+          "type": "boolean",
+          "const": true,
+          "description": "Locked card must expose a real accessible name / sr-only label."
+        },
+        "doNotRelyOnMotionAlone": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stopMarquee",
+        "triggers"
+      ],
+      "properties": {
+        "stopMarquee": {
+          "type": "boolean",
+          "const": true,
+          "description": "Set animation: none on the track; keep the static tape visible."
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "edge",
+        "edgeTop",
+        "edgeBottom",
+        "band",
+        "track",
+        "text"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "const": "coming-soon-tape"
+        },
+        "edge": {
+          "type": "string",
+          "const": "coming-soon-tape__edge"
+        },
+        "edgeTop": {
+          "type": "string",
+          "const": "coming-soon-tape__edge--top"
+        },
+        "edgeBottom": {
+          "type": "string",
+          "const": "coming-soon-tape__edge--bottom"
+        },
+        "band": {
+          "type": "string",
+          "const": "coming-soon-tape__band"
+        },
+        "track": {
+          "type": "string",
+          "const": "coming-soon-tape__track"
+        },
+        "text": {
+          "type": "string",
+          "const": "coming-soon-tape__text"
+        }
+      }
+    },
+    "buzzer": {
+      "type": "object",
+      "description": "Optional Buzzer-specific wiring for agents working in this repo.",
+      "additionalProperties": false,
+      "properties": {
+        "toggleConstant": {
+          "type": "string",
+          "const": "COMING_SOON_LESSONS_ENABLED"
+        },
+        "toggleFile": {
+          "type": "string",
+          "const": "apps/web/src/teacher/components/class-launch-pad.tsx"
+        },
+        "gateHelper": {
+          "type": "string",
+          "const": "isLessonComingSoon"
+        },
+        "cssFile": {
+          "type": "string",
+          "const": "apps/web/src/index.css"
+        },
+        "unlockedWhenToggleFalse": {
+          "type": "boolean",
+          "const": true,
+          "description": "All lesson cards selectable and launchable; tape code retained."
+        },
+        "independentOfIsPlaceholder": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "exampleInstance": {
+      "description": "Canonical instance matching the Buzzer implementation.",
+      "type": "object"
+    }
+  },
+  "$defs": {},
+  "examples": [
+    {
+      "name": "coming-soon-caution-tape",
+      "intent": "Diagonal black-and-yellow keep-out tape with bilingual Coming Soon marquee over a locked card.",
+      "copy": {
+        "unit": "COMING SOON · 近日公開 · COMING SOON · ",
+        "repeatsPerSpan": 4,
+        "spanCount": 2,
+        "srOnlyLabel": "Coming soon"
+      },
+      "layout": {
+        "angleDegrees": -28,
+        "leftPercent": -35,
+        "topPercent": 42,
+        "widthPercent": 170,
+        "edgeHeightPx": 5,
+        "bandBorderPx": 2,
+        "stripePeriodPx": 12,
+        "dropShadow": "0 2px 4px rgb(0 0 0 / 0.35)",
+        "pointerEvents": "none",
+        "zIndex": 2,
+        "parentRequirements": [
+          "position:relative",
+          "overflow:hidden"
+        ]
+      },
+      "colours": {
+        "band": "#f5c518",
+        "ink": "#111827"
+      },
+      "typography": {
+        "fontFamily": "Outfit, ui-sans-serif, system-ui, sans-serif",
+        "fontSizeRem": 0.62,
+        "fontWeight": 900,
+        "letterSpacingEm": 0.22,
+        "lineHeight": 1.2,
+        "textTransform": "uppercase",
+        "whiteSpace": "nowrap"
+      },
+      "animation": {
+        "name": "coming-soon-marquee",
+        "durationSeconds": 9,
+        "timingFunction": "linear",
+        "iterationCount": "infinite",
+        "keyframes": {
+          "from": {
+            "translateX": "0"
+          },
+          "to": {
+            "translateX": "-50%"
+          }
+        }
+      },
+      "dom": {
+        "root": {
+          "tag": "div",
+          "className": "coming-soon-tape",
+          "ariaHidden": true
+        },
+        "children": [
+          {
+            "role": "edge-top",
+            "className": "coming-soon-tape__edge coming-soon-tape__edge--top"
+          },
+          {
+            "role": "band",
+            "className": "coming-soon-tape__band",
+            "children": [
+              {
+                "role": "track",
+                "className": "coming-soon-tape__track",
+                "children": [
+                  {
+                    "role": "text",
+                    "className": "coming-soon-tape__text"
+                  },
+                  {
+                    "role": "text",
+                    "className": "coming-soon-tape__text",
+                    "ariaHidden": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "role": "edge-bottom",
+            "className": "coming-soon-tape__edge coming-soon-tape__edge--bottom"
+          }
+        ]
+      },
+      "a11y": {
+        "tapeDecorative": true,
+        "announceLockSeparately": true,
+        "doNotRelyOnMotionAlone": true
+      },
+      "reducedMotion": {
+        "stopMarquee": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "coming-soon-tape",
+        "edge": "coming-soon-tape__edge",
+        "edgeTop": "coming-soon-tape__edge--top",
+        "edgeBottom": "coming-soon-tape__edge--bottom",
+        "band": "coming-soon-tape__band",
+        "track": "coming-soon-tape__track",
+        "text": "coming-soon-tape__text"
+      },
+      "buzzer": {
+        "toggleConstant": "COMING_SOON_LESSONS_ENABLED",
+        "toggleFile": "apps/web/src/teacher/components/class-launch-pad.tsx",
+        "gateHelper": "isLessonComingSoon",
+        "cssFile": "apps/web/src/index.css",
+        "unlockedWhenToggleFalse": true,
+        "independentOfIsPlaceholder": true
+      }
+    }
+  ]
+}
+\`\`\`
+
+## Integration
+1. Mount the tape inside a container with position: relative and overflow: hidden so the rotated strip clips to the card.
+2. Dim the card’s interactive content (about opacity 0.55) while the lock is active.
+3. Render the tape markup only when the item is locked; keep it decorative with aria-hidden on the root.
+4. Block selection and primary actions for the locked item in your own interaction layer.
+5. Expose a screen-reader-only “Coming soon” (or equivalent) label outside the decorative tape root.
+
+## Acceptance
+- [ ] Tape is clipped by the card and reads at -28deg across the face
+- [ ] Marquee loops with no visible seam
+- [ ] Animation stops under reduced motion while the tape stays visible
+- [ ] Lock state is announced by a screen reader without reading the tape copy
+"
+`;
