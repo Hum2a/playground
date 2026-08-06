@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/manga-cut-in-notification.schema.json",
+  "title": "MangaCutInNotification",
+  "description": "Portable contract for a manga-style cut-in notification strip. No character imagery.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "manga-cut-in-notification" },
+    "intent": {
+      "type": "string",
+      "const": "Interruptive notification that opens from a narrow diagonal slit into a graphic comic strip with misregistered red/black backing."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "headline", "meta", "status", "trigger"],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "SYSTEM" },
+        "headline": { "type": "string", "const": "BUILD COMPLETE!" },
+        "meta": { "type": "string", "const": "12 artifacts compiled" },
+        "status": {
+          "type": "string",
+          "const": "Build complete. 12 artifacts compiled."
+        },
+        "trigger": { "type": "string", "const": "COMPLETE BUILD" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stripWidthPercent",
+        "stripHeightPx",
+        "rotationDegrees",
+        "backingOffsetPx",
+        "hostSplitPx",
+        "parentRequirements"
+      ],
+      "properties": {
+        "stripWidthPercent": { "type": "number", "const": 120 },
+        "stripHeightPx": { "type": "number", "const": 110 },
+        "rotationDegrees": { "type": "number", "const": -3 },
+        "backingOffsetPx": {
+          "type": "object",
+          "const": { "x": 7, "y": 6 }
+        },
+        "hostSplitPx": { "type": "number", "const": 3 },
+        "parentRequirements": {
+          "type": "array",
+          "const": ["position:relative", "overflow:hidden"]
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slitMs",
+        "openMs",
+        "contentMs",
+        "holdMs",
+        "exitMs",
+        "headlineOvershootPx",
+        "loops"
+      ],
+      "properties": {
+        "slitMs": { "type": "number", "const": 100 },
+        "openMs": { "type": "number", "const": 200 },
+        "contentMs": { "type": "number", "const": 200 },
+        "holdMs": { "type": "number", "const": 900 },
+        "exitMs": { "type": "number", "const": 260 },
+        "headlineDelayMs": { "type": "number", "const": 50 },
+        "headlineOvershootPx": { "type": "number", "const": 8 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "decorativeTypographyHidden"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "decorativeTypographyHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticStrip", "triggers"],
+      "properties": {
+        "showStaticStrip": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "strip", "backing", "eyebrow", "headline", "meta", "host"],
+      "properties": {
+        "root": { "type": "string", "const": "manga-cut-in" },
+        "strip": { "type": "string", "const": "manga-cut-in__strip" },
+        "backing": { "type": "string", "const": "manga-cut-in__backing" },
+        "eyebrow": { "type": "string", "const": "manga-cut-in__eyebrow" },
+        "headline": { "type": "string", "const": "manga-cut-in__headline" },
+        "meta": { "type": "string", "const": "manga-cut-in__meta" },
+        "host": { "type": "string", "const": "manga-cut-in-host" },
+        "hostSplit": { "type": "string", "const": "manga-cut-in-host--split" }
+      }
+    }
+  }
+}

@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **5 / 301** complete.
+- Progress: **6 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 296 |
+| Done | 6 |
+| Open | 295 |
 
 ## Shipped (mapped to live specimens)
 
@@ -23,6 +23,7 @@
 | P5-013 | `SPX-002` | `comic-panel-wipe` | Comic Panel Wipe |
 | P5-031 | `SPX-042` | `letter-scatter-assemble` | Letter Scatter Assemble |
 | P5-045 | `SPX-056` | `crooked-menu-stack` | Crooked Menu Stack |
+| P5-093 | `SPX-104` | `manga-cut-in-notification` | Manga Cut-In Notification |
 
 ## Core first-wave
 
@@ -40,7 +41,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-046** · `SPX-057` · **Radial Command Snap** — selection
 - [ ] **P5-065** · `SPX-076` · **Graphic Burst Hover** — hover
 - [ ] **P5-082** · `SPX-093` · **Hold-to-Charge Button** — confirmation
-- [ ] **P5-093** · `SPX-104` · **Manga Cut-In Notification** — notification
+- [x] **P5-093** · `SPX-104` · **Manga Cut-In Notification** — notification
 - [ ] **P5-122** · `SPX-133` · **Redacted Content Lock** — locked state
 - [ ] **P5-123** · `SPX-134` · **Calling Card Lock** — locked state
 - [ ] **P5-133** · `SPX-144` · **Input Focus Attack** — form
@@ -166,7 +167,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Notifications and alerts
 
-- [ ] **P5-093** · `SPX-104` · **Manga Cut-In Notification** — Thin horizontal graphic strip opens across screen.
+- [x] **P5-093** · `SPX-104` · **Manga Cut-In Notification** — Thin horizontal graphic strip opens across screen.
 - [ ] **P5-094** · `SPX-105` · **Breaking News Strip** — Crooked newspaper strip interrupts viewport.
 - [ ] **P5-095** · `SPX-106` · **Corner Attack Toast** — Toast flies diagonally from corner.
 - [ ] **P5-096** · `SPX-107` · **Impact Badge** — Tiny notification count lands with graphic explosion.

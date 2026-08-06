@@ -1,0 +1,46 @@
+<div class="manga-cut-in-host" data-manga-cut-in-host>
+  <div class="manga-cut-in-host__upper">
+    <header class="manga-cut-in-host__bar">
+      <span class="manga-cut-in-host__brand">Studio Desk</span>
+      <span class="manga-cut-in-host__chip">v2.4</span>
+    </header>
+    <section class="manga-cut-in-host__panel" aria-label="Project summary">
+      <p class="manga-cut-in-host__kicker">Pipeline</p>
+      <h1 class="manga-cut-in-host__title">Asset compile</h1>
+      <p class="manga-cut-in-host__copy">
+        Queue the final package, then interrupt the host with a manga-style cut-in.
+      </p>
+    </section>
+  </div>
+  <div class="manga-cut-in-host__lower">
+    <ul class="manga-cut-in-host__list">
+      <li>Spritesheet atlas</li>
+      <li>UI chrome pack</li>
+      <li>Audio cues</li>
+    </ul>
+    <button type="button" class="manga-cut-in-host__trigger" data-manga-cut-in-trigger>
+      COMPLETE BUILD
+    </button>
+  </div>
+
+  <div class="manga-cut-in" data-manga-cut-in hidden>
+    <div class="manga-cut-in__strip">
+      <div class="manga-cut-in__backing manga-cut-in__backing--red" aria-hidden="true"></div>
+      <div class="manga-cut-in__backing manga-cut-in__backing--black" aria-hidden="true"></div>
+      <span class="manga-cut-in__shard manga-cut-in__shard--1" aria-hidden="true"></span>
+      <span class="manga-cut-in__shard manga-cut-in__shard--2" aria-hidden="true"></span>
+      <span class="manga-cut-in__shard manga-cut-in__shard--3" aria-hidden="true"></span>
+      <div class="manga-cut-in__body" aria-hidden="true">
+        <p class="manga-cut-in__eyebrow">SYSTEM</p>
+        <p class="manga-cut-in__headline">BUILD COMPLETE!</p>
+        <p class="manga-cut-in__meta">12 artifacts compiled</p>
+      </div>
+    </div>
+    <p
+      class="manga-cut-in__status"
+      data-manga-cut-in-status
+      role="status"
+      aria-live="polite"
+    ></p>
+  </div>
+</div>

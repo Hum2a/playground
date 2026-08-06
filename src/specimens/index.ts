@@ -1,4 +1,4 @@
-import { achievementEncounter } from './achievement-encounter/entry'
+﻿import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
@@ -10,11 +10,14 @@ import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
+import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
+import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
+import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
@@ -93,6 +96,9 @@ export const specimens: Specimen[] = [
   graphicBurstHover,
   comicCardSelection,
   redactedContentLock,
+  panelExplosionReveal,
+  mangaCutInNotification,
+  holdToChargeButton,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

@@ -1,0 +1,556 @@
+/* SPX-104 Manga Cut-In Notification — portable contract. Do not restyle to host tokens. */
+
+.manga-cut-in-host {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1.25rem;
+  background: #1c1c1c;
+  color: #f5f1e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.manga-cut-in-host__bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.manga-cut-in-host__brand {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.manga-cut-in-host__chip {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgb(245 241 232 / 0.55);
+}
+
+.manga-cut-in-host__kicker {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e60012;
+}
+
+.manga-cut-in-host__title {
+  margin: 0.35rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.manga-cut-in-host__copy {
+  margin: 0.45rem 0 0;
+  max-width: 28ch;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgb(245 241 232 / 0.7);
+}
+
+.manga-cut-in-host__list {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgb(245 241 232 / 0.55);
+}
+
+.manga-cut-in-host__list li + li {
+  margin-top: 0.35rem;
+}
+
+.manga-cut-in-host__trigger {
+  appearance: none;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid #f5f1e8;
+  border-radius: 0;
+  background: transparent;
+  color: #f5f1e8;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.manga-cut-in-host__trigger:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 3px;
+}
+
+.manga-cut-in-host__trigger:hover {
+  background: #f5f1e8;
+  color: #090909;
+}
+
+.manga-cut-in-host__upper,
+.manga-cut-in-host__lower {
+  transition: transform 100ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.manga-cut-in-host--split .manga-cut-in-host__upper {
+  transform: translateY(-3px);
+}
+
+.manga-cut-in-host--split .manga-cut-in-host__lower {
+  transform: translateY(3px);
+}
+
+/* —— Cut-in layer —— */
+.manga-cut-in {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.manga-cut-in[hidden] {
+  display: none;
+}
+
+.manga-cut-in__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.manga-cut-in__strip {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  height: 110px;
+  transform: translateY(-50%) rotate(-3deg);
+  transform-origin: center center;
+}
+
+.manga-cut-in__backing {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+}
+
+.manga-cut-in__backing--red {
+  z-index: 1;
+  background: #e60012;
+  transform: translate(7px, 6px);
+  clip-path: inset(50% 100% 50% 0);
+}
+
+.manga-cut-in__backing--black {
+  z-index: 2;
+  background: #090909;
+  clip-path: inset(50% 100% 50% 0);
+}
+
+.manga-cut-in__body {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  align-content: center;
+  gap: 0.12rem;
+  padding: 0.55rem 8% 0.55rem 10%;
+  color: #f5f1e8;
+  opacity: 0;
+}
+
+.manga-cut-in__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #e60012;
+  transform: translateX(-40px);
+  opacity: 0;
+}
+
+.manga-cut-in__headline {
+  margin: 0;
+  font-size: clamp(1.25rem, 7vw, 2.05rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  transform: translateX(48px);
+  opacity: 0;
+}
+
+.manga-cut-in__meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgb(245 241 232 / 0.75);
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.manga-cut-in__shard {
+  position: absolute;
+  z-index: 3;
+  display: block;
+  background: #f5f1e8;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.manga-cut-in__shard--1 {
+  top: -10px;
+  left: 12%;
+  width: 28px;
+  height: 18px;
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+  background: #e60012;
+}
+
+.manga-cut-in__shard--2 {
+  top: -8px;
+  right: 18%;
+  width: 22px;
+  height: 16px;
+  clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+}
+
+.manga-cut-in__shard--3 {
+  bottom: -12px;
+  left: 58%;
+  width: 26px;
+  height: 20px;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  background: #090909;
+}
+
+/* —— Slit attack 0–100ms —— */
+.manga-cut-in--slit .manga-cut-in__backing--black,
+.manga-cut-in--slit .manga-cut-in__backing--red {
+  animation: manga-cut-in-slit 100ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--slit .manga-cut-in__backing--red {
+  animation-delay: 12ms;
+}
+
+@keyframes manga-cut-in-slit {
+  from {
+    clip-path: inset(calc(50% - 1px) 100% calc(50% - 1px) 0);
+  }
+  to {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0);
+  }
+}
+
+/* —— Open ~200ms: expand 2px → 110px —— */
+.manga-cut-in--open .manga-cut-in__backing--black {
+  animation: manga-cut-in-expand 200ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--open .manga-cut-in__backing--red {
+  animation: manga-cut-in-expand-red 200ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--open .manga-cut-in__shard {
+  animation: manga-cut-in-shard-in 160ms cubic-bezier(0.7, 0, 0.3, 1) 40ms forwards;
+}
+
+@keyframes manga-cut-in-expand {
+  from {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes manga-cut-in-expand-red {
+  from {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0);
+    transform: translate(7px, 6px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translate(7px, 6px);
+  }
+}
+
+@keyframes manga-cut-in-shard-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* —— Content entrance ~200ms —— */
+.manga-cut-in--content .manga-cut-in__backing--black,
+.manga-cut-in--hold .manga-cut-in__backing--black,
+.manga-cut-in--reduced .manga-cut-in__backing--black {
+  clip-path: inset(0 0 0 0);
+  animation: none;
+}
+
+.manga-cut-in--content .manga-cut-in__backing--red,
+.manga-cut-in--hold .manga-cut-in__backing--red,
+.manga-cut-in--reduced .manga-cut-in__backing--red {
+  clip-path: inset(0 0 0 0);
+  transform: translate(7px, 6px);
+  animation: none;
+}
+
+.manga-cut-in--content .manga-cut-in__body,
+.manga-cut-in--hold .manga-cut-in__body,
+.manga-cut-in--reduced .manga-cut-in__body {
+  opacity: 1;
+}
+
+.manga-cut-in--content .manga-cut-in__shard,
+.manga-cut-in--hold .manga-cut-in__shard,
+.manga-cut-in--reduced .manga-cut-in__shard {
+  opacity: 1;
+  animation: none;
+}
+
+.manga-cut-in--content .manga-cut-in__eyebrow {
+  animation: manga-cut-in-eyebrow-in 160ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--content .manga-cut-in__headline {
+  animation: manga-cut-in-headline-in 180ms cubic-bezier(0.7, 0, 0.3, 1) 50ms forwards;
+}
+
+.manga-cut-in--content .manga-cut-in__meta {
+  animation: manga-cut-in-meta-in 140ms cubic-bezier(0.7, 0, 0.3, 1) 110ms forwards;
+}
+
+@keyframes manga-cut-in-eyebrow-in {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes manga-cut-in-headline-in {
+  0% {
+    transform: translateX(48px);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes manga-cut-in-meta-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* —— Hold: still —— */
+.manga-cut-in--hold .manga-cut-in__eyebrow,
+.manga-cut-in--hold .manga-cut-in__headline,
+.manga-cut-in--hold .manga-cut-in__meta,
+.manga-cut-in--reduced .manga-cut-in__eyebrow,
+.manga-cut-in--reduced .manga-cut-in__headline,
+.manga-cut-in--reduced .manga-cut-in__meta {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+/* —— Exit ~260ms —— */
+.manga-cut-in--exit .manga-cut-in__backing--black,
+.manga-cut-in--exit .manga-cut-in__backing--red {
+  clip-path: inset(0 0 0 0);
+}
+
+.manga-cut-in--exit .manga-cut-in__body {
+  opacity: 1;
+}
+
+.manga-cut-in--exit .manga-cut-in__eyebrow {
+  opacity: 1;
+  animation: manga-cut-in-eyebrow-out 160ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--exit .manga-cut-in__headline {
+  opacity: 1;
+  animation: manga-cut-in-headline-out 180ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--exit .manga-cut-in__meta {
+  opacity: 1;
+  animation: manga-cut-in-meta-out 120ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--exit .manga-cut-in__backing--black {
+  animation: manga-cut-in-collapse 200ms cubic-bezier(0.7, 0, 0.3, 1) 40ms forwards;
+}
+
+.manga-cut-in--exit .manga-cut-in__backing--red {
+  animation: manga-cut-in-collapse-red 200ms cubic-bezier(0.7, 0, 0.3, 1) 40ms forwards;
+}
+
+.manga-cut-in--exit .manga-cut-in__shard {
+  opacity: 1;
+  animation: manga-cut-in-shard-out 140ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.manga-cut-in--exit .manga-cut-in__strip {
+  animation: manga-cut-in-retract 120ms cubic-bezier(0.7, 0, 0.3, 1) 140ms forwards;
+}
+
+@keyframes manga-cut-in-eyebrow-out {
+  to {
+    transform: translateX(36px);
+    opacity: 0;
+  }
+}
+
+@keyframes manga-cut-in-headline-out {
+  to {
+    transform: translateX(-42px);
+    opacity: 0;
+  }
+}
+
+@keyframes manga-cut-in-meta-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes manga-cut-in-collapse {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  70% {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0);
+  }
+  100% {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 100%);
+  }
+}
+
+@keyframes manga-cut-in-collapse-red {
+  from {
+    clip-path: inset(0 0 0 0);
+    transform: translate(7px, 6px);
+  }
+  70% {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0);
+    transform: translate(7px, 6px);
+  }
+  100% {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 100%);
+    transform: translate(7px, 6px);
+  }
+}
+
+@keyframes manga-cut-in-shard-out {
+  to {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+@keyframes manga-cut-in-retract {
+  to {
+    transform: translate(30%, -50%) rotate(-3deg);
+    opacity: 0;
+  }
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .manga-cut-in--slit .manga-cut-in__backing,
+  .manga-cut-in--open .manga-cut-in__backing,
+  .manga-cut-in--open .manga-cut-in__shard,
+  .manga-cut-in--content .manga-cut-in__eyebrow,
+  .manga-cut-in--content .manga-cut-in__headline,
+  .manga-cut-in--content .manga-cut-in__meta,
+  .manga-cut-in--exit .manga-cut-in__eyebrow,
+  .manga-cut-in--exit .manga-cut-in__headline,
+  .manga-cut-in--exit .manga-cut-in__meta,
+  .manga-cut-in--exit .manga-cut-in__backing,
+  .manga-cut-in--exit .manga-cut-in__shard,
+  .manga-cut-in--exit .manga-cut-in__strip,
+  .manga-cut-in-host--split .manga-cut-in-host__upper,
+  .manga-cut-in-host--split .manga-cut-in-host__lower {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .manga-cut-in-host--split .manga-cut-in-host__upper,
+  .manga-cut-in-host--split .manga-cut-in-host__lower {
+    transform: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .manga-cut-in--slit .manga-cut-in__backing,
+[data-force-reduced-motion='true'] .manga-cut-in--open .manga-cut-in__backing,
+[data-force-reduced-motion='true'] .manga-cut-in--open .manga-cut-in__shard,
+[data-force-reduced-motion='true'] .manga-cut-in--content .manga-cut-in__eyebrow,
+[data-force-reduced-motion='true'] .manga-cut-in--content .manga-cut-in__headline,
+[data-force-reduced-motion='true'] .manga-cut-in--content .manga-cut-in__meta,
+[data-force-reduced-motion='true'] .manga-cut-in--exit .manga-cut-in__eyebrow,
+[data-force-reduced-motion='true'] .manga-cut-in--exit .manga-cut-in__headline,
+[data-force-reduced-motion='true'] .manga-cut-in--exit .manga-cut-in__meta,
+[data-force-reduced-motion='true'] .manga-cut-in--exit .manga-cut-in__backing,
+[data-force-reduced-motion='true'] .manga-cut-in--exit .manga-cut-in__shard,
+[data-force-reduced-motion='true'] .manga-cut-in--exit .manga-cut-in__strip,
+[data-force-reduced-motion='true'] .manga-cut-in-host--split .manga-cut-in-host__upper,
+[data-force-reduced-motion='true'] .manga-cut-in-host--split .manga-cut-in-host__lower {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .manga-cut-in-host--split .manga-cut-in-host__upper,
+[data-force-reduced-motion='true'] .manga-cut-in-host--split .manga-cut-in-host__lower {
+  transform: none !important;
+}
