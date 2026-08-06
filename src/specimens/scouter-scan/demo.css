@@ -1,0 +1,720 @@
+/* scouter-scan — portable specimen styles. Do not restyle to host tokens. */
+
+.scouter-scan {
+  --ss-bg: #151c1c;
+  --ss-fg: #edf0df;
+  --ss-mid: #a7c950;
+  --ss-bright: #d9e86c;
+  --ss-alert: #e26850;
+  --ss-target-w: 110px;
+  --ss-target-h: 130px;
+  --ss-search-ms: 320ms;
+  --ss-lock-ms: 100ms;
+  --ss-cross-ms: 140ms;
+  --ss-sweep-ms: 520ms;
+  --ss-class-ms: 140ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  padding: 0.7rem 0.7rem 2.5rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
+  color: var(--ss-fg);
+  background: transparent;
+}
+
+.scouter-scan *,
+.scouter-scan *::before,
+.scouter-scan *::after {
+  box-sizing: border-box;
+}
+
+.scouter-scan__system {
+  margin: 0 0 0.65rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ss-mid);
+}
+
+.scouter-scan__plate {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 0.75rem 1rem;
+  align-items: center;
+  min-height: 220px;
+  padding: 0.75rem;
+  background: var(--ss-bg);
+  border: 1px solid rgb(167 201 80 / 0.35);
+}
+
+@media (max-width: 420px) {
+  .scouter-scan__plate {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scouter-scan__stage {
+  position: relative;
+  justify-self: end;
+  width: calc(var(--ss-target-w) + 100px);
+  height: calc(var(--ss-target-h) + 100px);
+  max-width: 100%;
+}
+
+.scouter-scan__target {
+  position: absolute;
+  top: 50%;
+  left: 58%;
+  width: var(--ss-target-w);
+  height: var(--ss-target-h);
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.scouter-scan__diamond {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--ss-mid);
+  background: rgb(167 201 80 / 0.12);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.scouter-scan__block {
+  position: absolute;
+  border: 1.5px solid rgb(237 240 223 / 0.55);
+  background: rgb(237 240 223 / 0.06);
+}
+
+.scouter-scan__block--a {
+  left: 12px;
+  top: 18px;
+  width: 28px;
+  height: 48px;
+  transform: rotate(-8deg);
+}
+
+.scouter-scan__block--b {
+  right: 10px;
+  bottom: 22px;
+  width: 36px;
+  height: 22px;
+  transform: rotate(6deg);
+}
+
+.scouter-scan__node {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--ss-bright);
+  border-radius: 50%;
+  background: rgb(217 232 108 / 0.2);
+}
+
+/* Internals revealed behind scan beam via clip */
+.scouter-scan__internals {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+}
+
+.scouter-scan[data-phase='sweep'] .scouter-scan__internals {
+  animation: ss-reveal-internals var(--ss-sweep-ms) linear forwards;
+}
+
+.scouter-scan[data-phase='classify'] .scouter-scan__internals,
+.scouter-scan[data-phase='confirm'] .scouter-scan__internals,
+.scouter-scan[data-phase='done'] .scouter-scan__internals {
+  clip-path: inset(0 0 0 0);
+  animation: none;
+}
+
+@keyframes ss-reveal-internals {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.scouter-scan__line {
+  position: absolute;
+  left: 14%;
+  height: 1.5px;
+  background: var(--ss-bright);
+  opacity: 0.85;
+}
+
+.scouter-scan__line--1 {
+  top: 28%;
+  width: 42%;
+}
+
+.scouter-scan__line--2 {
+  top: 40%;
+  width: 58%;
+}
+
+.scouter-scan__line--3 {
+  top: 52%;
+  width: 36%;
+}
+
+.scouter-scan__line--4 {
+  top: 64%;
+  width: 50%;
+}
+
+.scouter-scan__line--5 {
+  top: 76%;
+  width: 28%;
+}
+
+.scouter-scan__beam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--ss-bright);
+  box-shadow: 0 0 8px rgb(217 232 108 / 0.65);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scouter-scan[data-phase='sweep'] .scouter-scan__beam {
+  opacity: 1;
+  animation: ss-beam-sweep var(--ss-sweep-ms) linear forwards;
+}
+
+@keyframes ss-beam-sweep {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Brackets — idle ~45px outside target (stage sized target+100) */
+.scouter-scan__brackets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scouter-scan__bracket {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--ss-mid);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.55;
+}
+
+.scouter-scan__bracket--tl {
+  top: 8px;
+  left: 18px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.scouter-scan__bracket--tr {
+  top: 8px;
+  right: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.scouter-scan__bracket--bl {
+  bottom: 8px;
+  left: 18px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.scouter-scan__bracket--br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* Search wander then converge toward lock (8px outside target) */
+.scouter-scan[data-phase='search'] .scouter-scan__bracket--tl {
+  animation: ss-br-tl var(--ss-search-ms) cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+}
+
+.scouter-scan[data-phase='search'] .scouter-scan__bracket--tr {
+  animation: ss-br-tr var(--ss-search-ms) cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+}
+
+.scouter-scan[data-phase='search'] .scouter-scan__bracket--bl {
+  animation: ss-br-bl var(--ss-search-ms) cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+}
+
+.scouter-scan[data-phase='search'] .scouter-scan__bracket--br {
+  animation: ss-br-br var(--ss-search-ms) cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+}
+
+/* Locked positions: ~8px outside 110×130 target centered at 58%/50% of stage */
+.scouter-scan[data-phase='lock'] .scouter-scan__bracket,
+.scouter-scan[data-phase='sweep'] .scouter-scan__bracket,
+.scouter-scan[data-phase='classify'] .scouter-scan__bracket,
+.scouter-scan[data-phase='confirm'] .scouter-scan__bracket,
+.scouter-scan[data-phase='done'] .scouter-scan__bracket {
+  opacity: 1;
+  animation: none;
+}
+
+.scouter-scan[data-phase='lock'] .scouter-scan__bracket--tl,
+.scouter-scan[data-phase='sweep'] .scouter-scan__bracket--tl,
+.scouter-scan[data-phase='classify'] .scouter-scan__bracket--tl {
+  top: calc(50% - var(--ss-target-h) / 2 - 8px);
+  left: calc(58% - var(--ss-target-w) / 2 - 8px);
+  transition: top var(--ss-lock-ms) ease-out, left var(--ss-lock-ms) ease-out;
+}
+
+.scouter-scan[data-phase='lock'] .scouter-scan__bracket--tr,
+.scouter-scan[data-phase='sweep'] .scouter-scan__bracket--tr,
+.scouter-scan[data-phase='classify'] .scouter-scan__bracket--tr {
+  top: calc(50% - var(--ss-target-h) / 2 - 8px);
+  right: calc(42% - var(--ss-target-w) / 2 - 8px);
+  left: auto;
+  transition: top var(--ss-lock-ms) ease-out, right var(--ss-lock-ms) ease-out;
+}
+
+.scouter-scan[data-phase='lock'] .scouter-scan__bracket--bl,
+.scouter-scan[data-phase='sweep'] .scouter-scan__bracket--bl,
+.scouter-scan[data-phase='classify'] .scouter-scan__bracket--bl {
+  bottom: calc(50% - var(--ss-target-h) / 2 - 8px);
+  top: auto;
+  left: calc(58% - var(--ss-target-w) / 2 - 8px);
+  transition: bottom var(--ss-lock-ms) ease-out, left var(--ss-lock-ms) ease-out;
+}
+
+.scouter-scan[data-phase='lock'] .scouter-scan__bracket--br,
+.scouter-scan[data-phase='sweep'] .scouter-scan__bracket--br,
+.scouter-scan[data-phase='classify'] .scouter-scan__bracket--br {
+  bottom: calc(50% - var(--ss-target-h) / 2 - 8px);
+  top: auto;
+  right: calc(42% - var(--ss-target-w) / 2 - 8px);
+  left: auto;
+  transition: bottom var(--ss-lock-ms) ease-out, right var(--ss-lock-ms) ease-out;
+}
+
+/* Confirm: brackets +3px inward */
+.scouter-scan--confirmed .scouter-scan__bracket--tl,
+.scouter-scan[data-phase='confirm'] .scouter-scan__bracket--tl,
+.scouter-scan[data-phase='done'] .scouter-scan__bracket--tl {
+  top: calc(50% - var(--ss-target-h) / 2 - 5px);
+  left: calc(58% - var(--ss-target-w) / 2 - 5px);
+}
+
+.scouter-scan--confirmed .scouter-scan__bracket--tr,
+.scouter-scan[data-phase='confirm'] .scouter-scan__bracket--tr,
+.scouter-scan[data-phase='done'] .scouter-scan__bracket--tr {
+  top: calc(50% - var(--ss-target-h) / 2 - 5px);
+  right: calc(42% - var(--ss-target-w) / 2 - 5px);
+}
+
+.scouter-scan--confirmed .scouter-scan__bracket--bl,
+.scouter-scan[data-phase='confirm'] .scouter-scan__bracket--bl,
+.scouter-scan[data-phase='done'] .scouter-scan__bracket--bl {
+  bottom: calc(50% - var(--ss-target-h) / 2 - 5px);
+  left: calc(58% - var(--ss-target-w) / 2 - 5px);
+}
+
+.scouter-scan--confirmed .scouter-scan__bracket--br,
+.scouter-scan[data-phase='confirm'] .scouter-scan__bracket--br,
+.scouter-scan[data-phase='done'] .scouter-scan__bracket--br {
+  bottom: calc(50% - var(--ss-target-h) / 2 - 5px);
+  right: calc(42% - var(--ss-target-w) / 2 - 5px);
+}
+
+@keyframes ss-br-tl {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.55;
+  }
+  45% {
+    transform: translate(-18px, -12px);
+    opacity: 0.9;
+  }
+  100% {
+    top: calc(50% - var(--ss-target-h) / 2 - 8px);
+    left: calc(58% - var(--ss-target-w) / 2 - 8px);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes ss-br-tr {
+  0% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(14px, -18px);
+    opacity: 0.9;
+  }
+  100% {
+    top: calc(50% - var(--ss-target-h) / 2 - 8px);
+    right: calc(42% - var(--ss-target-w) / 2 - 8px);
+    left: auto;
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes ss-br-bl {
+  0% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(-12px, 16px);
+    opacity: 0.9;
+  }
+  100% {
+    bottom: calc(50% - var(--ss-target-h) / 2 - 8px);
+    top: auto;
+    left: calc(58% - var(--ss-target-w) / 2 - 8px);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes ss-br-br {
+  0% {
+    transform: translate(0, 0);
+  }
+  45% {
+    transform: translate(20px, 10px);
+    opacity: 0.9;
+  }
+  100% {
+    bottom: calc(50% - var(--ss-target-h) / 2 - 8px);
+    top: auto;
+    right: calc(42% - var(--ss-target-w) / 2 - 8px);
+    left: auto;
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+/* Ticks + crosshair at lock */
+.scouter-scan__ticks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.scouter-scan[data-phase='lock'] .scouter-scan__ticks,
+.scouter-scan[data-phase='sweep'] .scouter-scan__ticks,
+.scouter-scan[data-phase='classify'] .scouter-scan__ticks,
+.scouter-scan[data-phase='confirm'] .scouter-scan__ticks,
+.scouter-scan[data-phase='done'] .scouter-scan__ticks {
+  opacity: 1;
+}
+
+.scouter-scan__tick {
+  position: absolute;
+  background: var(--ss-bright);
+}
+
+.scouter-scan__tick--t,
+.scouter-scan__tick--b {
+  left: 58%;
+  width: 10px;
+  height: 2px;
+  margin-left: -5px;
+}
+
+.scouter-scan__tick--t {
+  top: calc(50% - var(--ss-target-h) / 2 - 14px);
+}
+
+.scouter-scan__tick--b {
+  bottom: calc(50% - var(--ss-target-h) / 2 - 14px);
+}
+
+.scouter-scan__tick--l,
+.scouter-scan__tick--r {
+  top: 50%;
+  width: 2px;
+  height: 10px;
+  margin-top: -5px;
+}
+
+.scouter-scan__tick--l {
+  left: calc(58% - var(--ss-target-w) / 2 - 14px);
+}
+
+.scouter-scan__tick--r {
+  right: calc(42% - var(--ss-target-w) / 2 - 14px);
+  left: auto;
+}
+
+.scouter-scan__crosshair {
+  position: absolute;
+  left: 58%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scouter-scan__crosshair::before,
+.scouter-scan__crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgb(217 232 108 / 0.85);
+}
+
+.scouter-scan__crosshair::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  margin-left: -0.5px;
+}
+
+.scouter-scan__crosshair::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  margin-top: -0.5px;
+}
+
+.scouter-scan[data-phase='lock'] .scouter-scan__crosshair {
+  animation: ss-cross var(--ss-cross-ms) ease-out forwards;
+}
+
+@keyframes ss-cross {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.scouter-scan[data-phase='confirm'] .scouter-scan__diamond,
+.scouter-scan--confirmed .scouter-scan__diamond {
+  animation: ss-diamond-pulse 220ms ease-out 1;
+}
+
+@keyframes ss-diamond-pulse {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  45% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.16);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+}
+
+.scouter-scan[data-phase='done'] .scouter-scan__diamond {
+  animation: none;
+}
+
+/* Report */
+.scouter-scan__report {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.scouter-scan__row {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 0.35rem;
+  align-items: baseline;
+}
+
+.scouter-scan__row dt {
+  margin: 0;
+  color: var(--ss-mid);
+  font-weight: 700;
+}
+
+.scouter-scan__row dd {
+  margin: 0;
+  color: var(--ss-fg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.scouter-scan__row--class {
+  grid-template-columns: 5.2rem 1fr;
+  position: relative;
+  padding-bottom: 0.45rem;
+}
+
+.scouter-scan__class {
+  position: relative;
+  display: inline-grid;
+  overflow: hidden;
+}
+
+.scouter-scan__class-unknown,
+.scouter-scan__class-extreme {
+  grid-area: 1 / 1;
+}
+
+.scouter-scan__class-extreme {
+  color: var(--ss-alert);
+  clip-path: inset(0 100% 0 0);
+}
+
+.scouter-scan--classified .scouter-scan__class-extreme {
+  animation: ss-class-reveal var(--ss-class-ms) ease-out forwards;
+}
+
+.scouter-scan--classified .scouter-scan__class-unknown {
+  opacity: 0;
+}
+
+@keyframes ss-class-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.scouter-scan__class-bar {
+  position: absolute;
+  left: 5.2rem;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--ss-alert);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.scouter-scan--classified .scouter-scan__class-bar {
+  animation: ss-bar var(--ss-class-ms) ease-out forwards;
+}
+
+@keyframes ss-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.scouter-scan__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+}
+
+.scouter-scan__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--ss-mid);
+  background: rgb(167 201 80 / 0.12);
+  color: var(--ss-fg);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.scouter-scan__btn:hover:not(:disabled) {
+  border-color: var(--ss-bright);
+  color: #fff;
+}
+
+.scouter-scan__btn:focus-visible {
+  outline: 2px solid var(--ss-bright);
+  outline-offset: 2px;
+}
+
+.scouter-scan__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.scouter-scan__btn--ghost {
+  background: transparent;
+  border-color: rgb(167 201 80 / 0.4);
+  color: var(--ss-mid);
+}
+
+.scouter-scan__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scouter-scan[data-phase='search'] .scouter-scan__bracket,
+  .scouter-scan[data-phase='sweep'] .scouter-scan__beam,
+  .scouter-scan[data-phase='sweep'] .scouter-scan__internals,
+  .scouter-scan[data-phase='lock'] .scouter-scan__crosshair,
+  .scouter-scan--classified .scouter-scan__class-extreme,
+  .scouter-scan--classified .scouter-scan__class-bar,
+  .scouter-scan[data-phase='confirm'] .scouter-scan__diamond {
+    animation: none !important;
+  }
+
+  .scouter-scan[data-phase='done'] .scouter-scan__internals,
+  .scouter-scan[data-phase='done'] .scouter-scan__bracket {
+    opacity: 1;
+  }
+
+  .scouter-scan[data-phase='done'] .scouter-scan__internals {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .scouter-scan--classified .scouter-scan__class-extreme {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .scouter-scan--classified .scouter-scan__class-bar {
+    transform: scaleX(1);
+  }
+}
+
+html[data-force-reduced-motion='true'] .scouter-scan[data-phase='search'] .scouter-scan__bracket,
+html[data-force-reduced-motion='true'] .scouter-scan[data-phase='sweep'] .scouter-scan__beam,
+html[data-force-reduced-motion='true'] .scouter-scan--classified .scouter-scan__class-extreme,
+html[data-force-reduced-motion='true'] .scouter-scan[data-phase='confirm'] .scouter-scan__diamond {
+  animation: none !important;
+}

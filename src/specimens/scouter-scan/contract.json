@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/scouter-scan.schema.json",
+  "title": "ScouterScan",
+  "description": "Portable contract for a diagnostic scouter-inspired scan: bracket search, lock, one sweep, deterministic metrics, EXTREME classification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "target",
+    "brackets",
+    "animation",
+    "metrics",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "scouter-scan" },
+    "intent": {
+      "type": "string",
+      "const": "Diagnostic scanner: unidentified target → search → lock → sweep → deterministic metrics → EXTREME classification → stable report."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "trigger", "reset", "finalStatus"],
+      "properties": {
+        "system": { "type": "string", "const": "NODE // 07" },
+        "trigger": { "type": "string", "const": "SCAN" },
+        "reset": { "type": "string", "const": "RESET" },
+        "finalStatus": {
+          "type": "string",
+          "const": "NODE 07, OUTPUT 8,471, LATENCY 24ms, LOAD 82%, CLASS EXTREME."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "fg", "mid", "bright", "alert"],
+      "properties": {
+        "bg": { "type": "string", "const": "#151c1c" },
+        "fg": { "type": "string", "const": "#edf0df" },
+        "mid": { "type": "string", "const": "#a7c950" },
+        "bright": { "type": "string", "const": "#d9e86c" },
+        "alert": { "type": "string", "const": "#e26850" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 110 },
+        "heightPx": { "type": "number", "const": 130 }
+      }
+    },
+    "brackets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "idleOutsidePx",
+        "lockOutsidePx",
+        "confirmInwardPx",
+        "searchOffsets"
+      ],
+      "properties": {
+        "idleOutsidePx": { "type": "number", "const": 45 },
+        "lockOutsidePx": { "type": "number", "const": 8 },
+        "confirmInwardPx": { "type": "number", "const": 3 },
+        "searchOffsets": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tl", "tr", "bl", "br"],
+          "properties": {
+            "tl": { "type": "string", "const": "translate(-18px, -12px)" },
+            "tr": { "type": "string", "const": "translate(14px, -18px)" },
+            "bl": { "type": "string", "const": "translate(-12px, 16px)" },
+            "br": { "type": "string", "const": "translate(20px, 10px)" }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "searchMs",
+        "lockMs",
+        "crosshairMs",
+        "sweepMs",
+        "classMs",
+        "beamWidthPx",
+        "loops"
+      ],
+      "properties": {
+        "searchMs": { "type": "number", "const": 320 },
+        "lockMs": { "type": "number", "const": 100 },
+        "crosshairMs": { "type": "number", "const": 140 },
+        "sweepMs": { "type": "number", "const": 520 },
+        "classMs": { "type": "number", "const": 140 },
+        "beamWidthPx": { "type": "number", "const": 2 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["output", "latency", "load", "classFinal"],
+      "properties": {
+        "output": {
+          "type": "array",
+          "const": ["0031", "0184", "0927", "4812", "7320", "8294", "8,471"]
+        },
+        "latency": {
+          "type": "array",
+          "const": ["--", "91", "62", "47", "31", "26", "24"]
+        },
+        "load": {
+          "type": "array",
+          "const": ["--", "18", "34", "51", "69", "77", "82"]
+        },
+        "classFinal": { "type": "string", "const": "EXTREME" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeFinalOnly", "metricsAreText"],
+      "properties": {
+        "politeFinalOnly": { "type": "boolean", "const": true },
+        "metricsAreText": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateReport", "triggers"],
+      "properties": {
+        "immediateReport": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "target", "bracket", "beam", "report"],
+      "properties": {
+        "root": { "type": "string", "const": "scouter-scan" },
+        "target": { "type": "string", "const": "scouter-scan__target" },
+        "bracket": { "type": "string", "const": "scouter-scan__bracket" },
+        "beam": { "type": "string", "const": "scouter-scan__beam" },
+        "report": { "type": "string", "const": "scouter-scan__report" }
+      }
+    }
+  }
+}

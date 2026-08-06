@@ -91,6 +91,7 @@ import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
+import { scouterScan } from './scouter-scan/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
@@ -242,6 +243,7 @@ export const specimens: Specimen[] = [
   redactedContentLock,
   ripplePortalTransition,
   scannerSearch,
+  scouterScan,
   surfaceBreakReveal,
   tacticalCommandWheel,
   tacticalTargetLock,

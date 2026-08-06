@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **4 / 244** complete.
+- Progress: **6 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 240 |
+| Done | 6 |
+| Open | 238 |
 
 ## Visual grammar
 
@@ -39,6 +39,7 @@
 | DB-032 | `SPX-997` | `power-level-readout` | Power Level Readout |
 | DB-001 | `SPX-966` | `ki-charge-meter` | Ki Charge Meter |
 | DB-220 | `SPX-1185` | `measurement-overload` | Measurement Overload |
+| DB-003 | `SPX-968` | `concentrated-energy-charge` | Concentrated Energy Charge |
 
 ## Core first-wave
 
@@ -74,7 +75,6 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-176** · `SPX-1141` · **World Tournament Bracket** — tournament-ranking
 - [ ] **DB-230** · `SPX-1195` · **Git Fusion Merge** — data-developer-tool-specimens
 - [ ] **DB-234** · `SPX-1199` · **Over-9000 Metric Overflow** — data-developer-tool-specimens
-
 ## Ki Charging / Progress
 
 - [x] **DB-001** · `SPX-966` · **Ki Charge Meter** — scattered energy particles accelerate inward as progress approaches completion.
