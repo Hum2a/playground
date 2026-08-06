@@ -1,0 +1,8 @@
+{
+  "name": "auto-gain-scan",
+  "ref": "SPX-3929",
+  "title": "Auto Gain Scan",
+  "mode": "scope",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

@@ -481,7 +481,7 @@ specimens can feel tactile without needing sound.
 
 - [ ] **MUSIC-169** · `SPX-3928` · ★★★★★ **Input Halo Acquire** — A hardware-style input ring
     lights as signal appears.
-- [ ] **MUSIC-170** · `SPX-3929` · ★★★★★ **Auto Gain Scan** — A short calibration sequence
+- [x] **MUSIC-170** · `SPX-3929` · ★★★★★ **Auto Gain Scan** — A short calibration sequence
     samples levels and settles on a gain value.
 - [ ] **MUSIC-171** · `SPX-3930` · ★★★★☆ **Phantom Power Engage** — A +48V-like generic power
     state requires deliberate activation and persistent warning.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-170 | SPX-3929 | `auto-gain-scan` | Auto Gain Scan |
 | MUSIC-165 | SPX-3924 | `recording-waveform-grow` | Recording Waveform Grow |
 | MUSIC-151 | SPX-3910 | `strobe-tuner-lock` | Strobe Tuner Lock |
 | MUSIC-150 | SPX-3909 | `needle-tuner-centre` | Needle Tuner Centre |
@@ -906,12 +907,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **43 / 310** complete.
+- Progress: **44 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 43 |
-| Open | 267 |
+| Done | 44 |
+| Open | 266 |
 
 ## Core first-wave / build queue
 
@@ -957,7 +958,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · `needle-tuner-centre`
 - [x] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · `strobe-tuner-lock`
 - [x] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · `recording-waveform-grow`
-- [ ] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · scaffold `auto-gain-scan`
+- [x] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · `auto-gain-scan`
 - [ ] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · scaffold `transport-play-engage`
 - [ ] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · scaffold `loop-brace-clamp`
 - [ ] **MUSIC-185** · `SPX-3944` · **Waveform Trim Handles** · scaffold `waveform-trim-handles`

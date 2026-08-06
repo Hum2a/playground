@@ -590,4 +590,5 @@ export const specimenOrder: string[] = [
   'needle-tuner-centre',
   'strobe-tuner-lock',
   'recording-waveform-grow',
+  'auto-gain-scan',
 ]
