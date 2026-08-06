@@ -1,0 +1,12 @@
+{
+  "name": "neighbour-push-out",
+  "intent": "Adjacent cards translate away from an expanding selection while keeping their size — room is made without shrinking neighbours.",
+  "ref": "SPX-3147",
+  "nf": "NF-038",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}

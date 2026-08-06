@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **1 / 197** complete.
+- Progress: **2 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 1 |
-| Open | 196 |
+| Done | 2 |
+| Open | 195 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-038 | `SPX-3147` | `neighbour-push-out` | Neighbour Push-Out |
 | NF-035 | `SPX-3144` | `preview-card-hover-expand` | Preview Card Hover Expand |
 
 ## Core first-wave
@@ -43,7 +44,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ### Wave A — Core streaming grammar
 
 - [x] **NF-035** · `SPX-3144` · **Preview Card Hover Expand** — `preview-card-hover-expand`
-- [ ] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — `neighbour-push-out`
+- [x] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — `neighbour-push-out`
 - [ ] **NF-040** · `SPX-3149` · **Preview Collapse Return** — `preview-collapse-return`
 - [ ] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — `horizontal-content-rail`
 - [ ] **NF-027** · `SPX-3136` · **Rail Page Snap** — `rail-page-snap`
@@ -152,7 +153,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-035** · `SPX-3144` · **Preview Card Hover Expand** — Focused content expands while adjacent cards move outward rather than overlap
 - [ ] **NF-036** · `SPX-3145` · **Delayed Preview Expansion** — A short focus dwell triggers a larger information card only after intent is clear
 - [ ] **NF-037** · `SPX-3146` · **Expanded Card Metadata Reveal** — An enlarged card exposes actions, match-like metadata and tags beneath the visual
-- [ ] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — Adjacent cards translate away from an expanding selection while keeping their size
+- [x] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — Adjacent cards translate away from an expanding selection while keeping their size
 - [ ] **NF-039** · `SPX-3148` · **Card Focus Lift** — A selected card gains scale and depth without starting a full preview
 - [ ] **NF-040** · `SPX-3149` · **Preview Collapse Return** — Expanded content returns exactly to its rail slot without layout residue
 - [ ] **NF-041** · `SPX-3150` · **Keyboard Focus Expansion** — The same expansion behaviour works from keyboard focus, not hover alone

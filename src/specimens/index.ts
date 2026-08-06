@@ -241,6 +241,7 @@ import { multiKeySeal } from './multi-key-seal/entry'
 import { navigationDrawerEdgePull } from './navigation-drawer-edge-pull/entry'
 import { nearbyDeviceDiscovery } from './nearby-device-discovery/entry'
 import { nearbyFileTransfer } from './nearby-file-transfer/entry'
+import { neighbourPushOut } from './neighbour-push-out/entry'
 import { networkScan360 } from './network-scan-360/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { noSignalCard } from './no-signal-card/entry'
@@ -682,6 +683,7 @@ export const specimens: Specimen[] = [
   navigationDrawerEdgePull,
   nearbyDeviceDiscovery,
   nearbyFileTransfer,
+  neighbourPushOut,
   networkScan360,
   newspaperHeadlineDrop,
   noSignalCard,
