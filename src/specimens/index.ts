@@ -114,6 +114,7 @@ import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
+import { sharedResourcePool } from './shared-resource-pool/entry'
 import { stateFieldTransfer } from './state-field-transfer/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { stateIntensityField } from './state-intensity-field/entry'
@@ -295,6 +296,7 @@ export const specimens: Specimen[] = [
   scannerSearch,
   scouterScan,
   sectorRadarSearch,
+  sharedResourcePool,
   stateFieldTransfer,
   stateIntensityField,
   sevenPartPrerequisiteCollection,

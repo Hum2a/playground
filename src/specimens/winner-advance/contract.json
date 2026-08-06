@@ -1,0 +1,50 @@
+{
+  "name": "winner-advance",
+  "intent": "Resolve a quarter-final comparison, keep historical evidence, and advance a compact winner token along a fixed bracket path into the semi-final slot.",
+  "catalogue": {
+    "db": "DB-177",
+    "ref": "SPX-1142",
+    "checklistTitle": "Bracket Winner Advance",
+    "specimenTitle": "Winner Advance"
+  },
+  "counts": {
+    "candidates": 2,
+    "winnerBrackets": 2,
+    "advancementTokens": 1,
+    "nextRoundSlots": 1
+  },
+  "scores": {
+    "nova": 84,
+    "kite": 71,
+    "delta": 13
+  },
+  "timing": {
+    "compareMs": 120,
+    "holdMs": 100,
+    "identifyMs": 140,
+    "emergeMs": 90,
+    "travelMs": 320,
+    "dockMs": 100
+  },
+  "geometry": {
+    "tokenPx": [54, 26],
+    "winnerShiftPx": 3,
+    "path": "M 118 72 H 178 V 100 H 214",
+    "slotScalePeak": 1.08
+  },
+  "constraints": {
+    "originalWinnerNodeRemains": true,
+    "eliminatedRemainsVisible": true,
+    "tokenFollowsPathCorners": true,
+    "noLoopingInFinal": true,
+    "noFranchiseAssets": true
+  },
+  "api": {
+    "resolve": "resolveWinnerAdvance()",
+    "reset": "resetWinnerAdvance()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show resolved quarter-final and NOVA in semi-final"
+  }
+}
