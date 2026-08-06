@@ -131,6 +131,7 @@ import { printRegistrationHover } from './print-registration-hover/entry'
 import { processingTimeSkip } from './processing-time-skip/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { propagatedShockwave } from './propagated-shockwave/entry'
+import { pullToRefresh } from './pull-to-refresh/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
@@ -339,6 +340,7 @@ export const specimens: Specimen[] = [
   processingTimeSkip,
   progressMilestoneBreakthrough,
   propagatedShockwave,
+  pullToRefresh,
   quickLookExpansion,
   radarPulseDiscovery,
   rankUpImpact,

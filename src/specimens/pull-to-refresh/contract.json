@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/pull-to-refresh.schema.json",
+  "title": "PullToRefresh",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "pull", "refresh", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "pull-to-refresh" },
+    "intent": {
+      "type": "string",
+      "const": "Turn top overscroll into a thresholded refresh interaction with clear pre-threshold and committed states."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rows", "timestampBefore", "timestampAfter"],
+      "properties": {
+        "rows": { "type": "number", "const": 8 },
+        "timestampBefore": { "type": "string", "const": "12:42:18" },
+        "timestampAfter": { "type": "string", "const": "12:43:02" }
+      }
+    },
+    "pull": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxDisplayPx", "thresholdPx", "holdOffsetPx"],
+      "properties": {
+        "maxDisplayPx": { "type": "number", "const": 110 },
+        "thresholdPx": { "type": "number", "const": 72 },
+        "holdOffsetPx": { "type": "number", "const": 58 }
+      }
+    },
+    "refresh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cycleMs", "rotationTurns", "thresholdTicks"],
+      "properties": {
+        "cycleMs": { "type": "number", "const": 620 },
+        "rotationTurns": { "type": "number", "const": 1 },
+        "thresholdTicks": { "type": "number", "const": 2 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["staticIndicator", "triggers"],
+      "properties": {
+        "staticIndicator": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "viewport"],
+      "properties": {
+        "root": { "type": "string", "const": "ptr" },
+        "viewport": { "type": "string", "const": "ptr__viewport" }
+      }
+    }
+  }
+}

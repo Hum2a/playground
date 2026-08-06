@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **22 / 258** complete.
+- Progress: **23 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 22 |
-| Open | 236 |
+| Done | 23 |
+| Open | 235 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-219 | `SPX-1518` | `pull-to-refresh` | Pull to Refresh |
 | IOS-194 | `SPX-1493` | `handoff-continuation` | Handoff Continuation |
 | IOS-188 | `SPX-1487` | `airdrop-transfer-arc` | AirDrop Transfer Arc |
 | IOS-172 | `SPX-1471` | `control-centre-module-expansion` | Control Centre Module Expansion |
@@ -83,7 +84,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
 - [x] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
 - [x] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
-- [ ] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
+- [x] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
 - [ ] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
 - [ ] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
 - [ ] **IOS-231** · `SPX-1530` · **Invalid Field Shake** — error-validation
@@ -379,7 +380,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-216** · `SPX-1515` · **Insert Row Expansion** — new list item creates space first, then its content constructs into the gap.
 - [ ] **IOS-217** · `SPX-1516` · **Remove Row Collapse** — content exits before neighbouring rows close the vacated space.
 - [ ] **IOS-218** · `SPX-1517` · **Reorder Lift and Gap** — dragged row lifts while an insertion gap moves through the list.
-- [ ] **IOS-219** · `SPX-1518` · **Pull to Refresh** — overscroll progressively constructs a refresh state, crosses an activation threshold, then resolves.
+- [x] **IOS-219** · `SPX-1518` · **Pull to Refresh** — overscroll progressively constructs a refresh state, crosses an activation threshold, then resolves.
 - [ ] **IOS-220** · `SPX-1519` · **Section Collapse** — grouped rows compress beneath their header.
 - [ ] **IOS-221** · `SPX-1520` · **Section Expand** — hidden rows unfold sequentially while the section retains identity.
 - [ ] **IOS-222** · `SPX-1521` · **Pinned Row Swipe** — row transitions into a persistent pinned state with structural marker.
