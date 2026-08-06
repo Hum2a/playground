@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **42 / 216** complete.
+- Progress: **43 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 174 |
+| Done | 43 |
+| Open | 173 |
 
 ## Visual grammar
 
@@ -74,6 +74,7 @@
 | PS-111 | `SPX-3417` | `capture-thumbnail-flyout` | Capture Thumbnail Flyout |
 | PS-011 | `SPX-3317` | `four-shape-orbit-loader` | Four-Shape Orbit Loader |
 | PS-013 | `SPX-3319` | `shape-scatter-transition` | Shape Scatter Transition |
+| PS-046 | `SPX-3352` | `platinum-style-completion` | Platinum-Style Completion |
 
 ## Core first-wave
 
@@ -121,7 +122,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — capture-share
 - [x] **PS-011** · `SPX-3317` · **Four-Shape Orbit Loader** — playstation-shapes-geometry
 - [x] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — playstation-shapes-geometry
-- [ ] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — trophies-achievements
+- [x] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — trophies-achievements
 - [ ] **PS-071** · `SPX-3377` · **Back Navigation Restore** — remote-tv-focus-navigation
 - [ ] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
 - [ ] **PS-096** · `SPX-3402` · **Party Join Handoff** — friends-parties-social
@@ -193,7 +194,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-043** · `SPX-3349` · **Trophy Progress Ring** — Progress toward an achievement fills around a compact emblem.
 - [ ] **PS-044** · `SPX-3350` · **Trophy Tier Ascend** — Achievement treatment transforms from lower to higher tier.
 - [ ] **PS-045** · `SPX-3351` · **Trophy List Acquisition** — Newly earned entry inserts into a trophy list with clear chronology.
-- [ ] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — Completing the final achievement transforms the collection into a master completion state.
+- [x] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — Completing the final achievement transforms the collection into a master completion state.
 - [ ] **PS-047** · `SPX-3353` · **Hidden Trophy Reveal** — A secret achievement removes its concealed treatment after unlock.
 - [ ] **PS-048** · `SPX-3354` · **Trophy Compare** — Two players' achievement progress expands into a side-by-side comparison.
 

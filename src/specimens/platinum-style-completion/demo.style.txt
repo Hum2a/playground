@@ -1,0 +1,205 @@
+/* Portable specimen CSS (iframe-isolated). */
+
+.psc {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  --ps-panel: #121820;
+  --ps-rule: #1e2a38;
+  --ps-pewter: #8a9aad;
+
+  box-sizing: border-box;
+  width: min(100%, 480px);
+  margin: 0 auto;
+  padding: 16px;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
+  color: var(--ps-chalk);
+}
+
+.psc *,
+.psc *::before,
+.psc *::after {
+  box-sizing: border-box;
+}
+
+.psc__btn {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ps-ink);
+  background: var(--ps-chalk);
+  border: 1px solid var(--ps-chalk);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.psc__btn:hover:not(:disabled) {
+  background: #fff;
+}
+
+.psc__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.psc__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.psc__status {
+  margin: 10px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--ps-pewter);
+}
+
+.psc__shape {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.psc__shape--circle {
+  border-radius: 50%;
+  background: var(--ps-sky);
+}
+
+.psc__shape--square {
+  border-radius: 2px;
+  background: var(--ps-blue);
+}
+
+.psc__shape--cross {
+  position: relative;
+  background: transparent;
+}
+
+.psc__shape--cross::before,
+.psc__shape--cross::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 3px;
+  margin: -1.5px 0 0 -6px;
+  background: var(--ps-chalk);
+  border-radius: 1px;
+}
+
+.psc__shape--cross::before {
+  transform: rotate(45deg);
+}
+
+.psc__shape--cross::after {
+  transform: rotate(-45deg);
+}
+
+.psc__shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid var(--ps-blue);
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .psc__anim,
+  .psc__orbit,
+  .psc__shape,
+  .psc__scan,
+  .psc__rift,
+  .psc__ring,
+  .psc__tile,
+  .psc__card,
+  .psc__slab,
+  .psc__token,
+  .psc__panel,
+  .psc__overlay {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .psc__anim,
+[data-force-reduced-motion='true'] .psc__orbit,
+[data-force-reduced-motion='true'] .psc__shape,
+[data-force-reduced-motion='true'] .psc__scan,
+[data-force-reduced-motion='true'] .psc__rift,
+[data-force-reduced-motion='true'] .psc__ring,
+[data-force-reduced-motion='true'] .psc__tile,
+[data-force-reduced-motion='true'] .psc__card,
+[data-force-reduced-motion='true'] .psc__slab,
+[data-force-reduced-motion='true'] .psc__token,
+[data-force-reduced-motion='true'] .psc__panel,
+[data-force-reduced-motion='true'] .psc__overlay {
+  animation: none !important;
+  transition: none !important;
+}
+
+.psc__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.psc__slot {
+  height: 56px;
+  border: 1px solid var(--ps-rule);
+  border-radius: 3px;
+  background: linear-gradient(160deg, #1a2430, var(--ps-panel));
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+
+.psc__slot.is-earned {
+  border-color: var(--ps-sky);
+  box-shadow: inset 0 0 12px rgba(46, 144, 255, 0.25);
+}
+
+.psc__slot--final.is-earned {
+  border-color: var(--ps-blue);
+}
+
+.psc__platinum {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 14px;
+  text-align: center;
+  border: 1px solid var(--ps-sky);
+  border-radius: 4px;
+  background: radial-gradient(circle at 50% 30%, rgba(46, 144, 255, 0.2), var(--ps-panel));
+  animation: psc-glow 1.2s ease;
+}
+
+.psc__platinum .psc__shape {
+  display: inline-block;
+  margin: 0 6px;
+  vertical-align: middle;
+}
+
+.psc__platinum-label {
+  margin: 12px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ps-sky);
+}
+
+.psc.is-platinum .psc__grid {
+  opacity: 0.25;
+  transform: scale(0.96);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.psc__btn { display: block; margin: 0 auto; }
+
+@keyframes psc-glow {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}

@@ -326,6 +326,7 @@ import { personaFusionCombine } from './persona-fusion-combine/entry'
 import { pictureInPictureCollapse } from './picture-in-picture-collapse/entry'
 import { pipEdgeMagnetism } from './pip-edge-magnetism/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
+import { platinumStyleCompletion } from './platinum-style-completion/entry'
 import { playPauseGlyphMorph } from './play-pause-glyph-morph/entry'
 import { playbackControlsFadeIn } from './playback-controls-fade-in/entry'
 import { playbackErrorTakeover } from './playback-error-takeover/entry'
@@ -855,6 +856,7 @@ export const specimens: Specimen[] = [
   pictureInPictureCollapse,
   pipEdgeMagnetism,
   pixelHpDrain,
+  platinumStyleCompletion,
   playPauseGlyphMorph,
   playbackControlsFadeIn,
   playbackErrorTakeover,

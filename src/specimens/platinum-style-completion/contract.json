@@ -1,0 +1,14 @@
+{
+  "name": "platinum-style-completion",
+  "intent": "Completing the final achievement transforms the collection into a master completion state.",
+  "primitives": [
+    "trophy",
+    "completion"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  }
+}
