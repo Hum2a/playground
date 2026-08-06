@@ -151,6 +151,7 @@ import { fogOfWarCard } from './fog-of-war-card/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fourPointBarrierConstruct } from './four-point-barrier-construct/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
+import { fusionPreview } from './fusion-preview/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { gadgetDeployment } from './gadget-deployment/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
@@ -574,6 +575,7 @@ export const specimens: Specimen[] = [
   forgetAMove,
   fourPointBarrierConstruct,
   fullMoonMilestone,
+  fusionPreview,
   fusionSelectionMerge,
   gadgetDeployment,
   glassFractureReveal,
