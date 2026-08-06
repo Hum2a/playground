@@ -14,6 +14,7 @@ import { authenticationFailureReset } from './authentication-failure-reset/entry
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
+import { bindingWrapLock } from './binding-wrap-lock/entry'
 import { biometricScanAcquisition } from './biometric-scan-acquisition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blinkSelection } from './blink-selection/entry'
@@ -332,6 +333,7 @@ export const specimens: Specimen[] = [
   authenticationSuccessMorph,
   azureShardTransition,
   badgeCaseInsert,
+  bindingWrapLock,
   biometricScanAcquisition,
   blackoutLoader,
   blinkSelection,
