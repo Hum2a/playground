@@ -117,6 +117,7 @@ import { erasureDelete } from './erasure-delete/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { errorSubstitutionRecovery } from './error-substitution-recovery/entry'
 import { escalatingBurstMultiplier } from './escalating-burst-multiplier/entry'
+import { evidenceConnectionDraw } from './evidence-connection-draw/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
@@ -511,6 +512,7 @@ export const specimens: Specimen[] = [
   errorCorrectionRewrite,
   errorSubstitutionRecovery,
   escalatingBurstMultiplier,
+  evidenceConnectionDraw,
   evokerMenuSnap,
   evolutionComplete,
   evolutionSilhouetteTransformation,

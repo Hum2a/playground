@@ -1,0 +1,12 @@
+{
+  "name": "evidence-connection-draw",
+  "intent": "Select two clues; yellow line draws between them establishing linked state.",
+  "catalogue": { "p4": "P4-029", "ref": "SPX-2947" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "reducedMotion": { "behaviour": "Line visible immediately without dash draw" }
+}

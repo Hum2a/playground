@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **4 / 191** complete.
+- Progress: **5 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 187 |
+| Done | 5 |
+| Open | 186 |
 
 ## Visual grammar
 
@@ -38,6 +38,7 @@
 | P4-002 | `SPX-2920` | `crt-power-on-reveal` | CRT Power-On Reveal |
 | P4-013 | `SPX-2931` | `tv-screen-dive-transition` | TV Screen Dive Transition |
 | P4-021 | `SPX-2939` | `fog-clearing-data-reveal` | Fog-Clearing Data Reveal |
+| P4-029 | `SPX-2947` | `evidence-connection-draw` | Evidence Connection Draw |
 
 ## Core first-wave
 
@@ -47,7 +48,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-002** · `SPX-2920` · **CRT Power-On Reveal** — midnight-channel-crt-broadcast
 - [x] **P4-013** · `SPX-2931` · **TV Screen Dive Transition** — tv-world-screen-portals
 - [x] **P4-021** · `SPX-2939` · **Fog-Clearing Data Reveal** — fog-hidden-information
-- [ ] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — investigation-evidence
+- [x] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — investigation-evidence
 - [ ] **P4-030** · `SPX-2948` · **Contradiction Found** — investigation-evidence
 - [ ] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — shadow-identity-confrontation
 - [ ] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — social-links-bonds
@@ -134,7 +135,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Investigation / Evidence
 
-- [ ] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — Selecting two clues draws a physical connection and creates a relationship state.
+- [x] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — Selecting two clues draws a physical connection and creates a relationship state.
 - [ ] **P4-030** · `SPX-2948` · **Contradiction Found** — Two evidence cards collide and highlight the exact values that conflict.
 - [ ] **P4-031** · `SPX-2949` · **Case Breakthrough** — A chaotic evidence board reorganises into a solved relationship graph.
 - [ ] **P4-032** · `SPX-2950` · **Evidence Pin Drop** — A clue card is pinned into an investigation board with a finite impact.

@@ -1,0 +1,160 @@
+/* SPX-2947 Evidence Connection Draw — portable contract. */
+
+.ecd {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ecd__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ecd__stage {
+  position: relative;
+  width: min(100%, 320px);
+  height: 200px;
+  border: 3px solid var(--yellow);
+  background: var(--paper);
+}
+
+.ecd__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ecd__line {
+  stroke: var(--yellow);
+  stroke-width: 4;
+  stroke-linecap: square;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.ecd[data-phase='drawing'] .ecd__line,
+.ecd[data-phase='linked'] .ecd__line {
+  opacity: 1;
+  animation: ecd-draw 480ms ease-out forwards;
+}
+
+@keyframes ecd-draw {
+  from { stroke-dashoffset: 200; stroke-dasharray: 200; }
+  to { stroke-dashoffset: 0; stroke-dasharray: 200; }
+}
+
+.ecd[data-phase='linked'] .ecd__line {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+.ecd__clue {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 42%;
+  padding: 0.55rem 0.6rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.ecd__clue--a {
+  top: 28%;
+  left: 6%;
+}
+
+.ecd__clue--b {
+  top: 28%;
+  right: 6%;
+}
+
+.ecd__clue-id {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ecd__clue-text {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ecd__clue[data-selected='true'] {
+  border-color: var(--yellow);
+  background: var(--ink);
+  color: var(--yellow);
+}
+
+.ecd__clue:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+.ecd__status {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ecd__btn {
+  box-sizing: border-box;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ecd__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ecd__line {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ecd__line {
+  animation: none !important;
+  transition: none !important;
+}
