@@ -30,7 +30,7 @@ export const fadeThrough: Specimen = {
   inspiredBy: {
     franchise: 'android',
   },
-  tags: ['transition', 'fade-through', 'content-swap'],
+  tags: ['fade-through', 'content-swap'],
   deps: 'none',
   motion: {
     loops: false,

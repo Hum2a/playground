@@ -30,7 +30,7 @@ export const cardToDetailContainerTransform: Specimen = {
   inspiredBy: {
     franchise: 'android',
   },
-  tags: ['container-transform', 'card', 'navigation'],
+  tags: ['container-transform', 'navigation'],
   deps: 'none',
   motion: {
     loops: false,

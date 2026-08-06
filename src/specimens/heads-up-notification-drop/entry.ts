@@ -30,7 +30,7 @@ export const headsUpNotificationDrop: Specimen = {
   inspiredBy: {
     franchise: 'android',
   },
-  tags: ['notification', 'heads-up', 'overlay'],
+  tags: ['notification', 'heads-up'],
   deps: 'none',
   motion: {
     loops: false,
