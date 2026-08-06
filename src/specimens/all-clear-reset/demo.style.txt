@@ -1,0 +1,205 @@
+/* SPX-2073 All-Clear Reset — portable contract. */
+
+.acr {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.acr *,
+.acr *::before,
+.acr *::after {
+  box-sizing: border-box;
+}
+
+.acr__host {
+  position: relative;
+  width: 100%;
+  min-height: 140px;
+  overflow: hidden;
+  border: 3px solid var(--paper);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.acr__normal {
+  padding: 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.acr[data-phase='alert'] .acr__normal {
+  opacity: 0;
+}
+
+.acr[data-phase='clearing'] .acr__normal,
+.acr[data-phase='done'] .acr__normal {
+  animation: acr-rebuild 500ms var(--ease) 400ms forwards;
+}
+
+.acr[data-phase='done'] .acr__normal {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes acr-rebuild {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.acr__title {
+  margin: 0 0 0.5rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--primary);
+}
+
+.acr__line {
+  margin: 0.2rem 0 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.acr__alert {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background: var(--accent);
+  color: var(--paper);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.acr__stripe {
+  position: absolute;
+  left: -20%;
+  width: 140%;
+  height: 12px;
+  background: var(--ink);
+  opacity: 0.25;
+  transform: rotate(-12deg);
+}
+
+.acr__stripe--1 { top: 28%; }
+.acr__stripe--2 { top: 58%; }
+
+.acr__alert-text {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  z-index: 1;
+}
+
+.acr__alert-sub {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  z-index: 1;
+}
+
+.acr[data-phase='clearing'] .acr__alert,
+.acr[data-phase='done'] .acr__alert {
+  animation: acr-retract 420ms var(--ease) forwards;
+}
+
+.acr[data-phase='done'] .acr__alert {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes acr-retract {
+  to {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    opacity: 0;
+  }
+}
+
+.acr__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.acr__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.acr__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.acr__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.acr__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acr[data-phase] .acr__alert,
+  .acr[data-phase] .acr__normal {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .acr[data-phase] .acr__alert,
+[data-force-reduced-motion='true'] .acr[data-phase] .acr__normal {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acr[data-phase='done'] .acr__alert {
+    opacity: 0;
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+
+  .acr[data-phase='done'] .acr__normal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .acr[data-phase='done'] .acr__alert {
+  opacity: 0;
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+}
+
+[data-force-reduced-motion='true'] .acr[data-phase='done'] .acr__normal {
+  opacity: 1;
+  transform: none;
+}

@@ -3,6 +3,7 @@ import { activeBottomNavPillTransfer } from './active-bottom-nav-pill-transfer/e
 import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
 import { airdropTransferArc } from './airdrop-transfer-arc/entry'
+import { allClearReset } from './all-clear-reset/entry'
 import { analysisScribbleReveal } from './analysis-scribble-reveal/entry'
 import { androidBottomSheetDetentSnap } from './android-bottom-sheet-detent-snap/entry'
 import { androidDragProxyFormation } from './android-drag-proxy-formation/entry'
@@ -340,6 +341,7 @@ export const specimens: Specimen[] = [
   adaptiveRecovery,
   afterimageNavigation,
   airdropTransferArc,
+  allClearReset,
   analysisScribbleReveal,
   androidBottomSheetDetentSnap,
   androidDragProxyFormation,

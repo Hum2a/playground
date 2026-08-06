@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **49 / 369** complete.
+- Progress: **50 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 320 |
+| Done | 50 |
+| Open | 319 |
 
 ## Visual grammar
 
@@ -81,6 +81,7 @@
 | MHA-221 | `SPX-2195` | `license-card-issue` | License Card Issue |
 | MHA-130 | `SPX-2104` | `mission-complete-burst` | Mission Complete Burst |
 | MHA-293 | `SPX-2267` | `hold-to-maximum-button` | Hold-to-Maximum Button |
+| MHA-099 | `SPX-2073` | `all-clear-reset` | All-Clear Reset |
 
 ## Core first-wave
 
@@ -244,7 +245,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [ ] **MHA-096** · `SPX-2070` · **Perimeter Breach** — boundary line fractures at a detected breach point.
 - [ ] **MHA-097** · `SPX-2071` · **Emergency Broadcast Strip** — high-priority ticker forcibly replaces normal status strip.
 - [ ] **MHA-098** · `SPX-2072` · **Threat Marker Acquisition** — dangerous target receives expanding angular brackets.
-- [ ] **MHA-099** · `SPX-2073` · **All-Clear Reset** — warning geometry retracts and normal interface reconstructs.
+- [x] **MHA-099** · `SPX-2073` · **All-Clear Reset** — warning geometry retracts and normal interface reconstructs.
 - [ ] **MHA-100** · `SPX-2074` · **Civilian Count Update** — evacuation count rolls down/up with clear state semantics.
 - [ ] **MHA-101** · `SPX-2075` · **Multiple Alert Stack** — incidents compress into a controlled priority stack.
 

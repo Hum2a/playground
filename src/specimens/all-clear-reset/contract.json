@@ -1,0 +1,11 @@
+{
+  "name": "all-clear-reset",
+  "ref": "SPX-2073",
+  "catalogue": { "mha": "MHA-099" },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}
