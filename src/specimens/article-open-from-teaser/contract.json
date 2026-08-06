@@ -1,0 +1,8 @@
+{
+  "name": "article-open-from-teaser",
+  "ref": "SPX-3558",
+  "title": "Article Open from Teaser",
+  "mode": "roll",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

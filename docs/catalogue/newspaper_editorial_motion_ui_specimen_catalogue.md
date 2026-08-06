@@ -125,7 +125,7 @@ chronology and information priority.
 
 # 5. Article Entry / Reading
 
-- [ ] **NEWS-036** · `SPX-3558` · ★★★★★ **Article Open from Teaser** — A compact teaser grows
+- [x] **NEWS-036** · `SPX-3558` · ★★★★★ **Article Open from Teaser** — A compact teaser grows
     into the full article header and reading surface.
 - [ ] **NEWS-037** · `SPX-3559` · ★★★★☆ **Deck Reveal** — Summary/deck text appears after the
     headline settles.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-036 | SPX-3558 | `article-open-from-teaser` | Article Open from Teaser |
 | NEWS-033 | SPX-3555 | `grid-collapse-to-mobile` | Grid Collapse to Mobile |
 | NEWS-030 | SPX-3552 | `modular-page-replate` | Modular Page Replate |
 | NEWS-029 | SPX-3551 | `grid-rule-construction` | Grid Rule Construction |
@@ -694,12 +695,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **15 / 237** complete.
+- Progress: **16 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 15 |
-| Open | 222 |
+| Done | 16 |
+| Open | 221 |
 
 ## Core first-wave / build queue
 
@@ -718,7 +719,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-029** · `SPX-3551` · **Grid Rule Construction** · `grid-rule-construction`
 - [x] **NEWS-030** · `SPX-3552` · **Modular Page Replate** · `modular-page-replate`
 - [x] **NEWS-033** · `SPX-3555` · **Grid Collapse to Mobile** · `grid-collapse-to-mobile`
-- [ ] **NEWS-036** · `SPX-3558` · **Article Open from Teaser** · scaffold `article-open-from-teaser`
+- [x] **NEWS-036** · `SPX-3558` · **Article Open from Teaser** · `article-open-from-teaser`
 - [ ] **NEWS-039** · `SPX-3561` · **Reading Progress Rule** · scaffold `reading-progress-rule`
 - [ ] **NEWS-041** · `SPX-3563` · **Article Close Return** · scaffold `article-close-return`
 - [ ] **NEWS-045** · `SPX-3567` · **Broadsheet Page Turn** · scaffold `broadsheet-page-turn`
