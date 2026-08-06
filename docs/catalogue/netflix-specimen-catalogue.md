@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **12 / 197** complete.
+- Progress: **13 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 185 |
+| Done | 13 |
+| Open | 184 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-041 | `SPX-3150` | `keyboard-focus-expansion` | Keyboard Focus Expansion |
 | NF-037 | `SPX-3146` | `expanded-card-metadata-reveal` | Expanded Card Metadata Reveal |
 | NF-036 | `SPX-3145` | `delayed-preview-expansion` | Delayed Preview Expansion |
 | NF-075 | `SPX-3184` | `next-episode-countdown` | Next Episode Countdown |
@@ -68,7 +69,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 
 - [x] **NF-036** · `SPX-3145` · **Delayed Preview Expansion** — `delayed-preview-expansion`
 - [x] **NF-037** · `SPX-3146` · **Expanded Card Metadata Reveal** — `expanded-card-metadata-reveal`
-- [ ] **NF-041** · `SPX-3150` · **Keyboard Focus Expansion** — `keyboard-focus-expansion`
+- [x] **NF-041** · `SPX-3150` · **Keyboard Focus Expansion** — `keyboard-focus-expansion`
 - [ ] **NF-017** · `SPX-3126` · **Featured Hero Crossfade** — `featured-hero-crossfade`
 - [ ] **NF-018** · `SPX-3127` · **Hero Metadata Cascade** — `hero-metadata-cascade`
 - [ ] **NF-097** · `SPX-3206` · **Search Field Expand** — `search-field-expand`
@@ -166,7 +167,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — Adjacent cards translate away from an expanding selection while keeping their size
 - [ ] **NF-039** · `SPX-3148` · **Card Focus Lift** — A selected card gains scale and depth without starting a full preview
 - [x] **NF-040** · `SPX-3149` · **Preview Collapse Return** — Expanded content returns exactly to its rail slot without layout residue
-- [ ] **NF-041** · `SPX-3150` · **Keyboard Focus Expansion** — The same expansion behaviour works from keyboard focus, not hover alone
+- [x] **NF-041** · `SPX-3150` · **Keyboard Focus Expansion** — The same expansion behaviour works from keyboard focus, not hover alone
 - [ ] **NF-042** · `SPX-3151` · **Expansion Edge Compensation** — Cards near viewport edges expand inward so content remains visible
 - [ ] **NF-043** · `SPX-3152` · **Action Strip Reveal** — Play/add/info controls slide into the expanded card after its geometry settles
 ## 6. Autoplay / Preview States
