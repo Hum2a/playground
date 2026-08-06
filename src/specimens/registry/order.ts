@@ -588,4 +588,5 @@ export const specimenOrder: string[] = [
   'tape-splice',
   'tube-warm-up',
   'needle-tuner-centre',
+  'strobe-tuner-lock',
 ]

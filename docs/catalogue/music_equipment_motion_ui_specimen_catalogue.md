@@ -428,7 +428,7 @@ specimens can feel tactile without needing sound.
 
 - [x] **MUSIC-150** · `SPX-3909` · ★★★★★ **Needle Tuner Centre** — A tuning needle moves from
     flat/sharp toward a centred in-tune target.
-- [ ] **MUSIC-151** · `SPX-3910` · ★★★★★ **Strobe Tuner Lock** — Moving strobe bands slow and
+- [x] **MUSIC-151** · `SPX-3910` · ★★★★★ **Strobe Tuner Lock** — Moving strobe bands slow and
     stop as pitch reaches target.
 - [ ] **MUSIC-152** · `SPX-3911` · ★★★★☆ **String Detection Acquire** — A detected string/note
     appears after a short listening state.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-151 | SPX-3910 | `strobe-tuner-lock` | Strobe Tuner Lock |
 | MUSIC-150 | SPX-3909 | `needle-tuner-centre` | Needle Tuner Centre |
 | MUSIC-143 | SPX-3902 | `tube-warm-up` | Tube Warm-Up |
 | MUSIC-130 | SPX-3889 | `tape-splice` | Tape Splice |
@@ -904,12 +905,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **41 / 310** complete.
+- Progress: **42 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 41 |
-| Open | 269 |
+| Done | 42 |
+| Open | 268 |
 
 ## Core first-wave / build queue
 
@@ -953,7 +954,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-130** · `SPX-3889` · **Tape Splice** · `tape-splice`
 - [x] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · `tube-warm-up`
 - [x] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · `needle-tuner-centre`
-- [ ] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · scaffold `strobe-tuner-lock`
+- [x] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · `strobe-tuner-lock`
 - [ ] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · scaffold `recording-waveform-grow`
 - [ ] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · scaffold `auto-gain-scan`
 - [ ] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · scaffold `transport-play-engage`

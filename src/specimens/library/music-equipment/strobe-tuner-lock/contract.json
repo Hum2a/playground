@@ -1,0 +1,8 @@
+{
+  "name": "strobe-tuner-lock",
+  "ref": "SPX-3910",
+  "title": "Strobe Tuner Lock",
+  "mode": "fader",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
