@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **47 / 258** complete.
+- Progress: **48 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 47 |
-| Open | 211 |
+| Done | 48 |
+| Open | 210 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-129 | `SPX-1428` | `authentication-failure-reset` | Authentication Failure Reset |
 | IOS-128 | `SPX-1427` | `authentication-success-morph` | Authentication Success Morph |
 | IOS-173 | `SPX-1472` | `control-module-collapse` | Control Centre Module Collapse |
 | IOS-171 | `SPX-1470` | `menu-bar-active-transfer` | Menu Bar Active Transfer |
@@ -281,7 +282,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [x] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — abstract identity field searches, acquires and validates a user-presence target.
 - [x] **IOS-128** · `SPX-1427` · **Authentication Success Morph** — scanning geometry resolves into an unlocked state.
-- [ ] **IOS-129** · `SPX-1428` · **Authentication Failure Reset** — acquisition fails, geometry rejects once, then resets to retry-ready state.
+- [x] **IOS-129** · `SPX-1428` · **Authentication Failure Reset** — acquisition fails, geometry rejects once, then resets to retry-ready state.
 - [ ] **IOS-130** · `SPX-1429` · **Passkey Handoff** — authentication request transfers from one device/context representation to another.
 - [ ] **IOS-131** · `SPX-1430` · **Credential Confirmation Sheet** — identity confirmation surface rises, resolves and dismisses after success.
 - [ ] **IOS-132** · `SPX-1431` · **Secure Action Unlock** — previously unavailable control becomes actionable only after authentication completion.

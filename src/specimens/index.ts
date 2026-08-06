@@ -3,6 +3,7 @@ import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
 import { airdropTransferArc } from './airdrop-transfer-arc/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
+import { authenticationFailureReset } from './authentication-failure-reset/entry'
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
@@ -236,6 +237,7 @@ export const specimens: Specimen[] = [
   afterimageNavigation,
   airdropTransferArc,
   appLaunchExpansion,
+  authenticationFailureReset,
   authenticationSuccessMorph,
   azureShardTransition,
   badgeCaseInsert,

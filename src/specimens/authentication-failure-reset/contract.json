@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/authentication-failure-reset.schema.json",
+  "title": "AuthenticationFailureReset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "authentication-failure-reset" },
+    "intent": {
+      "type": "string",
+      "const": "A failed identity acquisition rejects once, explains failure, and resets to a clean retry-ready state."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initialStatus", "failedStatus", "retryStatus"],
+      "properties": {
+        "initialStatus": { "type": "string", "const": "SCANNING" },
+        "failedStatus": { "type": "string", "const": "NOT VERIFIED" },
+        "retryStatus": { "type": "string", "const": "READY TO RETRY" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shakeMs", "holdMs", "restoreMs", "bracketCount", "bracketRotateDeg", "bracketRetractPx"],
+      "properties": {
+        "shakeMs": { "type": "number", "const": 240 },
+        "holdMs": { "type": "number", "const": 650 },
+        "restoreMs": { "type": "number", "const": 180 },
+        "bracketCount": { "type": "number", "const": 4 },
+        "bracketRotateDeg": { "type": "number", "const": 8 },
+        "bracketRetractPx": { "type": "number", "const": 5 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noShake", "triggers"],
+      "properties": {
+        "noShake": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "field"],
+      "properties": {
+        "root": { "type": "string", "const": "afr" },
+        "field": { "type": "string", "const": "afr__field" }
+      }
+    }
+  }
+}
