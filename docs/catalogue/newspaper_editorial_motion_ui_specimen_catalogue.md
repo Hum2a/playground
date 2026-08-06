@@ -232,7 +232,7 @@ chronology and information priority.
 
 # 10. Redaction / Classified / Investigative
 
-- [ ] **NEWS-077** · `SPX-3599` · ★★★★★ **Black-Bar Redaction Reveal** — Authorised text removes
+- [x] **NEWS-077** · `SPX-3599` · ★★★★★ **Black-Bar Redaction Reveal** — Authorised text removes
     redaction bars in a deterministic sweep.
 - [ ] **NEWS-078** · `SPX-3600` · ★★★★★ **Redaction Apply** — Sensitive fragments are covered by
     hard black bars without shifting text.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-077 | SPX-3599 | `black-bar-redaction-reveal` | Black-Bar Redaction Reveal |
 | NEWS-073 | SPX-3595 | `retraction-takeover` | Retraction Takeover |
 | NEWS-070 | SPX-3592 | `inline-correction-replace` | Inline Correction Replace |
 | NEWS-069 | SPX-3591 | `correction-notice-insert` | Correction Notice Insert |
@@ -710,12 +711,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **31 / 237** complete.
+- Progress: **32 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 31 |
-| Open | 206 |
+| Done | 32 |
+| Open | 205 |
 
 ## Core first-wave / build queue
 
@@ -750,7 +751,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-069** · `SPX-3591` · **Correction Notice Insert** · `correction-notice-insert`
 - [x] **NEWS-070** · `SPX-3592` · **Inline Correction Replace** · `inline-correction-replace`
 - [x] **NEWS-073** · `SPX-3595` · **Retraction Takeover** · `retraction-takeover`
-- [ ] **NEWS-077** · `SPX-3599` · **Black-Bar Redaction Reveal** · scaffold `black-bar-redaction-reveal`
+- [x] **NEWS-077** · `SPX-3599` · **Black-Bar Redaction Reveal** · `black-bar-redaction-reveal`
 - [ ] **NEWS-078** · `SPX-3600` · **Redaction Apply** · scaffold `redaction-apply`
 - [ ] **NEWS-079** · `SPX-3601` · **Document Declassification** · scaffold `document-declassification`
 - [ ] **NEWS-082** · `SPX-3604` · **Evidence Annotation** · scaffold `evidence-annotation`
