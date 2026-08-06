@@ -1,0 +1,198 @@
+/* button-impact-shockwave — portable specimen styles. Do not restyle to host tokens. */
+
+.bis {
+  --bis-primary: #38a3ff;
+  --bis-ink: #101820;
+  --bis-paper: #f4f7fa;
+  --bis-accent: #ff4d35;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--bis-paper);
+  color: var(--bis-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.bis *,
+.bis *::before,
+.bis *::after {
+  box-sizing: border-box;
+}
+
+.bis__live {
+  align-self: stretch;
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(16 24 32 / 0.55);
+}
+
+.bis__card {
+  position: relative;
+  width: min(100%, 300px);
+  padding: 1rem 1rem 1.1rem;
+  border: 3px solid var(--bis-ink);
+  background: var(--bis-paper);
+  overflow: hidden;
+}
+
+.bis__wave {
+  position: absolute;
+  left: 50%;
+  top: 72%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 3px solid var(--bis-primary);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  opacity: 0;
+  transform: scale(0.2);
+  pointer-events: none;
+}
+
+.bis__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--bis-primary);
+}
+
+.bis__title {
+  margin: 0.35rem 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.bis__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--bis-ink);
+  border-radius: 0;
+  background: var(--bis-accent);
+  color: var(--bis-paper);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bis__btn:focus-visible {
+  outline: 2px solid var(--bis-primary);
+  outline-offset: 2px;
+}
+
+.bis__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bis__result {
+  margin: 0.65rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--bis-primary);
+}
+
+.bis__result[hidden] {
+  display: none;
+}
+
+.bis__replay {
+  margin: 0;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--bis-ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bis-ink);
+  font: inherit;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bis__replay:focus-visible {
+  outline: 2px solid var(--bis-primary);
+  outline-offset: 2px;
+}
+
+.bis[data-phase='impact'] .bis__wave {
+  animation: bis-wave 660ms cubic-bezier(0.15, 0.85, 0.25, 1) both;
+}
+
+.bis[data-phase='impact'] .bis__card {
+  animation: bis-card 660ms ease-out both;
+}
+
+.bis[data-phase='done'] .bis__wave {
+  opacity: 0;
+}
+
+@keyframes bis-wave {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.2);
+  }
+  35% {
+    opacity: 0.75;
+    transform: scale(4.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(8);
+  }
+}
+
+@keyframes bis-card {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  12% {
+    transform: translateY(3px);
+  }
+  24% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bis[data-phase='impact'] .bis__wave,
+  .bis[data-phase='impact'] .bis__card {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__wave,
+[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__card {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bis[data-phase='done'] .bis__wave,
+  .bis[data-phase='impact'] .bis__wave {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .bis[data-phase='done'] .bis__wave,
+[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__wave {
+  opacity: 0;
+}

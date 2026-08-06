@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **27 / 369** complete.
+- Progress: **28 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 342 |
+| Done | 28 |
+| Open | 341 |
 
 ## Visual grammar
 
@@ -59,6 +59,7 @@
 | MHA-128 | `SPX-2102` | `mission-incoming` | Mission Incoming |
 | MHA-129 | `SPX-2103` | `objective-update-slash` | Objective Update Slash |
 | MHA-137 | `SPX-2111` | `maximum-output-breakthrough` | Maximum Output Breakthrough |
+| MHA-144 | `SPX-2118` | `button-impact-shockwave` | Button Impact Shockwave |
 
 ## Core first-wave
 
@@ -285,7 +286,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Smash / Impact-Inspired Software Feedback
 
-- [ ] **MHA-144** · `SPX-2118` · **Button Impact Shockwave** — successful high-priority action sends one angular shockwave through its parent card.
+- [x] **MHA-144** · `SPX-2118` · **Button Impact Shockwave** — successful high-priority action sends one angular shockwave through its parent card.
 - [ ] **MHA-145** · `SPX-2119` · **Card Punch-Out Delete** — removed card shoots backward/away through a comic impact aperture.
 - [ ] **MHA-146** · `SPX-2120` · **Success Crater** — completion mark lands and leaves a temporary radial indentation/ring.
 - [ ] **MHA-147** · `SPX-2121` · **Metric Smash Counter** — large number hits its target value with overshoot and debris-like line accents.

@@ -28,6 +28,7 @@ import { branchEvolutionChoice } from './branch-evolution-choice/entry'
 import { branchingEnergySurge } from './branching-energy-surge/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
+import { buttonImpactShockwave } from './button-impact-shockwave/entry'
 import { buttonLoadingMorph } from './button-loading-morph/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
@@ -343,6 +344,7 @@ export const specimens: Specimen[] = [
   branchingEnergySurge,
   butterflyEntry,
   butterflySuccessState,
+  buttonImpactShockwave,
   buttonLoadingMorph,
   callingCardPeel,
   callingCardSlam,
