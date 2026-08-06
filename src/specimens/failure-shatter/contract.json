@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/failure-shatter.schema.json",
+  "title": "FailureShatter",
+  "description": "Portable contract for a false-success export that fractures into FAILED. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "phases",
+    "success",
+    "fracture",
+    "failed",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "failure-shatter" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Operation appears to succeed, then SUCCESS is struck and fractured before resolving to FAILED."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "ready",
+        "run",
+        "processing",
+        "success",
+        "failed",
+        "errorCode",
+        "retry",
+        "statusReady",
+        "statusFailed"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "EXPORT SPECIMEN" },
+        "ready": { "type": "string", "const": "READY" },
+        "run": { "type": "string", "const": "RUN EXPORT" },
+        "processing": { "type": "string", "const": "PROCESSING" },
+        "success": { "type": "string", "const": "SUCCESS" },
+        "failed": { "type": "string", "const": "FAILED" },
+        "errorCode": { "type": "string", "const": "ERROR // 042" },
+        "retry": { "type": "string", "const": "TRY AGAIN" },
+        "statusReady": { "type": "string", "const": "Export ready." },
+        "statusFailed": {
+          "type": "string",
+          "const": "Export failed. Error 042."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "processingMs",
+        "successMs",
+        "strikeMs",
+        "fractureMs",
+        "failedMs",
+        "codeAtMs"
+      ],
+      "properties": {
+        "processingMs": { "type": "number", "const": 280 },
+        "successMs": { "type": "number", "const": 200 },
+        "strikeMs": { "type": "number", "const": 90 },
+        "fractureMs": { "type": "number", "const": 210 },
+        "failedMs": { "type": "number", "const": 240 },
+        "codeAtMs": { "type": "number", "const": 850 },
+        "progressMarks": { "type": "integer", "const": 3 }
+      }
+    },
+    "success": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "impact"],
+      "properties": {
+        "initial": {
+          "type": "string",
+          "const": "translateY(50px) rotate(6deg) scale(1.3)"
+        },
+        "impact": {
+          "type": "string",
+          "const": "translateY(-3px) rotate(-2deg) scale(0.96)"
+        },
+        "decorativeOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "fracture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["majorPieces", "smallFragments", "travel"],
+      "properties": {
+        "majorPieces": { "type": "integer", "const": 4 },
+        "smallFragments": { "type": "integer", "const": 3 },
+        "travel": {
+          "type": "object",
+          "properties": {
+            "ul": { "type": "string", "const": "translate(-58px, -52px) rotate(-14deg)" },
+            "ur": { "type": "string", "const": "translate(62px, -48px) rotate(12deg)" },
+            "ll": { "type": "string", "const": "translate(-52px, 55px) rotate(16deg)" },
+            "lr": { "type": "string", "const": "translate(70px, 50px) rotate(-11deg)" }
+          }
+        }
+      }
+    },
+    "failed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "impact", "final", "backingOffset"],
+      "properties": {
+        "initial": { "type": "string", "const": "scale(2) rotate(-9deg)" },
+        "impact": { "type": "string", "const": "scale(0.9) rotate(3deg)" },
+        "final": { "type": "string", "const": "scale(1) rotate(-2deg)" },
+        "backingOffset": { "type": "string", "const": "8px 7px" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["neverAnnounceSuccess", "finalStatus", "stageDecorative"],
+      "properties": {
+        "neverAnnounceSuccess": { "type": "boolean", "const": true },
+        "finalStatus": {
+          "type": "string",
+          "const": "Export failed. Error 042."
+        },
+        "stageDecorative": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFailed", "noSuccessFlash", "triggers"],
+      "properties": {
+        "instantFailed": { "type": "boolean", "const": true },
+        "noSuccessFlash": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "success", "failed", "strike", "piece"],
+      "properties": {
+        "root": { "type": "string", "const": "fsh" },
+        "success": { "type": "string", "const": "fsh__success" },
+        "failed": { "type": "string", "const": "fsh__failed" },
+        "strike": { "type": "string", "const": "fsh__strike" },
+        "piece": { "type": "string", "const": "fsh__piece" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "runFailureShatter" },
+        "reset": { "type": "string", "const": "resetFailureShatter" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "failure-shatter",
+      "intent": "Operation appears to succeed, then SUCCESS is struck and fractured before resolving to FAILED.",
+      "copy": {
+        "title": "EXPORT SPECIMEN",
+        "ready": "READY",
+        "run": "RUN EXPORT",
+        "processing": "PROCESSING",
+        "success": "SUCCESS",
+        "failed": "FAILED",
+        "errorCode": "ERROR // 042",
+        "retry": "TRY AGAIN",
+        "statusReady": "Export ready.",
+        "statusFailed": "Export failed. Error 042."
+      },
+      "colours": {
+        "black": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "phases": {
+        "processingMs": 280,
+        "successMs": 200,
+        "strikeMs": 90,
+        "fractureMs": 210,
+        "failedMs": 240,
+        "codeAtMs": 850,
+        "progressMarks": 3
+      },
+      "success": {
+        "initial": "translateY(50px) rotate(6deg) scale(1.3)",
+        "impact": "translateY(-3px) rotate(-2deg) scale(0.96)",
+        "decorativeOnly": true
+      },
+      "fracture": {
+        "majorPieces": 4,
+        "smallFragments": 3
+      },
+      "failed": {
+        "initial": "scale(2) rotate(-9deg)",
+        "impact": "scale(0.9) rotate(3deg)",
+        "final": "scale(1) rotate(-2deg)",
+        "backingOffset": "8px 7px"
+      },
+      "a11y": {
+        "neverAnnounceSuccess": true,
+        "finalStatus": "Export failed. Error 042.",
+        "stageDecorative": true
+      },
+      "reducedMotion": {
+        "instantFailed": true,
+        "noSuccessFlash": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "fsh",
+        "success": "fsh__success",
+        "failed": "fsh__failed",
+        "strike": "fsh__strike",
+        "piece": "fsh__piece"
+      },
+      "behaviour": {
+        "run": "runFailureShatter",
+        "reset": "resetFailureShatter",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}

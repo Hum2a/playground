@@ -1,0 +1,627 @@
+/* SPX-318 Failure Shatter — portable contract. Do not restyle to host tokens. */
+
+.fsh {
+  --fsh-black: #090909;
+  --fsh-red: #e60012;
+  --fsh-paper: #f5f1e8;
+  --fsh-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --fsh-snap: cubic-bezier(0.55, 0, 1, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1rem;
+  background: #12141a;
+  color: var(--fsh-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.fsh *,
+.fsh *::before,
+.fsh *::after {
+  box-sizing: border-box;
+}
+
+.fsh__card {
+  position: relative;
+  width: min(100%, 320px);
+  padding: 1.1rem 1rem 1.15rem;
+  background: var(--fsh-paper);
+  color: var(--fsh-black);
+  border: 3px solid var(--fsh-black);
+  overflow: hidden;
+}
+
+.fsh__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.fsh__title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fsh__ready {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.fsh[data-state='processing'] .fsh__ready,
+.fsh[data-state='success'] .fsh__ready,
+.fsh[data-state='strike'] .fsh__ready,
+.fsh[data-state='fracture'] .fsh__ready,
+.fsh[data-state='failed'] .fsh__ready {
+  opacity: 0;
+}
+
+.fsh__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 140px;
+  margin-bottom: 0.9rem;
+  overflow: hidden;
+}
+
+.fsh__processing,
+.fsh__success,
+.fsh__failed,
+.fsh__code {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* —— Phase 1: PROCESSING —— */
+.fsh__processing {
+  inset: auto 0;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.7rem;
+  background: var(--fsh-black);
+  color: var(--fsh-paper);
+  transform: translate(-110%, -50%);
+  opacity: 0;
+}
+
+.fsh__proc-label {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.fsh__proc-marks {
+  display: flex;
+  gap: 0.28rem;
+}
+
+.fsh__mark {
+  width: 10px;
+  height: 10px;
+  background: var(--fsh-paper);
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 80%);
+  opacity: 0.25;
+}
+
+.fsh[data-state='processing'] .fsh__processing {
+  opacity: 1;
+  animation: fsh-proc-in 280ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='processing'] .fsh__mark:nth-child(1) {
+  animation: fsh-mark-on 90ms steps(1, end) 40ms forwards;
+}
+
+.fsh[data-state='processing'] .fsh__mark:nth-child(2) {
+  animation: fsh-mark-on 90ms steps(1, end) 120ms forwards;
+}
+
+.fsh[data-state='processing'] .fsh__mark:nth-child(3) {
+  animation: fsh-mark-on 90ms steps(1, end) 200ms forwards;
+}
+
+.fsh[data-state='success'] .fsh__processing,
+.fsh[data-state='strike'] .fsh__processing,
+.fsh[data-state='fracture'] .fsh__processing,
+.fsh[data-state='failed'] .fsh__processing {
+  opacity: 0;
+  transform: translate(110%, -50%);
+  transition:
+    opacity 80ms linear,
+    transform 80ms var(--fsh-snap);
+}
+
+/* —— Phase 2–4: SUCCESS panel (decorative) —— */
+.fsh__success {
+  inset: 18% 8% 22%;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(50px) rotate(6deg) scale(1.3);
+  transform-origin: center center;
+}
+
+.fsh[data-state='success'] .fsh__success {
+  opacity: 1;
+  animation: fsh-success-enter 200ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='strike'] .fsh__success,
+.fsh[data-state='fracture'] .fsh__success {
+  opacity: 1;
+  transform: translateY(-3px) rotate(-2deg) scale(0.96);
+}
+
+.fsh[data-state='failed'] .fsh__success {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.fsh__piece {
+  position: relative;
+  overflow: hidden;
+  background: var(--fsh-black);
+  color: var(--fsh-paper);
+}
+
+.fsh__piece--ul {
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 86% 100%, 0 100%);
+}
+
+.fsh__piece--ur {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 72%);
+}
+
+.fsh__piece--ll {
+  clip-path: polygon(0 0, 88% 0, 100% 28%, 100% 100%, 0 100%);
+}
+
+.fsh__piece--lr {
+  clip-path: polygon(0 22%, 14% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.fsh__piece-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(1.35rem, 7vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.fsh__piece--ul .fsh__piece-face {
+  justify-content: end;
+  padding-right: 0.15rem;
+  align-items: end;
+  padding-bottom: 0.1rem;
+}
+
+.fsh__piece--ur .fsh__piece-face {
+  justify-content: start;
+  padding-left: 0.1rem;
+  align-items: end;
+  padding-bottom: 0.1rem;
+}
+
+.fsh__piece--ll .fsh__piece-face {
+  justify-content: end;
+  padding-right: 0.15rem;
+  align-items: start;
+  padding-top: 0.1rem;
+}
+
+.fsh__piece--lr .fsh__piece-face {
+  justify-content: start;
+  padding-left: 0.1rem;
+  align-items: start;
+  padding-top: 0.05rem;
+}
+
+.fsh__strike {
+  position: absolute;
+  z-index: 5;
+  left: -10%;
+  top: 48%;
+  width: 0;
+  height: 5px;
+  background: var(--fsh-red);
+  transform: rotate(-22deg);
+  transform-origin: left center;
+  opacity: 0;
+  clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 75%);
+}
+
+.fsh[data-state='strike'] .fsh__strike,
+.fsh[data-state='fracture'] .fsh__strike {
+  opacity: 1;
+  animation: fsh-strike 90ms linear forwards;
+}
+
+.fsh__frag {
+  position: absolute;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fsh__frag--a {
+  top: 28%;
+  left: 42%;
+  width: 18px;
+  height: 10px;
+  background: var(--fsh-red);
+  clip-path: polygon(0 30%, 100% 0, 80% 100%, 10% 100%);
+}
+
+.fsh__frag--b {
+  top: 55%;
+  left: 48%;
+  width: 14px;
+  height: 14px;
+  background: var(--fsh-black);
+  clip-path: polygon(20% 0, 100% 20%, 70% 100%, 0 80%);
+}
+
+.fsh__frag--c {
+  top: 40%;
+  left: 58%;
+  width: 12px;
+  height: 8px;
+  background: var(--fsh-red);
+  clip-path: polygon(0 0, 100% 40%, 60% 100%, 0 70%);
+}
+
+.fsh[data-state='fracture'] .fsh__piece--ul {
+  animation: fsh-fly-ul 210ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='fracture'] .fsh__piece--ur {
+  animation: fsh-fly-ur 210ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='fracture'] .fsh__piece--ll {
+  animation: fsh-fly-ll 210ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='fracture'] .fsh__piece--lr {
+  animation: fsh-fly-lr 210ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='fracture'] .fsh__frag--a {
+  opacity: 1;
+  animation: fsh-frag-a 210ms var(--fsh-ease) forwards;
+}
+
+.fsh[data-state='fracture'] .fsh__frag--b {
+  opacity: 1;
+  animation: fsh-frag-b 210ms var(--fsh-ease) 20ms forwards;
+}
+
+.fsh[data-state='fracture'] .fsh__frag--c {
+  opacity: 1;
+  animation: fsh-frag-c 210ms var(--fsh-ease) 35ms forwards;
+}
+
+/* —— Phase 5: FAILED —— */
+.fsh__failed {
+  z-index: 6;
+  display: inline-grid;
+  place-items: center;
+  opacity: 0;
+  transform: scale(2) rotate(-9deg);
+  transform-origin: center center;
+}
+
+.fsh__failed-back {
+  position: absolute;
+  inset: 0;
+  background: var(--fsh-red);
+  transform: translate(8px, 7px);
+  clip-path: polygon(2% 8%, 96% 0%, 100% 90%, 88% 100%, 0% 94%);
+}
+
+.fsh__failed-face {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 0.55rem 1.1rem;
+  background: var(--fsh-black);
+  color: var(--fsh-paper);
+  font-size: clamp(1.6rem, 8vw, 2.15rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  clip-path: polygon(0% 10%, 98% 0%, 100% 88%, 90% 100%, 2% 96%);
+}
+
+.fsh[data-state='failed'] .fsh__failed {
+  opacity: 1;
+  animation: fsh-failed-enter 240ms var(--fsh-ease) both;
+}
+
+.fsh__code {
+  bottom: 0.15rem;
+  left: 50%;
+  z-index: 7;
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fsh-red);
+  opacity: 0;
+  transform: translate(-50%, 8px);
+}
+
+.fsh[data-state='failed'] .fsh__code {
+  animation: fsh-code-in 140ms var(--fsh-ease) 170ms both;
+}
+
+.fsh__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.fsh__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--fsh-black);
+  border-radius: 0;
+  background: var(--fsh-black);
+  color: var(--fsh-paper);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fsh__btn--ghost {
+  background: transparent;
+  color: var(--fsh-black);
+}
+
+.fsh__btn:hover {
+  background: var(--fsh-red);
+  border-color: var(--fsh-red);
+  color: var(--fsh-paper);
+}
+
+.fsh__btn:focus-visible {
+  outline: 2px solid var(--fsh-red);
+  outline-offset: 3px;
+}
+
+.fsh__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fsh__btn[hidden] {
+  display: none;
+}
+
+.fsh__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes fsh-proc-in {
+  from {
+    transform: translate(-110%, -50%);
+  }
+  to {
+    transform: translate(0, -50%);
+  }
+}
+
+@keyframes fsh-mark-on {
+  to {
+    opacity: 1;
+    background: var(--fsh-red);
+  }
+}
+
+@keyframes fsh-success-enter {
+  0% {
+    opacity: 1;
+    transform: translateY(50px) rotate(6deg) scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-3px) rotate(-2deg) scale(0.96);
+  }
+}
+
+@keyframes fsh-strike {
+  from {
+    width: 0;
+  }
+  to {
+    width: 125%;
+  }
+}
+
+@keyframes fsh-fly-ul {
+  to {
+    transform: translate(-58px, -52px) rotate(-14deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-fly-ur {
+  to {
+    transform: translate(62px, -48px) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-fly-ll {
+  to {
+    transform: translate(-52px, 55px) rotate(16deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-fly-lr {
+  to {
+    transform: translate(70px, 50px) rotate(-11deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-frag-a {
+  to {
+    transform: translate(-36px, -28px) rotate(-24deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-frag-b {
+  to {
+    transform: translate(40px, 22px) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-frag-c {
+  to {
+    transform: translate(28px, -34px) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fsh-failed-enter {
+  0% {
+    opacity: 1;
+    transform: scale(2) rotate(-9deg);
+  }
+  72% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-2deg);
+  }
+}
+
+@keyframes fsh-code-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 360px) {
+  .fsh {
+    min-height: 300px;
+    padding: 0.75rem;
+  }
+
+  .fsh__card {
+    padding: 0.9rem 0.8rem 1rem;
+  }
+
+  .fsh__stage {
+    min-height: 124px;
+  }
+
+  .fsh__failed-face {
+    padding: 0.45rem 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fsh__processing,
+  .fsh__success,
+  .fsh__failed,
+  .fsh__code,
+  .fsh__piece,
+  .fsh__frag,
+  .fsh__strike,
+  .fsh__mark {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fsh[data-state='failed'] .fsh__processing,
+  .fsh[data-state='failed'] .fsh__success {
+    opacity: 0 !important;
+    visibility: hidden;
+  }
+
+  .fsh[data-state='failed'] .fsh__failed {
+    opacity: 1;
+    transform: scale(1) rotate(-2deg);
+  }
+
+  .fsh[data-state='failed'] .fsh__code {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+[data-force-reduced-motion='true'] .fsh__processing,
+[data-force-reduced-motion='true'] .fsh__success,
+[data-force-reduced-motion='true'] .fsh__failed,
+[data-force-reduced-motion='true'] .fsh__code,
+[data-force-reduced-motion='true'] .fsh__piece,
+[data-force-reduced-motion='true'] .fsh__frag,
+[data-force-reduced-motion='true'] .fsh__strike,
+[data-force-reduced-motion='true'] .fsh__mark {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .fsh[data-state='failed'] .fsh__processing,
+[data-force-reduced-motion='true'] .fsh[data-state='failed'] .fsh__success {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
+[data-force-reduced-motion='true'] .fsh[data-state='failed'] .fsh__failed {
+  opacity: 1;
+  transform: scale(1) rotate(-2deg);
+}
+
+[data-force-reduced-motion='true'] .fsh[data-state='failed'] .fsh__code {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

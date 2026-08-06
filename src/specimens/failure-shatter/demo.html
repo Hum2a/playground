@@ -1,0 +1,56 @@
+<div class="fsh" data-failure-shatter data-state="ready">
+  <article class="fsh__card">
+    <header class="fsh__header">
+      <h2 class="fsh__title">EXPORT SPECIMEN</h2>
+      <p class="fsh__ready" data-fsh-ready>READY</p>
+    </header>
+
+    <div class="fsh__stage" data-fsh-stage aria-hidden="true">
+      <div class="fsh__processing" data-fsh-processing>
+        <span class="fsh__proc-label">PROCESSING</span>
+        <span class="fsh__proc-marks" aria-hidden="true">
+          <span class="fsh__mark"></span>
+          <span class="fsh__mark"></span>
+          <span class="fsh__mark"></span>
+        </span>
+      </div>
+
+      <div class="fsh__success" data-fsh-success>
+        <span class="fsh__strike" data-fsh-strike></span>
+        <span class="fsh__frag fsh__frag--a"></span>
+        <span class="fsh__frag fsh__frag--b"></span>
+        <span class="fsh__frag fsh__frag--c"></span>
+        <span class="fsh__piece fsh__piece--ul">
+          <span class="fsh__piece-face">SU</span>
+        </span>
+        <span class="fsh__piece fsh__piece--ur">
+          <span class="fsh__piece-face">CC</span>
+        </span>
+        <span class="fsh__piece fsh__piece--ll">
+          <span class="fsh__piece-face">ES</span>
+        </span>
+        <span class="fsh__piece fsh__piece--lr">
+          <span class="fsh__piece-face">S!</span>
+        </span>
+      </div>
+
+      <div class="fsh__failed" data-fsh-failed>
+        <span class="fsh__failed-back" aria-hidden="true"></span>
+        <span class="fsh__failed-face">FAILED</span>
+      </div>
+
+      <p class="fsh__code" data-fsh-code>ERROR // 042</p>
+    </div>
+
+    <div class="fsh__actions">
+      <button type="button" class="fsh__btn" data-fsh-run>RUN EXPORT</button>
+      <button type="button" class="fsh__btn fsh__btn--ghost" data-fsh-retry hidden>
+        TRY AGAIN
+      </button>
+    </div>
+  </article>
+
+  <p class="fsh__status" role="status" aria-live="polite" data-fsh-status>
+    Export ready.
+  </p>
+</div>

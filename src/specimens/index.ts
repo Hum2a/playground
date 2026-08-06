@@ -16,8 +16,10 @@ import { crossOutStatusSwap } from './cross-out-status-swap/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
+import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
+import { failureShatter } from './failure-shatter/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
@@ -31,6 +33,7 @@ import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
+import { permissionRejection } from './permission-rejection/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
@@ -125,6 +128,8 @@ export const specimens: Specimen[] = [
   errorCorrectionRewrite,
   choiceExecutionSlash,
   progressMilestoneBreakthrough,
+  failureShatter,
+  permissionRejection,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
