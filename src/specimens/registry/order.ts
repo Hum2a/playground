@@ -594,4 +594,5 @@ export const specimenOrder: string[] = [
   'transport-play-engage',
   'loop-brace-clamp',
   'waveform-trim-handles',
+  'crossfade-overlap',
 ]

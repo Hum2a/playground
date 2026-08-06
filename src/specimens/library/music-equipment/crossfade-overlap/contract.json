@@ -1,0 +1,8 @@
+{
+  "name": "crossfade-overlap",
+  "ref": "SPX-3948",
+  "title": "Crossfade Overlap",
+  "mode": "patch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
