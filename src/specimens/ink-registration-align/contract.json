@@ -1,0 +1,8 @@
+{
+  "name": "ink-registration-align",
+  "ref": "SPX-3576",
+  "title": "Ink Registration Align",
+  "mode": "typeset",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

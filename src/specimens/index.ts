@@ -578,6 +578,8 @@ import { paperPeelReveal } from './paper-peel-reveal/entry'
 
 import { pressRollReveal } from './press-roll-reveal/entry'
 
+import { inkRegistrationAlign } from './ink-registration-align/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1095,6 +1097,7 @@ export const specimens: Specimen[] = [
   halfFoldOpen,
   paperPeelReveal,
   pressRollReveal,
+  inkRegistrationAlign,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
