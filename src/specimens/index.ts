@@ -89,6 +89,7 @@ import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
+import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
 import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
@@ -278,6 +279,7 @@ export const specimens: Specimen[] = [
   liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
+  matchedCardExpansion,
   maxRankCompletion,
   measurementOverload,
   memoryFragmentReveal,

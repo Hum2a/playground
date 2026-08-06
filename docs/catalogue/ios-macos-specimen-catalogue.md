@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **3 / 258** complete.
+- Progress: **4 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 255 |
+| Done | 4 |
+| Open | 254 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-004 | `SPX-1303` | `matched-card-expansion` | Matched Card Expansion |
 | IOS-062 | `SPX-1361` | `scroll-rubber-band` | Scroll Rubber Band |
 | IOS-015 | `SPX-1314` | `bottom-sheet-detent-snap` | Bottom Sheet Detent Snap |
 | IOS-003 | `SPX-1302` | `interactive-back-swipe` | Interactive Back Swipe |
@@ -41,7 +42,7 @@
 Curated implementation priority (former Flagship Cross-Platform Specimens). Same checkbox as the master list — checking either counts.
 
 - [x] **IOS-003** · `SPX-1302` · **Interactive Back Swipe** — navigation-spatial-continuity
-- [ ] **IOS-004** · `SPX-1303` · **Matched Card Expansion** — navigation-spatial-continuity
+- [x] **IOS-004** · `SPX-1303` · **Matched Card Expansion** — navigation-spatial-continuity
 - [x] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheets-panels-presentation
 - [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — sheets-panels-presentation
 - [ ] **IOS-027** · `SPX-1326` · **Compact Activity Expansion** — dynamic-island-live-activity-inspired
@@ -76,7 +77,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-001** · `SPX-1300` · **Navigation Push** — current surface shifts aside while the next surface enters with clear spatial hierarchy.
 - [ ] **IOS-002** · `SPX-1301` · **Navigation Pop** — reverse-direction return that restores the previous surface.
 - [x] **IOS-003** · `SPX-1302` · **Interactive Back Swipe** — drag-controlled navigation transition whose completion depends on release position/velocity.
-- [ ] **IOS-004** · `SPX-1303` · **Matched Card Expansion** — compact card expands continuously into a detailed surface while preserving identity.
+- [x] **IOS-004** · `SPX-1303` · **Matched Card Expansion** — compact card expands continuously into a detailed surface while preserving identity.
 - [ ] **IOS-005** · `SPX-1304` · **Matched Card Collapse** — detailed surface contracts back into its exact originating card.
 - [ ] **IOS-006** · `SPX-1305` · **Shared Element Handoff** — one visual element appears to move between two layouts while surrounding structure changes.
 - [ ] **IOS-007** · `SPX-1306` · **Tab Content Slide** — adjacent tab content enters with restrained directional movement.

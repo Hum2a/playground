@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/matched-card-expansion.schema.json",
+  "title": "MatchedCardExpansion",
+  "description": "Portable contract for shared-element expansion from an ORBIT project card into a detail surface with spatial continuity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "preview",
+    "cards",
+    "expansion",
+    "title",
+    "siblings",
+    "detail",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "matched-card-expansion" },
+    "intent": {
+      "type": "string",
+      "const": "A compact ORBIT card expands continuously into a detailed surface while preserving identity-bearing geometry instead of cross-fading unrelated layouts."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cards", "interactiveCard", "cta", "close"],
+      "properties": {
+        "cards": {
+          "type": "array",
+          "const": ["ORBIT", "ATLAS", "NOVA"]
+        },
+        "interactiveCard": { "type": "string", "const": "ORBIT" },
+        "cta": { "type": "string", "const": "OPEN ORBIT" },
+        "close": { "type": "string", "const": "CLOSE" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "detailInsetPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 520 },
+        "heightPx": { "type": "number", "const": 520 },
+        "detailInsetPx": { "type": "number", "const": 20 }
+      }
+    },
+    "cards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["orbitWidthPx", "orbitHeightPx"],
+      "properties": {
+        "orbitWidthPx": { "type": "number", "const": 180 },
+        "orbitHeightPx": { "type": "number", "const": 118 }
+      }
+    },
+    "expansion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "easing", "measureStartBounds"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 460 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.22, 1, 0.36, 1)" },
+        "measureStartBounds": { "type": "boolean", "const": true }
+      }
+    },
+    "title": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "sizeFromPx", "sizeToPx", "persists"],
+      "properties": {
+        "text": { "type": "string", "const": "ORBIT" },
+        "sizeFromPx": { "type": "number", "const": 20 },
+        "sizeToPx": { "type": "number", "const": 34 },
+        "persists": { "type": "boolean", "const": true }
+      }
+    },
+    "siblings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scale", "translateYPx", "durationMs"],
+      "properties": {
+        "scale": { "type": "number", "const": 0.96 },
+        "translateYPx": { "type": "number", "const": 8 },
+        "durationMs": { "type": "number", "const": 180 }
+      }
+    },
+    "detail": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revealAfterProgress", "revealDelayMs"],
+      "properties": {
+        "revealAfterProgress": { "type": "number", "const": 0.55 },
+        "revealDelayMs": { "type": "number", "const": 253 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["opacityOutlineSwap", "noLargeMovement", "triggers"],
+      "properties": {
+        "opacityOutlineSwap": { "type": "boolean", "const": true },
+        "noLargeMovement": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ariaExpanded", "politeStatus"],
+      "properties": {
+        "ariaExpanded": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "grid", "orbitCard", "layer", "title", "detail"],
+      "properties": {
+        "root": { "type": "string", "const": "mce" },
+        "grid": { "type": "string", "const": "mce__grid" },
+        "orbitCard": { "type": "string", "const": "mce__card--orbit" },
+        "layer": { "type": "string", "const": "mce__layer" },
+        "title": { "type": "string", "const": "mce__layer-title" },
+        "detail": { "type": "string", "const": "mce__detail" }
+      }
+    }
+  }
+}
