@@ -219,6 +219,7 @@ import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { recentsCardRestore } from './recents-card-restore/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
+import { rivalCardsClash } from './rival-cards-clash/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { screenshotExpandToEditor } from './screenshot-expand-to-editor/entry'
@@ -539,6 +540,7 @@ export const specimens: Specimen[] = [
   recentsCardRestore,
   redactedContentLock,
   ripplePortalTransition,
+  rivalCardsClash,
   scannerSearch,
   scouterScan,
   screenshotExpandToEditor,

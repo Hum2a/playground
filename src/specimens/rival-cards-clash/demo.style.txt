@@ -1,0 +1,248 @@
+/* SPX-2206 Rival Cards Clash — portable contract. Do not restyle to host tokens. */
+
+.rcc {
+  --rcc-primary: #38a3ff;
+  --rcc-ink: #101820;
+  --rcc-paper: #f4f7fa;
+  --rcc-accent: #ff4d35;
+  --rcc-ease: cubic-bezier(0.22, 0.95, 0.28, 1);
+
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1.25rem 1rem 1.5rem;
+  background: var(--rcc-ink);
+  color: var(--rcc-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.rcc *,
+.rcc *::before,
+.rcc *::after {
+  box-sizing: border-box;
+}
+
+.rcc__trigger {
+  appearance: none;
+  border: 2px solid var(--rcc-primary);
+  background: transparent;
+  color: var(--rcc-paper);
+  padding: 0.45rem 1.1rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(0 0, 96% 0, 100% 28%, 100% 100%, 4% 100%, 0 72%);
+}
+
+.rcc__trigger:focus-visible {
+  outline: 2px solid var(--rcc-primary);
+  outline-offset: 3px;
+}
+
+.rcc__arena {
+  position: relative;
+  width: min(100%, 340px);
+  height: 200px;
+  overflow: hidden;
+  border: 3px solid var(--rcc-paper);
+  background:
+    radial-gradient(circle at 20% 80%, rgba(56, 163, 255, 0.12) 0 2px, transparent 2px) 0 0 / 12px 12px,
+    var(--rcc-ink);
+}
+
+.rcc__divider {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  z-index: 4;
+  width: 6px;
+  height: 120%;
+  background: var(--rcc-accent);
+  transform: translateX(-50%) rotate(18deg);
+  transform-origin: center;
+  opacity: 0.35;
+  transition: opacity 200ms ease, box-shadow 200ms ease;
+}
+
+.rcc__card {
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 68%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 10px;
+  background: var(--rcc-paper);
+  color: var(--rcc-ink);
+  border: 3px solid var(--rcc-ink);
+  clip-path: polygon(2% 0, 100% 4%, 98% 100%, 0 96%);
+  transition: transform 660ms var(--rcc-ease);
+}
+
+.rcc__card--left {
+  left: -48%;
+  transform: translateY(-50%) rotate(-4deg);
+  border-color: var(--rcc-primary);
+}
+
+.rcc__card--right {
+  right: -48%;
+  transform: translateY(-50%) rotate(3deg);
+  border-color: var(--rcc-accent);
+}
+
+.rcc__tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--rcc-primary);
+}
+
+.rcc__label {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.rcc__rank {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.rcc__impact {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(16, 24, 32, 0.55);
+  transition: opacity 280ms ease 380ms;
+}
+
+.rcc__impact-label {
+  padding: 0.35rem 0.9rem;
+  border: 3px solid var(--rcc-accent);
+  background: var(--rcc-ink);
+  color: var(--rcc-paper);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  transform: scale(0.7);
+  transition: transform 320ms var(--rcc-ease) 420ms;
+}
+
+.rcc__status {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 247, 250, 0.75);
+}
+
+.rcc--active .rcc__card--left {
+  left: 4%;
+  transform: translateY(-50%) rotate(-2deg) scale(0.98);
+}
+
+.rcc--active .rcc__card--right {
+  right: 4%;
+  transform: translateY(-50%) rotate(2deg) scale(0.98);
+}
+
+.rcc--settled .rcc__divider {
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--rcc-accent);
+}
+
+.rcc--settled .rcc__impact {
+  opacity: 1;
+}
+
+.rcc--settled .rcc__impact-label {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rcc__card,
+  .rcc__divider,
+  .rcc__impact,
+  .rcc__impact-label {
+    transition: none !important;
+  }
+
+  .rcc--active .rcc__card--left,
+  .rcc--settled .rcc__card--left {
+    left: 4%;
+    transform: translateY(-50%) rotate(-2deg) scale(0.98);
+  }
+
+  .rcc--active .rcc__card--right,
+  .rcc--settled .rcc__card--right {
+    right: 4%;
+    transform: translateY(-50%) rotate(2deg) scale(0.98);
+  }
+
+  .rcc--active .rcc__divider,
+  .rcc--settled .rcc__divider {
+    opacity: 1;
+  }
+
+  .rcc--active .rcc__impact,
+  .rcc--settled .rcc__impact {
+    opacity: 1;
+  }
+
+  .rcc--active .rcc__impact-label,
+  .rcc--settled .rcc__impact-label {
+    transform: scale(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .rcc__card,
+[data-force-reduced-motion='true'] .rcc__divider,
+[data-force-reduced-motion='true'] .rcc__impact,
+[data-force-reduced-motion='true'] .rcc__impact-label {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .rcc--active .rcc__card--left,
+[data-force-reduced-motion='true'] .rcc--settled .rcc__card--left {
+  left: 4%;
+  transform: translateY(-50%) rotate(-2deg) scale(0.98);
+}
+
+[data-force-reduced-motion='true'] .rcc--active .rcc__card--right,
+[data-force-reduced-motion='true'] .rcc--settled .rcc__card--right {
+  right: 4%;
+  transform: translateY(-50%) rotate(2deg) scale(0.98);
+}
+
+[data-force-reduced-motion='true'] .rcc--active .rcc__divider,
+[data-force-reduced-motion='true'] .rcc--settled .rcc__divider {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .rcc--active .rcc__impact,
+[data-force-reduced-motion='true'] .rcc--settled .rcc__impact {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .rcc--active .rcc__impact-label,
+[data-force-reduced-motion='true'] .rcc--settled .rcc__impact-label {
+  transform: scale(1);
+}
