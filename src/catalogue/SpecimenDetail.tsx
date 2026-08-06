@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   ControlStrip,
@@ -7,6 +7,7 @@ import {
   type HarnessControls,
   type PreviewFrameHandle,
 } from '../harness'
+import { buildPrompt, CopyButton } from '../prompt'
 import { getSpecimen } from '../specimens'
 import './specimen-detail.css'
 
@@ -35,6 +36,15 @@ export function SpecimenDetail() {
     )
   }
 
+  const prompts = useMemo(
+    () => ({
+      full: buildPrompt(specimen, 'full'),
+      code: buildPrompt(specimen, 'code'),
+      contract: buildPrompt(specimen, 'contract'),
+    }),
+    [specimen],
+  )
+
   return (
     <div className="specimen-detail">
       <header className="specimen-detail__header">
@@ -43,6 +53,11 @@ export function SpecimenDetail() {
         </p>
         <h1 className="display specimen-detail__title">{specimen.title}</h1>
         <p className="specimen-detail__blurb">{specimen.blurb}</p>
+        <div className="specimen-detail__copy">
+          <CopyButton text={prompts.full} mode="full" label="Full prompt" />
+          <CopyButton text={prompts.code} mode="code" />
+          <CopyButton text={prompts.contract} mode="contract" />
+        </div>
       </header>
       <PreviewFrame
         ref={frameRef}
