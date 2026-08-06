@@ -1,0 +1,8 @@
+{
+  "name": "16-step-sequencer-chase",
+  "ref": "SPX-3821",
+  "title": "16-Step Sequencer Chase",
+  "mode": "tuner",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

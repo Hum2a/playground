@@ -559,4 +559,5 @@ export const specimenOrder: string[] = [
   'pedalboard-signal-chain',
   'oscillator-wave-morph',
   'arpeggiator-step-chase',
+  '16-step-sequencer-chase',
 ]
