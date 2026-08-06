@@ -1,0 +1,25 @@
+{
+  "name": "network-lost-takeover",
+  "ref": "SPX-3441",
+  "ps": "PS-135",
+  "title": "Network Lost Takeover",
+  "palette": {
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "blue": "#2E90FF",
+    "blueLight": "#7EB6FF",
+    "panel": "#121820",
+    "panel2": "#1a2330",
+    "rule": "#243044",
+    "pewter": "#8a9bb0"
+  },
+  "behaviour": "Content scale 0.88 + blur; offline panel opacity 1.",
+  "trigger": "LOSE CONNECTION / RETRY",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "End states remain; transitions and animations removed"
+  }
+}

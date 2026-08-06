@@ -286,6 +286,7 @@ import { nearbyDeviceDiscovery } from './nearby-device-discovery/entry'
 import { nearbyFileTransfer } from './nearby-file-transfer/entry'
 import { neighbourPushOut } from './neighbour-push-out/entry'
 import { networkLostOverlay } from './network-lost-overlay/entry'
+import { networkLostTakeover } from './network-lost-takeover/entry'
 import { networkScan360 } from './network-scan-360/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { nextEpisodeCountdown } from './next-episode-countdown/entry'
@@ -808,6 +809,7 @@ export const specimens: Specimen[] = [
   nearbyFileTransfer,
   neighbourPushOut,
   networkLostOverlay,
+  networkLostTakeover,
   networkScan360,
   newspaperHeadlineDrop,
   nextEpisodeCountdown,
