@@ -337,7 +337,7 @@ chronology and information priority.
 
 # 15. Markets / Business Desk
 
-- [ ] **NEWS-117** · `SPX-3639` · ★★★★★ **Market Ticker** — Compact symbols and values move
+- [x] **NEWS-117** · `SPX-3639` · ★★★★★ **Market Ticker** — Compact symbols and values move
     through a financial-news ticker.
 - [ ] **NEWS-118** · `SPX-3640` · ★★★★☆ **Price Change Tick** — A value updates with directional
     numeric motion.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-117 | SPX-3639 | `market-ticker` | Market Ticker |
 | NEWS-111 | SPX-3633 | `race-called-stamp` | Race Called Stamp |
 | NEWS-110 | SPX-3632 | `map-result-fill` | Map Result Fill |
 | NEWS-109 | SPX-3631 | `seat-count-tally` | Seat Count Tally |
@@ -726,12 +727,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **47 / 237** complete.
+- Progress: **48 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 47 |
-| Open | 190 |
+| Done | 48 |
+| Open | 189 |
 
 ## Core first-wave / build queue
 
@@ -782,7 +783,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-109** · `SPX-3631` · **Seat Count Tally** · `seat-count-tally`
 - [x] **NEWS-110** · `SPX-3632` · **Map Result Fill** · `map-result-fill`
 - [x] **NEWS-111** · `SPX-3633` · **Race Called Stamp** · `race-called-stamp`
-- [ ] **NEWS-117** · `SPX-3639` · **Market Ticker** · scaffold `market-ticker`
+- [x] **NEWS-117** · `SPX-3639` · **Market Ticker** · `market-ticker`
 - [ ] **NEWS-124** · `SPX-3646` · **Photo Lead Expand** · scaffold `photo-lead-expand`
 - [ ] **NEWS-126** · `SPX-3648` · **Contact Sheet Focus** · scaffold `contact-sheet-focus`
 
