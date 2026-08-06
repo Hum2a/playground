@@ -1,0 +1,185 @@
+
+/* Portable PlayStation specimen — palette contract. */
+
+.csp {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
+  background: var(--ps-ink);
+  color: var(--ps-chalk);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.csp *,
+.csp *::before,
+.csp *::after {
+  box-sizing: border-box;
+}
+
+.csp__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.csp__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ps-sky);
+}
+
+.csp__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgb(46 144 255 / 0.35);
+  background: rgb(244 246 248 / 0.03);
+}
+
+.csp__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--ps-chalk);
+}
+
+.csp__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgb(244 246 248 / 0.55);
+  text-align: center;
+}
+
+.csp__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.csp__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgb(244 246 248 / 0.35);
+  background: transparent;
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.csp__btn--primary {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.14);
+}
+
+.csp__btn:hover:not(:disabled) {
+  border-color: var(--ps-sky);
+}
+
+.csp__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.csp__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.csp__sync-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+}
+
+.csp__node {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--ps-sky);
+}
+
+.csp__track {
+  position: relative;
+  height: 8px;
+  background: rgb(244 246 248 / 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.csp__sync-beam {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  margin-left: -12px;
+  background: var(--ps-blue);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgb(46 144 255 / 0.6);
+  transition: left 50ms linear;
+}
+
+.csp[data-phase='synced'] .csp__sync-beam {
+  left: 100%;
+  background: var(--ps-sky);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .csp__ring-track,
+  .csp__ring-fill,
+  .csp__pulse,
+  .csp__wave,
+  .csp__sync-beam,
+  .csp__morph,
+  .csp__fill,
+  .csp__notch-glow {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .csp__ring-track,
+html[data-force-reduced-motion='true'] .csp__ring-fill,
+html[data-force-reduced-motion='true'] .csp__pulse,
+html[data-force-reduced-motion='true'] .csp__wave,
+html[data-force-reduced-motion='true'] .csp__sync-beam,
+html[data-force-reduced-motion='true'] .csp__morph,
+html[data-force-reduced-motion='true'] .csp__fill,
+html[data-force-reduced-motion='true'] .csp__notch-glow {
+  transition: none !important;
+  animation: none !important;
+}

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **27 / 216** complete.
+- Progress: **28 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 189 |
+| Done | 28 |
+| Open | 188 |
 
 ## Visual grammar
 
@@ -59,6 +59,7 @@
 | PS-058 | `SPX-3364` | `adaptive-trigger-meter` | Adaptive Trigger Meter |
 | PS-059 | `SPX-3365` | `haptic-pulse-visualizer` | Haptic Pulse Visualizer |
 | PS-063 | `SPX-3369` | `trigger-breakpoint-confirm` | Trigger Breakpoint Confirm |
+| PS-140 | `SPX-3446` | `cloud-sync-progress` | Cloud Sync Progress |
 
 ## Core first-wave
 
@@ -91,7 +92,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-058** · `SPX-3364` · **Adaptive Trigger Meter** — dualsense-controller-feedback-visuals
 - [x] **PS-059** · `SPX-3365` · **Haptic Pulse Visualizer** — dualsense-controller-feedback-visuals
 - [x] **PS-063** · `SPX-3369` · **Trigger Breakpoint Confirm** — dualsense-controller-feedback-visuals
-- [ ] **PS-140** · `SPX-3446` · **Cloud Sync Progress** — network-connectivity
+- [x] **PS-140** · `SPX-3446` · **Cloud Sync Progress** — network-connectivity
 - [ ] **PS-146** · `SPX-3452` · **Save Conflict Compare** — save-data-cloud
 - [ ] **PS-083** · `SPX-3389` · **Purchase Confirm Hold** — playstation-store-commerce
 - [ ] **PS-021** · `SPX-3327` · **Resume-from-Rest Wake** — console-boot-system-identity
@@ -311,7 +312,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-137** · `SPX-3443` · **Latency Meter Escalation** — Connection quality moves through stable/warning/critical bands.
 - [ ] **PS-138** · `SPX-3444` · **Wi-Fi Signal Acquire** — Signal arcs build as connection establishes.
 - [ ] **PS-139** · `SPX-3445` · **Party Connection Retry** — Social session error transitions into reconnection progress.
-- [ ] **PS-140** · `SPX-3446` · **Cloud Sync Progress** — Local and cloud nodes exchange a determinate sync signal.
+- [x] **PS-140** · `SPX-3446` · **Cloud Sync Progress** — Local and cloud nodes exchange a determinate sync signal.
 - [ ] **PS-141** · `SPX-3447` · **Cloud Conflict Reveal** — Two save states expand into a clear conflict comparison.
 
 ## Save Data / Cloud

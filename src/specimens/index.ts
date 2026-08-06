@@ -81,6 +81,7 @@ import { clipToTitleHandoff } from './clip-to-title-handoff/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
 import { cloneFailurePop } from './clone-failure-pop/entry'
 import { cloneMergeResult } from './clone-merge-result/entry'
+import { cloudSyncProgress } from './cloud-sync-progress/entry'
 import { collapsingAppBar } from './collapsing-app-bar/entry'
 import { collectiveCiDeployment } from './collective-ci-deployment/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
@@ -595,6 +596,7 @@ export const specimens: Specimen[] = [
   clockHandWipe,
   cloneFailurePop,
   cloneMergeResult,
+  cloudSyncProgress,
   collapsingAppBar,
   collectiveCiDeployment,
   comicCardSelection,
