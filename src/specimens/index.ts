@@ -105,6 +105,7 @@ import { levelUpOverflow } from './level-up-overflow/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
+import { listToIconViewMorph } from './list-to-icon-view-morph/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
@@ -334,6 +335,7 @@ export const specimens: Specimen[] = [
   linkedFusionMerge,
   linkTradeTransfer,
   liquidSplitTransition,
+  listToIconViewMorph,
   lockedChainBreak,
   longPressLift,
   mangaCutInNotification,

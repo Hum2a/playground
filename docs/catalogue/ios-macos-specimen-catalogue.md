@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **43 / 258** complete.
+- Progress: **44 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 43 |
-| Open | 215 |
+| Done | 44 |
+| Open | 214 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-164 | `SPX-1463` | `list-to-icon-view-morph` | List-to-Icon View Morph |
 | IOS-175 | `SPX-1474` | `volume-brightness-hud` | Volume/Brightness HUD |
 | IOS-179 | `SPX-1478` | `now-playing-expansion` | Now Playing Expansion |
 | IOS-178 | `SPX-1477` | `play-pause-glyph-morph` | Play/Pause Glyph Morph |
@@ -324,7 +325,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-161** · `SPX-1460` · **Quick Look Dismiss** — preview collapses back toward the selected file.
 - [ ] **IOS-162** · `SPX-1461` · **File Copy Progress Collapse** — active copy operation condenses into a compact progress indicator.
 - [ ] **IOS-163** · `SPX-1462` · **File Conflict Decision** — duplicate/conflict state presents two competing outcomes and resolves one.
-- [ ] **IOS-164** · `SPX-1463` · **List-to-Icon View Morph** — same file set reorganises between linear rows and spatial grid while preserving identities.
+- [x] **IOS-164** · `SPX-1463` · **List-to-Icon View Morph** — same file set reorganises between linear rows and spatial grid while preserving identities.
 - [ ] **IOS-165** · `SPX-1464` · **Column Browser Advance** — selecting a folder populates the next hierarchical column.
 - [ ] **IOS-166** · `SPX-1465` · **Sidebar Location Handoff** — selected location changes while content plane updates independently.
 - [ ] **IOS-167** · `SPX-1466` · **File Rename Focus** — static filename becomes an editable focused token without moving the file itself.

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/list-to-icon-view-morph.schema.json",
+  "title": "ListToIconViewMorph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "layout", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "list-to-icon-view-morph" },
+    "intent": {
+      "type": "string",
+      "const": "The same six files reorganise between list and icon-grid representations while preserving item identity."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["files"],
+      "properties": {
+        "files": {
+          "type": "array",
+          "const": ["ALPHA.MD", "BETA.PDF", "GAMMA.PNG", "DELTA.JSON", "EPSILON.TXT", "ZETA.CSV"]
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["listRowHeightPx", "gridCellWidthPx", "gridCellHeightPx", "gridColumns", "gridRows"],
+      "properties": {
+        "listRowHeightPx": { "type": "number", "const": 44 },
+        "gridCellWidthPx": { "type": "number", "const": 116 },
+        "gridCellHeightPx": { "type": "number", "const": 104 },
+        "gridColumns": { "type": "number", "const": 3 },
+        "gridRows": { "type": "number", "const": 2 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["morphMs", "glyphStartPx", "glyphEndPx", "metaCollapsePct"],
+      "properties": {
+        "morphMs": { "type": "number", "const": 420 },
+        "glyphStartPx": { "type": "number", "const": 24 },
+        "glyphEndPx": { "type": "number", "const": 42 },
+        "metaCollapsePct": { "type": "number", "const": 35 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantRelayout", "triggers"],
+      "properties": {
+        "instantRelayout": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "item"],
+      "properties": {
+        "root": { "type": "string", "const": "ltv" },
+        "item": { "type": "string", "const": "ltv__item" }
+      }
+    }
+  }
+}
