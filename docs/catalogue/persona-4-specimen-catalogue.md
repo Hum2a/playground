@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 191** complete.
+- Progress: **17 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 175 |
+| Done | 17 |
+| Open | 174 |
 
 ## Visual grammar
 
@@ -50,6 +50,7 @@
 | P4-036 | `SPX-2954` | `deduction-lock-in` | Deduction Lock-In |
 | P4-040 | `SPX-2958` | `timeline-reconstruction` | Timeline Reconstruction |
 | P4-156 | `SPX-3074` | `classified-dossier-reveal` | Classified Dossier Reveal |
+| P4-157 | `SPX-3075` | `fingerprint-scan-match` | Fingerprint Scan Match |
 
 ## Core first-wave
 
@@ -71,7 +72,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-036** · `SPX-2954` · **Deduction Lock-In** — investigation-evidence
 - [x] **P4-040** · `SPX-2958` · **Timeline Reconstruction** — investigation-evidence
 - [x] **P4-156** · `SPX-3074` · **Classified Dossier Reveal** — mystery-thriller
-- [ ] **P4-157** · `SPX-3075` · **Fingerprint Scan Match** — mystery-thriller
+- [x] **P4-157** · `SPX-3075` · **Fingerprint Scan Match** — mystery-thriller
 - [ ] **P4-043** · `SPX-2961` · **Redaction Reveal** — investigation-evidence
 - [ ] **P4-170** · `SPX-3088` · **Case Solved Completion** — notifications-errors-success
 - [ ] **P4-037** · `SPX-2955` · **False Lead Strikeout** — investigation-evidence
@@ -316,7 +317,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 ## Mystery / Thriller
 
 - [x] **P4-156** · `SPX-3074` · **Classified Dossier Reveal** — A locked case file removes redactions after verification.
-- [ ] **P4-157** · `SPX-3075` · **Fingerprint Scan Match** — Abstract print-like lines align into match/no-match.
+- [x] **P4-157** · `SPX-3075` · **Fingerprint Scan Match** — Abstract print-like lines align into match/no-match.
 - [ ] **P4-158** · `SPX-3076` · **Evidence Stamp** — A clue receives a CASE EVIDENCE-style original stamp.
 - [ ] **P4-159** · `SPX-3077` · **Suspect Lineup Focus** — Selection brackets move between candidate cards.
 - [ ] **P4-160** · `SPX-3078` · **Case Status Escalation** — Open case moves from routine to urgent visual treatment.

@@ -136,6 +136,7 @@ import { fabToComposerTransform } from './fab-to-composer-transform/entry'
 import { fadeThrough } from './fade-through/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { fingerprintAcquisitionField } from './fingerprint-acquisition-field/entry'
+import { fingerprintScanMatch } from './fingerprint-scan-match/entry'
 import { fireballCommit } from './fireball-commit/entry'
 import { floatingLabelLift } from './floating-label-lift/entry'
 import { focusModeActivation } from './focus-mode-activation/entry'
@@ -542,6 +543,7 @@ export const specimens: Specimen[] = [
   fadeThrough,
   failureShatter,
   fingerprintAcquisitionField,
+  fingerprintScanMatch,
   fireballCommit,
   floatingLabelLift,
   focusModeActivation,

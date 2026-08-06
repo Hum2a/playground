@@ -1,0 +1,24 @@
+/* fingerprint-scan-match */
+.fsm{--p4-yellow:#F5C400;--p4-black:#101010;--p4-cream:#F7F3E8;--p4-gray:#E8E8E8;box-sizing:border-box;position:relative;width:100%;height:100%;min-height:240px;padding:0.65rem;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--p4-cream);background:var(--p4-black);}
+.fsm *,.fsm *::before,.fsm *::after{box-sizing:border-box}
+.fsm__panels{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-top:0.5rem}
+.fsm__print{width:5.5rem;height:7rem;border:2px solid var(--p4-gray);padding:0.35rem;position:relative}
+.fsm__svg{width:100%;height:100%}
+.fsm__ridge{fill:none;stroke:var(--p4-gray);stroke-width:2.5;stroke-linecap:round;transition:stroke 320ms ease,transform 480ms ease}
+.fsm__svg--offset .fsm__ridge{transform:translate(3px,2px)}
+.fsm__panel-label{position:absolute;bottom:0.2rem;left:0.25rem;font-size:0.45rem;font-weight:800;letter-spacing:0.1em;color:var(--p4-gray)}
+.fsm__scan{width:2px;height:7rem;background:var(--p4-yellow);opacity:0;transform:scaleY(0);transform-origin:top}
+.fsm[data-state="scanning"] .fsm__scan{opacity:1;animation:fsm-scan 900ms ease forwards}
+.fsm[data-state="match"] .fsm__ridge,.fsm[data-state="scanning"] .fsm__ridge{stroke:var(--p4-yellow)}
+.fsm[data-state="match"] .fsm__svg--offset .fsm__ridge{transform:translate(0,0)}
+.fsm__result{margin:0.65rem 0 0;text-align:center;font-size:1.1rem;font-weight:900;letter-spacing:0.2em;color:var(--p4-yellow);opacity:0;transform:scale(0.9)}
+.fsm[data-state="match"] .fsm__result{opacity:1;transform:scale(1);transition:opacity 320ms ease,transform 320ms ease}
+@keyframes fsm-scan{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+
+.specimen__demo { position:absolute;left:0.5rem;bottom:0.4rem;z-index:10;display:flex;gap:0.35rem; }
+.specimen__demo-btn { padding:0.28rem 0.5rem;border:2px solid var(--p4-yellow);background:var(--p4-yellow);color:var(--p4-black);font:800 0.58rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer; }
+.specimen__demo-btn:focus-visible { outline:2px solid var(--p4-cream);outline-offset:2px; }
+.specimen__status { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+
+@media (prefers-reduced-motion: reduce) { .spec *, .spec * { animation:none!important;transition:none!important; } }
+[data-force-reduced-motion="true"] .spec *, [data-force-reduced-motion="true"] .spec * { animation:none!important;transition:none!important; }
