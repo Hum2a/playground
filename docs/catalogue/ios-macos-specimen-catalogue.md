@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **38 / 258** complete.
+- Progress: **39 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 220 |
+| Done | 39 |
+| Open | 219 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-051 | `SPX-1350` | `window-minimise-funnel` | Window Minimise Funnel |
 | IOS-055 | `SPX-1354` | `window-snap-preview` | Window Snap Preview |
 | IOS-156 | `SPX-1455` | `invalid-drop-return` | Invalid Drop Return |
 | IOS-153 | `SPX-1452` | `multi-item-drag-stack` | Multi-Item Drag Stack |
@@ -170,7 +171,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [x] **IOS-049** · `SPX-1348` · **Mission Control Spread** — overlapping windows separate into a readable overview while preserving relative identity.
 - [ ] **IOS-050** · `SPX-1349` · **Mission Control Restore** — overview windows converge back into their original workspace positions.
-- [ ] **IOS-051** · `SPX-1350` · **Window Minimise Funnel** — rectangular window collapses toward a small destination while preserving spatial continuity.
+- [x] **IOS-051** · `SPX-1350` · **Window Minimise Funnel** — rectangular window collapses toward a small destination while preserving spatial continuity.
 - [ ] **IOS-052** · `SPX-1351` · **Window Maximise / Zoom** — window transitions between bounded and expanded states with continuous geometry.
 - [ ] **IOS-053** · `SPX-1352` · **Desktop Space Swipe** — one workspace exits while another enters as a coherent spatial plane.
 - [x] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — foreground workspace swaps with a staged background group using layered depth.

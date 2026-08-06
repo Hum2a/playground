@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/window-minimise-funnel.schema.json",
+  "title": "WindowMinimiseFunnel",
+  "description": "Portable contract for window minimise funnel animation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "minimise",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "window-minimise-funnel" },
+    "intent": {
+      "type": "string",
+      "const": "Window funnels into dock token over 520ms; TERMINAL identity persists; RESTORE reconstructs full window."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "const": "TERMINAL" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d1118" },
+        "panel": { "type": "string", "const": "#1a2030" },
+        "line": { "type": "string", "const": "#2a3348" },
+        "muted": { "type": "string", "const": "#6d7a90" },
+        "cream": { "type": "string", "const": "#e6ecf4" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["windowWidthPx", "windowHeightPx", "tokenWidthPx", "tokenHeightPx"],
+      "properties": {
+        "windowWidthPx": { "type": "number", "const": 380 },
+        "windowHeightPx": { "type": "number", "const": 250 },
+        "tokenWidthPx": { "type": "number", "const": 52 },
+        "tokenHeightPx": { "type": "number", "const": 34 }
+      }
+    },
+    "minimise": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "contentClipProgress"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 520 },
+        "contentClipProgress": { "type": "number", "const": 0.7 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "window", "token"],
+      "properties": {
+        "root": { "type": "string", "const": "wmf" },
+        "window": { "type": "string", "const": "wmf__window" },
+        "token": { "type": "string", "const": "wmf__token" }
+      }
+    }
+  }
+}
