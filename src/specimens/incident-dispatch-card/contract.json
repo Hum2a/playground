@@ -1,0 +1,27 @@
+{
+  "name": "incident-dispatch-card",
+  "intent": "Urgent incident card tears into calm ops dashboard.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "slideMs": 660,
+    "settleMs": 1310
+  },
+  "api": {
+    "run": "runIncidentDispatch()",
+    "reset": "resetIncidentDispatch()",
+    "replay": "replayIncidentDispatch()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Card appears in final position immediately"
+  }
+}

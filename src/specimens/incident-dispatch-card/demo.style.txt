@@ -1,0 +1,180 @@
+/* incident-dispatch-card — portable specimen styles */
+
+.idc {
+  --idc-primary: #38a3ff;
+  --idc-ink: #101820;
+  --idc-paper: #f4f7fa;
+  --idc-accent: #ff4d35;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 260px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--idc-ink);
+  background: var(--idc-paper);
+  border: 2px solid var(--idc-ink);
+}
+
+.idc *,
+.idc *::before,
+.idc *::after {
+  box-sizing: border-box;
+}
+
+.idc__dashboard {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: opacity 280ms ease, filter 280ms ease;
+}
+
+.idc--dispatch .idc__dashboard {
+  opacity: 0.35;
+  filter: saturate(0.5);
+}
+
+.idc__label {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.idc__status-line {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.idc__meta {
+  margin: 0;
+  font-size: 0.68rem;
+  color: color-mix(in srgb, var(--idc-ink) 65%, transparent);
+}
+
+.idc__trigger {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--idc-ink);
+  background: transparent;
+  color: var(--idc-ink);
+  font: 800 0.6rem/1.2 inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.idc__trigger:focus {
+  outline: none;
+}
+
+.idc__trigger:focus-visible {
+  outline: 2px solid var(--idc-primary);
+  outline-offset: 3px;
+}
+
+.idc__trigger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.idc__card {
+  position: absolute;
+  top: 12px;
+  right: -110%;
+  width: 72%;
+  padding: 0.75rem;
+  border: 3px solid var(--idc-ink);
+  background: var(--idc-accent);
+  color: var(--idc-paper);
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  transform: rotate(4deg);
+  transition:
+    right 660ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 660ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+.idc__card[hidden] {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.idc--dispatch .idc__card {
+  visibility: visible;
+  right: 10px;
+  transform: rotate(-2deg);
+}
+
+.idc__tear {
+  position: absolute;
+  top: -6px;
+  left: 18%;
+  width: 42px;
+  height: 14px;
+  background: var(--idc-paper);
+  clip-path: polygon(0 100%, 20% 0, 45% 80%, 70% 10%, 100% 100%);
+}
+
+.idc__card-tag {
+  margin: 0 0 0.25rem;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.idc__card-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.idc__card-priority {
+  margin: 0.35rem 0 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.idc__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .idc__dashboard,
+  .idc__card {
+    transition: none !important;
+  }
+
+  .idc--dispatch .idc__card {
+    right: 10px;
+    transform: rotate(-2deg);
+  }
+}
+
+[data-force-reduced-motion='true'] .idc__dashboard,
+[data-force-reduced-motion='true'] .idc__card {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .idc--dispatch .idc__card {
+  right: 10px;
+  transform: rotate(-2deg);
+}
