@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **8 / 258** complete.
+- Progress: **9 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 8 |
-| Open | 250 |
+| Done | 9 |
+| Open | 249 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-049 | `SPX-1348` | `mission-control-spread` | Mission Control Spread |
 | IOS-040 | `SPX-1339` | `dock-launch-bounce` | Dock Launch Bounce |
 | IOS-039 | `SPX-1338` | `dock-magnification` | Dock Magnification |
 | IOS-029 | `SPX-1328` | `dual-activity-split` | Dual Activity Split |
@@ -53,7 +54,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-029** · `SPX-1328` · **Dual Activity Split** — dynamic-island-live-activity-inspired
 - [x] **IOS-039** · `SPX-1338` · **Dock Magnification** — dock-macos-application-launching
 - [x] **IOS-040** · `SPX-1339` · **Dock Launch Bounce** — dock-macos-application-launching
-- [ ] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
+- [x] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
 - [ ] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
 - [x] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — spring-rubber-banding-physical-response
 - [ ] **IOS-072** · `SPX-1371` · **Large Title Collapse** — scroll-content-physics
@@ -138,7 +139,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Windows, Mission Control & Desktop Space
 
-- [ ] **IOS-049** · `SPX-1348` · **Mission Control Spread** — overlapping windows separate into a readable overview while preserving relative identity.
+- [x] **IOS-049** · `SPX-1348` · **Mission Control Spread** — overlapping windows separate into a readable overview while preserving relative identity.
 - [ ] **IOS-050** · `SPX-1349` · **Mission Control Restore** — overview windows converge back into their original workspace positions.
 - [ ] **IOS-051** · `SPX-1350` · **Window Minimise Funnel** — rectangular window collapses toward a small destination while preserving spatial continuity.
 - [ ] **IOS-052** · `SPX-1351` · **Window Maximise / Zoom** — window transitions between bounded and expanded states with continuous geometry.

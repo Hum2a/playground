@@ -99,6 +99,7 @@ import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { missionControlSpread } from './mission-control-spread/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
@@ -293,6 +294,7 @@ export const specimens: Specimen[] = [
   memoryFragmentReveal,
   midnightClockTransition,
   misprintNotification,
+  missionControlSpread,
   monochromeBattleSlideIn,
   moonPhaseProgress,
   moveLearned,

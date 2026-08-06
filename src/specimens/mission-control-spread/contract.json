@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/mission-control-spread.schema.json",
+  "title": "MissionControlSpread",
+  "description": "Portable contract for overlapping desktop windows spreading into a Mission Control–style overview with EDITOR restore.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "window",
+    "desktop",
+    "overview",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "mission-control-spread" },
+    "intent": {
+      "type": "string",
+      "const": "Five overlapping desktop windows spread into a readable overview with minimum 18px separation; EDITOR restore returns exact desktop coordinates and brings EDITOR frontmost."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["windows", "spaceLabel", "trigger"],
+      "properties": {
+        "windows": {
+          "type": "array",
+          "const": ["EDITOR", "TERMINAL", "DOCS", "CHAT", "PREVIEW"]
+        },
+        "spaceLabel": { "type": "string", "const": "SPACE // 01" },
+        "trigger": { "type": "string", "const": "OVERVIEW" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "cream", "muted", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d1118" },
+        "panel": { "type": "string", "const": "#161c26" },
+        "line": { "type": "string", "const": "#2a3342" },
+        "cream": { "type": "string", "const": "#e6eaef" },
+        "muted": { "type": "string", "const": "#6d7786" },
+        "accent": { "type": "string", "const": "#5a9fd4" }
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "count"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 200 },
+        "heightPx": { "type": "number", "const": 140 },
+        "count": { "type": "number", "const": 5 }
+      }
+    },
+    "desktop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["editor", "terminal", "docs", "chat", "preview"],
+      "properties": {
+        "editor": { "type": "object", "const": { "x": 48, "y": 36, "z": 3 } },
+        "terminal": { "type": "object", "const": { "x": 168, "y": 68, "z": 1 } },
+        "docs": { "type": "object", "const": { "x": 24, "y": 112, "z": 2 } },
+        "chat": { "type": "object", "const": { "x": 210, "y": 52, "z": 4 } },
+        "preview": { "type": "object", "const": { "x": 108, "y": 156, "z": 5 } }
+      }
+    },
+    "overview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minSeparationPx", "slots"],
+      "properties": {
+        "minSeparationPx": { "type": "number", "const": 18 },
+        "slots": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["editor", "terminal", "docs", "chat", "preview"],
+          "properties": {
+            "editor": { "type": "object", "const": { "x": 22, "y": 22, "scale": 0.78, "z": 1 } },
+            "terminal": { "type": "object", "const": { "x": 196, "y": 22, "scale": 0.72, "z": 2 } },
+            "docs": { "type": "object", "const": { "x": 22, "y": 149, "scale": 0.72, "z": 3 } },
+            "chat": { "type": "object", "const": { "x": 196, "y": 149, "scale": 0.72, "z": 4 } },
+            "preview": { "type": "object", "const": { "x": 109, "y": 276, "scale": 0.78, "z": 5 } }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overviewMs", "restoreMs", "spaceLabelAtProgress", "noFadeOut"],
+      "properties": {
+        "overviewMs": { "type": "number", "const": 520 },
+        "restoreMs": { "type": "number", "const": 460 },
+        "spaceLabelAtProgress": { "type": "number", "const": 0.6 },
+        "noFadeOut": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overviewEditorSelectable", "politeStatus"],
+      "properties": {
+        "overviewEditorSelectable": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLayoutSwap", "triggers"],
+      "properties": {
+        "instantLayoutSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "desktop", "window", "space"],
+      "properties": {
+        "root": { "type": "string", "const": "mcs" },
+        "desktop": { "type": "string", "const": "mcs__desktop" },
+        "window": { "type": "string", "const": "mcs__window" },
+        "space": { "type": "string", "const": "mcs__space" }
+      }
+    }
+  }
+}
