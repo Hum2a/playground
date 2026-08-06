@@ -1,0 +1,327 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/torn-edge-drawer.schema.json",
+  "title": "TornEdgeDrawer",
+  "description": "Portable visual/component contract for a Persona-adjacent torn-paper disclosure drawer. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "clipPath",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "torn-edge-drawer" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Irregular torn-paper side drawer that drags a printed panel in from the right with an offset black backing silhouette."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kicker", "open", "title", "body", "ref", "close"],
+      "properties": {
+        "kicker": { "type": "string", "const": "PROJECT ARCHIVE" },
+        "open": { "type": "string", "const": "OPEN INFO" },
+        "title": { "type": "string", "const": "DETAILS" },
+        "body": { "type": "string", "const": "Portable motion artifact" },
+        "ref": { "type": "string", "const": "REF // 05" },
+        "close": { "type": "string", "const": "CLOSE" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direction",
+        "width",
+        "height",
+        "position",
+        "backingOffsetPx",
+        "borderRadius",
+        "parentRequirements"
+      ],
+      "properties": {
+        "direction": { "type": "string", "const": "right" },
+        "width": { "type": "string", "const": "min(78%, 340px)" },
+        "widthNarrow": { "type": "string", "const": "min(88%, 340px)" },
+        "height": { "type": "string", "const": "100%" },
+        "position": { "type": "string", "const": "absolute" },
+        "top": { "type": "number", "const": 0 },
+        "right": { "type": "number", "const": 0 },
+        "backingOffsetPx": { "type": "number", "const": 8 },
+        "borderRadius": { "type": "number", "const": 0 },
+        "hostShiftOpenPx": { "type": "number", "const": -6 },
+        "parentRequirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "examples": [["position:relative", "overflow:hidden"]]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper", "ink", "red"],
+      "properties": {
+        "paper": { "type": "string", "const": "#f2eee3" },
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#d71920" }
+      }
+    },
+    "clipPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper", "backing", "zigZagPointCount"],
+      "properties": {
+        "paper": {
+          "type": "string",
+          "const": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 3% 92%, 0% 84%, 4% 72%, 1% 58%, 5% 44%, 0% 30%, 4% 16%, 1% 6%)"
+        },
+        "backing": {
+          "type": "string",
+          "const": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 4% 93%, 1% 85%, 5% 73%, 0% 59%, 6% 45%, 1% 31%, 5% 17%, 0% 7%)"
+        },
+        "zigZagPointCount": { "type": "integer", "const": 8 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "openMs",
+        "closeMs",
+        "backingLagMs",
+        "edgeMs",
+        "paperOvershoot",
+        "chunkTranslatePx"
+      ],
+      "properties": {
+        "openMs": { "type": "number", "const": 520 },
+        "closeMs": { "type": "number", "const": 360 },
+        "backingLagMs": { "type": "number", "const": 35 },
+        "edgeMs": { "type": "number", "const": 120 },
+        "paperDelayMs": { "type": "number", "const": 80 },
+        "paperDurationMs": { "type": "number", "const": 340 },
+        "chunkStartMs": { "type": "number", "const": 320 },
+        "chunkTranslatePx": { "type": "number", "const": 40 },
+        "paperOvershoot": {
+          "type": "object",
+          "properties": {
+            "start": { "type": "string", "const": "110%" },
+            "impact": { "type": "string", "const": "-2%" },
+            "final": { "type": "string", "const": "0" }
+          }
+        },
+        "closeExit": { "type": "string", "const": "112%" },
+        "openEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.2, 1.2, 0.32, 1)"
+        },
+        "closeEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.55, 0.08, 0.75, 0.35)"
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "torn-drawer" },
+            "dataAttr": { "type": "string", "const": "data-torn-drawer" }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disclosureControls",
+        "backingDecorative",
+        "nonModal",
+        "escapeCloses"
+      ],
+      "properties": {
+        "disclosureControls": { "type": "boolean", "const": true },
+        "backingDecorative": { "type": "boolean", "const": true },
+        "nonModal": { "type": "boolean", "const": true },
+        "escapeCloses": { "type": "boolean", "const": true },
+        "panelRole": { "type": "string", "const": "region" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantToggle", "triggers"],
+      "properties": {
+        "instantToggle": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "host",
+        "open",
+        "close",
+        "panel",
+        "edge",
+        "backing",
+        "paper",
+        "chunk",
+        "title",
+        "body",
+        "ref",
+        "phaseOpen",
+        "phaseClosing",
+        "phaseSettled"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "torn-drawer" },
+        "host": { "type": "string", "const": "torn-drawer__host" },
+        "open": { "type": "string", "const": "torn-drawer__open" },
+        "close": { "type": "string", "const": "torn-drawer__close" },
+        "panel": { "type": "string", "const": "torn-drawer__panel" },
+        "edge": { "type": "string", "const": "torn-drawer__edge" },
+        "backing": { "type": "string", "const": "torn-drawer__backing" },
+        "paper": { "type": "string", "const": "torn-drawer__paper" },
+        "chunk": { "type": "string", "const": "torn-drawer__chunk" },
+        "title": { "type": "string", "const": "torn-drawer__title" },
+        "body": { "type": "string", "const": "torn-drawer__body" },
+        "ref": { "type": "string", "const": "torn-drawer__ref" },
+        "phaseOpen": { "type": "string", "const": "torn-drawer--open" },
+        "phaseClosing": { "type": "string", "const": "torn-drawer--closing" },
+        "phaseSettled": { "type": "string", "const": "torn-drawer--settled" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "open": { "type": "string", "const": "openTornDrawer" },
+        "close": { "type": "string", "const": "closeTornDrawer" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "noDomAccumulation": { "type": "boolean", "const": true }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "torn-edge-drawer",
+      "intent": "Irregular torn-paper side drawer that drags a printed panel in from the right with an offset black backing silhouette.",
+      "copy": {
+        "kicker": "PROJECT ARCHIVE",
+        "open": "OPEN INFO",
+        "title": "DETAILS",
+        "body": "Portable motion artifact",
+        "ref": "REF // 05",
+        "close": "CLOSE"
+      },
+      "layout": {
+        "direction": "right",
+        "width": "min(78%, 340px)",
+        "widthNarrow": "min(88%, 340px)",
+        "height": "100%",
+        "position": "absolute",
+        "top": 0,
+        "right": 0,
+        "backingOffsetPx": 8,
+        "borderRadius": 0,
+        "hostShiftOpenPx": -6,
+        "parentRequirements": ["position:relative", "overflow:hidden"]
+      },
+      "colours": {
+        "paper": "#f2eee3",
+        "ink": "#090909",
+        "red": "#d71920"
+      },
+      "clipPath": {
+        "paper": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 3% 92%, 0% 84%, 4% 72%, 1% 58%, 5% 44%, 0% 30%, 4% 16%, 1% 6%)",
+        "backing": "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 4% 93%, 1% 85%, 5% 73%, 0% 59%, 6% 45%, 1% 31%, 5% 17%, 0% 7%)",
+        "zigZagPointCount": 8
+      },
+      "animation": {
+        "openMs": 520,
+        "closeMs": 360,
+        "backingLagMs": 35,
+        "edgeMs": 120,
+        "paperDelayMs": 80,
+        "paperDurationMs": 340,
+        "chunkStartMs": 320,
+        "chunkTranslatePx": 40,
+        "paperOvershoot": {
+          "start": "110%",
+          "impact": "-2%",
+          "final": "0"
+        },
+        "closeExit": "112%"
+      },
+      "a11y": {
+        "disclosureControls": true,
+        "backingDecorative": true,
+        "nonModal": true,
+        "escapeCloses": true,
+        "panelRole": "region"
+      },
+      "reducedMotion": {
+        "instantToggle": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "torn-drawer",
+        "host": "torn-drawer__host",
+        "open": "torn-drawer__open",
+        "close": "torn-drawer__close",
+        "panel": "torn-drawer__panel",
+        "edge": "torn-drawer__edge",
+        "backing": "torn-drawer__backing",
+        "paper": "torn-drawer__paper",
+        "chunk": "torn-drawer__chunk",
+        "title": "torn-drawer__title",
+        "body": "torn-drawer__body",
+        "ref": "torn-drawer__ref",
+        "phaseOpen": "torn-drawer--open",
+        "phaseClosing": "torn-drawer--closing",
+        "phaseSettled": "torn-drawer--settled"
+      },
+      "behaviour": {
+        "open": "openTornDrawer",
+        "close": "closeTornDrawer",
+        "restartMessageType": "restart",
+        "noDomAccumulation": true
+      }
+    }
+  ]
+}

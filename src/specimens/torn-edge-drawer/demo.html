@@ -1,0 +1,42 @@
+<div class="torn-drawer" data-torn-drawer>
+  <div class="torn-drawer__host" data-td-host>
+    <p class="torn-drawer__kicker">PROJECT ARCHIVE</p>
+    <button
+      type="button"
+      class="torn-drawer__open"
+      data-td-open
+      aria-expanded="false"
+      aria-controls="torn-drawer-panel"
+    >
+      OPEN INFO
+    </button>
+  </div>
+
+  <div
+    class="torn-drawer__panel"
+    id="torn-drawer-panel"
+    role="region"
+    aria-labelledby="torn-drawer-title"
+    data-td-panel
+    hidden
+  >
+    <div class="torn-drawer__edge" data-td-edge aria-hidden="true"></div>
+    <div class="torn-drawer__backing" data-td-backing aria-hidden="true"></div>
+    <div class="torn-drawer__paper" data-td-paper>
+      <div class="torn-drawer__chunk torn-drawer__chunk--title" data-td-chunk>
+        <h2 class="torn-drawer__title" id="torn-drawer-title">DETAILS</h2>
+      </div>
+      <div class="torn-drawer__chunk torn-drawer__chunk--body" data-td-chunk>
+        <p class="torn-drawer__body">Portable motion artifact</p>
+      </div>
+      <div class="torn-drawer__chunk torn-drawer__chunk--ref" data-td-chunk>
+        <p class="torn-drawer__ref">REF // 05</p>
+      </div>
+      <div class="torn-drawer__chunk torn-drawer__chunk--close" data-td-chunk>
+        <button type="button" class="torn-drawer__close" data-td-close>
+          CLOSE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
