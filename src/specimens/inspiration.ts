@@ -83,6 +83,10 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Android',
     works: {},
   },
+  'my-hero-academia': {
+    label: 'My Hero Academia',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},

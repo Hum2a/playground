@@ -111,6 +111,12 @@ Backlog: [`docs/catalogue/ios-macos-specimen-catalogue.md`](catalogue/ios-macos-
 
 Backlog: [`docs/catalogue/android-specimen-catalogue.md`](catalogue/android-specimen-catalogue.md) (`AND-NNN` / `SPX-1558`…`SPX-1974`).
 
+### My Hero Academia (`my-hero-academia`)
+
+*(franchise only so far — manga impact / Quirk activation / analysis / tournament motion language; no anime or manga assets)*
+
+Backlog: [`docs/catalogue/my-hero-academia-specimen-catalogue.md`](catalogue/my-hero-academia-specimen-catalogue.md) (`MHA-NNN` / `SPX-1975`…`SPX-2343`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.
