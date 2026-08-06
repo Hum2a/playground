@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/weakness-highlight-sweep.schema.json",
+  "title": "WeaknessHighlightSweep",
+  "description": "Portable contract for profile weakness sweep highlight.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "weakness-highlight-sweep" },
+    "intent": {
+      "type": "string",
+      "examples": ["Sweep highlights critical weakness sector on profile diagram."]
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "accent"],
+      "properties": {
+        "primary": { "type": "string", "const": "#38A3FF" },
+        "ink": { "type": "string", "const": "#101820" },
+        "paper": { "type": "string", "const": "#F4F7FA" },
+        "accent": { "type": "string", "const": "#FF4D35" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sweepMs", "totalMs"],
+      "properties": {
+        "sweepMs": { "type": "number", "const": 500 },
+        "totalMs": { "type": "number", "const": 950 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantHighlight", "triggers"],
+      "properties": {
+        "instantHighlight": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "sweep", "highlight"],
+      "properties": {
+        "root": { "type": "string", "const": "whs" },
+        "sweep": { "type": "string", "const": "whs__sweep" },
+        "highlight": { "type": "string", "const": "whs__highlight" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "weaknessHighlightSweep" }
+      }
+    }
+  }
+}

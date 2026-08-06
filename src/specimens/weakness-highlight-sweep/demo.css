@@ -1,0 +1,239 @@
+/* SPX-2018 Weakness Highlight Sweep — portable specimen. */
+
+.whs {
+  --whs-primary: #38a3ff;
+  --whs-ink: #101820;
+  --whs-paper: #f4f7fa;
+  --whs-accent: #ff4d35;
+  --whs-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1rem;
+  background: var(--whs-ink);
+  color: var(--whs-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.whs *,
+.whs *::before,
+.whs *::after {
+  box-sizing: border-box;
+}
+
+.whs__diagram {
+  position: relative;
+  width: min(100%, 320px);
+  padding: 1rem;
+  background: var(--whs-paper);
+  color: var(--whs-ink);
+  border: 4px solid var(--whs-ink);
+  clip-path: polygon(2% 0%, 100% 4%, 98% 100%, 0% 96%);
+  overflow: hidden;
+}
+
+.whs__title {
+  margin: 0 0 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  color: var(--whs-primary);
+}
+
+.whs__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.whs__bar {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.whs__bar i {
+  display: block;
+  height: 10px;
+  background: rgb(16 24 32 / 0.12);
+  border: 2px solid var(--whs-ink);
+  position: relative;
+}
+
+.whs__bar i::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--whs-val);
+  background: var(--whs-primary);
+}
+
+.whs__sweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(56 163 255 / 0.45),
+    transparent
+  );
+  opacity: 0;
+  transform: skewX(-12deg);
+}
+
+.whs__highlight {
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  top: 38%;
+  height: 18%;
+  border: 3px solid var(--whs-accent);
+  background: rgb(255 77 53 / 0.15);
+  clip-path: polygon(0% 8%, 100% 0%, 98% 100%, 2% 92%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.whs__run {
+  margin: 0;
+  padding: 0.55rem 1.2rem;
+  border: 3px solid var(--whs-primary);
+  background: var(--whs-ink);
+  color: var(--whs-paper);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+.whs__run:focus-visible {
+  outline: 2px solid var(--whs-primary);
+  outline-offset: 3px;
+}
+
+.whs__status {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgb(244 247 250 / 0.7);
+}
+
+.whs[data-phase="sweep"] .whs__sweep {
+  animation: whs-sweep 500ms var(--whs-ease) forwards;
+  opacity: 1;
+}
+
+.whs[data-phase="sweep"] .whs__highlight {
+  animation: whs-highlight 350ms ease-out 420ms forwards;
+}
+
+.whs[data-phase="sweep"] .whs__bar--weak i::after {
+  animation: whs-weak-pulse 400ms ease-out 500ms forwards;
+}
+
+.whs[data-phase="found"] .whs__highlight {
+  opacity: 1;
+}
+
+.whs[data-phase="found"] .whs__bar--weak i::after {
+  background: var(--whs-accent);
+  width: var(--whs-val);
+}
+
+.whs[data-phase="found"] .whs__bar--weak {
+  color: var(--whs-accent);
+}
+
+@keyframes whs-sweep {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 110%;
+  }
+}
+
+@keyframes whs-highlight {
+  from {
+    opacity: 0;
+    transform: scaleX(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes whs-weak-pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.4);
+  }
+  100% {
+    filter: brightness(1);
+    background: var(--whs-accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whs[data-phase="sweep"] .whs__sweep,
+  .whs[data-phase="sweep"] .whs__highlight,
+  .whs[data-phase="sweep"] .whs__bar--weak i::after {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .whs[data-phase="sweep"] .whs__sweep,
+[data-force-reduced-motion="true"] .whs[data-phase="sweep"] .whs__highlight,
+[data-force-reduced-motion="true"] .whs[data-phase="sweep"] .whs__bar--weak i::after {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whs[data-phase="sweep"] .whs__highlight,
+  .whs[data-phase="found"] .whs__highlight {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .whs[data-phase="sweep"] .whs__bar--weak i::after,
+  .whs[data-phase="found"] .whs__bar--weak i::after {
+    background: var(--whs-accent);
+  }
+
+  .whs[data-phase="sweep"] .whs__sweep {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion="true"] .whs[data-phase="sweep"] .whs__highlight,
+[data-force-reduced-motion="true"] .whs[data-phase="found"] .whs__highlight {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+[data-force-reduced-motion="true"] .whs[data-phase="sweep"] .whs__bar--weak i::after,
+[data-force-reduced-motion="true"] .whs[data-phase="found"] .whs__bar--weak i::after {
+  background: var(--whs-accent);
+}
+
+[data-force-reduced-motion="true"] .whs[data-phase="sweep"] .whs__sweep {
+  opacity: 0;
+}

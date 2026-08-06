@@ -247,6 +247,7 @@ import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { volumeSliderHud } from './volume-slider-hud/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
+import { weaknessHighlightSweep } from './weakness-highlight-sweep/entry'
 import { wiFiSearchingToConnectedMorph } from './wi-fi-searching-to-connected-morph/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
 import { wildEncounterTransition } from './wild-encounter-transition/entry'
@@ -545,6 +546,7 @@ export const specimens: Specimen[] = [
   volumeBrightnessHud,
   volumeSliderHud,
   waterlinePageWipe,
+  weaknessHighlightSweep,
   wiFiSearchingToConnectedMorph,
   widgetResizeMorph,
   wildEncounterTransition,

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 369** complete.
+- Progress: **11 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 359 |
+| Done | 11 |
+| Open | 358 |
 
 ## Visual grammar
 
@@ -42,6 +42,7 @@
 | MHA-027 | `SPX-2001` | `power-threshold-break` | Power Threshold Break |
 | MHA-034 | `SPX-2008` | `branching-energy-surge` | Branching Energy Surge |
 | MHA-043 | `SPX-2017` | `analysis-scribble-reveal` | Analysis Scribble Reveal |
+| MHA-044 | `SPX-2018` | `weakness-highlight-sweep` | Weakness Highlight Sweep |
 
 ## Core first-wave
 
@@ -57,7 +58,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-027** · `SPX-2001` · **Power Threshold Break** — quirk-activation
 - [x] **MHA-034** · `SPX-2008` · **Branching Energy Surge** — one-for-all-style-energy-language
 - [x] **MHA-043** · `SPX-2017` · **Analysis Scribble Reveal** — hero-analysis-notebook-ui
-- [ ] **MHA-044** · `SPX-2018` · **Weakness Highlight Sweep** — hero-analysis-notebook-ui
+- [x] **MHA-044** · `SPX-2018` · **Weakness Highlight Sweep** — hero-analysis-notebook-ui
 - [ ] **MHA-053** · `SPX-2027` · **Training Simulation Start** — u-a-style-training-interface
 - [ ] **MHA-056** · `SPX-2030` · **Performance Meter Burst** — u-a-style-training-interface
 - [ ] **MHA-063** · `SPX-2037` · **Versus Card Collision** — sports-festival-tournament
@@ -135,7 +136,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 ## Hero Analysis / Notebook UI
 
 - [x] **MHA-043** · `SPX-2017` · **Analysis Scribble Reveal** — structured data is rapidly annotated with arrows, circles and handwritten-style marks.
-- [ ] **MHA-044** · `SPX-2018` · **Weakness Highlight Sweep** — analysis pass highlights a critical region in a profile or diagram.
+- [x] **MHA-044** · `SPX-2018` · **Weakness Highlight Sweep** — analysis pass highlights a critical region in a profile or diagram.
 - [ ] **MHA-045** · `SPX-2019` · **Trait Connection Lines** — observations connect to a central subject with animated leader lines.
 - [ ] **MHA-046** · `SPX-2020` · **Rapid Note Stack** — small analytical notes accumulate around a subject in deterministic order.
 - [ ] **MHA-047** · `SPX-2021` · **Margin Annotation Pop** — side note appears with arrow pointing to exact UI region.
