@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/day-change-tear.schema.json",
+  "title": "DayChangeTear",
+  "description": "Portable visual/component contract for a calendar sheet that tears away to reveal the next date underneath. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "tear",
+    "pull",
+    "fragments",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "day-change-tear" },
+    "intent": {
+      "type": "string",
+      "const": "Temporal date transition where the current calendar sheet is physically torn away to reveal the next date already underneath."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dates", "controls"],
+      "properties": {
+        "dates": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["month", "day", "weekday", "announce"]
+          }
+        },
+        "controls": {
+          "type": "object",
+          "required": ["previous", "next"],
+          "properties": {
+            "previous": { "type": "string", "const": "PREVIOUS" },
+            "next": { "type": "string", "const": "NEXT DAY" }
+          }
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper", "black", "red"],
+      "properties": {
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "dayFontPx", "cardClip"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 260 },
+        "heightPx": { "type": "number", "const": 260 },
+        "dayFontPx": { "type": "number", "const": 120 },
+        "cardClip": {
+          "type": "string",
+          "const": "polygon(1.5% 0.5%, 98.5% 0%, 100% 97.5%, 98% 100%, 1% 99%, 0% 2.5%)"
+        }
+      }
+    },
+    "tear": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruptureOrigin", "leftTorn", "rightTorn"],
+      "properties": {
+        "ruptureOrigin": { "type": "string", "const": "50% 18%" },
+        "leftTorn": { "type": "string" },
+        "rightTorn": { "type": "string" }
+      }
+    },
+    "pull": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left", "right", "rightLagMs"],
+      "properties": {
+        "left": {
+          "type": "object",
+          "required": ["translate", "rotateDeg"],
+          "properties": {
+            "translate": { "type": "string", "const": "-85% 35%" },
+            "rotateDeg": { "type": "number", "const": -18 }
+          }
+        },
+        "right": {
+          "type": "object",
+          "required": ["translate", "rotateDeg"],
+          "properties": {
+            "translate": { "type": "string", "const": "90% 45%" },
+            "rotateDeg": { "type": "number", "const": 21 }
+          }
+        },
+        "rightLagMs": { "type": "number", "const": 28 }
+      }
+    },
+    "fragments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "travelPx"],
+      "properties": {
+        "count": { "type": "integer", "const": 4 },
+        "travelPx": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number", "const": 20 },
+            "max": { "type": "number", "const": 45 }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nextTotalMs",
+        "ruptureMs",
+        "tearMs",
+        "pullMs",
+        "settleMs",
+        "previousMs",
+        "underSettleTranslateYPx"
+      ],
+      "properties": {
+        "nextTotalMs": { "type": "number", "const": 760 },
+        "ruptureMs": { "type": "number", "const": 120 },
+        "tearMs": { "type": "number", "const": 200 },
+        "pullMs": { "type": "number", "const": 300 },
+        "settleMs": { "type": "number", "const": 160 },
+        "settleStartMs": { "type": "number", "const": 600 },
+        "previousMs": { "type": "number", "const": 420 },
+        "underSettleTranslateYPx": { "type": "number", "const": 4 },
+        "stripNudgePx": { "type": "number", "const": 2 },
+        "noDomAccumulation": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["singleSemanticDate", "stageDecorative", "liveRegion"],
+      "properties": {
+        "singleSemanticDate": { "type": "boolean", "const": true },
+        "stageDecorative": { "type": "boolean", "const": true },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "stage",
+        "under",
+        "current",
+        "incoming",
+        "halfLeft",
+        "halfRight",
+        "rupture",
+        "frag"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "dct" },
+        "stage": { "type": "string", "const": "dct__stage" },
+        "under": { "type": "string", "const": "dct__sheet--under" },
+        "current": { "type": "string", "const": "dct__sheet--current" },
+        "incoming": { "type": "string", "const": "dct__sheet--incoming" },
+        "halfLeft": { "type": "string", "const": "dct__half--left" },
+        "halfRight": { "type": "string", "const": "dct__half--right" },
+        "rupture": { "type": "string", "const": "dct__rupture" },
+        "frag": { "type": "string", "const": "dct__frag" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "next": { "type": "string", "const": "nextDayTear" },
+        "previous": { "type": "string", "const": "previousDayInsert" },
+        "reset": { "type": "string", "const": "resetDayChange" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "day-change-tear",
+      "intent": "Temporal date transition where the current calendar sheet is physically torn away to reveal the next date already underneath.",
+      "copy": {
+        "dates": [
+          {
+            "month": "AUGUST",
+            "day": "06",
+            "weekday": "THURSDAY",
+            "announce": "Thursday, 6 August"
+          },
+          {
+            "month": "AUGUST",
+            "day": "07",
+            "weekday": "FRIDAY",
+            "announce": "Friday, 7 August"
+          },
+          {
+            "month": "AUGUST",
+            "day": "08",
+            "weekday": "SATURDAY",
+            "announce": "Saturday, 8 August"
+          }
+        ],
+        "controls": {
+          "previous": "PREVIOUS",
+          "next": "NEXT DAY"
+        }
+      },
+      "colours": {
+        "paper": "#f5f1e8",
+        "black": "#090909",
+        "red": "#e60012"
+      },
+      "geometry": {
+        "widthPx": 260,
+        "heightPx": 260,
+        "dayFontPx": 120,
+        "cardClip": "polygon(1.5% 0.5%, 98.5% 0%, 100% 97.5%, 98% 100%, 1% 99%, 0% 2.5%)"
+      },
+      "tear": {
+        "ruptureOrigin": "50% 18%"
+      },
+      "pull": {
+        "left": { "translate": "-85% 35%", "rotateDeg": -18 },
+        "right": { "translate": "90% 45%", "rotateDeg": 21 },
+        "rightLagMs": 28
+      },
+      "fragments": {
+        "count": 4,
+        "travelPx": { "min": 20, "max": 45 }
+      },
+      "animation": {
+        "nextTotalMs": 760,
+        "ruptureMs": 120,
+        "tearMs": 200,
+        "pullMs": 300,
+        "settleMs": 160,
+        "settleStartMs": 600,
+        "previousMs": 420,
+        "underSettleTranslateYPx": 4,
+        "stripNudgePx": 2,
+        "noDomAccumulation": true
+      },
+      "a11y": {
+        "singleSemanticDate": true,
+        "stageDecorative": true,
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "instantSwap": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "dct",
+        "stage": "dct__stage",
+        "under": "dct__sheet--under",
+        "current": "dct__sheet--current",
+        "incoming": "dct__sheet--incoming",
+        "halfLeft": "dct__half--left",
+        "halfRight": "dct__half--right",
+        "rupture": "dct__rupture",
+        "frag": "dct__frag"
+      },
+      "behaviour": {
+        "next": "nextDayTear",
+        "previous": "previousDayInsert",
+        "reset": "resetDayChange",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}
