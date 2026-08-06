@@ -342,6 +342,7 @@ import { timeSkip } from './time-skip/entry'
 import { timelineReconstruction } from './timeline-reconstruction/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { tournamentBracketActivation } from './tournament-bracket-activation/entry'
+import { trackingErrorRecovery } from './tracking-error-recovery/entry'
 import { trainingSimulationStart } from './training-simulation-start/entry'
 import { transformationMorph } from './transformation-morph/entry'
 import { translucentMaterialLift } from './translucent-material-lift/entry'
@@ -758,6 +759,7 @@ export const specimens: Specimen[] = [
   timelineReconstruction,
   tornEdgeDrawer,
   tournamentBracketActivation,
+  trackingErrorRecovery,
   trainingSimulationStart,
   transformationMorph,
   translucentMaterialLift,
