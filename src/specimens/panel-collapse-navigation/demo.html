@@ -1,0 +1,35 @@
+<div class="panel-collapse-demo" data-panel-collapse-demo>
+  <div class="panel-collapse-demo__viewport" data-panel-collapse-viewport>
+    <section class="panel-collapse-demo__state panel-collapse-demo__state--a" data-state="a">
+      <p class="panel-collapse-demo__kicker">SECTION 01</p>
+      <h1 class="panel-collapse-demo__title">CURRENT MATERIAL</h1>
+      <button type="button" class="panel-collapse-demo__btn" data-panel-collapse-trigger data-target="b">
+        CONTINUE
+      </button>
+    </section>
+    <section class="panel-collapse-demo__state panel-collapse-demo__state--b" data-state="b" hidden>
+      <p class="panel-collapse-demo__kicker">SECTION 02</p>
+      <h1 class="panel-collapse-demo__title">NEXT MATERIAL</h1>
+      <button type="button" class="panel-collapse-demo__btn" data-panel-collapse-trigger data-target="a">
+        BACK
+      </button>
+    </section>
+  </div>
+</div>
+
+<div class="panel-collapse" aria-hidden="true" data-panel-collapse>
+  <div class="panel-collapse__wedge panel-collapse__wedge--l"></div>
+  <div class="panel-collapse__wedge panel-collapse__wedge--r"></div>
+
+  <div class="panel-collapse__panel panel-collapse__panel--left">
+    <span class="panel-collapse__accent panel-collapse__accent--l1"></span>
+    <span class="panel-collapse__accent panel-collapse__accent--l2"></span>
+  </div>
+  <div class="panel-collapse__panel panel-collapse__panel--right">
+    <span class="panel-collapse__accent panel-collapse__accent--r1"></span>
+    <span class="panel-collapse__accent panel-collapse__accent--r2"></span>
+    <span class="panel-collapse__accent panel-collapse__accent--r3"></span>
+  </div>
+
+  <p class="panel-collapse__next">NEXT</p>
+</div>

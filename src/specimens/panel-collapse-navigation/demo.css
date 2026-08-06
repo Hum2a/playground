@@ -1,0 +1,476 @@
+/* SPX-021 Panel Collapse Navigation — portable contract. Do not restyle to host tokens. */
+
+.panel-collapse-demo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  overflow: hidden;
+  background: #141414;
+  color: #f5f1e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.panel-collapse-demo__viewport {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  padding: 1.5rem;
+  clip-path: inset(0 0% 0 0%);
+}
+
+.panel-collapse-demo__state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 16rem;
+}
+
+.panel-collapse-demo__state[hidden] {
+  display: none;
+}
+
+.panel-collapse-demo__kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e60012;
+}
+
+.panel-collapse-demo__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 7vw, 2.1rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.panel-collapse-demo__btn {
+  appearance: none;
+  margin-top: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid #f5f1e8;
+  border-radius: 0;
+  background: transparent;
+  color: #f5f1e8;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.panel-collapse-demo__btn:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 3px;
+}
+
+.panel-collapse-demo__btn:hover {
+  background: #f5f1e8;
+  color: #090909;
+}
+
+/* Content genuinely narrows — no opacity fade */
+.panel-collapse-demo--crushing .panel-collapse-demo__viewport {
+  animation: panel-collapse-slit 520ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.panel-collapse-demo--crushing .panel-collapse-demo__state:not([hidden]) {
+  animation: panel-collapse-nudge 120ms steps(2, end) forwards;
+}
+
+.panel-collapse-demo--covered .panel-collapse-demo__viewport {
+  clip-path: inset(0 50% 0 50%);
+  animation: none;
+}
+
+@keyframes panel-collapse-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  70% {
+    transform: translateX(-1px);
+  }
+}
+
+@keyframes panel-collapse-slit {
+  /* 0–120ms anticipation: full width */
+  0%,
+  23.08% {
+    clip-path: inset(0 0% 0 0%);
+  }
+  /* ~350ms into total active crush window → ~23% visible (inset ~38.5% each side) */
+  67.3% {
+    clip-path: inset(0 38.5% 0 38.5%);
+  }
+  /* 430–520ms final crush → ~6px slit */
+  82.7% {
+    clip-path: inset(0 calc(50% - 3px) 0 calc(50% - 3px));
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+  }
+}
+
+/* —— Overlay —— */
+.panel-collapse {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.panel-collapse__wedge {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 42%;
+  background: #e60012;
+  opacity: 0;
+  transform: translateY(-50%);
+  clip-path: polygon(0% 8%, 100% 0%, 100% 100%, 0% 92%);
+}
+
+.panel-collapse__wedge--l {
+  left: 0;
+}
+
+.panel-collapse__wedge--r {
+  right: 0;
+  clip-path: polygon(0% 0%, 100% 10%, 100% 90%, 0% 100%);
+}
+
+.panel-collapse__panel {
+  position: absolute;
+  top: -12%;
+  height: 124%;
+  will-change: transform;
+}
+
+.panel-collapse__panel--left {
+  left: -8%;
+  width: 62%;
+  background: #090909;
+  clip-path: polygon(
+    0% 0%,
+    88% 0%,
+    100% 12%,
+    92% 28%,
+    100% 46%,
+    86% 62%,
+    98% 78%,
+    84% 100%,
+    0% 100%
+  );
+  transform: translate3d(-105%, 0, 0);
+}
+
+.panel-collapse__panel--right {
+  right: -8%;
+  width: 62%;
+  background: #e60012;
+  clip-path: polygon(
+    12% 0%,
+    100% 0%,
+    100% 100%,
+    8% 100%,
+    0% 82%,
+    14% 64%,
+    0% 48%,
+    16% 30%,
+    2% 14%
+  );
+  transform: translate3d(105%, 0, 0);
+}
+
+.panel-collapse__accent {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+
+.panel-collapse__accent--l1 {
+  top: 18%;
+  right: -6%;
+  width: 22%;
+  height: 18%;
+  background: #e60012;
+  clip-path: polygon(0% 20%, 100% 0%, 80% 100%, 0% 100%);
+}
+
+.panel-collapse__accent--l2 {
+  bottom: 12%;
+  right: -4%;
+  width: 16%;
+  height: 22%;
+  background: #f5f1e8;
+  clip-path: polygon(10% 0%, 100% 18%, 100% 100%, 0% 86%);
+}
+
+.panel-collapse__accent--r1 {
+  top: 10%;
+  left: -5%;
+  width: 18%;
+  height: 16%;
+  background: #090909;
+  clip-path: polygon(0% 0%, 100% 12%, 88% 100%, 0% 80%);
+}
+
+.panel-collapse__accent--r2 {
+  top: 48%;
+  left: -8%;
+  width: 24%;
+  height: 14%;
+  background: #f5f1e8;
+  clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 12% 100%);
+}
+
+.panel-collapse__accent--r3 {
+  bottom: 8%;
+  left: -3%;
+  width: 14%;
+  height: 20%;
+  background: #090909;
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 78%);
+}
+
+.panel-collapse__next {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: clamp(4.5rem, 32vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  text-transform: uppercase;
+  color: #f5f1e8;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-6deg);
+  clip-path: polygon(8% 0%, 100% 12%, 92% 100%, 0% 88%);
+  pointer-events: none;
+}
+
+/* —— Active enter (0–600ms coverage window driven by JS) —— */
+.panel-collapse--active:not(.panel-collapse--exit) .panel-collapse__wedge--l {
+  animation: panel-collapse-wedge-in 120ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.panel-collapse--active:not(.panel-collapse--exit) .panel-collapse__wedge--r {
+  animation: panel-collapse-wedge-in 120ms cubic-bezier(0.7, 0, 0.3, 1) 20ms forwards;
+}
+
+.panel-collapse--active:not(.panel-collapse--exit) .panel-collapse__panel--left {
+  animation: panel-collapse-left-in 520ms cubic-bezier(0.7, 0, 0.3, 1) 120ms forwards;
+}
+
+.panel-collapse--active:not(.panel-collapse--exit) .panel-collapse__panel--right {
+  animation: panel-collapse-right-in 520ms cubic-bezier(0.7, 0, 0.3, 1) 120ms forwards;
+}
+
+.panel-collapse--active:not(.panel-collapse--exit) .panel-collapse__next {
+  animation: panel-collapse-next-flash 120ms steps(1, end) 480ms forwards;
+}
+
+@keyframes panel-collapse-wedge-in {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes panel-collapse-left-in {
+  0% {
+    transform: translate3d(-105%, 0, 0);
+  }
+  /* compression mid (~350ms absolute ≈ 44% of 520ms delayed anim) */
+  44% {
+    transform: translate3d(-18%, 0, 0);
+  }
+  /* final crush */
+  82% {
+    transform: translate3d(-2%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes panel-collapse-right-in {
+  0% {
+    transform: translate3d(105%, 0, 0);
+  }
+  44% {
+    transform: translate3d(18%, 0, 0);
+  }
+  82% {
+    transform: translate3d(2%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes panel-collapse-next-flash {
+  0% {
+    opacity: 0;
+  }
+  1%,
+  99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* —— Reveal exit (600–980ms = 380ms): diagonal, not reverse —— */
+.panel-collapse--exit .panel-collapse__wedge {
+  opacity: 0;
+  animation: none;
+}
+
+.panel-collapse--exit .panel-collapse__next {
+  opacity: 0;
+  animation: none;
+}
+
+.panel-collapse--exit .panel-collapse__panel--left {
+  animation: panel-collapse-left-out 380ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.panel-collapse--exit .panel-collapse__panel--right {
+  animation: panel-collapse-right-out 380ms cubic-bezier(0.7, 0, 0.3, 1) 30ms forwards;
+}
+
+.panel-collapse--exit .panel-collapse__accent--l1 {
+  animation: panel-collapse-shard-ul 320ms cubic-bezier(0.7, 0, 0.3, 1) 40ms forwards;
+}
+
+.panel-collapse--exit .panel-collapse__accent--l2 {
+  animation: panel-collapse-shard-dl 340ms cubic-bezier(0.7, 0, 0.3, 1) 60ms forwards;
+}
+
+.panel-collapse--exit .panel-collapse__accent--r1 {
+  animation: panel-collapse-shard-ur 300ms cubic-bezier(0.7, 0, 0.3, 1) 50ms forwards;
+}
+
+.panel-collapse--exit .panel-collapse__accent--r2 {
+  animation: panel-collapse-shard-dr 360ms cubic-bezier(0.7, 0, 0.3, 1) 20ms forwards;
+}
+
+.panel-collapse--exit .panel-collapse__accent--r3 {
+  animation: panel-collapse-shard-dr 330ms cubic-bezier(0.7, 0, 0.3, 1) 70ms forwards;
+}
+
+@keyframes panel-collapse-left-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-55%, -120%, 0);
+  }
+}
+
+@keyframes panel-collapse-right-out {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(55%, 120%, 0);
+  }
+}
+
+@keyframes panel-collapse-shard-ul {
+  to {
+    transform: translate3d(-80%, -90%, 0) rotate(-12deg);
+  }
+}
+
+@keyframes panel-collapse-shard-dl {
+  to {
+    transform: translate3d(-60%, 110%, 0) rotate(8deg);
+  }
+}
+
+@keyframes panel-collapse-shard-ur {
+  to {
+    transform: translate3d(90%, -70%, 0) rotate(10deg);
+  }
+}
+
+@keyframes panel-collapse-shard-dr {
+  to {
+    transform: translate3d(70%, 100%, 0) rotate(-6deg);
+  }
+}
+
+/* —— Reduced motion: static cover, no crush / travel —— */
+@media (prefers-reduced-motion: reduce) {
+  .panel-collapse-demo--crushing .panel-collapse-demo__viewport,
+  .panel-collapse-demo--crushing .panel-collapse-demo__state:not([hidden]),
+  .panel-collapse--active .panel-collapse__wedge,
+  .panel-collapse--active .panel-collapse__panel,
+  .panel-collapse--active .panel-collapse__next,
+  .panel-collapse--exit .panel-collapse__panel,
+  .panel-collapse--exit .panel-collapse__accent {
+    animation: none !important;
+  }
+
+  .panel-collapse--rm-flash .panel-collapse__panel--left,
+  .panel-collapse--rm-flash .panel-collapse__panel--right {
+    transform: none;
+  }
+
+  .panel-collapse--rm-flash .panel-collapse__wedge,
+  .panel-collapse--rm-flash .panel-collapse__accent,
+  .panel-collapse--rm-flash .panel-collapse__next {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .panel-collapse-demo--crushing .panel-collapse-demo__viewport,
+[data-force-reduced-motion='true']
+  .panel-collapse-demo--crushing
+  .panel-collapse-demo__state:not([hidden]),
+[data-force-reduced-motion='true'] .panel-collapse--active .panel-collapse__wedge,
+[data-force-reduced-motion='true'] .panel-collapse--active .panel-collapse__panel,
+[data-force-reduced-motion='true'] .panel-collapse--active .panel-collapse__next,
+[data-force-reduced-motion='true'] .panel-collapse--exit .panel-collapse__panel,
+[data-force-reduced-motion='true'] .panel-collapse--exit .panel-collapse__accent {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .panel-collapse--rm-flash .panel-collapse__panel--left,
+[data-force-reduced-motion='true'] .panel-collapse--rm-flash .panel-collapse__panel--right {
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .panel-collapse--rm-flash .panel-collapse__wedge,
+[data-force-reduced-motion='true'] .panel-collapse--rm-flash .panel-collapse__accent,
+[data-force-reduced-motion='true'] .panel-collapse--rm-flash .panel-collapse__next {
+  opacity: 0;
+}

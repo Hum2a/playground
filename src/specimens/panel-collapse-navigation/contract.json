@@ -1,0 +1,89 @@
+{
+  "name": "panel-collapse-navigation",
+  "intent": "Opposing irregular comic panels crush the current content into a vertical slit, fully cover for a state swap, then tear apart diagonally to reveal the destination.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "copy": {
+    "stateA": { "kicker": "SECTION 01", "title": "CURRENT MATERIAL", "cta": "CONTINUE" },
+    "stateB": { "kicker": "SECTION 02", "title": "NEXT MATERIAL", "cta": "BACK" },
+    "coverageFlash": "NEXT"
+  },
+  "panels": [
+    {
+      "id": "left",
+      "className": "panel-collapse__panel--left",
+      "colour": "#090909",
+      "enterFrom": "left",
+      "exitTo": "upper-left",
+      "clipPath": "polygon(0% 0%, 88% 0%, 100% 12%, 92% 28%, 100% 46%, 86% 62%, 98% 78%, 84% 100%, 0% 100%)"
+    },
+    {
+      "id": "right",
+      "className": "panel-collapse__panel--right",
+      "colour": "#e60012",
+      "enterFrom": "right",
+      "exitTo": "lower-right",
+      "clipPath": "polygon(12% 0%, 100% 0%, 100% 100%, 8% 100%, 0% 82%, 14% 64%, 0% 48%, 16% 30%, 2% 14%)"
+    }
+  ],
+  "accents": [
+    { "id": "l1", "className": "panel-collapse__accent--l1", "colour": "#e60012", "exitTo": "upper-left" },
+    { "id": "l2", "className": "panel-collapse__accent--l2", "colour": "#f5f1e8", "exitTo": "lower-left" },
+    { "id": "r1", "className": "panel-collapse__accent--r1", "colour": "#090909", "exitTo": "upper-right" },
+    { "id": "r2", "className": "panel-collapse__accent--r2", "colour": "#f5f1e8", "exitTo": "lower-right" },
+    { "id": "r3", "className": "panel-collapse__accent--r3", "colour": "#090909", "exitTo": "lower-right" }
+  ],
+  "contentClip": {
+    "method": "clip-path: inset(...)",
+    "at350msVisibleWidthPercent": 23,
+    "slitWidthPx": 6,
+    "noOpacityFade": true
+  },
+  "timing": {
+    "easing": "cubic-bezier(0.7, 0, 0.3, 1)",
+    "totalMs": 980,
+    "anticipationMs": 120,
+    "compressionStartMs": 120,
+    "compressionMidMs": 350,
+    "crushStartMs": 430,
+    "crushEndMs": 520,
+    "coveredStartMs": 520,
+    "coveredEndMs": 600,
+    "onCoveredMs": 550,
+    "revealStartMs": 600,
+    "nextFlashMs": 120,
+    "nextFlashAtMs": 480
+  },
+  "api": {
+    "export": "runPanelCollapse(onCovered)",
+    "busyGuard": true,
+    "swapOnlyInsideOnCovered": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "overlayAriaHidden": true,
+    "idlePointerEvents": "none",
+    "doNotFocusOverlay": true,
+    "focusAfterSwap": "newly revealed peer button"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Static full-coverage frame, swap, then reveal without crushing or panel travel"
+  },
+  "constraints": {
+    "flatFillsOnly": true,
+    "noGradients": true,
+    "noBlur": true,
+    "no3d": true,
+    "noFontFace": true,
+    "noOpacityFadeForCompression": true,
+    "nonMirroredExits": true,
+    "diagonalReveal": true
+  }
+}

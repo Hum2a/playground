@@ -10,10 +10,12 @@ import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
+import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
+import { rankUpImpact } from './rank-up-impact/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
@@ -79,6 +81,8 @@ export const specimens: Specimen[] = [
   newspaperHeadlineDrop,
   ransomNoteReveal,
   paperRipUnlock,
+  panelCollapseNavigation,
+  rankUpImpact,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
