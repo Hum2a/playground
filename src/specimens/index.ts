@@ -632,6 +632,8 @@ import { marketTicker } from './market-ticker/entry'
 
 import { photoLeadExpand } from './photo-lead-expand/entry'
 
+import { contactSheetFocus } from './contact-sheet-focus/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1176,6 +1178,7 @@ export const specimens: Specimen[] = [
   raceCalledStamp,
   marketTicker,
   photoLeadExpand,
+  contactSheetFocus,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

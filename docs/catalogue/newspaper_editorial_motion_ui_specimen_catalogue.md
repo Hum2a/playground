@@ -360,7 +360,7 @@ chronology and information priority.
     from article thumbnail into dominant visual.
 - [ ] **NEWS-125** · `SPX-3647` · ★★★★☆ **Caption Reveal** — Photo caption and credit emerge
     after the image settles.
-- [ ] **NEWS-126** · `SPX-3648` · ★★★★★ **Contact Sheet Focus** — One frame enlarges from a grid
+- [x] **NEWS-126** · `SPX-3648` · ★★★★★ **Contact Sheet Focus** — One frame enlarges from a grid
     while surrounding images recede.
 - [ ] **NEWS-127** · `SPX-3649` · ★★★★★ **Photo Essay Advance** — Full-width frames transition
     with restrained editorial pacing.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-126 | SPX-3648 | `contact-sheet-focus` | Contact Sheet Focus |
 | NEWS-124 | SPX-3646 | `photo-lead-expand` | Photo Lead Expand |
 | NEWS-117 | SPX-3639 | `market-ticker` | Market Ticker |
 | NEWS-111 | SPX-3633 | `race-called-stamp` | Race Called Stamp |
@@ -728,12 +729,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **49 / 237** complete.
+- Progress: **50 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 188 |
+| Done | 50 |
+| Open | 187 |
 
 ## Core first-wave / build queue
 
@@ -786,7 +787,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-111** · `SPX-3633` · **Race Called Stamp** · `race-called-stamp`
 - [x] **NEWS-117** · `SPX-3639` · **Market Ticker** · `market-ticker`
 - [x] **NEWS-124** · `SPX-3646` · **Photo Lead Expand** · `photo-lead-expand`
-- [ ] **NEWS-126** · `SPX-3648` · **Contact Sheet Focus** · scaffold `contact-sheet-focus`
+- [x] **NEWS-126** · `SPX-3648` · **Contact Sheet Focus** · `contact-sheet-focus`
 
 # Recommended Build Waves
 

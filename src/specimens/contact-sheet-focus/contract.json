@@ -1,0 +1,8 @@
+{
+  "name": "contact-sheet-focus",
+  "ref": "SPX-3648",
+  "title": "Contact Sheet Focus",
+  "mode": "tally",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
