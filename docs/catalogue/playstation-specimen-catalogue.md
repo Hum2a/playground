@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **41 / 216** complete.
+- Progress: **42 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 41 |
-| Open | 175 |
+| Done | 42 |
+| Open | 174 |
 
 ## Visual grammar
 
@@ -73,6 +73,7 @@
 | PS-110 | `SPX-3416` | `screenshot-capture-flash` | Screenshot Capture Flash |
 | PS-111 | `SPX-3417` | `capture-thumbnail-flyout` | Capture Thumbnail Flyout |
 | PS-011 | `SPX-3317` | `four-shape-orbit-loader` | Four-Shape Orbit Loader |
+| PS-013 | `SPX-3319` | `shape-scatter-transition` | Shape Scatter Transition |
 
 ## Core first-wave
 
@@ -119,7 +120,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-110** · `SPX-3416` · **Screenshot Capture Flash** — capture-share
 - [x] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — capture-share
 - [x] **PS-011** · `SPX-3317` · **Four-Shape Orbit Loader** — playstation-shapes-geometry
-- [ ] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — playstation-shapes-geometry
+- [x] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — playstation-shapes-geometry
 - [ ] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — trophies-achievements
 - [ ] **PS-071** · `SPX-3377` · **Back Navigation Restore** — remote-tv-focus-navigation
 - [ ] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
@@ -147,7 +148,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 - [x] **PS-011** · `SPX-3317` · **Four-Shape Orbit Loader** — Four original geometric symbols orbit and settle into a completion state.
 - [ ] **PS-012** · `SPX-3318` · **Shape Trail Navigation** — Simple circle/cross/square/triangle-like primitives leave a finite directional trail during navigation.
-- [ ] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — Small geometric tokens scatter from the selected control and reform around destination content.
+- [x] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — Small geometric tokens scatter from the selected control and reform around destination content.
 - [ ] **PS-014** · `SPX-3320` · **Shape Grid Assemble** — Geometric pieces snap into a structured panel.
 - [ ] **PS-015** · `SPX-3321` · **Shape Pulse Confirmation** — A compact symbol emits one bounded pulse when an action succeeds.
 - [ ] **PS-016** · `SPX-3322` · **Shape Cascade Loader** — Four primitive shapes acquire in a repeating sequence that stops on completion.

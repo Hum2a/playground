@@ -1,0 +1,18 @@
+{
+  "name": "shape-scatter-transition",
+  "intent": "Small geometric tokens scatter from the selected control and reform around destination content.",
+  "primitives": [
+    "scatter",
+    "shapes",
+    "transition"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "timing": {
+    "scatterMs": 900
+  }
+}

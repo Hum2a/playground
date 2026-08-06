@@ -397,6 +397,7 @@ import { shadowBindSelection } from './shadow-bind-selection/entry'
 import { shadowCloneFanOut } from './shadow-clone-fan-out/entry'
 import { shadowSelfReveal } from './shadow-self-reveal/entry'
 import { shapeMorphButtonToCard } from './shape-morph-button-to-card/entry'
+import { shapeScatterTransition } from './shape-scatter-transition/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sharedXAxisNavigation } from './shared-x-axis-navigation/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
@@ -925,6 +926,7 @@ export const specimens: Specimen[] = [
   shadowCloneFanOut,
   shadowSelfReveal,
   shapeMorphButtonToCard,
+  shapeScatterTransition,
   sharedResourcePool,
   sharedXAxisNavigation,
   sheetRubberBandLimit,
