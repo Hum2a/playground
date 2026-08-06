@@ -1,0 +1,21 @@
+{
+  "name": "resume-activity-handoff",
+  "intent": "Activity card morphs into full active state.",
+  "catalogue": {
+    "ps": "PS-027",
+    "ref": "SPX-3333"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "api": {
+    "run": "runResumeActivityHandoff()",
+    "reset": "resetResumeActivityHandoff()"
+  },
+  "reducedMotion": {
+    "behaviour": "Active state shown immediately"
+  }
+}
