@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **32 / 417** complete.
+- Progress: **33 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 32 |
-| Open | 385 |
+| Done | 33 |
+| Open | 384 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-179 | `SPX-1736` | `search-bar-to-view-transform` | Search Bar-to-View Transform |
 | AND-101 | `SPX-1658` | `notification-swipe-dismiss` | Notification Swipe Dismiss |
 | AND-056 | `SPX-1613` | `quick-app-switch-swipe` | Quick App Switch Swipe |
 | AND-398 | `SPX-1955` | `single-to-dual-pane-transform` | Single-to-Dual Pane Transform |
@@ -346,7 +347,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Search
 
 - [ ] **AND-178** · `SPX-1735` · **Search Bar Activation** — static search surface gains focus and reorganises surrounding content.
-- [ ] **AND-179** · `SPX-1736` · **Search Bar-to-View Transform** — search bar expands into dedicated search experience.
+- [x] **AND-179** · `SPX-1736` · **Search Bar-to-View Transform** — search bar expands into dedicated search experience.
 - [ ] **AND-180** · `SPX-1737` · **Search Suggestions Cascade** — deterministic result rows construct as query becomes active.
 - [ ] **AND-181** · `SPX-1738` · **Search Result Shared Element** — selected result becomes destination header/card.
 - [ ] **AND-182** · `SPX-1739` · **Voice Search Listening State** — search field becomes abstract audio acquisition state.

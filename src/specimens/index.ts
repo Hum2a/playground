@@ -185,6 +185,7 @@ import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { screenshotThumbnailArrival } from './screenshot-thumbnail-arrival/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
+import { searchBarToViewTransform } from './search-bar-to-view-transform/entry'
 import { searchFieldActivation } from './search-field-activation/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { shapeMorphButtonToCard } from './shape-morph-button-to-card/entry'
@@ -453,6 +454,7 @@ export const specimens: Specimen[] = [
   scouterScan,
   screenshotThumbnailArrival,
   scrollRubberBand,
+  searchBarToViewTransform,
   searchFieldActivation,
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,

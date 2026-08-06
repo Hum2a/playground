@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/search-bar-to-view-transform.schema.json",
+  "title": "SearchBarToViewTransform",
+  "description": "Portable contract for search bar container transform.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "compact", "expanded", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "search-bar-to-view-transform" },
+    "intent": {
+      "type": "string",
+      "const": "Search bar expands into dedicated search experience from same container origin."
+    },
+    "compact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "radiusPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 320 },
+        "heightPx": { "type": "number", "const": 56 },
+        "radiusPx": { "type": "number", "const": 28 }
+      }
+    },
+    "expanded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "radiusPx", "resultsDelayMs"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 344 },
+        "heightPx": { "type": "number", "const": 500 },
+        "radiusPx": { "type": "number", "const": 24 },
+        "resultsDelayMs": { "type": "number", "const": 140 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantGeometry", "triggers"],
+      "properties": {
+        "instantGeometry": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusAfterExpand", "hostInertWhenExpanded"],
+      "properties": {
+        "focusAfterExpand": { "type": "boolean", "const": true },
+        "hostInertWhenExpanded": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "trigger", "search", "input"],
+      "properties": {
+        "root": { "type": "string", "const": "sbvt" },
+        "trigger": { "type": "string", "const": "sbvt__trigger" },
+        "search": { "type": "string", "const": "sbvt__search" },
+        "input": { "type": "string", "const": "sbvt__input" }
+      }
+    }
+  }
+}
