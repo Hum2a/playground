@@ -198,7 +198,6 @@ export const specimens: Specimen[] = [
   holdToChargeButton,
   hoverCutout,
   letterScatterAssemble,
-  levelUpOverflow,
   liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
