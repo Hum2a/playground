@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/notification-swipe-dismiss.schema.json",
+  "title": "NotificationSwipeDismiss",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "card", "dismiss", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "notification-swipe-dismiss" },
+    "intent": {
+      "type": "string",
+      "const": "Dismiss a notification card with horizontal drag, opacity fade, exit animation, and height collapse."
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "opacityStartRatio", "commitRatio"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 336 },
+        "heightPx": { "type": "number", "const": 76 },
+        "opacityStartRatio": { "type": "number", "const": 0.35 },
+        "commitRatio": { "type": "number", "const": 0.45 }
+      }
+    },
+    "dismiss": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["velocityThreshold", "exitMs", "collapseMs"],
+      "properties": {
+        "velocityThreshold": { "type": "number", "const": 0.65 },
+        "exitMs": { "type": "number", "const": 160 },
+        "collapseMs": { "type": "number", "const": 180 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantDismiss", "triggers"],
+      "properties": {
+        "instantDismiss": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "stack"],
+      "properties": {
+        "root": { "type": "string", "const": "nsd" },
+        "card": { "type": "string", "const": "nsd__card" },
+        "stack": { "type": "string", "const": "nsd__stack" }
+      }
+    }
+  }
+}

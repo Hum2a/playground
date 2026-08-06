@@ -1,0 +1,116 @@
+/* notification-swipe-dismiss — portable specimen styles. Do not restyle to host tokens. */
+
+.nsd {
+  --nsd-ink: #17213a;
+  --nsd-panel: #e8edf5;
+  --nsd-line: #c5d0e0;
+  --nsd-muted: #6b7a94;
+  --nsd-dismiss: #d8dde8;
+  box-sizing: border-box;
+  width: 360px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--nsd-ink);
+}
+
+.nsd *,
+.nsd *::before,
+.nsd *::after {
+  box-sizing: border-box;
+}
+
+.nsd__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 336px;
+}
+
+.nsd__card-wrap {
+  position: relative;
+  height: 76px;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: height 180ms ease, margin 180ms ease, opacity 180ms ease;
+}
+
+.nsd__card-wrap.is-collapsing {
+  height: 0 !important;
+  margin: 0 !important;
+  opacity: 0;
+}
+
+.nsd__card-wrap.is-removed {
+  display: none;
+}
+
+.nsd__dismiss {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--nsd-dismiss);
+  color: var(--nsd-muted);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+
+.nsd__card {
+  position: relative;
+  z-index: 1;
+  width: 336px;
+  height: 76px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--nsd-line);
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+.nsd__card--static {
+  cursor: default;
+}
+
+.nsd__card:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.nsd__title {
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.nsd__body {
+  font-size: 0.68rem;
+  color: var(--nsd-muted);
+}
+
+.nsd__status {
+  margin: 0.65rem 0 0;
+  font-size: 0.68rem;
+  color: var(--nsd-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nsd__card,
+  .nsd__card-wrap {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .nsd__card,
+[data-force-reduced-motion='true'] .nsd__card-wrap {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}
