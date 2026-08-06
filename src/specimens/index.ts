@@ -3,6 +3,7 @@ import { afterimageNavigation } from './afterimage-navigation/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
 import { blackoutLoader } from './blackout-loader/entry'
+import { blinkSelection } from './blink-selection/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
@@ -205,6 +206,7 @@ export const specimens: Specimen[] = [
   kiChargeMeter,
   victoryResultsTally,
   blackoutLoader,
+  blinkSelection,
   blueDoorDiscovery,
   blueFlameButtonHover,
   blueFocusBrackets,
