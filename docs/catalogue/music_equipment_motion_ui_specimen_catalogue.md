@@ -329,7 +329,7 @@ specimens can feel tactile without needing sound.
 
 # 14. Rack Gear / Studio Hardware
 
-- [ ] **MUSIC-114** · `SPX-3873` · ★★★★★ **Rack Unit Power-On** — A dark rack device wakes
+- [x] **MUSIC-114** · `SPX-3873` · ★★★★★ **Rack Unit Power-On** — A dark rack device wakes
     through LEDs, display segments and meter acquisition.
 - [ ] **MUSIC-115** · `SPX-3874` · ★★★★★ **Rack Power Cascade** — Several rack units power on
     sequentially from top to bottom.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-114 | SPX-3873 | `rack-unit-power-on` | Rack Unit Power-On |
 | MUSIC-041 | SPX-3800 | `noise-gate-open` | Noise Gate Open |
 | MUSIC-039 | SPX-3798 | `gain-reduction-slam` | Gain Reduction Slam |
 | MUSIC-032 | SPX-3791 | `spectrogram-waterfall` | Spectrogram Waterfall |
@@ -898,12 +899,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **35 / 310** complete.
+- Progress: **36 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 35 |
-| Open | 275 |
+| Done | 36 |
+| Open | 274 |
 
 ## Core first-wave / build queue
 
@@ -941,7 +942,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · `feedback-loop-warning`
 - [x] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · `envelope-generator-cycle`
 - [x] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · `clock-divider-cascade`
-- [ ] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · scaffold `rack-unit-power-on`
+- [x] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · `rack-unit-power-on`
 - [ ] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · scaffold `reel-spin-up`
 - [ ] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · scaffold `tape-thread-route`
 - [ ] **MUSIC-130** · `SPX-3889` · **Tape Splice** · scaffold `tape-splice`

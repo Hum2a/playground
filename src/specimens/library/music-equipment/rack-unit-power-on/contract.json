@@ -1,0 +1,8 @@
+{
+  "name": "rack-unit-power-on",
+  "ref": "SPX-3873",
+  "title": "Rack Unit Power-On",
+  "mode": "sequence",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

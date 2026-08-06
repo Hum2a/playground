@@ -582,4 +582,5 @@ export const specimenOrder: string[] = [
   'spectrogram-waterfall',
   'gain-reduction-slam',
   'noise-gate-open',
+  'rack-unit-power-on',
 ]
