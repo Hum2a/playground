@@ -95,6 +95,7 @@ import { powerStateTransformation } from './power-state-transformation/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
+import { propagatedShockwave } from './propagated-shockwave/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
@@ -260,6 +261,7 @@ export const specimens: Specimen[] = [
   personaAwakeningReveal,
   printRegistrationHover,
   progressMilestoneBreakthrough,
+  propagatedShockwave,
   radarPulseDiscovery,
   rankUpImpact,
   ransomNoteReveal,

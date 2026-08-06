@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 244** complete.
+- Progress: **17 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 228 |
+| Done | 17 |
+| Open | 227 |
 
 ## Visual grammar
 
@@ -49,6 +49,7 @@
 | DB-003 | `SPX-968` | `concentrated-energy-charge` | Concentrated Energy Charge |
 | DB-056 | `SPX-1021` | `synchronous-fusion-merge` | Synchronous Fusion Merge |
 | DB-122 | `SPX-1087` | `impact-freeze-frame` | Impact Freeze Frame |
+| DB-123 | `SPX-1088` | `propagated-shockwave` | Propagated Shockwave |
 | DB-095 | `SPX-1060` | `sector-radar-search` | Sector Radar Search |
 
 ## Core first-wave
@@ -70,7 +71,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-070** · `SPX-1035` · **Beam Clash** — energy-attacks-actions
 - [ ] **DB-071** · `SPX-1036` · **Beam Clash Resolution** — energy-attacks-actions
 - [x] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — impact-combat-feedback
-- [ ] **DB-123** · `SPX-1088` · **Punch Shockwave** — impact-combat-feedback
+- [x] **DB-123** · `SPX-1088` · **Punch Shockwave** — impact-combat-feedback
 - [ ] **DB-083** · `SPX-1048` · **Spirit Bomb Contribution** — spirit-bomb-collective-contribution
 - [x] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — data-developer-tool-specimens
 - [x] **DB-095** · `SPX-1060` · **Dragon Radar Search** — dragon-radar-search
@@ -239,7 +240,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Impact & Combat Feedback
 
 - [x] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — interaction pauses for ~80ms at exact contact before consequence explodes outward.
-- [ ] **DB-123** · `SPX-1088` · **Punch Shockwave** — contact creates expanding concentric distortion rings.
+- [x] **DB-123** · `SPX-1088` · **Punch Shockwave** — contact creates expanding concentric distortion rings.
 - [ ] **DB-124** · `SPX-1089` · **Heavy Hit Screen Displacement** — target and environment separate momentarily under impact.
 - [ ] **DB-125** · `SPX-1090` · **Knockback** — target travels away from the source proportional to result magnitude.
 - [ ] **DB-126** · `SPX-1091` · **Rapid Combo Counter** — several discrete actions accumulate into one aggregate result.

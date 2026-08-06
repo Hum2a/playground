@@ -1,0 +1,131 @@
+<div class="psw-demo" data-psw-demo>
+  <p class="psw-demo__live" data-psw-live aria-live="polite">Dependents stale</p>
+
+  <div class="psw" data-psw data-phase="idle">
+    <div class="psw__stage" data-psw-stage>
+      <span class="psw__ring" data-psw-ring="1" aria-hidden="true"></span>
+      <span class="psw__ring" data-psw-ring="2" aria-hidden="true"></span>
+      <span class="psw__ring" data-psw-ring="3" aria-hidden="true"></span>
+
+      <div class="psw__root" data-psw-root>
+        <p class="psw__root-label">CONFIG // ROOT</p>
+        <div class="psw__root-state" data-psw-root-state>
+          <span class="psw__clip psw__clip--from" data-psw-root-from>READY</span>
+          <span class="psw__clip psw__clip--to" data-psw-root-to aria-hidden="true">PROPAGATED</span>
+        </div>
+      </div>
+
+      <!-- Fixed polar positions: angle + radial distance (contract) -->
+      <article
+        class="psw__node"
+        data-psw-node="a"
+        data-status="stale"
+        style="--angle: -15deg; --r: 70px"
+      >
+        <span class="psw__node-id">A</span>
+        <span class="psw__node-state">
+          <span class="psw__clip psw__clip--from">STALE</span>
+          <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
+        </span>
+        <span class="psw__ticks" aria-hidden="true">
+          <span class="psw__tick"></span>
+          <span class="psw__tick"></span>
+        </span>
+      </article>
+
+      <article
+        class="psw__node"
+        data-psw-node="b"
+        data-status="stale"
+        style="--angle: 45deg; --r: 88px"
+      >
+        <span class="psw__node-id">B</span>
+        <span class="psw__node-state">
+          <span class="psw__clip psw__clip--from">STALE</span>
+          <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
+        </span>
+        <span class="psw__ticks" aria-hidden="true">
+          <span class="psw__tick"></span>
+          <span class="psw__tick"></span>
+        </span>
+      </article>
+
+      <article
+        class="psw__node"
+        data-psw-node="c"
+        data-status="stale"
+        style="--angle: 105deg; --r: 105px"
+      >
+        <span class="psw__node-id">C</span>
+        <span class="psw__node-state">
+          <span class="psw__clip psw__clip--from">STALE</span>
+          <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
+        </span>
+        <span class="psw__ticks" aria-hidden="true">
+          <span class="psw__tick"></span>
+          <span class="psw__tick"></span>
+        </span>
+      </article>
+
+      <article
+        class="psw__node"
+        data-psw-node="d"
+        data-status="stale"
+        style="--angle: 165deg; --r: 126px"
+      >
+        <span class="psw__node-id">D</span>
+        <span class="psw__node-state">
+          <span class="psw__clip psw__clip--from">STALE</span>
+          <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
+        </span>
+        <span class="psw__ticks" aria-hidden="true">
+          <span class="psw__tick"></span>
+          <span class="psw__tick"></span>
+        </span>
+      </article>
+
+      <article
+        class="psw__node"
+        data-psw-node="e"
+        data-status="stale"
+        style="--angle: 225deg; --r: 144px"
+      >
+        <span class="psw__node-id">E</span>
+        <span class="psw__node-state">
+          <span class="psw__clip psw__clip--from">STALE</span>
+          <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
+        </span>
+        <span class="psw__ticks" aria-hidden="true">
+          <span class="psw__tick"></span>
+          <span class="psw__tick"></span>
+        </span>
+      </article>
+
+      <article
+        class="psw__node"
+        data-psw-node="f"
+        data-status="stale"
+        style="--angle: 285deg; --r: 166px"
+      >
+        <span class="psw__node-id">F</span>
+        <span class="psw__node-state">
+          <span class="psw__clip psw__clip--from">STALE</span>
+          <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
+        </span>
+        <span class="psw__ticks" aria-hidden="true">
+          <span class="psw__tick"></span>
+          <span class="psw__tick"></span>
+        </span>
+      </article>
+    </div>
+  </div>
+
+  <div class="psw-demo__controls">
+    <button type="button" class="psw-demo__btn psw-demo__btn--primary" data-psw-apply>
+      Apply Change
+    </button>
+    <button type="button" class="psw-demo__btn" data-psw-reset>
+      Reset
+    </button>
+  </div>
+</div>

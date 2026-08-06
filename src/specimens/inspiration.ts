@@ -143,6 +143,8 @@ export const SUGGESTED_FREE_TAGS = [
   'arrival',
   'ephemeral',
   'impact',
+  'propagation',
+  'dependency',
   'feedback',
   'hit-stop',
   'paper',

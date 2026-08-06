@@ -1,0 +1,52 @@
+{
+  "name": "propagated-shockwave",
+  "intent": "Root config impact emits three concentric shockwave rings; six dependents update when Ring 1 reaches each fixed radial distance (A→F).",
+  "catalogue": {
+    "db": "DB-123",
+    "ref": "SPX-1088",
+    "catalogueTitle": "Punch Shockwave"
+  },
+  "root": {
+    "label": "CONFIG // ROOT",
+    "compress": { "scale": [1, 0.92, 1.04, 1], "durationMs": 140 },
+    "finalStatus": "PROPAGATED"
+  },
+  "rings": {
+    "count": 3,
+    "startsMs": [0, 90, 180],
+    "durationMs": 520,
+    "maxDiameterPx": 380,
+    "maxRadiusPx": 190,
+    "style": "thin structural outline; no glow; finite"
+  },
+  "nodes": [
+    { "id": "a", "label": "A", "rPx": 70, "angleDeg": -15, "hitAtMsFromApply": 332 },
+    { "id": "b", "label": "B", "rPx": 88, "angleDeg": 45, "hitAtMsFromApply": 381 },
+    { "id": "c", "label": "C", "rPx": 105, "angleDeg": 105, "hitAtMsFromApply": 427 },
+    { "id": "d", "label": "D", "rPx": 126, "angleDeg": 165, "hitAtMsFromApply": 485 },
+    { "id": "e", "label": "E", "rPx": 144, "angleDeg": 225, "hitAtMsFromApply": 534 },
+    { "id": "f", "label": "F", "rPx": 166, "angleDeg": 285, "hitAtMsFromApply": 594 }
+  ],
+  "hitFormula": "hitAt = ROOT_MS + RING_MS * (r / RING_MAX_R)",
+  "nodeUpdate": {
+    "radialBumpPx": 3,
+    "durationMs": 100,
+    "status": "STALE → UPDATED via clip",
+    "ticks": { "count": 2, "visibleMs": 90 }
+  },
+  "completionMsFromApply": 840,
+  "api": {
+    "execute": "runPropagatedShockwave()",
+    "reset": "resetPropagatedShockwave()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately ROOT PROPAGATED and all six UPDATED"
+  },
+  "constraints": {
+    "noLooping": true,
+    "noPermanentGlow": true,
+    "noRandomPositions": true,
+    "updateOncePerNode": true
+  }
+}
