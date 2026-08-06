@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/liquid-split-transition.schema.json",
+  "title": "LiquidSplitTransition",
+  "description": "Portable contract for a horizontal liquid seam that pulls upper and lower surface regions apart to expose a destination beneath.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "seam",
+    "split",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "liquid-split-transition" },
+    "intent": {
+      "type": "string",
+      "const": "Container transition where a thin horizontal liquid seam forms and pulls upper and lower regions apart to expose the destination behind the opening."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kickerA",
+        "titleA",
+        "kickerB",
+        "titleB",
+        "trigger",
+        "reset",
+        "statusA",
+        "statusB"
+      ],
+      "properties": {
+        "kickerA": { "type": "string", "const": "DEPTH // 01" },
+        "titleA": { "type": "string", "const": "SURFACE" },
+        "kickerB": { "type": "string", "const": "DEPTH // 02" },
+        "titleB": { "type": "string", "const": "SUBMERGED" },
+        "trigger": { "type": "string", "const": "DESCEND" },
+        "reset": { "type": "string", "const": "RESET" },
+        "statusA": { "type": "string", "const": "Depth 01. Surface." },
+        "statusB": { "type": "string", "const": "Depth 02. Submerged." }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "deep", "mid", "bright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020b16" },
+        "deep": { "type": "string", "const": "#063253" },
+        "mid": { "type": "string", "const": "#0c6891" },
+        "bright": { "type": "string", "const": "#3cb4da" },
+        "pale": { "type": "string", "const": "#cef4ff" }
+      }
+    },
+    "seam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "originPercent",
+        "heightPx",
+        "segmentCount",
+        "growFrom",
+        "growTo",
+        "growMs"
+      ],
+      "properties": {
+        "originPercent": { "type": "number", "const": 54 },
+        "heightPx": { "type": "number", "const": 2 },
+        "segmentCount": { "type": "number", "const": 5 },
+        "growFrom": { "type": "string", "const": "0" },
+        "growTo": { "type": "string", "const": "110%" },
+        "growMs": { "type": "number", "const": 180 }
+      }
+    },
+    "split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "startMs",
+        "durationMs",
+        "upperTranslateY",
+        "lowerTranslateY",
+        "upperTranslateXPx",
+        "lowerTranslateXPx",
+        "lobeCountPerEdge",
+        "refractBandPx",
+        "refractOffsetPx",
+        "destScaleFrom",
+        "destScaleTo"
+      ],
+      "properties": {
+        "startMs": { "type": "number", "const": 160 },
+        "durationMs": { "type": "number", "const": 430 },
+        "upperTranslateY": { "type": "string", "const": "-58%" },
+        "lowerTranslateY": { "type": "string", "const": "58%" },
+        "upperTranslateXPx": { "type": "number", "const": -8 },
+        "lowerTranslateXPx": { "type": "number", "const": 8 },
+        "lobeCountPerEdge": { "type": "number", "const": 6 },
+        "refractBandPx": { "type": "number", "const": 24 },
+        "refractOffsetPx": { "type": "number", "const": 2.5 },
+        "destScaleFrom": { "type": "number", "const": 0.97 },
+        "destScaleTo": { "type": "number", "const": 1 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalMs", "loops", "exitContinues", "noCrossfade"],
+      "properties": {
+        "totalMs": { "type": "number", "const": 760 },
+        "loops": { "type": "boolean", "const": false },
+        "exitContinues": { "type": "boolean", "const": true },
+        "noCrossfade": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "decorativeMotion"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "decorativeMotion": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateDestination", "triggers"],
+      "properties": {
+        "immediateDestination": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "host", "dest", "slab", "seam", "refract"],
+      "properties": {
+        "root": { "type": "string", "const": "ls" },
+        "host": { "type": "string", "const": "ls__host" },
+        "dest": { "type": "string", "const": "ls__dest" },
+        "slab": { "type": "string", "const": "ls__slab" },
+        "seam": { "type": "string", "const": "ls__seam" },
+        "refract": { "type": "string", "const": "ls__refract" }
+      }
+    }
+  }
+}

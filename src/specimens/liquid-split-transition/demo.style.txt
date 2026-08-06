@@ -1,0 +1,575 @@
+/* liquid-split-transition — portable specimen styles. Do not restyle to host tokens. */
+
+.ls {
+  --ls-near-black: #020b16;
+  --ls-deep: #063253;
+  --ls-mid: #0c6891;
+  --ls-bright: #3cb4da;
+  --ls-pale: #cef4ff;
+  --ls-seam-y: 54%;
+  --ls-seam-ms: 180ms;
+  --ls-split-ms: 430ms;
+  --ls-total-ms: 760ms;
+  --ls-refract: 24px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  padding: 0.65rem 0.65rem 2.6rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: #e8f4fa;
+}
+
+.ls *,
+.ls *::before,
+.ls *::after {
+  box-sizing: border-box;
+}
+
+.ls__host {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 220px;
+  height: 220px;
+  background: var(--ls-near-black);
+  border: 2px solid rgb(12 104 145 / 0.45);
+}
+
+/* Destination — always beneath; no fade */
+
+.ls__dest {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.2rem 1.1rem;
+  background: linear-gradient(165deg, #031525 0%, #020b16 48%, #041a2c 100%);
+  transform: scale(0.97);
+  transform-origin: center center;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ls[data-phase='seam'] .ls__dest,
+.ls[data-phase='split'] .ls__dest,
+.ls[data-phase='exit'] .ls__dest,
+.ls[data-phase='done'] .ls__dest,
+.ls[data-surface='b'] .ls__dest {
+  visibility: visible;
+}
+
+.ls[data-phase='split'] .ls__dest,
+.ls[data-phase='exit'] .ls__dest {
+  animation: ls-dest-open var(--ls-split-ms) cubic-bezier(0.22, 0.82, 0.2, 1) both;
+}
+
+.ls[data-phase='done'] .ls__dest,
+.ls[data-surface='b'][data-phase='idle'] .ls__dest,
+.ls[data-surface='b'][data-phase='done'] .ls__dest {
+  transform: scale(1);
+  animation: none;
+}
+
+.ls[data-surface='b'] .ls__dest {
+  pointer-events: auto;
+}
+
+@keyframes ls-dest-open {
+  from {
+    transform: scale(0.97);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Idle continuous surface (State A) */
+
+.ls__surface {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.2rem 1.1rem;
+  background: linear-gradient(160deg, #0a1c2e 0%, var(--ls-near-black) 55%, #061525 100%);
+}
+
+.ls[data-surface='b'] .ls__surface,
+.ls[data-phase='seam'] .ls__surface,
+.ls[data-phase='split'] .ls__surface,
+.ls[data-phase='exit'] .ls__surface,
+.ls[data-phase='done'] .ls__surface {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ls__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ls-bright);
+}
+
+.ls__title {
+  margin: 0;
+  font-size: clamp(1.55rem, 7vw, 2.05rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #f2f9fc;
+}
+
+.ls__dest .ls__kicker {
+  color: var(--ls-pale);
+}
+
+.ls__dest .ls__title {
+  color: var(--ls-pale);
+}
+
+/* Split slabs — duplicate State A halves */
+
+.ls__slab {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ls[data-phase='seam'] .ls__slab,
+.ls[data-phase='split'] .ls__slab,
+.ls[data-phase='exit'] .ls__slab {
+  visibility: visible;
+}
+
+.ls__slab--upper {
+  clip-path: inset(0 0 46% 0);
+}
+
+.ls__slab--lower {
+  clip-path: inset(54% 0 0 0);
+}
+
+.ls__slab-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.2rem 1.1rem;
+  background: linear-gradient(160deg, #0a1c2e 0%, var(--ls-near-black) 55%, #061525 100%);
+}
+
+.ls[data-phase='split'] .ls__slab--upper {
+  animation: ls-upper-split var(--ls-split-ms) cubic-bezier(0.18, 0.7, 0.22, 1) forwards;
+}
+
+.ls[data-phase='split'] .ls__slab--lower {
+  animation: ls-lower-split var(--ls-split-ms) cubic-bezier(0.18, 0.7, 0.22, 1) forwards;
+}
+
+.ls[data-phase='exit'] .ls__slab--upper,
+.ls[data-phase='done'] .ls__slab--upper {
+  transform: translate(-8px, -58%);
+  animation: none;
+}
+
+.ls[data-phase='exit'] .ls__slab--lower,
+.ls[data-phase='done'] .ls__slab--lower {
+  transform: translate(8px, 58%);
+  animation: none;
+}
+
+@keyframes ls-upper-split {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-8px, -58%);
+  }
+}
+
+@keyframes ls-lower-split {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(8px, 58%);
+  }
+}
+
+/* Frozen irregular liquid lobes along inner edges */
+
+.ls__edge {
+  position: absolute;
+  left: -2%;
+  width: 104%;
+  height: 18px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ls__edge--lower {
+  top: calc(var(--ls-seam-y) - 10px);
+}
+
+.ls__edge--upper {
+  top: calc(var(--ls-seam-y) - 8px);
+}
+
+.ls__lobe {
+  position: absolute;
+  display: block;
+  background: var(--ls-mid);
+  border-radius: 45% 55% 50% 50% / 60% 40% 70% 30%;
+  opacity: 0.92;
+  box-shadow: 0 0 0 1px rgb(206 244 255 / 0.35);
+}
+
+.ls__slab--upper .ls__lobe--1 {
+  left: 3%;
+  top: 2px;
+  width: 52px;
+  height: 11px;
+  background: var(--ls-bright);
+}
+
+.ls__slab--upper .ls__lobe--2 {
+  left: 18%;
+  top: 7px;
+  width: 68px;
+  height: 14px;
+}
+
+.ls__slab--upper .ls__lobe--3 {
+  left: 38%;
+  top: 1px;
+  width: 44px;
+  height: 10px;
+  background: var(--ls-pale);
+  opacity: 0.75;
+}
+
+.ls__slab--upper .ls__lobe--4 {
+  left: 52%;
+  top: 6px;
+  width: 76px;
+  height: 13px;
+}
+
+.ls__slab--upper .ls__lobe--5 {
+  left: 72%;
+  top: 0;
+  width: 58px;
+  height: 12px;
+  background: var(--ls-bright);
+}
+
+.ls__slab--upper .ls__lobe--6 {
+  left: 88%;
+  top: 5px;
+  width: 42px;
+  height: 10px;
+}
+
+.ls__slab--lower .ls__lobe--1 {
+  left: 2%;
+  top: 4px;
+  width: 60px;
+  height: 12px;
+}
+
+.ls__slab--lower .ls__lobe--2 {
+  left: 16%;
+  top: -1px;
+  width: 48px;
+  height: 11px;
+  background: var(--ls-pale);
+  opacity: 0.7;
+}
+
+.ls__slab--lower .ls__lobe--3 {
+  left: 32%;
+  top: 5px;
+  width: 72px;
+  height: 14px;
+  background: var(--ls-bright);
+}
+
+.ls__slab--lower .ls__lobe--4 {
+  left: 54%;
+  top: 0;
+  width: 50px;
+  height: 10px;
+}
+
+.ls__slab--lower .ls__lobe--5 {
+  left: 68%;
+  top: 6px;
+  width: 64px;
+  height: 13px;
+}
+
+.ls__slab--lower .ls__lobe--6 {
+  left: 86%;
+  top: 1px;
+  width: 46px;
+  height: 11px;
+  background: var(--ls-bright);
+}
+
+/* Narrow refraction bands (~24px) along each moving boundary */
+
+.ls__refract {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--ls-refract);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+}
+
+.ls__refract--upper {
+  top: calc(var(--ls-seam-y) - var(--ls-refract));
+}
+
+.ls__refract--lower {
+  top: var(--ls-seam-y);
+}
+
+.ls[data-phase='split'] .ls__refract,
+.ls[data-phase='exit'] .ls__refract {
+  opacity: 1;
+}
+
+.ls__refract-shift {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.2rem 1.1rem;
+  height: 220px;
+  filter: brightness(1.18) saturate(1.12);
+  opacity: 0.7;
+}
+
+.ls__refract--upper .ls__refract-shift {
+  top: calc(var(--ls-refract) - var(--ls-seam-y));
+  transform: translate(2.5px, 2px);
+}
+
+.ls__refract--lower .ls__refract-shift {
+  top: calc(0% - var(--ls-seam-y));
+  transform: translate(-2.5px, -2px);
+}
+
+.ls__refract-kicker {
+  margin: 0;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ls-pale);
+}
+
+.ls__refract-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 6.5vw, 1.9rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #f2f9fc;
+}
+
+/* Liquid seam — 5 large irregular segments */
+
+.ls__seam {
+  position: absolute;
+  left: 50%;
+  top: var(--ls-seam-y);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  width: 0;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ls[data-phase='seam'] .ls__seam {
+  opacity: 1;
+  animation: ls-seam-grow var(--ls-seam-ms) cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+}
+
+.ls[data-phase='split'] .ls__seam,
+.ls[data-phase='exit'] .ls__seam {
+  width: 110%;
+  opacity: 0.55;
+  animation: none;
+}
+
+.ls[data-phase='done'] .ls__seam,
+.ls[data-phase='idle'] .ls__seam {
+  width: 0;
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes ls-seam-grow {
+  from {
+    width: 0;
+    opacity: 0.4;
+  }
+  to {
+    width: 110%;
+    opacity: 1;
+  }
+}
+
+.ls__seg {
+  flex: 1 1 0;
+  display: block;
+  height: 2px;
+  background: var(--ls-pale);
+  box-shadow: 0 0 6px rgb(60 180 218 / 0.55);
+}
+
+.ls__seg--1 {
+  height: 2px;
+  transform: translateY(-1px) skewX(-4deg);
+  background: linear-gradient(90deg, transparent, var(--ls-pale) 20%, var(--ls-bright));
+}
+
+.ls__seg--2 {
+  height: 3px;
+  transform: translateY(1px) skewX(3deg);
+}
+
+.ls__seg--3 {
+  height: 2px;
+  transform: translateY(-2px);
+  background: var(--ls-bright);
+}
+
+.ls__seg--4 {
+  height: 3px;
+  transform: translateY(1px) skewX(-2deg);
+}
+
+.ls__seg--5 {
+  height: 2px;
+  transform: translateY(-1px) skewX(5deg);
+  background: linear-gradient(90deg, var(--ls-bright), var(--ls-pale) 70%, transparent);
+}
+
+/* Controls + status */
+
+.ls__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.ls__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--ls-mid);
+  background: var(--ls-deep);
+  color: var(--ls-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ls__btn:hover:not(:disabled) {
+  border-color: var(--ls-bright);
+  color: #fff;
+}
+
+.ls__btn:focus-visible {
+  outline: 2px solid var(--ls-pale);
+  outline-offset: 2px;
+}
+
+.ls__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ls__btn--ghost {
+  background: transparent;
+  border-color: rgb(12 104 145 / 0.55);
+  color: var(--ls-bright);
+}
+
+.ls__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion — destination only, no travel */
+
+@media (prefers-reduced-motion: reduce) {
+  .ls[data-phase='seam'] .ls__seam,
+  .ls[data-phase='split'] .ls__slab--upper,
+  .ls[data-phase='split'] .ls__slab--lower,
+  .ls[data-phase='split'] .ls__dest,
+  .ls[data-phase='exit'] .ls__dest {
+    animation: none !important;
+  }
+
+  .ls[data-surface='b'] .ls__surface,
+  .ls[data-phase='done'] .ls__surface {
+    visibility: hidden;
+  }
+
+  .ls[data-surface='b'] .ls__dest {
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .ls[data-surface='b'] .ls__slab {
+    visibility: hidden;
+  }
+}
+
+.ls[data-force-rm='true'] .ls__seam,
+html[data-force-reduced-motion='true'] .ls[data-phase='seam'] .ls__seam,
+html[data-force-reduced-motion='true'] .ls[data-phase='split'] .ls__slab--upper,
+html[data-force-reduced-motion='true'] .ls[data-phase='split'] .ls__slab--lower,
+html[data-force-reduced-motion='true'] .ls[data-phase='split'] .ls__dest {
+  animation: none !important;
+}

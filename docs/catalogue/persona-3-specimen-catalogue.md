@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **20 / 238** complete.
+- Progress: **21 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 20 |
-| Open | 218 |
+| Done | 21 |
+| Open | 217 |
 
 ## Visual grammar
 
@@ -50,8 +50,9 @@
 | P3-134 | `SPX-531` | `midnight-clock-transition` | Midnight Clock Transition |
 | P3-225 | `SPX-622` | `memory-fragment-reveal` | Memory Fragment Reveal |
 | P3-054 | `SPX-451` | `temporal-freeze` | Temporal Freeze |
-| P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
+| P3-098 | `SPX-495` | `card-break-summon` | Card Break Summon |
 | P3-031 | `SPX-429` | `crystallised-selection` | Crystallised Selection |
+| P3-009 | `SPX-408` | `surface-break-reveal` | Surface Break Reveal |
 
 ## Core first-wave
 
@@ -84,13 +85,13 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [x] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transitions.
 - [ ] **P3-002** · `SPX-401` · **Submerged Reveal** — transitions.
-- [x] **P3-003** · `SPX-402` · **Liquid Split Transition** — transitions.
+- [ ] **P3-003** · `SPX-402` · **Liquid Split Transition** — transitions.
 - [ ] **P3-004** · `SPX-403` · **Wave Crash Reveal** — transitions.
 - [ ] **P3-005** · `SPX-404` · **Water Curtain Drop** — transitions.
 - [ ] **P3-006** · `SPX-405` · **Tidal Pull Exit** — transitions.
 - [x] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transitions.
 - [ ] **P3-008** · `SPX-407` · **Underwater Distortion Swap** — transitions.
-- [ ] **P3-009** · `SPX-408` · **Surface Break Reveal** — transitions.
+- [x] **P3-009** · `SPX-408` · **Surface Break Reveal** — transitions.
 - [ ] **P3-010** · `SPX-409` · **Droplet Collapse Transition** — transitions.
 
 ### Components / feedback
@@ -208,7 +209,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [x] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — summon.
 - [ ] **P3-097** · `SPX-494` · **Summoning Burst** — summon.
-- [ ] **P3-098** · `SPX-495` · **Card Break Summon** — summon.
+- [x] **P3-098** · `SPX-495` · **Card Break Summon** — summon.
 - [ ] **P3-099** · `SPX-496` · **Identity Breakthrough** — summon.
 - [ ] **P3-100** · `SPX-497` · **Power Unlocked** — summon.
 - [ ] **P3-101** · `SPX-498` · **Awakening Pulse** — summon.
