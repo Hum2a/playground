@@ -1,0 +1,500 @@
+/* SPX-502 Velvet Door Transition — portable contract. Do not restyle to host tokens. */
+
+.velvet-door-demo {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  overflow: hidden;
+  background: #020711;
+  color: #cbdcff;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.velvet-door-demo__depth,
+.velvet-door-demo__surface {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+.velvet-door-demo__depth {
+  z-index: 1;
+  background: #07153a;
+  transform: scale(0.9);
+  transform-origin: 52% 50%;
+}
+
+.velvet-door-demo__surface {
+  z-index: 2;
+  background: #020711;
+}
+
+.velvet-door-demo__depth-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.velvet-door-demo__depth-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgb(40 85 164 / 0.45);
+}
+
+.velvet-door-demo__depth-line--1 {
+  left: 18%;
+}
+
+.velvet-door-demo__depth-line--2 {
+  left: 38%;
+}
+
+.velvet-door-demo__depth-line--3 {
+  left: 62%;
+}
+
+.velvet-door-demo__depth-line--4 {
+  left: 82%;
+}
+
+.velvet-door-demo__state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  max-width: 16rem;
+}
+
+.velvet-door-demo__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #2855a4;
+}
+
+.velvet-door-demo__state--b .velvet-door-demo__kicker {
+  color: #cbdcff;
+}
+
+.velvet-door-demo__title {
+  margin: 0;
+  font-size: clamp(1.2rem, 5.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: #f5f7ff;
+}
+
+.velvet-door-demo__btn {
+  appearance: none;
+  margin-top: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgb(203 220 255 / 0.55);
+  border-radius: 0;
+  background: transparent;
+  color: #cbdcff;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.velvet-door-demo__btn:focus-visible {
+  outline: 2px solid #2855a4;
+  outline-offset: 3px;
+}
+
+.velvet-door-demo__btn:hover {
+  background: rgb(40 85 164 / 0.25);
+  color: #f5f7ff;
+}
+
+/* —— Entering: surface peels with door; depth scales up —— */
+.velvet-door-demo--entering .velvet-door-demo__depth {
+  animation: velvet-depth-in 500ms cubic-bezier(0.4, 0, 0.2, 1) 220ms forwards;
+}
+
+.velvet-door-demo--entering .velvet-door-demo__depth-line--1 {
+  animation: velvet-line-drift 700ms linear 220ms forwards;
+}
+
+.velvet-door-demo--entering .velvet-door-demo__depth-line--2 {
+  animation: velvet-line-drift 900ms linear 220ms reverse forwards;
+}
+
+.velvet-door-demo--entering .velvet-door-demo__depth-line--3 {
+  animation: velvet-line-drift 800ms linear 240ms forwards;
+}
+
+.velvet-door-demo--entering .velvet-door-demo__depth-line--4 {
+  animation: velvet-line-drift 1000ms linear 220ms reverse forwards;
+}
+
+.velvet-door-demo--entering .velvet-door-demo__surface {
+  animation: velvet-surface-reveal 500ms cubic-bezier(0.4, 0, 0.2, 1) 220ms forwards;
+}
+
+.velvet-door-demo--at-b .velvet-door-demo__depth {
+  transform: scale(1);
+}
+
+.velvet-door-demo--at-b .velvet-door-demo__surface {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.velvet-door-demo--returning .velvet-door-demo__depth {
+  animation: velvet-depth-out 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.velvet-door-demo--returning .velvet-door-demo__surface {
+  visibility: visible;
+  animation: velvet-surface-restore 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes velvet-depth-in {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes velvet-depth-out {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes velvet-surface-reveal {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 48% 0 52%);
+  }
+}
+
+@keyframes velvet-surface-restore {
+  from {
+    clip-path: inset(0 48% 0 52%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes velvet-line-drift {
+  from {
+    transform: translateX(0);
+    opacity: 0.35;
+  }
+  to {
+    transform: translateX(12px);
+    opacity: 0.7;
+  }
+}
+
+/* —— Door overlay —— */
+.velvet-door {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.velvet-door__seam {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  z-index: 4;
+  width: 1px;
+  height: 0;
+  background: #cbdcff;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.velvet-door__panel {
+  position: absolute;
+  top: -5%;
+  height: 110%;
+  width: 56%;
+  background: #102c73;
+  will-change: transform;
+}
+
+.velvet-door__panel--left {
+  left: -2%;
+  clip-path: polygon(0% 0%, 100% 0%, 94% 100%, 0% 100%);
+  transform: translateX(0);
+  /* initially flush — invisible over near-black via matching until open */
+  opacity: 0;
+}
+
+.velvet-door__panel--right {
+  right: -2%;
+  clip-path: polygon(6% 0%, 100% 0%, 100% 100%, 0% 100%);
+  transform: translateX(0);
+  opacity: 0;
+  background: #07153a;
+}
+
+.velvet-door__threshold {
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  z-index: 6;
+  margin: 0;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #cbdcff;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.velvet-door__edge {
+  position: absolute;
+  top: 14%;
+  bottom: 14%;
+  left: 0;
+  z-index: 3;
+  width: 1px;
+  background: rgb(203 220 255 / 0.55);
+  opacity: 0;
+}
+
+/* —— Seam 0–220ms —— */
+.velvet-door--seam .velvet-door__seam {
+  animation: velvet-seam-grow 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes velvet-seam-grow {
+  0% {
+    opacity: 0;
+    width: 1px;
+    height: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    width: 3px;
+    height: 72%;
+  }
+}
+
+/* —— Open 220–720ms —— */
+.velvet-door--open .velvet-door__seam,
+.velvet-door--seam.velvet-door--open .velvet-door__seam {
+  opacity: 1;
+  width: 3px;
+  height: 72%;
+  animation: velvet-seam-fade 200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.velvet-door--open .velvet-door__panel--left,
+.velvet-door--seam.velvet-door--open .velvet-door__panel--left {
+  opacity: 1;
+  animation: velvet-panel-left-out 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.velvet-door--open .velvet-door__panel--right,
+.velvet-door--seam.velvet-door--open .velvet-door__panel--right {
+  opacity: 1;
+  animation: velvet-panel-right-out 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.velvet-door--open .velvet-door__threshold,
+.velvet-door--seam.velvet-door--open .velvet-door__threshold {
+  animation: velvet-threshold-in 240ms cubic-bezier(0.4, 0, 0.2, 1) 180ms forwards;
+}
+
+@keyframes velvet-seam-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes velvet-panel-left-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) skewY(0.4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-52%) skewY(0.8deg);
+  }
+}
+
+@keyframes velvet-panel-right-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) skewY(-0.4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(52%) skewY(-0.8deg);
+  }
+}
+
+@keyframes velvet-threshold-in {
+  0% {
+    opacity: 0;
+  }
+  30%,
+  70% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* —— Entered: residual edge motif —— */
+.velvet-door--entered .velvet-door__panel {
+  opacity: 0;
+  transform: translateX(-60%);
+}
+
+.velvet-door--entered .velvet-door__panel--right {
+  transform: translateX(60%);
+}
+
+.velvet-door--entered .velvet-door__seam,
+.velvet-door--entered .velvet-door__threshold {
+  opacity: 0;
+}
+
+.velvet-door--entered .velvet-door__edge {
+  opacity: 1;
+}
+
+/* —— Closing: panels from outside —— */
+.velvet-door--closing .velvet-door__edge {
+  opacity: 0;
+}
+
+.velvet-door--closing .velvet-door__panel--left {
+  opacity: 1;
+  animation: velvet-panel-left-in 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.velvet-door--closing .velvet-door__panel--right {
+  opacity: 1;
+  animation: velvet-panel-right-in 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.velvet-door--closing .velvet-door__seam {
+  opacity: 1;
+  width: 3px;
+  height: 72%;
+  animation: none;
+}
+
+@keyframes velvet-panel-left-in {
+  from {
+    transform: translateX(-52%) skewY(0.8deg);
+  }
+  to {
+    transform: translateX(0) skewY(0);
+  }
+}
+
+@keyframes velvet-panel-right-in {
+  from {
+    transform: translateX(52%) skewY(-0.8deg);
+  }
+  to {
+    transform: translateX(0) skewY(0);
+  }
+}
+
+/* —— Seam contract —— */
+.velvet-door--contract .velvet-door__panel {
+  opacity: 0;
+}
+
+.velvet-door--contract .velvet-door__seam {
+  opacity: 1;
+  width: 2px;
+  height: 72%;
+  animation: velvet-seam-contract 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes velvet-seam-contract {
+  from {
+    opacity: 1;
+    height: 72%;
+    width: 2px;
+  }
+  to {
+    opacity: 0;
+    height: 0;
+    width: 1px;
+  }
+}
+
+/* —— Reduced motion —— */
+.velvet-door--rm.velvet-door--entered .velvet-door__edge {
+  opacity: 1;
+}
+
+.velvet-door--rm .velvet-door__panel,
+.velvet-door--rm .velvet-door__seam,
+.velvet-door--rm .velvet-door__threshold {
+  animation: none !important;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .velvet-door-demo--entering .velvet-door-demo__depth,
+  .velvet-door-demo--entering .velvet-door-demo__surface,
+  .velvet-door-demo--entering .velvet-door-demo__depth-line,
+  .velvet-door-demo--returning .velvet-door-demo__depth,
+  .velvet-door-demo--returning .velvet-door-demo__surface,
+  .velvet-door--seam .velvet-door__seam,
+  .velvet-door--open .velvet-door__panel,
+  .velvet-door--open .velvet-door__seam,
+  .velvet-door--open .velvet-door__threshold,
+  .velvet-door--closing .velvet-door__panel,
+  .velvet-door--contract .velvet-door__seam {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .velvet-door-demo--entering .velvet-door-demo__depth,
+[data-force-reduced-motion='true'] .velvet-door-demo--entering .velvet-door-demo__surface,
+[data-force-reduced-motion='true'] .velvet-door-demo--entering .velvet-door-demo__depth-line,
+[data-force-reduced-motion='true'] .velvet-door-demo--returning .velvet-door-demo__depth,
+[data-force-reduced-motion='true'] .velvet-door-demo--returning .velvet-door-demo__surface,
+[data-force-reduced-motion='true'] .velvet-door--seam .velvet-door__seam,
+[data-force-reduced-motion='true'] .velvet-door--open .velvet-door__panel,
+[data-force-reduced-motion='true'] .velvet-door--open .velvet-door__seam,
+[data-force-reduced-motion='true'] .velvet-door--open .velvet-door__threshold,
+[data-force-reduced-motion='true'] .velvet-door--closing .velvet-door__panel,
+[data-force-reduced-motion='true'] .velvet-door--contract .velvet-door__seam {
+  animation: none !important;
+}

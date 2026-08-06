@@ -1,0 +1,69 @@
+{
+  "name": "velvet-door-transition",
+  "intent": "Calm contextual transition: a pale vertical seam grows from centre, then angular blue panels separate to reveal a deep-blue destination that already exists behind the doorway.",
+  "colours": {
+    "nearBlack": "#020711",
+    "velvetNavy": "#07153a",
+    "royalBlue": "#102c73",
+    "coolBlue": "#2855a4",
+    "pale": "#cbdcff",
+    "white": "#f5f7ff"
+  },
+  "copy": {
+    "stateA": { "kicker": "PUBLIC ARCHIVE", "title": "24 available specimens", "cta": "ENTER" },
+    "stateB": { "kicker": "PRIVATE COMPENDIUM", "title": "Fusion records", "cta": "RETURN" },
+    "threshold": "ENTERING // COMPENDIUM"
+  },
+  "geometry": {
+    "seamLeftPercent": 52,
+    "seamWidthPx": [1, 3],
+    "seamHeightPercent": 72,
+    "leftPanelTranslatePercent": -52,
+    "rightPanelTranslatePercent": 52,
+    "destinationScaleFrom": 0.9,
+    "destinationScaleTo": 1,
+    "depthLineCount": 4,
+    "leftClipPath": "polygon(0% 0%, 100% 0%, 94% 100%, 0% 100%)",
+    "rightClipPath": "polygon(6% 0%, 100% 0%, 100% 100%, 0% 100%)"
+  },
+  "timing": {
+    "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "seamMs": 220,
+    "openStartMs": 220,
+    "openEndMs": 720,
+    "thresholdAtMs": 520,
+    "enterTotalMs": 900,
+    "closeMs": 500,
+    "seamContractMs": 220,
+    "returnTotalMs": 780,
+    "noBounce": true
+  },
+  "api": {
+    "enter": "runVelvetEnter()",
+    "return": "runVelvetReturn()",
+    "busyGuard": true,
+    "destinationExistsBehindDoor": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "doorAriaHidden": true,
+    "activeContextOnlySemantic": true,
+    "focusAfterEnter": "RETURN button",
+    "focusAfterReturn": "ENTER button"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately display destination (or public) context; no opening travel"
+  },
+  "constraints": {
+    "noParticles": true,
+    "noStarfield": true,
+    "noLiteral3dDoorSwing": true,
+    "noVelvetRoomAssets": true,
+    "noBounce": true,
+    "noImpact": true
+  }
+}

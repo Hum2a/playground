@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **2 / 238** complete.
+- Progress: **3 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 2 |
-| Open | 236 |
+| Done | 3 |
+| Open | 235 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 | --- | --- | --- | --- |
 | P3-019 | `SPX-005` | `azure-shard-transition` | Azure Shard Transition |
 | P3-037 | `SPX-006` | `precision-menu-snap` | Precision Menu Snap |
+| P3-105 | `SPX-502` | `velvet-door-transition` | Velvet Door Transition |
 
 ## Core first-wave
 
@@ -45,7 +46,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-062** · `SPX-459` · **Eclipse Transition** — transition
 - [ ] **P3-071** · `SPX-468` · **Tartarus Floor Ascension** — progress
 - [ ] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — reveal
-- [ ] **P3-105** · `SPX-502` · **Velvet Door Transition** — transition
+- [x] **P3-105** · `SPX-502` · **Velvet Door Transition** — transition
 - [ ] **P3-112** · `SPX-509` · **Fusion Selection Merge** — fusion
 - [ ] **P3-083** · `SPX-480` · **Tactical Target Lock** — selection
 - [ ] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
@@ -200,7 +201,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Velvet Room
 
-- [ ] **P3-105** · `SPX-502` · **Velvet Door Transition** — velvet.
+- [x] **P3-105** · `SPX-502` · **Velvet Door Transition** — velvet.
 - [ ] **P3-106** · `SPX-503` · **Velvet Curtain Reveal** — velvet.
 - [ ] **P3-107** · `SPX-504` · **Butterfly Entry** — velvet.
 - [ ] **P3-108** · `SPX-505` · **Butterfly Dissolve Exit** — velvet.
