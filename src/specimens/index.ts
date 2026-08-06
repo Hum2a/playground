@@ -554,6 +554,8 @@ import { kickerToHeadlineCascade } from './kicker-to-headline-cascade/entry'
 
 import { headlineCorrectionStrike } from './headline-correction-strike/entry'
 
+import { columnReflow } from './column-reflow/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1059,6 +1061,7 @@ export const specimens: Specimen[] = [
   headlineReflow,
   kickerToHeadlineCascade,
   headlineCorrectionStrike,
+  columnReflow,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
