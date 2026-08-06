@@ -1,0 +1,16 @@
+.catalogue {
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+.catalogue__plates {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.catalogue__empty {
+  color: var(--pewter);
+  font-size: var(--text-xs);
+  margin-top: var(--space-4);
+}

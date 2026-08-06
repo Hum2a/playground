@@ -1,8 +1,9 @@
 .specimen-detail {
-  max-width: 40rem;
+  max-width: 72rem;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .specimen-detail__header {
@@ -18,7 +19,7 @@
 .specimen-detail__blurb {
   color: var(--pewter);
   font-size: var(--text-xs);
-  max-width: 36ch;
+  max-width: 48ch;
 }
 
 .specimen-detail__empty {
@@ -34,9 +35,156 @@
   align-self: flex-start;
 }
 
+.specimen-detail__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.specimen-detail__preview-col {
+  position: sticky;
+  top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.specimen-detail__source {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.specimen-detail__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  border-bottom: var(--hairline);
+  padding-bottom: var(--space-2);
+}
+
+.specimen-detail__tab {
+  appearance: none;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: var(--pewter);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-2);
+}
+
+.specimen-detail__tab:hover {
+  color: var(--chalk);
+  border-color: var(--rule);
+}
+
+.specimen-detail__tab[aria-selected='true'] {
+  color: var(--chalk);
+  border-color: var(--verdigris);
+}
+
 .specimen-detail__copy {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-top: var(--space-2);
+}
+
+.specimen-detail__panel {
+  min-width: 0;
+}
+
+.specimen-detail__code {
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--panel);
+  border: var(--hairline);
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: var(--chalk);
+}
+
+.specimen-detail__md {
+  color: var(--chalk);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+}
+
+.specimen-detail__md h1,
+.specimen-detail__md h2,
+.specimen-detail__md h3 {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+.specimen-detail__md h1 { font-size: var(--text-md); }
+.specimen-detail__md h2 { font-size: var(--text-sm); }
+.specimen-detail__md h3 { font-size: var(--text-xs); }
+
+.specimen-detail__md p,
+.specimen-detail__md ul {
+  margin-bottom: var(--space-3);
+  color: var(--pewter);
+}
+
+.specimen-detail__md code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--chalk);
+}
+
+.specimen-detail__md .md-pre {
+  margin: var(--space-3) 0;
+  padding: var(--space-3);
+  background: var(--panel);
+  border: var(--hairline);
+  overflow: auto;
+  font-size: var(--text-2xs);
+}
+
+.specimen-detail__md .md-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-3) 0;
+  font-size: var(--text-2xs);
+}
+
+.specimen-detail__md .md-table th,
+.specimen-detail__md .md-table td {
+  border: var(--hairline);
+  padding: var(--space-2);
+  text-align: left;
+  vertical-align: top;
+}
+
+.specimen-detail__md .md-table th {
+  color: var(--pewter);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .specimen-detail__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .specimen-detail__preview-col {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--ink);
+    padding-bottom: var(--space-3);
+  }
 }

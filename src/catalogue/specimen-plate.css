@@ -1,0 +1,77 @@
+.specimen-plate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--panel);
+  border: var(--hairline);
+}
+
+.specimen-plate__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--pewter);
+}
+
+.specimen-plate__origin {
+  text-align: right;
+}
+
+.specimen-plate__preview {
+  position: relative;
+}
+
+.specimen-plate__placeholder {
+  width: 100%;
+  background: var(--ink);
+  border: var(--hairline);
+}
+
+.specimen-plate__play {
+  appearance: none;
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--chalk);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-2);
+}
+
+.specimen-plate__title {
+  font-size: var(--text-sm);
+}
+
+.specimen-plate__tags {
+  color: var(--pewter);
+}
+
+.specimen-plate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.specimen-plate__open {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  border-bottom: 1px solid transparent;
+  padding-block: var(--space-1);
+}
+
+.specimen-plate__open:hover {
+  color: var(--chalk);
+  border-bottom-color: var(--rule);
+}
