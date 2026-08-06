@@ -1,0 +1,164 @@
+/* keyboard-rise-content-avoidance — portable specimen styles. Do not restyle to host tokens. */
+
+.krca {
+  --krca-ink: #12141a;
+  --krca-panel: #1e232d;
+  --krca-line: #2e3644;
+  --krca-muted: #8a939f;
+  --krca-cream: #eceff4;
+  --krca-keyboard-h: 260px;
+  --krca-rise-ms: 260ms;
+  --krca-gap: 16px;
+  position: relative;
+  width: 390px;
+  max-width: 100%;
+  height: 700px;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--krca-cream);
+  background: var(--krca-ink);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.krca *,
+.krca *::before,
+.krca *::after {
+  box-sizing: border-box;
+}
+
+.krca__viewport {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: height var(--krca-rise-ms) ease, bottom var(--krca-rise-ms) ease;
+}
+
+.krca[data-phase='open'] .krca__viewport {
+  height: calc(100% - var(--krca-keyboard-h));
+  bottom: var(--krca-keyboard-h);
+}
+
+.krca__messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: auto;
+  padding-bottom: 1rem;
+}
+
+.krca__msg {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  background: var(--krca-panel);
+  font-size: 0.78rem;
+  max-width: 85%;
+}
+
+.krca__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.62rem;
+  color: var(--krca-muted);
+}
+
+.krca__field--top {
+  margin-top: 1rem;
+}
+
+.krca__input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--krca-line);
+  border-radius: 12px;
+  background: var(--krca-panel);
+  color: var(--krca-cream);
+  font-size: 0.78rem;
+}
+
+.krca__input:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.krca__composer {
+  padding-top: 0.5rem;
+  margin-top: auto;
+}
+
+.krca__keyboard {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--krca-keyboard-h);
+  padding: 0.75rem;
+  border-top: 1px solid var(--krca-line);
+  background: color-mix(in srgb, var(--krca-panel) 95%, #000);
+  transform: translateY(100%);
+  transition: transform var(--krca-rise-ms) cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 3;
+}
+
+.krca[data-phase='open'] .krca__keyboard {
+  transform: translateY(0);
+}
+
+.krca__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.krca__keys span {
+  height: 36px;
+  border-radius: 8px;
+  background: var(--krca-line);
+}
+
+.krca__dismiss {
+  width: 100%;
+  padding: 0.45rem;
+  border: 1px solid var(--krca-line);
+  border-radius: 10px;
+  background: var(--krca-ink);
+  color: var(--krca-muted);
+  font-size: 0.65rem;
+  cursor: pointer;
+}
+
+.krca__dismiss:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.krca__status {
+  position: absolute;
+  bottom: 4px;
+  left: 1rem;
+  font-size: 0.58rem;
+  color: var(--krca-muted);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.krca[data-phase='open'] .krca__status {
+  bottom: calc(var(--krca-keyboard-h) + 4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .krca__viewport,
+  .krca__keyboard {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .krca__viewport,
+[data-force-reduced-motion='true'] .krca__keyboard {
+  transition-duration: 0.01ms !important;
+}

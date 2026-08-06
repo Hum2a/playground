@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/keyboard-rise-content-avoidance.schema.json",
+  "title": "KeyboardRiseContentAvoidance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "keyboard", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "keyboard-rise-content-avoidance" },
+    "keyboard": {
+      "type": "object",
+      "required": ["widthPx", "heightPx", "gapPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 390 },
+        "heightPx": { "type": "number", "const": 260 },
+        "gapPx": { "type": "number", "const": 16 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["riseMs"],
+      "properties": {
+        "riseMs": { "type": "number", "const": 260 }
+      }
+    }
+  }
+}

@@ -120,6 +120,7 @@ import { irreversibleThreshold } from './irreversible-threshold/entry'
 import { isolatedTimeFreeze } from './isolated-time-freeze/entry'
 import { itemObtained } from './item-obtained/entry'
 import { instantTransmissionNavigation } from './instant-transmission-navigation/entry'
+import { keyboardRiseContentAvoidance } from './keyboard-rise-content-avoidance/entry'
 import { kiChargeMeter } from './ki-charge-meter/entry'
 import { largeTitleCollapse } from './large-title-collapse/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
@@ -401,6 +402,7 @@ export const specimens: Specimen[] = [
   irreversibleThreshold,
   isolatedTimeFreeze,
   itemObtained,
+  keyboardRiseContentAvoidance,
   kiChargeMeter,
   largeTitleCollapse,
   letterScatterAssemble,
