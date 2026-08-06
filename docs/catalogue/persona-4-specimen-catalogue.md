@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **42 / 191** complete.
+- Progress: **43 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 149 |
+| Done | 43 |
+| Open | 148 |
 
 ## Visual grammar
 
@@ -76,6 +76,7 @@
 | P4-089 | `SPX-3007` | `level-up-burst` | Level-Up Burst |
 | P4-092 | `SPX-3010` | `map-construction` | Map Construction |
 | P4-094 | `SPX-3012` | `danger-meter-escalation` | Danger Meter Escalation |
+| P4-100 | `SPX-3018` | `day-change-card` | Day Change Card |
 
 ## Core first-wave
 
@@ -123,7 +124,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-089** · `SPX-3007` · **Level-Up Burst** — battle-weakness-advantage
 - [x] **P4-092** · `SPX-3010` · **Map Construction** — dungeon-exploration
 - [x] **P4-094** · `SPX-3012` · **Danger Meter Escalation** — dungeon-exploration
-- [ ] **P4-100** · `SPX-3018` · **Day Change Card** — calendar-time-deadlines
+- [x] **P4-100** · `SPX-3018` · **Day Change Card** — calendar-time-deadlines
 - [ ] **P4-103** · `SPX-3021` · **Deadline Pressure Meter** — calendar-time-deadlines
 - [ ] **P4-105** · `SPX-3023` · **Fog Forecast Warning** — calendar-time-deadlines
 - [ ] **P4-049** · `SPX-2967` · **Boss Introduction Freeze** — shadow-identity-confrontation
@@ -264,7 +265,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Calendar / Time / Deadlines
 
-- [ ] **P4-100** · `SPX-3018` · **Day Change Card** — The current date peels/slides away and the next day locks into place.
+- [x] **P4-100** · `SPX-3018` · **Day Change Card** — The current date peels/slides away and the next day locks into place.
 - [ ] **P4-101** · `SPX-3019` · **After-School Transition** — Time-of-day state shifts through a short graphic interstitial.
 - [ ] **P4-102** · `SPX-3020` · **Weather Forecast Change** — Calendar weather iconography morphs between fixed states.
 - [ ] **P4-103** · `SPX-3021` · **Deadline Pressure Meter** — Days remaining compress visually as a deadline approaches.

@@ -96,6 +96,7 @@ import { crystallisedSelection } from './crystallised-selection/entry'
 import { dangerMeterEscalation } from './danger-meter-escalation/entry'
 import { darkHourConversion } from './dark-hour-conversion/entry'
 import { darkHourConversionLoader } from './dark-hour-conversion-loader/entry'
+import { dayChangeCard } from './day-change-card/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { deadlineClock } from './deadline-clock/entry'
 import { deadlinePanic } from './deadline-panic/entry'
@@ -528,6 +529,7 @@ export const specimens: Specimen[] = [
   dangerMeterEscalation,
   darkHourConversion,
   darkHourConversionLoader,
+  dayChangeCard,
   dayChangeTear,
   deadlineClock,
   deadlinePanic,
