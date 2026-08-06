@@ -1,0 +1,90 @@
+<div class="wpd" data-wpd data-phase="idle">
+  <p class="wpd__live" data-wpd-live aria-live="polite">
+    Scan idle. Four weak points pending.
+  </p>
+
+  <p class="wpd__system">SCAN // WEAK-POINT</p>
+
+  <div class="wpd__stage" data-wpd-stage>
+    <svg class="wpd__diagram" viewBox="0 0 200 160" aria-hidden="true">
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        d="M100 8 L150 34 L150 96 L124 140 L76 140 L50 96 L50 34 Z"
+      />
+      <path fill="none" stroke="currentColor" stroke-width="1" opacity="0.5" d="M100 8 V140" />
+      <path fill="none" stroke="currentColor" stroke-width="1" opacity="0.5" d="M50 60 H150" />
+      <path fill="none" stroke="currentColor" stroke-width="1" opacity="0.5" d="M58 104 H142" />
+    </svg>
+
+    <div class="wpd__scanline" data-wpd-scanline></div>
+
+    <ol class="wpd__markers" data-wpd-markers aria-label="Weak points">
+      <li
+        class="wpd__marker"
+        data-wpd-marker
+        data-index="0"
+        style="top: 20%; left: 34%;"
+        aria-label="Weak point 1 pending"
+      >
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 4v6M4 4h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 4v6M20 4h-6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 20v-6M4 20h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 20v-6M20 20h-6" />
+        </svg>
+      </li>
+      <li
+        class="wpd__marker"
+        data-wpd-marker
+        data-index="1"
+        style="top: 38%; left: 66%;"
+        aria-label="Weak point 2 pending"
+      >
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 4v6M4 4h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 4v6M20 4h-6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 20v-6M4 20h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 20v-6M20 20h-6" />
+        </svg>
+      </li>
+      <li
+        class="wpd__marker"
+        data-wpd-marker
+        data-index="2"
+        style="top: 62%; left: 40%;"
+        aria-label="Weak point 3 pending"
+      >
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 4v6M4 4h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 4v6M20 4h-6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 20v-6M4 20h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 20v-6M20 20h-6" />
+        </svg>
+      </li>
+      <li
+        class="wpd__marker"
+        data-wpd-marker
+        data-index="3"
+        style="top: 82%; left: 62%;"
+        aria-label="Weak point 4 pending"
+      >
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 4v6M4 4h6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 4v6M20 4h-6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M20 20v-6M20 20h-6" />
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M4 20v-6M4 20h6" />
+        </svg>
+      </li>
+    </ol>
+
+    <p class="wpd__status" data-wpd-status>IDLE</p>
+    <p class="wpd__hint" data-wpd-hint>Press Run to sweep the diagram.</p>
+  </div>
+
+  <div class="wpd__controls">
+    <button type="button" class="wpd__btn wpd__btn--primary" data-wpd-run>Run</button>
+    <button type="button" class="wpd__btn" data-wpd-replay>Replay</button>
+  </div>
+</div>
