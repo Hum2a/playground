@@ -141,6 +141,8 @@ export const SUGGESTED_FREE_TAGS = [
   'stack',
   'progress',
   'confirmation',
+  'completion',
+  'task',
   'hold',
   'rank-up',
   'tear',

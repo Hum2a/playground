@@ -1,0 +1,481 @@
+/* SPX-322 Discovery Tear-Open — portable contract. Do not restyle to host tokens. */
+
+.discovery-tear-demo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  background: #1a1a1a;
+  color: #f5f1e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.discovery-tear {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: min(100%, 340px);
+  min-height: 210px;
+  border: 1px solid rgba(245, 241, 232, 0.2);
+  background: #090909;
+}
+
+/* —— Secret underlay —— */
+.discovery-tear__secret {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.45rem;
+  box-sizing: border-box;
+  padding: 1.4rem 1.25rem;
+  background: #090909;
+  color: #f5f1e8;
+}
+
+.discovery-tear__secret-title {
+  margin: 0;
+  font-size: clamp(1.2rem, 5.5vw, 1.55rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #e60012;
+  transform: scale(1);
+  transform-origin: left center;
+}
+
+.discovery-tear__secret-body {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #f5f1e8;
+}
+
+.discovery-tear--pop .discovery-tear__secret-title {
+  animation: discovery-tear-secret-pop 180ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes discovery-tear-secret-pop {
+  from {
+    transform: scale(0.96);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* —— Cover stack —— */
+.discovery-tear__cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.discovery-tear__peek {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #e60012 0 55%, #090909 55% 100%);
+  clip-path: polygon(40% 0%, 100% 0%, 100% 100%);
+  pointer-events: none;
+}
+
+.discovery-tear__paper {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  padding: 1.25rem 1.15rem;
+  background: #f5f1e8;
+  color: #090909;
+  /* Idle: mostly intact; small UR corner missing (~28×28) */
+  clip-path: polygon(
+    0% 0%,
+    88% 0%,
+    100% 12%,
+    100% 100%,
+    0% 100%
+  );
+  will-change: clip-path;
+}
+
+.discovery-tear__code {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.discovery-tear__blurb {
+  margin: 0.55rem 0 0;
+  max-width: 12rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: rgba(9, 9, 9, 0.72);
+}
+
+/* Corner trigger — sits on the torn tip */
+.discovery-tear__corner {
+  appearance: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: 100% 0%;
+}
+
+.discovery-tear__corner:disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.discovery-tear__corner:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 2px;
+}
+
+.discovery-tear__corner-tip {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: #f5f1e8;
+  border-left: 1.5px solid #090909;
+  border-bottom: 1.5px solid #090909;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+  box-shadow: -1px 1px 0 #e60012;
+}
+
+/* Three torn regions — idle off; active during split / final */
+.discovery-tear__flap {
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
+  background: #f5f1e8;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.discovery-tear__flap--a {
+  top: -4%;
+  right: -6%;
+  width: 62%;
+  height: 48%;
+  clip-path: polygon(
+    18% 0%,
+    100% 0%,
+    100% 72%,
+    78% 100%,
+    52% 82%,
+    30% 96%,
+    8% 70%,
+    22% 42%
+  );
+  transform-origin: 100% 0%;
+}
+
+.discovery-tear__flap--b {
+  top: 8%;
+  left: -8%;
+  width: 58%;
+  height: 78%;
+  clip-path: polygon(
+    0% 6%,
+    72% 0%,
+    100% 28%,
+    86% 52%,
+    100% 78%,
+    64% 100%,
+    0% 92%,
+    12% 48%
+  );
+  transform-origin: 0% 80%;
+}
+
+.discovery-tear__flap--c {
+  right: -4%;
+  bottom: -8%;
+  width: 70%;
+  height: 58%;
+  clip-path: polygon(
+    8% 0%,
+    48% 18%,
+    72% 0%,
+    100% 22%,
+    100% 100%,
+    0% 100%,
+    0% 48%,
+    22% 28%
+  );
+  transform-origin: 80% 100%;
+}
+
+/* —— Lift 0–160ms —— */
+.discovery-tear--lift .discovery-tear__corner-tip {
+  animation: discovery-tear-lift 160ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes discovery-tear-lift {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1.2) rotate(-6deg);
+  }
+}
+
+/* —— Grow 160–520ms: irregular hole expands from UR —— */
+.discovery-tear--grow .discovery-tear__corner-tip {
+  transform: scale(1.2) rotate(-6deg);
+  opacity: 0.35;
+}
+
+.discovery-tear--grow .discovery-tear__paper {
+  animation: discovery-tear-grow 360ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 8 frozen irregular points on the tear edge */
+@keyframes discovery-tear-grow {
+  0% {
+    clip-path: polygon(
+      0% 0%,
+      88% 0%,
+      100% 12%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  55% {
+    clip-path: polygon(
+      0% 0%,
+      62% 0%,
+      70% 14%,
+      58% 22%,
+      72% 34%,
+      100% 28%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0% 0%,
+      42% 0%,
+      52% 12%,
+      38% 24%,
+      48% 36%,
+      34% 48%,
+      55% 58%,
+      100% 48%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
+
+/* —— Split 520–760ms: three regions pull outward —— */
+.discovery-tear--split .discovery-tear__paper,
+.discovery-tear--revealed .discovery-tear__paper {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.discovery-tear--split .discovery-tear__peek,
+.discovery-tear--revealed .discovery-tear__peek,
+.discovery-tear--split .discovery-tear__corner,
+.discovery-tear--revealed .discovery-tear__corner {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.discovery-tear--split .discovery-tear__flap {
+  opacity: 1;
+}
+
+.discovery-tear--split .discovery-tear__flap--a {
+  animation: discovery-tear-flap-a 240ms cubic-bezier(0.55, 0.05, 0.8, 0.25) forwards;
+}
+
+.discovery-tear--split .discovery-tear__flap--b {
+  animation: discovery-tear-flap-b 240ms cubic-bezier(0.55, 0.05, 0.8, 0.25) 20ms forwards;
+}
+
+.discovery-tear--split .discovery-tear__flap--c {
+  animation: discovery-tear-flap-c 240ms cubic-bezier(0.55, 0.05, 0.8, 0.25) 35ms forwards;
+}
+
+@keyframes discovery-tear-flap-a {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(18%, -22%) rotate(8deg);
+  }
+}
+
+@keyframes discovery-tear-flap-b {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(-24%, 12%) rotate(-7deg);
+  }
+}
+
+@keyframes discovery-tear-flap-c {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(14%, 26%) rotate(6deg);
+  }
+}
+
+/* Final: flaps remain partially in frame (torn edges stay) */
+.discovery-tear--revealed .discovery-tear__flap {
+  opacity: 1;
+}
+
+.discovery-tear--revealed .discovery-tear__flap--a {
+  transform: translate(18%, -22%) rotate(8deg);
+}
+
+.discovery-tear--revealed .discovery-tear__flap--b {
+  transform: translate(-24%, 12%) rotate(-7deg);
+}
+
+.discovery-tear--revealed .discovery-tear__flap--c {
+  transform: translate(14%, 26%) rotate(6deg);
+}
+
+.discovery-tear-demo__status {
+  margin: 0;
+  min-height: 1.1em;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 232, 0.65);
+}
+
+.discovery-tear-demo__reset {
+  appearance: none;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(245, 241, 232, 0.45);
+  border-radius: 0;
+  background: transparent;
+  color: #f5f1e8;
+  font: inherit;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.discovery-tear-demo__reset:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 3px;
+}
+
+/* —— Reduced motion: final torn-open composition immediately —— */
+@media (prefers-reduced-motion: reduce) {
+  .discovery-tear--lift .discovery-tear__corner-tip,
+  .discovery-tear--grow .discovery-tear__paper,
+  .discovery-tear--split .discovery-tear__flap--a,
+  .discovery-tear--split .discovery-tear__flap--b,
+  .discovery-tear--split .discovery-tear__flap--c,
+  .discovery-tear--pop .discovery-tear__secret-title {
+    animation: none !important;
+  }
+
+  .discovery-tear--reduced .discovery-tear__paper,
+  .discovery-tear--reduced .discovery-tear__peek,
+  .discovery-tear--reduced .discovery-tear__corner {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .discovery-tear--reduced .discovery-tear__flap {
+    opacity: 1;
+  }
+
+  .discovery-tear--reduced .discovery-tear__flap--a {
+    transform: translate(18%, -22%) rotate(8deg);
+  }
+
+  .discovery-tear--reduced .discovery-tear__flap--b {
+    transform: translate(-24%, 12%) rotate(-7deg);
+  }
+
+  .discovery-tear--reduced .discovery-tear__flap--c {
+    transform: translate(14%, 26%) rotate(6deg);
+  }
+
+  .discovery-tear--reduced .discovery-tear__secret-title {
+    transform: scale(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--lift .discovery-tear__corner-tip,
+[data-force-reduced-motion='true'] .discovery-tear--grow .discovery-tear__paper,
+[data-force-reduced-motion='true'] .discovery-tear--split .discovery-tear__flap--a,
+[data-force-reduced-motion='true'] .discovery-tear--split .discovery-tear__flap--b,
+[data-force-reduced-motion='true'] .discovery-tear--split .discovery-tear__flap--c,
+[data-force-reduced-motion='true'] .discovery-tear--pop .discovery-tear__secret-title {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__paper,
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__peek,
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__corner {
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__flap {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__flap--a {
+  transform: translate(18%, -22%) rotate(8deg);
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__flap--b {
+  transform: translate(-24%, 12%) rotate(-7deg);
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__flap--c {
+  transform: translate(14%, 26%) rotate(6deg);
+}
+
+[data-force-reduced-motion='true'] .discovery-tear--reduced .discovery-tear__secret-title {
+  transform: scale(1);
+}

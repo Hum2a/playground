@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/deadline-panic.schema.json",
+  "title": "DeadlinePanic",
+  "description": "Portable contract for a 10s countdown that becomes compositionally unstable as zero approaches. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "timing",
+    "phases",
+    "shatter",
+    "zero",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "deadline-panic" },
+    "intent": {
+      "type": "string",
+      "const": "Short countdown where typography becomes progressively more compositionally unstable as zero approaches — urgency via graphic disorder, not flashing."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "reset", "timeUp", "announce"],
+      "properties": {
+        "start": { "type": "string", "const": "START COUNTDOWN" },
+        "reset": { "type": "string", "const": "RESET" },
+        "timeUp": { "type": "string", "const": "TIME UP" },
+        "announce": { "type": "string", "const": "Time expired." }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "clock", "noTimeoutChain"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 10000 },
+        "clock": {
+          "type": "string",
+          "const": "performance.now + requestAnimationFrame"
+        },
+        "noTimeoutChain": { "type": "boolean", "const": true },
+        "noFlashing": { "type": "boolean", "const": true },
+        "noRuntimeRandom": { "type": "boolean", "const": true }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stable", "tense", "split", "scatter", "shatter"],
+      "properties": {
+        "stable": {
+          "type": "object",
+          "properties": {
+            "secs": { "type": "string", "const": "10-6" },
+            "maxNudgePx": { "type": "number", "const": 1 }
+          }
+        },
+        "tense": {
+          "type": "object",
+          "properties": {
+            "secs": { "type": "string", "const": "5-4" },
+            "rotateDeg": { "type": "array", "const": [-1, 1] }
+          }
+        },
+        "split": {
+          "type": "object",
+          "properties": {
+            "secs": { "type": "number", "const": 3 },
+            "colonRotateDeg": { "type": "number", "const": 6 },
+            "scale": { "type": "number", "const": 1.05 }
+          }
+        },
+        "scatter": {
+          "type": "object",
+          "properties": {
+            "secs": { "type": "number", "const": 2 },
+            "offsetsPx": {
+              "type": "array",
+              "const": [
+                [-4, 3],
+                [5, -3],
+                [-3, 4],
+                [4, -5]
+              ]
+            }
+          }
+        },
+        "shatter": {
+          "type": "object",
+          "properties": {
+            "secs": { "type": "number", "const": 1 }
+          }
+        }
+      }
+    },
+    "shatter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["digits"],
+      "properties": {
+        "digits": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["translate", "rotateDeg"]
+          }
+        }
+      }
+    },
+    "zero": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseMs", "impactMs"],
+      "properties": {
+        "collapseMs": { "type": "number", "const": 120 },
+        "impactMs": { "type": "number", "const": 300 },
+        "backingOffset": {
+          "type": "object",
+          "properties": {
+            "xPx": { "type": "number", "const": 7 },
+            "yPx": { "type": "number", "const": 6 }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["quietRemaining", "finalAnnounce"],
+      "properties": {
+        "quietRemaining": { "type": "boolean", "const": true },
+        "finalAnnounce": { "type": "string", "const": "Time expired." }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["staticDigits", "immediateTimeUp", "triggers"],
+      "properties": {
+        "staticDigits": { "type": "boolean", "const": true },
+        "immediateTimeUp": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "timer", "digit", "colon", "timeup"],
+      "properties": {
+        "root": { "type": "string", "const": "dp" },
+        "timer": { "type": "string", "const": "dp__timer" },
+        "digit": { "type": "string", "const": "dp__digit" },
+        "colon": { "type": "string", "const": "dp__colon" },
+        "timeup": { "type": "string", "const": "dp__timeup" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "start": { "type": "string", "const": "startDeadlinePanic" },
+        "reset": { "type": "string", "const": "resetDeadlinePanic" },
+        "replay": { "type": "string", "const": "replayDeadlinePanic" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "deadline-panic",
+      "intent": "Short countdown where typography becomes progressively more compositionally unstable as zero approaches — urgency via graphic disorder, not flashing.",
+      "copy": {
+        "start": "START COUNTDOWN",
+        "reset": "RESET",
+        "timeUp": "TIME UP",
+        "announce": "Time expired."
+      },
+      "colours": {
+        "black": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "timing": {
+        "durationMs": 10000,
+        "clock": "performance.now + requestAnimationFrame",
+        "noTimeoutChain": true,
+        "noFlashing": true,
+        "noRuntimeRandom": true
+      },
+      "phases": {
+        "stable": { "secs": "10-6", "maxNudgePx": 1 },
+        "tense": { "secs": "5-4", "rotateDeg": [-1, 1] },
+        "split": { "secs": 3, "colonRotateDeg": 6, "scale": 1.05 },
+        "scatter": {
+          "secs": 2,
+          "offsetsPx": [
+            [-4, 3],
+            [5, -3],
+            [-3, 4],
+            [4, -5]
+          ]
+        },
+        "shatter": { "secs": 1 }
+      },
+      "shatter": {
+        "digits": [
+          { "translate": "-7px -3px", "rotateDeg": -5 },
+          { "translate": "3px 4px", "rotateDeg": 3 },
+          { "translate": "-2px -6px", "rotateDeg": -4 },
+          { "translate": "8px 3px", "rotateDeg": 7 }
+        ]
+      },
+      "zero": {
+        "collapseMs": 120,
+        "impactMs": 300,
+        "backingOffset": { "xPx": 7, "yPx": 6 }
+      },
+      "a11y": {
+        "quietRemaining": true,
+        "finalAnnounce": "Time expired."
+      },
+      "reducedMotion": {
+        "staticDigits": true,
+        "immediateTimeUp": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "dp",
+        "timer": "dp__timer",
+        "digit": "dp__digit",
+        "colon": "dp__colon",
+        "timeup": "dp__timeup"
+      },
+      "behaviour": {
+        "start": "startDeadlinePanic",
+        "reset": "resetDeadlinePanic",
+        "replay": "replayDeadlinePanic",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}

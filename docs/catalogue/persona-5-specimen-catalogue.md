@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **17 / 301** complete.
+- Progress: **18 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 17 |
-| Open | 284 |
+| Done | 18 |
+| Open | 283 |
 
 ## Shipped (mapped to live specimens)
 
@@ -35,6 +35,7 @@
 | P5-115 | `SPX-126` | `blackout-loader` | Blackout Loader |
 | P5-268 | `SPX-279` | `cross-out-status-swap` | Cross-Out Status Swap |
 | P5-156 | `SPX-167` | `progress-milestone-breakthrough` | Progress Milestone Breakthrough |
+| P5-294 | `SPX-305` | `deadline-panic` | Deadline Panic |
 
 ## Core first-wave
 
@@ -442,7 +443,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Calendar / time
 
 - [x] **P5-293** · `SPX-304` · **Day Change Tear** — Previous date tears away to reveal next.
-- [ ] **P5-294** · `SPX-305` · **Deadline Attack** — Approaching deadline gets graphic warning.
+- [x] **P5-294** · `SPX-305` · **Deadline Attack** — Approaching deadline gets graphic warning.
 - [ ] **P5-295** · `SPX-306` · **Today Stamp** — Current date receives physical stamp.
 - [ ] **P5-296** · `SPX-307` · **Month Panel Wipe** — Calendar month changes through comic panels.
 - [ ] **P5-297** · `SPX-308` · **Event Calling Card** — Important event lands over calendar.

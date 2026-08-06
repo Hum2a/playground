@@ -1,0 +1,45 @@
+<div class="dp" data-deadline-panic data-state="idle" data-phase="idle" data-secs="10">
+  <p class="dp__eyebrow">SUBMISSION WINDOW</p>
+  <p class="dp__title">DEADLINE</p>
+
+  <div class="dp__stage">
+    <div class="dp__timer" data-dp-timer aria-hidden="true">
+      <span class="dp__backing" aria-hidden="true"></span>
+      <span class="dp__marks" aria-hidden="true">
+        <span class="dp__mark dp__mark--1"></span>
+        <span class="dp__mark dp__mark--2"></span>
+        <span class="dp__mark dp__mark--3"></span>
+      </span>
+
+      <span class="dp__group dp__group--min">
+        <span class="dp__digit" data-dp-digit="0">0</span>
+        <span class="dp__digit" data-dp-digit="1">0</span>
+      </span>
+      <span class="dp__colon" data-dp-colon>:</span>
+      <span class="dp__group dp__group--sec">
+        <span class="dp__digit" data-dp-digit="2">1</span>
+        <span class="dp__digit" data-dp-digit="3">0</span>
+      </span>
+    </div>
+
+    <div class="dp__timeup" data-dp-timeup aria-hidden="true" hidden>
+      <span class="dp__timeup-back" aria-hidden="true"></span>
+      <span class="dp__timeup-face">TIME UP</span>
+    </div>
+  </div>
+
+  <div class="dp__actions">
+    <button type="button" class="dp__btn dp__btn--go" data-dp-start>
+      START COUNTDOWN
+    </button>
+    <button type="button" class="dp__btn" data-dp-reset>RESET</button>
+  </div>
+
+  <p class="dp__sr" data-dp-sr>10 seconds remaining</p>
+  <div
+    class="dp__live"
+    role="status"
+    aria-live="polite"
+    data-dp-live
+  ></div>
+</div>

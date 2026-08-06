@@ -1,0 +1,81 @@
+{
+  "name": "discovery-tear-open",
+  "intent": "Mostly intact paper surface with a 28×28 torn corner clue; on activation the irregular opening grows then three flaps pull outward to reveal a secret specimen.",
+  "colours": {
+    "paper": "#f5f1e8",
+    "black": "#090909",
+    "red": "#e60012"
+  },
+  "corner": {
+    "sizePx": 28,
+    "liftScale": 1.2,
+    "liftRotateDeg": -6,
+    "peekGradient": "135deg #e60012 / #090909"
+  },
+  "idleClipPath": "polygon(0% 0%, 88% 0%, 100% 12%, 100% 100%, 0% 100%)",
+  "grownClipPath": "polygon(0% 0%, 42% 0%, 52% 12%, 38% 24%, 48% 36%, 34% 48%, 55% 58%, 100% 48%, 100% 100%, 0% 100%)",
+  "tearEdgePoints": 8,
+  "flaps": [
+    {
+      "id": "a",
+      "role": "upper",
+      "exit": "up/right",
+      "transform": "translate(18%, -22%) rotate(8deg)",
+      "clipPath": "polygon(18% 0%, 100% 0%, 100% 72%, 78% 100%, 52% 82%, 30% 96%, 8% 70%, 22% 42%)"
+    },
+    {
+      "id": "b",
+      "role": "left",
+      "exit": "left/down",
+      "transform": "translate(-24%, 12%) rotate(-7deg)",
+      "clipPath": "polygon(0% 6%, 72% 0%, 100% 28%, 86% 52%, 100% 78%, 64% 100%, 0% 92%, 12% 48%)"
+    },
+    {
+      "id": "c",
+      "role": "lower",
+      "exit": "down/right",
+      "transform": "translate(14%, 26%) rotate(6deg)",
+      "clipPath": "polygon(8% 0%, 48% 18%, 72% 0%, 100% 22%, 100% 100%, 0% 100%, 0% 48%, 22% 28%)"
+    }
+  ],
+  "copy": {
+    "frontCode": "ARCHIVE // 042",
+    "frontBlurb": "Nothing unusual here.",
+    "secretTitle": "SECRET SPECIMEN",
+    "secretBody": "You found it.",
+    "triggerLabel": "Reveal hidden content"
+  },
+  "timing": {
+    "liftMs": 160,
+    "growEndMs": 520,
+    "secretPopMs": 700,
+    "splitEndMs": 760,
+    "totalMs": 780
+  },
+  "api": {
+    "open": "openDiscoveryTear()",
+    "reset": "resetDiscoveryTear()",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart"
+  },
+  "a11y": {
+    "cornerButtonLabel": "Reveal hidden content",
+    "secretAriaHiddenUntilReveal": true,
+    "statusLiveRegion": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show final torn-open flaps and available secret content"
+  },
+  "constraints": {
+    "noImages": true,
+    "noNetwork": true,
+    "noLibraries": true,
+    "noCircularHoleScale": true,
+    "residualEdgesRemain": true
+  }
+}
