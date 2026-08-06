@@ -1,0 +1,25 @@
+{
+  "name": "quick-resume-snapshot",
+  "ref": "SPX-3336",
+  "ps": "PS-030",
+  "title": "Quick Resume Snapshot",
+  "palette": {
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "blue": "#2E90FF",
+    "blueLight": "#7EB6FF",
+    "panel": "#121820",
+    "panel2": "#1a2330",
+    "rule": "#243044",
+    "pewter": "#8a9bb0"
+  },
+  "behaviour": "96×54px snapshot → full inset active panel over 420ms.",
+  "trigger": "RESUME / RESET toggle",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "End states remain; transitions and animations removed"
+  }
+}

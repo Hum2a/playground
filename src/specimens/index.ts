@@ -346,6 +346,7 @@ import { pullToRefresh } from './pull-to-refresh/entry'
 import { purchaseConfirmHold } from './purchase-confirm-hold/entry'
 import { quickAppSwitchSwipe } from './quick-app-switch-swipe/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
+import { quickResumeSnapshot } from './quick-resume-snapshot/entry'
 import { quickSettingsExpansion } from './quick-settings-expansion/entry'
 import { quickSettingsTileToggle } from './quick-settings-tile-toggle/entry'
 import { quirkActivationBurst } from './quirk-activation-burst/entry'
@@ -864,6 +865,7 @@ export const specimens: Specimen[] = [
   purchaseConfirmHold,
   quickAppSwitchSwipe,
   quickLookExpansion,
+  quickResumeSnapshot,
   quickSettingsExpansion,
   quickSettingsTileToggle,
   quirkActivationBurst,
