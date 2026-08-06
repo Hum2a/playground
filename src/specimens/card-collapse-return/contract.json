@@ -1,0 +1,17 @@
+{
+  "name": "card-collapse-return",
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion",
+      "data-force-reduced-motion"
+    ],
+    "instantEndStates": true
+  },
+  "expandScale": 1.26
+}
