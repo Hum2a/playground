@@ -112,6 +112,7 @@ import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { gridReorderGap } from './grid-reorder-gap/entry'
 import { handoffContinuation } from './handoff-continuation/entry'
 import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
+import { heroAssignmentTransfer } from './hero-assignment-transfer/entry'
 import { heroNameSlam } from './hero-name-slam/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
@@ -418,6 +419,7 @@ export const specimens: Specimen[] = [
   gridReorderGap,
   handoffContinuation,
   headsUpNotificationDrop,
+  heroAssignmentTransfer,
   heroNameSlam,
   highSpeedDashNavigation,
   holdToChargeButton,

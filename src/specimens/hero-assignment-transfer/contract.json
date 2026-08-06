@@ -1,0 +1,27 @@
+{
+  "name": "hero-assignment-transfer",
+  "intent": "Hero chip travels from roster into incident assignment slot.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "transferMs": 740,
+    "settleMs": 1390
+  },
+  "api": {
+    "run": "runHeroAssignment()",
+    "reset": "resetHeroAssignment()",
+    "replay": "replayHeroAssignment()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Slot shows assigned state immediately"
+  }
+}

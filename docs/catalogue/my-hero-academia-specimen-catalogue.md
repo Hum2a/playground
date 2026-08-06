@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **18 / 369** complete.
+- Progress: **19 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 351 |
+| Done | 19 |
+| Open | 350 |
 
 ## Visual grammar
 
@@ -50,6 +50,7 @@
 | MHA-066 | `SPX-2040` | `match-start-slam` | Match Start Slam |
 | MHA-075 | `SPX-2049` | `rank-promotion` | Rank Promotion |
 | MHA-082 | `SPX-2056` | `incident-dispatch-card` | Incident Dispatch Card |
+| MHA-083 | `SPX-2057` | `hero-assignment-transfer` | Hero Assignment Transfer |
 
 ## Core first-wave
 
@@ -73,7 +74,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [ ] **MHA-091** · `SPX-2065` · **Emergency Screen Takeover** — emergency-villain-alert-system
 - [ ] **MHA-092** · `SPX-2066` · **Threat Level Escalation** — emergency-villain-alert-system
 - [x] **MHA-082** · `SPX-2056` · **Incident Dispatch Card** — hero-agency-dashboard
-- [ ] **MHA-083** · `SPX-2057` · **Hero Assignment Transfer** — hero-agency-dashboard
+- [x] **MHA-083** · `SPX-2057` · **Hero Assignment Transfer** — hero-agency-dashboard
 - [ ] **MHA-102** · `SPX-2076` · **Decay Delete** — villain-corruption-motion-language
 - [ ] **MHA-111** · `SPX-2085` · **Blueprint Assembly** — support-course-gadget-ui
 - [ ] **MHA-112** · `SPX-2086` · **Part Compatibility Snap** — support-course-gadget-ui
@@ -194,7 +195,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 ## Hero Agency Dashboard
 
 - [x] **MHA-082** · `SPX-2056` · **Incident Dispatch Card** — urgent job card tears/slides into an otherwise calm dashboard.
-- [ ] **MHA-083** · `SPX-2057` · **Hero Assignment Transfer** — profile chip travels from available roster into an incident card.
+- [x] **MHA-083** · `SPX-2057` · **Hero Assignment Transfer** — profile chip travels from available roster into an incident card.
 - [ ] **MHA-084** · `SPX-2058` · **Patrol Route Draw** — route line constructs across a schematic map.
 - [ ] **MHA-085** · `SPX-2059` · **Case Priority Escalation** — ordinary case card progressively gains high-priority geometry.
 - [ ] **MHA-086** · `SPX-2060` · **Agency Status Board** — several hero states update through compact animated tokens.
