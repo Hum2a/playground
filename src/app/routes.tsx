@@ -1,11 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Catalogue } from '../catalogue/Catalogue'
 import { SpecimenDetail } from '../catalogue/SpecimenDetail'
+import { Playground } from '../playground/Playground'
 import { Shell } from './Shell'
-
-function PlaygroundPlaceholder() {
-  return <p className="shell__placeholder">Playground — coming in a later phase.</p>
-}
 
 export function AppRoutes() {
   return (
@@ -13,7 +10,7 @@ export function AppRoutes() {
       <Route element={<Shell />}>
         <Route index element={<Catalogue />} />
         <Route path="s/:id" element={<SpecimenDetail />} />
-        <Route path="playground" element={<PlaygroundPlaceholder />} />
+        <Route path="playground" element={<Playground />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
