@@ -1,0 +1,40 @@
+<div class="lpl" data-long-press-lift data-phase="idle">
+  <ul class="lpl__stack" aria-label="Messages">
+    <li class="lpl__card" data-lpl-card="1" aria-hidden="true">
+      <span class="lpl__label">MESSAGE // 02</span>
+      <span class="lpl__preview">Status update queued.</span>
+    </li>
+    <li
+      class="lpl__card lpl__card--target"
+      data-lpl-card="4"
+      data-lpl-target
+      tabindex="0"
+      aria-label="MESSAGE // 04 — long press to lift"
+    >
+      <span class="lpl__label">MESSAGE // 04</span>
+      <span class="lpl__preview">Draft review attached.</span>
+      <span class="lpl__tick lpl__tick--tl" aria-hidden="true"></span>
+      <span class="lpl__tick lpl__tick--tr" aria-hidden="true"></span>
+      <span class="lpl__tick lpl__tick--bl" aria-hidden="true"></span>
+      <span class="lpl__tick lpl__tick--br" aria-hidden="true"></span>
+    </li>
+    <li class="lpl__card" data-lpl-card="6" aria-hidden="true">
+      <span class="lpl__label">MESSAGE // 06</span>
+      <span class="lpl__preview">Reminder for tomorrow.</span>
+    </li>
+  </ul>
+
+  <div class="lpl__actions" data-lpl-actions hidden>
+    <button type="button" class="lpl__action">COPY</button>
+    <button type="button" class="lpl__action">PIN</button>
+    <button type="button" class="lpl__action lpl__action--danger">DELETE</button>
+  </div>
+
+  <div class="lpl__controls">
+    <button type="button" class="lpl__btn lpl__btn--ghost" data-lpl-reset>RESET</button>
+  </div>
+
+  <p class="lpl__status" role="status" aria-live="polite" data-lpl-status>
+    Hold MESSAGE // 04 to lift.
+  </p>
+</div>

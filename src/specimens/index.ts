@@ -93,6 +93,7 @@ import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
+import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
@@ -290,6 +291,7 @@ export const specimens: Specimen[] = [
   linkTradeTransfer,
   liquidSplitTransition,
   lockedChainBreak,
+  longPressLift,
   mangaCutInNotification,
   matchedCardExpansion,
   maxRankCompletion,

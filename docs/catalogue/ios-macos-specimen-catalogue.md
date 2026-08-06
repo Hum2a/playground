@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **11 / 258** complete.
+- Progress: **12 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 11 |
-| Open | 247 |
+| Done | 12 |
+| Open | 246 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-092 | `SPX-1391` | `long-press-lift` | Long-Press Lift |
 | IOS-072 | `SPX-1371` | `large-title-collapse` | Large Title Collapse |
 | IOS-054 | `SPX-1353` | `stage-manager-stack-shift` | Stage Manager Stack Shift |
 | IOS-049 | `SPX-1348` | `mission-control-spread` | Mission Control Spread |
@@ -60,7 +61,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
 - [x] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — spring-rubber-banding-physical-response
 - [x] **IOS-072** · `SPX-1371` · **Large Title Collapse** — scroll-content-physics
-- [ ] **IOS-092** · `SPX-1391` · **Long-Press Lift** — context-menus-long-press-interaction
+- [x] **IOS-092** · `SPX-1391` · **Long-Press Lift** — context-menus-long-press-interaction
 - [ ] **IOS-093** · `SPX-1392` · **Context Menu Bloom** — context-menus-long-press-interaction
 - [ ] **IOS-100** · `SPX-1399` · **App Launch Expansion** — home-screen-app-grid
 - [ ] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — notifications
@@ -196,7 +197,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Context Menus & Long-Press Interaction
 
-- [ ] **IOS-092** · `SPX-1391` · **Long-Press Lift** — pressed object separates visually from its context before secondary actions appear.
+- [x] **IOS-092** · `SPX-1391` · **Long-Press Lift** — pressed object separates visually from its context before secondary actions appear.
 - [ ] **IOS-093** · `SPX-1392` · **Context Menu Bloom** — menu constructs outward from the long-pressed object's location.
 - [ ] **IOS-094** · `SPX-1393` · **Context Preview Expansion** — content preview enlarges while actions arrange around/below it.
 - [ ] **IOS-095** · `SPX-1394` · **Context Dismiss Return** — preview and menu collapse precisely back toward the source object.

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/long-press-lift.schema.json",
+  "title": "LongPressLift",
+  "description": "Portable contract for long-press card lift with context actions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "interaction",
+    "lift",
+    "actions",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "long-press-lift" },
+    "intent": {
+      "type": "string",
+      "const": "Middle card MESSAGE // 04 lifts after 420ms hold; neighbours recede; four corner ticks and COPY PIN DELETE rail appear."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "actions", "reset"],
+      "properties": {
+        "target": { "type": "string", "const": "MESSAGE // 04" },
+        "actions": { "type": "array", "const": ["COPY", "PIN", "DELETE"] },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["holdMs", "moveCancelPx", "cardCount"],
+      "properties": {
+        "holdMs": { "type": "number", "const": 420 },
+        "moveCancelPx": { "type": "number", "const": 8 },
+        "cardCount": { "type": "number", "const": 3 }
+      }
+    },
+    "lift": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scale", "translateYPx", "neighbourScale", "transitionMs", "tickCount"],
+      "properties": {
+        "scale": { "type": "number", "const": 1.035 },
+        "translateYPx": { "type": "number", "const": -4 },
+        "neighbourScale": { "type": "number", "const": 0.975 },
+        "transitionMs": { "type": "number", "const": 160 },
+        "tickCount": { "type": "number", "const": 4 }
+      }
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "afterLiftOnly"],
+      "properties": {
+        "count": { "type": "number", "const": 3 },
+        "afterLiftOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetFocusable", "politeStatus"],
+      "properties": {
+        "targetFocusable": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLiftState", "triggers"],
+      "properties": {
+        "instantLiftState": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "tick", "actions"],
+      "properties": {
+        "root": { "type": "string", "const": "lpl" },
+        "card": { "type": "string", "const": "lpl__card" },
+        "tick": { "type": "string", "const": "lpl__tick" },
+        "actions": { "type": "string", "const": "lpl__actions" }
+      }
+    }
+  }
+}
