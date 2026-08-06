@@ -1,0 +1,213 @@
+/* broadcast-interruption — portable specimen styles. Do not restyle to host tokens. */
+
+.bi {
+  --bi-yellow: #f5c400;
+  --bi-ink: #101010;
+  --bi-paper: #f7f3e8;
+  --bi-gray: #e8e8e8;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--bi-ink);
+  color: var(--bi-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.bi *,
+.bi *::before,
+.bi *::after {
+  box-sizing: border-box;
+}
+
+.bi__live {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.65);
+}
+
+.bi__stage {
+  position: relative;
+  flex: 1;
+  min-height: 170px;
+  overflow: hidden;
+  border: 3px solid var(--bi-gray);
+}
+
+.bi__card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: var(--bi-paper);
+  color: var(--bi-ink);
+}
+
+.bi__card[hidden] {
+  display: none;
+}
+
+.bi__card--urgent {
+  background: var(--bi-yellow);
+  border-inline-start: 8px solid var(--bi-ink);
+}
+
+.bi__tag {
+  align-self: flex-start;
+  padding: 0.12rem 0.4rem;
+  border: 2px solid var(--bi-ink);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.bi__tag--urgent {
+  background: var(--bi-ink);
+  color: var(--bi-yellow);
+}
+
+.bi__headline {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bi__copy {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.bi__flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--bi-yellow);
+  opacity: 0;
+}
+
+.bi__btn {
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--bi-yellow);
+  background: var(--bi-yellow);
+  color: var(--bi-ink);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bi__btn:focus-visible {
+  outline: 2px solid var(--bi-yellow);
+  outline-offset: 2px;
+}
+
+.bi__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.bi[data-phase='interrupt'] .bi__card--normal {
+  animation: bi-normal-out 280ms ease-in both;
+}
+
+.bi[data-phase='interrupt'] .bi__card--urgent {
+  display: flex;
+  animation: bi-urgent-in 420ms cubic-bezier(0.2, 0.9, 0.25, 1) 180ms both;
+}
+
+.bi[data-phase='interrupt'] .bi__flash {
+  animation: bi-flash 180ms ease-out both;
+}
+
+.bi[data-phase='done'] .bi__card--normal {
+  display: none;
+}
+
+.bi[data-phase='done'] .bi__card--urgent {
+  display: flex;
+}
+
+@keyframes bi-normal-out {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(2px);
+  }
+}
+
+@keyframes bi-urgent-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bi-flash {
+  0% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bi[data-phase='interrupt'] .bi__card--normal,
+  .bi[data-phase='interrupt'] .bi__card--urgent,
+  .bi[data-phase='interrupt'] .bi__flash {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .bi[data-phase='interrupt'] .bi__card--normal,
+[data-force-reduced-motion='true'] .bi[data-phase='interrupt'] .bi__card--urgent,
+[data-force-reduced-motion='true'] .bi[data-phase='interrupt'] .bi__flash {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bi[data-phase='done'] .bi__card--normal,
+  .bi[data-phase='interrupt'] .bi__card--normal {
+    display: none;
+  }
+
+  .bi[data-phase='done'] .bi__card--urgent,
+  .bi[data-phase='interrupt'] .bi__card--urgent {
+    display: flex;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .bi[data-phase='done'] .bi__card--normal,
+[data-force-reduced-motion='true'] .bi[data-phase='interrupt'] .bi__card--normal {
+  display: none;
+}
+
+[data-force-reduced-motion='true'] .bi[data-phase='done'] .bi__card--urgent,
+[data-force-reduced-motion='true'] .bi[data-phase='interrupt'] .bi__card--urgent {
+  display: flex;
+  opacity: 1;
+  transform: none;
+}

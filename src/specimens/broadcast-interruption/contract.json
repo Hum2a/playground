@@ -1,0 +1,15 @@
+{
+  "name": "broadcast-interruption",
+  "ref": "SPX-2923",
+  "catalogueId": "P4-005",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "gray": "#E8E8E8"
+  },
+  "animation": { "interruptMs": 620 },
+  "reducedMotion": {
+    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+  }
+}

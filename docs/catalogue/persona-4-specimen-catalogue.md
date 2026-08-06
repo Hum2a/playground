@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 191** complete.
+- Progress: **22 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 170 |
+| Done | 22 |
+| Open | 169 |
 
 ## Visual grammar
 
@@ -55,6 +55,7 @@
 | P4-170 | `SPX-3088` | `case-solved-completion` | Case Solved Completion |
 | P4-037 | `SPX-2955` | `false-lead-strikeout` | False Lead Strikeout |
 | P4-003 | `SPX-2921` | `channel-tuning-scrub` | Channel Tuning Scrub |
+| P4-005 | `SPX-2923` | `broadcast-interruption` | Broadcast Interruption |
 
 ## Core first-wave
 
@@ -81,7 +82,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-170** · `SPX-3088` · **Case Solved Completion** — notifications-errors-success
 - [x] **P4-037** · `SPX-2955` · **False Lead Strikeout** — investigation-evidence
 - [x] **P4-003** · `SPX-2921` · **Channel Tuning Scrub** — midnight-channel-crt-broadcast
-- [ ] **P4-005** · `SPX-2923` · **Broadcast Interruption** — midnight-channel-crt-broadcast
+- [x] **P4-005** · `SPX-2923` · **Broadcast Interruption** — midnight-channel-crt-broadcast
 - [ ] **P4-019** · `SPX-2937` · **Static Portal Materialise** — tv-world-screen-portals
 - [ ] **P4-022** · `SPX-2940` · **Fog-of-War Card** — fog-hidden-information
 - [ ] **P4-025** · `SPX-2943` · **Fog Deadline Escalation** — fog-hidden-information
@@ -118,7 +119,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-002** · `SPX-2920` · **CRT Power-On Reveal** — A dead screen collapses to a bright line, blooms, and resolves into UI.
 - [x] **P4-003** · `SPX-2921` · **Channel Tuning Scrub** — Dragging a tuning dial moves through unstable fragments before acquiring a target state.
 - [ ] **P4-004** · `SPX-2922` · **Lost Signal Collapse** — Stable content progressively loses sync and collapses into a no-signal state.
-- [ ] **P4-005** · `SPX-2923` · **Broadcast Interruption** — Normal content is forcibly replaced by an urgent transmission card.
+- [x] **P4-005** · `SPX-2923` · **Broadcast Interruption** — Normal content is forcibly replaced by an urgent transmission card.
 - [ ] **P4-006** · `SPX-2924` · **Vertical Hold Slip** — Content drifts vertically out of sync before snapping back into alignment.
 - [ ] **P4-007** · `SPX-2925` · **Tracking Error Recovery** — Horizontal tearing bands destabilise content until a calibration action fixes them.
 - [ ] **P4-008** · `SPX-2926` · **Channel Number Slam** — Oversized channel numerals punctuate a content/state switch.

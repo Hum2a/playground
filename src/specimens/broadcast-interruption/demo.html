@@ -1,0 +1,21 @@
+<div class="bi" data-bi data-phase="idle">
+  <p class="bi__live" data-bi-live aria-live="polite">Regular programming active.</p>
+
+  <div class="bi__stage">
+    <article class="bi__card bi__card--normal" data-bi-normal>
+      <span class="bi__tag">LIVE</span>
+      <h2 class="bi__headline">Evening Bulletin</h2>
+      <p class="bi__copy">Local weather and community updates.</p>
+    </article>
+
+    <article class="bi__card bi__card--urgent" data-bi-urgent hidden>
+      <span class="bi__tag bi__tag--urgent">URGENT</span>
+      <h2 class="bi__headline">Transmission Override</h2>
+      <p class="bi__copy">Incoming midnight broadcast detected.</p>
+    </article>
+
+    <div class="bi__flash" data-bi-flash aria-hidden="true"></div>
+  </div>
+
+  <button type="button" class="bi__btn" data-bi-trigger>Interrupt broadcast</button>
+</div>
