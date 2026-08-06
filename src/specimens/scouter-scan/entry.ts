@@ -15,7 +15,7 @@ const scaffold = `
 
 export const scouterScan: Specimen = {
   id: 'scouter-scan',
-  ref: 'SPX-TODO',
+  ref: 'SPX-996',
   title: 'Scouter Scan',
   blurb:
     'Four angular brackets acquire an abstract node, one scan sweep structures it, and deterministic metrics settle on OUTPUT 8,471 / 24ms / 82% / EXTREME.',
