@@ -106,6 +106,7 @@ import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { explosiveNotificationBurst } from './explosive-notification-burst/entry'
 import { extendedFabCollapse } from './extended-fab-collapse/entry'
+import { eyecatchTransition } from './eyecatch-transition/entry'
 import { fabToComposerTransform } from './fab-to-composer-transform/entry'
 import { fadeThrough } from './fade-through/entry'
 import { failureShatter } from './failure-shatter/entry'
@@ -429,6 +430,7 @@ export const specimens: Specimen[] = [
   evolutionSilhouetteTransformation,
   explosiveNotificationBurst,
   extendedFabCollapse,
+  eyecatchTransition,
   fabToComposerTransform,
   fadeThrough,
   failureShatter,

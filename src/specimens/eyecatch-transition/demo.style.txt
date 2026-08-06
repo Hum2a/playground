@@ -1,0 +1,164 @@
+/* SPX-2218 Eyecatch Transition — portable contract. */
+
+.eyc {
+  --eyc-primary: #38a3ff;
+  --eyc-ink: #101820;
+  --eyc-paper: #f4f7fa;
+  --eyc-accent: #ff4d35;
+  --eyc-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  background: var(--eyc-ink);
+  color: var(--eyc-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.eyc *,
+.eyc *::before,
+.eyc *::after {
+  box-sizing: border-box;
+}
+
+.eyc__state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 1.25rem;
+}
+
+.eyc__kicker {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--eyc-primary);
+}
+
+.eyc__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.eyc__btn {
+  appearance: none;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  border: 2px solid var(--eyc-primary);
+  background: transparent;
+  color: var(--eyc-paper);
+  padding: 0.4rem 0.95rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.eyc__btn:focus-visible {
+  outline: 2px solid var(--eyc-primary);
+  outline-offset: 3px;
+}
+
+.eyc__interstitial {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.eyc__split {
+  position: absolute;
+  inset: 0;
+  transition: transform 500ms var(--eyc-ease);
+}
+
+.eyc__split--a {
+  background: var(--eyc-primary);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  transform: translate(-100%, -100%);
+}
+
+.eyc__split--b {
+  background: var(--eyc-accent);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  transform: translate(100%, 100%);
+}
+
+.eyc__brand {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0.35rem 0.75rem;
+  border: 3px solid var(--eyc-ink);
+  background: var(--eyc-paper);
+  color: var(--eyc-ink);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 220ms ease 180ms, transform 320ms var(--eyc-ease) 160ms;
+}
+
+.eyc__interstitial--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.eyc__interstitial--active .eyc__split--a,
+.eyc__interstitial--active .eyc__split--b {
+  transform: translate(0, 0);
+}
+
+.eyc__interstitial--active .eyc__brand {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.eyc__interstitial--exit .eyc__split--a {
+  transform: translate(100%, -100%);
+}
+
+.eyc__interstitial--exit .eyc__split--b {
+  transform: translate(-100%, 100%);
+}
+
+.eyc__interstitial--exit .eyc__brand {
+  opacity: 0;
+  transition-delay: 0ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyc__split,
+  .eyc__brand {
+    transition: none !important;
+  }
+
+  .eyc__interstitial--active,
+  .eyc__interstitial--exit {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .eyc__split,
+[data-force-reduced-motion='true'] .eyc__brand {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .eyc__interstitial--active,
+[data-force-reduced-motion='true'] .eyc__interstitial--exit {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}

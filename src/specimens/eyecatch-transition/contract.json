@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EyecatchTransition",
+  "type": "object",
+  "required": ["name", "animation"],
+  "properties": {
+    "name": { "type": "string", "const": "eyecatch-transition" },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 500 },
+        "totalMs": { "type": "number", "const": 1150 }
+      }
+    }
+  }
+}
