@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/window-snap-preview.schema.json",
+  "title": "WindowSnapPreview",
+  "description": "Portable contract for window snap preview on drag.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "desktop",
+    "snap",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "window-snap-preview" },
+    "intent": {
+      "type": "string",
+      "const": "Drag window near left 54px zone to preview snap bounds; release commits to preview rectangle."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["windowTitle"],
+      "properties": {
+        "windowTitle": { "type": "string", "const": "EDITOR" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d1118" },
+        "panel": { "type": "string", "const": "#1a2030" },
+        "line": { "type": "string", "const": "#2a3348" },
+        "muted": { "type": "string", "const": "#6d7a90" },
+        "cream": { "type": "string", "const": "#e6ecf4" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "desktop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "windowWidthPx", "windowHeightPx", "zoneWidthPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 520 },
+        "heightPx": { "type": "number", "const": 380 },
+        "windowWidthPx": { "type": "number", "const": 260 },
+        "windowHeightPx": { "type": "number", "const": 190 },
+        "zoneWidthPx": { "type": "number", "const": 54 }
+      }
+    },
+    "snap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previewInsetPx", "previewInMs", "previewOutMs", "commitMs"],
+      "properties": {
+        "previewInsetPx": { "type": "number", "const": 10 },
+        "previewInMs": { "type": "number", "const": 120 },
+        "previewOutMs": { "type": "number", "const": 90 },
+        "commitMs": { "type": "number", "const": 260 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSnap", "triggers"],
+      "properties": {
+        "instantSnap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "desktop", "preview", "window"],
+      "properties": {
+        "root": { "type": "string", "const": "wsp" },
+        "desktop": { "type": "string", "const": "wsp__desktop" },
+        "preview": { "type": "string", "const": "wsp__preview" },
+        "window": { "type": "string", "const": "wsp__window" }
+      }
+    }
+  }
+}

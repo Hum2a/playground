@@ -178,6 +178,7 @@ import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
+import { windowSnapPreview } from './window-snap-preview/entry'
 import { winnerAdvance } from './winner-advance/entry'
 import { wildEncounterTransition } from './wild-encounter-transition/entry'
 import type { Specimen } from './types'
@@ -402,6 +403,7 @@ export const specimens: Specimen[] = [
   victoryResultsTally,
   waterlinePageWipe,
   wildEncounterTransition,
+  windowSnapPreview,
   winnerAdvance,
 ]
 
