@@ -1,0 +1,28 @@
+{
+  "name": "part-compatibility-snap",
+  "intent": "Component magnetically snaps into compatible slot.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "magnetMs": 180,
+    "snapMs": 520,
+    "settleMs": 1100
+  },
+  "api": {
+    "run": "runPartSnap()",
+    "reset": "resetPartSnap()",
+    "replay": "replayPartSnap()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Part appears snapped in slot immediately"
+  }
+}
