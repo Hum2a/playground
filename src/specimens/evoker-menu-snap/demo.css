@@ -1,0 +1,419 @@
+/* SPX-636 Evoker Menu Snap — portable contract. Do not restyle to host tokens. */
+
+.ems {
+  --ems-navy: #071525;
+  --ems-blue: #1565c0;
+  --ems-bright: #42a5f5;
+  --ems-pale: #d9f1ff;
+  --ems-white: #f4fbff;
+  --ems-sharp: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --ems-snap: cubic-bezier(0.15, 0.95, 0.2, 1);
+  --ems-clip-main: polygon(
+    0% 8%,
+    96% 0%,
+    100% 88%,
+    4% 100%
+  );
+  --ems-clip-shard: polygon(
+    12% 0%,
+    100% 18%,
+    88% 100%,
+    0% 72%
+  );
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  background: #040d18;
+  color: var(--ems-white);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.ems *,
+.ems *::before,
+.ems *::after {
+  box-sizing: border-box;
+}
+
+.ems__rail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: min(100%, 260px);
+}
+
+.ems__item {
+  position: relative;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  margin: 0;
+  padding: 0 0.9rem 0 1.15rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 100ms var(--ems-sharp);
+}
+
+.ems__item:focus {
+  outline: none;
+}
+
+.ems__item:focus-visible {
+  outline: 2px solid var(--ems-bright);
+  outline-offset: 3px;
+}
+
+.ems__plate {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ems__plate-main,
+.ems__plate-shard,
+.ems__plate-edge,
+.ems__plate-hi {
+  position: absolute;
+  pointer-events: none;
+}
+
+.ems__plate-main {
+  inset: 0;
+  background: var(--ems-navy);
+  clip-path: var(--ems-clip-main);
+  transform: translateX(-18px);
+  transform-origin: left center;
+}
+
+.ems__plate-shard {
+  top: 10%;
+  right: -2%;
+  bottom: 18%;
+  width: 38%;
+  background: var(--ems-pale);
+  opacity: 0.55;
+  clip-path: var(--ems-clip-shard);
+  transform: translateX(14px);
+  mix-blend-mode: screen;
+}
+
+.ems__plate-edge {
+  inset: 0;
+  border: 1.5px solid var(--ems-blue);
+  clip-path: var(--ems-clip-main);
+  opacity: 0;
+}
+
+.ems__plate-hi {
+  left: 0;
+  top: 12%;
+  bottom: 18%;
+  width: 3px;
+  background: var(--ems-pale);
+  clip-path: polygon(0% 0%, 100% 12%, 100% 100%, 0% 88%);
+  opacity: 0;
+}
+
+.ems__marker {
+  position: absolute;
+  left: 0.35rem;
+  top: 50%;
+  z-index: 2;
+  width: 8px;
+  height: 14px;
+  margin-top: -7px;
+  background: var(--ems-bright);
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.ems__line {
+  position: absolute;
+  left: -4%;
+  top: 50%;
+  z-index: 3;
+  width: 0;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--ems-bright);
+  box-shadow: 0 0 0 1px rgb(66 165 245 / 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+.ems__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgb(244 251 255 / 0.72);
+  transform: translateX(0);
+  transition:
+    color 80ms linear,
+    transform 90ms var(--ems-sharp);
+}
+
+/* Idle inactive */
+.ems__item:not(.ems__item--active):not(.ems__item--exit) .ems__label {
+  color: rgb(244 251 255 / 0.62);
+}
+
+/* Settled active */
+.ems__item--active .ems__plate {
+  opacity: 1;
+}
+
+.ems__item--active .ems__plate-main {
+  transform: translateX(0);
+}
+
+.ems__item--active .ems__plate-shard {
+  transform: translateX(0);
+}
+
+.ems__item--active .ems__plate-edge {
+  opacity: 1;
+}
+
+.ems__item--active .ems__plate-hi {
+  opacity: 1;
+}
+
+.ems__item--active .ems__marker {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.ems__item--active .ems__label {
+  color: var(--ems-white);
+  transform: translateX(6px) scale(1.03);
+}
+
+/* Neighbour nudge via data-selected */
+.ems[data-selected='0'] .ems__item[data-index='1'],
+.ems[data-selected='1'] .ems__item[data-index='0'],
+.ems[data-selected='1'] .ems__item[data-index='2'],
+.ems[data-selected='2'] .ems__item[data-index='1'],
+.ems[data-selected='2'] .ems__item[data-index='3'],
+.ems[data-selected='3'] .ems__item[data-index='2'] {
+  /* settled: no offset */
+  transform: translateY(0);
+}
+
+.ems--busy[data-selected='0'] .ems__item[data-index='1'],
+.ems--busy[data-selected='1'] .ems__item[data-index='2'],
+.ems--busy[data-selected='2'] .ems__item[data-index='3'] {
+  transform: translateY(3px);
+}
+
+.ems--busy[data-selected='1'] .ems__item[data-index='0'],
+.ems--busy[data-selected='2'] .ems__item[data-index='1'],
+.ems--busy[data-selected='3'] .ems__item[data-index='2'] {
+  transform: translateY(-3px);
+}
+
+/* —— Phase 1: release —— */
+.ems__item--exit .ems__plate {
+  opacity: 1;
+}
+
+.ems__item--exit .ems__plate-main {
+  animation: ems-release 60ms var(--ems-sharp) forwards;
+}
+
+.ems__item--exit .ems__plate-shard,
+.ems__item--exit .ems__plate-edge,
+.ems__item--exit .ems__plate-hi,
+.ems__item--exit .ems__marker {
+  opacity: 0;
+}
+
+.ems__item--exit .ems__label {
+  color: rgb(244 251 255 / 0.7);
+  transform: translateX(2px);
+}
+
+@keyframes ems-release {
+  0% {
+    transform: translateX(0) scaleX(1);
+    clip-path: var(--ems-clip-main);
+  }
+  100% {
+    transform: translateX(0) scaleX(0.82);
+    clip-path: inset(0 18% 0 0);
+    opacity: 0;
+  }
+}
+
+/* —— Phase 2: execution line —— */
+.ems__item--line .ems__line {
+  opacity: 1;
+  animation: ems-line 65ms linear forwards;
+}
+
+.ems__item--line .ems__label {
+  color: var(--ems-pale);
+}
+
+@keyframes ems-line {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  85% {
+    width: 115%;
+    opacity: 1;
+  }
+  100% {
+    width: 115%;
+    opacity: 0.35;
+  }
+}
+
+/* —— Phase 3: snap —— */
+.ems__item--snap .ems__plate,
+.ems__item--authority .ems__plate,
+.ems__item--active .ems__plate {
+  opacity: 1;
+}
+
+.ems__item--snap .ems__plate-main {
+  animation: ems-snap-main 80ms var(--ems-snap) forwards;
+}
+
+.ems__item--snap .ems__plate-shard {
+  animation: ems-snap-shard 80ms var(--ems-snap) forwards;
+}
+
+.ems__item--snap .ems__plate-edge,
+.ems__item--authority .ems__plate-edge,
+.ems__item--active .ems__plate-edge {
+  opacity: 1;
+}
+
+.ems__item--snap .ems__plate-hi,
+.ems__item--authority .ems__plate-hi,
+.ems__item--active .ems__plate-hi {
+  opacity: 1;
+}
+
+@keyframes ems-snap-main {
+  0% {
+    transform: translateX(-18px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes ems-snap-shard {
+  0% {
+    transform: translateX(14px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* —— Phase 4: authority —— */
+.ems__item--authority .ems__plate-main,
+.ems__item--authority .ems__plate-shard {
+  transform: translateX(0);
+}
+
+.ems__item--authority .ems__label {
+  color: var(--ems-white);
+  animation: ems-authority 90ms var(--ems-sharp) forwards;
+}
+
+.ems__item--authority .ems__marker {
+  opacity: 1;
+  animation: ems-marker 90ms var(--ems-snap) forwards;
+}
+
+@keyframes ems-authority {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  55% {
+    transform: translateX(8px) scale(1.045);
+  }
+  100% {
+    transform: translateX(6px) scale(1.03);
+  }
+}
+
+@keyframes ems-marker {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.35);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 340px) {
+  .ems__rail {
+    width: 100%;
+  }
+
+  .ems__label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ems__item,
+  .ems__label,
+  .ems__plate-main,
+  .ems__plate-shard,
+  .ems__line,
+  .ems__marker {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ems--busy[data-selected] .ems__item {
+    transform: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ems__item,
+[data-force-reduced-motion='true'] .ems__label,
+[data-force-reduced-motion='true'] .ems__plate-main,
+[data-force-reduced-motion='true'] .ems__plate-shard,
+[data-force-reduced-motion='true'] .ems__line,
+[data-force-reduced-motion='true'] .ems__marker {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .ems--busy[data-selected] .ems__item {
+  transform: none !important;
+}

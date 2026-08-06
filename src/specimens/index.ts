@@ -16,6 +16,7 @@ import { criticalThresholdWarning } from './critical-threshold-warning/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
+import { darkHourConversion } from './dark-hour-conversion/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { deadlinePanic } from './deadline-panic/entry'
 import { decisionShowdown } from './decision-showdown/entry'
@@ -49,6 +50,7 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
+import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import type { Specimen } from './types'
 
@@ -143,6 +145,8 @@ export const specimens: Specimen[] = [
   objectiveAcquired,
   completionStrike,
   connectionSevered,
+  velvetDoorTransition,
+  darkHourConversion,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

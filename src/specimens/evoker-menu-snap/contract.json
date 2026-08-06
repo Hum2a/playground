@@ -1,0 +1,82 @@
+{
+  "name": "evoker-menu-snap",
+  "intent": "Decisive menu selection: previous backing releases, a thin bright-blue execution line attacks L→R, angular plates snap, then authority settle — ~210ms, no weapon imagery.",
+  "colours": {
+    "navy": "#071525",
+    "blue": "#1565c0",
+    "bright": "#42a5f5",
+    "pale": "#d9f1ff",
+    "white": "#f4fbff",
+    "stage": "#040d18"
+  },
+  "dimensions": {
+    "maxWidthPx": 260,
+    "rowHeightPx": 52,
+    "gapPx": 4,
+    "lineHeightPx": 2,
+    "lineWidthPct": 115,
+    "mainTranslateXPx": -18,
+    "shardTranslateXPx": 14,
+    "labelAuthorityPx": [0, 8, 6],
+    "labelScale": [1, 1.045, 1.03],
+    "neighbourNudgePx": 3,
+    "prevLabelMaxShiftPx": 2
+  },
+  "options": [
+    { "label": "OVERVIEW", "dataIndex": 0 },
+    { "label": "SPECIMENS", "dataIndex": 1 },
+    { "label": "CONTRACT", "dataIndex": 2 },
+    { "label": "INTEGRATION", "dataIndex": 3 }
+  ],
+  "classes": {
+    "root": "ems",
+    "selectedAttr": "data-selected",
+    "busy": "ems--busy",
+    "itemExit": "ems__item--exit",
+    "itemLine": "ems__item--line",
+    "itemSnap": "ems__item--snap",
+    "itemAuthority": "ems__item--authority",
+    "itemActive": "ems__item--active"
+  },
+  "timing": {
+    "easing": "cubic-bezier(0.2, 0.9, 0.25, 1) / cubic-bezier(0.15, 0.95, 0.2, 1)",
+    "totalMs": 210,
+    "releaseMs": 60,
+    "lineStartMs": 35,
+    "lineMs": 65,
+    "snapStartMs": 70,
+    "snapMs": 80,
+    "authorityStartMs": 120,
+    "authorityMs": 90,
+    "neighbourMs": "80–120"
+  },
+  "api": {
+    "export": "selectEvokerMenu(index)",
+    "busyGuard": true,
+    "rapidReselectStable": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "pattern": "radiogroup + radio",
+    "rovingTabindex": true,
+    "keys": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Home", "End", "Enter", " "],
+    "decorativeAriaHidden": true,
+    "focusVisible": "2px solid #42a5f5",
+    "noPlayGlyphMarker": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate settled selected styling; no line travel, snap travel, or neighbour nudge"
+  },
+  "constraints": {
+    "noRoundedPills": true,
+    "noBounceSpring": true,
+    "noWeaponImagery": true,
+    "noExternalAssets": true,
+    "noElementAccumulation": true,
+    "geometryNotColourAlone": true
+  }
+}
