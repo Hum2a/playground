@@ -132,6 +132,7 @@ import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
+import { playPauseGlyphMorph } from './play-pause-glyph-morph/entry'
 import { postBurstRecovery } from './post-burst-recovery/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
@@ -358,6 +359,7 @@ export const specimens: Specimen[] = [
   permissionRejection,
   personaAwakeningReveal,
   pixelHpDrain,
+  playPauseGlyphMorph,
   postBurstRecovery,
   powerLevelReadout,
   powerStateTransformation,

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **40 / 258** complete.
+- Progress: **41 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 40 |
-| Open | 218 |
+| Done | 41 |
+| Open | 217 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-178 | `SPX-1477` | `play-pause-glyph-morph` | Play/Pause Glyph Morph |
 | IOS-053 | `SPX-1352` | `desktop-space-swipe` | Desktop Space Swipe |
 | IOS-051 | `SPX-1350` | `window-minimise-funnel` | Window Minimise Funnel |
 | IOS-055 | `SPX-1354` | `window-snap-preview` | Window Snap Preview |
@@ -341,7 +342,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Media & Playback
 
-- [ ] **IOS-178** · `SPX-1477` · **Play/Pause Glyph Morph** — one control's geometry transforms directly between playback states.
+- [x] **IOS-178** · `SPX-1477` · **Play/Pause Glyph Morph** — one control's geometry transforms directly between playback states.
 - [ ] **IOS-179** · `SPX-1478` · **Now Playing Expansion** — compact media control grows into richer playback information.
 - [ ] **IOS-180** · `SPX-1479` · **Now Playing Collapse** — expanded player compresses back into compact persistent playback state.
 - [ ] **IOS-181** · `SPX-1480` · **Scrubber Pickup** — progress thumb enlarges, reveals precision information and follows active drag.
