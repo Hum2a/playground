@@ -289,7 +289,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-156** ?? `SPX-1121` ?? **Planet-Break Delete Confirmation** ??? destructive operation creates visible irreversible structural fracture before execution.
 - [ ] **DB-157** ?? `SPX-1122` ?? **Disintegration** ??? object breaks into deterministic square/diamond fragments.
 - [ ] **DB-158** ?? `SPX-1123` ?? **Delete Cancellation** ??? disintegration begins but reverses before irreversible threshold.
-- [ ] **DB-159** ?? `SPX-1124` ?? **Irreversible Threshold** ??? deletion animation visibly crosses a point after which undo is unavailable.
+- [x] **DB-159** ?? `SPX-1124` ?? **Irreversible Threshold** ??? deletion animation visibly crosses a point after which undo is unavailable.
 - [ ] **DB-160** ?? `SPX-1125` ?? **Mass Delete** ??? several selected entities disintegrate sequentially.
 - [ ] **DB-161** ?? `SPX-1126` ?? **Erase From History** ??? object disappears from both active position and historical trail.
 
