@@ -1,0 +1,512 @@
+/* SPX-176 Comic Card Selection — portable contract. Do not restyle to host tokens. */
+
+.ccs {
+  --ccs-black: #090909;
+  --ccs-paper: #f5f1e8;
+  --ccs-red: #e60012;
+  --ccs-ease: cubic-bezier(0.25, 0.9, 0.3, 1);
+  --ccs-w: 120px;
+  --ccs-h: 150px;
+  --ccs-gap: 14px;
+  --ccs-clip-face: polygon(
+    1% 3%,
+    97% 0%,
+    100% 92%,
+    96% 100%,
+    2% 98%,
+    0% 12%
+  );
+  --ccs-clip-backing: polygon(
+    0% 6%,
+    94% 0%,
+    100% 88%,
+    92% 100%,
+    4% 97%,
+    0% 22%
+  );
+  --ccs-clip-misreg: polygon(
+    4% 0%,
+    100% 8%,
+    96% 100%,
+    0% 90%
+  );
+
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1.5rem 1rem 1.75rem;
+  background: #12141a;
+  color: var(--ccs-black);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ccs *,
+.ccs *::before,
+.ccs *::after {
+  box-sizing: border-box;
+}
+
+.ccs__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, var(--ccs-w));
+  gap: var(--ccs-gap);
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  padding: 18px 12px 22px;
+}
+
+.ccs__card {
+  position: relative;
+  appearance: none;
+  display: block;
+  width: var(--ccs-w);
+  height: var(--ccs-h);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transform-origin: center center;
+  transition: transform 170ms var(--ccs-ease);
+  z-index: 1;
+}
+
+.ccs__card:focus-visible {
+  outline: 2px solid var(--ccs-red);
+  outline-offset: 5px;
+}
+
+/* Hover preview on the face only — never full selection choreography */
+.ccs__card:hover:not(.ccs__card--active):not(.ccs__card--exit) .ccs__face {
+  transform: translateY(-2px);
+}
+
+/* —— Idle frozen rotations —— */
+.ccs__card--0 {
+  transform: rotate(-1deg);
+}
+
+.ccs__card--1 {
+  transform: rotate(1deg);
+}
+
+.ccs__card--2 {
+  transform: rotate(-2deg);
+}
+
+.ccs__hard,
+.ccs__backing,
+.ccs__misreg,
+.ccs__shard {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Inactive hard black backing ~4px 5px */
+.ccs__hard {
+  inset: 0;
+  z-index: 0;
+  background: var(--ccs-black);
+  transform: translate(4px, 5px);
+  transition:
+    opacity 100ms ease,
+    transform 100ms ease;
+}
+
+.ccs__face {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 14px 12px 16px;
+  background: var(--ccs-paper);
+  color: var(--ccs-black);
+  clip-path: var(--ccs-clip-face);
+  transition:
+    transform 140ms var(--ccs-ease),
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.ccs__index {
+  display: block;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  transition: font-size 170ms var(--ccs-ease);
+}
+
+.ccs__label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  transition: transform 170ms var(--ccs-ease);
+}
+
+/* Selected decorative layers — hidden until active */
+.ccs__backing,
+.ccs__misreg,
+.ccs__shard {
+  opacity: 0;
+}
+
+.ccs__backing {
+  z-index: 0;
+  inset: -10px -12px -14px -8px;
+  background: var(--ccs-black);
+  clip-path: var(--ccs-clip-backing);
+  transform: translate(10px, 12px) scale(0.85);
+  transition:
+    opacity 100ms ease,
+    transform 170ms var(--ccs-ease);
+}
+
+.ccs__misreg {
+  z-index: 1;
+  inset: -4px -6px -6px -4px;
+  background: var(--ccs-red);
+  clip-path: var(--ccs-clip-misreg);
+  transform: translate(8px, -4px) rotate(2deg) scale(0.4);
+  transform-origin: left center;
+  transition:
+    opacity 100ms ease,
+    transform 170ms var(--ccs-ease);
+}
+
+.ccs__shard {
+  z-index: 2;
+  width: 18px;
+  height: 10px;
+  background: var(--ccs-black);
+}
+
+.ccs__shard--a {
+  top: -6px;
+  right: 10px;
+  clip-path: polygon(0 40%, 100% 0, 80% 100%, 10% 100%);
+  transform: rotate(-18deg) scale(0.4);
+}
+
+.ccs__shard--b {
+  bottom: 8px;
+  left: -8px;
+  width: 14px;
+  height: 16px;
+  background: var(--ccs-red);
+  clip-path: polygon(20% 0, 100% 20%, 70% 100%, 0 80%);
+  transform: rotate(12deg) scale(0.4);
+}
+
+/* —— Selected card attacks foreground —— */
+.ccs__card--active {
+  z-index: 4;
+}
+
+.ccs__card--active .ccs__hard {
+  opacity: 0;
+}
+
+.ccs__card--active .ccs__backing,
+.ccs__card--active .ccs__misreg,
+.ccs__card--active .ccs__shard {
+  opacity: 1;
+}
+
+.ccs__card--active .ccs__backing {
+  transform: translate(8px, 10px) scale(1);
+}
+
+.ccs__card--active .ccs__misreg {
+  transform: translate(6px, -3px) rotate(2deg) scale(1);
+}
+
+.ccs__card--active .ccs__shard--a {
+  transform: rotate(-18deg) scale(1);
+}
+
+.ccs__card--active .ccs__shard--b {
+  transform: rotate(12deg) scale(1);
+}
+
+.ccs__card--active .ccs__index {
+  font-size: 54px;
+}
+
+.ccs__card--active .ccs__label {
+  transform: rotate(1.5deg);
+}
+
+.ccs__card--0.ccs__card--active {
+  transform: translateY(-10px) rotate(-3deg) scale(1.14);
+}
+
+.ccs__card--1.ccs__card--active {
+  transform: translateY(-10px) rotate(2deg) scale(1.14);
+}
+
+.ccs__card--2.ccs__card--active {
+  transform: translateY(-10px) rotate(-4deg) scale(1.14);
+}
+
+.ccs__card--0.ccs__card--active .ccs__label {
+  transform: rotate(-1.5deg);
+}
+
+.ccs__card--1.ccs__card--active .ccs__label {
+  transform: rotate(2deg);
+}
+
+.ccs__card--2.ccs__card--active .ccs__label {
+  transform: rotate(-2deg);
+}
+
+/* —— Neighbour reaction (whole composition shifts) —— */
+/* Left selected → centre/right shift right */
+.ccs[data-selected='0'] .ccs__card--1:not(.ccs__card--active):not(.ccs__card--exit) {
+  transform: translateX(10px) rotate(1deg);
+}
+
+.ccs[data-selected='0'] .ccs__card--2:not(.ccs__card--active):not(.ccs__card--exit) {
+  transform: translateX(12px) rotate(-2deg);
+}
+
+/* Centre selected → neighbours peel outward */
+.ccs[data-selected='1'] .ccs__card--0:not(.ccs__card--active):not(.ccs__card--exit) {
+  transform: translateX(-10px) rotate(-3deg);
+}
+
+.ccs[data-selected='1'] .ccs__card--2:not(.ccs__card--active):not(.ccs__card--exit) {
+  transform: translateX(10px) rotate(0deg);
+}
+
+/* Right selected → others shift left */
+.ccs[data-selected='2'] .ccs__card--0:not(.ccs__card--active):not(.ccs__card--exit) {
+  transform: translateX(-10px) rotate(-1deg);
+}
+
+.ccs[data-selected='2'] .ccs__card--1:not(.ccs__card--active):not(.ccs__card--exit) {
+  transform: translateX(-8px) rotate(1deg);
+}
+
+/* Active overrides neighbour rules */
+.ccs[data-selected='0'] .ccs__card--0.ccs__card--active {
+  transform: translateY(-10px) rotate(-3deg) scale(1.14);
+}
+
+.ccs[data-selected='1'] .ccs__card--1.ccs__card--active {
+  transform: translateY(-10px) rotate(2deg) scale(1.14);
+}
+
+.ccs[data-selected='2'] .ccs__card--2.ccs__card--active {
+  transform: translateY(-10px) rotate(-4deg) scale(1.14);
+}
+
+/* —— Selection choreography (~300ms) —— */
+.ccs__card--exit {
+  z-index: 2;
+}
+
+.ccs__card--exit .ccs__backing,
+.ccs__card--exit .ccs__misreg,
+.ccs__card--exit .ccs__shard {
+  opacity: 0;
+  transition:
+    opacity 100ms ease,
+    transform 100ms ease;
+}
+
+.ccs__card--exit .ccs__backing {
+  transform: translate(10px, 12px) scale(0.85);
+}
+
+.ccs__card--exit .ccs__misreg {
+  transform: translate(8px, -4px) rotate(2deg) scale(0.4);
+}
+
+.ccs__card--exit .ccs__index {
+  font-size: 32px;
+  transition: font-size 100ms ease;
+}
+
+.ccs__card--exit .ccs__label {
+  transform: none;
+  transition: transform 100ms ease;
+}
+
+.ccs__card--0.ccs__card--exit {
+  transform: rotate(-1deg) scale(0.96);
+  transition: transform 100ms ease;
+}
+
+.ccs__card--1.ccs__card--exit {
+  transform: rotate(1deg) scale(0.96);
+  transition: transform 100ms ease;
+}
+
+.ccs__card--2.ccs__card--exit {
+  transform: rotate(-2deg) scale(0.96);
+  transition: transform 100ms ease;
+}
+
+.ccs__card--enter {
+  z-index: 5;
+}
+
+.ccs__card--enter .ccs__backing {
+  animation: ccs-backing-attack 170ms var(--ccs-ease) both;
+}
+
+.ccs__card--enter .ccs__misreg {
+  animation: ccs-misreg-attack 170ms var(--ccs-ease) 20ms both;
+}
+
+.ccs__card--enter .ccs__shard--a,
+.ccs__card--enter .ccs__shard--b {
+  animation: ccs-shard-attack 170ms var(--ccs-ease) 30ms both;
+}
+
+.ccs__card--enter .ccs__face {
+  animation: ccs-face-attack 170ms var(--ccs-ease) both;
+}
+
+.ccs--settling .ccs__card {
+  transition-duration: 170ms;
+}
+
+.ccs--settle .ccs__card {
+  transition-duration: 30ms;
+}
+
+@keyframes ccs-backing-attack {
+  0% {
+    opacity: 1;
+    transform: translate(18px, 16px) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(8px, 10px) scale(1);
+  }
+}
+
+@keyframes ccs-misreg-attack {
+  0% {
+    opacity: 1;
+    transform: translate(14px, -8px) rotate(4deg) scale(0.35);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(6px, -3px) rotate(2deg) scale(1);
+  }
+}
+
+@keyframes ccs-shard-attack {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ccs-face-attack {
+  0% {
+    transform: translateY(8px) scale(0.96);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 400px) {
+  .ccs {
+    --ccs-w: 96px;
+    --ccs-h: 124px;
+    --ccs-gap: 10px;
+    padding: 1.25rem 0.5rem 1.5rem;
+  }
+
+  .ccs__index {
+    font-size: 26px;
+  }
+
+  .ccs__card--active .ccs__index {
+    font-size: 42px;
+  }
+
+  .ccs__label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .ccs__face {
+    padding: 10px 8px 12px;
+  }
+
+  .ccs__grid {
+    padding: 14px 6px 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .ccs {
+    --ccs-w: 84px;
+    --ccs-h: 110px;
+    --ccs-gap: 8px;
+  }
+
+  .ccs__card--active .ccs__index {
+    font-size: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ccs__card,
+  .ccs__face,
+  .ccs__hard,
+  .ccs__backing,
+  .ccs__misreg,
+  .ccs__shard,
+  .ccs__index,
+  .ccs__label {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .ccs__card:hover:not(.ccs__card--active) .ccs__face {
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .ccs__card,
+[data-force-reduced-motion='true'] .ccs__face,
+[data-force-reduced-motion='true'] .ccs__hard,
+[data-force-reduced-motion='true'] .ccs__backing,
+[data-force-reduced-motion='true'] .ccs__misreg,
+[data-force-reduced-motion='true'] .ccs__shard,
+[data-force-reduced-motion='true'] .ccs__index,
+[data-force-reduced-motion='true'] .ccs__label {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .ccs__card:hover:not(.ccs__card--active) .ccs__face {
+  transform: none;
+}

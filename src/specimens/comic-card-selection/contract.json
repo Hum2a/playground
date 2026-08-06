@@ -1,0 +1,345 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/comic-card-selection.schema.json",
+  "title": "ComicCardSelection",
+  "description": "Portable visual/component contract for a Persona-adjacent comic card grid where selection escapes alignment and recomposes neighbours. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "idle",
+    "selected",
+    "neighborPush",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "comic-card-selection" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Card-selection interaction where the selected card escapes the grid and neighbours recompose around it."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cards"],
+      "properties": {
+        "cards": {
+          "type": "array",
+          "const": [
+            { "index": "01", "label": "MOTION" },
+            { "index": "02", "label": "TYPE" },
+            { "index": "03", "label": "OVERLAYS" }
+          ]
+        },
+        "defaultSelectedIndex": { "type": "integer", "const": 0 }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "paper", "red"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardWidthPx", "cardHeightPx", "gapPx", "columns"],
+      "properties": {
+        "cardWidthPx": { "type": "number", "const": 120 },
+        "cardHeightPx": { "type": "number", "const": 150 },
+        "gapPx": { "type": "number", "const": 14 },
+        "columns": { "type": "integer", "const": 3 }
+      }
+    },
+    "idle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["indexFontSizePx", "hardBacking", "rotations"],
+      "properties": {
+        "indexFontSizePx": { "type": "number", "const": 32 },
+        "hardBacking": {
+          "type": "object",
+          "required": ["xPx", "yPx"],
+          "properties": {
+            "xPx": { "type": "number", "const": 4 },
+            "yPx": { "type": "number", "const": 5 }
+          }
+        },
+        "rotations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["motion", "type", "overlays"],
+          "properties": {
+            "motion": { "type": "number", "const": -1 },
+            "type": { "type": "number", "const": 1 },
+            "overlays": { "type": "number", "const": -2 }
+          }
+        }
+      }
+    },
+    "selected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scale",
+        "translateYPx",
+        "indexFontSizePx",
+        "rotations",
+        "labelRotations"
+      ],
+      "properties": {
+        "scale": { "type": "number", "const": 1.14 },
+        "translateYPx": { "type": "number", "const": -10 },
+        "indexFontSizePx": { "type": "number", "const": 54 },
+        "rotations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["motion", "type", "overlays"],
+          "properties": {
+            "motion": { "type": "number", "const": -3 },
+            "type": { "type": "number", "const": 2 },
+            "overlays": { "type": "number", "const": -4 }
+          }
+        },
+        "labelRotations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["motion", "type", "overlays"],
+          "properties": {
+            "motion": { "type": "number", "const": -1.5 },
+            "type": { "type": "number", "const": 2 },
+            "overlays": { "type": "number", "const": -2 }
+          }
+        }
+      }
+    },
+    "neighborPush": {
+      "type": "object",
+      "description": "Horizontal neighbour shifts by selected index.",
+      "additionalProperties": false,
+      "required": ["bySelectedIndex"],
+      "properties": {
+        "bySelectedIndex": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["0", "1", "2"],
+          "properties": {
+            "0": {
+              "type": "object",
+              "description": "Left selected: centre/right shift right.",
+              "properties": {
+                "1": { "type": "string", "const": "translateX(10px) rotate(1deg)" },
+                "2": { "type": "string", "const": "translateX(12px) rotate(-2deg)" }
+              }
+            },
+            "1": {
+              "type": "object",
+              "description": "Centre selected: neighbours peel outward.",
+              "properties": {
+                "0": { "type": "string", "const": "translateX(-10px) rotate(-3deg)" },
+                "2": { "type": "string", "const": "translateX(10px) rotate(0deg)" }
+              }
+            },
+            "2": {
+              "type": "object",
+              "description": "Right selected: others shift left.",
+              "properties": {
+                "0": { "type": "string", "const": "translateX(-10px) rotate(-1deg)" },
+                "1": { "type": "string", "const": "translateX(-8px) rotate(1deg)" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalMs", "contractMs", "attackMs", "neighborMs", "settleMs"],
+      "properties": {
+        "totalMs": { "type": "number", "const": 300 },
+        "contractMs": { "type": "number", "const": 100 },
+        "attackMs": { "type": "number", "const": 170 },
+        "neighborMs": { "type": "number", "const": 170 },
+        "settleMs": { "type": "number", "const": 30 },
+        "exitScale": { "type": "number", "const": 0.96 },
+        "hoverPreviewPx": { "type": "number", "const": 2 },
+        "noBounce": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radiogroup", "stableDomOrder", "decorativeLayers"],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "stableDomOrder": { "type": "boolean", "const": true },
+        "decorativeLayers": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwitch", "triggers"],
+      "properties": {
+        "instantSwitch": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "grid",
+        "card",
+        "face",
+        "hard",
+        "backing",
+        "misreg",
+        "shard",
+        "active",
+        "exit",
+        "enter"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "ccs" },
+        "grid": { "type": "string", "const": "ccs__grid" },
+        "card": { "type": "string", "const": "ccs__card" },
+        "face": { "type": "string", "const": "ccs__face" },
+        "hard": { "type": "string", "const": "ccs__hard" },
+        "backing": { "type": "string", "const": "ccs__backing" },
+        "misreg": { "type": "string", "const": "ccs__misreg" },
+        "shard": { "type": "string", "const": "ccs__shard" },
+        "active": { "type": "string", "const": "ccs__card--active" },
+        "exit": { "type": "string", "const": "ccs__card--exit" },
+        "enter": { "type": "string", "const": "ccs__card--enter" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "select": { "type": "string", "const": "selectComicCard" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "noDomReorder": { "type": "boolean", "const": true }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "comic-card-selection",
+      "intent": "Card-selection interaction where the selected card escapes the grid and neighbours recompose around it.",
+      "copy": {
+        "cards": [
+          { "index": "01", "label": "MOTION" },
+          { "index": "02", "label": "TYPE" },
+          { "index": "03", "label": "OVERLAYS" }
+        ],
+        "defaultSelectedIndex": 0
+      },
+      "colours": {
+        "black": "#090909",
+        "paper": "#f5f1e8",
+        "red": "#e60012"
+      },
+      "layout": {
+        "cardWidthPx": 120,
+        "cardHeightPx": 150,
+        "gapPx": 14,
+        "columns": 3
+      },
+      "idle": {
+        "indexFontSizePx": 32,
+        "hardBacking": { "xPx": 4, "yPx": 5 },
+        "rotations": { "motion": -1, "type": 1, "overlays": -2 }
+      },
+      "selected": {
+        "scale": 1.14,
+        "translateYPx": -10,
+        "indexFontSizePx": 54,
+        "rotations": { "motion": -3, "type": 2, "overlays": -4 },
+        "labelRotations": { "motion": -1.5, "type": 2, "overlays": -2 }
+      },
+      "neighborPush": {
+        "bySelectedIndex": {
+          "0": {
+            "1": "translateX(10px) rotate(1deg)",
+            "2": "translateX(12px) rotate(-2deg)"
+          },
+          "1": {
+            "0": "translateX(-10px) rotate(-3deg)",
+            "2": "translateX(10px) rotate(0deg)"
+          },
+          "2": {
+            "0": "translateX(-10px) rotate(-1deg)",
+            "1": "translateX(-8px) rotate(1deg)"
+          }
+        }
+      },
+      "animation": {
+        "totalMs": 300,
+        "contractMs": 100,
+        "attackMs": 170,
+        "neighborMs": 170,
+        "settleMs": 30,
+        "exitScale": 0.96,
+        "hoverPreviewPx": 2,
+        "noBounce": true
+      },
+      "a11y": {
+        "radiogroup": true,
+        "stableDomOrder": true,
+        "decorativeLayers": true
+      },
+      "reducedMotion": {
+        "instantSwitch": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "ccs",
+        "grid": "ccs__grid",
+        "card": "ccs__card",
+        "face": "ccs__face",
+        "hard": "ccs__hard",
+        "backing": "ccs__backing",
+        "misreg": "ccs__misreg",
+        "shard": "ccs__shard",
+        "active": "ccs__card--active",
+        "exit": "ccs__card--exit",
+        "enter": "ccs__card--enter"
+      },
+      "behaviour": {
+        "select": "selectComicCard",
+        "restartMessageType": "restart",
+        "noDomReorder": true
+      }
+    }
+  ]
+}
