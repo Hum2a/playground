@@ -548,6 +548,8 @@ import { sectionFlagDrop } from './section-flag-drop/entry'
 
 import { headlineTypesetReveal } from './headline-typeset-reveal/entry'
 
+import { headlineReflow } from './headline-reflow/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1050,6 +1052,7 @@ export const specimens: Specimen[] = [
   mastheadAssemble,
   sectionFlagDrop,
   headlineTypesetReveal,
+  headlineReflow,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

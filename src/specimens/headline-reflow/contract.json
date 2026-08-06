@@ -1,0 +1,8 @@
+{
+  "name": "headline-reflow",
+  "ref": "SPX-3541",
+  "title": "Headline Reflow",
+  "mode": "redact",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
