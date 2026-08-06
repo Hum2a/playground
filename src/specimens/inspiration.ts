@@ -133,6 +133,9 @@ export const SUGGESTED_FREE_TAGS = [
   'paper',
   'peel',
   'unlock',
+  'selection',
+  'content-switch',
+  'stack',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

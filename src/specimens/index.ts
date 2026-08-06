@@ -9,9 +9,13 @@ import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
+import { paperRipUnlock } from './paper-rip-unlock/entry'
+import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
+import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import type { Specimen } from './types'
@@ -69,8 +73,12 @@ export const specimens: Specimen[] = [
   tacticalAlertPing,
   inkSplatTransition,
   victoryResultsTally,
+  paperStackShuffle,
   misprintNotification,
+  tornEdgeDrawer,
+  newspaperHeadlineDrop,
   ransomNoteReveal,
+  paperRipUnlock,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

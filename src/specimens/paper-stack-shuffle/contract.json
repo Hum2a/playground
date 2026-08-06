@@ -1,0 +1,78 @@
+{
+  "name": "paper-stack-shuffle",
+  "intent": "Physical paper-stack selection: extract front sheet, advance remaining sheets, return extracted sheet to the back without visible z-index teleport.",
+  "colours": {
+    "paper": "#f2eee3",
+    "paperBright": "#fffdf7",
+    "ink": "#090909",
+    "red": "#d71920"
+  },
+  "geometry": {
+    "width": "min(78%, 360px)",
+    "heightPx": 220,
+    "backingOffsetPx": 5,
+    "borderRadius": 0,
+    "clipPaths": {
+      "sheet0": "polygon(0% 2%, 97% 0%, 100% 96%, 3% 100%)",
+      "sheet1": "polygon(1% 0%, 100% 3%, 97% 100%, 0% 95%)",
+      "sheet2": "polygon(0% 4%, 96% 0%, 100% 93%, 4% 100%)",
+      "sheet3": "polygon(2% 0%, 100% 5%, 98% 100%, 0% 94%)"
+    }
+  },
+  "depths": [
+    { "depth": 0, "x": 0, "y": 0, "rotateDeg": -2, "zIndex": 40 },
+    { "depth": 1, "x": 8, "y": 8, "rotateDeg": 3, "zIndex": 30 },
+    { "depth": 2, "x": -5, "y": 16, "rotateDeg": -4, "zIndex": 20 },
+    { "depth": 3, "x": 11, "y": 23, "rotateDeg": 2, "zIndex": 10 }
+  ],
+  "sheets": [
+    { "id": 0, "label": "01 // MOTION", "statusLabel": "01 Motion" },
+    { "id": 1, "label": "02 // TYPOGRAPHY", "statusLabel": "02 Typography" },
+    { "id": 2, "label": "03 // OVERLAYS", "statusLabel": "03 Overlays" },
+    { "id": 3, "label": "04 // TRANSITIONS", "statusLabel": "04 Transitions" }
+  ],
+  "timing": {
+    "totalMs": 720,
+    "easing": "cubic-bezier(0.7, 0, 0.3, 1)",
+    "next": {
+      "liftMs": 120,
+      "extractMs": 240,
+      "stackAdvanceDelayMs": 140,
+      "stackAdvanceMs": 240,
+      "returnBehindMs": 290,
+      "settleMs": 70
+    },
+    "extractTranslate": {
+      "x": "var(--extract-x)",
+      "xDefault": "78%",
+      "xNarrow": "58%",
+      "y": "-14%",
+      "rotateDeg": 9
+    }
+  },
+  "ordering": {
+    "model": "array front-to-back of stable sheet ids",
+    "next": "rotate left — front becomes back",
+    "previous": "rotate right — back becomes front",
+    "zIndexSwapRule": "Only while sheet is spatially clear of the stack (elevated flight class)"
+  },
+  "api": {
+    "export": "shufflePaperStack('next' | 'prev')",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "noNetwork": true
+  },
+  "a11y": {
+    "stackAriaHidden": true,
+    "statusRole": "status",
+    "statusLive": "polite",
+    "controls": "real buttons PREVIOUS / NEXT"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate order change and settled depth poses; no extraction flight"
+  }
+}
