@@ -582,6 +582,8 @@ import { inkRegistrationAlign } from './ink-registration-align/entry'
 
 import { plateSwapTransition } from './plate-swap-transition/entry'
 
+import { proofToFinalToggle } from './proof-to-final-toggle/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1101,6 +1103,7 @@ export const specimens: Specimen[] = [
   pressRollReveal,
   inkRegistrationAlign,
   plateSwapTransition,
+  proofToFinalToggle,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

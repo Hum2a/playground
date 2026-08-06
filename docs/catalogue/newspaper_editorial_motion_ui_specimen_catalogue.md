@@ -181,7 +181,7 @@ chronology and information priority.
     acquire in sequence during a finite processing state.
 - [ ] **NEWS-058** · `SPX-3580` · ★★★★☆ **Print Queue Advance** — Issue cards move through
     queued, printing and complete states.
-- [ ] **NEWS-059** · `SPX-3581` · ★★★★★ **Proof-to-Final Toggle** — Annotated proof copy
+- [x] **NEWS-059** · `SPX-3581` · ★★★★★ **Proof-to-Final Toggle** — Annotated proof copy
     transforms into clean final publication.
 - [ ] **NEWS-060** · `SPX-3582` · ★★★★☆ **Press Stop Alert** — A production flow halts and
     exposes a high-priority correction state.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-059 | SPX-3581 | `proof-to-final-toggle` | Proof-to-Final Toggle |
 | NEWS-056 | SPX-3578 | `plate-swap-transition` | Plate Swap Transition |
 | NEWS-054 | SPX-3576 | `ink-registration-align` | Ink Registration Align |
 | NEWS-053 | SPX-3575 | `press-roll-reveal` | Press Roll Reveal |
@@ -703,12 +704,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **24 / 237** complete.
+- Progress: **25 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 213 |
+| Done | 25 |
+| Open | 212 |
 
 ## Core first-wave / build queue
 
@@ -736,7 +737,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-053** · `SPX-3575` · **Press Roll Reveal** · `press-roll-reveal`
 - [x] **NEWS-054** · `SPX-3576` · **Ink Registration Align** · `ink-registration-align`
 - [x] **NEWS-056** · `SPX-3578` · **Plate Swap Transition** · `plate-swap-transition`
-- [ ] **NEWS-059** · `SPX-3581` · **Proof-to-Final Toggle** · scaffold `proof-to-final-toggle`
+- [x] **NEWS-059** · `SPX-3581` · **Proof-to-Final Toggle** · `proof-to-final-toggle`
 - [ ] **NEWS-061** · `SPX-3583` · **Typewriter Headline Entry** · scaffold `typewriter-headline-entry`
 - [ ] **NEWS-064** · `SPX-3586` · **Copy Edit Strike-and-Replace** · scaffold `copy-edit-strike-and-replace`
 - [ ] **NEWS-065** · `SPX-3587` · **Proofreader Mark Reveal** · scaffold `proofreader-mark-reveal`

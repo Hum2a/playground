@@ -1,0 +1,8 @@
+{
+  "name": "proof-to-final-toggle",
+  "ref": "SPX-3581",
+  "title": "Proof-to-Final Toggle",
+  "mode": "paper",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
