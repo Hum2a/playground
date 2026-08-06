@@ -155,6 +155,7 @@ import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { missionControlSpread } from './mission-control-spread/entry'
+import { missionIncoming } from './mission-incoming/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { moveLearned } from './move-learned/entry'
@@ -467,6 +468,7 @@ export const specimens: Specimen[] = [
   midnightClockTransition,
   misprintNotification,
   missionControlSpread,
+  missionIncoming,
   monochromeBattleSlideIn,
   moonPhaseProgress,
   moveLearned,
