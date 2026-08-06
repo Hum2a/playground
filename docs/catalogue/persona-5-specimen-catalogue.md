@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 301** complete.
+- Progress: **17 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 285 |
+| Done | 17 |
+| Open | 284 |
 
 ## Shipped (mapped to live specimens)
 
@@ -34,6 +34,7 @@
 | P5-057 | `SPX-068` | `hover-cutout` | Hover Cutout |
 | P5-115 | `SPX-126` | `blackout-loader` | Blackout Loader |
 | P5-268 | `SPX-279` | `cross-out-status-swap` | Cross-Out Status Swap |
+| P5-156 | `SPX-167` | `progress-milestone-breakthrough` | Progress Milestone Breakthrough |
 
 ## Core first-wave
 
@@ -252,7 +253,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-153** · `SPX-164` · **Progress Explosion** — Reaching 100% fractures progress bar.
 - [ ] **P5-154** · `SPX-165` · **Skill Unlock Branch** — Graphic branch shoots from rank into unlocked ability.
 - [ ] **P5-155** · `SPX-166` · **Combo Counter** — Number grows more visually aggressive with consecutive actions.
-- [ ] **P5-156** · `SPX-167` · **Threshold Cross** — Marker violently punches through milestone line.
+- [x] **P5-156** · `SPX-167` · **Threshold Cross** — Marker violently punches through milestone line.
 
 ## Numbers and counters
 

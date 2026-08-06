@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/progress-milestone-breakthrough.schema.json",
+  "title": "ProgressMilestoneBreakthrough",
+  "description": "Portable contract for a progress track that collides with and breaks through a 60% milestone barrier. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "track",
+    "milestone",
+    "sequence",
+    "breakthrough",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "progress-milestone-breakthrough" },
+    "intent": {
+      "type": "string",
+      "const": "Progress fill collides with a milestone barrier, resists, then breaks through — communicating that a meaningful threshold was crossed."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eyebrow",
+        "title",
+        "go",
+        "reset",
+        "kicker",
+        "detail",
+        "announce"
+      ],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "UPLOAD · BATCH 07" },
+        "title": { "type": "string", "const": "SYNC PROGRESS" },
+        "go": { "type": "string", "const": "ADD PROGRESS" },
+        "reset": { "type": "string", "const": "RESET" },
+        "kicker": { "type": "string", "const": "MILESTONE" },
+        "detail": { "type": "string", "const": "60% COMPLETE" },
+        "announce": {
+          "type": "string",
+          "const": "60% complete. Milestone reached."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 320 },
+        "heightPx": { "type": "number", "const": 26 },
+        "roundedEnds": { "type": "boolean", "const": false }
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["atPercent", "widthPx", "heightPx", "label"],
+      "properties": {
+        "atPercent": { "type": "number", "const": 60 },
+        "widthPx": { "type": "number", "const": 7 },
+        "heightPx": { "type": "number", "const": 44 },
+        "label": { "type": "string", "const": "60" }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "steps", "finalLogical"],
+      "properties": {
+        "initial": { "type": "number", "const": 54 },
+        "steps": {
+          "type": "array",
+          "const": [57, 59, 60]
+        },
+        "finalLogical": { "type": "number", "const": 60 },
+        "visualOvershoot": { "type": "number", "const": 62 },
+        "overshootNeverSemantic": { "type": "boolean", "const": true }
+      }
+    },
+    "breakthrough": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["upper", "lower", "scraps"],
+      "properties": {
+        "upper": {
+          "type": "object",
+          "properties": {
+            "translate": { "type": "string", "const": "8px -18px" },
+            "rotateDeg": { "type": "number", "const": 16 }
+          }
+        },
+        "lower": {
+          "type": "object",
+          "properties": {
+            "translate": { "type": "string", "const": "10px 17px" },
+            "rotateDeg": { "type": "number", "const": -13 }
+          }
+        },
+        "scraps": { "type": "integer", "const": 3 },
+        "markerBendDeg": {
+          "type": "array",
+          "const": [0, 4, -2]
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepAMs",
+        "stepBMs",
+        "resistMs",
+        "breakMs",
+        "settleMs",
+        "announceMs",
+        "detailLagMs",
+        "noLoop"
+      ],
+      "properties": {
+        "stepAMs": { "type": "number", "const": 300 },
+        "stepBMs": { "type": "number", "const": 220 },
+        "resistMs": { "type": "number", "const": 110 },
+        "breakMs": { "type": "number", "const": 180 },
+        "settleMs": { "type": "number", "const": 140 },
+        "announceMs": { "type": "number", "const": 240 },
+        "detailLagMs": { "type": "number", "const": 70 },
+        "noLoop": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["progressbar", "valuetextFinal"],
+      "properties": {
+        "progressbar": { "type": "boolean", "const": true },
+        "valuetextFinal": { "type": "string", "const": "60% complete" },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFinal", "triggers"],
+      "properties": {
+        "instantFinal": { "type": "boolean", "const": true },
+        "staticCopy": {
+          "type": "string",
+          "const": "MILESTONE — 60% COMPLETE"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "track", "fill", "marker", "tick", "announce"],
+      "properties": {
+        "root": { "type": "string", "const": "pmb" },
+        "track": { "type": "string", "const": "pmb__track" },
+        "fill": { "type": "string", "const": "pmb__fill" },
+        "marker": { "type": "string", "const": "pmb__marker" },
+        "tick": { "type": "string", "const": "pmb__tick" },
+        "announce": { "type": "string", "const": "pmb__announce" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "go": { "type": "string", "const": "addProgressMilestone" },
+        "reset": { "type": "string", "const": "resetProgressMilestone" },
+        "replay": { "type": "string", "const": "replayProgressMilestone" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "progress-milestone-breakthrough",
+      "intent": "Progress fill collides with a milestone barrier, resists, then breaks through — communicating that a meaningful threshold was crossed.",
+      "copy": {
+        "eyebrow": "UPLOAD · BATCH 07",
+        "title": "SYNC PROGRESS",
+        "go": "ADD PROGRESS",
+        "reset": "RESET",
+        "kicker": "MILESTONE",
+        "detail": "60% COMPLETE",
+        "announce": "60% complete. Milestone reached."
+      },
+      "colours": {
+        "black": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "track": {
+        "widthPx": 320,
+        "heightPx": 26,
+        "roundedEnds": false
+      },
+      "milestone": {
+        "atPercent": 60,
+        "widthPx": 7,
+        "heightPx": 44,
+        "label": "60"
+      },
+      "sequence": {
+        "initial": 54,
+        "steps": [57, 59, 60],
+        "finalLogical": 60,
+        "visualOvershoot": 62,
+        "overshootNeverSemantic": true
+      },
+      "breakthrough": {
+        "upper": { "translate": "8px -18px", "rotateDeg": 16 },
+        "lower": { "translate": "10px 17px", "rotateDeg": -13 },
+        "scraps": 3,
+        "markerBendDeg": [0, 4, -2]
+      },
+      "animation": {
+        "stepAMs": 300,
+        "stepBMs": 220,
+        "resistMs": 110,
+        "breakMs": 180,
+        "settleMs": 140,
+        "announceMs": 240,
+        "detailLagMs": 70,
+        "noLoop": true
+      },
+      "a11y": {
+        "progressbar": true,
+        "valuetextFinal": "60% complete",
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "instantFinal": true,
+        "staticCopy": "MILESTONE — 60% COMPLETE",
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "pmb",
+        "track": "pmb__track",
+        "fill": "pmb__fill",
+        "marker": "pmb__marker",
+        "tick": "pmb__tick",
+        "announce": "pmb__announce"
+      },
+      "behaviour": {
+        "go": "addProgressMilestone",
+        "reset": "resetProgressMilestone",
+        "replay": "replayProgressMilestone",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}
