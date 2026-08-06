@@ -227,6 +227,7 @@ import { nearbyDeviceDiscovery } from './nearby-device-discovery/entry'
 import { nearbyFileTransfer } from './nearby-file-transfer/entry'
 import { networkScan360 } from './network-scan-360/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
+import { noSignalCard } from './no-signal-card/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
 import { notificationShadePullDown } from './notification-shade-pull-down/entry'
@@ -644,6 +645,7 @@ export const specimens: Specimen[] = [
   nearbyFileTransfer,
   networkScan360,
   newspaperHeadlineDrop,
+  noSignalCard,
   notificationBannerDrop,
   notificationExpand,
   notificationShadePullDown,

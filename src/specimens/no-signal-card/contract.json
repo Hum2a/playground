@@ -1,0 +1,15 @@
+{
+  "name": "no-signal-card",
+  "ref": "SPX-3045",
+  "catalogueId": "P4-127",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "gray": "#E8E8E8"
+  },
+  "states": ["unavailable", "available"],
+  "reducedMotion": {
+    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+  }
+}

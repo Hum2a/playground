@@ -1,0 +1,180 @@
+/* no-signal-card — portable specimen styles. Do not restyle to host tokens. */
+
+.nsc {
+  --nsc-yellow: #f5c400;
+  --nsc-ink: #101010;
+  --nsc-paper: #f7f3e8;
+  --nsc-gray: #e8e8e8;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--nsc-ink);
+  color: var(--nsc-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.nsc *,
+.nsc *::before,
+.nsc *::after {
+  box-sizing: border-box;
+}
+
+.nsc__live {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.65);
+}
+
+.nsc__card {
+  position: relative;
+  flex: 1;
+  min-height: 180px;
+  overflow: hidden;
+  border: 3px solid var(--nsc-gray);
+  background: var(--nsc-ink);
+}
+
+.nsc__bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 18px;
+}
+
+.nsc__bars span:nth-child(1) {
+  background: #fff;
+}
+.nsc__bars span:nth-child(2) {
+  background: var(--nsc-yellow);
+}
+.nsc__bars span:nth-child(3) {
+  background: #00c8ff;
+}
+.nsc__bars span:nth-child(4) {
+  background: #00a800;
+}
+.nsc__bars span:nth-child(5) {
+  background: #ff00ff;
+}
+.nsc__bars span:nth-child(6) {
+  background: #ff0000;
+}
+.nsc__bars span:nth-child(7) {
+  background: var(--nsc-ink);
+}
+
+.nsc__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: calc(100% - 18px);
+  padding: 1rem;
+  text-align: center;
+}
+
+.nsc__icon {
+  font-size: 1.2rem;
+  color: var(--nsc-gray);
+}
+
+.nsc__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.nsc__copy {
+  margin: 0;
+  max-width: 18ch;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--nsc-gray);
+}
+
+.nsc__static {
+  position: absolute;
+  inset: 18px 0 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background:
+    repeating-linear-gradient(0deg, rgb(232 232 232 / 0.15) 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(90deg, rgb(245 196 0 / 0.08) 0 3px, transparent 3px 6px);
+  animation: nsc-static 0.16s steps(2) infinite;
+}
+
+.nsc__btn {
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--nsc-yellow);
+  background: transparent;
+  color: var(--nsc-yellow);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nsc__btn:focus-visible {
+  outline: 2px solid var(--nsc-yellow);
+  outline-offset: 2px;
+}
+
+.nsc[data-state='available'] .nsc__card {
+  background: var(--nsc-paper);
+  color: var(--nsc-ink);
+}
+
+.nsc[data-state='available'] .nsc__body {
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.nsc[data-state='available'] .nsc__title {
+  font-size: 0.88rem;
+  letter-spacing: 0.12em;
+}
+
+.nsc[data-state='available'] .nsc__copy {
+  color: var(--nsc-ink);
+  max-width: none;
+}
+
+.nsc[data-state='available'] .nsc__static {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes nsc-static {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nsc__static {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .nsc__static {
+  animation: none;
+}
