@@ -21,41 +21,38 @@ function ContactSheetCell({
 
   return (
     <div ref={ref} className="contact-sheet__cell">
+      {visible ? (
+        <PreviewFrame
+          html={specimen.files.html}
+          css={specimen.files.css}
+          js={specimen.files.js}
+          label={specimen.preview.label}
+          width={specimen.preview.width}
+          height={specimen.preview.height}
+          scaffold={specimen.preview.scaffold}
+          controls={{
+            ...DEFAULT_CONTROLS,
+            background: specimen.preview.background,
+            viewport: 'full',
+            playbackRate: animate ? 1 : 0,
+            reducedMotion: animate ? 'off' : 'force',
+          }}
+        />
+      ) : (
+        <div
+          className="contact-sheet__placeholder"
+          style={{
+            aspectRatio: `${specimen.preview.width} / ${specimen.preview.height}`,
+          }}
+          aria-hidden
+        />
+      )}
       <Link
-        className="contact-sheet__link"
+        className="contact-sheet__caption mono-label"
         to={`/s/${specimen.id}`}
         title={`${specimen.ref} · ${specimen.title}`}
-        aria-label={`Open ${specimen.title} (${specimen.ref})`}
       >
-        {visible ? (
-          <PreviewFrame
-            html={specimen.files.html}
-            css={specimen.files.css}
-            js={specimen.files.js}
-            label={specimen.preview.label}
-            width={specimen.preview.width}
-            height={specimen.preview.height}
-            scaffold={specimen.preview.scaffold}
-            controls={{
-              ...DEFAULT_CONTROLS,
-              background: specimen.preview.background,
-              viewport: 'full',
-              playbackRate: animate ? 1 : 0,
-              reducedMotion: animate ? 'off' : 'force',
-            }}
-          />
-        ) : (
-          <div
-            className="contact-sheet__placeholder"
-            style={{
-              aspectRatio: `${specimen.preview.width} / ${specimen.preview.height}`,
-            }}
-            aria-hidden
-          />
-        )}
-        <span className="contact-sheet__caption mono-label" aria-hidden>
-          {specimen.ref}
-        </span>
+        {specimen.ref}
       </Link>
     </div>
   )

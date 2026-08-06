@@ -72,7 +72,10 @@ export function SpecimenDetail() {
   }, [specimen])
 
   const neighbours = useMemo(
-    () => (specimen ? getSpecimenNeighbors(specimen.id) : {}),
+    () =>
+      specimen
+        ? getSpecimenNeighbors(specimen.id)
+        : { prev: undefined, next: undefined },
     [specimen],
   )
 

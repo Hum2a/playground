@@ -1,5 +1,5 @@
-import { useEffect, useState, type KeyboardEvent, type MouseEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { DEFAULT_CONTROLS, PreviewFrame } from '../harness'
 import { buildPrompt, CopyButton } from '../prompt'
 import type { Specimen } from '../specimens'
@@ -24,7 +24,6 @@ export function SpecimenPlate({
   const { ref, visible } = useFrameVisibility()
   const prefersReduced = usePrefersReducedMotion()
   const [play, setPlay] = useState(false)
-  const navigate = useNavigate()
   const detailPath = `/s/${specimen.id}`
   const animate = !prefersReduced || play
   const prompt = buildPrompt(specimen, 'full')
@@ -32,23 +31,6 @@ export function SpecimenPlate({
   useEffect(() => {
     if (prefersReduced) setPlay(false)
   }, [prefersReduced])
-
-  const openDetail = () => {
-    navigate(detailPath)
-  }
-
-  const onPreviewKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      openDetail()
-    }
-  }
-
-  const onPreviewClick = (event: MouseEvent) => {
-    const target = event.target as HTMLElement
-    if (target.closest('button, a')) return
-    openDetail()
-  }
 
   return (
     <article className="plate specimen-plate" ref={ref}>
@@ -62,10 +44,7 @@ export function SpecimenPlate({
       <div
         className="specimen-plate__preview"
         tabIndex={0}
-        role="link"
-        aria-label={`Open ${specimen.title}`}
-        onClick={onPreviewClick}
-        onKeyDown={onPreviewKeyDown}
+        aria-label={`Preview: ${specimen.preview.label}`}
       >
         {visible ? (
           <PreviewFrame
@@ -98,10 +77,7 @@ export function SpecimenPlate({
             type="button"
             className="specimen-plate__play"
             aria-pressed={play}
-            onClick={(e) => {
-              e.stopPropagation()
-              setPlay((v) => !v)
-            }}
+            onClick={() => setPlay((v) => !v)}
           >
             {play ? 'Pause' : 'Play'}
           </button>
@@ -113,24 +89,24 @@ export function SpecimenPlate({
       </h2>
       <p className="specimen-plate__blurb">{specimen.blurb}</p>
       <p className="mono-label specimen-plate__facets">
-        {(
-          Object.entries(specimen.facets) as [string, string][]
-        ).map(([key, value], i, arr) => (
-          <span key={key}>
-            {onFacetClick ? (
-              <button
-                type="button"
-                className="specimen-plate__filter-btn"
-                onClick={() => onFacetClick(key, value)}
-              >
-                {value}
-              </button>
-            ) : (
-              value
-            )}
-            {i < arr.length - 1 ? ' · ' : null}
-          </span>
-        ))}
+        {(Object.entries(specimen.facets) as [string, string][]).map(
+          ([key, value], i, arr) => (
+            <span key={key}>
+              {onFacetClick ? (
+                <button
+                  type="button"
+                  className="specimen-plate__filter-btn"
+                  onClick={() => onFacetClick(key, value)}
+                >
+                  {value}
+                </button>
+              ) : (
+                value
+              )}
+              {i < arr.length - 1 ? ' · ' : null}
+            </span>
+          ),
+        )}
       </p>
       {specimen.inspiredBy ? (
         <p className="mono-label specimen-plate__inspired">

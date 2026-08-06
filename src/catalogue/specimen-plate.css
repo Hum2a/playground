@@ -24,11 +24,6 @@
 
 .specimen-plate__preview {
   position: relative;
-  cursor: pointer;
-}
-
-.specimen-plate__preview .preview-frame {
-  pointer-events: none;
 }
 
 .specimen-plate__placeholder {

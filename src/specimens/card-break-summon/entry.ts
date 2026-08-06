@@ -15,7 +15,7 @@ const scaffold = `
 
 export const cardBreakSummon: Specimen = {
   id: 'card-break-summon',
-  ref: 'SPX-TODO',
+  ref: 'SPX-495',
   title: 'Card Break Summon',
   blurb:
     'A sealed archive token shivers, cracks along four break lines, and splits into five shards that fly outward — revealing ENTITY // 08 that was already waiting underneath.',

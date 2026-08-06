@@ -15,7 +15,7 @@ const scaffold = `
 
 export const surfaceBreakReveal: Specimen = {
   id: 'surface-break-reveal',
-  ref: 'SPX-TODO',
+  ref: 'SPX-408',
   title: 'Surface Break Reveal',
   blurb:
     'A submerged unknown record rises through a graphic waterline — distorted below, sharp above — then a restrained surface reaction and exit leave RECORD // 045 / RECOVERED clear.',

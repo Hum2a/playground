@@ -15,21 +15,8 @@
   min-width: 0;
 }
 
-.contact-sheet__link {
-  position: relative;
-  display: block;
-  min-width: 0;
-  color: inherit;
-}
-
-.contact-sheet__link:hover .contact-sheet__caption,
-.contact-sheet__link:focus-visible .contact-sheet__caption {
-  color: var(--chalk);
-}
-
 .contact-sheet__cell .preview-frame {
   border-color: var(--rule);
-  pointer-events: none;
 }
 
 .contact-sheet__placeholder {
@@ -45,6 +32,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.contact-sheet__caption:hover,
+.contact-sheet__caption:focus-visible {
+  color: var(--chalk);
 }
 
 .contact-sheet__play {

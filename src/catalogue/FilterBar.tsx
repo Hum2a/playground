@@ -1,3 +1,4 @@
+import { useEffect, useId, useRef, useState } from 'react'
 import {
   FACET_KEYS,
   FACET_LABELS,
@@ -63,23 +64,85 @@ export function FilterBar({
   onClear,
 }: FilterBarProps) {
   const active = hasActiveFilters(filters, query)
+  const bodyId = useId()
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  const [scrolledPast, setScrolledPast] = useState(false)
+  const [pinnedOpen, setPinnedOpen] = useState(false)
+  const collapsed = scrolledPast && !pinnedOpen
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    if (!sentinel) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const past = !entry.isIntersecting
+        setScrolledPast(past)
+        if (!past) setPinnedOpen(false)
+      },
+      {
+        root: null,
+        threshold: 0,
+        // Fire as the sentinel leaves the top of the viewport (filters about to stick).
+        rootMargin: '-1px 0px 0px 0px',
+      },
+    )
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <div className="filter-bar" id="catalogue-filters">
-      <div className="filter-bar__top">
-        <p className="filter-bar__count" role="status" aria-live="polite">
-          {resultCount === totalCount
-            ? `${totalCount} specimens`
-            : `${resultCount} of ${totalCount} specimens`}
-        </p>
-        {active ? (
-          <button type="button" className="filter-bar__clear" onClick={onClear}>
-            Clear filters
-          </button>
-        ) : null}
-      </div>
+    <>
+      <div
+        ref={sentinelRef}
+        className="filter-bar__sentinel"
+        aria-hidden="true"
+      />
+      <div
+        className={
+          collapsed ? 'filter-bar filter-bar--collapsed' : 'filter-bar'
+        }
+        id="catalogue-filters"
+      >
+        <div className="filter-bar__top">
+          <p className="filter-bar__count" role="status" aria-live="polite">
+            {resultCount === totalCount
+              ? `${totalCount} specimens`
+              : `${resultCount} of ${totalCount} specimens`}
+            {collapsed && active ? (
+              <span className="filter-bar__active-note"> · Filtered</span>
+            ) : null}
+          </p>
+          <div className="filter-bar__top-actions">
+            {scrolledPast ? (
+              <button
+                type="button"
+                className="filter-bar__toggle"
+                aria-expanded={!collapsed}
+                aria-controls={bodyId}
+                onClick={() => setPinnedOpen((open) => !open)}
+              >
+                {collapsed ? 'Show filters' : 'Hide filters'}
+              </button>
+            ) : null}
+            {active ? (
+              <button
+                type="button"
+                className="filter-bar__clear"
+                onClick={onClear}
+              >
+                Clear filters
+              </button>
+            ) : null}
+          </div>
+        </div>
 
-      <div className="filter-bar__body">
+        <div
+          className="filter-bar__body"
+          id={bodyId}
+          hidden={collapsed}
+        >
         <div className="filter-bar__facets">
           {FACET_KEYS.map((key) => (
             <fieldset key={key} className="filter-bar__group">
@@ -209,6 +272,7 @@ export function FilterBar({
           />
         </label>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

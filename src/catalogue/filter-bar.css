@@ -1,3 +1,11 @@
+.filter-bar__sentinel {
+  height: 1px;
+  margin-bottom: -1px;
+  width: 100%;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .filter-bar {
   position: sticky;
   top: var(--shell-sticky-offset);
@@ -12,12 +20,52 @@
   background: var(--ink);
 }
 
+.filter-bar--collapsed {
+  gap: 0;
+  padding-block: var(--space-3);
+}
+
 .filter-bar__top {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
+}
+
+.filter-bar__top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.filter-bar__active-note {
+  color: var(--verdigris);
+}
+
+.filter-bar__toggle {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--pewter);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-2);
+}
+
+.filter-bar__toggle:hover {
+  border-color: var(--pewter);
+  color: var(--chalk);
+}
+
+.filter-bar__toggle[aria-expanded='true'] {
+  border-color: var(--verdigris);
+  color: var(--chalk);
 }
 
 .filter-bar__count {
