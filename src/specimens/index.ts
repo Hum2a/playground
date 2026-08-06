@@ -151,6 +151,7 @@ import { floatingLabelLift } from './floating-label-lift/entry'
 import { focusModeActivation } from './focus-mode-activation/entry'
 import { fogClearingDataReveal } from './fog-clearing-data-reveal/entry'
 import { fogDeadlineEscalation } from './fog-deadline-escalation/entry'
+import { fogForecastWarning } from './fog-forecast-warning/entry'
 import { fogOfWarCard } from './fog-of-war-card/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fourPointBarrierConstruct } from './four-point-barrier-construct/entry'
@@ -585,6 +586,7 @@ export const specimens: Specimen[] = [
   focusModeActivation,
   fogClearingDataReveal,
   fogDeadlineEscalation,
+  fogForecastWarning,
   fogOfWarCard,
   forgetAMove,
   fourPointBarrierConstruct,
