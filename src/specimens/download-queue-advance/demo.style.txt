@@ -1,0 +1,213 @@
+
+/* Portable PlayStation specimen — palette contract. */
+
+.dqa {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 360px;
+  padding: 0.85rem 0.7rem;
+  background: var(--ps-ink);
+  color: var(--ps-chalk);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.dqa *,
+.dqa *::before,
+.dqa *::after {
+  box-sizing: border-box;
+}
+
+.dqa__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dqa__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ps-sky);
+}
+
+.dqa__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgb(46 144 255 / 0.35);
+  background: rgb(244 246 248 / 0.03);
+}
+
+.dqa__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--ps-chalk);
+}
+
+.dqa__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgb(244 246 248 / 0.55);
+  text-align: center;
+}
+
+.dqa__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.dqa__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgb(244 246 248 / 0.35);
+  background: transparent;
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dqa__btn--primary {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.14);
+}
+
+.dqa__btn:hover:not(:disabled) {
+  border-color: var(--ps-sky);
+}
+
+.dqa__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.dqa__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.dqa__queue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 340px;
+}
+
+.dqa__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 0.25rem 0.6rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgb(244 246 248 / 0.12);
+  background: rgb(244 246 248 / 0.03);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+.dqa__item[data-state='active'] {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.08);
+}
+
+.dqa__item[data-state='done'] {
+  border-color: rgb(126 182 255 / 0.5);
+  opacity: 0.85;
+}
+
+.dqa__item-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.dqa__item-bar {
+  grid-column: 1 / -1;
+  height: 4px;
+  background: rgb(244 246 248 / 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.dqa__item-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--ps-blue);
+  transition: width 40ms linear;
+}
+
+.dqa__item[data-state='done'] .dqa__item-fill {
+  width: 100%;
+  background: var(--ps-sky);
+}
+
+.dqa__item-state {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgb(244 246 248 / 0.5);
+  align-self: start;
+}
+
+.dqa__item[data-state='active'] .dqa__item-state {
+  color: var(--ps-sky);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dqa__ring-track,
+  .dqa__ring-fill,
+  .dqa__pulse,
+  .dqa__wave,
+  .dqa__sync-beam,
+  .dqa__morph,
+  .dqa__fill,
+  .dqa__notch-glow {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .dqa__ring-track,
+html[data-force-reduced-motion='true'] .dqa__ring-fill,
+html[data-force-reduced-motion='true'] .dqa__pulse,
+html[data-force-reduced-motion='true'] .dqa__wave,
+html[data-force-reduced-motion='true'] .dqa__sync-beam,
+html[data-force-reduced-motion='true'] .dqa__morph,
+html[data-force-reduced-motion='true'] .dqa__fill,
+html[data-force-reduced-motion='true'] .dqa__notch-glow {
+  transition: none !important;
+  animation: none !important;
+}

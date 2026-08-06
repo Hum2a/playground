@@ -139,6 +139,7 @@ import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
 import { downloadCompleteMorph } from './download-complete-morph/entry'
 import { downloadProgressRing } from './download-progress-ring/entry'
+import { downloadQueueAdvance } from './download-queue-advance/entry'
 import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { dropTargetMagnetism } from './drop-target-magnetism/entry'
@@ -648,6 +649,7 @@ export const specimens: Specimen[] = [
   dockMagnification,
   downloadCompleteMorph,
   downloadProgressRing,
+  downloadQueueAdvance,
   dragProxyFormation,
   dramaticObjectionError,
   dropTargetMagnetism,
