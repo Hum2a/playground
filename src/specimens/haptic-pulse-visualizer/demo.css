@@ -1,0 +1,204 @@
+
+/* Portable PlayStation specimen — palette contract. */
+
+.hpv {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 320px;
+  padding: 0.85rem 0.7rem;
+  background: var(--ps-ink);
+  color: var(--ps-chalk);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.hpv *,
+.hpv *::before,
+.hpv *::after {
+  box-sizing: border-box;
+}
+
+.hpv__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hpv__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ps-sky);
+}
+
+.hpv__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgb(46 144 255 / 0.35);
+  background: rgb(244 246 248 / 0.03);
+}
+
+.hpv__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--ps-chalk);
+}
+
+.hpv__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgb(244 246 248 / 0.55);
+  text-align: center;
+}
+
+.hpv__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.hpv__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgb(244 246 248 / 0.35);
+  background: transparent;
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hpv__btn--primary {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.14);
+}
+
+.hpv__btn:hover:not(:disabled) {
+  border-color: var(--ps-sky);
+}
+
+.hpv__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.hpv__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.hpv__pulse-host {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: grid;
+  place-items: center;
+}
+
+.hpv__btn-pulse {
+  appearance: none;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--ps-blue);
+  border-radius: 999px;
+  background: rgb(46 144 255 / 0.12);
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.hpv__btn-pulse:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 3px;
+}
+
+.hpv__wave {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--ps-sky);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hpv__wave[data-active='true'] {
+  animation: hpv-wave 480ms ease-out forwards;
+}
+
+@keyframes hpv-wave {
+  0% { opacity: 0.85; transform: scale(0.6); }
+  100% { opacity: 0; transform: scale(2.8); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hpv__wave[data-active='true'] {
+    animation: none;
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+html[data-force-reduced-motion='true'] .hpv__wave[data-active='true'] {
+  animation: none;
+  opacity: 0.7;
+  transform: scale(1.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hpv__ring-track,
+  .hpv__ring-fill,
+  .hpv__pulse,
+  .hpv__wave,
+  .hpv__sync-beam,
+  .hpv__morph,
+  .hpv__fill,
+  .hpv__notch-glow {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .hpv__ring-track,
+html[data-force-reduced-motion='true'] .hpv__ring-fill,
+html[data-force-reduced-motion='true'] .hpv__pulse,
+html[data-force-reduced-motion='true'] .hpv__wave,
+html[data-force-reduced-motion='true'] .hpv__sync-beam,
+html[data-force-reduced-motion='true'] .hpv__morph,
+html[data-force-reduced-motion='true'] .hpv__fill,
+html[data-force-reduced-motion='true'] .hpv__notch-glow {
+  transition: none !important;
+  animation: none !important;
+}

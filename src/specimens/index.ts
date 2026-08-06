@@ -198,6 +198,7 @@ import { gridReorderGap } from './grid-reorder-gap/entry'
 import { halftoneExpansion } from './halftone-expansion/entry'
 import { handSignComboSequence } from './hand-sign-combo-sequence/entry'
 import { handoffContinuation } from './handoff-continuation/entry'
+import { hapticPulseVisualizer } from './haptic-pulse-visualizer/entry'
 import { hazardStripeReveal } from './hazard-stripe-reveal/entry'
 import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
 import { healingProgressField } from './healing-progress-field/entry'
@@ -710,6 +711,7 @@ export const specimens: Specimen[] = [
   halftoneExpansion,
   handSignComboSequence,
   handoffContinuation,
+  hapticPulseVisualizer,
   hazardStripeReveal,
   headsUpNotificationDrop,
   healingProgressField,
