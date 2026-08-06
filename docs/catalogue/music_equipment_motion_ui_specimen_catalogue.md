@@ -239,7 +239,7 @@ specimens can feel tactile without needing sound.
 
 # 10. Turntables / DJ Decks
 
-- [ ] **MUSIC-079** · `SPX-3838` · ★★★★★ **Vinyl Spin-Up** — A platter accelerates from rest to
+- [x] **MUSIC-079** · `SPX-3838` · ★★★★★ **Vinyl Spin-Up** — A platter accelerates from rest to
     stable speed with believable easing.
 - [ ] **MUSIC-080** · `SPX-3839` · ★★★★★ **Vinyl Brake Stop** — A spinning platter decelerates
     gradually after stop is pressed.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-079 | SPX-3838 | `vinyl-spin-up` | Vinyl Spin-Up |
 | MUSIC-101 | SPX-3860 | `signal-flow-pulse` | Signal Flow Pulse |
 | MUSIC-097 | SPX-3856 | `patch-cable-connect` | Patch Cable Connect |
 | MUSIC-109 | SPX-3868 | `clock-divider-cascade` | Clock Divider Cascade |
@@ -883,12 +884,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **20 / 310** complete.
+- Progress: **21 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 20 |
-| Open | 290 |
+| Done | 21 |
+| Open | 289 |
 
 ## Core first-wave / build queue
 
@@ -914,7 +915,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-066** · `SPX-3825` · **Swing Offset** · `swing-offset`
 - [x] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · `velocity-pad-hit`
 - [x] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · `sample-slice-markers`
-- [ ] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · scaffold `vinyl-spin-up`
+- [x] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · `vinyl-spin-up`
 - [ ] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · scaffold `scratch-recoil`
 - [ ] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · scaffold `deck-sync-lock`
 - [ ] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · scaffold `crossfader-blend`
