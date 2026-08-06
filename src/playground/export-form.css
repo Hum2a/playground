@@ -39,7 +39,8 @@
   color: var(--pewter);
 }
 
-.export-form input {
+.export-form input,
+.export-form select {
   background: var(--ink);
   border: 1px solid var(--rule);
   border-radius: 0;
@@ -49,6 +50,10 @@
   letter-spacing: 0;
   text-transform: none;
   padding: var(--space-2);
+}
+
+.export-form__size {
+  color: var(--pewter);
 }
 
 .export-form__error {

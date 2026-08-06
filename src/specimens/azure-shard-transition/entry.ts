@@ -8,7 +8,7 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#071b33;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#071525;">
   {{specimen}}
 </div>
 `.trim()
@@ -16,12 +16,12 @@ const scaffold = `
 export const azureShardTransition: Specimen = {
   id: 'azure-shard-transition',
   ref: 'SPX-005',
-  title: 'Azure Shard Transition',
+  title: 'Blue Glass Shard Transition',
   blurb:
-    'Seven translucent crystalline shards and a solid deep-navy angular wipe cover for a content swap, then drift upward and outward.',
+    'Seven major translucent blue glass panes and two accent slivers sweep the host, obscure via overlapping geometry, swap MIDNIGHT→DARK HOUR under full coverage, then continue their trajectories — cool P3 Reload language, original CSS only.',
   origin: {
     project: 'Original',
-    surface: 'Persona 3 Reload–inspired crystalline blue transition language',
+    surface: 'Persona 3 Reload–inspired cool blue glass / refraction transition',
   },
   facets: {
     kind: 'transition',
@@ -33,13 +33,13 @@ export const azureShardTransition: Specimen = {
     franchise: 'persona',
     works: ['persona-3'],
   },
-  tags: ['shard', 'crystalline', 'wipe'],
+  tags: ['glass', 'refraction'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Shard travel is skipped under prefers-reduced-motion or data-force-reduced-motion; a solid deep-navy coverage frame still hides the content change before reveal.',
+      'Pane travel is skipped under prefers-reduced-motion or data-force-reduced-motion; content swaps immediately with an optional static diagonal glass accent — no scale.',
   },
   files: { html, css, js },
   spec,
@@ -49,22 +49,22 @@ export const azureShardTransition: Specimen = {
     height: 320,
     background: 'dark',
     scaffold,
-    label: 'Page transition demo',
+    label: 'Blue glass page transition',
   },
   integration: [
-    'Mount the demo surface and `.azure-shard` overlay inside a relative, overflow-hidden frame that matches the transition viewport.',
-    'Import or inline demo.css verbatim; keep the frozen hex colours and clip-path polygons.',
-    'Call runShardTransition(onCovered) from your trigger; put the A↔B (or route) swap only inside onCovered so it runs while fully covered (~560ms).',
-    'Guard re-entrancy with the busy flag (or equivalent) so spam-clicks cannot stack overlays.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion with a non-travelling solid cover → swap → reveal path.',
+    'Mount `.azure-shard-host` as a relative, overflow-hidden frame matching the transition viewport.',
+    'Import demo.css verbatim; keep frozen hex colours, clip-path polygons, depths, and timings.',
+    'Call runShardTransition(onCovered) from TRANSITION; put the A↔B swap only inside onCovered (~410ms) so it runs under full pane coverage.',
+    'Do not add an opaque full-screen rectangle to cheat coverage — overlapping panes must provide it.',
+    'Guard re-entrancy with the busy flag; honour prefers-reduced-motion and data-force-reduced-motion with an immediate swap path.',
   ],
   acceptance: [
-    'Seven distinct clipped shards are visible during the cover window at widths 320–768',
-    'Solid deep-navy backing plus shards fully cover the viewport before the swap; no old-state flash',
-    'Content swap happens only inside onCovered (~560ms); coverage window spans ~480–650ms',
-    'Exit drifts primarily upward/outward at varied speeds; exits are non-mirrored',
-    'Exact hex colours #071b33 / #0878c9 / #41c9ff / #dff7ff / #f7fcff; no blur-heavy glass, images, canvas, or SVG assets',
-    'Reduced motion works via prefers-reduced-motion and data-force-reduced-motion with no shard travel',
-    'Spam-click safe; overlay stays aria-hidden; works under sandbox="allow-scripts" without parent/storage/fetch',
+    'Seven major panes + two thin accent slivers; large surfaces, not particles',
+    'Three depth groups (rear/mid/fore) with distinct speeds and scales; pane 6 scales ≈1→1.15',
+    'Staggered entrances; host genuinely covered by pane geometry by ~390–440ms (verified ~320–768px)',
+    'Content swaps only inside onCovered (~410ms); no crossfade or visible morph',
+    'Exit continues trajectories (non-mirrored); destination settles scale .985→1 over ~180ms',
+    'No opaque coverage cheat, no blur glassmorphism, no Persona assets, no external deps',
+    'Reduced motion swaps immediately; overlay aria-hidden; sandbox="allow-scripts" safe',
   ],
 }

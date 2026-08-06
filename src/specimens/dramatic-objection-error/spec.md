@@ -25,7 +25,7 @@ or extracted assets. This specimen uses original `HOLD IT!` copy only.
       aria-describedby="do-access-error" data-do-input />
     <p class="dramatic-objection__error" id="do-access-error" role="alert"
       data-do-error hidden></p>
-    <button class="dramatic-objection__submit" type="submit">SUBMIT</button>
+    <button class="dramatic-objection__submit" type="button">SUBMIT</button>
   </form>
 
   <div class="dramatic-objection__overlay" data-do-overlay aria-hidden="true">

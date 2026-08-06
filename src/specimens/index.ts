@@ -179,6 +179,24 @@ export const specimens: Specimen[] = [
   scannerSearch,
 ]
 
-export function getSpecimen(id: string): Specimen | undefined {
-  return specimens.find((s) => s.id === id)
+export function getSpecimen(idOrRef: string): Specimen | undefined {
+  const needle = idOrRef.trim()
+  return specimens.find(
+    (s) =>
+      s.id === needle ||
+      s.ref === needle ||
+      s.ref.toLowerCase() === needle.toLowerCase(),
+  )
+}
+
+export function getSpecimenNeighbors(id: string): {
+  prev?: Specimen
+  next?: Specimen
+} {
+  const i = specimens.findIndex((s) => s.id === id)
+  if (i < 0) return {}
+  return {
+    prev: i > 0 ? specimens[i - 1] : undefined,
+    next: i < specimens.length - 1 ? specimens[i + 1] : undefined,
+  }
 }

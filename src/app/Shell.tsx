@@ -4,8 +4,11 @@ import './shell.css'
 export function Shell() {
   return (
     <div className="shell">
+      <a className="shell__skip" href="#catalogue-filters">
+        Skip to filters
+      </a>
       <header className="shell__header">
-        <NavLink to="/" className="shell__wordmark" end>
+        <NavLink to="/" className="shell__wordmark" end aria-label="Specimen Archive home">
           Specimen Archive
         </NavLink>
         <nav className="shell__nav" aria-label="Primary">

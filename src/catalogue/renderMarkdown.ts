@@ -60,5 +60,14 @@ function inline(text: string): string {
   return text
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (_m, label: string, href: string) => {
+        const external = /^https?:\/\//i.test(href)
+        const attrs = external
+          ? ' target="_blank" rel="noopener noreferrer"'
+          : ''
+        return `<a href="${href}"${attrs}>${label}</a>`
+      },
+    )
 }

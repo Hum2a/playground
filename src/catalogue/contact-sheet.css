@@ -7,7 +7,7 @@
 
 .contact-sheet__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--sheet-min), 1fr));
   gap: var(--space-2);
 }
 
@@ -15,8 +15,36 @@
   min-width: 0;
 }
 
+.contact-sheet__link {
+  position: relative;
+  display: block;
+  min-width: 0;
+  color: inherit;
+}
+
+.contact-sheet__link:hover .contact-sheet__caption,
+.contact-sheet__link:focus-visible .contact-sheet__caption {
+  color: var(--chalk);
+}
+
 .contact-sheet__cell .preview-frame {
   border-color: var(--rule);
+  pointer-events: none;
+}
+
+.contact-sheet__placeholder {
+  width: 100%;
+  background: var(--ink);
+  border: var(--hairline);
+}
+
+.contact-sheet__caption {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--pewter);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .contact-sheet__play {

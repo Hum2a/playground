@@ -11,6 +11,9 @@ alwaysApply: false
 - First thing on `/`: every specimen live at reduced scale in a tight grid
 - No headline card, no gradient, no stats — two lines of copy beneath the sheet
 - Everything around it stays grey so the sheet lands
+- Content is near full-bleed (`--content-max: none`); `--plate-min` / `--sheet-min` densify above `90rem` / `120rem`
+- Filters sync to the URL (`?kind=&q=`…); sticky filter bar + skip link; result count + clear
+- Contact sheet cells lazy-mount via IntersectionObserver and link to `/s/:id`
 
 ## Plates
 

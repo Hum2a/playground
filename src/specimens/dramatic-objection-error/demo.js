@@ -144,8 +144,17 @@ function onSubmit(event) {
 }
 
 function bind() {
+  // Preview iframe is sandbox="allow-scripts" only (no allow-forms), so native
+  // form submission never fires. Drive the demo from button click / Enter.
   const form = document.querySelector('[data-do-form]')
+  const submit = document.querySelector('[data-do-submit]')
+  const input = document.querySelector('[data-do-input]')
+
   form?.addEventListener('submit', onSubmit)
+  submit?.addEventListener('click', onSubmit)
+  input?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') onSubmit(event)
+  })
 }
 
 window.addEventListener('message', (event) => {

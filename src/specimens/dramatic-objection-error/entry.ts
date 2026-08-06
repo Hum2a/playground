@@ -56,6 +56,7 @@ export const dramaticObjectionError: Specimen = {
     'Reserve the interruption for major validation failures — not ordinary inline field hints.',
     'Call runDramaticObjection() (or equivalent phase toggles) on invalid submit; keep burst/shout nodes fixed in the DOM.',
     'Associate the real error message with the input via aria-describedby, aria-invalid, and role="alert"; keep the overlay aria-hidden.',
+    'Drive validation from a button click (not native form submit) when hosted under sandbox="allow-scripts" without allow-forms.',
     'Honour both prefers-reduced-motion and data-force-reduced-motion with a non-slamming path that still exposes the field error.',
   ],
   acceptance: [

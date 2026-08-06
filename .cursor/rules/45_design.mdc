@@ -16,6 +16,11 @@ Tokens live in `src/styles/tokens.css`. Specimens ignore these.
 | `--pewter` | `#767E8C` | Captions / disabled |
 | `--chalk` | `#E6E8EC` | Primary text |
 | `--verdigris` | `#4E9E8F` | Interactive only |
+| `--gutter-inline` | `clamp(1.5rem, 2vw, 3rem)` | Shell / content side padding |
+| `--content-max` | `none` | Catalogue / detail / playground width |
+| `--plate-min` | `280px` → `240px` @90rem → `220px` @120rem | Plate grid track floor |
+| `--sheet-min` | `140px` → `120px` @120rem | Contact-sheet track floor |
+| `--detail-preview-col` | `22rem` → `28rem` @90rem → `32rem` @120rem | Detail sticky preview |
 
 ## Type
 

@@ -1,0 +1,52 @@
+<div class="dhc" data-dark-hour data-state="normal">
+  <div class="dhc__stage" data-dhc-stage>
+    <!-- Semantic surface: one live representation -->
+    <div class="dhc__layer dhc__layer--normal" data-dhc-normal>
+      <p class="dhc__eyebrow">ARCHIVE STATUS</p>
+      <div class="dhc__clock-wrap">
+        <p class="dhc__clock" data-dhc-clock-normal>
+          <span class="dhc__clock-out" data-dhc-clock-out>23:59</span>
+          <span class="dhc__clock-in" data-dhc-clock-in aria-hidden="true">00:00</span>
+        </p>
+      </div>
+      <p class="dhc__secondary">NORMAL HOURS</p>
+      <div class="dhc__divider" aria-hidden="true"></div>
+      <p class="dhc__body">Catalogue access available.</p>
+      <div class="dhc__strip" aria-hidden="true">STATUS // OPEN</div>
+    </div>
+
+    <div class="dhc__layer dhc__layer--dark" aria-hidden="true" data-dhc-dark>
+      <span class="dhc__vrule" aria-hidden="true"></span>
+      <p class="dhc__eyebrow">ARCHIVE STATUS</p>
+      <div class="dhc__clock-wrap dhc__clock-wrap--dark">
+        <span class="dhc__clock-backing" aria-hidden="true"></span>
+        <p class="dhc__clock">00:00</p>
+      </div>
+      <p class="dhc__secondary">DARK HOUR</p>
+      <div class="dhc__divider dhc__divider--dark" aria-hidden="true"></div>
+      <p class="dhc__body" data-dhc-refract>Temporal state altered.</p>
+      <div class="dhc__strip dhc__strip--dark" aria-hidden="true">STATUS // ALTERED</div>
+    </div>
+
+    <div class="dhc__boundary" aria-hidden="true" data-dhc-boundary>
+      <span class="dhc__edge"></span>
+      <span class="dhc__streak dhc__streak--1"></span>
+      <span class="dhc__streak dhc__streak--2"></span>
+      <span class="dhc__streak dhc__streak--3"></span>
+      <span class="dhc__streak dhc__streak--4"></span>
+    </div>
+  </div>
+
+  <div class="dhc__actions">
+    <button type="button" class="dhc__btn dhc__btn--advance" data-dhc-advance>
+      ADVANCE TO MIDNIGHT
+    </button>
+    <button type="button" class="dhc__btn dhc__btn--restore" data-dhc-restore hidden>
+      RESTORE
+    </button>
+  </div>
+
+  <p class="dhc__status" role="status" aria-live="polite" data-dhc-status>
+    Normal hours
+  </p>
+</div>

@@ -1,27 +1,89 @@
-<div class="azure-shard-demo" data-azure-shard-demo>
-  <section class="azure-shard-demo__state azure-shard-demo__state--a" data-state="a">
-    <p class="azure-shard-demo__kicker">LAYER 01</p>
-    <h1 class="azure-shard-demo__title">TARTARUS</h1>
-    <button type="button" class="azure-shard-demo__btn" data-azure-shard-trigger data-target="b">
-      CROSS →
-    </button>
-  </section>
-  <section class="azure-shard-demo__state azure-shard-demo__state--b" data-state="b" hidden>
-    <p class="azure-shard-demo__kicker">LAYER 02</p>
-    <h1 class="azure-shard-demo__title">THE VELVET</h1>
-    <button type="button" class="azure-shard-demo__btn" data-azure-shard-trigger data-target="a">
-      RETURN →
-    </button>
-  </section>
-</div>
+<div class="azure-shard-host" data-azure-shard-host>
+  <div class="azure-shard-demo" data-azure-shard-demo>
+    <section
+      class="azure-shard-demo__state azure-shard-demo__state--a"
+      data-state="a"
+    >
+      <p class="azure-shard-demo__kicker">ARCHIVE // 03</p>
+      <h1 class="azure-shard-demo__title">MIDNIGHT</h1>
+      <p class="azure-shard-demo__sub">Current surface</p>
+      <button
+        type="button"
+        class="azure-shard-demo__btn"
+        data-azure-shard-trigger
+        data-target="b"
+      >
+        TRANSITION
+      </button>
+    </section>
+    <section
+      class="azure-shard-demo__state azure-shard-demo__state--b"
+      data-state="b"
+      hidden
+    >
+      <p class="azure-shard-demo__kicker">ARCHIVE // 04</p>
+      <h1 class="azure-shard-demo__title">DARK HOUR</h1>
+      <p class="azure-shard-demo__sub">Destination surface</p>
+      <button
+        type="button"
+        class="azure-shard-demo__btn"
+        data-azure-shard-trigger
+        data-target="a"
+      >
+        TRANSITION
+      </button>
+    </section>
+  </div>
 
-<div class="azure-shard" aria-hidden="true" data-azure-shard>
-  <div class="azure-shard__backing"></div>
-  <div class="azure-shard__shard azure-shard__shard--1"></div>
-  <div class="azure-shard__shard azure-shard__shard--2"></div>
-  <div class="azure-shard__shard azure-shard__shard--3"></div>
-  <div class="azure-shard__shard azure-shard__shard--4"></div>
-  <div class="azure-shard__shard azure-shard__shard--5"></div>
-  <div class="azure-shard__shard azure-shard__shard--6"></div>
-  <div class="azure-shard__shard azure-shard__shard--7"></div>
+  <div class="azure-shard" aria-hidden="true" data-azure-shard>
+    <!-- Rear depth (2) -->
+    <div
+      class="azure-shard__pane azure-shard__pane--7 azure-shard__pane--rear"
+      data-pane="7"
+    >
+      <span class="azure-shard__refract"></span>
+    </div>
+    <div
+      class="azure-shard__pane azure-shard__pane--2 azure-shard__pane--rear"
+      data-pane="2"
+    ></div>
+
+    <!-- Mid depth (3) -->
+    <div
+      class="azure-shard__pane azure-shard__pane--1 azure-shard__pane--mid"
+      data-pane="1"
+    >
+      <span class="azure-shard__refract"></span>
+    </div>
+    <div
+      class="azure-shard__pane azure-shard__pane--3 azure-shard__pane--mid"
+      data-pane="3"
+    >
+      <span class="azure-shard__refract"></span>
+    </div>
+    <div
+      class="azure-shard__pane azure-shard__pane--5 azure-shard__pane--mid"
+      data-pane="5"
+    ></div>
+
+    <!-- Foreground (2) -->
+    <div
+      class="azure-shard__pane azure-shard__pane--4 azure-shard__pane--fore"
+      data-pane="4"
+    ></div>
+    <div
+      class="azure-shard__pane azure-shard__pane--6 azure-shard__pane--fore"
+      data-pane="6"
+    ></div>
+
+    <!-- Thin accent slivers (2) -->
+    <div
+      class="azure-shard__sliver azure-shard__sliver--a"
+      data-sliver="a"
+    ></div>
+    <div
+      class="azure-shard__sliver azure-shard__sliver--b"
+      data-sliver="b"
+    ></div>
+  </div>
 </div>

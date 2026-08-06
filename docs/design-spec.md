@@ -212,35 +212,33 @@ body text it sits beside, and always uppercase with `0.08em` tracking for refs a
 
 ### Layout
 
+Content is near full-bleed inside shared gutters (`--gutter-inline`). Catalogue, detail, and
+playground have no narrow page max-width (`--content-max: none`). Plate and contact-sheet grids
+use `auto-fill` with `--plate-min` / `--sheet-min`, which densify above `90rem` and `120rem`.
+Intro copy and detail blurbs keep a short prose measure so text does not stretch wall-to-wall.
+
 ```
-┌──────────────────────────────────────────────────────────┐
-│ SPECIMEN ARCHIVE            [ catalogue ] [ playground ]  │
-├──────────────────────────────────────────────────────────┤
-│                                                          │
-│   ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐            │  ← contact sheet:
-│   │ live   │ │ live   │ │ live   │ │ live   │            │    every specimen
-│   └────────┘ └────────┘ └────────┘ └────────┘            │    running at once
-│   Twelve motion artifacts, pulled out of                 │
-│   shipped projects and made portable.                    │
-│                                                          │
-├──────────────────────────────────────────────────────────┤
-│ [ all ] [ overlay ] [ marquee ] [ scroll ]      ⌕ filter  │
-├──────────────────────────────────────────────────────────┤
-│ ┌─────────────────────────┐ ┌─────────────────────────┐  │
-│ │ SPX-001        BUZZER   │ │ SPX-002       LIFESMART │  │  ← plates
-│ │ ┌─────────────────────┐ │ │ ┌─────────────────────┐ │  │
-│ │ │   live preview      │ │ │ │   live preview      │ │  │
-│ │ └─────────────────────┘ │ │ └─────────────────────┘ │  │
-│ │ Coming-soon tape        │ │ Ticker rail             │  │
-│ │ css-only · overlay      │ │ css-only · marquee      │  │
-│ │ [copy prompt]  [open →] │ │ [copy prompt]  [open →] │  │
-│ └─────────────────────────┘ └─────────────────────────┘  │
-└──────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SPECIMEN ARCHIVE                          [ catalogue ] [ playground ]        │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ …                        │  ← contact sheet
+│  └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘                           │    full-bleed band
+│  Twelve motion artifacts, pulled out of shipped projects…                    │  ← short measure
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ [ all ] [ overlay ] [ marquee ] …                                  ⌕ filter  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ …          │  ← plates densify
+│ │ SPX-001  │ │ SPX-002  │ │ SPX-003  │ │ SPX-004  │ │ SPX-005  │            │    on wide viewports
+│ │ preview  │ │ preview  │ │ preview  │ │ preview  │ │ preview  │            │
+│ └──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘            │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Detail route `/s/:id` is a two-column plate: sticky preview with its control strip on the left,
-tabbed source (Spec / Markup / Styles / Contract / Prompt) on the right. Collapses to stacked on
-mobile with the preview pinned to the top.
+Detail route `/s/:id` is a two-column plate: sticky preview with its control strip on the left
+(`--detail-preview-col`, grows on wide viewports), tabbed source (Spec / Markup / Styles /
+Contract / Prompt) on the right. Collapses to stacked on mobile with the preview pinned to the top.
 
 ### Signature
 

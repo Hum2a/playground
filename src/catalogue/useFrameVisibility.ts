@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react'
 /** Mount when near viewport; unmount when more than one viewport away. */
 export function useFrameVisibility(rootMargin = '100% 0px') {
   const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  // Start true so above-fold cells avoid a blank flash before IO fires.
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     const el = ref.current

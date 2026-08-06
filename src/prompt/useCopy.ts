@@ -33,13 +33,21 @@ export function useCopy(resetMs = 1600) {
   }, [])
 
   const copy = useCallback(
-    async (text: string) => {
+    async (text: string, kind: 'prompt' | 'code' | 'contract' | 'text' = 'prompt') => {
       setLastText(text)
       try {
         await writeClipboard(text)
         setStatus('copied')
+        const noun =
+          kind === 'code'
+            ? 'Code'
+            : kind === 'contract'
+              ? 'Contract'
+              : kind === 'text'
+                ? 'Text'
+                : 'Prompt'
         setAnnouncement(
-          `Prompt copied — ${text.length.toLocaleString('en-US')} characters`,
+          `${noun} copied — ${text.length.toLocaleString('en-US')} characters`,
         )
         if (timer.current) clearTimeout(timer.current)
         timer.current = setTimeout(() => {

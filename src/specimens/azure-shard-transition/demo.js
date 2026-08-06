@@ -1,14 +1,22 @@
 /**
- * Azure Shard Transition — tiny portable API.
+ * Blue Glass Shard Transition (SPX-005) — tiny portable API.
  * Works inside sandbox="allow-scripts" (no parent / storage / network).
+ *
+ * Timing (ms):
+ *   Cover checkpoint  ~410  (panes achieve effective full coverage)
+ *   Exit begins         420
+ *   Total               850
+ *   Destination settle  180 (after swap, during exit)
  */
 
-const COVERED_MS = 560
-const EXIT_MS = 650
-const TOTAL_MS = 1250
-const RM_FLASH_MS = 40
+const COVERED_MS = 410
+const EXIT_MS = 420
+const TOTAL_MS = 850
+const DEST_SETTLE_MS = 180
+const RM_FLASH_MS = 50
 
 let busy = false
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -17,8 +25,19 @@ function prefersReducedMotion() {
   return forced || media
 }
 
+function clearTimers() {
+  for (const id of timers) window.clearTimeout(id)
+  timers = []
+}
+
+function later(ms, fn) {
+  const id = window.setTimeout(fn, ms)
+  timers.push(id)
+  return id
+}
+
 /**
- * @param {() => void} [onCovered] — called once while the viewport is fully obscured
+ * @param {() => void} [onCovered] — called once while glass coverage is complete
  * @returns {Promise<void>}
  */
 export function runShardTransition(onCovered) {
@@ -28,6 +47,7 @@ export function runShardTransition(onCovered) {
   if (!root) return Promise.resolve()
 
   busy = true
+  clearTimers()
 
   if (prefersReducedMotion()) {
     return runReduced(root, onCovered)
@@ -38,22 +58,22 @@ export function runShardTransition(onCovered) {
     root.classList.add('azure-shard--active')
 
     let covered = false
-    const coverTimer = window.setTimeout(() => {
+
+    later(COVERED_MS, () => {
       covered = true
       try {
         onCovered?.()
       } catch {
         /* keep transition resilient */
       }
-    }, COVERED_MS)
+      startDestinationSettle()
+    })
 
-    const exitTimer = window.setTimeout(() => {
+    later(EXIT_MS, () => {
       root.classList.add('azure-shard--exit')
-    }, EXIT_MS)
+    })
 
-    window.setTimeout(() => {
-      window.clearTimeout(coverTimer)
-      window.clearTimeout(exitTimer)
+    later(TOTAL_MS, () => {
       if (!covered) {
         try {
           onCovered?.()
@@ -62,25 +82,47 @@ export function runShardTransition(onCovered) {
         }
       }
       root.classList.remove('azure-shard--active', 'azure-shard--exit')
+      stopDestinationSettle()
       busy = false
       resolve()
-    }, TOTAL_MS)
+    })
   })
+}
+
+function startDestinationSettle() {
+  const demo = document.querySelector('[data-azure-shard-demo]')
+  if (!demo) return
+  demo.classList.remove('azure-shard-demo--settle')
+  void demo.offsetWidth
+  demo.classList.add('azure-shard-demo--settle')
+  later(DEST_SETTLE_MS + 20, () => {
+    demo.classList.remove('azure-shard-demo--settle')
+  })
+}
+
+function stopDestinationSettle() {
+  document
+    .querySelector('[data-azure-shard-demo]')
+    ?.classList.remove('azure-shard-demo--settle')
 }
 
 function runReduced(root, onCovered) {
   return new Promise((resolve) => {
     root.classList.add('azure-shard--active', 'azure-shard--rm-flash')
-    window.setTimeout(() => {
+    later(RM_FLASH_MS, () => {
       try {
         onCovered?.()
       } catch {
         /* ignore */
       }
-      root.classList.remove('azure-shard--active', 'azure-shard--rm-flash', 'azure-shard--exit')
+      root.classList.remove(
+        'azure-shard--active',
+        'azure-shard--rm-flash',
+        'azure-shard--exit',
+      )
       busy = false
       resolve()
-    }, RM_FLASH_MS)
+    })
   })
 }
 
@@ -100,6 +142,33 @@ function swapTo(target) {
   nextBtn?.focus({ preventScroll: true })
 }
 
+/**
+ * Deterministic reset to State A — no accumulated panes.
+ * @returns {Promise<void>}
+ */
+export function resetShardTransition() {
+  if (busy) return Promise.resolve()
+  clearTimers()
+  const root = document.querySelector('[data-azure-shard]')
+  root?.classList.remove(
+    'azure-shard--active',
+    'azure-shard--exit',
+    'azure-shard--rm-flash',
+  )
+  stopDestinationSettle()
+  swapTo('a')
+  return Promise.resolve()
+}
+
+/**
+ * Harness restart — reset to State A.
+ * @returns {Promise<void>}
+ */
+export async function replayShardTransition() {
+  if (busy) return
+  await resetShardTransition()
+}
+
 function bindTriggers() {
   document.querySelectorAll('[data-azure-shard-trigger]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -107,6 +176,12 @@ function bindTriggers() {
       if (!target) return
       void runShardTransition(() => swapTo(target))
     })
+  })
+
+  window.addEventListener('message', (event) => {
+    const data = event.data
+    if (!data || typeof data !== 'object') return
+    if (data.type === 'restart') void replayShardTransition()
   })
 }
 

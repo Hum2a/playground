@@ -54,9 +54,18 @@ export function loadDraft(id: string): PlaygroundDraft | null {
 
 export function saveDraft(draft: PlaygroundDraft) {
   const next = { ...draft, updatedAt: Date.now() }
-  localStorage.setItem(draftKey(next.id), JSON.stringify(next))
-  const index = readIndex()
-  if (!index.includes(next.id)) writeIndex([next.id, ...index])
+  try {
+    localStorage.setItem(draftKey(next.id), JSON.stringify(next))
+    const index = readIndex()
+    if (!index.includes(next.id)) writeIndex([next.id, ...index])
+  } catch (error) {
+    const err = new Error(
+      error instanceof Error && /quota/i.test(error.message)
+        ? 'Storage full — delete a draft and try again.'
+        : 'Could not save draft to local storage.',
+    )
+    throw err
+  }
   return next
 }
 

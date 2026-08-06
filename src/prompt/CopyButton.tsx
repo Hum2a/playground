@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react'
 import { useCopy } from './useCopy'
 import './copy-button.css'
 
-export type CopyMode = 'full' | 'code' | 'contract'
+export type CopyMode = 'full' | 'code' | 'contract' | 'text'
 
 const LABELS: Record<CopyMode, string> = {
   full: 'Copy prompt',
   code: 'Code only',
   contract: 'Contract only',
+  text: 'Copy',
 }
 
 interface CopyButtonProps {
@@ -51,7 +52,18 @@ export function CopyButton({
         ]
           .filter(Boolean)
           .join(' ')}
-        onClick={() => void copy(text)}
+        onClick={() =>
+          void copy(
+            text,
+            mode === 'code'
+              ? 'code'
+              : mode === 'contract'
+                ? 'contract'
+                : mode === 'text'
+                  ? 'text'
+                  : 'prompt',
+          )
+        }
       >
         {buttonLabel}
       </button>

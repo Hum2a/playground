@@ -1,6 +1,16 @@
 import { zipSync, strToU8 } from 'fflate'
 import type { HarnessControls } from '../harness'
 import { specimens } from '../specimens'
+import type {
+  SpecimenIntensity,
+  SpecimenKind,
+  SpecimenScope,
+  SpecimenTech,
+} from '../specimens/taxonomy'
+import {
+  FACET_VALUES,
+  type FacetKey,
+} from '../specimens/taxonomy'
 import { parseCssContract } from './parseCssContract'
 
 export interface ExportMeta {
@@ -9,6 +19,12 @@ export interface ExportMeta {
   blurb: string
   originProject: string
   originSurface?: string
+  kind: SpecimenKind
+  tech: SpecimenTech
+  scope: SpecimenScope
+  intensity: SpecimenIntensity
+  /** Comma-separated free tags. */
+  tags: string
 }
 
 export interface ExportInput extends ExportMeta {
@@ -16,9 +32,25 @@ export interface ExportInput extends ExportMeta {
   css: string
   js: string
   controls: HarnessControls
+  previewWidth: number
+  previewHeight: number
 }
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+
+function parseTags(raw: string): string[] {
+  return raw
+    .split(',')
+    .map((t) => t.trim())
+    .filter(Boolean)
+}
+
+function isFacetValue<K extends FacetKey>(
+  key: K,
+  value: string,
+): value is (typeof FACET_VALUES)[K][number] {
+  return (FACET_VALUES[key] as readonly string[]).includes(value)
+}
 
 export function validateExportMeta(meta: ExportMeta): string | null {
   if (!SLUG_RE.test(meta.id)) {
@@ -30,6 +62,10 @@ export function validateExportMeta(meta: ExportMeta): string | null {
   if (!meta.title.trim()) return 'Title is required.'
   if (!meta.blurb.trim()) return 'Blurb is required.'
   if (!meta.originProject.trim()) return 'Origin project is required.'
+  if (!isFacetValue('kind', meta.kind)) return 'Kind is required.'
+  if (!isFacetValue('tech', meta.tech)) return 'Tech is required.'
+  if (!isFacetValue('scope', meta.scope)) return 'Scope is required.'
+  if (!isFacetValue('intensity', meta.intensity)) return 'Intensity is required.'
   return null
 }
 
@@ -41,6 +77,7 @@ function buildEntryTs(input: ExportInput): string {
     ? `import js from './demo.js?raw'\n`
     : ''
   const jsField = input.js.trim() ? `\n    js,` : ''
+  const tags = parseTags(input.tags)
 
   return `import type { Specimen } from '../types'
 import html from './demo.html?raw'
@@ -56,15 +93,15 @@ export const specimen: Specimen = {
   origin: {
     project: ${JSON.stringify(input.originProject.trim())},${surface}
   },
-  // TODO: set facets / inspiredBy (see taxonomy.ts + inspiration.ts / docs/inspiration-directory.md)
+  // TODO: set inspiredBy (see inspiration.ts / docs/inspiration-directory.md)
   facets: {
-    kind: 'overlay',
-    tech: ${input.js.trim() ? `'tiny-js'` : `'css-only'`},
-    scope: 'card',
-    intensity: 'subtle',
+    kind: ${JSON.stringify(input.kind)},
+    tech: ${JSON.stringify(input.tech)},
+    scope: ${JSON.stringify(input.scope)},
+    intensity: ${JSON.stringify(input.intensity)},
   },
   // inspiredBy: { franchise: 'persona', works: ['persona-5'] },
-  tags: [],
+  tags: ${JSON.stringify(tags)},
   deps: 'none',
   motion: {
     loops: true,
@@ -75,8 +112,8 @@ export const specimen: Specimen = {
   spec,
   contract,
   preview: {
-    width: ${input.controls.viewport === 'full' ? 360 : input.controls.viewport},
-    height: 240,
+    width: ${input.previewWidth},
+    height: ${input.previewHeight},
     background: ${JSON.stringify(input.controls.background)},
     label: ${JSON.stringify(input.title.trim())},
   },

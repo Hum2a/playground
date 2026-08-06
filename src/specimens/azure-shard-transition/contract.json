@@ -1,173 +1,334 @@
 {
-  "name": "azure-shard-transition",
-  "intent": "Seven translucent crystalline shards and a solid deep-navy backing wipe elegantly cover the viewport for a content swap, then drift upward and outward in non-mirrored exits.",
-  "colours": {
-    "deepNavy": "#071b33",
-    "oceanBlue": "#0878c9",
-    "brightCyan": "#41c9ff",
-    "ice": "#dff7ff",
-    "white": "#f7fcff",
-    "border": "rgba(223,247,255,.55)"
-  },
-  "backing": {
-    "className": "azure-shard__backing",
-    "colour": "#071b33",
-    "enter": "angularClipWipe",
-    "exit": "angularClipRetractUp",
-    "enterMs": 480,
-    "exitMs": 520,
-    "exitDelayMs": 40
-  },
-  "shards": [
-    {
-      "id": 1,
-      "className": "azure-shard__shard--1",
-      "role": "long-triangle",
-      "colour": "#0878c9",
-      "opacity": 0.88,
-      "enterFrom": "left",
-      "exitTo": "up-left",
-      "delayMs": 0,
-      "rotateDeg": 6,
-      "enterMs": 250,
-      "exitMs": 480,
-      "exitDelayMs": 0,
-      "clipPath": "polygon(0% 0%, 100% 8%, 42% 100%)"
-    },
-    {
-      "id": 2,
-      "className": "azure-shard__shard--2",
-      "role": "irregular-quad",
-      "colour": "#41c9ff",
-      "opacity": 0.92,
-      "enterFrom": "bottom",
-      "exitTo": "up",
-      "delayMs": 40,
-      "rotateDeg": 0,
-      "enterMs": 250,
-      "exitMs": 560,
-      "exitDelayMs": 20,
-      "clipPath": "polygon(0% 12%, 88% 0%, 100% 78%, 18% 100%)"
-    },
-    {
-      "id": 3,
-      "className": "azure-shard__shard--3",
-      "role": "narrow-sliver",
-      "colour": "#dff7ff",
-      "opacity": 0.78,
-      "enterFrom": "right",
-      "exitTo": "up-right",
-      "delayMs": 75,
-      "rotateDeg": -8,
-      "enterMs": 250,
-      "exitMs": 420,
-      "exitDelayMs": 60,
-      "clipPath": "polygon(40% 0%, 58% 0%, 72% 100%, 28% 100%)"
-    },
-    {
-      "id": 4,
-      "className": "azure-shard__shard--4",
-      "role": "large-central-plane",
-      "colour": "#0878c9",
-      "opacity": 0.96,
-      "enterFrom": "bottom",
-      "exitTo": "up",
-      "delayMs": 110,
-      "rotateDeg": 4,
-      "enterMs": 250,
-      "exitMs": 600,
-      "exitDelayMs": 0,
-      "clipPath": "polygon(8% 0%, 100% 6%, 94% 100%, 0% 88%)"
-    },
-    {
-      "id": 5,
-      "className": "azure-shard__shard--5",
-      "role": "long-triangle",
-      "colour": "#41c9ff",
-      "opacity": 0.84,
-      "enterFrom": "bottom-left",
-      "exitTo": "up-left",
-      "delayMs": 150,
-      "rotateDeg": 10,
-      "enterMs": 250,
-      "exitMs": 500,
-      "exitDelayMs": 40,
-      "clipPath": "polygon(0% 20%, 100% 0%, 78% 100%)"
-    },
-    {
-      "id": 6,
-      "className": "azure-shard__shard--6",
-      "role": "irregular-quad",
-      "colour": "#071b33",
-      "opacity": 0.9,
-      "enterFrom": "left",
-      "exitTo": "left-up",
-      "delayMs": 190,
-      "rotateDeg": -5,
-      "enterMs": 250,
-      "exitMs": 460,
-      "exitDelayMs": 30,
-      "clipPath": "polygon(0% 0%, 100% 18%, 72% 100%, 0% 82%)"
-    },
-    {
-      "id": 7,
-      "className": "azure-shard__shard--7",
-      "role": "narrow-sliver",
-      "colour": "#f7fcff",
-      "opacity": 0.72,
-      "enterFrom": "right",
-      "exitTo": "up-right",
-      "delayMs": 230,
-      "rotateDeg": 12,
-      "enterMs": 250,
-      "exitMs": 540,
-      "exitDelayMs": 50,
-      "clipPath": "polygon(35% 0%, 52% 0%, 65% 100%, 22% 100%)"
-    }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/azure-shard-transition.schema.json",
+  "title": "BlueGlassShardTransition",
+  "description": "Portable cool blue glass pane transition: seven major panes + two slivers cover via overlapping geometry (no opaque cheat), swap, continue trajectories. Persona 3 Reload–inspired original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "colours",
+    "panes",
+    "slivers",
+    "timing",
+    "api",
+    "a11y",
+    "reducedMotion",
+    "constraints"
   ],
-  "timing": {
-    "easing": "cubic-bezier(0.33, 0, 0.2, 1)",
-    "totalMs": 1250,
-    "entryMs": 480,
-    "coveredStartMs": 480,
-    "coveredEndMs": 650,
-    "onCoveredMs": 560,
-    "exitStartMs": 650,
-    "staggerMs": [0, 40, 75, 110, 150, 190, 230],
-    "enterDurationMs": 250
+  "properties": {
+    "name": { "type": "string", "const": "azure-shard-transition" },
+    "title": { "type": "string", "const": "Blue Glass Shard Transition" },
+    "intent": {
+      "type": "string",
+      "const": "Large translucent blue glass panes attack from several directions, obscure via overlapping geometry, swap content only under full coverage, then continue trajectories to reveal the destination."
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deepNavy",
+        "midnightBlue",
+        "electricBlue",
+        "glassBlue",
+        "paleReflection",
+        "white"
+      ],
+      "properties": {
+        "deepNavy": { "type": "string", "const": "#071525" },
+        "midnightBlue": { "type": "string", "const": "#0b2f52" },
+        "electricBlue": { "type": "string", "const": "#1976d2" },
+        "glassBlue": { "type": "string", "const": "#49a9e8" },
+        "paleReflection": { "type": "string", "const": "#b9e7ff" },
+        "white": { "type": "string", "const": "#eef8ff" }
+      }
+    },
+    "panes": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "depth",
+          "opacity",
+          "delayMs",
+          "clipPath",
+          "enterFrom",
+          "exitTo"
+        ]
+      }
+    },
+    "slivers": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "paneTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "1": {
+          "const": {
+            "depth": "mid",
+            "role": "upper-left-diagonal",
+            "opacity": 0.86,
+            "delayMs": 0,
+            "enterMs": 280,
+            "exitMs": 360,
+            "clipPath": "polygon(0% 0%, 100% 12%, 58% 100%, 0% 78%)",
+            "enterFrom": "upper-left",
+            "exitTo": "centre-right",
+            "coverScale": 1,
+            "refract": true
+          }
+        },
+        "2": {
+          "const": {
+            "depth": "rear",
+            "role": "lower-left-long",
+            "opacity": 0.9,
+            "delayMs": 35,
+            "enterMs": 340,
+            "exitMs": 400,
+            "clipPath": "polygon(0% 22%, 92% 0%, 100% 70%, 12% 100%)",
+            "enterFrom": "lower-left",
+            "exitTo": "centre-right",
+            "scaleFrom": 0.95,
+            "scaleTo": 1.04
+          }
+        },
+        "3": {
+          "const": {
+            "depth": "mid",
+            "role": "centre-dominant",
+            "opacity": 0.8,
+            "delayMs": 65,
+            "enterMs": 300,
+            "exitMs": 340,
+            "clipPath": "polygon(8% 0%, 100% 8%, 88% 100%, 0% 90%)",
+            "enterFrom": "right",
+            "exitTo": "left",
+            "refract": true
+          }
+        },
+        "4": {
+          "const": {
+            "depth": "fore",
+            "role": "upper-right",
+            "opacity": 0.92,
+            "delayMs": 95,
+            "enterMs": 250,
+            "exitMs": 320,
+            "clipPath": "polygon(18% 0%, 100% 0%, 100% 100%, 0% 72%)",
+            "enterFrom": "upper-right",
+            "exitTo": "lower-left",
+            "coverScale": 1.08
+          }
+        },
+        "5": {
+          "const": {
+            "depth": "mid",
+            "role": "bottom-to-upper",
+            "opacity": 0.88,
+            "delayMs": 125,
+            "enterMs": 290,
+            "exitMs": 350,
+            "clipPath": "polygon(0% 28%, 100% 0%, 100% 100%, 8% 100%)",
+            "enterFrom": "bottom",
+            "exitTo": "up"
+          }
+        },
+        "6": {
+          "const": {
+            "depth": "fore",
+            "role": "narrow-vertical",
+            "opacity": 0.74,
+            "delayMs": 155,
+            "enterMs": 240,
+            "exitMs": 300,
+            "clipPath": "polygon(12% 0%, 78% 4%, 100% 100%, 0% 94%)",
+            "enterFrom": "left",
+            "exitTo": "right",
+            "scaleFrom": 1,
+            "scaleTo": 1.15
+          }
+        },
+        "7": {
+          "const": {
+            "depth": "rear",
+            "role": "wide-rear-depth",
+            "opacity": 0.94,
+            "delayMs": 190,
+            "enterMs": 360,
+            "exitMs": 380,
+            "clipPath": "polygon(0% 8%, 100% 0%, 100% 100%, 0% 92%)",
+            "enterFrom": "right-lower",
+            "exitTo": "left-up",
+            "scaleFrom": 0.95,
+            "scaleTo": 1.04,
+            "refract": true
+          }
+        }
+      }
+    },
+    "sliverTable": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "const": {
+            "opacity": 0.78,
+            "delayMs": 110,
+            "clipPath": "polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%)"
+          }
+        },
+        "b": {
+          "const": {
+            "opacity": 0.82,
+            "delayMs": 145,
+            "clipPath": "polygon(0% 20%, 100% 0%, 100% 100%, 0% 80%)"
+          }
+        }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "onCoveredMs",
+        "exitAtMs",
+        "coverageWindowMs",
+        "destinationSettleMs",
+        "easing"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 850 },
+        "onCoveredMs": { "type": "number", "const": 410 },
+        "exitAtMs": { "type": "number", "const": 420 },
+        "coverageWindowMs": {
+          "type": "object",
+          "const": { "from": 390, "to": 440 }
+        },
+        "destinationSettleMs": { "type": "number", "const": 180 },
+        "destinationSettleScale": {
+          "type": "object",
+          "const": { "from": 0.985, "to": 1 }
+        },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        },
+        "staggersMs": {
+          "type": "array",
+          "const": [0, 35, 65, 95, 125, 155, 190]
+        }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "busyGuard", "swapOnlyInOnCovered"],
+      "properties": {
+        "run": {
+          "type": "string",
+          "const": "runShardTransition(onCovered)"
+        },
+        "reset": { "type": "string", "const": "resetShardTransition" },
+        "replay": { "type": "string", "const": "replayShardTransition" },
+        "busyGuard": { "type": "boolean", "const": true },
+        "swapOnlyInOnCovered": { "type": "boolean", "const": true },
+        "restartMessage": { "type": "string", "const": "restart" },
+        "sandbox": { "type": "string", "const": "allow-scripts" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overlayHidden", "singleSemanticState", "realTriggerButton"],
+      "properties": {
+        "overlayHidden": { "type": "boolean", "const": true },
+        "singleSemanticState": { "type": "boolean", "const": true },
+        "realTriggerButton": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateSwap", "noTravel", "triggers"],
+      "properties": {
+        "immediateSwap": { "type": "boolean", "const": true },
+        "noTravel": { "type": "boolean", "const": true },
+        "noDestinationScale": { "type": "boolean", "const": true },
+        "staticAccentOptional": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "noOpaqueCoverageCheat",
+        "noBlurGlassmorphism",
+        "noCrossfade",
+        "nonMirroredExits",
+        "noExternalAssets"
+      ],
+      "properties": {
+        "noOpaqueCoverageCheat": { "type": "boolean", "const": true },
+        "noBlurGlassmorphism": { "type": "boolean", "const": true },
+        "noCrossfade": { "type": "boolean", "const": true },
+        "nonMirroredExits": { "type": "boolean", "const": true },
+        "noExternalAssets": { "type": "boolean", "const": true },
+        "noCanvas": { "type": "boolean", "const": true },
+        "coverageFromPaneComposition": { "type": "boolean", "const": true }
+      }
+    }
   },
-  "typography": {
-    "fontFamily": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
-  },
-  "api": {
-    "export": "runShardTransition(onCovered)",
-    "busyGuard": true,
-    "swapOnlyInsideOnCovered": true,
-    "sandboxSafe": true
-  },
-  "a11y": {
-    "overlayAriaHidden": true,
-    "idlePointerEvents": "none",
-    "doNotFocusOverlay": true,
-    "focusAfterSwap": "newly revealed peer button"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Skip shard travel; instantly show solid deep-navy coverage, run onCovered, then reveal"
-  },
-  "constraints": {
-    "noBlur": true,
-    "noImages": true,
-    "noCanvas": true,
-    "noSvgAssets": true,
-    "noExternalTextures": true,
-    "noFontFace": true,
-    "nonMirroredExits": true,
-    "backingAngularWipe": true,
-    "fullCoverageBeforeSwap": true,
-    "subtleEdgeHighlightsOnly": true
-  }
+  "examples": [
+    {
+      "name": "azure-shard-transition",
+      "title": "Blue Glass Shard Transition",
+      "intent": "Large translucent blue glass panes attack from several directions, obscure via overlapping geometry, swap content only under full coverage, then continue trajectories to reveal the destination.",
+      "colours": {
+        "deepNavy": "#071525",
+        "midnightBlue": "#0b2f52",
+        "electricBlue": "#1976d2",
+        "glassBlue": "#49a9e8",
+        "paleReflection": "#b9e7ff",
+        "white": "#eef8ff"
+      },
+      "timing": {
+        "totalMs": 850,
+        "onCoveredMs": 410,
+        "exitAtMs": 420,
+        "destinationSettleMs": 180,
+        "easing": "cubic-bezier(0.33, 0, 0.2, 1)"
+      },
+      "api": {
+        "run": "runShardTransition(onCovered)",
+        "busyGuard": true,
+        "swapOnlyInOnCovered": true
+      },
+      "constraints": {
+        "noOpaqueCoverageCheat": true,
+        "noBlurGlassmorphism": true,
+        "noCrossfade": true,
+        "nonMirroredExits": true,
+        "noExternalAssets": true
+      }
+    }
+  ]
 }

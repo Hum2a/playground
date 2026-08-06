@@ -1,0 +1,430 @@
+/* SPX-444 Dark Hour Conversion — portable contract. Do not restyle to host tokens. */
+
+.dhc {
+  --dhc-paper: #edf1f4;
+  --dhc-ink: #18212b;
+  --dhc-muted: #697784;
+  --dhc-near-black: #030b14;
+  --dhc-deep: #071c32;
+  --dhc-cold: #0d4d73;
+  --dhc-spectral: #2d9bd3;
+  --dhc-pale: #d7f5ff;
+  --dhc-anomaly: #6fae9c;
+  --dhc-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  --dhc-wipe: 0%;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  background: #0a1016;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  color: var(--dhc-ink);
+}
+
+.dhc__stage {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+  min-height: 14.5rem;
+  overflow: hidden;
+}
+
+.dhc__layer {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 14.5rem;
+  padding: 1rem 1.05rem 1.1rem;
+}
+
+.dhc__layer--normal {
+  position: relative;
+  z-index: 1;
+  background: var(--dhc-paper);
+  border: 1px solid color-mix(in srgb, var(--dhc-ink) 18%, transparent);
+  color: var(--dhc-ink);
+}
+
+.dhc__layer--dark {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(165deg, var(--dhc-deep) 0%, var(--dhc-near-black) 72%);
+  color: var(--dhc-pale);
+  /* Reveal from top; irregular leading edge via polygon bottom */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% var(--dhc-wipe),
+    0% calc(var(--dhc-wipe) + 1.2%)
+  );
+  border: 1px solid color-mix(in srgb, var(--dhc-cold) 55%, transparent);
+  /* Final settled silhouette: one diagonal bottom edge */
+  --dhc-dark-shape: polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%);
+}
+
+.dhc.is-dark .dhc__layer--dark,
+.dhc.is-settled .dhc__layer--dark {
+  clip-path: var(--dhc-dark-shape);
+}
+
+.dhc__eyebrow {
+  margin: 0 0 0.55rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dhc-muted);
+}
+
+.dhc__layer--dark .dhc__eyebrow {
+  color: var(--dhc-spectral);
+}
+
+.dhc__clock-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 0.35rem;
+}
+
+.dhc__clock-wrap--dark {
+  padding: 0.15rem 0.45rem 0.2rem 0.35rem;
+}
+
+.dhc__clock-backing {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--dhc-cold);
+  clip-path: polygon(0 8%, 100% 0, 96% 100%, 4% 92%);
+  opacity: 0.85;
+}
+
+.dhc__clock {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(2.2rem, 9vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.dhc__clock-out,
+.dhc__clock-in {
+  display: block;
+}
+
+.dhc__clock-in {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-110%);
+  opacity: 0;
+}
+
+.dhc.is-clock-swap .dhc__clock-out {
+  animation: dhc-clock-out 160ms var(--dhc-ease) forwards;
+}
+
+.dhc.is-clock-swap .dhc__clock-in {
+  animation: dhc-clock-in 160ms var(--dhc-ease) forwards;
+}
+
+@keyframes dhc-clock-out {
+  to {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+}
+
+@keyframes dhc-clock-in {
+  from {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.dhc.is-midnight .dhc__clock-out {
+  visibility: hidden;
+}
+
+.dhc.is-midnight .dhc__clock-in {
+  position: relative;
+  transform: none;
+  opacity: 1;
+}
+
+.dhc__secondary {
+  margin: 0 0 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dhc-ink);
+}
+
+.dhc__layer--dark .dhc__secondary {
+  color: var(--dhc-pale);
+}
+
+.dhc__divider {
+  width: 3.2rem;
+  height: 2px;
+  margin: 0 0 0.7rem;
+  background: var(--dhc-muted);
+}
+
+.dhc__divider--dark {
+  width: 4.5rem;
+  margin-left: 0.55rem;
+  background: var(--dhc-spectral);
+  transform: skewX(-18deg);
+}
+
+.dhc__body {
+  margin: 0 0 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--dhc-ink);
+  max-width: 16rem;
+}
+
+.dhc__layer--dark .dhc__body {
+  color: color-mix(in srgb, var(--dhc-pale) 88%, var(--dhc-anomaly));
+}
+
+.dhc.is-refract [data-dhc-refract] {
+  animation: dhc-refract 90ms ease-out;
+}
+
+@keyframes dhc-refract {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.08);
+    letter-spacing: 0.02em;
+  }
+}
+
+.dhc__strip {
+  display: inline-block;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--dhc-ink) 8%, var(--dhc-paper));
+  color: var(--dhc-muted);
+  border-left: 2px solid var(--dhc-muted);
+}
+
+.dhc__strip--dark {
+  background: var(--dhc-cold);
+  color: var(--dhc-pale);
+  border-left: none;
+  clip-path: polygon(0 0, 100% 8%, 96% 100%, 0 88%);
+  padding: 0.28rem 0.55rem;
+}
+
+.dhc__vrule {
+  position: absolute;
+  left: 0.45rem;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  width: 2px;
+  background: var(--dhc-pale);
+  opacity: 0.55;
+}
+
+.dhc__layer--dark {
+  padding-left: 1.35rem;
+}
+
+/* Conversion boundary */
+.dhc__boundary {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  top: var(--dhc-wipe);
+  z-index: 4;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-50%);
+}
+
+.dhc.is-converting .dhc__boundary,
+.dhc.is-restoring .dhc__boundary {
+  opacity: 1;
+}
+
+.dhc__edge {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--dhc-pale) 8%,
+    var(--dhc-spectral) 42%,
+    var(--dhc-pale) 78%,
+    transparent 100%
+  );
+  clip-path: polygon(0% 35%, 12% 0%, 38% 55%, 61% 10%, 82% 60%, 100% 20%, 100% 100%, 0% 100%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--dhc-pale) 35%, transparent);
+}
+
+.dhc__streak {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--dhc-pale),
+    var(--dhc-spectral) 40%,
+    transparent
+  );
+  opacity: 0.75;
+  transform: translateY(-8px);
+}
+
+.dhc__streak--1 {
+  left: 14%;
+  width: 1px;
+  height: 42px;
+  transition-delay: 0ms;
+}
+
+.dhc__streak--2 {
+  left: 38%;
+  width: 2px;
+  height: 68px;
+  transition-delay: 28ms;
+}
+
+.dhc__streak--3 {
+  left: 61%;
+  width: 3px;
+  height: 36px;
+  transition-delay: 48ms;
+}
+
+.dhc__streak--4 {
+  left: 82%;
+  width: 2px;
+  height: 84px;
+  transition-delay: 18ms;
+}
+
+.dhc.is-converting .dhc__streak {
+  animation: dhc-streak-follow 720ms var(--dhc-ease) forwards;
+}
+
+@keyframes dhc-streak-follow {
+  0% {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  12% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.35;
+    transform: translateY(12px);
+  }
+}
+
+.dhc__actions {
+  margin-top: 0.95rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dhc__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.48rem 0.75rem;
+  border: 1px solid var(--dhc-ink);
+  border-radius: 0;
+  background: var(--dhc-paper);
+  color: var(--dhc-ink);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dhc__btn--advance {
+  background: var(--dhc-ink);
+  color: var(--dhc-paper);
+}
+
+.dhc.is-dark .dhc__btn--restore,
+.dhc.is-settled .dhc__btn--restore {
+  background: var(--dhc-deep);
+  color: var(--dhc-pale);
+  border-color: var(--dhc-cold);
+}
+
+.dhc__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dhc__btn:focus-visible {
+  outline: 2px solid var(--dhc-spectral);
+  outline-offset: 3px;
+}
+
+.dhc__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Settled dark: hide normal layer for paint (semantics already flipped) */
+.dhc.is-settled .dhc__layer--normal {
+  visibility: hidden;
+}
+
+.dhc.is-settled .dhc__boundary {
+  opacity: 0;
+}
+
+.dhc.is-settled .dhc__layer--dark {
+  clip-path: var(--dhc-dark-shape);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dhc.is-clock-swap .dhc__clock-out,
+  .dhc.is-clock-swap .dhc__clock-in,
+  .dhc.is-refract [data-dhc-refract],
+  .dhc.is-converting .dhc__streak {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .dhc.is-clock-swap .dhc__clock-out,
+[data-force-reduced-motion='true'] .dhc.is-clock-swap .dhc__clock-in,
+[data-force-reduced-motion='true'] .dhc.is-refract [data-dhc-refract],
+[data-force-reduced-motion='true'] .dhc.is-converting .dhc__streak {
+  animation: none !important;
+}

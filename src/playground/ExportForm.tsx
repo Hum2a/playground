@@ -1,11 +1,17 @@
 import { useState, type FormEvent } from 'react'
 import {
+  FACET_KEYS,
+  FACET_LABELS,
+  FACET_VALUES,
+} from '../specimens'
+import type { FacetKey } from '../specimens/taxonomy'
+import type { HarnessControls } from '../harness'
+import {
   buildSpecimenZip,
   downloadZip,
   validateExportMeta,
   type ExportMeta,
 } from './exportSpecimen'
-import type { HarnessControls } from '../harness'
 import './export-form.css'
 
 interface ExportFormProps {
@@ -13,6 +19,8 @@ interface ExportFormProps {
   css: string
   js: string
   controls: HarnessControls
+  previewWidth: number
+  previewHeight: number
 }
 
 const empty: ExportMeta = {
@@ -21,12 +29,28 @@ const empty: ExportMeta = {
   blurb: '',
   originProject: '',
   originSurface: '',
+  kind: 'overlay',
+  tech: 'css-only',
+  scope: 'card',
+  intensity: 'subtle',
+  tags: '',
 }
 
-export function ExportForm({ html, css, js, controls }: ExportFormProps) {
+export function ExportForm({
+  html,
+  css,
+  js,
+  controls,
+  previewWidth,
+  previewHeight,
+}: ExportFormProps) {
   const [open, setOpen] = useState(false)
   const [meta, setMeta] = useState<ExportMeta>(empty)
   const [error, setError] = useState<string | null>(null)
+
+  const setFacet = (key: FacetKey, value: string) => {
+    setMeta({ ...meta, [key]: value } as ExportMeta)
+  }
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -35,7 +59,15 @@ export function ExportForm({ html, css, js, controls }: ExportFormProps) {
       setError(problem)
       return
     }
-    const zip = buildSpecimenZip({ ...meta, html, css, js, controls })
+    const zip = buildSpecimenZip({
+      ...meta,
+      html,
+      css,
+      js,
+      controls,
+      previewWidth,
+      previewHeight,
+    })
     downloadZip(`${meta.id}.zip`, zip)
     setError(null)
     setOpen(false)
@@ -53,6 +85,9 @@ export function ExportForm({ html, css, js, controls }: ExportFormProps) {
   return (
     <form className="export-form" onSubmit={onSubmit}>
       <h2 className="mono-label">Export specimen</h2>
+      <p className="export-form__size mono-label">
+        Preview {previewWidth}×{previewHeight}
+      </p>
       <label>
         Id (slug)
         <input
@@ -91,6 +126,30 @@ export function ExportForm({ html, css, js, controls }: ExportFormProps) {
         <input
           value={meta.originSurface ?? ''}
           onChange={(e) => setMeta({ ...meta, originSurface: e.target.value })}
+        />
+      </label>
+      {FACET_KEYS.map((key) => (
+        <label key={key}>
+          {FACET_LABELS[key]}
+          <select
+            required
+            value={meta[key]}
+            onChange={(e) => setFacet(key, e.target.value)}
+          >
+            {FACET_VALUES[key].map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+      ))}
+      <label>
+        Tags (comma-separated)
+        <input
+          value={meta.tags}
+          onChange={(e) => setMeta({ ...meta, tags: e.target.value })}
+          placeholder="wipe, comic, glitch"
         />
       </label>
       {error ? <p className="export-form__error">{error}</p> : null}

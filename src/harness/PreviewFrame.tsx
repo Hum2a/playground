@@ -24,7 +24,10 @@ export interface PreviewFrameProps {
 }
 
 export interface PreviewFrameHandle {
+  /** Soft restart — CSS animations via postMessage. */
   restart: () => void
+  /** Hard restart — remount srcdoc so JS-driven specimens reset. */
+  hardRestart: () => void
 }
 
 export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
@@ -46,9 +49,13 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
     const iframeRef = useRef<HTMLIFrameElement>(null)
     const shellRef = useRef<HTMLDivElement>(null)
     const [scale, setScale] = useState(1)
+    const [remountKey, setRemountKey] = useState(0)
 
     const bg = background ?? controls.background
-    const forceReducedMotion = controls.reducedMotion === 'force'
+    // Prefers also applies force so specimen CSS `@media` + `[data-force-…]` gates both fire.
+    const forceReducedMotion =
+      controls.reducedMotion === 'force' ||
+      controls.reducedMotion === 'prefers'
     const emulatePrefersReducedMotion = controls.reducedMotion === 'prefers'
 
     const srcDoc = useMemo(
@@ -68,9 +75,19 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
     const frameWidth =
       controls.viewport === 'full' ? width : Math.min(width, controls.viewport)
 
+    const postPlayback = () => {
+      iframeRef.current?.contentWindow?.postMessage(
+        { type: 'playback', rate: controls.playbackRate },
+        '*',
+      )
+    }
+
     useImperativeHandle(ref, () => ({
       restart: () => {
         iframeRef.current?.contentWindow?.postMessage({ type: 'restart' }, '*')
+      },
+      hardRestart: () => {
+        setRemountKey((k) => k + 1)
       },
     }))
 
@@ -90,13 +107,8 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
     }, [frameWidth])
 
     useEffect(() => {
-      const frame = iframeRef.current
-      if (!frame?.contentWindow) return
-      frame.contentWindow.postMessage(
-        { type: 'playback', rate: controls.playbackRate },
-        '*',
-      )
-    }, [controls.playbackRate, srcDoc])
+      postPlayback()
+    }, [controls.playbackRate, srcDoc, remountKey])
 
     return (
       <div
@@ -111,6 +123,7 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
           }}
         >
           <iframe
+            key={remountKey}
             ref={iframeRef}
             className="preview-frame__iframe"
             title={`Preview: ${label}`}
@@ -118,6 +131,7 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
             loading="lazy"
             tabIndex={-1}
             srcDoc={srcDoc}
+            onLoad={postPlayback}
             style={{
               width: frameWidth,
               height,

@@ -11,6 +11,8 @@ interface ControlStripProps {
   value: HarnessControls
   onChange: (next: HarnessControls) => void
   onRestart: () => void
+  /** Soft CSS-only replay; shown when provided. */
+  onSoftRestart?: () => void
 }
 
 const VIEWPORTS: { value: ViewportPreset; label: string }[] = [
@@ -36,7 +38,12 @@ const RATES: { value: PlaybackRate; label: string }[] = [
   { value: 2, label: '2×' },
 ]
 
-export function ControlStrip({ value, onChange, onRestart }: ControlStripProps) {
+export function ControlStrip({
+  value,
+  onChange,
+  onRestart,
+  onSoftRestart,
+}: ControlStripProps) {
   return (
     <div className="control-strip" role="group" aria-label="Preview controls">
       <fieldset className="control-strip__group">
@@ -107,6 +114,15 @@ export function ControlStrip({ value, onChange, onRestart }: ControlStripProps) 
           <button type="button" className="control-strip__btn" onClick={onRestart}>
             Restart
           </button>
+          {onSoftRestart ? (
+            <button
+              type="button"
+              className="control-strip__btn"
+              onClick={onSoftRestart}
+            >
+              Replay CSS
+            </button>
+          ) : null}
         </div>
       </fieldset>
     </div>

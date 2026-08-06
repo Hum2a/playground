@@ -1,6 +1,7 @@
 .specimen-detail {
-  max-width: 72rem;
+  max-width: var(--content-max);
   margin-inline: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
@@ -10,6 +11,55 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+}
+
+.specimen-detail__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.specimen-detail__back,
+.specimen-detail__siblings a,
+.specimen-detail__fork-link {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  border-bottom: 1px solid transparent;
+}
+
+.specimen-detail__back:hover,
+.specimen-detail__siblings a:hover,
+.specimen-detail__fork-link:hover {
+  color: var(--chalk);
+  border-bottom-color: var(--rule);
+}
+
+.specimen-detail__siblings {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.specimen-detail__sibling-disabled {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rule);
+}
+
+.specimen-detail__facets,
+.specimen-detail__inspired,
+.specimen-detail__tags {
+  color: var(--pewter);
+}
+
+.specimen-detail__fork {
+  margin-top: var(--space-1);
 }
 
 .specimen-detail__title {
@@ -37,17 +87,46 @@
 
 .specimen-detail__layout {
   display: grid;
-  grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, var(--detail-preview-col)) minmax(0, 1fr);
   gap: var(--space-6);
   align-items: start;
 }
 
 .specimen-detail__preview-col {
   position: sticky;
-  top: var(--space-4);
+  top: calc(var(--shell-sticky-offset) + var(--space-4));
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  max-height: calc(100vh - var(--shell-sticky-offset) - var(--space-6));
+  max-height: calc(100dvh - var(--shell-sticky-offset) - var(--space-6));
+  overflow: auto;
+}
+
+.specimen-detail__preview-wrap:focus-visible {
+  outline: 2px solid var(--verdigris);
+  outline-offset: 2px;
+}
+
+.specimen-detail__controls-toggle {
+  display: none;
+  appearance: none;
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--pewter);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-2);
+}
+
+.specimen-detail__controls-toggle:hover {
+  color: var(--chalk);
+  border-color: var(--pewter);
 }
 
 .specimen-detail__source {
@@ -55,6 +134,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  max-width: 72rem;
 }
 
 .specimen-detail__tabs {
@@ -105,6 +185,7 @@
   background: var(--panel);
   border: var(--hairline);
   overflow: auto;
+  max-height: min(70vh, 48rem);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   line-height: 1.5;
@@ -182,9 +263,19 @@
 
   .specimen-detail__preview-col {
     position: sticky;
-    top: 0;
+    top: var(--shell-sticky-offset);
     z-index: 1;
     background: var(--ink);
     padding-bottom: var(--space-3);
+    max-height: none;
+    overflow: visible;
+  }
+
+  .specimen-detail__controls-toggle {
+    display: inline-block;
+  }
+
+  .specimen-detail__controls--collapsed {
+    display: none;
   }
 }

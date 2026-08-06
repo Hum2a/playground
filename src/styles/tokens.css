@@ -33,4 +33,27 @@
   /* Chrome */
   --radius-plate: 2px;
   --hairline: 1px solid var(--rule);
+
+  /* Layout — near full-bleed; grids densify at large breakpoints below */
+  --gutter-inline: clamp(1.5rem, 2vw, 3rem);
+  --content-max: none;
+  --plate-min: 280px;
+  --sheet-min: 140px;
+  --detail-preview-col: 22rem;
+  --shell-sticky-offset: 3.25rem;
+}
+
+@media (min-width: 90rem) {
+  :root {
+    --plate-min: 240px;
+    --detail-preview-col: 28rem;
+  }
+}
+
+@media (min-width: 120rem) {
+  :root {
+    --plate-min: 220px;
+    --sheet-min: 128px;
+    --detail-preview-col: 32rem;
+  }
 }

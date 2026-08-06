@@ -1,29 +1,129 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import {
   FACET_KEYS,
+  FACET_VALUES,
   INSPIRATION_DIRECTORY,
   INSPIRATION_FRANCHISE_IDS,
   specimens,
   type FacetKey,
   type InspirationFranchiseId,
 } from '../specimens'
+import { useDocumentTitle } from '../app/useDocumentTitle'
 import { ContactSheet } from './ContactSheet'
-import { FilterBar, type CatalogueFilters } from './FilterBar'
+import {
+  EMPTY_FILTERS,
+  FilterBar,
+  type CatalogueFilters,
+} from './FilterBar'
 import { SpecimenPlate } from './SpecimenPlate'
 import './catalogue.css'
 
-const EMPTY_FILTERS: CatalogueFilters = {
-  kind: null,
-  tech: null,
-  scope: null,
-  intensity: null,
-  franchise: null,
-  work: null,
+function isFranchiseId(value: string): value is InspirationFranchiseId {
+  return (INSPIRATION_FRANCHISE_IDS as readonly string[]).includes(value)
+}
+
+function filtersFromParams(params: URLSearchParams): CatalogueFilters {
+  const next: CatalogueFilters = { ...EMPTY_FILTERS }
+  for (const key of FACET_KEYS) {
+    const raw = params.get(key)
+    if (raw && (FACET_VALUES[key] as readonly string[]).includes(raw)) {
+      next[key] = raw
+    }
+  }
+  const franchise = params.get('franchise')
+  if (franchise && isFranchiseId(franchise)) {
+    next.franchise = franchise
+    const work = params.get('work')
+    if (work && work in INSPIRATION_DIRECTORY[franchise].works) {
+      next.work = work
+    }
+  }
+  return next
+}
+
+function writeParams(
+  filters: CatalogueFilters,
+  query: string,
+): URLSearchParams {
+  const params = new URLSearchParams()
+  for (const key of FACET_KEYS) {
+    if (filters[key]) params.set(key, filters[key]!)
+  }
+  if (filters.franchise) params.set('franchise', filters.franchise)
+  if (filters.work) params.set('work', filters.work)
+  if (query.trim()) params.set('q', query.trim())
+  return params
+}
+
+function matchesQuery(s: (typeof specimens)[number], q: string): boolean {
+  if (!q) return true
+  const tokens = q.toLowerCase().split(/\s+/).filter(Boolean)
+  if (tokens.length === 0) return true
+
+  const inspirationBits = s.inspiredBy
+    ? [
+        s.inspiredBy.franchise,
+        INSPIRATION_DIRECTORY[s.inspiredBy.franchise].label,
+        ...(s.inspiredBy.works ?? []),
+        ...(s.inspiredBy.works ?? []).map(
+          (w) =>
+            (
+              INSPIRATION_DIRECTORY[s.inspiredBy!.franchise].works as Record<
+                string,
+                { label: string }
+              >
+            )[w]?.label ?? '',
+        ),
+      ]
+    : []
+  const hay = [
+    s.id,
+    s.ref,
+    s.title,
+    s.blurb,
+    s.origin.project,
+    s.origin.surface ?? '',
+    ...FACET_KEYS.map((k) => s.facets[k]),
+    ...inspirationBits,
+    ...s.tags,
+  ]
+    .join(' ')
+    .toLowerCase()
+
+  return tokens.every((token) => hay.includes(token))
+}
+
+function matchesFilters(
+  s: (typeof specimens)[number],
+  filters: CatalogueFilters,
+  ignoreKey?: FacetKey | 'franchise' | 'work',
+): boolean {
+  for (const key of FACET_KEYS) {
+    if (ignoreKey === key) continue
+    const active = filters[key]
+    if (active && s.facets[key] !== active) return false
+  }
+  if (ignoreKey !== 'franchise' && filters.franchise) {
+    if (s.inspiredBy?.franchise !== filters.franchise) return false
+  }
+  if (ignoreKey !== 'work' && filters.franchise && filters.work) {
+    if (!(s.inspiredBy?.works ?? []).some((w) => w === filters.work)) {
+      return false
+    }
+  }
+  return true
 }
 
 export function Catalogue() {
-  const [filters, setFilters] = useState<CatalogueFilters>(EMPTY_FILTERS)
-  const [query, setQuery] = useState('')
+  useDocumentTitle('Catalogue — Specimen Archive')
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const filters = useMemo(
+    () => filtersFromParams(searchParams),
+    [searchParams],
+  )
+  const query = searchParams.get('q') ?? ''
 
   const usedFranchises = useMemo(() => {
     const set = new Set<InspirationFranchiseId>()
@@ -35,75 +135,88 @@ export function Catalogue() {
 
   const workOptions = useMemo(() => {
     if (!filters.franchise) return [] as { id: string; label: string }[]
-    const works = INSPIRATION_DIRECTORY[filters.franchise].works
-    return Object.entries(works).map(([id, meta]) => ({
-      id,
-      label: meta.label,
-    }))
+    const used = new Set<string>()
+    for (const s of specimens) {
+      if (s.inspiredBy?.franchise !== filters.franchise) continue
+      for (const w of s.inspiredBy.works ?? []) used.add(w)
+    }
+    const works = INSPIRATION_DIRECTORY[filters.franchise].works as Record<
+      string,
+      { label: string }
+    >
+    return [...used]
+      .filter((id) => id in works)
+      .map((id) => ({ id, label: works[id].label }))
   }, [filters.franchise])
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    return specimens.filter((s) => {
-      for (const key of FACET_KEYS) {
-        const active = filters[key]
-        if (active && s.facets[key] !== active) return false
-      }
-      if (filters.franchise) {
-        if (s.inspiredBy?.franchise !== filters.franchise) return false
-        if (
-          filters.work &&
-          !(s.inspiredBy.works ?? []).some((w) => w === filters.work)
-        ) {
-          return false
-        }
-      }
-      if (!q) return true
-      const inspirationBits = s.inspiredBy
-        ? [
-            s.inspiredBy.franchise,
-            INSPIRATION_DIRECTORY[s.inspiredBy.franchise].label,
-            ...(s.inspiredBy.works ?? []),
-            ...(s.inspiredBy.works ?? []).map(
-              (w) =>
-                (
-                  INSPIRATION_DIRECTORY[s.inspiredBy!.franchise].works as Record<
-                    string,
-                    { label: string }
-                  >
-                )[w]?.label ?? '',
-            ),
-          ]
-        : []
-      const hay = [
-        s.title,
-        s.blurb,
-        s.origin.project,
-        s.origin.surface ?? '',
-        ...FACET_KEYS.map((k) => s.facets[k]),
-        ...inspirationBits,
-        ...s.tags,
-      ]
-        .join(' ')
-        .toLowerCase()
-      return hay.includes(q)
-    })
+    return specimens.filter(
+      (s) => matchesFilters(s, filters) && matchesQuery(s, query),
+    )
   }, [filters, query])
 
+  const disabledFacetValues = useMemo(() => {
+    const out: Partial<Record<FacetKey, Set<string>>> = {}
+    for (const key of FACET_KEYS) {
+      const disabled = new Set<string>()
+      for (const value of FACET_VALUES[key]) {
+        const probe = { ...filters, [key]: value }
+        const any = specimens.some(
+          (s) => matchesFilters(s, probe) && matchesQuery(s, query),
+        )
+        if (!any) disabled.add(value)
+      }
+      out[key] = disabled
+    }
+    return out
+  }, [filters, query])
+
+  const disabledFranchises = useMemo(() => {
+    const disabled = new Set<string>()
+    for (const id of usedFranchises) {
+      const probe = { ...filters, franchise: id, work: null }
+      const any = specimens.some(
+        (s) => matchesFilters(s, probe) && matchesQuery(s, query),
+      )
+      if (!any) disabled.add(id)
+    }
+    return disabled
+  }, [filters, query, usedFranchises])
+
+  const disabledWorks = useMemo(() => {
+    const disabled = new Set<string>()
+    for (const w of workOptions) {
+      const probe = { ...filters, work: w.id }
+      const any = specimens.some(
+        (s) => matchesFilters(s, probe) && matchesQuery(s, query),
+      )
+      if (!any) disabled.add(w.id)
+    }
+    return disabled
+  }, [filters, query, workOptions])
+
+  function patchParams(nextFilters: CatalogueFilters, nextQuery: string) {
+    setSearchParams(writeParams(nextFilters, nextQuery), { replace: true })
+  }
+
   function onFacetChange(key: FacetKey, value: string | null) {
-    setFilters((prev) => ({ ...prev, [key]: value }))
+    patchParams({ ...filters, [key]: value }, query)
   }
 
   function onFranchiseChange(value: InspirationFranchiseId | null) {
-    setFilters((prev) => ({
-      ...prev,
-      franchise: value,
-      work: null,
-    }))
+    patchParams({ ...filters, franchise: value, work: null }, query)
   }
 
   function onWorkChange(value: string | null) {
-    setFilters((prev) => ({ ...prev, work: value }))
+    patchParams({ ...filters, work: value }, query)
+  }
+
+  function onQueryChange(next: string) {
+    patchParams(filters, next)
+  }
+
+  function onClear() {
+    setSearchParams({}, { replace: true })
   }
 
   return (
@@ -113,19 +226,42 @@ export function Catalogue() {
         filters={filters}
         franchises={usedFranchises}
         works={workOptions}
+        disabledFacetValues={disabledFacetValues}
+        disabledFranchises={disabledFranchises}
+        disabledWorks={disabledWorks}
         query={query}
+        resultCount={filtered.length}
+        totalCount={specimens.length}
         onFacetChange={onFacetChange}
         onFranchiseChange={onFranchiseChange}
         onWorkChange={onWorkChange}
-        onQueryChange={setQuery}
+        onQueryChange={onQueryChange}
+        onClear={onClear}
       />
-      <div className="catalogue__plates">
+      <div className="catalogue__plates" id="catalogue-plates">
         {filtered.map((specimen) => (
-          <SpecimenPlate key={specimen.id} specimen={specimen} />
+          <SpecimenPlate
+            key={specimen.id}
+            specimen={specimen}
+            onFacetClick={(key, value) => {
+              if ((FACET_KEYS as readonly string[]).includes(key)) {
+                onFacetChange(key as FacetKey, value)
+              }
+            }}
+            onFranchiseClick={(franchise) => {
+              if (isFranchiseId(franchise)) onFranchiseChange(franchise)
+            }}
+            onTagClick={(tag) => onQueryChange(tag)}
+          />
         ))}
       </div>
       {filtered.length === 0 ? (
-        <p className="catalogue__empty">No specimens match that filter.</p>
+        <div className="catalogue__empty" role="status">
+          <p>No specimens match that filter.</p>
+          <button type="button" className="catalogue__empty-clear" onClick={onClear}>
+            Clear filters
+          </button>
+        </div>
       ) : null}
     </div>
   )

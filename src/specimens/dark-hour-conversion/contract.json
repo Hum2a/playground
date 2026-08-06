@@ -1,0 +1,70 @@
+{
+  "name": "dark-hour-conversion",
+  "intent": "Travelling irregular boundary converts an ordinary interface into a Dark Hour nocturnal state via clipping, not a full-layer crossfade.",
+  "colours": {
+    "normal": {
+      "paper": "#edf1f4",
+      "ink": "#18212b",
+      "muted": "#697784"
+    },
+    "dark": {
+      "nearBlack": "#030b14",
+      "deepBlue": "#071c32",
+      "coldBlue": "#0d4d73",
+      "spectralBlue": "#2d9bd3",
+      "pale": "#d7f5ff",
+      "anomaly": "#6fae9c"
+    }
+  },
+  "boundary": {
+    "direction": "top-to-bottom",
+    "heightPx": 4,
+    "startPct": -5,
+    "endPct": 105,
+    "leadingEdge": "pale-blue",
+    "revealMethod": "clip-path polygon on dark layer"
+  },
+  "streaks": {
+    "count": 4,
+    "widthsPx": [1, 2, 3, 2],
+    "heightsPx": [42, 68, 36, 84],
+    "deterministic": true
+  },
+  "timing": {
+    "clockSwapMs": 160,
+    "holdAtMidnightMs": 80,
+    "conversionStartMs": 240,
+    "conversionDurationMs": 720,
+    "conversionEndMs": 960,
+    "refractAtMs": 600,
+    "refractDurationMs": 90,
+    "restoreMs": 520,
+    "easing": "cubic-bezier(0.45, 0.05, 0.55, 0.95)"
+  },
+  "structuralDarkDiffs": [
+    "diagonal bottom-right card edge",
+    "skewed metadata divider shifted right",
+    "angular clock backing",
+    "pale vertical rule",
+    "irregular dark-blue status strip"
+  ],
+  "api": {
+    "export": ["runDarkHourConversion()", "restoreDarkHour()"],
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "noNetwork": true
+  },
+  "a11y": {
+    "statusNormal": "Normal hours",
+    "statusDark": "Dark Hour",
+    "singleSemanticLayer": true,
+    "decorativeBoundaryAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "After clock becomes 00:00, immediately settle Dark Hour; no travelling boundary"
+  }
+}
