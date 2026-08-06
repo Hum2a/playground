@@ -1,0 +1,8 @@
+{
+  "name": "margin-note-slide-in",
+  "ref": "SPX-3607",
+  "title": "Margin Note Slide-In",
+  "mode": "edit",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

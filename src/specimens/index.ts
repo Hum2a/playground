@@ -606,6 +606,8 @@ import { evidenceAnnotation } from './evidence-annotation/entry'
 
 import { documentCompareSplit } from './document-compare-split/entry'
 
+import { marginNoteSlideIn } from './margin-note-slide-in/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1137,6 +1139,7 @@ export const specimens: Specimen[] = [
   documentDeclassification,
   evidenceAnnotation,
   documentCompareSplit,
+  marginNoteSlideIn,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
