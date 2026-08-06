@@ -1,0 +1,37 @@
+<div class="ripple-portal-demo" data-ripple-portal-demo data-context="a">
+  <div class="ripple-portal-demo__surface" data-ripple-surface>
+    <section class="ripple-portal-demo__state ripple-portal-demo__state--a" data-state="a">
+      <p class="ripple-portal-demo__kicker">RECORD // A</p>
+      <h1 class="ripple-portal-demo__title">SURFACE</h1>
+      <button type="button" class="ripple-portal-demo__btn" data-ripple-enter>
+        ENTER DEPTH
+      </button>
+    </section>
+  </div>
+
+  <div class="ripple-portal-demo__depth" data-ripple-depth aria-hidden="true">
+    <section class="ripple-portal-demo__state ripple-portal-demo__state--b" data-state="b">
+      <p class="ripple-portal-demo__kicker">RECORD // B</p>
+      <h1 class="ripple-portal-demo__title">DEPTH</h1>
+      <button type="button" class="ripple-portal-demo__btn" data-ripple-return tabindex="-1">
+        RETURN
+      </button>
+    </section>
+  </div>
+
+  <div class="ripple-portal-demo__refract" aria-hidden="true" data-ripple-refract>
+    <div class="ripple-portal-demo__refract-shift">
+      <section class="ripple-portal-demo__state ripple-portal-demo__state--b">
+        <p class="ripple-portal-demo__kicker">RECORD // B</p>
+        <h1 class="ripple-portal-demo__title">DEPTH</h1>
+      </section>
+    </div>
+  </div>
+
+  <div class="ripple-portal" aria-hidden="true" data-ripple-fx>
+    <span class="ripple-portal__point"></span>
+    <span class="ripple-portal__ring ripple-portal__ring--1"></span>
+    <span class="ripple-portal__ring ripple-portal__ring--2"></span>
+    <span class="ripple-portal__ring ripple-portal__ring--3"></span>
+  </div>
+</div>

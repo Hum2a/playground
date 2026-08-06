@@ -1,0 +1,443 @@
+/* SPX-406 Ripple Portal Transition — portable contract. Do not restyle to host tokens. */
+
+.ripple-portal-demo {
+  --ripple-ox: 68%;
+  --ripple-oy: 58%;
+  --ripple-cover: 150vmax;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  overflow: hidden;
+  background: #020b16;
+  color: #d2f5ff;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ripple-portal-demo__surface,
+.ripple-portal-demo__depth,
+.ripple-portal-demo__refract {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  padding: 1.5rem;
+}
+
+.ripple-portal-demo__surface {
+  z-index: 2;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 28%, rgb(14 111 159 / 0.18), transparent 55%),
+    #020b16;
+  transform: scale(1);
+  transform-origin: var(--ripple-ox) var(--ripple-oy);
+}
+
+.ripple-portal-demo__depth {
+  z-index: 3;
+  background:
+    radial-gradient(ellipse 70% 55% at 68% 58%, rgb(66 185 220 / 0.22), transparent 50%),
+    #062b4a;
+  clip-path: circle(0px at var(--ripple-ox) var(--ripple-oy));
+  transform: scale(0.985);
+  transform-origin: var(--ripple-ox) var(--ripple-oy);
+  pointer-events: none;
+}
+
+.ripple-portal-demo__refract {
+  z-index: 4;
+  background: #062b4a;
+  pointer-events: none;
+  opacity: 0;
+  /* Annulus mask + slight content offset — no blur */
+  -webkit-mask-image: radial-gradient(
+    circle at var(--ripple-ox) var(--ripple-oy),
+    transparent 0,
+    transparent 0,
+    #000 0,
+    #000 0,
+    transparent 0
+  );
+  mask-image: radial-gradient(
+    circle at var(--ripple-ox) var(--ripple-oy),
+    transparent 0,
+    transparent 0,
+    #000 0,
+    #000 0,
+    transparent 0
+  );
+}
+
+.ripple-portal-demo__refract-shift {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background:
+    radial-gradient(ellipse 70% 55% at 68% 58%, rgb(66 185 220 / 0.22), transparent 50%),
+    #062b4a;
+  transform: translate(3px, -2px);
+}
+
+.ripple-portal-demo__state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  max-width: 16rem;
+}
+
+.ripple-portal-demo__state--a {
+  /* Push CTA toward lower-right so origin (68%/58%) reads non-central */
+  margin: 2.5rem 0 0 auto;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.ripple-portal-demo__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #0e6f9f;
+}
+
+.ripple-portal-demo__state--b .ripple-portal-demo__kicker {
+  color: #42b9dc;
+}
+
+.ripple-portal-demo__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 6vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  color: #d2f5ff;
+}
+
+.ripple-portal-demo__btn {
+  appearance: none;
+  margin-top: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgb(66 185 220 / 0.55);
+  border-radius: 0;
+  background: transparent;
+  color: #d2f5ff;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ripple-portal-demo__btn:focus-visible {
+  outline: 2px solid #42b9dc;
+  outline-offset: 3px;
+}
+
+.ripple-portal-demo__btn:hover {
+  background: rgb(14 111 159 / 0.28);
+  color: #d2f5ff;
+}
+
+/* —— FX layer —— */
+.ripple-portal {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ripple-portal__point,
+.ripple-portal__ring {
+  position: absolute;
+  left: var(--ripple-ox);
+  top: var(--ripple-oy);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.ripple-portal__point {
+  width: 4px;
+  height: 4px;
+  background: #d2f5ff;
+  box-shadow: 0 0 8px rgb(66 185 220 / 0.55);
+}
+
+.ripple-portal__ring {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgb(210 245 255 / 0.85);
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.ripple-portal__ring--2 {
+  border-color: rgb(66 185 220 / 0.7);
+}
+
+.ripple-portal__ring--3 {
+  border-color: rgb(210 245 255 / 0.55);
+  border-width: 1.5px;
+}
+
+/* —— Running enter —— */
+.ripple-portal-demo--running .ripple-portal-demo__surface {
+  animation: ripple-surface-push 520ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ripple-portal-demo--running .ripple-portal-demo__depth {
+  animation: ripple-depth-reveal 520ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: auto;
+}
+
+.ripple-portal-demo--running .ripple-portal-demo__refract {
+  animation: ripple-refract-band 520ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ripple-portal-demo--running .ripple-portal__point {
+  animation: ripple-disturb 100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.ripple-portal-demo--running .ripple-portal__ring--1 {
+  animation: ripple-ring-1 260ms cubic-bezier(0.33, 0, 0.2, 1) 60ms forwards;
+}
+
+.ripple-portal-demo--running .ripple-portal__ring--2 {
+  animation: ripple-ring-2 320ms cubic-bezier(0.33, 0, 0.2, 1) 170ms forwards;
+}
+
+.ripple-portal-demo--running .ripple-portal__ring--3 {
+  animation: ripple-ring-3 520ms cubic-bezier(0.4, 0, 0.2, 1) 180ms forwards;
+}
+
+@keyframes ripple-disturb {
+  0% {
+    opacity: 0;
+    width: 4px;
+    height: 4px;
+  }
+  45% {
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+  }
+  100% {
+    opacity: 0.55;
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@keyframes ripple-ring-1 {
+  0% {
+    opacity: 0.9;
+    width: 12px;
+    height: 12px;
+  }
+  100% {
+    opacity: 0.15;
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@keyframes ripple-ring-2 {
+  0% {
+    opacity: 0.75;
+    width: 10px;
+    height: 10px;
+  }
+  100% {
+    opacity: 0.1;
+    width: 240px;
+    height: 240px;
+  }
+}
+
+/* Ring 3 tracks reveal boundary then continues ~150ms past cover */
+@keyframes ripple-ring-3 {
+  0% {
+    opacity: 0.7;
+    width: 14px;
+    height: 14px;
+  }
+  65% {
+    opacity: 0.35;
+    width: 120vmax;
+    height: 120vmax;
+  }
+  85% {
+    opacity: 0.18;
+    width: 150vmax;
+    height: 150vmax;
+  }
+  100% {
+    opacity: 0;
+    width: 168vmax;
+    height: 168vmax;
+  }
+}
+
+@keyframes ripple-depth-reveal {
+  0% {
+    clip-path: circle(0px at var(--ripple-ox) var(--ripple-oy));
+    transform: scale(0.985);
+  }
+  100% {
+    clip-path: circle(var(--ripple-cover) at var(--ripple-ox) var(--ripple-oy));
+    transform: scale(1);
+  }
+}
+
+@keyframes ripple-surface-push {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.015);
+  }
+}
+
+/* 8–14px refraction band; content offset 2–4px via .refract-shift */
+@keyframes ripple-refract-band {
+  0% {
+    opacity: 0;
+    -webkit-mask-image: radial-gradient(
+      circle at var(--ripple-ox) var(--ripple-oy),
+      transparent 0px,
+      transparent 0px,
+      #000 0px,
+      #000 11px,
+      transparent 11px
+    );
+    mask-image: radial-gradient(
+      circle at var(--ripple-ox) var(--ripple-oy),
+      transparent 0px,
+      transparent 0px,
+      #000 0px,
+      #000 11px,
+      transparent 11px
+    );
+  }
+  8% {
+    opacity: 0.85;
+  }
+  92% {
+    opacity: 0.55;
+    -webkit-mask-image: radial-gradient(
+      circle at var(--ripple-ox) var(--ripple-oy),
+      transparent calc(var(--ripple-cover) - 12px),
+      transparent calc(var(--ripple-cover) - 12px),
+      #000 calc(var(--ripple-cover) - 12px),
+      #000 var(--ripple-cover),
+      transparent var(--ripple-cover)
+    );
+    mask-image: radial-gradient(
+      circle at var(--ripple-ox) var(--ripple-oy),
+      transparent calc(var(--ripple-cover) - 12px),
+      transparent calc(var(--ripple-cover) - 12px),
+      #000 calc(var(--ripple-cover) - 12px),
+      #000 var(--ripple-cover),
+      transparent var(--ripple-cover)
+    );
+  }
+  100% {
+    opacity: 0;
+    -webkit-mask-image: radial-gradient(
+      circle at var(--ripple-ox) var(--ripple-oy),
+      transparent var(--ripple-cover),
+      transparent var(--ripple-cover),
+      #000 var(--ripple-cover),
+      #000 calc(var(--ripple-cover) + 14px),
+      transparent calc(var(--ripple-cover) + 14px)
+    );
+    mask-image: radial-gradient(
+      circle at var(--ripple-ox) var(--ripple-oy),
+      transparent var(--ripple-cover),
+      transparent var(--ripple-cover),
+      #000 var(--ripple-cover),
+      #000 calc(var(--ripple-cover) + 14px),
+      transparent calc(var(--ripple-cover) + 14px)
+    );
+  }
+}
+
+/* —— Settled at B —— */
+.ripple-portal-demo--at-b .ripple-portal-demo__depth {
+  clip-path: none;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.ripple-portal-demo--at-b .ripple-portal-demo__surface {
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.015);
+}
+
+.ripple-portal-demo--at-b .ripple-portal-demo__refract,
+.ripple-portal-demo--at-b .ripple-portal__point,
+.ripple-portal-demo--at-b .ripple-portal__ring {
+  opacity: 0;
+  animation: none;
+}
+
+/* —— Return (instant restore; origin frozen for next enter) —— */
+.ripple-portal-demo--returning .ripple-portal-demo__depth {
+  clip-path: circle(0px at var(--ripple-ox) var(--ripple-oy));
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
+.ripple-portal-demo--returning .ripple-portal-demo__surface {
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* —— Reduced motion —— */
+.ripple-portal-demo--rm.ripple-portal-demo--at-b .ripple-portal-demo__depth {
+  clip-path: none;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.ripple-portal-demo--rm.ripple-portal-demo--at-b .ripple-portal-demo__surface {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ripple-portal-demo--rm .ripple-portal__point,
+.ripple-portal-demo--rm .ripple-portal__ring,
+.ripple-portal-demo--rm .ripple-portal-demo__refract {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-portal-demo--running .ripple-portal-demo__surface,
+  .ripple-portal-demo--running .ripple-portal-demo__depth,
+  .ripple-portal-demo--running .ripple-portal-demo__refract,
+  .ripple-portal-demo--running .ripple-portal__point,
+  .ripple-portal-demo--running .ripple-portal__ring {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ripple-portal-demo--running .ripple-portal-demo__surface,
+[data-force-reduced-motion='true'] .ripple-portal-demo--running .ripple-portal-demo__depth,
+[data-force-reduced-motion='true'] .ripple-portal-demo--running .ripple-portal-demo__refract,
+[data-force-reduced-motion='true'] .ripple-portal-demo--running .ripple-portal__point,
+[data-force-reduced-motion='true'] .ripple-portal-demo--running .ripple-portal__ring {
+  animation: none !important;
+}

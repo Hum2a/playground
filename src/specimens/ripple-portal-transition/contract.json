@@ -1,0 +1,68 @@
+{
+  "name": "ripple-portal-transition",
+  "intent": "Water-like disturbance expands from a fixed non-central origin; destination exists inside the growing circular reveal, with a narrow refraction band at the boundary.",
+  "colours": {
+    "nearBlack": "#020b16",
+    "deepBlue": "#062b4a",
+    "blue": "#0e6f9f",
+    "bright": "#42b9dc",
+    "pale": "#d2f5ff"
+  },
+  "copy": {
+    "stateA": { "kicker": "RECORD // A", "title": "SURFACE", "cta": "ENTER DEPTH" },
+    "stateB": { "kicker": "RECORD // B", "title": "DEPTH", "cta": "RETURN" }
+  },
+  "geometry": {
+    "origin": { "xPercent": 68, "yPercent": 58 },
+    "originDeterministic": true,
+    "clickPositionRandom": false,
+    "disturbanceDiameterPx": [4, 10, 6],
+    "ring1DiameterPx": [12, 180],
+    "ring1BorderPx": 2,
+    "ring2DiameterPx": [10, 240],
+    "ring3ExpandsBeyondDiagonal": true,
+    "revealCoverRadius": "150vmax",
+    "refractionBandPx": [8, 14],
+    "refractionOffsetPx": [2, 4],
+    "surfaceScaleOutside": [1, 1.015],
+    "depthScaleInside": [0.985, 1]
+  },
+  "timing": {
+    "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "disturbanceMs": [0, 100],
+    "ring1Ms": [60, 320],
+    "ring2StartMs": 170,
+    "ring2DelayAfterRing1Ms": 110,
+    "ring3StartMs": 180,
+    "revealCoverMs": 520,
+    "ringsAfterglowMs": 150,
+    "totalMs": 700,
+    "noLoop": true
+  },
+  "api": {
+    "enter": "runRippleEnter()",
+    "return": "runRippleReturn()",
+    "busyGuard": true,
+    "destinationInsideRipple": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "rippleAriaHidden": true,
+    "activeContextOnlySemantic": true,
+    "focusAfterEnter": "RETURN button",
+    "focusAfterReturn": "ENTER DEPTH button"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show State B; no ripple expansion"
+  },
+  "constraints": {
+    "noClickOriginRandom": true,
+    "noLoopingRings": true,
+    "noCrossfadeOnly": true,
+    "destinationExistsInsideRadius": true
+  }
+}
