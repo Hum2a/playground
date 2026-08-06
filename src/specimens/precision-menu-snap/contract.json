@@ -1,0 +1,77 @@
+{
+  "name": "precision-menu-snap",
+  "intent": "Angled command menu where selection snaps into alignment with targeting lines, plate punch, accent extend, and short recoil.",
+  "colours": {
+    "navy": "#06182d",
+    "blue": "#087dcc",
+    "selectedFill": "#0a3f66",
+    "cyan": "#50d6ff",
+    "white": "#f5fbff",
+    "indexMuted": "#8fe6ff"
+  },
+  "dimensions": {
+    "maxWidthPx": 300,
+    "minHeightPx": 280,
+    "railAngleDeg": -14,
+    "optionHeightPx": 44,
+    "optionGapPx": 10,
+    "selectedTranslateXPx": 10,
+    "labelShiftPx": 10,
+    "recoilPy": 2,
+    "radialSizePx": 28,
+    "stageWidthPx": 64,
+    "paddingLeftPx": 56
+  },
+  "options": [
+    { "index": "01", "label": "ACTION", "dataIndex": 0 },
+    { "index": "02", "label": "ITEM", "dataIndex": 1 },
+    { "index": "03", "label": "STATUS", "dataIndex": 2 },
+    { "index": "04", "label": "EXIT", "dataIndex": 3 }
+  ],
+  "classes": {
+    "root": "pms",
+    "selectedAttr": "data-selected",
+    "settling": "pms--settling",
+    "recoil": "pms--recoil",
+    "optionSelected": "pms__option--selected",
+    "optionExit": "pms__option--exit",
+    "optionEnter": "pms__option--enter"
+  },
+  "timing": {
+    "easing": "steps(2, end) / steps(3, end)",
+    "totalMs": 260,
+    "contractMs": 90,
+    "snapMs": 110,
+    "accentMs": 100,
+    "accentDelayMs": 30,
+    "recoilMs": 60,
+    "targetLineMs": 100
+  },
+  "api": {
+    "export": "selectPrecisionMenu(index)",
+    "init": "initPrecisionMenu()",
+    "busyGuard": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "pattern": "radiogroup + radio",
+    "rovingTabindex": true,
+    "keys": ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Home", "End"],
+    "decorativeStageAriaHidden": true,
+    "focusVisible": "2px solid #50d6ff"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Selection applies immediately; selected plate offset, corners, and accent remain visible with no travel"
+  },
+  "constraints": {
+    "noRoundedPills": true,
+    "noSoftGradients": true,
+    "noExternalAssets": true,
+    "noSoftSliding": true,
+    "geometryNotColourAlone": true
+  }
+}
