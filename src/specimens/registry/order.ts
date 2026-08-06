@@ -583,4 +583,5 @@ export const specimenOrder: string[] = [
   'gain-reduction-slam',
   'noise-gate-open',
   'rack-unit-power-on',
+  'reel-spin-up',
 ]

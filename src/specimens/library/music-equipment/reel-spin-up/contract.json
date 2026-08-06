@@ -1,0 +1,8 @@
+{
+  "name": "reel-spin-up",
+  "ref": "SPX-3881",
+  "title": "Reel Spin-Up",
+  "mode": "deck",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
