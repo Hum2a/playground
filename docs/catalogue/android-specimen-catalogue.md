@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **20 / 417** complete.
+- Progress: **21 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 20 |
-| Open | 397 |
+| Done | 21 |
+| Open | 396 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-205 | `SPX-1762` | `collapsing-app-bar` | Collapsing App Bar |
 | AND-200 | `SPX-1757` | `vertical-content-stretch` | Vertical Content Stretch |
 | AND-193 | `SPX-1750` | `material-pull-to-refresh` | Material Pull-to-Refresh |
 | AND-134 | `SPX-1691` | `active-bottom-nav-pill-transfer` | Active Bottom-Nav Pill Transfer |
@@ -77,7 +78,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — bottom-navigation
 - [x] **AND-193** · `SPX-1750` · **Material Pull-to-Refresh** — pull-to-refresh-overscroll
 - [x] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
-- [ ] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
+- [x] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
 - [ ] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — biometric-unlock-inspired
 - [ ] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
 - [ ] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
@@ -372,7 +373,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Scroll Behaviour
 
-- [ ] **AND-205** · `SPX-1762` · **Collapsing App Bar** — large top app bar condenses into compact toolbar as content scrolls.
+- [x] **AND-205** · `SPX-1762` · **Collapsing App Bar** — large top app bar condenses into compact toolbar as content scrolls.
 - [ ] **AND-206** · `SPX-1763` · **Flexible Header Collapse** — image/title region compresses while key actions remain available.
 - [ ] **AND-207** · `SPX-1764` · **Pinned Toolbar Handoff** — inline control group becomes fixed after reaching top boundary.
 - [ ] **AND-208** · `SPX-1765` · **FAB Scroll Hide/Show** — scroll direction controls FAB visibility.

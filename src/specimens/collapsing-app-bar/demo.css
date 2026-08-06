@@ -1,0 +1,128 @@
+/* collapsing-app-bar — portable specimen styles. Do not restyle to host tokens. */
+
+.cab {
+  --cab-ink: #141218;
+  --cab-panel: #1e1a22;
+  --cab-line: #49454f;
+  --cab-muted: #938f99;
+  --cab-text: #e8e0ec;
+  --cab-accent: #cbb8ff;
+  --cab-bar-h: 152px;
+  --cab-title-size: 32px;
+  --cab-title-y: 96px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--cab-text);
+  background: var(--cab-ink);
+}
+
+.cab *,
+.cab *::before,
+.cab *::after {
+  box-sizing: border-box;
+}
+
+.cab__bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: end;
+  width: 360px;
+  max-width: 100%;
+  height: var(--cab-bar-h);
+  margin: 0 auto;
+  padding: 0 0.5rem 0.75rem;
+  background: var(--cab-panel);
+  border: 1px solid var(--cab-line);
+  border-bottom: none;
+  overflow: hidden;
+}
+
+.cab__back,
+.cab__action {
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  color: var(--cab-text);
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.cab__back:focus-visible,
+.cab__action:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.cab__title {
+  position: absolute;
+  left: 3.5rem;
+  bottom: 0.75rem;
+  margin: 0;
+  font-size: var(--cab-title-size);
+  font-weight: 600;
+  line-height: 1.1;
+  transform: translateY(calc(var(--cab-title-y) - 96px));
+  transform-origin: left bottom;
+  transition: none;
+  pointer-events: none;
+}
+
+.cab__divider {
+  width: 360px;
+  max-width: 100%;
+  height: 0;
+  margin: 0 auto;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms ease;
+}
+
+.cab.is-divider .cab__divider {
+  border-bottom-color: var(--cab-line);
+}
+
+.cab__scroll {
+  width: 360px;
+  max-width: 100%;
+  height: 408px;
+  margin: 0 auto;
+  overflow-y: auto;
+  border: 1px solid var(--cab-line);
+  border-top: none;
+  background: var(--cab-panel);
+}
+
+.cab__article {
+  padding: 1rem 1.25rem 2rem;
+}
+
+.cab__article p {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--cab-muted);
+}
+
+.cab__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--cab-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cab__divider {
+    transition-duration: 0ms;
+  }
+}
+
+[data-force-reduced-motion='true'] .cab__divider {
+  transition-duration: 0ms !important;
+}

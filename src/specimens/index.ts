@@ -36,6 +36,7 @@ import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { circularProgressCompletionMorph } from './circular-progress-completion-morph/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
+import { collapsingAppBar } from './collapsing-app-bar/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
@@ -292,6 +293,7 @@ export const specimens: Specimen[] = [
   choiceExecutionSlash,
   circularProgressCompletionMorph,
   clockHandWipe,
+  collapsingAppBar,
   collectiveCiDeployment,
   comicCardSelection,
   comicPanelScrollReveal,

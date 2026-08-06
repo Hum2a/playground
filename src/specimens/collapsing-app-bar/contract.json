@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/collapsing-app-bar.schema.json",
+  "title": "CollapsingAppBar",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "layout", "scroll", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "collapsing-app-bar" },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["barLargePx", "barSmallPx", "titleLargePx", "titleSmallPx"],
+      "properties": {
+        "barLargePx": { "type": "number", "const": 152 },
+        "barSmallPx": { "type": "number", "const": 64 },
+        "titleLargePx": { "type": "number", "const": 32 },
+        "titleSmallPx": { "type": "number", "const": 20 }
+      }
+    },
+    "scroll": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseRangePx", "dividerAtPx"],
+      "properties": {
+        "collapseRangePx": { "type": "number", "const": 96 },
+        "dividerAtPx": { "type": "number", "const": 88 }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "bar", "title", "scroll"],
+      "properties": {
+        "root": { "type": "string", "const": "cab" },
+        "bar": { "type": "string", "const": "cab__bar" },
+        "title": { "type": "string", "const": "cab__title" },
+        "scroll": { "type": "string", "const": "cab__scroll" }
+      }
+    }
+  }
+}
