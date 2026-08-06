@@ -1,0 +1,147 @@
+/* SPX-2004 Overuse Warning — portable contract. */
+
+.ouw {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ouw *,
+.ouw *::before,
+.ouw *::after {
+  box-sizing: border-box;
+}
+
+.ouw__title {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.ouw__readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.ouw__pct {
+  font-size: 1.55rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.ouw__label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--primary);
+}
+
+.ouw[data-level='3'] .ouw__label,
+.ouw[data-level='4'] .ouw__label {
+  color: var(--accent);
+}
+
+.ouw__meter {
+  position: relative;
+  height: 32px;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.ouw__fill {
+  height: 100%;
+  width: 25%;
+  background: var(--primary);
+  transition: width 580ms var(--ease);
+}
+
+.ouw[data-level='3'] .ouw__fill,
+.ouw[data-level='4'] .ouw__fill {
+  background: var(--accent);
+}
+
+.ouw__warn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--paper);
+  opacity: 0;
+  background: repeating-linear-gradient(-45deg, var(--accent) 0 2px, var(--ink) 2px 6px);
+}
+
+.ouw[data-level='3'] .ouw__warn,
+.ouw[data-level='4'] .ouw__warn {
+  opacity: 0.9;
+}
+
+.ouw__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ouw__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.ouw__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.ouw__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.ouw__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ouw__live {
+  margin: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ouw__fill {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .ouw__fill {
+  transition: none;
+}

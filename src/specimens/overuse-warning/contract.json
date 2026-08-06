@@ -1,0 +1,13 @@
+{
+  "name": "overuse-warning",
+  "ref": "SPX-2004",
+  "catalogue": { "mha": "MHA-030" },
+  "levels": [25, 45, 65, 85, 100],
+  "labels": ["NOMINAL", "ELEVATED", "STRAINED", "WARNING", "EXHAUSTED"],
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}

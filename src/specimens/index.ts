@@ -185,6 +185,7 @@ import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
 import { objectiveUpdateSlash } from './objective-update-slash/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
+import { overuseWarning } from './overuse-warning/entry'
 import { panelBreakTransition } from './panel-break-transition/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
@@ -514,6 +515,7 @@ export const specimens: Specimen[] = [
   objectiveAcquired,
   objectiveUpdateSlash,
   overchargeWarning,
+  overuseWarning,
   panelBreakTransition,
   panelCollapseNavigation,
   panelExplosionReveal,
