@@ -1,0 +1,59 @@
+<div class="sms" data-stage-manager data-phase="build-foreground">
+  <div class="sms__layout">
+    <aside class="sms__rail" data-sms-rail aria-label="Stage rail">
+      <div class="sms__marker" data-sms-marker aria-hidden="true"></div>
+      <div class="sms__stage-group sms__stage-group--research" data-sms-staged-research>
+        <p class="sms__group-label">RESEARCH</p>
+        <div class="sms__mini-stack sms__mini-stack--triple" aria-hidden="true">
+          <span class="sms__mini sms__mini--a"></span>
+          <span class="sms__mini sms__mini--b"></span>
+          <span class="sms__mini sms__mini--c"></span>
+        </div>
+      </div>
+      <div class="sms__stage-group sms__stage-group--build" data-sms-staged-build hidden>
+        <p class="sms__group-label">BUILD</p>
+        <div class="sms__mini-stack sms__mini-stack--dual" aria-hidden="true">
+          <span class="sms__mini sms__mini--a"></span>
+          <span class="sms__mini sms__mini--b"></span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sms__workspace" data-sms-workspace>
+      <div class="sms__group sms__group--build" data-sms-foreground>
+        <p class="sms__group-label">BUILD</p>
+        <div class="sms__windows">
+          <div class="sms__win sms__win--a" aria-hidden="true">
+            <span class="sms__win-title">COMPILE</span>
+          </div>
+          <div class="sms__win sms__win--b" aria-hidden="true">
+            <span class="sms__win-title">OUTPUT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sms__group sms__group--research" data-sms-background aria-hidden="true">
+        <p class="sms__group-label">RESEARCH</p>
+        <div class="sms__windows sms__windows--triple">
+          <div class="sms__win sms__win--r1" aria-hidden="true">
+            <span class="sms__win-title">NOTES</span>
+          </div>
+          <div class="sms__win sms__win--r2" aria-hidden="true">
+            <span class="sms__win-title">LINKS</span>
+          </div>
+          <div class="sms__win sms__win--r3" aria-hidden="true">
+            <span class="sms__win-title">DRAFT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sms__controls">
+    <button type="button" class="sms__btn" data-sms-swap>SWAP</button>
+  </div>
+
+  <p class="sms__status" role="status" aria-live="polite" data-sms-status>
+    BUILD foreground; RESEARCH staged in rail.
+  </p>
+</div>

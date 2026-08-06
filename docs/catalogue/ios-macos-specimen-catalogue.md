@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 258** complete.
+- Progress: **10 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 249 |
+| Done | 10 |
+| Open | 248 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-054 | `SPX-1353` | `stage-manager-stack-shift` | Stage Manager Stack Shift |
 | IOS-049 | `SPX-1348` | `mission-control-spread` | Mission Control Spread |
 | IOS-040 | `SPX-1339` | `dock-launch-bounce` | Dock Launch Bounce |
 | IOS-039 | `SPX-1338` | `dock-magnification` | Dock Magnification |
@@ -55,7 +56,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-039** · `SPX-1338` · **Dock Magnification** — dock-macos-application-launching
 - [x] **IOS-040** · `SPX-1339` · **Dock Launch Bounce** — dock-macos-application-launching
 - [x] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
-- [ ] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
+- [x] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
 - [x] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — spring-rubber-banding-physical-response
 - [ ] **IOS-072** · `SPX-1371` · **Large Title Collapse** — scroll-content-physics
 - [ ] **IOS-092** · `SPX-1391` · **Long-Press Lift** — context-menus-long-press-interaction
@@ -144,7 +145,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-051** · `SPX-1350` · **Window Minimise Funnel** — rectangular window collapses toward a small destination while preserving spatial continuity.
 - [ ] **IOS-052** · `SPX-1351` · **Window Maximise / Zoom** — window transitions between bounded and expanded states with continuous geometry.
 - [ ] **IOS-053** · `SPX-1352` · **Desktop Space Swipe** — one workspace exits while another enters as a coherent spatial plane.
-- [ ] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — foreground workspace swaps with a staged background group using layered depth.
+- [x] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — foreground workspace swaps with a staged background group using layered depth.
 - [ ] **IOS-055** · `SPX-1354` · **Window Snap Preview** — dragging near a target region constructs a potential placement outline before commit.
 - [ ] **IOS-056** · `SPX-1355` · **Window Snap Commit** — release converts the preview region into the window's new geometry.
 - [ ] **IOS-057** · `SPX-1356` · **Window Shake Rejection** — invalid drop produces a tiny finite lateral refusal gesture.
