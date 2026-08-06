@@ -1,0 +1,211 @@
+/* SPX-2017 Analysis Scribble Reveal — portable specimen. */
+
+.asr {
+  --asr-primary: #38a3ff;
+  --asr-ink: #101820;
+  --asr-paper: #f4f7fa;
+  --asr-accent: #ff4d35;
+  --asr-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1rem;
+  background: var(--asr-ink);
+  color: var(--asr-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.asr *,
+.asr *::before,
+.asr *::after {
+  box-sizing: border-box;
+}
+
+.asr__panel {
+  position: relative;
+  width: min(100%, 300px);
+  padding: 1rem 1.1rem 1.2rem;
+  background: var(--asr-paper);
+  color: var(--asr-ink);
+  border: 4px solid var(--asr-ink);
+  clip-path: polygon(0% 3%, 98% 0%, 100% 97%, 2% 100%);
+}
+
+.asr__heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: var(--asr-primary);
+}
+
+.asr__stats {
+  margin: 0;
+}
+
+.asr__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid rgb(16 24 32 / 0.12);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.asr__row dt {
+  margin: 0;
+}
+
+.asr__row dd {
+  margin: 0;
+}
+
+.asr__scribble {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.asr__mark {
+  fill: none;
+  stroke: var(--asr-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+.asr__note {
+  fill: var(--asr-accent);
+  font-size: 22px;
+  font-weight: 900;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  opacity: 0;
+}
+
+.asr__run {
+  margin: 0;
+  padding: 0.55rem 1.2rem;
+  border: 3px solid var(--asr-primary);
+  background: var(--asr-ink);
+  color: var(--asr-paper);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.asr__run:focus-visible {
+  outline: 2px solid var(--asr-primary);
+  outline-offset: 3px;
+}
+
+.asr__status {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgb(244 247 250 / 0.7);
+}
+
+.asr[data-phase="scribble"] .asr__mark--circle {
+  animation: asr-draw 320ms var(--asr-ease) forwards;
+  opacity: 1;
+}
+
+.asr[data-phase="scribble"] .asr__mark--arrow {
+  animation: asr-draw 280ms var(--asr-ease) 180ms forwards;
+  opacity: 1;
+}
+
+.asr[data-phase="scribble"] .asr__mark--underline {
+  animation: asr-draw 240ms var(--asr-ease) 360ms forwards;
+  opacity: 1;
+}
+
+.asr[data-phase="scribble"] .asr__note {
+  animation: asr-pop 200ms ease-out 520ms forwards;
+}
+
+.asr[data-phase="scribble"] [data-asr-output] {
+  color: var(--asr-accent);
+}
+
+.asr[data-phase="done"] .asr__mark {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.asr[data-phase="done"] .asr__note {
+  opacity: 1;
+}
+
+.asr[data-phase="done"] [data-asr-output] {
+  color: var(--asr-accent);
+}
+
+@keyframes asr-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes asr-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asr[data-phase="scribble"] .asr__mark,
+  .asr[data-phase="scribble"] .asr__note {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__mark,
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__note {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asr[data-phase="scribble"] .asr__mark,
+  .asr[data-phase="done"] .asr__mark {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .asr[data-phase="scribble"] .asr__note,
+  .asr[data-phase="done"] .asr__note {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__mark,
+[data-force-reduced-motion="true"] .asr[data-phase="done"] .asr__mark {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__note,
+[data-force-reduced-motion="true"] .asr[data-phase="done"] .asr__note {
+  opacity: 1;
+}

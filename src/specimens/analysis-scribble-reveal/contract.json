@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/analysis-scribble-reveal.schema.json",
+  "title": "AnalysisScribbleReveal",
+  "description": "Portable contract for rapid analysis annotation marks.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "analysis-scribble-reveal" },
+    "intent": {
+      "type": "string",
+      "examples": ["Structured data annotated with circles, arrows, and scribbles."]
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "accent"],
+      "properties": {
+        "primary": { "type": "string", "const": "#38A3FF" },
+        "ink": { "type": "string", "const": "#101820" },
+        "paper": { "type": "string", "const": "#F4F7FA" },
+        "accent": { "type": "string", "const": "#FF4D35" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalMs"],
+      "properties": {
+        "totalMs": { "type": "number", "const": 780 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantMarks", "triggers"],
+      "properties": {
+        "instantMarks": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "mark", "panel"],
+      "properties": {
+        "root": { "type": "string", "const": "asr" },
+        "mark": { "type": "string", "const": "asr__mark" },
+        "panel": { "type": "string", "const": "asr__panel" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "analysisScribbleReveal" }
+      }
+    }
+  }
+}
