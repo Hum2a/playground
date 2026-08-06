@@ -1,0 +1,29 @@
+<div class="nbd" data-notification-banner data-phase="hidden">
+  <div class="nbd__host">
+    <header class="nbd__host-head">BUILD DASHBOARD</header>
+    <div class="nbd__host-body" aria-hidden="true">
+      <div class="nbd__metric"></div>
+      <div class="nbd__metric"></div>
+      <div class="nbd__metric"></div>
+    </div>
+    <button type="button" class="nbd__replay" data-nbd-replay>REPLAY</button>
+  </div>
+
+  <div
+    class="nbd__banner"
+    data-nbd-banner
+    role="status"
+    aria-live="polite"
+    tabindex="0"
+  >
+    <span class="nbd__marker" aria-hidden="true"></span>
+    <div class="nbd__text">
+      <p class="nbd__title">DEPLOY COMPLETE</p>
+      <p class="nbd__subtitle">Release 2.4.0 is live</p>
+    </div>
+  </div>
+
+  <p class="nbd__status" role="status" aria-live="polite" data-nbd-status>
+    Banner hidden. Press REPLAY to show notification drop.
+  </p>
+</div>

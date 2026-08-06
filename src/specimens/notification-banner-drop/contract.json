@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/notification-banner-drop.schema.json",
+  "title": "NotificationBannerDrop",
+  "description": "Portable contract for temporary top-edge notification banner drop.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "banner",
+    "sequence",
+    "interaction",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "notification-banner-drop" },
+    "intent": {
+      "type": "string",
+      "const": "Temporary top-edge alert enters, dwells, then retreats."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["host", "title", "subtitle"],
+      "properties": {
+        "host": { "type": "string", "const": "BUILD DASHBOARD" },
+        "title": { "type": "string", "const": "DEPLOY COMPLETE" },
+        "subtitle": { "type": "string", "const": "Release 2.4.0 is live" }
+      }
+    },
+    "banner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "startTranslateYPx", "markerCount"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 340 },
+        "heightPx": { "type": "number", "const": 74 },
+        "startTranslateYPx": { "type": "number", "const": -96 },
+        "markerCount": { "type": "number", "const": 1 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entryMs",
+        "overshootPx",
+        "settleMs",
+        "dwellMs",
+        "exitMs"
+      ],
+      "properties": {
+        "entryMs": { "type": "number", "const": 280 },
+        "overshootPx": { "type": "number", "const": 6 },
+        "settleMs": { "type": "number", "const": 80 },
+        "dwellMs": { "type": "number", "const": 2200 },
+        "exitMs": { "type": "number", "const": 220 }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hoverPauses", "focusPauses", "replay"],
+      "properties": {
+        "hoverPauses": { "type": "boolean", "const": true },
+        "focusPauses": { "type": "boolean", "const": true },
+        "replay": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noTravel", "dwellMs", "triggers"],
+      "properties": {
+        "noTravel": { "type": "boolean", "const": true },
+        "dwellMs": { "type": "number", "const": 2200 },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bannerStatus", "politeStatus"],
+      "properties": {
+        "bannerStatus": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "banner"],
+      "properties": {
+        "root": { "type": "string", "const": "nbd" },
+        "banner": { "type": "string", "const": "nbd__banner" }
+      }
+    }
+  }
+}
