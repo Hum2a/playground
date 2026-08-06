@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/butterfly-success-state.schema.json",
+  "title": "ButterflySuccessState",
+  "description": "Portable contract for one abstract geometric butterfly that assembles from four wings and a body, opens briefly, and departs upward to reveal a COMPLETE status.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "butterfly",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "butterfly-success-state" },
+    "intent": {
+      "type": "string",
+      "const": "Four wing polygons and one body assemble into a single abstract butterfly, open ~12deg, then depart upward leaving COMPLETE and Record saved."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial",
+        "trigger",
+        "finalLabel",
+        "meta",
+        "status",
+        "reset"
+      ],
+      "properties": {
+        "initial": { "type": "string", "const": "PROCESSING" },
+        "trigger": { "type": "string", "const": "COMPLETE" },
+        "finalLabel": { "type": "string", "const": "COMPLETE" },
+        "meta": { "type": "string", "const": "Record saved." },
+        "status": { "type": "string", "const": "Record saved." },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "deepBlue", "blue", "bright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020912" },
+        "deepBlue": { "type": "string", "const": "#071f3d" },
+        "blue": { "type": "string", "const": "#176fa8" },
+        "bright": { "type": "string", "const": "#4dbce8" },
+        "pale": { "type": "string", "const": "#d9f7ff" }
+      }
+    },
+    "butterfly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wingCount", "bodyCount", "pieceOffsetsPx", "wingOpenDeg"],
+      "properties": {
+        "wingCount": { "type": "number", "const": 4 },
+        "bodyCount": { "type": "number", "const": 1 },
+        "wingOpenDeg": { "type": "number", "const": 12 },
+        "pieceOffsetsPx": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ul", "ur", "ll", "lr", "body"],
+          "properties": {
+            "ul": { "type": "array", "const": [-34, -28] },
+            "ur": { "type": "array", "const": [38, -24] },
+            "ll": { "type": "array", "const": [-30, 36] },
+            "lr": { "type": "array", "const": [32, 40] },
+            "body": { "type": "array", "const": [0, 22] }
+          }
+        },
+        "travelRangePx": { "type": "array", "const": [20, 45] },
+        "noCheckmark": { "type": "boolean", "const": true },
+        "noParticleSwarm": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assembleMs",
+        "openMs",
+        "holdMs",
+        "departMs",
+        "departTranslateYPx",
+        "departScale",
+        "loops"
+      ],
+      "properties": {
+        "assembleMs": { "type": "number", "const": 220 },
+        "openMs": { "type": "number", "const": 100 },
+        "holdMs": { "type": "number", "const": 80 },
+        "departMs": { "type": "number", "const": 260 },
+        "departTranslateYPx": { "type": "number", "const": -60 },
+        "departScale": { "type": "array", "const": [1, 0.65] },
+        "totalMs": { "type": "number", "const": 660 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["butterflyDecorative", "politeStatus"],
+      "properties": {
+        "butterflyDecorative": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["staticCompleteOnly", "triggers"],
+      "properties": {
+        "staticCompleteOnly": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "butterfly", "wing", "body", "panel"],
+      "properties": {
+        "root": { "type": "string", "const": "butterfly-success" },
+        "butterfly": { "type": "string", "const": "butterfly-success__butterfly" },
+        "wing": { "type": "string", "const": "bss-wing" },
+        "body": { "type": "string", "const": "bss-body" },
+        "panel": { "type": "string", "const": "butterfly-success__panel" }
+      }
+    }
+  }
+}

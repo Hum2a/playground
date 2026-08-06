@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **25 / 238** complete.
+- Progress: **28 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 25 |
-| Open | 213 |
+| Done | 28 |
+| Open | 210 |
 
 ## Visual grammar
 
@@ -57,10 +57,12 @@
 
 | P3-121 | `SPX-518` | `butterfly-success-state` | Butterfly Success State |
 | P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
+| P3-089 | `SPX-486` | `tactical-command-wheel` | Tactical Command Wheel |
 
 | P3-064 | SPX-461 | ull-moon-milestone | Full Moon Milestone |
 
 | P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
+| P3-170 | `SPX-567` | `blue-focus-brackets` | Blue Focus Brackets |
 
 ## Core first-wave
 
@@ -205,7 +207,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-086** · `SPX-483` · **Weakness Discovery** — tactical.
 - [ ] **P3-087** · `SPX-484` · **Analysis Complete** — tactical.
 - [ ] **P3-088** · `SPX-485` · **Party Member Selection** — tactical.
-- [ ] **P3-089** · `SPX-486` · **Tactical Command Wheel** — tactical.
+- [x] **P3-089** · `SPX-486` · **Tactical Command Wheel** — tactical.
 - [ ] **P3-090** · `SPX-487` · **Command Confirmation Snap** — tactical.
 - [ ] **P3-091** · `SPX-488` · **Status Scanline** — tactical.
 - [ ] **P3-092** · `SPX-489` · **Critical Weakness Hit** — tactical.
@@ -310,7 +312,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-167** · `SPX-564` · **Glass Drawer Open** — navigation.
 - [ ] **P3-168** · `SPX-565` · **Angular Menu Expansion** — navigation.
 - [ ] **P3-169** · `SPX-566` · **Vertical Menu Current** — navigation.
-- [ ] **P3-170** · `SPX-567` · **Blue Focus Brackets** — navigation.
+- [x] **P3-170** · `SPX-567` · **Blue Focus Brackets** — navigation.
 - [ ] **P3-171** · `SPX-568` · **Navigation Refraction** — navigation.
 - [ ] **P3-172** · `SPX-569` · **Selected Item Depth Shift** — navigation.
 - [ ] **P3-173** · `SPX-570` · **Menu Exit Collapse** — navigation.
