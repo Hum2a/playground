@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/collective-ci-deployment.schema.json",
+  "title": "CollectiveCiDeployment",
+  "description": "Portable contract for a CI pipeline where six jobs complete on a frozen schedule, each emitting one result token into a central RELEASE artifact that grows only on arrival until DEPLOY unlocks at 6/6.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "jobs",
+    "artifact",
+    "token",
+    "readiness",
+    "deploy",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "collective-ci-deployment" },
+    "intent": {
+      "type": "string",
+      "const": "Distributed CI completion: six independent jobs finish at frozen times, each contributes one result token to a shared RELEASE artifact, and DEPLOY unlocks only at 6/6 readiness — readiness focus, not auto-deploy."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pipeline",
+        "jobs",
+        "statusRunning",
+        "statusPassed",
+        "deployLocked",
+        "deployReady",
+        "trigger",
+        "deploy",
+        "replay"
+      ],
+      "properties": {
+        "pipeline": { "type": "string", "const": "RELEASE // 2.4.0" },
+        "jobs": {
+          "type": "array",
+          "const": ["LINT", "UNIT", "BUILD", "E2E", "SECURITY", "PACKAGE"]
+        },
+        "statusRunning": { "type": "string", "const": "RUNNING" },
+        "statusPassed": { "type": "string", "const": "PASSED" },
+        "deployLocked": { "type": "string", "const": "LOCKED" },
+        "deployReady": { "type": "string", "const": "READY" },
+        "trigger": { "type": "string", "const": "RUN PIPELINE" },
+        "deploy": { "type": "string", "const": "DEPLOY" },
+        "replay": { "type": "string", "const": "REPLAY" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "muted", "blue", "cyan", "pass", "ready"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0c1218" },
+        "cream": { "type": "string", "const": "#e8eef4" },
+        "muted": { "type": "string", "const": "#7a8b9c" },
+        "blue": { "type": "string", "const": "#3d8fd1" },
+        "cyan": { "type": "string", "const": "#6ec8f0" },
+        "pass": { "type": "string", "const": "#4a9e6e" },
+        "ready": { "type": "string", "const": "#c4a035" }
+      }
+    },
+    "jobs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "scheduleMs", "paths"],
+      "properties": {
+        "count": { "type": "number", "const": 6 },
+        "scheduleMs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lint", "unit", "build", "e2e", "security", "package"],
+          "properties": {
+            "lint": { "type": "number", "const": 420 },
+            "unit": { "type": "number", "const": 680 },
+            "build": { "type": "number", "const": 920 },
+            "e2e": { "type": "number", "const": 1240 },
+            "security": { "type": "number", "const": 1510 },
+            "package": { "type": "number", "const": 1780 }
+          }
+        },
+        "paths": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lint", "unit", "build", "e2e", "security", "package"],
+          "properties": {
+            "lint": {
+              "type": "string",
+              "const": "M 60 58 C 110 90, 160 140, 200 160"
+            },
+            "unit": {
+              "type": "string",
+              "const": "M 60 160 C 110 160, 150 160, 200 160"
+            },
+            "build": {
+              "type": "string",
+              "const": "M 60 262 C 110 230, 160 180, 200 160"
+            },
+            "e2e": {
+              "type": "string",
+              "const": "M 340 58 C 290 90, 240 140, 200 160"
+            },
+            "security": {
+              "type": "string",
+              "const": "M 340 160 C 290 160, 250 160, 200 160"
+            },
+            "package": {
+              "type": "string",
+              "const": "M 340 262 C 290 230, 240 180, 200 160"
+            }
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizesPx", "growOnArrivalOnly"],
+      "properties": {
+        "sizesPx": {
+          "type": "array",
+          "const": [34, 42, 50, 58, 66, 74, 86]
+        },
+        "growOnArrivalOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["perJob", "shape", "travelMs"],
+      "properties": {
+        "perJob": { "type": "number", "const": 1 },
+        "shape": { "type": "string", "const": "diamond" },
+        "travelMs": { "type": "number", "const": 240 }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "finalConnectionLines"],
+      "properties": {
+        "from": { "type": "string", "const": "0 / 6" },
+        "to": { "type": "string", "const": "6 / 6" },
+        "finalConnectionLines": { "type": "number", "const": 6 }
+      }
+    },
+    "deploy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["disabledUntilReady", "autoDeploy"],
+      "properties": {
+        "disabledUntilReady": { "type": "boolean", "const": true },
+        "autoDeploy": { "type": "boolean", "const": false }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalMs", "loopsAfterReady", "packageLast"],
+      "properties": {
+        "totalMs": { "type": "number", "const": 2060 },
+        "loopsAfterReady": { "type": "boolean", "const": false },
+        "packageLast": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jobStatusText", "politeStatus", "readableReadiness"],
+      "properties": {
+        "jobStatusText": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true },
+        "readableReadiness": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateReady", "noPulse", "triggers"],
+      "properties": {
+        "immediateReady": { "type": "boolean", "const": true },
+        "noPulse": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "stage", "job", "artifact", "token", "link"],
+      "properties": {
+        "root": { "type": "string", "const": "cci" },
+        "stage": { "type": "string", "const": "cci__stage" },
+        "job": { "type": "string", "const": "cci__job" },
+        "artifact": { "type": "string", "const": "cci__artifact" },
+        "token": { "type": "string", "const": "cci__token" },
+        "link": { "type": "string", "const": "cci__link" }
+      }
+    }
+  }
+}

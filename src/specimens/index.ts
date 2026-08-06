@@ -20,6 +20,7 @@ import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
+import { collectiveCiDeployment } from './collective-ci-deployment/entry'
 import { completionStrike } from './completion-strike/entry'
 import { concentratedEnergyCharge } from './concentrated-energy-charge/entry'
 import { connectionSevered } from './connection-severed/entry'
@@ -160,6 +161,7 @@ export {
 /** Explicit specimen registry. Add one import per specimen. */
 export const specimens: Specimen[] = [
   comingSoonTape,
+  collectiveCiDeployment,
   comicPanelWipe,
   contentDeclassification,
   callingCardSlam,

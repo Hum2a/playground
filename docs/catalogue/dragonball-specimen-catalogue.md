@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **14 / 244** complete.
+- Progress: **16 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 230 |
+| Done | 16 |
+| Open | 228 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-231 | `SPX-1196` | `collective-ci-deployment` | Collective CI Deployment |
 | DB-057 | `SPX-1022` | `linked-fusion-merge` | Linked Fusion Merge |
 | DB-105 | `SPX-1070` | `seven-part-prerequisite-collection` | Seven-Part Prerequisite Collection |
 | DB-004 | `SPX-969` | `charge-release` | Charge Release |
@@ -70,7 +71,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — impact-combat-feedback
 - [ ] **DB-123** · `SPX-1088` · **Punch Shockwave** — impact-combat-feedback
 - [ ] **DB-083** · `SPX-1048` · **Spirit Bomb Contribution** — spirit-bomb-collective-contribution
-- [ ] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — data-developer-tool-specimens
+- [x] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — data-developer-tool-specimens
 - [x] **DB-095** · `SPX-1060` · **Dragon Radar Search** — dragon-radar-search
 - [x] **DB-105** · `SPX-1070` · **Seven-Item Collection** — dragon-balls-collection-completion
 - [ ] **DB-106** · `SPX-1071` · **Final Item Acquired** — dragon-balls-collection-completion
@@ -381,7 +382,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Data / Developer-Tool Specimens
 
 - [ ] **DB-230** · `SPX-1195` · **Git Fusion Merge** — two branch histories converge into one canonical commit.
-- [ ] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — independent jobs feed one final deploy state.
+- [x] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — independent jobs feed one final deploy state.
 - [ ] **DB-232** · `SPX-1197` · **Scouter Performance Profiler** — component metrics scan and resolve into a performance classification.
 - [ ] **DB-233** · `SPX-1198` · **Power Level Benchmark** — benchmark number climbs rapidly before stabilising.
 - [ ] **DB-234** · `SPX-1199` · **Over-9000 Metric Overflow** — monitoring value exceeds expected visual scale.
