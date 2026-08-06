@@ -1,0 +1,28 @@
+{
+  "name": "character-freeze-introduction",
+  "intent": "Abstract silhouette approaches, freezes, and profile card slides in.",
+  "catalogue": { "mha": "MHA-016", "ref": "SPX-1990" },
+  "copy": {
+    "title": "ANALYST",
+    "eyebrow": "PROFILE // LOCK",
+    "meta": "RANK B · READY"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "approachMs": 280,
+    "freezeMs": 140,
+    "cardMs": 420,
+    "settleMs": 230
+  },
+  "api": {
+    "run": "runCharacterFreezeIntro()",
+    "reset": "resetCharacterFreezeIntro()",
+    "replay": "replayCharacterFreezeIntro()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show frozen silhouette and card" }
+}

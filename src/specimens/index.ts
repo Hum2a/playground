@@ -35,6 +35,7 @@ import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { cardToDetailContainerTransform } from './card-to-detail-container-transform/entry'
 import { championResolution } from './champion-resolution/entry'
+import { characterFreezeIntroduction } from './character-freeze-introduction/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { circularProgressCompletionMorph } from './circular-progress-completion-morph/entry'
@@ -325,6 +326,7 @@ export const specimens: Specimen[] = [
   cardBreakSummon,
   cardToDetailContainerTransform,
   championResolution,
+  characterFreezeIntroduction,
   chargeRelease,
   choiceExecutionSlash,
   circularProgressCompletionMorph,
