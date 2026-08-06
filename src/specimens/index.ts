@@ -261,7 +261,8 @@ export const specimens: Specimen[] = [
   temporalFreeze,
   timeSkip,
   ultraStateOptimisation,
-  tornEdgeDrawer,  velvetDoorTransition,
+  tornEdgeDrawer,
+  velvetDoorTransition,
   waterlinePageWipe,
   wildEncounterTransition,
 ]
