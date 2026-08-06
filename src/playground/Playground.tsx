@@ -24,6 +24,7 @@ import {
   saveDraft,
   type PlaygroundDraft,
 } from './drafts'
+import { ExportForm } from './ExportForm'
 import { decodeShare, encodeShare } from './share'
 import type { EditorLanguage } from './CodeEditor'
 import './playground.css'
@@ -264,6 +265,7 @@ export function Playground() {
             onChange={setControls}
             onRestart={() => frameRef.current?.restart()}
           />
+          <ExportForm html={html} css={css} js={js} controls={controls} />
         </div>
       </div>
     </div>
