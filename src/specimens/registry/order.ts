@@ -579,4 +579,5 @@ export const specimenOrder: string[] = [
   'feedback-loop-warning',
   'spectrum-bar-dance',
   'oscilloscope-trace',
+  'spectrogram-waterfall',
 ]
