@@ -1,0 +1,8 @@
+{
+  "name": "noise-gate-open",
+  "ref": "SPX-3800",
+  "title": "Noise Gate Open",
+  "mode": "scope",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

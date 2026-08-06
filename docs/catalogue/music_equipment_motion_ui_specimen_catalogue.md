@@ -137,7 +137,7 @@ specimens can feel tactile without needing sound.
     decisive reduction-meter impact followed by recovery.
 - [ ] **MUSIC-040** · `SPX-3799` · ★★★★★ **Limiter Ceiling Lock** — Peaks hit a hard ceiling and
     flatten while the limiter state acquires.
-- [ ] **MUSIC-041** · `SPX-3800` · ★★★★★ **Noise Gate Open** — A closed signal path opens only
+- [x] **MUSIC-041** · `SPX-3800` · ★★★★★ **Noise Gate Open** — A closed signal path opens only
     when input crosses a threshold.
 - [ ] **MUSIC-042** · `SPX-3801` · ★★★★☆ **Gate Hold Countdown** — An open gate visibly holds for
     a fixed interval before closing.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-041 | SPX-3800 | `noise-gate-open` | Noise Gate Open |
 | MUSIC-039 | SPX-3798 | `gain-reduction-slam` | Gain Reduction Slam |
 | MUSIC-032 | SPX-3791 | `spectrogram-waterfall` | Spectrogram Waterfall |
 | MUSIC-030 | SPX-3789 | `oscilloscope-trace` | Oscilloscope Trace |
@@ -897,12 +898,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **34 / 310** complete.
+- Progress: **35 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 34 |
-| Open | 276 |
+| Done | 35 |
+| Open | 275 |
 
 ## Core first-wave / build queue
 
@@ -918,7 +919,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · `spectrogram-waterfall`
 - [x] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · `compressor-threshold-crush`
 - [x] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · `gain-reduction-slam`
-- [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
+- [x] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · `noise-gate-open`
 - [x] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · `stomp-switch-press`
 - [x] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · `pedalboard-signal-chain`
 - [x] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · `tap-tempo-pulse`

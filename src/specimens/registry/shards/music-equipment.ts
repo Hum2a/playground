@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { noiseGateOpen } from '../../library/music-equipment/noise-gate-open/entry'
 import { gainReductionSlam } from '../../library/music-equipment/gain-reduction-slam/entry'
 import { spectrogramWaterfall } from '../../library/music-equipment/spectrogram-waterfall/entry'
 import { oscilloscopeTrace } from '../../library/music-equipment/oscilloscope-trace/entry'
@@ -35,6 +36,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  noiseGateOpen,
   gainReductionSlam,
   spectrogramWaterfall,
   oscilloscopeTrace,
