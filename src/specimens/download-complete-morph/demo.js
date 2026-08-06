@@ -1,0 +1,1 @@
+export function runDownloadComplete(){document.querySelector('[data-ring]').hidden=true;document.querySelector('[data-done]').hidden=false};document.querySelector('[data-go]')?.addEventListener('click',()=>runDownloadComplete())

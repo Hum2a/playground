@@ -128,6 +128,7 @@ import { directionalFocusTravel } from './directional-focus-travel/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
+import { downloadCompleteMorph } from './download-complete-morph/entry'
 import { downloadProgressRing } from './download-progress-ring/entry'
 import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
@@ -614,6 +615,7 @@ export const specimens: Specimen[] = [
   discoveryTearOpen,
   dockLaunchBounce,
   dockMagnification,
+  downloadCompleteMorph,
   downloadProgressRing,
   dragProxyFormation,
   dramaticObjectionError,
