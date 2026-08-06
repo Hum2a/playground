@@ -115,6 +115,7 @@ import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
 import { detailsPanelExpand } from './details-panel-expand/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dialogMaterialise } from './dialog-materialise/entry'
+import { directionalFocusTravel } from './directional-focus-travel/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
@@ -574,6 +575,7 @@ export const specimens: Specimen[] = [
   detailsPanelExpand,
   diagnosticBootSequence,
   dialogMaterialise,
+  directionalFocusTravel,
   discoveryTearOpen,
   dockLaunchBounce,
   dockMagnification,
