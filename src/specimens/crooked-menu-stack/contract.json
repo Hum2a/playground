@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/crooked-menu-stack.schema.json",
+  "title": "CrookedMenuStack",
+  "description": "Portable visual/component contract for a Persona-adjacent crooked menu that recomposes on selection. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "idle",
+    "active",
+    "neighborPush",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "crooked-menu-stack" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Interactive crooked menu where selection expands the active item and physically recomposes neighbouring items."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "const": ["PROFILE", "PROJECTS", "ARCHIVE", "LAB", "CONTACT"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "paper", "red"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "idle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontSizePx", "fontWeight", "padding", "rotations"],
+      "properties": {
+        "fontSizePx": { "type": "number", "const": 22 },
+        "fontWeight": { "type": "integer", "const": 900 },
+        "padding": { "type": "string", "const": "8px 18px" },
+        "rotations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["profile", "projects", "archive", "lab", "contact"],
+          "properties": {
+            "profile": { "type": "number", "const": -2 },
+            "projects": { "type": "number", "const": 2 },
+            "archive": { "type": "number", "const": -1 },
+            "lab": { "type": "number", "const": 3 },
+            "contact": { "type": "number", "const": -2 }
+          }
+        },
+        "margins": {
+          "type": "object",
+          "description": "Frozen uneven spacing (margin-top / margin-left rem).",
+          "properties": {
+            "profile": { "type": "string", "const": "0 / 0.35rem" },
+            "projects": { "type": "string", "const": "0.55rem / 1.1rem" },
+            "archive": { "type": "string", "const": "0.4rem / 0.15rem" },
+            "lab": { "type": "string", "const": "0.7rem / 1.35rem" },
+            "contact": { "type": "string", "const": "0.5rem / 0.55rem" }
+          }
+        }
+      }
+    },
+    "active": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fontSizePx",
+        "padding",
+        "widthPercent",
+        "clipPath",
+        "backingOffset",
+        "rotations"
+      ],
+      "properties": {
+        "fontSizePx": { "type": "number", "const": 34 },
+        "padding": { "type": "string", "const": "14px 30px" },
+        "widthPercent": { "type": "number", "const": 122 },
+        "clipPath": {
+          "type": "string",
+          "const": "polygon(2% 4%, 96% 0%, 100% 88%, 94% 100%, 3% 97%, 0% 18%)"
+        },
+        "backingOffset": {
+          "type": "object",
+          "required": ["xPx", "yPx"],
+          "properties": {
+            "xPx": { "type": "number", "const": 7 },
+            "yPx": { "type": "number", "const": 6 }
+          }
+        },
+        "backingLagMs": { "type": "number", "const": 30 },
+        "rotations": {
+          "type": "object",
+          "properties": {
+            "profile": { "type": "number", "const": -5 },
+            "projects": { "type": "number", "const": 5 },
+            "archive": { "type": "number", "const": -4 },
+            "lab": { "type": "number", "const": 6 },
+            "contact": { "type": "number", "const": -5 }
+          }
+        }
+      }
+    },
+    "neighborPush": {
+      "type": "object",
+      "description": "Vertical translateY px for non-active items by selected index.",
+      "additionalProperties": false,
+      "required": ["minPx", "maxPx", "bySelectedIndex"],
+      "properties": {
+        "minPx": { "type": "number", "const": 10 },
+        "maxPx": { "type": "number", "const": 20 },
+        "bySelectedIndex": {
+          "type": "object",
+          "description": "Maps selected index → { itemIndex: translateYPx }"
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalMs", "contractMs", "attackMs", "settleMs"],
+      "properties": {
+        "totalMs": { "type": "number", "const": 320 },
+        "contractMs": { "type": "number", "const": 90 },
+        "attackMs": { "type": "number", "const": 140 },
+        "neighborMs": { "type": "number", "const": 140 },
+        "settleMs": { "type": "number", "const": 40 },
+        "exitScale": { "type": "number", "const": 0.94 },
+        "enterTranslatePx": { "type": "number", "const": 16 },
+        "hoverPreviewPx": { "type": "number", "const": 4 },
+        "noBounce": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radiogroup", "stableDomOrder", "backingDecorative"],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "stableDomOrder": { "type": "boolean", "const": true },
+        "backingDecorative": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwitch", "triggers"],
+      "properties": {
+        "instantSwitch": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "stack",
+        "item",
+        "face",
+        "backing",
+        "active",
+        "exit",
+        "enter"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "cms" },
+        "stack": { "type": "string", "const": "cms__stack" },
+        "item": { "type": "string", "const": "cms__item" },
+        "face": { "type": "string", "const": "cms__face" },
+        "backing": { "type": "string", "const": "cms__backing" },
+        "active": { "type": "string", "const": "cms__item--active" },
+        "exit": { "type": "string", "const": "cms__item--exit" },
+        "enter": { "type": "string", "const": "cms__item--enter" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "select": { "type": "string", "const": "selectCrookedMenu" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "noDomReorder": { "type": "boolean", "const": true }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "crooked-menu-stack",
+      "intent": "Interactive crooked menu where selection expands the active item and physically recomposes neighbouring items.",
+      "copy": {
+        "items": ["PROFILE", "PROJECTS", "ARCHIVE", "LAB", "CONTACT"]
+      },
+      "colours": {
+        "black": "#090909",
+        "paper": "#f5f1e8",
+        "red": "#e60012"
+      },
+      "idle": {
+        "fontSizePx": 22,
+        "fontWeight": 900,
+        "padding": "8px 18px",
+        "rotations": {
+          "profile": -2,
+          "projects": 2,
+          "archive": -1,
+          "lab": 3,
+          "contact": -2
+        }
+      },
+      "active": {
+        "fontSizePx": 34,
+        "padding": "14px 30px",
+        "widthPercent": 122,
+        "clipPath": "polygon(2% 4%, 96% 0%, 100% 88%, 94% 100%, 3% 97%, 0% 18%)",
+        "backingOffset": { "xPx": 7, "yPx": 6 },
+        "backingLagMs": 30,
+        "rotations": {
+          "profile": -5,
+          "projects": 5,
+          "archive": -4,
+          "lab": 6,
+          "contact": -5
+        }
+      },
+      "neighborPush": {
+        "minPx": 10,
+        "maxPx": 20
+      },
+      "animation": {
+        "totalMs": 320,
+        "contractMs": 90,
+        "attackMs": 140,
+        "neighborMs": 140,
+        "settleMs": 40,
+        "exitScale": 0.94,
+        "enterTranslatePx": 16,
+        "hoverPreviewPx": 4,
+        "noBounce": true
+      },
+      "a11y": {
+        "radiogroup": true,
+        "stableDomOrder": true,
+        "backingDecorative": true
+      },
+      "reducedMotion": {
+        "instantSwitch": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "cms",
+        "stack": "cms__stack",
+        "item": "cms__item",
+        "face": "cms__face",
+        "backing": "cms__backing",
+        "active": "cms__item--active",
+        "exit": "cms__item--exit",
+        "enter": "cms__item--enter"
+      },
+      "behaviour": {
+        "select": "selectCrookedMenu",
+        "restartMessageType": "restart",
+        "noDomReorder": true
+      }
+    }
+  ]
+}

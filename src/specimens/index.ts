@@ -4,6 +4,7 @@ import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
+import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
@@ -83,6 +84,7 @@ export const specimens: Specimen[] = [
   paperRipUnlock,
   panelCollapseNavigation,
   rankUpImpact,
+  crookedMenuStack,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
