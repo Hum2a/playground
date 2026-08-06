@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/desktop-space-swipe.schema.json",
+  "title": "DesktopSpaceSwipe",
+  "description": "Portable contract for desktop space plane swipe navigation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "viewport",
+    "transition",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "desktop-space-swipe" },
+    "intent": {
+      "type": "string",
+      "const": "Two workspace planes slide coherently; all windows move as one; indicator updates at 50%."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["space01Windows", "space02Windows"],
+      "properties": {
+        "space01Windows": {
+          "type": "array",
+          "const": ["EDITOR", "TERMINAL", "PREVIEW"]
+        },
+        "space02Windows": {
+          "type": "array",
+          "const": ["DOCS", "CHAT"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d1118" },
+        "panel": { "type": "string", "const": "#1a2030" },
+        "line": { "type": "string", "const": "#2a3348" },
+        "muted": { "type": "string", "const": "#6d7a90" },
+        "cream": { "type": "string", "const": "#e6ecf4" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "viewport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "space01WindowCount", "space02WindowCount"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 520 },
+        "heightPx": { "type": "number", "const": 360 },
+        "space01WindowCount": { "type": "number", "const": 3 },
+        "space02WindowCount": { "type": "number", "const": 2 }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "depthScale", "indicatorDelayRatio"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 460 },
+        "depthScale": { "type": "number", "const": 0.985 },
+        "indicatorDelayRatio": { "type": "number", "const": 0.5 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwitch", "triggers"],
+      "properties": {
+        "instantSwitch": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "track", "plane", "window"],
+      "properties": {
+        "root": { "type": "string", "const": "dss" },
+        "track": { "type": "string", "const": "dss__track" },
+        "plane": { "type": "string", "const": "dss__plane" },
+        "window": { "type": "string", "const": "dss__window" }
+      }
+    }
+  }
+}

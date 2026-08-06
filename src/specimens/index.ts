@@ -59,6 +59,7 @@ import { deadlinePanic } from './deadline-panic/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
+import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
@@ -284,6 +285,7 @@ export const specimens: Specimen[] = [
   decisionShowdown,
   delayedDamageBar,
   deletionGuillotine,
+  desktopSpaceSwipe,
   diagnosticBootSequence,
   discoveryTearOpen,
   dockLaunchBounce,
