@@ -1,0 +1,54 @@
+<div class="midnight-clock" data-midnight-clock data-state="evening">
+  <div class="midnight-clock__stage">
+    <div class="midnight-clock__panels" aria-hidden="true">
+      <span class="midnight-clock__seam" data-mc-seam></span>
+      <span class="midnight-clock__panel midnight-clock__panel--left"></span>
+      <span class="midnight-clock__panel midnight-clock__panel--right"></span>
+    </div>
+
+    <div class="midnight-clock__scene midnight-clock__scene--a" data-mc-scene="a">
+      <p class="midnight-clock__date" data-mc-date-a>06 APR</p>
+      <h2 class="midnight-clock__title" data-mc-title-a>LATE EVENING</h2>
+      <p class="midnight-clock__digital" data-mc-digital aria-hidden="true">23:54</p>
+
+      <div class="midnight-clock__face" data-mc-face aria-hidden="true">
+        <span class="midnight-clock__ring"></span>
+        <span class="midnight-clock__markers"></span>
+        <span class="midnight-clock__hand midnight-clock__hand--hour" data-mc-hour></span>
+        <span class="midnight-clock__hand midnight-clock__hand--minute" data-mc-minute></span>
+        <span class="midnight-clock__hub"></span>
+      </div>
+    </div>
+
+    <div class="midnight-clock__scene midnight-clock__scene--b" data-mc-scene="b" hidden>
+      <p class="midnight-clock__date">07 APR</p>
+      <h2 class="midnight-clock__title">MIDNIGHT</h2>
+      <p class="midnight-clock__digital">00:00</p>
+      <div class="midnight-clock__face midnight-clock__face--mini" aria-hidden="true">
+        <span class="midnight-clock__ring"></span>
+        <span class="midnight-clock__markers"></span>
+        <span class="midnight-clock__hand midnight-clock__hand--hour midnight-clock__hand--settled"></span>
+        <span class="midnight-clock__hand midnight-clock__hand--minute midnight-clock__hand--settled"></span>
+        <span class="midnight-clock__hub"></span>
+      </div>
+    </div>
+
+    <p
+      class="midnight-clock__status"
+      data-mc-status
+      role="status"
+      aria-live="polite"
+    >
+      Late evening. 6 April, 23:54.
+    </p>
+  </div>
+
+  <div class="midnight-clock__controls">
+    <button type="button" class="midnight-clock__btn" data-mc-advance>
+      ADVANCE TIME
+    </button>
+    <button type="button" class="midnight-clock__btn midnight-clock__btn--ghost" data-mc-reset>
+      RESET
+    </button>
+  </div>
+</div>

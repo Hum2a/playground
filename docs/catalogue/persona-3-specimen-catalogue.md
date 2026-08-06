@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 238** complete.
+- Progress: **17 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 222 |
+| Done | 17 |
+| Open | 221 |
 
 ## Visual grammar
 
@@ -47,6 +47,7 @@
 | P3-207 | `SPX-604` | `scanner-search` | Scanner Search |
 | P3-083 | `SPX-480` | `tactical-target-lock` | Tactical Target Lock |
 | P3-221 | `SPX-618` | `energy-transfer-sync` | Energy Transfer Sync |
+| P3-134 | `SPX-531` | `midnight-clock-transition` | Midnight Clock Transition |
 | P3-225 | `SPX-622` | `memory-fragment-reveal` | Memory Fragment Reveal |
 
 ## Core first-wave
@@ -70,7 +71,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transition
 - [ ] **P3-020** · `SPX-418` · **Glass Fracture Reveal** — reveal
 - [x] **P3-107** · `SPX-504` · **Butterfly Entry** — arrival
-- [ ] **P3-134** · `SPX-531` · **Midnight Clock Transition** — transition
+- [x] **P3-134** · `SPX-531` · **Midnight Clock Transition** — transition
 - [x] **P3-207** · `SPX-604` · **Scanner Search** — search
 - [x] **P3-221** · `SPX-618` · **Energy Transfer Sync** — sync
 
@@ -252,7 +253,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Clock / time / midnight
 
-- [ ] **P3-134** · `SPX-531` · **Midnight Clock Transition** — time.
+- [x] **P3-134** · `SPX-531` · **Midnight Clock Transition** — time.
 - [ ] **P3-135** · `SPX-532` · **Clock-Hand Wipe** — time.
 - [ ] **P3-136** · `SPX-533` · **Time Skip** — time.
 - [ ] **P3-137** · `SPX-534` · **Day Advance** — time.

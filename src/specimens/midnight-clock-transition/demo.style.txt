@@ -1,0 +1,429 @@
+/* SPX-531 Midnight Clock Transition — portable contract. Do not restyle to host tokens. */
+
+.midnight-clock {
+  --mc-bg: #020912;
+  --mc-deep: #071e38;
+  --mc-blue: #155f8e;
+  --mc-bright: #45b8df;
+  --mc-pale: #d7f6ff;
+  /* 23:54 geometry */
+  --mc-hour-start: 357deg;
+  --mc-minute-start: 324deg;
+
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--mc-bg);
+  color: var(--mc-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.midnight-clock *,
+.midnight-clock *::before,
+.midnight-clock *::after {
+  box-sizing: border-box;
+}
+
+.midnight-clock__stage {
+  position: relative;
+  flex: 1;
+  min-height: 240px;
+  overflow: hidden;
+  border: 1px solid rgb(21 95 142 / 0.4);
+  background: radial-gradient(ellipse at 50% 40%, #041525 0%, var(--mc-bg) 72%);
+}
+
+.midnight-clock__scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+}
+
+.midnight-clock__scene[hidden] {
+  display: none;
+}
+
+.midnight-clock__date {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mc-bright);
+}
+
+.midnight-clock__title {
+  margin: 0;
+  font-size: clamp(1.05rem, 5vw, 1.35rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mc-pale);
+}
+
+.midnight-clock__digital {
+  margin: 0.15rem 0 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  font-variant-numeric: tabular-nums;
+  color: var(--mc-pale);
+}
+
+/* —— Clock face (~150px) —— */
+.midnight-clock__face {
+  position: relative;
+  width: clamp(120px, 38vw, 150px);
+  height: clamp(120px, 38vw, 150px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.midnight-clock__face--mini {
+  width: 72px;
+  height: 72px;
+  margin-top: 0.35rem;
+  opacity: 0.85;
+}
+
+.midnight-clock__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--mc-blue);
+  background: var(--mc-deep);
+  box-shadow: inset 0 0 0 1px rgb(69 184 223 / 0.15);
+  transition:
+    border-color 120ms linear,
+    box-shadow 120ms linear;
+}
+
+.midnight-clock--anticipate .midnight-clock__ring {
+  border-color: var(--mc-bright);
+  box-shadow:
+    inset 0 0 0 1px rgb(69 184 223 / 0.45),
+    0 0 18px rgb(69 184 223 / 0.25);
+}
+
+.midnight-clock__markers {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      from -1.5deg,
+      var(--mc-pale) 0deg 3deg,
+      transparent 3deg 30deg
+    );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.midnight-clock__face--mini .midnight-clock__markers {
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+}
+
+.midnight-clock__hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  background: var(--mc-pale);
+  border-radius: 1px;
+  will-change: transform;
+}
+
+.midnight-clock__hand--hour {
+  width: 3px;
+  height: 28%;
+  margin-left: -1.5px;
+  transform: rotate(var(--mc-hour-start));
+  background: var(--mc-bright);
+}
+
+.midnight-clock__hand--minute {
+  width: 2px;
+  height: 40%;
+  margin-left: -1px;
+  transform: rotate(var(--mc-minute-start));
+  background: var(--mc-pale);
+}
+
+.midnight-clock__hand--settled {
+  transform: rotate(0deg);
+}
+
+.midnight-clock__face--mini .midnight-clock__hand--hour {
+  height: 26%;
+}
+
+.midnight-clock__face--mini .midnight-clock__hand--minute {
+  height: 38%;
+}
+
+.midnight-clock__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--mc-pale);
+  box-shadow: 0 0 0 2px var(--mc-deep);
+}
+
+/* —— Accelerate 120–620ms —— */
+.midnight-clock--accelerate .midnight-clock__hand--hour {
+  animation: mc-hour-run 500ms cubic-bezier(0.55, 0.05, 0.7, 0.2) forwards;
+}
+
+.midnight-clock--accelerate .midnight-clock__hand--minute {
+  animation: mc-minute-run 500ms cubic-bezier(0.4, 0.02, 0.75, 0.15) forwards;
+}
+
+.midnight-clock--accelerate .midnight-clock__ring {
+  border-color: var(--mc-bright);
+}
+
+/*
+ * Hour: 357° → 360°/0° via slight overshoot path ending at 0.
+ * Minute: 324° → 324 + 684 = 1008° ≡ 0° (≈1.9 turns) — much faster.
+ */
+@keyframes mc-hour-run {
+  0% {
+    transform: rotate(357deg);
+  }
+  40% {
+    transform: rotate(358.5deg);
+  }
+  75% {
+    transform: rotate(359.4deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mc-minute-run {
+  0% {
+    transform: rotate(324deg);
+  }
+  25% {
+    transform: rotate(420deg);
+  }
+  55% {
+    transform: rotate(620deg);
+  }
+  80% {
+    transform: rotate(880deg);
+  }
+  100% {
+    transform: rotate(1008deg);
+  }
+}
+
+/* Hold aligned at impact / wipe */
+.midnight-clock--impact .midnight-clock__hand--hour,
+.midnight-clock--wipe .midnight-clock__hand--hour,
+.midnight-clock--reveal .midnight-clock__hand--hour,
+.midnight-clock--impact .midnight-clock__hand--minute,
+.midnight-clock--wipe .midnight-clock__hand--minute,
+.midnight-clock--reveal .midnight-clock__hand--minute {
+  transform: rotate(0deg);
+  animation: none;
+}
+
+/* —— Midnight seam + panels —— */
+.midnight-clock__panels {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.midnight-clock__seam {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  margin-left: -1px;
+  background: var(--mc-pale);
+  opacity: 0;
+  transform-origin: center top;
+}
+
+.midnight-clock--impact .midnight-clock__seam {
+  animation: mc-seam 100ms cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+}
+
+@keyframes mc-seam {
+  from {
+    height: 0;
+    top: 50%;
+    opacity: 0.4;
+  }
+  to {
+    height: 100%;
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.midnight-clock__panel {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--mc-deep);
+  transform: scaleX(0);
+}
+
+.midnight-clock__panel--left {
+  left: 0;
+  transform-origin: right center;
+  border-right: 1px solid var(--mc-bright);
+}
+
+.midnight-clock__panel--right {
+  right: 0;
+  transform-origin: left center;
+  border-left: 1px solid var(--mc-bright);
+}
+
+.midnight-clock--wipe .midnight-clock__panel {
+  animation: mc-panel-cover 180ms cubic-bezier(0.55, 0.05, 0.35, 1) forwards;
+}
+
+.midnight-clock--reveal .midnight-clock__seam {
+  opacity: 0;
+}
+
+.midnight-clock--reveal .midnight-clock__panel--left {
+  animation: mc-panel-exit-left 100ms cubic-bezier(0.55, 0.05, 0.35, 1) forwards;
+}
+
+.midnight-clock--reveal .midnight-clock__panel--right {
+  animation: mc-panel-exit-right 100ms cubic-bezier(0.55, 0.05, 0.35, 1) forwards;
+}
+
+@keyframes mc-panel-cover {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes mc-panel-exit-left {
+  from {
+    transform: scaleX(1) translateX(0);
+  }
+  to {
+    transform: scaleX(1) translateX(-105%);
+  }
+}
+
+@keyframes mc-panel-exit-right {
+  from {
+    transform: scaleX(1) translateX(0);
+  }
+  to {
+    transform: scaleX(1) translateX(105%);
+  }
+}
+
+.midnight-clock--settle .midnight-clock__panels {
+  visibility: hidden;
+}
+
+.midnight-clock__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.midnight-clock__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.midnight-clock__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--mc-pale);
+  border-radius: 0;
+  background: transparent;
+  color: var(--mc-pale);
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.midnight-clock__btn:hover:not(:disabled) {
+  background: var(--mc-pale);
+  color: var(--mc-bg);
+}
+
+.midnight-clock__btn:focus-visible {
+  outline: 2px solid var(--mc-bright);
+  outline-offset: 3px;
+}
+
+.midnight-clock__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.midnight-clock__btn--ghost {
+  border-color: rgb(215 246 255 / 0.4);
+  color: rgb(215 246 255 / 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .midnight-clock__hand,
+  .midnight-clock__seam,
+  .midnight-clock__panel,
+  .midnight-clock__ring {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .midnight-clock__hand,
+[data-force-reduced-motion='true'] .midnight-clock__seam,
+[data-force-reduced-motion='true'] .midnight-clock__panel,
+[data-force-reduced-motion='true'] .midnight-clock__ring {
+  animation: none !important;
+  transition: none !important;
+}

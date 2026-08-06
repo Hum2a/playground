@@ -40,6 +40,7 @@ import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
@@ -152,6 +153,7 @@ export const specimens: Specimen[] = [
   mangaCutInNotification,
   memoryFragmentReveal,
   misprintNotification,
+  midnightClockTransition,
   moonPhaseProgress,
   newspaperHeadlineDrop,
   objectiveAcquired,
