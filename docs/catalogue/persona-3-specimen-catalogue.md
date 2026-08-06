@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **5 / 238** complete.
+- Progress: **6 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 233 |
+| Done | 6 |
+| Open | 232 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 | --- | --- | --- | --- |
 | P3-019 | `SPX-005` | `azure-shard-transition` | Blue Glass Shard Transition |
 | P3-037 | `SPX-006` | `precision-menu-snap` | Precision Menu Snap |
+| P3-059 | `SPX-456` | `moon-phase-progress` | Moon Phase Progress |
 | P3-112 | `SPX-509` | `fusion-selection-merge` | Fusion Selection Merge |
 | P3-105 | `SPX-502` | `velvet-door-transition` | Velvet Door Transition |
 | P3-096 | `SPX-493` | `persona-awakening-reveal` | Persona Awakening Reveal |
@@ -44,14 +45,14 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [x] **P3-019** · `SPX-005` · **Blue Glass Shard Transition** — transition
 - [x] **P3-037** · `SPX-006` · **Evoker Menu Snap** — selection
-- [ ] **P3-047** · `SPX-444` · **Dark Hour Conversion** — transformation
+- [x] **P3-047** · `SPX-444` · **Dark Hour Conversion** — transformation
 - [ ] **P3-062** · `SPX-459` · **Eclipse Transition** — transition
 - [ ] **P3-071** · `SPX-468` · **Tartarus Floor Ascension** — progress
 - [x] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — reveal
 - [x] **P3-105** · `SPX-502` · **Velvet Door Transition** — transition
 - [x] **P3-112** · `SPX-509` · **Fusion Selection Merge** — fusion
 - [ ] **P3-083** · `SPX-480` · **Tactical Target Lock** — selection
-- [ ] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
+- [x] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
 - [ ] **P3-145** · `SPX-542` · **Social Link Rank Up** — progression
 - [ ] **P3-224** · `SPX-621` · **Blue Door Discovery** — discovery
 - [ ] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — reveal
@@ -130,7 +131,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Dark Hour transformation
 
-- [ ] **P3-047** · `SPX-444` · **Dark Hour Conversion** — dark-hour.
+- [x] **P3-047** · `SPX-444` · **Dark Hour Conversion** — dark-hour.
 - [ ] **P3-048** · `SPX-445` · **Midnight Snap** — dark-hour.
 - [ ] **P3-049** · `SPX-446` · **Dark Hour Overlay Descent** — dark-hour.
 - [ ] **P3-050** · `SPX-447` · **Reality Distortion Transition** — dark-hour.
@@ -145,7 +146,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Moon / lunar cycle
 
-- [ ] **P3-059** · `SPX-456` · **Moon Phase Progress** — moon.
+- [x] **P3-059** · `SPX-456` · **Moon Phase Progress** — moon.
 - [ ] **P3-060** · `SPX-457` · **Lunar Cycle Loader** — moon.
 - [ ] **P3-061** · `SPX-458` · **Moonrise Reveal** — moon.
 - [ ] **P3-062** · `SPX-459` · **Eclipse Transition** — moon.

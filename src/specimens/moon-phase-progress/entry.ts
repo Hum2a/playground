@@ -29,6 +29,10 @@ export const moonPhaseProgress: Specimen = {
     scope: 'card',
     intensity: 'graphic',
   },
+  inspiredBy: {
+    franchise: 'persona',
+    works: ['persona-3'],
+  },
   tags: ['progress', 'lunar', 'visualisation'],
   deps: 'none',
   motion: {
