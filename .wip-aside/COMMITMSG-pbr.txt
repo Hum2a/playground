@@ -1,0 +1,3 @@
+Add SPX-1212 Post-Burst Recovery
+
+Cooldown after successful boost: capacity recovers through a frozen ladder while TASK COMPLETE stays visible.

@@ -1,0 +1,58 @@
+{
+  "name": "post-burst-recovery",
+  "intent": "Cooldown after successful over-performance: capacity is temporarily reduced, then recovers through a frozen ladder until baseline READY — task completion remains visible throughout.",
+  "primitives": ["cooldown", "recovery", "resource"],
+  "colours": {
+    "ink": "#101218",
+    "panel": "#171b22",
+    "rule": "#2d3442",
+    "pewter": "#8b93a5",
+    "chalk": "#e7eaf1",
+    "ok": "#6bb59a",
+    "warm": "#d4a45a"
+  },
+  "chrome": {
+    "worker": "WORKER // 04",
+    "task": "TASK COMPLETE",
+    "taskPersists": true,
+    "initialStatus": "RECOVERING",
+    "finalStatus": "READY",
+    "trigger": "RESTORE",
+    "initialScale": 0.96
+  },
+  "stages": [
+    { "recovery": 0, "load": 71, "capacity": 38, "structures": 2 },
+    { "recovery": 20, "load": 66, "capacity": 46, "structures": 3 },
+    { "recovery": 45, "load": 59, "capacity": 59, "structures": 4 },
+    { "recovery": 70, "load": 52, "capacity": 74, "structures": 5 },
+    { "recovery": 88, "load": 46, "capacity": 89, "structures": 6 },
+    { "recovery": 100, "load": 42, "capacity": 100, "structures": 6 }
+  ],
+  "timing": {
+    "stageMs": [0, 160, 160, 160, 160, 160],
+    "readySettleMs": 140,
+    "scaleRestore": "0.96 → 1"
+  },
+  "ready": {
+    "onlyAtRecovery": 100,
+    "at88Status": "RECOVERING",
+    "ticks": 2
+  },
+  "api": {
+    "restore": "runPostBurstRecovery()",
+    "reset": "runPostBurstReset()",
+    "busyGuard": true,
+    "replayViaRestore": true
+  },
+  "a11y": {
+    "taskSeparateFromRecoveryStatus": true,
+    "liveRegion": "polite"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show READY with load 42%, capacity 100%, six structures, two ticks"
+  }
+}

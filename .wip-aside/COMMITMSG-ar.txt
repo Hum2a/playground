@@ -1,0 +1,3 @@
+Add SPX-1211 Adaptive Recovery
+
+Failed worker recovers through a health ladder, then adapts three metrics above its previous baseline.
