@@ -95,7 +95,7 @@ specimens can feel tactile without needing sound.
     onto a detected problem frequency.
 - [ ] **MUSIC-024** · `SPX-3783` · ★★★★★ **Graphic EQ Fader Wave** — A bank of vertical frequency
     faders rises into a shaped tonal curve.
-- [ ] **MUSIC-025** · `SPX-3784` · ★★★★★ **EQ Bypass Flatten** — The active curve smoothly
+- [x] **MUSIC-025** · `SPX-3784` · ★★★★★ **EQ Bypass Flatten** — The active curve smoothly
     collapses to a neutral flat line.
 - [ ] **MUSIC-026** · `SPX-3785` · ★★★★☆ **Frequency Solo Spotlight** — One frequency region
     remains highlighted while the rest of the spectrum recedes.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-025 | SPX-3784 | `eq-bypass-flatten` | EQ Bypass Flatten |
 | MUSIC-019 | SPX-3778 | `parametric-eq-node-drag` | Parametric EQ Node Drag |
 | MUSIC-013 | SPX-3772 | `peak-hold-marker` | Peak Hold Marker |
 | MUSIC-012 | SPX-3771 | `led-ladder-meter` | LED Ladder Meter |
@@ -869,12 +870,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **6 / 310** complete.
+- Progress: **7 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 304 |
+| Done | 7 |
+| Open | 303 |
 
 ## Core first-wave / build queue
 
@@ -884,7 +885,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-012** · `SPX-3771` · **LED Ladder Meter** · `led-ladder-meter`
 - [x] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · `peak-hold-marker`
 - [x] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · `parametric-eq-node-drag`
-- [ ] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · scaffold `eq-bypass-flatten`
+- [x] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · `eq-bypass-flatten`
 - [ ] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · scaffold `spectrum-bar-dance`
 - [ ] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · scaffold `oscilloscope-trace`
 - [ ] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · scaffold `spectrogram-waterfall`

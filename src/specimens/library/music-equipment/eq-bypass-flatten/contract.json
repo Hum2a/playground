@@ -1,0 +1,8 @@
+{
+  "name": "eq-bypass-flatten",
+  "ref": "SPX-3784",
+  "title": "EQ Bypass Flatten",
+  "mode": "patch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

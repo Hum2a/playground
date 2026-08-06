@@ -553,4 +553,5 @@ export const specimenOrder: string[] = [
   'led-ladder-meter',
   'peak-hold-marker',
   'parametric-eq-node-drag',
+  'eq-bypass-flatten',
 ]
