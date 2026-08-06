@@ -1,0 +1,8 @@
+{
+  "name": "modular-page-replate",
+  "ref": "SPX-3552",
+  "title": "Modular Page Replate",
+  "mode": "rule",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

@@ -560,6 +560,8 @@ import { leadColumnExpansion } from './lead-column-expansion/entry'
 
 import { gridRuleConstruction } from './grid-rule-construction/entry'
 
+import { modularPageReplate } from './modular-page-replate/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1068,6 +1070,7 @@ export const specimens: Specimen[] = [
   columnReflow,
   leadColumnExpansion,
   gridRuleConstruction,
+  modularPageReplate,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
