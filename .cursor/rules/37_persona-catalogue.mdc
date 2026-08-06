@@ -1,5 +1,5 @@
 ---
-description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball catalogue checklists when a listed specimen ships
+description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS catalogue checklists when a listed specimen ships
 alwaysApply: true
 ---
 
@@ -11,6 +11,7 @@ alwaysApply: true
 | Persona 3 | [`docs/catalogue/persona-3-specimen-catalogue.md`](docs/catalogue/persona-3-specimen-catalogue.md) |
 | Pokémon | [`docs/catalogue/pokemon-specimen-catalogue.md`](docs/catalogue/pokemon-specimen-catalogue.md) |
 | Dragon Ball | [`docs/catalogue/dragonball-specimen-catalogue.md`](docs/catalogue/dragonball-specimen-catalogue.md) |
+| iOS & macOS | [`docs/catalogue/ios-macos-specimen-catalogue.md`](docs/catalogue/ios-macos-specimen-catalogue.md) |
 
 ## IDs
 
@@ -20,6 +21,7 @@ alwaysApply: true
 | `P3-NNN` | Stable idea id in the P3 checklist (001–238) |
 | `PK-NNN` | Stable idea id in the Pokémon checklist (001–266) |
 | `DB-NNN` | Stable idea id in the Dragon Ball checklist (001–244) |
+| `IOS-NNN` | Stable idea id in the iOS & macOS checklist (001–258) |
 | `SPX-NNN` | Registry `ref` in `entry.ts` / `index.ts` |
 
 ### Persona 5 refs
@@ -40,15 +42,20 @@ alwaysApply: true
 
 - Unbuilt DB ideas are **pre-assigned** `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 
+### iOS & macOS refs
+
+- Unbuilt IOS ideas are **pre-assigned** `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/ios_macos_effects_catalogue.md`](docs/catalogue/ios_macos_effects_catalogue.md) redirects to the canonical checklist.
+
 ### Outside these catalogues
 
-Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, or DB row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
+Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, or IOS row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 
 ## When a specimen ships
 
 After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
 
-1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / title / assigned `SPX-NNN`).
+1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / title / assigned `SPX-NNN`).
 2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
 3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / total`).
 4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
@@ -58,4 +65,4 @@ Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
 
 ## Scope
 
-Only applies to ideas listed in these four catalogue files. Other inspiration lineages do not use them.
+Only applies to ideas listed in these five catalogue files. Other inspiration lineages do not use them.

@@ -72,6 +72,13 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Dragon Ball',
     works: {},
   },
+  apple: {
+    label: 'Apple Platforms',
+    works: {
+      ios: { label: 'iOS' },
+      macos: { label: 'macOS' },
+    },
+  },
   original: {
     label: 'Original',
     works: {},

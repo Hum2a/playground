@@ -94,6 +94,17 @@ Backlog: [`docs/catalogue/pokemon-specimen-catalogue.md`](catalogue/pokemon-spec
 
 Backlog: [`docs/catalogue/dragonball-specimen-catalogue.md`](catalogue/dragonball-specimen-catalogue.md) (`DB-NNN` / `SPX-966`…`SPX-1209`).
 
+### Apple Platforms (`apple`)
+
+| Work id | Label |
+| --- | --- |
+| `ios` | iOS |
+| `macos` | macOS |
+
+Platform interaction language (continuity, detents, materials, ownership). No Apple marks, SF Symbol assets, or system screenshots.
+
+Backlog: [`docs/catalogue/ios-macos-specimen-catalogue.md`](catalogue/ios-macos-specimen-catalogue.md) (`IOS-NNN` / `SPX-1300`…`SPX-1557`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.
