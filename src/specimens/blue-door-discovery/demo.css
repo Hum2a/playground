@@ -1,0 +1,779 @@
+/* blue-door-discovery — portable specimen styles (SPX-621) */
+
+.bdd {
+  --bdd-paper: #e8edf0;
+  --bdd-ink: #17212a;
+  --bdd-mute: #74818c;
+  --bdd-void: #020b18;
+  --bdd-deep: #071d43;
+  --bdd-mid: #163e83;
+  --bdd-blue: #3f83d1;
+  --bdd-pale: #cfe5ff;
+  --bdd-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  /* Clue origin: lower-central */
+  --bdd-clue-x: 50%;
+  --bdd-clue-y: 68%;
+  --bdd-clue-size: 12px;
+  /* Doorway ~41% of host */
+  --bdd-door-w: 41%;
+  --bdd-door-h: 72%;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  color: var(--bdd-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.bdd *,
+.bdd *::before,
+.bdd *::after {
+  box-sizing: border-box;
+}
+
+.bdd__host {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 300px;
+  height: 300px;
+  background: var(--bdd-void);
+  border: 1px solid rgb(23 33 42 / 0.2);
+}
+
+/* —— Secret (always in DOM; not semantic until discovered) —— */
+.bdd__secret {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--bdd-pale);
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 48%, var(--bdd-deep) 0%, var(--bdd-void) 72%);
+  transform: scale(0.9) translateY(6px);
+  transform-origin: 50% 50%;
+}
+
+.bdd__depth {
+  position: absolute;
+  inset: 14% 28%;
+  pointer-events: none;
+}
+
+.bdd__depth-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgb(207 229 255 / 0.22);
+}
+
+.bdd__depth-line--1 {
+  left: 22%;
+}
+
+.bdd__depth-line--2 {
+  left: 50%;
+}
+
+.bdd__depth-line--3 {
+  left: 78%;
+}
+
+.bdd__secret-kicker {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font: 700 0.58rem/1.2 inherit;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bdd-blue);
+}
+
+.bdd__secret-title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font: 800 clamp(1.1rem, 5vw, 1.45rem) / 1.1 inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bdd-pale);
+}
+
+.bdd__secret-body {
+  position: relative;
+  z-index: 1;
+  margin: 0.15rem 0 0.55rem;
+  font: 500 0.78rem/1.35 inherit;
+  color: rgb(207 229 255 / 0.72);
+}
+
+.bdd__secret-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+/* —— Ordinary surface —— */
+.bdd__surface {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.bdd__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.35rem 1.2rem;
+  background: var(--bdd-paper);
+  color: var(--bdd-ink);
+  /* Idle: full surface. Open: doorway hole so frame remains. */
+  clip-path: inset(0 0 0 0);
+}
+
+.bdd__face-shift {
+  min-width: 0;
+}
+
+.bdd__face-shift--left {
+  padding-right: 0.35rem;
+}
+
+.bdd__face-shift--right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding-left: 0.35rem;
+}
+
+.bdd__kicker {
+  margin: 0 0 0.4rem;
+  font: 700 0.58rem/1.2 inherit;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bdd-mute);
+}
+
+.bdd__title {
+  margin: 0;
+  font: 800 clamp(0.95rem, 3.8vw, 1.2rem) / 1.15 inherit;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.bdd__meta {
+  margin: 0;
+  font: 600 0.78rem/1.3 inherit;
+  color: var(--bdd-mute);
+}
+
+.bdd__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.48rem 0.72rem;
+  border: 1px solid var(--bdd-ink);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bdd-ink);
+  font: 700 0.62rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bdd__btn--enter,
+.bdd__btn--close {
+  border-color: rgb(207 229 255 / 0.45);
+  color: var(--bdd-pale);
+}
+
+.bdd__btn--enter {
+  background: var(--bdd-mid);
+  border-color: var(--bdd-mid);
+}
+
+.bdd__btn:focus {
+  outline: none;
+}
+
+.bdd__btn:focus-visible {
+  outline: 2px solid var(--bdd-blue);
+  outline-offset: 3px;
+}
+
+.bdd__btn--inspect:hover {
+  background: rgb(23 33 42 / 0.06);
+}
+
+.bdd__btn--enter:hover,
+.bdd__btn--close:hover {
+  background: rgb(63 131 209 / 0.35);
+}
+
+.bdd__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Discovery FX (decorative) —— */
+.bdd__fx {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.bdd__clue {
+  position: absolute;
+  left: var(--bdd-clue-x);
+  top: var(--bdd-clue-y);
+  width: var(--bdd-clue-size);
+  height: var(--bdd-clue-size);
+  margin: calc(var(--bdd-clue-size) / -2) 0 0 calc(var(--bdd-clue-size) / -2);
+  background: rgb(63 131 209 / 0.28);
+  clip-path: polygon(20% 0%, 100% 35%, 70% 100%, 0% 60%);
+  opacity: 1;
+}
+
+.bdd__seam {
+  position: absolute;
+  left: var(--bdd-clue-x);
+  top: var(--bdd-clue-y);
+  width: 1px;
+  height: 12px;
+  margin-left: -0.5px;
+  margin-top: -6px;
+  background: rgb(63 131 209 / 0.55);
+  transform-origin: 50% 50%;
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.bdd__seam-side {
+  position: absolute;
+  left: var(--bdd-clue-x);
+  top: 16%;
+  width: 1px;
+  height: 68%;
+  background: rgb(22 62 131 / 0.45);
+  opacity: 0;
+  transform: scaleY(0.2);
+  transform-origin: 50% 50%;
+}
+
+.bdd__seam-side--l {
+  margin-left: calc(-3px - 0.5px);
+}
+
+.bdd__seam-side--r {
+  margin-left: calc(3px - 0.5px);
+}
+
+.bdd__doorway {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--bdd-door-w);
+  height: var(--bdd-door-h);
+  margin-left: calc(var(--bdd-door-w) / -2);
+  margin-top: calc(var(--bdd-door-h) / -2);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.bdd__door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  background:
+    linear-gradient(180deg, var(--bdd-deep) 0%, var(--bdd-void) 100%);
+  border: 1px solid rgb(63 131 209 / 0.35);
+  box-shadow: inset 0 0 0 1px rgb(7 29 67 / 0.8);
+}
+
+.bdd__door--left {
+  left: 0;
+  clip-path: polygon(0% 0%, 100% 2%, 100% 98%, 0% 100%);
+  transform: translateX(0);
+}
+
+.bdd__door--right {
+  right: 0;
+  clip-path: polygon(0% 2%, 100% 0%, 100% 100%, 0% 98%);
+  transform: translateX(0);
+}
+
+.bdd__discovered {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--bdd-door-h) / 2 - 1.35rem);
+  margin: 0;
+  padding: 0.2rem 0.4rem;
+  background: var(--bdd-mid);
+  color: var(--bdd-pale);
+  font: 800 0.58rem/1 inherit;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: translateX(-50%) scale(0.92);
+  opacity: 0;
+}
+
+/* —— Phase: clue + seam grow 0–180ms —— */
+.bdd--clue .bdd__clue {
+  animation: bdd-clue-bright 180ms var(--bdd-ease) forwards;
+}
+
+.bdd--clue .bdd__seam {
+  opacity: 1;
+  animation: bdd-seam-grow 180ms var(--bdd-ease) forwards;
+}
+
+@keyframes bdd-clue-bright {
+  from {
+    background: rgb(63 131 209 / 0.28);
+  }
+  to {
+    background: rgb(63 131 209 / 0.85);
+  }
+}
+
+@keyframes bdd-seam-grow {
+  from {
+    width: 1px;
+    height: 12px;
+    margin-top: -6px;
+    transform: scaleY(1);
+    background: rgb(63 131 209 / 0.55);
+  }
+  to {
+    width: 2px;
+    height: 68%;
+    top: 16%;
+    margin-top: 0;
+    margin-left: -1px;
+    transform: scaleY(1);
+    background: rgb(63 131 209 / 0.75);
+  }
+}
+
+/* —— Phase: impossible seam 180–360ms —— */
+.bdd--seam .bdd__clue {
+  background: rgb(63 131 209 / 0.85);
+}
+
+.bdd--seam .bdd__seam {
+  opacity: 1;
+  width: 2px;
+  height: 68%;
+  top: 16%;
+  margin-top: 0;
+  margin-left: -1px;
+  transform: none;
+}
+
+.bdd--seam .bdd__seam-side {
+  animation: bdd-side-in 160ms var(--bdd-ease) forwards;
+}
+
+.bdd--seam .bdd__face-shift--left {
+  animation: bdd-shift-l 160ms var(--bdd-ease) forwards;
+}
+
+.bdd--seam .bdd__face-shift--right {
+  animation: bdd-shift-r 160ms var(--bdd-ease) forwards;
+}
+
+@keyframes bdd-side-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bdd-shift-l {
+  to {
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes bdd-shift-r {
+  to {
+    transform: translateX(3px);
+  }
+}
+
+/* —— Phase: door definition 320–500ms —— */
+.bdd--define .bdd__clue,
+.bdd--define .bdd__seam,
+.bdd--define .bdd__seam-side {
+  opacity: 1;
+}
+
+.bdd--define .bdd__seam {
+  width: 2px;
+  height: 68%;
+  top: 16%;
+  margin-top: 0;
+  margin-left: -1px;
+  transform: none;
+}
+
+.bdd--define .bdd__seam-side {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.bdd--define .bdd__face-shift--left {
+  transform: translateX(-3px);
+}
+
+.bdd--define .bdd__face-shift--right {
+  transform: translateX(3px);
+}
+
+.bdd--define .bdd__doorway {
+  visibility: visible;
+  opacity: 0;
+  animation: bdd-door-appear 180ms var(--bdd-ease) forwards;
+}
+
+@keyframes bdd-door-appear {
+  from {
+    opacity: 0;
+    transform: scaleX(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* —— Phase: opening 480–820ms —— */
+.bdd--open .bdd__clue {
+  opacity: 0;
+}
+
+.bdd--open .bdd__seam,
+.bdd--open .bdd__seam-side {
+  opacity: 0;
+}
+
+.bdd--open .bdd__face-shift--left {
+  transform: translateX(-3px);
+}
+
+.bdd--open .bdd__face-shift--right {
+  transform: translateX(3px);
+}
+
+.bdd--open .bdd__doorway {
+  visibility: visible;
+  opacity: 1;
+}
+
+.bdd--open .bdd__door--left {
+  animation: bdd-door-l 340ms var(--bdd-ease) forwards;
+}
+
+.bdd--open .bdd__door--right {
+  animation: bdd-door-r 340ms var(--bdd-ease) forwards;
+}
+
+.bdd--open .bdd__face {
+  /* Frame remains: cut a doorway aperture (~41% × 72% centered) */
+  animation: bdd-face-aperture 340ms var(--bdd-ease) forwards;
+}
+
+.bdd--open .bdd__secret {
+  animation: bdd-secret-in 340ms var(--bdd-ease) forwards;
+}
+
+.bdd--open.bdd--marker .bdd__discovered {
+  opacity: 1;
+  animation: bdd-marker-in 140ms var(--bdd-ease) forwards;
+}
+
+@keyframes bdd-door-l {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-55%);
+  }
+}
+
+@keyframes bdd-door-r {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(55%);
+  }
+}
+
+@keyframes bdd-face-aperture {
+  from {
+    clip-path: inset(0% 0% 0% 0%);
+  }
+  to {
+    /* top 14%, bottom 14%, left/right ~29.5% → ~41% centre hole */
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%,
+      0% 0%,
+      29.5% 14%,
+      29.5% 86%,
+      70.5% 86%,
+      70.5% 14%,
+      29.5% 14%
+    );
+  }
+}
+
+@keyframes bdd-secret-in {
+  from {
+    transform: scale(0.9) translateY(6px);
+  }
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes bdd-marker-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* —— Settled open —— */
+.bdd--opened .bdd__doorway {
+  visibility: visible;
+  opacity: 1;
+}
+
+.bdd--opened .bdd__door--left {
+  transform: translateX(-55%);
+}
+
+.bdd--opened .bdd__door--right {
+  transform: translateX(55%);
+}
+
+.bdd--opened .bdd__face {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 100%,
+    0% 100%,
+    0% 0%,
+    29.5% 14%,
+    29.5% 86%,
+    70.5% 86%,
+    70.5% 14%,
+    29.5% 14%
+  );
+}
+
+.bdd--opened .bdd__face-shift--left {
+  transform: translateX(-3px);
+}
+
+.bdd--opened .bdd__face-shift--right {
+  transform: translateX(3px);
+}
+
+.bdd--opened .bdd__secret {
+  transform: scale(1) translateY(0);
+}
+
+.bdd--opened .bdd__discovered {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.bdd--opened .bdd__clue,
+.bdd--opened .bdd__seam,
+.bdd--opened .bdd__seam-side {
+  opacity: 0;
+}
+
+/* —— Close reverse —— */
+.bdd--closing .bdd__discovered {
+  opacity: 0;
+}
+
+.bdd--closing .bdd__door--left {
+  animation: bdd-door-l-close 280ms var(--bdd-ease) forwards;
+}
+
+.bdd--closing .bdd__door--right {
+  animation: bdd-door-r-close 280ms var(--bdd-ease) forwards;
+}
+
+.bdd--closing .bdd__face {
+  animation: bdd-face-aperture-close 280ms var(--bdd-ease) forwards;
+}
+
+.bdd--closing .bdd__secret {
+  animation: bdd-secret-out 280ms var(--bdd-ease) forwards;
+}
+
+.bdd--closing .bdd__seam {
+  opacity: 1;
+  width: 2px;
+  height: 68%;
+  top: 16%;
+  margin-top: 0;
+  margin-left: -1px;
+  animation: bdd-seam-shrink 220ms var(--bdd-ease) 200ms forwards;
+}
+
+.bdd--closing .bdd__clue {
+  opacity: 1;
+  background: rgb(63 131 209 / 0.28);
+  animation: bdd-clue-restore 160ms var(--bdd-ease) 360ms forwards;
+}
+
+@keyframes bdd-door-l-close {
+  from {
+    transform: translateX(-55%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bdd-door-r-close {
+  from {
+    transform: translateX(55%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bdd-face-aperture-close {
+  from {
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%,
+      0% 0%,
+      29.5% 14%,
+      29.5% 86%,
+      70.5% 86%,
+      70.5% 14%,
+      29.5% 14%
+    );
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes bdd-secret-out {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(0.9) translateY(6px);
+  }
+}
+
+@keyframes bdd-seam-shrink {
+  from {
+    width: 2px;
+    height: 68%;
+    top: 16%;
+    margin-top: 0;
+    opacity: 1;
+  }
+  to {
+    width: 1px;
+    height: 12px;
+    top: var(--bdd-clue-y);
+    margin-top: -6px;
+    opacity: 0;
+  }
+}
+
+@keyframes bdd-clue-restore {
+  from {
+    background: rgb(63 131 209 / 0.55);
+  }
+  to {
+    background: rgb(63 131 209 / 0.28);
+  }
+}
+
+/* Hide inspect while open; enable secret controls via JS tabindex */
+.bdd--opened .bdd__btn--inspect,
+.bdd--open .bdd__btn--inspect,
+.bdd--closing .bdd__btn--inspect {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bdd__clue,
+  .bdd__seam,
+  .bdd__seam-side,
+  .bdd__door,
+  .bdd__doorway,
+  .bdd__face,
+  .bdd__face-shift,
+  .bdd__secret,
+  .bdd__discovered {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .bdd__clue,
+[data-force-reduced-motion='true'] .bdd__seam,
+[data-force-reduced-motion='true'] .bdd__seam-side,
+[data-force-reduced-motion='true'] .bdd__door,
+[data-force-reduced-motion='true'] .bdd__doorway,
+[data-force-reduced-motion='true'] .bdd__face,
+[data-force-reduced-motion='true'] .bdd__face-shift,
+[data-force-reduced-motion='true'] .bdd__secret,
+[data-force-reduced-motion='true'] .bdd__discovered {
+  animation: none !important;
+  transition: none !important;
+}

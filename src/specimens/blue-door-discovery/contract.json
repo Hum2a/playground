@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/blue-door-discovery.schema.json",
+  "title": "BlueDoorDiscovery",
+  "description": "Ordinary surface → subtle clue → seam → door definition → open onto secret content already behind. Discovery interaction, not a known doorway. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "blue-door-discovery" },
+    "intent": {
+      "type": "string",
+      "const": "An apparently complete surface reveals a hidden doorway only after inspecting a subtle clue; secret content exists behind and is revealed by opening."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surfaceKicker",
+        "surfaceTitle",
+        "surfaceMeta",
+        "inspect",
+        "secretKicker",
+        "secretTitle",
+        "secretBody",
+        "enter",
+        "close",
+        "discovered",
+        "status"
+      ],
+      "properties": {
+        "surfaceKicker": { "type": "string", "const": "ARCHIVE STORAGE" },
+        "surfaceTitle": {
+          "type": "string",
+          "const": "NO ADDITIONAL RECORDS"
+        },
+        "surfaceMeta": {
+          "type": "string",
+          "const": "42 indexed specimens"
+        },
+        "inspect": { "type": "string", "const": "INSPECT" },
+        "secretKicker": { "type": "string", "const": "UNLISTED" },
+        "secretTitle": { "type": "string", "const": "SPECIMEN // ???" },
+        "secretBody": {
+          "type": "string",
+          "const": "An undocumented artifact."
+        },
+        "enter": { "type": "string", "const": "ENTER" },
+        "close": { "type": "string", "const": "CLOSE" },
+        "discovered": { "type": "string", "const": "DISCOVERED" },
+        "status": {
+          "type": "string",
+          "const": "Hidden specimen discovered."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paper",
+        "ink",
+        "mute",
+        "void",
+        "deep",
+        "mid",
+        "blue",
+        "pale"
+      ],
+      "properties": {
+        "paper": { "type": "string", "const": "#e8edf0" },
+        "ink": { "type": "string", "const": "#17212a" },
+        "mute": { "type": "string", "const": "#74818c" },
+        "void": { "type": "string", "const": "#020b18" },
+        "deep": { "type": "string", "const": "#071d43" },
+        "mid": { "type": "string", "const": "#163e83" },
+        "blue": { "type": "string", "const": "#3f83d1" },
+        "pale": { "type": "string", "const": "#cfe5ff" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clueSizePx",
+        "clueX",
+        "clueY",
+        "doorwayWidthPercent",
+        "doorwayHeightPercent",
+        "doorTravelPercent",
+        "sideLineOffsetPx",
+        "contentShiftPx"
+      ],
+      "properties": {
+        "clueSizePx": { "type": "number", "const": 12 },
+        "clueX": { "type": "string", "const": "50%" },
+        "clueY": { "type": "string", "const": "68%" },
+        "seamHeightFromTo": {
+          "type": "object",
+          "const": { "from": "12px", "to": "68%" }
+        },
+        "seamWidthFromTo": {
+          "type": "object",
+          "const": { "from": "1px", "to": "2px" }
+        },
+        "sideLineOffsetPx": { "type": "number", "const": 3 },
+        "contentShiftPx": { "type": "number", "const": 3 },
+        "doorwayWidthPercent": { "type": "number", "const": 41 },
+        "doorwayHeightPercent": { "type": "number", "const": 72 },
+        "doorTravelPercent": { "type": "number", "const": 55 },
+        "aperture": {
+          "type": "object",
+          "const": {
+            "leftPercent": 29.5,
+            "rightPercent": 70.5,
+            "topPercent": 14,
+            "bottomPercent": 86
+          }
+        },
+        "secretFrom": {
+          "type": "object",
+          "const": { "scale": 0.9, "translateYPx": 6 }
+        },
+        "secretTo": {
+          "type": "object",
+          "const": { "scale": 1, "translateYPx": 0 }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "clueMs",
+        "seamAtMs",
+        "defineAtMs",
+        "openAtMs",
+        "markerAtMs",
+        "openEndMs",
+        "closeMs"
+      ],
+      "properties": {
+        "clueMs": { "type": "number", "const": 180 },
+        "seamAtMs": { "type": "number", "const": 180 },
+        "defineAtMs": { "type": "number", "const": 320 },
+        "openAtMs": { "type": "number", "const": 480 },
+        "markerAtMs": { "type": "number", "const": 735 },
+        "openEndMs": { "type": "number", "const": 820 },
+        "closeMs": { "type": "number", "const": 420 },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "realInspectControl",
+        "secretHiddenUntilDiscovery",
+        "singleStatusAnnouncement"
+      ],
+      "properties": {
+        "realInspectControl": { "type": "boolean", "const": true },
+        "secretHiddenUntilDiscovery": { "type": "boolean", "const": true },
+        "singleStatusAnnouncement": { "type": "boolean", "const": true },
+        "decorativeFxHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateOpened", "triggers"],
+      "properties": {
+        "immediateOpened": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "secret", "face", "clue", "doorway"],
+      "properties": {
+        "root": { "type": "string", "const": "bdd" },
+        "secret": { "type": "string", "const": "bdd__secret" },
+        "face": { "type": "string", "const": "bdd__face" },
+        "clue": { "type": "string", "const": "bdd__clue" },
+        "doorway": { "type": "string", "const": "bdd__doorway" },
+        "stateOpened": { "type": "string", "const": "bdd--opened" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "blue-door-discovery",
+      "intent": "An apparently complete surface reveals a hidden doorway only after inspecting a subtle clue; secret content exists behind and is revealed by opening.",
+      "copy": {
+        "surfaceKicker": "ARCHIVE STORAGE",
+        "surfaceTitle": "NO ADDITIONAL RECORDS",
+        "surfaceMeta": "42 indexed specimens",
+        "inspect": "INSPECT",
+        "secretKicker": "UNLISTED",
+        "secretTitle": "SPECIMEN // ???",
+        "secretBody": "An undocumented artifact.",
+        "enter": "ENTER",
+        "close": "CLOSE",
+        "discovered": "DISCOVERED",
+        "status": "Hidden specimen discovered."
+      },
+      "colours": {
+        "paper": "#e8edf0",
+        "ink": "#17212a",
+        "mute": "#74818c",
+        "void": "#020b18",
+        "deep": "#071d43",
+        "mid": "#163e83",
+        "blue": "#3f83d1",
+        "pale": "#cfe5ff"
+      },
+      "animation": {
+        "clueMs": 180,
+        "seamAtMs": 180,
+        "defineAtMs": 320,
+        "openAtMs": 480,
+        "markerAtMs": 735,
+        "openEndMs": 820,
+        "closeMs": 420
+      },
+      "a11y": {
+        "realInspectControl": true,
+        "secretHiddenUntilDiscovery": true,
+        "singleStatusAnnouncement": true
+      },
+      "reducedMotion": {
+        "immediateOpened": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "bdd",
+        "secret": "bdd__secret",
+        "face": "bdd__face",
+        "clue": "bdd__clue",
+        "doorway": "bdd__doorway"
+      }
+    }
+  ]
+}
