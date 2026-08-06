@@ -117,6 +117,7 @@ import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
+import { notificationExpand } from './notification-expand/entry'
 import { notificationStackCompression } from './notification-stack-compression/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
@@ -335,6 +336,7 @@ export const specimens: Specimen[] = [
   moveLearned,
   newspaperHeadlineDrop,
   notificationBannerDrop,
+  notificationExpand,
   notificationStackCompression,
   objectiveAcquired,
   overchargeWarning,

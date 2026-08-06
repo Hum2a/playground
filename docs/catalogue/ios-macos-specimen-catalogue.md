@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **32 / 258** complete.
+- Progress: **33 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 32 |
-| Open | 226 |
+| Done | 33 |
+| Open | 225 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-111 | `SPX-1410` | `notification-expand` | Notification Expand |
 | IOS-110 | `SPX-1409` | `notification-banner-drop` | Notification Banner Drop |
 | IOS-065 | `SPX-1364` | `spring-selection-pill` | Spring Selection Pill |
 | IOS-066 | `SPX-1365` | `pressed-control-compression` | Pressed Control Compression |
@@ -242,7 +243,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 ## Notifications
 
 - [x] **IOS-110** · `SPX-1409` · **Notification Banner Drop** — compact alert enters from the top edge and settles into temporary presence.
-- [ ] **IOS-111** · `SPX-1410` · **Notification Expand** — compact alert grows into richer actions/content while preserving its identity.
+- [x] **IOS-111** · `SPX-1410` · **Notification Expand** — compact alert grows into richer actions/content while preserving its identity.
 - [ ] **IOS-112** · `SPX-1411` · **Notification Collapse** — expanded notification returns to compact state.
 - [x] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — several alerts collapse into a layered stack.
 - [ ] **IOS-114** · `SPX-1413` · **Notification Stack Fan** — compressed stack expands into individually readable notifications.
