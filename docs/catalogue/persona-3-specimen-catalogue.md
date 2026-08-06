@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **11 / 238** complete.
+- Progress: **12 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 11 |
-| Open | 227 |
+| Done | 12 |
+| Open | 226 |
 
 ## Visual grammar
 
@@ -44,6 +44,7 @@
 | P3-224 | `SPX-621` | `blue-door-discovery` | Blue Door Discovery |
 | P3-107 | `SPX-504` | `butterfly-entry` | Butterfly Entry |
 | P3-001 | `SPX-400` | `waterline-page-wipe` | Waterline Page Wipe |
+| P3-083 | `SPX-480` | `tactical-target-lock` | Tactical Target Lock |
 
 ## Core first-wave
 
@@ -57,7 +58,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P3-096** · `SPX-493` · **Persona Awakening Reveal** — reveal
 - [x] **P3-105** · `SPX-502` · **Velvet Door Transition** — transition
 - [x] **P3-112** · `SPX-509` · **Fusion Selection Merge** — fusion
-- [ ] **P3-083** · `SPX-480` · **Tactical Target Lock** — selection
+- [x] **P3-083** · `SPX-480` · **Tactical Target Lock** — selection
 - [x] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
 - [ ] **P3-145** · `SPX-542` · **Social Link Rank Up** — progression
 - [x] **P3-224** · `SPX-621` · **Blue Door Discovery** — discovery
@@ -182,7 +183,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## SEES / tactical interface
 
-- [ ] **P3-083** · `SPX-480` · **Tactical Target Lock** — tactical.
+- [x] **P3-083** · `SPX-480` · **Tactical Target Lock** — tactical.
 - [ ] **P3-084** · `SPX-481` · **Target Switch Snap** — tactical.
 - [ ] **P3-085** · `SPX-482` · **Enemy Scan Reveal** — tactical.
 - [ ] **P3-086** · `SPX-483` · **Weakness Discovery** — tactical.

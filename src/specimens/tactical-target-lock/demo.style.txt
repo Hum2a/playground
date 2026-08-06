@@ -1,0 +1,758 @@
+/* SPX-480 Tactical Target Lock — portable contract. Do not restyle to host tokens. */
+
+.ttl {
+  --ttl-near: #020912;
+  --ttl-deep: #09233d;
+  --ttl-blue: #1677ad;
+  --ttl-bright: #4bc4ee;
+  --ttl-pale: #d7f7ff;
+  --ttl-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --ttl-size: 100px;
+  --ttl-bracket: 22px;
+  --ttl-thick: 2.5px;
+  /* Attack offsets from final corner seats */
+  --ttl-ax: 28px;
+  --ttl-ay: 24px;
+  --ttl-overshoot: 2.5px;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  background: var(--ttl-near);
+  color: var(--ttl-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.ttl *,
+.ttl *::before,
+.ttl *::after {
+  box-sizing: border-box;
+}
+
+.ttl__rail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.35rem;
+}
+
+.ttl__card {
+  appearance: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: var(--ttl-size);
+  height: var(--ttl-size);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.ttl__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform-origin: center center;
+}
+
+.ttl__plate {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    rgb(22 119 173 / 0.35) 0%,
+    rgb(9 35 61 / 0.95) 55%,
+    rgb(2 9 18 / 1) 100%
+  );
+  border: 1px solid rgb(75 196 238 / 0.28);
+  clip-path: polygon(
+    3% 0%,
+    97% 4%,
+    100% 90%,
+    92% 100%,
+    4% 97%,
+    0% 10%
+  );
+}
+
+.ttl__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+/* —— Lock overlay (decorative) —— */
+.ttl__lock {
+  position: absolute;
+  inset: -4px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.ttl__bracket {
+  position: absolute;
+  width: var(--ttl-bracket);
+  height: var(--ttl-bracket);
+  opacity: 0;
+  transform: scale(1.25);
+}
+
+.ttl__bracket::before,
+.ttl__bracket::after {
+  content: '';
+  position: absolute;
+  background: var(--ttl-bright);
+}
+
+/* Two perpendicular bars per corner */
+.ttl__bracket--tl {
+  top: 0;
+  left: 0;
+  transform: translate(calc(-1 * var(--ttl-ax)), calc(-1 * var(--ttl-ay)))
+    scale(1.25);
+}
+
+.ttl__bracket--tl::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--ttl-thick);
+}
+
+.ttl__bracket--tl::after {
+  top: 0;
+  left: 0;
+  width: var(--ttl-thick);
+  height: 100%;
+}
+
+.ttl__bracket--tr {
+  top: 0;
+  right: 0;
+  transform: translate(var(--ttl-ax), calc(-1 * var(--ttl-ay))) scale(1.25);
+}
+
+.ttl__bracket--tr::before {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: var(--ttl-thick);
+}
+
+.ttl__bracket--tr::after {
+  top: 0;
+  right: 0;
+  width: var(--ttl-thick);
+  height: 100%;
+}
+
+.ttl__bracket--bl {
+  bottom: 0;
+  left: 0;
+  transform: translate(calc(-1 * var(--ttl-ax)), var(--ttl-ay)) scale(1.25);
+}
+
+.ttl__bracket--bl::before {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--ttl-thick);
+}
+
+.ttl__bracket--bl::after {
+  bottom: 0;
+  left: 0;
+  width: var(--ttl-thick);
+  height: 100%;
+}
+
+.ttl__bracket--br {
+  bottom: 0;
+  right: 0;
+  transform: translate(var(--ttl-ax), var(--ttl-ay)) scale(1.25);
+}
+
+.ttl__bracket--br::before {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: var(--ttl-thick);
+}
+
+.ttl__bracket--br::after {
+  bottom: 0;
+  right: 0;
+  width: var(--ttl-thick);
+  height: 100%;
+}
+
+.ttl__guides {
+  position: absolute;
+  inset: 18%;
+  opacity: 0;
+}
+
+.ttl__guide {
+  position: absolute;
+  background: rgb(75 196 238 / 0.75);
+}
+
+.ttl__guide--n,
+.ttl__guide--s {
+  left: 50%;
+  width: 1px;
+  height: 42%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: center;
+}
+
+.ttl__guide--n {
+  top: 0;
+  transform-origin: top center;
+}
+
+.ttl__guide--s {
+  bottom: 0;
+  transform-origin: bottom center;
+}
+
+.ttl__guide--e,
+.ttl__guide--w {
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  transform: translateY(-50%) scaleX(0);
+}
+
+.ttl__guide--e {
+  right: 0;
+  transform-origin: right center;
+}
+
+.ttl__guide--w {
+  left: 0;
+  transform-origin: left center;
+}
+
+.ttl__badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  padding: 0.12rem 0.28rem;
+  border: 1px solid var(--ttl-bright);
+  background: rgb(2 9 18 / 0.92);
+  color: var(--ttl-bright);
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  transform: translate(6px, 4px) scale(0.85);
+}
+
+/* —— Hover preview (not full lock) —— */
+.ttl__card:hover:not([aria-checked='true']):not([data-lock]) .ttl__lock,
+.ttl__card:focus-visible:not([aria-checked='true']):not([data-lock])
+  .ttl__lock {
+  opacity: 1;
+}
+
+.ttl__card:hover:not([aria-checked='true']):not([data-lock]) .ttl__bracket,
+.ttl__card:focus-visible:not([aria-checked='true']):not([data-lock])
+  .ttl__bracket {
+  opacity: 0.4;
+  transform: none;
+}
+
+/* Focus ring distinct from selected lock */
+.ttl__card:focus-visible .ttl__plate {
+  outline: 2px solid var(--ttl-bright);
+  outline-offset: 3px;
+}
+
+.ttl__card[aria-checked='true']:focus-visible .ttl__plate {
+  outline-offset: 6px;
+}
+
+.ttl__card[aria-checked='true'] .ttl__plate {
+  border-color: rgb(75 196 238 / 0.7);
+  background: linear-gradient(
+    155deg,
+    rgb(22 119 173 / 0.5) 0%,
+    rgb(9 35 61 / 0.98) 55%,
+    rgb(2 9 18 / 1) 100%
+  );
+}
+
+/* —— Attack / settle / locked —— */
+.ttl__card[data-lock] .ttl__lock {
+  opacity: 1;
+}
+
+.ttl__card[data-lock='attack'] .ttl__bracket,
+.ttl__card[data-lock='settle'] .ttl__bracket,
+.ttl__card[data-lock='locked'] .ttl__bracket {
+  opacity: 1;
+}
+
+.ttl__card[data-lock='attack'] .ttl__bracket--tl {
+  animation: ttl-tl-attack 150ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='attack'] .ttl__bracket--tr {
+  animation: ttl-tr-attack 150ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='attack'] .ttl__bracket--bl {
+  animation: ttl-bl-attack 150ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='attack'] .ttl__bracket--br {
+  animation: ttl-br-attack 150ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='attack'] .ttl__guides {
+  animation: ttl-guides 100ms linear 70ms both;
+}
+
+.ttl__card[data-lock='attack'] .ttl__guide--n,
+.ttl__card[data-lock='attack'] .ttl__guide--s {
+  animation: ttl-guide-v 100ms linear 70ms both;
+}
+
+.ttl__card[data-lock='attack'] .ttl__guide--e,
+.ttl__card[data-lock='attack'] .ttl__guide--w {
+  animation: ttl-guide-h 100ms linear 70ms both;
+}
+
+.ttl__card[data-lock='attack'] .ttl__face {
+  animation: ttl-react 180ms var(--ttl-ease) both;
+}
+
+.ttl__card[data-lock='settle'] .ttl__bracket--tl {
+  animation: ttl-tl-settle 60ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='settle'] .ttl__bracket--tr {
+  animation: ttl-tr-settle 60ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='settle'] .ttl__bracket--bl {
+  animation: ttl-bl-settle 60ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='settle'] .ttl__bracket--br {
+  animation: ttl-br-settle 60ms var(--ttl-ease) forwards;
+}
+
+.ttl__card[data-lock='settle'] .ttl__guides,
+.ttl__card[data-lock='locked'] .ttl__guides {
+  opacity: 0;
+}
+
+.ttl__card[data-lock='locked'] .ttl__bracket {
+  transform: none;
+  opacity: 1;
+}
+
+.ttl__card[data-lock='locked'] .ttl__badge {
+  opacity: 1;
+  animation: ttl-badge 90ms var(--ttl-ease) both;
+}
+
+/* —— Release outward —— */
+.ttl__card[data-lock='release'] .ttl__lock {
+  opacity: 1;
+}
+
+.ttl__card[data-lock='release'] .ttl__bracket {
+  opacity: 1;
+  animation-duration: 90ms;
+  animation-timing-function: var(--ttl-ease);
+  animation-fill-mode: forwards;
+}
+
+.ttl__card[data-lock='release'] .ttl__bracket--tl {
+  animation-name: ttl-tl-release;
+}
+
+.ttl__card[data-lock='release'] .ttl__bracket--tr {
+  animation-name: ttl-tr-release;
+}
+
+.ttl__card[data-lock='release'] .ttl__bracket--bl {
+  animation-name: ttl-bl-release;
+}
+
+.ttl__card[data-lock='release'] .ttl__bracket--br {
+  animation-name: ttl-br-release;
+}
+
+.ttl__card[data-lock='release'] .ttl__badge {
+  opacity: 0;
+  transition: opacity 60ms linear;
+}
+
+.ttl__clear {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgb(215 247 255 / 0.4);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ttl-pale);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ttl__clear:hover:not(:disabled) {
+  background: rgb(75 196 238 / 0.12);
+}
+
+.ttl__clear:focus-visible {
+  outline: 2px solid var(--ttl-bright);
+  outline-offset: 3px;
+}
+
+.ttl__clear:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.ttl__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Attack: outside → overshoot (inward 2.5px) by 150ms */
+@keyframes ttl-tl-attack {
+  0% {
+    transform: translate(calc(-1 * var(--ttl-ax)), calc(-1 * var(--ttl-ay)))
+      scale(1.25);
+  }
+  80% {
+    transform: translate(var(--ttl-overshoot), var(--ttl-overshoot)) scale(1);
+  }
+  100% {
+    transform: translate(var(--ttl-overshoot), var(--ttl-overshoot)) scale(1);
+  }
+}
+
+@keyframes ttl-tr-attack {
+  0% {
+    transform: translate(var(--ttl-ax), calc(-1 * var(--ttl-ay))) scale(1.25);
+  }
+  80% {
+    transform: translate(calc(-1 * var(--ttl-overshoot)), var(--ttl-overshoot))
+      scale(1);
+  }
+  100% {
+    transform: translate(calc(-1 * var(--ttl-overshoot)), var(--ttl-overshoot))
+      scale(1);
+  }
+}
+
+@keyframes ttl-bl-attack {
+  0% {
+    transform: translate(calc(-1 * var(--ttl-ax)), var(--ttl-ay)) scale(1.25);
+  }
+  80% {
+    transform: translate(var(--ttl-overshoot), calc(-1 * var(--ttl-overshoot)))
+      scale(1);
+  }
+  100% {
+    transform: translate(var(--ttl-overshoot), calc(-1 * var(--ttl-overshoot)))
+      scale(1);
+  }
+}
+
+@keyframes ttl-br-attack {
+  0% {
+    transform: translate(var(--ttl-ax), var(--ttl-ay)) scale(1.25);
+  }
+  80% {
+    transform: translate(
+        calc(-1 * var(--ttl-overshoot)),
+        calc(-1 * var(--ttl-overshoot))
+      )
+      scale(1);
+  }
+  100% {
+    transform: translate(
+        calc(-1 * var(--ttl-overshoot)),
+        calc(-1 * var(--ttl-overshoot))
+      )
+      scale(1);
+  }
+}
+
+@keyframes ttl-tl-settle {
+  from {
+    transform: translate(var(--ttl-overshoot), var(--ttl-overshoot)) scale(1);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes ttl-tr-settle {
+  from {
+    transform: translate(calc(-1 * var(--ttl-overshoot)), var(--ttl-overshoot))
+      scale(1);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes ttl-bl-settle {
+  from {
+    transform: translate(var(--ttl-overshoot), calc(-1 * var(--ttl-overshoot)))
+      scale(1);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes ttl-br-settle {
+  from {
+    transform: translate(
+        calc(-1 * var(--ttl-overshoot)),
+        calc(-1 * var(--ttl-overshoot))
+      )
+      scale(1);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes ttl-tl-release {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translate(calc(-1 * var(--ttl-ax)), calc(-1 * var(--ttl-ay)))
+      scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes ttl-tr-release {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--ttl-ax), calc(-1 * var(--ttl-ay))) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes ttl-bl-release {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translate(calc(-1 * var(--ttl-ax)), var(--ttl-ay)) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes ttl-br-release {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--ttl-ax), var(--ttl-ay)) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes ttl-guide-v {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes ttl-guide-h {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes ttl-guides {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+@keyframes ttl-react {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes ttl-badge {
+  from {
+    opacity: 0;
+    transform: translate(6px, 4px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ttl__card[data-lock='locked'] .ttl__face {
+  transform: scale(1);
+}
+
+@media (max-width: 380px) {
+  .ttl {
+    --ttl-size: 84px;
+    --ttl-bracket: 18px;
+    --ttl-ax: 22px;
+    --ttl-ay: 18px;
+  }
+
+  .ttl__rail {
+    gap: 1rem;
+  }
+
+  .ttl__label {
+    font-size: 0.62rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ttl__bracket,
+  .ttl__guide,
+  .ttl__guides,
+  .ttl__badge,
+  .ttl__face {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ttl__card[data-lock] .ttl__lock,
+  .ttl__card[aria-checked='true'] .ttl__lock {
+    opacity: 1;
+  }
+
+  .ttl__card[data-lock] .ttl__bracket,
+  .ttl__card[aria-checked='true'] .ttl__bracket {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ttl__card[data-lock] .ttl__badge,
+  .ttl__card[aria-checked='true'] .ttl__badge {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ttl__card[data-lock] .ttl__guides,
+  .ttl__card[aria-checked='true'] .ttl__guides {
+    opacity: 0;
+  }
+
+  .ttl__card[data-lock='release'] .ttl__lock {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .ttl__bracket,
+[data-force-reduced-motion='true'] .ttl__guide,
+[data-force-reduced-motion='true'] .ttl__guides,
+[data-force-reduced-motion='true'] .ttl__badge,
+[data-force-reduced-motion='true'] .ttl__face {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .ttl__card[data-lock] .ttl__lock,
+[data-force-reduced-motion='true'] .ttl__card[aria-checked='true'] .ttl__lock {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .ttl__card[data-lock] .ttl__bracket,
+[data-force-reduced-motion='true']
+  .ttl__card[aria-checked='true']
+  .ttl__bracket {
+  opacity: 1;
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .ttl__card[data-lock] .ttl__badge,
+[data-force-reduced-motion='true'] .ttl__card[aria-checked='true'] .ttl__badge {
+  opacity: 1;
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .ttl__card[data-lock] .ttl__guides,
+[data-force-reduced-motion='true']
+  .ttl__card[aria-checked='true']
+  .ttl__guides {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .ttl__card[data-lock='release'] .ttl__lock {
+  opacity: 0;
+}

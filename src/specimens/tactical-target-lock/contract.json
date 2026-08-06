@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/tactical-target-lock.schema.json",
+  "title": "TacticalTargetLock",
+  "description": "Portable contract for angular bracket target acquisition. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "brackets",
+    "phases",
+    "switching",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "tactical-target-lock" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Four angular brackets attack a selected card from outside, overshoot, settle, then snap LOCKED."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alpha",
+        "beta",
+        "gamma",
+        "locked",
+        "clear",
+        "statusIdle",
+        "statusTemplate"
+      ],
+      "properties": {
+        "alpha": { "type": "string", "const": "ALPHA" },
+        "beta": { "type": "string", "const": "BETA" },
+        "gamma": { "type": "string", "const": "GAMMA" },
+        "locked": { "type": "string", "const": "LOCKED" },
+        "clear": { "type": "string", "const": "CLEAR TARGET" },
+        "statusIdle": { "type": "string", "const": "No target selected." },
+        "statusTemplate": {
+          "type": "string",
+          "const": "{Name} targeted."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "deep", "blue", "bright", "pale"],
+      "properties": {
+        "near": { "type": "string", "const": "#020912" },
+        "deep": { "type": "string", "const": "#09233d" },
+        "blue": { "type": "string", "const": "#1677ad" },
+        "bright": { "type": "string", "const": "#4bc4ee" },
+        "pale": { "type": "string", "const": "#d7f7ff" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardPx", "targetCount", "defaultSelected"],
+      "properties": {
+        "cardPx": { "type": "number", "const": 100 },
+        "targetCount": { "type": "integer", "const": 3 },
+        "defaultSelected": { "type": "null", "const": null }
+      }
+    },
+    "brackets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sizePx",
+        "thicknessPx",
+        "attackOffset",
+        "attackScale",
+        "overshootPx",
+        "hoverOpacity"
+      ],
+      "properties": {
+        "sizePx": { "type": "number", "const": 22 },
+        "thicknessPx": { "type": "number", "const": 2.5 },
+        "attackOffset": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tl", "tr", "bl", "br"],
+          "properties": {
+            "tl": { "type": "string", "const": "-28px -24px" },
+            "tr": { "type": "string", "const": "28px -24px" },
+            "bl": { "type": "string", "const": "-28px 24px" },
+            "br": { "type": "string", "const": "28px 24px" }
+          }
+        },
+        "attackScale": { "type": "number", "const": 1.25 },
+        "overshootPx": { "type": "number", "const": 2.5 },
+        "hoverOpacity": { "type": "number", "const": 0.4 }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attackMs",
+        "settleAtMs",
+        "lockedAtMs",
+        "guidesDelayMs",
+        "guidesMs",
+        "reactMs",
+        "badgeMs"
+      ],
+      "properties": {
+        "attackMs": { "type": "number", "const": 150 },
+        "settleAtMs": { "type": "number", "const": 150 },
+        "lockedAtMs": { "type": "number", "const": 210 },
+        "guidesDelayMs": { "type": "number", "const": 70 },
+        "guidesMs": { "type": "number", "const": 100 },
+        "reactMs": { "type": "number", "const": 180 },
+        "badgeMs": { "type": "number", "const": 90 },
+        "reactScale": {
+          "type": "array",
+          "const": [1, 0.98, 1.02]
+        }
+      }
+    },
+    "switching": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["releaseMs", "newAttackDelayMs", "noTeleport"],
+      "properties": {
+        "releaseMs": { "type": "number", "const": 90 },
+        "newAttackDelayMs": { "type": "number", "const": 50 },
+        "noTeleport": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radiogroup",
+        "announceSelection",
+        "decorativeHidden",
+        "focusDistinctFromSelected"
+      ],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "announceSelection": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true },
+        "focusDistinctFromSelected": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLock", "triggers"],
+      "properties": {
+        "instantLock": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "bracket", "guides", "badge"],
+      "properties": {
+        "root": { "type": "string", "const": "ttl" },
+        "card": { "type": "string", "const": "ttl__card" },
+        "bracket": { "type": "string", "const": "ttl__bracket" },
+        "guides": { "type": "string", "const": "ttl__guides" },
+        "badge": { "type": "string", "const": "ttl__badge" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "select": { "type": "string", "const": "select" },
+        "clear": { "type": "string", "const": "clear" },
+        "api": { "type": "string", "const": "tacticalTargetLock" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "tactical-target-lock",
+      "intent": "Four angular brackets attack a selected card from outside, overshoot, settle, then snap LOCKED.",
+      "copy": {
+        "alpha": "ALPHA",
+        "beta": "BETA",
+        "gamma": "GAMMA",
+        "locked": "LOCKED",
+        "clear": "CLEAR TARGET",
+        "statusIdle": "No target selected.",
+        "statusTemplate": "{Name} targeted."
+      },
+      "colours": {
+        "near": "#020912",
+        "deep": "#09233d",
+        "blue": "#1677ad",
+        "bright": "#4bc4ee",
+        "pale": "#d7f7ff"
+      },
+      "layout": {
+        "cardPx": 100,
+        "targetCount": 3,
+        "defaultSelected": null
+      },
+      "brackets": {
+        "sizePx": 22,
+        "thicknessPx": 2.5,
+        "attackOffset": {
+          "tl": "-28px -24px",
+          "tr": "28px -24px",
+          "bl": "-28px 24px",
+          "br": "28px 24px"
+        },
+        "attackScale": 1.25,
+        "overshootPx": 2.5,
+        "hoverOpacity": 0.4
+      },
+      "phases": {
+        "attackMs": 150,
+        "settleAtMs": 150,
+        "lockedAtMs": 210,
+        "guidesDelayMs": 70,
+        "guidesMs": 100,
+        "reactMs": 180,
+        "badgeMs": 90,
+        "reactScale": [1, 0.98, 1.02]
+      },
+      "switching": {
+        "releaseMs": 90,
+        "newAttackDelayMs": 50,
+        "noTeleport": true
+      },
+      "a11y": {
+        "radiogroup": true,
+        "announceSelection": true,
+        "decorativeHidden": true,
+        "focusDistinctFromSelected": true
+      },
+      "reducedMotion": {
+        "instantLock": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "ttl",
+        "card": "ttl__card",
+        "bracket": "ttl__bracket",
+        "guides": "ttl__guides",
+        "badge": "ttl__badge"
+      },
+      "behaviour": {
+        "select": "select",
+        "clear": "clear",
+        "api": "tacticalTargetLock"
+      }
+    }
+  ]
+}
