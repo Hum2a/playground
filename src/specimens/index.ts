@@ -86,6 +86,7 @@ import { contractConfirmation } from './contract-confirmation/entry'
 import { contradictionFound } from './contradiction-found/entry'
 import { controlCentreModuleExpansion } from './control-centre-module-expansion/entry'
 import { controlModuleCollapse } from './control-module-collapse/entry'
+import { controlsIdleDissolve } from './controls-idle-dissolve/entry'
 import { copyConfirmationMorph } from './copy-confirmation-morph/entry'
 import { coreSeedRegeneration } from './core-seed-regeneration/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
@@ -549,6 +550,7 @@ export const specimens: Specimen[] = [
   contradictionFound,
   controlCentreModuleExpansion,
   controlModuleCollapse,
+  controlsIdleDissolve,
   copyConfirmationMorph,
   coreSeedRegeneration,
   corruptedAccessLock,

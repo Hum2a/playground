@@ -1,0 +1,1 @@
+let t;const c=document.querySelector('[data-chrome]');export function runControlsShow(){c.style.opacity='1';window.clearTimeout(t);t=window.setTimeout(()=>{c.style.opacity='0'},900)};document.querySelector('[data-show]')?.addEventListener('click',()=>runControlsShow());document.querySelector('[data-stage]')?.addEventListener('pointermove',()=>runControlsShow())
