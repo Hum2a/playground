@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/capacity-drain.schema.json",
+  "title": "CapacityDrain",
+  "description": "Process B drains Service A in six 10-capacity packets until SAFE MIN 30. Non-catalogue Dragon Ball–inspired SPX-1210.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "capacity-drain" },
+    "intent": {
+      "type": "string",
+      "const": "Receiver-initiated extraction: B connects to A, transfers six packets of 10 capacity A→B until A hits SAFE MIN 30 (B 70), total conserved at 100."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "receiver",
+        "trigger",
+        "safeMinLabel",
+        "connected",
+        "limitReached",
+        "drainStopped",
+        "announceFinal"
+      ],
+      "properties": {
+        "source": { "type": "string", "const": "SERVICE // A" },
+        "receiver": { "type": "string", "const": "PROCESS // B" },
+        "trigger": { "type": "string", "const": "START DRAIN" },
+        "safeMinLabel": { "type": "string", "const": "SAFE MIN // 30" },
+        "connected": { "type": "string", "const": "CONNECTED" },
+        "limitReached": { "type": "string", "const": "SOURCE LIMIT REACHED" },
+        "drainStopped": { "type": "string", "const": "DRAIN STOPPED" },
+        "announceFinal": {
+          "type": "string",
+          "const": "Process B drained 60 capacity from Service A. Drain stopped at source safe minimum of 30."
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["#0b0e12", "#151a22", "#e6ebf2", "#5ec8a8", "#c45c4a"]
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gapPx",
+        "initialA",
+        "initialB",
+        "safeMin",
+        "finalA",
+        "finalB",
+        "packetCount",
+        "packetValue",
+        "bracketCount",
+        "breakSegmentCount",
+        "totalCapacity"
+      ],
+      "properties": {
+        "gapPx": { "type": "integer", "const": 230 },
+        "initialA": { "type": "integer", "const": 90 },
+        "initialB": { "type": "integer", "const": 10 },
+        "safeMin": { "type": "integer", "const": 30 },
+        "finalA": { "type": "integer", "const": 30 },
+        "finalB": { "type": "integer", "const": 70 },
+        "packetCount": { "type": "integer", "const": 6 },
+        "packetValue": { "type": "integer", "const": 10 },
+        "bracketCount": { "type": "integer", "const": 4 },
+        "breakSegmentCount": { "type": "integer", "const": 5 },
+        "totalCapacity": { "type": "integer", "const": 100 },
+        "metricsAfterArrival": {
+          "type": "array",
+          "const": [
+            [80, 20],
+            [70, 30],
+            [60, 40],
+            [50, 50],
+            [40, 60],
+            [30, 70]
+          ]
+        },
+        "connectionDirection": { "type": "string", "const": "B→A" },
+        "packetDirection": { "type": "string", "const": "A→B" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "connectMs",
+        "travelMs",
+        "spacingMs",
+        "disconnectMs",
+        "updateOnArrivalOnly"
+      ],
+      "properties": {
+        "connectMs": { "type": "integer", "const": 180 },
+        "travelMs": { "type": "integer", "const": 240 },
+        "spacingMs": { "type": "integer", "const": 110 },
+        "disconnectMs": { "type": "integer", "const": 140 },
+        "updateOnArrivalOnly": { "type": "boolean", "const": true },
+        "autoStopAtSafeMin": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceDrainSummary"],
+      "properties": {
+        "announceDrainSummary": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion='true']"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate final 30/70 with DRAIN STOPPED."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "connecting",
+        "locked",
+        "draining",
+        "disconnecting",
+        "complete"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "cdr" },
+        "connecting": { "type": "string", "const": "is-connecting" },
+        "locked": { "type": "string", "const": "is-locked" },
+        "draining": { "type": "string", "const": "is-draining" },
+        "disconnecting": { "type": "string", "const": "is-disconnecting" },
+        "complete": { "type": "string", "const": "is-complete" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset", "receiverInitiates"],
+      "properties": {
+        "run": { "type": "string", "const": "runCapacityDrain" },
+        "reset": { "type": "string", "const": "resetCapacityDrain" },
+        "receiverInitiates": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

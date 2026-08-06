@@ -12,6 +12,7 @@ import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
+import { capacityDrain } from './capacity-drain/entry'
 import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
 import { capsuleCollapse } from './capsule-collapse/entry'
@@ -183,6 +184,7 @@ export const specimens: Specimen[] = [
   comicPanelWipe,
   contentDeclassification,
   callingCardSlam,
+  capacityDrain,
   callingCardPeel,
   dramaticObjectionError,
   azureShardTransition,

@@ -1,0 +1,68 @@
+<div class="cdr" data-capacity-drain data-state="idle">
+  <p class="cdr__status" data-cdr-status>IDLE</p>
+
+  <div class="cdr__stage" data-cdr-stage>
+    <article class="cdr__node cdr__node--a" data-cdr-a>
+      <p class="cdr__role">SOURCE</p>
+      <h2 class="cdr__name">SERVICE // A</h2>
+      <p class="cdr__cap">
+        CAPACITY
+        <span data-cdr-cap-a>90</span>
+      </p>
+      <p class="cdr__safe" data-cdr-safe>SAFE MIN // 30</p>
+      <div class="cdr__bars cdr__bars--a" data-cdr-bars-a aria-hidden="true">
+        <span class="cdr__bar" data-cdr-bar-a="0"></span>
+        <span class="cdr__bar" data-cdr-bar-a="1"></span>
+        <span class="cdr__bar" data-cdr-bar-a="2"></span>
+        <span class="cdr__bar" data-cdr-bar-a="3"></span>
+        <span class="cdr__bar" data-cdr-bar-a="4"></span>
+        <span class="cdr__bar" data-cdr-bar-a="5"></span>
+        <span class="cdr__bar" data-cdr-bar-a="6"></span>
+        <span class="cdr__bar" data-cdr-bar-a="7"></span>
+        <span class="cdr__bar" data-cdr-bar-a="8"></span>
+      </div>
+      <span class="cdr__min-mark" aria-hidden="true"></span>
+      <span class="cdr__brackets" aria-hidden="true">
+        <span class="cdr__br cdr__br--tl"></span>
+        <span class="cdr__br cdr__br--tr"></span>
+        <span class="cdr__br cdr__br--br"></span>
+        <span class="cdr__br cdr__br--bl"></span>
+      </span>
+    </article>
+
+    <div class="cdr__channel" data-cdr-channel aria-hidden="true">
+      <span class="cdr__line" data-cdr-line></span>
+      <span class="cdr__break cdr__break--1" data-cdr-break="1"></span>
+      <span class="cdr__break cdr__break--2" data-cdr-break="2"></span>
+      <span class="cdr__break cdr__break--3" data-cdr-break="3"></span>
+      <span class="cdr__break cdr__break--4" data-cdr-break="4"></span>
+      <span class="cdr__break cdr__break--5" data-cdr-break="5"></span>
+      <span class="cdr__packet" data-cdr-packet hidden></span>
+    </div>
+
+    <article class="cdr__node cdr__node--b" data-cdr-b>
+      <p class="cdr__role">RECEIVER</p>
+      <h2 class="cdr__name">PROCESS // B</h2>
+      <p class="cdr__cap">
+        CAPACITY
+        <span data-cdr-cap-b>10</span>
+      </p>
+      <div class="cdr__bars cdr__bars--b" data-cdr-bars-b aria-hidden="true">
+        <span class="cdr__bar" data-cdr-bar-b="0"></span>
+        <span class="cdr__bar" data-cdr-bar-b="1"></span>
+        <span class="cdr__bar" data-cdr-bar-b="2"></span>
+        <span class="cdr__bar" data-cdr-bar-b="3"></span>
+        <span class="cdr__bar" data-cdr-bar-b="4"></span>
+        <span class="cdr__bar" data-cdr-bar-b="5"></span>
+        <span class="cdr__bar" data-cdr-bar-b="6"></span>
+      </div>
+    </article>
+  </div>
+
+  <div class="cdr__controls">
+    <button type="button" class="cdr__btn" data-cdr-start>START DRAIN</button>
+    <button type="button" class="cdr__btn cdr__btn--ghost" data-cdr-reset hidden>RESET</button>
+  </div>
+
+  <p class="cdr__announce" data-cdr-announce role="status" aria-live="polite"></p>
+</div>
