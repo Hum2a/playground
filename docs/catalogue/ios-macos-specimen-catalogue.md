@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **24 / 258** complete.
+- Progress: **25 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 234 |
+| Done | 25 |
+| Open | 233 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-224 | `SPX-1523` | `circular-progress-completion-morph` | Circular Progress Completion Morph |
 | IOS-209 | `SPX-1508` | `swipe-full-commit` | Swipe Full-Commit |
 | IOS-219 | `SPX-1518` | `pull-to-refresh` | Pull to Refresh |
 | IOS-194 | `SPX-1493` | `handoff-continuation` | Handoff Continuation |
@@ -87,7 +88,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
 - [x] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
 - [x] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
-- [ ] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
+- [x] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
 - [ ] **IOS-231** · `SPX-1530` · **Invalid Field Shake** — error-validation
 - [ ] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — material-blur-layering
 - [ ] **IOS-250** · `SPX-1549` · **Copy Confirmation Morph** — tiny-microinteractions
@@ -389,7 +390,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Progress & Completion
 
-- [ ] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress ring reaches 100% and transforms directly into completion geometry.
+- [x] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress ring reaches 100% and transforms directly into completion geometry.
 - [ ] **IOS-225** · `SPX-1524` · **Download Progress to File** — abstract progress representation becomes the completed downloadable object.
 - [ ] **IOS-226** · `SPX-1525` · **Install Progress to Launch** — installation state morphs into an available launch control.
 - [ ] **IOS-227** · `SPX-1526` · **Activity Spinner to Result** — indeterminate work resolves into a deterministic success/failure state.

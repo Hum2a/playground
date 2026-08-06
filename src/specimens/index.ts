@@ -25,6 +25,7 @@ import { cardBreakSummon } from './card-break-summon/entry'
 import { championResolution } from './champion-resolution/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
+import { circularProgressCompletionMorph } from './circular-progress-completion-morph/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
@@ -235,6 +236,7 @@ export const specimens: Specimen[] = [
   championResolution,
   chargeRelease,
   choiceExecutionSlash,
+  circularProgressCompletionMorph,
   clockHandWipe,
   collectiveCiDeployment,
   comicCardSelection,

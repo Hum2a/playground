@@ -1,0 +1,24 @@
+<div class="cpcm" data-circular-progress data-phase="idle">
+  <div class="cpcm__panel">
+    <p class="cpcm__operation" data-cpcm-label>EXPORT</p>
+    <div class="cpcm__ring-host" aria-hidden="true">
+      <svg class="cpcm__svg" viewBox="0 0 72 72" width="72" height="72">
+        <circle class="cpcm__track" cx="36" cy="36" r="33.5" fill="none" />
+        <circle
+          class="cpcm__ring"
+          data-cpcm-ring
+          cx="36"
+          cy="36"
+          r="33.5"
+          fill="none"
+        />
+        <line class="cpcm__check" data-cpcm-check-a x1="0" y1="0" x2="0" y2="0" />
+        <line class="cpcm__check" data-cpcm-check-b x1="0" y1="0" x2="0" y2="0" />
+      </svg>
+    </div>
+    <button type="button" class="cpcm__run" data-cpcm-run>START EXPORT</button>
+  </div>
+  <p class="cpcm__status" role="status" aria-live="polite" data-cpcm-status>
+    Ready. Press START EXPORT to run progression.
+  </p>
+</div>

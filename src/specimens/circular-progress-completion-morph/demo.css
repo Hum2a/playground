@@ -1,0 +1,124 @@
+/* circular-progress-completion-morph — portable specimen styles */
+
+.cpcm {
+  --cpcm-ink: #0f1218;
+  --cpcm-panel: #171c24;
+  --cpcm-line: #2a3140;
+  --cpcm-muted: #7a8494;
+  --cpcm-cream: #e8ecf2;
+  --cpcm-ring: #5a9fd4;
+  --cpcm-complete: #6bc48a;
+  box-sizing: border-box;
+  width: 280px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--cpcm-cream);
+}
+
+.cpcm *,
+.cpcm *::before,
+.cpcm *::after {
+  box-sizing: border-box;
+}
+
+.cpcm__panel {
+  padding: 1.25rem;
+  border: 1px solid var(--cpcm-line);
+  border-radius: 14px;
+  background: var(--cpcm-panel);
+  text-align: center;
+}
+
+.cpcm__operation {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cpcm-muted);
+}
+
+.cpcm[data-phase='complete'] .cpcm__operation {
+  color: var(--cpcm-complete);
+}
+
+.cpcm__ring-host {
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1rem;
+  width: 72px;
+  height: 72px;
+}
+
+.cpcm__svg {
+  display: block;
+}
+
+.cpcm__track {
+  stroke: var(--cpcm-line);
+  stroke-width: 5px;
+}
+
+.cpcm__ring {
+  stroke: var(--cpcm-ring);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  transition: stroke 180ms ease;
+}
+
+.cpcm[data-phase='complete'] .cpcm__ring,
+.cpcm[data-phase='morphing'] .cpcm__ring {
+  stroke: var(--cpcm-complete);
+}
+
+.cpcm__check {
+  stroke: var(--cpcm-complete);
+  stroke-width: 5px;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.cpcm__run {
+  min-width: 8rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--cpcm-line);
+  border-radius: 8px;
+  background: #1e2430;
+  color: var(--cpcm-cream);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.cpcm__run:hover {
+  border-color: #3d4658;
+}
+
+.cpcm__run:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.cpcm__run:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.cpcm__status {
+  margin: 0.65rem 0 0;
+  font-size: 0.68rem;
+  color: var(--cpcm-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cpcm__ring,
+  .cpcm__check {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .cpcm__ring,
+[data-force-reduced-motion='true'] .cpcm__check {
+  transition: none;
+}

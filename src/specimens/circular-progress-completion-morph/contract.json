@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/circular-progress-completion-morph.schema.json",
+  "title": "CircularProgressCompletionMorph",
+  "description": "Portable contract for circular progress ring morphing into completion check geometry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "ring",
+    "progress",
+    "morph",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "circular-progress-completion-morph" },
+    "intent": {
+      "type": "string",
+      "const": "Deterministic circular progress reaches 100% and morphs into completion geometry derived from ring stroke rather than swapping icons."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operationStart", "operationComplete"],
+      "properties": {
+        "operationStart": { "type": "string", "const": "EXPORT" },
+        "operationComplete": { "type": "string", "const": "COMPLETE" }
+      }
+    },
+    "ring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "strokePx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 72 },
+        "heightPx": { "type": "number", "const": 72 },
+        "strokePx": { "type": "number", "const": 5 }
+      }
+    },
+    "progress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["values", "totalMs", "holdAt100Ms"],
+      "properties": {
+        "values": {
+          "type": "array",
+          "const": [0, 18, 37, 61, 84, 100]
+        },
+        "totalMs": { "type": "number", "const": 1100 },
+        "holdAt100Ms": { "type": "number", "const": 100 }
+      }
+    },
+    "morph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "retainedArcDeg", "particleBurst"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 240 },
+        "retainedArcDeg": { "type": "number", "const": 110 },
+        "particleBurst": { "type": "boolean", "const": false }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateCompletion", "triggers"],
+      "properties": {
+        "immediateCompletion": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "ring", "label"],
+      "properties": {
+        "root": { "type": "string", "const": "cpcm" },
+        "ring": { "type": "string", "const": "cpcm__ring" },
+        "label": { "type": "string", "const": "cpcm__operation" }
+      }
+    }
+  }
+}
