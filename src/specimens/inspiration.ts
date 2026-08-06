@@ -140,6 +140,10 @@ export const SUGGESTED_FREE_TAGS = [
   'content-switch',
   'stack',
   'progress',
+  'navigation',
+  'vertical',
+  'lunar',
+  'visualisation',
   'confirmation',
   'completion',
   'task',
@@ -157,6 +161,9 @@ export const SUGGESTED_FREE_TAGS = [
   'disconnect',
   'unlink',
   'relationship',
+  'state-change',
+  'transformation',
+  'temporal',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

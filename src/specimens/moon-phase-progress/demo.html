@@ -1,0 +1,44 @@
+<div class="moon-phase" data-moon-phase data-state="idle">
+  <p class="moon-phase__label" id="moon-phase-label">ARCHIVE COMPLETION</p>
+
+  <div class="moon-phase__stage">
+    <div
+      class="moon-phase__progress"
+      role="progressbar"
+      aria-labelledby="moon-phase-label"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+      aria-valuetext="Archive completion, 0 percent."
+      data-moon-progressbar
+    >
+      <div
+        class="moon-phase__moon"
+        data-moon
+        aria-hidden="true"
+        style="--moon-progress: 0; --moon-duration: 260ms;"
+      >
+        <span class="moon-phase__halo" data-moon-halo></span>
+        <span class="moon-phase__body">
+          <span class="moon-phase__lit"></span>
+          <span class="moon-phase__shade"></span>
+        </span>
+        <span class="moon-phase__rim"></span>
+        <span class="moon-phase__tick moon-phase__tick--25" data-moon-tick="25"></span>
+        <span class="moon-phase__tick moon-phase__tick--50" data-moon-tick="50"></span>
+        <span class="moon-phase__tick moon-phase__tick--75" data-moon-tick="75"></span>
+      </div>
+    </div>
+
+    <p class="moon-phase__value" data-moon-value aria-hidden="true">0%</p>
+    <p class="moon-phase__full" data-moon-full hidden>FULL</p>
+  </div>
+
+  <div class="moon-phase__controls">
+    <button type="button" class="moon-phase__btn" data-moon-inc="10">+10</button>
+    <button type="button" class="moon-phase__btn" data-moon-inc="25">+25</button>
+    <button type="button" class="moon-phase__btn moon-phase__btn--ghost" data-moon-reset>
+      RESET
+    </button>
+  </div>
+</div>

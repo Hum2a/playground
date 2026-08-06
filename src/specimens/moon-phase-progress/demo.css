@@ -1,0 +1,315 @@
+/* SPX-331 Moon Phase Progress — portable contract. Do not restyle to host tokens. */
+
+.moon-phase {
+  --moon-bg: #020912;
+  --moon-dark: #071627;
+  --moon-lit: #ccefff;
+  --moon-edge: #4aa7d4;
+  --moon-white: #f4fbff;
+
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.15rem 1rem 1rem;
+  overflow: hidden;
+  background: var(--moon-bg);
+  color: var(--moon-white);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.moon-phase *,
+.moon-phase *::before,
+.moon-phase *::after {
+  box-sizing: border-box;
+}
+
+.moon-phase__label {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moon-edge);
+}
+
+.moon-phase__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.moon-phase__progress {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.moon-phase__moon {
+  --moon-size: clamp(120px, 42vw, 190px);
+  position: relative;
+  width: var(--moon-size);
+  height: var(--moon-size);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+
+.moon-phase__halo {
+  position: absolute;
+  inset: -10%;
+  border-radius: 50%;
+  border: 2px solid var(--moon-edge);
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+.moon-phase--halo .moon-phase__halo {
+  animation: moon-halo 300ms cubic-bezier(0.33, 0.9, 0.35, 1) forwards;
+}
+
+@keyframes moon-halo {
+  0% {
+    opacity: 0.85;
+    transform: scale(0.92);
+  }
+  55% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.moon-phase__body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--moon-dark);
+}
+
+.moon-phase__lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    var(--moon-white) 0%,
+    var(--moon-lit) 42%,
+    #9fd8f0 100%
+  );
+}
+
+/*
+ * Shade occlusion (waxing right → left):
+ * translateX(calc(var(--moon-progress) * -1%)) where 100% = moon diameter.
+ * 0 → centered (new). 50 → half. 100 → fully left (full moon).
+ */
+.moon-phase__shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--moon-dark);
+  transform: translateX(calc(var(--moon-progress, 0) * -1%));
+  transition: transform var(--moon-duration, 260ms) cubic-bezier(0.4, 0.05, 0.2, 1);
+  will-change: transform;
+}
+
+.moon-phase__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 1.5px rgb(74 167 212 / 0.55),
+    0 0 0 1px rgb(74 167 212 / 0.35);
+  pointer-events: none;
+}
+
+.moon-phase__tick {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 2px;
+  background: var(--moon-lit);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.moon-phase__tick--25 {
+  right: -12px;
+  transform: translateY(-50%) rotate(12deg);
+}
+
+.moon-phase__tick--50 {
+  right: -14px;
+  top: 18%;
+  transform: rotate(-8deg);
+}
+
+.moon-phase__tick--75 {
+  right: -12px;
+  top: 78%;
+  transform: rotate(18deg);
+}
+
+.moon-phase__tick--flash {
+  animation: moon-tick 160ms ease-out forwards;
+}
+
+@keyframes moon-tick {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+.moon-phase__tick--50.moon-phase__tick--flash {
+  animation-name: moon-tick-50;
+}
+
+.moon-phase__tick--75.moon-phase__tick--flash {
+  animation-name: moon-tick-75;
+}
+
+@keyframes moon-tick-50 {
+  0% {
+    opacity: 0;
+    transform: rotate(-8deg) scaleX(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(-8deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-8deg) scaleX(1);
+  }
+}
+
+@keyframes moon-tick-75 {
+  0% {
+    opacity: 0;
+    transform: rotate(18deg) scaleX(0.4);
+  }
+  35% {
+    opacity: 1;
+    transform: rotate(18deg) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(18deg) scaleX(1);
+  }
+}
+
+.moon-phase__value {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--moon-white);
+}
+
+.moon-phase__full {
+  margin: -0.2rem 0 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--moon-edge);
+}
+
+.moon-phase__full[hidden] {
+  display: none;
+}
+
+.moon-phase__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.moon-phase__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--moon-white);
+  border-radius: 0;
+  background: transparent;
+  color: var(--moon-white);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.moon-phase__btn:hover {
+  background: var(--moon-white);
+  color: var(--moon-bg);
+}
+
+.moon-phase__btn:focus-visible {
+  outline: 2px solid var(--moon-edge);
+  outline-offset: 3px;
+}
+
+.moon-phase__btn--ghost {
+  border-color: rgb(244 251 255 / 0.4);
+  color: rgb(244 251 255 / 0.65);
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .moon-phase__shade {
+    transition: none !important;
+  }
+
+  .moon-phase--halo .moon-phase__halo,
+  .moon-phase__tick--flash {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .moon-phase__shade {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .moon-phase--halo .moon-phase__halo,
+[data-force-reduced-motion='true'] .moon-phase__tick--flash {
+  animation: none !important;
+}
+
+@media (max-width: 360px) {
+  .moon-phase {
+    padding: 0.9rem 0.75rem;
+  }
+
+  .moon-phase__moon {
+    --moon-size: clamp(120px, 48vw, 150px);
+  }
+}

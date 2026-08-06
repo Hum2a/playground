@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/moon-phase-progress.schema.json",
+  "title": "MoonPhaseProgress",
+  "description": "Portable contract for lunar illumination progress. Waxing right→left via shade occlusion translateX(progress * -1%).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "phaseMapping",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "moon-phase-progress" },
+    "intent": {
+      "type": "string",
+      "const": "Progress visualisation where the illuminated portion of a moon is the sole progress graphic — no conventional bar."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "full", "inc10", "inc25", "reset", "valueTextTemplate"],
+      "properties": {
+        "label": { "type": "string", "const": "ARCHIVE COMPLETION" },
+        "full": { "type": "string", "const": "FULL" },
+        "inc10": { "type": "string", "const": "+10" },
+        "inc25": { "type": "string", "const": "+25" },
+        "reset": { "type": "string", "const": "RESET" },
+        "valueTextTemplate": {
+          "type": "string",
+          "const": "Archive completion, {n} percent."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["background", "darkMoon", "illuminated", "blueEdge", "white"],
+      "properties": {
+        "background": { "type": "string", "const": "#020912" },
+        "darkMoon": { "type": "string", "const": "#071627" },
+        "illuminated": { "type": "string", "const": "#ccefff" },
+        "blueEdge": { "type": "string", "const": "#4aa7d4" },
+        "white": { "type": "string", "const": "#f4fbff" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["moonDiameterPx", "moonDiameterMinPx", "moonDiameterMaxPx"],
+      "properties": {
+        "moonDiameterPx": { "type": "number", "const": 170 },
+        "moonDiameterMinPx": { "type": "number", "const": 120 },
+        "moonDiameterMaxPx": { "type": "number", "const": 190 }
+      }
+    },
+    "phaseMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direction",
+        "formula",
+        "checkpoints"
+      ],
+      "properties": {
+        "direction": {
+          "type": "string",
+          "const": "waxing-right-to-left"
+        },
+        "formula": {
+          "type": "string",
+          "const": "shade.translateX = calc(progress * -1%) of moon diameter; lit disc full beneath; 0 centered cover, 50 half, 100 shade off"
+        },
+        "checkpoints": {
+          "type": "object",
+          "const": {
+            "0": "new/dark",
+            "25": "crescent",
+            "50": "half",
+            "75": "gibbous",
+            "100": "full"
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepMs",
+        "jumpMs",
+        "tickMs",
+        "haloMs",
+        "milestones",
+        "semanticUpdate",
+        "loops"
+      ],
+      "properties": {
+        "stepMs": { "type": "number", "const": 260 },
+        "jumpMs": { "type": "number", "const": 420 },
+        "tickMs": { "type": "number", "const": 160 },
+        "haloMs": { "type": "number", "const": 300 },
+        "milestones": {
+          "type": "array",
+          "const": [25, 50, 75]
+        },
+        "semanticUpdate": {
+          "type": "string",
+          "const": "immediate"
+        },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["progressbar", "moonDecorative"],
+      "properties": {
+        "progressbar": { "type": "boolean", "const": true },
+        "moonDecorative": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediatePhase", "omitHalo", "omitTicks", "triggers"],
+      "properties": {
+        "immediatePhase": { "type": "boolean", "const": true },
+        "omitHalo": { "type": "boolean", "const": true },
+        "omitTicks": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "moon", "lit", "shade", "value", "full"],
+      "properties": {
+        "root": { "type": "string", "const": "moon-phase" },
+        "moon": { "type": "string", "const": "moon-phase__moon" },
+        "lit": { "type": "string", "const": "moon-phase__lit" },
+        "shade": { "type": "string", "const": "moon-phase__shade" },
+        "value": { "type": "string", "const": "moon-phase__value" },
+        "full": { "type": "string", "const": "moon-phase__full" }
+      }
+    }
+  }
+}

@@ -25,7 +25,9 @@ import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
+import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { failureShatter } from './failure-shatter/entry'
+import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
@@ -33,8 +35,8 @@ import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
-import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
@@ -42,6 +44,7 @@ import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { permissionRejection } from './permission-rejection/entry'
+import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
@@ -49,6 +52,7 @@ import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
+import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
@@ -102,6 +106,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   precisionMenuSnap,
+  evokerMenuSnap,
   truthShotNotification,
   diagnosticBootSequence,
   corruptedAccessLock,
@@ -142,12 +147,16 @@ export const specimens: Specimen[] = [
   choiceExecutionSlash,
   progressMilestoneBreakthrough,
   failureShatter,
+  fusionSelectionMerge,
   permissionRejection,
   objectiveAcquired,
   completionStrike,
   connectionSevered,
   velvetDoorTransition,
   darkHourConversion,
+  moonPhaseProgress,
+  personaAwakeningReveal,
+  tartarusFloorAscension,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
