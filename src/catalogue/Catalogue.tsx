@@ -1,46 +1,54 @@
 import { useMemo, useState } from 'react'
-import { specimens } from '../specimens'
+import { FACET_KEYS, specimens, type FacetKey } from '../specimens'
 import { ContactSheet } from './ContactSheet'
-import { FilterBar } from './FilterBar'
+import { FilterBar, type FacetFilters } from './FilterBar'
 import { SpecimenPlate } from './SpecimenPlate'
 import './catalogue.css'
 
-export function Catalogue() {
-  const [activeTag, setActiveTag] = useState<string | null>(null)
-  const [query, setQuery] = useState('')
+const EMPTY_FILTERS: FacetFilters = {
+  kind: null,
+  tech: null,
+  scope: null,
+  intensity: null,
+}
 
-  const tags = useMemo(() => {
-    const set = new Set<string>()
-    for (const s of specimens) for (const t of s.tags) set.add(t)
-    return [...set].sort()
-  }, [])
+export function Catalogue() {
+  const [filters, setFilters] = useState<FacetFilters>(EMPTY_FILTERS)
+  const [query, setQuery] = useState('')
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     return specimens.filter((s) => {
-      if (activeTag && !s.tags.includes(activeTag)) return false
+      for (const key of FACET_KEYS) {
+        const active = filters[key]
+        if (active && s.facets[key] !== active) return false
+      }
       if (!q) return true
       const hay = [
         s.title,
         s.blurb,
         s.origin.project,
         s.origin.surface ?? '',
+        ...FACET_KEYS.map((k) => s.facets[k]),
         ...s.tags,
       ]
         .join(' ')
         .toLowerCase()
       return hay.includes(q)
     })
-  }, [activeTag, query])
+  }, [filters, query])
+
+  function onFacetChange(key: FacetKey, value: string | null) {
+    setFilters((prev) => ({ ...prev, [key]: value }))
+  }
 
   return (
     <div className="catalogue">
       <ContactSheet specimens={specimens} />
       <FilterBar
-        tags={tags}
-        activeTag={activeTag}
+        filters={filters}
         query={query}
-        onTagChange={setActiveTag}
+        onFacetChange={onFacetChange}
         onQueryChange={setQuery}
       />
       <div className="catalogue__plates">

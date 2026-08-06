@@ -49,8 +49,13 @@
   font-size: var(--text-sm);
 }
 
+.specimen-plate__facets {
+  color: var(--chalk);
+}
+
 .specimen-plate__tags {
   color: var(--pewter);
+  margin-top: calc(var(--space-1) * -0.5);
 }
 
 .specimen-plate__actions {

@@ -12,6 +12,7 @@ detail here. Deeper product text lives in `docs/design-spec.md`.
 | `10_stack.mdc` | Always — stack and tooling |
 | `20_structure.mdc` | Always — folder map and registry |
 | `30_specimens.mdc` | `src/specimens/**` |
+| `35_taxonomy.mdc` | `src/specimens/**` — facets + free tags |
 | `40_harness.mdc` | `src/harness/**` |
 | `45_design.mdc` | Chrome styles / app shell CSS |
 | `46_motion.mdc` | Always — reduced motion |

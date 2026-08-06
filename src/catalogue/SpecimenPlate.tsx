@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { DEFAULT_CONTROLS, PreviewFrame } from '../harness'
 import { buildPrompt, CopyButton } from '../prompt'
 import type { Specimen } from '../specimens'
+import { formatFacets } from '../specimens'
 import { useFrameVisibility } from './useFrameVisibility'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 import './specimen-plate.css'
@@ -68,9 +69,12 @@ export function SpecimenPlate({ specimen }: SpecimenPlateProps) {
       </div>
 
       <h2 className="display specimen-plate__title">{specimen.title}</h2>
-      <p className="mono-label specimen-plate__tags">
-        {specimen.tags.join(' · ')}
+      <p className="mono-label specimen-plate__facets">
+        {formatFacets(specimen.facets)}
       </p>
+      {specimen.tags.length > 0 ? (
+        <p className="mono-label specimen-plate__tags">{specimen.tags.join(' · ')}</p>
+      ) : null}
 
       <div className="specimen-plate__actions">
         <CopyButton text={prompt} mode="full" />

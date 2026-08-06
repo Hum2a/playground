@@ -1,0 +1,29 @@
+---
+description: Specimen faceted taxonomy — required facets and free tags
+globs: src/specimens/**
+alwaysApply: false
+---
+
+# Specimen taxonomy
+
+Source of truth: [`src/specimens/taxonomy.ts`](src/specimens/taxonomy.ts).
+
+Every specimen **must** set `facets` and may set freeform `tags`.
+
+## Facets (required)
+
+| Facet | Values |
+| --- | --- |
+| `kind` | `overlay` · `transition` · `loop` · `interaction` |
+| `tech` | `css-only` · `tiny-js` |
+| `scope` | `card` · `fullscreen` · `inline` |
+| `intensity` | `subtle` · `graphic` · `maximal` |
+
+## Assignment rules
+
+- Do **not** put a facet value in `tags` (no `tags: ['css-only']` when `tech: 'css-only'`)
+- `tech: 'css-only'` ↔ no `demo.js` / no `files.js`; `tech: 'tiny-js'` ↔ JS present
+- Free tags: kebab-case, short, specific (`marquee`, `bilingual`, `comic`) — not synonyms of facets
+- Extending the vocab means editing `taxonomy.ts`, `spec-check.mjs`, and this rule together
+
+Catalogue filters AND across facets; plates show facets first, then free tags. See `55_catalogue`.

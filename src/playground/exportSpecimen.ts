@@ -56,7 +56,14 @@ export const specimen: Specimen = {
   origin: {
     project: ${JSON.stringify(input.originProject.trim())},${surface}
   },
-  tags: ['TODO'],
+  // TODO: set facets to match the effect (see src/specimens/taxonomy.ts)
+  facets: {
+    kind: 'overlay',
+    tech: ${input.js.trim() ? `'tiny-js'` : `'css-only'`},
+    scope: 'card',
+    intensity: 'subtle',
+  },
+  tags: [],
   deps: 'none',
   motion: {
     loops: true,

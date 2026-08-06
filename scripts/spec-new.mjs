@@ -86,6 +86,13 @@ export const specimen: Specimen = {
   title: '${slug}',
   blurb: 'TODO',
   origin: { project: 'TODO' },
+  // TODO: set facets to match the effect (see src/specimens/taxonomy.ts)
+  facets: {
+    kind: 'overlay',
+    tech: 'css-only',
+    scope: 'card',
+    intensity: 'subtle',
+  },
   tags: [],
   deps: 'none',
   motion: { loops: true, respectsReducedMotion: true },

@@ -37,7 +37,8 @@ Key metadata fields:
 
 - `id` (URL slug), `ref` (e.g. SPX-001), `title`, one-sentence `blurb`
 - `origin` — which project/surface it came from (or “original” if invented here)
-- `tags` — e.g. overlay, marquee, css-only, scroll, hover, bilingual
+- `facets` — required: kind / tech / scope / intensity (see `src/specimens/taxonomy.ts`)
+- `tags` — freeform flavor only (e.g. marquee, bilingual); never duplicate a facet value
 - `deps` — prefer `'none'` (plain HTML+CSS); list libs only if unavoidable
 - `motion` — whether it loops; must honour `prefers-reduced-motion` / `data-force-reduced-motion`
 - `preview` — width/height, background (`card`|`page`|`grid`|`dark`), optional **scaffold** host markup, label

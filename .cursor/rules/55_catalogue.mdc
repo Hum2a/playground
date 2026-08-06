@@ -14,10 +14,14 @@ alwaysApply: false
 
 ## Plates
 
-Anatomy: mono ref (left) + origin (right) → framed preview → display title → mono tags → `[Copy prompt]` + `[Open →]`.
+Anatomy: mono ref (left) + origin (right) → framed preview → display title → mono **facets** (`kind · tech · scope · intensity`) → optional free tags → `[Copy prompt]` + `[Open →]`.
 
 - Primary copy action only on plates; detail route shows Full / Code / Contract
 - Mount frames with `IntersectionObserver`; unmount when more than one viewport offscreen
+
+## Filters
+
+Catalogue plate list filters by required facets (AND across kind/tech/scope/intensity) plus text search. Contact sheet stays unfiltered. Taxonomy: `35_taxonomy` / `src/specimens/taxonomy.ts`.
 
 ## Detail `/s/:id`
 

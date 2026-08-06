@@ -24,7 +24,13 @@ export const comingSoonTape: Specimen = {
   blurb:
     'Diagonal black-and-yellow keep-out tape with a bilingual Coming Soon marquee over a locked card.',
   origin: { project: 'Buzzer', surface: 'Teacher class launch pad' },
-  tags: ['overlay', 'marquee', 'css-only', 'bilingual'],
+  facets: {
+    kind: 'overlay',
+    tech: 'css-only',
+    scope: 'card',
+    intensity: 'graphic',
+  },
+  tags: ['marquee', 'bilingual'],
   deps: 'none',
   motion: {
     loops: true,

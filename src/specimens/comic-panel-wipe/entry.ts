@@ -23,15 +23,13 @@ export const comicPanelWipe: Specimen = {
     project: 'Original',
     surface: 'Persona 5–inspired graphic transition language',
   },
-  tags: [
-    'transition',
-    'overlay',
-    'comic',
-    'wipe',
-    'persona-inspired',
-    'tiny-js',
-    'fullscreen',
-  ],
+  facets: {
+    kind: 'transition',
+    tech: 'tiny-js',
+    scope: 'fullscreen',
+    intensity: 'maximal',
+  },
+  tags: ['comic', 'wipe', 'persona-inspired'],
   deps: 'none',
   motion: {
     loops: false,

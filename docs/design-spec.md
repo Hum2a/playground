@@ -57,7 +57,13 @@ export interface Specimen {
   title: string;
   blurb: string;              // one sentence, what it looks like
   origin: { project: string; surface?: string };  // 'Buzzer' / 'Teacher class launch pad'
-  tags: string[];             // 'overlay' | 'marquee' | 'css-only' | 'scroll' | 'hover' ...
+  facets: {                   // required orthogonal axes — see taxonomy below
+    kind: 'overlay' | 'transition' | 'loop' | 'interaction';
+    tech: 'css-only' | 'tiny-js';
+    scope: 'card' | 'fullscreen' | 'inline';
+    intensity: 'subtle' | 'graphic' | 'maximal';
+  };
+  tags: string[];             // freeform flavor only — never duplicate a facet value
   deps: 'none' | string[];    // 'none' means pure HTML+CSS
   motion: {
     loops: boolean;
@@ -82,6 +88,13 @@ export interface Specimen {
 `scaffold` matters for overlays. The caution tape is meaningless floating in space — it needs a
 card with `position: relative; overflow: hidden` around it. That host markup is part of the
 specimen's story, so it ships with it.
+
+### Taxonomy
+
+Facets are the catalogue’s primary filter axes. Source of truth:
+`src/specimens/taxonomy.ts`. Free `tags` are optional and must not repeat any facet literal
+(e.g. do not put `css-only` in `tags` when `tech: 'css-only'`). `tech` must match whether the
+specimen ships `demo.js` / `files.js`.
 
 Registry is a plain array in `src/specimens/index.ts`. Adding a specimen = add a folder, add one
 import. No dynamic loading, no magic globs — the explicit list keeps ordering and ref numbers

@@ -17,4 +17,8 @@ Every specimen preview renders in an `<iframe>` with `sandbox="allow-scripts"` o
 
 Specimen CSS is never edited to fit the site. It stays verbatim and portable — no scoping prefixes, no restyling to match chrome tokens. Isolation comes from the iframe, not from CSS modules or renamed classes.
 
+## Taxonomy
+
+Every specimen needs required `facets` (kind / tech / scope / intensity) plus optional free `tags`. See `.cursor/rules/35_taxonomy.mdc` and `src/specimens/taxonomy.ts`.
+
 See `docs/design-spec.md` for the full product contract.
