@@ -153,6 +153,7 @@ import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
+import { pictureInPictureCollapse } from './picture-in-picture-collapse/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
 import { playPauseGlyphMorph } from './play-pause-glyph-morph/entry'
 import { postBurstRecovery } from './post-burst-recovery/entry'
@@ -411,6 +412,7 @@ export const specimens: Specimen[] = [
   paperStackShuffle,
   permissionRejection,
   personaAwakeningReveal,
+  pictureInPictureCollapse,
   pixelHpDrain,
   playPauseGlyphMorph,
   postBurstRecovery,

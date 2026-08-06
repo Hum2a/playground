@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/picture-in-picture-collapse.schema.json",
+  "title": "PictureInPictureCollapse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "layout", "animation", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "picture-in-picture-collapse" },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stageWidthPx", "stageHeightPx", "pipWidthPx", "pipHeightPx", "pipMarginPx"],
+      "properties": {
+        "stageWidthPx": { "type": "number", "const": 390 },
+        "stageHeightPx": { "type": "number", "const": 700 },
+        "pipWidthPx": { "type": "number", "const": 176 },
+        "pipHeightPx": { "type": "number", "const": 99 },
+        "pipMarginPx": { "type": "number", "const": 16 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 380 }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "stage", "player"],
+      "properties": {
+        "root": { "type": "string", "const": "pipc" },
+        "stage": { "type": "string", "const": "pipc__stage" },
+        "player": { "type": "string", "const": "pipc__player" }
+      }
+    }
+  }
+}

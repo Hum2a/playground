@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **22 / 417** complete.
+- Progress: **23 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 22 |
-| Open | 395 |
+| Done | 23 |
+| Open | 394 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-257 | `SPX-1814` | `picture-in-picture-collapse` | Picture-in-Picture Collapse |
 | AND-273 | `SPX-1830` | `fingerprint-acquisition-field` | Fingerprint Acquisition Field |
 | AND-205 | `SPX-1762` | `collapsing-app-bar` | Collapsing App Bar |
 | AND-200 | `SPX-1757` | `vertical-content-stretch` | Vertical Content Stretch |
@@ -81,7 +82,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
 - [x] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
 - [x] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — biometric-unlock-inspired
-- [ ] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
+- [x] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
 - [ ] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
 - [ ] **AND-311** · `SPX-1868` · **File Transfer Arc** — nearby-share-quick-share-inspired
 - [ ] **AND-317** · `SPX-1874` · **Widget Resize Morph** — widgets
@@ -450,7 +451,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [ ] **AND-254** · `SPX-1811` · **Split App Acquisition** — selected task docks into one side while chooser occupies the other.
 - [ ] **AND-255** · `SPX-1812` · **Split Dismiss Threshold** — dragging divider past threshold removes one surface.
 - [ ] **AND-256** · `SPX-1813` · **Split Orientation Reflow** — two panes reorganise when available aspect ratio changes.
-- [ ] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — full media/app surface contracts into floating mini-window.
+- [x] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — full media/app surface contracts into floating mini-window.
 - [ ] **AND-258** · `SPX-1815` · **Picture-in-Picture Restore** — mini-window expands back into owning application.
 - [ ] **AND-259** · `SPX-1816` · **PiP Edge Magnetism** — floating mini-window gravitates toward valid screen-edge anchors.
 - [ ] **AND-260** · `SPX-1817` · **PiP Stash** — mini-window partially retreats offscreen while retaining a visible handle.
