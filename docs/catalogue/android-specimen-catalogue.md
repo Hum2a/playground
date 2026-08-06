@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **4 / 417** complete.
+- Progress: **5 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 413 |
+| Done | 5 |
+| Open | 412 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-036 | `SPX-1593` | `bounded-touch-ripple` | Bounded Touch Ripple |
 | AND-002 | `SPX-1559` | `fab-to-composer-transform` | FAB-to-Composer Transform |
 | AND-001 | `SPX-1558` | `card-to-detail-container-transform` | Card-to-Detail Container Transform |
 | AND-045 | `SPX-1602` | `predictive-back-app-shrink` | Predictive Back App Shrink |
@@ -47,7 +48,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — material-container-transform
 - [ ] **AND-020** · `SPX-1577` · **Fade Through** — material-fade-patterns
 - [ ] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — shared-axis-transitions
-- [ ] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
+- [x] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
 - [ ] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher-home-screen
 - [ ] **AND-054** · `SPX-1611` · **Home Swipe Up** — gesture-navigation
 - [ ] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — android-recents-overview
@@ -121,7 +122,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Ripple & Touch Feedback
 
-- [ ] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — contact produces a radial response clipped to the control boundary.
+- [x] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — contact produces a radial response clipped to the control boundary.
 - [ ] **AND-037** · `SPX-1594` · **Unbounded Icon Ripple** — compact icon control produces a restrained radial touch field beyond glyph bounds.
 - [ ] **AND-038** · `SPX-1595` · **Ripple from Pointer Origin** — radial response originates at exact contact coordinates.
 - [ ] **AND-039** · `SPX-1596` · **Ripple-to-Selected State** — touch response resolves into persistent selected backing.

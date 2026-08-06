@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/bounded-touch-ripple.schema.json",
+  "title": "BoundedTouchRipple",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "controls", "ripple", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "bounded-touch-ripple" },
+    "intent": {
+      "type": "string",
+      "const": "Pointer-down creates corner-covering ripple clipped to control radius; 420ms scale 0→1, opacity 0.18→0; keyboard uses centre."
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["button", "row", "chip"],
+      "properties": {
+        "button": { "type": "object", "const": { "widthPx": 280, "heightPx": 56 } },
+        "row": { "type": "object", "const": { "widthPx": 280, "heightPx": 72 } },
+        "chip": { "type": "object", "const": { "widthPx": 120, "heightPx": 48 } }
+      }
+    },
+    "ripple": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "maxOpacity"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 420 },
+        "maxOpacity": { "type": "number", "const": 0.18 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flashMs", "triggers"],
+      "properties": {
+        "flashMs": { "type": "number", "const": 100 },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "ripple"],
+      "properties": {
+        "root": { "type": "string", "const": "btr" },
+        "ripple": { "type": "string", "const": "btr__ripple" }
+      }
+    }
+  }
+}

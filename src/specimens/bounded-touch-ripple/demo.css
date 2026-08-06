@@ -1,0 +1,145 @@
+/* bounded-touch-ripple — portable specimen styles. */
+
+.btr {
+  --btr-ink: #14161c;
+  --btr-panel: #1e222a;
+  --btr-line: #2e3440;
+  --btr-muted: #7a828e;
+  --btr-text: #e8ecf2;
+  --btr-accent: #6b9e8f;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--btr-text);
+  background: var(--btr-ink);
+}
+
+.btr *,
+.btr *::before,
+.btr *::after {
+  box-sizing: border-box;
+}
+
+.btr__btn,
+.btr__row,
+.btr__chip {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--btr-line);
+  background: var(--btr-panel);
+  color: var(--btr-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.btr__btn {
+  width: 280px;
+  height: 56px;
+  border-radius: 28px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btr__row {
+  width: 280px;
+  height: 72px;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.btr__row-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btr__row-sub {
+  font-size: 0.72rem;
+  color: var(--btr-muted);
+}
+
+.btr__chip {
+  width: 120px;
+  height: 48px;
+  border-radius: 24px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.btr__btn:focus-visible,
+.btr__row:focus-visible,
+.btr__chip:focus-visible {
+  outline: 2px solid var(--btr-accent);
+  outline-offset: 2px;
+}
+
+.btr__ripples {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.btr__ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: color-mix(in srgb, var(--btr-accent) 100%, transparent);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.btr__ripple.is-active {
+  animation: btr-ripple 420ms ease-out forwards;
+}
+
+@keyframes btr-ripple {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.btr__ripple--flash.is-active {
+  animation: btr-flash 100ms ease-out forwards;
+}
+
+@keyframes btr-flash {
+  0% {
+    opacity: 0.18;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.btr__status {
+  margin: 0.25rem 0 0;
+  font-size: 0.62rem;
+  color: var(--btr-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btr__ripple.is-active {
+    animation-name: btr-flash;
+    animation-duration: 100ms;
+  }
+}
+
+[data-force-reduced-motion='true'] .btr__ripple.is-active {
+  animation-name: btr-flash;
+  animation-duration: 100ms;
+}
