@@ -1,0 +1,12 @@
+{
+  "name": "rail-page-snap",
+  "intent": "A multi-card row translates to the next group and settles on exact card boundaries — no fractional overhang after snap.",
+  "ref": "SPX-3136",
+  "nf": "NF-027",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}

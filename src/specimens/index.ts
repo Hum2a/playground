@@ -180,6 +180,7 @@ import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { holdToMaximumButton } from './hold-to-maximum-button/entry'
 import { homeSwipeUp } from './home-swipe-up/entry'
+import { horizontalContentRail } from './horizontal-content-rail/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { iceWipeTransition } from './ice-wipe-transition/entry'
 import { impactFrameSlam } from './impact-frame-slam/entry'
@@ -299,6 +300,7 @@ import { quirkActivationBurst } from './quirk-activation-burst/entry'
 import { quirkCapabilityRadarBuild } from './quirk-capability-radar-build/entry'
 import { quirkCooldownRing } from './quirk-cooldown-ring/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
+import { railPageSnap } from './rail-page-snap/entry'
 import { rankPromotion } from './rank-promotion/entry'
 import { rankPromotionCard } from './rank-promotion-card/entry'
 import { rankThresholdUnlock } from './rank-threshold-unlock/entry'
@@ -623,6 +625,7 @@ export const specimens: Specimen[] = [
   holdToChargeButton,
   holdToMaximumButton,
   homeSwipeUp,
+  horizontalContentRail,
   hoverCutout,
   iceWipeTransition,
   impactFrameSlam,
@@ -742,6 +745,7 @@ export const specimens: Specimen[] = [
   quirkCapabilityRadarBuild,
   quirkCooldownRing,
   radarPulseDiscovery,
+  railPageSnap,
   rankPromotion,
   rankPromotionCard,
   rankThresholdUnlock,

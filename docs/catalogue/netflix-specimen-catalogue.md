@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **3 / 197** complete.
+- Progress: **5 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 194 |
+| Done | 5 |
+| Open | 192 |
 
 ## Visual grammar
 
@@ -34,6 +34,8 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-027 | `SPX-3136` | `rail-page-snap` | Rail Page Snap |
+| NF-025 | `SPX-3134` | `horizontal-content-rail` | Horizontal Content Rail |
 | NF-040 | `SPX-3149` | `preview-collapse-return` | Preview Collapse Return |
 | NF-038 | `SPX-3147` | `neighbour-push-out` | Neighbour Push-Out |
 | NF-035 | `SPX-3144` | `preview-card-hover-expand` | Preview Card Hover Expand |
@@ -47,8 +49,8 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-035** · `SPX-3144` · **Preview Card Hover Expand** — `preview-card-hover-expand`
 - [x] **NF-038** · `SPX-3147` · **Neighbour Push-Out** — `neighbour-push-out`
 - [x] **NF-040** · `SPX-3149` · **Preview Collapse Return** — `preview-collapse-return`
-- [ ] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — `horizontal-content-rail`
-- [ ] **NF-027** · `SPX-3136` · **Rail Page Snap** — `rail-page-snap`
+- [x] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — `horizontal-content-rail`
+- [x] **NF-027** · `SPX-3136` · **Rail Page Snap** — `rail-page-snap`
 - [ ] **NF-089** · `SPX-3198` · **Details Panel Expand** — `details-panel-expand`
 - [ ] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — `playback-controls-fade-in`
 - [ ] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — `scrub-preview-thumbnail`
@@ -139,9 +141,9 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [ ] **NF-024** · `SPX-3133` · **Hero Mute Indicator** — A compact audio-state control acquires and releases a visible muted state
 ## 4. Rows / Carousels
 
-- [ ] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — A row of cards moves by one viewport group with clear directional continuity
+- [x] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — A row of cards moves by one viewport group with clear directional continuity
 - [ ] **NF-026** · `SPX-3135` · **Edge Arrow Acquisition** — Carousel navigation appears only when the rail can move in that direction
-- [ ] **NF-027** · `SPX-3136` · **Rail Page Snap** — A multi-card row translates to the next group and settles on exact card boundaries
+- [x] **NF-027** · `SPX-3136` · **Rail Page Snap** — A multi-card row translates to the next group and settles on exact card boundaries
 - [ ] **NF-028** · `SPX-3137` · **Peek-Next-Card Affordance** — The final partial card hints that more content exists beyond the viewport
 - [ ] **NF-029** · `SPX-3138` · **Row Title Reveal** — A category heading gains a compact secondary action on focus
 - [ ] **NF-030** · `SPX-3139` · **Rail Momentum Brake** — A fast navigation sequence settles cleanly at the requested group
