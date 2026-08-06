@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **3 / 266** complete.
+- Progress: **4 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 263 |
+| Done | 4 |
+| Open | 262 |
 
 ## Visual grammar
 
@@ -35,6 +35,7 @@
 | PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
 | PK-032 | `SPX-731` | `branch-evolution-choice` | Branch Evolution Choice |
 | PK-025 | `SPX-724` | `evolution-silhouette-transformation` | Evolution Silhouette Transformation |
+| PK-061 | `SPX-760` | `delayed-damage-bar` | Delayed Damage Bar |
 
 ## Core first-wave
 
