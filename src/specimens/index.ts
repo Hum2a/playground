@@ -370,6 +370,7 @@ import { vortexHoldToConfirm } from './vortex-hold-to-confirm/entry'
 import { waterWavePageTransition } from './water-wave-page-transition/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { weakPointDetection } from './weak-point-detection/entry'
+import { weaknessDiscovered } from './weakness-discovered/entry'
 import { weaknessHighlightSweep } from './weakness-highlight-sweep/entry'
 import { wiFiSearchingToConnectedMorph } from './wi-fi-searching-to-connected-morph/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
@@ -796,6 +797,7 @@ export const specimens: Specimen[] = [
   waterWavePageTransition,
   waterlinePageWipe,
   weakPointDetection,
+  weaknessDiscovered,
   weaknessHighlightSweep,
   wiFiSearchingToConnectedMorph,
   widgetResizeMorph,

@@ -1,0 +1,13 @@
+/* SPX-2997 Weakness Discovered */
+.wkd{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;box-sizing:border-box;display:grid;gap:.75rem;place-items:center;width:100%;min-height:260px;padding:1rem;background:var(--ink);color:var(--cream);font-family:ui-sans-serif,system-ui,sans-serif}
+.wkd__live{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.wkd__enemy{position:relative;display:grid;gap:.35rem;place-items:center;width:10rem;padding:.85rem;border:2px solid var(--gray);background:rgb(247 243 232/.06);text-align:center}
+.wkd__enemy.is-hit{animation:wkd-hit 420ms ease-out}
+.wkd__name{margin:0;font-size:.85rem;font-weight:800;letter-spacing:.14em}
+.wkd__trait{font-size:.72rem;font-weight:800;letter-spacing:.18em;color:var(--gray)}
+.wkd__trait.is-weak{color:var(--gold)}
+.wkd__btn{appearance:none;padding:.5rem 1.1rem;border:2px solid var(--gold);background:var(--gold);color:var(--ink);font:inherit;font-size:.68rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.wkd__btn:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+@keyframes wkd-hit{0%{transform:scale(1)}30%{transform:scale(.92);border-color:var(--gold)}100%{transform:scale(1);border-color:var(--gold)}}
+@media (prefers-reduced-motion: reduce) { .wkd__enemy.is-hit{animation:none;border-color:var(--gold)} }
+[data-force-reduced-motion="true"] .wkd__enemy.is-hit{animation:none;border-color:var(--gold)}

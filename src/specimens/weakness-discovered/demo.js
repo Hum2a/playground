@@ -1,0 +1,5 @@
+let done=false;function rm(){return document.documentElement.getAttribute('data-force-reduced-motion')==='true'||matchMedia('(prefers-reduced-motion: reduce)').matches}
+function live(t){const e=document.querySelector('[data-wkd-live]');if(e)e.textContent=t}
+function strike(){if(done)return;const e=document.querySelector('[data-wkd-enemy]'),t=document.querySelector('[data-wkd-trait]'),b=document.querySelector('[data-wkd-strike]');if(!e||!t)return;done=true;if(b)b.disabled=true;live('Striking enemy.');function reveal(){t.textContent='WEAK';t.classList.add('is-weak');live('Weakness discovered: weak to strike.')}if(rm()){reveal();return}e.classList.add('is-hit');setTimeout(reveal,430)}
+document.querySelector('[data-wkd-strike]')?.addEventListener('click',strike)
+addEventListener('message',ev=>{if(ev.data?.type==='restart'){done=false;const t=document.querySelector('[data-wkd-trait]');if(t){t.textContent='???';t.classList.remove('is-weak')}document.querySelector('[data-wkd-enemy]')?.classList.remove('is-hit');const b=document.querySelector('[data-wkd-strike]');if(b)b.disabled=false;live('Enemy unknown.')}})

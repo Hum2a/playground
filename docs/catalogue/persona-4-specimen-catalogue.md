@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **36 / 191** complete.
+- Progress: **37 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 36 |
-| Open | 155 |
+| Done | 37 |
+| Open | 154 |
 
 ## Visual grammar
 
@@ -70,6 +70,7 @@
 | P4-070 | `SPX-2988` | `fusion-preview` | Fusion Preview |
 | P4-071 | `SPX-2989` | `skill-inheritance-select` | Skill Inheritance Select |
 | P4-078 | `SPX-2996` | `multi-fusion-assembly` | Multi-Fusion Assembly |
+| P4-079 | `SPX-2997` | `weakness-discovered` | Weakness Discovered |
 
 ## Core first-wave
 
@@ -111,7 +112,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-070** · `SPX-2988` · **Fusion Preview** — persona-fusion-compendium
 - [x] **P4-071** · `SPX-2989` · **Skill Inheritance Select** — persona-fusion-compendium
 - [x] **P4-078** · `SPX-2996` · **Multi-Fusion Assembly** — persona-fusion-compendium
-- [ ] **P4-079** · `SPX-2997` · **Weakness Discovered** — battle-weakness-advantage
+- [x] **P4-079** · `SPX-2997` · **Weakness Discovered** — battle-weakness-advantage
 - [ ] **P4-080** · `SPX-2998` · **Knockdown Chain** — battle-weakness-advantage
 - [ ] **P4-087** · `SPX-3005` · **Battle Result Tally** — battle-weakness-advantage
 - [ ] **P4-089** · `SPX-3007` · **Level-Up Burst** — battle-weakness-advantage
@@ -231,7 +232,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Battle / Weakness / Advantage
 
-- [ ] **P4-079** · `SPX-2997` · **Weakness Discovered** — An unknown property is tested, struck, and permanently identified.
+- [x] **P4-079** · `SPX-2997` · **Weakness Discovered** — An unknown property is tested, struck, and permanently identified.
 - [ ] **P4-080** · `SPX-2998` · **Knockdown Chain** — One successful weakness hit sends a completion pulse through dependent targets.
 - [ ] **P4-081** · `SPX-2999` · **Player Advantage Alert** — A favourable encounter begins with a sharp advantage banner.
 - [ ] **P4-082** · `SPX-3000` · **Enemy Advantage Warning** — An unfavourable encounter forcibly takes over the combat card.
