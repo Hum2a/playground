@@ -5,7 +5,7 @@
 ## How to use
 
 - **P5-NNN** — stable catalogue id (this list).
-- **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use gaps not reserved by open P5 or P3 rows (see `37_persona-catalogue`).
+- **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use gaps not reserved by open P5, P3, or PK rows (see `37_persona-catalogue`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
 - Progress: **18 / 301** complete.
 

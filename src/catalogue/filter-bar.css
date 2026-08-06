@@ -103,6 +103,12 @@
   gap: var(--space-4);
 }
 
+/* `display: flex` above would otherwise defeat the [hidden] UA rule. */
+.filter-bar__body[hidden],
+.filter-bar--collapsed .filter-bar__body {
+  display: none;
+}
+
 .filter-bar__facets {
   display: flex;
   flex-wrap: wrap;

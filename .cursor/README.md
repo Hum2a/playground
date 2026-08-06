@@ -14,7 +14,7 @@ detail here. Deeper product text lives in `docs/design-spec.md`.
 | `30_specimens.mdc` | `src/specimens/**` |
 | `35_taxonomy.mdc` | `src/specimens/**` — facets, tags, inspiration directory |
 | `36_specimen-commits.mdc` | Always — auto-commit after adding a new specimen |
-| `37_persona-catalogue.mdc` | Always — mark P5/P3 checklist when a catalogue specimen ships |
+| `37_persona-catalogue.mdc` | Always — mark P5/P3/PK checklist when a catalogue specimen ships |
 | `40_harness.mdc` | `src/harness/**` |
 | `45_design.mdc` | Chrome styles / app shell CSS |
 | `46_motion.mdc` | Always — reduced motion |

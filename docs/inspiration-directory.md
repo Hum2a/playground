@@ -86,6 +86,8 @@ inspiredBy: {
 
 *(franchise only so far — classic creature-battle encounter presentation language; no game assets)*
 
+Backlog: [`docs/catalogue/pokemon-specimen-catalogue.md`](catalogue/pokemon-specimen-catalogue.md) (`PK-NNN` / `SPX-700`…`SPX-965`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

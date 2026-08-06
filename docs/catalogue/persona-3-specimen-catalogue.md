@@ -6,7 +6,7 @@
 
 - **P3-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
-- Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
+- Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or PK (`SPX-700`–`SPX-965`) rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
 - Progress: **33 / 238** complete.
 
