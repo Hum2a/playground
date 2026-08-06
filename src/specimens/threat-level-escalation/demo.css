@@ -1,0 +1,178 @@
+/* threat-level-escalation — portable specimen styles */
+
+.tle {
+  --tle-primary: #38a3ff;
+  --tle-ink: #101820;
+  --tle-paper: #f4f7fa;
+  --tle-accent: #ff4d35;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 0.75rem;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--tle-ink);
+  background: var(--tle-paper);
+  border: 2px solid var(--tle-ink);
+}
+
+.tle *,
+.tle *::before,
+.tle *::after {
+  box-sizing: border-box;
+}
+
+.tle__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.tle__label {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.tle__trigger {
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--tle-ink);
+  background: var(--tle-accent);
+  color: var(--tle-paper);
+  font: 800 0.6rem/1.2 inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tle__trigger:focus {
+  outline: none;
+}
+
+.tle__trigger:focus-visible {
+  outline: 2px solid var(--tle-primary);
+  outline-offset: 3px;
+}
+
+.tle__trigger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tle__levels {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tle__level {
+  position: relative;
+  min-height: 72px;
+  padding: 0.35rem 0.2rem;
+  border: 2px solid var(--tle-ink);
+  background: var(--tle-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  text-align: center;
+  transition:
+    background 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.tle__level span {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.tle__level small {
+  font-size: 0.45rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.tle__level--active {
+  background: var(--tle-primary);
+  color: var(--tle-paper);
+  transform: scale(1.04);
+  box-shadow: 3px 3px 0 var(--tle-ink);
+  z-index: 1;
+}
+
+.tle--step-2 .tle__level[data-level='2'],
+.tle--step-3 .tle__level[data-level='3'],
+.tle--step-4 .tle__level[data-level='4'],
+.tle--step-5 .tle__level[data-level='5'] {
+  background: var(--tle-primary);
+  color: var(--tle-paper);
+  transform: scale(1.04);
+  box-shadow: 3px 3px 0 var(--tle-ink);
+  z-index: 1;
+}
+
+.tle--step-3 .tle__level[data-level='2'],
+.tle--step-4 .tle__level[data-level='2'],
+.tle--step-4 .tle__level[data-level='3'],
+.tle--step-5 .tle__level[data-level='2'],
+.tle--step-5 .tle__level[data-level='3'],
+.tle--step-5 .tle__level[data-level='4'] {
+  background: color-mix(in srgb, var(--tle-accent) 35%, var(--tle-paper));
+  color: var(--tle-ink);
+  transform: none;
+  box-shadow: none;
+}
+
+.tle--step-5 .tle__level[data-level='5'] {
+  background: var(--tle-accent);
+  transform: scale(1.08);
+  box-shadow: 4px 4px 0 var(--tle-ink);
+}
+
+.tle--step-2 .tle__level--active:not([data-level='2']),
+.tle--step-3 .tle__level--active:not([data-level='3']),
+.tle--step-4 .tle__level--active:not([data-level='4']),
+.tle--step-5 .tle__level--active:not([data-level='5']) {
+  background: color-mix(in srgb, var(--tle-accent) 35%, var(--tle-paper));
+  color: var(--tle-ink);
+  transform: none;
+  box-shadow: none;
+}
+
+.tle__readout {
+  margin: 0.65rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.tle__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tle__level {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .tle__level {
+  transition: none !important;
+}

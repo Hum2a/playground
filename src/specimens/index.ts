@@ -241,6 +241,7 @@ import { tacticalTargetLock } from './tactical-target-lock/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { temporalUndo } from './temporal-undo/entry'
+import { threatLevelEscalation } from './threat-level-escalation/entry'
 import { timeSkip } from './time-skip/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { tournamentBracketActivation } from './tournament-bracket-activation/entry'
@@ -549,6 +550,7 @@ export const specimens: Specimen[] = [
   tartarusFloorAscension,
   temporalFreeze,
   temporalUndo,
+  threatLevelEscalation,
   timeSkip,
   tornEdgeDrawer,
   tournamentBracketActivation,

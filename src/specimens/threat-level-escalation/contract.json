@@ -1,0 +1,27 @@
+{
+  "name": "threat-level-escalation",
+  "intent": "Threat meter steps through five levels to CRITICAL.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "stepMs": 200,
+    "settleMs": 1150
+  },
+  "api": {
+    "run": "runThreatEscalation()",
+    "reset": "resetThreatEscalation()",
+    "replay": "replayThreatEscalation()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Jump directly to LEVEL 5 CRITICAL"
+  }
+}
