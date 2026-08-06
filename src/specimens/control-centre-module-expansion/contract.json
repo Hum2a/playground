@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/control-centre-module-expansion.schema.json",
+  "title": "ControlCentreModuleExpansion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "compact", "expanded", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "control-centre-module-expansion" },
+    "intent": {
+      "type": "string",
+      "const": "A compact system-control tile expands into detailed controls while preserving its current value and identity."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module", "initialValue", "output", "balance"],
+      "properties": {
+        "module": { "type": "string", "const": "AUDIO" },
+        "initialValue": { "type": "string", "const": "62%" },
+        "output": { "type": "string", "const": "SPEAKERS" },
+        "balance": { "type": "string", "const": "0" }
+      }
+    },
+    "compact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 142 },
+        "heightPx": { "type": "number", "const": 72 }
+      }
+    },
+    "expanded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 320 },
+        "heightPx": { "type": "number", "const": 210 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expandMs", "rowStaggerMs", "sliderAtWidthPct"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 340 },
+        "rowStaggerMs": { "type": "number", "const": 45 },
+        "sliderAtWidthPct": { "type": "number", "const": 70 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "module"],
+      "properties": {
+        "root": { "type": "string", "const": "ccm" },
+        "module": { "type": "string", "const": "ccm__module" }
+      }
+    }
+  }
+}

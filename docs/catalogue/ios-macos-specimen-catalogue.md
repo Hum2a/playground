@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **19 / 258** complete.
+- Progress: **20 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 19 |
-| Open | 239 |
+| Done | 20 |
+| Open | 238 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-172 | `SPX-1471` | `control-centre-module-expansion` | Control Centre Module Expansion |
 | IOS-160 | `SPX-1459` | `quick-look-expansion` | Quick Look Expansion |
 | IOS-154 | `SPX-1453` | `drop-target-magnetism` | Drop Target Magnetism |
 | IOS-152 | `SPX-1451` | `drag-proxy-formation` | Drag Proxy Formation |
@@ -77,7 +78,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
 - [x] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — drag-drop
 - [x] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
-- [ ] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
+- [x] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
 - [ ] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
 - [ ] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
 - [ ] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
@@ -311,7 +312,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [ ] **IOS-170** · `SPX-1469` · **Menu Bar Dropdown Origin** — menu grows downward from a fixed menu-bar anchor.
 - [ ] **IOS-171** · `SPX-1470` · **Menu Bar Active Transfer** — pointer crosses menu headings and the open menu transfers ownership without closing/reopening theatrically.
-- [ ] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — compact system-control module expands into detailed controls.
+- [x] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — compact system-control module expands into detailed controls.
 - [ ] **IOS-173** · `SPX-1472` · **Control Centre Module Collapse** — detailed control contracts back into its compact summary.
 - [ ] **IOS-174** · `SPX-1473` · **Menu Check State** — selecting an option transfers a persistent check marker between mutually exclusive items.
 - [ ] **IOS-175** · `SPX-1474` · **Volume/Brightness HUD** — temporary system-value overlay appears, updates magnitude and retreats.

@@ -1,0 +1,43 @@
+<div class="ccm" data-control-centre-module-expansion data-phase="compact">
+  <div class="ccm__module" data-ccm-module>
+    <button type="button" class="ccm__compact" data-ccm-compact aria-expanded="false" aria-label="Audio module, 62 percent">
+      <span class="ccm__label">AUDIO</span>
+      <span class="ccm__value" data-ccm-value>62%</span>
+    </button>
+
+    <div class="ccm__expanded" data-ccm-expanded hidden>
+      <header class="ccm__header">
+        <span class="ccm__label">AUDIO</span>
+        <span class="ccm__value ccm__value--header" data-ccm-value-header>62%</span>
+      </header>
+
+      <div class="ccm__slider-wrap" data-ccm-slider-wrap>
+        <input
+          type="range"
+          class="ccm__slider"
+          data-ccm-slider
+          min="0"
+          max="100"
+          value="62"
+          aria-label="Volume"
+        />
+      </div>
+
+      <div class="ccm__row" data-ccm-row-output>
+        <span class="ccm__row-key">OUTPUT</span>
+        <span class="ccm__row-val">SPEAKERS</span>
+      </div>
+
+      <div class="ccm__row" data-ccm-row-balance>
+        <span class="ccm__row-key">BALANCE</span>
+        <span class="ccm__row-val">0</span>
+      </div>
+
+      <button type="button" class="ccm__collapse" data-ccm-collapse>COLLAPSE</button>
+    </div>
+  </div>
+
+  <p class="ccm__status" role="status" aria-live="polite" data-ccm-status>
+    Compact AUDIO module at 62%. Click to expand controls.
+  </p>
+</div>
