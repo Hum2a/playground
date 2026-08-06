@@ -118,6 +118,7 @@ import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { delayedPreviewExpansion } from './delayed-preview-expansion/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
+import { detailsCloseReturn } from './details-close-return/entry'
 import { detailsPanelExpand } from './details-panel-expand/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dialogMaterialise } from './dialog-materialise/entry'
@@ -596,6 +597,7 @@ export const specimens: Specimen[] = [
   delayedPreviewExpansion,
   deletionGuillotine,
   desktopSpaceSwipe,
+  detailsCloseReturn,
   detailsPanelExpand,
   diagnosticBootSequence,
   dialogMaterialise,

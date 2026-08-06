@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **38 / 197** complete.
+- Progress: **39 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 159 |
+| Done | 39 |
+| Open | 158 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-093 | `SPX-3202` | `details-close-return` | Details Close Return |
 | NF-118 | `SPX-3227` | `continue-watching-progress-bar` | Continue-Watching Progress Bar |
 | NF-117 | `SPX-3226` | `resume-playback-handoff` | Resume Playback Handoff |
 | NF-112 | `SPX-3221` | `remove-from-list-undo` | Remove-from-List Undo |
@@ -126,7 +127,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-112** · `SPX-3221` · **Remove-from-List Undo** — `remove-from-list-undo`
 - [x] **NF-117** · `SPX-3226` · **Resume Playback Handoff** — `resume-playback-handoff`
 - [x] **NF-118** · `SPX-3227` · **Continue-Watching Progress Bar** — `continue-watching-progress-bar`
-- [ ] **NF-093** · `SPX-3202` · **Details Close Return** — `details-close-return`
+- [x] **NF-093** · `SPX-3202` · **Details Close Return** — `details-close-return`
 - [ ] **NF-159** · `SPX-3268` · **Back Navigation Return** — `back-navigation-return`
 
 ### Wave E — Errors, mobile and cinematic polish
@@ -258,7 +259,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [ ] **NF-090** · `SPX-3199` · **More Info Overlay** — A dark bounded overlay opens with title metadata and actions
 - [ ] **NF-091** · `SPX-3200` · **Details Hero Reveal** — The details surface reveals its title region before secondary sections
 - [ ] **NF-092** · `SPX-3201` · **Modal Background Recede** — Underlying browse rows dim and scale subtly while details take focus
-- [ ] **NF-093** · `SPX-3202` · **Details Close Return** — Closing the panel reconstructs the exact originating card position
+- [x] **NF-093** · `SPX-3202` · **Details Close Return** — Closing the panel reconstructs the exact originating card position
 - [ ] **NF-094** · `SPX-3203` · **Metadata Chip Cascade** — Year, rating, runtime and tags appear as a short stagger
 - [ ] **NF-095** · `SPX-3204` · **Cast/Genre Expand** — Secondary metadata unfolds only when requested
 - [ ] **NF-096** · `SPX-3205` · **Related Titles Rail Reveal** — A secondary recommendation row appears beneath details

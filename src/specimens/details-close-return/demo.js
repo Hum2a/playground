@@ -1,0 +1,1 @@
+export function runDetailsClose(){document.querySelector('[data-panel]').hidden=true;document.querySelector('[data-card]').hidden=false};document.querySelector('[data-close]')?.addEventListener('click',()=>runDetailsClose())
