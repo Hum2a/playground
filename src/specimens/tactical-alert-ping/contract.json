@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/tactical-alert-ping.schema.json",
+  "title": "TacticalAlertPing",
+  "description": "Portable contract for a Metal Gear–inspired tactical detection ping. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "tactical-alert-ping" },
+    "intent": {
+      "type": "string",
+      "const": "Tiny high-priority detection ping: large red ! and DETECTED with two attention rings."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bang", "label", "trigger"],
+      "properties": {
+        "bang": { "type": "string", "const": "!" },
+        "label": { "type": "string", "const": "DETECTED" },
+        "trigger": { "type": "string", "const": "TRIGGER ALERT" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alertRed", "white", "black"],
+      "properties": {
+        "alertRed": { "type": "string", "const": "#e21b23" },
+        "white": { "type": "string", "const": "#f7f7f2" },
+        "black": { "type": "string", "const": "#111111" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "overshootScale",
+        "settleMs",
+        "ringMs",
+        "hostNudgePx",
+        "hostNudgeMs",
+        "exitRisePx",
+        "loops"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 650 },
+        "overshootScale": { "type": "number", "const": 1.35 },
+        "overshootMs": { "type": "number", "const": 90 },
+        "settleMs": { "type": "number", "const": 160 },
+        "holdUntilMs": { "type": "number", "const": 420 },
+        "ringMs": { "type": "number", "const": 180 },
+        "hostNudgePx": { "type": "number", "const": 2 },
+        "hostNudgeMs": { "type": "number", "const": 70 },
+        "exitRisePx": { "type": "number", "const": 10 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "parentRequirements": {
+          "type": "array",
+          "const": ["position:relative", "overflow:hidden"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["labelIsAlert", "bangDecorative", "ringsDecorative"],
+      "properties": {
+        "labelIsAlert": { "type": "boolean", "const": true },
+        "bangDecorative": { "type": "boolean", "const": true },
+        "ringsDecorative": { "type": "boolean", "const": true },
+        "doNotRelyOnMotionAlone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticMark", "triggers"],
+      "properties": {
+        "showStaticMark": {
+          "type": "boolean",
+          "const": true,
+          "description": "Skip scale/rings/nudge; show static ! DETECTED until reset."
+        },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "bang", "label", "ring", "host", "hostHit"],
+      "properties": {
+        "root": { "type": "string", "const": "tactical-alert" },
+        "bang": { "type": "string", "const": "tactical-alert__bang" },
+        "label": { "type": "string", "const": "tactical-alert__label" },
+        "ring": { "type": "string", "const": "tactical-alert__ring" },
+        "host": { "type": "string", "const": "tactical-alert-host" },
+        "hostHit": { "type": "string", "const": "tactical-alert-host--hit" },
+        "stateFire": { "type": "string", "const": "tactical-alert--fire" },
+        "stateReduced": { "type": "string", "const": "tactical-alert--reduced" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "tactical-alert-ping",
+      "colours": {
+        "alertRed": "#e21b23",
+        "white": "#f7f7f2",
+        "black": "#111111"
+      },
+      "animation": {
+        "totalMs": 650,
+        "overshootScale": 1.35,
+        "settleMs": 160,
+        "ringMs": 180,
+        "hostNudgePx": 2,
+        "hostNudgeMs": 70,
+        "exitRisePx": 10,
+        "loops": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+/* tactical-alert-ping — portable specimen styles. Do not restyle to host tokens. */
+
+.tactical-alert-host {
+  transition: transform 70ms ease-out;
+}
+
+.tactical-alert-host--hit {
+  transform: translateY(2px);
+}
+
+.tactical-alert {
+  position: absolute;
+  left: 50%;
+  top: 28%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 120px;
+  margin-left: -60px;
+  pointer-events: none;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.tactical-alert[hidden] {
+  display: none;
+}
+
+.tactical-alert__rings {
+  position: absolute;
+  left: 50%;
+  top: 28%;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+}
+
+.tactical-alert__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid #e21b23;
+  opacity: 0;
+  transform: scale(0.25);
+}
+
+.tactical-alert__ring--2 {
+  inset: 6px;
+  border-color: rgb(226 27 35 / 0.65);
+}
+
+.tactical-alert__mark {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  transform-origin: 50% 60%;
+}
+
+.tactical-alert__bang {
+  display: block;
+  margin: 0;
+  font-size: 3.25rem;
+  font-weight: 900;
+  line-height: 0.85;
+  color: #e21b23;
+  text-shadow: 1px 1px 0 #111111;
+}
+
+.tactical-alert__label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f7f7f2;
+  background: #e21b23;
+  border: 2px solid #111111;
+  padding: 0.2rem 0.45rem;
+}
+
+/* Fire sequence — total 650ms */
+.tactical-alert--fire .tactical-alert__mark {
+  animation: tactical-alert-mark 650ms cubic-bezier(0.2, 0.85, 0.3, 1) both;
+}
+
+.tactical-alert--fire .tactical-alert__ring--1 {
+  animation: tactical-alert-ring 180ms cubic-bezier(0.15, 0.8, 0.3, 1) both;
+}
+
+.tactical-alert--fire .tactical-alert__ring--2 {
+  animation: tactical-alert-ring 180ms cubic-bezier(0.15, 0.8, 0.3, 1) 35ms both;
+}
+
+@keyframes tactical-alert-mark {
+  0% {
+    opacity: 1;
+    transform: scale(0) translateY(0);
+  }
+  13.85% {
+    /* 90ms */
+    opacity: 1;
+    transform: scale(1.35) translateY(0);
+  }
+  24.6% {
+    /* 160ms — full visibility settled */
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  64.6% {
+    /* 420ms hold end */
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    /* 650ms */
+    opacity: 0;
+    transform: scale(1) translateY(-10px);
+  }
+}
+
+@keyframes tactical-alert-ring {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.25);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+}
+
+/* Reduced motion: static visible mark */
+.tactical-alert--reduced .tactical-alert__mark,
+.tactical-alert--settled .tactical-alert__mark {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.tactical-alert--reduced .tactical-alert__ring,
+.tactical-alert--settled .tactical-alert__ring {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tactical-alert--fire .tactical-alert__mark,
+  .tactical-alert--fire .tactical-alert__ring {
+    animation: none !important;
+  }
+
+  .tactical-alert--fire .tactical-alert__mark,
+  .tactical-alert--reduced .tactical-alert__mark {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .tactical-alert--fire .tactical-alert__ring {
+    opacity: 0;
+  }
+
+  .tactical-alert-host--hit {
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .tactical-alert--fire .tactical-alert__mark,
+[data-force-reduced-motion='true'] .tactical-alert--fire .tactical-alert__ring {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .tactical-alert--fire .tactical-alert__mark,
+[data-force-reduced-motion='true'] .tactical-alert--reduced .tactical-alert__mark {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+[data-force-reduced-motion='true'] .tactical-alert--fire .tactical-alert__ring {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .tactical-alert-host--hit {
+  transform: none;
+}
