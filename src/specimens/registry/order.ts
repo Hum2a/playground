@@ -565,4 +565,5 @@ export const specimenOrder: string[] = [
   'sample-slice-markers',
   'envelope-generator-cycle',
   'clock-divider-cascade',
+  'patch-cable-connect',
 ]

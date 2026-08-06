@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { patchCableConnect } from '../../library/music-equipment/patch-cable-connect/entry'
 import { clockDividerCascade } from '../../library/music-equipment/clock-divider-cascade/entry'
 import { envelopeGeneratorCycle } from '../../library/music-equipment/envelope-generator-cycle/entry'
 import { sampleSliceMarkers } from '../../library/music-equipment/sample-slice-markers/entry'
@@ -19,6 +20,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  patchCableConnect,
   clockDividerCascade,
   envelopeGeneratorCycle,
   sampleSliceMarkers,

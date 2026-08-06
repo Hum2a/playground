@@ -1,0 +1,8 @@
+{
+  "name": "patch-cable-connect",
+  "ref": "SPX-3856",
+  "title": "Patch Cable Connect",
+  "mode": "timeline",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

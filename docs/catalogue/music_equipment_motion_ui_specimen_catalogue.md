@@ -285,7 +285,7 @@ specimens can feel tactile without needing sound.
 
 # 12. Patch Bays / Modular Routing
 
-- [ ] **MUSIC-097** · `SPX-3856` · ★★★★★ **Patch Cable Connect** — A cable grows from one jack to
+- [x] **MUSIC-097** · `SPX-3856` · ★★★★★ **Patch Cable Connect** — A cable grows from one jack to
     another and locks into a routed state.
 - [ ] **MUSIC-098** · `SPX-3857` · ★★★★★ **Patch Cable Unplug** — A connected cable retracts and
     the signal path disappears.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-097 | SPX-3856 | `patch-cable-connect` | Patch Cable Connect |
 | MUSIC-109 | SPX-3868 | `clock-divider-cascade` | Clock Divider Cascade |
 | MUSIC-106 | SPX-3865 | `envelope-generator-cycle` | Envelope Generator Cycle |
 | MUSIC-073 | SPX-3832 | `sample-slice-markers` | Sample Slice Markers |
@@ -881,12 +882,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **18 / 310** complete.
+- Progress: **19 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 292 |
+| Done | 19 |
+| Open | 291 |
 
 ## Core first-wave / build queue
 
@@ -919,7 +920,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · scaffold `scrolling-dj-waveform`
 - [ ] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · scaffold `beatgrid-lock`
 - [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`
-- [ ] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · scaffold `patch-cable-connect`
+- [x] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · `patch-cable-connect`
 - [ ] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · scaffold `signal-flow-pulse`
 - [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
 - [x] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · `envelope-generator-cycle`
