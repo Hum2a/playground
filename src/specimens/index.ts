@@ -1,6 +1,7 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
+import { badgeEarned } from './badge-earned/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
@@ -52,6 +53,7 @@ import { evolutionSilhouetteTransformation } from './evolution-silhouette-transf
 import { failureShatter } from './failure-shatter/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
+import { forgetAMove } from './forget-a-move/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
@@ -69,6 +71,7 @@ import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
+import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
@@ -149,6 +152,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   badgeCaseInsert,
+  badgeEarned,
   precisionMenuSnap,
   evokerMenuSnap,
   truthShotNotification,
@@ -202,6 +206,7 @@ export const specimens: Specimen[] = [
   failureShatter,
   fullMoonMilestone,
   fusionSelectionMerge,
+  forgetAMove,
   glassFractureReveal,
   graphicBurstHover,
   holdToChargeButton,
@@ -217,6 +222,7 @@ export const specimens: Specimen[] = [
   midnightClockTransition,
   misprintNotification,
   monochromeBattleSlideIn,
+  moveLearned,
   moonPhaseProgress,
   newspaperHeadlineDrop,
   objectiveAcquired,

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **14 / 266** complete.
+- Progress: **16 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 252 |
+| Done | 16 |
+| Open | 250 |
 
 ## Visual grammar
 
@@ -45,7 +45,9 @@
 | PK-103 | `SPX-802` | `item-obtained` | Item Obtained |
 | PK-130 | `SPX-829` | `link-trade-transfer` | Link Trade Transfer |
 | PK-145 | `SPX-844` | `badge-case-insert` | Badge Case Insert |
+| PK-116 | `SPX-815` | `move-learned` | Move Learned |
 | PK-156 | `SPX-855` | `monochrome-battle-slide-in` | Monochrome Battle Slide-In |
+| PK-247 | `SPX-946` | `radar-pulse-discovery` | Radar Pulse Discovery |
 
 ## Core first-wave
 
@@ -67,7 +69,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-089** · `SPX-788` · **New Species Discovered** — pok-dex
 - [ ] **PK-041** · `SPX-740` · **Super Effective Hit** — battle-feedback
 - [x] **PK-103** · `SPX-802` · **Item Obtained** — items-inventory
-- [ ] **PK-116** · `SPX-815` · **Move Learned** — moves-abilities
+- [x] **PK-116** · `SPX-815` · **Move Learned** — moves-abilities
 - [ ] **PK-117** · `SPX-816` · **Forget a Move** — moves-abilities
 - [ ] **PK-144** · `SPX-843` · **Gym Badge Earned** — gym-badges
 - [x] **PK-145** · `SPX-844` · **Badge Case Insert** — gym-badges
@@ -213,7 +215,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 9. Moves & abilities
 
-- [ ] **PK-116** · `SPX-815` · **Move Learned** — An empty capability slot receives and permanently locks a new command.
+- [x] **PK-116** · `SPX-815` · **Move Learned** — An empty capability slot receives and permanently locks a new command.
 - [ ] **PK-117** · `SPX-816` · **Forget a Move** — Four existing capabilities rearrange as one leaves and another takes its exact place.
 - [ ] **PK-118** · `SPX-817` · **Move Selection** — Four-command battle menu uses decisive movement to establish selection.
 - [ ] **PK-119** · `SPX-818` · **PP Depletion** — Available action capacity visibly reduces every time a command executes.
@@ -383,7 +385,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 22. Search, exploration & discovery
 
-- [ ] **PK-247** · `SPX-946` · **Radar Pulse Discovery** — Expanding concentric pulses reveal hidden points of interest.
+- [x] **PK-247** · `SPX-946` · **Radar Pulse Discovery** — Expanding concentric pulses reveal hidden points of interest.
 - [ ] **PK-248** · `SPX-947` · **Hidden Item Ping** — Proximity to hidden content produces increasingly strong local feedback.
 - [ ] **PK-249** · `SPX-948` · **Dowsing Search** — Directional indicators respond to the relative position of hidden content.
 - [ ] **PK-250** · `SPX-949` · **Map Area Discovered** — An obscured region becomes permanently available after discovery.
