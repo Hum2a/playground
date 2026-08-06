@@ -1,0 +1,11 @@
+/* SPX-2996 Multi-Fusion Assembly */
+.mfa{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;position:relative;width:100%;min-height:260px;overflow:hidden;background:var(--ink);font-family:ui-sans-serif,system-ui,sans-serif}
+.mfa__input{position:absolute;width:4.8rem;padding:.4rem;border:2px solid var(--gold);background:var(--cream);color:var(--ink);font-size:.58rem;font-weight:800;letter-spacing:.08em;text-align:center;animation:mfa-converge 3s ease-in-out infinite}
+.mfa__input--a{left:12%;top:18%;animation-delay:0s}.mfa__input--b{right:12%;top:18%;animation-delay:.15s}.mfa__input--c{left:50%;bottom:14%;margin-left:-2.4rem;animation-delay:.3s}
+.mfa__core{position:absolute;left:50%;top:50%;z-index:2;display:grid;gap:.15rem;padding:.55rem .9rem;border:3px solid var(--gold);background:var(--ink);text-align:center;transform:translate(-50%,-50%) scale(.5);opacity:0;animation:mfa-core 3s ease-in-out infinite}
+.mfa__label{font-size:.52rem;font-weight:800;letter-spacing:.22em;color:var(--gold)}
+.mfa__name{font-size:.88rem;font-weight:900;letter-spacing:.1em;color:var(--cream)}
+@keyframes mfa-converge{0%,10%{transform:translate(0,0);opacity:1}55%,75%{transform:translate(calc(50vw - 50% - 2.4rem),calc(50vh - 50%));opacity:.35}100%{transform:translate(calc(42vw - 50%),calc(38vh - 50%));opacity:.2}}
+@keyframes mfa-core{0%,40%{opacity:0;transform:translate(-50%,-50%) scale(.5)}60%,85%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@media (prefers-reduced-motion: reduce) { .mfa__input{animation:none;left:50%;top:50%;margin:0;transform:translate(-50%,-50%);opacity:.25}.mfa__input--a{margin-top:-2rem;margin-left:-3rem}.mfa__input--b{margin-top:-2rem;margin-left:3rem}.mfa__input--c{margin-top:2.5rem}.mfa__core{animation:none;opacity:1;transform:translate(-50%,-50%) scale(1)} }
+[data-force-reduced-motion="true"] .mfa__input{animation:none;left:50%;top:50%;margin:0;transform:translate(-50%,-50%);opacity:.25}[data-force-reduced-motion="true"] .mfa__input--a{margin-top:-2rem;margin-left:-3rem}[data-force-reduced-motion="true"] .mfa__input--b{margin-top:-2rem;margin-left:3rem}[data-force-reduced-motion="true"] .mfa__input--c{margin-top:2.5rem}[data-force-reduced-motion="true"] .mfa__core{animation:none;opacity:1;transform:translate(-50%,-50%) scale(1)}

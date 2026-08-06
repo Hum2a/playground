@@ -223,6 +223,7 @@ import { missionScrollUnroll } from './mission-scroll-unroll/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { moveLearned } from './move-learned/entry'
+import { multiFusionAssembly } from './multi-fusion-assembly/entry'
 import { multiItemDragStack } from './multi-item-drag-stack/entry'
 import { multiKeySeal } from './multi-key-seal/entry'
 import { navigationDrawerEdgePull } from './navigation-drawer-edge-pull/entry'
@@ -648,6 +649,7 @@ export const specimens: Specimen[] = [
   monochromeBattleSlideIn,
   moonPhaseProgress,
   moveLearned,
+  multiFusionAssembly,
   multiItemDragStack,
   multiKeySeal,
   navigationDrawerEdgePull,
