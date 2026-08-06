@@ -1,0 +1,142 @@
+{
+  "name": "ransom-note-reveal",
+  "intent": "One-shot typographic announcement assembled from irregular printed paper word scraps with staggered overshooting entrances.",
+  "colours": {
+    "ink": "#090909",
+    "warmPaper": "#f2eee3",
+    "brightPaper": "#fffdf7",
+    "red": "#d71920"
+  },
+  "fragments": [
+    {
+      "id": "new",
+      "text": "NEW",
+      "role": "primary",
+      "finalRotateDeg": -5,
+      "enterFrom": "left",
+      "delayMs": 0,
+      "durationMs": 280,
+      "backed": true,
+      "backingOffsetPx": [5, 6],
+      "clipPath": "polygon(0% 8%, 96% 0%, 100% 88%, 4% 100%)"
+    },
+    {
+      "id": "material",
+      "text": "MATERIAL",
+      "role": "primary",
+      "finalRotateDeg": 2,
+      "enterFrom": "top",
+      "delayMs": 90,
+      "durationMs": 300,
+      "backed": true,
+      "backingOffsetPx": [6, 5],
+      "clipPath": "polygon(2% 0%, 100% 6%, 97% 100%, 0% 92%)"
+    },
+    {
+      "id": "archive",
+      "text": "ARCHIVE",
+      "role": "deco",
+      "finalRotateDeg": 8,
+      "enterFrom": "right",
+      "delayMs": 150,
+      "durationMs": 240,
+      "clipPath": "polygon(0% 0%, 100% 10%, 90% 100%, 0% 85%)"
+    },
+    {
+      "id": "has",
+      "text": "HAS",
+      "role": "primary",
+      "finalRotateDeg": -2,
+      "enterFrom": "right",
+      "delayMs": 220,
+      "durationMs": 280,
+      "clipPath": "polygon(0% 0%, 100% 12%, 92% 100%, 6% 88%)"
+    },
+    {
+      "id": "notice",
+      "text": "NOTICE",
+      "role": "deco",
+      "finalRotateDeg": -6,
+      "enterFrom": "left",
+      "delayMs": 300,
+      "durationMs": 240,
+      "clipPath": "polygon(5% 0%, 100% 0%, 95% 100%, 0% 90%)"
+    },
+    {
+      "id": "arrived",
+      "text": "ARRIVED!",
+      "role": "primary",
+      "finalRotateDeg": 4,
+      "enterFrom": "bottom",
+      "delayMs": 390,
+      "durationMs": 320,
+      "backed": true,
+      "backingOffsetPx": [7, 5],
+      "clipPath": "polygon(3% 4%, 100% 0%, 96% 94%, 0% 100%)"
+    },
+    {
+      "id": "num",
+      "text": "02",
+      "role": "deco",
+      "finalRotateDeg": 3,
+      "enterFrom": "top",
+      "delayMs": 450,
+      "durationMs": 240,
+      "clipPath": "polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%)"
+    },
+    {
+      "id": "read",
+      "text": "READ NOW",
+      "role": "deco",
+      "finalRotateDeg": -4,
+      "enterFrom": "bottom",
+      "delayMs": 550,
+      "durationMs": 250,
+      "clipPath": "polygon(0% 0%, 94% 8%, 100% 100%, 8% 92%)"
+    }
+  ],
+  "timing": {
+    "totalMs": 850,
+    "arrivedSettleMs": 710,
+    "impactMs": 60,
+    "impactNudgePx": 2,
+    "easing": "cubic-bezier(0.25, 0.8, 0.35, 1)"
+  },
+  "classes": {
+    "root": "rnr",
+    "busy": "rnr--busy",
+    "reveal": "rnr--reveal",
+    "impact": "rnr--impact",
+    "settled": "rnr--settled",
+    "reduced": "rnr--reduced"
+  },
+  "api": {
+    "reveal": "revealRansomNote()",
+    "reset": "resetRansomNote()",
+    "replay": "replayRansomNote()",
+    "busyGuard": true,
+    "deterministic": true,
+    "sandboxSafe": true,
+    "restartMessage": true
+  },
+  "a11y": {
+    "stageAriaHidden": true,
+    "statusAnnounce": "New material has arrived.",
+    "statusRole": "status",
+    "ariaLive": "polite"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "All scraps appear immediately in final positions; no flight, overshoot, or impact nudge"
+  },
+  "constraints": {
+    "fragmentCount": 8,
+    "noRuntimeRandomness": true,
+    "noExternalAssets": true,
+    "noExternalFonts": true,
+    "widthRangePx": [320, 768]
+  }
+}

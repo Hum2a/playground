@@ -1,0 +1,477 @@
+/* ransom-note-reveal — portable specimen styles */
+
+.rnr {
+  --rnr-ink: #090909;
+  --rnr-warm: #f2eee3;
+  --rnr-bright: #fffdf7;
+  --rnr-red: #d71920;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  overflow: hidden;
+  background: #14171c;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--rnr-ink);
+}
+
+.rnr *,
+.rnr *::before,
+.rnr *::after {
+  box-sizing: border-box;
+}
+
+.rnr__trigger {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  border: 2px solid var(--rnr-ink);
+  border-radius: 0;
+  background: var(--rnr-warm);
+  color: var(--rnr-ink);
+  font: 800 0.65rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.rnr__trigger:focus {
+  outline: none;
+}
+
+.rnr__trigger:focus-visible {
+  outline: 2px solid var(--rnr-red);
+  outline-offset: 3px;
+}
+
+.rnr--busy .rnr__trigger,
+.rnr--settled .rnr__trigger {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.rnr__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Stage / collage —— */
+.rnr__stage {
+  position: absolute;
+  inset: 8% 4% 12% 4%;
+  z-index: 2;
+}
+
+.rnr--impact .rnr__stage {
+  transform: translate(2px, 1px);
+  transition: transform 60ms steps(2, end);
+}
+
+.rnr--settled .rnr__stage {
+  transform: none;
+  transition: transform 70ms steps(2, end);
+}
+
+/* —— Shared scrap —— */
+.rnr__scrap {
+  position: absolute;
+  display: grid;
+  place-items: stretch;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.rnr__backing,
+.rnr__paper {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.rnr__backing {
+  background: var(--rnr-ink);
+  z-index: 0;
+}
+
+.rnr__paper {
+  position: relative;
+  z-index: 1;
+  padding: 0.35rem 0.55rem;
+  border: 2px solid var(--rnr-ink);
+  background: var(--rnr-warm);
+  color: var(--rnr-ink);
+}
+
+.rnr__paper--red {
+  color: var(--rnr-red);
+}
+
+.rnr__scrap--deco .rnr__paper {
+  background: var(--rnr-bright);
+  font-weight: 800;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  padding: 0.22rem 0.35rem;
+  border-width: 1.5px;
+}
+
+/* Idle off-canvas origins (deterministic) */
+.rnr__scrap--new {
+  top: 18%;
+  left: 4%;
+  transform: translateX(-140%) rotate(-14deg) scale(1.12);
+}
+
+.rnr__scrap--material {
+  top: 12%;
+  left: 28%;
+  transform: translateY(-160%) rotate(-8deg) scale(1.1);
+}
+
+.rnr__scrap--has {
+  top: 42%;
+  left: 58%;
+  transform: translateX(140%) rotate(10deg) scale(1.12);
+}
+
+.rnr__scrap--arrived {
+  top: 48%;
+  left: 22%;
+  transform: translateY(160%) rotate(-10deg) scale(1.14);
+}
+
+.rnr__scrap--archive {
+  top: 4%;
+  left: 62%;
+  transform: translateX(140%) rotate(12deg) scale(1.08);
+}
+
+.rnr__scrap--notice {
+  top: 68%;
+  left: 6%;
+  transform: translateX(-140%) rotate(-11deg) scale(1.08);
+}
+
+.rnr__scrap--num {
+  top: 8%;
+  left: 8%;
+  transform: translateY(-160%) rotate(6deg) scale(1.1);
+}
+
+.rnr__scrap--read {
+  top: 72%;
+  left: 55%;
+  transform: translateY(160%) rotate(-7deg) scale(1.08);
+}
+
+/* Final settled geometry */
+.rnr__scrap--new .rnr__paper {
+  font-size: clamp(0.95rem, 4.2vw, 1.25rem);
+  clip-path: polygon(0% 8%, 96% 0%, 100% 88%, 4% 100%);
+  min-width: 3.2rem;
+}
+
+.rnr__scrap--new .rnr__backing {
+  clip-path: polygon(0% 8%, 96% 0%, 100% 88%, 4% 100%);
+  transform: translate(5px, 6px);
+}
+
+.rnr__scrap--material .rnr__paper {
+  font-size: clamp(0.85rem, 3.8vw, 1.1rem);
+  clip-path: polygon(2% 0%, 100% 6%, 97% 100%, 0% 92%);
+  min-width: 5.5rem;
+  background: var(--rnr-bright);
+}
+
+.rnr__scrap--material .rnr__backing {
+  clip-path: polygon(2% 0%, 100% 6%, 97% 100%, 0% 92%);
+  transform: translate(6px, 5px);
+}
+
+.rnr__scrap--has .rnr__paper {
+  font-size: clamp(0.75rem, 3.2vw, 0.95rem);
+  clip-path: polygon(0% 0%, 100% 12%, 92% 100%, 6% 88%);
+  min-width: 2.6rem;
+}
+
+.rnr__scrap--arrived .rnr__paper {
+  font-size: clamp(1.05rem, 4.8vw, 1.4rem);
+  clip-path: polygon(3% 4%, 100% 0%, 96% 94%, 0% 100%);
+  min-width: 5.8rem;
+  padding: 0.42rem 0.6rem;
+}
+
+.rnr__scrap--arrived .rnr__backing {
+  clip-path: polygon(3% 4%, 100% 0%, 96% 94%, 0% 100%);
+  transform: translate(7px, 5px);
+}
+
+.rnr__scrap--archive .rnr__paper {
+  clip-path: polygon(0% 0%, 100% 10%, 90% 100%, 0% 85%);
+}
+
+.rnr__scrap--notice .rnr__paper {
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 90%);
+  background: var(--rnr-warm);
+  color: var(--rnr-red);
+}
+
+.rnr__scrap--num .rnr__paper {
+  clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%);
+  font-size: 0.7rem;
+  min-width: 1.6rem;
+}
+
+.rnr__scrap--read .rnr__paper {
+  clip-path: polygon(0% 0%, 94% 8%, 100% 100%, 8% 92%);
+}
+
+/* Enter + overshoot keyframes (per scrap via animation-delay on .rnr--reveal) */
+.rnr--reveal .rnr__scrap {
+  opacity: 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.25, 0.8, 0.35, 1);
+}
+
+.rnr--reveal .rnr__scrap--new {
+  animation-name: rnr-enter-new;
+  animation-duration: 280ms;
+  animation-delay: 0ms;
+}
+
+.rnr--reveal .rnr__scrap--material {
+  animation-name: rnr-enter-material;
+  animation-duration: 300ms;
+  animation-delay: 90ms;
+}
+
+.rnr--reveal .rnr__scrap--archive {
+  animation-name: rnr-enter-archive;
+  animation-duration: 240ms;
+  animation-delay: 150ms;
+}
+
+.rnr--reveal .rnr__scrap--has {
+  animation-name: rnr-enter-has;
+  animation-duration: 280ms;
+  animation-delay: 220ms;
+}
+
+.rnr--reveal .rnr__scrap--notice {
+  animation-name: rnr-enter-notice;
+  animation-duration: 240ms;
+  animation-delay: 300ms;
+}
+
+.rnr--reveal .rnr__scrap--arrived {
+  animation-name: rnr-enter-arrived;
+  animation-duration: 320ms;
+  animation-delay: 390ms;
+}
+
+.rnr--reveal .rnr__scrap--num {
+  animation-name: rnr-enter-num;
+  animation-duration: 240ms;
+  animation-delay: 450ms;
+}
+
+.rnr--reveal .rnr__scrap--read {
+  animation-name: rnr-enter-read;
+  animation-duration: 250ms;
+  animation-delay: 550ms;
+}
+
+/* Settled finals */
+.rnr--settled .rnr__scrap,
+.rnr--reduced .rnr__scrap {
+  opacity: 1;
+  animation: none;
+}
+
+.rnr--settled .rnr__scrap--new,
+.rnr--reduced .rnr__scrap--new {
+  transform: translate(0, 0) rotate(-5deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--material,
+.rnr--reduced .rnr__scrap--material {
+  transform: translate(0, 0) rotate(2deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--has,
+.rnr--reduced .rnr__scrap--has {
+  transform: translate(0, 0) rotate(-2deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--arrived,
+.rnr--reduced .rnr__scrap--arrived {
+  transform: translate(0, 0) rotate(4deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--archive,
+.rnr--reduced .rnr__scrap--archive {
+  transform: translate(0, 0) rotate(8deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--notice,
+.rnr--reduced .rnr__scrap--notice {
+  transform: translate(0, 0) rotate(-6deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--num,
+.rnr--reduced .rnr__scrap--num {
+  transform: translate(0, 0) rotate(3deg) scale(1);
+}
+
+.rnr--settled .rnr__scrap--read,
+.rnr--reduced .rnr__scrap--read {
+  transform: translate(0, 0) rotate(-4deg) scale(1);
+}
+
+@keyframes rnr-enter-new {
+  0% {
+    opacity: 1;
+    transform: translateX(-140%) rotate(-14deg) scale(1.12);
+  }
+  62% {
+    transform: translateX(3%) rotate(-3deg) scale(0.96);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-5deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-material {
+  0% {
+    opacity: 1;
+    transform: translateY(-160%) rotate(-8deg) scale(1.1);
+  }
+  60% {
+    transform: translateY(4%) rotate(4deg) scale(0.96);
+  }
+  100% {
+    transform: translate(0, 0) rotate(2deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-has {
+  0% {
+    opacity: 1;
+    transform: translateX(140%) rotate(10deg) scale(1.12);
+  }
+  58% {
+    transform: translateX(-3%) rotate(-4deg) scale(0.96);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-2deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-arrived {
+  0% {
+    opacity: 1;
+    transform: translateY(160%) rotate(-10deg) scale(1.14);
+  }
+  55% {
+    transform: translateY(-4%) rotate(6deg) scale(0.94);
+  }
+  100% {
+    transform: translate(0, 0) rotate(4deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-archive {
+  0% {
+    opacity: 1;
+    transform: translateX(140%) rotate(12deg) scale(1.08);
+  }
+  65% {
+    transform: translateX(-2%) rotate(10deg) scale(0.97);
+  }
+  100% {
+    transform: translate(0, 0) rotate(8deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-notice {
+  0% {
+    opacity: 1;
+    transform: translateX(-140%) rotate(-11deg) scale(1.08);
+  }
+  65% {
+    transform: translateX(2%) rotate(-4deg) scale(0.97);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-6deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-num {
+  0% {
+    opacity: 1;
+    transform: translateY(-160%) rotate(6deg) scale(1.1);
+  }
+  65% {
+    transform: translateY(3%) rotate(5deg) scale(0.97);
+  }
+  100% {
+    transform: translate(0, 0) rotate(3deg) scale(1);
+  }
+}
+
+@keyframes rnr-enter-read {
+  0% {
+    opacity: 1;
+    transform: translateY(160%) rotate(-7deg) scale(1.08);
+  }
+  65% {
+    transform: translateY(-2%) rotate(-2deg) scale(0.97);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-4deg) scale(1);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rnr__scrap,
+  .rnr__stage {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .rnr--reduced .rnr__scrap {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .rnr__scrap,
+[data-force-reduced-motion='true'] .rnr__stage {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .rnr--reduced .rnr__scrap {
+  opacity: 1;
+}

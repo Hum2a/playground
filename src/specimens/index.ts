@@ -10,6 +10,7 @@ import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
+import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
@@ -69,6 +70,7 @@ export const specimens: Specimen[] = [
   inkSplatTransition,
   victoryResultsTally,
   misprintNotification,
+  ransomNoteReveal,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
