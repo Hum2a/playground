@@ -1,0 +1,12 @@
+{
+  "name": "target-acquisition",
+  "ref": "SPX-2028",
+  "catalogue": { "mha": "MHA-054", "title": "Training Target Acquisition" },
+  "confidencePct": 92,
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}

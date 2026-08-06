@@ -258,6 +258,7 @@ import { tabIndicatorStretch } from './tab-indicator-stretch/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
+import { targetAcquisition } from './target-acquisition/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { teamFormationSnap } from './team-formation-snap/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
@@ -588,6 +589,7 @@ export const specimens: Specimen[] = [
   tacticalAlertPing,
   tacticalCommandWheel,
   tacticalTargetLock,
+  targetAcquisition,
   tartarusFloorAscension,
   teamFormationSnap,
   temporalFreeze,

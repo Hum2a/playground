@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **42 / 369** complete.
+- Progress: **43 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 327 |
+| Done | 43 |
+| Open | 326 |
 
 ## Visual grammar
 
@@ -74,6 +74,7 @@
 | MHA-007 | `SPX-1981` | `halftone-expansion` | Halftone Expansion |
 | MHA-037 | `SPX-2011` | `energy-transfer` | Energy Transfer |
 | MHA-030 | `SPX-2004` | `overuse-warning` | Overuse Warning |
+| MHA-054 | `SPX-2028` | `target-acquisition` | Training Target Acquisition |
 
 ## Core first-wave
 
@@ -180,7 +181,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 ## U.A.-Style Training Interface
 
 - [x] **MHA-053** · `SPX-2027` · **Training Simulation Start** — READY state counts down and explodes into active telemetry.
-- [ ] **MHA-054** · `SPX-2028` · **Training Target Acquisition** — target cards become tracked with brackets and confidence meters.
+- [x] **MHA-054** · `SPX-2028` · **Training Target Acquisition** — target cards become tracked with brackets and confidence meters.
 - [ ] **MHA-055** · `SPX-2029` · **Exercise Complete Stamp** — completion state receives an oversized PASS/CLEAR-style original stamp.
 - [x] **MHA-056** · `SPX-2030` · **Performance Meter Burst** — result bars race to final values and one standout metric breaks beyond the graph boundary.
 - [ ] **MHA-057** · `SPX-2031` · **Scenario Card Deal** — training scenarios fan/deal onto the screen.
