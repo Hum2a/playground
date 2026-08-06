@@ -1,0 +1,12 @@
+{
+  "name": "preview-collapse-return",
+  "intent": "Expanded content returns exactly to its rail slot without layout residue — expand then RETURN settles on the origin geometry.",
+  "ref": "SPX-3149",
+  "nf": "NF-040",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}
