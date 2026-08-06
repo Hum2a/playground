@@ -1,0 +1,17 @@
+.preview-frame {
+  width: 100%;
+  overflow: hidden;
+  border: var(--hairline);
+  background: var(--panel);
+}
+
+.preview-frame__scaler {
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-frame__iframe {
+  display: block;
+  border: 0;
+  background: transparent;
+}

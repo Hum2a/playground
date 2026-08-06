@@ -1,0 +1,54 @@
+.control-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-top: var(--hairline);
+}
+
+.control-strip__group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.control-strip__legend {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  margin-bottom: var(--space-2);
+  padding: 0;
+}
+
+.control-strip__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.control-strip__btn {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--pewter);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-2);
+}
+
+.control-strip__btn:hover {
+  border-color: var(--pewter);
+  color: var(--chalk);
+}
+
+.control-strip__btn[aria-pressed='true'] {
+  border-color: var(--verdigris);
+  color: var(--chalk);
+}
