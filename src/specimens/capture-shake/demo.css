@@ -1,0 +1,605 @@
+/* SPX-321 Capture Shake — portable contract. Do not restyle to host tokens. */
+
+.capture-shake {
+  --cs-ink: #171c20;
+  --cs-paper: #f1efe2;
+  --cs-coral: #d95b4e;
+  --cs-gold: #f0b84a;
+  --cs-white: #ffffff;
+  --cs-device: 120px;
+  --cs-enter-ms: 240ms;
+  --cs-settle-ms: 140ms;
+  --cs-settle-wait-ms: 180ms;
+  --cs-shake1-ms: 220ms;
+  --cs-pause1-ms: 180ms;
+  --cs-shake2-ms: 220ms;
+  --cs-pause2-ms: 200ms;
+  --cs-shake3-ms: 200ms;
+  --cs-pause3-ms: 220ms;
+
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  padding: 1.1rem 1rem 1.25rem;
+  overflow: hidden;
+  background: #12161a;
+  color: var(--cs-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.capture-shake *,
+.capture-shake *::before,
+.capture-shake *::after {
+  box-sizing: border-box;
+}
+
+.capture-shake__target-meta {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(241 239 226 / 0.7);
+}
+
+.capture-shake__stage {
+  position: relative;
+  width: 220px;
+  height: 240px;
+  margin: 0 auto;
+}
+
+/* —— Abstract target (entity) —— */
+.capture-shake__target {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 45px - 90px);
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  z-index: 3;
+  transform: translateY(0) scale(1);
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+.capture-shake__target-core {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--cs-coral);
+  clip-path: polygon(
+    50% 0%,
+    78% 22%,
+    100% 50%,
+    78% 78%,
+    50% 100%,
+    22% 78%,
+    0% 50%,
+    22% 22%
+  );
+  box-shadow: inset 0 0 0 2px rgb(240 184 74 / 0.55);
+}
+
+/* —— Capture device (original circular geometry) —— */
+.capture-shake__device {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--cs-device);
+  height: var(--cs-device);
+  margin: calc(var(--cs-device) / -2) 0 0 calc(var(--cs-device) / -2);
+  z-index: 2;
+  transform: translateY(0) rotate(0deg);
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.capture-shake__half {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  background: var(--cs-ink);
+  border: 4px solid var(--cs-ink);
+}
+
+.capture-shake__half--upper {
+  top: 0;
+  border-radius: calc(var(--cs-device) / 2) calc(var(--cs-device) / 2) 0 0;
+  border-bottom: none;
+  transform: translateY(0);
+  transform-origin: 50% 100%;
+}
+
+.capture-shake__half--upper::after {
+  content: '';
+  position: absolute;
+  inset: 8px 8px 0;
+  border-radius: calc(var(--cs-device) / 2 - 8px) calc(var(--cs-device) / 2 - 8px) 0 0;
+  background: linear-gradient(180deg, var(--cs-paper) 0%, #e4e0d2 100%);
+}
+
+.capture-shake__half--lower {
+  bottom: 0;
+  border-radius: 0 0 calc(var(--cs-device) / 2) calc(var(--cs-device) / 2);
+  border-top: none;
+  transform: translateY(0);
+  transform-origin: 50% 0%;
+}
+
+.capture-shake__half--lower::after {
+  content: '';
+  position: absolute;
+  inset: 0 8px 8px;
+  border-radius: 0 0 calc(var(--cs-device) / 2 - 8px) calc(var(--cs-device) / 2 - 8px);
+  background: linear-gradient(0deg, var(--cs-paper) 0%, #e4e0d2 100%);
+}
+
+/* Idle: halves slightly open so target can enter */
+.capture-shake[data-state='idle'] .capture-shake__half--upper,
+.capture-shake[data-state='capturing'] .capture-shake__half--upper {
+  transform: translateY(-14px);
+}
+
+.capture-shake[data-state='idle'] .capture-shake__half--lower,
+.capture-shake[data-state='capturing'] .capture-shake__half--lower {
+  transform: translateY(14px);
+}
+
+.capture-shake__seam {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 50%;
+  height: 4px;
+  margin-top: -2px;
+  z-index: 2;
+  background: var(--cs-ink);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.capture-shake.is-closed .capture-shake__seam,
+.capture-shake[data-state='settling'] .capture-shake__seam,
+.capture-shake[data-state='checking'] .capture-shake__seam,
+.capture-shake[data-state='captured'] .capture-shake__seam {
+  opacity: 1;
+}
+
+.capture-shake__diamond {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 4;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  background: var(--cs-coral);
+  transform: rotate(45deg) scale(0.92);
+  box-shadow:
+    0 0 0 2px var(--cs-ink),
+    inset 0 0 0 1px rgb(255 255 255 / 0.35);
+  opacity: 0;
+}
+
+.capture-shake.is-closed .capture-shake__diamond,
+.capture-shake[data-state='settling'] .capture-shake__diamond,
+.capture-shake[data-state='checking'] .capture-shake__diamond,
+.capture-shake[data-state='captured'] .capture-shake__diamond {
+  opacity: 1;
+}
+
+/* —— Capture enter —— */
+.capture-shake.is-entering .capture-shake__target {
+  animation: cs-enter var(--cs-enter-ms) cubic-bezier(0.4, 0.05, 0.2, 1) forwards;
+}
+
+@keyframes cs-enter {
+  0% {
+    transform: translateY(0) scaleY(1) scale(1);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(90px) scaleY(0.72) scale(0.55);
+    opacity: 1;
+  }
+}
+
+.capture-shake.is-closing .capture-shake__half--upper {
+  animation: cs-close-upper 160ms cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+}
+
+.capture-shake.is-closing .capture-shake__half--lower {
+  animation: cs-close-lower 160ms cubic-bezier(0.33, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes cs-close-upper {
+  from {
+    transform: translateY(-14px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes cs-close-lower {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.capture-shake.is-enclosed .capture-shake__target,
+.capture-shake.is-closed .capture-shake__target,
+.capture-shake[data-state='settling'] .capture-shake__target,
+.capture-shake[data-state='checking'] .capture-shake__target,
+.capture-shake[data-state='captured'] .capture-shake__target {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.capture-shake.is-closed .capture-shake__half--upper,
+.capture-shake[data-state='settling'] .capture-shake__half--upper,
+.capture-shake[data-state='checking'] .capture-shake__half--upper,
+.capture-shake[data-state='captured'] .capture-shake__half--upper,
+.capture-shake.is-closed .capture-shake__half--lower,
+.capture-shake[data-state='settling'] .capture-shake__half--lower,
+.capture-shake[data-state='checking'] .capture-shake__half--lower,
+.capture-shake[data-state='captured'] .capture-shake__half--lower {
+  transform: translateY(0);
+}
+
+/* —— Settle drop —— */
+.capture-shake.is-settling .capture-shake__device {
+  animation: cs-settle var(--cs-settle-ms) cubic-bezier(0.33, 0.9, 0.35, 1) forwards;
+}
+
+@keyframes cs-settle {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(10px) rotate(0deg);
+  }
+}
+
+.capture-shake.is-checking .capture-shake__device,
+.capture-shake[data-state='captured'] .capture-shake__device {
+  transform: translateY(10px) rotate(0deg);
+}
+
+/* —— Three discrete shakes —— */
+.capture-shake.is-shake-1 .capture-shake__device {
+  animation: cs-shake-1 var(--cs-shake1-ms) cubic-bezier(0.4, 0.05, 0.35, 1) both;
+}
+
+.capture-shake.is-shake-2 .capture-shake__device {
+  animation: cs-shake-2 var(--cs-shake2-ms) cubic-bezier(0.4, 0.05, 0.35, 1) both;
+}
+
+.capture-shake.is-shake-3 .capture-shake__device {
+  animation: cs-shake-3 var(--cs-shake3-ms) cubic-bezier(0.4, 0.05, 0.35, 1) both;
+}
+
+@keyframes cs-shake-1 {
+  0% {
+    transform: translateY(10px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(10px) rotate(-11deg);
+  }
+  70% {
+    transform: translateY(10px) rotate(4deg);
+  }
+  100% {
+    transform: translateY(10px) rotate(0deg);
+  }
+}
+
+@keyframes cs-shake-2 {
+  0% {
+    transform: translateY(10px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(10px) rotate(10deg);
+  }
+  70% {
+    transform: translateY(10px) rotate(-4deg);
+  }
+  100% {
+    transform: translateY(10px) rotate(0deg);
+  }
+}
+
+@keyframes cs-shake-3 {
+  0% {
+    transform: translateY(10px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(10px) rotate(-8deg);
+  }
+  70% {
+    transform: translateY(10px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(10px) rotate(0deg);
+  }
+}
+
+/* —— Resolution —— */
+.capture-shake.is-resolve .capture-shake__diamond {
+  animation: cs-diamond-flash 160ms ease-out both;
+}
+
+@keyframes cs-diamond-flash {
+  0%,
+  100% {
+    background: var(--cs-coral);
+    box-shadow:
+      0 0 0 2px var(--cs-ink),
+      inset 0 0 0 1px rgb(255 255 255 / 0.35);
+  }
+  40% {
+    background: var(--cs-gold);
+    box-shadow:
+      0 0 0 2px var(--cs-ink),
+      0 0 12px rgb(240 184 74 / 0.7),
+      inset 0 0 0 1px var(--cs-white);
+  }
+}
+
+.capture-shake__stars {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 78px);
+  width: 100px;
+  height: 40px;
+  margin-left: -50px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.capture-shake.is-resolve .capture-shake__stars,
+.capture-shake[data-state='captured'] .capture-shake__stars {
+  opacity: 1;
+}
+
+.cs-star {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--cs-gold);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  transform: scale(0.4);
+  opacity: 0;
+}
+
+.cs-star--1 {
+  left: 12px;
+  top: 14px;
+}
+.cs-star--2 {
+  left: 44px;
+  top: 0;
+}
+.cs-star--3 {
+  left: 76px;
+  top: 12px;
+}
+
+.capture-shake.is-resolve .cs-star--1 {
+  animation: cs-star-in 220ms cubic-bezier(0.22, 1, 0.36, 1) 0ms both;
+}
+.capture-shake.is-resolve .cs-star--2 {
+  animation: cs-star-in 220ms cubic-bezier(0.22, 1, 0.36, 1) 45ms both;
+}
+.capture-shake.is-resolve .cs-star--3 {
+  animation: cs-star-in 220ms cubic-bezier(0.22, 1, 0.36, 1) 90ms both;
+}
+
+.capture-shake[data-state='captured'] .cs-star {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes cs-star-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Status: vertical clip swap, no fade */
+.capture-shake__status {
+  margin: 0;
+  height: 1.2em;
+  overflow: hidden;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cs-gold);
+  text-align: center;
+}
+
+.capture-shake__status-clip {
+  display: block;
+  transform: translateY(0);
+  transition: none;
+}
+
+.capture-shake.is-resolve .capture-shake__status-clip,
+.capture-shake[data-state='captured'] .capture-shake__status-clip {
+  transform: translateY(-50%);
+}
+
+.capture-shake__status-word {
+  display: block;
+  height: 1.2em;
+  line-height: 1.2em;
+}
+
+.capture-shake__status-word--done {
+  color: var(--cs-paper);
+}
+
+/* Controls */
+.capture-shake__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.capture-shake__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--cs-coral);
+  border-radius: 0;
+  background: var(--cs-ink);
+  color: var(--cs-paper);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.capture-shake__btn:hover:not(:disabled) {
+  background: #22282e;
+}
+
+.capture-shake__btn:focus-visible {
+  outline: 2px solid var(--cs-gold);
+  outline-offset: 2px;
+}
+
+.capture-shake__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.capture-shake__btn--ghost {
+  border-color: rgb(241 239 226 / 0.35);
+  background: transparent;
+  color: rgb(241 239 226 / 0.75);
+}
+
+/* —— Reduced motion: closed + stars + CAPTURED, no shakes —— */
+@media (prefers-reduced-motion: reduce) {
+  .capture-shake__target,
+  .capture-shake__half,
+  .capture-shake__device,
+  .capture-shake__diamond,
+  .cs-star,
+  .capture-shake__status-clip {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .capture-shake.is-rm-settled .capture-shake__target {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .capture-shake.is-rm-settled .capture-shake__half--upper,
+  .capture-shake.is-rm-settled .capture-shake__half--lower {
+    transform: translateY(0);
+  }
+
+  .capture-shake.is-rm-settled .capture-shake__seam,
+  .capture-shake.is-rm-settled .capture-shake__diamond {
+    opacity: 1;
+  }
+
+  .capture-shake.is-rm-settled .capture-shake__device {
+    transform: translateY(10px) rotate(0deg);
+  }
+
+  .capture-shake.is-rm-settled .capture-shake__stars {
+    opacity: 1;
+  }
+
+  .capture-shake.is-rm-settled .cs-star {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .capture-shake.is-rm-settled .capture-shake__status-clip {
+    transform: translateY(-50%);
+  }
+}
+
+[data-force-reduced-motion='true'] .capture-shake .capture-shake__target,
+[data-force-reduced-motion='true'] .capture-shake .capture-shake__half,
+[data-force-reduced-motion='true'] .capture-shake .capture-shake__device,
+[data-force-reduced-motion='true'] .capture-shake .capture-shake__diamond,
+[data-force-reduced-motion='true'] .capture-shake .cs-star,
+[data-force-reduced-motion='true'] .capture-shake .capture-shake__status-clip {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__target {
+  opacity: 0;
+  visibility: hidden;
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__half--upper,
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__half--lower {
+  transform: translateY(0);
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__seam,
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__diamond {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__device {
+  transform: translateY(10px) rotate(0deg);
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__stars {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .cs-star {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-force-reduced-motion='true'] .capture-shake.is-rm-settled .capture-shake__status-clip {
+  transform: translateY(-50%);
+}

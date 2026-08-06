@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/capture-shake.schema.json",
+  "title": "CaptureShake",
+  "description": "Portable contract for an uncertain capture confirmation: entity enters an original circular device, three discrete shakes resolve to CAPTURED.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "device",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "capture-shake" },
+    "intent": {
+      "type": "string",
+      "const": "Abstract entity enters a generic circular capture device; three discrete resolution shakes then CAPTURED with three stars."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "trigger", "initialStatus", "finalStatus", "reset"],
+      "properties": {
+        "target": { "type": "string", "const": "SPECIMEN // UNKNOWN" },
+        "trigger": { "type": "string", "const": "CAPTURE" },
+        "initialStatus": { "type": "string", "const": "UNRESOLVED" },
+        "finalStatus": { "type": "string", "const": "CAPTURED" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper", "coral", "gold", "white"],
+      "properties": {
+        "ink": { "type": "string", "const": "#171c20" },
+        "paper": { "type": "string", "const": "#f1efe2" },
+        "coral": { "type": "string", "const": "#d95b4e" },
+        "gold": { "type": "string", "const": "#f0b84a" },
+        "white": { "type": "string", "const": "#ffffff" }
+      }
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "diameterPx",
+        "centralDiamond",
+        "horizontalSeam",
+        "notOfficialPokeBall"
+      ],
+      "properties": {
+        "diameterPx": { "type": "number", "const": 120 },
+        "centralDiamond": { "type": "boolean", "const": true },
+        "horizontalSeam": { "type": "boolean", "const": true },
+        "notOfficialPokeBall": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetStartOffsetPx",
+        "enterMs",
+        "enterScale",
+        "settleTranslateYPx",
+        "settleMs",
+        "settleWaitMs",
+        "shakes",
+        "starCount",
+        "starStaggerMs",
+        "loops"
+      ],
+      "properties": {
+        "targetStartOffsetPx": { "type": "number", "const": -90 },
+        "enterMs": { "type": "number", "const": 240 },
+        "enterScale": { "type": "array", "const": [1, 0.55] },
+        "settleTranslateYPx": { "type": "number", "const": 10 },
+        "settleMs": { "type": "number", "const": 140 },
+        "settleWaitMs": { "type": "number", "const": 180 },
+        "shakes": {
+          "type": "array",
+          "const": [
+            {
+              "rotateDeg": [0, -11, 4, 0],
+              "durationMs": 220,
+              "pauseMs": 180
+            },
+            {
+              "rotateDeg": [0, 10, -4, 0],
+              "durationMs": 220,
+              "pauseMs": 200
+            },
+            {
+              "rotateDeg": [0, -8, 3, 0],
+              "durationMs": 200,
+              "pauseMs": 220
+            }
+          ]
+        },
+        "starCount": { "type": "number", "const": 3 },
+        "starScale": { "type": "array", "const": [0.4, 1] },
+        "starStaggerMs": { "type": "array", "const": [0, 45, 90] },
+        "statusSwap": { "type": "string", "const": "vertical-clip" },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statusText", "politeLive", "decorativeDevice"],
+      "properties": {
+        "statusText": { "type": "boolean", "const": true },
+        "politeLive": { "type": "boolean", "const": true },
+        "decorativeDevice": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateCaptured", "noShakes", "triggers"],
+      "properties": {
+        "immediateCaptured": { "type": "boolean", "const": true },
+        "noShakes": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "device", "target", "stars"],
+      "properties": {
+        "root": { "type": "string", "const": "capture-shake" },
+        "device": { "type": "string", "const": "capture-shake__device" },
+        "target": { "type": "string", "const": "capture-shake__target" },
+        "stars": { "type": "string", "const": "capture-shake__stars" }
+      }
+    }
+  }
+}

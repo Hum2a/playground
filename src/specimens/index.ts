@@ -2,12 +2,14 @@ import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
-import { blueFocusBrackets } from './blue-focus-brackets/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
+import { blueFocusBrackets } from './blue-focus-brackets/entry'
+import { branchEvolutionChoice } from './branch-evolution-choice/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
+import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
@@ -32,6 +34,7 @@ import { dayChangeTear } from './day-change-tear/entry'
 import { deadlineClock } from './deadline-clock/entry'
 import { deadlinePanic } from './deadline-panic/entry'
 import { decisionShowdown } from './decision-showdown/entry'
+import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
@@ -40,8 +43,8 @@ import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
-import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
+import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
@@ -136,23 +139,23 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   precisionMenuSnap,
-  evolutionSilhouetteTransformation,
   evokerMenuSnap,
   truthShotNotification,
   diagnosticBootSequence,
   corruptedAccessLock,
   criticalThresholdWarning,
-  criticalWeaknessHit,
   achievementEncounter,
   tacticalAlertPing,
   inkSplatTransition,
   victoryResultsTally,
   blackoutLoader,
   blueDoorDiscovery,
-  blueFocusBrackets,
   blueFlameButtonHover,
+  blueFocusBrackets,
+  branchEvolutionChoice,
   butterflyEntry,
   butterflySuccessState,
+  captureShake,
   cardBreakSummon,
   choiceExecutionSlash,
   clockHandWipe,
@@ -160,6 +163,8 @@ export const specimens: Specimen[] = [
   comicPanelScrollReveal,
   completionStrike,
   connectionSevered,
+  criticalCapture,
+  criticalWeaknessHit,
   crookedMenuStack,
   crossOutReplacement,
   crossOutStatusSwap,
@@ -170,12 +175,14 @@ export const specimens: Specimen[] = [
   deadlineClock,
   deadlinePanic,
   decisionShowdown,
+  delayedDamageBar,
   deletionGuillotine,
   discoveryTearOpen,
   enemyScanReveal,
   energyChargeConfirmation,
   energyTransferSync,
   errorCorrectionRewrite,
+  evolutionSilhouetteTransformation,
   failureShatter,
   fullMoonMilestone,
   fusionSelectionMerge,
@@ -216,7 +223,6 @@ export const specimens: Specimen[] = [
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,
-  criticalCapture,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
