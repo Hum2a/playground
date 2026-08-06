@@ -1,0 +1,50 @@
+01|P4-001|SPX-2919|midnight-channel-signal-acquisition|Midnight Channel Signal Acquisition
+02|P4-002|SPX-2920|crt-power-on-reveal|CRT Power-On Reveal
+03|P4-013|SPX-2931|tv-screen-dive-transition|TV Screen Dive Transition
+04|P4-021|SPX-2939|fog-clearing-data-reveal|Fog-Clearing Data Reveal
+05|P4-029|SPX-2947|evidence-connection-draw|Evidence Connection Draw
+06|P4-030|SPX-2948|contradiction-found|Contradiction Found
+07|P4-044|SPX-2962|shadow-self-reveal|Shadow Self Reveal
+08|P4-052|SPX-2970|arcana-rank-up|Arcana Rank-Up
+09|P4-110|SPX-3028|keep-out-tape-marquee|KEEP OUT Tape Marquee
+10|P4-069|SPX-2987|persona-fusion-combine|Persona Fusion Combine
+11|P4-031|SPX-2949|case-breakthrough|Case Breakthrough
+12|P4-034|SPX-2952|suspect-card-reveal|Suspect Card Reveal
+13|P4-035|SPX-2953|evidence-chain-advance|Evidence Chain Advance
+14|P4-036|SPX-2954|deduction-lock-in|Deduction Lock-In
+15|P4-040|SPX-2958|timeline-reconstruction|Timeline Reconstruction
+16|P4-156|SPX-3074|classified-dossier-reveal|Classified Dossier Reveal
+17|P4-157|SPX-3075|fingerprint-scan-match|Fingerprint Scan Match
+18|P4-043|SPX-2961|redaction-reveal|Redaction Reveal
+19|P4-170|SPX-3088|case-solved-completion|Case Solved Completion
+20|P4-037|SPX-2955|false-lead-strikeout|False Lead Strikeout
+21|P4-003|SPX-2921|channel-tuning-scrub|Channel Tuning Scrub
+22|P4-005|SPX-2923|broadcast-interruption|Broadcast Interruption
+23|P4-019|SPX-2937|static-portal-materialise|Static Portal Materialise
+24|P4-022|SPX-2940|fog-of-war-card|Fog-of-War Card
+25|P4-025|SPX-2943|fog-deadline-escalation|Fog Deadline Escalation
+26|P4-119|SPX-3037|vhs-tracking-scrub|VHS Tracking Scrub
+27|P4-007|SPX-2925|tracking-error-recovery|Tracking Error Recovery
+28|P4-127|SPX-3045|no-signal-card|No Signal Card
+29|P4-112|SPX-3030|yellow-impact-wipe|Yellow Impact Wipe
+30|P4-111|SPX-3029|hazard-stripe-reveal|Hazard Stripe Reveal
+31|P4-053|SPX-2971|social-link-milestone|Social Link Milestone
+32|P4-057|SPX-2975|rank-threshold-unlock|Rank Threshold Unlock
+33|P4-062|SPX-2980|arcana-card-draw|Arcana Card Draw
+34|P4-070|SPX-2988|fusion-preview|Fusion Preview
+35|P4-071|SPX-2989|skill-inheritance-select|Skill Inheritance Select
+36|P4-078|SPX-2996|multi-fusion-assembly|Multi-Fusion Assembly
+37|P4-079|SPX-2997|weakness-discovered|Weakness Discovered
+38|P4-080|SPX-2998|knockdown-chain|Knockdown Chain
+39|P4-087|SPX-3005|battle-result-tally|Battle Result Tally
+40|P4-089|SPX-3007|level-up-burst|Level-Up Burst
+41|P4-092|SPX-3010|map-construction|Map Construction
+42|P4-094|SPX-3012|danger-meter-escalation|Danger Meter Escalation
+43|P4-100|SPX-3018|day-change-card|Day Change Card
+44|P4-103|SPX-3021|deadline-pressure-meter|Deadline Pressure Meter
+45|P4-105|SPX-3023|fog-forecast-warning|Fog Forecast Warning
+46|P4-049|SPX-2967|boss-introduction-freeze|Boss Introduction Freeze
+47|P4-046|SPX-2964|confrontation-card-slam|Confrontation Card Slam
+48|P4-150|SPX-3068|contract-confirmation|Contract Confirmation
+49|P4-059|SPX-2977|p4-max-rank-completion|Max Rank Completion
+50|P4-083|SPX-3001|all-out-completion-burst|All-Out Completion Burst

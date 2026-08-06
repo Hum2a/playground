@@ -1,5 +1,5 @@
 ---
-description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / MHA catalogue checklists when a listed specimen ships
+description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / MHA / Naruto / Persona 4 catalogue checklists when a listed specimen ships
 alwaysApply: true
 ---
 
@@ -14,6 +14,8 @@ alwaysApply: true
 | iOS & macOS | [`docs/catalogue/ios-macos-specimen-catalogue.md`](docs/catalogue/ios-macos-specimen-catalogue.md) |
 | Android | [`docs/catalogue/android-specimen-catalogue.md`](docs/catalogue/android-specimen-catalogue.md) |
 | My Hero Academia | [`docs/catalogue/my-hero-academia-specimen-catalogue.md`](docs/catalogue/my-hero-academia-specimen-catalogue.md) |
+| Naruto | [`docs/catalogue/naruto-specimen-catalogue.md`](docs/catalogue/naruto-specimen-catalogue.md) |
+| Persona 4 | [`docs/catalogue/persona-4-specimen-catalogue.md`](docs/catalogue/persona-4-specimen-catalogue.md) |
 
 ## IDs
 
@@ -26,6 +28,8 @@ alwaysApply: true
 | `IOS-NNN` | Stable idea id in the iOS & macOS checklist (001–258) |
 | `AND-NNN` | Stable idea id in the Android checklist (001–417) |
 | `MHA-NNN` | Stable idea id in the My Hero Academia checklist (001–369) |
+| `NR-NNN` | Stable idea id in the Naruto checklist (001–575) |
+| `P4-NNN` | Stable idea id in the Persona 4 checklist (001–191) |
 | `SPX-NNN` | Registry `ref` in `entry.ts` / `index.ts` |
 
 ### Persona 5 refs
@@ -61,15 +65,25 @@ alwaysApply: true
 - Unbuilt MHA ideas are **pre-assigned** `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Legacy path [`docs/catalogue/my_hero_academia_motion_ui_catalogue.md`](docs/catalogue/my_hero_academia_motion_ui_catalogue.md) redirects to the canonical checklist.
 
+### Naruto refs
+
+- Unbuilt NR ideas are **pre-assigned** `SPX-2344`…`SPX-2918` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/naruto_motion_ui_specimen_catalogue.md`](docs/catalogue/naruto_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
+### Persona 4 refs
+
+- Unbuilt P4 ideas are **pre-assigned** `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/persona_4_motion_ui_specimen_catalogue.md`](docs/catalogue/persona_4_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
 ### Outside these catalogues
 
-Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, or MHA row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
+Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, MHA, NR, or P4 row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 
 ## When a specimen ships
 
 After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
 
-1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / title / assigned `SPX-NNN`).
+1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / `NR-NNN` / `P4-NNN` / title / assigned `SPX-NNN`).
 2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
 3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / total`).
 4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
@@ -79,4 +93,4 @@ Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
 
 ## Scope
 
-Only applies to ideas listed in these seven catalogue files. Other inspiration lineages do not use them.
+Only applies to ideas listed in these ten catalogue files. Other inspiration lineages do not use them.
