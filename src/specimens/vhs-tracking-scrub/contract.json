@@ -1,0 +1,17 @@
+{
+  "name": "vhs-tracking-scrub",
+  "ref": "SPX-3037",
+  "catalogueId": "P4-119",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "gray": "#E8E8E8"
+  },
+  "center": 50,
+  "errorBand": 18,
+  "phases": ["clean", "error", "severe"],
+  "reducedMotion": {
+    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+  }
+}

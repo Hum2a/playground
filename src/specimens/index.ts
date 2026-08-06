@@ -353,6 +353,7 @@ import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { versusCardCollision } from './versus-card-collision/entry'
 import { versusClashCard } from './versus-clash-card/entry'
 import { verticalContentStretch } from './vertical-content-stretch/entry'
+import { vhsTrackingScrub } from './vhs-tracking-scrub/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { volumeSliderHud } from './volume-slider-hud/entry'
@@ -768,6 +769,7 @@ export const specimens: Specimen[] = [
   versusCardCollision,
   versusClashCard,
   verticalContentStretch,
+  vhsTrackingScrub,
   victoryResultsTally,
   volumeBrightnessHud,
   volumeSliderHud,
