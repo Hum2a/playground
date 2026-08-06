@@ -1,0 +1,190 @@
+/* SPX-2344 Hand-Sign Combo Sequence — portable contract. */
+
+.hscs {
+  --ink: #101318;
+  --parchment: #e7ddc7;
+  --chakra: #3a9bd9;
+  --olive: #69745a;
+  --off: #f4f1e8;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
+  background: var(--ink);
+  color: var(--off);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.hscs *,
+.hscs *::before,
+.hscs *::after {
+  box-sizing: border-box;
+}
+
+.hscs__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hscs__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chakra);
+}
+
+.hscs__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.65rem;
+  justify-items: center;
+  width: 100%;
+  padding: 1rem 0.75rem;
+  border: 1px solid rgb(58 155 217 / 0.45);
+  background: rgb(244 241 232 / 0.04);
+}
+
+.hscs__row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: center;
+}
+
+.hscs__slot {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1.5px solid var(--olive);
+  background: rgb(16 19 24 / 0.85);
+  color: var(--olive);
+  opacity: 0.4;
+  transform: scale(0.92);
+  transition:
+    opacity 120ms ease-out,
+    color 120ms ease-out,
+    border-color 120ms ease-out,
+    transform 120ms cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+.hscs__slot[data-acquired='true'] {
+  opacity: 1;
+  color: var(--chakra);
+  border-color: var(--chakra);
+  transform: scale(1);
+  box-shadow: inset 0 0 0 1px rgb(58 155 217 / 0.35);
+}
+
+.hscs__slot[data-pulse='true'] {
+  animation: hscs-pulse 130ms ease-out;
+}
+
+@keyframes hscs-pulse {
+  0% {
+    transform: scale(0.88);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hscs__glyph {
+  display: grid;
+  place-items: center;
+  line-height: 0;
+}
+
+.hscs__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--parchment);
+}
+
+.hscs[data-phase='done'] .hscs__status {
+  color: var(--chakra);
+}
+
+.hscs__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.hscs__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.hscs__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hscs__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.hscs__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.hscs__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.hscs__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hscs__slot,
+  .hscs__slot[data-pulse='true'] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .hscs__slot,
+html[data-force-reduced-motion='true'] .hscs__slot[data-pulse='true'] {
+  transition: none !important;
+  animation: none !important;
+}

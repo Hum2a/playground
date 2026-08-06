@@ -1,0 +1,48 @@
+<div class="hscs" data-hscs data-phase="idle">
+  <p class="hscs__live" data-hscs-live aria-live="polite">
+    Command sequence idle. Four signs pending.
+  </p>
+
+  <p class="hscs__system">CMD // SEQUENCE</p>
+
+  <div class="hscs__stage" data-hscs-stage>
+    <ol class="hscs__row" data-hscs-row aria-label="Hand-sign command sequence">
+      <li class="hscs__slot" data-hscs-slot data-index="0" aria-label="Sign 1 pending">
+        <span class="hscs__glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M6 18V8l6-4 6 4v10" />
+          </svg>
+        </span>
+      </li>
+      <li class="hscs__slot" data-hscs-slot data-index="1" aria-label="Sign 2 pending">
+        <span class="hscs__glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M12 5v14" />
+          </svg>
+        </span>
+      </li>
+      <li class="hscs__slot" data-hscs-slot data-index="2" aria-label="Sign 3 pending">
+        <span class="hscs__glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M5 7h14M5 12h14M5 17h9" />
+          </svg>
+        </span>
+      </li>
+      <li class="hscs__slot" data-hscs-slot data-index="3" aria-label="Sign 4 pending">
+        <span class="hscs__glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="none" stroke="currentColor" stroke-width="2" d="M7 6h10v12H7zM9 10h6M9 14h4" />
+          </svg>
+        </span>
+      </li>
+    </ol>
+    <p class="hscs__status" data-hscs-status>IDLE</p>
+    <p class="hscs__hint" data-hscs-hint>Press Run or keys 1–4 in order.</p>
+  </div>
+
+  <div class="hscs__controls">
+    <button type="button" class="hscs__btn hscs__btn--primary" data-hscs-run>Run</button>
+    <button type="button" class="hscs__btn" data-hscs-replay>Replay</button>
+  </div>
+</div>

@@ -123,6 +123,7 @@ import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { gridReorderGap } from './grid-reorder-gap/entry'
 import { halftoneExpansion } from './halftone-expansion/entry'
+import { handSignComboSequence } from './hand-sign-combo-sequence/entry'
 import { handoffContinuation } from './handoff-continuation/entry'
 import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
 import { heroAssignmentDrag } from './hero-assignment-drag/entry'
@@ -461,6 +462,7 @@ export const specimens: Specimen[] = [
   graphicBurstHover,
   gridReorderGap,
   halftoneExpansion,
+  handSignComboSequence,
   handoffContinuation,
   headsUpNotificationDrop,
   heroAssignmentDrag,

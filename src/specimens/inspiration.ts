@@ -87,6 +87,10 @@ export const INSPIRATION_DIRECTORY = {
     label: 'My Hero Academia',
     works: {},
   },
+  naruto: {
+    label: 'Naruto',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},
@@ -125,6 +129,8 @@ export const SUGGESTED_FREE_TAGS = [
   'scanline',
   'crt',
   'hud',
+  'ritual',
+  'command-sequence',
   'menu',
   'battle',
   'dialogue',
