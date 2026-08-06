@@ -129,6 +129,10 @@ export const SUGGESTED_FREE_TAGS = [
   'alert',
   'detection',
   'ping',
+  'reveal',
+  'paper',
+  'peel',
+  'unlock',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

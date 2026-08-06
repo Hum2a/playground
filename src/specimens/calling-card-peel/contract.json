@@ -1,0 +1,91 @@
+{
+  "name": "calling-card-peel",
+  "intent": "Attached crooked printed notice peels diagonally from the upper-right and flicks away to reveal content that was underneath the entire time.",
+  "colours": {
+    "paper": "#f2eee3",
+    "ink": "#090909",
+    "red": "#d71920"
+  },
+  "dimensions": {
+    "sheetWidthPercent": 112,
+    "sheetHeightPercent": 78,
+    "sheetLeftPercent": -6,
+    "sheetTopPercent": 11,
+    "initialRotateDeg": -3,
+    "transformOrigin": "100% 0%",
+    "backingOffsetPx": [7, 9],
+    "backingLagMs": 40,
+    "perspectivePx": 900,
+    "foldSizePx": 52,
+    "minHeightPx": 240
+  },
+  "clipPaths": {
+    "surfaceIdle": "polygon(2% 4%, 97% 0.5%, 100% 7%, 98% 96%, 3% 100%, 0% 7%)",
+    "surfaceLift": "polygon(2% 4%, 92% 1%, 94% 10%, 98% 96%, 3% 100%, 0% 7%)",
+    "surfaceTension": "polygon(2% 6%, 78% 2%, 72% 22%, 96% 97%, 3% 100%, 0% 10%)",
+    "surfacePeel": "polygon(0% 28%, 42% 8%, 28% 58%, 8% 100%, 0% 100%)",
+    "surfaceRelease": "polygon(0% 100%, 0% 100%, 0% 100%, 0% 100%)",
+    "backing": "polygon(1% 5%, 99% 0%, 100% 9%, 98% 97%, 2% 100%, 0% 8%)",
+    "fold": "polygon(0% 0%, 100% 0%, 0% 100%)"
+  },
+  "classes": {
+    "root": "ccp",
+    "lift": "ccp--lift",
+    "tension": "ccp--tension",
+    "peel": "ccp--peel",
+    "release": "ccp--release",
+    "revealed": "ccp--revealed",
+    "reduced": "ccp--reduced",
+    "busy": "ccp--busy"
+  },
+  "timing": {
+    "totalMs": 1040,
+    "liftMs": 180,
+    "tensionMs": 160,
+    "peelMs": 460,
+    "releaseMs": 240,
+    "easing": {
+      "lift": "cubic-bezier(0.2, 0.7, 0.2, 1)",
+      "tension": "cubic-bezier(0.4, 0, 0.4, 1)",
+      "peel": "cubic-bezier(0.45, 0.05, 0.55, 1)",
+      "release": "cubic-bezier(0.55, 0, 0.75, 0.2)"
+    }
+  },
+  "transforms": {
+    "tensionPaper": "translate(-2%, 3%) rotate(-5deg) skewX(1.5deg)",
+    "peelPaper": "translate(-48%, 32%) rotate(-13deg) rotateY(-8deg) scale(0.96)",
+    "releasePaper": "translate(-135%, 75%) rotate(-24deg) rotateY(-12deg) scale(0.88)"
+  },
+  "api": {
+    "peel": "peelCallingCard(onRevealed)",
+    "reset": "resetCallingCardPeel()",
+    "replay": "replayCallingCardPeel()",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": true,
+    "noAutoEntrance": true
+  },
+  "a11y": {
+    "obstructionAriaHidden": true,
+    "statusRole": "status",
+    "ariaLive": "polite",
+    "trigger": "button",
+    "hostActionEnabledAfterReveal": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Skip curl/travel; instantly hide obstruction and enable host action"
+  },
+  "constraints": {
+    "noEntranceAnimation": true,
+    "noOpacityFadeRemoval": true,
+    "contentAlwaysInDom": true,
+    "noExternalAssets": true,
+    "noExternalFonts": true,
+    "distinctFromCallingCardSlam": true,
+    "widthRangePx": [320, 768]
+  }
+}
