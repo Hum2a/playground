@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **17 / 238** complete.
+- Progress: **18 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 17 |
-| Open | 221 |
+| Done | 18 |
+| Open | 220 |
 
 ## Visual grammar
 
@@ -49,6 +49,7 @@
 | P3-221 | `SPX-618` | `energy-transfer-sync` | Energy Transfer Sync |
 | P3-134 | `SPX-531` | `midnight-clock-transition` | Midnight Clock Transition |
 | P3-225 | `SPX-622` | `memory-fragment-reveal` | Memory Fragment Reveal |
+| P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
 
 ## Core first-wave
 
@@ -81,7 +82,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [x] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transitions.
 - [ ] **P3-002** · `SPX-401` · **Submerged Reveal** — transitions.
-- [ ] **P3-003** · `SPX-402` · **Liquid Split Transition** — transitions.
+- [x] **P3-003** · `SPX-402` · **Liquid Split Transition** — transitions.
 - [ ] **P3-004** · `SPX-403` · **Wave Crash Reveal** — transitions.
 - [ ] **P3-005** · `SPX-404` · **Water Curtain Drop** — transitions.
 - [ ] **P3-006** · `SPX-405` · **Tidal Pull Exit** — transitions.

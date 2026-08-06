@@ -1,0 +1,57 @@
+{
+  "name": "card-break-summon",
+  "intent": "A sealed rectangular archive token fractures along four primary break lines into five large regions, revealing an entity that already waits beneath.",
+  "colours": {
+    "nearBlack": "#020b15",
+    "deep": "#071a2e",
+    "panel": "#0b2740",
+    "blue": "#1a6f9c",
+    "bright": "#42b9df",
+    "pale": "#d7f6ff"
+  },
+  "copy": {
+    "sealed": { "seal": "SEALED", "label": "ENTITY // ???" },
+    "entity": { "kicker": "ENTITY // 08", "title": "AVAILABLE" },
+    "cta": "SUMMON",
+    "reset": "RESET"
+  },
+  "geometry": {
+    "cardPx": [170, 230],
+    "borderRadius": 0,
+    "primaryBreakLines": 4,
+    "regions": 5,
+    "pieceTravelPx": [45, 100],
+    "noTarotArtwork": true,
+    "clipPaths": {
+      "1_top": "polygon(0% 0%, 100% 0%, 78% 22%, 22% 28%)",
+      "2_right": "polygon(100% 0%, 100% 100%, 72% 78%, 78% 22%)",
+      "3_bottom": "polygon(0% 100%, 100% 100%, 72% 78%, 28% 72%)",
+      "4_left": "polygon(0% 0%, 22% 28%, 28% 72%, 0% 100%)",
+      "5_centre": "polygon(22% 28%, 78% 22%, 72% 78%, 28% 72%)"
+    }
+  },
+  "timing": {
+    "shakeMs": 180,
+    "shakeRotationDeg": [0, -2, 2, 0],
+    "cracksAppearMs": 99,
+    "separateAtMs": 300,
+    "entityScale": [0.9, 1.04, 1],
+    "totalMs": 820,
+    "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "noParticleExplosion": true,
+    "finalStateStatic": true
+  },
+  "api": {
+    "summon": "runCardBreakSummon()",
+    "reset": "runCardBreakReset()",
+    "busyGuard": true,
+    "entityExistsUnderCard": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show ENTITY // 08 AVAILABLE; no shake, cracks, or piece travel"
+  }
+}

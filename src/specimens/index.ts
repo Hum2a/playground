@@ -37,6 +37,7 @@ import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
+import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
@@ -151,6 +152,7 @@ export const specimens: Specimen[] = [
   holdToChargeButton,
   hoverCutout,
   letterScatterAssemble,
+  liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
   memoryFragmentReveal,

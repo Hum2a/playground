@@ -1,0 +1,512 @@
+/* SPX-495 Card Break Summon — portable contract. Do not restyle to host tokens. */
+
+.card-break {
+  --cb-near: #020b15;
+  --cb-deep: #071a2e;
+  --cb-panel: #0b2740;
+  --cb-blue: #1a6f9c;
+  --cb-bright: #42b9df;
+  --cb-pale: #d7f6ff;
+  --cb-w: 170px;
+  --cb-h: 230px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem 1rem 3.25rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 48%, rgb(26 111 156 / 0.16), transparent 70%),
+    var(--cb-near);
+  color: var(--cb-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.card-break *,
+.card-break *::before,
+.card-break *::after {
+  box-sizing: border-box;
+}
+
+.card-break__btn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  z-index: 8;
+  transform: translateX(-50%);
+  appearance: none;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--cb-bright);
+  border-radius: 0;
+  background: rgb(26 111 156 / 0.28);
+  color: var(--cb-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.card-break__btn:focus-visible {
+  outline: 2px solid var(--cb-bright);
+  outline-offset: 3px;
+}
+
+.card-break__btn:hover:not(:disabled) {
+  background: rgb(66 185 223 / 0.22);
+}
+
+.card-break__btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.card-break__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.card-break__stage {
+  position: relative;
+  width: var(--cb-w);
+  height: var(--cb-h);
+}
+
+/* —— Entity beneath (always present) —— */
+.card-break__entity {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+  background:
+    linear-gradient(160deg, rgb(66 185 223 / 0.12), transparent 55%),
+    var(--cb-panel);
+  border: 1px solid rgb(66 185 223 / 0.55);
+  transform: scale(0.9);
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.card-break__kicker {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--cb-bright);
+}
+
+.card-break__title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cb-pale);
+}
+
+.card-break__frame {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgb(66 185 223 / 0.35);
+  pointer-events: none;
+}
+
+.card-break__frame::before,
+.card-break__frame::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--cb-bright);
+}
+
+.card-break__frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.card-break__frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* —— Sealed card —— */
+.card-break__card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transform-origin: center center;
+}
+
+.card-break__face,
+.card-break__piece-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 0.45rem;
+  padding: 1rem;
+  background:
+    linear-gradient(165deg, #0e2f4a 0%, var(--cb-deep) 48%, #061422 100%);
+  border: 1px solid rgb(26 111 156 / 0.75);
+  color: var(--cb-pale);
+}
+
+.card-break__face {
+  z-index: 2;
+}
+
+.card-break__seal {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--cb-blue);
+}
+
+.card-break__unknown {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.card-break__mark {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgb(66 185 223 / 0.45);
+  transform: rotate(45deg);
+}
+
+/* Four primary break lines → five regions (centre + four sides) */
+.card-break__cracks {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.card-break__crack {
+  position: absolute;
+  background: var(--cb-pale);
+  box-shadow:
+    0 0 6px rgb(66 185 223 / 0.85),
+    0 0 14px rgb(66 185 223 / 0.45);
+  transform-origin: center center;
+}
+
+/* Top edge → centre */
+.card-break__crack--1 {
+  left: 48%;
+  top: 0;
+  width: 2px;
+  height: 28%;
+  transform: rotate(8deg);
+}
+
+/* Right edge → centre */
+.card-break__crack--2 {
+  top: 42%;
+  right: 0;
+  width: 28%;
+  height: 2px;
+  transform: rotate(-6deg);
+}
+
+/* Bottom edge → centre */
+.card-break__crack--3 {
+  left: 46%;
+  bottom: 0;
+  width: 2px;
+  height: 30%;
+  transform: rotate(-10deg);
+}
+
+/* Left edge → centre */
+.card-break__crack--4 {
+  top: 46%;
+  left: 0;
+  width: 30%;
+  height: 2px;
+  transform: rotate(7deg);
+}
+
+.card-break__leak {
+  position: absolute;
+  inset: 18% 16%;
+  background: radial-gradient(circle, rgb(66 185 223 / 0.55), transparent 68%);
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+
+.card-break__pieces {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card-break__piece {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.card-break__piece-face {
+  /* Same face art; clip on piece defines the shard */
+}
+
+/* 1 Top */
+.card-break__piece--1 {
+  clip-path: polygon(0% 0%, 100% 0%, 78% 22%, 22% 28%);
+}
+
+/* 2 Right */
+.card-break__piece--2 {
+  clip-path: polygon(100% 0%, 100% 100%, 72% 78%, 78% 22%);
+}
+
+/* 3 Bottom */
+.card-break__piece--3 {
+  clip-path: polygon(0% 100%, 100% 100%, 72% 78%, 28% 72%);
+}
+
+/* 4 Left */
+.card-break__piece--4 {
+  clip-path: polygon(0% 0%, 22% 28%, 28% 72%, 0% 100%);
+}
+
+/* 5 Centre */
+.card-break__piece--5 {
+  clip-path: polygon(22% 28%, 78% 22%, 72% 78%, 28% 72%);
+}
+
+/* —— Shake 0–180ms —— */
+.card-break--shake .card-break__card {
+  animation: card-break-shake 180ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes card-break-shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(-2deg);
+  }
+  66% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* —— Cracks + leak —— */
+.card-break--crack .card-break__cracks {
+  opacity: 1;
+  animation: card-break-cracks-in 160ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-break--crack .card-break__leak {
+  animation: card-break-leak 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes card-break-cracks-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes card-break-leak {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* —— Separate at ~300ms —— */
+.card-break--separate .card-break__face {
+  opacity: 0;
+}
+
+.card-break--separate .card-break__cracks {
+  opacity: 0;
+}
+
+.card-break--separate .card-break__pieces {
+  opacity: 1;
+}
+
+.card-break--separate .card-break__piece--1 {
+  animation: card-break-fly-1 480ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-break--separate .card-break__piece--2 {
+  animation: card-break-fly-2 500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-break--separate .card-break__piece--3 {
+  animation: card-break-fly-3 520ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-break--separate .card-break__piece--4 {
+  animation: card-break-fly-4 490ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-break--separate .card-break__piece--5 {
+  animation: card-break-fly-5 460ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-break--separate .card-break__entity {
+  animation: card-break-entity-in 420ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes card-break-fly-1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(12px, -88px) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes card-break-fly-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(96px, 18px) rotate(11deg);
+    opacity: 0;
+  }
+}
+
+@keyframes card-break-fly-3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-10px, 100px) rotate(7deg);
+    opacity: 0;
+  }
+}
+
+@keyframes card-break-fly-4 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-92px, -8px) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes card-break-fly-5 {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(8px, -48px) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes card-break-entity-in {
+  0% {
+    transform: scale(0.9);
+  }
+  55% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* —— Done: static entity, no debris —— */
+.card-break--done .card-break__card {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card-break--done .card-break__entity {
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* —— Reduced motion —— */
+.card-break--rm.card-break--done .card-break__card {
+  visibility: hidden;
+}
+
+.card-break--rm.card-break--done .card-break__entity {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-break--shake .card-break__card,
+  .card-break--crack .card-break__cracks,
+  .card-break--crack .card-break__leak,
+  .card-break--separate .card-break__piece,
+  .card-break--separate .card-break__entity {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .card-break--shake .card-break__card,
+[data-force-reduced-motion='true'] .card-break--crack .card-break__cracks,
+[data-force-reduced-motion='true'] .card-break--crack .card-break__leak,
+[data-force-reduced-motion='true'] .card-break--separate .card-break__piece,
+[data-force-reduced-motion='true'] .card-break--separate .card-break__entity {
+  animation: none !important;
+}
