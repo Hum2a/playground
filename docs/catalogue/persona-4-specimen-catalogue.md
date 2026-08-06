@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **29 / 191** complete.
+- Progress: **30 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 162 |
+| Done | 30 |
+| Open | 161 |
 
 ## Visual grammar
 
@@ -63,6 +63,7 @@
 | P4-007 | `SPX-2925` | `tracking-error-recovery` | Tracking Error Recovery |
 | P4-127 | `SPX-3045` | `no-signal-card` | No Signal Card |
 | P4-112 | `SPX-3030` | `yellow-impact-wipe` | Yellow Impact Wipe |
+| P4-111 | `SPX-3029` | `hazard-stripe-reveal` | Hazard Stripe Reveal |
 
 ## Core first-wave
 
@@ -97,7 +98,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-007** · `SPX-2925` · **Tracking Error Recovery** — midnight-channel-crt-broadcast
 - [x] **P4-127** · `SPX-3045` · **No Signal Card** — analogue-vhs-retro-broadcast
 - [x] **P4-112** · `SPX-3030` · **Yellow Impact Wipe** — yellow-black-graphic-language
-- [ ] **P4-111** · `SPX-3029` · **Hazard Stripe Reveal** — yellow-black-graphic-language
+- [x] **P4-111** · `SPX-3029` · **Hazard Stripe Reveal** — yellow-black-graphic-language
 - [ ] **P4-053** · `SPX-2971` · **Social Link Milestone** — social-links-bonds
 - [ ] **P4-057** · `SPX-2975` · **Rank Threshold Unlock** — social-links-bonds
 - [ ] **P4-062** · `SPX-2980` · **Arcana Card Draw** — tarot-arcana-cards
@@ -265,7 +266,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 ## Yellow / Black Graphic Language
 
 - [x] **P4-110** · `SPX-3028` · **KEEP OUT Tape Marquee** — Diagonal yellow/black tape crosses a host card with a seamless moving warning marquee.
-- [ ] **P4-111** · `SPX-3029` · **Hazard Stripe Reveal** — Diagonal warning stripes sweep away to expose newly available content.
+- [x] **P4-111** · `SPX-3029` · **Hazard Stripe Reveal** — Diagonal warning stripes sweep away to expose newly available content.
 - [x] **P4-112** · `SPX-3030` · **Yellow Impact Wipe** — A saturated yellow plane cuts across the preview to exchange states.
 - [ ] **P4-113** · `SPX-3031` · **Black Cutout Transition** — Irregular black silhouettes carve through a yellow field.
 - [ ] **P4-114** · `SPX-3032` · **Chunky Type Slam** — Oversized condensed text lands behind a result card.
