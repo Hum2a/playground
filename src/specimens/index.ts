@@ -2,6 +2,7 @@ import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
+import { blueFocusBrackets } from './blue-focus-brackets/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
@@ -137,6 +138,7 @@ export const specimens: Specimen[] = [
   victoryResultsTally,
   blackoutLoader,
   blueDoorDiscovery,
+  blueFocusBrackets,
   butterflyEntry,
   butterflySuccessState,
   cardBreakSummon,

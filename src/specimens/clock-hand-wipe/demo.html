@@ -1,0 +1,30 @@
+<div class="clock-wipe" data-clock-wipe data-state="idle">
+  <div class="clock-wipe__stage">
+    <div class="clock-wipe__scene clock-wipe__scene--current" data-cw-current>
+      <p class="clock-wipe__kicker">Current</p>
+      <h2 class="clock-wipe__title">23:59</h2>
+      <p class="clock-wipe__sub">Before the sweep</p>
+    </div>
+
+    <div class="clock-wipe__scene clock-wipe__scene--dest" data-cw-dest aria-hidden="true">
+      <p class="clock-wipe__kicker clock-wipe__kicker--dest">Destination</p>
+      <h2 class="clock-wipe__title clock-wipe__title--dest">00:00</h2>
+      <p class="clock-wipe__sub">Full coverage</p>
+    </div>
+
+    <div class="clock-wipe__hands" data-cw-hands aria-hidden="true">
+      <span class="clock-wipe__hand clock-wipe__hand--trail" data-cw-trail></span>
+      <span class="clock-wipe__hand clock-wipe__hand--primary" data-cw-primary></span>
+      <span class="clock-wipe__hub"></span>
+    </div>
+
+    <p class="clock-wipe__status" data-cw-status role="status" aria-live="polite">
+      Current state. Ready to wipe.
+    </p>
+  </div>
+
+  <div class="clock-wipe__controls">
+    <button type="button" class="clock-wipe__btn" data-cw-wipe>WIPE</button>
+    <button type="button" class="clock-wipe__btn clock-wipe__btn--ghost" data-cw-reset>RESET</button>
+  </div>
+</div>

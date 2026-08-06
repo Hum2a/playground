@@ -145,6 +145,8 @@ export const SUGGESTED_FREE_TAGS = [
   'stack',
   'progress',
   'navigation',
+  'focus',
+  'keyboard',
   'vertical',
   'lunar',
   'visualisation',
@@ -174,6 +176,7 @@ export const SUGGESTED_FREE_TAGS = [
   'glass',
   'crystallise',
   'disclosure',
+  'radial',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

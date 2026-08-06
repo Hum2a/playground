@@ -1,0 +1,22 @@
+{
+  "id": "clock-hand-wipe",
+  "ref": "SPX-027",
+  "title": "Clock-Hand Wipe",
+  "tokens": {
+    "--cw-sweep": "0–360 (degrees of destination reveal)",
+    "--cw-duration": "700ms",
+    "handWidth": "2px",
+    "handLength": "150% of stage (exceeds diagonal)",
+    "hubSize": "10px",
+    "trailOffset": "4deg",
+    "origin": "50% 50%",
+    "mask": "conic-gradient from 0deg at 50% 50%"
+  },
+  "timeline": {
+    "sweepMs": 700,
+    "contractMs": 280,
+    "ease": "cubic-bezier(0.33, 0.02, 0.18, 1) with JS ease-out 1.35"
+  },
+  "states": ["idle", "wiping", "contracting", "done"],
+  "reducedMotion": "immediate destination; no hand sweep or contract"
+}

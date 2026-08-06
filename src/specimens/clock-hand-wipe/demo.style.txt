@@ -1,0 +1,273 @@
+/* SPX-027 Clock-Hand Wipe — portable contract. Do not restyle to host tokens. */
+
+.clock-wipe {
+  --cw-ink: #e8eef8;
+  --cw-muted: #8a9bb8;
+  --cw-current-bg: #1a2233;
+  --cw-dest-bg: #0a1628;
+  --cw-dest-deep: #06101c;
+  --cw-accent: #3d6ea8;
+  --cw-hand: #c8d6ec;
+  --cw-trail: #9eb0cc;
+  --cw-hub: #dce6f4;
+  --cw-sweep: 0;
+  --cw-duration: 700ms;
+  --cw-ease: cubic-bezier(0.33, 0.02, 0.18, 1);
+
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  place-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1.25rem;
+  background: #060a12;
+  color: var(--cw-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.clock-wipe__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 20rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(200, 214, 236, 0.22);
+  background: var(--cw-current-bg);
+  isolation: isolate;
+}
+
+.clock-wipe__scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.clock-wipe__scene--current {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(61, 110, 168, 0.12), transparent 55%),
+    var(--cw-current-bg);
+}
+
+.clock-wipe__scene--dest {
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(61, 110, 168, 0.28), transparent 50%),
+    linear-gradient(160deg, var(--cw-dest-bg), var(--cw-dest-deep));
+  /* Reveal follows hand angle: swept sector = destination (no crossfade). */
+  -webkit-mask-image: conic-gradient(
+    from 0deg at 50% 50%,
+    #000 0deg,
+    #000 calc(var(--cw-sweep) * 1deg),
+    transparent 0
+  );
+  mask-image: conic-gradient(
+    from 0deg at 50% 50%,
+    #000 0deg,
+    #000 calc(var(--cw-sweep) * 1deg),
+    transparent 0
+  );
+  pointer-events: none;
+}
+
+.clock-wipe[data-state='done'] .clock-wipe__scene--dest {
+  -webkit-mask-image: none;
+  mask-image: none;
+  pointer-events: auto;
+}
+
+.clock-wipe[data-state='done'] .clock-wipe__scene--current {
+  visibility: hidden;
+}
+
+.clock-wipe__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cw-muted);
+}
+
+.clock-wipe__kicker--dest {
+  color: #7eb0e0;
+}
+
+.clock-wipe__title {
+  margin: 0;
+  font-size: clamp(2rem, 12vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-wipe__title--dest {
+  color: #d6e8ff;
+}
+
+.clock-wipe__sub {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--cw-muted);
+}
+
+.clock-wipe__hands {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.clock-wipe[data-state='wiping'] .clock-wipe__hands,
+.clock-wipe[data-state='contracting'] .clock-wipe__hands {
+  opacity: 1;
+}
+
+.clock-wipe__hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 2px;
+  /* Longer than host diagonal so the tip always clears the frame. */
+  height: 150%;
+  margin-left: -1px;
+  transform-origin: 50% 100%;
+  border-radius: 1px;
+  will-change: transform;
+}
+
+.clock-wipe__hand--primary {
+  background: linear-gradient(to top, var(--cw-hand), rgba(200, 214, 236, 0.35));
+  box-shadow: 0 0 0 0.5px rgba(10, 22, 40, 0.35);
+  transform: rotate(calc(var(--cw-sweep) * 1deg));
+}
+
+.clock-wipe__hand--trail {
+  width: 2px;
+  background: linear-gradient(to top, var(--cw-trail), rgba(158, 176, 204, 0.2));
+  opacity: 0.72;
+  /* Trails primary by ~4deg (behind in clockwise sweep). */
+  transform: rotate(calc((var(--cw-sweep) - 4) * 1deg));
+}
+
+.clock-wipe__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff, var(--cw-hub) 55%, #8aa0c0);
+  box-shadow: 0 0 0 1px rgba(10, 22, 40, 0.45);
+  transform-origin: 50% 50%;
+}
+
+.clock-wipe[data-state='contracting'] .clock-wipe__hand {
+  animation: cw-hand-contract 280ms var(--cw-ease) forwards;
+}
+
+.clock-wipe[data-state='contracting'] .clock-wipe__hub {
+  animation: cw-hub-contract 280ms var(--cw-ease) forwards;
+}
+
+@keyframes cw-hand-contract {
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes cw-hub-contract {
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.clock-wipe__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.clock-wipe__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.clock-wipe__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(200, 214, 236, 0.45);
+  border-radius: 0;
+  background: transparent;
+  color: var(--cw-ink);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.clock-wipe__btn:hover {
+  background: rgba(61, 110, 168, 0.22);
+}
+
+.clock-wipe__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 3px;
+}
+
+.clock-wipe__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.clock-wipe__btn--ghost {
+  border-color: rgba(200, 214, 236, 0.28);
+  color: var(--cw-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clock-wipe[data-state='wiping'] .clock-wipe__hands,
+  .clock-wipe[data-state='contracting'] .clock-wipe__hands {
+    opacity: 0;
+  }
+
+  .clock-wipe[data-state='contracting'] .clock-wipe__hand,
+  .clock-wipe[data-state='contracting'] .clock-wipe__hub {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .clock-wipe[data-state='wiping'] .clock-wipe__hands,
+[data-force-reduced-motion='true'] .clock-wipe[data-state='contracting'] .clock-wipe__hands {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .clock-wipe[data-state='contracting'] .clock-wipe__hand,
+[data-force-reduced-motion='true'] .clock-wipe[data-state='contracting'] .clock-wipe__hub {
+  animation: none;
+}
