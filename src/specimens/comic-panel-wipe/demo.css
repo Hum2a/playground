@@ -1,0 +1,335 @@
+/* SPX-002 Comic Panel Wipe — portable contract. Do not restyle to host tokens. */
+
+.comic-wipe-demo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1.5rem;
+  background: #141414;
+  color: #f5f1e8;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.comic-wipe-demo__state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 16rem;
+}
+
+.comic-wipe-demo__state[hidden] {
+  display: none;
+}
+
+.comic-wipe-demo__kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e60012;
+}
+
+.comic-wipe-demo__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 8vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.comic-wipe-demo__btn {
+  appearance: none;
+  margin-top: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid #f5f1e8;
+  border-radius: 0;
+  background: transparent;
+  color: #f5f1e8;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.comic-wipe-demo__btn:focus-visible {
+  outline: 2px solid #e60012;
+  outline-offset: 3px;
+}
+
+.comic-wipe-demo__btn:hover {
+  background: #f5f1e8;
+  color: #090909;
+}
+
+/* —— Overlay —— */
+.comic-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.comic-wipe__panel {
+  position: absolute;
+  box-sizing: border-box;
+  will-change: transform;
+}
+
+/* Panel 1 — black left wedge, jagged right edge */
+.comic-wipe__panel--1 {
+  top: -12vh;
+  left: -18vw;
+  width: 72vw;
+  height: 124vh;
+  background: #090909;
+  clip-path: polygon(0% 0%, 78% 0%, 100% 18%, 82% 34%, 96% 52%, 74% 68%, 92% 86%, 70% 100%, 0% 100%);
+  transform: translate3d(-115%, 0, 0);
+}
+
+/* Panel 2 — red upper-right diagonal slab */
+.comic-wipe__panel--2 {
+  top: -18vh;
+  right: -22vw;
+  width: 78vw;
+  height: 62vh;
+  background: #e60012;
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%, 8% 62%, 28% 28%);
+  transform: translate3d(110%, -40%, 0) rotate(-2deg);
+}
+
+/* Panel 3 — paper bottom-left shard */
+.comic-wipe__panel--3 {
+  bottom: -16vh;
+  left: -20vw;
+  width: 58vw;
+  height: 70vh;
+  background: #f5f1e8;
+  clip-path: polygon(0% 22%, 62% 0%, 100% 38%, 48% 100%, 0% 100%);
+  transform: translate3d(-110%, 55%, 0);
+}
+
+/* Panel 4 — black bottom-right block + microtype */
+.comic-wipe__panel--4 {
+  right: -18vw;
+  bottom: -14vh;
+  width: 64vw;
+  height: 58vh;
+  background: #090909;
+  clip-path: polygon(12% 0%, 100% 8%, 100% 100%, 0% 100%, 0% 34%, 22% 18%);
+  transform: translate3d(110%, 50%, 0);
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+}
+
+.comic-wipe__microtype {
+  margin: 0;
+  padding: 0.4rem 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #f5f1e8;
+  transform: rotate(-8deg);
+}
+
+/* Panel 5 — red finishing cover + impact type */
+.comic-wipe__panel--5 {
+  top: -20vh;
+  left: -22vw;
+  width: 130vw;
+  height: 130vh;
+  background: #e60012;
+  clip-path: polygon(0% 0%, 88% 0%, 100% 22%, 92% 48%, 100% 72%, 78% 100%, 0% 100%, 8% 56%);
+  transform: translate3d(-120%, -30%, 0);
+  display: grid;
+  align-content: end;
+  justify-content: start;
+  overflow: hidden;
+}
+
+.comic-wipe__impact {
+  margin: 0 0 12vh 8vw;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: clamp(4rem, 28vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.8;
+  text-transform: uppercase;
+  color: #090909;
+  transform: rotate(-6deg);
+}
+
+/* —— Attack (0–380ms, staggered) —— */
+.comic-wipe--active:not(.comic-wipe--exit) .comic-wipe__panel--1 {
+  animation: comic-wipe-in-left 380ms cubic-bezier(0.7, 0, 0.3, 1) 0ms forwards;
+}
+
+.comic-wipe--active:not(.comic-wipe--exit) .comic-wipe__panel--2 {
+  animation: comic-wipe-in-tr 380ms cubic-bezier(0.7, 0, 0.3, 1) 45ms forwards;
+}
+
+.comic-wipe--active:not(.comic-wipe--exit) .comic-wipe__panel--3 {
+  animation: comic-wipe-in-bl 380ms cubic-bezier(0.7, 0, 0.3, 1) 90ms forwards;
+}
+
+.comic-wipe--active:not(.comic-wipe--exit) .comic-wipe__panel--4 {
+  animation: comic-wipe-in-br 380ms cubic-bezier(0.7, 0, 0.3, 1) 135ms forwards;
+}
+
+.comic-wipe--active:not(.comic-wipe--exit) .comic-wipe__panel--5 {
+  animation: comic-wipe-in-finish 380ms cubic-bezier(0.7, 0, 0.3, 1) 180ms forwards;
+}
+
+@keyframes comic-wipe-in-left {
+  from {
+    transform: translate3d(-115%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes comic-wipe-in-tr {
+  from {
+    transform: translate3d(110%, -40%, 0) rotate(-2deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+}
+
+@keyframes comic-wipe-in-bl {
+  from {
+    transform: translate3d(-110%, 55%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+}
+
+@keyframes comic-wipe-in-br {
+  from {
+    transform: translate3d(110%, 50%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes comic-wipe-in-finish {
+  from {
+    transform: translate3d(-120%, -30%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* —— Tear-away (520–1050ms = 530ms), non-mirrored exits —— */
+.comic-wipe--exit .comic-wipe__panel--1 {
+  animation: comic-wipe-out-up 530ms cubic-bezier(0.7, 0, 0.3, 1) 0ms forwards;
+}
+
+.comic-wipe--exit .comic-wipe__panel--2 {
+  animation: comic-wipe-out-left 530ms cubic-bezier(0.7, 0, 0.3, 1) 40ms forwards;
+}
+
+.comic-wipe--exit .comic-wipe__panel--3 {
+  animation: comic-wipe-out-right 530ms cubic-bezier(0.7, 0, 0.3, 1) 80ms forwards;
+}
+
+.comic-wipe--exit .comic-wipe__panel--4 {
+  animation: comic-wipe-out-down 530ms cubic-bezier(0.7, 0, 0.3, 1) 110ms forwards;
+}
+
+.comic-wipe--exit .comic-wipe__panel--5 {
+  animation: comic-wipe-out-ur 530ms cubic-bezier(0.7, 0, 0.3, 1) 150ms forwards;
+}
+
+@keyframes comic-wipe-out-up {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-8%, -120%, 0);
+  }
+}
+
+@keyframes comic-wipe-out-left {
+  from {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+  to {
+    transform: translate3d(-120%, 10%, 0) rotate(-3deg);
+  }
+}
+
+@keyframes comic-wipe-out-right {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+  to {
+    transform: translate3d(120%, 20%, 0);
+  }
+}
+
+@keyframes comic-wipe-out-down {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(10%, 120%, 0);
+  }
+}
+
+@keyframes comic-wipe-out-ur {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(40%, -120%, 0) rotate(2deg);
+  }
+}
+
+/* —— Reduced motion: no sweeping sequence —— */
+@media (prefers-reduced-motion: reduce) {
+  .comic-wipe--active .comic-wipe__panel,
+  .comic-wipe--exit .comic-wipe__panel {
+    animation: none !important;
+  }
+
+  .comic-wipe--rm-flash .comic-wipe__panel--5 {
+    transform: none;
+  }
+
+  .comic-wipe--rm-flash .comic-wipe__panel:not(.comic-wipe__panel--5) {
+    transform: translate3d(-200%, -200%, 0);
+  }
+}
+
+[data-force-reduced-motion='true'] .comic-wipe--active .comic-wipe__panel,
+[data-force-reduced-motion='true'] .comic-wipe--exit .comic-wipe__panel {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .comic-wipe--rm-flash .comic-wipe__panel--5 {
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .comic-wipe--rm-flash .comic-wipe__panel:not(.comic-wipe__panel--5) {
+  transform: translate3d(-200%, -200%, 0);
+}
