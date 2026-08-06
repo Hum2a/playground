@@ -106,6 +106,10 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Newspaper & Editorial',
     works: {},
   },
+  'music-equipment': {
+    label: 'Music Equipment',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},

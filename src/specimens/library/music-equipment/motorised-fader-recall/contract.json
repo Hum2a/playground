@@ -1,0 +1,8 @@
+{
+  "name": "motorised-fader-recall",
+  "ref": "SPX-3761",
+  "title": "Motorised Fader Recall",
+  "mode": "fader",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

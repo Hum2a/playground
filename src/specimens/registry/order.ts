@@ -547,4 +547,5 @@ export const specimenOrder: string[] = [
   'market-ticker',
   'photo-lead-expand',
   'contact-sheet-focus',
+  'motorised-fader-recall',
 ]

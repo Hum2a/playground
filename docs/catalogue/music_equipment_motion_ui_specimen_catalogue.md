@@ -28,1200 +28,968 @@ specimens can feel tactile without needing sound.
 
 ------------------------------------------------------------------------
 
+## Registry and progress
+
+- Stable ids: `MUSIC-001`…`MUSIC-310`.
+- Reserved refs: `SPX-3760`…`SPX-4069`.
+- Shipped specimens are marked in both the master list and the Top 50 queue.
+
 # 1. Mixing Consoles / Channel Strips
 
--   [ ] ★★★★★ **Fader Ride** --- A channel fader glides to a target
+- [ ] **MUSIC-001** · `SPX-3760` · ★★★★★ **Fader Ride** — A channel fader glides to a target
     level while its value and meter update in lockstep.
--   [ ] ★★★★★ **Motorised Fader Recall** --- Several faders snap into
+- [x] **MUSIC-002** · `SPX-3761` · ★★★★★ **Motorised Fader Recall** — Several faders snap into
     previously saved positions in a choreographed recall sequence.
--   [ ] ★★★★★ **Channel Select Acquire** --- Selecting a strip lights
+- [ ] **MUSIC-003** · `SPX-3762` · ★★★★★ **Channel Select Acquire** — Selecting a strip lights
     its controls and expands contextual metadata without moving the
     whole console.
--   [ ] ★★★★☆ **Mute Button Latch** --- A tactile mute control
+- [ ] **MUSIC-004** · `SPX-3763` · ★★★★☆ **Mute Button Latch** — A tactile mute control
     depresses, lights, and holds a persistent muted state.
--   [ ] ★★★★★ **Solo Bus Isolation** --- One channel remains vivid while
+- [ ] **MUSIC-005** · `SPX-3764` · ★★★★★ **Solo Bus Isolation** — One channel remains vivid while
     all non-solo channels recede into a subdued state.
--   [ ] ★★★★☆ **Pan Knob Sweep** --- A rotary control moves across
+- [ ] **MUSIC-006** · `SPX-3765` · ★★★★☆ **Pan Knob Sweep** — A rotary control moves across
     left-centre-right with a linked spatial indicator.
--   [ ] ★★★★★ **Channel Strip Expand** --- A narrow mixer strip widens
+- [ ] **MUSIC-007** · `SPX-3766` · ★★★★★ **Channel Strip Expand** — A narrow mixer strip widens
     into detailed EQ, routing and dynamics controls.
--   [ ] ★★★★☆ **Console Bank Shift** --- A group of channel strips
+- [ ] **MUSIC-008** · `SPX-3767` · ★★★★☆ **Console Bank Shift** — A group of channel strips
     slides laterally to reveal the next bank.
--   [ ] ★★★★★ **Scene Recall Sweep** --- An entire console changes state
+- [ ] **MUSIC-009** · `SPX-3768` · ★★★★★ **Scene Recall Sweep** — An entire console changes state
     as stored faders, mutes and sends return to exact values.
--   [ ] ★★★☆☆ **Scribble Strip Update** --- Tiny channel labels change
+- [ ] **MUSIC-010** · `SPX-3769` · ★★★☆☆ **Scribble Strip Update** — Tiny channel labels change
     with crisp segmented-display motion.
 
 ------------------------------------------------------------------------
 
 # 2. VU Meters / Level Monitoring
 
--   [ ] ★★★★★ **Analog VU Needle** --- A damped needle responds to a
+- [ ] **MUSIC-011** · `SPX-3770` · ★★★★★ **Analog VU Needle** — A damped needle responds to a
     deterministic level sequence and settles naturally.
--   [ ] ★★★★★ **LED Ladder Meter** --- Segmented level bars climb
+- [ ] **MUSIC-012** · `SPX-3771` · ★★★★★ **LED Ladder Meter** — Segmented level bars climb
     through green/amber/red-like zones and fall with controlled decay.
--   [ ] ★★★★★ **Peak Hold Marker** --- A peak indicator remains briefly
+- [ ] **MUSIC-013** · `SPX-3772` · ★★★★★ **Peak Hold Marker** — A peak indicator remains briefly
     above the falling meter before dropping.
--   [ ] ★★★★☆ **Stereo Meter Pair** --- Left and right level bars move
+- [ ] **MUSIC-014** · `SPX-3773` · ★★★★☆ **Stereo Meter Pair** — Left and right level bars move
     independently around a shared scale.
--   [ ] ★★★★☆ **Clip Warning Latch** --- A peak event lights a CLIP
+- [ ] **MUSIC-015** · `SPX-3774` · ★★★★☆ **Clip Warning Latch** — A peak event lights a CLIP
     state that remains until explicitly cleared.
--   [ ] ★★★★★ **Gain Reduction Meter** --- A second meter moves downward
+- [ ] **MUSIC-016** · `SPX-3775` · ★★★★★ **Gain Reduction Meter** — A second meter moves downward
     as compression becomes more aggressive.
--   [ ] ★★★★☆ **Meter Bridge Sweep** --- A row of channel meters
+- [ ] **MUSIC-017** · `SPX-3776` · ★★★★☆ **Meter Bridge Sweep** — A row of channel meters
     activates sequentially during a system check.
--   [ ] ★★★☆☆ **Signal Present Pulse** --- A tiny input indicator
+- [ ] **MUSIC-018** · `SPX-3777` · ★★★☆☆ **Signal Present Pulse** — A tiny input indicator
     confirms detected signal without becoming a full meter.
 
 ------------------------------------------------------------------------
 
 # 3. Equalisers / Frequency
 
--   [ ] ★★★★★ **Parametric EQ Node Drag** --- Frequency nodes move
+- [ ] **MUSIC-019** · `SPX-3778` · ★★★★★ **Parametric EQ Node Drag** — Frequency nodes move
     across a graph while their bell/shelf curves update continuously.
--   [ ] ★★★★★ **EQ Band Acquire** --- Selecting a band enlarges its node
+- [ ] **MUSIC-020** · `SPX-3779` · ★★★★★ **EQ Band Acquire** — Selecting a band enlarges its node
     and reveals frequency, gain and Q controls.
--   [ ] ★★★★★ **High-Pass Filter Sweep** --- A cutoff boundary travels
+- [ ] **MUSIC-021** · `SPX-3780` · ★★★★★ **High-Pass Filter Sweep** — A cutoff boundary travels
     across the spectrum and removes the low-frequency region visually.
--   [ ] ★★★★★ **Low-Pass Filter Sweep** --- A cutoff boundary travels
+- [ ] **MUSIC-022** · `SPX-3781` · ★★★★★ **Low-Pass Filter Sweep** — A cutoff boundary travels
     inward from the high end of the spectrum.
--   [ ] ★★★★☆ **Notch Filter Lock** --- A narrow rejection notch snaps
+- [ ] **MUSIC-023** · `SPX-3782` · ★★★★☆ **Notch Filter Lock** — A narrow rejection notch snaps
     onto a detected problem frequency.
--   [ ] ★★★★★ **Graphic EQ Fader Wave** --- A bank of vertical frequency
+- [ ] **MUSIC-024** · `SPX-3783` · ★★★★★ **Graphic EQ Fader Wave** — A bank of vertical frequency
     faders rises into a shaped tonal curve.
--   [ ] ★★★★★ **EQ Bypass Flatten** --- The active curve smoothly
+- [ ] **MUSIC-025** · `SPX-3784` · ★★★★★ **EQ Bypass Flatten** — The active curve smoothly
     collapses to a neutral flat line.
--   [ ] ★★★★☆ **Frequency Solo Spotlight** --- One frequency region
+- [ ] **MUSIC-026** · `SPX-3785` · ★★★★☆ **Frequency Solo Spotlight** — One frequency region
     remains highlighted while the rest of the spectrum recedes.
--   [ ] ★★★★☆ **Q Width Pinch** --- A bell curve visibly narrows or
+- [ ] **MUSIC-027** · `SPX-3786` · ★★★★☆ **Q Width Pinch** — A bell curve visibly narrows or
     widens around a fixed centre frequency.
 
 ------------------------------------------------------------------------
 
 # 4. Spectrum Analysers / Scopes
 
--   [ ] ★★★★★ **Spectrum Bar Dance** --- Frequency bars react to a
+- [ ] **MUSIC-028** · `SPX-3787` · ★★★★★ **Spectrum Bar Dance** — Frequency bars react to a
     deterministic signal loop and freeze under reduced motion.
--   [ ] ★★★★★ **Spectral Peak Trail** --- Falling frequency peaks leave
+- [ ] **MUSIC-029** · `SPX-3788` · ★★★★★ **Spectral Peak Trail** — Falling frequency peaks leave
     short-lived markers above the current spectrum.
--   [ ] ★★★★★ **Oscilloscope Trace** --- A waveform draws continuously
+- [ ] **MUSIC-030** · `SPX-3789` · ★★★★★ **Oscilloscope Trace** — A waveform draws continuously
     across a bounded instrument screen.
--   [ ] ★★★★☆ **Vectorscope Orbit** --- A deterministic stereo/phase
+- [ ] **MUSIC-031** · `SPX-3790` · ★★★★☆ **Vectorscope Orbit** — A deterministic stereo/phase
     trace moves around a central scope.
--   [ ] ★★★★★ **Spectrogram Waterfall** --- Frequency intensity rows
+- [ ] **MUSIC-032** · `SPX-3791` · ★★★★★ **Spectrogram Waterfall** — Frequency intensity rows
     descend through time like a compact waterfall display.
--   [ ] ★★★★☆ **Scope Trigger Lock** --- An unstable waveform slides
+- [ ] **MUSIC-033** · `SPX-3792` · ★★★★☆ **Scope Trigger Lock** — An unstable waveform slides
     until trigger acquisition snaps it into a stable trace.
--   [ ] ★★★★☆ **Analyzer Freeze** --- A moving spectrum instantly
+- [ ] **MUSIC-034** · `SPX-3793` · ★★★★☆ **Analyzer Freeze** — A moving spectrum instantly
     becomes a static inspection state.
--   [ ] ★★★★☆ **Frequency Cursor Scan** --- A vertical cursor traverses
+- [ ] **MUSIC-035** · `SPX-3794` · ★★★★☆ **Frequency Cursor Scan** — A vertical cursor traverses
     the spectrum and reports the selected band.
 
 ------------------------------------------------------------------------
 
 # 5. Compressors / Dynamics
 
--   [ ] ★★★★★ **Compressor Threshold Crush** --- Signal peaks visibly
+- [ ] **MUSIC-036** · `SPX-3795` · ★★★★★ **Compressor Threshold Crush** — Signal peaks visibly
     compress after crossing a movable threshold.
--   [ ] ★★★★☆ **Ratio Dial Snap** --- A large rotary ratio control
+- [ ] **MUSIC-037** · `SPX-3796` · ★★★★☆ **Ratio Dial Snap** — A large rotary ratio control
     clicks between fixed compression ratios.
--   [ ] ★★★★★ **Attack Release Envelope** --- An envelope visual
+- [ ] **MUSIC-038** · `SPX-3797` · ★★★★★ **Attack Release Envelope** — An envelope visual
     tightens or relaxes as timing controls change.
--   [ ] ★★★★★ **Gain Reduction Slam** --- A transient produces a
+- [ ] **MUSIC-039** · `SPX-3798` · ★★★★★ **Gain Reduction Slam** — A transient produces a
     decisive reduction-meter impact followed by recovery.
--   [ ] ★★★★★ **Limiter Ceiling Lock** --- Peaks hit a hard ceiling and
+- [ ] **MUSIC-040** · `SPX-3799` · ★★★★★ **Limiter Ceiling Lock** — Peaks hit a hard ceiling and
     flatten while the limiter state acquires.
--   [ ] ★★★★★ **Noise Gate Open** --- A closed signal path opens only
+- [ ] **MUSIC-041** · `SPX-3800` · ★★★★★ **Noise Gate Open** — A closed signal path opens only
     when input crosses a threshold.
--   [ ] ★★★★☆ **Gate Hold Countdown** --- An open gate visibly holds for
+- [ ] **MUSIC-042** · `SPX-3801` · ★★★★☆ **Gate Hold Countdown** — An open gate visibly holds for
     a fixed interval before closing.
--   [ ] ★★★★☆ **Dynamics Bypass Release** --- Compressed motion returns
+- [ ] **MUSIC-043** · `SPX-3802` · ★★★★☆ **Dynamics Bypass Release** — Compressed motion returns
     to an unrestricted signal state.
 
 ------------------------------------------------------------------------
 
 # 6. Pedals / Stompboxes
 
--   [ ] ★★★★★ **Stomp Switch Press** --- A footswitch depresses with
+- [ ] **MUSIC-044** · `SPX-3803` · ★★★★★ **Stomp Switch Press** — A footswitch depresses with
     tactile travel and toggles a persistent effect LED.
--   [ ] ★★★★★ **Pedal LED Engage** --- An effect status light blooms
+- [ ] **MUSIC-045** · `SPX-3804` · ★★★★★ **Pedal LED Engage** — An effect status light blooms
     once then settles into its active state.
--   [ ] ★★★★☆ **Knob Twist Feedback** --- A pedal knob rotates with a
+- [ ] **MUSIC-046** · `SPX-3805` · ★★★★☆ **Knob Twist Feedback** — A pedal knob rotates with a
     printed pointer and numeric value.
--   [ ] ★★★★★ **Expression Pedal Sweep** --- A treadle moves heel-to-toe
+- [ ] **MUSIC-047** · `SPX-3806` · ★★★★★ **Expression Pedal Sweep** — A treadle moves heel-to-toe
     while a linked parameter fills.
--   [ ] ★★★★★ **Pedalboard Signal Chain** --- Several pedals connect
+- [ ] **MUSIC-048** · `SPX-3807` · ★★★★★ **Pedalboard Signal Chain** — Several pedals connect
     with a glowing signal path that reroutes when bypassed.
--   [ ] ★★★★☆ **True Bypass Route** --- Disabling a pedal visibly
+- [ ] **MUSIC-049** · `SPX-3808` · ★★★★☆ **True Bypass Route** — Disabling a pedal visibly
     redirects the signal around its processing block.
--   [ ] ★★★★★ **Tap Tempo Pulse** --- Repeated taps establish a tempo
+- [ ] **MUSIC-050** · `SPX-3809` · ★★★★★ **Tap Tempo Pulse** — Repeated taps establish a tempo
     and a status LED adopts the measured cadence.
--   [ ] ★★★★☆ **Pedal Preset Recall** --- Multiple knobs jump to a saved
+- [ ] **MUSIC-051** · `SPX-3810` · ★★★★☆ **Pedal Preset Recall** — Multiple knobs jump to a saved
     configuration with finite mechanical motion.
--   [ ] ★★★★☆ **Footswitch Hold Secondary** --- Holding the stomp switch
+- [ ] **MUSIC-052** · `SPX-3811` · ★★★★☆ **Footswitch Hold Secondary** — Holding the stomp switch
     fills toward a secondary function threshold.
 
 ------------------------------------------------------------------------
 
 # 7. Synthesizers / Keyboards
 
--   [ ] ★★★★★ **Synth Key Press** --- A key depresses and rebounds while
+- [ ] **MUSIC-053** · `SPX-3812` · ★★★★★ **Synth Key Press** — A key depresses and rebounds while
     a compact voice indicator activates.
--   [ ] ★★★★★ **Polyphonic Chord Acquire** --- Several keys depress
+- [ ] **MUSIC-054** · `SPX-3813` · ★★★★★ **Polyphonic Chord Acquire** — Several keys depress
     together and illuminate independent voice slots.
--   [ ] ★★★★★ **Pitch Bend Wheel Return** --- A wheel moves away from
+- [ ] **MUSIC-055** · `SPX-3814` · ★★★★★ **Pitch Bend Wheel Return** — A wheel moves away from
     centre and springs precisely back.
--   [ ] ★★★★☆ **Mod Wheel Rise** --- A modulation wheel stays at its
+- [ ] **MUSIC-056** · `SPX-3815` · ★★★★☆ **Mod Wheel Rise** — A modulation wheel stays at its
     selected position while linked intensity increases.
--   [ ] ★★★★★ **Oscillator Wave Morph** --- A waveform changes
+- [ ] **MUSIC-057** · `SPX-3816` · ★★★★★ **Oscillator Wave Morph** — A waveform changes
     continuously between sine-like, triangle-like, saw-like and
     square-like forms.
--   [ ] ★★★★☆ **Voice Allocation Steal** --- Voice indicators fill until
+- [ ] **MUSIC-058** · `SPX-3817` · ★★★★☆ **Voice Allocation Steal** — Voice indicators fill until
     a new note replaces the oldest active voice.
--   [ ] ★★★★☆ **Octave Shift** --- Keyboard range labels slide by one
+- [ ] **MUSIC-059** · `SPX-3818` · ★★★★☆ **Octave Shift** — Keyboard range labels slide by one
     octave while the physical keybed remains anchored.
--   [ ] ★★★★★ **Arpeggiator Step Chase** --- A row of note steps lights
+- [ ] **MUSIC-060** · `SPX-3819` · ★★★★★ **Arpeggiator Step Chase** — A row of note steps lights
     sequentially at a deterministic tempo.
--   [ ] ★★★★☆ **Aftertouch Pressure** --- A held key gains a secondary
+- [ ] **MUSIC-061** · `SPX-3820` · ★★★★☆ **Aftertouch Pressure** — A held key gains a secondary
     pressure meter after initial depression.
 
 ------------------------------------------------------------------------
 
 # 8. Drum Machines / Sequencers
 
--   [ ] ★★★★★ **16-Step Sequencer Chase** --- A playhead advances across
+- [ ] **MUSIC-062** · `SPX-3821` · ★★★★★ **16-Step Sequencer Chase** — A playhead advances across
     sixteen steps while active triggers flash.
--   [ ] ★★★★★ **Step Toggle Punch** --- Clicking a sequencer step
+- [ ] **MUSIC-063** · `SPX-3822` · ★★★★★ **Step Toggle Punch** — Clicking a sequencer step
     depresses it into a persistent active state.
--   [ ] ★★★★★ **Pattern Bank Switch** --- One 16-step pattern slides out
+- [ ] **MUSIC-064** · `SPX-3823` · ★★★★★ **Pattern Bank Switch** — One 16-step pattern slides out
     while another pattern's triggers replace it.
--   [ ] ★★★★☆ **Velocity Accent Rise** --- A step grows taller/brighter
+- [ ] **MUSIC-065** · `SPX-3824` · ★★★★☆ **Velocity Accent Rise** — A step grows taller/brighter
     to represent increased velocity.
--   [ ] ★★★★★ **Swing Offset** --- Alternating sequencer steps visibly
+- [ ] **MUSIC-066** · `SPX-3825` · ★★★★★ **Swing Offset** — Alternating sequencer steps visibly
     shift in timing while the grid remains fixed.
--   [ ] ★★★★☆ **Pattern Clear Sweep** --- Active steps switch off in a
+- [ ] **MUSIC-067** · `SPX-3826` · ★★★★☆ **Pattern Clear Sweep** — Active steps switch off in a
     rapid left-to-right reset.
--   [ ] ★★★★★ **Fill Pattern Burst** --- A temporary dense trigger
+- [ ] **MUSIC-068** · `SPX-3827` · ★★★★★ **Fill Pattern Burst** — A temporary dense trigger
     pattern takes over the final beat then returns to the main loop.
--   [ ] ★★★★☆ **Record Arm Count-In** --- A four-beat visual count-in
+- [ ] **MUSIC-069** · `SPX-3828` · ★★★★☆ **Record Arm Count-In** — A four-beat visual count-in
     leads into an armed recording state.
--   [ ] ★★★☆☆ **Step Probability Flicker** --- Probabilistic steps
+- [ ] **MUSIC-070** · `SPX-3829` · ★★★☆☆ **Step Probability Flicker** — Probabilistic steps
     display deterministic alternate outcomes in demo mode.
 
 ------------------------------------------------------------------------
 
 # 9. Samplers / Pads
 
--   [ ] ★★★★★ **Velocity Pad Hit** --- A performance pad compresses and
+- [ ] **MUSIC-071** · `SPX-3830` · ★★★★★ **Velocity Pad Hit** — A performance pad compresses and
     blooms according to hit strength.
--   [ ] ★★★★☆ **Pad Bank Switch** --- A 4x4 pad grid changes sample
+- [ ] **MUSIC-072** · `SPX-3831` · ★★★★☆ **Pad Bank Switch** — A 4x4 pad grid changes sample
     labels and colours as banks switch.
--   [ ] ★★★★★ **Sample Slice Markers** --- Transient markers divide a
+- [ ] **MUSIC-073** · `SPX-3832` · ★★★★★ **Sample Slice Markers** — Transient markers divide a
     waveform into playable slices.
--   [ ] ★★★★★ **Slice Trigger Jump** --- Triggering a pad moves the
+- [ ] **MUSIC-074** · `SPX-3833` · ★★★★★ **Slice Trigger Jump** — Triggering a pad moves the
     waveform playhead to its assigned slice.
--   [ ] ★★★★☆ **Sample Chop Confirm** --- A selected waveform region
+- [ ] **MUSIC-075** · `SPX-3834` · ★★★★☆ **Sample Chop Confirm** — A selected waveform region
     becomes a new persistent pad assignment.
--   [ ] ★★★★☆ **One-Shot Progress** --- A tiny ring around a pad shows
+- [ ] **MUSIC-076** · `SPX-3835` · ★★★★☆ **One-Shot Progress** — A tiny ring around a pad shows
     playback through a finite sample.
--   [ ] ★★★★☆ **Pad Choke** --- Triggering one pad immediately cuts the
+- [ ] **MUSIC-077** · `SPX-3836` · ★★★★☆ **Pad Choke** — Triggering one pad immediately cuts the
     visual playback state of another.
--   [ ] ★★★★☆ **Sample Reverse Flip** --- A waveform direction indicator
+- [ ] **MUSIC-078** · `SPX-3837` · ★★★★☆ **Sample Reverse Flip** — A waveform direction indicator
     flips and playback travels backward.
 
 ------------------------------------------------------------------------
 
 # 10. Turntables / DJ Decks
 
--   [ ] ★★★★★ **Vinyl Spin-Up** --- A platter accelerates from rest to
+- [ ] **MUSIC-079** · `SPX-3838` · ★★★★★ **Vinyl Spin-Up** — A platter accelerates from rest to
     stable speed with believable easing.
--   [ ] ★★★★★ **Vinyl Brake Stop** --- A spinning platter decelerates
+- [ ] **MUSIC-080** · `SPX-3839` · ★★★★★ **Vinyl Brake Stop** — A spinning platter decelerates
     gradually after stop is pressed.
--   [ ] ★★★★★ **Cue Point Drop** --- A marker stamps onto the waveform
+- [ ] **MUSIC-081** · `SPX-3840` · ★★★★★ **Cue Point Drop** — A marker stamps onto the waveform
     and becomes a reusable jump point.
--   [ ] ★★★★★ **Cue Jump** --- The playhead snaps instantly back to a
+- [ ] **MUSIC-082** · `SPX-3841` · ★★★★★ **Cue Jump** — The playhead snaps instantly back to a
     saved cue marker.
--   [ ] ★★★★☆ **Pitch Fader Shift** --- A long fader changes playback
+- [ ] **MUSIC-083** · `SPX-3842` · ★★★★☆ **Pitch Fader Shift** — A long fader changes playback
     rate while a percentage display updates.
--   [ ] ★★★★★ **Jog Wheel Nudge** --- A platter rotates briefly
+- [ ] **MUSIC-084** · `SPX-3843` · ★★★★★ **Jog Wheel Nudge** — A platter rotates briefly
     faster/slower then returns to normal speed.
--   [ ] ★★★★★ **Scratch Recoil** --- Dragging the platter scrubs the
+- [ ] **MUSIC-085** · `SPX-3844` · ★★★★★ **Scratch Recoil** — Dragging the platter scrubs the
     waveform forward/back and releases into playback.
--   [ ] ★★★★★ **Deck Sync Lock** --- Two tempo values converge and a
+- [ ] **MUSIC-086** · `SPX-3845` · ★★★★★ **Deck Sync Lock** — Two tempo values converge and a
     phase indicator aligns.
--   [ ] ★★★★★ **Crossfader Blend** --- A horizontal fader moves between
+- [ ] **MUSIC-087** · `SPX-3846` · ★★★★★ **Crossfader Blend** — A horizontal fader moves between
     deck A and B while their visual prominence crossfades.
--   [ ] ★★★★☆ **Needle Drop** --- A tonearm-like indicator lowers onto a
+- [ ] **MUSIC-088** · `SPX-3847` · ★★★★☆ **Needle Drop** — A tonearm-like indicator lowers onto a
     track position and starts playback.
 
 ------------------------------------------------------------------------
 
 # 11. DJ Waveforms / Beatgrids
 
--   [ ] ★★★★★ **Scrolling DJ Waveform** --- A detailed abstract waveform
+- [ ] **MUSIC-089** · `SPX-3848` · ★★★★★ **Scrolling DJ Waveform** — A detailed abstract waveform
     moves beneath a fixed central playhead.
--   [ ] ★★★★★ **Beatgrid Lock** --- Misaligned beat markers slide until
+- [ ] **MUSIC-090** · `SPX-3849` · ★★★★★ **Beatgrid Lock** — Misaligned beat markers slide until
     they snap onto waveform transients.
--   [ ] ★★★★☆ **Downbeat Marker Slam** --- A stronger first-beat marker
+- [ ] **MUSIC-091** · `SPX-3850` · ★★★★☆ **Downbeat Marker Slam** — A stronger first-beat marker
     enters at each phrase boundary.
--   [ ] ★★★★☆ **Phrase Colour Blocks** --- Large waveform regions
+- [ ] **MUSIC-092** · `SPX-3851` · ★★★★☆ **Phrase Colour Blocks** — Large waveform regions
     acquire section labels such as intro, break and drop.
--   [ ] ★★★★★ **Loop Region Clamp** --- Two loop handles close around a
+- [ ] **MUSIC-093** · `SPX-3852` · ★★★★★ **Loop Region Clamp** — Two loop handles close around a
     waveform region and playback cycles inside it.
--   [ ] ★★★★☆ **Hot Cue Marker Pop** --- A coloured cue marker stamps
+- [ ] **MUSIC-094** · `SPX-3853` · ★★★★☆ **Hot Cue Marker Pop** — A coloured cue marker stamps
     above the waveform.
--   [ ] ★★★★☆ **Waveform Zoom** --- The time scale expands around the
+- [ ] **MUSIC-095** · `SPX-3854` · ★★★★☆ **Waveform Zoom** — The time scale expands around the
     fixed playhead for precise editing.
--   [ ] ★★★★★ **Phase Meter Align** --- Two rotating/linear phase
+- [ ] **MUSIC-096** · `SPX-3855` · ★★★★★ **Phase Meter Align** — Two rotating/linear phase
     markers converge into a centred sync state.
 
 ------------------------------------------------------------------------
 
 # 12. Patch Bays / Modular Routing
 
--   [ ] ★★★★★ **Patch Cable Connect** --- A cable grows from one jack to
+- [ ] **MUSIC-097** · `SPX-3856` · ★★★★★ **Patch Cable Connect** — A cable grows from one jack to
     another and locks into a routed state.
--   [ ] ★★★★★ **Patch Cable Unplug** --- A connected cable retracts and
+- [ ] **MUSIC-098** · `SPX-3857` · ★★★★★ **Patch Cable Unplug** — A connected cable retracts and
     the signal path disappears.
--   [ ] ★★★★★ **Cable Reroute** --- An existing cable detaches from one
+- [ ] **MUSIC-099** · `SPX-3858` · ★★★★★ **Cable Reroute** — An existing cable detaches from one
     destination and bends toward another.
--   [ ] ★★★★☆ **Jack Acquire** --- Hover/focus illuminates compatible
+- [ ] **MUSIC-100** · `SPX-3859` · ★★★★☆ **Jack Acquire** — Hover/focus illuminates compatible
     patch points.
--   [ ] ★★★★★ **Signal Flow Pulse** --- A finite pulse travels along
+- [ ] **MUSIC-101** · `SPX-3860` · ★★★★★ **Signal Flow Pulse** — A finite pulse travels along
     connected cables to explain routing.
--   [ ] ★★★★☆ **Modular Module Insert** --- A new module slides into an
+- [ ] **MUSIC-102** · `SPX-3861` · ★★★★☆ **Modular Module Insert** — A new module slides into an
     empty rack position.
--   [ ] ★★★★☆ **Module Bypass Route** --- Signal visibly routes around a
+- [ ] **MUSIC-103** · `SPX-3862` · ★★★★☆ **Module Bypass Route** — Signal visibly routes around a
     bypassed module.
--   [ ] ★★★★☆ **Cable Bundle Fan** --- Overlapping patch cables separate
+- [ ] **MUSIC-104** · `SPX-3863` · ★★★★☆ **Cable Bundle Fan** — Overlapping patch cables separate
     temporarily for inspection.
--   [ ] ★★★★★ **Feedback Loop Warning** --- A newly created circular
+- [ ] **MUSIC-105** · `SPX-3864` · ★★★★★ **Feedback Loop Warning** — A newly created circular
     route triggers a clear feedback warning state.
 
 ------------------------------------------------------------------------
 
 # 13. Modular Synth / CV
 
--   [ ] ★★★★★ **Envelope Generator Cycle** --- Attack, decay, sustain
+- [ ] **MUSIC-106** · `SPX-3865` · ★★★★★ **Envelope Generator Cycle** — Attack, decay, sustain
     and release stages draw through a compact envelope graph.
--   [ ] ★★★★☆ **LFO Rate Pulse** --- A modulation indicator oscillates
+- [ ] **MUSIC-107** · `SPX-3866` · ★★★★☆ **LFO Rate Pulse** — A modulation indicator oscillates
     at the selected rate and stops under reduced motion.
--   [ ] ★★★★☆ **CV Attenuator Sweep** --- Control voltage strength
+- [ ] **MUSIC-108** · `SPX-3867` · ★★★★☆ **CV Attenuator Sweep** — Control voltage strength
     scales down as an attenuator rotates.
--   [ ] ★★★★★ **Clock Divider Cascade** --- One master pulse generates
+- [ ] **MUSIC-109** · `SPX-3868` · ★★★★★ **Clock Divider Cascade** — One master pulse generates
     slower subordinate clock indicators.
--   [ ] ★★★★☆ **Gate Trigger Flash** --- A short trigger creates a crisp
+- [ ] **MUSIC-110** · `SPX-3869` · ★★★★☆ **Gate Trigger Flash** — A short trigger creates a crisp
     pulse while a gate remains high for its duration.
--   [ ] ★★★★★ **Sequencer Voltage Steps** --- A stepped voltage line
+- [ ] **MUSIC-111** · `SPX-3870` · ★★★★★ **Sequencer Voltage Steps** — A stepped voltage line
     advances with the modular sequencer.
--   [ ] ★★★★☆ **Module Power-Up** --- Rack LEDs acquire in a short
+- [ ] **MUSIC-112** · `SPX-3871` · ★★★★☆ **Module Power-Up** — Rack LEDs acquire in a short
     diagnostic sequence.
--   [ ] ★★★★★ **Modulation Matrix Connect** --- A source-to-destination
+- [ ] **MUSIC-113** · `SPX-3872` · ★★★★★ **Modulation Matrix Connect** — A source-to-destination
     modulation line draws and gains intensity.
 
 ------------------------------------------------------------------------
 
 # 14. Rack Gear / Studio Hardware
 
--   [ ] ★★★★★ **Rack Unit Power-On** --- A dark rack device wakes
+- [ ] **MUSIC-114** · `SPX-3873` · ★★★★★ **Rack Unit Power-On** — A dark rack device wakes
     through LEDs, display segments and meter acquisition.
--   [ ] ★★★★★ **Rack Power Cascade** --- Several rack units power on
+- [ ] **MUSIC-115** · `SPX-3874` · ★★★★★ **Rack Power Cascade** — Several rack units power on
     sequentially from top to bottom.
--   [ ] ★★★★☆ **Preset Number Roll** --- A segmented preset display
+- [ ] **MUSIC-116** · `SPX-3875` · ★★★★☆ **Preset Number Roll** — A segmented preset display
     rolls to a selected patch number.
--   [ ] ★★★★☆ **Hardware Bypass Relay** --- A processing unit clicks
+- [ ] **MUSIC-117** · `SPX-3876` · ★★★★☆ **Hardware Bypass Relay** — A processing unit clicks
     visually between active and bypass routes.
--   [ ] ★★★★☆ **Rack Drawer Expand** --- A 1U-style faceplate expands
+- [ ] **MUSIC-118** · `SPX-3877` · ★★★★☆ **Rack Drawer Expand** — A 1U-style faceplate expands
     into deeper software controls.
--   [ ] ★★★★☆ **Encoder Push Select** --- A rotary encoder depresses to
+- [ ] **MUSIC-119** · `SPX-3878` · ★★★★☆ **Encoder Push Select** — A rotary encoder depresses to
     confirm the currently highlighted option.
--   [ ] ★★★☆☆ **Status LED Diagnostic** --- Several tiny LEDs perform a
+- [ ] **MUSIC-120** · `SPX-3879` · ★★★☆☆ **Status LED Diagnostic** — Several tiny LEDs perform a
     finite startup self-test.
--   [ ] ★★★☆☆ **Ventilation Idle** --- Subtle deterministic fan/airflow
+- [ ] **MUSIC-121** · `SPX-3880` · ★★★☆☆ **Ventilation Idle** — Subtle deterministic fan/airflow
     indicators communicate active hardware.
 
 ------------------------------------------------------------------------
 
 # 15. Tape Machines / Reel-to-Reel
 
--   [ ] ★★★★★ **Reel Spin-Up** --- Two reels accelerate into coordinated
+- [ ] **MUSIC-122** · `SPX-3881` · ★★★★★ **Reel Spin-Up** — Two reels accelerate into coordinated
     tape transport.
--   [ ] ★★★★★ **Tape Thread Route** --- A tape path draws through guides
+- [ ] **MUSIC-123** · `SPX-3882` · ★★★★★ **Tape Thread Route** — A tape path draws through guides
     and heads before playback becomes ready.
--   [ ] ★★★★★ **Tape Stop Slack** --- Transport stops and the tape path
+- [ ] **MUSIC-124** · `SPX-3883` · ★★★★★ **Tape Stop Slack** — Transport stops and the tape path
     gains a small believable slack state.
--   [ ] ★★★★★ **Fast Forward Reels** --- Supply and take-up reels change
+- [ ] **MUSIC-125** · `SPX-3884` · ★★★★★ **Fast Forward Reels** — Supply and take-up reels change
     relative speed during fast-forward.
--   [ ] ★★★★★ **Rewind Reels** --- Tape direction reverses and reel
+- [ ] **MUSIC-126** · `SPX-3885` · ★★★★★ **Rewind Reels** — Tape direction reverses and reel
     speeds swap.
--   [ ] ★★★★☆ **Tape Counter Roll** --- A mechanical counter advances
+- [ ] **MUSIC-127** · `SPX-3886` · ★★★★☆ **Tape Counter Roll** — A mechanical counter advances
     with playback.
--   [ ] ★★★★☆ **Record Arm Red** --- Record mode requires an armed state
+- [ ] **MUSIC-128** · `SPX-3887` · ★★★★☆ **Record Arm Red** — Record mode requires an armed state
     before transport begins.
--   [ ] ★★★★☆ **Tape Saturation Meter** --- Signal pushes into a warmer
+- [ ] **MUSIC-129** · `SPX-3888` · ★★★★☆ **Tape Saturation Meter** — Signal pushes into a warmer
     high-level zone with restrained visual compression.
--   [ ] ★★★★★ **Tape Splice** --- Two waveform/tape regions cut apart
+- [ ] **MUSIC-130** · `SPX-3889` · ★★★★★ **Tape Splice** — Two waveform/tape regions cut apart
     and rejoin at a visible splice point.
 
 ------------------------------------------------------------------------
 
 # 16. Cassette / Portable Audio
 
--   [ ] ★★★★★ **Cassette Insert** --- A cassette-like object slides into
+- [ ] **MUSIC-131** · `SPX-3890` · ★★★★★ **Cassette Insert** — A cassette-like object slides into
     a deck and locks.
--   [ ] ★★★★☆ **Cassette Door Close** --- A hinged door closes over the
+- [ ] **MUSIC-132** · `SPX-3891` · ★★★★☆ **Cassette Door Close** — A hinged door closes over the
     inserted media.
--   [ ] ★★★★☆ **Play Button Latch** --- A mechanical transport button
+- [ ] **MUSIC-133** · `SPX-3892` · ★★★★☆ **Play Button Latch** — A mechanical transport button
     depresses and remains latched.
--   [ ] ★★★★★ **Auto-Reverse Flip** --- Playback reaches an endpoint and
+- [ ] **MUSIC-134** · `SPX-3893` · ★★★★★ **Auto-Reverse Flip** — Playback reaches an endpoint and
     the cassette orientation/state flips to the reverse side.
--   [ ] ★★★★☆ **Tape Window Progress** --- Reel proportions change to
+- [ ] **MUSIC-135** · `SPX-3894` · ★★★★☆ **Tape Window Progress** — Reel proportions change to
     communicate position through the tape.
--   [ ] ★★★★☆ **Eject Spring** --- The cassette door releases and media
+- [ ] **MUSIC-136** · `SPX-3895` · ★★★★☆ **Eject Spring** — The cassette door releases and media
     rises into an eject state.
 
 ------------------------------------------------------------------------
 
 # 17. CD / Optical Players
 
--   [ ] ★★★★★ **Disc Tray Eject** --- A tray slides outward and waits
+- [ ] **MUSIC-137** · `SPX-3896` · ★★★★★ **Disc Tray Eject** — A tray slides outward and waits
     for media.
--   [ ] ★★★★★ **Disc Tray Load** --- The tray retracts and a short
+- [ ] **MUSIC-138** · `SPX-3897` · ★★★★★ **Disc Tray Load** — The tray retracts and a short
     read/acquire state begins.
--   [ ] ★★★★☆ **Disc Spin Acquire** --- A disc-like element accelerates
+- [ ] **MUSIC-139** · `SPX-3898` · ★★★★☆ **Disc Spin Acquire** — A disc-like element accelerates
     while track metadata resolves.
--   [ ] ★★★★☆ **Track Skip** --- Track number rolls and progress resets
+- [ ] **MUSIC-140** · `SPX-3899` · ★★★★☆ **Track Skip** — Track number rolls and progress resets
     to the next item.
--   [ ] ★★★★☆ **Disc Read Error** --- Spin/acquisition fails into a
+- [ ] **MUSIC-141** · `SPX-3900` · ★★★★☆ **Disc Read Error** — Spin/acquisition fails into a
     clear retry state.
--   [ ] ★★★☆☆ **Track Time Counter** --- Segmented elapsed time advances
+- [ ] **MUSIC-142** · `SPX-3901` · ★★★☆☆ **Track Time Counter** — Segmented elapsed time advances
     during playback.
 
 ------------------------------------------------------------------------
 
 # 18. Amplifiers / Guitar Heads
 
--   [ ] ★★★★★ **Tube Warm-Up** --- A dark amplifier slowly acquires warm
+- [ ] **MUSIC-143** · `SPX-3902` · ★★★★★ **Tube Warm-Up** — A dark amplifier slowly acquires warm
     valve-like indicators before becoming ready.
--   [ ] ★★★★★ **Standby-to-Play** --- A standby switch transitions the
+- [ ] **MUSIC-144** · `SPX-3903` · ★★★★★ **Standby-to-Play** — A standby switch transitions the
     amp from warmed state into active output.
--   [ ] ★★★★☆ **Gain Knob Drive** --- Turning gain increases an abstract
+- [ ] **MUSIC-145** · `SPX-3904` · ★★★★☆ **Gain Knob Drive** — Turning gain increases an abstract
     saturation/distortion visual.
--   [ ] ★★★★☆ **Channel Switch** --- Clean and driven channels trade
+- [ ] **MUSIC-146** · `SPX-3905` · ★★★★☆ **Channel Switch** — Clean and driven channels trade
     active indicator states.
--   [ ] ★★★★☆ **Master Volume Sweep** --- A large knob rotates while a
+- [ ] **MUSIC-147** · `SPX-3906` · ★★★★☆ **Master Volume Sweep** — A large knob rotates while a
     linked level meter responds.
--   [ ] ★★★★☆ **Amp Protect Warning** --- An overload condition forces
+- [ ] **MUSIC-148** · `SPX-3907` · ★★★★☆ **Amp Protect Warning** — An overload condition forces
     output into a protected muted state.
--   [ ] ★★★☆☆ **Cabinet Impedance Match** --- Output/cabinet selections
+- [ ] **MUSIC-149** · `SPX-3908` · ★★★☆☆ **Cabinet Impedance Match** — Output/cabinet selections
     align into a valid connection state.
 
 ------------------------------------------------------------------------
 
 # 19. Guitar Tuners / Pitch
 
--   [ ] ★★★★★ **Needle Tuner Centre** --- A tuning needle moves from
+- [ ] **MUSIC-150** · `SPX-3909` · ★★★★★ **Needle Tuner Centre** — A tuning needle moves from
     flat/sharp toward a centred in-tune target.
--   [ ] ★★★★★ **Strobe Tuner Lock** --- Moving strobe bands slow and
+- [ ] **MUSIC-151** · `SPX-3910` · ★★★★★ **Strobe Tuner Lock** — Moving strobe bands slow and
     stop as pitch reaches target.
--   [ ] ★★★★☆ **String Detection Acquire** --- A detected string/note
+- [ ] **MUSIC-152** · `SPX-3911` · ★★★★☆ **String Detection Acquire** — A detected string/note
     appears after a short listening state.
--   [ ] ★★★★☆ **Pitch Confidence Ring** --- A ring tightens around the
+- [ ] **MUSIC-153** · `SPX-3912` · ★★★★☆ **Pitch Confidence Ring** — A ring tightens around the
     target as tuning confidence improves.
--   [ ] ★★★☆☆ **Drop Tuning Switch** --- Reference note labels shift
+- [ ] **MUSIC-154** · `SPX-3913` · ★★★☆☆ **Drop Tuning Switch** — Reference note labels shift
     into an alternate tuning preset.
--   [ ] ★★★☆☆ **Calibration A4 Dial** --- Reference frequency changes
+- [ ] **MUSIC-155** · `SPX-3914` · ★★★☆☆ **Calibration A4 Dial** — Reference frequency changes
     with a compact numeric dial.
 
 ------------------------------------------------------------------------
 
 # 20. Pianos / Acoustic Mechanisms
 
--   [ ] ★★★★★ **Piano Key Hammer** --- Pressing a key drives a
+- [ ] **MUSIC-156** · `SPX-3915` · ★★★★★ **Piano Key Hammer** — Pressing a key drives a
     simplified hammer mechanism toward a string.
--   [ ] ★★★★★ **Sustain Pedal Hold** --- Released notes remain visually
+- [ ] **MUSIC-157** · `SPX-3916` · ★★★★★ **Sustain Pedal Hold** — Released notes remain visually
     active while sustain is engaged.
--   [ ] ★★★★☆ **Damper Release** --- Dampers lift together when the
+- [ ] **MUSIC-158** · `SPX-3917` · ★★★★☆ **Damper Release** — Dampers lift together when the
     sustain pedal is pressed.
--   [ ] ★★★★☆ **Velocity Hammer Speed** --- Hammer travel speed changes
+- [ ] **MUSIC-159** · `SPX-3918` · ★★★★☆ **Velocity Hammer Speed** — Hammer travel speed changes
     according to key velocity.
--   [ ] ★★★☆☆ **Soft Pedal Shift** --- The mechanism shifts laterally
+- [ ] **MUSIC-160** · `SPX-3919` · ★★★☆☆ **Soft Pedal Shift** — The mechanism shifts laterally
     into a softer state.
--   [ ] ★★★★☆ **Key Release Damping** --- A released note visibly damps
+- [ ] **MUSIC-161** · `SPX-3920` · ★★★★☆ **Key Release Damping** — A released note visibly damps
     unless sustain remains active.
 
 ------------------------------------------------------------------------
 
 # 21. Microphones / Recording
 
--   [ ] ★★★★★ **Mic Arm Record** --- A microphone channel changes from
+- [ ] **MUSIC-162** · `SPX-3921` · ★★★★★ **Mic Arm Record** — A microphone channel changes from
     idle to armed and then recording.
--   [ ] ★★★★☆ **Input Gain Ring** --- A circular gain indicator grows
+- [ ] **MUSIC-163** · `SPX-3922` · ★★★★☆ **Input Gain Ring** — A circular gain indicator grows
     around a microphone control.
--   [ ] ★★★☆☆ **Pop Filter Pulse** --- A stylised transient hits a
+- [ ] **MUSIC-164** · `SPX-3923` · ★★★☆☆ **Pop Filter Pulse** — A stylised transient hits a
     filter plane and emerges softened.
--   [ ] ★★★★★ **Recording Waveform Grow** --- A waveform builds from
+- [ ] **MUSIC-165** · `SPX-3924` · ★★★★★ **Recording Waveform Grow** — A waveform builds from
     left to right as a finite recording progresses.
--   [ ] ★★★★★ **Punch-In Region** --- A selected timeline region turns
+- [ ] **MUSIC-166** · `SPX-3925` · ★★★★★ **Punch-In Region** — A selected timeline region turns
     into an armed replacement-recording state.
--   [ ] ★★★★☆ **Mic Clip Warning** --- Excess input lights a persistent
+- [ ] **MUSIC-167** · `SPX-3926` · ★★★★☆ **Mic Clip Warning** — Excess input lights a persistent
     clipping warning.
--   [ ] ★★★★☆ **Talkback Hold** --- A hold-to-talk control stays active
+- [ ] **MUSIC-168** · `SPX-3927` · ★★★★☆ **Talkback Hold** — A hold-to-talk control stays active
     only while pressed.
 
 ------------------------------------------------------------------------
 
 # 22. Audio Interfaces
 
--   [ ] ★★★★★ **Input Halo Acquire** --- A hardware-style input ring
+- [ ] **MUSIC-169** · `SPX-3928` · ★★★★★ **Input Halo Acquire** — A hardware-style input ring
     lights as signal appears.
--   [ ] ★★★★★ **Auto Gain Scan** --- A short calibration sequence
+- [ ] **MUSIC-170** · `SPX-3929` · ★★★★★ **Auto Gain Scan** — A short calibration sequence
     samples levels and settles on a gain value.
--   [ ] ★★★★☆ **Phantom Power Engage** --- A +48V-like generic power
+- [ ] **MUSIC-171** · `SPX-3930` · ★★★★☆ **Phantom Power Engage** — A +48V-like generic power
     state requires deliberate activation and persistent warning.
--   [ ] ★★★★★ **Direct Monitor Blend** --- A blend knob crossfades
+- [ ] **MUSIC-172** · `SPX-3931` · ★★★★★ **Direct Monitor Blend** — A blend knob crossfades
     between input and playback paths.
--   [ ] ★★★★☆ **Input Instrument Switch** --- One jack changes between
+- [ ] **MUSIC-173** · `SPX-3932` · ★★★★☆ **Input Instrument Switch** — One jack changes between
     line and instrument modes with clear state.
--   [ ] ★★★★☆ **Interface Sync Lock** --- Clock/sync status progresses
+- [ ] **MUSIC-174** · `SPX-3933` · ★★★★☆ **Interface Sync Lock** — Clock/sync status progresses
     from searching to locked.
--   [ ] ★★★☆☆ **Sample Rate Switch** --- A numeric sample-rate display
+- [ ] **MUSIC-175** · `SPX-3934` · ★★★☆☆ **Sample Rate Switch** — A numeric sample-rate display
     changes after a brief reconfiguration state.
 
 ------------------------------------------------------------------------
 
 # 23. DAW Transport / Timeline
 
--   [ ] ★★★★★ **Transport Play Engage** --- A play control latches and
+- [ ] **MUSIC-176** · `SPX-3935` · ★★★★★ **Transport Play Engage** — A play control latches and
     the timeline playhead begins moving.
--   [ ] ★★★★☆ **Stop Return** --- Stopping freezes playback and
+- [ ] **MUSIC-177** · `SPX-3936` · ★★★★☆ **Stop Return** — Stopping freezes playback and
     optionally returns the playhead to a stored start point.
--   [ ] ★★★★★ **Record Count-In** --- A visible count-in leads into
+- [ ] **MUSIC-178** · `SPX-3937` · ★★★★★ **Record Count-In** — A visible count-in leads into
     recording and turns the transport into an armed red state.
--   [ ] ★★★★★ **Loop Brace Clamp** --- Loop handles close around a
+- [ ] **MUSIC-179** · `SPX-3938` · ★★★★★ **Loop Brace Clamp** — Loop handles close around a
     timeline range and playback cycles within it.
--   [ ] ★★★★★ **Playhead Scrub** --- Dragging the playhead updates
+- [ ] **MUSIC-180** · `SPX-3939` · ★★★★★ **Playhead Scrub** — Dragging the playhead updates
     timecode and inspection state continuously.
--   [ ] ★★★★☆ **Punch-In Arm** --- A selected region gains pre-roll,
+- [ ] **MUSIC-181** · `SPX-3940` · ★★★★☆ **Punch-In Arm** — A selected region gains pre-roll,
     record and post-roll boundaries.
--   [ ] ★★★★☆ **Marker Drop** --- A marker stamps onto the ruler at the
+- [ ] **MUSIC-182** · `SPX-3941` · ★★★★☆ **Marker Drop** — A marker stamps onto the ruler at the
     current playhead.
--   [ ] ★★★★☆ **Tempo Change Ramp** --- Tempo automation transitions
+- [ ] **MUSIC-183** · `SPX-3942` · ★★★★☆ **Tempo Change Ramp** — Tempo automation transitions
     between two BPM values over a defined region.
--   [ ] ★★★★★ **Timeline Zoom Anchor** --- Zoom changes around the
+- [ ] **MUSIC-184** · `SPX-3943` · ★★★★★ **Timeline Zoom Anchor** — Zoom changes around the
     pointer/playhead rather than the viewport centre.
 
 ------------------------------------------------------------------------
 
 # 24. Waveform Editing
 
--   [ ] ★★★★★ **Waveform Trim Handles** --- Start/end handles clamp
+- [ ] **MUSIC-185** · `SPX-3944` · ★★★★★ **Waveform Trim Handles** — Start/end handles clamp
     around a waveform and update the active region.
--   [ ] ★★★★★ **Audio Fade Handle** --- Dragging a corner handle draws a
+- [ ] **MUSIC-186** · `SPX-3945` · ★★★★★ **Audio Fade Handle** — Dragging a corner handle draws a
     fade-in or fade-out curve.
--   [ ] ★★★★★ **Clip Split** --- A playhead cut divides one audio region
+- [ ] **MUSIC-187** · `SPX-3946` · ★★★★★ **Clip Split** — A playhead cut divides one audio region
     into two independently selectable clips.
--   [ ] ★★★★★ **Clip Slip Edit** --- Audio content moves inside a fixed
+- [ ] **MUSIC-188** · `SPX-3947` · ★★★★★ **Clip Slip Edit** — Audio content moves inside a fixed
     clip boundary.
--   [ ] ★★★★★ **Crossfade Overlap** --- Two overlapping clips gain
+- [ ] **MUSIC-189** · `SPX-3948` · ★★★★★ **Crossfade Overlap** — Two overlapping clips gain
     complementary fade curves.
--   [ ] ★★★★☆ **Waveform Normalize** --- Amplitude scales toward a
+- [ ] **MUSIC-190** · `SPX-3949` · ★★★★☆ **Waveform Normalize** — Amplitude scales toward a
     target peak while clip duration remains unchanged.
--   [ ] ★★★★☆ **Silence Detection Slice** --- Quiet regions become cut
+- [ ] **MUSIC-191** · `SPX-3950` · ★★★★☆ **Silence Detection Slice** — Quiet regions become cut
     markers in a deterministic scan.
--   [ ] ★★★★☆ **Region Consolidate** --- Several adjacent clips merge
+- [ ] **MUSIC-192** · `SPX-3951` · ★★★★☆ **Region Consolidate** — Several adjacent clips merge
     into one continuous region.
 
 ------------------------------------------------------------------------
 
 # 25. MIDI / Piano Roll
 
--   [ ] ★★★★★ **MIDI Note Draw** --- A note rectangle appears between
+- [ ] **MUSIC-193** · `SPX-3952` · ★★★★★ **MIDI Note Draw** — A note rectangle appears between
     pitch row and time grid coordinates.
--   [ ] ★★★★★ **Note Drag Quantize** --- A moved note snaps onto the
+- [ ] **MUSIC-194** · `SPX-3953` · ★★★★★ **Note Drag Quantize** — A moved note snaps onto the
     nearest timing division.
--   [ ] ★★★★☆ **Velocity Stem Adjust** --- Dragging a velocity stem
+- [ ] **MUSIC-195** · `SPX-3954` · ★★★★☆ **Velocity Stem Adjust** — Dragging a velocity stem
     changes note intensity.
--   [ ] ★★★★★ **Chord Block Move** --- Several selected notes travel
+- [ ] **MUSIC-196** · `SPX-3955` · ★★★★★ **Chord Block Move** — Several selected notes travel
     together while retaining intervals.
--   [ ] ★★★★★ **Quantize Sweep** --- Off-grid notes slide simultaneously
+- [ ] **MUSIC-197** · `SPX-3956` · ★★★★★ **Quantize Sweep** — Off-grid notes slide simultaneously
     toward exact rhythmic divisions.
--   [ ] ★★★☆☆ **Humanise Scatter** --- Notes shift by small
+- [ ] **MUSIC-198** · `SPX-3957` · ★★★☆☆ **Humanise Scatter** — Notes shift by small
     predetermined offsets to demonstrate timing looseness.
--   [ ] ★★★★☆ **Piano Roll Zoom** --- Grid resolution changes around the
+- [ ] **MUSIC-199** · `SPX-3958` · ★★★★☆ **Piano Roll Zoom** — Grid resolution changes around the
     active note region.
--   [ ] ★★★★☆ **MIDI Ghost Notes** --- Reference notes from another clip
+- [ ] **MUSIC-200** · `SPX-3959` · ★★★★☆ **MIDI Ghost Notes** — Reference notes from another clip
     appear as subdued guides.
 
 ------------------------------------------------------------------------
 
 # 26. Automation / Modulation
 
--   [ ] ★★★★★ **Automation Point Draw** --- A point appears on a
+- [ ] **MUSIC-201** · `SPX-3960` · ★★★★★ **Automation Point Draw** — A point appears on a
     parameter lane and connects into the existing curve.
--   [ ] ★★★★★ **Automation Curve Bend** --- A line segment changes from
+- [ ] **MUSIC-202** · `SPX-3961` · ★★★★★ **Automation Curve Bend** — A line segment changes from
     linear to curved response.
--   [ ] ★★★★★ **Latch Automation Write** --- A moving parameter writes a
+- [ ] **MUSIC-203** · `SPX-3962` · ★★★★★ **Latch Automation Write** — A moving parameter writes a
     visible automation path behind it.
--   [ ] ★★★★☆ **Automation Read Chase** --- A control follows a
+- [ ] **MUSIC-204** · `SPX-3963` · ★★★★☆ **Automation Read Chase** — A control follows a
     prewritten curve as the playhead passes.
--   [ ] ★★★★☆ **Breakpoint Delete Collapse** --- Removing a point causes
+- [ ] **MUSIC-205** · `SPX-3964` · ★★★★☆ **Breakpoint Delete Collapse** — Removing a point causes
     adjacent segments to reconnect.
--   [ ] ★★★★☆ **Parameter Lane Expand** --- A compact automation lane
+- [ ] **MUSIC-206** · `SPX-3965` · ★★★★☆ **Parameter Lane Expand** — A compact automation lane
     opens into a larger editing surface.
 
 ------------------------------------------------------------------------
 
 # 27. Channel Routing / Sends
 
--   [ ] ★★★★☆ **Send Level Arc** --- A send amount grows around an
+- [ ] **MUSIC-207** · `SPX-3966` · ★★★★☆ **Send Level Arc** — A send amount grows around an
     auxiliary control.
--   [ ] ★★★★★ **Bus Route Connect** --- A channel draws a route into a
+- [ ] **MUSIC-208** · `SPX-3967` · ★★★★★ **Bus Route Connect** — A channel draws a route into a
     shared bus and updates the bus meter.
--   [ ] ★★★★☆ **Pre/Post Fader Switch** --- Signal flow diagram reroutes
+- [ ] **MUSIC-209** · `SPX-3968` · ★★★★☆ **Pre/Post Fader Switch** — Signal flow diagram reroutes
     around or through the channel fader.
--   [ ] ★★★★☆ **Aux Return Acquire** --- An effects return activates
+- [ ] **MUSIC-210** · `SPX-3969` · ★★★★☆ **Aux Return Acquire** — An effects return activates
     after receiving routed signal.
--   [ ] ★★★★★ **Sidechain Route** --- A secondary source draws into a
+- [ ] **MUSIC-211** · `SPX-3970` · ★★★★★ **Sidechain Route** — A secondary source draws into a
     compressor's detector path.
--   [ ] ★★★★☆ **Output Assign Switch** --- A channel moves between
+- [ ] **MUSIC-212** · `SPX-3971` · ★★★★☆ **Output Assign Switch** — A channel moves between
     output destinations while its route line follows.
 
 ------------------------------------------------------------------------
 
 # 28. Loopers / Live Performance
 
--   [ ] ★★★★★ **Loop Record Ring** --- A circular progress ring records
+- [ ] **MUSIC-213** · `SPX-3972` · ★★★★★ **Loop Record Ring** — A circular progress ring records
     one loop length and closes precisely at the boundary.
--   [ ] ★★★★★ **Overdub Layer Add** --- Each overdub adds a new
+- [ ] **MUSIC-214** · `SPX-3973` · ★★★★★ **Overdub Layer Add** — Each overdub adds a new
     concentric layer around the loop.
--   [ ] ★★★★★ **Loop Undo Peel** --- The latest overdub layer peels away
+- [ ] **MUSIC-215** · `SPX-3974` · ★★★★★ **Loop Undo Peel** — The latest overdub layer peels away
     while earlier layers remain.
--   [ ] ★★★★☆ **Loop Stop Quantize** --- Stop request waits visibly
+- [ ] **MUSIC-216** · `SPX-3975` · ★★★★☆ **Loop Stop Quantize** — Stop request waits visibly
     until the next loop boundary.
--   [ ] ★★★★☆ **Track Multiply** --- A short loop expands into a
+- [ ] **MUSIC-217** · `SPX-3976` · ★★★★☆ **Track Multiply** — A short loop expands into a
     doubled-length structure.
--   [ ] ★★★★☆ **Looper Clear Hold** --- A destructive clear action fills
+- [ ] **MUSIC-218** · `SPX-3977` · ★★★★☆ **Looper Clear Hold** — A destructive clear action fills
     through a hold threshold.
--   [ ] ★★★★★ **Multi-Track Loop Launch** --- Several loop rings start
+- [ ] **MUSIC-219** · `SPX-3978` · ★★★★★ **Multi-Track Loop Launch** — Several loop rings start
     together on a shared quantised boundary.
 
 ------------------------------------------------------------------------
 
 # 29. Launchpads / Clip Launching
 
--   [ ] ★★★★★ **Clip Pad Launch** --- A grid pad flashes, queues, then
+- [ ] **MUSIC-220** · `SPX-3979` · ★★★★★ **Clip Pad Launch** — A grid pad flashes, queues, then
     enters a persistent playing state on the next beat.
--   [ ] ★★★★★ **Scene Launch Sweep** --- An entire row queues and starts
+- [ ] **MUSIC-221** · `SPX-3980` · ★★★★★ **Scene Launch Sweep** — An entire row queues and starts
     together with a left-to-right acquisition sweep.
--   [ ] ★★★★☆ **Queued Clip Blink** --- A selected clip waits visibly
+- [ ] **MUSIC-222** · `SPX-3981` · ★★★★☆ **Queued Clip Blink** — A selected clip waits visibly
     for the quantisation boundary.
--   [ ] ★★★★☆ **Clip Stop** --- A playing pad transitions through a
+- [ ] **MUSIC-223** · `SPX-3982` · ★★★★☆ **Clip Stop** — A playing pad transitions through a
     stopping state at the next beat.
--   [ ] ★★★★☆ **Session Grid Scroll** --- A clip grid shifts to reveal
+- [ ] **MUSIC-224** · `SPX-3983` · ★★★★☆ **Session Grid Scroll** — A clip grid shifts to reveal
     more tracks/scenes while preserving play states.
--   [ ] ★★★★☆ **Follow Action Jump** --- A completed clip hands playback
+- [ ] **MUSIC-225** · `SPX-3984` · ★★★★☆ **Follow Action Jump** — A completed clip hands playback
     to another pad.
 
 ------------------------------------------------------------------------
 
 # 30. Metronomes / Tempo
 
--   [ ] ★★★★★ **Metronome Pendulum** --- A pendulum swings at a chosen
+- [ ] **MUSIC-226** · `SPX-3985` · ★★★★★ **Metronome Pendulum** — A pendulum swings at a chosen
     BPM and stops under reduced motion.
--   [ ] ★★★★★ **Tempo Tap Detect** --- Repeated taps produce a
+- [ ] **MUSIC-227** · `SPX-3986` · ★★★★★ **Tempo Tap Detect** — Repeated taps produce a
     stabilising BPM estimate.
--   [ ] ★★★★☆ **Beat Accent Flash** --- The first beat receives stronger
+- [ ] **MUSIC-228** · `SPX-3987` · ★★★★☆ **Beat Accent Flash** — The first beat receives stronger
     visual emphasis than subsequent beats.
--   [ ] ★★★★☆ **Tempo Ramp** --- A BPM value increases or decreases
+- [ ] **MUSIC-229** · `SPX-3988` · ★★★★☆ **Tempo Ramp** — A BPM value increases or decreases
     smoothly toward a target.
--   [ ] ★★★★☆ **Subdivision Pulse** --- Quarter, eighth and sixteenth
+- [ ] **MUSIC-230** · `SPX-3989` · ★★★★☆ **Subdivision Pulse** — Quarter, eighth and sixteenth
     subdivisions display different pulse densities.
--   [ ] ★★★★☆ **Tempo Lock** --- An unstable detected tempo settles into
+- [ ] **MUSIC-231** · `SPX-3990` · ★★★★☆ **Tempo Lock** — An unstable detected tempo settles into
     a locked value.
 
 ------------------------------------------------------------------------
 
 # 31. Stage / Live Mixing
 
--   [ ] ★★★★★ **Scene Change Recall** --- A live-mix scene triggers
+- [ ] **MUSIC-232** · `SPX-3991` · ★★★★★ **Scene Change Recall** — A live-mix scene triggers
     coordinated fader, mute and routing changes.
--   [ ] ★★★★☆ **Channel PFL Acquire** --- Pre-fade listen isolates one
+- [ ] **MUSIC-233** · `SPX-3992` · ★★★★☆ **Channel PFL Acquire** — Pre-fade listen isolates one
     channel into a monitoring state.
--   [ ] ★★★★★ **Talkback Duck** --- Talkback activation reduces program
+- [ ] **MUSIC-234** · `SPX-3993` · ★★★★★ **Talkback Duck** — Talkback activation reduces program
     channels while keeping communication prominent.
--   [ ] ★★★★★ **Feedback Frequency Hunt** --- A spectrum cursor narrows
+- [ ] **MUSIC-235** · `SPX-3994` · ★★★★★ **Feedback Frequency Hunt** — A spectrum cursor narrows
     onto a ringing frequency and applies a notch.
--   [ ] ★★★★☆ **Stage Mute Group** --- A group of channels mutes
+- [ ] **MUSIC-236** · `SPX-3995` · ★★★★☆ **Stage Mute Group** — A group of channels mutes
     together with linked status.
--   [ ] ★★★★☆ **Monitor Mix Switch** --- The console changes from
+- [ ] **MUSIC-237** · `SPX-3996` · ★★★★☆ **Monitor Mix Switch** — The console changes from
     front-of-house to a musician's monitor mix.
--   [ ] ★★★★★ **Show Cue Advance** --- A cue list promotes the next
+- [ ] **MUSIC-238** · `SPX-3997` · ★★★★★ **Show Cue Advance** — A cue list promotes the next
     scene and marks the previous one complete.
 
 ------------------------------------------------------------------------
 
 # 32. Lighting / Music-Adjacent Control
 
--   [ ] ★★★★☆ **Fader-to-Light Intensity** --- A channel fader drives a
+- [ ] **MUSIC-239** · `SPX-3998` · ★★★★☆ **Fader-to-Light Intensity** — A channel fader drives a
     stage-light-like intensity preview.
--   [ ] ★★★★★ **Cue Stack Go** --- A GO button advances through a
+- [ ] **MUSIC-240** · `SPX-3999` · ★★★★★ **Cue Stack Go** — A GO button advances through a
     numbered cue stack with exact state transitions.
--   [ ] ★★★★★ **Blackout Slam** --- All active visual channels collapse
+- [ ] **MUSIC-241** · `SPX-4000` · ★★★★★ **Blackout Slam** — All active visual channels collapse
     instantly into a blackout state.
--   [ ] ★★★★☆ **Fade Time Execute** --- A cue transitions between two
+- [ ] **MUSIC-242** · `SPX-4001` · ★★★★☆ **Fade Time Execute** — A cue transitions between two
     states over an exact programmed duration.
--   [ ] ★★★★☆ **Fixture Pan Tilt** --- A two-axis control moves a
+- [ ] **MUSIC-243** · `SPX-4002` · ★★★★☆ **Fixture Pan Tilt** — A two-axis control moves a
     spotlight proxy through a bounded stage.
--   [ ] ★★★★☆ **Chase Sequence** --- Several fixture indicators activate
+- [ ] **MUSIC-244** · `SPX-4003` · ★★★★☆ **Chase Sequence** — Several fixture indicators activate
     in a programmed repeating sequence.
 
 ------------------------------------------------------------------------
 
 # 33. Retro Hi-Fi / Receivers
 
--   [ ] ★★★★★ **Receiver Power Relay** --- A dark hi-fi faceplate wakes
+- [ ] **MUSIC-245** · `SPX-4004` · ★★★★★ **Receiver Power Relay** — A dark hi-fi faceplate wakes
     with a relay-like delay and display acquisition.
--   [ ] ★★★★★ **Tuning Dial Glide** --- A long frequency pointer moves
+- [ ] **MUSIC-246** · `SPX-4005` · ★★★★★ **Tuning Dial Glide** — A long frequency pointer moves
     across an analogue radio scale.
--   [ ] ★★★★☆ **Station Lock** --- The tuner settles onto a station and
+- [ ] **MUSIC-247** · `SPX-4006` · ★★★★☆ **Station Lock** — The tuner settles onto a station and
     signal-strength indicator stabilises.
--   [ ] ★★★★☆ **Segment Display Scroll** --- Long metadata scrolls
+- [ ] **MUSIC-248** · `SPX-4007` · ★★★★☆ **Segment Display Scroll** — Long metadata scrolls
     through a constrained segmented display.
--   [ ] ★★★★☆ **Source Selector Click** --- A selector rotates between
+- [ ] **MUSIC-249** · `SPX-4008` · ★★★★☆ **Source Selector Click** — A selector rotates between
     PHONO, AUX, TUNER-like generic inputs.
--   [ ] ★★★☆☆ **Loudness Toggle** --- A physical-looking toggle changes
+- [ ] **MUSIC-250** · `SPX-4009` · ★★★☆☆ **Loudness Toggle** — A physical-looking toggle changes
     the tonal indicator state.
 
 ------------------------------------------------------------------------
 
 # 34. Hardware Displays / LEDs
 
--   [ ] ★★★★★ **Seven-Segment Number Roll** --- A numeric display
+- [ ] **MUSIC-251** · `SPX-4010` · ★★★★★ **Seven-Segment Number Roll** — A numeric display
     changes using segment-aware transitions.
--   [ ] ★★★★☆ **OLED Menu Scroll** --- A compact hardware screen scrolls
+- [ ] **MUSIC-252** · `SPX-4011` · ★★★★☆ **OLED Menu Scroll** — A compact hardware screen scrolls
     through preset/settings rows.
--   [ ] ★★★★☆ **LED Boot Test** --- All indicator lights briefly
+- [ ] **MUSIC-253** · `SPX-4012` · ★★★★☆ **LED Boot Test** — All indicator lights briefly
     illuminate before normal state.
--   [ ] ★★★★☆ **Status LED Blink Code** --- A finite blink pattern
+- [ ] **MUSIC-254** · `SPX-4013` · ★★★★☆ **Status LED Blink Code** — A finite blink pattern
     communicates a diagnostic code.
--   [ ] ★★★★★ **Encoder Ring Fill** --- LED segments around a rotary
+- [ ] **MUSIC-255** · `SPX-4014` · ★★★★★ **Encoder Ring Fill** — LED segments around a rotary
     encoder illuminate to show value.
--   [ ] ★★★☆☆ **Page Indicator LEDs** --- A small row of LEDs shows
+- [ ] **MUSIC-256** · `SPX-4015` · ★★★☆☆ **Page Indicator LEDs** — A small row of LEDs shows
     active parameter page.
 
 ------------------------------------------------------------------------
 
 # 35. Power / Startup / Shutdown
 
--   [ ] ★★★★★ **Studio Power Sequence** --- Multiple devices wake in a
+- [ ] **MUSIC-257** · `SPX-4016` · ★★★★★ **Studio Power Sequence** — Multiple devices wake in a
     safe deterministic order.
--   [ ] ★★★★★ **Amp Last Power-On** --- The final amplification stage
+- [ ] **MUSIC-258** · `SPX-4017` · ★★★★★ **Amp Last Power-On** — The final amplification stage
     activates only after upstream gear is ready.
--   [ ] ★★★★★ **Reverse Shutdown Sequence** --- Devices power down in
+- [ ] **MUSIC-259** · `SPX-4018` · ★★★★★ **Reverse Shutdown Sequence** — Devices power down in
     reverse order to avoid abrupt output.
--   [ ] ★★★★☆ **Soft Start Meter Rise** --- Meters and displays fade
+- [ ] **MUSIC-260** · `SPX-4019` · ★★★★☆ **Soft Start Meter Rise** — Meters and displays fade
     into operation rather than appearing instantly.
--   [ ] ★★★★☆ **Power Fault Interrupt** --- Startup halts at a device
+- [ ] **MUSIC-261** · `SPX-4020` · ★★★★☆ **Power Fault Interrupt** — Startup halts at a device
     and marks the failed stage.
--   [ ] ★★★★☆ **Warm-Up Countdown** --- A hardware unit counts down
+- [ ] **MUSIC-262** · `SPX-4021` · ★★★★☆ **Warm-Up Countdown** — A hardware unit counts down
     until operational.
 
 ------------------------------------------------------------------------
 
 # 36. Errors / Warnings / Protection
 
--   [ ] ★★★★★ **Feedback Warning Ring** --- A detected feedback
+- [ ] **MUSIC-263** · `SPX-4022` · ★★★★★ **Feedback Warning Ring** — A detected feedback
     condition produces a high-priority ring around the offending
     channel.
--   [ ] ★★★★★ **Clipping Alert** --- Level overflow triggers a
+- [ ] **MUSIC-264** · `SPX-4023` · ★★★★★ **Clipping Alert** — Level overflow triggers a
     persistent clip state and exact reset action.
--   [ ] ★★★★☆ **Phantom Power Warning** --- Potentially consequential
+- [ ] **MUSIC-265** · `SPX-4024` · ★★★★☆ **Phantom Power Warning** — Potentially consequential
     power state gains a deliberate warning confirmation.
--   [ ] ★★★★★ **Clock Sync Lost** --- A stable digital system visibly
+- [ ] **MUSIC-266** · `SPX-4025` · ★★★★★ **Clock Sync Lost** — A stable digital system visibly
     falls out of sync and enters recovery.
--   [ ] ★★★★☆ **Buffer Underrun** --- Playback stutters into a clear
+- [ ] **MUSIC-267** · `SPX-4026` · ★★★★☆ **Buffer Underrun** — Playback stutters into a clear
     processing-performance warning.
--   [ ] ★★★★☆ **Missing Input Signal** --- An expected channel changes
+- [ ] **MUSIC-268** · `SPX-4027` · ★★★★☆ **Missing Input Signal** — An expected channel changes
     into a no-signal diagnostic state.
--   [ ] ★★★★☆ **Overtemperature Protect** --- Hardware transitions into
+- [ ] **MUSIC-269** · `SPX-4028` · ★★★★☆ **Overtemperature Protect** — Hardware transitions into
     a protected muted state.
--   [ ] ★★★★★ **MIDI Panic** --- A stuck-note state clears all active
+- [ ] **MUSIC-270** · `SPX-4029` · ★★★★★ **MIDI Panic** — A stuck-note state clears all active
     note indicators in one decisive action.
 
 ------------------------------------------------------------------------
 
 # 37. Loading / Calibration / Diagnostics
 
--   [ ] ★★★★★ **Auto Gain Calibration** --- Input level is sampled,
+- [ ] **MUSIC-271** · `SPX-4030` · ★★★★★ **Auto Gain Calibration** — Input level is sampled,
     tested and resolved into a recommended gain.
--   [ ] ★★★★★ **Room Calibration Sweep** --- A frequency sweep travels
+- [ ] **MUSIC-272** · `SPX-4031` · ★★★★★ **Room Calibration Sweep** — A frequency sweep travels
     across a room-analysis graph and produces a correction curve.
--   [ ] ★★★★☆ **Device Scan Rack** --- Connected devices acquire
+- [ ] **MUSIC-273** · `SPX-4032` · ★★★★☆ **Device Scan Rack** — Connected devices acquire
     one-by-one in a rack diagram.
--   [ ] ★★★★☆ **Plugin Scan Meter** --- A progress strip advances
+- [ ] **MUSIC-274** · `SPX-4033` · ★★★★☆ **Plugin Scan Meter** — A progress strip advances
     through named processing modules.
--   [ ] ★★★★☆ **Firmware Update Ring** --- A hardware-like device enters
+- [ ] **MUSIC-275** · `SPX-4034` · ★★★★☆ **Firmware Update Ring** — A hardware-like device enters
     a determinate update state and restarts.
--   [ ] ★★★★☆ **Clock Sync Acquire** --- A searching timing indicator
+- [ ] **MUSIC-276** · `SPX-4035` · ★★★★☆ **Clock Sync Acquire** — A searching timing indicator
     becomes locked.
--   [ ] ★★★★☆ **Latency Test Ping** --- A pulse travels to an endpoint
+- [ ] **MUSIC-277** · `SPX-4036` · ★★★★☆ **Latency Test Ping** — A pulse travels to an endpoint
     and returns with a measured delay.
 
 ------------------------------------------------------------------------
 
 # 38. Music Player / Consumer Controls
 
--   [ ] ★★★★★ **Now Playing Expand** --- A compact track strip expands
+- [ ] **MUSIC-278** · `SPX-4037` · ★★★★★ **Now Playing Expand** — A compact track strip expands
     into a full now-playing control surface.
--   [ ] ★★★★★ **Play Pause Morph** --- The primary transport control
+- [ ] **MUSIC-279** · `SPX-4038` · ★★★★★ **Play Pause Morph** — The primary transport control
     morphs cleanly between play and pause.
--   [ ] ★★★★★ **Track Progress Scrub** --- A timeline handle reveals
+- [ ] **MUSIC-280** · `SPX-4039` · ★★★★★ **Track Progress Scrub** — A timeline handle reveals
     time while dragging and settles at release.
--   [ ] ★★★★☆ **Queue Reorder** --- Tracks move through a queue with
+- [ ] **MUSIC-281** · `SPX-4040` · ★★★★☆ **Queue Reorder** — Tracks move through a queue with
     spatial continuity.
--   [ ] ★★★★★ **Crossfade Track Handoff** --- Outgoing and incoming
+- [ ] **MUSIC-282** · `SPX-4041` · ★★★★★ **Crossfade Track Handoff** — Outgoing and incoming
     track cards overlap and trade prominence.
--   [ ] ★★★☆☆ **Repeat Mode Cycle** --- Repeat control cycles through
+- [ ] **MUSIC-283** · `SPX-4042` · ★★★☆☆ **Repeat Mode Cycle** — Repeat control cycles through
     off, all and one states.
--   [ ] ★★★☆☆ **Shuffle Acquire** --- Shuffle action transforms into a
+- [ ] **MUSIC-284** · `SPX-4043` · ★★★☆☆ **Shuffle Acquire** — Shuffle action transforms into a
     persistent active state.
--   [ ] ★★★★☆ **Volume Popup** --- A compact volume slider rises from
+- [ ] **MUSIC-285** · `SPX-4044` · ★★★★☆ **Volume Popup** — A compact volume slider rises from
     its icon and retracts after use.
 
 ------------------------------------------------------------------------
 
 # 39. Experimental Software Mappings
 
--   [ ] ★★★★★ **Mixer Faders as Multi-Parameter Control** --- Several
+- [ ] **MUSIC-286** · `SPX-4045` · ★★★★★ **Mixer Faders as Multi-Parameter Control** — Several
     independent system values become tactile vertical controls with
     recallable scenes.
--   [ ] ★★★★★ **Scene Recall as Workspace Preset** --- A saved
+- [ ] **MUSIC-287** · `SPX-4046` · ★★★★★ **Scene Recall as Workspace Preset** — A saved
     configuration restores many UI parameters simultaneously.
--   [ ] ★★★★★ **VU Meter as Live Health** --- Signal level language maps
+- [ ] **MUSIC-288** · `SPX-4047` · ★★★★★ **VU Meter as Live Health** — Signal level language maps
     to throughput, CPU, queue depth or confidence.
--   [ ] ★★★★★ **Peak Hold as Incident Memory** --- A transient maximum
+- [ ] **MUSIC-289** · `SPX-4048` · ★★★★★ **Peak Hold as Incident Memory** — A transient maximum
     remains visible after the live value falls.
--   [ ] ★★★★★ **EQ Curve as Filter Builder** --- Graph nodes become an
+- [ ] **MUSIC-290** · `SPX-4049` · ★★★★★ **EQ Curve as Filter Builder** — Graph nodes become an
     intuitive way to shape query/filter weighting.
--   [ ] ★★★★★ **Compressor as Rate Limiter** --- Threshold and ratio
+- [ ] **MUSIC-291** · `SPX-4050` · ★★★★★ **Compressor as Rate Limiter** — Threshold and ratio
     visualise how a system suppresses excessive input.
--   [ ] ★★★★★ **Noise Gate as Conditional Trigger** --- A process opens
+- [ ] **MUSIC-292** · `SPX-4051` · ★★★★★ **Noise Gate as Conditional Trigger** — A process opens
     only after input crosses a defined threshold.
--   [ ] ★★★★★ **Pedalboard as Processing Pipeline** --- Effects pedals
+- [ ] **MUSIC-293** · `SPX-4052` · ★★★★★ **Pedalboard as Processing Pipeline** — Effects pedals
     become reorderable processing stages with bypass.
--   [ ] ★★★★★ **Patch Bay as Data Routing** --- Cables provide a
+- [ ] **MUSIC-294** · `SPX-4053` · ★★★★★ **Patch Bay as Data Routing** — Cables provide a
     physical metaphor for connecting sources, transforms and
     destinations.
--   [ ] ★★★★★ **Modular Synth as Workflow Builder** --- Modules and
+- [ ] **MUSIC-295** · `SPX-4054` · ★★★★★ **Modular Synth as Workflow Builder** — Modules and
     control-voltage routes become composable automation blocks.
--   [ ] ★★★★★ **Sequencer as Scheduled Jobs** --- A step grid maps
+- [ ] **MUSIC-296** · `SPX-4055` · ★★★★★ **Sequencer as Scheduled Jobs** — A step grid maps
     naturally to recurring timed tasks.
--   [ ] ★★★★★ **Sampler Pads as Macro Launcher** --- Performance pads
+- [ ] **MUSIC-297** · `SPX-4056` · ★★★★★ **Sampler Pads as Macro Launcher** — Performance pads
     trigger reusable commands, snippets or workflows.
--   [ ] ★★★★★ **DJ Cue Points as Timeline Bookmarks** --- Saved points
+- [ ] **MUSIC-298** · `SPX-4057` · ★★★★★ **DJ Cue Points as Timeline Bookmarks** — Saved points
     enable instant jumps to meaningful moments in a long process.
--   [ ] ★★★★★ **Crossfader as Compare/Blend** --- A single control
+- [ ] **MUSIC-299** · `SPX-4058` · ★★★★★ **Crossfader as Compare/Blend** — A single control
     blends two datasets, versions or visual states.
--   [ ] ★★★★★ **Tuner as Alignment Quality** --- Flat/sharp becomes
+- [ ] **MUSIC-300** · `SPX-4059` · ★★★★★ **Tuner as Alignment Quality** — Flat/sharp becomes
     below/above target and centre means exact alignment.
--   [ ] ★★★★★ **Loop Ring as Repeating Job** --- Circular progress
+- [ ] **MUSIC-301** · `SPX-4060` · ★★★★★ **Loop Ring as Repeating Job** — Circular progress
     communicates a repeating bounded process and its next boundary.
--   [ ] ★★★★★ **Transport as Simulation Control** --- Play, pause,
+- [ ] **MUSIC-302** · `SPX-4061` · ★★★★★ **Transport as Simulation Control** — Play, pause,
     record, loop and scrub become controls for simulations or replay.
--   [ ] ★★★★★ **Automation Lane as Parameter History** --- Editable
+- [ ] **MUSIC-303** · `SPX-4062` · ★★★★★ **Automation Lane as Parameter History** — Editable
     curves represent how a value changes over time.
--   [ ] ★★★★★ **Sidechain as Dependency Trigger** --- One system's
+- [ ] **MUSIC-304** · `SPX-4063` · ★★★★★ **Sidechain as Dependency Trigger** — One system's
     activity controls or suppresses another system.
--   [ ] ★★★★☆ **Tape Splice as Version Editing** --- Physical
+- [ ] **MUSIC-305** · `SPX-4064` · ★★★★☆ **Tape Splice as Version Editing** — Physical
     cut-and-join language maps to timeline or document segment editing.
--   [ ] ★★★★★ **Rack Power Sequence as Dependency Startup** --- Services
+- [ ] **MUSIC-306** · `SPX-4065` · ★★★★★ **Rack Power Sequence as Dependency Startup** — Services
     start and stop in a safe dependency order.
--   [ ] ★★★★☆ **Hardware Diagnostic LEDs as Service Health** --- Tiny
+- [ ] **MUSIC-307** · `SPX-4066` · ★★★★☆ **Hardware Diagnostic LEDs as Service Health** — Tiny
     status lights create a compact overview of many subsystems.
--   [ ] ★★★★★ **Clip Launch Grid as Deployment Matrix** --- Queued,
+- [ ] **MUSIC-308** · `SPX-4067` · ★★★★★ **Clip Launch Grid as Deployment Matrix** — Queued,
     running and stopped clips become deployable jobs/environments.
--   [ ] ★★★★☆ **Metronome as Cadence Indicator** --- A steady pulse
+- [ ] **MUSIC-309** · `SPX-4068` · ★★★★☆ **Metronome as Cadence Indicator** — A steady pulse
     represents polling, refresh or scheduled execution cadence.
--   [ ] ★★★★★ **MIDI Piano Roll as Schedule Editor** --- Notes on a time
+- [ ] **MUSIC-310** · `SPX-4069` · ★★★★★ **MIDI Piano Roll as Schedule Editor** — Notes on a time
     grid become tasks with duration and lane/category.
 
 ------------------------------------------------------------------------
 
 # Top 50 Ranked Shortlist
 
-**This section intentionally contains exactly 50 ranked concepts.**
-Ranked for tactile interaction potential, software portability, visual
-distinctiveness, technical variety and usefulness as standalone
-Playground specimens.
-
-## 1. Motorised Fader Recall
-
--   **Family:** Mixing Consoles / Channel Strips
--   **Concept:** Several faders snap into previously saved positions in
-    a choreographed recall sequence.
-
-## 2. Scene Recall Sweep
-
--   **Family:** Mixing Consoles / Channel Strips
--   **Concept:** An entire console changes state as stored faders, mutes
-    and sends return to exact values.
-
-## 3. Analog VU Needle
-
--   **Family:** VU Meters / Level Monitoring
--   **Concept:** A damped needle responds to a deterministic level
-    sequence and settles naturally.
-
-## 4. LED Ladder Meter
-
--   **Family:** VU Meters / Level Monitoring
--   **Concept:** Segmented level bars climb through green/amber/red-like
-    zones and fall with controlled decay.
-
-## 5. Peak Hold Marker
-
--   **Family:** VU Meters / Level Monitoring
--   **Concept:** A peak indicator remains briefly above the falling
-    meter before dropping.
-
-## 6. Parametric EQ Node Drag
-
--   **Family:** Equalisers / Frequency
--   **Concept:** Frequency nodes move across a graph while their
-    bell/shelf curves update continuously.
-
-## 7. EQ Bypass Flatten
-
--   **Family:** Equalisers / Frequency
--   **Concept:** The active curve smoothly collapses to a neutral flat
-    line.
-
-## 8. Spectrum Bar Dance
-
--   **Family:** Spectrum Analysers / Scopes
--   **Concept:** Frequency bars react to a deterministic signal loop and
-    freeze under reduced motion.
-
-## 9. Oscilloscope Trace
-
--   **Family:** Spectrum Analysers / Scopes
--   **Concept:** A waveform draws continuously across a bounded
-    instrument screen.
-
-## 10. Spectrogram Waterfall
-
--   **Family:** Spectrum Analysers / Scopes
--   **Concept:** Frequency intensity rows descend through time like a
-    compact waterfall display.
-
-## 11. Compressor Threshold Crush
-
--   **Family:** Compressors / Dynamics
--   **Concept:** Signal peaks visibly compress after crossing a movable
-    threshold.
-
-## 12. Gain Reduction Slam
-
--   **Family:** Compressors / Dynamics
--   **Concept:** A transient produces a decisive reduction-meter impact
-    followed by recovery.
-
-## 13. Noise Gate Open
-
--   **Family:** Compressors / Dynamics
--   **Concept:** A closed signal path opens only when input crosses a
-    threshold.
-
-## 14. Stomp Switch Press
-
--   **Family:** Pedals / Stompboxes
--   **Concept:** A footswitch depresses with tactile travel and toggles
-    a persistent effect LED.
-
-## 15. Pedalboard Signal Chain
-
--   **Family:** Pedals / Stompboxes
--   **Concept:** Several pedals connect with a glowing signal path that
-    reroutes when bypassed.
-
-## 16. Tap Tempo Pulse
-
--   **Family:** Pedals / Stompboxes
--   **Concept:** Repeated taps establish a tempo and a status LED adopts
-    the measured cadence.
-
-## 17. Oscillator Wave Morph
-
--   **Family:** Synthesizers / Keyboards
--   **Concept:** A waveform changes continuously between sine-like,
-    triangle-like, saw-like and square-like forms.
-
-## 18. Arpeggiator Step Chase
-
--   **Family:** Synthesizers / Keyboards
--   **Concept:** A row of note steps lights sequentially at a
-    deterministic tempo.
-
-## 19. 16-Step Sequencer Chase
-
--   **Family:** Drum Machines / Sequencers
--   **Concept:** A playhead advances across sixteen steps while active
-    triggers flash.
-
-## 20. Swing Offset
-
--   **Family:** Drum Machines / Sequencers
--   **Concept:** Alternating sequencer steps visibly shift in timing
-    while the grid remains fixed.
-
-## 21. Velocity Pad Hit
-
--   **Family:** Samplers / Pads
--   **Concept:** A performance pad compresses and blooms according to
-    hit strength.
-
-## 22. Sample Slice Markers
-
--   **Family:** Samplers / Pads
--   **Concept:** Transient markers divide a waveform into playable
-    slices.
-
-## 23. Vinyl Spin-Up
-
--   **Family:** Turntables / DJ Decks
--   **Concept:** A platter accelerates from rest to stable speed with
-    believable easing.
-
-## 24. Scratch Recoil
-
--   **Family:** Turntables / DJ Decks
--   **Concept:** Dragging the platter scrubs the waveform forward/back
-    and releases into playback.
-
-## 25. Deck Sync Lock
-
--   **Family:** Turntables / DJ Decks
--   **Concept:** Two tempo values converge and a phase indicator aligns.
-
-## 26. Crossfader Blend
-
--   **Family:** Turntables / DJ Decks
--   **Concept:** A horizontal fader moves between deck A and B while
-    their visual prominence crossfades.
-
-## 27. Scrolling DJ Waveform
-
--   **Family:** DJ Waveforms / Beatgrids
--   **Concept:** A detailed abstract waveform moves beneath a fixed
-    central playhead.
-
-## 28. Beatgrid Lock
-
--   **Family:** DJ Waveforms / Beatgrids
--   **Concept:** Misaligned beat markers slide until they snap onto
-    waveform transients.
-
-## 29. Loop Region Clamp
-
--   **Family:** DJ Waveforms / Beatgrids
--   **Concept:** Two loop handles close around a waveform region and
-    playback cycles inside it.
-
-## 30. Patch Cable Connect
-
--   **Family:** Patch Bays / Modular Routing
--   **Concept:** A cable grows from one jack to another and locks into a
-    routed state.
-
-## 31. Signal Flow Pulse
-
--   **Family:** Patch Bays / Modular Routing
--   **Concept:** A finite pulse travels along connected cables to
-    explain routing.
-
-## 32. Feedback Loop Warning
-
--   **Family:** Patch Bays / Modular Routing
--   **Concept:** A newly created circular route triggers a clear
-    feedback warning state.
-
-## 33. Envelope Generator Cycle
-
--   **Family:** Modular Synth / CV
--   **Concept:** Attack, decay, sustain and release stages draw through
-    a compact envelope graph.
-
-## 34. Clock Divider Cascade
-
--   **Family:** Modular Synth / CV
--   **Concept:** One master pulse generates slower subordinate clock
-    indicators.
-
-## 35. Rack Unit Power-On
-
--   **Family:** Rack Gear / Studio Hardware
--   **Concept:** A dark rack device wakes through LEDs, display segments
-    and meter acquisition.
-
-## 36. Reel Spin-Up
-
--   **Family:** Tape Machines / Reel-to-Reel
--   **Concept:** Two reels accelerate into coordinated tape transport.
-
-## 37. Tape Thread Route
-
--   **Family:** Tape Machines / Reel-to-Reel
--   **Concept:** A tape path draws through guides and heads before
-    playback becomes ready.
-
-## 38. Tape Splice
-
--   **Family:** Tape Machines / Reel-to-Reel
--   **Concept:** Two waveform/tape regions cut apart and rejoin at a
-    visible splice point.
-
-## 39. Tube Warm-Up
-
--   **Family:** Amplifiers / Guitar Heads
--   **Concept:** A dark amplifier slowly acquires warm valve-like
-    indicators before becoming ready.
-
-## 40. Needle Tuner Centre
-
--   **Family:** Guitar Tuners / Pitch
--   **Concept:** A tuning needle moves from flat/sharp toward a centred
-    in-tune target.
-
-## 41. Strobe Tuner Lock
-
--   **Family:** Guitar Tuners / Pitch
--   **Concept:** Moving strobe bands slow and stop as pitch reaches
-    target.
-
-## 42. Recording Waveform Grow
-
--   **Family:** Microphones / Recording
--   **Concept:** A waveform builds from left to right as a finite
-    recording progresses.
-
-## 43. Auto Gain Scan
-
--   **Family:** Audio Interfaces
--   **Concept:** A short calibration sequence samples levels and settles
-    on a gain value.
-
-## 44. Transport Play Engage
-
--   **Family:** DAW Transport / Timeline
--   **Concept:** A play control latches and the timeline playhead begins
-    moving.
-
-## 45. Loop Brace Clamp
-
--   **Family:** DAW Transport / Timeline
--   **Concept:** Loop handles close around a timeline range and playback
-    cycles within it.
-
-## 46. Waveform Trim Handles
-
--   **Family:** Waveform Editing
--   **Concept:** Start/end handles clamp around a waveform and update
-    the active region.
-
-## 47. Crossfade Overlap
-
--   **Family:** Waveform Editing
--   **Concept:** Two overlapping clips gain complementary fade curves.
-
-## 48. Quantize Sweep
-
--   **Family:** MIDI / Piano Roll
--   **Concept:** Off-grid notes slide simultaneously toward exact
-    rhythmic divisions.
-
-## 49. Automation Point Draw
-
--   **Family:** Automation / Modulation
--   **Concept:** A point appears on a parameter lane and connects into
-    the existing curve.
-
-## 50. Loop Record Ring
-
--   **Family:** Loopers / Live Performance
--   **Concept:** A circular progress ring records one loop length and
-    closes precisely at the boundary.
-
-------------------------------------------------------------------------
+The original ranked Top 50 and its recommended build waves are retained below.
+
+## Shipped (mapped to live specimens)
+
+| MUSIC | SPX | Specimen id | Title |
+| --- | --- | --- | --- |
+| MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
+
+- Progress: **1 / 310** complete.
+
+| Status | Count |
+| --- | --- |
+| Done | 1 |
+| Open | 309 |
+
+## Core first-wave / build queue
+
+- [x] **MUSIC-002** · `SPX-3761` · **Motorised Fader Recall** · `motorised-fader-recall`
+- [ ] **MUSIC-009** · `SPX-3768` · **Scene Recall Sweep** · scaffold `scene-recall-sweep`
+- [ ] **MUSIC-011** · `SPX-3770` · **Analog VU Needle** · scaffold `analog-vu-needle`
+- [ ] **MUSIC-012** · `SPX-3771` · **LED Ladder Meter** · scaffold `led-ladder-meter`
+- [ ] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · scaffold `peak-hold-marker`
+- [ ] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · scaffold `parametric-eq-node-drag`
+- [ ] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · scaffold `eq-bypass-flatten`
+- [ ] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · scaffold `spectrum-bar-dance`
+- [ ] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · scaffold `oscilloscope-trace`
+- [ ] **MUSIC-032** · `SPX-3791` · **Spectrogram Waterfall** · scaffold `spectrogram-waterfall`
+- [ ] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · scaffold `compressor-threshold-crush`
+- [ ] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · scaffold `gain-reduction-slam`
+- [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
+- [ ] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · scaffold `stomp-switch-press`
+- [ ] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · scaffold `pedalboard-signal-chain`
+- [ ] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · scaffold `tap-tempo-pulse`
+- [ ] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · scaffold `oscillator-wave-morph`
+- [ ] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · scaffold `arpeggiator-step-chase`
+- [ ] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · scaffold `16-step-sequencer-chase`
+- [ ] **MUSIC-066** · `SPX-3825` · **Swing Offset** · scaffold `swing-offset`
+- [ ] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · scaffold `velocity-pad-hit`
+- [ ] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · scaffold `sample-slice-markers`
+- [ ] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · scaffold `vinyl-spin-up`
+- [ ] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · scaffold `scratch-recoil`
+- [ ] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · scaffold `deck-sync-lock`
+- [ ] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · scaffold `crossfader-blend`
+- [ ] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · scaffold `scrolling-dj-waveform`
+- [ ] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · scaffold `beatgrid-lock`
+- [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`
+- [ ] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · scaffold `patch-cable-connect`
+- [ ] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · scaffold `signal-flow-pulse`
+- [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
+- [ ] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · scaffold `envelope-generator-cycle`
+- [ ] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · scaffold `clock-divider-cascade`
+- [ ] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · scaffold `rack-unit-power-on`
+- [ ] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · scaffold `reel-spin-up`
+- [ ] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · scaffold `tape-thread-route`
+- [ ] **MUSIC-130** · `SPX-3889` · **Tape Splice** · scaffold `tape-splice`
+- [ ] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · scaffold `tube-warm-up`
+- [ ] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · scaffold `needle-tuner-centre`
+- [ ] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · scaffold `strobe-tuner-lock`
+- [ ] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · scaffold `recording-waveform-grow`
+- [ ] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · scaffold `auto-gain-scan`
+- [ ] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · scaffold `transport-play-engage`
+- [ ] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · scaffold `loop-brace-clamp`
+- [ ] **MUSIC-185** · `SPX-3944` · **Waveform Trim Handles** · scaffold `waveform-trim-handles`
+- [ ] **MUSIC-189** · `SPX-3948` · **Crossfade Overlap** · scaffold `crossfade-overlap`
+- [ ] **MUSIC-197** · `SPX-3956` · **Quantize Sweep** · scaffold `quantize-sweep`
+- [ ] **MUSIC-201** · `SPX-3960` · **Automation Point Draw** · scaffold `automation-point-draw`
+- [ ] **MUSIC-213** · `SPX-3972` · **Loop Record Ring** · scaffold `loop-record-ring`
 
 # Recommended Build Waves
 
 ## Wave A --- Tactile hardware essentials
 
-1.  Motorised Fader Recall
-2.  Scene Recall Sweep
-3.  Analog VU Needle
-4.  LED Ladder Meter
-5.  Peak Hold Marker
-6.  Parametric EQ Node Drag
-7.  EQ Bypass Flatten
-8.  Compressor Threshold Crush
-9.  Stomp Switch Press
-10. Pedalboard Signal Chain
+1. **MUSIC-002** · `SPX-3761` · Motorised Fader Recall
+2. **MUSIC-009** · `SPX-3768` · Scene Recall Sweep
+3. **MUSIC-011** · `SPX-3770` · Analog VU Needle
+4. **MUSIC-012** · `SPX-3771` · LED Ladder Meter
+5. **MUSIC-013** · `SPX-3772` · Peak Hold Marker
+6. **MUSIC-019** · `SPX-3778` · Parametric EQ Node Drag
+7. **MUSIC-025** · `SPX-3784` · EQ Bypass Flatten
+8. **MUSIC-036** · `SPX-3795` · Compressor Threshold Crush
+9. **MUSIC-044** · `SPX-3803` · Stomp Switch Press
+10. **MUSIC-048** · `SPX-3807` · Pedalboard Signal Chain
 
 ## Wave B --- synthesis and sequencing
 
-11. Oscillator Wave Morph
-12. Arpeggiator Step Chase
-13. 16-Step Sequencer Chase
-14. Swing Offset
-15. Velocity Pad Hit
-16. Sample Slice Markers
-17. Envelope Generator Cycle
-18. Clock Divider Cascade
-19. Patch Cable Connect
-20. Signal Flow Pulse
+1. **MUSIC-057** · `SPX-3816` · Oscillator Wave Morph
+2. **MUSIC-060** · `SPX-3819` · Arpeggiator Step Chase
+3. **MUSIC-062** · `SPX-3821` · 16-Step Sequencer Chase
+4. **MUSIC-066** · `SPX-3825` · Swing Offset
+5. **MUSIC-071** · `SPX-3830` · Velocity Pad Hit
+6. **MUSIC-073** · `SPX-3832` · Sample Slice Markers
+7. **MUSIC-106** · `SPX-3865` · Envelope Generator Cycle
+8. **MUSIC-109** · `SPX-3868` · Clock Divider Cascade
+9. **MUSIC-097** · `SPX-3856` · Patch Cable Connect
+10. **MUSIC-101** · `SPX-3860` · Signal Flow Pulse
 
 ## Wave C --- DJ / performance
 
-21. Vinyl Spin-Up
-22. Scratch Recoil
-23. Deck Sync Lock
-24. Crossfader Blend
-25. Scrolling DJ Waveform
-26. Beatgrid Lock
-27. Loop Region Clamp
-28. Tap Tempo Pulse
-29. Loop Record Ring
-30. Feedback Loop Warning
+1. **MUSIC-079** · `SPX-3838` · Vinyl Spin-Up
+2. **MUSIC-085** · `SPX-3844` · Scratch Recoil
+3. **MUSIC-086** · `SPX-3845` · Deck Sync Lock
+4. **MUSIC-087** · `SPX-3846` · Crossfader Blend
+5. **MUSIC-089** · `SPX-3848` · Scrolling DJ Waveform
+6. **MUSIC-090** · `SPX-3849` · Beatgrid Lock
+7. **MUSIC-093** · `SPX-3852` · Loop Region Clamp
+8. **MUSIC-050** · `SPX-3809` · Tap Tempo Pulse
+9. **MUSIC-213** · `SPX-3972` · Loop Record Ring
+10. **MUSIC-105** · `SPX-3864` · Feedback Loop Warning
 
 ## Wave D --- studio / recording
 
-31. Spectrum Bar Dance
-32. Oscilloscope Trace
-33. Spectrogram Waterfall
-34. Gain Reduction Slam
-35. Noise Gate Open
-36. Rack Unit Power-On
-37. Reel Spin-Up
-38. Tape Thread Route
-39. Tape Splice
-40. Tube Warm-Up
+1. **MUSIC-028** · `SPX-3787` · Spectrum Bar Dance
+2. **MUSIC-030** · `SPX-3789` · Oscilloscope Trace
+3. **MUSIC-032** · `SPX-3791` · Spectrogram Waterfall
+4. **MUSIC-039** · `SPX-3798` · Gain Reduction Slam
+5. **MUSIC-041** · `SPX-3800` · Noise Gate Open
+6. **MUSIC-114** · `SPX-3873` · Rack Unit Power-On
+7. **MUSIC-122** · `SPX-3881` · Reel Spin-Up
+8. **MUSIC-123** · `SPX-3882` · Tape Thread Route
+9. **MUSIC-130** · `SPX-3889` · Tape Splice
+10. **MUSIC-143** · `SPX-3902` · Tube Warm-Up
 
 ## Wave E --- precision editing
 
-41. Needle Tuner Centre
-42. Strobe Tuner Lock
-43. Recording Waveform Grow
-44. Auto Gain Scan
-45. Transport Play Engage
-46. Loop Brace Clamp
-47. Waveform Trim Handles
-48. Crossfade Overlap
-49. Quantize Sweep
-50. Automation Point Draw
-
-------------------------------------------------------------------------
+1. **MUSIC-150** · `SPX-3909` · Needle Tuner Centre
+2. **MUSIC-151** · `SPX-3910` · Strobe Tuner Lock
+3. **MUSIC-165** · `SPX-3924` · Recording Waveform Grow
+4. **MUSIC-170** · `SPX-3929` · Auto Gain Scan
+5. **MUSIC-176** · `SPX-3935` · Transport Play Engage
+6. **MUSIC-179** · `SPX-3938` · Loop Brace Clamp
+7. **MUSIC-185** · `SPX-3944` · Waveform Trim Handles
+8. **MUSIC-189** · `SPX-3948` · Crossfade Overlap
+9. **MUSIC-197** · `SPX-3956` · Quantize Sweep
+10. **MUSIC-201** · `SPX-3960` · Automation Point Draw
 
 # Strong Software Mappings
 

@@ -143,6 +143,12 @@ Backlog: [`docs/catalogue/playstation-specimen-catalogue.md`](catalogue/playstat
 
 Backlog: [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md) (`NEWS-NNN` / `SPX-3523`…`SPX-3759`).
 
+### Music Equipment (`music-equipment`)
+
+*(manufacturer-neutral mixers, meters, instruments, pedals, sequencing, routing, recording, and editing controls; no branded panels, product silhouettes, audio samples, or external assets)*
+
+Backlog: [`docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md`](catalogue/music_equipment_motion_ui_specimen_catalogue.md) (`MUSIC-NNN` / `SPX-3760`…`SPX-4069`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

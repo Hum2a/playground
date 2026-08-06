@@ -1,0 +1,302 @@
+[
+  {
+    "id": "MUSIC-002",
+    "ref": "SPX-3761",
+    "title": "Motorised Fader Recall",
+    "slug": "motorised-fader-recall"
+  },
+  {
+    "id": "MUSIC-009",
+    "ref": "SPX-3768",
+    "title": "Scene Recall Sweep",
+    "slug": "scene-recall-sweep"
+  },
+  {
+    "id": "MUSIC-011",
+    "ref": "SPX-3770",
+    "title": "Analog VU Needle",
+    "slug": "analog-vu-needle"
+  },
+  {
+    "id": "MUSIC-012",
+    "ref": "SPX-3771",
+    "title": "LED Ladder Meter",
+    "slug": "led-ladder-meter"
+  },
+  {
+    "id": "MUSIC-013",
+    "ref": "SPX-3772",
+    "title": "Peak Hold Marker",
+    "slug": "peak-hold-marker"
+  },
+  {
+    "id": "MUSIC-019",
+    "ref": "SPX-3778",
+    "title": "Parametric EQ Node Drag",
+    "slug": "parametric-eq-node-drag"
+  },
+  {
+    "id": "MUSIC-025",
+    "ref": "SPX-3784",
+    "title": "EQ Bypass Flatten",
+    "slug": "eq-bypass-flatten"
+  },
+  {
+    "id": "MUSIC-028",
+    "ref": "SPX-3787",
+    "title": "Spectrum Bar Dance",
+    "slug": "spectrum-bar-dance"
+  },
+  {
+    "id": "MUSIC-030",
+    "ref": "SPX-3789",
+    "title": "Oscilloscope Trace",
+    "slug": "oscilloscope-trace"
+  },
+  {
+    "id": "MUSIC-032",
+    "ref": "SPX-3791",
+    "title": "Spectrogram Waterfall",
+    "slug": "spectrogram-waterfall"
+  },
+  {
+    "id": "MUSIC-036",
+    "ref": "SPX-3795",
+    "title": "Compressor Threshold Crush",
+    "slug": "compressor-threshold-crush"
+  },
+  {
+    "id": "MUSIC-039",
+    "ref": "SPX-3798",
+    "title": "Gain Reduction Slam",
+    "slug": "gain-reduction-slam"
+  },
+  {
+    "id": "MUSIC-041",
+    "ref": "SPX-3800",
+    "title": "Noise Gate Open",
+    "slug": "noise-gate-open"
+  },
+  {
+    "id": "MUSIC-044",
+    "ref": "SPX-3803",
+    "title": "Stomp Switch Press",
+    "slug": "stomp-switch-press"
+  },
+  {
+    "id": "MUSIC-048",
+    "ref": "SPX-3807",
+    "title": "Pedalboard Signal Chain",
+    "slug": "pedalboard-signal-chain"
+  },
+  {
+    "id": "MUSIC-050",
+    "ref": "SPX-3809",
+    "title": "Tap Tempo Pulse",
+    "slug": "tap-tempo-pulse"
+  },
+  {
+    "id": "MUSIC-057",
+    "ref": "SPX-3816",
+    "title": "Oscillator Wave Morph",
+    "slug": "oscillator-wave-morph"
+  },
+  {
+    "id": "MUSIC-060",
+    "ref": "SPX-3819",
+    "title": "Arpeggiator Step Chase",
+    "slug": "arpeggiator-step-chase"
+  },
+  {
+    "id": "MUSIC-062",
+    "ref": "SPX-3821",
+    "title": "16-Step Sequencer Chase",
+    "slug": "16-step-sequencer-chase"
+  },
+  {
+    "id": "MUSIC-066",
+    "ref": "SPX-3825",
+    "title": "Swing Offset",
+    "slug": "swing-offset"
+  },
+  {
+    "id": "MUSIC-071",
+    "ref": "SPX-3830",
+    "title": "Velocity Pad Hit",
+    "slug": "velocity-pad-hit"
+  },
+  {
+    "id": "MUSIC-073",
+    "ref": "SPX-3832",
+    "title": "Sample Slice Markers",
+    "slug": "sample-slice-markers"
+  },
+  {
+    "id": "MUSIC-079",
+    "ref": "SPX-3838",
+    "title": "Vinyl Spin-Up",
+    "slug": "vinyl-spin-up"
+  },
+  {
+    "id": "MUSIC-085",
+    "ref": "SPX-3844",
+    "title": "Scratch Recoil",
+    "slug": "scratch-recoil"
+  },
+  {
+    "id": "MUSIC-086",
+    "ref": "SPX-3845",
+    "title": "Deck Sync Lock",
+    "slug": "deck-sync-lock"
+  },
+  {
+    "id": "MUSIC-087",
+    "ref": "SPX-3846",
+    "title": "Crossfader Blend",
+    "slug": "crossfader-blend"
+  },
+  {
+    "id": "MUSIC-089",
+    "ref": "SPX-3848",
+    "title": "Scrolling DJ Waveform",
+    "slug": "scrolling-dj-waveform"
+  },
+  {
+    "id": "MUSIC-090",
+    "ref": "SPX-3849",
+    "title": "Beatgrid Lock",
+    "slug": "beatgrid-lock"
+  },
+  {
+    "id": "MUSIC-093",
+    "ref": "SPX-3852",
+    "title": "Loop Region Clamp",
+    "slug": "loop-region-clamp"
+  },
+  {
+    "id": "MUSIC-097",
+    "ref": "SPX-3856",
+    "title": "Patch Cable Connect",
+    "slug": "patch-cable-connect"
+  },
+  {
+    "id": "MUSIC-101",
+    "ref": "SPX-3860",
+    "title": "Signal Flow Pulse",
+    "slug": "signal-flow-pulse"
+  },
+  {
+    "id": "MUSIC-105",
+    "ref": "SPX-3864",
+    "title": "Feedback Loop Warning",
+    "slug": "feedback-loop-warning"
+  },
+  {
+    "id": "MUSIC-106",
+    "ref": "SPX-3865",
+    "title": "Envelope Generator Cycle",
+    "slug": "envelope-generator-cycle"
+  },
+  {
+    "id": "MUSIC-109",
+    "ref": "SPX-3868",
+    "title": "Clock Divider Cascade",
+    "slug": "clock-divider-cascade"
+  },
+  {
+    "id": "MUSIC-114",
+    "ref": "SPX-3873",
+    "title": "Rack Unit Power-On",
+    "slug": "rack-unit-power-on"
+  },
+  {
+    "id": "MUSIC-122",
+    "ref": "SPX-3881",
+    "title": "Reel Spin-Up",
+    "slug": "reel-spin-up"
+  },
+  {
+    "id": "MUSIC-123",
+    "ref": "SPX-3882",
+    "title": "Tape Thread Route",
+    "slug": "tape-thread-route"
+  },
+  {
+    "id": "MUSIC-130",
+    "ref": "SPX-3889",
+    "title": "Tape Splice",
+    "slug": "tape-splice"
+  },
+  {
+    "id": "MUSIC-143",
+    "ref": "SPX-3902",
+    "title": "Tube Warm-Up",
+    "slug": "tube-warm-up"
+  },
+  {
+    "id": "MUSIC-150",
+    "ref": "SPX-3909",
+    "title": "Needle Tuner Centre",
+    "slug": "needle-tuner-centre"
+  },
+  {
+    "id": "MUSIC-151",
+    "ref": "SPX-3910",
+    "title": "Strobe Tuner Lock",
+    "slug": "strobe-tuner-lock"
+  },
+  {
+    "id": "MUSIC-165",
+    "ref": "SPX-3924",
+    "title": "Recording Waveform Grow",
+    "slug": "recording-waveform-grow"
+  },
+  {
+    "id": "MUSIC-170",
+    "ref": "SPX-3929",
+    "title": "Auto Gain Scan",
+    "slug": "auto-gain-scan"
+  },
+  {
+    "id": "MUSIC-176",
+    "ref": "SPX-3935",
+    "title": "Transport Play Engage",
+    "slug": "transport-play-engage"
+  },
+  {
+    "id": "MUSIC-179",
+    "ref": "SPX-3938",
+    "title": "Loop Brace Clamp",
+    "slug": "loop-brace-clamp"
+  },
+  {
+    "id": "MUSIC-185",
+    "ref": "SPX-3944",
+    "title": "Waveform Trim Handles",
+    "slug": "waveform-trim-handles"
+  },
+  {
+    "id": "MUSIC-189",
+    "ref": "SPX-3948",
+    "title": "Crossfade Overlap",
+    "slug": "crossfade-overlap"
+  },
+  {
+    "id": "MUSIC-197",
+    "ref": "SPX-3956",
+    "title": "Quantize Sweep",
+    "slug": "quantize-sweep"
+  },
+  {
+    "id": "MUSIC-201",
+    "ref": "SPX-3960",
+    "title": "Automation Point Draw",
+    "slug": "automation-point-draw"
+  },
+  {
+    "id": "MUSIC-213",
+    "ref": "SPX-3972",
+    "title": "Loop Record Ring",
+    "slug": "loop-record-ring"
+  }
+]
