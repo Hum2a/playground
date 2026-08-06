@@ -1,0 +1,8 @@
+{
+  "name": "photo-lead-expand",
+  "ref": "SPX-3646",
+  "title": "Photo Lead Expand",
+  "mode": "ticker",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

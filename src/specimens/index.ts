@@ -630,6 +630,8 @@ import { raceCalledStamp } from './race-called-stamp/entry'
 
 import { marketTicker } from './market-ticker/entry'
 
+import { photoLeadExpand } from './photo-lead-expand/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1173,6 +1175,7 @@ export const specimens: Specimen[] = [
   mapResultFill,
   raceCalledStamp,
   marketTicker,
+  photoLeadExpand,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
