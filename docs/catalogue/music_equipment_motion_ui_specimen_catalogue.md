@@ -203,7 +203,7 @@ specimens can feel tactile without needing sound.
     while another pattern's triggers replace it.
 - [ ] **MUSIC-065** · `SPX-3824` · ★★★★☆ **Velocity Accent Rise** — A step grows taller/brighter
     to represent increased velocity.
-- [ ] **MUSIC-066** · `SPX-3825` · ★★★★★ **Swing Offset** — Alternating sequencer steps visibly
+- [x] **MUSIC-066** · `SPX-3825` · ★★★★★ **Swing Offset** — Alternating sequencer steps visibly
     shift in timing while the grid remains fixed.
 - [ ] **MUSIC-067** · `SPX-3826` · ★★★★☆ **Pattern Clear Sweep** — Active steps switch off in a
     rapid left-to-right reset.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-066 | SPX-3825 | `swing-offset` | Swing Offset |
 | MUSIC-062 | SPX-3821 | `16-step-sequencer-chase` | 16-Step Sequencer Chase |
 | MUSIC-060 | SPX-3819 | `arpeggiator-step-chase` | Arpeggiator Step Chase |
 | MUSIC-057 | SPX-3816 | `oscillator-wave-morph` | Oscillator Wave Morph |
@@ -876,12 +877,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **13 / 310** complete.
+- Progress: **14 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 13 |
-| Open | 297 |
+| Done | 14 |
+| Open | 296 |
 
 ## Core first-wave / build queue
 
@@ -904,7 +905,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · `oscillator-wave-morph`
 - [x] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · `arpeggiator-step-chase`
 - [x] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · `16-step-sequencer-chase`
-- [ ] **MUSIC-066** · `SPX-3825` · **Swing Offset** · scaffold `swing-offset`
+- [x] **MUSIC-066** · `SPX-3825` · **Swing Offset** · `swing-offset`
 - [ ] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · scaffold `velocity-pad-hit`
 - [ ] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · scaffold `sample-slice-markers`
 - [ ] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · scaffold `vinyl-spin-up`

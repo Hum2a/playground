@@ -560,4 +560,5 @@ export const specimenOrder: string[] = [
   'oscillator-wave-morph',
   'arpeggiator-step-chase',
   '16-step-sequencer-chase',
+  'swing-offset',
 ]
