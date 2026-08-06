@@ -177,6 +177,7 @@ import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sharedXAxisNavigation } from './shared-x-axis-navigation/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
+import { snackbarRise } from './snackbar-rise/entry'
 import { spotlightMaterialise } from './spotlight-materialise/entry'
 import { springSelectionPill } from './spring-selection-pill/entry'
 import { stageManagerStackShift } from './stage-manager-stack-shift/entry'
@@ -428,6 +429,7 @@ export const specimens: Specimen[] = [
   sharedResourcePool,
   sharedXAxisNavigation,
   sheetRubberBandLimit,
+  snackbarRise,
   spotlightMaterialise,
   springSelectionPill,
   stageManagerStackShift,

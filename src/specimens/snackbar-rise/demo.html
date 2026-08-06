@@ -1,0 +1,33 @@
+<div class="sbr" data-snackbar-rise data-phase="idle">
+  <div class="sbr__host">
+    <header class="sbr__host-bar">TASKS</header>
+    <ul class="sbr__list" data-sbr-list>
+      <li class="sbr__row" data-sbr-row>
+        <span class="sbr__row-label">Review draft</span>
+        <button type="button" class="sbr__delete" data-sbr-delete>DELETE</button>
+      </li>
+      <li class="sbr__row" data-sbr-row>
+        <span class="sbr__row-label">Send invoice</span>
+        <button type="button" class="sbr__delete" data-sbr-delete>DELETE</button>
+      </li>
+      <li class="sbr__row" data-sbr-row>
+        <span class="sbr__row-label">Archive notes</span>
+        <button type="button" class="sbr__delete" data-sbr-delete>DELETE</button>
+      </li>
+    </ul>
+    <div
+      class="sbr__snackbar"
+      data-sbr-snackbar
+      role="status"
+      aria-live="polite"
+      hidden
+      tabindex="0"
+    >
+      <span class="sbr__copy" data-sbr-copy>Item removed</span>
+      <button type="button" class="sbr__undo" data-sbr-undo>UNDO</button>
+    </div>
+  </div>
+  <p class="sbr__status" role="status" aria-live="polite" data-sbr-status>
+    Delete a row to show the snackbar.
+  </p>
+</div>
