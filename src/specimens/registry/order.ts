@@ -593,4 +593,5 @@ export const specimenOrder: string[] = [
   'auto-gain-scan',
   'transport-play-engage',
   'loop-brace-clamp',
+  'waveform-trim-handles',
 ]
