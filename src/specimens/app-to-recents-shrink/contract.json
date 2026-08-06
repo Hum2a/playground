@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/app-to-recents-shrink.schema.json",
+  "title": "AppToRecentsShrink",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "card", "transition", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "app-to-recents-shrink" },
+    "intent": {
+      "type": "string",
+      "const": "Active app surface becomes centre recents task card with adjacent cards."
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "radiusPx", "sideOffsetPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 300 },
+        "heightPx": { "type": "number", "const": 520 },
+        "radiusPx": { "type": "number", "const": 26 },
+        "sideOffsetPx": { "type": "number", "const": 250 }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 380 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantGeometry", "triggers"],
+      "properties": {
+        "instantGeometry": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "active"],
+      "properties": {
+        "root": { "type": "string", "const": "atrs" },
+        "active": { "type": "string", "const": "atrs__active" }
+      }
+    }
+  }
+}

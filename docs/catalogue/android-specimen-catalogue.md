@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 417** complete.
+- Progress: **10 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 408 |
+| Done | 10 |
+| Open | 407 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-245 | `SPX-1802` | `app-to-recents-shrink` | App-to-Recents Shrink |
 | AND-054 | `SPX-1611` | `home-swipe-up` | Home Swipe Up |
 | AND-061 | `SPX-1618` | `app-launch-from-icon` | App Launch from Icon |
 | AND-011 | `SPX-1568` | `shared-x-axis-navigation` | Shared X-Axis Navigation |
@@ -55,7 +56,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
 - [x] **AND-061** · `SPX-1618` · **App Launch from Icon** — launcher-home-screen
 - [x] **AND-054** · `SPX-1611` · **Home Swipe Up** — gesture-navigation
-- [ ] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — android-recents-overview
+- [x] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — android-recents-overview
 - [ ] **AND-248** · `SPX-1805` · **Recents Card Restore** — android-recents-overview
 - [ ] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification-shade
 - [ ] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — quick-settings
@@ -422,7 +423,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Android Recents / Overview
 
-- [ ] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — current task contracts into an overview card.
+- [x] **AND-245** · `SPX-1802` · **App-to-Recents Shrink** — current task contracts into an overview card.
 - [ ] **AND-246** · `SPX-1803` · **Recents Horizontal Paging** — task cards move with snap/velocity semantics.
 - [ ] **AND-247** · `SPX-1804` · **Recents Card Dismiss** — upward swipe removes a task from overview.
 - [ ] **AND-248** · `SPX-1805` · **Recents Card Restore** — selected task expands back into full application surface.

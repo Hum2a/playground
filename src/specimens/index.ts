@@ -4,6 +4,7 @@ import { afterimageNavigation } from './afterimage-navigation/entry'
 import { airdropTransferArc } from './airdrop-transfer-arc/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
 import { appLaunchFromIcon } from './app-launch-from-icon/entry'
+import { appToRecentsShrink } from './app-to-recents-shrink/entry'
 import { authenticationFailureReset } from './authentication-failure-reset/entry'
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
@@ -249,6 +250,7 @@ export const specimens: Specimen[] = [
   airdropTransferArc,
   appLaunchExpansion,
   appLaunchFromIcon,
+  appToRecentsShrink,
   authenticationFailureReset,
   authenticationSuccessMorph,
   azureShardTransition,
