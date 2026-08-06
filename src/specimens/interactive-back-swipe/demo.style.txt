@@ -1,0 +1,318 @@
+/* interactive-back-swipe — portable specimen styles. Do not restyle to host tokens. */
+
+.ibs {
+  --ibs-ink: #12141a;
+  --ibs-panel: #1a1f28;
+  --ibs-line: #2c3440;
+  --ibs-muted: #6b7585;
+  --ibs-text: #e8ecf2;
+  --ibs-accent: #5a8fd4;
+  --ibs-pale: #9eb8e0;
+  --ibs-progress: 0;
+  --ibs-drag-px: 0px;
+  --ibs-width: 420px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 560px;
+  padding: 0.65rem 0.65rem 1.5rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  color: var(--ibs-text);
+  background: var(--ibs-ink);
+}
+
+.ibs *,
+.ibs *::before,
+.ibs *::after {
+  box-sizing: border-box;
+}
+
+.ibs__stage {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
+  border: 1px solid var(--ibs-line);
+  background: var(--ibs-panel);
+  touch-action: none;
+}
+
+.ibs__stack {
+  position: absolute;
+  inset: 0;
+}
+
+/* Previous surface — beneath at -28% scale .98 */
+
+.ibs__previous {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 1.1rem 1rem;
+  background: color-mix(in srgb, var(--ibs-panel) 92%, #0a0c10);
+  border-right: 1px solid var(--ibs-line);
+  transform: translateX(calc(-28% + var(--ibs-progress) * 28%))
+    scale(calc(0.98 + var(--ibs-progress) * 0.02));
+  opacity: calc(0.72 + var(--ibs-progress) * 0.28);
+  transition:
+    transform 220ms cubic-bezier(0.32, 0.72, 0.35, 1),
+    opacity 220ms cubic-bezier(0.32, 0.72, 0.35, 1);
+}
+
+.ibs.is-committing .ibs__previous {
+  transition-duration: 260ms;
+}
+
+.ibs.is-dragging .ibs__previous {
+  transition: none;
+}
+
+.ibs[data-ibs-view='projects'] .ibs__previous {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+  transition: none;
+}
+
+.ibs__nav-title {
+  margin: 0 0 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ibs-pale);
+}
+
+.ibs__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ibs__list-item {
+  padding: 0.55rem 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--ibs-muted);
+  border-bottom: 1px solid var(--ibs-line);
+}
+
+.ibs__list-item.is-active {
+  color: var(--ibs-text);
+  background: color-mix(in srgb, var(--ibs-accent) 18%, transparent);
+}
+
+/* Current surface — follows drag 1:1 */
+
+.ibs__current {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--ibs-panel);
+  border-left: 1px solid var(--ibs-line);
+  transform: translateX(var(--ibs-drag-px));
+  transition: transform 220ms cubic-bezier(0.32, 0.72, 0.35, 1);
+  box-shadow: -8px 0 24px color-mix(in srgb, #000 35%, transparent);
+}
+
+.ibs.is-committing .ibs__current {
+  transition-duration: 260ms;
+}
+
+.ibs.is-dragging .ibs__current {
+  transition: none;
+}
+
+.ibs[data-ibs-view='projects'] .ibs__current {
+  transform: translateX(100%);
+  pointer-events: none;
+}
+
+.ibs__header {
+  padding: 0.95rem 1rem 0.65rem;
+  border-bottom: 1px solid var(--ibs-line);
+}
+
+.ibs__header-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ibs-pale);
+}
+
+.ibs__body {
+  padding: 0.85rem 1rem;
+}
+
+.ibs__line {
+  margin: 0 0 0.45rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: var(--ibs-muted);
+}
+
+.ibs__block {
+  margin-top: 0.75rem;
+  height: 52px;
+  border: 1px solid var(--ibs-line);
+  background: color-mix(in srgb, var(--ibs-line) 35%, transparent);
+}
+
+.ibs__block--short {
+  height: 36px;
+  width: 72%;
+}
+
+/* Edge zone — 28px left */
+
+.ibs__edge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 4;
+  width: 28px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+/* Back hint — chevron + PROJECTS */
+
+.ibs__hint {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding-left: 0.45rem;
+  transform: translateY(-50%);
+  opacity: calc(min(1, var(--ibs-progress) * 2.8));
+  pointer-events: none;
+  transition: opacity 80ms linear;
+}
+
+.ibs.is-dragging .ibs__hint {
+  transition: none;
+}
+
+.ibs[data-ibs-view='projects'] .ibs__hint {
+  opacity: 0;
+}
+
+.ibs__chevron {
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid var(--ibs-text);
+  border-bottom: 2px solid var(--ibs-text);
+  transform: rotate(45deg);
+  margin-left: 2px;
+}
+
+.ibs__hint-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ibs-text);
+}
+
+/* Threshold tick — 2px at 42% */
+
+.ibs__tick {
+  position: absolute;
+  left: 42%;
+  top: 0;
+  z-index: 5;
+  width: 2px;
+  height: 0;
+  background: var(--ibs-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: height 60ms linear, opacity 60ms linear;
+}
+
+.ibs__tick.is-on {
+  height: 14px;
+  opacity: 1;
+}
+
+.ibs.is-dragging .ibs__tick {
+  transition: none;
+}
+
+/* Controls */
+
+.ibs__controls {
+  margin-top: 0.65rem;
+}
+
+.ibs__btn {
+  appearance: none;
+  border: 2px solid var(--ibs-line);
+  background: transparent;
+  color: var(--ibs-muted);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+.ibs__btn:hover:not(:disabled) {
+  color: var(--ibs-text);
+  border-color: var(--ibs-accent);
+}
+
+.ibs__btn:focus-visible {
+  outline: 2px solid var(--ibs-pale);
+  outline-offset: 2px;
+}
+
+.ibs__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ibs__status {
+  margin: 0.5rem 0 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  color: var(--ibs-muted);
+}
+
+/* Reduced motion — no parallax scale */
+
+@media (prefers-reduced-motion: reduce) {
+  .ibs__previous {
+    transform: translateX(calc(-28% + var(--ibs-progress) * 28%)) scale(1);
+  }
+
+  .ibs.is-committing .ibs__previous,
+  .ibs.is-canceling .ibs__previous,
+  .ibs.is-committing .ibs__current,
+  .ibs.is-canceling .ibs__current {
+    transition-duration: 0ms !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ibs__previous {
+  transform: translateX(calc(-28% + var(--ibs-progress) * 28%)) scale(1);
+}
+
+[data-force-reduced-motion='true'] .ibs.is-committing .ibs__previous,
+[data-force-reduced-motion='true'] .ibs.is-canceling .ibs__previous,
+[data-force-reduced-motion='true'] .ibs.is-committing .ibs__current,
+[data-force-reduced-motion='true'] .ibs.is-canceling .ibs__current {
+  transition-duration: 0ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ibs__previous {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .ibs__previous {
+  animation: none;
+}
