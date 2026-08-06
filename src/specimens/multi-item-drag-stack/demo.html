@@ -1,0 +1,43 @@
+<div class="mds" data-multi-item-drag-stack data-phase="idle">
+  <p class="mds__label">SELECTED FILES</p>
+
+  <div class="mds__stage" data-mds-stage>
+    <div class="mds__sources">
+      <article class="mds__card" data-mds-source="0" data-selected>
+        <span class="mds__glyph" aria-hidden="true"></span>
+        <span class="mds__name">A.MD</span>
+      </article>
+      <article class="mds__card" data-mds-source="1" data-selected>
+        <span class="mds__glyph mds__glyph--pdf" aria-hidden="true"></span>
+        <span class="mds__name">B.PDF</span>
+      </article>
+      <article class="mds__card" data-mds-source="2" data-selected>
+        <span class="mds__glyph mds__glyph--img" aria-hidden="true"></span>
+        <span class="mds__name">C.PNG</span>
+      </article>
+      <article class="mds__card" data-mds-source="3" data-selected>
+        <span class="mds__glyph mds__glyph--json" aria-hidden="true"></span>
+        <span class="mds__name">D.JSON</span>
+      </article>
+    </div>
+
+    <div class="mds__target" data-mds-target aria-label="Drop target">
+      <span class="mds__target-label">DROP HERE</span>
+    </div>
+
+    <div class="mds__stack" data-mds-stack hidden aria-hidden="true">
+      <div class="mds__proxy" data-mds-proxy="3"><span>D.JSON</span></div>
+      <div class="mds__proxy" data-mds-proxy="2"><span>C.PNG</span></div>
+      <div class="mds__proxy" data-mds-proxy="1"><span>B.PDF</span></div>
+      <div class="mds__proxy" data-mds-proxy="0"><span>A.MD</span></div>
+      <span class="mds__badge" data-mds-badge aria-hidden="true">4</span>
+    </div>
+  </div>
+
+  <div class="mds__controls">
+    <button type="button" class="mds__btn" data-mds-start>START DRAG</button>
+    <button type="button" class="mds__btn mds__btn--ghost" data-mds-reset hidden>RESET</button>
+  </div>
+
+  <p class="mds__status" role="status" aria-live="polite" data-mds-status>Four files selected. Start drag.</p>
+</div>

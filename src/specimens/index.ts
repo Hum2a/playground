@@ -116,6 +116,7 @@ import { missionControlSpread } from './mission-control-spread/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
+import { multiItemDragStack } from './multi-item-drag-stack/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
@@ -337,6 +338,7 @@ export const specimens: Specimen[] = [
   monochromeBattleSlideIn,
   moonPhaseProgress,
   moveLearned,
+  multiItemDragStack,
   newspaperHeadlineDrop,
   notificationBannerDrop,
   notificationExpand,
