@@ -1,0 +1,8 @@
+{
+  "name": "masthead-assemble",
+  "ref": "SPX-3532",
+  "title": "Masthead Assemble",
+  "mode": "paper",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

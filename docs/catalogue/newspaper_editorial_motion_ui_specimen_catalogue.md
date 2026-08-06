@@ -56,7 +56,7 @@ chronology and information priority.
 
 # 2. Mastheads / Section Identity
 
-- [ ] **NEWS-010** · `SPX-3532` · ★★★★★ **Masthead Assemble** — Large editorial letterforms and
+- [x] **NEWS-010** · `SPX-3532` · ★★★★★ **Masthead Assemble** — Large editorial letterforms and
     rules assemble from separated fragments into a stable publication
     header.
 - [ ] **NEWS-011** · `SPX-3533` · ★★★★★ **Section Flag Drop** — A section label drops into the
@@ -678,17 +678,18 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-010 | SPX-3532 | `masthead-assemble` | Masthead Assemble |
 | NEWS-005 | SPX-3527 | `lead-story-promotion` | Lead Story Promotion |
 | NEWS-003 | SPX-3525 | `late-edition-stamp` | Late Edition Stamp |
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **4 / 237** complete.
+- Progress: **5 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 233 |
+| Done | 5 |
+| Open | 232 |
 
 ## Core first-wave / build queue
 
@@ -696,7 +697,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-002** · `SPX-3524` · **Front Page Replate** · `front-page-replate`
 - [x] **NEWS-003** · `SPX-3525` · **Late Edition Stamp** · `late-edition-stamp`
 - [x] **NEWS-005** · `SPX-3527` · **Lead Story Promotion** · `lead-story-promotion`
-- [ ] **NEWS-010** · `SPX-3532` · **Masthead Assemble** · scaffold `masthead-assemble`
+- [x] **NEWS-010** · `SPX-3532` · **Masthead Assemble** · `masthead-assemble`
 - [ ] **NEWS-011** · `SPX-3533` · **Section Flag Drop** · scaffold `section-flag-drop`
 - [ ] **NEWS-018** · `SPX-3540` · **Headline Typeset Reveal** · scaffold `headline-typeset-reveal`
 - [ ] **NEWS-019** · `SPX-3541` · **Headline Reflow** · scaffold `headline-reflow`

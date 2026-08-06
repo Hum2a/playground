@@ -542,6 +542,8 @@ import { lateEditionStamp } from './late-edition-stamp/entry'
 
 import { leadStoryPromotion } from './lead-story-promotion/entry'
 
+import { mastheadAssemble } from './masthead-assemble/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1041,6 +1043,7 @@ export const specimens: Specimen[] = [
   frontPageReplate,
   lateEditionStamp,
   leadStoryPromotion,
+  mastheadAssemble,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
