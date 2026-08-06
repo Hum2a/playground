@@ -1,0 +1,54 @@
+<div class="hsd-demo" data-hsd-demo>
+  <p class="hsd-demo__live" data-hsd-live aria-live="polite">
+    Active destination Overview
+  </p>
+
+  <div class="hsd" data-hsd data-phase="idle" data-at="overview">
+    <p class="hsd__status" data-hsd-status>ACTIVE // OVERVIEW</p>
+
+    <div class="hsd__stage" data-hsd-stage>
+      <div class="hsd__rail" aria-hidden="true"></div>
+
+      <div class="hsd__nodes">
+        <div class="hsd__node" data-hsd-node="overview" data-active="true">
+          <span class="hsd__node-label">OVERVIEW</span>
+        </div>
+        <div class="hsd__node" data-hsd-node="metrics">
+          <span class="hsd__node-label">METRICS</span>
+        </div>
+        <div class="hsd__node" data-hsd-node="logs">
+          <span class="hsd__node-label">LOGS</span>
+        </div>
+      </div>
+
+      <!-- Selection indicator — travels OVERVIEW (0) → LOGS (320px) -->
+      <div class="hsd__indicator" data-hsd-indicator aria-hidden="true">
+        <span class="hsd__body"></span>
+
+        <span class="hsd__traces">
+          <i style="--len: 18px"></i>
+          <i style="--len: 30px"></i>
+          <i style="--len: 44px"></i>
+          <i style="--len: 62px"></i>
+          <i style="--len: 78px"></i>
+        </span>
+
+        <span class="hsd__ticks">
+          <i class="hsd__tick hsd__tick--tl"></i>
+          <i class="hsd__tick hsd__tick--tr"></i>
+          <i class="hsd__tick hsd__tick--bl"></i>
+          <i class="hsd__tick hsd__tick--br"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hsd-demo__controls">
+    <button type="button" class="hsd-demo__btn hsd-demo__btn--primary" data-hsd-go>
+      Go to Logs
+    </button>
+    <button type="button" class="hsd-demo__btn" data-hsd-reset>
+      Reset
+    </button>
+  </div>
+</div>

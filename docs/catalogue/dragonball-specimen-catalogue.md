@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **29 / 244** complete.
+- Progress: **30 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 215 |
+| Done | 30 |
+| Open | 214 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-177 | `SPX-1142` | `winner-advance` | Winner Advance |
 | DB-135 | `SPX-1100` | `afterimage-navigation` | Afterimage Navigation |
 | DB-150 | `SPX-1115` | `state-field-transfer` | State Field Transfer |
 | DB-176 | `SPX-1141` | `tournament-bracket-activation` | Tournament Bracket Activation |
@@ -62,6 +63,7 @@
 | DB-163 | `SPX-1128` | `core-seed-regeneration` | Core Seed Regeneration |
 | DB-195 | `SPX-1160` | `temporal-undo` | Temporal Undo |
 | DB-182 | `SPX-1147` | `champion-resolution` | Champion Resolution |
+| DB-134 | `SPX-1099` | `high-speed-dash-navigation` | High-Speed Dash Navigation |
 
 ## Core first-wave
 
@@ -266,7 +268,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Speed / Movement
 
-- [ ] **DB-134** ?? `SPX-1099` ?? **High-Speed Dash** ??? component exits before its motion trail has time to disappear.
+- [x] **DB-134** ?? `SPX-1099` ?? **High-Speed Dash** ??? component exits before its motion trail has time to disappear.
 - [x] **DB-135** ?? `SPX-1100` ?? **Afterimage Navigation** ??? previous component position remains for several frames after state movement.
 - [ ] **DB-136** ?? `SPX-1101` ?? **Vanish / Reappear** ??? target disappears immediately before an incoming interaction arrives.
 - [ ] **DB-137** ?? `SPX-1102` ?? **Speed-Line Transition** ??? directional lines dominate the viewport while content moves between states.
@@ -324,7 +326,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Tournament / Ranking
 
 - [x] **DB-176** ?? `SPX-1141` ?? **World Tournament Bracket** ??? competitors progress through a rigid elimination structure.
-- [ ] **DB-177** ?? `SPX-1142` ?? **Bracket Winner Advance** ??? winning entity physically moves into the next-round slot.
+- [x] **DB-177** ?? `SPX-1142` ?? **Bracket Winner Advance** ??? winning entity physically moves into the next-round slot.
 - [ ] **DB-178** ?? `SPX-1143` ?? **Tournament Intro Cards** ??? two competitors slam into opposing sides before comparison.
 - [ ] **DB-179** ?? `SPX-1144` ?? **Ring-Out Result** ??? entity crosses a fixed spatial boundary and immediately loses active status.
 - [ ] **DB-180** ?? `SPX-1145` ?? **Round Complete** ??? bracket restructures around remaining entities.

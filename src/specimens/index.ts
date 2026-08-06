@@ -64,6 +64,7 @@ import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
+import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
@@ -132,6 +133,7 @@ import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
+import { winnerAdvance } from './winner-advance/entry'
 import { wildEncounterTransition } from './wild-encounter-transition/entry'
 import type { Specimen } from './types'
 
@@ -253,6 +255,7 @@ export const specimens: Specimen[] = [
   fusionSelectionMerge,
   glassFractureReveal,
   graphicBurstHover,
+  highSpeedDashNavigation,
   holdToChargeButton,
   hoverCutout,
   impactFreezeFrame,
@@ -308,6 +311,7 @@ export const specimens: Specimen[] = [
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,
+  winnerAdvance,
   wildEncounterTransition,
 ]
 

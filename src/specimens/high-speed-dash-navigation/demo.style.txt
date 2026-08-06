@@ -1,0 +1,387 @@
+/* SPX-1099 High-Speed Dash Navigation — portable contract. Do not restyle to host tokens. */
+/* Frozen: OVERVIEW→LOGS 320px · anticipate 55ms · launch 40px/80ms · cruise 170ms · brake 55px/110ms · lock 90ms */
+
+.hsd-demo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 0.85rem 0.6rem;
+  background: #0e1016;
+  color: #e8e6e1;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.hsd-demo__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hsd {
+  --ink: #16181f;
+  --panel: #eceae4;
+  --line: rgba(232, 230, 225, 0.28);
+  --accent: #c8925e;
+  --active: #4e9e8f;
+  box-sizing: border-box;
+  width: min(100%, 400px);
+}
+
+.hsd__status {
+  margin: 0 0 0.55rem;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.75);
+}
+
+.hsd[data-at='logs'] .hsd__status {
+  color: var(--active);
+}
+
+.hsd__stage {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: 140px;
+  padding: 1.25rem 0.5rem 1.5rem;
+  border: 1px solid var(--line);
+  background: #0a0c10;
+}
+
+.hsd__rail {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  top: 72px;
+  height: 1px;
+  background: rgba(232, 230, 225, 0.15);
+}
+
+/* Three destinations — centres spaced so OVERVIEW→LOGS = 320px */
+.hsd__nodes {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  max-width: 400px;
+  /* node centres: 40px, 200px, 360px → span 320px */
+  padding: 0;
+}
+
+.hsd__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hsd__node-label {
+  padding: 0.45rem 0.55rem;
+  border: 1px solid rgba(232, 230, 225, 0.22);
+  background: #16181f;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hsd__node[data-active='true'] .hsd__node-label {
+  border-color: var(--active);
+  color: var(--active);
+}
+
+.hsd[data-pass='true'] .hsd__node[data-hsd-node='metrics'] {
+  animation: hsd-metrics-pass 90ms ease-out;
+}
+
+@keyframes hsd-metrics-pass {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/*
+ * Indicator sits under OVERVIEW centre (40px from stage left padding edge).
+ * Travel translateX(0 → 320px) to LOGS centre.
+ */
+.hsd__indicator {
+  position: absolute;
+  left: 40px;
+  top: 64px;
+  z-index: 3;
+  width: 56px;
+  height: 16px;
+  margin-left: -28px;
+  transform: translateX(0) scaleX(1);
+  transform-origin: 50% 50%;
+}
+
+.hsd__body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+
+/* Anticipation: 4px opposite (left), then compress */
+.hsd[data-phase='anticipate'] .hsd__indicator {
+  animation: hsd-anticipate 55ms ease-out forwards;
+}
+
+@keyframes hsd-anticipate {
+  0% {
+    transform: translateX(0) scaleX(1);
+  }
+  55% {
+    transform: translateX(-4px) scaleX(1);
+  }
+  100% {
+    transform: translateX(-4px) scaleX(0.9);
+  }
+}
+
+/*
+ * Travel 320px over 360ms after anticipation:
+ * 0–80ms → +40px; 80–250ms → +265px; 250–360ms → +320px with stretch.
+ */
+.hsd[data-phase='travel'] .hsd__indicator {
+  animation: hsd-travel 360ms cubic-bezier(0.55, 0.05, 0.85, 0.35) forwards;
+}
+
+@keyframes hsd-travel {
+  0% {
+    transform: translateX(0) scaleX(0.9);
+  }
+  /* first 40px @ 80/360 ≈ 22.2% — still accelerating */
+  22.2% {
+    transform: translateX(40px) scaleX(0.95);
+  }
+  /* end cruise at 265px @ 250/360 ≈ 69.4% */
+  69.4% {
+    transform: translateX(265px) scaleX(1);
+  }
+  /* brake stretch */
+  85% {
+    transform: translateX(300px) scaleX(1.12);
+  }
+  100% {
+    transform: translateX(320px) scaleX(1);
+  }
+}
+
+.hsd[data-phase='lock'] .hsd__indicator,
+.hsd[data-phase='done'] .hsd__indicator {
+  transform: translateX(320px) scaleX(1);
+  animation: none;
+}
+
+/* Exactly 5 speed traces — fixed lengths, left of body */
+.hsd__traces {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-right: 4px;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hsd__traces i {
+  display: block;
+  height: 1px;
+  width: var(--len);
+  background: rgba(200, 146, 94, 0.75);
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.hsd[data-phase='travel'] .hsd__traces {
+  opacity: 1;
+}
+
+.hsd[data-phase='travel'] .hsd__traces i:nth-child(1) {
+  animation: hsd-trace 80ms ease-out 20ms forwards;
+}
+
+.hsd[data-phase='travel'] .hsd__traces i:nth-child(2) {
+  animation: hsd-trace 90ms ease-out 40ms forwards;
+}
+
+.hsd[data-phase='travel'] .hsd__traces i:nth-child(3) {
+  animation: hsd-trace 100ms ease-out 90ms forwards;
+}
+
+.hsd[data-phase='travel'] .hsd__traces i:nth-child(4) {
+  animation: hsd-trace 110ms ease-out 120ms forwards;
+}
+
+.hsd[data-phase='travel'] .hsd__traces i:nth-child(5) {
+  animation: hsd-trace 120ms ease-out 150ms forwards;
+}
+
+@keyframes hsd-trace {
+  from {
+    transform: scaleX(0);
+    opacity: 0.4;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.hsd[data-phase='lock'] .hsd__traces,
+.hsd[data-phase='done'] .hsd__traces,
+.hsd[data-phase='idle'] .hsd__traces,
+.hsd[data-phase='anticipate'] .hsd__traces {
+  opacity: 0;
+  animation: none;
+}
+
+.hsd[data-phase='lock'] .hsd__traces i,
+.hsd[data-phase='done'] .hsd__traces i {
+  transform: scaleX(0);
+  animation: none;
+}
+
+/* Exactly 4 destination lock ticks */
+.hsd__ticks {
+  position: absolute;
+  inset: -5px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hsd__tick {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: var(--active);
+  border-style: solid;
+}
+
+.hsd__tick--tl {
+  left: 0;
+  top: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.hsd__tick--tr {
+  right: 0;
+  top: 0;
+  border-width: 2px 2px 0 0;
+}
+
+.hsd__tick--bl {
+  left: 0;
+  bottom: 0;
+  border-width: 0 0 2px 2px;
+}
+
+.hsd__tick--br {
+  right: 0;
+  bottom: 0;
+  border-width: 0 2px 2px 0;
+}
+
+.hsd[data-phase='lock'] .hsd__ticks {
+  animation: hsd-ticks 90ms ease-out forwards;
+}
+
+.hsd[data-phase='done'] .hsd__ticks {
+  opacity: 1;
+}
+
+@keyframes hsd-ticks {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hsd-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.hsd-demo__btn {
+  appearance: none;
+  min-width: 6.5rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(232, 230, 225, 0.4);
+  border-radius: 0;
+  background: transparent;
+  color: #e8e6e1;
+  font: inherit;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hsd-demo__btn--primary {
+  border-color: #c8925e;
+  background: #c8925e;
+  color: #16181f;
+}
+
+.hsd-demo__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.hsd-demo__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hsd__indicator,
+  .hsd__traces i,
+  .hsd__ticks,
+  .hsd__node[data-hsd-node='metrics'] {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .hsd__indicator,
+[data-force-reduced-motion='true'] .hsd__traces i,
+[data-force-reduced-motion='true'] .hsd__ticks,
+[data-force-reduced-motion='true'] .hsd__node[data-hsd-node='metrics'] {
+  animation: none !important;
+}

@@ -1,0 +1,53 @@
+{
+  "name": "high-speed-dash-navigation",
+  "intent": "Extreme-speed nav OVERVIEW→LOGS (320px) with opposite anticipation, five fixed speed traces, METRICS pass reaction, brake stretch, and four lock ticks.",
+  "catalogue": {
+    "db": "DB-134",
+    "ref": "SPX-1099",
+    "catalogueTitle": "High-Speed Dash"
+  },
+  "destinations": ["OVERVIEW", "METRICS", "LOGS"],
+  "distancePx": {
+    "overviewToLogs": 320,
+    "overviewToMetrics": 160
+  },
+  "timingsMs": {
+    "anticipate": 55,
+    "launch": 80,
+    "cruise": 170,
+    "brake": 110,
+    "lock": 90,
+    "travelTotal": 360
+  },
+  "anticipate": {
+    "oppositePx": 4,
+    "compressScaleX": 0.9
+  },
+  "launch": { "distancePx": 40, "durationMs": 80 },
+  "cruise": { "distancePx": 225, "durationMs": 170 },
+  "brake": {
+    "distancePx": 55,
+    "durationMs": 110,
+    "stretchScaleX": 1.12
+  },
+  "traces": {
+    "count": 5,
+    "lengthsPx": [18, 30, 44, 62, 78]
+  },
+  "metricsPass": { "translateYPx": [-2, 0], "durationMs": 90 },
+  "lock": { "cornerTicks": 4, "durationMs": 90, "status": "ACTIVE // LOGS" },
+  "api": {
+    "execute": "runHighSpeedDash()",
+    "reset": "resetHighSpeedDash()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately select LOGS"
+  },
+  "constraints": {
+    "noTeleport": true,
+    "noRandomTrails": true,
+    "noResidualTraces": true,
+    "noLooping": true
+  }
+}

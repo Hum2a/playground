@@ -164,6 +164,8 @@ export const SUGGESTED_FREE_TAGS = [
   'stack',
   'progress',
   'navigation',
+  'velocity',
+  'movement',
   'focus',
   'keyboard',
   'vertical',
