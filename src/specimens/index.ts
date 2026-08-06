@@ -136,6 +136,7 @@ import { eyecatchTransition } from './eyecatch-transition/entry'
 import { fabToComposerTransform } from './fab-to-composer-transform/entry'
 import { fadeThrough } from './fade-through/entry'
 import { failureShatter } from './failure-shatter/entry'
+import { falseLeadStrikeout } from './false-lead-strikeout/entry'
 import { fingerprintAcquisitionField } from './fingerprint-acquisition-field/entry'
 import { fingerprintScanMatch } from './fingerprint-scan-match/entry'
 import { fireballCommit } from './fireball-commit/entry'
@@ -545,6 +546,7 @@ export const specimens: Specimen[] = [
   fabToComposerTransform,
   fadeThrough,
   failureShatter,
+  falseLeadStrikeout,
   fingerprintAcquisitionField,
   fingerprintScanMatch,
   fireballCommit,
