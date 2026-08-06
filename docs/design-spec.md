@@ -63,7 +63,11 @@ export interface Specimen {
     scope: 'card' | 'fullscreen' | 'inline';
     intensity: 'subtle' | 'graphic' | 'maximal';
   };
-  tags: string[];             // freeform flavor only — never duplicate a facet value
+  inspiredBy?: {              // optional game lineage — see inspiration directory
+    franchise: string;        // e.g. 'persona'
+    works?: string[];         // e.g. ['persona-5']
+  };
+  tags: string[];             // effect flavor only — never duplicate facet/inspiration ids
   deps: 'none' | string[];    // 'none' means pure HTML+CSS
   motion: {
     loops: boolean;
@@ -92,9 +96,18 @@ specimen's story, so it ships with it.
 ### Taxonomy
 
 Facets are the catalogue’s primary filter axes. Source of truth:
-`src/specimens/taxonomy.ts`. Free `tags` are optional and must not repeat any facet literal
-(e.g. do not put `css-only` in `tags` when `tech: 'css-only'`). `tech` must match whether the
-specimen ships `demo.js` / `files.js`.
+`src/specimens/taxonomy.ts`. Free `tags` are optional effect flavor and must not repeat any
+facet or inspiration id.
+
+Game / franchise lineage uses optional `inspiredBy` from the inspiration directory
+(`src/specimens/inspiration.ts`, human mirror `docs/inspiration-directory.md`):
+
+```ts
+inspiredBy: { franchise: 'persona', works: ['persona-5'] }
+```
+
+Franchise = category (Persona); works = specific titles (Persona 5). `tech` must match whether
+the specimen ships `demo.js` / `files.js`.
 
 Registry is a plain array in `src/specimens/index.ts`. Adding a specimen = add a folder, add one
 import. No dynamic loading, no magic globs — the explicit list keeps ordering and ref numbers

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { DEFAULT_CONTROLS, PreviewFrame } from '../harness'
 import { buildPrompt, CopyButton } from '../prompt'
 import type { Specimen } from '../specimens'
-import { formatFacets } from '../specimens'
+import { formatFacets, formatInspiredBy } from '../specimens'
 import { useFrameVisibility } from './useFrameVisibility'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 import './specimen-plate.css'
@@ -72,6 +72,11 @@ export function SpecimenPlate({ specimen }: SpecimenPlateProps) {
       <p className="mono-label specimen-plate__facets">
         {formatFacets(specimen.facets)}
       </p>
+      {specimen.inspiredBy ? (
+        <p className="mono-label specimen-plate__inspired">
+          {formatInspiredBy(specimen.inspiredBy)}
+        </p>
+      ) : null}
       {specimen.tags.length > 0 ? (
         <p className="mono-label specimen-plate__tags">{specimen.tags.join(' · ')}</p>
       ) : null}

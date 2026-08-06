@@ -19,7 +19,7 @@ Specimen CSS is never edited to fit the site. It stays verbatim and portable —
 
 ## Taxonomy
 
-Every specimen needs required `facets` (kind / tech / scope / intensity) plus optional free `tags`. See `.cursor/rules/35_taxonomy.mdc` and `src/specimens/taxonomy.ts`.
+Every specimen needs required `facets` (kind / tech / scope / intensity) plus optional free `tags`. Game lineage uses optional `inspiredBy` from the inspiration directory (`src/specimens/inspiration.ts`, `docs/inspiration-directory.md`). See `.cursor/rules/35_taxonomy.mdc`.
 
 ## New specimen commits
 

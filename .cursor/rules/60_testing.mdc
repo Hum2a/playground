@@ -18,7 +18,7 @@ Smoke floor: catalogue plate count, clipboard copy non-empty, detail five tabs, 
 
 ## CLI
 
-- `spec:check` — non-empty html/css/spec/contract, unique id/ref, css twin sync, required facets + no tag/facet collisions, tech↔js consistency
+- `spec:check` — non-empty html/css/spec/contract, unique id/ref, css twin sync, required facets + inspiration directory checks, no tag/facet/inspiration collisions, tech↔js consistency
 - `spec:new <slug>` — scaffold folder matching section 3 of the design spec
 
 ## Performance

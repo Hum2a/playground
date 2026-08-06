@@ -56,13 +56,14 @@ export const specimen: Specimen = {
   origin: {
     project: ${JSON.stringify(input.originProject.trim())},${surface}
   },
-  // TODO: set facets to match the effect (see src/specimens/taxonomy.ts)
+  // TODO: set facets / inspiredBy (see taxonomy.ts + inspiration.ts / docs/inspiration-directory.md)
   facets: {
     kind: 'overlay',
     tech: ${input.js.trim() ? `'tiny-js'` : `'css-only'`},
     scope: 'card',
     intensity: 'subtle',
   },
+  // inspiredBy: { franchise: 'persona', works: ['persona-5'] },
   tags: [],
   deps: 'none',
   motion: {

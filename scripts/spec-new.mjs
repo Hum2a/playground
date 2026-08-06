@@ -86,13 +86,14 @@ export const specimen: Specimen = {
   title: '${slug}',
   blurb: 'TODO',
   origin: { project: 'TODO' },
-  // TODO: set facets to match the effect (see src/specimens/taxonomy.ts)
+  // TODO: set facets / inspiredBy (see taxonomy.ts + inspiration.ts / docs/inspiration-directory.md)
   facets: {
     kind: 'overlay',
     tech: 'css-only',
     scope: 'card',
     intensity: 'subtle',
   },
+  // inspiredBy: { franchise: 'persona', works: ['persona-5'] },
   tags: [],
   deps: 'none',
   motion: { loops: true, respectsReducedMotion: true },

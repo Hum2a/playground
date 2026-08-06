@@ -38,7 +38,8 @@ Key metadata fields:
 - `id` (URL slug), `ref` (e.g. SPX-001), `title`, one-sentence `blurb`
 - `origin` — which project/surface it came from (or “original” if invented here)
 - `facets` — required: kind / tech / scope / intensity (see `src/specimens/taxonomy.ts`)
-- `tags` — freeform flavor only (e.g. marquee, bilingual); never duplicate a facet value
+- `inspiredBy` — optional franchise + works from `src/specimens/inspiration.ts` / `docs/inspiration-directory.md`
+- `tags` — freeform effect flavor only (e.g. marquee, comic); never duplicate facet/inspiration ids
 - `deps` — prefer `'none'` (plain HTML+CSS); list libs only if unavoidable
 - `motion` — whether it loops; must honour `prefers-reduced-motion` / `data-force-reduced-motion`
 - `preview` — width/height, background (`card`|`page`|`grid`|`dark`), optional **scaffold** host markup, label
