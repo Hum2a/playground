@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/versus-clash-card.schema.json",
+  "title": "VersusClashCard",
+  "description": "Two competitor cards close in and clash into a locked versus state with an impact flash.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "closeMs", "flashMs", "colours", "reducedMotion"],
+  "properties": {
+    "name": { "type": "string", "const": "versus-clash-card" },
+    "closeMs": { "type": "number", "const": 220 },
+    "flashMs": { "type": "number", "const": 220 },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "alarm": { "type": "string", "const": "#D94A38" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateClash"],
+      "properties": {
+        "immediateClash": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}
