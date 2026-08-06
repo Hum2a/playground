@@ -236,7 +236,7 @@ chronology and information priority.
     redaction bars in a deterministic sweep.
 - [x] **NEWS-078** · `SPX-3600` · ★★★★★ **Redaction Apply** — Sensitive fragments are covered by
     hard black bars without shifting text.
-- [ ] **NEWS-079** · `SPX-3601` · ★★★★★ **Document Declassification** — A classified-looking
+- [x] **NEWS-079** · `SPX-3601` · ★★★★★ **Document Declassification** — A classified-looking
     page progressively exposes previously hidden sections.
 - [ ] **NEWS-080** · `SPX-3602` · ★★★★☆ **Source Protected State** — Source identity collapses
     into an anonymous protected treatment.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-079 | SPX-3601 | `document-declassification` | Document Declassification |
 | NEWS-078 | SPX-3600 | `redaction-apply` | Redaction Apply |
 | NEWS-077 | SPX-3599 | `black-bar-redaction-reveal` | Black-Bar Redaction Reveal |
 | NEWS-073 | SPX-3595 | `retraction-takeover` | Retraction Takeover |
@@ -712,12 +713,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **33 / 237** complete.
+- Progress: **34 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 33 |
-| Open | 204 |
+| Done | 34 |
+| Open | 203 |
 
 ## Core first-wave / build queue
 
@@ -754,7 +755,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-073** · `SPX-3595` · **Retraction Takeover** · `retraction-takeover`
 - [x] **NEWS-077** · `SPX-3599` · **Black-Bar Redaction Reveal** · `black-bar-redaction-reveal`
 - [x] **NEWS-078** · `SPX-3600` · **Redaction Apply** · `redaction-apply`
-- [ ] **NEWS-079** · `SPX-3601` · **Document Declassification** · scaffold `document-declassification`
+- [x] **NEWS-079** · `SPX-3601` · **Document Declassification** · `document-declassification`
 - [ ] **NEWS-082** · `SPX-3604` · **Evidence Annotation** · scaffold `evidence-annotation`
 - [ ] **NEWS-083** · `SPX-3605` · **Document Compare Split** · scaffold `document-compare-split`
 - [ ] **NEWS-085** · `SPX-3607` · **Margin Note Slide-In** · scaffold `margin-note-slide-in`

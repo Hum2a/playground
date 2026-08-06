@@ -1,0 +1,8 @@
+{
+  "name": "document-declassification",
+  "ref": "SPX-3601",
+  "title": "Document Declassification",
+  "mode": "rule",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

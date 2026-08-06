@@ -600,6 +600,8 @@ import { blackBarRedactionReveal } from './black-bar-redaction-reveal/entry'
 
 import { redactionApply } from './redaction-apply/entry'
 
+import { documentDeclassification } from './document-declassification/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1128,6 +1130,7 @@ export const specimens: Specimen[] = [
   retractionTakeover,
   blackBarRedactionReveal,
   redactionApply,
+  documentDeclassification,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
