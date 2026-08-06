@@ -1,0 +1,552 @@
+/* SPX-026 Glass Fracture Reveal — portable contract. Do not restyle to host tokens. */
+
+.gfr {
+  --gfr-black: #020a14;
+  --gfr-dark: #0b3553;
+  --gfr-mid: #17688e;
+  --gfr-bright: #4eb8dc;
+  --gfr-pale: #d5f6ff;
+  --gfr-ease: cubic-bezier(0.22, 0.8, 0.28, 1);
+  --gfr-origin-x: 63%;
+  --gfr-origin-y: 42%;
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  background: var(--gfr-black);
+  color: var(--gfr-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.gfr *,
+.gfr *::before,
+.gfr *::after {
+  box-sizing: border-box;
+}
+
+.gfr__stage {
+  position: relative;
+  width: min(100%, 320px);
+  height: 220px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.gfr__record {
+  position: absolute;
+  inset: 8%;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  background: rgb(2 10 20 / 0.55);
+  border: 1px solid rgb(78 184 220 / 0.35);
+  clip-path: polygon(0% 6%, 97% 0%, 100% 94%, 3% 100%);
+}
+
+.gfr__eyebrow {
+  margin: 0;
+  font: 700 0.58rem/1 inherit;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(213 246 255 / 0.65);
+}
+
+.gfr__title {
+  margin: 0;
+  font: 900 1.15rem/1 inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gfr-pale);
+}
+
+.gfr__note {
+  margin: 0;
+  font: 500 0.72rem/1.35 inherit;
+  color: rgb(213 246 255 / 0.7);
+}
+
+/* Coherent glass pane ~88% of stage */
+.gfr__pane {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  width: 88%;
+  height: 88%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.gfr__seal {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-content: center;
+  gap: 0.4rem;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 80ms linear;
+}
+
+.gfr__seal-kicker {
+  font: 900 0.78rem/1 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gfr-pale);
+  text-shadow: 0 1px 0 rgb(2 10 20 / 0.8);
+}
+
+.gfr__seal-state {
+  font: 700 0.62rem/1 inherit;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(78 184 220 / 0.9);
+}
+
+.gfr[data-phase='fracture'] .gfr__seal,
+.gfr[data-phase='separate'] .gfr__seal,
+.gfr[data-phase='edge'] .gfr__seal,
+.gfr[data-phase='settled'] .gfr__seal {
+  opacity: 0;
+}
+
+.gfr__shard {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      145deg,
+      rgb(78 184 220 / 0.28) 0%,
+      rgb(23 104 142 / 0.72) 42%,
+      rgb(11 53 83 / 0.92) 100%
+    ),
+    linear-gradient(
+      20deg,
+      rgb(213 246 255 / 0.12) 0%,
+      transparent 40%
+    );
+  border: 1px solid rgb(78 184 220 / 0.22);
+  box-shadow: inset 0 0 24px rgb(2 10 20 / 0.35);
+  transform-origin: var(--gfr-origin-x) var(--gfr-origin-y);
+  transition: none;
+  will-change: transform;
+}
+
+/* Six complementary regions — boundaries align with major cracks */
+.gfr__shard--1 {
+  clip-path: polygon(
+    63% 42%,
+    66% 22%,
+    70% 0%,
+    0% 0%,
+    0% 32%,
+    18% 36%,
+    38% 40%
+  );
+}
+
+.gfr__shard--2 {
+  clip-path: polygon(
+    63% 42%,
+    66% 22%,
+    70% 0%,
+    100% 0%,
+    100% 12%,
+    92% 18%,
+    78% 30%
+  );
+}
+
+.gfr__shard--3 {
+  clip-path: polygon(
+    63% 42%,
+    78% 30%,
+    92% 18%,
+    100% 12%,
+    100% 58%,
+    82% 48%
+  );
+}
+
+.gfr__shard--4 {
+  clip-path: polygon(
+    63% 42%,
+    82% 48%,
+    100% 58%,
+    100% 100%,
+    72% 100%,
+    68% 70%,
+    58% 62%
+  );
+}
+
+.gfr__shard--5 {
+  clip-path: polygon(
+    63% 42%,
+    58% 62%,
+    52% 82%,
+    48% 100%,
+    0% 100%,
+    0% 75%,
+    28% 58%
+  );
+}
+
+.gfr__shard--6 {
+  clip-path: polygon(
+    63% 42%,
+    38% 40%,
+    18% 36%,
+    0% 32%,
+    0% 75%,
+    28% 58%
+  );
+}
+
+/* Idle: one coherent pane — no crack visibility */
+.gfr__cracks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.gfr__crack {
+  stroke: var(--gfr-pale);
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  fill: none;
+  opacity: 0;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  vector-effect: non-scaling-stroke;
+}
+
+.gfr__crack--major {
+  stroke-width: 1.1;
+}
+
+.gfr__crack--sec {
+  stroke-width: 0.75;
+  stroke: rgb(78 184 220 / 0.95);
+}
+
+.gfr__impact {
+  position: absolute;
+  left: var(--gfr-origin-x);
+  top: var(--gfr-origin-y);
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  z-index: 6;
+  border-radius: 0;
+  background: var(--gfr-pale);
+  box-shadow: 0 0 10px rgb(78 184 220 / 0.65);
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+}
+
+/* Edge trace after reveal */
+.gfr__edge {
+  position: absolute;
+  inset: 8%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: polygon(0% 6%, 97% 0%, 100% 94%, 3% 100%);
+  box-shadow: inset 0 0 0 0 transparent;
+}
+
+.gfr__edge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gfr-pale);
+  clip-path: polygon(0% 6%, 97% 0%, 100% 8%, 2% 14%);
+  opacity: 0;
+}
+
+/* ——— Phases ——— */
+
+.gfr[data-phase='pressure'] .gfr__impact {
+  opacity: 1;
+  animation: gfr-impact 100ms var(--gfr-ease) both;
+}
+
+@keyframes gfr-impact {
+  0% {
+    width: 4px;
+    height: 4px;
+    margin: -2px 0 0 -2px;
+    opacity: 0.4;
+  }
+  55% {
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    opacity: 1;
+  }
+  100% {
+    width: 7px;
+    height: 7px;
+    margin: -3.5px 0 0 -3.5px;
+    opacity: 0.85;
+  }
+}
+
+.gfr[data-phase='fracture'] .gfr__impact,
+.gfr[data-phase='separate'] .gfr__impact {
+  opacity: 0.5;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+}
+
+.gfr[data-phase='fracture'] .gfr__crack--major,
+.gfr[data-phase='separate'] .gfr__crack--major,
+.gfr[data-phase='edge'] .gfr__crack--major,
+.gfr[data-phase='settled'] .gfr__crack--major {
+  opacity: 0.95;
+  stroke-dashoffset: 0;
+  transition:
+    stroke-dashoffset 160ms linear,
+    opacity 40ms linear;
+}
+
+.gfr[data-phase='fracture'] .gfr__crack--1 {
+  transition-delay: 0ms;
+}
+.gfr[data-phase='fracture'] .gfr__crack--2 {
+  transition-delay: 25ms;
+}
+.gfr[data-phase='fracture'] .gfr__crack--3 {
+  transition-delay: 45ms;
+}
+.gfr[data-phase='fracture'] .gfr__crack--4 {
+  transition-delay: 70ms;
+}
+.gfr[data-phase='fracture'] .gfr__crack--5 {
+  transition-delay: 90ms;
+}
+
+.gfr[data-phase='fracture'] .gfr__crack--sec,
+.gfr[data-phase='separate'] .gfr__crack--sec,
+.gfr[data-phase='edge'] .gfr__crack--sec,
+.gfr[data-phase='settled'] .gfr__crack--sec {
+  opacity: 0.85;
+  stroke-dashoffset: 0;
+  transition:
+    stroke-dashoffset 120ms linear,
+    opacity 40ms linear;
+  transition-delay: 100ms;
+}
+
+/* pathLength=100 dash animation driven by phase transitions above */
+
+.gfr[data-phase='separate'] .gfr__crack,
+.gfr[data-phase='edge'] .gfr__crack,
+.gfr[data-phase='settled'] .gfr__crack {
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+.gfr[data-phase='separate'] .gfr__shard,
+.gfr[data-phase='edge'] .gfr__shard,
+.gfr[data-phase='settled'] .gfr__shard {
+  transition: transform 320ms var(--gfr-ease);
+}
+
+/* Separation — rear less, foreground more; mostly leave content area */
+.gfr[data-phase='separate'] .gfr__shard--1,
+.gfr[data-phase='edge'] .gfr__shard--1,
+.gfr[data-phase='settled'] .gfr__shard--1 {
+  transform: translate(-72px, -58px) rotate(-11deg);
+}
+
+.gfr[data-phase='separate'] .gfr__shard--2,
+.gfr[data-phase='edge'] .gfr__shard--2,
+.gfr[data-phase='settled'] .gfr__shard--2 {
+  transform: translate(48px, -64px) rotate(8deg);
+}
+
+.gfr[data-phase='separate'] .gfr__shard--3,
+.gfr[data-phase='edge'] .gfr__shard--3,
+.gfr[data-phase='settled'] .gfr__shard--3 {
+  transform: translate(85px, 12px) rotate(12deg);
+}
+
+.gfr[data-phase='separate'] .gfr__shard--4,
+.gfr[data-phase='edge'] .gfr__shard--4,
+.gfr[data-phase='settled'] .gfr__shard--4 {
+  transform: translate(70px, 78px) rotate(-7deg);
+}
+
+.gfr[data-phase='separate'] .gfr__shard--5,
+.gfr[data-phase='edge'] .gfr__shard--5,
+.gfr[data-phase='settled'] .gfr__shard--5 {
+  transform: translate(-40px, 82px) rotate(5deg);
+}
+
+.gfr[data-phase='separate'] .gfr__shard--6,
+.gfr[data-phase='edge'] .gfr__shard--6,
+.gfr[data-phase='settled'] .gfr__shard--6 {
+  transform: translate(-78px, 18px) rotate(-4deg);
+}
+
+/* 1–2 small edge fragments remain clipped at host (shards 4/5 peek briefly then settle out) */
+.gfr[data-phase='settled'] .gfr__shard--4 {
+  transform: translate(92px, 96px) rotate(-9deg);
+}
+
+.gfr[data-phase='settled'] .gfr__shard--6 {
+  transform: translate(-88px, 8px) rotate(-3deg);
+}
+
+.gfr[data-phase='edge'] .gfr__edge,
+.gfr[data-phase='settled'] .gfr__edge {
+  opacity: 1;
+}
+
+.gfr[data-phase='edge'] .gfr__edge::after,
+.gfr[data-phase='settled'] .gfr__edge::after {
+  opacity: 1;
+  animation: gfr-edge-trace 180ms var(--gfr-ease) both;
+}
+
+.gfr[data-phase='settled'] .gfr__edge::after {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes gfr-edge-trace {
+  from {
+    clip-path: polygon(0% 6%, 0% 6%, 2% 14%, 2% 14%);
+    opacity: 0.4;
+  }
+  to {
+    clip-path: polygon(0% 6%, 97% 0%, 100% 8%, 2% 14%);
+    opacity: 1;
+  }
+}
+
+.gfr[data-phase='settled'] .gfr__pane {
+  pointer-events: none;
+}
+
+.gfr__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: min(100%, 320px);
+}
+
+.gfr__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--gfr-bright);
+  background: transparent;
+  color: var(--gfr-pale);
+  font: 700 0.62rem/1 inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(0% 10%, 96% 0%, 100% 88%, 4% 100%);
+}
+
+.gfr__btn:hover:not(:disabled) {
+  background: rgb(78 184 220 / 0.12);
+}
+
+.gfr__btn:focus-visible {
+  outline: 2px solid var(--gfr-pale);
+  outline-offset: 3px;
+}
+
+.gfr__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gfr__btn--go {
+  background: var(--gfr-mid);
+  border-color: var(--gfr-bright);
+  color: var(--gfr-pale);
+}
+
+.gfr__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion — both triggers */
+@media (prefers-reduced-motion: reduce) {
+  .gfr__shard,
+  .gfr__crack,
+  .gfr__impact,
+  .gfr__seal,
+  .gfr__edge::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .gfr[data-phase='settled'] .gfr__pane,
+  .gfr--rm .gfr__pane {
+    display: none;
+  }
+
+  .gfr[data-phase='settled'] .gfr__edge,
+  .gfr--rm .gfr__edge {
+    opacity: 1;
+  }
+
+  .gfr[data-phase='settled'] .gfr__edge::after,
+  .gfr--rm .gfr__edge::after {
+    opacity: 1;
+    clip-path: polygon(0% 6%, 97% 0%, 100% 8%, 2% 14%);
+  }
+}
+
+[data-force-reduced-motion='true'] .gfr__shard,
+[data-force-reduced-motion='true'] .gfr__crack,
+[data-force-reduced-motion='true'] .gfr__impact,
+[data-force-reduced-motion='true'] .gfr__seal,
+[data-force-reduced-motion='true'] .gfr__edge::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .gfr[data-phase='settled'] .gfr__pane,
+[data-force-reduced-motion='true'] .gfr--rm .gfr__pane {
+  display: none;
+}
+
+[data-force-reduced-motion='true'] .gfr[data-phase='settled'] .gfr__edge,
+[data-force-reduced-motion='true'] .gfr--rm .gfr__edge {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .gfr[data-phase='settled'] .gfr__edge::after,
+[data-force-reduced-motion='true'] .gfr--rm .gfr__edge::after {
+  opacity: 1;
+  clip-path: polygon(0% 6%, 97% 0%, 100% 8%, 2% 14%);
+}

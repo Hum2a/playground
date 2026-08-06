@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/glass-fracture-reveal.schema.json",
+  "title": "GlassFractureReveal",
+  "description": "Portable contract for a blue glass pane that fractures into six regions and separates to disclose sealed content. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "pane",
+    "impact",
+    "fractures",
+    "shards",
+    "separation",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "glass-fracture-reveal" },
+    "intent": {
+      "type": "string",
+      "const": "A coherent glass pane seals content until pressure, fracture, and regional separation physically uncover the record underneath."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sealKicker",
+        "sealState",
+        "record",
+        "access",
+        "note",
+        "reveal",
+        "reset",
+        "announce"
+      ],
+      "properties": {
+        "sealKicker": { "type": "string", "const": "RESTRICTED RECORD" },
+        "sealState": { "type": "string", "const": "CONTENT SEALED" },
+        "record": { "type": "string", "const": "RECORD // 042" },
+        "access": { "type": "string", "const": "ACCESS GRANTED" },
+        "note": {
+          "type": "string",
+          "const": "Recovered specimen metadata."
+        },
+        "reveal": { "type": "string", "const": "REVEAL" },
+        "reset": { "type": "string", "const": "RESET" },
+        "announce": {
+          "type": "string",
+          "const": "Record 042. Access granted. Recovered specimen metadata."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "glassDark", "glassMid", "glassBright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020a14" },
+        "glassDark": { "type": "string", "const": "#0b3553" },
+        "glassMid": { "type": "string", "const": "#17688e" },
+        "glassBright": { "type": "string", "const": "#4eb8dc" },
+        "pale": { "type": "string", "const": "#d5f6ff" }
+      }
+    },
+    "pane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coveragePercent", "unbrokenInitially"],
+      "properties": {
+        "coveragePercent": { "type": "number", "const": 88 },
+        "unbrokenInitially": { "type": "boolean", "const": true },
+        "noLoopingShine": { "type": "boolean", "const": true }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "durationMs", "diameterPx"],
+      "properties": {
+        "origin": { "type": "string", "const": "63% 42%" },
+        "durationMs": { "type": "number", "const": 100 },
+        "diameterPx": { "type": "array", "const": [4, 14, 7] }
+      }
+    },
+    "fractures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["majorCount", "secondaryCount", "majorPaths", "secondaryPaths"],
+      "properties": {
+        "majorCount": { "type": "integer", "const": 5 },
+        "secondaryCount": { "type": "integer", "const": 3 },
+        "majorPaths": {
+          "type": "array",
+          "const": [
+            "M63 42 L66 22 L70 0",
+            "M63 42 L78 30 L92 18 L100 12",
+            "M63 42 L82 48 L100 58",
+            "M63 42 L58 62 L52 82 L48 100",
+            "M63 42 L38 40 L18 36 L0 32"
+          ]
+        },
+        "secondaryPaths": {
+          "type": "array",
+          "const": [
+            "M66 22 L58 14",
+            "M82 48 L88 40",
+            "M58 62 L68 70"
+          ]
+        }
+      }
+    },
+    "shards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count"],
+      "properties": {
+        "count": { "type": "integer", "const": 6 },
+        "complementary": { "type": "boolean", "const": true }
+      }
+    },
+    "separation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["travelPx", "rotateDeg", "noParticleShower", "contentUnderneath"],
+      "properties": {
+        "travelPx": { "type": "string", "const": "35–85" },
+        "rotateDeg": { "type": "string", "const": "3–12" },
+        "noParticleShower": { "type": "boolean", "const": true },
+        "contentUnderneath": { "type": "boolean", "const": true },
+        "noCrossfade": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pressureMs",
+        "separateAtMs",
+        "separateMs",
+        "edgeAtMs",
+        "edgeMs",
+        "noLoop"
+      ],
+      "properties": {
+        "pressureMs": { "type": "number", "const": 100 },
+        "separateAtMs": { "type": "number", "const": 300 },
+        "separateMs": { "type": "number", "const": 320 },
+        "edgeAtMs": { "type": "number", "const": 620 },
+        "edgeMs": { "type": "number", "const": 180 },
+        "noLoop": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inertUntilReveal", "announce"],
+      "properties": {
+        "inertUntilReveal": { "type": "boolean", "const": true },
+        "announce": {
+          "type": "string",
+          "const": "Record 042. Access granted. Recovered specimen metadata."
+        },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFinal", "triggers"],
+      "properties": {
+        "instantFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "pane", "shard", "crack", "record"],
+      "properties": {
+        "root": { "type": "string", "const": "gfr" },
+        "pane": { "type": "string", "const": "gfr__pane" },
+        "shard": { "type": "string", "const": "gfr__shard" },
+        "crack": { "type": "string", "const": "gfr__crack" },
+        "record": { "type": "string", "const": "gfr__record" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "go": { "type": "string", "const": "revealGlassFracture" },
+        "reset": { "type": "string", "const": "resetGlassFracture" },
+        "replay": { "type": "string", "const": "replayGlassFracture" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "glass-fracture-reveal",
+      "intent": "A coherent glass pane seals content until pressure, fracture, and regional separation physically uncover the record underneath.",
+      "copy": {
+        "sealKicker": "RESTRICTED RECORD",
+        "sealState": "CONTENT SEALED",
+        "record": "RECORD // 042",
+        "access": "ACCESS GRANTED",
+        "note": "Recovered specimen metadata.",
+        "reveal": "REVEAL",
+        "reset": "RESET",
+        "announce": "Record 042. Access granted. Recovered specimen metadata."
+      },
+      "colours": {
+        "nearBlack": "#020a14",
+        "glassDark": "#0b3553",
+        "glassMid": "#17688e",
+        "glassBright": "#4eb8dc",
+        "pale": "#d5f6ff"
+      },
+      "pane": {
+        "coveragePercent": 88,
+        "unbrokenInitially": true,
+        "noLoopingShine": true
+      },
+      "impact": {
+        "origin": "63% 42%",
+        "durationMs": 100,
+        "diameterPx": [4, 14, 7]
+      },
+      "fractures": {
+        "majorCount": 5,
+        "secondaryCount": 3,
+        "majorPaths": [
+          "M63 42 L66 22 L70 0",
+          "M63 42 L78 30 L92 18 L100 12",
+          "M63 42 L82 48 L100 58",
+          "M63 42 L58 62 L52 82 L48 100",
+          "M63 42 L38 40 L18 36 L0 32"
+        ],
+        "secondaryPaths": [
+          "M66 22 L58 14",
+          "M82 48 L88 40",
+          "M58 62 L68 70"
+        ]
+      },
+      "shards": { "count": 6, "complementary": true },
+      "separation": {
+        "travelPx": "35–85",
+        "rotateDeg": "3–12",
+        "noParticleShower": true,
+        "contentUnderneath": true,
+        "noCrossfade": true
+      },
+      "animation": {
+        "pressureMs": 100,
+        "separateAtMs": 300,
+        "separateMs": 320,
+        "edgeAtMs": 620,
+        "edgeMs": 180,
+        "noLoop": true
+      },
+      "a11y": {
+        "inertUntilReveal": true,
+        "announce": "Record 042. Access granted. Recovered specimen metadata.",
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "instantFinal": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "gfr",
+        "pane": "gfr__pane",
+        "shard": "gfr__shard",
+        "crack": "gfr__crack",
+        "record": "gfr__record"
+      },
+      "behaviour": {
+        "go": "revealGlassFracture",
+        "reset": "resetGlassFracture",
+        "replay": "replayGlassFracture",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}

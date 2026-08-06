@@ -31,6 +31,7 @@ import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
+import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
@@ -145,6 +146,7 @@ export const specimens: Specimen[] = [
   errorCorrectionRewrite,
   failureShatter,
   fusionSelectionMerge,
+  glassFractureReveal,
   graphicBurstHover,
   holdToChargeButton,
   hoverCutout,

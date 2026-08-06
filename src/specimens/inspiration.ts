@@ -167,6 +167,8 @@ export const SUGGESTED_FREE_TAGS = [
   'state-change',
   'transformation',
   'temporal',
+  'glass',
+  'disclosure',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]
