@@ -178,6 +178,7 @@ import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
 import { healingProgressField } from './healing-progress-field/entry'
 import { heroAssignmentDrag } from './hero-assignment-drag/entry'
 import { heroAssignmentTransfer } from './hero-assignment-transfer/entry'
+import { heroMetadataCascade } from './hero-metadata-cascade/entry'
 import { heroNameSlam } from './hero-name-slam/entry'
 import { highSpeedCardRelocation } from './high-speed-card-relocation/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
@@ -632,6 +633,7 @@ export const specimens: Specimen[] = [
   healingProgressField,
   heroAssignmentDrag,
   heroAssignmentTransfer,
+  heroMetadataCascade,
   heroNameSlam,
   highSpeedCardRelocation,
   highSpeedDashNavigation,

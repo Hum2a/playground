@@ -1,0 +1,1 @@
+const root=document.querySelector('[data-nf]');export function runHeroCascade(){root.classList.remove('is-cascade');void root.offsetWidth;root.classList.add('is-cascade')};document.querySelector('[data-run]')?.addEventListener('click',()=>runHeroCascade());runHeroCascade()
