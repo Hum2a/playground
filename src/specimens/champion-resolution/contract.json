@@ -1,0 +1,52 @@
+{
+  "name": "champion-resolution",
+  "intent": "Tournament final: ATLAS 92 vs NOVA 87; difference +05; NOVA remains runner-up; ATLAS becomes canonical champion with 8 rays and 6 historical path lines.",
+  "catalogue": {
+    "db": "DB-182",
+    "ref": "SPX-1147",
+    "catalogueTitle": "Champion Result"
+  },
+  "arena": "MODEL ARENA // 08",
+  "finalists": {
+    "atlas": { "label": "ATLAS // 92", "score": 92, "role": "champion" },
+    "nova": { "label": "NOVA // 87", "score": 87, "role": "runner-up" }
+  },
+  "historyMarkers": 6,
+  "timingsMs": {
+    "scores": 300,
+    "hold": 120,
+    "delta": 140,
+    "resolve": 280,
+    "pathStagger": 25,
+    "pathDraw": 220,
+    "stamp": 180
+  },
+  "delta": "+05",
+  "novaResolve": { "translateXPx": 4, "scale": 0.92, "label": "RUNNER-UP" },
+  "atlasResolve": {
+    "translateXPx": 26,
+    "frameExpandPx": 4,
+    "rays": 8,
+    "label": "CHAMPION"
+  },
+  "canonical": {
+    "title": "FINAL → CHAMPION",
+    "tournament": "ACTIVE → COMPLETE",
+    "resultCopy": "CHAMPION // ATLAS",
+    "stamp": "angular outline — no trophy"
+  },
+  "api": {
+    "execute": "runChampionResolution()",
+    "reset": "resetChampionResolution()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show champion composition",
+    "announce": "Atlas is champion with score 92. Nova runner-up with 87."
+  },
+  "constraints": {
+    "noConfetti": true,
+    "noLooping": true,
+    "novaRemainsVisible": true
+  }
+}

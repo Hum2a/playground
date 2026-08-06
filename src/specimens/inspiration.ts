@@ -158,6 +158,7 @@ export const SUGGESTED_FREE_TAGS = [
   'unlock',
   'locked',
   'chain',
+  'result',
   'selection',
   'content-switch',
   'stack',

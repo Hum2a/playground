@@ -15,6 +15,7 @@ import { captureShake } from './capture-shake/entry'
 import { capsuleCollapse } from './capsule-collapse/entry'
 import { capsuleDeploy } from './capsule-deploy/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
+import { championResolution } from './champion-resolution/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
@@ -112,6 +113,7 @@ import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
+import { stateIntensityField } from './state-intensity-field/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
@@ -207,6 +209,7 @@ export const specimens: Specimen[] = [
   capsuleCollapse,
   capsuleDeploy,
   cardBreakSummon,
+  championResolution,
   chargeRelease,
   choiceExecutionSlash,
   clockHandWipe,
@@ -285,6 +288,7 @@ export const specimens: Specimen[] = [
   scannerSearch,
   scouterScan,
   sectorRadarSearch,
+  stateIntensityField,
   sevenPartPrerequisiteCollection,
   surfaceBreakReveal,
   synchronousFusionMerge,

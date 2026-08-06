@@ -1,0 +1,81 @@
+<div class="cr-demo" data-cr-demo>
+  <p class="cr-demo__live" data-cr-live aria-live="polite">
+    Model Arena 08 final — Atlas versus Nova. Ready to finalise.
+  </p>
+
+  <div class="cr" data-cr data-phase="idle">
+    <header class="cr__header">
+      <p class="cr__arena">MODEL ARENA // 08</p>
+      <p class="cr__meta">
+        <span class="cr__title" data-cr-title>FINAL</span>
+        <span class="cr__sep">·</span>
+        <span class="cr__status" data-cr-status>ACTIVE</span>
+      </p>
+    </header>
+
+    <div class="cr__stage" data-cr-stage>
+      <!-- Exactly 6 historical candidate markers -->
+      <div class="cr__history" data-cr-history aria-hidden="true">
+        <span class="cr__marker" data-cr-marker="0" style="--mx: 12%; --my: 18%">ORION</span>
+        <span class="cr__marker" data-cr-marker="1" style="--mx: 28%; --my: 8%">VEGA</span>
+        <span class="cr__marker" data-cr-marker="2" style="--mx: 72%; --my: 10%">LYRA</span>
+        <span class="cr__marker" data-cr-marker="3" style="--mx: 88%; --my: 22%">PULSE</span>
+        <span class="cr__marker" data-cr-marker="4" style="--mx: 18%; --my: 78%">QUARK</span>
+        <span class="cr__marker" data-cr-marker="5" style="--mx: 82%; --my: 74%">NEXUS</span>
+        <svg class="cr__paths" viewBox="0 0 360 280" aria-hidden="true" focusable="false">
+          <line data-cr-path="0" x1="43" y1="50" x2="180" y2="140" />
+          <line data-cr-path="1" x1="101" y1="22" x2="180" y2="140" />
+          <line data-cr-path="2" x1="259" y1="28" x2="180" y2="140" />
+          <line data-cr-path="3" x1="317" y1="62" x2="180" y2="140" />
+          <line data-cr-path="4" x1="65" y1="218" x2="180" y2="140" />
+          <line data-cr-path="5" x1="295" y1="207" x2="180" y2="140" />
+        </svg>
+      </div>
+
+      <div class="cr__finalists">
+        <article
+          class="cr__card cr__card--atlas"
+          data-cr-card="atlas"
+          data-role="finalist"
+        >
+          <p class="cr__name">ATLAS // 92</p>
+          <div class="cr__rail" aria-hidden="true">
+            <span class="cr__rail-fill" data-cr-fill="atlas"></span>
+          </div>
+          <p class="cr__score" data-cr-score="atlas">00</p>
+          <p class="cr__badge" data-cr-badge="atlas"></p>
+          <span class="cr__rays" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </span>
+          <span class="cr__stamp" aria-hidden="true"></span>
+        </article>
+
+        <div class="cr__delta" data-cr-delta aria-hidden="true">+05</div>
+
+        <article
+          class="cr__card cr__card--nova"
+          data-cr-card="nova"
+          data-role="finalist"
+        >
+          <p class="cr__name">NOVA // 87</p>
+          <div class="cr__rail" aria-hidden="true">
+            <span class="cr__rail-fill" data-cr-fill="nova"></span>
+          </div>
+          <p class="cr__score" data-cr-score="nova">00</p>
+          <p class="cr__badge" data-cr-badge="nova"></p>
+        </article>
+      </div>
+    </div>
+
+    <p class="cr__result" data-cr-result hidden>CHAMPION // ATLAS</p>
+  </div>
+
+  <div class="cr-demo__controls">
+    <button type="button" class="cr-demo__btn cr-demo__btn--primary" data-cr-finalise>
+      Finalise
+    </button>
+    <button type="button" class="cr-demo__btn" data-cr-reset>
+      Reset
+    </button>
+  </div>
+</div>

@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **23 / 244** complete.
+- Progress: **24 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 23 |
-| Open | 221 |
+| Done | 24 |
+| Open | 220 |
 
 ## Visual grammar
 
@@ -41,6 +41,7 @@
 | DB-231 | `SPX-1196` | `collective-ci-deployment` | Collective CI Deployment |
 | DB-057 | `SPX-1022` | `linked-fusion-merge` | Linked Fusion Merge |
 | DB-105 | `SPX-1070` | `seven-part-prerequisite-collection` | Seven-Part Prerequisite Collection |
+| DB-145 | `SPX-1110` | `state-intensity-field` | State Intensity Field |
 | DB-004 | `SPX-969` | `charge-release` | Charge Release |
 | DB-005 | `SPX-970` | `overcharge-warning` | Overcharge Warning |
 | DB-016 | `SPX-981` | `power-state-transformation` | Power State Transformation |
@@ -57,6 +58,7 @@
 | DB-184 | `SPX-1149` | `capsule-collapse` | Capsule Collapse |
 | DB-163 | `SPX-1128` | `core-seed-regeneration` | Core Seed Regeneration |
 | DB-195 | `SPX-1160` | `temporal-undo` | Temporal Undo |
+| DB-182 | `SPX-1147` | `champion-resolution` | Champion Resolution |
 
 ## Core first-wave
 
@@ -275,7 +277,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Aura / System State
 
 - [ ] **DB-144** ?? `SPX-1109` ?? **Idle Ki Aura** ??? subtle irregular boundary indicates an active elevated state.
-- [ ] **DB-145** ?? `SPX-1110` ?? **Aura Intensity Meter** ??? boundary behaviour becomes stronger as a metric rises.
+- [x] **DB-145** ?? `SPX-1110` ?? **Aura Intensity Meter** ??? boundary behaviour becomes stronger as a metric rises.
 - [ ] **DB-146** ?? `SPX-1111` ?? **Unstable Aura** ??? irregular boundary communicates degraded or dangerous operation.
 - [ ] **DB-147** ?? `SPX-1112` ?? **Calm Aura** ??? extremely restrained boundary indicates stable enhanced state.
 - [ ] **DB-148** ?? `SPX-1113` ?? **Aura Collapse** ??? system loses elevated capability and boundary falls inward.
@@ -324,7 +326,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-179** ?? `SPX-1144` ?? **Ring-Out Result** ??? entity crosses a fixed spatial boundary and immediately loses active status.
 - [ ] **DB-180** ?? `SPX-1145` ?? **Round Complete** ??? bracket restructures around remaining entities.
 - [ ] **DB-181** ?? `SPX-1146` ?? **Finalist Reveal** ??? two surviving branches become dominant.
-- [ ] **DB-182** ?? `SPX-1147` ?? **Champion Result** ??? final surviving entity leaves bracket structure and becomes singular result.
+- [x] **DB-182** ?? `SPX-1147` ?? **Champion Result** ??? final surviving entity leaves bracket structure and becomes singular result.
 - [ ] **DB-183** ?? `SPX-1148` ?? **Tournament Seed Shuffle** ??? participants deterministically rearrange into initial positions.
 
 ## Capsule Corp / Compact Storage
