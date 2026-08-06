@@ -149,6 +149,7 @@ import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
 import { spotlightMaterialise } from './spotlight-materialise/entry'
+import { springSelectionPill } from './spring-selection-pill/entry'
 import { stageManagerStackShift } from './stage-manager-stack-shift/entry'
 import { stateFieldTransfer } from './state-field-transfer/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
@@ -366,6 +367,7 @@ export const specimens: Specimen[] = [
   sharedResourcePool,
   sheetRubberBandLimit,
   spotlightMaterialise,
+  springSelectionPill,
   stageManagerStackShift,
   stateFieldTransfer,
   stateIntensityField,

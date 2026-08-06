@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/spring-selection-pill.schema.json",
+  "title": "SpringSelectionPill",
+  "description": "Portable contract for spring-backed segment selection pill.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "container",
+    "spring",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "spring-selection-pill" },
+    "intent": {
+      "type": "string",
+      "const": "Shared selection backing moves between four options with restrained spring settling."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segments", "initial"],
+      "properties": {
+        "segments": {
+          "type": "array",
+          "const": ["DAY", "WEEK", "MONTH", "YEAR"]
+        },
+        "initial": { "type": "string", "const": "DAY" }
+      }
+    },
+    "container": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "backingInsetPx", "segmentCount"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 336 },
+        "heightPx": { "type": "number", "const": 44 },
+        "backingInsetPx": { "type": "number", "const": 3 },
+        "segmentCount": { "type": "number", "const": 4 }
+      }
+    },
+    "spring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["longJumpMs", "adjacentMs", "longOvershootPx", "adjacentOvershootPx"],
+      "properties": {
+        "longJumpMs": { "type": "number", "const": 340 },
+        "adjacentMs": { "type": "number", "const": 240 },
+        "longOvershootPx": { "type": "number", "const": 5 },
+        "adjacentOvershootPx": { "type": "number", "const": 3 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directJump", "triggers"],
+      "properties": {
+        "directJump": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tablist", "politeStatus"],
+      "properties": {
+        "tablist": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "backing", "segment"],
+      "properties": {
+        "root": { "type": "string", "const": "ssp" },
+        "backing": { "type": "string", "const": "ssp__backing" },
+        "segment": { "type": "string", "const": "ssp__seg" }
+      }
+    }
+  }
+}

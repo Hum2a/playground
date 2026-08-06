@@ -1,0 +1,86 @@
+/* spring-selection-pill — portable specimen styles */
+
+.ssp {
+  --ssp-ink: #0f1218;
+  --ssp-panel: #171c24;
+  --ssp-line: #2a3140;
+  --ssp-muted: #7a8494;
+  --ssp-cream: #e8ecf2;
+  --ssp-accent: #5a9fd4;
+  box-sizing: border-box;
+  width: 360px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--ssp-cream);
+}
+
+.ssp *,
+.ssp *::before,
+.ssp *::after {
+  box-sizing: border-box;
+}
+
+.ssp__track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 336px;
+  max-width: 100%;
+  height: 44px;
+  padding: 3px;
+  border: 1px solid var(--ssp-line);
+  border-radius: 999px;
+  background: var(--ssp-panel);
+}
+
+.ssp__backing {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  width: calc((336px - 6px) / 4);
+  height: 38px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ssp-accent) 22%, #1e2430);
+  border: 1px solid color-mix(in srgb, var(--ssp-accent) 40%, var(--ssp-line));
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ssp__seg {
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  color: var(--ssp-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.ssp__seg[aria-selected='true'] {
+  color: var(--ssp-cream);
+}
+
+.ssp__seg:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.ssp__status {
+  margin: 0.65rem 0 0;
+  font-size: 0.68rem;
+  color: var(--ssp-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ssp__backing {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .ssp__backing {
+  transition: none;
+}
