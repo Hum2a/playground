@@ -213,7 +213,7 @@ chronology and information priority.
 
 - [x] **NEWS-069** · `SPX-3591` · ★★★★★ **Correction Notice Insert** — A correction block
     inserts directly beneath the affected article metadata.
-- [ ] **NEWS-070** · `SPX-3592` · ★★★★★ **Inline Correction Replace** — Incorrect text is
+- [x] **NEWS-070** · `SPX-3592` · ★★★★★ **Inline Correction Replace** — Incorrect text is
     visibly struck and replaced without hiding the change.
 - [ ] **NEWS-071** · `SPX-3593` · ★★★★☆ **Updated Timestamp Tick** — The article's updated time
     changes with a restrained numeric transition.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-070 | SPX-3592 | `inline-correction-replace` | Inline Correction Replace |
 | NEWS-069 | SPX-3591 | `correction-notice-insert` | Correction Notice Insert |
 | NEWS-065 | SPX-3587 | `proofreader-mark-reveal` | Proofreader Mark Reveal |
 | NEWS-064 | SPX-3586 | `copy-edit-strike-and-replace` | Copy Edit Strike-and-Replace |
@@ -708,12 +709,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **29 / 237** complete.
+- Progress: **30 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 208 |
+| Done | 30 |
+| Open | 207 |
 
 ## Core first-wave / build queue
 
@@ -746,7 +747,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-064** · `SPX-3586` · **Copy Edit Strike-and-Replace** · `copy-edit-strike-and-replace`
 - [x] **NEWS-065** · `SPX-3587` · **Proofreader Mark Reveal** · `proofreader-mark-reveal`
 - [x] **NEWS-069** · `SPX-3591` · **Correction Notice Insert** · `correction-notice-insert`
-- [ ] **NEWS-070** · `SPX-3592` · **Inline Correction Replace** · scaffold `inline-correction-replace`
+- [x] **NEWS-070** · `SPX-3592` · **Inline Correction Replace** · `inline-correction-replace`
 - [ ] **NEWS-073** · `SPX-3595` · **Retraction Takeover** · scaffold `retraction-takeover`
 - [ ] **NEWS-077** · `SPX-3599` · **Black-Bar Redaction Reveal** · scaffold `black-bar-redaction-reveal`
 - [ ] **NEWS-078** · `SPX-3600` · **Redaction Apply** · scaffold `redaction-apply`

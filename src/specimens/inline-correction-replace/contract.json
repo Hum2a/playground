@@ -1,0 +1,8 @@
+{
+  "name": "inline-correction-replace",
+  "ref": "SPX-3592",
+  "title": "Inline Correction Replace",
+  "mode": "tally",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

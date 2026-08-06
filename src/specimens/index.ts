@@ -592,6 +592,8 @@ import { proofreaderMarkReveal } from './proofreader-mark-reveal/entry'
 
 import { correctionNoticeInsert } from './correction-notice-insert/entry'
 
+import { inlineCorrectionReplace } from './inline-correction-replace/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1116,6 +1118,7 @@ export const specimens: Specimen[] = [
   copyEditStrikeAndReplace,
   proofreaderMarkReveal,
   correctionNoticeInsert,
+  inlineCorrectionReplace,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
