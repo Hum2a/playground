@@ -40,7 +40,7 @@ chronology and information priority.
     the masthead area after an urgent update.
 - [ ] **NEWS-004** · `SPX-3526` · ★★★★☆ **Extra Edition Reveal** — A restrained page
     tears/opening motion reveals an extraordinary edition treatment.
-- [ ] **NEWS-005** · `SPX-3527` · ★★★★★ **Lead Story Promotion** — A normal article card grows
+- [x] **NEWS-005** · `SPX-3527` · ★★★★★ **Lead Story Promotion** — A normal article card grows
     into the dominant headline position while surrounding modules yield
     space.
 - [ ] **NEWS-006** · `SPX-3528` · ★★★★☆ **Breaking Story Pulse** — A breaking marker emits one
@@ -678,23 +678,24 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-005 | SPX-3527 | `lead-story-promotion` | Lead Story Promotion |
 | NEWS-003 | SPX-3525 | `late-edition-stamp` | Late Edition Stamp |
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **3 / 237** complete.
+- Progress: **4 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 234 |
+| Done | 4 |
+| Open | 233 |
 
 ## Core first-wave / build queue
 
 - [x] **NEWS-001** · `SPX-3523` · **Breaking News Banner Slam** · `breaking-news-banner-slam`
 - [x] **NEWS-002** · `SPX-3524` · **Front Page Replate** · `front-page-replate`
 - [x] **NEWS-003** · `SPX-3525` · **Late Edition Stamp** · `late-edition-stamp`
-- [ ] **NEWS-005** · `SPX-3527` · **Lead Story Promotion** · scaffold `lead-story-promotion`
+- [x] **NEWS-005** · `SPX-3527` · **Lead Story Promotion** · `lead-story-promotion`
 - [ ] **NEWS-010** · `SPX-3532` · **Masthead Assemble** · scaffold `masthead-assemble`
 - [ ] **NEWS-011** · `SPX-3533` · **Section Flag Drop** · scaffold `section-flag-drop`
 - [ ] **NEWS-018** · `SPX-3540` · **Headline Typeset Reveal** · scaffold `headline-typeset-reveal`

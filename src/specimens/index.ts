@@ -540,6 +540,8 @@ import { frontPageReplate } from './front-page-replate/entry'
 
 import { lateEditionStamp } from './late-edition-stamp/entry'
 
+import { leadStoryPromotion } from './lead-story-promotion/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1038,6 +1040,7 @@ export const specimens: Specimen[] = [
   breakingNewsBannerSlam,
   frontPageReplate,
   lateEditionStamp,
+  leadStoryPromotion,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

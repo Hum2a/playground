@@ -1,0 +1,8 @@
+{
+  "name": "lead-story-promotion",
+  "ref": "SPX-3527",
+  "title": "Lead Story Promotion",
+  "mode": "rule",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
