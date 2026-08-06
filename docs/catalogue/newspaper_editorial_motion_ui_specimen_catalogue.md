@@ -36,7 +36,7 @@ chronology and information priority.
     cuts across a quiet page and locks into a stable breaking state.
 - [x] **NEWS-002** · `SPX-3524` · ★★★★★ **Front Page Replate** — The lead story expands while
     secondary stories reflow into a newly prioritised front page.
-- [ ] **NEWS-003** · `SPX-3525` · ★★★★★ **Late Edition Stamp** — A bold edition stamp lands over
+- [x] **NEWS-003** · `SPX-3525` · ★★★★★ **Late Edition Stamp** — A bold edition stamp lands over
     the masthead area after an urgent update.
 - [ ] **NEWS-004** · `SPX-3526` · ★★★★☆ **Extra Edition Reveal** — A restrained page
     tears/opening motion reveals an extraordinary edition treatment.
@@ -678,21 +678,22 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-003 | SPX-3525 | `late-edition-stamp` | Late Edition Stamp |
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **2 / 237** complete.
+- Progress: **3 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 2 |
-| Open | 235 |
+| Done | 3 |
+| Open | 234 |
 
 ## Core first-wave / build queue
 
 - [x] **NEWS-001** · `SPX-3523` · **Breaking News Banner Slam** · `breaking-news-banner-slam`
 - [x] **NEWS-002** · `SPX-3524` · **Front Page Replate** · `front-page-replate`
-- [ ] **NEWS-003** · `SPX-3525` · **Late Edition Stamp** · scaffold `late-edition-stamp`
+- [x] **NEWS-003** · `SPX-3525` · **Late Edition Stamp** · `late-edition-stamp`
 - [ ] **NEWS-005** · `SPX-3527` · **Lead Story Promotion** · scaffold `lead-story-promotion`
 - [ ] **NEWS-010** · `SPX-3532` · **Masthead Assemble** · scaffold `masthead-assemble`
 - [ ] **NEWS-011** · `SPX-3533` · **Section Flag Drop** · scaffold `section-flag-drop`

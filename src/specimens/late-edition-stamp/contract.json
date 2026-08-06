@@ -1,0 +1,8 @@
+{
+  "name": "late-edition-stamp",
+  "ref": "SPX-3525",
+  "title": "Late Edition Stamp",
+  "mode": "typeset",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

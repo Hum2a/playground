@@ -538,6 +538,8 @@ import { breakingNewsBannerSlam } from './breaking-news-banner-slam/entry'
 
 import { frontPageReplate } from './front-page-replate/entry'
 
+import { lateEditionStamp } from './late-edition-stamp/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1035,6 +1037,7 @@ export const specimens: Specimen[] = [
   yellowImpactWipe,
   breakingNewsBannerSlam,
   frontPageReplate,
+  lateEditionStamp,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
