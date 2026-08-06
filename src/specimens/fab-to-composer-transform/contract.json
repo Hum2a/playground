@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/fab-to-composer-transform.schema.json",
+  "title": "FabToComposerTransform",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "preview", "geometry", "timing", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "fab-to-composer-transform" },
+    "intent": {
+      "type": "string",
+      "const": "56×56 FAB grows into 342×210 composer; radius 28→24px over 360ms; glyph fades by 90ms; content after 120ms; actions after 180ms."
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 390 },
+        "heightPx": { "type": "number", "const": 640 }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fabSizePx", "composerWidthPx", "composerHeightPx", "insetPx", "radiusStartPx", "radiusEndPx"],
+      "properties": {
+        "fabSizePx": { "type": "number", "const": 56 },
+        "composerWidthPx": { "type": "number", "const": 342 },
+        "composerHeightPx": { "type": "number", "const": 210 },
+        "insetPx": { "type": "number", "const": 24 },
+        "radiusStartPx": { "type": "number", "const": 28 },
+        "radiusEndPx": { "type": "number", "const": 24 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "glyphFadeMs", "contentStartMs", "actionsStartMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 360 },
+        "glyphFadeMs": { "type": "number", "const": 90 },
+        "contentStartMs": { "type": "number", "const": 120 },
+        "actionsStartMs": { "type": "number", "const": 180 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateGeometry", "triggers"],
+      "properties": {
+        "immediateGeometry": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "container", "fab", "composer"],
+      "properties": {
+        "root": { "type": "string", "const": "ftc" },
+        "container": { "type": "string", "const": "ftc__container" },
+        "fab": { "type": "string", "const": "ftc__fab" },
+        "composer": { "type": "string", "const": "ftc__composer" }
+      }
+    }
+  }
+}

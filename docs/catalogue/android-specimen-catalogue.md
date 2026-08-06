@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **3 / 417** complete.
+- Progress: **4 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 414 |
+| Done | 4 |
+| Open | 413 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-002 | `SPX-1559` | `fab-to-composer-transform` | FAB-to-Composer Transform |
 | AND-001 | `SPX-1558` | `card-to-detail-container-transform` | Card-to-Detail Container Transform |
 | AND-045 | `SPX-1602` | `predictive-back-app-shrink` | Predictive Back App Shrink |
 | AND-044 | `SPX-1601` | `predictive-back-edge-pull` | Predictive Back Edge Pull |
@@ -43,7 +44,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-044** · `SPX-1601` · **Predictive Back Edge Pull** — android-back-gesture
 - [x] **AND-045** · `SPX-1602` · **Predictive Back App Shrink** — android-back-gesture
 - [x] **AND-001** · `SPX-1558` · **Card-to-Detail Container Transform** — material-container-transform
-- [ ] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — material-container-transform
+- [x] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — material-container-transform
 - [ ] **AND-020** · `SPX-1577` · **Fade Through** — material-fade-patterns
 - [ ] **AND-011** · `SPX-1568` · **Shared X-Axis Forward** — shared-axis-transitions
 - [ ] **AND-036** · `SPX-1593` · **Bounded Touch Ripple** — ripple-touch-feedback
@@ -74,7 +75,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Material Container Transform
 
 - [x] **AND-001** · `SPX-1558` · **Card-to-Detail Container Transform** — a compact card grows into a detail surface while preserving title and container identity.
-- [ ] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — a floating action control expands into a full composer/input surface.
+- [x] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — a floating action control expands into a full composer/input surface.
 - [ ] **AND-003** · `SPX-1560` · **List Item-to-Detail Transform** — selected row becomes the header/container of its destination.
 - [ ] **AND-004** · `SPX-1561` · **Thumbnail-to-Viewer Transform** — image/media thumbnail expands continuously into a larger viewing surface.
 - [ ] **AND-005** · `SPX-1562` · **Chip-to-Filter Panel Transform** — compact filter chip becomes a detailed filter configuration surface.
