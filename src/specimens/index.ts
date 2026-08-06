@@ -1,5 +1,6 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
+import { blackoutLoader } from './blackout-loader/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
@@ -111,6 +112,7 @@ export const specimens: Specimen[] = [
   printRegistrationHover,
   dayChangeTear,
   hoverCutout,
+  blackoutLoader,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

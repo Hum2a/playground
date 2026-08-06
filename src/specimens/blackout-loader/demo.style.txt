@@ -1,0 +1,489 @@
+/* blackout-loader — portable specimen styles */
+
+.bol {
+  --bol-ink: #090909;
+  --bol-red: #e60012;
+  --bol-paper: #f5f1e8;
+  --bol-ease: cubic-bezier(0.32, 0.08, 0.45, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  min-height: 240px;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #16181e;
+  color: var(--bol-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.bol *,
+.bol *::before,
+.bol *::after {
+  box-sizing: border-box;
+}
+
+.bol__surface {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 240px;
+  padding: 1.35rem 1.2rem 1.5rem;
+  background: var(--bol-paper);
+  color: var(--bol-ink);
+}
+
+.bol__eyebrow {
+  margin: 0;
+  font: 700 0.62rem/1.2 inherit;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(9 9 9 / 0.5);
+}
+
+.bol__title {
+  margin: 0;
+  font: 900 clamp(1.35rem, 5.5vw, 1.85rem) / 1.05 inherit;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bol__count {
+  margin: 0.15rem 0 0.85rem;
+  font: 600 0.85rem/1.3 inherit;
+  color: rgb(9 9 9 / 0.72);
+}
+
+.bol__trigger {
+  appearance: none;
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.55rem 0.85rem;
+  border: 2px solid var(--bol-ink);
+  border-radius: 0;
+  background: var(--bol-ink);
+  color: var(--bol-paper);
+  font: 800 0.65rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.bol__trigger:focus {
+  outline: none;
+}
+
+.bol__trigger:focus-visible {
+  outline: 2px solid var(--bol-red);
+  outline-offset: 3px;
+}
+
+.bol--busy .bol__trigger,
+.bol--settled .bol__trigger {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bol__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Veil / polygons —— */
+.bol__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bol__poly {
+  position: absolute;
+  background: var(--bol-ink);
+  opacity: 0;
+  will-change: transform;
+}
+
+/* 1 — large left wedge (~45% coverage) */
+.bol__poly--1 {
+  left: 0;
+  top: -4%;
+  width: 58%;
+  height: 108%;
+  clip-path: polygon(0% 0%, 78% 0%, 100% 48%, 72% 100%, 0% 100%);
+  transform: translateX(-105%);
+}
+
+/* 2 — upper-right slab */
+.bol__poly--2 {
+  right: -2%;
+  top: -6%;
+  width: 62%;
+  height: 58%;
+  clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 86%, 8% 18%);
+  transform: translate(110%, -40%);
+}
+
+/* 3 — lower-right wedge */
+.bol__poly--3 {
+  right: -4%;
+  bottom: -6%;
+  width: 68%;
+  height: 62%;
+  clip-path: polygon(0% 22%, 100% 0%, 100% 100%, 8% 100%, 18% 48%);
+  transform: translate(110%, 55%);
+}
+
+/* 4 — final central slash/panel (closes remaining window) */
+.bol__poly--4 {
+  left: 18%;
+  top: 12%;
+  width: 72%;
+  height: 76%;
+  clip-path: polygon(8% 0%, 100% 12%, 88% 100%, 0% 86%, 18% 28%);
+  transform: scale(0.35) rotate(12deg);
+  transform-origin: 60% 40%;
+}
+
+/* Consume phase */
+.bol--consume .bol__poly {
+  opacity: 1;
+}
+
+.bol--consume .bol__poly--1 {
+  animation: bol-in-1 300ms var(--bol-ease) forwards;
+}
+
+.bol--consume .bol__poly--2 {
+  animation: bol-in-2 270ms var(--bol-ease) 90ms forwards;
+}
+
+.bol--consume .bol__poly--3 {
+  animation: bol-in-3 260ms var(--bol-ease) 180ms forwards;
+}
+
+.bol--consume .bol__poly--4 {
+  animation: bol-in-4 220ms cubic-bezier(0.4, 0.05, 0.35, 1) 300ms forwards;
+}
+
+@keyframes bol-in-1 {
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bol-in-2 {
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes bol-in-3 {
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes bol-in-4 {
+  0% {
+    transform: scale(0.35) rotate(12deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(-3deg);
+    opacity: 1;
+  }
+}
+
+/* Hold covered */
+.bol--covered .bol__poly,
+.bol--loading .bol__poly,
+.bol--warn .bol__poly {
+  opacity: 1;
+  transform: none;
+}
+
+.bol--covered .bol__poly--1,
+.bol--loading .bol__poly--1,
+.bol--warn .bol__poly--1 {
+  transform: translateX(0);
+}
+
+.bol--covered .bol__poly--2,
+.bol--loading .bol__poly--2,
+.bol--warn .bol__poly--2 {
+  transform: translate(0, 0);
+}
+
+.bol--covered .bol__poly--3,
+.bol--loading .bol__poly--3,
+.bol--warn .bol__poly--3 {
+  transform: translate(0, 0);
+}
+
+.bol--covered .bol__poly--4,
+.bol--loading .bol__poly--4,
+.bol--warn .bol__poly--4 {
+  transform: scale(1) rotate(-3deg);
+}
+
+/* Loading chrome — only after coverage */
+.bol__loading {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-content: center;
+  gap: 0.45rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bol--loading .bol__loading,
+.bol--warn .bol__loading {
+  opacity: 1;
+}
+
+.bol__loading-label {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  font: 900 1.15rem/1 inherit;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bol-paper);
+}
+
+.bol__dots {
+  display: inline-flex;
+  gap: 0.18rem;
+  margin-left: 0.12rem;
+  min-width: 1.4rem;
+}
+
+.bol__dots span {
+  display: block;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: var(--bol-paper);
+  opacity: 0.25;
+}
+
+.bol--loading .bol__dots span {
+  animation: bol-dot 600ms steps(1, end) infinite;
+}
+
+.bol--loading .bol__dots span:nth-child(2) {
+  animation-delay: 200ms;
+}
+
+.bol--loading .bol__dots span:nth-child(3) {
+  animation-delay: 400ms;
+}
+
+@keyframes bol-dot {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  33%,
+  66% {
+    opacity: 1;
+  }
+}
+
+.bol__microtype {
+  margin: 0;
+  text-align: center;
+  font: 700 0.58rem/1.2 inherit;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(245 241 232 / 0.55);
+}
+
+/* Completion telegraph slash */
+.bol__slash {
+  position: absolute;
+  z-index: 4;
+  top: 46%;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background: var(--bol-red);
+  clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 70%);
+  transform: scaleX(0.2);
+  transform-origin: 10% 50%;
+  opacity: 0;
+}
+
+.bol--warn .bol__slash {
+  opacity: 1;
+  animation: bol-slash 150ms cubic-bezier(0.35, 0.05, 0.55, 1) forwards;
+}
+
+@keyframes bol-slash {
+  from {
+    transform: scaleX(0.2);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Reveal — diagonal split exits */
+.bol--reveal .bol__loading,
+.bol--reveal .bol__slash {
+  opacity: 0;
+  transition: opacity 80ms linear;
+}
+
+.bol--reveal .bol__poly {
+  opacity: 1;
+  animation-fill-mode: forwards;
+}
+
+.bol--reveal .bol__poly--1,
+.bol--reveal .bol__poly--2 {
+  animation: bol-out-ul 420ms cubic-bezier(0.45, 0.05, 0.7, 0.25) forwards;
+}
+
+.bol--reveal .bol__poly--3,
+.bol--reveal .bol__poly--4 {
+  animation: bol-out-lr 420ms cubic-bezier(0.45, 0.05, 0.7, 0.25) 40ms forwards;
+}
+
+@keyframes bol-out-ul {
+  to {
+    transform: translate(-120%, -80%) rotate(-8deg);
+    opacity: 1;
+  }
+}
+
+@keyframes bol-out-lr {
+  to {
+    transform: translate(120%, 90%) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+.bol--settled .bol__veil {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bol--settled .bol__poly,
+.bol--settled .bol__loading,
+.bol--settled .bol__slash {
+  opacity: 0;
+  animation: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bol__poly,
+  .bol__slash,
+  .bol__dots span,
+  .bol__loading {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .bol--loading .bol__dots span {
+    opacity: 1;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .bol__poly,
+[data-force-reduced-motion='true'] .bol__slash,
+[data-force-reduced-motion='true'] .bol__dots span,
+[data-force-reduced-motion='true'] .bol__loading {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .bol--loading .bol__dots span,
+[data-force-reduced-motion='true'] .bol--covered .bol__dots span {
+  opacity: 1;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bol--covered .bol__poly,
+  .bol--loading .bol__poly,
+  .bol--warn .bol__poly {
+    opacity: 1;
+  }
+
+  .bol--covered .bol__poly--1,
+  .bol--loading .bol__poly--1,
+  .bol--warn .bol__poly--1 {
+    transform: translateX(0);
+  }
+
+  .bol--covered .bol__poly--2,
+  .bol--loading .bol__poly--2,
+  .bol--warn .bol__poly--2,
+  .bol--covered .bol__poly--3,
+  .bol--loading .bol__poly--3,
+  .bol--warn .bol__poly--3 {
+    transform: translate(0, 0);
+  }
+
+  .bol--covered .bol__poly--4,
+  .bol--loading .bol__poly--4,
+  .bol--warn .bol__poly--4 {
+    transform: scale(1) rotate(-3deg);
+  }
+
+  .bol--covered .bol__loading,
+  .bol--loading .bol__loading {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .bol--covered .bol__poly,
+[data-force-reduced-motion='true'] .bol--loading .bol__poly,
+[data-force-reduced-motion='true'] .bol--warn .bol__poly {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .bol--covered .bol__poly--1,
+[data-force-reduced-motion='true'] .bol--loading .bol__poly--1,
+[data-force-reduced-motion='true'] .bol--warn .bol__poly--1 {
+  transform: translateX(0);
+}
+
+[data-force-reduced-motion='true'] .bol--covered .bol__poly--2,
+[data-force-reduced-motion='true'] .bol--loading .bol__poly--2,
+[data-force-reduced-motion='true'] .bol--warn .bol__poly--2,
+[data-force-reduced-motion='true'] .bol--covered .bol__poly--3,
+[data-force-reduced-motion='true'] .bol--loading .bol__poly--3,
+[data-force-reduced-motion='true'] .bol--warn .bol__poly--3 {
+  transform: translate(0, 0);
+}
+
+[data-force-reduced-motion='true'] .bol--covered .bol__poly--4,
+[data-force-reduced-motion='true'] .bol--loading .bol__poly--4,
+[data-force-reduced-motion='true'] .bol--warn .bol__poly--4 {
+  transform: scale(1) rotate(-3deg);
+}
+
+[data-force-reduced-motion='true'] .bol--covered .bol__loading,
+[data-force-reduced-motion='true'] .bol--loading .bol__loading {
+  opacity: 1;
+}

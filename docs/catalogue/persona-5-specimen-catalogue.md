@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **14 / 301** complete.
+- Progress: **15 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 287 |
+| Done | 15 |
+| Open | 286 |
 
 ## Shipped (mapped to live specimens)
 
@@ -32,6 +32,7 @@
 | P5-034 | `SPX-045` | `print-registration-hover` | Print Registration Hover |
 | P5-293 | `SPX-304` | `day-change-tear` | Day Change Tear |
 | P5-057 | `SPX-068` | `hover-cutout` | Hover Cutout |
+| P5-115 | `SPX-126` | `blackout-loader` | Blackout Loader |
 
 ## Core first-wave
 
@@ -200,7 +201,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-112** · `SPX-123` · **Slash Progress** — Diagonal bars accumulate rather than horizontal bar.
 - [ ] **P5-113** · `SPX-124` · **Ransom Letter Loader** — `LOADING` letters arrive individually.
 - [ ] **P5-114** · `SPX-125` · **Rotating Headline Loader** — Loading words rotate around centre.
-- [ ] **P5-115** · `SPX-126` · **Blackout Loader** — Irregular black shape slowly consumes surface.
+- [x] **P5-115** · `SPX-126` · **Blackout Loader** — Irregular black shape slowly consumes surface.
 - [ ] **P5-116** · `SPX-127` · **Microtype Conveyor Loader** — Tiny status words move along rails.
 - [ ] **P5-117** · `SPX-128` · **Ink Registration Loader** — Layers progressively align as progress reaches 100%.
 - [ ] **P5-118** · `SPX-129` · **Page Flip Loader** — Tiny paper scraps flip through statuses.

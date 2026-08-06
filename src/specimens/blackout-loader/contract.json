@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/blackout-loader.schema.json",
+  "title": "BlackoutLoader",
+  "description": "Portable blackout loading transition: irregular black polygons consume a host, hold, then split-reveal updated content. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "polygons",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "blackout-loader" },
+    "intent": {
+      "type": "string",
+      "const": "Irregular black polygons consume a host, hold with a minimal LOADING mark, then split diagonally to reveal updated content underneath."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "initialCount",
+        "finalCount",
+        "trigger",
+        "loading",
+        "microtype"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "ARCHIVE INDEX" },
+        "initialCount": {
+          "type": "string",
+          "const": "24 specimens available"
+        },
+        "finalCount": {
+          "type": "string",
+          "const": "30 specimens available"
+        },
+        "trigger": { "type": "string", "const": "REFRESH INDEX" },
+        "loading": { "type": "string", "const": "LOADING" },
+        "microtype": { "type": "string", "const": "ARCHIVE // REFRESH" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "red", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "polygons": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "Four major black consumers; content swap only after full coverage."
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverMs",
+        "warnAtMs",
+        "revealAtMs",
+        "revealMs",
+        "dotLoopMs"
+      ],
+      "properties": {
+        "coverMs": { "type": "number", "const": 520 },
+        "poly1Ms": { "type": "number", "const": 300 },
+        "poly2DelayMs": { "type": "number", "const": 90 },
+        "poly3DelayMs": { "type": "number", "const": 180 },
+        "poly4DelayMs": { "type": "number", "const": 300 },
+        "warnAtMs": { "type": "number", "const": 1650 },
+        "slashMs": { "type": "number", "const": 150 },
+        "revealAtMs": { "type": "number", "const": 1800 },
+        "revealMs": { "type": "number", "const": 420 },
+        "dotLoopMs": { "type": "number", "const": 600 },
+        "demoLoadMs": { "type": "number", "const": 1800 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ariaBusy", "statusOnComplete", "veilDecorative"],
+      "properties": {
+        "ariaBusy": { "type": "boolean", "const": true },
+        "statusOnComplete": { "type": "boolean", "const": true },
+        "veilDecorative": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["staticBlackout", "staticLoading", "instantReveal", "triggers"],
+      "properties": {
+        "staticBlackout": { "type": "boolean", "const": true },
+        "staticLoading": { "type": "boolean", "const": true },
+        "instantReveal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "surface", "veil", "poly", "loading", "slash"],
+      "properties": {
+        "root": { "type": "string", "const": "bol" },
+        "surface": { "type": "string", "const": "bol__surface" },
+        "veil": { "type": "string", "const": "bol__veil" },
+        "poly": { "type": "string", "const": "bol__poly" },
+        "loading": { "type": "string", "const": "bol__loading" },
+        "slash": { "type": "string", "const": "bol__slash" },
+        "stateConsume": { "type": "string", "const": "bol--consume" },
+        "stateReveal": { "type": "string", "const": "bol--reveal" },
+        "stateSettled": { "type": "string", "const": "bol--settled" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "blackout-loader",
+      "intent": "Irregular black polygons consume a host, hold with a minimal LOADING mark, then split diagonally to reveal updated content underneath.",
+      "copy": {
+        "title": "ARCHIVE INDEX",
+        "initialCount": "24 specimens available",
+        "finalCount": "30 specimens available",
+        "trigger": "REFRESH INDEX",
+        "loading": "LOADING",
+        "microtype": "ARCHIVE // REFRESH"
+      },
+      "colours": {
+        "ink": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "polygons": [
+        {
+          "id": 1,
+          "edge": "left",
+          "delayMs": 0,
+          "durationMs": 300,
+          "clipPath": "polygon(0% 0%, 78% 0%, 100% 48%, 72% 100%, 0% 100%)"
+        },
+        {
+          "id": 2,
+          "edge": "upper-right",
+          "delayMs": 90,
+          "durationMs": 270,
+          "clipPath": "polygon(12% 0%, 100% 0%, 100% 100%, 0% 86%, 8% 18%)"
+        },
+        {
+          "id": 3,
+          "edge": "lower-right",
+          "delayMs": 180,
+          "durationMs": 260,
+          "clipPath": "polygon(0% 22%, 100% 0%, 100% 100%, 8% 100%, 18% 48%)"
+        },
+        {
+          "id": 4,
+          "edge": "centre",
+          "delayMs": 300,
+          "durationMs": 220,
+          "clipPath": "polygon(8% 0%, 100% 12%, 88% 100%, 0% 86%, 18% 28%)"
+        }
+      ],
+      "animation": {
+        "coverMs": 520,
+        "warnAtMs": 1650,
+        "revealAtMs": 1800,
+        "revealMs": 420,
+        "dotLoopMs": 600,
+        "demoLoadMs": 1800
+      },
+      "a11y": {
+        "ariaBusy": true,
+        "statusOnComplete": true,
+        "veilDecorative": true
+      },
+      "reducedMotion": {
+        "staticBlackout": true,
+        "staticLoading": true,
+        "instantReveal": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "bol",
+        "surface": "bol__surface",
+        "veil": "bol__veil",
+        "poly": "bol__poly",
+        "loading": "bol__loading",
+        "slash": "bol__slash"
+      }
+    }
+  ]
+}
