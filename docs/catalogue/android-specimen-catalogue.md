@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **35 / 417** complete.
+- Progress: **36 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 35 |
-| Open | 382 |
+| Done | 36 |
+| Open | 381 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-218 | `SPX-1775` | `dialog-materialise` | Dialog Materialise |
 | AND-170 | `SPX-1727` | `floating-label-lift` | Floating Label Lift |
 | AND-162 | `SPX-1719` | `material-switch-toggle` | Material Switch Toggle |
 | AND-179 | `SPX-1736` | `search-bar-to-view-transform` | Search Bar-to-View Transform |
@@ -406,7 +407,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Dialogs
 
-- [ ] **AND-218** · `SPX-1775` · **Material Dialog Materialise** — dialog establishes itself through scale/fade hierarchy.
+- [x] **AND-218** · `SPX-1775` · **Material Dialog Materialise** — dialog establishes itself through scale/fade hierarchy.
 - [ ] **AND-219** · `SPX-1776` · **Dialog-to-Button Return** — dismissal returns visual ownership toward launch control.
 - [ ] **AND-220** · `SPX-1777` · **Full-Screen Dialog Advance** — large editing dialog uses shared-axis navigation internally.
 - [ ] **AND-221** · `SPX-1778` · **Confirmation State Resolve** — confirm action changes dialog into deterministic working/result state.

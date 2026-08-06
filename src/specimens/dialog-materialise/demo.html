@@ -1,0 +1,46 @@
+<div class="dlg" data-dialog-materialise data-phase="closed">
+  <div class="dlg__host">
+    <h2 class="dlg__host-title">Settings</h2>
+    <p class="dlg__host-copy">Manage account preferences and sync options.</p>
+    <button class="dlg__open" type="button" data-dlg-open>
+      Delete account
+    </button>
+  </div>
+
+  <div class="dlg__scrim" data-dlg-scrim hidden></div>
+
+  <div
+    class="dlg__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="dlg-title"
+    data-dlg-dialog
+    hidden
+    style="--dlg-origin-x: 50%; --dlg-origin-y: 72%;"
+  >
+    <h3 class="dlg__title" id="dlg-title" data-dlg-title>Delete account?</h3>
+    <p class="dlg__copy" data-dlg-copy>
+      This removes your profile and cannot be undone.
+    </p>
+    <div class="dlg__actions" data-dlg-actions>
+      <button class="dlg__btn dlg__btn--cancel" type="button" data-dlg-cancel>
+        Cancel
+      </button>
+      <button class="dlg__btn dlg__btn--confirm" type="button" data-dlg-confirm>
+        Confirm
+      </button>
+    </div>
+    <div class="dlg__working" data-dlg-working hidden>
+      <span class="dlg__spinner" aria-hidden="true"></span>
+      <span>Working…</span>
+    </div>
+    <div class="dlg__success" data-dlg-success hidden>
+      <span class="dlg__success-mark" aria-hidden="true"></span>
+      <span>Account deleted</span>
+    </div>
+  </div>
+
+  <p class="dlg__status" role="status" aria-live="polite" data-dlg-status>
+    Open the dialog from Delete account.
+  </p>
+</div>

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/dialog-materialise.schema.json",
+  "title": "DialogMaterialise",
+  "description": "Portable contract for materialising confirmation dialog.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "dialog", "timing", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "dialog-materialise" },
+    "intent": {
+      "type": "string",
+      "const": "Dialog establishes itself through scale/fade hierarchy aligned to trigger."
+    },
+    "dialog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "scaleFrom"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 304 },
+        "heightPx": { "type": "number", "const": 220 },
+        "scaleFrom": { "type": "number", "const": 0.92 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scrimMs", "dialogMs", "workMs"],
+      "properties": {
+        "scrimMs": { "type": "number", "const": 180 },
+        "dialogMs": { "type": "number", "const": 240 },
+        "workMs": { "type": "number", "const": 700 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finalScale", "triggers"],
+      "properties": {
+        "finalScale": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dialogRole", "focusReturn", "escapeCloses"],
+      "properties": {
+        "dialogRole": { "type": "boolean", "const": true },
+        "focusReturn": { "type": "boolean", "const": true },
+        "escapeCloses": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "scrim", "dialog"],
+      "properties": {
+        "root": { "type": "string", "const": "dlg" },
+        "scrim": { "type": "string", "const": "dlg__scrim" },
+        "dialog": { "type": "string", "const": "dlg__dialog" }
+      }
+    }
+  }
+}

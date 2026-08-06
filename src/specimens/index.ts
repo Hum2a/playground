@@ -72,6 +72,7 @@ import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
+import { dialogMaterialise } from './dialog-materialise/entry'
 import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
 import { dragProxyFormation } from './drag-proxy-formation/entry'
@@ -343,6 +344,7 @@ export const specimens: Specimen[] = [
   deletionGuillotine,
   desktopSpaceSwipe,
   diagnosticBootSequence,
+  dialogMaterialise,
   discoveryTearOpen,
   dockLaunchBounce,
   dockMagnification,
