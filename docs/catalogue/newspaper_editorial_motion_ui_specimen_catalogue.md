@@ -196,7 +196,7 @@ chronology and information priority.
     advances through text edits.
 - [ ] **NEWS-063** · `SPX-3585` · ★★★★☆ **Carriage Return Line Break** — The cursor snaps back
     and the next line begins with mechanical rhythm.
-- [ ] **NEWS-064** · `SPX-3586` · ★★★★★ **Copy Edit Strike-and-Replace** — A word is crossed out
+- [x] **NEWS-064** · `SPX-3586` · ★★★★★ **Copy Edit Strike-and-Replace** — A word is crossed out
     and its replacement types into the same measure.
 - [ ] **NEWS-065** · `SPX-3587` · ★★★★★ **Proofreader Mark Reveal** — Original proofing marks
     appear around a selected text fragment.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-064 | SPX-3586 | `copy-edit-strike-and-replace` | Copy Edit Strike-and-Replace |
 | NEWS-061 | SPX-3583 | `typewriter-headline-entry` | Typewriter Headline Entry |
 | NEWS-059 | SPX-3581 | `proof-to-final-toggle` | Proof-to-Final Toggle |
 | NEWS-056 | SPX-3578 | `plate-swap-transition` | Plate Swap Transition |
@@ -705,12 +706,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **26 / 237** complete.
+- Progress: **27 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 26 |
-| Open | 211 |
+| Done | 27 |
+| Open | 210 |
 
 ## Core first-wave / build queue
 
@@ -740,7 +741,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-056** · `SPX-3578` · **Plate Swap Transition** · `plate-swap-transition`
 - [x] **NEWS-059** · `SPX-3581` · **Proof-to-Final Toggle** · `proof-to-final-toggle`
 - [x] **NEWS-061** · `SPX-3583` · **Typewriter Headline Entry** · `typewriter-headline-entry`
-- [ ] **NEWS-064** · `SPX-3586` · **Copy Edit Strike-and-Replace** · scaffold `copy-edit-strike-and-replace`
+- [x] **NEWS-064** · `SPX-3586` · **Copy Edit Strike-and-Replace** · `copy-edit-strike-and-replace`
 - [ ] **NEWS-065** · `SPX-3587` · **Proofreader Mark Reveal** · scaffold `proofreader-mark-reveal`
 - [ ] **NEWS-069** · `SPX-3591` · **Correction Notice Insert** · scaffold `correction-notice-insert`
 - [ ] **NEWS-070** · `SPX-3592` · **Inline Correction Replace** · scaffold `inline-correction-replace`

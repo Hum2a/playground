@@ -1,0 +1,8 @@
+{
+  "name": "copy-edit-strike-and-replace",
+  "ref": "SPX-3586",
+  "title": "Copy Edit Strike-and-Replace",
+  "mode": "edit",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

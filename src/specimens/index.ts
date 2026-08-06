@@ -586,6 +586,8 @@ import { proofToFinalToggle } from './proof-to-final-toggle/entry'
 
 import { typewriterHeadlineEntry } from './typewriter-headline-entry/entry'
 
+import { copyEditStrikeAndReplace } from './copy-edit-strike-and-replace/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1107,6 +1109,7 @@ export const specimens: Specimen[] = [
   plateSwapTransition,
   proofToFinalToggle,
   typewriterHeadlineEntry,
+  copyEditStrikeAndReplace,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
