@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/evolution-silhouette-transformation.schema.json",
+  "title": "EvolutionSilhouetteTransformation",
+  "description": "Portable contract for decisive A/B silhouette evolution. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "forms",
+    "phases",
+    "marks",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "evolution-silhouette-transformation"
+    },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Form A charges then decisively alternates with Form B until Form B permanently wins; no crossfade."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["idFrom", "idTo", "tierFrom", "tierTo", "action"],
+      "properties": {
+        "idFrom": { "type": "string", "const": "FORM // 01" },
+        "idTo": { "type": "string", "const": "FORM // 02" },
+        "tierFrom": { "type": "string", "const": "BASIC" },
+        "tierTo": { "type": "string", "const": "ADVANCED" },
+        "action": { "type": "string", "const": "EVOLVE" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "body", "bodyFinal", "glow", "ring", "mark"],
+      "properties": {
+        "near": { "type": "string", "const": "#0c0a12" },
+        "body": { "type": "string", "const": "#6e5c92" },
+        "bodyFinal": { "type": "string", "const": "#9b86c9" },
+        "glow": { "type": "string", "const": "#f7f2ff" },
+        "ring": { "type": "string", "const": "#d9c8f5" },
+        "mark": { "type": "string", "const": "#c4b0e8" }
+      }
+    },
+    "forms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["a", "b", "noCrossfade"],
+      "properties": {
+        "a": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthPx", "heightPx", "clipPath"],
+          "properties": {
+            "widthPx": { "type": "number", "const": 110 },
+            "heightPx": { "type": "number", "const": 140 },
+            "clipPath": {
+              "type": "string",
+              "const": "polygon(38% 0%, 32% 14%, 24% 18%, 14% 42%, 8% 68%, 12% 92%, 28% 100%, 50% 90%, 72% 100%, 88% 92%, 92% 68%, 86% 42%, 76% 18%, 68% 14%, 62% 0%, 50% 10%)"
+            }
+          }
+        },
+        "b": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthPx", "heightPx", "clipPath"],
+          "properties": {
+            "widthPx": { "type": "number", "const": 145 },
+            "heightPx": { "type": "number", "const": 175 },
+            "clipPath": {
+              "type": "string",
+              "const": "polygon(50% 0%, 42% 10%, 30% 2%, 26% 16%, 14% 8%, 18% 24%, 6% 36%, 10% 48%, 2% 58%, 12% 70%, 8% 88%, 22% 100%, 50% 88%, 78% 100%, 92% 88%, 88% 70%, 98% 58%, 90% 48%, 94% 36%, 82% 24%, 86% 8%, 74% 16%, 70% 2%, 58% 10%)"
+            }
+          }
+        },
+        "noCrossfade": { "type": "boolean", "const": true }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chargeMs",
+        "cycles",
+        "resolveMs",
+        "scaleFrom",
+        "scaleTo",
+        "ringCount"
+      ],
+      "properties": {
+        "chargeMs": { "type": "number", "const": 280 },
+        "cycles": {
+          "type": "array",
+          "const": [
+            { "a": 180, "b": 90 },
+            { "a": 140, "b": 120 },
+            { "a": 100, "b": 150 },
+            { "a": 60, "b": 0 }
+          ]
+        },
+        "resolveMs": { "type": "number", "const": 220 },
+        "scaleFrom": { "type": "number", "const": 1 },
+        "scaleTo": { "type": "number", "const": 1.12 },
+        "ringCount": { "type": "integer", "const": 3 }
+      }
+    },
+    "marks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "rotationDeg", "oneShot"],
+      "properties": {
+        "count": { "type": "integer", "const": 8 },
+        "rotationDeg": { "type": "number", "const": 45 },
+        "oneShot": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["explicitIdentityText", "liveStatus", "decorativeHidden"],
+      "properties": {
+        "explicitIdentityText": { "type": "boolean", "const": true },
+        "liveStatus": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFormB", "triggers"],
+      "properties": {
+        "instantFormB": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "sil", "ring", "mark"],
+      "properties": {
+        "root": { "type": "string", "const": "est" },
+        "sil": { "type": "string", "const": "est__sil" },
+        "ring": { "type": "string", "const": "est__ring" },
+        "mark": { "type": "string", "const": "est__mark" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "run" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": {
+          "type": "string",
+          "const": "evolutionSilhouetteTransformation"
+        }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "evolution-silhouette-transformation",
+      "intent": "Form A charges then decisively alternates with Form B until Form B permanently wins; no crossfade.",
+      "copy": {
+        "idFrom": "FORM // 01",
+        "idTo": "FORM // 02",
+        "tierFrom": "BASIC",
+        "tierTo": "ADVANCED",
+        "action": "EVOLVE"
+      },
+      "colours": {
+        "near": "#0c0a12",
+        "body": "#6e5c92",
+        "bodyFinal": "#9b86c9",
+        "glow": "#f7f2ff",
+        "ring": "#d9c8f5",
+        "mark": "#c4b0e8"
+      },
+      "forms": {
+        "a": {
+          "widthPx": 110,
+          "heightPx": 140,
+          "clipPath": "polygon(38% 0%, 32% 14%, 24% 18%, 14% 42%, 8% 68%, 12% 92%, 28% 100%, 50% 90%, 72% 100%, 88% 92%, 92% 68%, 86% 42%, 76% 18%, 68% 14%, 62% 0%, 50% 10%)"
+        },
+        "b": {
+          "widthPx": 145,
+          "heightPx": 175,
+          "clipPath": "polygon(50% 0%, 42% 10%, 30% 2%, 26% 16%, 14% 8%, 18% 24%, 6% 36%, 10% 48%, 2% 58%, 12% 70%, 8% 88%, 22% 100%, 50% 88%, 78% 100%, 92% 88%, 88% 70%, 98% 58%, 90% 48%, 94% 36%, 82% 24%, 86% 8%, 74% 16%, 70% 2%, 58% 10%)"
+        },
+        "noCrossfade": true
+      },
+      "phases": {
+        "chargeMs": 280,
+        "cycles": [
+          { "a": 180, "b": 90 },
+          { "a": 140, "b": 120 },
+          { "a": 100, "b": 150 },
+          { "a": 60, "b": 0 }
+        ],
+        "resolveMs": 220,
+        "scaleFrom": 1,
+        "scaleTo": 1.12,
+        "ringCount": 3
+      },
+      "marks": {
+        "count": 8,
+        "rotationDeg": 45,
+        "oneShot": true
+      },
+      "a11y": {
+        "explicitIdentityText": true,
+        "liveStatus": true,
+        "decorativeHidden": true
+      },
+      "reducedMotion": {
+        "instantFormB": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "est",
+        "sil": "est__sil",
+        "ring": "est__ring",
+        "mark": "est__mark"
+      },
+      "behaviour": {
+        "run": "run",
+        "reset": "reset",
+        "api": "evolutionSilhouetteTransformation"
+      }
+    }
+  ]
+}

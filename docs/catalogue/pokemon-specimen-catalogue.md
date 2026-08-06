@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **1 / 266** complete.
+- Progress: **2 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 1 |
-| Open | 265 |
+| Done | 2 |
+| Open | 264 |
 
 ## Visual grammar
 
@@ -33,6 +33,7 @@
 | PK | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
 | PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
+| PK-025 | `SPX-724` | `evolution-silhouette-transformation` | Evolution Silhouette Transformation |
 
 ## Core first-wave
 
@@ -133,7 +134,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 5. HP, XP & progression
 
-- [ ] **PK-061** · `SPX-760` · **HP Bar Damage Drain** — The primary value responds immediately while a delayed secondary bar catches up behind it.
+- [x] **PK-061** · `SPX-760` · **HP Bar Damage Drain** — The primary value responds immediately while a delayed secondary bar catches up behind it.
 - [ ] **PK-062** · `SPX-761` · **XP Bar Fill** — Earned progress travels through a long bar and approaches a threshold.
 - [ ] **PK-063** · `SPX-762` · **Level Up Overflow** — XP reaches 100%, increments the level, resets and continues with leftover progress.
 - [ ] **PK-064** · `SPX-763` · **Low HP Warning** — A resource crossing a critical threshold causes a restrained persistent warning state.

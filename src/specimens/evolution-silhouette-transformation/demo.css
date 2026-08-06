@@ -1,0 +1,403 @@
+/* evolution-silhouette-transformation — portable specimen styles */
+
+.est {
+  /* Frozen palette */
+  --est-near: #0c0a12;
+  --est-deep: #1a1528;
+  --est-body: #6e5c92;
+  --est-body-final: #9b86c9;
+  --est-glow: #f7f2ff;
+  --est-ring: #d9c8f5;
+  --est-mark: #c4b0e8;
+  --est-mute: #9a8fb3;
+  --est-pale: #efe8ff;
+
+  /* Frozen form A geometry (110 × 140) — broad base, two short upper protrusions */
+  --est-clip-a: polygon(
+    38% 0%,
+    32% 14%,
+    24% 18%,
+    14% 42%,
+    8% 68%,
+    12% 92%,
+    28% 100%,
+    50% 90%,
+    72% 100%,
+    88% 92%,
+    92% 68%,
+    86% 42%,
+    76% 18%,
+    68% 14%,
+    62% 0%,
+    50% 10%
+  );
+
+  /* Frozen form B geometry (145 × 175) — related: three upper crests + two laterals */
+  --est-clip-b: polygon(
+    50% 0%,
+    42% 10%,
+    30% 2%,
+    26% 16%,
+    14% 8%,
+    18% 24%,
+    6% 36%,
+    10% 48%,
+    2% 58%,
+    12% 70%,
+    8% 88%,
+    22% 100%,
+    50% 88%,
+    78% 100%,
+    92% 88%,
+    88% 70%,
+    98% 58%,
+    90% 48%,
+    94% 36%,
+    82% 24%,
+    86% 8%,
+    74% 16%,
+    70% 2%,
+    58% 10%
+  );
+
+  --est-charge-ms: 280ms;
+  --est-instability-ms: 840ms;
+  --est-resolve-ms: 220ms;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  padding: 1rem 0.85rem 0.85rem;
+  color: var(--est-pale);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 40%, #221a36 0%, var(--est-near) 72%);
+}
+
+.est *,
+.est *::before,
+.est *::after {
+  box-sizing: border-box;
+}
+
+.est__meta {
+  display: grid;
+  gap: 0.2rem;
+  justify-items: center;
+  margin-bottom: 0.65rem;
+  text-align: center;
+}
+
+.est__meta-clip {
+  position: relative;
+  height: 1.05rem;
+  overflow: hidden;
+  min-width: 7.5rem;
+}
+
+.est__id,
+.est__tier {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.05rem;
+  transition: transform var(--est-resolve-ms) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.est__id {
+  color: var(--est-pale);
+}
+
+.est__tier {
+  color: var(--est-mute);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+}
+
+.est__id--from,
+.est__tier--from {
+  transform: translateY(0);
+}
+
+.est__id--to,
+.est__tier--to {
+  transform: translateY(110%);
+}
+
+.est[data-state='evolved'] .est__id--from,
+.est[data-state='evolved'] .est__tier--from,
+.est--resolve .est__id--from,
+.est--resolve .est__tier--from {
+  transform: translateY(-110%);
+}
+
+.est[data-state='evolved'] .est__id--to,
+.est[data-state='evolved'] .est__tier--to,
+.est--resolve .est__id--to,
+.est--resolve .est__tier--to {
+  transform: translateY(0);
+}
+
+.est__stage {
+  position: relative;
+  width: 260px;
+  height: 230px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+.est__scale {
+  position: relative;
+  width: 180px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  transform: scale(1);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.est--instability .est__scale {
+  transition: transform var(--est-instability-ms) cubic-bezier(0.25, 0.1, 0.35, 1);
+  transform: scale(1.12);
+}
+
+.est[data-state='evolved'] .est__scale,
+.est--resolve .est__scale {
+  transform: scale(1.12);
+  transition: none;
+}
+
+.est__sil {
+  position: relative;
+  z-index: 2;
+  width: 110px;
+  height: 140px;
+  background: var(--est-body);
+  clip-path: var(--est-clip-a);
+  filter: brightness(1);
+  transition: none;
+}
+
+.est[data-form='b'] .est__sil {
+  width: 145px;
+  height: 175px;
+  clip-path: var(--est-clip-b);
+}
+
+.est--charge .est__sil {
+  transition: filter var(--est-charge-ms) linear, background var(--est-charge-ms) linear;
+  filter: brightness(1.55);
+  background: color-mix(in srgb, var(--est-body) 35%, var(--est-glow));
+}
+
+.est--instability .est__sil {
+  transition: none;
+  filter: brightness(1.85);
+  background: color-mix(in srgb, var(--est-body) 15%, var(--est-glow));
+}
+
+.est--resolve .est__sil,
+.est[data-state='evolved'] .est__sil {
+  transition: filter var(--est-resolve-ms) ease-out, background var(--est-resolve-ms) ease-out;
+  filter: brightness(1);
+  background: var(--est-body-final);
+}
+
+.est__rings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.est__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid color-mix(in srgb, var(--est-ring) 70%, transparent);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.55);
+}
+
+.est__ring--1 {
+  width: 150px;
+  height: 150px;
+}
+
+.est__ring--2 {
+  width: 180px;
+  height: 180px;
+}
+
+.est__ring--3 {
+  width: 210px;
+  height: 210px;
+}
+
+.est--charge .est__ring {
+  opacity: 0.85;
+  animation: est-ring-contract var(--est-charge-ms) cubic-bezier(0.35, 0.05, 0.45, 1) both;
+}
+
+.est--charge .est__ring--2 {
+  animation-delay: 40ms;
+}
+
+.est--charge .est__ring--3 {
+  animation-delay: 80ms;
+}
+
+@keyframes est-ring-contract {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.55);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+}
+
+.est__marks {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transform: rotate(0deg);
+}
+
+.est--instability .est__marks {
+  opacity: 1;
+  transition: transform var(--est-instability-ms) linear, opacity 60ms linear;
+  transform: rotate(45deg);
+}
+
+.est--resolve .est__marks,
+.est[data-state='evolved'] .est__marks {
+  opacity: 0;
+  transition: opacity 80ms linear;
+  transform: rotate(45deg);
+}
+
+.est__mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 1.5px;
+  margin-left: -9px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--est-mark) 30%,
+    var(--est-glow) 100%
+  );
+  transform: rotate(calc(var(--i) * 45deg)) translateX(78px);
+  transform-origin: center center;
+}
+
+.est__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.est__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.est__btn {
+  appearance: none;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--est-mark) 55%, transparent);
+  background: color-mix(in srgb, var(--est-deep) 88%, #000);
+  color: var(--est-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.est__btn:focus {
+  outline: none;
+}
+
+.est__btn:focus-visible {
+  outline: 2px solid var(--est-glow);
+  outline-offset: 2px;
+}
+
+.est__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.est__live {
+  margin: 0.7rem 0 0;
+  color: var(--est-mute);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .est--charge .est__sil,
+  .est--resolve .est__sil,
+  .est[data-state='evolved'] .est__sil,
+  .est--instability .est__scale,
+  .est--instability .est__marks,
+  .est--resolve .est__id,
+  .est--resolve .est__tier,
+  .est[data-state='evolved'] .est__id,
+  .est[data-state='evolved'] .est__tier {
+    transition: none;
+  }
+
+  .est--charge .est__ring {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .est--charge .est__sil,
+[data-force-reduced-motion='true'] .est--resolve .est__sil,
+[data-force-reduced-motion='true'] .est[data-state='evolved'] .est__sil,
+[data-force-reduced-motion='true'] .est--instability .est__scale,
+[data-force-reduced-motion='true'] .est--instability .est__marks,
+[data-force-reduced-motion='true'] .est--resolve .est__id,
+[data-force-reduced-motion='true'] .est--resolve .est__tier,
+[data-force-reduced-motion='true'] .est[data-state='evolved'] .est__id,
+[data-force-reduced-motion='true'] .est[data-state='evolved'] .est__tier {
+  transition: none;
+}
+
+[data-force-reduced-motion='true'] .est--charge .est__ring {
+  animation: none;
+  opacity: 0;
+}

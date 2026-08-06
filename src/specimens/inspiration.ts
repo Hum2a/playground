@@ -179,6 +179,8 @@ export const SUGGESTED_FREE_TAGS = [
   'crystallise',
   'disclosure',
   'radial',
+  'evolution',
+  'identity',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]
