@@ -1,0 +1,61 @@
+/* SPX-3028 KEEP OUT Tape Marquee — portable contract. */
+
+.kout-tape {
+  pointer-events: none;
+  position: absolute;
+  left: -35%;
+  top: 42%;
+  z-index: 2;
+  width: 170%;
+  transform: translateY(-50%) rotate(-28deg);
+  filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.35));
+}
+
+.kout-tape__edge {
+  height: 5px;
+  background: repeating-linear-gradient(-45deg, #101010 0 6px, #F5C400 6px 12px);
+}
+
+.kout-tape__band {
+  overflow: hidden;
+  border-block: 2px solid #101010;
+  background: #F5C400;
+}
+
+.kout-tape__track {
+  display: flex;
+  width: max-content;
+  animation: kout-marquee 8s linear infinite;
+}
+
+.kout-tape__text {
+  flex-shrink: 0;
+  padding: 0.2rem 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #101010;
+  white-space: nowrap;
+}
+
+@keyframes kout-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kout-tape__track {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .kout-tape__track {
+  animation: none;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "keep-out-tape-marquee",
+  "intent": "Diagonal KEEP OUT yellow/black tape with seamless SIGNAL marquee.",
+  "catalogue": { "p4": "P4-110", "ref": "SPX-3028" },
+  "copy": {
+    "unit": "KEEP OUT · SIGNAL · KEEP OUT · ",
+    "repeatsPerSpan": 4,
+    "spanCount": 2
+  },
+  "colours": { "yellow": "#F5C400", "ink": "#101010" },
+  "layout": { "angleDegrees": -28, "widthPercent": 170 },
+  "animation": { "name": "kout-marquee", "durationSeconds": 8 },
+  "reducedMotion": { "stopMarquee": true }
+}
