@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/pip-edge-magnetism.schema.json",
+  "title": "PipEdgeMagnetism",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "layout", "magnetism", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "pip-edge-magnetism" },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stageWidthPx", "stageHeightPx", "windowWidthPx", "windowHeightPx", "insetPx"],
+      "properties": {
+        "stageWidthPx": { "type": "number", "const": 390 },
+        "stageHeightPx": { "type": "number", "const": 700 },
+        "windowWidthPx": { "type": "number", "const": 176 },
+        "windowHeightPx": { "type": "number", "const": 99 },
+        "insetPx": { "type": "number", "const": 12 }
+      }
+    },
+    "magnetism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["attractZonePx", "attractBlend", "snapMs", "flingThresholdPxMs"],
+      "properties": {
+        "attractZonePx": { "type": "number", "const": 56 },
+        "attractBlend": { "type": "number", "const": 0.35 },
+        "snapMs": { "type": "number", "const": 180 },
+        "flingThresholdPxMs": { "type": "number", "const": 0.8 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noMagneticDrag", "instantSnap", "triggers"],
+      "properties": {
+        "noMagneticDrag": { "type": "boolean", "const": true },
+        "instantSnap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "stage", "window"],
+      "properties": {
+        "root": { "type": "string", "const": "pem" },
+        "stage": { "type": "string", "const": "pem__stage" },
+        "window": { "type": "string", "const": "pem__window" }
+      }
+    }
+  }
+}
