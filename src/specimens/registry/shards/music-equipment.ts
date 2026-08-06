@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { deckSyncLock } from '../../library/music-equipment/deck-sync-lock/entry'
 import { scratchRecoil } from '../../library/music-equipment/scratch-recoil/entry'
 import { vinylSpinUp } from '../../library/music-equipment/vinyl-spin-up/entry'
 import { signalFlowPulse } from '../../library/music-equipment/signal-flow-pulse/entry'
@@ -23,6 +24,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  deckSyncLock,
   scratchRecoil,
   vinylSpinUp,
   signalFlowPulse,

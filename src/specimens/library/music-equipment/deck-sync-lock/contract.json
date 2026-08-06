@@ -1,0 +1,8 @@
+{
+  "name": "deck-sync-lock",
+  "ref": "SPX-3845",
+  "title": "Deck Sync Lock",
+  "mode": "sequence",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

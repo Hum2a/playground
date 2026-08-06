@@ -569,4 +569,5 @@ export const specimenOrder: string[] = [
   'signal-flow-pulse',
   'vinyl-spin-up',
   'scratch-recoil',
+  'deck-sync-lock',
 ]
