@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/afterimage-navigation.schema.json",
+  "title": "AfterimageNavigation",
+  "description": "Portable contract for rapid rail navigation that leaves four outline afterimages and path ticks while an ACTIVE marker jumps HOME→SHIP.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "destinations",
+    "marker",
+    "segments",
+    "afterimages",
+    "ticks",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "afterimage-navigation" },
+    "intent": {
+      "type": "string",
+      "const": "Rapid navigation along five fixed destinations where the ACTIVE marker leaves exactly four outline afterimages and path ticks, settling locked at SHIP."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "destinations", "markerLabel", "trigger", "replay", "statusHome", "statusShip"],
+      "properties": {
+        "title": { "type": "string", "const": "ROUTE // NAV" },
+        "destinations": {
+          "type": "array",
+          "const": ["HOME", "SEARCH", "BUILD", "REVIEW", "SHIP"]
+        },
+        "markerLabel": { "type": "string", "const": "ACTIVE" },
+        "trigger": { "type": "string", "const": "JUMP TO SHIP" },
+        "replay": { "type": "string", "const": "REPLAY" },
+        "statusHome": { "type": "string", "const": "Destination home." },
+        "statusShip": { "type": "string", "const": "Destination ship." }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "muted", "line", "blue", "pale"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0e1218" },
+        "cream": { "type": "string", "const": "#e8ecef" },
+        "muted": { "type": "string", "const": "#6a7380" },
+        "line": { "type": "string", "const": "#2a3440" },
+        "blue": { "type": "string", "const": "#5b8fd9" },
+        "pale": { "type": "string", "const": "#9ec4f0" }
+      }
+    },
+    "destinations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "coordinates"],
+      "properties": {
+        "count": { "type": "number", "const": 5 },
+        "coordinates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["home", "search", "build", "review", "ship"],
+          "properties": {
+            "home": { "type": "object", "const": { "x": "6%", "y": "52%" } },
+            "search": { "type": "object", "const": { "x": "26%", "y": "46%" } },
+            "build": { "type": "object", "const": { "x": "48%", "y": "54%" } },
+            "review": { "type": "object", "const": { "x": "70%", "y": "48%" } },
+            "ship": { "type": "object", "const": { "x": "90%", "y": "52%" } }
+          }
+        }
+      }
+    },
+    "marker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "finalCornerLocks"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 44 },
+        "heightPx": { "type": "number", "const": 28 },
+        "finalCornerLocks": { "type": "number", "const": 4 }
+      }
+    },
+    "segments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationsMs", "arrivalMs"],
+      "properties": {
+        "durationsMs": {
+          "type": "array",
+          "const": [90, 70, 65, 80]
+        },
+        "arrivalMs": { "type": "number", "const": 305 }
+      }
+    },
+    "afterimages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "lifetimesMs", "outlineOnly"],
+      "properties": {
+        "count": { "type": "number", "const": 4 },
+        "lifetimesMs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["home", "search", "build", "review"],
+          "properties": {
+            "home": { "type": "number", "const": 420 },
+            "search": { "type": "number", "const": 330 },
+            "build": { "type": "number", "const": 240 },
+            "review": { "type": "number", "const": 150 }
+          }
+        },
+        "outlineOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "ticks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["perTraversedDestination", "remainAfterCleanup"],
+      "properties": {
+        "perTraversedDestination": { "type": "number", "const": 1 },
+        "remainAfterCleanup": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loops", "finalStatic"],
+      "properties": {
+        "loops": { "type": "boolean", "const": false },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceCurrentOnly", "politeStatus"],
+      "properties": {
+        "announceCurrentOnly": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateShip", "staticTicks", "noAfterimages", "triggers"],
+      "properties": {
+        "immediateShip": { "type": "boolean", "const": true },
+        "staticTicks": { "type": "boolean", "const": true },
+        "noAfterimages": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "stage", "marker", "ghost", "tick"],
+      "properties": {
+        "root": { "type": "string", "const": "ain" },
+        "stage": { "type": "string", "const": "ain__stage" },
+        "marker": { "type": "string", "const": "ain__marker" },
+        "ghost": { "type": "string", "const": "ain__ghost" },
+        "tick": { "type": "string", "const": "ain__tick" }
+      }
+    }
+  }
+}

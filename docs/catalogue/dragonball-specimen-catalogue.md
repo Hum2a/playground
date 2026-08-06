@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **27 / 244** complete.
+- Progress: **29 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 217 |
+| Done | 29 |
+| Open | 215 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-135 | `SPX-1100` | `afterimage-navigation` | Afterimage Navigation |
 | DB-150 | `SPX-1115` | `state-field-transfer` | State Field Transfer |
 | DB-176 | `SPX-1141` | `tournament-bracket-activation` | Tournament Bracket Activation |
 | DB-193 | `SPX-1158` | `isolated-time-freeze` | Isolated Time Freeze |
@@ -266,7 +267,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Speed / Movement
 
 - [ ] **DB-134** ?? `SPX-1099` ?? **High-Speed Dash** ??? component exits before its motion trail has time to disappear.
-- [ ] **DB-135** ?? `SPX-1100` ?? **Afterimage Navigation** ??? previous component position remains for several frames after state movement.
+- [x] **DB-135** ?? `SPX-1100` ?? **Afterimage Navigation** ??? previous component position remains for several frames after state movement.
 - [ ] **DB-136** ?? `SPX-1101` ?? **Vanish / Reappear** ??? target disappears immediately before an incoming interaction arrives.
 - [ ] **DB-137** ?? `SPX-1102` ?? **Speed-Line Transition** ??? directional lines dominate the viewport while content moves between states.
 - [ ] **DB-138** ?? `SPX-1103` ?? **Rapid Position Exchange** ??? two entities swap places too quickly for conventional travel.

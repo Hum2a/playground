@@ -1,0 +1,59 @@
+<div class="ain" data-afterimage-nav data-phase="idle" data-at="home">
+  <p class="ain__title">ROUTE // NAV</p>
+
+  <div class="ain__stage" data-ain-stage>
+    <svg
+      class="ain__svg"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <polyline
+        class="ain__polyline"
+        points="6,52 26,46 48,54 70,48 90,52"
+        fill="none"
+      />
+    </svg>
+
+    <div class="ain__dest ain__dest--home" data-ain-dest="home" style="--ain-x: 6%; --ain-y: 52%">
+      <span class="ain__tick" data-ain-tick="home" aria-hidden="true"></span>
+      <span class="ain__label">HOME</span>
+    </div>
+    <div class="ain__dest ain__dest--search" data-ain-dest="search" style="--ain-x: 26%; --ain-y: 46%">
+      <span class="ain__tick" data-ain-tick="search" aria-hidden="true"></span>
+      <span class="ain__label">SEARCH</span>
+    </div>
+    <div class="ain__dest ain__dest--build" data-ain-dest="build" style="--ain-x: 48%; --ain-y: 54%">
+      <span class="ain__tick" data-ain-tick="build" aria-hidden="true"></span>
+      <span class="ain__label">BUILD</span>
+    </div>
+    <div class="ain__dest ain__dest--review" data-ain-dest="review" style="--ain-x: 70%; --ain-y: 48%">
+      <span class="ain__tick" data-ain-tick="review" aria-hidden="true"></span>
+      <span class="ain__label">REVIEW</span>
+    </div>
+    <div class="ain__dest ain__dest--ship" data-ain-dest="ship" style="--ain-x: 90%; --ain-y: 52%">
+      <span class="ain__tick" data-ain-tick="ship" aria-hidden="true"></span>
+      <span class="ain__label">SHIP</span>
+    </div>
+
+    <div class="ain__ghosts" data-ain-ghosts aria-hidden="true"></div>
+
+    <div class="ain__marker" data-ain-marker aria-hidden="true">
+      <span class="ain__marker-body">ACTIVE</span>
+      <span class="ain__lock ain__lock--tl"></span>
+      <span class="ain__lock ain__lock--tr"></span>
+      <span class="ain__lock ain__lock--bl"></span>
+      <span class="ain__lock ain__lock--br"></span>
+    </div>
+  </div>
+
+  <div class="ain__controls">
+    <button type="button" class="ain__btn" data-ain-jump>JUMP TO SHIP</button>
+    <button type="button" class="ain__btn ain__btn--ghost" data-ain-replay>REPLAY</button>
+  </div>
+
+  <p class="ain__status" role="status" aria-live="polite" data-ain-status>
+    Destination home.
+  </p>
+</div>

@@ -1,0 +1,307 @@
+/* afterimage-navigation — portable specimen styles. Do not restyle to host tokens. */
+
+.ain {
+  --ain-ink: #0e1218;
+  --ain-cream: #e8ecef;
+  --ain-muted: #6a7380;
+  --ain-line: #2a3440;
+  --ain-blue: #5b8fd9;
+  --ain-pale: #9ec4f0;
+  --ain-mx: 6%;
+  --ain-my: 52%;
+  --ain-move-ms: 90ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  min-height: 300px;
+  padding: 0.75rem 0.75rem 2.4rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  color: var(--ain-cream);
+  background: var(--ain-ink);
+}
+
+.ain *,
+.ain *::before,
+.ain *::after {
+  box-sizing: border-box;
+}
+
+.ain__title {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--ain-pale);
+}
+
+.ain__stage {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border: 1px solid var(--ain-line);
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 50%, color-mix(in srgb, var(--ain-blue) 12%, transparent), transparent 70%),
+    #121820;
+}
+
+.ain__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ain__polyline {
+  stroke: var(--ain-line);
+  stroke-width: 0.6;
+  stroke-dasharray: 1.2 1.1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Destinations — frozen coordinates */
+
+.ain__dest {
+  position: absolute;
+  left: var(--ain-x);
+  top: var(--ain-y);
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  pointer-events: none;
+}
+
+.ain__label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ain-muted);
+  margin-top: 1.35rem;
+}
+
+.ain__tick {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: var(--ain-cream);
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.ain__tick.is-on {
+  height: 8px;
+  opacity: 1;
+}
+
+.ain[data-at='home'] .ain__dest--home .ain__label,
+.ain[data-at='search'] .ain__dest--search .ain__label,
+.ain[data-at='build'] .ain__dest--build .ain__label,
+.ain[data-at='review'] .ain__dest--review .ain__label,
+.ain[data-at='ship'] .ain__dest--ship .ain__label {
+  color: var(--ain-cream);
+}
+
+/* Active marker 44×28 */
+
+.ain__marker {
+  position: absolute;
+  left: var(--ain-mx);
+  top: var(--ain-my);
+  z-index: 5;
+  width: 44px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.ain__marker.is-travel {
+  animation: ain-move var(--ain-move-ms) linear forwards;
+}
+
+@keyframes ain-move {
+  to {
+    left: var(--ain-tx);
+    top: var(--ain-ty);
+  }
+}
+
+.ain__marker-body {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--ain-pale);
+  background: color-mix(in srgb, var(--ain-blue) 55%, var(--ain-ink));
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ain-cream);
+}
+
+.ain__marker.is-moving .ain__marker-body {
+  border-style: solid;
+  background: color-mix(in srgb, var(--ain-blue) 35%, var(--ain-ink));
+}
+
+.ain__lock {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: var(--ain-cream);
+  border-style: solid;
+  opacity: 0;
+}
+
+.ain__lock--tl {
+  left: -3px;
+  top: -3px;
+  border-width: 2px 0 0 2px;
+}
+.ain__lock--tr {
+  right: -3px;
+  top: -3px;
+  border-width: 2px 2px 0 0;
+}
+.ain__lock--bl {
+  left: -3px;
+  bottom: -3px;
+  border-width: 0 0 2px 2px;
+}
+.ain__lock--br {
+  right: -3px;
+  bottom: -3px;
+  border-width: 0 2px 2px 0;
+}
+
+.ain__marker.is-locked .ain__lock {
+  opacity: 1;
+}
+
+.ain__marker.is-locked .ain__marker-body {
+  border-color: var(--ain-cream);
+  background: color-mix(in srgb, var(--ain-blue) 70%, var(--ain-ink));
+}
+
+/* Afterimages — outline only, lose detail */
+
+.ain__ghosts {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.ain__ghost {
+  position: absolute;
+  left: var(--ain-gx);
+  top: var(--ain-gy);
+  width: 44px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border: 1.5px dashed var(--ain-blue);
+  background: transparent;
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  opacity: 0;
+}
+
+.ain__ghost.is-alive {
+  animation: ain-ghost-fade var(--ain-ghost-ms) linear forwards;
+}
+
+.ain__ghost::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid color-mix(in srgb, var(--ain-blue) 45%, transparent);
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+}
+
+@keyframes ain-ghost-fade {
+  0% {
+    opacity: 0.85;
+    filter: none;
+  }
+  55% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+}
+
+/* Controls */
+
+.ain__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+.ain__btn {
+  appearance: none;
+  border: 2px solid var(--ain-blue);
+  background: color-mix(in srgb, var(--ain-blue) 28%, var(--ain-ink));
+  color: var(--ain-cream);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.42rem 0.75rem;
+  cursor: pointer;
+}
+
+.ain__btn:hover:not(:disabled) {
+  background: var(--ain-blue);
+  color: var(--ain-ink);
+}
+
+.ain__btn:focus-visible {
+  outline: 2px solid var(--ain-pale);
+  outline-offset: 2px;
+}
+
+.ain__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ain__btn--ghost {
+  background: transparent;
+  border-color: var(--ain-line);
+  color: var(--ain-muted);
+}
+
+.ain__btn--ghost:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--ain-line) 40%, transparent);
+  color: var(--ain-cream);
+}
+
+.ain__status {
+  margin: 0.55rem 0 0;
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  color: var(--ain-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ain__marker.is-travel,
+  .ain__ghost.is-alive {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ain__marker.is-travel,
+[data-force-reduced-motion='true'] .ain__ghost.is-alive {
+  animation: none !important;
+}
