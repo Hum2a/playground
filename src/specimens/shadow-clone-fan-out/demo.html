@@ -1,0 +1,40 @@
+<div class="scf" data-scf data-phase="idle">
+  <p class="scf__live" data-scf-live aria-live="polite">
+    Idle. Source task ready to fan out.
+  </p>
+
+  <p class="scf__system">TASK // FAN-OUT</p>
+
+  <div class="scf__stage" data-scf-stage>
+    <article class="scf__source" data-scf-source>
+      <p class="scf__source-kicker" data-scf-source-kicker>SOURCE</p>
+      <p class="scf__source-title">Batch Task</p>
+    </article>
+
+    <div class="scf__clones" data-scf-clones aria-hidden="true">
+      <span class="scf__clone" data-scf-clone="0"></span>
+      <span class="scf__clone" data-scf-clone="1"></span>
+      <span class="scf__clone" data-scf-clone="2"></span>
+    </div>
+
+    <ol class="scf__slots" data-scf-slots aria-label="Fanned worker slots">
+      <li class="scf__slot" data-scf-slot="0" aria-label="Worker slot 1 empty">
+        <span class="scf__slot-label" data-scf-slot-label>WORKER 1</span>
+      </li>
+      <li class="scf__slot" data-scf-slot="1" aria-label="Worker slot 2 empty">
+        <span class="scf__slot-label" data-scf-slot-label>WORKER 2</span>
+      </li>
+      <li class="scf__slot" data-scf-slot="2" aria-label="Worker slot 3 empty">
+        <span class="scf__slot-label" data-scf-slot-label>WORKER 3</span>
+      </li>
+    </ol>
+
+    <p class="scf__status" data-scf-status>IDLE</p>
+    <p class="scf__hint" data-scf-hint>Press Run to fan out three clones.</p>
+  </div>
+
+  <div class="scf__controls">
+    <button type="button" class="scf__btn scf__btn--primary" data-scf-run>Run</button>
+    <button type="button" class="scf__btn" data-scf-replay>Replay</button>
+  </div>
+</div>
