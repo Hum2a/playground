@@ -1,0 +1,10 @@
+{
+  "name": "maximum-output-breakthrough",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "animation": { "fillMs": 580, "breakMs": 320, "totalMs": 1230 }
+}

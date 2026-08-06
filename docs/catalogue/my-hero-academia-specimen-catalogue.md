@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **26 / 369** complete.
+- Progress: **27 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 26 |
-| Open | 343 |
+| Done | 27 |
+| Open | 342 |
 
 ## Visual grammar
 
@@ -58,6 +58,7 @@
 | MHA-112 | `SPX-2086` | `part-compatibility-snap` | Part Compatibility Snap |
 | MHA-128 | `SPX-2102` | `mission-incoming` | Mission Incoming |
 | MHA-129 | `SPX-2103` | `objective-update-slash` | Objective Update Slash |
+| MHA-137 | `SPX-2111` | `maximum-output-breakthrough` | Maximum Output Breakthrough |
 
 ## Core first-wave
 
@@ -87,7 +88,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-112** · `SPX-2086` · **Part Compatibility Snap** — support-course-gadget-ui
 - [x] **MHA-128** · `SPX-2102` · **Mission Incoming** — mission-quest-language
 - [x] **MHA-129** · `SPX-2103` · **Objective Update Slash** — mission-quest-language
-- [ ] **MHA-137** · `SPX-2111` · **Maximum Output Breakthrough** — plus-ultra-maximum-effort-language
+- [x] **MHA-137** · `SPX-2111` · **Maximum Output Breakthrough** — plus-ultra-maximum-effort-language
 - [ ] **MHA-158** · `SPX-2132` · **Ice Wipe Transition** — ice-freeze-inspired-effects
 - [ ] **MHA-169** · `SPX-2143` · **Explosive Notification Burst** — explosion-inspired-effects
 - [ ] **MHA-180** · `SPX-2154` · **Binding Wrap Lock** — capture-binding-effects
@@ -274,7 +275,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Plus Ultra / Maximum Effort Language
 
-- [ ] **MHA-137** · `SPX-2111` · **Maximum Output Breakthrough** — progress meter reaches nominal maximum, then physically breaks beyond its container.
+- [x] **MHA-137** · `SPX-2111` · **Maximum Output Breakthrough** — progress meter reaches nominal maximum, then physically breaks beyond its container.
 - [ ] **MHA-138** · `SPX-2112` · **Beyond-Limit Completion** — success state overshoots normal completion geometry before locking.
 - [ ] **MHA-139** · `SPX-2113` · **Final Push Button** — hold-to-confirm action becomes increasingly intense until commit.
 - [ ] **MHA-140** · `SPX-2114` · **Overdrive Counter** — rapidly accumulating counter crosses a redline and changes mode.

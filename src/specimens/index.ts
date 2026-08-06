@@ -149,6 +149,7 @@ import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { materialPullToRefresh } from './material-pull-to-refresh/entry'
 import { materialSwitchToggle } from './material-switch-toggle/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
+import { maximumOutputBreakthrough } from './maximum-output-breakthrough/entry'
 import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
@@ -463,6 +464,7 @@ export const specimens: Specimen[] = [
   materialPullToRefresh,
   materialSwitchToggle,
   maxRankCompletion,
+  maximumOutputBreakthrough,
   measurementOverload,
   memoryFragmentReveal,
   menuBarActiveTransfer,
