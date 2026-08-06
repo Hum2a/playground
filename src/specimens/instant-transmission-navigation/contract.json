@@ -1,0 +1,65 @@
+{
+  "name": "instant-transmission-navigation",
+  "intent": "Zero-distance relocation: lock destination B, collapse SESSION // 04 at A, empty teleport gap, reconstruct at B — never travel intervening space.",
+  "colours": {
+    "ink": "#08080c",
+    "panel": "#14141a",
+    "rule": "#2a2a34",
+    "accent": "#5ec8e8",
+    "pale": "#d8eef6",
+    "white": "#f4f8fb",
+    "vacant": "#6a6a78"
+  },
+  "layout": {
+    "regionGapPxApprox": "200–260 centre-to-centre",
+    "session": "SESSION // 04",
+    "regions": ["REGION // A", "REGION // B"]
+  },
+  "counts": {
+    "destinationBrackets": 4,
+    "departureFragments": 3,
+    "arrivalFragments": 3,
+    "arrivalPointPx": [4, 4]
+  },
+  "timing": {
+    "lockMs": 140,
+    "bracketInsetPx": 6,
+    "collapseMs": 100,
+    "collapseScale": [1, 0.72, 0.28],
+    "fadeMs": 35,
+    "residueMs": 100,
+    "gapMs": 70,
+    "arriveMs": 150,
+    "arriveScale": [0.12, 1.08, 1],
+    "totalMsApprox": 595
+  },
+  "api": {
+    "transmit": "transmitInstantNav()",
+    "reset": "resetInstantNav()",
+    "busyGuard": true,
+    "noTravelPath": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "before": "Session 04 at location A.",
+    "searching": "SEARCHING",
+    "locked": "TARGET LOCKED",
+    "after": "Session 04 at location B.",
+    "stageAriaHidden": true,
+    "focusVisible": "2px solid #5ec8e8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate relocation to B with VACANT at A; no collapse/reconstruction"
+  },
+  "constraints": {
+    "noCharacters": true,
+    "noFranchiseSymbols": true,
+    "noInterveningTravel": true,
+    "noLooping": true,
+    "noExternalAssets": true
+  }
+}

@@ -1,0 +1,531 @@
+/* SPX-1011 Instant Transmission Navigation — portable contract. Do not restyle to host tokens. */
+
+.itn {
+  --itn-ink: #08080c;
+  --itn-panel: #14141a;
+  --itn-rule: #2a2a34;
+  --itn-accent: #5ec8e8;
+  --itn-pale: #d8eef6;
+  --itn-white: #f4f8fb;
+  --itn-vacant: #6a6a78;
+  --itn-lock-ms: 140ms;
+  --itn-collapse-ms: 100ms;
+  --itn-fade-ms: 35ms;
+  --itn-frag-ms: 100ms;
+  --itn-gap-ms: 70ms;
+  --itn-arrive-ms: 150ms;
+  --itn-ease: cubic-bezier(0.33, 0.1, 0.22, 1);
+  --itn-snap: cubic-bezier(0.2, 0.9, 0.25, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 0.7rem;
+  overflow: hidden;
+  background: var(--itn-ink);
+  color: var(--itn-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.itn *,
+.itn *::before,
+.itn *::after {
+  box-sizing: border-box;
+}
+
+.itn__toolbar {
+  z-index: 2;
+}
+
+.itn__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--itn-accent);
+  border-radius: 0;
+  background: var(--itn-panel);
+  color: var(--itn-white);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.itn__btn:focus {
+  outline: none;
+}
+
+.itn__btn:focus-visible {
+  outline: 2px solid var(--itn-accent);
+  outline-offset: 3px;
+}
+
+.itn__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.itn__status {
+  min-height: 1.2em;
+  margin: 0;
+  color: rgb(216 238 246 / 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+.itn__host {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+}
+
+.itn__stage {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  width: min(100%, 420px);
+  min-height: 200px;
+}
+
+.itn__gap {
+  flex: 0 0 clamp(48px, 14vw, 72px);
+  /* Regions ~200–260px centre-to-centre with this spacer */
+}
+
+.itn__region {
+  position: relative;
+  flex: 1 1 150px;
+  max-width: 170px;
+  min-height: 180px;
+  padding: 0.65rem 0.55rem 0.75rem;
+  border: 1px solid var(--itn-rule);
+  background: var(--itn-panel);
+}
+
+.itn__region--a {
+  border-color: rgb(94 200 232 / 0.35);
+}
+
+.itn__region--b {
+  border-color: rgb(94 200 232 / 0.25);
+}
+
+.itn__region-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--itn-accent);
+}
+
+.itn__region-state {
+  margin: 0 0 0.75rem;
+  min-height: 1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgb(216 238 246 / 0.7);
+}
+
+.itn__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 88px;
+}
+
+/* —— Session card —— */
+.itn__session {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 48px;
+  border: 1.5px solid var(--itn-accent);
+  background: linear-gradient(160deg, #1a2830, #101820);
+  transform-origin: center center;
+}
+
+.itn__session--dest {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.12);
+  pointer-events: none;
+}
+
+.itn__session-id {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--itn-white);
+}
+
+/* —— Destination brackets (exactly 4) —— */
+.itn__bracket {
+  position: absolute;
+  z-index: 2;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--itn-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.itn__bracket--tl {
+  top: 8px;
+  left: 8px;
+  border-right: 0;
+  border-bottom: 0;
+  transform: translate(-6px, -6px);
+}
+
+.itn__bracket--tr {
+  top: 8px;
+  right: 8px;
+  border-left: 0;
+  border-bottom: 0;
+  transform: translate(6px, -6px);
+}
+
+.itn__bracket--br {
+  bottom: 8px;
+  right: 8px;
+  border-left: 0;
+  border-top: 0;
+  transform: translate(6px, 6px);
+}
+
+.itn__bracket--bl {
+  bottom: 8px;
+  left: 8px;
+  border-right: 0;
+  border-top: 0;
+  transform: translate(-6px, 6px);
+}
+
+.itn__node {
+  position: absolute;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--itn-pale);
+  background: rgb(94 200 232 / 0.35);
+  opacity: 0;
+  transform: scale(0.4);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.itn__point {
+  position: absolute;
+  z-index: 4;
+  width: 4px;
+  height: 4px;
+  background: var(--itn-pale);
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* —— Fragments: 3 departure + 3 arrival —— */
+.itn__frag {
+  position: absolute;
+  z-index: 2;
+  height: 2px;
+  width: 14px;
+  background: var(--itn-pale);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.itn__frag--d1 {
+  top: 42%;
+  left: 22%;
+}
+.itn__frag--d2 {
+  top: 50%;
+  left: 38%;
+  width: 18px;
+}
+.itn__frag--d3 {
+  top: 58%;
+  left: 28%;
+  width: 12px;
+}
+
+.itn__frag--a1 {
+  top: 42%;
+  right: 22%;
+}
+.itn__frag--a2 {
+  top: 50%;
+  right: 38%;
+  width: 18px;
+}
+.itn__frag--a3 {
+  top: 58%;
+  right: 28%;
+  width: 12px;
+}
+
+/* —— Phase: lock (destination acquisition) —— */
+.itn[data-state='lock'] .itn__bracket,
+.itn[data-state='collapse'] .itn__bracket,
+.itn[data-state='fade'] .itn__bracket,
+.itn[data-state='residue'] .itn__bracket,
+.itn[data-state='gap'] .itn__bracket,
+.itn[data-state='arrive'] .itn__bracket {
+  opacity: 1;
+}
+
+.itn[data-state='lock'] .itn__bracket--tl {
+  animation: itn-br-tl var(--itn-lock-ms) var(--itn-ease) forwards;
+}
+.itn[data-state='lock'] .itn__bracket--tr {
+  animation: itn-br-tr var(--itn-lock-ms) var(--itn-ease) forwards;
+}
+.itn[data-state='lock'] .itn__bracket--br {
+  animation: itn-br-br var(--itn-lock-ms) var(--itn-ease) forwards;
+}
+.itn[data-state='lock'] .itn__bracket--bl {
+  animation: itn-br-bl var(--itn-lock-ms) var(--itn-ease) forwards;
+}
+
+.itn[data-state='lock'] .itn__node,
+.itn[data-state='collapse'] .itn__node,
+.itn[data-state='fade'] .itn__node,
+.itn[data-state='residue'] .itn__node,
+.itn[data-state='gap'] .itn__node {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 80ms linear 40ms,
+    transform 100ms var(--itn-snap) 40ms;
+}
+
+.itn[data-state='collapse'] .itn__bracket--tl,
+.itn[data-state='fade'] .itn__bracket--tl,
+.itn[data-state='residue'] .itn__bracket--tl,
+.itn[data-state='gap'] .itn__bracket--tl,
+.itn[data-state='arrive'] .itn__bracket--tl {
+  transform: translate(0, 0);
+}
+.itn[data-state='collapse'] .itn__bracket--tr,
+.itn[data-state='fade'] .itn__bracket--tr,
+.itn[data-state='residue'] .itn__bracket--tr,
+.itn[data-state='gap'] .itn__bracket--tr,
+.itn[data-state='arrive'] .itn__bracket--tr {
+  transform: translate(0, 0);
+}
+.itn[data-state='collapse'] .itn__bracket--br,
+.itn[data-state='fade'] .itn__bracket--br,
+.itn[data-state='residue'] .itn__bracket--br,
+.itn[data-state='gap'] .itn__bracket--br,
+.itn[data-state='arrive'] .itn__bracket--br {
+  transform: translate(0, 0);
+}
+.itn[data-state='collapse'] .itn__bracket--bl,
+.itn[data-state='fade'] .itn__bracket--bl,
+.itn[data-state='residue'] .itn__bracket--bl,
+.itn[data-state='gap'] .itn__bracket--bl,
+.itn[data-state='arrive'] .itn__bracket--bl {
+  transform: translate(0, 0);
+}
+
+@keyframes itn-br-tl {
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes itn-br-tr {
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes itn-br-br {
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes itn-br-bl {
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+/* —— Phase: collapse at A —— */
+.itn[data-state='collapse'] .itn__session:not(.itn__session--dest) {
+  animation: itn-collapse var(--itn-collapse-ms) var(--itn-snap) forwards;
+}
+
+.itn[data-state='fade'] .itn__session:not(.itn__session--dest) {
+  transform: scale(0.28);
+  animation: itn-fade var(--itn-fade-ms) linear forwards;
+}
+
+.itn[data-state='residue'] .itn__session:not(.itn__session--dest),
+.itn[data-state='gap'] .itn__session:not(.itn__session--dest),
+.itn[data-state='arrive'] .itn__session:not(.itn__session--dest),
+.itn[data-state='complete'] .itn__session:not(.itn__session--dest),
+.itn--reduced .itn__session:not(.itn__session--dest) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes itn-collapse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(0.72);
+  }
+  100% {
+    transform: scale(0.28);
+  }
+}
+
+@keyframes itn-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Departure fragments */
+.itn[data-state='residue'] .itn__frag--d1,
+.itn[data-state='residue'] .itn__frag--d2,
+.itn[data-state='residue'] .itn__frag--d3 {
+  opacity: 0.9;
+  animation: itn-frag-hold var(--itn-frag-ms) linear forwards;
+}
+
+@keyframes itn-frag-hold {
+  0%,
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* —— Phase: gap — nothing between —— */
+.itn[data-state='gap'] .itn__frag {
+  opacity: 0;
+}
+
+/* —— Phase: arrive at B —— */
+.itn[data-state='arrive'] .itn__point {
+  opacity: 1;
+  transform: scale(1);
+  animation: itn-point 40ms linear forwards;
+}
+
+.itn[data-state='arrive'] .itn__session--dest {
+  opacity: 1;
+  visibility: visible;
+  animation: itn-arrive var(--itn-arrive-ms) var(--itn-snap) forwards;
+}
+
+.itn[data-state='arrive'] .itn__frag--a1,
+.itn[data-state='arrive'] .itn__frag--a2,
+.itn[data-state='arrive'] .itn__frag--a3 {
+  opacity: 0.85;
+  animation: itn-frag-hold 120ms linear 20ms forwards;
+}
+
+.itn[data-state='arrive'] .itn__node {
+  opacity: 0;
+  transition: opacity 60ms linear;
+}
+
+@keyframes itn-point {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes itn-arrive {
+  0% {
+    transform: scale(0.12);
+  }
+  55% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* —— Complete —— */
+.itn[data-state='complete'] .itn__session--dest,
+.itn--reduced .itn__session--dest {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.itn[data-state='complete'] .itn__bracket,
+.itn[data-state='complete'] .itn__node,
+.itn[data-state='complete'] .itn__point,
+.itn[data-state='complete'] .itn__frag,
+.itn--reduced .itn__bracket,
+.itn--reduced .itn__node,
+.itn--reduced .itn__point,
+.itn--reduced .itn__frag {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.itn[data-location='b'] .itn__region--a .itn__region-state {
+  color: var(--itn-vacant);
+}
+
+.itn[data-location='b'] .itn__region--b {
+  border-color: rgb(94 200 232 / 0.55);
+}
+
+.itn[data-location='b'] .itn__region--b .itn__region-state {
+  color: var(--itn-accent);
+}
+
+@media (max-width: 380px) {
+  .itn__stage {
+    transform: scale(0.88);
+    transform-origin: center top;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .itn__session,
+  .itn__bracket,
+  .itn__node,
+  .itn__point,
+  .itn__frag {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .itn__session,
+[data-force-reduced-motion='true'] .itn__bracket,
+[data-force-reduced-motion='true'] .itn__node,
+[data-force-reduced-motion='true'] .itn__point,
+[data-force-reduced-motion='true'] .itn__frag {
+  animation: none !important;
+  transition: none !important;
+}

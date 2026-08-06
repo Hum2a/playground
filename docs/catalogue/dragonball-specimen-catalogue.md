@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 244** complete.
+- Progress: **12 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 234 |
+| Done | 12 |
+| Open | 232 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-105 | `SPX-1070` | `seven-part-prerequisite-collection` | Seven-Part Prerequisite Collection |
 | DB-004 | `SPX-969` | `charge-release` | Charge Release |
 | DB-005 | `SPX-970` | `overcharge-warning` | Overcharge Warning |
 | DB-016 | `SPX-981` | `power-state-transformation` | Power State Transformation |
@@ -60,7 +61,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-027** · `SPX-992` · **Ultra Instinct Activation** — transformation
 - [x] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — fusion
 - [ ] **DB-057** · `SPX-1022` · **Potara Fusion** — fusion
-- [ ] **DB-046** · `SPX-1011` · **Instant Transmission Navigation** — instant-transmission-navigation
+- [x] **DB-046** · `SPX-1011` · **Instant Transmission Navigation** — instant-transmission-navigation
 - [ ] **DB-070** · `SPX-1035` · **Beam Clash** — energy-attacks-actions
 - [ ] **DB-071** · `SPX-1036` · **Beam Clash Resolution** — energy-attacks-actions
 - [ ] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — impact-combat-feedback
@@ -68,7 +69,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-083** · `SPX-1048` · **Spirit Bomb Contribution** — spirit-bomb-collective-contribution
 - [ ] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — data-developer-tool-specimens
 - [ ] **DB-095** · `SPX-1060` · **Dragon Radar Search** — dragon-radar-search
-- [ ] **DB-105** · `SPX-1070` · **Seven-Item Collection** — dragon-balls-collection-completion
+- [x] **DB-105** · `SPX-1070` · **Seven-Item Collection** — dragon-balls-collection-completion
 - [ ] **DB-106** · `SPX-1071` · **Final Item Acquired** — dragon-balls-collection-completion
 - [ ] **DB-184** · `SPX-1149` · **Capsule Collapse** — capsule-corp-compact-storage
 - [ ] **DB-185** · `SPX-1150` · **Capsule Deploy** — capsule-corp-compact-storage
@@ -135,7 +136,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Instant Transmission / Navigation
 
-- [ ] **DB-046** · `SPX-1011` · **Instant Transmission Navigation** — component compresses to a tiny point at origin and reconstructs at destination.
+- [x] **DB-046** · `SPX-1011` · **Instant Transmission Navigation** — component compresses to a tiny point at origin and reconstructs at destination.
 - [ ] **DB-047** · `SPX-1012` · **Teleporting Modal** — modal appears by spatial reconstruction rather than scale/fade.
 - [ ] **DB-048** · `SPX-1013` · **Instant Route Switch** — current context disappears from one anchor and destination emerges from another.
 - [ ] **DB-049** · `SPX-1014` · **Teleport Target Lock** — destination must be identified before teleport becomes available.
@@ -209,7 +210,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Dragon Balls / Collection Completion
 
-- [ ] **DB-105** · `SPX-1070` · **Seven-Item Collection** — seven empty positions populate as required objects are acquired.
+- [x] **DB-105** · `SPX-1070` · **Seven-Item Collection** — seven empty positions populate as required objects are acquired.
 - [ ] **DB-106** · `SPX-1071` · **Final Item Acquired** — seventh item triggers a qualitatively different completion state.
 - [ ] **DB-107** · `SPX-1072` · **Collection Resonance** — completed collection begins responding as one connected system.
 - [ ] **DB-108** · `SPX-1073` · **Summon Unlock** — action remains unavailable until all required collection slots are occupied.

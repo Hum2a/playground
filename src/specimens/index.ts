@@ -98,6 +98,7 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
+import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
@@ -173,6 +174,7 @@ export const specimens: Specimen[] = [
   achievementEncounter,
   tacticalAlertPing,
   inkSplatTransition,
+  instantTransmissionNavigation,
   itemObtained,
   kiChargeMeter,
   victoryResultsTally,
@@ -257,6 +259,7 @@ export const specimens: Specimen[] = [
   ripplePortalTransition,
   scannerSearch,
   scouterScan,
+  sevenPartPrerequisiteCollection,
   surfaceBreakReveal,
   synchronousFusionMerge,
   tacticalCommandWheel,
