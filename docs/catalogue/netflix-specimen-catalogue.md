@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **5 / 197** complete.
+- Progress: **6 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 192 |
+| Done | 6 |
+| Open | 191 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-089 | `SPX-3198` | `details-panel-expand` | Details Panel Expand |
 | NF-027 | `SPX-3136` | `rail-page-snap` | Rail Page Snap |
 | NF-025 | `SPX-3134` | `horizontal-content-rail` | Horizontal Content Rail |
 | NF-040 | `SPX-3149` | `preview-collapse-return` | Preview Collapse Return |
@@ -51,7 +52,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-040** · `SPX-3149` · **Preview Collapse Return** — `preview-collapse-return`
 - [x] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — `horizontal-content-rail`
 - [x] **NF-027** · `SPX-3136` · **Rail Page Snap** — `rail-page-snap`
-- [ ] **NF-089** · `SPX-3198` · **Details Panel Expand** — `details-panel-expand`
+- [x] **NF-089** · `SPX-3198` · **Details Panel Expand** — `details-panel-expand`
 - [ ] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — `playback-controls-fade-in`
 - [ ] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — `scrub-preview-thumbnail`
 - [ ] **NF-069** · `SPX-3178` · **Skip Intro Appear** — `skip-intro-appear`
@@ -221,7 +222,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [ ] **NF-088** · `SPX-3197` · **Progressive Metadata Load** — Primary title information resolves before secondary metadata
 ## 12. Title Details / Modal Surfaces
 
-- [ ] **NF-089** · `SPX-3198` · **Details Panel Expand** — A selected card grows into a larger details surface while retaining visual continuity
+- [x] **NF-089** · `SPX-3198` · **Details Panel Expand** — A selected card grows into a larger details surface while retaining visual continuity
 - [ ] **NF-090** · `SPX-3199` · **More Info Overlay** — A dark bounded overlay opens with title metadata and actions
 - [ ] **NF-091** · `SPX-3200` · **Details Hero Reveal** — The details surface reveals its title region before secondary sections
 - [ ] **NF-092** · `SPX-3201` · **Modal Background Recede** — Underlying browse rows dim and scale subtly while details take focus
