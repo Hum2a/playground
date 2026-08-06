@@ -1,0 +1,107 @@
+/* vertical-content-stretch — portable specimen styles. Do not restyle to host tokens. */
+
+.vcs {
+  --vcs-ink: #141218;
+  --vcs-panel: #1e1a22;
+  --vcs-line: #49454f;
+  --vcs-muted: #938f99;
+  --vcs-text: #e8e0ec;
+  --vcs-accent: #7c8bff;
+  --vcs-scale: 1;
+  --vcs-ty: 0px;
+  --vcs-emphasis: 0px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--vcs-text);
+  background: var(--vcs-ink);
+}
+
+.vcs *,
+.vcs *::before,
+.vcs *::after {
+  box-sizing: border-box;
+}
+
+.vcs__viewport {
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  height: 480px;
+  margin: 0 auto;
+  overflow-y: auto;
+  border: 1px solid var(--vcs-line);
+  background: var(--vcs-panel);
+}
+
+.vcs__stretch {
+  transform: scaleY(var(--vcs-scale)) translateY(var(--vcs-ty));
+  transform-origin: top center;
+  transition: transform 0ms;
+}
+
+.vcs[data-vcs-origin='bottom'] .vcs__stretch {
+  transform-origin: bottom center;
+}
+
+.vcs__stretch.is-settling {
+  transition: transform 260ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.vcs__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vcs__list li {
+  padding: 1rem;
+  border-bottom: 1px solid var(--vcs-line);
+  font-size: 0.875rem;
+}
+
+.vcs__boundary {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--vcs-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 80ms ease;
+}
+
+.vcs__boundary--top {
+  top: 0;
+  box-shadow: 0 var(--vcs-emphasis) 0 var(--vcs-accent);
+}
+
+.vcs__boundary--bottom {
+  bottom: 0;
+  box-shadow: 0 calc(-1 * var(--vcs-emphasis)) 0 var(--vcs-accent);
+}
+
+.vcs[data-vcs-origin='top'] .vcs__boundary--top,
+.vcs[data-vcs-origin='bottom'] .vcs__boundary--bottom {
+  opacity: 1;
+}
+
+.vcs__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--vcs-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vcs__stretch.is-settling {
+    transition-duration: 0ms;
+  }
+}
+
+[data-force-reduced-motion='true'] .vcs__stretch.is-settling {
+  transition-duration: 0ms !important;
+}

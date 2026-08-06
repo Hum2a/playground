@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/vertical-content-stretch.schema.json",
+  "title": "VerticalContentStretch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "physics", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "vertical-content-stretch" },
+    "physics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxDragPx", "maxScaleY", "maxTranslatePx", "settleMs"],
+      "properties": {
+        "maxDragPx": { "type": "number", "const": 140 },
+        "maxScaleY": { "type": "number", "const": 1.055 },
+        "maxTranslatePx": { "type": "number", "const": 10 },
+        "settleMs": { "type": "number", "const": 260 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["boundaryEmphasisPx", "triggers"],
+      "properties": {
+        "boundaryEmphasisPx": { "type": "number", "const": 2 },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "viewport", "stretch"],
+      "properties": {
+        "root": { "type": "string", "const": "vcs" },
+        "viewport": { "type": "string", "const": "vcs__viewport" },
+        "stretch": { "type": "string", "const": "vcs__stretch" }
+      }
+    }
+  }
+}

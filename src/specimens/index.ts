@@ -205,6 +205,7 @@ import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { universalClipboardTransfer } from './universal-clipboard-transfer/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
+import { verticalContentStretch } from './vertical-content-stretch/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
@@ -460,6 +461,7 @@ export const specimens: Specimen[] = [
   ultraStateOptimisation,
   universalClipboardTransfer,
   velvetDoorTransition,
+  verticalContentStretch,
   victoryResultsTally,
   volumeBrightnessHud,
   waterlinePageWipe,

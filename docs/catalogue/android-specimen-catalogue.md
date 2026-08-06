@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **19 / 417** complete.
+- Progress: **20 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 19 |
-| Open | 398 |
+| Done | 20 |
+| Open | 397 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-200 | `SPX-1757` | `vertical-content-stretch` | Vertical Content Stretch |
 | AND-193 | `SPX-1750` | `material-pull-to-refresh` | Material Pull-to-Refresh |
 | AND-134 | `SPX-1691` | `active-bottom-nav-pill-transfer` | Active Bottom-Nav Pill Transfer |
 | AND-126 | `SPX-1683` | `navigation-drawer-edge-pull` | Navigation Drawer Edge Pull |
@@ -75,7 +76,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — navigation-drawer
 - [x] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — bottom-navigation
 - [x] **AND-193** · `SPX-1750` · **Material Pull-to-Refresh** — pull-to-refresh-overscroll
-- [ ] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
+- [x] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
 - [ ] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
 - [ ] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — biometric-unlock-inspired
 - [ ] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
@@ -363,7 +364,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Android 12+ Stretch / Edge Effects
 
-- [ ] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — overscroll scales content non-uniformly along the gesture axis.
+- [x] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — overscroll scales content non-uniformly along the gesture axis.
 - [ ] **AND-201** · `SPX-1758` · **Horizontal Content Stretch** — pager edge deforms with constrained stretch.
 - [ ] **AND-202** · `SPX-1759` · **Nested Stretch Propagation** — inner content reaches boundary and transfers a smaller response to outer container.
 - [ ] **AND-203** · `SPX-1760` · **Stretch Release Settle** — deformation returns with a finite spring.
