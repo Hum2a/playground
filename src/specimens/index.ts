@@ -96,6 +96,7 @@ import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { handoffContinuation } from './handoff-continuation/entry'
+import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { homeSwipeUp } from './home-swipe-up/entry'
@@ -345,6 +346,7 @@ export const specimens: Specimen[] = [
   glassFractureReveal,
   graphicBurstHover,
   handoffContinuation,
+  headsUpNotificationDrop,
   highSpeedDashNavigation,
   holdToChargeButton,
   homeSwipeUp,

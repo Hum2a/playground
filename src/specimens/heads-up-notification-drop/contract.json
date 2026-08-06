@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/heads-up-notification-drop.schema.json",
+  "title": "HeadsUpNotificationDrop",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "alert", "sequence", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "heads-up-notification-drop" },
+    "intent": {
+      "type": "string",
+      "const": "Transient heads-up alert overlays host with dwell and swipe dismiss."
+    },
+    "alert": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "expandedHeightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 350 },
+        "heightPx": { "type": "number", "const": 88 },
+        "expandedHeightPx": { "type": "number", "const": 156 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entryMs", "dwellMs", "exitMs", "swipeDismissPx"],
+      "properties": {
+        "entryMs": { "type": "number", "const": 320 },
+        "dwellMs": { "type": "number", "const": 3200 },
+        "exitMs": { "type": "number", "const": 220 },
+        "swipeDismissPx": { "type": "number", "const": 55 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noTravel", "triggers"],
+      "properties": {
+        "noTravel": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "alert"],
+      "properties": {
+        "root": { "type": "string", "const": "hund" },
+        "alert": { "type": "string", "const": "hund__alert" }
+      }
+    }
+  }
+}

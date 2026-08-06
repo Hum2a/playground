@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **13 / 417** complete.
+- Progress: **14 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 13 |
-| Open | 404 |
+| Done | 14 |
+| Open | 403 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-099 | `SPX-1656` | `heads-up-notification-drop` | Heads-Up Notification Drop |
 | AND-090 | `SPX-1647` | `quick-settings-tile-toggle` | Quick Settings Tile Toggle |
 | AND-080 | `SPX-1637` | `notification-shade-pull-down` | Notification Shade Pull-Down |
 | AND-248 | `SPX-1805` | `recents-card-restore` | Recents Card Restore |
@@ -63,7 +64,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-248** · `SPX-1805` · **Recents Card Restore** — android-recents-overview
 - [x] **AND-080** · `SPX-1637` · **Shade Pull-Down** — notification-shade
 - [x] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — quick-settings
-- [ ] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — android-notifications
+- [x] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — android-notifications
 - [ ] **AND-109** · `SPX-1666` · **Snackbar Rise** — toasts-snackbars-temporary-feedback
 - [ ] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — bottom-sheets
 - [ ] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — navigation-drawer
@@ -214,7 +215,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Android Notifications
 
-- [ ] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — alert enters from top edge and temporarily overlays current task.
+- [x] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — alert enters from top edge and temporarily overlays current task.
 - [ ] **AND-100** · `SPX-1657` · **Heads-Up Expand** — compact alert becomes actionable notification.
 - [ ] **AND-101** · `SPX-1658` · **Notification Swipe Dismiss** — horizontal gesture dismisses notification past threshold.
 - [ ] **AND-102** · `SPX-1659` · **Notification Action Resolve** — inline action transforms card into result state before removal.

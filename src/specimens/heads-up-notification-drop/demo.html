@@ -1,0 +1,30 @@
+<div class="hund" data-heads-up data-phase="idle">
+  <div class="hund__host">
+    <header class="hund__host-bar">INBOX</header>
+    <div class="hund__host-body" aria-hidden="true">
+      <p class="hund__line"></p>
+      <p class="hund__line"></p>
+      <p class="hund__line hund__line--short"></p>
+    </div>
+    <button type="button" class="hund__trigger" data-hund-trigger>SHOW ALERT</button>
+    <div
+      class="hund__alert"
+      data-hund-alert
+      role="alertdialog"
+      aria-label="Heads-up notification"
+      tabindex="0"
+      hidden
+    >
+      <p class="hund__sender">Messages</p>
+      <p class="hund__title">Alex Chen</p>
+      <p class="hund__body">Running 5 min late — start without me?</p>
+      <div class="hund__actions" data-hund-actions hidden>
+        <button type="button" class="hund__action">REPLY</button>
+        <button type="button" class="hund__action" data-hund-dismiss>DISMISS</button>
+      </div>
+    </div>
+  </div>
+  <p class="hund__status" role="status" aria-live="polite" data-hund-status>
+    Press SHOW ALERT to trigger a heads-up notification.
+  </p>
+</div>
