@@ -1,0 +1,144 @@
+/* floating-label-lift — portable specimen styles */
+
+.fll {
+  --fll-ink: #1a1c22;
+  --fll-muted: #6b7280;
+  --fll-line: #9aa3b2;
+  --fll-active: #5c7cfa;
+  --fll-error: #d64545;
+  --fll-surface: #f8f9fb;
+  box-sizing: border-box;
+  width: 300px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--fll-ink);
+}
+
+.fll *,
+.fll *::before,
+.fll *::after {
+  box-sizing: border-box;
+}
+
+.fll__field {
+  position: relative;
+  width: 300px;
+  height: 58px;
+}
+
+.fll__input {
+  width: 100%;
+  height: 100%;
+  padding: 18px 16px 8px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--fll-ink);
+  outline: none;
+  z-index: 1;
+  position: relative;
+}
+
+.fll__input:focus-visible {
+  outline: none;
+}
+
+.fll__outline {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--fll-line);
+  border-radius: 8px;
+  pointer-events: none;
+  transition: border-color 180ms ease, border-width 180ms ease;
+}
+
+.fll__field.is-focused .fll__outline,
+.fll__field.is-filled .fll__outline {
+  border-width: 2px;
+  border-color: var(--fll-active);
+}
+
+.fll__field.is-error .fll__outline {
+  border-color: var(--fll-error);
+}
+
+.fll__label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--fll-muted);
+  pointer-events: auto;
+  cursor: text;
+  transition:
+    top 180ms ease,
+    left 180ms ease,
+    font-size 180ms ease,
+    color 180ms ease;
+  z-index: 2;
+  padding: 0 4px;
+  background: transparent;
+}
+
+.fll__field.is-focused .fll__label,
+.fll__field.is-filled .fll__label {
+  top: -7px;
+  left: 12px;
+  font-size: 12px;
+  color: var(--fll-active);
+  background: var(--fll-surface);
+}
+
+.fll__field.is-error.is-focused .fll__label,
+.fll__field.is-error.is-filled .fll__label {
+  color: var(--fll-error);
+}
+
+.fll__support {
+  min-height: 1.25rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--fll-error);
+}
+
+.fll__support[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+.fll__error-toggle {
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--fll-line);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.fll__error-toggle:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.fll__status {
+  margin: 0.5rem 0 0;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--fll-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fll__label,
+  .fll__outline {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .fll__label,
+[data-force-reduced-motion='true'] .fll__outline {
+  transition-duration: 0.01ms !important;
+}

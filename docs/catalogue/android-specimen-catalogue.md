@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **34 / 417** complete.
+- Progress: **35 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 34 |
-| Open | 383 |
+| Done | 35 |
+| Open | 382 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-170 | `SPX-1727` | `floating-label-lift` | Floating Label Lift |
 | AND-162 | `SPX-1719` | `material-switch-toggle` | Material Switch Toggle |
 | AND-179 | `SPX-1736` | `search-bar-to-view-transform` | Search Bar-to-View Transform |
 | AND-101 | `SPX-1658` | `notification-swipe-dismiss` | Notification Swipe Dismiss |
@@ -336,7 +337,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Text Fields
 
-- [ ] **AND-170** · `SPX-1727` · **Floating Label Lift** — placeholder/label relocates into compact field label on focus.
+- [x] **AND-170** · `SPX-1727` · **Floating Label Lift** — placeholder/label relocates into compact field label on focus.
 - [ ] **AND-171** · `SPX-1728` · **Underline Focus Expansion** — field focus line expands from contact/focus origin.
 - [ ] **AND-172** · `SPX-1729` · **Outlined Label Notch** — field label creates/occupies a notch in outlined boundary.
 - [ ] **AND-173** · `SPX-1730` · **Validation Error Expansion** — supporting error text creates layout space below field.

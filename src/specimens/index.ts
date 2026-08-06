@@ -94,6 +94,7 @@ import { fabToComposerTransform } from './fab-to-composer-transform/entry'
 import { fadeThrough } from './fade-through/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { fingerprintAcquisitionField } from './fingerprint-acquisition-field/entry'
+import { floatingLabelLift } from './floating-label-lift/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
@@ -364,6 +365,7 @@ export const specimens: Specimen[] = [
   fadeThrough,
   failureShatter,
   fingerprintAcquisitionField,
+  floatingLabelLift,
   forgetAMove,
   fullMoonMilestone,
   fusionSelectionMerge,

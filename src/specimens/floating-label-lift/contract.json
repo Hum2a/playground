@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/floating-label-lift.schema.json",
+  "title": "FloatingLabelLift",
+  "description": "Portable contract for outlined field with floating label lift.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "field", "label", "reducedMotion", "a11y", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "floating-label-lift" },
+    "intent": {
+      "type": "string",
+      "const": "Label relocates into compact field label on focus or non-empty value."
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "transitionMs"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 300 },
+        "heightPx": { "type": "number", "const": 58 },
+        "transitionMs": { "type": "number", "const": 180 }
+      }
+    },
+    "label": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["floatTopPx", "floatLeftPx", "floatFontPx"],
+      "properties": {
+        "floatTopPx": { "type": "number", "const": -7 },
+        "floatLeftPx": { "type": "number", "const": 12 },
+        "floatFontPx": { "type": "number", "const": 12 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLabel", "triggers"],
+      "properties": {
+        "instantLabel": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["realLabel", "noPlaceholderLabel"],
+      "properties": {
+        "realLabel": { "type": "boolean", "const": true },
+        "noPlaceholderLabel": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "field", "label", "input"],
+      "properties": {
+        "root": { "type": "string", "const": "fll" },
+        "field": { "type": "string", "const": "fll__field" },
+        "label": { "type": "string", "const": "fll__label" },
+        "input": { "type": "string", "const": "fll__input" }
+      }
+    }
+  }
+}
