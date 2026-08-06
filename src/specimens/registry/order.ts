@@ -549,4 +549,5 @@ export const specimenOrder: string[] = [
   'contact-sheet-focus',
   'motorised-fader-recall',
   'scene-recall-sweep',
+  'analog-vu-needle',
 ]

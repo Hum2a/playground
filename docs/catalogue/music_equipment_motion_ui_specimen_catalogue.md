@@ -62,7 +62,7 @@ specimens can feel tactile without needing sound.
 
 # 2. VU Meters / Level Monitoring
 
-- [ ] **MUSIC-011** · `SPX-3770` · ★★★★★ **Analog VU Needle** — A damped needle responds to a
+- [x] **MUSIC-011** · `SPX-3770` · ★★★★★ **Analog VU Needle** — A damped needle responds to a
     deterministic level sequence and settles naturally.
 - [ ] **MUSIC-012** · `SPX-3771` · ★★★★★ **LED Ladder Meter** — Segmented level bars climb
     through green/amber/red-like zones and fall with controlled decay.
@@ -862,21 +862,22 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-011 | SPX-3770 | `analog-vu-needle` | Analog VU Needle |
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **2 / 310** complete.
+- Progress: **3 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 2 |
-| Open | 308 |
+| Done | 3 |
+| Open | 307 |
 
 ## Core first-wave / build queue
 
 - [x] **MUSIC-002** · `SPX-3761` · **Motorised Fader Recall** · `motorised-fader-recall`
 - [x] **MUSIC-009** · `SPX-3768` · **Scene Recall Sweep** · `scene-recall-sweep`
-- [ ] **MUSIC-011** · `SPX-3770` · **Analog VU Needle** · scaffold `analog-vu-needle`
+- [x] **MUSIC-011** · `SPX-3770` · **Analog VU Needle** · `analog-vu-needle`
 - [ ] **MUSIC-012** · `SPX-3771` · **LED Ladder Meter** · scaffold `led-ladder-meter`
 - [ ] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · scaffold `peak-hold-marker`
 - [ ] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · scaffold `parametric-eq-node-drag`
