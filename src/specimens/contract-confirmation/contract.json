@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "contract-confirmation",
+  "description": "A formal agreement panel assembles and receives a final seal.",
+  "type": "object",
+  "required": [
+    "name",
+    "intent",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "contract-confirmation"
+    },
+    "intent": {
+      "type": "string",
+      "const": "A formal agreement panel assembles and receives a final seal."
+    },
+    "colours": {
+      "type": "object",
+      "properties": {
+        "yellow": {
+          "const": "#F5C400"
+        },
+        "ink": {
+          "const": "#101010"
+        },
+        "paper": {
+          "const": "#F7F3E8"
+        },
+        "gray": {
+          "const": "#E8E8E8"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

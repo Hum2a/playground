@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **47 / 191** complete.
+- Progress: **48 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 47 |
-| Open | 144 |
+| Done | 48 |
+| Open | 143 |
 
 ## Visual grammar
 
@@ -81,6 +81,7 @@
 | P4-105 | `SPX-3023` | `fog-forecast-warning` | Fog Forecast Warning |
 | P4-049 | `SPX-2967` | `boss-introduction-freeze` | Boss Introduction Freeze |
 | P4-046 | `SPX-2964` | `confrontation-card-slam` | Confrontation Card Slam |
+| P4-150 | `SPX-3068` | `contract-confirmation` | Contract Confirmation |
 
 ## Core first-wave
 
@@ -133,7 +134,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-105** · `SPX-3023` · **Fog Forecast Warning** — calendar-time-deadlines
 - [x] **P4-049** · `SPX-2967` · **Boss Introduction Freeze** — shadow-identity-confrontation
 - [x] **P4-046** · `SPX-2964` · **Confrontation Card Slam** — shadow-identity-confrontation
-- [ ] **P4-150** · `SPX-3068` · **Contract Confirmation** — velvet-room-inspired-elegance
+- [x] **P4-150** · `SPX-3068` · **Contract Confirmation** — velvet-room-inspired-elegance
 - [ ] **P4-059** · `SPX-2977` · **Max Rank Completion** — social-links-bonds
 - [ ] **P4-083** · `SPX-3001` · **All-Out Completion Burst** — battle-weakness-advantage
 
@@ -337,7 +338,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 ## Velvet-Room-Inspired Elegance
 
 - [ ] **P4-149** · `SPX-3067` · **Elegant Card Rotation** — A dark-blue abstract card rotates into a refined selection state.
-- [ ] **P4-150** · `SPX-3068` · **Contract Confirmation** — A formal agreement panel assembles and receives a final seal.
+- [x] **P4-150** · `SPX-3068` · **Contract Confirmation** — A formal agreement panel assembles and receives a final seal.
 - [ ] **P4-151** · `SPX-3069` · **Compendium Index Slide** — Entries glide along a restrained archival index.
 - [ ] **P4-152** · `SPX-3070` · **Fusion Chamber Transition** — Inputs move into a central geometric chamber before synthesis.
 - [ ] **P4-153** · `SPX-3071` · **Capability Inheritance Flow** — Chosen traits visibly transfer between source and result.
