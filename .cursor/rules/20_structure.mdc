@@ -14,7 +14,7 @@ src/
   prompt/       buildPrompt, CopyButton
   specimens/    one folder per specimen + index.ts
   styles/       tokens.css, base.css
-docs/           design-spec.md
+docs/           design-spec.md, ideation/ (external LLM briefs)
 public/         _redirects, _headers, favicon
 ```
 
