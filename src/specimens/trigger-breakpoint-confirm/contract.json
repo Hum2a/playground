@@ -1,0 +1,18 @@
+{
+  "name": "trigger-breakpoint-confirm",
+  "ref": "SPX-3369",
+  "ps": "PS-063",
+  "title": "Trigger Breakpoint Confirm",
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion",
+      "data-force-reduced-motion"
+    ]
+  }
+}

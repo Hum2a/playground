@@ -436,6 +436,7 @@ import { trackingErrorRecovery } from './tracking-error-recovery/entry'
 import { trainingSimulationStart } from './training-simulation-start/entry'
 import { transformationMorph } from './transformation-morph/entry'
 import { translucentMaterialLift } from './translucent-material-lift/entry'
+import { triggerBreakpointConfirm } from './trigger-breakpoint-confirm/entry'
 import { trophyUnlockPop } from './trophy-unlock-pop/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { tvScreenDiveTransition } from './tv-screen-dive-transition/entry'
@@ -949,6 +950,7 @@ export const specimens: Specimen[] = [
   trainingSimulationStart,
   transformationMorph,
   translucentMaterialLift,
+  triggerBreakpointConfirm,
   trophyUnlockPop,
   truthShotNotification,
   tvScreenDiveTransition,

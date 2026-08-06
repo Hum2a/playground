@@ -1,0 +1,205 @@
+
+/* Portable PlayStation specimen — palette contract. */
+
+.tbc {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
+  background: var(--ps-ink);
+  color: var(--ps-chalk);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.tbc *,
+.tbc *::before,
+.tbc *::after {
+  box-sizing: border-box;
+}
+
+.tbc__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tbc__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ps-sky);
+}
+
+.tbc__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgb(46 144 255 / 0.35);
+  background: rgb(244 246 248 / 0.03);
+}
+
+.tbc__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--ps-chalk);
+}
+
+.tbc__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgb(244 246 248 / 0.55);
+  text-align: center;
+}
+
+.tbc__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tbc__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgb(244 246 248 / 0.35);
+  background: transparent;
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tbc__btn--primary {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.14);
+}
+
+.tbc__btn:hover:not(:disabled) {
+  border-color: var(--ps-sky);
+}
+
+.tbc__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.tbc__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.tbc__bar {
+  position: relative;
+  width: 300px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgb(46 144 255 / 0.4);
+  border-radius: 6px;
+  background: rgb(244 246 248 / 0.04);
+  cursor: pointer;
+  touch-action: none;
+  overflow: hidden;
+}
+
+.tbc__bar:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 3px;
+}
+
+.tbc__notch {
+  position: absolute;
+  left: 68%;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--ps-sky);
+  z-index: 2;
+}
+
+.tbc__notch-glow {
+  position: absolute;
+  left: 66%;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  background: rgb(126 182 255 / 0);
+  transition: background 200ms ease;
+  z-index: 1;
+}
+
+.tbc[data-phase='past-notch'] .tbc__notch-glow,
+.tbc[data-phase='confirmed'] .tbc__notch-glow {
+  background: rgb(126 182 255 / 0.25);
+  animation: tbc-glow 400ms ease-out;
+}
+
+@keyframes tbc-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.tbc__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--ps-blue);
+  transition: width 50ms linear;
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tbc__ring-track,
+  .tbc__ring-fill,
+  .tbc__pulse,
+  .tbc__wave,
+  .tbc__sync-beam,
+  .tbc__morph,
+  .tbc__fill,
+  .tbc__notch-glow {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .tbc__ring-track,
+html[data-force-reduced-motion='true'] .tbc__ring-fill,
+html[data-force-reduced-motion='true'] .tbc__pulse,
+html[data-force-reduced-motion='true'] .tbc__wave,
+html[data-force-reduced-motion='true'] .tbc__sync-beam,
+html[data-force-reduced-motion='true'] .tbc__morph,
+html[data-force-reduced-motion='true'] .tbc__fill,
+html[data-force-reduced-motion='true'] .tbc__notch-glow {
+  transition: none !important;
+  animation: none !important;
+}
