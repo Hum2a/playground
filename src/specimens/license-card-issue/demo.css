@@ -1,0 +1,242 @@
+/* SPX-2195 License Card Issue — portable contract. */
+
+.lci {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.lci *,
+.lci *::before,
+.lci *::after {
+  box-sizing: border-box;
+}
+
+.lci__stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.lci__card {
+  position: relative;
+  width: 220px;
+  min-height: 140px;
+  padding: 0.65rem;
+  border: 3px solid var(--paper);
+  background: var(--paper);
+  color: var(--ink);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.lci__photo {
+  width: 52px;
+  height: 62px;
+  margin-bottom: 0.45rem;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.lci__photo-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--primary);
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(56 163 255 / 0.15) 0 3px,
+    var(--paper) 3px 7px
+  );
+}
+
+.lci[data-phase='photo'] .lci__photo,
+.lci[data-phase='data'] .lci__photo,
+.lci[data-phase='seal'] .lci__photo,
+.lci[data-phase='done'] .lci__photo {
+  animation: lci-pop 320ms var(--ease) forwards;
+}
+
+.lci[data-phase='done'] .lci__photo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes lci-pop {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lci__data {
+  opacity: 0;
+}
+
+.lci__line {
+  margin: 0 0 0.2rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  transform: translateX(-12px);
+  opacity: 0;
+}
+
+.lci[data-phase='data'] .lci__data,
+.lci[data-phase='seal'] .lci__data,
+.lci[data-phase='done'] .lci__data {
+  opacity: 1;
+}
+
+.lci[data-phase='data'] .lci__line,
+.lci[data-phase='seal'] .lci__line,
+.lci[data-phase='done'] .lci__line {
+  animation: lci-slide 280ms var(--ease) forwards;
+}
+
+.lci[data-phase='data'] .lci__line:nth-child(2),
+.lci[data-phase='seal'] .lci__line:nth-child(2),
+.lci[data-phase='done'] .lci__line:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.lci[data-phase='data'] .lci__line:nth-child(3),
+.lci[data-phase='seal'] .lci__line:nth-child(3),
+.lci[data-phase='done'] .lci__line:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.lci[data-phase='done'] .lci__line {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes lci-slide {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.lci__seal {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+  transform: scale(0.3) rotate(-20deg);
+}
+
+.lci__seal-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+}
+
+.lci__seal-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.48rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.lci[data-phase='seal'] .lci__seal,
+.lci[data-phase='done'] .lci__seal {
+  animation: lci-seal 400ms var(--ease) forwards;
+}
+
+.lci[data-phase='done'] .lci__seal {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+@keyframes lci-seal {
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.lci__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.lci__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.lci__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.lci__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.lci__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lci[data-phase] .lci__photo,
+  .lci[data-phase] .lci__line,
+  .lci[data-phase] .lci__seal {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .lci[data-phase] .lci__photo,
+[data-force-reduced-motion='true'] .lci[data-phase] .lci__line,
+[data-force-reduced-motion='true'] .lci[data-phase] .lci__seal {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lci[data-phase='done'] .lci__photo,
+  .lci[data-phase='done'] .lci__line,
+  .lci[data-phase='done'] .lci__seal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .lci[data-phase='done'] .lci__data {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__photo,
+[data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__line,
+[data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__seal {
+  opacity: 1;
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__data {
+  opacity: 1;
+}

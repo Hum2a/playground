@@ -148,6 +148,7 @@ import { kiChargeMeter } from './ki-charge-meter/entry'
 import { largeTitleCollapse } from './large-title-collapse/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
+import { licenseCardIssue } from './license-card-issue/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
@@ -482,6 +483,7 @@ export const specimens: Specimen[] = [
   largeTitleCollapse,
   letterScatterAssemble,
   levelUpOverflow,
+  licenseCardIssue,
   linkTradeTransfer,
   linkedFusionMerge,
   liquidSplitTransition,

@@ -1,0 +1,12 @@
+{
+  "name": "license-card-issue",
+  "ref": "SPX-2195",
+  "catalogue": { "mha": "MHA-221" },
+  "stages": ["photo", "data", "seal"],
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}

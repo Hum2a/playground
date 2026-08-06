@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **46 / 369** complete.
+- Progress: **47 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 46 |
-| Open | 323 |
+| Done | 47 |
+| Open | 322 |
 
 ## Visual grammar
 
@@ -78,6 +78,7 @@
 | MHA-067 | `SPX-2041` | `winner-banner-breakthrough` | Winner Banner Breakthrough |
 | MHA-095 | `SPX-2069` | `lockdown-shutter` | Lockdown Shutter |
 | MHA-114 | `SPX-2088` | `gadget-deployment` | Gadget Deployment |
+| MHA-221 | `SPX-2195` | `license-card-issue` | License Card Issue |
 
 ## Core first-wave
 
@@ -423,7 +424,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## License / Certification Effects
 
-- [ ] **MHA-221** · `SPX-2195` · **License Card Issue** — blank credential constructs through photo/data/seal stages.
+- [x] **MHA-221** · `SPX-2195` · **License Card Issue** — blank credential constructs through photo/data/seal stages.
 - [ ] **MHA-222** · `SPX-2196` · **Exam Pass Certification** — test result folds/morphs into a persistent credential card.
 - [ ] **MHA-223** · `SPX-2197` · **License Scan Verify** — scan line traverses credential and resolves into verified state.
 - [ ] **MHA-224** · `SPX-2198` · **Temporary License Countdown** — credential carries determinate expiry treatment.
