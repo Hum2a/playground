@@ -1,0 +1,1 @@
+const av=[...document.querySelectorAll('[data-p]')];function paint(i){av.forEach((a,idx)=>{a.classList.toggle('is-on',idx===i);a.classList.toggle('is-dim',idx!==i)})}av.forEach((a,i)=>{a.addEventListener('focus',()=>paint(i));a.addEventListener('pointerenter',()=>paint(i))});export function runProfileFocus(i=1){paint(i);av[i]?.focus()}

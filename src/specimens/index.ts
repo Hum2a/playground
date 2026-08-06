@@ -415,6 +415,7 @@ import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { weakPointDetection } from './weak-point-detection/entry'
 import { weaknessDiscovered } from './weakness-discovered/entry'
 import { weaknessHighlightSweep } from './weakness-highlight-sweep/entry'
+import { whosWatchingGridFocus } from './whos-watching-grid-focus/entry'
 import { wiFiSearchingToConnectedMorph } from './wi-fi-searching-to-connected-morph/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
 import { wildEncounterTransition } from './wild-encounter-transition/entry'
@@ -885,6 +886,7 @@ export const specimens: Specimen[] = [
   weakPointDetection,
   weaknessDiscovered,
   weaknessHighlightSweep,
+  whosWatchingGridFocus,
   wiFiSearchingToConnectedMorph,
   widgetResizeMorph,
   wildEncounterTransition,
