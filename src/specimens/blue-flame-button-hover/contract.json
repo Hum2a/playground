@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/blue-flame-button-hover.schema.json",
+  "title": "BlueFlameButtonHover",
+  "description": "Portable contract for five graphic blue energy polygons that rise from a static angular button on hover and focus.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "button",
+    "energy",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "blue-flame-button-hover" },
+    "intent": {
+      "type": "string",
+      "const": "Five graphic blue energy polygons rise from the upper edge of a static OPEN RECORD button on hover and keyboard focus."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "const": "OPEN RECORD" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nearBlack", "deepBlue", "blue", "bright", "pale"],
+      "properties": {
+        "nearBlack": { "type": "string", "const": "#020912" },
+        "deepBlue": { "type": "string", "const": "#071f3d" },
+        "blue": { "type": "string", "const": "#176fa8" },
+        "bright": { "type": "string", "const": "#4dbce8" },
+        "pale": { "type": "string", "const": "#d9f7ff" }
+      }
+    },
+    "button": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "labelShiftPx", "angularCorners"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 190 },
+        "heightPx": { "type": "number", "const": 48 },
+        "labelShiftPx": { "type": "number", "const": 3 },
+        "angularCorners": { "type": "boolean", "const": true }
+      }
+    },
+    "energy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "restScaleY", "activeScaleY", "translateYPx"],
+      "properties": {
+        "count": { "type": "number", "const": 5 },
+        "restScaleY": { "type": "number", "const": 0 },
+        "activeScaleY": {
+          "type": "array",
+          "const": [0.85, 1.25, 1, 1.4, 0.65]
+        },
+        "translateYPx": {
+          "type": "array",
+          "const": [-8, -12, -10, -14, -5]
+        },
+        "graphicPolygons": { "type": "boolean", "const": true },
+        "noFlameImage": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enterMs", "exitMs", "loopMs", "loopsWhileHovered"],
+      "properties": {
+        "enterMs": { "type": "number", "const": 150 },
+        "exitMs": { "type": "number", "const": 120 },
+        "loopMs": { "type": "number", "const": 1200 },
+        "loopsWhileHovered": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["energyDecorative", "focusVisibleEquivalent"],
+      "properties": {
+        "energyDecorative": { "type": "boolean", "const": true },
+        "focusVisibleEquivalent": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["staticShapes", "noLoop", "triggers"],
+      "properties": {
+        "staticShapes": { "type": "boolean", "const": true },
+        "noLoop": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "btn", "energy", "flame"],
+      "properties": {
+        "root": { "type": "string", "const": "blue-flame-hover" },
+        "btn": { "type": "string", "const": "blue-flame-hover__btn" },
+        "energy": { "type": "string", "const": "blue-flame-hover__energy" },
+        "flame": { "type": "string", "const": "bfh-flame" }
+      }
+    }
+  }
+}

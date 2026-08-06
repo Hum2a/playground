@@ -1,0 +1,277 @@
+/* SPX-521 Blue Flame Button Hover — portable contract. Do not restyle to host tokens. */
+
+.blue-flame-hover {
+  --bfh-bg: #020912;
+  --bfh-deep: #071f3d;
+  --bfh-blue: #176fa8;
+  --bfh-bright: #4dbce8;
+  --bfh-pale: #d9f7ff;
+  --bfh-ink: #e8f7ff;
+  --bfh-enter: 150ms;
+  --bfh-exit: 120ms;
+  --bfh-loop: 1200ms;
+  --bfh-ease: cubic-bezier(0.33, 0.1, 0.25, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 220px;
+  height: 100%;
+  padding: 2.5rem 1rem 1.5rem;
+  overflow: hidden;
+  background: var(--bfh-bg);
+  color: var(--bfh-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.blue-flame-hover *,
+.blue-flame-hover *::before,
+.blue-flame-hover *::after {
+  box-sizing: border-box;
+}
+
+.blue-flame-hover__btn {
+  position: relative;
+  z-index: 1;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 190px;
+  height: 48px;
+  margin: 0;
+  padding: 0 1.1rem;
+  border: 1px solid rgb(23 111 168 / 0.55);
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgb(7 31 61 / 0.95), rgb(2 9 18 / 0.98));
+  color: var(--bfh-ink);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: visible;
+  transition:
+    border-color var(--bfh-exit) ease-out,
+    background-color var(--bfh-exit) ease-out;
+}
+
+.blue-flame-hover__btn:focus {
+  outline: none;
+}
+
+.blue-flame-hover__btn:focus-visible {
+  outline: 2px solid var(--bfh-bright);
+  outline-offset: 3px;
+}
+
+.blue-flame-hover__label {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform var(--bfh-exit) var(--bfh-ease);
+}
+
+/* Thin lower edge — brightens on hover/focus */
+.blue-flame-hover__edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 2px;
+  background: rgb(77 188 232 / 0.28);
+  pointer-events: none;
+  transition: background-color var(--bfh-exit) ease-out, box-shadow var(--bfh-exit) ease-out;
+}
+
+/* Five graphic energy polygons along the top edge */
+.blue-flame-hover__energy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bfh-flame {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  transform-origin: 50% 100%;
+  transform: translateY(0) scaleY(0);
+  opacity: 0.92;
+  transition:
+    transform var(--bfh-exit) var(--bfh-ease),
+    opacity var(--bfh-exit) ease-out;
+  will-change: transform;
+}
+
+.bfh-flame--1 {
+  left: 12%;
+  width: 18px;
+  height: 22px;
+  background: linear-gradient(180deg, var(--bfh-pale), var(--bfh-bright) 45%, var(--bfh-blue));
+  clip-path: polygon(50% 0%, 100% 38%, 78% 100%, 22% 100%, 0% 38%);
+  --bfh-sy: 0.85;
+  --bfh-ty: -8px;
+  transition-delay: 0ms;
+}
+
+.bfh-flame--2 {
+  left: 28%;
+  width: 14px;
+  height: 28px;
+  background: linear-gradient(185deg, var(--bfh-bright), var(--bfh-blue) 60%, #0a3a68);
+  clip-path: polygon(48% 0%, 100% 28%, 88% 100%, 12% 100%, 0% 42%);
+  --bfh-sy: 1.25;
+  --bfh-ty: -12px;
+  transition-delay: 18ms;
+}
+
+.bfh-flame--3 {
+  left: 46%;
+  width: 20px;
+  height: 24px;
+  background: linear-gradient(175deg, var(--bfh-pale) 10%, var(--bfh-bright) 40%, var(--bfh-blue));
+  clip-path: polygon(50% 0%, 92% 32%, 100% 100%, 0% 100%, 8% 34%);
+  --bfh-sy: 1;
+  --bfh-ty: -10px;
+  transition-delay: 36ms;
+}
+
+.bfh-flame--4 {
+  left: 64%;
+  width: 16px;
+  height: 30px;
+  background: linear-gradient(190deg, var(--bfh-bright), var(--bfh-blue) 55%, #071f3d);
+  clip-path: polygon(42% 0%, 100% 40%, 82% 100%, 18% 100%, 0% 36%);
+  --bfh-sy: 1.4;
+  --bfh-ty: -14px;
+  transition-delay: 24ms;
+}
+
+.bfh-flame--5 {
+  left: 80%;
+  width: 15px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--bfh-pale), var(--bfh-blue));
+  clip-path: polygon(55% 0%, 100% 48%, 76% 100%, 24% 100%, 0% 44%);
+  --bfh-sy: 0.65;
+  --bfh-ty: -5px;
+  transition-delay: 48ms;
+}
+
+/* —— Hover / focus-visible: rise + button response —— */
+.blue-flame-hover__btn:hover .bfh-flame,
+.blue-flame-hover__btn:focus-visible .bfh-flame {
+  transform: translateY(var(--bfh-ty)) scaleY(var(--bfh-sy));
+  transition-duration: var(--bfh-enter);
+  transition-timing-function: var(--bfh-ease);
+}
+
+.blue-flame-hover__btn:hover .blue-flame-hover__label,
+.blue-flame-hover__btn:focus-visible .blue-flame-hover__label {
+  transform: translateX(3px);
+  transition-duration: var(--bfh-enter);
+}
+
+.blue-flame-hover__btn:hover .blue-flame-hover__edge,
+.blue-flame-hover__btn:focus-visible .blue-flame-hover__edge {
+  background: var(--bfh-bright);
+  box-shadow: 0 0 8px rgb(77 188 232 / 0.35);
+  transition-duration: var(--bfh-enter);
+}
+
+.blue-flame-hover__btn:hover,
+.blue-flame-hover__btn:focus-visible {
+  border-color: rgb(77 188 232 / 0.7);
+}
+
+/* Restrained two-state loop while hovered/focused (≤1200ms) */
+.blue-flame-hover__btn:hover .bfh-flame--1,
+.blue-flame-hover__btn:focus-visible .bfh-flame--1 {
+  animation: bfh-pulse-a var(--bfh-loop) ease-in-out var(--bfh-enter) infinite;
+}
+
+.blue-flame-hover__btn:hover .bfh-flame--2,
+.blue-flame-hover__btn:focus-visible .bfh-flame--2 {
+  animation: bfh-pulse-b var(--bfh-loop) ease-in-out calc(var(--bfh-enter) + 80ms) infinite;
+}
+
+.blue-flame-hover__btn:hover .bfh-flame--3,
+.blue-flame-hover__btn:focus-visible .bfh-flame--3 {
+  animation: bfh-pulse-a var(--bfh-loop) ease-in-out calc(var(--bfh-enter) + 40ms) infinite;
+}
+
+.blue-flame-hover__btn:hover .bfh-flame--4,
+.blue-flame-hover__btn:focus-visible .bfh-flame--4 {
+  animation: bfh-pulse-b var(--bfh-loop) ease-in-out calc(var(--bfh-enter) + 120ms) infinite;
+}
+
+.blue-flame-hover__btn:hover .bfh-flame--5,
+.blue-flame-hover__btn:focus-visible .bfh-flame--5 {
+  animation: bfh-pulse-a var(--bfh-loop) ease-in-out calc(var(--bfh-enter) + 60ms) infinite;
+}
+
+@keyframes bfh-pulse-a {
+  0%,
+  100% {
+    transform: translateY(var(--bfh-ty)) scaleY(var(--bfh-sy));
+  }
+  50% {
+    transform: translateY(calc(var(--bfh-ty) - 2px)) scaleY(calc(var(--bfh-sy) * 0.92));
+  }
+}
+
+@keyframes bfh-pulse-b {
+  0%,
+  100% {
+    transform: translateY(var(--bfh-ty)) scaleY(var(--bfh-sy));
+  }
+  50% {
+    transform: translateY(calc(var(--bfh-ty) + 1px)) scaleY(calc(var(--bfh-sy) * 1.06));
+  }
+}
+
+/* Exit: collapsing into edge uses exit duration via default transition when hover ends */
+
+/* —— Reduced motion: static five shapes, no loop —— */
+@media (prefers-reduced-motion: reduce) {
+  .bfh-flame {
+    transition: none;
+  }
+
+  .blue-flame-hover__label,
+  .blue-flame-hover__edge {
+    transition: none;
+  }
+
+  .blue-flame-hover__btn:hover .bfh-flame,
+  .blue-flame-hover__btn:focus-visible .bfh-flame {
+    transform: translateY(var(--bfh-ty)) scaleY(var(--bfh-sy));
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .blue-flame-hover .bfh-flame {
+  transition: none;
+}
+
+[data-force-reduced-motion='true'] .blue-flame-hover .blue-flame-hover__label,
+[data-force-reduced-motion='true'] .blue-flame-hover .blue-flame-hover__edge {
+  transition: none;
+}
+
+[data-force-reduced-motion='true'] .blue-flame-hover__btn:hover .bfh-flame,
+[data-force-reduced-motion='true'] .blue-flame-hover__btn:focus-visible .bfh-flame {
+  transform: translateY(var(--bfh-ty)) scaleY(var(--bfh-sy));
+  animation: none;
+}
