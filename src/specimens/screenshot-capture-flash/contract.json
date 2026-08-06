@@ -1,0 +1,25 @@
+{
+  "name": "screenshot-capture-flash",
+  "ref": "SPX-3416",
+  "ps": "PS-110",
+  "title": "Screenshot Capture Flash",
+  "palette": {
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "blue": "#2E90FF",
+    "blueLight": "#7EB6FF",
+    "panel": "#121820",
+    "panel2": "#1a2330",
+    "rule": "#243044",
+    "pewter": "#8a9bb0"
+  },
+  "behaviour": "White flash peaks at 92% opacity at 12% of 420ms keyframe.",
+  "trigger": "CAPTURE button",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "End states remain; transitions and animations removed"
+  }
+}

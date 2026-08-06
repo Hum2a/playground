@@ -378,6 +378,7 @@ import { rivalCardsClash } from './rival-cards-clash/entry'
 import { saveConflictCompare } from './save-conflict-compare/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
+import { screenshotCaptureFlash } from './screenshot-capture-flash/entry'
 import { screenshotExpandToEditor } from './screenshot-expand-to-editor/entry'
 import { screenshotThumbnailArrival } from './screenshot-thumbnail-arrival/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
@@ -903,6 +904,7 @@ export const specimens: Specimen[] = [
   saveConflictCompare,
   scannerSearch,
   scouterScan,
+  screenshotCaptureFlash,
   screenshotExpandToEditor,
   screenshotThumbnailArrival,
   scrollRubberBand,
