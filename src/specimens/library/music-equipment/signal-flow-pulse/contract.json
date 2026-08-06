@@ -1,0 +1,8 @@
+{
+  "name": "signal-flow-pulse",
+  "ref": "SPX-3860",
+  "title": "Signal Flow Pulse",
+  "mode": "fader",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

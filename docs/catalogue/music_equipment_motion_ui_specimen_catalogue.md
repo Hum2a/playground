@@ -293,7 +293,7 @@ specimens can feel tactile without needing sound.
     destination and bends toward another.
 - [ ] **MUSIC-100** · `SPX-3859` · ★★★★☆ **Jack Acquire** — Hover/focus illuminates compatible
     patch points.
-- [ ] **MUSIC-101** · `SPX-3860` · ★★★★★ **Signal Flow Pulse** — A finite pulse travels along
+- [x] **MUSIC-101** · `SPX-3860` · ★★★★★ **Signal Flow Pulse** — A finite pulse travels along
     connected cables to explain routing.
 - [ ] **MUSIC-102** · `SPX-3861` · ★★★★☆ **Modular Module Insert** — A new module slides into an
     empty rack position.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-101 | SPX-3860 | `signal-flow-pulse` | Signal Flow Pulse |
 | MUSIC-097 | SPX-3856 | `patch-cable-connect` | Patch Cable Connect |
 | MUSIC-109 | SPX-3868 | `clock-divider-cascade` | Clock Divider Cascade |
 | MUSIC-106 | SPX-3865 | `envelope-generator-cycle` | Envelope Generator Cycle |
@@ -882,12 +883,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **19 / 310** complete.
+- Progress: **20 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 19 |
-| Open | 291 |
+| Done | 20 |
+| Open | 290 |
 
 ## Core first-wave / build queue
 
@@ -921,7 +922,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · scaffold `beatgrid-lock`
 - [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`
 - [x] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · `patch-cable-connect`
-- [ ] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · scaffold `signal-flow-pulse`
+- [x] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · `signal-flow-pulse`
 - [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
 - [x] **MUSIC-106** · `SPX-3865` · **Envelope Generator Cycle** · `envelope-generator-cycle`
 - [x] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · `clock-divider-cascade`

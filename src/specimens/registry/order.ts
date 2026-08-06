@@ -566,4 +566,5 @@ export const specimenOrder: string[] = [
   'envelope-generator-cycle',
   'clock-divider-cascade',
   'patch-cable-connect',
+  'signal-flow-pulse',
 ]
