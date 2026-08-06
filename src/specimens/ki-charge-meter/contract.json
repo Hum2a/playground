@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/ki-charge-meter.schema.json",
+  "title": "KiChargeMeter",
+  "description": "Portable deterministic progress aggregation contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "copy", "units", "groups", "nodeSizes", "completion", "reducedMotion"],
+  "properties": {
+    "name": { "const": "ki-charge-meter" },
+    "copy": {
+      "type": "object",
+      "required": ["operation", "trigger", "states"],
+      "properties": {
+        "operation": { "const": "BUILD // RELEASE" },
+        "trigger": { "const": "CHARGE" },
+        "states": { "const": [0, 25, 50, 75, 100] }
+      }
+    },
+    "units": { "const": 24 },
+    "groups": {
+      "const": [
+        { "count": 6, "durationMs": 420, "staggerMs": 30 },
+        { "count": 6, "durationMs": 340, "staggerMs": 30 },
+        { "count": 6, "durationMs": 270, "staggerMs": 30 },
+        { "count": 6, "durationMs": 200, "staggerMs": 30 }
+      ]
+    },
+    "nodeSizes": { "const": [34, 46, 58, 70, 82] },
+    "completion": {
+      "const": {
+        "compressMs": 160,
+        "lineCount": 4,
+        "status": "READY"
+      }
+    },
+    "reducedMotion": { "const": "Immediate 100% READY with all units consumed." }
+  }
+}
