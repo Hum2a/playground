@@ -373,6 +373,7 @@ import { windowSnapPreview } from './window-snap-preview/entry'
 import { winnerAdvance } from './winner-advance/entry'
 import { winnerBannerBreakthrough } from './winner-banner-breakthrough/entry'
 import { wireConnectionDraw } from './wire-connection-draw/entry'
+import { yellowImpactWipe } from './yellow-impact-wipe/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -791,6 +792,7 @@ export const specimens: Specimen[] = [
   winnerAdvance,
   winnerBannerBreakthrough,
   wireConnectionDraw,
+  yellowImpactWipe,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

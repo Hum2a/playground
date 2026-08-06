@@ -1,0 +1,160 @@
+/* yellow-impact-wipe — portable specimen styles. Do not restyle to host tokens. */
+
+.yiw {
+  --yiw-yellow: #f5c400;
+  --yiw-ink: #101010;
+  --yiw-paper: #f7f3e8;
+  --yiw-gray: #e8e8e8;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 1rem;
+  overflow: hidden;
+  background: var(--yiw-ink);
+  color: var(--yiw-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.yiw *,
+.yiw *::before,
+.yiw *::after {
+  box-sizing: border-box;
+}
+
+.yiw__live {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.65);
+}
+
+.yiw__stage {
+  position: relative;
+  flex: 1;
+  min-height: 180px;
+  overflow: hidden;
+  border: 3px solid var(--yiw-gray);
+}
+
+.yiw__scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.yiw__scene--a {
+  background: var(--yiw-paper);
+  color: var(--yiw-ink);
+}
+
+.yiw__scene--b {
+  background: var(--yiw-ink);
+  color: var(--yiw-paper);
+}
+
+.yiw__scene[hidden] {
+  display: none;
+}
+
+.yiw__tag {
+  padding: 0.12rem 0.4rem;
+  border: 2px solid currentColor;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.yiw__copy {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.yiw__wipe {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0;
+  background: var(--yiw-yellow);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.yiw__btn {
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--yiw-yellow);
+  background: var(--yiw-yellow);
+  color: var(--yiw-ink);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.yiw__btn:focus-visible {
+  outline: 2px solid var(--yiw-yellow);
+  outline-offset: 2px;
+}
+
+.yiw__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.yiw[data-phase='wipe-in'] .yiw__wipe {
+  animation: yiw-sweep-in 320ms cubic-bezier(0.3, 0.9, 0.2, 1) both;
+}
+
+.yiw[data-phase='wipe-out'] .yiw__wipe {
+  animation: yiw-sweep-out 280ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes yiw-sweep-in {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes yiw-sweep-out {
+  from {
+    width: 100%;
+    left: 0;
+  }
+  to {
+    width: 100%;
+    left: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yiw[data-phase='wipe-in'] .yiw__wipe,
+  .yiw[data-phase='wipe-out'] .yiw__wipe {
+    animation: none !important;
+    width: 0;
+    left: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .yiw[data-phase='wipe-in'] .yiw__wipe,
+[data-force-reduced-motion='true'] .yiw[data-phase='wipe-out'] .yiw__wipe {
+  animation: none !important;
+  width: 0;
+  left: 0;
+}
