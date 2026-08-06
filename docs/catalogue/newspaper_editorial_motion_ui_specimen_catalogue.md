@@ -152,7 +152,7 @@ chronology and information priority.
     curls across the viewport to reveal the next page.
 - [x] **NEWS-046** · `SPX-3568` · ★★★★★ **Half-Fold Open** — A folded editorial panel opens from
     the centre into a full reading surface.
-- [ ] **NEWS-047** · `SPX-3569` · ★★★★★ **Paper Peel Reveal** — A corner peels back to expose
+- [x] **NEWS-047** · `SPX-3569` · ★★★★★ **Paper Peel Reveal** — A corner peels back to expose
     updated content beneath.
 - [ ] **NEWS-048** · `SPX-3570` · ★★★★☆ **Section Page Flip** — A section index turns like a
     thin print page into the selected section.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-047 | SPX-3569 | `paper-peel-reveal` | Paper Peel Reveal |
 | NEWS-046 | SPX-3568 | `half-fold-open` | Half-Fold Open |
 | NEWS-045 | SPX-3567 | `broadsheet-page-turn` | Broadsheet Page Turn |
 | NEWS-041 | SPX-3563 | `article-close-return` | Article Close Return |
@@ -699,12 +700,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **20 / 237** complete.
+- Progress: **21 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 20 |
-| Open | 217 |
+| Done | 21 |
+| Open | 216 |
 
 ## Core first-wave / build queue
 
@@ -728,7 +729,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-041** · `SPX-3563` · **Article Close Return** · `article-close-return`
 - [x] **NEWS-045** · `SPX-3567` · **Broadsheet Page Turn** · `broadsheet-page-turn`
 - [x] **NEWS-046** · `SPX-3568` · **Half-Fold Open** · `half-fold-open`
-- [ ] **NEWS-047** · `SPX-3569` · **Paper Peel Reveal** · scaffold `paper-peel-reveal`
+- [x] **NEWS-047** · `SPX-3569` · **Paper Peel Reveal** · `paper-peel-reveal`
 - [ ] **NEWS-053** · `SPX-3575` · **Press Roll Reveal** · scaffold `press-roll-reveal`
 - [ ] **NEWS-054** · `SPX-3576` · **Ink Registration Align** · scaffold `ink-registration-align`
 - [ ] **NEWS-056** · `SPX-3578` · **Plate Swap Transition** · scaffold `plate-swap-transition`
