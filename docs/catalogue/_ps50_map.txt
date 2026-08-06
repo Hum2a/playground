@@ -14,7 +14,7 @@
 14|PS-038|SPX-3344|activity-expand-details|Activity Expand Details
 15|PS-073|SPX-3379|media-card-focus-expand|Media Card Focus Expand
 16|PS-074|SPX-3380|card-to-details-morph|Card-to-Details Morph
-17|PS-076|SPX-3382|neighbour-push-out|Neighbour Push-Out
+17|PS-076|SPX-3382|ps-neighbour-push-out|Neighbour Push-Out
 18|PS-077|SPX-3383|card-collapse-return|Card Collapse Return
 19|PS-041|SPX-3347|trophy-unlock-pop|Trophy Unlock Pop
 20|PS-042|SPX-3348|rare-trophy-reveal|Rare Trophy Reveal
