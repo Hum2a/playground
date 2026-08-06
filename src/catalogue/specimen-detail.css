@@ -1,0 +1,35 @@
+.specimen-detail {
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.specimen-detail__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.specimen-detail__title {
+  font-size: var(--text-md);
+}
+
+.specimen-detail__blurb {
+  color: var(--pewter);
+  font-size: var(--text-xs);
+  max-width: 36ch;
+}
+
+.specimen-detail__empty {
+  color: var(--pewter);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.specimen-detail__empty a {
+  color: var(--chalk);
+  border-bottom: 1px solid var(--verdigris);
+  align-self: flex-start;
+}
