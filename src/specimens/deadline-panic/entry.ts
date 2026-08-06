@@ -15,7 +15,7 @@ const scaffold = `
 
 export const deadlinePanic: Specimen = {
   id: 'deadline-panic',
-  ref: 'SPX-TODO',
+  ref: 'SPX-305',
   title: 'Deadline Panic',
   blurb:
     'A 10-second countdown that stays compositionally calm until the final beats, then fractures digit-by-digit into TIME UP — urgency through disorder, not flashing.',
