@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/hover-cutout.schema.json",
+  "title": "HoverCutout",
+  "description": "Portable CSS-only hover/focus cutout: oversized black irregular mass with paper negative-space aperture. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "hover-cutout" },
+    "intent": {
+      "type": "string",
+      "const": "Oversized black irregular graphic expands behind a text action; a paper aperture punches through so the label reads as negative-space cutout."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actions"],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "const": ["VIEW ARCHIVE", "OPEN SPECIMEN", "COPY PROMPT"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper", "red"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "massWidthPercent",
+        "massHeightPercent",
+        "massFinalRotateDeg",
+        "massClipPath",
+        "cutClipPath",
+        "redOffsetPx"
+      ],
+      "properties": {
+        "massWidthPercent": { "type": "number", "const": 135 },
+        "massHeightPercent": { "type": "number", "const": 170 },
+        "massFinalRotateDeg": { "type": "number", "const": -2 },
+        "massEnterOrigin": { "type": "string", "const": "20% 50%" },
+        "massExitOrigin": { "type": "string", "const": "85% 45%" },
+        "massClipPath": {
+          "type": "string",
+          "const": "polygon(1% 12%, 18% 0%, 97% 4%, 100% 78%, 88% 100%, 8% 96%, 0% 62%)"
+        },
+        "cutWidthPercent": { "type": "number", "const": 108 },
+        "cutHeightPercent": { "type": "number", "const": 118 },
+        "cutClipPath": {
+          "type": "string",
+          "const": "polygon(2% 18%, 96% 0%, 100% 82%, 90% 100%, 4% 94%, 0% 28%)"
+        },
+        "redOffsetPx": { "type": "object", "const": { "x": 8, "y": 5 } }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enterMs", "exitMs", "enterFrom", "overshootScale"],
+      "properties": {
+        "enterMs": { "type": "number", "const": 200 },
+        "exitMs": { "type": "number", "const": 140 },
+        "redDelayMs": { "type": "number", "const": 30 },
+        "enterFrom": {
+          "type": "object",
+          "const": { "scaleX": 0.15, "scaleY": 0.45, "rotateDeg": 5 }
+        },
+        "overshootScale": { "type": "number", "const": 1.06 },
+        "tech": { "type": "string", "const": "css-only" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["realLinks", "decorativeHidden", "focusVisibleParity"],
+      "properties": {
+        "realLinks": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true },
+        "focusVisibleParity": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantCompositions", "triggers"],
+      "properties": {
+        "instantCompositions": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "item", "mass", "cut", "red", "label"],
+      "properties": {
+        "root": { "type": "string", "const": "hco" },
+        "item": { "type": "string", "const": "hco__item" },
+        "mass": { "type": "string", "const": "hco__mass" },
+        "cut": { "type": "string", "const": "hco__cut" },
+        "red": { "type": "string", "const": "hco__red" },
+        "label": { "type": "string", "const": "hco__label" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "hover-cutout",
+      "intent": "Oversized black irregular graphic expands behind a text action; a paper aperture punches through so the label reads as negative-space cutout.",
+      "copy": {
+        "actions": ["VIEW ARCHIVE", "OPEN SPECIMEN", "COPY PROMPT"]
+      },
+      "colours": {
+        "ink": "#090909",
+        "paper": "#f5f1e8",
+        "red": "#e60012"
+      },
+      "geometry": {
+        "massWidthPercent": 135,
+        "massHeightPercent": 170,
+        "massFinalRotateDeg": -2,
+        "massEnterOrigin": "20% 50%",
+        "massExitOrigin": "85% 45%",
+        "massClipPath": "polygon(1% 12%, 18% 0%, 97% 4%, 100% 78%, 88% 100%, 8% 96%, 0% 62%)",
+        "cutClipPath": "polygon(2% 18%, 96% 0%, 100% 82%, 90% 100%, 4% 94%, 0% 28%)",
+        "redOffsetPx": { "x": 8, "y": 5 }
+      },
+      "animation": {
+        "enterMs": 200,
+        "exitMs": 140,
+        "redDelayMs": 30,
+        "enterFrom": { "scaleX": 0.15, "scaleY": 0.45, "rotateDeg": 5 },
+        "overshootScale": 1.06,
+        "tech": "css-only"
+      },
+      "a11y": {
+        "realLinks": true,
+        "decorativeHidden": true,
+        "focusVisibleParity": true
+      },
+      "reducedMotion": {
+        "instantCompositions": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "hco",
+        "item": "hco__item",
+        "mass": "hco__mass",
+        "cut": "hco__cut",
+        "red": "hco__red",
+        "label": "hco__label"
+      }
+    }
+  ]
+}

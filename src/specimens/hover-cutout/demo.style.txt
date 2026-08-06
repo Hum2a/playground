@@ -1,0 +1,311 @@
+/* hover-cutout — portable specimen styles (CSS-only) */
+
+.hco {
+  --hco-ink: #090909;
+  --hco-paper: #f5f1e8;
+  --hco-red: #e60012;
+  --hco-enter: 200ms;
+  --hco-exit: 140ms;
+  --hco-ease-in: cubic-bezier(0.28, 0.85, 0.32, 1.12);
+  --hco-ease-out: cubic-bezier(0.45, 0.05, 0.65, 0.3);
+  --hco-mass-clip: polygon(
+    1% 12%,
+    18% 0%,
+    97% 4%,
+    100% 78%,
+    88% 100%,
+    8% 96%,
+    0% 62%
+  );
+  --hco-cut-clip: polygon(
+    2% 18%,
+    96% 0%,
+    100% 82%,
+    90% 100%,
+    4% 94%,
+    0% 28%
+  );
+  --hco-red-clip: polygon(0% 20%, 100% 0%, 92% 100%, 8% 88%);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 260px;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  overflow: hidden;
+  background: #1a1d22;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.hco *,
+.hco *::before,
+.hco *::after {
+  box-sizing: border-box;
+}
+
+.hco__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.35rem;
+  width: min(100%, 280px);
+}
+
+.hco__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--hco-ink);
+  text-decoration: none;
+  font: 800 0.72rem/1.1 inherit;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  isolation: isolate;
+  /* Room for oversized mass without clipping the hit target awkwardly */
+  overflow: visible;
+}
+
+.hco__item:focus {
+  outline: none;
+}
+
+.hco__item:focus-visible {
+  outline: 2px solid var(--hco-red);
+  outline-offset: 5px;
+}
+
+.hco__label {
+  position: relative;
+  z-index: 4;
+  display: block;
+  padding: 0.15rem 0.1rem;
+  color: var(--hco-ink);
+  background: var(--hco-paper);
+  transition: color var(--hco-exit) steps(1, end), background-color var(--hco-exit)
+    steps(1, end);
+}
+
+/* Idle restrained chip */
+.hco__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--hco-paper);
+  border: 2px solid var(--hco-ink);
+  pointer-events: none;
+  transition: opacity var(--hco-exit) steps(1, end);
+}
+
+/* Red shard behind black mass */
+.hco__red {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 135%;
+  height: 170%;
+  background: var(--hco-red);
+  clip-path: var(--hco-red-clip);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) translate(0, 0) rotate(3deg) scale(0.2);
+  transform-origin: 20% 50%;
+  transition:
+    opacity var(--hco-exit) steps(1, end),
+    transform var(--hco-exit) var(--hco-ease-out);
+}
+
+/* Oversized black irregular mass */
+.hco__mass {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 135%;
+  height: 170%;
+  background: var(--hco-ink);
+  clip-path: var(--hco-mass-clip);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(5deg) scale(0.15, 0.45);
+  transform-origin: 20% 50%;
+  transition:
+    opacity var(--hco-exit) steps(1, end),
+    transform var(--hco-exit) var(--hco-ease-out);
+}
+
+/* Paper aperture — carved hole through the black mass */
+.hco__cut {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  width: 108%;
+  height: 118%;
+  background: var(--hco-paper);
+  clip-path: var(--hco-cut-clip);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  transition:
+    opacity var(--hco-exit) steps(1, end),
+    transform var(--hco-exit) var(--hco-ease-out);
+}
+
+/* —— Active: hover or keyboard focus —— */
+.hco__item:hover::before,
+.hco__item:focus-visible::before {
+  opacity: 0;
+}
+
+.hco__item:hover .hco__mass,
+.hco__item:focus-visible .hco__mass {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(-2deg) scale(1);
+  transform-origin: 20% 50%;
+  transition:
+    opacity 40ms steps(1, end),
+    transform var(--hco-enter) var(--hco-ease-in);
+  animation: hco-mass-enter var(--hco-enter) var(--hco-ease-in) both;
+}
+
+.hco__item:hover .hco__red,
+.hco__item:focus-visible .hco__red {
+  opacity: 1;
+  transform: translate(-50%, -50%) translate(8px, 5px) rotate(-3deg) scale(1);
+  transform-origin: 20% 50%;
+  transition:
+    opacity 40ms steps(1, end) 30ms,
+    transform var(--hco-enter) var(--hco-ease-in) 30ms;
+}
+
+.hco__item:hover .hco__cut,
+.hco__item:focus-visible .hco__cut {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition:
+    opacity 40ms steps(1, end) 70ms,
+    transform 130ms var(--hco-ease-in) 70ms;
+}
+
+.hco__item:hover .hco__label,
+.hco__item:focus-visible .hco__label {
+  color: var(--hco-ink);
+  background: transparent;
+}
+
+@keyframes hco-mass-enter {
+  0% {
+    transform: translate(-50%, -50%) rotate(5deg) scale(0.15, 0.45);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1.06);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1);
+  }
+}
+
+/* Exit: collapse toward opposite side (not a mirror of enter) */
+.hco__item:not(:hover):not(:focus-visible) .hco__mass {
+  transform-origin: 85% 45%;
+  transform: translate(-50%, -50%) rotate(-6deg) scale(0.12, 0.35);
+}
+
+.hco__item:not(:hover):not(:focus-visible) .hco__red {
+  transform-origin: 85% 45%;
+  transform: translate(-50%, -50%) translate(12px, 0) rotate(-8deg) scale(0.15);
+}
+
+.hco__item:not(:hover):not(:focus-visible) .hco__cut {
+  transform: translate(-50%, -50%) scale(0.25);
+}
+
+/* Slight per-item silhouette variation (frozen, not mirrored) */
+.hco__item:nth-child(2) .hco__mass {
+  clip-path: polygon(0% 8%, 22% 0%, 100% 10%, 96% 92%, 70% 100%, 4% 88%, 2% 40%);
+}
+
+.hco__item:nth-child(2) .hco__cut {
+  clip-path: polygon(0% 10%, 100% 4%, 96% 90%, 8% 100%, 2% 30%);
+}
+
+.hco__item:nth-child(3) .hco__mass {
+  clip-path: polygon(4% 0%, 100% 6%, 98% 70%, 86% 100%, 0% 94%, 6% 48%);
+}
+
+.hco__item:nth-child(3) .hco__cut {
+  clip-path: polygon(6% 0%, 100% 12%, 94% 100%, 0% 86%, 4% 22%);
+}
+
+/* Reduced motion: instant compositions */
+@media (prefers-reduced-motion: reduce) {
+  .hco__mass,
+  .hco__red,
+  .hco__cut,
+  .hco__label,
+  .hco__item::before {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .hco__item:hover .hco__mass,
+  .hco__item:focus-visible .hco__mass {
+    transform: translate(-50%, -50%) rotate(-2deg) scale(1);
+  }
+
+  .hco__item:hover .hco__red,
+  .hco__item:focus-visible .hco__red {
+    transform: translate(-50%, -50%) translate(8px, 5px) rotate(-3deg) scale(1);
+  }
+
+  .hco__item:hover .hco__cut,
+  .hco__item:focus-visible .hco__cut {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .hco__mass,
+[data-force-reduced-motion='true'] .hco__red,
+[data-force-reduced-motion='true'] .hco__cut,
+[data-force-reduced-motion='true'] .hco__label,
+[data-force-reduced-motion='true'] .hco__item::before {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .hco__item:hover .hco__mass,
+[data-force-reduced-motion='true'] .hco__item:focus-visible .hco__mass {
+  transform: translate(-50%, -50%) rotate(-2deg) scale(1);
+}
+
+[data-force-reduced-motion='true'] .hco__item:hover .hco__red,
+[data-force-reduced-motion='true'] .hco__item:focus-visible .hco__red {
+  transform: translate(-50%, -50%) translate(8px, 5px) rotate(-3deg) scale(1);
+}
+
+[data-force-reduced-motion='true'] .hco__item:hover .hco__cut,
+[data-force-reduced-motion='true'] .hco__item:focus-visible .hco__cut {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 360px) {
+  .hco__nav {
+    gap: 1.1rem;
+  }
+
+  .hco__item {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.65rem;
+  }
+}

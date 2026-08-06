@@ -9,11 +9,13 @@ import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
+import { dayChangeTear } from './day-change-tear/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
+import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
@@ -107,6 +109,8 @@ export const specimens: Specimen[] = [
   comicPanelScrollReveal,
   crossOutReplacement,
   printRegistrationHover,
+  dayChangeTear,
+  hoverCutout,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

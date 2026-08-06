@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **12 / 301** complete.
+- Progress: **14 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 289 |
+| Done | 14 |
+| Open | 287 |
 
 ## Shipped (mapped to live specimens)
 
@@ -30,6 +30,8 @@
 | P5-201 | `SPX-212` | `comic-panel-scroll-reveal` | Comic Panel Scroll Reveal |
 | P5-044 | `SPX-055` | `cross-out-replacement` | Cross-Out Replacement |
 | P5-034 | `SPX-045` | `print-registration-hover` | Print Registration Hover |
+| P5-293 | `SPX-304` | `day-change-tear` | Day Change Tear |
+| P5-057 | `SPX-068` | `hover-cutout` | Hover Cutout |
 
 ## Core first-wave
 
@@ -128,7 +130,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-054** · `SPX-065` · **Corner Label Navigation** — Current section label attacks from viewport corner.
 - [ ] **P5-055** · `SPX-066` · **Exploding Submenu** — Child actions burst radially from selected option.
 - [ ] **P5-056** · `SPX-067` · **Diagonal Tab Switcher** — Tabs overlap like cut pieces of card.
-- [ ] **P5-057** · `SPX-068` · **Hover Cutout** — Hovered menu item punches a white hole through black backing.
+- [x] **P5-057** · `SPX-068` · **Hover Cutout** — Hovered menu item punches a white hole through black backing.
 - [ ] **P5-058** · `SPX-069` · **Reverse Highlight** — Entire region turns black except selected item's white cutout.
 - [ ] **P5-059** · `SPX-070` · **Arrow Barrage Selector** — Several tiny arrows converge on current selection.
 - [ ] **P5-060** · `SPX-071` · **Cursor Chase** — Angular cursor rapidly catches newly selected item.
@@ -436,7 +438,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Calendar / time
 
-- [ ] **P5-293** · `SPX-304` · **Day Change Tear** — Previous date tears away to reveal next.
+- [x] **P5-293** · `SPX-304` · **Day Change Tear** — Previous date tears away to reveal next.
 - [ ] **P5-294** · `SPX-305` · **Deadline Attack** — Approaching deadline gets graphic warning.
 - [ ] **P5-295** · `SPX-306` · **Today Stamp** — Current date receives physical stamp.
 - [ ] **P5-296** · `SPX-307` · **Month Panel Wipe** — Calendar month changes through comic panels.
