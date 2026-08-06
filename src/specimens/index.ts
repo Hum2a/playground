@@ -384,6 +384,7 @@ import { tenSecondSeekRipple } from './ten-second-seek-ripple/entry'
 import { threatLevelEscalation } from './threat-level-escalation/entry'
 import { threePersonCellFormation } from './three-person-cell-formation/entry'
 import { timeSkip } from './time-skip/entry'
+import { timelineHoverPreview } from './timeline-hover-preview/entry'
 import { timelineReconstruction } from './timeline-reconstruction/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { tournamentBracketActivation } from './tournament-bracket-activation/entry'
@@ -848,6 +849,7 @@ export const specimens: Specimen[] = [
   threatLevelEscalation,
   threePersonCellFormation,
   timeSkip,
+  timelineHoverPreview,
   timelineReconstruction,
   tornEdgeDrawer,
   tournamentBracketActivation,
