@@ -128,6 +128,7 @@ import { directionalFocusTravel } from './directional-focus-travel/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dockLaunchBounce } from './dock-launch-bounce/entry'
 import { dockMagnification } from './dock-magnification/entry'
+import { downloadProgressRing } from './download-progress-ring/entry'
 import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { dropTargetMagnetism } from './drop-target-magnetism/entry'
@@ -613,6 +614,7 @@ export const specimens: Specimen[] = [
   discoveryTearOpen,
   dockLaunchBounce,
   dockMagnification,
+  downloadProgressRing,
   dragProxyFormation,
   dramaticObjectionError,
   dropTargetMagnetism,

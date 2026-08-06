@@ -1,0 +1,1 @@
+export function runDownload(){const pct=document.querySelector('[data-pct]');const ring=document.querySelector('[data-ring]');let n=0;const id=window.setInterval(()=>{n+=20;pct.textContent=n+'%';if(n>=100){window.clearInterval(id);ring.classList.add('is-done')}},200)};document.querySelector('[data-run]')?.addEventListener('click',()=>runDownload())
