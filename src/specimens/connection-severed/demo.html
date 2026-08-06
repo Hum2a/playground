@@ -1,0 +1,58 @@
+<div class="connection-severed" data-connection-severed data-state="linked">
+  <div class="connection-severed__stage">
+    <article
+      class="connection-severed__card connection-severed__card--source"
+      data-cs-card="source"
+      aria-labelledby="cs-source-title"
+    >
+      <p class="connection-severed__eyebrow">SOURCE</p>
+      <h2 class="connection-severed__title" id="cs-source-title">Archive</h2>
+      <p class="connection-severed__unlinked" data-cs-unlinked aria-hidden="true">
+        UNLINKED
+      </p>
+    </article>
+
+    <div class="connection-severed__bridge" data-cs-bridge aria-hidden="true">
+      <div class="connection-severed__tether" data-cs-tether>
+        <span class="connection-severed__backing" aria-hidden="true"></span>
+        <span class="connection-severed__seg connection-severed__seg--1"></span>
+        <span class="connection-severed__seg connection-severed__seg--2"></span>
+        <span class="connection-severed__seg connection-severed__seg--3"></span>
+        <span class="connection-severed__gap" data-cs-gap></span>
+        <span class="connection-severed__frag connection-severed__frag--1"></span>
+        <span class="connection-severed__frag connection-severed__frag--2"></span>
+        <span class="connection-severed__frag connection-severed__frag--3"></span>
+      </div>
+    </div>
+
+    <article
+      class="connection-severed__card connection-severed__card--target"
+      data-cs-card="target"
+      aria-labelledby="cs-target-title"
+    >
+      <p class="connection-severed__eyebrow">TARGET</p>
+      <h2 class="connection-severed__title" id="cs-target-title">Portfolio</h2>
+      <p class="connection-severed__unlinked" data-cs-unlinked aria-hidden="true">
+        UNLINKED
+      </p>
+    </article>
+  </div>
+
+  <div class="connection-severed__controls">
+    <button type="button" class="connection-severed__btn" data-cs-disconnect>
+      DISCONNECT
+    </button>
+    <button type="button" class="connection-severed__btn connection-severed__btn--ghost" data-cs-reconnect>
+      RECONNECT
+    </button>
+  </div>
+
+  <p
+    class="connection-severed__status"
+    data-cs-status
+    role="status"
+    aria-live="polite"
+  >
+    Archive connected to Portfolio.
+  </p>
+</div>

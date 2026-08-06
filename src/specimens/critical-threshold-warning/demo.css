@@ -1,0 +1,549 @@
+/* SPX-025 Critical Threshold Warning — portable contract. Do not restyle to host tokens. */
+
+.ctw {
+  --ctw-black: #090909;
+  --ctw-red: #e60012;
+  --ctw-paper: #f5f1e8;
+  --ctw-ease: cubic-bezier(0.28, 0.85, 0.32, 1);
+  --ctw-approach: cubic-bezier(0.45, 0.12, 0.55, 1);
+  --ctw-track: polygon(
+    0% 16%,
+    1.5% 0%,
+    98.5% 5%,
+    100% 82%,
+    97.5% 100%,
+    1% 95%
+  );
+  --ctw-fill: polygon(0% 0%, 100% 6%, 100% 100%, 0% 94%);
+  --ctw-clamp-top: polygon(
+    8% 100%,
+    0% 18%,
+    22% 0%,
+    78% 6%,
+    100% 28%,
+    92% 100%
+  );
+  --ctw-clamp-bot: polygon(
+    6% 0%,
+    14% 100%,
+    72% 94%,
+    100% 78%,
+    88% 0%,
+    28% 8%
+  );
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+  background: #12141a;
+  color: var(--ctw-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.ctw *,
+.ctw *::before,
+.ctw *::after {
+  box-sizing: border-box;
+}
+
+.ctw__eyebrow {
+  margin: 0 0 0.35rem;
+  width: min(100%, 320px);
+  font: 700 0.58rem/1 inherit;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(245 241 232 / 0.55);
+}
+
+.ctw__title {
+  margin: 0 0 1.25rem;
+  width: min(100%, 320px);
+  font: 900 0.95rem/1 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ctw__stage {
+  position: relative;
+  width: min(100%, 320px);
+  height: 132px;
+  margin-bottom: 1.1rem;
+}
+
+.ctw__meter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52px;
+  height: 24px;
+  transform: translate(0, 0);
+  transition: transform 120ms var(--ctw-ease);
+}
+
+.ctw--impact .ctw__meter {
+  animation: ctw-host-nudge 180ms var(--ctw-ease) both;
+}
+
+@keyframes ctw-host-nudge {
+  0% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(2px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.ctw__track {
+  position: absolute;
+  inset: 0;
+  background: var(--ctw-black);
+  border: 2px solid var(--ctw-paper);
+  clip-path: var(--ctw-track);
+  overflow: hidden;
+}
+
+.ctw__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 82%;
+  background: var(--ctw-paper);
+  clip-path: var(--ctw-fill);
+  transform-origin: left center;
+  transition: width 300ms var(--ctw-ease), background-color 0ms linear;
+}
+
+.ctw--step-a .ctw__fill {
+  transition-duration: 300ms;
+  transition-timing-function: var(--ctw-ease);
+}
+
+.ctw--approach .ctw__fill {
+  transition-duration: 480ms;
+  transition-timing-function: var(--ctw-approach);
+}
+
+.ctw--cross .ctw__fill,
+.ctw--critical .ctw__fill {
+  background: var(--ctw-red);
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.ctw--settled .ctw__fill {
+  transition-duration: 0ms;
+  background: var(--ctw-red);
+}
+
+/* Threshold marker at exactly 90% */
+.ctw__threshold {
+  position: absolute;
+  left: 90%;
+  top: -22px;
+  width: 8px;
+  height: 68px;
+  margin-left: -4px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.ctw__threshold-label {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 2px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: 900 0.58rem/1 inherit;
+  letter-spacing: 0.06em;
+  color: var(--ctw-paper);
+}
+
+.ctw__threshold-mark {
+  position: absolute;
+  left: 1px;
+  top: 18px;
+  width: 6px;
+  height: 48px;
+  background: var(--ctw-paper);
+  border: 1px solid var(--ctw-black);
+  box-shadow: 2px 0 0 var(--ctw-black);
+  clip-path: polygon(0% 0%, 100% 4%, 85% 100%, 12% 96%);
+  transform-origin: 50% 70%;
+  transform: rotate(0deg);
+  transition: transform 140ms var(--ctw-ease);
+}
+
+.ctw--react .ctw__threshold-mark {
+  transform: rotate(-3deg);
+}
+
+.ctw--critical .ctw__threshold-mark,
+.ctw--settled .ctw__threshold-mark {
+  transform: rotate(-2deg);
+}
+
+.ctw__tension {
+  position: absolute;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  margin-left: -7px;
+  background: var(--ctw-red);
+  opacity: 0;
+  transform: scaleX(0.4);
+  pointer-events: none;
+}
+
+.ctw__tension--1 {
+  top: 22px;
+  transform: translateX(-10px) rotate(-18deg) scaleX(0.4);
+}
+
+.ctw__tension--2 {
+  bottom: 4px;
+  transform: translateX(8px) rotate(14deg) scaleX(0.4);
+}
+
+.ctw--react .ctw__tension {
+  opacity: 1;
+  animation: ctw-tension-in 140ms var(--ctw-ease) both;
+}
+
+.ctw--critical .ctw__tension,
+.ctw--settled .ctw__tension {
+  opacity: 0.85;
+  transform: none;
+  animation: none;
+}
+
+.ctw--critical .ctw__tension--1,
+.ctw--settled .ctw__tension--1 {
+  transform: translateX(-10px) rotate(-18deg) scaleX(1);
+}
+
+.ctw--critical .ctw__tension--2,
+.ctw--settled .ctw__tension--2 {
+  transform: translateX(8px) rotate(14deg) scaleX(1);
+}
+
+@keyframes ctw-tension-in {
+  from {
+    opacity: 0;
+    transform: translateX(0) scaleX(0.35);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ctw--react .ctw__tension--1 {
+  animation-name: ctw-tension-in-1;
+}
+
+.ctw--react .ctw__tension--2 {
+  animation-name: ctw-tension-in-2;
+}
+
+@keyframes ctw-tension-in-1 {
+  from {
+    opacity: 0;
+    transform: translateX(-10px) rotate(-18deg) scaleX(0.35);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-10px) rotate(-18deg) scaleX(1);
+  }
+}
+
+@keyframes ctw-tension-in-2 {
+  from {
+    opacity: 0;
+    transform: translateX(8px) rotate(14deg) scaleX(0.35);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(8px) rotate(14deg) scaleX(1);
+  }
+}
+
+/* Clamps trap the threshold — they do not explode the marker */
+.ctw__clamp {
+  position: absolute;
+  left: 50%;
+  width: 42px;
+  height: 18px;
+  margin-left: -21px;
+  background: var(--ctw-black);
+  border: 1px solid var(--ctw-paper);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.ctw__clamp--top {
+  top: 8px;
+  clip-path: var(--ctw-clamp-top);
+  transform: translateY(-35px);
+}
+
+.ctw__clamp--bot {
+  bottom: -2px;
+  clip-path: var(--ctw-clamp-bot);
+  transform: translateY(35px);
+}
+
+.ctw--clamp .ctw__clamp {
+  opacity: 1;
+  transition:
+    transform 180ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    opacity 40ms linear;
+}
+
+.ctw--clamp .ctw__clamp--top,
+.ctw--clamp .ctw__clamp--bot,
+.ctw--critical .ctw__clamp--top,
+.ctw--critical .ctw__clamp--bot,
+.ctw--settled .ctw__clamp--top,
+.ctw--settled .ctw__clamp--bot {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctw--critical .ctw__clamp,
+.ctw--settled .ctw__clamp {
+  transition: none;
+}
+
+/* Warning label */
+.ctw__warn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  display: grid;
+  gap: 0.28rem;
+  justify-items: end;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(70px) rotate(6deg);
+  transform-origin: right center;
+}
+
+.ctw__warn-kicker {
+  font: 900 1.55rem/0.9 inherit;
+  letter-spacing: 0.04em;
+  color: var(--ctw-red);
+  text-shadow: 2px 2px 0 var(--ctw-black);
+}
+
+.ctw__warn-detail {
+  font: 700 0.68rem/1 inherit;
+  letter-spacing: 0.12em;
+  color: var(--ctw-paper);
+  opacity: 0;
+}
+
+.ctw--warn .ctw__warn {
+  opacity: 1;
+  animation: ctw-warn-attack 240ms var(--ctw-ease) both;
+}
+
+.ctw--warn .ctw__warn-detail {
+  animation: ctw-warn-detail 160ms 70ms var(--ctw-ease) both;
+}
+
+.ctw--settled .ctw__warn,
+.ctw--critical.ctw--settled .ctw__warn {
+  opacity: 1;
+  transform: translateX(0) rotate(-1deg);
+  animation: none;
+}
+
+.ctw--settled .ctw__warn-detail {
+  opacity: 1;
+  animation: none;
+}
+
+@keyframes ctw-warn-attack {
+  0% {
+    opacity: 0;
+    transform: translateX(70px) rotate(6deg);
+  }
+  62% {
+    opacity: 1;
+    transform: translateX(-4px) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(-1deg);
+  }
+}
+
+@keyframes ctw-warn-detail {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ctw__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: min(100%, 320px);
+}
+
+.ctw__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  border: 2px solid var(--ctw-paper);
+  background: transparent;
+  color: var(--ctw-paper);
+  font: 700 0.62rem/1 inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(0% 8%, 96% 0%, 100% 88%, 4% 100%);
+}
+
+.ctw__btn:hover:not(:disabled) {
+  background: rgb(245 241 232 / 0.08);
+}
+
+.ctw__btn:focus-visible {
+  outline: 2px solid var(--ctw-red);
+  outline-offset: 3px;
+}
+
+.ctw__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ctw__btn--go {
+  background: var(--ctw-paper);
+  color: var(--ctw-black);
+  border-color: var(--ctw-paper);
+}
+
+.ctw__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion — both triggers */
+@media (prefers-reduced-motion: reduce) {
+  .ctw__fill,
+  .ctw__threshold-mark,
+  .ctw__clamp,
+  .ctw__warn,
+  .ctw__meter {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .ctw--rm .ctw__fill,
+  .ctw--settled.ctw--rm .ctw__fill {
+    width: 94%;
+    background: var(--ctw-red);
+  }
+
+  .ctw--rm .ctw__clamp--top,
+  .ctw--rm .ctw__clamp--bot {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ctw--rm .ctw__threshold-mark {
+    transform: rotate(-2deg);
+  }
+
+  .ctw--rm .ctw__tension {
+    opacity: 0.85;
+  }
+
+  .ctw--rm .ctw__tension--1 {
+    transform: translateX(-10px) rotate(-18deg) scaleX(1);
+  }
+
+  .ctw--rm .ctw__tension--2 {
+    transform: translateX(8px) rotate(14deg) scaleX(1);
+  }
+
+  .ctw--rm .ctw__warn {
+    opacity: 1;
+    transform: translateX(0) rotate(-1deg);
+  }
+
+  .ctw--rm .ctw__warn-detail {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .ctw__fill,
+[data-force-reduced-motion='true'] .ctw__threshold-mark,
+[data-force-reduced-motion='true'] .ctw__clamp,
+[data-force-reduced-motion='true'] .ctw__warn,
+[data-force-reduced-motion='true'] .ctw__meter {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__fill,
+[data-force-reduced-motion='true'] .ctw--settled.ctw--rm .ctw__fill {
+  width: 94%;
+  background: var(--ctw-red);
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__clamp--top,
+[data-force-reduced-motion='true'] .ctw--rm .ctw__clamp--bot {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__threshold-mark {
+  transform: rotate(-2deg);
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__tension {
+  opacity: 0.85;
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__tension--1 {
+  transform: translateX(-10px) rotate(-18deg) scaleX(1);
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__tension--2 {
+  transform: translateX(8px) rotate(14deg) scaleX(1);
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__warn {
+  opacity: 1;
+  transform: translateX(0) rotate(-1deg);
+}
+
+[data-force-reduced-motion='true'] .ctw--rm .ctw__warn-detail {
+  opacity: 1;
+}

@@ -1,0 +1,549 @@
+/* SPX-323 Connection Severed — portable contract. Do not restyle to host tokens. */
+
+.connection-severed {
+  --cs-black: #090909;
+  --cs-red: #e60012;
+  --cs-paper: #f5f1e8;
+  --cs-ink: #f5f1e8;
+  --cs-mute: rgb(245 241 232 / 0.55);
+
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.15rem;
+  overflow: hidden;
+  background: #1c1c1c;
+  color: var(--cs-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.connection-severed *,
+.connection-severed *::before,
+.connection-severed *::after {
+  box-sizing: border-box;
+}
+
+.connection-severed__stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(56px, 0.85fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 148px;
+  flex: 1;
+}
+
+.connection-severed__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 112px;
+  padding: 0.85rem 0.75rem;
+  border: 2px solid var(--cs-paper);
+  background: var(--cs-black);
+  transition: transform 180ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.connection-severed__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cs-red);
+}
+
+.connection-severed__title {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1rem, 4.2vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.connection-severed__unlinked {
+  margin: 0.55rem 0 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cs-paper);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 160ms cubic-bezier(0.7, 0, 0.3, 1),
+    transform 160ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.connection-severed__unlinked[aria-hidden='false'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* —— Bridge / tether —— */
+.connection-severed__bridge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 0;
+}
+
+.connection-severed__tether {
+  position: relative;
+  width: 100%;
+  height: 28px;
+  overflow: visible;
+}
+
+.connection-severed__backing {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  width: 92%;
+  height: 12px;
+  background: var(--cs-red);
+  transform: translate(3px, calc(-50% + 2px));
+  clip-path: polygon(
+    0% 35%,
+    34% 10%,
+    66% 40%,
+    100% 18%,
+    100% 78%,
+    66% 92%,
+    34% 70%,
+    0% 88%
+  );
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+.connection-severed__seg {
+  position: absolute;
+  top: 50%;
+  height: 12px;
+  background: var(--cs-black);
+  transform: translateY(-50%);
+  transform-origin: center center;
+}
+
+.connection-severed__seg--1 {
+  left: 0;
+  width: 42%;
+  clip-path: polygon(0% 22%, 100% 0%, 100% 100%, 0% 84%);
+  z-index: 2;
+}
+
+.connection-severed__seg--2 {
+  left: 34%;
+  width: 32%;
+  height: 12px;
+  clip-path: polygon(0% 0%, 100% 28%, 100% 78%, 0% 100%);
+  z-index: 3;
+}
+
+.connection-severed__seg--3 {
+  right: 0;
+  width: 42%;
+  clip-path: polygon(0% 28%, 100% 8%, 100% 90%, 0% 72%);
+  z-index: 2;
+}
+
+.connection-severed__gap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 22px;
+  background: #1c1c1c;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.connection-severed__frag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 8px;
+  background: var(--cs-black);
+  opacity: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.connection-severed__frag--1 {
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+  background: var(--cs-red);
+}
+
+.connection-severed__frag--2 {
+  clip-path: polygon(0% 0%, 100% 40%, 40% 100%);
+}
+
+.connection-severed__frag--3 {
+  clip-path: polygon(0% 20%, 100% 0%, 70% 100%, 0% 90%);
+  background: var(--cs-paper);
+}
+
+.connection-severed__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.connection-severed__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--cs-paper);
+  border-radius: 0;
+  background: transparent;
+  color: var(--cs-paper);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.connection-severed__btn:hover:not(:disabled) {
+  background: var(--cs-paper);
+  color: var(--cs-black);
+}
+
+.connection-severed__btn:focus-visible {
+  outline: 2px solid var(--cs-red);
+  outline-offset: 3px;
+}
+
+.connection-severed__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.connection-severed__btn--ghost {
+  border-color: rgb(245 241 232 / 0.45);
+  color: var(--cs-mute);
+}
+
+.connection-severed__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Tension 0–180ms —— */
+.connection-severed--tension .connection-severed__card--source {
+  transform: translateX(-3px);
+}
+
+.connection-severed--tension .connection-severed__card--target {
+  transform: translateX(3px);
+}
+
+.connection-severed--tension .connection-severed__backing {
+  opacity: 1;
+}
+
+.connection-severed--tension .connection-severed__seg--2 {
+  animation: cs-tension-narrow 180ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes cs-tension-narrow {
+  from {
+    height: 12px;
+    transform: translateY(-50%) scaleY(1);
+  }
+  to {
+    height: 5px;
+    transform: translateY(-50%) scaleY(1);
+  }
+}
+
+/* —— Snap 180–260ms —— */
+.connection-severed--snap .connection-severed__card--source {
+  transform: translateX(-3px);
+}
+
+.connection-severed--snap .connection-severed__card--target {
+  transform: translateX(3px);
+}
+
+.connection-severed--snap .connection-severed__backing,
+.connection-severed--recoil .connection-severed__backing {
+  opacity: 1;
+}
+
+.connection-severed--snap .connection-severed__seg--2 {
+  height: 5px;
+  opacity: 0;
+  transform: translateY(-50%) scaleX(0.2);
+}
+
+.connection-severed--snap .connection-severed__gap {
+  animation: cs-gap-open 80ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.connection-severed--snap .connection-severed__frag--1 {
+  animation: cs-frag-1 160ms cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+}
+
+.connection-severed--snap .connection-severed__frag--2 {
+  animation: cs-frag-2 170ms cubic-bezier(0.2, 0.85, 0.25, 1) 10ms forwards;
+}
+
+.connection-severed--snap .connection-severed__frag--3 {
+  animation: cs-frag-3 180ms cubic-bezier(0.2, 0.85, 0.25, 1) 16ms forwards;
+}
+
+@keyframes cs-gap-open {
+  from {
+    width: 0;
+  }
+  to {
+    width: 20px;
+  }
+}
+
+@keyframes cs-frag-1 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(calc(-50% - 14px), calc(-50% - 16px)) rotate(-28deg) scale(1);
+  }
+}
+
+@keyframes cs-frag-2 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(calc(-50% + 4px), calc(-50% + 14px)) rotate(18deg) scale(1);
+  }
+}
+
+@keyframes cs-frag-3 {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: translate(calc(-50% + 18px), calc(-50% - 8px)) rotate(34deg) scale(1);
+  }
+}
+
+/* —— Recoil 240–480ms —— */
+.connection-severed--recoil .connection-severed__gap {
+  width: 20px;
+}
+
+.connection-severed--recoil .connection-severed__seg--2 {
+  opacity: 0;
+}
+
+.connection-severed--recoil .connection-severed__frag {
+  opacity: 0;
+  transition: opacity 120ms linear 80ms;
+}
+
+.connection-severed--recoil .connection-severed__seg--1 {
+  animation: cs-recoil-left 240ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.connection-severed--recoil .connection-severed__seg--3 {
+  animation: cs-recoil-right 240ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.connection-severed--recoil .connection-severed__card--source {
+  animation: cs-card-recoil-left 240ms cubic-bezier(0.55, 0.05, 0.3, 1) forwards;
+}
+
+.connection-severed--recoil .connection-severed__card--target {
+  animation: cs-card-recoil-right 240ms cubic-bezier(0.55, 0.05, 0.3, 1) forwards;
+}
+
+@keyframes cs-recoil-left {
+  from {
+    transform: translate(0, -50%);
+    clip-path: polygon(0% 22%, 100% 0%, 100% 100%, 0% 84%);
+  }
+  to {
+    transform: translate(-72%, -50%);
+    opacity: 0;
+    clip-path: polygon(0% 22%, 55% 8%, 55% 92%, 0% 84%);
+  }
+}
+
+@keyframes cs-recoil-right {
+  from {
+    transform: translate(0, -50%);
+    clip-path: polygon(0% 28%, 100% 8%, 100% 90%, 0% 72%);
+  }
+  to {
+    transform: translate(72%, -50%);
+    opacity: 0;
+    clip-path: polygon(45% 20%, 100% 8%, 100% 90%, 45% 80%);
+  }
+}
+
+@keyframes cs-card-recoil-left {
+  0% {
+    transform: translateX(-3px);
+  }
+  45% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cs-card-recoil-right {
+  0% {
+    transform: translateX(3px);
+  }
+  45% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* —— Severed final —— */
+.connection-severed--severed .connection-severed__bridge,
+.connection-severed--reduced.connection-severed--severed .connection-severed__bridge {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.connection-severed--severed .connection-severed__card,
+.connection-severed--reduced.connection-severed--severed .connection-severed__card {
+  transform: none;
+}
+
+.connection-severed--severed .connection-severed__unlinked[aria-hidden='false'],
+.connection-severed--reduced.connection-severed--severed
+  .connection-severed__unlinked[aria-hidden='false'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* —— Reconnect construction —— */
+.connection-severed--reconnect .connection-severed__bridge {
+  visibility: visible;
+  opacity: 1;
+}
+
+.connection-severed--reconnect .connection-severed__backing {
+  opacity: 0;
+}
+
+.connection-severed--reconnect .connection-severed__seg--1 {
+  animation: cs-rebuild-left 220ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.connection-severed--reconnect .connection-severed__seg--2 {
+  animation: cs-rebuild-centre 220ms cubic-bezier(0.7, 0, 0.3, 1) 40ms forwards;
+}
+
+.connection-severed--reconnect .connection-severed__seg--3 {
+  animation: cs-rebuild-right 220ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.connection-severed--reconnect .connection-severed__gap,
+.connection-severed--reconnect .connection-severed__frag {
+  opacity: 0;
+  width: 0;
+}
+
+@keyframes cs-rebuild-left {
+  from {
+    transform: translate(-40%, -50%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes cs-rebuild-centre {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes cs-rebuild-right {
+  from {
+    transform: translate(40%, -50%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .connection-severed__card,
+  .connection-severed__unlinked,
+  .connection-severed__backing,
+  .connection-severed__seg,
+  .connection-severed__gap,
+  .connection-severed__frag {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .connection-severed__card,
+[data-force-reduced-motion='true'] .connection-severed__unlinked,
+[data-force-reduced-motion='true'] .connection-severed__backing,
+[data-force-reduced-motion='true'] .connection-severed__seg,
+[data-force-reduced-motion='true'] .connection-severed__gap,
+[data-force-reduced-motion='true'] .connection-severed__frag {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (max-width: 360px) {
+  .connection-severed__stage {
+    grid-template-columns: minmax(0, 1fr) minmax(40px, 0.7fr) minmax(0, 1fr);
+    gap: 0.2rem;
+  }
+
+  .connection-severed__card {
+    min-height: 100px;
+    padding: 0.7rem 0.55rem;
+  }
+}

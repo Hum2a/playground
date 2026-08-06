@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/connection-severed.schema.json",
+  "title": "ConnectionSevered",
+  "description": "Portable contract for an angular tether unlink: tension, central snap, three fragments, dual recoil, UNLINKED settle.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "connection-severed" },
+    "intent": {
+      "type": "string",
+      "const": "Unlink two connected entities by tensioning an irregular angular tether until it snaps centrally, recoils, and leaves independent UNLINKED cards."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceEyebrow",
+        "sourceTitle",
+        "targetEyebrow",
+        "targetTitle",
+        "unlinked",
+        "disconnect",
+        "reconnect",
+        "statusLinked",
+        "statusSevered"
+      ],
+      "properties": {
+        "sourceEyebrow": { "type": "string", "const": "SOURCE" },
+        "sourceTitle": { "type": "string", "const": "Archive" },
+        "targetEyebrow": { "type": "string", "const": "TARGET" },
+        "targetTitle": { "type": "string", "const": "Portfolio" },
+        "unlinked": { "type": "string", "const": "UNLINKED" },
+        "disconnect": { "type": "string", "const": "DISCONNECT" },
+        "reconnect": { "type": "string", "const": "RECONNECT" },
+        "statusLinked": {
+          "type": "string",
+          "const": "Archive connected to Portfolio."
+        },
+        "statusSevered": {
+          "type": "string",
+          "const": "Archive disconnected from Portfolio."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tetherHeightPx",
+        "tetherTensionHeightPx",
+        "segmentCount",
+        "fragmentCount",
+        "gapOpenPx",
+        "cardTensionPx",
+        "cardRecoilPx"
+      ],
+      "properties": {
+        "tetherHeightPx": { "type": "number", "const": 12 },
+        "tetherTensionHeightPx": { "type": "number", "const": 5 },
+        "segmentCount": { "type": "number", "const": 3 },
+        "fragmentCount": { "type": "number", "const": 3 },
+        "gapOpenPx": { "type": "number", "const": 20 },
+        "cardTensionPx": { "type": "number", "const": 3 },
+        "cardRecoilPx": { "type": "number", "const": 2 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tensionMs",
+        "snapMs",
+        "recoilStartMs",
+        "recoilEndMs",
+        "reconnectMs",
+        "loops"
+      ],
+      "properties": {
+        "tensionMs": { "type": "number", "const": 180 },
+        "snapMs": { "type": "number", "const": 80 },
+        "recoilStartMs": { "type": "number", "const": 240 },
+        "recoilEndMs": { "type": "number", "const": 480 },
+        "reconnectMs": { "type": "number", "const": 220 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "dataState"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "dataState": {
+          "type": "array",
+          "const": ["linked", "severed"]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateUnlink", "triggers"],
+      "properties": {
+        "immediateUnlink": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "tether", "seg", "frag", "unlinked"],
+      "properties": {
+        "root": { "type": "string", "const": "connection-severed" },
+        "card": { "type": "string", "const": "connection-severed__card" },
+        "tether": { "type": "string", "const": "connection-severed__tether" },
+        "seg": { "type": "string", "const": "connection-severed__seg" },
+        "frag": { "type": "string", "const": "connection-severed__frag" },
+        "unlinked": { "type": "string", "const": "connection-severed__unlinked" }
+      }
+    }
+  }
+}

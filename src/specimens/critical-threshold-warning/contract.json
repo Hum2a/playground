@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/critical-threshold-warning.schema.json",
+  "title": "CriticalThresholdWarning",
+  "description": "Portable contract for a metric that enters a restrictive critical state when load exceeds a 90% threshold. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "meter",
+    "threshold",
+    "sequence",
+    "crossing",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "critical-threshold-warning" },
+    "intent": {
+      "type": "string",
+      "const": "Crossing a predefined critical threshold changes the metric interface into a restrictive structural warning state."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eyebrow",
+        "title",
+        "go",
+        "reset",
+        "kicker",
+        "detail",
+        "announce"
+      ],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "MONITOR · NODE A" },
+        "title": { "type": "string", "const": "SYSTEM LOAD" },
+        "go": { "type": "string", "const": "INCREASE LOAD" },
+        "reset": { "type": "string", "const": "RESET LOAD" },
+        "kicker": { "type": "string", "const": "CRITICAL" },
+        "detail": { "type": "string", "const": "94% LOAD" },
+        "announce": {
+          "type": "string",
+          "const": "System load critical at 94 percent."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "meter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 320 },
+        "heightPx": { "type": "number", "const": 24 },
+        "roundedEnds": { "type": "boolean", "const": false }
+      }
+    },
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["atPercent", "label", "markerReactDeg"],
+      "properties": {
+        "atPercent": { "type": "number", "const": 90 },
+        "label": { "type": "string", "const": "90 // LIMIT" },
+        "markerReactDeg": { "type": "number", "const": -3 },
+        "tensionMarks": { "type": "integer", "const": 2 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "steps", "finalLogical", "criticalWhenExceeds"],
+      "properties": {
+        "initial": { "type": "number", "const": 82 },
+        "steps": {
+          "type": "array",
+          "const": [88, 90, 91, 94]
+        },
+        "finalLogical": { "type": "number", "const": 94 },
+        "criticalWhenExceeds": { "type": "number", "const": 90 },
+        "semanticDrivesState": { "type": "boolean", "const": true }
+      }
+    },
+    "crossing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["topClamp", "bottomClamp", "markerExplodes", "hostNudgePx"],
+      "properties": {
+        "topClamp": {
+          "type": "object",
+          "properties": {
+            "translateY": { "type": "string", "const": "-35px → 0" },
+            "durationMs": { "type": "number", "const": 180 }
+          }
+        },
+        "bottomClamp": {
+          "type": "object",
+          "properties": {
+            "translateY": { "type": "string", "const": "35px → 0" },
+            "durationMs": { "type": "number", "const": 180 }
+          }
+        },
+        "markerExplodes": { "type": "boolean", "const": false },
+        "hostNudgePx": { "type": "number", "const": 2 },
+        "criticalFill": { "type": "string", "const": "red discrete" },
+        "noPulseNoFlash": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepAMs",
+        "approachMs",
+        "reactAtMs",
+        "crossMs",
+        "fillMs",
+        "warnMs",
+        "detailLagMs",
+        "noLoop"
+      ],
+      "properties": {
+        "stepAMs": { "type": "number", "const": 300 },
+        "approachMs": { "type": "number", "const": 480 },
+        "reactAtMs": { "type": "number", "const": 360 },
+        "crossMs": { "type": "number", "const": 180 },
+        "fillMs": { "type": "number", "const": 200 },
+        "warnMs": { "type": "number", "const": 240 },
+        "detailLagMs": { "type": "number", "const": 70 },
+        "warnFrom": {
+          "type": "string",
+          "const": "translateX(70px) rotate(6deg)"
+        },
+        "warnImpact": {
+          "type": "string",
+          "const": "translateX(-4px) rotate(-2deg)"
+        },
+        "warnFinal": {
+          "type": "string",
+          "const": "translateX(0) rotate(-1deg)"
+        },
+        "noLoop": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["meter", "announceOnce"],
+      "properties": {
+        "meter": { "type": "boolean", "const": true },
+        "announceOnce": {
+          "type": "string",
+          "const": "System load critical at 94 percent."
+        },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantFinal", "triggers"],
+      "properties": {
+        "instantFinal": { "type": "boolean", "const": true },
+        "staticCopy": {
+          "type": "string",
+          "const": "CRITICAL — 94% LOAD"
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "meter", "fill", "threshold", "warn"],
+      "properties": {
+        "root": { "type": "string", "const": "ctw" },
+        "meter": { "type": "string", "const": "ctw__meter" },
+        "fill": { "type": "string", "const": "ctw__fill" },
+        "threshold": { "type": "string", "const": "ctw__threshold" },
+        "warn": { "type": "string", "const": "ctw__warn" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "go": { "type": "string", "const": "increaseCriticalThreshold" },
+        "reset": { "type": "string", "const": "resetCriticalThreshold" },
+        "replay": { "type": "string", "const": "replayCriticalThreshold" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "critical-threshold-warning",
+      "intent": "Crossing a predefined critical threshold changes the metric interface into a restrictive structural warning state.",
+      "copy": {
+        "eyebrow": "MONITOR · NODE A",
+        "title": "SYSTEM LOAD",
+        "go": "INCREASE LOAD",
+        "reset": "RESET LOAD",
+        "kicker": "CRITICAL",
+        "detail": "94% LOAD",
+        "announce": "System load critical at 94 percent."
+      },
+      "colours": {
+        "black": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "meter": {
+        "widthPx": 320,
+        "heightPx": 24,
+        "roundedEnds": false
+      },
+      "threshold": {
+        "atPercent": 90,
+        "label": "90 // LIMIT",
+        "markerReactDeg": -3,
+        "tensionMarks": 2
+      },
+      "sequence": {
+        "initial": 82,
+        "steps": [88, 90, 91, 94],
+        "finalLogical": 94,
+        "criticalWhenExceeds": 90,
+        "semanticDrivesState": true
+      },
+      "crossing": {
+        "topClamp": { "translateY": "-35px → 0", "durationMs": 180 },
+        "bottomClamp": { "translateY": "35px → 0", "durationMs": 180 },
+        "markerExplodes": false,
+        "hostNudgePx": 2,
+        "criticalFill": "red discrete",
+        "noPulseNoFlash": true
+      },
+      "animation": {
+        "stepAMs": 300,
+        "approachMs": 480,
+        "reactAtMs": 360,
+        "crossMs": 180,
+        "fillMs": 200,
+        "warnMs": 240,
+        "detailLagMs": 70,
+        "warnFrom": "translateX(70px) rotate(6deg)",
+        "warnImpact": "translateX(-4px) rotate(-2deg)",
+        "warnFinal": "translateX(0) rotate(-1deg)",
+        "noLoop": true
+      },
+      "a11y": {
+        "meter": true,
+        "announceOnce": "System load critical at 94 percent.",
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "instantFinal": true,
+        "staticCopy": "CRITICAL — 94% LOAD",
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "ctw",
+        "meter": "ctw__meter",
+        "fill": "ctw__fill",
+        "threshold": "ctw__threshold",
+        "warn": "ctw__warn"
+      },
+      "behaviour": {
+        "go": "increaseCriticalThreshold",
+        "reset": "resetCriticalThreshold",
+        "replay": "replayCriticalThreshold",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}

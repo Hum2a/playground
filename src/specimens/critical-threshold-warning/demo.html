@@ -1,0 +1,49 @@
+<div class="ctw" data-critical-threshold data-state="idle" data-value="82">
+  <p class="ctw__eyebrow">MONITOR · NODE A</p>
+  <p class="ctw__title">SYSTEM LOAD</p>
+
+  <div class="ctw__stage" data-ctw-stage>
+    <div class="ctw__warn" data-ctw-warn aria-hidden="true">
+      <span class="ctw__warn-kicker" data-ctw-kicker>CRITICAL</span>
+      <span class="ctw__warn-detail" data-ctw-detail>94% LOAD</span>
+    </div>
+
+    <div
+      class="ctw__meter"
+      data-ctw-meter
+      role="meter"
+      aria-label="System load"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="82"
+      aria-valuetext="82 percent"
+    >
+      <div class="ctw__track">
+        <div class="ctw__fill" data-ctw-fill style="width: 82%"></div>
+      </div>
+
+      <div class="ctw__threshold" data-ctw-threshold aria-hidden="true">
+        <span class="ctw__threshold-label">90 // LIMIT</span>
+        <span class="ctw__threshold-mark" data-ctw-mark></span>
+        <span class="ctw__tension ctw__tension--1" aria-hidden="true"></span>
+        <span class="ctw__tension ctw__tension--2" aria-hidden="true"></span>
+        <span class="ctw__clamp ctw__clamp--top" data-ctw-clamp-top></span>
+        <span class="ctw__clamp ctw__clamp--bot" data-ctw-clamp-bot></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ctw__actions">
+    <button type="button" class="ctw__btn ctw__btn--go" data-ctw-go>
+      INCREASE LOAD
+    </button>
+    <button type="button" class="ctw__btn" data-ctw-reset>RESET LOAD</button>
+  </div>
+
+  <div
+    class="ctw__live"
+    role="status"
+    aria-live="polite"
+    data-ctw-live
+  ></div>
+</div>
