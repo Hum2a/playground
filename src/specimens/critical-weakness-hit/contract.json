@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/critical-weakness-hit.schema.json",
+  "title": "CriticalWeaknessHit",
+  "description": "Portable contract for a short weakness-exploit success hit. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "phases",
+    "split",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "critical-weakness-hit" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Compress, four corner lines attack, three-layer split, then WEAKNESS→RESOLVED with one cut."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "weakness", "resolved", "action", "reset"],
+      "properties": {
+        "target": { "type": "string", "const": "MEMORY" },
+        "weakness": { "type": "string", "const": "WEAKNESS" },
+        "resolved": { "type": "string", "const": "RESOLVED" },
+        "action": { "type": "string", "const": "OPTIMISE" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "deep", "blue", "bright", "pale"],
+      "properties": {
+        "near": { "type": "string", "const": "#020912" },
+        "deep": { "type": "string", "const": "#09233d" },
+        "blue": { "type": "string", "const": "#1677ad" },
+        "bright": { "type": "string", "const": "#4bc4ee" },
+        "pale": { "type": "string", "const": "#d7f7ff" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compressMs",
+        "attackMs",
+        "splitMs",
+        "resolveMs",
+        "totalMs",
+        "compressScale",
+        "attackLineCount",
+        "noRepeatedShake"
+      ],
+      "properties": {
+        "compressMs": { "type": "number", "const": 70 },
+        "attackMs": { "type": "number", "const": 70 },
+        "splitMs": { "type": "number", "const": 80 },
+        "resolveMs": { "type": "number", "const": 140 },
+        "totalMs": { "type": "number", "const": 360 },
+        "compressScale": { "type": "array", "const": [1, 0.96] },
+        "attackLineCount": { "type": "integer", "const": 4 },
+        "noRepeatedShake": { "type": "boolean", "const": true }
+      }
+    },
+    "split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["layerCount", "offsetsPx", "deterministic"],
+      "properties": {
+        "layerCount": { "type": "integer", "const": 3 },
+        "offsetsPx": { "type": "array", "const": [-4, 0, 4] },
+        "deterministic": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["liveStatus", "decorativeHidden"],
+      "properties": {
+        "liveStatus": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantResolved", "triggers"],
+      "properties": {
+        "instantResolved": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "target", "line", "layer", "cut"],
+      "properties": {
+        "root": { "type": "string", "const": "cwh" },
+        "target": { "type": "string", "const": "cwh__target" },
+        "line": { "type": "string", "const": "cwh__line" },
+        "layer": { "type": "string", "const": "cwh__layer" },
+        "cut": { "type": "string", "const": "cwh__cut" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "run" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": { "type": "string", "const": "criticalWeaknessHit" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "critical-weakness-hit",
+      "intent": "Compress, four corner lines attack, three-layer split, then WEAKNESS→RESOLVED with one cut.",
+      "copy": {
+        "target": "MEMORY",
+        "weakness": "WEAKNESS",
+        "resolved": "RESOLVED",
+        "action": "OPTIMISE",
+        "reset": "RESET"
+      },
+      "colours": {
+        "near": "#020912",
+        "deep": "#09233d",
+        "blue": "#1677ad",
+        "bright": "#4bc4ee",
+        "pale": "#d7f7ff"
+      },
+      "phases": {
+        "compressMs": 70,
+        "attackMs": 70,
+        "splitMs": 80,
+        "resolveMs": 140,
+        "totalMs": 360,
+        "compressScale": [1, 0.96],
+        "attackLineCount": 4,
+        "noRepeatedShake": true
+      },
+      "split": {
+        "layerCount": 3,
+        "offsetsPx": [-4, 0, 4],
+        "deterministic": true
+      },
+      "a11y": {
+        "liveStatus": true,
+        "decorativeHidden": true
+      },
+      "reducedMotion": {
+        "instantResolved": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "cwh",
+        "target": "cwh__target",
+        "line": "cwh__line",
+        "layer": "cwh__layer",
+        "cut": "cwh__cut"
+      },
+      "behaviour": {
+        "run": "run",
+        "reset": "reset",
+        "api": "criticalWeaknessHit"
+      }
+    }
+  ]
+}
