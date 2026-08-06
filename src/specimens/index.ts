@@ -546,6 +546,8 @@ import { mastheadAssemble } from './masthead-assemble/entry'
 
 import { sectionFlagDrop } from './section-flag-drop/entry'
 
+import { headlineTypesetReveal } from './headline-typeset-reveal/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1047,6 +1049,7 @@ export const specimens: Specimen[] = [
   leadStoryPromotion,
   mastheadAssemble,
   sectionFlagDrop,
+  headlineTypesetReveal,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
