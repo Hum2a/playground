@@ -335,6 +335,7 @@ import { processingTimeSkip } from './processing-time-skip/entry'
 import { profileAvatarSelectSnap } from './profile-avatar-select-snap/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { propagatedShockwave } from './propagated-shockwave/entry'
+import { psNeighbourPushOut } from './ps-neighbour-push-out/entry'
 import { pullToRefresh } from './pull-to-refresh/entry'
 import { quickAppSwitchSwipe } from './quick-app-switch-swipe/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
@@ -840,6 +841,7 @@ export const specimens: Specimen[] = [
   profileAvatarSelectSnap,
   progressMilestoneBreakthrough,
   propagatedShockwave,
+  psNeighbourPushOut,
   pullToRefresh,
   quickAppSwitchSwipe,
   quickLookExpansion,

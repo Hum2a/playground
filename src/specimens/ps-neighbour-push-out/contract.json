@@ -1,0 +1,21 @@
+{
+  "name": "ps-neighbour-push-out",
+  "intent": "Adjacent cards move aside when the selected tile expands for focus.",
+  "catalogue": {
+    "ps": "PS-076",
+    "ref": "SPX-3382"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "reducedMotion": {
+    "behaviour": "Expansion and neighbour offsets apply instantly with no transition.",
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}
