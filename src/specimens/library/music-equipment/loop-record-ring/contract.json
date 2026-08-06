@@ -1,0 +1,8 @@
+{
+  "name": "loop-record-ring",
+  "ref": "SPX-3972",
+  "title": "Loop Record Ring",
+  "mode": "timeline",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

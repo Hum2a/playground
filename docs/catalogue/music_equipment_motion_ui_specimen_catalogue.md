@@ -597,7 +597,7 @@ specimens can feel tactile without needing sound.
 
 # 28. Loopers / Live Performance
 
-- [ ] **MUSIC-213** · `SPX-3972` · ★★★★★ **Loop Record Ring** — A circular progress ring records
+- [x] **MUSIC-213** · `SPX-3972` · ★★★★★ **Loop Record Ring** — A circular progress ring records
     one loop length and closes precisely at the boundary.
 - [ ] **MUSIC-214** · `SPX-3973` · ★★★★★ **Overdub Layer Add** — Each overdub adds a new
     concentric layer around the loop.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-213 | SPX-3972 | `loop-record-ring` | Loop Record Ring |
 | MUSIC-050 | SPX-3809 | `tap-tempo-pulse` | Tap Tempo Pulse |
 | MUSIC-093 | SPX-3852 | `loop-region-clamp` | Loop Region Clamp |
 | MUSIC-090 | SPX-3849 | `beatgrid-lock` | Beatgrid Lock |
@@ -891,12 +892,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **28 / 310** complete.
+- Progress: **29 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 28 |
-| Open | 282 |
+| Done | 29 |
+| Open | 281 |
 
 ## Core first-wave / build queue
 
@@ -949,7 +950,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-189** · `SPX-3948` · **Crossfade Overlap** · scaffold `crossfade-overlap`
 - [ ] **MUSIC-197** · `SPX-3956` · **Quantize Sweep** · scaffold `quantize-sweep`
 - [ ] **MUSIC-201** · `SPX-3960` · **Automation Point Draw** · scaffold `automation-point-draw`
-- [ ] **MUSIC-213** · `SPX-3972` · **Loop Record Ring** · scaffold `loop-record-ring`
+- [x] **MUSIC-213** · `SPX-3972` · **Loop Record Ring** · `loop-record-ring`
 
 # Recommended Build Waves
 

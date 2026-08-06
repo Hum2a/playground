@@ -575,4 +575,5 @@ export const specimenOrder: string[] = [
   'beatgrid-lock',
   'loop-region-clamp',
   'tap-tempo-pulse',
+  'loop-record-ring',
 ]
