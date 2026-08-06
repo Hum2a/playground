@@ -179,7 +179,7 @@ specimens can feel tactile without needing sound.
     centre and springs precisely back.
 - [ ] **MUSIC-056** · `SPX-3815` · ★★★★☆ **Mod Wheel Rise** — A modulation wheel stays at its
     selected position while linked intensity increases.
-- [ ] **MUSIC-057** · `SPX-3816` · ★★★★★ **Oscillator Wave Morph** — A waveform changes
+- [x] **MUSIC-057** · `SPX-3816` · ★★★★★ **Oscillator Wave Morph** — A waveform changes
     continuously between sine-like, triangle-like, saw-like and
     square-like forms.
 - [ ] **MUSIC-058** · `SPX-3817` · ★★★★☆ **Voice Allocation Steal** — Voice indicators fill until
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-057 | SPX-3816 | `oscillator-wave-morph` | Oscillator Wave Morph |
 | MUSIC-048 | SPX-3807 | `pedalboard-signal-chain` | Pedalboard Signal Chain |
 | MUSIC-044 | SPX-3803 | `stomp-switch-press` | Stomp Switch Press |
 | MUSIC-036 | SPX-3795 | `compressor-threshold-crush` | Compressor Threshold Crush |
@@ -873,12 +874,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **10 / 310** complete.
+- Progress: **11 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 300 |
+| Done | 11 |
+| Open | 299 |
 
 ## Core first-wave / build queue
 
@@ -898,7 +899,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · `stomp-switch-press`
 - [x] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · `pedalboard-signal-chain`
 - [ ] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · scaffold `tap-tempo-pulse`
-- [ ] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · scaffold `oscillator-wave-morph`
+- [x] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · `oscillator-wave-morph`
 - [ ] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · scaffold `arpeggiator-step-chase`
 - [ ] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · scaffold `16-step-sequencer-chase`
 - [ ] **MUSIC-066** · `SPX-3825` · **Swing Offset** · scaffold `swing-offset`

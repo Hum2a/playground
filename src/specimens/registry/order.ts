@@ -557,4 +557,5 @@ export const specimenOrder: string[] = [
   'compressor-threshold-crush',
   'stomp-switch-press',
   'pedalboard-signal-chain',
+  'oscillator-wave-morph',
 ]

@@ -1,0 +1,8 @@
+{
+  "name": "oscillator-wave-morph",
+  "ref": "SPX-3816",
+  "title": "Oscillator Wave Morph",
+  "mode": "patch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
