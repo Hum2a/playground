@@ -572,6 +572,8 @@ import { articleCloseReturn } from './article-close-return/entry'
 
 import { broadsheetPageTurn } from './broadsheet-page-turn/entry'
 
+import { halfFoldOpen } from './half-fold-open/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1086,6 +1088,7 @@ export const specimens: Specimen[] = [
   readingProgressRule,
   articleCloseReturn,
   broadsheetPageTurn,
+  halfFoldOpen,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
