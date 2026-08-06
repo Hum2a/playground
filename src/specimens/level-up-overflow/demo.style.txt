@@ -1,0 +1,315 @@
+/* level-up-overflow — portable specimen styles (SPX-762) */
+
+.luo {
+  --luo-ink: #1a1c1e;
+  --luo-panel: #f3f0e8;
+  --luo-mute: #6a6d72;
+  --luo-track: #2b2f35;
+  --luo-fill: #3b82c4;
+  --luo-fill-bright: #6eb6f0;
+  --luo-token: #c45c2a;
+  --luo-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --luo-bar-w: 300px;
+  --luo-bar-h: 12px;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 1.1rem 0.85rem;
+  background: #e4e2dc;
+  color: var(--luo-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.luo *,
+.luo *::before,
+.luo *::after {
+  box-sizing: border-box;
+}
+
+.luo__panel {
+  position: relative;
+  width: 100%;
+  max-width: calc(var(--luo-bar-w) + 1.75rem);
+  padding: 1rem 0.95rem 1.1rem;
+  background: var(--luo-panel);
+  border: 2px solid var(--luo-ink);
+}
+
+.luo__title {
+  margin: 0 0 0.65rem;
+  font: 700 0.62rem/1.2 inherit;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--luo-mute);
+}
+
+.luo__level-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.luo__level-label {
+  font: 800 0.85rem/1 inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.luo__level-slot {
+  position: relative;
+  display: inline-grid;
+  height: 1.15em;
+  min-width: 1.6em;
+  overflow: hidden;
+  font: 800 1.15rem/1 inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.luo__level-num {
+  grid-area: 1 / 1;
+  display: block;
+}
+
+.luo__level-num--in {
+  transform: translateY(110%);
+}
+
+.luo--level-swap .luo__level-num--out {
+  animation: luo-level-out 180ms var(--luo-ease) forwards;
+}
+
+.luo--level-swap .luo__level-num--in {
+  animation: luo-level-in 180ms var(--luo-ease) forwards;
+}
+
+.luo--done .luo__level-num--out {
+  transform: translateY(-110%);
+}
+
+.luo--done .luo__level-num--in {
+  transform: translateY(0);
+}
+
+@keyframes luo-level-out {
+  to {
+    transform: translateY(-110%);
+  }
+}
+
+@keyframes luo-level-in {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.luo__level-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.luo__xp-row {
+  margin-bottom: 0.75rem;
+}
+
+.luo__xp {
+  margin: 0;
+  font: 700 0.95rem/1 inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.luo__sep {
+  margin: 0 0.12rem;
+  color: var(--luo-mute);
+}
+
+.luo__bar-wrap {
+  position: relative;
+  width: min(100%, var(--luo-bar-w));
+  padding-top: 40px;
+}
+
+.luo__token {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  margin: 0;
+  padding: 0.2rem 0.35rem;
+  background: var(--luo-token);
+  color: #fff8f2;
+  font: 800 0.62rem/1 inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.luo--token-in .luo__token {
+  opacity: 1;
+  animation: luo-token-travel 180ms var(--luo-ease) forwards;
+}
+
+.luo--token-gone .luo__token {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes luo-token-travel {
+  from {
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+  }
+  to {
+    left: 100%;
+    top: 2.15rem;
+    transform: translate(-100%, 0);
+  }
+}
+
+.luo__track {
+  position: relative;
+  width: 100%;
+  height: var(--luo-bar-h);
+  background: var(--luo-track);
+  border: 1px solid var(--luo-ink);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.luo__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 87%;
+  max-width: 100%;
+  background: var(--luo-fill);
+}
+
+.luo--fill-phase1 .luo__fill {
+  transition: width 260ms var(--luo-ease);
+}
+
+.luo--threshold .luo__fill {
+  background: var(--luo-fill-bright);
+}
+
+.luo--reset .luo__fill {
+  transition: width 100ms var(--luo-ease);
+}
+
+.luo--overflow .luo__fill {
+  transition: width 300ms var(--luo-ease);
+}
+
+.luo__tick {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: var(--luo-ink);
+  opacity: 0;
+  z-index: 3;
+}
+
+.luo__tick--a {
+  right: 5px;
+}
+
+.luo__tick--b {
+  right: 1px;
+}
+
+.luo--threshold .luo__tick {
+  opacity: 1;
+}
+
+.luo--done .luo__tick {
+  opacity: 0;
+}
+
+.luo__applied {
+  margin: 0.65rem 0 0;
+  font: 700 0.62rem/1.2 inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--luo-token);
+}
+
+.luo__applied[hidden] {
+  display: none !important;
+}
+
+.luo__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid var(--luo-ink);
+  border-radius: 0;
+  background: var(--luo-ink);
+  color: var(--luo-panel);
+  font: 700 0.65rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.luo__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.luo__btn:focus {
+  outline: none;
+}
+
+.luo__btn:focus-visible {
+  outline: 2px solid var(--luo-fill);
+  outline-offset: 3px;
+}
+
+.luo__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luo__token,
+  .luo__fill,
+  .luo__level-num {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .luo__token,
+[data-force-reduced-motion='true'] .luo__fill,
+[data-force-reduced-motion='true'] .luo__level-num {
+  animation: none !important;
+  transition: none !important;
+}

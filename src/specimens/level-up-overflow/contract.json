@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/level-up-overflow.schema.json",
+  "title": "LevelUpOverflow",
+  "description": "XP crosses 100%, level increments, bar resets, overflow continues. Canonical: L12 87/100 +38 → L13 25/100. Pokemon-inspired. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "values",
+    "dimensions",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "level-up-overflow" },
+    "intent": {
+      "type": "string",
+      "const": "Incoming progress crosses a level threshold without losing overflow: fill to 100%, level increments, bar resets, remaining XP continues."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "addXp", "token", "status"],
+      "properties": {
+        "title": { "type": "string", "const": "SPECIMEN MASTERY" },
+        "addXp": { "type": "string", "const": "ADD XP" },
+        "token": { "type": "string", "const": "+38 XP" },
+        "applied": { "type": "string", "const": "+38 XP APPLIED" },
+        "status": {
+          "type": "string",
+          "const": "Level 13. 25 of 100 experience."
+        }
+      }
+    },
+    "values": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "startLevel",
+        "endLevel",
+        "maxXp",
+        "startXp",
+        "reward",
+        "overflowXp"
+      ],
+      "properties": {
+        "startLevel": { "type": "number", "const": 12 },
+        "endLevel": { "type": "number", "const": 13 },
+        "maxXp": { "type": "number", "const": 100 },
+        "startXp": { "type": "number", "const": 87 },
+        "reward": { "type": "number", "const": 38 },
+        "phase1Consume": { "type": "number", "const": 13 },
+        "overflowXp": { "type": "number", "const": 25 },
+        "startPercent": { "type": "number", "const": 87 },
+        "overflowPercent": { "type": "number", "const": 25 }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "thresholdTicks"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 300 },
+        "heightPx": { "type": "number", "const": 12 },
+        "thresholdTicks": { "type": "number", "const": 2 },
+        "tokenAbovePx": { "type": "number", "const": 40 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokenMs",
+        "fillToFullMs",
+        "thresholdHoldMs",
+        "levelSwapMs",
+        "resetMs",
+        "overflowFillMs",
+        "totalMs"
+      ],
+      "properties": {
+        "tokenMs": { "type": "number", "const": 180 },
+        "fillToFullMs": { "type": "number", "const": 260 },
+        "thresholdHoldMs": { "type": "number", "const": 100 },
+        "levelSwapMs": { "type": "number", "const": 180 },
+        "resetMs": { "type": "number", "const": 100 },
+        "overflowFillMs": { "type": "number", "const": 300 },
+        "totalMs": { "type": "number", "const": 1120 },
+        "noDirectJump87to25": { "type": "boolean", "const": true },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["progressbarRole", "meterResetsOnLevelUp"],
+      "properties": {
+        "progressbarRole": { "type": "boolean", "const": true },
+        "meterResetsOnLevelUp": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinal", "triggers"],
+      "properties": {
+        "immediateFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "fill", "token", "track"],
+      "properties": {
+        "root": { "type": "string", "const": "luo" },
+        "fill": { "type": "string", "const": "luo__fill" },
+        "token": { "type": "string", "const": "luo__token" },
+        "track": { "type": "string", "const": "luo__track" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "level-up-overflow",
+      "values": {
+        "startLevel": 12,
+        "endLevel": 13,
+        "maxXp": 100,
+        "startXp": 87,
+        "reward": 38,
+        "overflowXp": 25
+      },
+      "animation": {
+        "tokenMs": 180,
+        "fillToFullMs": 260,
+        "thresholdHoldMs": 100,
+        "levelSwapMs": 180,
+        "resetMs": 100,
+        "overflowFillMs": 300,
+        "totalMs": 1120
+      }
+    }
+  ]
+}
