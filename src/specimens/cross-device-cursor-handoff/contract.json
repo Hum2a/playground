@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/cross-device-cursor-handoff.schema.json",
+  "title": "CrossDeviceCursorHandoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "layout", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "cross-device-cursor-handoff" },
+    "intent": {
+      "type": "string",
+      "const": "A pointer reaches the boundary of one abstract display and continues from the adjacent boundary of another, preserving trajectory."
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gapPx", "normalizedY"],
+      "properties": {
+        "gapPx": { "type": "number", "const": 36 },
+        "normalizedY": { "type": "number", "const": 0.62 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handoffDelayMs", "tickMs", "continuePx", "boundaryTicks"],
+      "properties": {
+        "handoffDelayMs": { "type": "number", "const": 45 },
+        "tickMs": { "type": "number", "const": 120 },
+        "continuePx": { "type": "number", "const": 120 },
+        "boundaryTicks": { "type": "number", "const": 2 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantTransfer", "triggers"],
+      "properties": {
+        "instantTransfer": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "pointer"],
+      "properties": {
+        "root": { "type": "string", "const": "cdc" },
+        "pointer": { "type": "string", "const": "cdc__pointer" }
+      }
+    }
+  }
+}

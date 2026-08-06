@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **49 / 258** complete.
+- Progress: **50 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 209 |
+| Done | 50 |
+| Open | 208 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-198 | `SPX-1497` | `cross-device-cursor-handoff` | Cross-Device Cursor Handoff |
 | IOS-195 | `SPX-1494` | `universal-clipboard-transfer` | Universal Clipboard Transfer |
 | IOS-129 | `SPX-1428` | `authentication-failure-reset` | Authentication Failure Reset |
 | IOS-128 | `SPX-1427` | `authentication-success-morph` | Authentication Success Morph |
@@ -376,7 +377,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-195** · `SPX-1494` · **Universal Clipboard Transfer** — copied object becomes a temporary shared token then materialises on another device.
 - [ ] **IOS-196** · `SPX-1495` · **Continuity Camera Acquisition** — desktop placeholder discovers and binds to a nearby camera source.
 - [ ] **IOS-197** · `SPX-1496` · **Sidecar Workspace Extension** — secondary display region attaches to the primary workspace and receives moved content.
-- [ ] **IOS-198** · `SPX-1497` · **Cross-Device Cursor Handoff** — pointer reaches one display boundary and emerges on another contextual surface.
+- [x] **IOS-198** · `SPX-1497` · **Cross-Device Cursor Handoff** — pointer reaches one display boundary and emerges on another contextual surface.
 - [ ] **IOS-199** · `SPX-1498` · **Device Proximity Unlock** — nearby trusted-device state changes a locked action into an available one.
 - [ ] **IOS-200** · `SPX-1499` · **Task Return Handoff** — task previously transferred away re-enters the original device with preserved progress.
 

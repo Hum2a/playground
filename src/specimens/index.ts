@@ -51,6 +51,7 @@ import { criticalCapture } from './critical-capture/entry'
 import { criticalThresholdWarning } from './critical-threshold-warning/entry'
 import { criticalWeaknessHit } from './critical-weakness-hit/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
+import { crossDeviceCursorHandoff } from './cross-device-cursor-handoff/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
 import { crystallisedSelection } from './crystallised-selection/entry'
@@ -286,6 +287,7 @@ export const specimens: Specimen[] = [
   criticalThresholdWarning,
   criticalWeaknessHit,
   crookedMenuStack,
+  crossDeviceCursorHandoff,
   crossOutReplacement,
   crossOutStatusSwap,
   crystallisedSelection,
