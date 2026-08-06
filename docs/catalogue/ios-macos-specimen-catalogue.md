@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **5 / 258** complete.
+- Progress: **6 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 253 |
+| Done | 6 |
+| Open | 252 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-029 | `SPX-1328` | `dual-activity-split` | Dual Activity Split |
 | IOS-027 | `SPX-1326` | `compact-activity-expansion` | Compact Activity Expansion |
 | IOS-004 | `SPX-1303` | `matched-card-expansion` | Matched Card Expansion |
 | IOS-062 | `SPX-1361` | `scroll-rubber-band` | Scroll Rubber Band |
@@ -47,7 +48,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheets-panels-presentation
 - [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — sheets-panels-presentation
 - [x] **IOS-027** · `SPX-1326` · **Compact Activity Expansion** — dynamic-island-live-activity-inspired
-- [ ] **IOS-029** · `SPX-1328` · **Dual Activity Split** — dynamic-island-live-activity-inspired
+- [x] **IOS-029** · `SPX-1328` · **Dual Activity Split** — dynamic-island-live-activity-inspired
 - [ ] **IOS-039** · `SPX-1338` · **Dock Magnification** — dock-macos-application-launching
 - [ ] **IOS-040** · `SPX-1339` · **Dock Launch Bounce** — dock-macos-application-launching
 - [ ] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
@@ -109,7 +110,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [x] **IOS-027** · `SPX-1326` · **Compact Activity Expansion** — tiny persistent status capsule expands into a richer live-status surface.
 - [ ] **IOS-028** · `SPX-1327` · **Activity Contraction** — completed expanded activity compresses back into a minimal persistent indicator.
-- [ ] **IOS-029** · `SPX-1328` · **Dual Activity Split** — one compact activity separates into two independently meaningful status regions.
+- [x] **IOS-029** · `SPX-1328` · **Dual Activity Split** — one compact activity separates into two independently meaningful status regions.
 - [ ] **IOS-030** · `SPX-1329` · **Activity Merge** — two simultaneous status indicators converge into one combined summary.
 - [ ] **IOS-031** · `SPX-1330` · **Live Progress Morph** — compact status geometry changes as an operation progresses through phases.
 - [ ] **IOS-032** · `SPX-1331` · **Incoming Event Bloom** — dormant compact region rapidly expands to announce a high-priority event, then settles.

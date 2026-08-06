@@ -1,0 +1,267 @@
+/* dual-activity-split — portable specimen styles. Do not restyle to host tokens. */
+
+.das {
+  --das-ink: #0c0d10;
+  --das-surface: #1a1b20;
+  --das-line: #2e3038;
+  --das-text: #e8eaef;
+  --das-muted: #7a808c;
+  --das-accent: #5b8fd9;
+  --das-track-w: 196px;
+  --das-h: 40px;
+  --das-main-split: 126px;
+  --das-gap: 12px;
+  --das-secondary-w: 58px;
+  --das-split-ms: 320ms;
+  --das-bridge-ms: 90ms;
+  --das-ease: cubic-bezier(0.32, 0.72, 0, 1);
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  min-height: 200px;
+  padding: 0.75rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--das-text);
+  background: var(--das-ink);
+}
+
+.das *,
+.das *::before,
+.das *::after {
+  box-sizing: border-box;
+}
+
+.das__stage {
+  display: grid;
+  place-items: center;
+  min-height: 120px;
+  padding: 1rem 0;
+}
+
+.das__track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: var(--das-track-w);
+  height: var(--das-h);
+  gap: 0;
+  transition: gap var(--das-split-ms) var(--das-ease);
+}
+
+.das[data-state="split"] .das__track,
+.das[data-state="splitting"] .das__track {
+  gap: var(--das-gap);
+}
+
+/* Main region */
+
+.das__main {
+  position: relative;
+  flex: 0 0 var(--das-track-w);
+  width: var(--das-track-w);
+  height: var(--das-h);
+  border-radius: 20px;
+  background: var(--das-surface);
+  border: 1px solid var(--das-line);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  transition: flex-basis var(--das-split-ms) var(--das-ease),
+    width var(--das-split-ms) var(--das-ease);
+}
+
+.das[data-state="split"] .das__main,
+.das[data-state="splitting"] .das__main {
+  flex-basis: var(--das-main-split);
+  width: var(--das-main-split);
+}
+
+.das__progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 64%;
+  background: color-mix(in srgb, var(--das-accent) 22%, transparent);
+  border-right: 2px solid var(--das-accent);
+  pointer-events: none;
+  transition: width var(--das-split-ms) var(--das-ease);
+}
+
+.das__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Connecting bridge — visible first 90ms of split */
+
+.das__bridge {
+  position: absolute;
+  top: 50%;
+  left: var(--das-main-split);
+  width: var(--das-gap);
+  height: 6px;
+  margin-top: -3px;
+  margin-left: 0;
+  background: var(--das-line);
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 40ms ease;
+}
+
+.das[data-bridge="visible"] .das__bridge {
+  opacity: 1;
+}
+
+/* Secondary region */
+
+.das__secondary {
+  flex: 0 0 0;
+  width: 0;
+  height: var(--das-h);
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--das-surface);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    flex-basis var(--das-split-ms) var(--das-ease),
+    width var(--das-split-ms) var(--das-ease),
+    border-color var(--das-split-ms) var(--das-ease);
+}
+
+.das[data-state="split"] .das__secondary,
+.das[data-state="splitting"] .das__secondary {
+  flex-basis: var(--das-secondary-w);
+  width: var(--das-secondary-w);
+  border-color: var(--das-line);
+}
+
+/* Timer digits — vertical clipping reveal */
+
+.das__timer {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.das__digit-wrap {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.das__digit {
+  display: block;
+  transform: translateY(100%);
+  transition: transform 180ms var(--das-ease);
+}
+
+.das[data-reveal-digits="true"] .das__digit {
+  transform: translateY(0);
+}
+
+.das[data-reveal-digits="true"] .das__digit-wrap:nth-child(1) .das__digit {
+  transition-delay: 0ms;
+}
+
+.das[data-reveal-digits="true"] .das__digit-wrap:nth-child(2) .das__digit {
+  transition-delay: 30ms;
+}
+
+.das[data-reveal-digits="true"] .das__digit-wrap:nth-child(4) .das__digit {
+  transition-delay: 50ms;
+}
+
+.das[data-reveal-digits="true"] .das__digit-wrap:nth-child(5) .das__digit {
+  transition-delay: 70ms;
+}
+
+.das__sep {
+  opacity: 0;
+  transition: opacity 120ms ease 40ms;
+}
+
+.das[data-reveal-digits="true"] .das__sep {
+  opacity: 1;
+}
+
+/* Controls */
+
+.das__controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.das__btn {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--das-line);
+  border-radius: 6px;
+  background: var(--das-surface);
+  color: var(--das-text);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.das__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.das__btn--ghost {
+  background: transparent;
+}
+
+.das__status {
+  margin: 0.65rem 0 0;
+  text-align: center;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  color: var(--das-muted);
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .das__track,
+  .das__main,
+  .das__secondary,
+  .das__progress,
+  .das__digit,
+  .das__sep,
+  .das__bridge {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion="true"] .das__track,
+[data-force-reduced-motion="true"] .das__main,
+[data-force-reduced-motion="true"] .das__secondary,
+[data-force-reduced-motion="true"] .das__progress,
+[data-force-reduced-motion="true"] .das__digit,
+[data-force-reduced-motion="true"] .das__sep,
+[data-force-reduced-motion="true"] .das__bridge {
+  transition: none !important;
+  animation: none !important;
+}

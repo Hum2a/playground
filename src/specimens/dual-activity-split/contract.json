@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/dual-activity-split.schema.json",
+  "title": "DualActivitySplit",
+  "description": "Portable contract for one compact activity region splitting into two concurrent status zones.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "geometry",
+    "bridge",
+    "timer",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "dual-activity-split" },
+    "intent": {
+      "type": "string",
+      "const": "One compact status region splits into two meaningful activity zones when a second concurrent task begins."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uploadSingle", "uploadSplit", "timer", "start", "end"],
+      "properties": {
+        "uploadSingle": { "type": "string", "const": "UPLOAD // 64%" },
+        "uploadSplit": { "type": "string", "const": "UPLOAD 64%" },
+        "timer": { "type": "string", "const": "04:12" },
+        "start": { "type": "string", "const": "START TIMER" },
+        "end": { "type": "string", "const": "END TIMER" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "split", "splitMs"],
+      "properties": {
+        "initial": {
+          "type": "object",
+          "const": { "widthPx": 196, "heightPx": 40 }
+        },
+        "split": {
+          "type": "object",
+          "const": {
+            "mainWidthPx": 126,
+            "gapPx": 12,
+            "secondaryWidthPx": 58
+          }
+        },
+        "splitMs": { "type": "number", "const": 320 }
+      }
+    },
+    "bridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["visibleMs", "count"],
+      "properties": {
+        "visibleMs": { "type": "number", "const": 90 },
+        "count": { "type": "number", "const": 1 }
+      }
+    },
+    "timer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verticalClipping", "staticValue"],
+      "properties": {
+        "verticalClipping": { "type": "boolean", "const": true },
+        "staticValue": { "type": "string", "const": "04:12" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uploadProgressOnLeft"],
+      "properties": {
+        "uploadProgressOnLeft": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateLayout", "triggers"],
+      "properties": {
+        "immediateLayout": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "main", "secondary", "bridge"],
+      "properties": {
+        "root": { "type": "string", "const": "das" },
+        "main": { "type": "string", "const": "das__main" },
+        "secondary": { "type": "string", "const": "das__secondary" },
+        "bridge": { "type": "string", "const": "das__bridge" }
+      }
+    }
+  }
+}
