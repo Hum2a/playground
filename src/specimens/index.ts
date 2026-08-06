@@ -85,6 +85,7 @@ import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { contextMenuBloom } from './context-menu-bloom/entry'
 import { contextualVanishReappear } from './contextual-vanish-reappear/entry'
+import { continueWatchingProgressBar } from './continue-watching-progress-bar/entry'
 import { contractConfirmation } from './contract-confirmation/entry'
 import { contradictionFound } from './contradiction-found/entry'
 import { controlCentreModuleExpansion } from './control-centre-module-expansion/entry'
@@ -562,6 +563,7 @@ export const specimens: Specimen[] = [
   contentDeclassification,
   contextMenuBloom,
   contextualVanishReappear,
+  continueWatchingProgressBar,
   contractConfirmation,
   contradictionFound,
   controlCentreModuleExpansion,
