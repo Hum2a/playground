@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/nearby-file-transfer.schema.json",
+  "title": "NearbyFileTransfer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "layout", "transfer", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "nearby-file-transfer" },
+    "intent": {
+      "type": "string",
+      "const": "Animate a generic document transfer between nearby nodes with reject path and determinate receive progress."
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["separationPx", "docWidthPx", "docHeightPx", "proxyWidthPx", "proxyHeightPx"],
+      "properties": {
+        "separationPx": { "type": "number", "const": 240 },
+        "docWidthPx": { "type": "number", "const": 52 },
+        "docHeightPx": { "type": "number", "const": 64 },
+        "proxyWidthPx": { "type": "number", "const": 34 },
+        "proxyHeightPx": { "type": "number", "const": 42 }
+      }
+    },
+    "transfer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transferMs", "progressMs", "rejectOutPx"],
+      "properties": {
+        "transferMs": { "type": "number", "const": 650 },
+        "progressMs": { "type": "number", "const": 1100 },
+        "rejectOutPx": { "type": "number", "const": 40 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["jumpProxy", "triggers"],
+      "properties": {
+        "jumpProxy": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "doc", "proxy"],
+      "properties": {
+        "root": { "type": "string", "const": "nft" },
+        "doc": { "type": "string", "const": "nft__doc" },
+        "proxy": { "type": "string", "const": "nft__proxy" }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="nft" data-nearby-file-transfer data-phase="idle">
+  <div class="nft__stage" data-nft-stage>
+    <div class="nft__node nft__node--source" data-nft-source>
+      <span class="nft__node-label">SOURCE</span>
+      <div class="nft__doc" data-nft-doc>
+        <span class="nft__doc-icon" aria-hidden="true"></span>
+        <span class="nft__doc-name">ARCHIVE.ZIP</span>
+      </div>
+    </div>
+
+    <svg class="nft__path" data-nft-path aria-hidden="true" viewBox="0 0 240 80" preserveAspectRatio="none">
+      <path d="M 20 40 Q 120 0 220 40" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4" opacity="0.35" />
+    </svg>
+
+    <div class="nft__node nft__node--recipient" data-nft-recipient>
+      <span class="nft__node-label">RECIPIENT</span>
+      <div class="nft__ring" data-nft-ring hidden>
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="nft__ring-track" cx="24" cy="24" r="20" />
+          <circle class="nft__ring-fill" data-nft-ring-fill cx="24" cy="24" r="20" />
+        </svg>
+        <span class="nft__ring-val" data-nft-ring-val>0%</span>
+      </div>
+      <span class="nft__received" data-nft-received hidden>Received</span>
+    </div>
+
+    <div class="nft__proxy" data-nft-proxy hidden aria-hidden="true">
+      <span class="nft__proxy-icon" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="nft__actions">
+    <button type="button" class="nft__send" data-nft-send>SEND</button>
+    <button type="button" class="nft__reject" data-nft-reject>REJECT</button>
+  </div>
+
+  <p class="nft__status" role="status" aria-live="polite" data-nft-status>
+    ARCHIVE.ZIP ready beside SOURCE. Send or reject before transfer begins.
+  </p>
+</div>
