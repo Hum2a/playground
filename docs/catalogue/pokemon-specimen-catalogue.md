@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **4 / 266** complete.
+- Progress: **5 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 262 |
+| Done | 5 |
+| Open | 261 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | PK | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| PK-001 | `SPX-700` | `wild-encounter-transition` | Wild Encounter Transition |
 | PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
 | PK-032 | `SPX-731` | `branch-evolution-choice` | Branch Evolution Choice |
 | PK-025 | `SPX-724` | `evolution-silhouette-transformation` | Evolution Silhouette Transformation |
@@ -50,7 +51,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-225** · `SPX-924` · **Terastallization Crystallise** — scarlet-violet
 - [ ] **PK-130** · `SPX-829` · **Link Trade Transfer** — trading-transfer
 - [ ] **PK-178** · `SPX-877` · **Poké Radar Pulse** — sinnoh-ds
-- [ ] **PK-001** · `SPX-700` · **Wild Encounter Transition** — encounters-arrivals
+- [x] **PK-001** · `SPX-700` · **Wild Encounter Transition** — encounters-arrivals
 - [x] **PK-012** · `SPX-711` · **Critical Capture** — capture-uncertainty
 - [ ] **PK-013** · `SPX-712` · **Capture Success Stars** — capture-uncertainty
 - [ ] **PK-027** · `SPX-726` · **Evolution Complete** — evolution-transformation
@@ -64,7 +65,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 1. Encounters & arrivals
 
-- [ ] **PK-001** · `SPX-700` · **Wild Encounter Transition** — The current interface is abruptly interrupted by an encounter sweep and a newly discovered entity takes over the plate.
+- [x] **PK-001** · `SPX-700` · **Wild Encounter Transition** — The current interface is abruptly interrupted by an encounter sweep and a newly discovered entity takes over the plate.
 - [ ] **PK-002** · `SPX-701` · **Battle Intro Face-Off** — Two opposing entities enter from opposite sides and lock into a confrontational comparison state.
 - [ ] **PK-003** · `SPX-702` · **Poké Ball Encounter Reveal** — A radial capture-device abstraction opens from the centre and reveals new content inside.
 - [ ] **PK-004** · `SPX-703` · **Tall Grass Disturbance** — An apparently ordinary region rustles before hidden content emerges.

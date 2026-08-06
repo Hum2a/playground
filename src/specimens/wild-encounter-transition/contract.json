@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/wild-encounter-transition.schema.json",
+  "title": "WildEncounterTransition",
+  "description": "Portable contract for an abrupt wild-encounter interruption: one disturbance, seven opposing horizontal bands, a growing central encounter plate with abstract CSS entity geometry, then full destination takeover without crossfade.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "disturbance",
+    "bands",
+    "seam",
+    "entity",
+    "takeover",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "wild-encounter-transition" },
+    "intent": {
+      "type": "string",
+      "const": "Abrupt encounter interruption: current interface exists, single disturbance, seven alternating horizontal bands travel off-host, a central high-contrast plate grows beneath, an abstract CSS entity arrives, then the plate expands to full destination takeover — no crossfade."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kickerA",
+        "scanA",
+        "records",
+        "kickerB",
+        "titleB",
+        "trigger",
+        "replay",
+        "statusA",
+        "statusB"
+      ],
+      "properties": {
+        "kickerA": { "type": "string", "const": "ROUTE // 04" },
+        "scanA": { "type": "string", "const": "Scanning local records..." },
+        "records": {
+          "type": "array",
+          "const": [
+            { "id": "REC-A1", "path": "meadow.scan" },
+            { "id": "REC-B7", "path": "path.trace" },
+            { "id": "REC-C3", "path": "signal.null" }
+          ]
+        },
+        "kickerB": { "type": "string", "const": "SIGNAL DETECTED" },
+        "titleB": { "type": "string", "const": "UNKNOWN ENTITY" },
+        "trigger": { "type": "string", "const": "ENCOUNTER" },
+        "replay": { "type": "string", "const": "REPLAY" },
+        "statusA": {
+          "type": "string",
+          "const": "Route 04. Scanning local records."
+        },
+        "statusB": {
+          "type": "string",
+          "const": "Unknown entity. Signal detected."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cream", "ink", "mid", "bright", "pale"],
+      "properties": {
+        "cream": { "type": "string", "const": "#f4f1df" },
+        "ink": { "type": "string", "const": "#17211b" },
+        "mid": { "type": "string", "const": "#3f7252" },
+        "bright": { "type": "string", "const": "#86c46c" },
+        "pale": { "type": "string", "const": "#d8f29a" }
+      }
+    },
+    "disturbance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "keyframesPx", "once"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 120 },
+        "keyframesPx": {
+          "type": "array",
+          "const": [0, -5, 4, 0]
+        },
+        "once": { "type": "boolean", "const": true }
+      }
+    },
+    "bands": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "durationMs",
+        "staggerMs",
+        "oddDirection",
+        "evenDirection",
+        "travel"
+      ],
+      "properties": {
+        "count": { "type": "number", "const": 7 },
+        "durationMs": { "type": "number", "const": 280 },
+        "staggerMs": { "type": "number", "const": 18 },
+        "oddDirection": { "type": "string", "const": "left-to-right" },
+        "evenDirection": { "type": "string", "const": "right-to-left" },
+        "travel": { "type": "string", "const": "110%" }
+      }
+    },
+    "seam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "heightFrom",
+        "heightTo",
+        "growMs",
+        "revealMethod"
+      ],
+      "properties": {
+        "origin": { "type": "string", "const": "vertical-center" },
+        "heightFrom": { "type": "string", "const": "4px" },
+        "heightTo": { "type": "string", "const": "38%" },
+        "growMs": { "type": "number", "const": 180 },
+        "revealMethod": { "type": "string", "const": "clipped-height" }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometry",
+        "scaleFrom",
+        "scalePeak",
+        "scaleTo",
+        "durationMs",
+        "parts"
+      ],
+      "properties": {
+        "geometry": { "type": "string", "const": "abstract-css-silhouette" },
+        "scaleFrom": { "type": "number", "const": 0.72 },
+        "scalePeak": { "type": "number", "const": 1.08 },
+        "scaleTo": { "type": "number", "const": 1 },
+        "durationMs": { "type": "number", "const": 240 },
+        "parts": {
+          "type": "array",
+          "const": ["horn-l", "horn-r", "head", "body", "core", "base"]
+        }
+      }
+    },
+    "takeover": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fromHeight", "toHeight", "durationMs", "noCrossfade"],
+      "properties": {
+        "fromHeight": { "type": "string", "const": "38%" },
+        "toHeight": { "type": "string", "const": "100%" },
+        "durationMs": { "type": "number", "const": 320 },
+        "noCrossfade": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "sweepStartMs",
+        "entityStartMs",
+        "takeoverStartMs",
+        "loops",
+        "noCrossfade"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 720 },
+        "sweepStartMs": { "type": "number", "const": 100 },
+        "entityStartMs": { "type": "number", "const": 160 },
+        "takeoverStartMs": { "type": "number", "const": 400 },
+        "loops": { "type": "boolean", "const": false },
+        "noCrossfade": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "decorativeMotion", "readableDestination"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "decorativeMotion": { "type": "boolean", "const": true },
+        "readableDestination": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateDestination", "skipDisturbance", "skipBands", "triggers"],
+      "properties": {
+        "immediateDestination": { "type": "boolean", "const": true },
+        "skipDisturbance": { "type": "boolean", "const": true },
+        "skipBands": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "host", "route", "bands", "band", "plate", "entity"],
+      "properties": {
+        "root": { "type": "string", "const": "we" },
+        "host": { "type": "string", "const": "we__host" },
+        "route": { "type": "string", "const": "we__route" },
+        "bands": { "type": "string", "const": "we__bands" },
+        "band": { "type": "string", "const": "we__band" },
+        "plate": { "type": "string", "const": "we__plate" },
+        "entity": { "type": "string", "const": "we__entity" }
+      }
+    }
+  }
+}
