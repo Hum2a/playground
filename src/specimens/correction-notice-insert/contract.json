@@ -1,0 +1,8 @@
+{
+  "name": "correction-notice-insert",
+  "ref": "SPX-3591",
+  "title": "Correction Notice Insert",
+  "mode": "ticker",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
