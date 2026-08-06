@@ -81,6 +81,7 @@ import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
+import { powerLevelReadout } from './power-level-readout/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
@@ -98,6 +99,7 @@ import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { timeSkip } from './time-skip/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
+import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
@@ -152,6 +154,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   badgeCaseInsert,
+  powerLevelReadout,
   precisionMenuSnap,
   evokerMenuSnap,
   truthShotNotification,
@@ -245,8 +248,8 @@ export const specimens: Specimen[] = [
   tartarusFloorAscension,
   temporalFreeze,
   timeSkip,
-  tornEdgeDrawer,
-  velvetDoorTransition,
+  ultraStateOptimisation,
+  tornEdgeDrawer,  velvetDoorTransition,
   waterlinePageWipe,
   wildEncounterTransition,
 ]
