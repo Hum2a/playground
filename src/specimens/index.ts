@@ -22,6 +22,7 @@ import { boundedTouchRipple } from './bounded-touch-ripple/entry'
 import { branchEvolutionChoice } from './branch-evolution-choice/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
+import { buttonLoadingMorph } from './button-loading-morph/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { capacityDrain } from './capacity-drain/entry'
@@ -295,6 +296,7 @@ export const specimens: Specimen[] = [
   branchEvolutionChoice,
   butterflyEntry,
   butterflySuccessState,
+  buttonLoadingMorph,
   callingCardPeel,
   callingCardSlam,
   capacityDrain,

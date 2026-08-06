@@ -1,0 +1,179 @@
+/* button-loading-morph — portable specimen styles */
+
+.blm {
+  --blm-ink: #ffffff;
+  --blm-bg: #5c7cfa;
+  --blm-muted: #6b7280;
+  box-sizing: border-box;
+  width: 200px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.blm *,
+.blm *::before,
+.blm *::after {
+  box-sizing: border-box;
+}
+
+.blm__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 24px;
+  background: var(--blm-bg);
+  color: var(--blm-ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.blm__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 3px;
+}
+
+.blm__btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.92;
+}
+
+.blm__label {
+  transition: opacity 80ms ease;
+}
+
+.blm[data-phase='loading'] .blm__label,
+.blm[data-phase='success'] .blm__label,
+.blm[data-phase='saved'] .blm__label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.blm__loader {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.blm__loader[hidden] {
+  display: none;
+}
+
+.blm__arc-track {
+  stroke: rgba(255, 255, 255, 0.25);
+}
+
+.blm__arc-progress {
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-dasharray: 56.5;
+  stroke-dashoffset: 42;
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+.blm[data-phase='loading'] .blm__arc-progress {
+  animation: blm-spin 900ms linear forwards;
+}
+
+.blm[data-phase='success'] .blm__arc-progress {
+  animation: none;
+  stroke-dashoffset: 0;
+  transform: rotate(135deg);
+  transition: stroke-dashoffset 180ms ease, transform 180ms ease;
+}
+
+.blm__check {
+  position: absolute;
+  width: 12px;
+  height: 7px;
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: rotate(-45deg) scale(0);
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.blm[data-phase='success'] .blm__check,
+.blm[data-phase='saved'] .blm__check {
+  opacity: 1;
+  transform: rotate(-45deg) scale(1);
+}
+
+.blm__saved {
+  position: absolute;
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+
+.blm__saved[hidden] {
+  display: block;
+  visibility: hidden;
+}
+
+.blm[data-phase='saved'] .blm__saved {
+  visibility: visible;
+  opacity: 1;
+}
+
+.blm[data-phase='saved'] .blm__check {
+  opacity: 0;
+}
+
+.blm__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: var(--blm-muted);
+}
+
+@keyframes blm-spin {
+  to {
+    transform: rotate(990deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blm__label,
+  .blm__arc-progress,
+  .blm__check,
+  .blm__saved {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+
+  .blm[data-phase='loading'] .blm__arc-progress {
+    animation: blm-fill-rm 900ms linear forwards;
+  }
+}
+
+[data-force-reduced-motion='true'] .blm__label,
+[data-force-reduced-motion='true'] .blm__arc-progress,
+[data-force-reduced-motion='true'] .blm__check,
+[data-force-reduced-motion='true'] .blm__saved {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .blm[data-phase='loading'] .blm__arc-progress {
+  animation: blm-fill-rm 900ms linear forwards;
+}
+
+@keyframes blm-fill-rm {
+  to {
+    stroke-dashoffset: 0;
+    transform: rotate(-90deg);
+  }
+}
