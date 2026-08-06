@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"StateIntensityField",
+  "type":"object",
+  "required":["name","levels","threshold","timing","reducedMotion"],
+  "properties":{
+    "name":{"const":"state-intensity-field"},
+    "levels":{"const":[{"load":20,"contours":1,"fragments":0,"radiusPx":8},{"load":45,"contours":2,"fragments":2,"radiusPx":14},{"load":70,"contours":3,"fragments":4,"radiusPx":22},{"load":95,"contours":3,"brokenBoundary":1,"fragments":8,"radiusPx":34}]},
+    "threshold":{"const":{"criticalPercent":90,"warningTicks":4}},
+    "timing":{"const":{"transitionsMs":[300,300,360],"holdMs":220}},
+    "reducedMotion":{"const":"Immediate static Level 4, 95% CRITICAL."}
+  }
+}
