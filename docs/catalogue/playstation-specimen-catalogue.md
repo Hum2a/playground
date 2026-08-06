@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **44 / 216** complete.
+- Progress: **45 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 44 |
-| Open | 172 |
+| Done | 45 |
+| Open | 171 |
 
 ## Visual grammar
 
@@ -76,6 +76,7 @@
 | PS-013 | `SPX-3319` | `shape-scatter-transition` | Shape Scatter Transition |
 | PS-046 | `SPX-3352` | `platinum-style-completion` | Platinum-Style Completion |
 | PS-071 | `SPX-3377` | `back-navigation-restore` | Back Navigation Restore |
+| PS-088 | `SPX-3394` | `library-grid-focus` | Library Grid Focus |
 
 ## Core first-wave
 
@@ -125,7 +126,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — playstation-shapes-geometry
 - [x] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — trophies-achievements
 - [x] **PS-071** · `SPX-3377` · **Back Navigation Restore** — remote-tv-focus-navigation
-- [ ] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
+- [x] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
 - [ ] **PS-096** · `SPX-3402` · **Party Join Handoff** — friends-parties-social
 - [ ] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — notifications
 - [ ] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — psvr-spatial-ui
@@ -255,7 +256,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 ## Library / Collection
 
-- [ ] **PS-088** · `SPX-3394` · **Library Grid Focus** — Focus moves through a dense game grid with strong controller readability.
+- [x] **PS-088** · `SPX-3394` · **Library Grid Focus** — Focus moves through a dense game grid with strong controller readability.
 - [ ] **PS-089** · `SPX-3395` · **Installed Filter Reflow** — Changing a filter deterministically rearranges the library grid.
 - [ ] **PS-090** · `SPX-3396` · **Recently Played Reorder** — Cards move to new positions while preserving identity.
 - [ ] **PS-091** · `SPX-3397` · **Collection Folder Expand** — A compact collection tile unfolds into its member games.

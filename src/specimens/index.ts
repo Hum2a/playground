@@ -244,6 +244,7 @@ import { largeTitleCollapse } from './large-title-collapse/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpBurst } from './level-up-burst/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
+import { libraryGridFocus } from './library-grid-focus/entry'
 import { licenseCardIssue } from './license-card-issue/entry'
 import { lightningTargetAcquisition } from './lightning-target-acquisition/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
@@ -775,6 +776,7 @@ export const specimens: Specimen[] = [
   letterScatterAssemble,
   levelUpBurst,
   levelUpOverflow,
+  libraryGridFocus,
   licenseCardIssue,
   lightningTargetAcquisition,
   linkTradeTransfer,

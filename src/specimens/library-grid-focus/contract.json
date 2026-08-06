@@ -1,0 +1,14 @@
+{
+  "name": "library-grid-focus",
+  "intent": "Focus moves through a dense game grid with strong controller readability.",
+  "primitives": [
+    "grid",
+    "focus"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  }
+}
