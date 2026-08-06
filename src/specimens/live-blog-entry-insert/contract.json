@@ -1,0 +1,8 @@
+{
+  "name": "live-blog-entry-insert",
+  "ref": "SPX-3623",
+  "title": "Live Blog Entry Insert",
+  "mode": "replate",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

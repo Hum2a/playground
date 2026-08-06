@@ -616,6 +616,8 @@ import { statCalloutRise } from './stat-callout-rise/entry'
 
 import { breakingTickerCrawl } from './breaking-ticker-crawl/entry'
 
+import { liveBlogEntryInsert } from './live-blog-entry-insert/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1152,6 +1154,7 @@ export const specimens: Specimen[] = [
   pullQuoteExtraction,
   statCalloutRise,
   breakingTickerCrawl,
+  liveBlogEntryInsert,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
