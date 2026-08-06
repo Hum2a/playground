@@ -1,0 +1,1 @@
+{"title":"InstantFullRecovery","type":"object","properties":{"name":{"const":"instant-full-recovery"},"initial":{"const":[24,31,"CRITICAL",1]},"final":{"const":[100,100,"HEALTHY",0]},"missingSections":{"const":4},"resourceMs":{"const":180},"snapMs":{"const":60},"lines":{"const":6},"reducedMotion":{"const":true}}}

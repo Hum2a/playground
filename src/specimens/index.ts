@@ -1,4 +1,5 @@
 import { achievementEncounter } from './achievement-encounter/entry'
+import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
@@ -198,6 +199,7 @@ export const specimens: Specimen[] = [
   corruptedAccessLock,
   criticalThresholdWarning,
   achievementEncounter,
+  adaptiveRecovery,
   afterimageNavigation,
   tacticalAlertPing,
   inkSplatTransition,
