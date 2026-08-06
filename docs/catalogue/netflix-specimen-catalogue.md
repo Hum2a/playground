@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 197** complete.
+- Progress: **17 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 181 |
+| Done | 17 |
+| Open | 180 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-098 | `SPX-3207` | `live-result-grid-reflow` | Live Result Grid Reflow |
 | NF-097 | `SPX-3206` | `search-field-expand` | Search Field Expand |
 | NF-018 | `SPX-3127` | `hero-metadata-cascade` | Hero Metadata Cascade |
 | NF-017 | `SPX-3126` | `featured-hero-crossfade` | Featured Hero Crossfade |
@@ -76,7 +77,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-017** · `SPX-3126` · **Featured Hero Crossfade** — `featured-hero-crossfade`
 - [x] **NF-018** · `SPX-3127` · **Hero Metadata Cascade** — `hero-metadata-cascade`
 - [x] **NF-097** · `SPX-3206` · **Search Field Expand** — `search-field-expand`
-- [ ] **NF-098** · `SPX-3207` · **Live Result Grid Reflow** — `live-result-grid-reflow`
+- [x] **NF-098** · `SPX-3207` · **Live Result Grid Reflow** — `live-result-grid-reflow`
 - [ ] **NF-123** · `SPX-3232` · **Oversized Rank Numeral** — `oversized-rank-numeral`
 - [ ] **NF-124** · `SPX-3233` · **Rank Change Slide** — `rank-change-slide`
 - [ ] **NF-156** · `SPX-3265` · **Directional Focus Travel** — `directional-focus-travel`
@@ -243,7 +244,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 13. Search / Discovery
 
 - [x] **NF-097** · `SPX-3206` · **Search Field Expand** — A compact search icon expands into a full query field while preserving focus
-- [ ] **NF-098** · `SPX-3207` · **Live Result Grid Reflow** — Result cards reorganise as the query narrows
+- [x] **NF-098** · `SPX-3207` · **Live Result Grid Reflow** — Result cards reorganise as the query narrows
 - [ ] **NF-099** · `SPX-3208` · **Empty Search State** — No-results state arrives without destroying the search context
 - [ ] **NF-100** · `SPX-3209` · **Search Category Filter** — Filter selection visibly restructures the result set
 - [ ] **NF-101** · `SPX-3210` · **Voice/Search Listening Pulse** — A finite listening-state pulse communicates active input without recording externally

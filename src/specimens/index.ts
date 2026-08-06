@@ -215,6 +215,7 @@ import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { listToIconViewMorph } from './list-to-icon-view-morph/entry'
+import { liveResultGridReflow } from './live-result-grid-reflow/entry'
 import { lockdownShutter } from './lockdown-shutter/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
@@ -671,6 +672,7 @@ export const specimens: Specimen[] = [
   linkedFusionMerge,
   liquidSplitTransition,
   listToIconViewMorph,
+  liveResultGridReflow,
   lockdownShutter,
   lockedChainBreak,
   longPressLift,
