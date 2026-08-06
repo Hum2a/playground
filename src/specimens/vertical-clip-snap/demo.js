@@ -1,0 +1,1 @@
+let a=true;export function runClipSnap(){const c=document.querySelector('[data-clip]');c.style.transform='translateY(-12px)';window.setTimeout(()=>{a=!a;c.classList.toggle('is-2',!a);c.style.transform='translateY(0)'},120)};document.querySelector('[data-next]')?.addEventListener('click',()=>runClipSnap())

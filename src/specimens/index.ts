@@ -416,6 +416,7 @@ import { universalClipboardTransfer } from './universal-clipboard-transfer/entry
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { versusCardCollision } from './versus-card-collision/entry'
 import { versusClashCard } from './versus-clash-card/entry'
+import { verticalClipSnap } from './vertical-clip-snap/entry'
 import { verticalContentStretch } from './vertical-content-stretch/entry'
 import { vhsTrackingScrub } from './vhs-tracking-scrub/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
@@ -899,6 +900,7 @@ export const specimens: Specimen[] = [
   velvetDoorTransition,
   versusCardCollision,
   versusClashCard,
+  verticalClipSnap,
   verticalContentStretch,
   vhsTrackingScrub,
   victoryResultsTally,
