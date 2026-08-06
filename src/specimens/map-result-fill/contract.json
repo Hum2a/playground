@@ -1,0 +1,8 @@
+{
+  "name": "map-result-fill",
+  "ref": "SPX-3632",
+  "title": "Map Result Fill",
+  "mode": "roll",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

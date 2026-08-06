@@ -318,7 +318,7 @@ chronology and information priority.
     a reported result and settles at an exact value.
 - [x] **NEWS-109** · `SPX-3631` · ★★★★★ **Seat Count Tally** — Party/category counts increment
     into a fixed results grid.
-- [ ] **NEWS-110** · `SPX-3632` · ★★★★★ **Map Result Fill** — Regions acquire deterministic
+- [x] **NEWS-110** · `SPX-3632` · ★★★★★ **Map Result Fill** — Regions acquire deterministic
     result states one by one.
 - [ ] **NEWS-111** · `SPX-3633` · ★★★★★ **Race Called Stamp** — A completed result receives a
     bold CALLED-style original stamp.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-110 | SPX-3632 | `map-result-fill` | Map Result Fill |
 | NEWS-109 | SPX-3631 | `seat-count-tally` | Seat Count Tally |
 | NEWS-108 | SPX-3630 | `election-needle-sweep` | Election Needle Sweep |
 | NEWS-104 | SPX-3626 | `ticker-pause-on-focus` | Ticker Pause on Focus |
@@ -724,12 +725,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **45 / 237** complete.
+- Progress: **46 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 45 |
-| Open | 192 |
+| Done | 46 |
+| Open | 191 |
 
 ## Core first-wave / build queue
 
@@ -778,7 +779,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-104** · `SPX-3626` · **Ticker Pause on Focus** · `ticker-pause-on-focus`
 - [x] **NEWS-108** · `SPX-3630` · **Election Needle Sweep** · `election-needle-sweep`
 - [x] **NEWS-109** · `SPX-3631` · **Seat Count Tally** · `seat-count-tally`
-- [ ] **NEWS-110** · `SPX-3632` · **Map Result Fill** · scaffold `map-result-fill`
+- [x] **NEWS-110** · `SPX-3632` · **Map Result Fill** · `map-result-fill`
 - [ ] **NEWS-111** · `SPX-3633` · **Race Called Stamp** · scaffold `race-called-stamp`
 - [ ] **NEWS-117** · `SPX-3639` · **Market Ticker** · scaffold `market-ticker`
 - [ ] **NEWS-124** · `SPX-3646` · **Photo Lead Expand** · scaffold `photo-lead-expand`

@@ -624,6 +624,8 @@ import { electionNeedleSweep } from './election-needle-sweep/entry'
 
 import { seatCountTally } from './seat-count-tally/entry'
 
+import { mapResultFill } from './map-result-fill/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1164,6 +1166,7 @@ export const specimens: Specimen[] = [
   tickerPauseOnFocus,
   electionNeedleSweep,
   seatCountTally,
+  mapResultFill,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
