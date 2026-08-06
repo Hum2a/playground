@@ -366,7 +366,7 @@ specimens can feel tactile without needing sound.
     before transport begins.
 - [ ] **MUSIC-129** · `SPX-3888` · ★★★★☆ **Tape Saturation Meter** — Signal pushes into a warmer
     high-level zone with restrained visual compression.
-- [ ] **MUSIC-130** · `SPX-3889` · ★★★★★ **Tape Splice** — Two waveform/tape regions cut apart
+- [x] **MUSIC-130** · `SPX-3889` · ★★★★★ **Tape Splice** — Two waveform/tape regions cut apart
     and rejoin at a visible splice point.
 
 ------------------------------------------------------------------------
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-130 | SPX-3889 | `tape-splice` | Tape Splice |
 | MUSIC-123 | SPX-3882 | `tape-thread-route` | Tape Thread Route |
 | MUSIC-122 | SPX-3881 | `reel-spin-up` | Reel Spin-Up |
 | MUSIC-114 | SPX-3873 | `rack-unit-power-on` | Rack Unit Power-On |
@@ -901,12 +902,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **38 / 310** complete.
+- Progress: **39 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 272 |
+| Done | 39 |
+| Open | 271 |
 
 ## Core first-wave / build queue
 
@@ -947,7 +948,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · `rack-unit-power-on`
 - [x] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · `reel-spin-up`
 - [x] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · `tape-thread-route`
-- [ ] **MUSIC-130** · `SPX-3889` · **Tape Splice** · scaffold `tape-splice`
+- [x] **MUSIC-130** · `SPX-3889` · **Tape Splice** · `tape-splice`
 - [ ] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · scaffold `tube-warm-up`
 - [ ] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · scaffold `needle-tuner-centre`
 - [ ] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · scaffold `strobe-tuner-lock`

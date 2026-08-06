@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { tapeSplice } from '../../library/music-equipment/tape-splice/entry'
 import { tapeThreadRoute } from '../../library/music-equipment/tape-thread-route/entry'
 import { reelSpinUp } from '../../library/music-equipment/reel-spin-up/entry'
 import { rackUnitPowerOn } from '../../library/music-equipment/rack-unit-power-on/entry'
@@ -39,6 +40,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  tapeSplice,
   tapeThreadRoute,
   reelSpinUp,
   rackUnitPowerOn,

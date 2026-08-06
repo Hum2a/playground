@@ -585,4 +585,5 @@ export const specimenOrder: string[] = [
   'rack-unit-power-on',
   'reel-spin-up',
   'tape-thread-route',
+  'tape-splice',
 ]
