@@ -50,6 +50,12 @@ export const INSPIRATION_DIRECTORY = {
       'danganronpa-v3': { label: 'Danganronpa V3: Killing Harmony' },
     },
   },
+  nier: {
+    label: 'NieR',
+    works: {
+      'nier-automata': { label: 'NieR:Automata' },
+    },
+  },
   original: {
     label: 'Original',
     works: {},
@@ -99,6 +105,10 @@ export const SUGGESTED_FREE_TAGS = [
   'projectile',
   'announcement',
   'slam',
+  'boot',
+  'loading',
+  'terminal',
+  'monospace',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

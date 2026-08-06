@@ -29,7 +29,11 @@ export const comicPanelWipe: Specimen = {
     scope: 'fullscreen',
     intensity: 'maximal',
   },
-  tags: ['comic', 'wipe', 'persona-inspired'],
+  inspiredBy: {
+    franchise: 'persona',
+    works: ['persona-5'],
+  },
+  tags: ['comic', 'wipe'],
   deps: 'none',
   motion: {
     loops: false,

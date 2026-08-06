@@ -68,6 +68,12 @@ inspiredBy: {
 | `danganronpa-2` | Danganronpa 2: Goodbye Despair |
 | `danganronpa-v3` | Danganronpa V3: Killing Harmony |
 
+### NieR (`nier`)
+
+| Work id | Label |
+| --- | --- |
+| `nier-automata` | NieR:Automata |
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.
