@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"SevenPartPrerequisiteCollection",
+  "type":"object",
+  "required":["name","requirements","initial","arrival","holdMs","resonance","unlock"],
+  "properties":{
+    "name":{"const":"seven-part-prerequisite-collection"},
+    "requirements":{"const":["SPEC","TEST","BUILD","REVIEW","SECURITY","SIGN","APPROVAL"]},
+    "initial":{"const":{"count":"6 / 7","missing":"APPROVAL","publish":"LOCKED"}},
+    "arrival":{"const":{"durationMs":280,"distancePx":90,"rotation":[-12,0],"scale":[0.7,1],"dockMs":120}},
+    "holdMs":{"const":140},
+    "resonance":{"const":{"lineCount":7,"durationMs":220,"corePx":[4,24],"outerBoundaryCount":1}},
+    "unlock":{"const":{"status":"COMPLETE","publish":"READY"}},
+    "reducedMotion":{"const":"Immediate 7/7 connected PUBLISH READY."}
+  }
+}

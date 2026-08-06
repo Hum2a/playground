@@ -1,0 +1,30 @@
+<div class="spc" data-prerequisite-collection data-state="idle">
+  <header class="spc__header">
+    <h2>RELEASE REQUIREMENTS</h2>
+    <p class="spc__count" data-spc-count>6 / 7</p>
+  </header>
+  <div class="spc__field" aria-hidden="true">
+    <div class="spc__boundary"></div><span class="spc__core"></span>
+    <span class="spc__line spc__line--1"></span><span class="spc__line spc__line--2"></span>
+    <span class="spc__line spc__line--3"></span><span class="spc__line spc__line--4"></span>
+    <span class="spc__line spc__line--5"></span><span class="spc__line spc__line--6"></span>
+    <span class="spc__line spc__line--7"></span>
+    <div class="spc__slot spc__slot--spec" style="--x:42px;--y:28px"><i></i><b>SPEC</b></div>
+    <div class="spc__slot spc__slot--test" style="--x:152px;--y:10px"><i></i><b>TEST</b></div>
+    <div class="spc__slot spc__slot--build" style="--x:267px;--y:50px"><i></i><b>BUILD</b></div>
+    <div class="spc__slot spc__slot--review" style="--x:287px;--y:153px"><i></i><b>REVIEW</b></div>
+    <div class="spc__slot spc__slot--security" style="--x:196px;--y:211px"><i></i><b>SECURITY</b></div>
+    <div class="spc__slot spc__slot--sign" style="--x:78px;--y:190px"><i></i><b>SIGN</b></div>
+    <div class="spc__slot spc__slot--approval spc__slot--missing" style="--x:8px;--y:116px" data-spc-approval>
+      <i></i><b>APPROVAL</b><em data-spc-missing>MISSING</em>
+    </div>
+    <div class="spc__incoming" data-spc-incoming><i></i><b>APPROVAL</b></div>
+  </div>
+  <div class="spc__actions">
+    <button type="button" data-spc-receive>RECEIVE APPROVAL</button>
+    <button type="button" class="spc__publish" data-spc-publish disabled>PUBLISH <span data-spc-lock>LOCKED</span></button>
+    <button type="button" data-spc-reset hidden>RESET</button>
+  </div>
+  <p class="spc__status" role="status" aria-live="polite" data-spc-status>INCOMPLETE</p>
+  <p class="spc__sr" data-spc-sr>6 of 7 release requirements complete. Approval missing. Publish locked.</p>
+</div>
