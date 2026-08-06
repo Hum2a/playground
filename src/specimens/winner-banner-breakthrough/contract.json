@@ -1,0 +1,12 @@
+{
+  "name": "winner-banner-breakthrough",
+  "ref": "SPX-2041",
+  "catalogue": { "mha": "MHA-067" },
+  "banner": "WINNER — TEAM A",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}

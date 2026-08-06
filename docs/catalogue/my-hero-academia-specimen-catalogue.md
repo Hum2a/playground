@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **43 / 369** complete.
+- Progress: **44 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 43 |
-| Open | 326 |
+| Done | 44 |
+| Open | 325 |
 
 ## Visual grammar
 
@@ -75,6 +75,7 @@
 | MHA-037 | `SPX-2011` | `energy-transfer` | Energy Transfer |
 | MHA-030 | `SPX-2004` | `overuse-warning` | Overuse Warning |
 | MHA-054 | `SPX-2028` | `target-acquisition` | Training Target Acquisition |
+| MHA-067 | `SPX-2041` | `winner-banner-breakthrough` | Winner Banner Breakthrough |
 
 ## Core first-wave
 
@@ -197,7 +198,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-064** · `SPX-2038` · **Bracket Winner Advance** — winner card physically travels along tournament connector into next round.
 - [ ] **MHA-065** · `SPX-2039` · **Scoreboard Flip** — numeric score changes through mechanical/comic flip geometry.
 - [x] **MHA-066** · `SPX-2040` · **Match Start Slam** — giant START treatment briefly owns the viewport then tears away.
-- [ ] **MHA-067** · `SPX-2041` · **Winner Banner Breakthrough** — winner strip pushes through the scoreboard after final result.
+- [x] **MHA-067** · `SPX-2041` · **Winner Banner Breakthrough** — winner strip pushes through the scoreboard after final result.
 - [ ] **MHA-068** · `SPX-2042` · **Tournament Bracket Draw** — bracket connectors construct outward from seeded competitors.
 - [ ] **MHA-069** · `SPX-2043` · **Crowd Momentum Meter** — abstract excitement meter rises with event intensity.
 - [ ] **MHA-070** · `SPX-2044` · **Round Indicator Wipe** — ROUND 1/2/FINAL text wipes across between stages.

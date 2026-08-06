@@ -1,0 +1,168 @@
+/* SPX-2041 Winner Banner Breakthrough — portable contract. */
+
+.wbb {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.wbb *,
+.wbb *::before,
+.wbb *::after {
+  box-sizing: border-box;
+}
+
+.wbb__board {
+  position: relative;
+  width: 100%;
+  padding: 0.85rem;
+  border: 3px solid var(--paper);
+  background: var(--paper);
+  color: var(--ink);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  overflow: hidden;
+}
+
+.wbb__head {
+  margin: 0 0 0.5rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+}
+
+.wbb__scores {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.wbb__side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.wbb__team {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.wbb__score {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.wbb__vs {
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: rgb(16 24 32 / 0.45);
+}
+
+.wbb__banner-slot {
+  position: relative;
+  margin-top: 0.65rem;
+  height: 36px;
+}
+
+.wbb__banner {
+  position: absolute;
+  left: -110%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--paper);
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+  transform: translateX(0);
+}
+
+.wbb__banner-text {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.wbb[data-phase='break'] .wbb__banner {
+  animation: wbb-break 740ms var(--ease) forwards;
+}
+
+.wbb[data-phase='done'] .wbb__banner {
+  left: 0;
+  transform: translateX(0);
+}
+
+@keyframes wbb-break {
+  0% { left: -110%; transform: translateX(0); }
+  70% { left: 4%; transform: translateX(8px); }
+  100% { left: 0; transform: translateX(0); }
+}
+
+.wbb__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.wbb__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.wbb__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.wbb__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.wbb__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wbb[data-phase='break'] .wbb__banner {
+    animation: none;
+    left: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .wbb[data-phase='break'] .wbb__banner {
+  animation: none;
+  left: 0;
+}

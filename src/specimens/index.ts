@@ -286,6 +286,7 @@ import { wildEncounterTransition } from './wild-encounter-transition/entry'
 import { windowMinimiseFunnel } from './window-minimise-funnel/entry'
 import { windowSnapPreview } from './window-snap-preview/entry'
 import { winnerAdvance } from './winner-advance/entry'
+import { winnerBannerBreakthrough } from './winner-banner-breakthrough/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -617,6 +618,7 @@ export const specimens: Specimen[] = [
   windowMinimiseFunnel,
   windowSnapPreview,
   winnerAdvance,
+  winnerBannerBreakthrough,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
