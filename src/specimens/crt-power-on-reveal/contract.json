@@ -1,0 +1,28 @@
+{
+  "name": "crt-power-on-reveal",
+  "intent": "Dead CRT screen → bright line → bloom → SIGNAL READY UI resolve.",
+  "catalogue": { "p4": "P4-002", "ref": "SPX-2920" },
+  "copy": {
+    "eyebrow": "INVESTIGATION // CRT",
+    "title": "SIGNAL READY",
+    "meta": "Channel interface online."
+  },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": {
+    "lineMs": 180,
+    "expandMs": 320,
+    "bloomMs": 280,
+    "resolveMs": 360
+  },
+  "api": {
+    "run": "runCrtPowerOn()",
+    "reset": "resetCrtPowerOn()",
+    "replay": "replayCrtPowerOn()"
+  },
+  "reducedMotion": { "behaviour": "Show final UI immediately" }
+}

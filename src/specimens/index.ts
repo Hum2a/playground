@@ -82,6 +82,7 @@ import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { crossDeviceCursorHandoff } from './cross-device-cursor-handoff/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
+import { crtPowerOnReveal } from './crt-power-on-reveal/entry'
 import { crystallisedSelection } from './crystallised-selection/entry'
 import { darkHourConversion } from './dark-hour-conversion/entry'
 import { darkHourConversionLoader } from './dark-hour-conversion-loader/entry'
@@ -333,16 +334,16 @@ import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { volumeSliderHud } from './volume-slider-hud/entry'
 import { vortexHoldToConfirm } from './vortex-hold-to-confirm/entry'
-import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { waterWavePageTransition } from './water-wave-page-transition/entry'
-import { weaknessHighlightSweep } from './weakness-highlight-sweep/entry'
+import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import { weakPointDetection } from './weak-point-detection/entry'
+import { weaknessHighlightSweep } from './weakness-highlight-sweep/entry'
 import { wiFiSearchingToConnectedMorph } from './wi-fi-searching-to-connected-morph/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
 import { wildEncounterTransition } from './wild-encounter-transition/entry'
+import { windSliceTransition } from './wind-slice-transition/entry'
 import { windowMinimiseFunnel } from './window-minimise-funnel/entry'
 import { windowSnapPreview } from './window-snap-preview/entry'
-import { windSliceTransition } from './wind-slice-transition/entry'
 import { winnerAdvance } from './winner-advance/entry'
 import { winnerBannerBreakthrough } from './winner-banner-breakthrough/entry'
 import { wireConnectionDraw } from './wire-connection-draw/entry'
@@ -473,6 +474,7 @@ export const specimens: Specimen[] = [
   crossDeviceCursorHandoff,
   crossOutReplacement,
   crossOutStatusSwap,
+  crtPowerOnReveal,
   crystallisedSelection,
   darkHourConversion,
   darkHourConversionLoader,
@@ -724,20 +726,19 @@ export const specimens: Specimen[] = [
   volumeBrightnessHud,
   volumeSliderHud,
   vortexHoldToConfirm,
-  waterlinePageWipe,
   waterWavePageTransition,
-  weaknessHighlightSweep,
+  waterlinePageWipe,
   weakPointDetection,
+  weaknessHighlightSweep,
   wiFiSearchingToConnectedMorph,
   widgetResizeMorph,
   wildEncounterTransition,
+  windSliceTransition,
   windowMinimiseFunnel,
   windowSnapPreview,
-  windSliceTransition,
   winnerAdvance,
   winnerBannerBreakthrough,
   wireConnectionDraw,
-
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

@@ -1,0 +1,198 @@
+/* SPX-2920 CRT Power-On Reveal — portable contract. */
+
+.cpo {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 260px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.cpo__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cpo__screen {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 320px);
+  min-height: 180px;
+  border: 3px solid var(--yellow);
+  background: var(--ink);
+}
+
+.cpo__beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--yellow);
+  opacity: 0;
+  transform: scaleY(1);
+}
+
+.cpo[data-phase='line'] .cpo__beam {
+  opacity: 1;
+  animation: cpo-line 180ms ease-out forwards;
+}
+
+.cpo[data-phase='expand'] .cpo__beam {
+  opacity: 1;
+  animation: cpo-expand 320ms cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+@keyframes cpo-line {
+  from { opacity: 0; transform: scaleY(0.2); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes cpo-expand {
+  from { transform: scaleY(1); }
+  to { transform: scaleY(90); }
+}
+
+.cpo__bloom {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(circle at center, var(--paper) 0%, var(--muted) 45%, var(--ink) 100%);
+  opacity: 0;
+}
+
+.cpo[data-phase='bloom'] .cpo__bloom {
+  animation: cpo-bloom 280ms ease-out forwards;
+}
+
+@keyframes cpo-bloom {
+  0% { opacity: 0; transform: scale(0.6); }
+  60% { opacity: 0.95; transform: scale(1.02); }
+  100% { opacity: 0; transform: scale(1.08); }
+}
+
+.cpo__ui {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 180px;
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.cpo[data-phase='resolve'] .cpo__ui,
+.cpo[data-phase='done'] .cpo__ui {
+  animation: cpo-resolve 360ms ease-out forwards;
+}
+
+@keyframes cpo-resolve {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.cpo[data-phase='done'] .cpo__ui {
+  animation: none;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cpo__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cpo__title {
+  margin: 0;
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.cpo__meta {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.cpo__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cpo__btn {
+  box-sizing: border-box;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cpo__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.cpo__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cpo__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cpo__beam,
+  .cpo__bloom,
+  .cpo__ui {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .cpo__beam,
+[data-force-reduced-motion='true'] .cpo__bloom,
+[data-force-reduced-motion='true'] .cpo__ui {
+  animation: none !important;
+}
