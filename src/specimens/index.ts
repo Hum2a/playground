@@ -144,6 +144,7 @@ import { postBurstRecovery } from './post-burst-recovery/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
+import { predictiveBackAppShrink } from './predictive-back-app-shrink/entry'
 import { predictiveBackEdgePull } from './predictive-back-edge-pull/entry'
 import { pressedControlCompression } from './pressed-control-compression/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
@@ -381,6 +382,7 @@ export const specimens: Specimen[] = [
   powerLevelReadout,
   powerStateTransformation,
   precisionMenuSnap,
+  predictiveBackAppShrink,
   predictiveBackEdgePull,
   pressedControlCompression,
   printRegistrationHover,
