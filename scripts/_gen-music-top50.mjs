@@ -9,7 +9,7 @@ for (const [index, item] of items.entries()) {
   const dir = join('src', 'specimens', 'library', 'music-equipment', item.slug)
   mkdirSync(dir, { recursive: true })
   const mode = modes[index % modes.length]
-  const exportName = item.slug.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+  const exportName = `${/^\d/.test(item.slug) ? 'step' : ''}${item.slug.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())}`
   const title = item.title.toUpperCase()
   const html = `<div class="me me--${mode}" data-me-root data-state="idle">
   <header><span>STUDIO UNIT 04</span><b>${title}</b><em data-me-status>READY</em></header>

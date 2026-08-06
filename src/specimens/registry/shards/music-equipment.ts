@@ -36,7 +36,7 @@ import { envelopeGeneratorCycle } from '../../library/music-equipment/envelope-g
 import { sampleSliceMarkers } from '../../library/music-equipment/sample-slice-markers/entry'
 import { velocityPadHit } from '../../library/music-equipment/velocity-pad-hit/entry'
 import { swingOffset } from '../../library/music-equipment/swing-offset/entry'
-import { 16StepSequencerChase } from '../../library/music-equipment/16-step-sequencer-chase/entry'
+import { step16SequencerChase } from '../../library/music-equipment/16-step-sequencer-chase/entry'
 import { arpeggiatorStepChase } from '../../library/music-equipment/arpeggiator-step-chase/entry'
 import { oscillatorWaveMorph } from '../../library/music-equipment/oscillator-wave-morph/entry'
 import { pedalboardSignalChain } from '../../library/music-equipment/pedalboard-signal-chain/entry'
@@ -88,7 +88,7 @@ export const shard: Specimen[] = [
   sampleSliceMarkers,
   velocityPadHit,
   swingOffset,
-  16StepSequencerChase,
+  step16SequencerChase,
   arpeggiatorStepChase,
   oscillatorWaveMorph,
   pedalboardSignalChain,

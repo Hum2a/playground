@@ -1,6 +1,6 @@
 import type { Specimen } from '../../../types'
 
-export const 16StepSequencerChase: Specimen = {
+export const step16SequencerChase: Specimen = {
   id: '16-step-sequencer-chase', ref: 'SPX-3821', title: '16-Step Sequencer Chase',
   blurb: 'A manufacturer-neutral music equipment primitive for 16-step sequencer chase.',
   origin: { project: 'Original', surface: 'Music equipment interaction language' },
