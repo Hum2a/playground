@@ -59,6 +59,7 @@ import { capsuleCollapse } from './capsule-collapse/entry'
 import { capsuleDeploy } from './capsule-deploy/entry'
 import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
+import { captureThumbnailFlyout } from './capture-thumbnail-flyout/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { cardCollapseReturn } from './card-collapse-return/entry'
 import { cardToDetailContainerTransform } from './card-to-detail-container-transform/entry'
@@ -585,6 +586,7 @@ export const specimens: Specimen[] = [
   capsuleDeploy,
   captureBreakout,
   captureShake,
+  captureThumbnailFlyout,
   cardBreakSummon,
   cardCollapseReturn,
   cardToDetailContainerTransform,

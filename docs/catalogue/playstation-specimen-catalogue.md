@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **39 / 216** complete.
+- Progress: **40 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 39 |
-| Open | 177 |
+| Done | 40 |
+| Open | 176 |
 
 ## Visual grammar
 
@@ -71,6 +71,7 @@
 | PS-149 | `SPX-3455` | `game-crash-recovery` | Game Crash Recovery |
 | PS-102 | `SPX-3408` | `system-notification-slide` | System Notification Slide |
 | PS-110 | `SPX-3416` | `screenshot-capture-flash` | Screenshot Capture Flash |
+| PS-111 | `SPX-3417` | `capture-thumbnail-flyout` | Capture Thumbnail Flyout |
 
 ## Core first-wave
 
@@ -115,7 +116,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-149** · `SPX-3455` · **Game Crash Recovery** — errors-recovery
 - [x] **PS-102** · `SPX-3408` · **System Notification Slide** — notifications
 - [x] **PS-110** · `SPX-3416` · **Screenshot Capture Flash** — capture-share
-- [ ] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — capture-share
+- [x] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — capture-share
 - [ ] **PS-011** · `SPX-3317` · **Four-Shape Orbit Loader** — playstation-shapes-geometry
 - [ ] **PS-013** · `SPX-3319` · **Shape Scatter Transition** — playstation-shapes-geometry
 - [ ] **PS-046** · `SPX-3352` · **Platinum-Style Completion** — trophies-achievements
@@ -282,7 +283,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 ## Capture / Share
 
 - [x] **PS-110** · `SPX-3416` · **Screenshot Capture Flash** — A single controlled shutter-like flash confirms capture.
-- [ ] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — A small captured-frame placeholder travels into a saved-preview corner.
+- [x] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — A small captured-frame placeholder travels into a saved-preview corner.
 - [ ] **PS-112** · `SPX-3418` · **Recording Timer Acquire** — A recording timer appears and becomes persistent.
 - [ ] **PS-113** · `SPX-3419` · **Share Sheet Rise** — Share destinations rise from the bottom into an anchored panel.
 - [ ] **PS-114** · `SPX-3420` · **Clip Trim Handles** — Timeline trim controls acquire around a selected clip range.
