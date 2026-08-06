@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/translucent-material-lift.schema.json",
+  "title": "TranslucentMaterialLift",
+  "description": "Portable contract for translucent floating panel material lift over dense grid.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "panel",
+    "open",
+    "boundaries",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "translucent-material-lift" },
+    "intent": {
+      "type": "string",
+      "const": "Contextual translucent surface separates from underlying content using layered material hierarchy."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["panelTitle", "rows"],
+      "properties": {
+        "panelTitle": { "type": "string", "const": "FILTERS" },
+        "rows": {
+          "type": "array",
+          "const": ["STATUS", "OWNER", "DATE"]
+        }
+      }
+    },
+    "panel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 286 },
+        "heightPx": { "type": "number", "const": 214 }
+      }
+    },
+    "open": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "translateStartPx", "scaleStart", "hostScale"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 220 },
+        "translateStartPx": { "type": "number", "const": 8 },
+        "scaleStart": { "type": "number", "const": 0.985 },
+        "hostScale": { "type": "number", "const": 0.995 }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outerBorder", "innerHighlight", "giantShadow"],
+      "properties": {
+        "outerBorder": { "type": "number", "const": 1 },
+        "innerHighlight": { "type": "number", "const": 1 },
+        "giantShadow": { "type": "boolean", "const": false }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noScaleTranslation", "triggers"],
+      "properties": {
+        "noScaleTranslation": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dialog", "politeStatus"],
+      "properties": {
+        "dialog": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "panel", "host"],
+      "properties": {
+        "root": { "type": "string", "const": "tml" },
+        "panel": { "type": "string", "const": "tml__panel" },
+        "host": { "type": "string", "const": "tml__host" }
+      }
+    }
+  }
+}

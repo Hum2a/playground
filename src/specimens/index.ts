@@ -162,6 +162,7 @@ import { temporalUndo } from './temporal-undo/entry'
 import { timeSkip } from './time-skip/entry'
 import { tournamentBracketActivation } from './tournament-bracket-activation/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
+import { translucentMaterialLift } from './translucent-material-lift/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
@@ -374,6 +375,7 @@ export const specimens: Specimen[] = [
   timeSkip,
   tornEdgeDrawer,
   tournamentBracketActivation,
+  translucentMaterialLift,
   truthShotNotification,
   ultraStateOptimisation,
   velvetDoorTransition,

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **26 / 258** complete.
+- Progress: **27 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 26 |
-| Open | 232 |
+| Done | 27 |
+| Open | 231 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-237 | `SPX-1536` | `translucent-material-lift` | Translucent Material Lift |
 | IOS-231 | `SPX-1530` | `invalid-field-shake` | Invalid Field Shake |
 | IOS-224 | `SPX-1523` | `circular-progress-completion-morph` | Circular Progress Completion Morph |
 | IOS-209 | `SPX-1508` | `swipe-full-commit` | Swipe Full-Commit |
@@ -91,7 +92,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
 - [x] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
 - [x] **IOS-231** · `SPX-1530` · **Invalid Field Shake** — error-validation
-- [ ] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — material-blur-layering
+- [x] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — material-blur-layering
 - [ ] **IOS-250** · `SPX-1549` · **Copy Confirmation Morph** — tiny-microinteractions
 
 ## Navigation & Spatial Continuity
@@ -410,7 +411,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Material, Blur & Layering
 
-- [ ] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — contextual surface separates from content using layered translucency and boundary treatment.
+- [x] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — contextual surface separates from content using layered translucency and boundary treatment.
 - [ ] **IOS-238** · `SPX-1537` · **Material Density Transition** — surface changes between thin/compact and denser/high-priority material states.
 - [ ] **IOS-239** · `SPX-1538` · **Backdrop Defocus on Modal** — underlying content becomes visually secondary while modal remains crisp.
 - [ ] **IOS-240** · `SPX-1539` · **Layered Sheet Depth** — multiple presented sheets establish depth through scale/offset hierarchy.

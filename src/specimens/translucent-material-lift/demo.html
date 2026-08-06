@@ -1,0 +1,41 @@
+<div class="tml" data-translucent-material data-phase="closed">
+  <div class="tml__host" data-tml-host>
+    <header class="tml__host-bar" aria-hidden="true">
+      <span>DOCS</span><span>GRID</span><span>VIEW</span>
+    </header>
+    <div class="tml__grid" aria-hidden="true">
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+      <div class="tml__cell"></div>
+    </div>
+    <button type="button" class="tml__open" data-tml-open>OPEN FILTERS</button>
+  </div>
+
+  <div class="tml__backdrop" data-tml-backdrop hidden></div>
+
+  <dialog class="tml__panel" data-tml-panel aria-labelledby="tml-title">
+    <div class="tml__panel-outer">
+      <div class="tml__panel-inner">
+        <header class="tml__panel-head">
+          <h2 id="tml-title" class="tml__title">FILTERS</h2>
+          <button type="button" class="tml__close" data-tml-close aria-label="Close filters">×</button>
+        </header>
+        <ul class="tml__rows">
+          <li class="tml__row">STATUS</li>
+          <li class="tml__row">OWNER</li>
+          <li class="tml__row">DATE</li>
+        </ul>
+      </div>
+    </div>
+  </dialog>
+
+  <p class="tml__status" role="status" aria-live="polite" data-tml-status>
+    Dense document grid behind. Open filters panel.
+  </p>
+</div>
