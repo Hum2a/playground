@@ -1,0 +1,33 @@
+{
+  "id": "enhanced-state-reversion",
+  "ref": "SPX-029",
+  "title": "Enhanced State Reversion",
+  "initial": {
+    "state": "STAGE III",
+    "capacity": "4.0×",
+    "channels": 8,
+    "tasksDone": 42
+  },
+  "final": {
+    "state": "BASE",
+    "capacity": "1.0×",
+    "channels": 2,
+    "tasksDone": 42
+  },
+  "timeline": {
+    "fieldStopHoldMs": 70,
+    "fieldRetractMs": 140,
+    "pairMs": 90,
+    "foldMs": 180,
+    "settleMs": 160
+  },
+  "channelPairs": [8, 6, 4, 2],
+  "capacityStages": ["4.0×", "2.5×", "1.5×", "1.0×"],
+  "geometry": {
+    "heightReduce": "20%",
+    "widthReduce": "8%",
+    "settleScale": "1.02 → 1"
+  },
+  "invariant": "TASKS DONE remains 42 throughout; never resets or animates backward",
+  "reducedMotion": "immediate BASE with TASKS DONE 42"
+}
