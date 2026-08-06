@@ -60,6 +60,7 @@ import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { cardToDetailContainerTransform } from './card-to-detail-container-transform/entry'
+import { cardToDetailsMorph } from './card-to-details-morph/entry'
 import { caseBreakthrough } from './case-breakthrough/entry'
 import { caseSolvedCompletion } from './case-solved-completion/entry'
 import { chakraChargeField } from './chakra-charge-field/entry'
@@ -564,6 +565,7 @@ export const specimens: Specimen[] = [
   captureShake,
   cardBreakSummon,
   cardToDetailContainerTransform,
+  cardToDetailsMorph,
   caseBreakthrough,
   caseSolvedCompletion,
   chakraChargeField,
