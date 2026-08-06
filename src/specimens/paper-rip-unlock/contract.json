@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/paper-rip-unlock.schema.json",
+  "title": "PaperRipUnlock",
+  "description": "Portable contract for a two-half paper tear unlock/reveal. Not Calling Card Peel.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "tearPolygons",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "paper-rip-unlock" },
+    "intent": {
+      "type": "string",
+      "const": "Sealed paper sheet covering content tears from the centre into two halves that violently separate, revealing the underlay."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sealed", "microtype", "stamp"],
+      "properties": {
+        "sealed": { "type": "string", "const": "SEALED" },
+        "microtype": {
+          "type": "string",
+          "const": "RESTRICTED · RESTRICTED · RESTRICTED"
+        },
+        "stamp": { "type": "string", "const": "UNLOCKED" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper", "ink", "red"],
+      "properties": {
+        "paper": { "type": "string", "const": "#f2eee3" },
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#d71920" }
+      }
+    },
+    "tearPolygons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left", "right", "ruptureApprox"],
+      "properties": {
+        "left": {
+          "type": "string",
+          "const": "polygon(0% 0%, 52% 0%, 49.5% 7%, 54% 14%, 50% 22%, 53.5% 30%, 49% 38%, 55% 46%, 50.5% 54%, 54% 62%, 49.5% 70%, 53% 78%, 50% 86%, 54.5% 93%, 51% 100%, 0% 100%)"
+        },
+        "right": {
+          "type": "string",
+          "const": "polygon(52% 0%, 100% 0%, 100% 100%, 51% 100%, 54.5% 93%, 50% 86%, 53% 78%, 49.5% 70%, 54% 62%, 50.5% 54%, 55% 46%, 49% 38%, 53.5% 30%, 50% 22%, 54% 14%, 49.5% 7%, 52% 0%)"
+        },
+        "ruptureApprox": {
+          "type": "object",
+          "const": { "xPercent": 52, "yPercent": 46 }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruptureMs",
+        "tearMs",
+        "separateMs",
+        "settleMs",
+        "totalMs",
+        "gapEndPx",
+        "leftExit",
+        "rightExit",
+        "fragmentCount",
+        "loops"
+      ],
+      "properties": {
+        "ruptureMs": { "type": "number", "const": 120 },
+        "tearMs": { "type": "number", "const": 240 },
+        "separateMs": { "type": "number", "const": 360 },
+        "settleMs": { "type": "number", "const": 180 },
+        "totalMs": { "type": "number", "const": 900 },
+        "gapEndPx": { "type": "number", "const": 18 },
+        "leftExit": {
+          "type": "object",
+          "const": {
+            "translateX": "-115%",
+            "translateY": "8%",
+            "rotate": "-11deg"
+          }
+        },
+        "rightExit": {
+          "type": "object",
+          "const": {
+            "translateX": "115%",
+            "translateY": "-5%",
+            "rotate": "13deg"
+          }
+        },
+        "fragmentCount": { "type": "integer", "const": 4 },
+        "fragmentMs": { "type": "number", "const": 220 },
+        "stampMs": { "type": "number", "const": 180 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paperDecorative",
+        "announceLockSeparately",
+        "disableActionWhileLocked"
+      ],
+      "properties": {
+        "paperDecorative": { "type": "boolean", "const": true },
+        "announceLockSeparately": { "type": "boolean", "const": true },
+        "disableActionWhileLocked": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateReveal", "triggers"],
+      "properties": {
+        "immediateReveal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "halfLeft", "halfRight", "crack", "frag", "stamp", "host"],
+      "properties": {
+        "root": { "type": "string", "const": "paper-rip" },
+        "halfLeft": { "type": "string", "const": "paper-rip__half--left" },
+        "halfRight": { "type": "string", "const": "paper-rip__half--right" },
+        "crack": { "type": "string", "const": "paper-rip__crack" },
+        "frag": { "type": "string", "const": "paper-rip__frag" },
+        "stamp": { "type": "string", "const": "paper-rip__stamp" },
+        "host": { "type": "string", "const": "paper-rip-host" }
+      }
+    }
+  }
+}
