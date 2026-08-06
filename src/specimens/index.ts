@@ -30,6 +30,7 @@ import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
 import { blueprintAssembly } from './blueprint-assembly/entry'
 import { bodyFlickerPageJump } from './body-flicker-page-jump/entry'
+import { bossIntroductionFreeze } from './boss-introduction-freeze/entry'
 import { bottomSheetDetentSnap } from './bottom-sheet-detent-snap/entry'
 import { boundedTouchRipple } from './bounded-touch-ripple/entry'
 import { bracketWinnerAdvance } from './bracket-winner-advance/entry'
@@ -465,6 +466,7 @@ export const specimens: Specimen[] = [
   blueFocusBrackets,
   blueprintAssembly,
   bodyFlickerPageJump,
+  bossIntroductionFreeze,
   bottomSheetDetentSnap,
   boundedTouchRipple,
   bracketWinnerAdvance,
