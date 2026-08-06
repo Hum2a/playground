@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/match-start-slam.schema.json",
+  "title": "MatchStartSlam",
+  "description": "Portable contract for START overlay slam and tear reveal.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "match-start-slam" },
+    "intent": {
+      "type": "string",
+      "examples": ["Giant START slams then tears away to reveal match."]
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "accent"],
+      "properties": {
+        "primary": { "type": "string", "const": "#38A3FF" },
+        "ink": { "type": "string", "const": "#101820" },
+        "paper": { "type": "string", "const": "#F4F7FA" },
+        "accent": { "type": "string", "const": "#FF4D35" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slamMs", "tearMs"],
+      "properties": {
+        "slamMs": { "type": "number", "const": 500 },
+        "tearMs": { "type": "number", "const": 380 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLive", "triggers"],
+      "properties": {
+        "instantLive": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "overlay", "start"],
+      "properties": {
+        "root": { "type": "string", "const": "mss" },
+        "overlay": { "type": "string", "const": "mss__overlay" },
+        "start": { "type": "string", "const": "mss__start" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "matchStartSlam" }
+      }
+    }
+  }
+}

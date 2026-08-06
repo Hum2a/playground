@@ -139,6 +139,7 @@ import { listToIconViewMorph } from './list-to-icon-view-morph/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
+import { matchStartSlam } from './match-start-slam/entry'
 import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { materialPullToRefresh } from './material-pull-to-refresh/entry'
 import { materialSwitchToggle } from './material-switch-toggle/entry'
@@ -442,6 +443,7 @@ export const specimens: Specimen[] = [
   lockedChainBreak,
   longPressLift,
   mangaCutInNotification,
+  matchStartSlam,
   matchedCardExpansion,
   materialPullToRefresh,
   materialSwitchToggle,
