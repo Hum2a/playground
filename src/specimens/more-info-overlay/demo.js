@@ -1,0 +1,1 @@
+export function runMoreInfo(){document.querySelector('[data-ov]').classList.add('is-on')};export function runMoreInfoClose(){document.querySelector('[data-ov]').classList.remove('is-on')};document.querySelector('[data-open]')?.addEventListener('click',()=>runMoreInfo());document.querySelector('[data-close]')?.addEventListener('click',()=>runMoreInfoClose())

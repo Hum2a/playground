@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **49 / 197** complete.
+- Progress: **50 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 148 |
+| Done | 50 |
+| Open | 147 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-090 | `SPX-3199` | `more-info-overlay` | More Info Overlay |
 | NF-002 | `SPX-3111` | `vertical-light-bar-intro` | Vertical Light-Bar Intro |
 | NF-001 | `SPX-3110` | `cinematic-ribbon-reveal` | Cinematic Ribbon Reveal |
 | NF-150 | `SPX-3259` | `download-complete-morph` | Download Complete Morph |
@@ -151,7 +152,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-150** · `SPX-3259` · **Download Complete Morph** — `download-complete-morph`
 - [x] **NF-001** · `SPX-3110` · **Cinematic Ribbon Reveal** — `cinematic-ribbon-reveal`
 - [x] **NF-002** · `SPX-3111` · **Vertical Light-Bar Intro** — `vertical-light-bar-intro`
-- [ ] **NF-090** · `SPX-3199` · **More Info Overlay** — `more-info-overlay`
+- [x] **NF-090** · `SPX-3199` · **More Info Overlay** — `more-info-overlay`
 
 ## 1. Brand / Cinematic Identity
 
@@ -266,7 +267,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 12. Title Details / Modal Surfaces
 
 - [x] **NF-089** · `SPX-3198` · **Details Panel Expand** — A selected card grows into a larger details surface while retaining visual continuity
-- [ ] **NF-090** · `SPX-3199` · **More Info Overlay** — A dark bounded overlay opens with title metadata and actions
+- [x] **NF-090** · `SPX-3199` · **More Info Overlay** — A dark bounded overlay opens with title metadata and actions
 - [ ] **NF-091** · `SPX-3200` · **Details Hero Reveal** — The details surface reveals its title region before secondary sections
 - [ ] **NF-092** · `SPX-3201` · **Modal Background Recede** — Underlying browse rows dim and scale subtly while details take focus
 - [x] **NF-093** · `SPX-3202` · **Details Close Return** — Closing the panel reconstructs the exact originating card position
