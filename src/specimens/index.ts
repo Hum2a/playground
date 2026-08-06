@@ -9,6 +9,7 @@ import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
+import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
@@ -159,6 +160,7 @@ export const specimens: Specimen[] = [
   butterflyEntry,
   butterflySuccessState,
   captureShake,
+  captureBreakout,
   cardBreakSummon,
   choiceExecutionSlash,
   clockHandWipe,
@@ -196,6 +198,7 @@ export const specimens: Specimen[] = [
   holdToChargeButton,
   hoverCutout,
   letterScatterAssemble,
+  levelUpOverflow,
   liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,

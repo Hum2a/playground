@@ -1,0 +1,57 @@
+{
+  "name": "capture-breakout",
+  "intent": "Failure counterpart to Capture Shake: two complete uncertainty checks, an interrupted third, then structural container open and entity escape to ESCAPED.",
+  "colours": {
+    "ink": "#171c20",
+    "paper": "#f1efe2",
+    "coral": "#d95b4e",
+    "gold": "#f0b84a"
+  },
+  "copy": {
+    "entity": "ENTITY // UNKNOWN",
+    "processing": "RESOLVING",
+    "final": "ESCAPED",
+    "trigger": "CAPTURE",
+    "retry": "RETRY"
+  },
+  "geometry": {
+    "devicePx": 120,
+    "family": "capture-shake",
+    "noOfficialPokeBallArtwork": true,
+    "breakoutRays": 6,
+    "upperBreak": { "translateYPx": -18, "rotateDeg": -6 },
+    "lowerBreak": { "translateYPx": 18, "rotateDeg": 5 },
+    "escapeTranslateYPx": -95,
+    "escapeScale": [0.5, 1.08, 1],
+    "compressScaleY": 0.9
+  },
+  "timing": {
+    "enterMs": 240,
+    "closeMs": 160,
+    "shake1Ms": 220,
+    "pause1Ms": 180,
+    "shake2Ms": 220,
+    "longPauseMs": 280,
+    "shake3FullMs": 220,
+    "shake3InterruptFraction": 0.4,
+    "shake3PartialMs": 88,
+    "compressMs": 70,
+    "escapeMs": 420,
+    "recoverMs": 280,
+    "completeChecks": 2,
+    "noContinuousShake": true,
+    "noThreeCompleteChecks": true
+  },
+  "api": {
+    "capture": "runCaptureBreakout()",
+    "retry": "runCaptureBreakoutRetry()",
+    "busyGuard": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show target outside open container with ESCAPED"
+  }
+}

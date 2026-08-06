@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **7 / 266** complete.
+- Progress: **8 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 259 |
+| Done | 8 |
+| Open | 258 |
 
 ## Visual grammar
 
@@ -39,6 +39,7 @@
 | PK-087 | `SPX-786` | `entry-registration` | Entry Registration |
 | PK-061 | `SPX-760` | `delayed-damage-bar` | Delayed Damage Bar |
 | PK-027 | `SPX-726` | `evolution-complete` | Evolution Complete |
+| PK-014 | `SPX-713` | `capture-breakout` | Capture Breakout |
 
 ## Core first-wave
 
@@ -83,7 +84,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — Content enters a closed container which rocks through three discrete uncertainty checks before resolving.
 - [x] **PK-012** · `SPX-711` · **Critical Capture** — A normally multi-stage uncertain operation unexpectedly compresses into one decisive lock.
 - [ ] **PK-013** · `SPX-712` · **Capture Success Stars** — A completed uncertain operation receives a restrained three-star confirmation.
-- [ ] **PK-014** · `SPX-713` · **Capture Breakout** — The container begins resolving but bursts open and restores the unresolved state.
+- [x] **PK-014** · `SPX-713` · **Capture Breakout** — The container begins resolving but bursts open and restores the unresolved state.
 - [ ] **PK-015** · `SPX-714` · **Capture Probability Behaviour** — Confidence is communicated through the stability and motion of the container rather than a conventional percentage bar.
 - [ ] **PK-016** · `SPX-715` · **Ball Throw Arc** — An action leaves its source, follows a deterministic arc and reaches a target.
 - [ ] **PK-017** · `SPX-716` · **Ball Snap Shut** — Two opposing semicircular regions close around content and commit it.
