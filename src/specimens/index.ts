@@ -7,6 +7,7 @@ import { analysisScribbleReveal } from './analysis-scribble-reveal/entry'
 import { androidBottomSheetDetentSnap } from './android-bottom-sheet-detent-snap/entry'
 import { androidDragProxyFormation } from './android-drag-proxy-formation/entry'
 import { androidInvalidDropReturn } from './android-invalid-drop-return/entry'
+import { angularFocusBrackets } from './angular-focus-brackets/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
 import { appLaunchFromIcon } from './app-launch-from-icon/entry'
 import { appToRecentsShrink } from './app-to-recents-shrink/entry'
@@ -332,6 +333,7 @@ export const specimens: Specimen[] = [
   androidBottomSheetDetentSnap,
   androidDragProxyFormation,
   androidInvalidDropReturn,
+  angularFocusBrackets,
   appLaunchExpansion,
   appLaunchFromIcon,
   appToRecentsShrink,

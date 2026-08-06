@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AngularFocusBrackets",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": { "type": "string", "const": "angular-focus-brackets" },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 660 }
+      }
+    }
+  }
+}

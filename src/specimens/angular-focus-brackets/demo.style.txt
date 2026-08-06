@@ -1,0 +1,173 @@
+/* SPX-2298 Angular Focus Brackets — portable contract. */
+
+.afb {
+  --afb-primary: #38a3ff;
+  --afb-ink: #101820;
+  --afb-paper: #f4f7fa;
+  --afb-accent: #ff4d35;
+  --afb-ease: cubic-bezier(0.2, 0.92, 0.24, 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  background: var(--afb-ink);
+  color: var(--afb-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.afb *,
+.afb *::before,
+.afb *::after {
+  box-sizing: border-box;
+}
+
+.afb__trigger {
+  appearance: none;
+  border: 2px solid var(--afb-primary);
+  background: transparent;
+  color: var(--afb-paper);
+  padding: 0.4rem 1rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.afb__trigger:focus-visible {
+  outline: 2px solid var(--afb-primary);
+  outline-offset: 3px;
+}
+
+.afb__stage {
+  display: grid;
+  place-items: center;
+  width: min(100%, 340px);
+  height: 200px;
+  border: 3px solid rgba(244, 247, 250, 0.2);
+}
+
+.afb__target {
+  position: relative;
+  width: 72%;
+  padding: 1rem 0.85rem;
+  background: var(--afb-paper);
+  color: var(--afb-ink);
+  border: 3px solid var(--afb-ink);
+  clip-path: polygon(0 8%, 96% 0, 100% 92%, 6% 100%);
+}
+
+.afb__bracket {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 4px solid var(--afb-primary);
+  opacity: 0;
+  transition:
+    transform 660ms var(--afb-ease),
+    opacity 220ms ease;
+}
+
+.afb__bracket--tl {
+  top: -14px;
+  left: -14px;
+  border-right: 0;
+  border-bottom: 0;
+  transform: translate(-18px, -18px);
+}
+
+.afb__bracket--tr {
+  top: -14px;
+  right: -14px;
+  border-left: 0;
+  border-bottom: 0;
+  transform: translate(18px, -18px);
+}
+
+.afb__bracket--bl {
+  bottom: -14px;
+  left: -14px;
+  border-right: 0;
+  border-top: 0;
+  transform: translate(-18px, 18px);
+}
+
+.afb__bracket--br {
+  bottom: -14px;
+  right: -14px;
+  border-left: 0;
+  border-top: 0;
+  transform: translate(18px, 18px);
+}
+
+.afb__kicker {
+  margin: 0 0 0.25rem;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--afb-primary);
+}
+
+.afb__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.afb__meta {
+  margin: 0.35rem 0 0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.afb__status {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 247, 250, 0.75);
+}
+
+.afb--focused .afb__bracket {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.afb--locked .afb__bracket {
+  border-color: var(--afb-accent);
+}
+
+.afb--locked .afb__target {
+  box-shadow: 0 0 0 2px var(--afb-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .afb__bracket {
+    transition: none !important;
+  }
+
+  .afb--focused .afb__bracket,
+  .afb--locked .afb__bracket {
+    opacity: 1;
+    transform: translate(0, 0);
+    border-color: var(--afb-accent);
+  }
+}
+
+[data-force-reduced-motion='true'] .afb__bracket {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .afb--focused .afb__bracket,
+[data-force-reduced-motion='true'] .afb--locked .afb__bracket {
+  opacity: 1;
+  transform: translate(0, 0);
+  border-color: var(--afb-accent);
+}
