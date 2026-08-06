@@ -15,7 +15,7 @@ const scaffold = `
 
 export const liquidSplitTransition: Specimen = {
   id: 'liquid-split-transition',
-  ref: 'SPX-TODO',
+  ref: 'SPX-402',
   title: 'Liquid Split Transition',
   blurb:
     'A pale liquid seam forms across the host, then upper and lower surfaces pull apart to expose a destination that already waits behind the opening.',

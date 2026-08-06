@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **24 / 238** complete.
+- Progress: **25 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 24 |
-| Open | 214 |
+| Done | 25 |
+| Open | 213 |
 
 ## Visual grammar
 
@@ -57,6 +57,10 @@
 
 | P3-121 | `SPX-518` | `butterfly-success-state` | Butterfly Success State |
 | P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
+
+| P3-064 | SPX-461 | ull-moon-milestone | Full Moon Milestone |
+
+| P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
 
 ## Core first-wave
 
@@ -170,7 +174,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-061** · `SPX-458` · **Moonrise Reveal** — moon.
 - [ ] **P3-062** · `SPX-459` · **Eclipse Transition** — moon.
 - [ ] **P3-063** · `SPX-460` · **Crescent Wipe** — moon.
-- [ ] **P3-064** · `SPX-461` · **Full Moon Milestone** — moon.
+- [x] **P3-064** · `SPX-461` · **Full Moon Milestone** — moon.
 - [ ] **P3-065** · `SPX-462` · **Lunar Deadline** — moon.
 - [ ] **P3-066** · `SPX-463` · **Moon Phase Pagination** — moon.
 - [ ] **P3-067** · `SPX-464` · **Eclipse Loading State** — moon.

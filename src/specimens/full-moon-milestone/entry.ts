@@ -15,7 +15,7 @@ const scaffold = `
 
 export const fullMoonMilestone: Specimen = {
   id: 'full-moon-milestone',
-  ref: 'SPX-TODO',
+  ref: 'SPX-461',
   title: 'Full Moon Milestone',
   blurb:
     'Numeric progress ticks 74→75, then a symbolic lunar sweep fills to a full moon with ring, eight radial marks, and PHASE III — while the progressbar stays honestly at 75%.',
