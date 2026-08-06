@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **16 / 266** complete.
+- Progress: **17 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 16 |
-| Open | 250 |
+| Done | 17 |
+| Open | 249 |
 
 ## Visual grammar
 
@@ -45,6 +45,7 @@
 | PK-103 | `SPX-802` | `item-obtained` | Item Obtained |
 | PK-130 | `SPX-829` | `link-trade-transfer` | Link Trade Transfer |
 | PK-145 | `SPX-844` | `badge-case-insert` | Badge Case Insert |
+| PK-144 | `SPX-843` | `badge-earned` | Badge Earned |
 | PK-116 | `SPX-815` | `move-learned` | Move Learned |
 | PK-156 | `SPX-855` | `monochrome-battle-slide-in` | Monochrome Battle Slide-In |
 | PK-247 | `SPX-946` | `radar-pulse-discovery` | Radar Pulse Discovery |
@@ -71,7 +72,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [x] **PK-103** · `SPX-802` · **Item Obtained** — items-inventory
 - [x] **PK-116** · `SPX-815` · **Move Learned** — moves-abilities
 - [ ] **PK-117** · `SPX-816` · **Forget a Move** — moves-abilities
-- [ ] **PK-144** · `SPX-843` · **Gym Badge Earned** — gym-badges
+- [x] **PK-144** · `SPX-843` · **Gym Badge Earned** — gym-badges
 - [x] **PK-145** · `SPX-844` · **Badge Case Insert** — gym-badges
 
 ## 1. Encounters & arrivals
@@ -249,7 +250,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 11. Gym, badges & achievements
 
-- [ ] **PK-144** · `SPX-843` · **Gym Badge Earned** — An incomplete badge abstraction assembles into a permanent achievement.
+- [x] **PK-144** · `SPX-843` · **Gym Badge Earned** — An incomplete badge abstraction assembles into a permanent achievement.
 - [x] **PK-145** · `SPX-844` · **Badge Case Insert** — A newly earned achievement physically docks into an empty collection slot.
 - [ ] **PK-146** · `SPX-845` · **Badge Polish** — A subdued achievement responds to interaction by revealing its completed visual state.
 - [ ] **PK-147** · `SPX-846` · **Gym Victory Stamp** — A completion mark physically stamps itself onto a record.

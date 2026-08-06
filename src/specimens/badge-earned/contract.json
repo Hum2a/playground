@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/badge-earned.schema.json",
+  "title": "BadgeEarned",
+  "description": "Portable contract for assembling a permanent achievement badge from six polygons. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "pieces",
+    "phases",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "badge-earned" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Ghosted VECTOR TRIAL outline assembles from six deterministic polygons; status becomes EARNED only after lock."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "statusFrom",
+        "statusTo",
+        "locked",
+        "action",
+        "reset"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "VECTOR TRIAL" },
+        "statusFrom": { "type": "string", "const": "INCOMPLETE" },
+        "statusTo": { "type": "string", "const": "EARNED" },
+        "locked": { "type": "string", "const": "LOCKED" },
+        "action": { "type": "string", "const": "COMPLETE TRIAL" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "gold", "green", "coral"],
+      "properties": {
+        "ink": { "type": "string", "const": "#172024" },
+        "cream": { "type": "string", "const": "#f2eedc" },
+        "gold": { "type": "string", "const": "#d3a842" },
+        "green": { "type": "string", "const": "#6fa889" },
+        "coral": { "type": "string", "const": "#cf6655" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["badgePx", "primaryPolygonCount", "rayCount"],
+      "properties": {
+        "badgePx": { "type": "number", "const": 100 },
+        "primaryPolygonCount": { "type": "integer", "const": 6 },
+        "rayCount": { "type": "integer", "const": 8 }
+      }
+    },
+    "pieces": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "offsetX", "offsetY", "staggerMs"],
+        "properties": {
+          "id": { "type": "integer" },
+          "offsetX": { "type": "number" },
+          "offsetY": { "type": "number" },
+          "staggerMs": { "type": "number" }
+        }
+      },
+      "const": [
+        { "id": 1, "offsetX": 0, "offsetY": 55, "staggerMs": 0 },
+        { "id": 2, "offsetX": -48, "offsetY": -42, "staggerMs": 35 },
+        { "id": 3, "offsetX": 65, "offsetY": 8, "staggerMs": 70 },
+        { "id": 4, "offsetX": 50, "offsetY": 48, "staggerMs": 105 },
+        { "id": 5, "offsetX": 12, "offsetY": -58, "staggerMs": 140 },
+        { "id": 6, "offsetX": -62, "offsetY": 20, "staggerMs": 175 }
+      ]
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pieceMs",
+        "assemblyEndMs",
+        "lockMs",
+        "lockRotation",
+        "raysMs",
+        "rayPairDelaysMs",
+        "statusAfter"
+      ],
+      "properties": {
+        "pieceMs": { "type": "number", "const": 220 },
+        "assemblyEndMs": { "type": "number", "const": 395 },
+        "lockMs": { "type": "number", "const": 140 },
+        "lockRotation": {
+          "type": "array",
+          "const": [-3, 2, 0]
+        },
+        "raysMs": { "type": "number", "const": 160 },
+        "rayPairDelaysMs": {
+          "type": "array",
+          "const": [0, 40, 80, 120]
+        },
+        "statusAfter": {
+          "type": "string",
+          "const": "lock"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titleId", "liveRegion", "announceIdle", "announceEarned"],
+      "properties": {
+        "titleId": { "type": "string", "const": "be-title" },
+        "liveRegion": { "type": "boolean", "const": true },
+        "announceIdle": {
+          "type": "string",
+          "const": "VECTOR TRIAL incomplete. Press COMPLETE TRIAL to earn the badge."
+        },
+        "announceEarned": {
+          "type": "string",
+          "const": "VECTOR TRIAL earned. The abstract badge is permanently assembled."
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["behaviour"],
+      "properties": {
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate completed badge and EARNED; no travel, lock, or rays."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "badge", "piece", "status", "rays"],
+      "properties": {
+        "root": { "type": "string", "const": "be" },
+        "badge": { "type": "string", "const": "be__badge" },
+        "piece": { "type": "string", "const": "be__piece" },
+        "status": { "type": "string", "const": "be__status" },
+        "rays": { "type": "string", "const": "be__rays" }
+      }
+    }
+  }
+}
