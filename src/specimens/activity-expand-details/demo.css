@@ -1,0 +1,48 @@
+/* SPX-3344 Activity Expand Details — portable PlayStation specimen CSS */
+.ps {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  --ps-panel: #121820;
+  --ps-rule: #1E2A38;
+  --ps-muted: #6B7A8C;
+  box-sizing: border-box;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  padding: 16px;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ps-chalk);
+  background: var(--ps-ink);
+}
+.ps *, .ps *::before, .ps *::after { box-sizing: border-box; }
+.ps__live { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ps__eyebrow { margin: 0 0 10px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ps-sky); }
+.ps__btn { appearance: none; margin: 0; padding: 8px 14px; border: 1px solid var(--ps-blue); background: rgb(46 144 255 / 0.12); color: var(--ps-chalk); font: inherit; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+.ps__btn:hover:not(:disabled) { border-color: var(--ps-sky); background: rgb(46 144 255 / 0.22); }
+.ps__btn:focus-visible { outline: 2px solid var(--ps-blue); outline-offset: 2px; }
+.ps__btn:disabled { opacity: 0.45; cursor: default; }
+.ps__status { margin: 10px 0 0; font-size: 0.62rem; letter-spacing: 0.06em; color: var(--ps-muted); text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ps *, .ps *::before, .ps *::after { transition: none !important; animation: none !important; }
+}
+[data-force-reduced-motion='true'] .ps,
+[data-force-reduced-motion='true'] .ps *,
+[data-force-reduced-motion='true'] .ps *::before,
+[data-force-reduced-motion='true'] .ps *::after {
+  transition: none !important;
+  animation: none !important;
+}
+.aed__card { display: block; width: 100%; padding: 0; border: 1px solid var(--ps-rule); background: var(--ps-panel); border-radius: 8px; color: inherit; text-align: left; cursor: pointer; overflow: hidden; transition: min-height 220ms ease, border-color 200ms ease, box-shadow 200ms ease; min-height: 72px; }
+.aed__card:focus-visible { outline: 2px solid var(--ps-blue); outline-offset: 3px; }
+.aed__compact { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; font-size: 0.78rem; }
+.aed__compact strong { font-weight: 800; letter-spacing: 0.04em; }
+.aed__compact span { color: var(--ps-muted); font-size: 0.66rem; }
+.aed__details { display: grid; gap: 8px; padding: 0 16px 14px; font-size: 0.68rem; }
+.aed__details[hidden] { display: none !important; }
+.aed__row { color: var(--ps-chalk); }
+.aed__reward { color: var(--ps-sky); font-weight: 700; }
+.aed__actions { display: flex; gap: 10px; margin-top: 4px; }
+.aed__actions span { padding: 4px 10px; border: 1px solid var(--ps-blue); border-radius: 4px; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+.aed[data-phase='expanded'] .aed__card { border-color: var(--ps-blue); box-shadow: 0 8px 24px rgb(0 0 0 / 0.35); min-height: 168px; }

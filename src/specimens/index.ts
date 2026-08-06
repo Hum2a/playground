@@ -2,6 +2,7 @@ import { achievementEncounter } from './achievement-encounter/entry'
 import { activeBottomNavPillTransfer } from './active-bottom-nav-pill-transfer/entry'
 import { activityCardFocus } from './activity-card-focus/entry'
 import { activityCompleteBurst } from './activity-complete-burst/entry'
+import { activityExpandDetails } from './activity-expand-details/entry'
 import { activityProgressFill } from './activity-progress-fill/entry'
 import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { addToListConfirmation } from './add-to-list-confirmation/entry'
@@ -504,6 +505,7 @@ export const specimens: Specimen[] = [
   activeBottomNavPillTransfer,
   activityCardFocus,
   activityCompleteBurst,
+  activityExpandDetails,
   activityProgressFill,
   adaptiveRecovery,
   addToListConfirmation,
