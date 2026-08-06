@@ -1,0 +1,22 @@
+/* evidence-chain-advance */
+.eca{--p4-yellow:#F5C400;--p4-black:#101010;--p4-cream:#F7F3E8;--p4-gray:#E8E8E8;box-sizing:border-box;position:relative;width:100%;height:100%;min-height:240px;padding:0.65rem;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--p4-cream);background:var(--p4-black);}
+.eca *,.eca *::before,.eca *::after{box-sizing:border-box}
+.eca__title{margin:0 0 0.5rem;font-size:0.62rem;font-weight:800;letter-spacing:0.16em;color:var(--p4-gray)}
+.eca__chain{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:0.35rem;flex-wrap:wrap}
+.eca__node{width:4.2rem;padding:0.4rem 0.2rem;border:2px solid var(--p4-gray);text-align:center;opacity:0.35;transition:opacity 320ms ease,border-color 320ms ease,transform 320ms ease}
+.eca__node span{display:block;font-size:0.85rem;font-weight:900;color:var(--p4-yellow)}
+.eca__node small{font-size:0.45rem;letter-spacing:0.06em;color:var(--p4-gray)}
+.eca__link{width:1.8rem;height:3px;background:var(--p4-gray);opacity:0.25;transition:opacity 320ms ease,background 320ms ease}
+.eca[data-step="1"] .eca__node--1,.eca[data-step="2"] .eca__node--1,.eca[data-step="3"] .eca__node--1{opacity:1;border-color:var(--p4-yellow);transform:scale(1.04)}
+.eca[data-step="1"] .eca__link--1,.eca[data-step="2"] .eca__link--1,.eca[data-step="3"] .eca__link--1{opacity:1;background:var(--p4-yellow)}
+.eca[data-step="2"] .eca__node--2,.eca[data-step="3"] .eca__node--2{opacity:1;border-color:var(--p4-yellow);transform:scale(1.04)}
+.eca[data-step="2"] .eca__link--2,.eca[data-step="3"] .eca__link--2{opacity:1;background:var(--p4-yellow)}
+.eca[data-step="3"] .eca__node--3{opacity:1;border-color:var(--p4-yellow);transform:scale(1.04)}
+
+.specimen__demo { position:absolute;left:0.5rem;bottom:0.4rem;z-index:10;display:flex;gap:0.35rem; }
+.specimen__demo-btn { padding:0.28rem 0.5rem;border:2px solid var(--p4-yellow);background:var(--p4-yellow);color:var(--p4-black);font:800 0.58rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer; }
+.specimen__demo-btn:focus-visible { outline:2px solid var(--p4-cream);outline-offset:2px; }
+.specimen__status { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+
+@media (prefers-reduced-motion: reduce) { .spec *, .spec * { animation:none!important;transition:none!important; } }
+[data-force-reduced-motion="true"] .spec *, [data-force-reduced-motion="true"] .spec * { animation:none!important;transition:none!important; }
