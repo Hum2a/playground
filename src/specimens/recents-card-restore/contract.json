@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/recents-card-restore.schema.json",
+  "title": "RecentsCardRestore",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "cards", "transition", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "recents-card-restore" },
+    "intent": {
+      "type": "string",
+      "const": "Task card expands to full viewport; overview reconstructs on back."
+    },
+    "cards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "widthPx", "heightPx", "radiusPx"],
+      "properties": {
+        "count": { "type": "number", "const": 3 },
+        "widthPx": { "type": "number", "const": 286 },
+        "heightPx": { "type": "number", "const": 500 },
+        "radiusPx": { "type": "number", "const": 26 }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 380 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card"],
+      "properties": {
+        "root": { "type": "string", "const": "rcr" },
+        "card": { "type": "string", "const": "rcr__card" }
+      }
+    }
+  }
+}

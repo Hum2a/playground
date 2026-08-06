@@ -163,6 +163,7 @@ import { quickLookExpansion } from './quick-look-expansion/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
+import { recentsCardRestore } from './recents-card-restore/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
@@ -409,6 +410,7 @@ export const specimens: Specimen[] = [
   radarPulseDiscovery,
   rankUpImpact,
   ransomNoteReveal,
+  recentsCardRestore,
   redactedContentLock,
   ripplePortalTransition,
   scannerSearch,
