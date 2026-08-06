@@ -74,6 +74,10 @@ inspiredBy: {
 | --- | --- |
 | `nier-automata` | NieR:Automata |
 
+### Cyberpunk (`cyberpunk`)
+
+*(franchise only so far — original glitch / malfunction UI language; no game-specific assets)*
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

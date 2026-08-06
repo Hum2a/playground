@@ -56,6 +56,10 @@ export const INSPIRATION_DIRECTORY = {
       'nier-automata': { label: 'NieR:Automata' },
     },
   },
+  cyberpunk: {
+    label: 'Cyberpunk',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},
@@ -109,6 +113,7 @@ export const SUGGESTED_FREE_TAGS = [
   'loading',
   'terminal',
   'monospace',
+  'lock',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

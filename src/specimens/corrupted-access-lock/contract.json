@@ -1,0 +1,71 @@
+{
+  "name": "corrupted-access-lock",
+  "intent": "CSS-only locked-card overlay with a restrained periodic glitch burst: ACCESS // DENIED, chromatic offsets, three horizontal slices, scanlines, and technical microcopy over dimmed host content.",
+  "colours": {
+    "nearBlack": "#090c0d",
+    "warningYellow": "#f4e409",
+    "cyan": "#00e7e7",
+    "errorRed": "#ff3045",
+    "veil": "rgb(9 12 13 / 0.78)"
+  },
+  "copy": {
+    "title": "ACCESS // DENIED",
+    "code": "ERR_LOCK_09",
+    "micro": "SYS.AUTH // FAIL · SECTOR 09 · READ=0",
+    "hostModule": "MODULE 09",
+    "hostTitle": "RESTRICTED MATERIAL",
+    "srOnlyLabel": "Locked: Restricted material"
+  },
+  "timing": {
+    "cycleMs": 3400,
+    "burstMs": 180,
+    "restEndPercent": 94.7,
+    "burstStartPercent": 94.71,
+    "easing": "steps(2, end)"
+  },
+  "offsets": {
+    "slice1Px": -7,
+    "slice2Px": 5,
+    "slice3Px": 3,
+    "cyanChannelPx": 3,
+    "redChannelPx": -2
+  },
+  "classNames": {
+    "root": "corrupt-lock",
+    "veil": "corrupt-lock__veil",
+    "scanlines": "corrupt-lock__scanlines",
+    "brackets": "corrupt-lock__brackets",
+    "code": "corrupt-lock__code",
+    "title": "corrupt-lock__title",
+    "titleMain": "corrupt-lock__title-main",
+    "titleCyan": "corrupt-lock__title-cyan",
+    "titleRed": "corrupt-lock__title-red",
+    "slice1": "corrupt-lock__slice--1",
+    "slice2": "corrupt-lock__slice--2",
+    "slice3": "corrupt-lock__slice--3",
+    "micro": "corrupt-lock__micro"
+  },
+  "a11y": {
+    "overlayAriaHidden": true,
+    "chromaticDuplicatesDecorative": true,
+    "srOnlyLabelOutsideOverlay": "Locked: Restricted material",
+    "idlePointerEvents": "none"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Disable glitch bursts and scanline drift; keep static veil, ACCESS // DENIED, and ERR_LOCK_09"
+  },
+  "constraints": {
+    "cssOnly": true,
+    "noCanvas": true,
+    "noImages": true,
+    "noSvgAssets": true,
+    "noExternalAssets": true,
+    "noFontFace": true,
+    "noHostCardShake": true,
+    "briefBurstsOnly": true
+  }
+}
