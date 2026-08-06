@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **26 / 417** complete.
+- Progress: **27 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 26 |
-| Open | 391 |
+| Done | 27 |
+| Open | 390 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-317 | `SPX-1874` | `widget-resize-morph` | Widget Resize Morph |
 | AND-311 | `SPX-1868` | `nearby-file-transfer` | Nearby File Transfer |
 | AND-309 | `SPX-1866` | `nearby-device-discovery` | Nearby Device Discovery |
 | AND-259 | `SPX-1816` | `pip-edge-magnetism` | PiP Edge Magnetism |
@@ -88,7 +89,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
 - [x] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
 - [x] **AND-311** · `SPX-1868` · **File Transfer Arc** — nearby-share-quick-share-inspired
-- [ ] **AND-317** · `SPX-1874` · **Widget Resize Morph** — widgets
+- [x] **AND-317** · `SPX-1874` · **Widget Resize Morph** — widgets
 - [ ] **AND-323** · `SPX-1880` · **Shape Morph Button-to-Card** — material-you-dynamic-shape-ideas
 - [ ] **AND-340** · `SPX-1897` · **Drag Proxy Formation** — drag-drop
 - [ ] **AND-383** · `SPX-1940` · **Screenshot Thumbnail Arrival** — screenshot-selection-inspired
@@ -544,7 +545,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Widgets
 
-- [ ] **AND-317** · `SPX-1874` · **Widget Resize Morph** — information module changes between fixed grid sizes.
+- [x] **AND-317** · `SPX-1874` · **Widget Resize Morph** — information module changes between fixed grid sizes.
 - [ ] **AND-318** · `SPX-1875` · **Widget Content Refresh** — only changed content regions update without full replacement.
 - [ ] **AND-319** · `SPX-1876` · **Widget Configuration Expansion** — placed widget opens compact configuration surface.
 - [ ] **AND-320** · `SPX-1877` · **Widget Drag Placement Preview** — occupied launcher cells preview before commit.

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/widget-resize-morph.schema.json",
+  "title": "WidgetResizeMorph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "sizes", "morph", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "widget-resize-morph" },
+    "intent": {
+      "type": "string",
+      "const": "Morph a launcher widget between three valid grid dimensions with semantic content reflow."
+    },
+    "sizes": {
+      "type": "array",
+      "const": ["2x1", "2x2", "4x2"]
+    },
+    "morph": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "smallWidthPx", "smallHeightPx", "largeWidthPx"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 300 },
+        "smallWidthPx": { "type": "number", "const": 152 },
+        "smallHeightPx": { "type": "number", "const": 72 },
+        "largeWidthPx": { "type": "number", "const": 320 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantResize", "triggers"],
+      "properties": {
+        "instantResize": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "widget"],
+      "properties": {
+        "root": { "type": "string", "const": "wrm" },
+        "widget": { "type": "string", "const": "wrm__widget" }
+      }
+    }
+  }
+}
