@@ -1,0 +1,36 @@
+:root {
+  /* Colour */
+  --ink: #12141a;
+  --panel: #1b1e26;
+  --rule: #2c313c;
+  --pewter: #767e8c;
+  --chalk: #e6e8ec;
+  --verdigris: #4e9e8f;
+
+  /* Type scale */
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 1rem;
+  --text-md: 1.375rem;
+  --text-lg: 2rem;
+  --text-xl: 3.25rem;
+
+  /* Font stacks — Archivo Variable with stretch = Expanded */
+  --font-display: 'Archivo Variable', sans-serif;
+  --font-body: 'Inter Tight Variable', 'Inter Tight', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', monospace;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Chrome */
+  --radius-plate: 2px;
+  --hairline: 1px solid var(--rule);
+}

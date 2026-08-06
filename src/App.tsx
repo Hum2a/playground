@@ -1,5 +1,12 @@
+import { BrowserRouter } from 'react-router-dom'
+import { AppRoutes } from './app/routes'
+
 function App() {
-  return <main>Specimen archive scaffold</main>
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  )
 }
 
 export default App
