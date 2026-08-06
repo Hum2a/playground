@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/android-bottom-sheet-detent-snap.schema.json",
+  "title": "BottomSheetDetentSnap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "detents", "gesture", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "android-bottom-sheet-detent-snap" },
+    "intent": {
+      "type": "string",
+      "const": "Bottom sheet snaps to three detents with velocity bias and scrim."
+    },
+    "detents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapsedPx", "mediumPx", "expandedPx"],
+      "properties": {
+        "collapsedPx": { "type": "number", "const": 96 },
+        "mediumPx": { "type": "number", "const": 360 },
+        "expandedPx": { "type": "number", "const": 640 }
+      }
+    },
+    "gesture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handleWidthPx", "handleHeightPx", "velocityPxMs", "scrimMax"],
+      "properties": {
+        "handleWidthPx": { "type": "number", "const": 48 },
+        "handleHeightPx": { "type": "number", "const": 24 },
+        "velocityPxMs": { "type": "number", "const": 0.55 },
+        "scrimMax": { "type": "number", "const": 0.34 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSnap", "triggers"],
+      "properties": {
+        "instantSnap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "sheet"],
+      "properties": {
+        "root": { "type": "string", "const": "abssds" },
+        "sheet": { "type": "string", "const": "abssds__sheet" }
+      }
+    }
+  }
+}

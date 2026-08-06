@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **15 / 417** complete.
+- Progress: **16 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 15 |
-| Open | 402 |
+| Done | 16 |
+| Open | 401 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-118 | `SPX-1675` | `android-bottom-sheet-detent-snap` | Bottom Sheet Detent Snap |
 | AND-109 | `SPX-1666` | `snackbar-rise` | Snackbar Rise |
 | AND-099 | `SPX-1656` | `heads-up-notification-drop` | Heads-Up Notification Drop |
 | AND-090 | `SPX-1647` | `quick-settings-tile-toggle` | Quick Settings Tile Toggle |
@@ -67,7 +68,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-090** · `SPX-1647` · **Quick Settings Tile Toggle** — quick-settings
 - [x] **AND-099** · `SPX-1656` · **Heads-Up Notification Drop** — android-notifications
 - [x] **AND-109** · `SPX-1666` · **Snackbar Rise** — toasts-snackbars-temporary-feedback
-- [ ] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — bottom-sheets
+- [x] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — bottom-sheets
 - [ ] **AND-126** · `SPX-1683` · **Edge Drawer Pull** — navigation-drawer
 - [ ] **AND-134** · `SPX-1691` · **Active Indicator Pill Slide** — bottom-navigation
 - [ ] **AND-193** · `SPX-1750` · **Material Pull-to-Refresh** — pull-to-refresh-overscroll
@@ -241,7 +242,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 ## Bottom Sheets
 
 - [ ] **AND-117** · `SPX-1674` · **Modal Bottom Sheet Rise** — sheet enters from bottom while background becomes secondary.
-- [ ] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — persistent sheet moves between fixed detents.
+- [x] **AND-118** · `SPX-1675` · **Standard Bottom Sheet Drag** — persistent sheet moves between fixed detents.
 - [ ] **AND-119** · `SPX-1676` · **Bottom Sheet Half-to-Full Snap** — sheet chooses medium/full state from release position and velocity.
 - [ ] **AND-120** · `SPX-1677` · **Sheet Dismiss Threshold** — downward drag converts from resize into dismissal.
 - [ ] **AND-121** · `SPX-1678` · **Sheet Overscroll Resistance** — drag beyond maximum detent meets rubber-band resistance.
