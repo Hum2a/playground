@@ -584,6 +584,8 @@ import { plateSwapTransition } from './plate-swap-transition/entry'
 
 import { proofToFinalToggle } from './proof-to-final-toggle/entry'
 
+import { typewriterHeadlineEntry } from './typewriter-headline-entry/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1104,6 +1106,7 @@ export const specimens: Specimen[] = [
   inkRegistrationAlign,
   plateSwapTransition,
   proofToFinalToggle,
+  typewriterHeadlineEntry,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
