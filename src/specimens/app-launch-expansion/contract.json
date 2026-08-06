@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/app-launch-expansion.schema.json",
+  "title": "AppLaunchExpansion",
+  "description": "Portable contract for grid tile launch expansion from App 05 to ANALYTICS surface.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "grid",
+    "animation",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "app-launch-expansion" },
+    "intent": {
+      "type": "string",
+      "const": "App 05 tile expands from exact bounds to full preview over 430ms; destination ANALYTICS reveals at 58%."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "destination"],
+      "properties": {
+        "target": { "type": "string", "const": "APP // 05" },
+        "destination": { "type": "string", "const": "ANALYTICS" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101218" },
+        "panel": { "type": "string", "const": "#1a1f28" },
+        "line": { "type": "string", "const": "#2d3542" },
+        "muted": { "type": "string", "const": "#7c8696" },
+        "cream": { "type": "string", "const": "#e9edf3" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "grid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tileCount", "tilePx", "gapPx", "preview", "radiusPx", "glyphPeakScale"],
+      "properties": {
+        "tileCount": { "type": "number", "const": 9 },
+        "tilePx": { "type": "number", "const": 72 },
+        "gapPx": { "type": "number", "const": 22 },
+        "preview": { "type": "object", "const": { "width": 300, "height": 380 } },
+        "radiusPx": { "type": "object", "const": { "start": 18, "end": 0 } },
+        "glyphPeakScale": { "type": "number", "const": 1.18 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expandMs", "recedeMs", "detailRevealAt", "siblingScale"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 430 },
+        "recedeMs": { "type": "number", "const": 180 },
+        "detailRevealAt": { "type": "number", "const": 0.58 },
+        "siblingScale": { "type": "number", "const": 0.92 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "grid", "tile", "layer"],
+      "properties": {
+        "root": { "type": "string", "const": "ale" },
+        "grid": { "type": "string", "const": "ale__grid" },
+        "tile": { "type": "string", "const": "ale__tile" },
+        "layer": { "type": "string", "const": "ale__layer" }
+      }
+    }
+  }
+}
