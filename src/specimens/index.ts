@@ -12,6 +12,7 @@ import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
+import { capsuleCollapse } from './capsule-collapse/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
@@ -199,6 +200,7 @@ export const specimens: Specimen[] = [
   butterflySuccessState,
   captureShake,
   captureBreakout,
+  capsuleCollapse,
   cardBreakSummon,
   chargeRelease,
   choiceExecutionSlash,
