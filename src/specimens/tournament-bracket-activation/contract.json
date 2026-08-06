@@ -1,0 +1,56 @@
+{
+  "name": "tournament-bracket-activation",
+  "intent": "Activate a dormant eight-participant elimination bracket into quarter-final readiness without selecting winners.",
+  "catalogue": {
+    "db": "DB-176",
+    "ref": "SPX-1141",
+    "checklistTitle": "World Tournament Bracket",
+    "specimenTitle": "Tournament Bracket Activation"
+  },
+  "counts": {
+    "participants": 8,
+    "firstRoundMatchups": 4,
+    "firstStageSegments": 8,
+    "matchupJunctions": 4,
+    "semiSlots": 2,
+    "finalSlots": 1,
+    "championSlots": 1
+  },
+  "participants": [
+    "A // ATLAS",
+    "B // NOVA",
+    "C // KITE",
+    "D // ECHO",
+    "E // VELA",
+    "F // ORBIT",
+    "G // FLINT",
+    "H // PULSE"
+  ],
+  "timing": {
+    "pairStaggerMs": 70,
+    "pathConstructMs": 140,
+    "junctionMs": 180,
+    "guideStrengthenMs": 160
+  },
+  "geometry": {
+    "boardPx": [480, 300],
+    "junctionPx": [8, 8],
+    "nodeInwardShiftPx": 3,
+    "scaleBelowPx": 480
+  },
+  "constraints": {
+    "activationOnlyNoWinners": true,
+    "fixedGeometryNoReflow": true,
+    "futureRoundsSubdued": true,
+    "noLoopingInFinal": true,
+    "noFranchiseAssets": true
+  },
+  "api": {
+    "open": "openTournamentBracket()",
+    "reset": "resetTournamentBracket()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show fully activated bracket"
+  }
+}
