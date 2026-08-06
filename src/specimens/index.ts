@@ -123,6 +123,7 @@ import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
 import { notificationStackCompression } from './notification-stack-compression/entry'
+import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
@@ -350,6 +351,7 @@ export const specimens: Specimen[] = [
   notificationBannerDrop,
   notificationExpand,
   notificationStackCompression,
+  nowPlayingExpansion,
   objectiveAcquired,
   overchargeWarning,
   panelCollapseNavigation,

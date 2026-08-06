@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/now-playing-expansion.schema.json",
+  "title": "NowPlayingExpansion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "compact", "expanded", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "now-playing-expansion" },
+    "intent": {
+      "type": "string",
+      "const": "A compact playback strip expands into richer playback controls while track identity and current progress persist."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["track", "artist", "progress"],
+      "properties": {
+        "track": { "type": "string", "const": "NIGHT SIGNAL" },
+        "artist": { "type": "string", "const": "VECTOR" },
+        "progress": { "type": "string", "const": "01:42 / 03:18" }
+      }
+    },
+    "compact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 300 },
+        "heightPx": { "type": "number", "const": 56 }
+      }
+    },
+    "expanded": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "heightPx": { "type": "number", "const": 260 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expandMs", "controlRevealOrder"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 360 },
+        "controlRevealOrder": {
+          "type": "array",
+          "const": ["previous", "playPause", "next", "volume"]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "player"],
+      "properties": {
+        "root": { "type": "string", "const": "npe" },
+        "player": { "type": "string", "const": "npe__player" }
+      }
+    }
+  }
+}

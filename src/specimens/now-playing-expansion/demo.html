@@ -1,0 +1,43 @@
+<div class="npe" data-now-playing-expansion data-phase="compact">
+  <article class="npe__player" data-npe-player>
+    <button type="button" class="npe__compact" data-npe-compact aria-expanded="false" aria-label="Now playing NIGHT SIGNAL by VECTOR, expand controls">
+      <span class="npe__art" aria-hidden="true"></span>
+      <span class="npe__meta">
+        <span class="npe__title">NIGHT SIGNAL</span>
+        <span class="npe__artist">VECTOR</span>
+      </span>
+      <div class="npe__progress-compact" aria-hidden="true">
+        <div class="npe__progress-fill" data-npe-progress style="width:52%"></div>
+      </div>
+      <span class="npe__time" data-npe-time>01:42 / 03:18</span>
+    </button>
+
+    <div class="npe__expanded" data-npe-expanded hidden>
+      <span class="npe__art npe__art--large" aria-hidden="true"></span>
+      <span class="npe__title npe__title--large">NIGHT SIGNAL</span>
+      <span class="npe__artist npe__artist--large">VECTOR</span>
+
+      <div class="npe__progress-expanded" data-npe-progress-wrap>
+        <div class="npe__progress-fill" style="width:52%"></div>
+      </div>
+      <span class="npe__time npe__time--expanded" data-npe-time-expanded>01:42 / 03:18</span>
+
+      <div class="npe__controls" data-npe-controls>
+        <button type="button" class="npe__ctrl" data-npe-prev aria-label="Previous track">◀</button>
+        <button type="button" class="npe__ctrl npe__ctrl--play" data-npe-play aria-label="Play pause">▶</button>
+        <button type="button" class="npe__ctrl" data-npe-next aria-label="Next track">▶</button>
+      </div>
+
+      <div class="npe__volume" data-npe-volume>
+        <span class="npe__vol-label">VOLUME</span>
+        <input type="range" class="npe__vol-slider" data-npe-vol min="0" max="100" value="62" aria-label="Volume" />
+      </div>
+
+      <button type="button" class="npe__collapse" data-npe-collapse>COLLAPSE</button>
+    </div>
+  </article>
+
+  <p class="npe__status" role="status" aria-live="polite" data-npe-status>
+    Compact now playing strip — NIGHT SIGNAL at 01:42.
+  </p>
+</div>
