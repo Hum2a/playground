@@ -608,6 +608,8 @@ import { documentCompareSplit } from './document-compare-split/entry'
 
 import { marginNoteSlideIn } from './margin-note-slide-in/entry'
 
+import { editorialBracketDraw } from './editorial-bracket-draw/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1140,6 +1142,7 @@ export const specimens: Specimen[] = [
   evidenceAnnotation,
   documentCompareSplit,
   marginNoteSlideIn,
+  editorialBracketDraw,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

@@ -1,0 +1,8 @@
+{
+  "name": "editorial-bracket-draw",
+  "ref": "SPX-3608",
+  "title": "Editorial Bracket Draw",
+  "mode": "redact",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

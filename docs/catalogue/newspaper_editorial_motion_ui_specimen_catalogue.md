@@ -255,7 +255,7 @@ chronology and information priority.
 
 - [x] **NEWS-085** · `SPX-3607` · ★★★★★ **Margin Note Slide-In** — An annotation enters from the
     outer margin and connects to its paragraph.
-- [ ] **NEWS-086** · `SPX-3608` · ★★★★★ **Editorial Bracket Draw** — A bracket grows beside
+- [x] **NEWS-086** · `SPX-3608` · ★★★★★ **Editorial Bracket Draw** — A bracket grows beside
     several lines to group them as one editorial point.
 - [ ] **NEWS-087** · `SPX-3609` · ★★★★☆ **Highlighter Sweep** — A restrained marker-like band
     travels behind selected text.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-086 | SPX-3608 | `editorial-bracket-draw` | Editorial Bracket Draw |
 | NEWS-085 | SPX-3607 | `margin-note-slide-in` | Margin Note Slide-In |
 | NEWS-083 | SPX-3605 | `document-compare-split` | Document Compare Split |
 | NEWS-082 | SPX-3604 | `evidence-annotation` | Evidence Annotation |
@@ -716,12 +717,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **37 / 237** complete.
+- Progress: **38 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 37 |
-| Open | 200 |
+| Done | 38 |
+| Open | 199 |
 
 ## Core first-wave / build queue
 
@@ -762,7 +763,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-082** · `SPX-3604` · **Evidence Annotation** · `evidence-annotation`
 - [x] **NEWS-083** · `SPX-3605` · **Document Compare Split** · `document-compare-split`
 - [x] **NEWS-085** · `SPX-3607` · **Margin Note Slide-In** · `margin-note-slide-in`
-- [ ] **NEWS-086** · `SPX-3608` · **Editorial Bracket Draw** · scaffold `editorial-bracket-draw`
+- [x] **NEWS-086** · `SPX-3608` · **Editorial Bracket Draw** · `editorial-bracket-draw`
 - [ ] **NEWS-093** · `SPX-3615` · **Pull Quote Extraction** · scaffold `pull-quote-extraction`
 - [ ] **NEWS-094** · `SPX-3616` · **Stat Callout Rise** · scaffold `stat-callout-rise`
 - [ ] **NEWS-100** · `SPX-3622` · **Breaking Ticker Crawl** · scaffold `breaking-ticker-crawl`
