@@ -368,6 +368,7 @@ import { resumePlaybackHandoff } from './resume-playback-handoff/entry'
 import { retryToBufferTransition } from './retry-to-buffer-transition/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { rivalCardsClash } from './rival-cards-clash/entry'
+import { saveConflictCompare } from './save-conflict-compare/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { screenshotExpandToEditor } from './screenshot-expand-to-editor/entry'
@@ -883,6 +884,7 @@ export const specimens: Specimen[] = [
   retryToBufferTransition,
   ripplePortalTransition,
   rivalCardsClash,
+  saveConflictCompare,
   scannerSearch,
   scouterScan,
   screenshotExpandToEditor,

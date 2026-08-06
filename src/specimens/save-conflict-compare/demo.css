@@ -1,0 +1,195 @@
+
+/* Portable PlayStation specimen — palette contract. */
+
+.scc {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 360px;
+  padding: 0.85rem 0.7rem;
+  background: var(--ps-ink);
+  color: var(--ps-chalk);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.scc *,
+.scc *::before,
+.scc *::after {
+  box-sizing: border-box;
+}
+
+.scc__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.scc__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ps-sky);
+}
+
+.scc__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgb(46 144 255 / 0.35);
+  background: rgb(244 246 248 / 0.03);
+}
+
+.scc__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--ps-chalk);
+}
+
+.scc__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgb(244 246 248 / 0.55);
+  text-align: center;
+}
+
+.scc__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.scc__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid rgb(244 246 248 / 0.35);
+  background: transparent;
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.scc__btn--primary {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.14);
+}
+
+.scc__btn:hover:not(:disabled) {
+  border-color: var(--ps-sky);
+}
+
+.scc__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.scc__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.scc__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.scc__save {
+  padding: 0.5rem 0.55rem;
+  border: 1px solid rgb(244 246 248 / 0.15);
+  background: rgb(244 246 248 / 0.03);
+  transition: padding 280ms ease, border-color 280ms ease, min-height 280ms ease;
+  min-height: 52px;
+}
+
+.scc[data-phase='expanded'] .scc__save {
+  padding: 0.85rem 0.7rem;
+  min-height: 100px;
+  border-color: rgb(46 144 255 / 0.45);
+}
+
+.scc__save-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--ps-sky);
+}
+
+.scc__meta {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: rgb(244 246 248 / 0.7);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 280ms ease, max-height 280ms ease;
+}
+
+.scc[data-phase='expanded'] .scc__meta {
+  opacity: 1;
+  max-height: 80px;
+}
+
+.scc__diff {
+  color: var(--ps-blue);
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scc__ring-track,
+  .scc__ring-fill,
+  .scc__pulse,
+  .scc__wave,
+  .scc__sync-beam,
+  .scc__morph,
+  .scc__fill,
+  .scc__notch-glow {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .scc__ring-track,
+html[data-force-reduced-motion='true'] .scc__ring-fill,
+html[data-force-reduced-motion='true'] .scc__pulse,
+html[data-force-reduced-motion='true'] .scc__wave,
+html[data-force-reduced-motion='true'] .scc__sync-beam,
+html[data-force-reduced-motion='true'] .scc__morph,
+html[data-force-reduced-motion='true'] .scc__fill,
+html[data-force-reduced-motion='true'] .scc__notch-glow {
+  transition: none !important;
+  animation: none !important;
+}
