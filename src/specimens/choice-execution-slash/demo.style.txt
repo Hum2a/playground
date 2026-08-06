@@ -1,0 +1,366 @@
+/* SPX-316 Choice Execution Slash — portable contract. Do not restyle to host tokens. */
+
+.choice-slash-demo {
+  --cs-black: #090909;
+  --cs-red: #e60012;
+  --cs-paper: #f5f1e8;
+  --cs-ease: cubic-bezier(0.55, 0, 0.85, 0.35);
+  --cs-slash-rot: 18deg;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1.25rem 1rem 1rem;
+  overflow: hidden;
+  background: var(--cs-black);
+  color: var(--cs-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.choice-slash-demo__question {
+  margin: 0 0 0.85rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cs-red);
+}
+
+.choice-slash-demo__options {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-width: 16rem;
+}
+
+.choice-slash-demo__option {
+  position: relative;
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--cs-paper);
+  border-radius: 0;
+  background: transparent;
+  color: var(--cs-paper);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: translateX(0);
+}
+
+.choice-slash-demo__option:focus-visible {
+  outline: 2px solid var(--cs-red);
+  outline-offset: 3px;
+}
+
+.choice-slash-demo__backing {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--cs-red);
+  opacity: 0;
+  transform: translate(0, 0);
+  pointer-events: none;
+}
+
+.choice-slash-demo__label {
+  position: relative;
+  z-index: 1;
+}
+
+.choice-slash-demo__option.is-selected {
+  transform: translateX(4px);
+}
+
+.choice-slash-demo__option.is-selected .choice-slash-demo__backing {
+  opacity: 1;
+  transform: translate(-4px, 3px);
+}
+
+.choice-slash-demo__option.is-ghost {
+  visibility: hidden;
+}
+
+.choice-slash-demo__controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.choice-slash-demo__confirm,
+.choice-slash-demo__reset {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid var(--cs-paper);
+  border-radius: 0;
+  background: var(--cs-red);
+  color: var(--cs-paper);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.choice-slash-demo__reset {
+  background: transparent;
+}
+
+.choice-slash-demo__confirm:disabled,
+.choice-slash-demo__option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.choice-slash-demo__confirm:focus-visible,
+.choice-slash-demo__reset:focus-visible {
+  outline: 2px solid var(--cs-paper);
+  outline-offset: 3px;
+}
+
+.choice-slash-demo__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Slash */
+.choice-slash-demo__slash {
+  position: absolute;
+  z-index: 4;
+  left: -20%;
+  top: 8%;
+  width: 130%;
+  height: 20px;
+  background: var(--cs-red);
+  clip-path: polygon(0% 18%, 100% 0%, 100% 82%, 0% 100%);
+  transform: rotate(var(--cs-slash-rot)) translate(-120%, 0);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.choice-slash-demo.is-slashing .choice-slash-demo__slash {
+  animation: choice-slash-travel 180ms var(--cs-ease) forwards;
+}
+
+.choice-slash-demo.is-confirmed .choice-slash-demo__slash {
+  display: none;
+}
+
+@keyframes choice-slash-travel {
+  from {
+    transform: rotate(var(--cs-slash-rot)) translate(-120%, 0);
+  }
+  to {
+    transform: rotate(var(--cs-slash-rot)) translate(40%, 120%);
+  }
+}
+
+/* Selected stays above slash so slash “passes behind” */
+.choice-slash-demo.is-slashing .choice-slash-demo__option.is-selected {
+  z-index: 5;
+  isolation: isolate;
+}
+
+.choice-slash-demo.is-slashing .choice-slash-demo__option.is-selected::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: 2;
+  background: var(--cs-black);
+  clip-path: polygon(8% 0%, 100% 12%, 92% 100%, 0% 88%);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.choice-slash-demo.is-slashing .choice-slash-demo__option.is-selected .choice-slash-demo__label,
+.choice-slash-demo.is-slashing .choice-slash-demo__option.is-selected .choice-slash-demo__backing {
+  z-index: 3;
+}
+
+/* Decorative split halves */
+.choice-slash-demo__shard {
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
+  border: 2px solid var(--cs-paper);
+  color: var(--cs-paper);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.7rem 0.9rem;
+  pointer-events: none;
+  background: var(--cs-black);
+}
+
+.choice-slash-demo__shard--a {
+  clip-path: polygon(0% 0%, 100% 0%, 55% 100%, 0% 100%);
+}
+
+.choice-slash-demo__shard--b {
+  clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.choice-slash-demo.is-rejecting .choice-slash-demo__shard--a.is-above {
+  animation: choice-slash-reject-ul 240ms var(--cs-ease) forwards;
+}
+
+.choice-slash-demo.is-rejecting .choice-slash-demo__shard--b.is-above {
+  animation: choice-slash-reject-lr 240ms var(--cs-ease) forwards;
+}
+
+.choice-slash-demo.is-rejecting .choice-slash-demo__shard--a.is-below {
+  animation: choice-slash-reject-ur 240ms var(--cs-ease) forwards;
+}
+
+.choice-slash-demo.is-rejecting .choice-slash-demo__shard--b.is-below {
+  animation: choice-slash-reject-ll 240ms var(--cs-ease) forwards;
+}
+
+@keyframes choice-slash-reject-ul {
+  to {
+    transform: translate(-36px, -28px) rotate(-8deg);
+    opacity: 1;
+  }
+}
+
+@keyframes choice-slash-reject-lr {
+  to {
+    transform: translate(38px, 32px) rotate(7deg);
+    opacity: 1;
+  }
+}
+
+@keyframes choice-slash-reject-ur {
+  to {
+    transform: translate(34px, -30px) rotate(9deg);
+    opacity: 1;
+  }
+}
+
+@keyframes choice-slash-reject-ll {
+  to {
+    transform: translate(-40px, 34px) rotate(-6deg);
+    opacity: 1;
+  }
+}
+
+/* Final confirmed state */
+.choice-slash-demo__final {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 6;
+  width: min(78%, 12.5rem);
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  text-align: center;
+}
+
+.choice-slash-demo__final[hidden] {
+  display: none;
+}
+
+.choice-slash-demo.is-attacking .choice-slash-demo__final {
+  display: block;
+  animation: choice-slash-attack 260ms var(--cs-ease) forwards;
+}
+
+.choice-slash-demo.is-confirmed .choice-slash-demo__final {
+  display: block;
+  transform: translate(-50%, -50%) scale(1.12) rotate(-2deg);
+}
+
+.choice-slash-demo__final-panel {
+  position: absolute;
+  inset: -0.55rem -0.75rem;
+  z-index: 0;
+  background: var(--cs-black);
+  clip-path: polygon(0% 8%, 100% 0%, 96% 100%, 4% 92%);
+  border: 2px solid var(--cs-paper);
+}
+
+.choice-slash-demo__final-backing {
+  position: absolute;
+  inset: -0.55rem -0.75rem;
+  z-index: -1;
+  background: var(--cs-red);
+  transform: translate(8px, 7px);
+  clip-path: polygon(0% 8%, 100% 0%, 96% 100%, 4% 92%);
+}
+
+.choice-slash-demo__final-label {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(1.2rem, 5vw, 1.55rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.choice-slash-demo__selected-tag {
+  position: relative;
+  z-index: 1;
+  margin: 0.35rem 0 0;
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  background: var(--cs-paper);
+  color: var(--cs-black);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@keyframes choice-slash-attack {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  55% {
+    transform: translate(-50%, -50%) scale(1.22) rotate(-4deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.12) rotate(-2deg);
+  }
+}
+
+.choice-slash-demo.is-confirmed .choice-slash-demo__options,
+.choice-slash-demo.is-confirmed .choice-slash-demo__confirm {
+  display: none;
+}
+
+.choice-slash-demo.is-confirmed .choice-slash-demo__reset {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .choice-slash-demo.is-slashing .choice-slash-demo__slash,
+  .choice-slash-demo.is-rejecting .choice-slash-demo__shard,
+  .choice-slash-demo.is-attacking .choice-slash-demo__final {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .choice-slash-demo.is-slashing .choice-slash-demo__slash,
+[data-force-reduced-motion='true'] .choice-slash-demo.is-rejecting .choice-slash-demo__shard,
+[data-force-reduced-motion='true'] .choice-slash-demo.is-attacking .choice-slash-demo__final {
+  animation: none !important;
+}

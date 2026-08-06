@@ -1,0 +1,60 @@
+{
+  "name": "choice-execution-slash",
+  "intent": "Diagonal confirmation slash rejects unselected options while the chosen option survives and expands into a SELECTED state.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "choices": ["standard", "express", "overnight"],
+  "defaultChoice": "express",
+  "preConfirm": {
+    "selectedTranslateXPx": 4,
+    "selectedBackingOffset": "-4px 3px"
+  },
+  "slash": {
+    "width": "130%",
+    "heightPx": 20,
+    "rotateDeg": 18,
+    "clipPath": "polygon(0% 18%, 100% 0%, 100% 82%, 0% 100%)",
+    "durationMs": 180,
+    "path": "upper-left to lower-right"
+  },
+  "rejection": {
+    "startMs": 60,
+    "durationMs": 240,
+    "travelPx": [20, 45],
+    "shardsAriaHidden": true
+  },
+  "attack": {
+    "startMs": 220,
+    "durationMs": 260,
+    "scaleKeyframes": [1, 1.22, 1.12],
+    "rotateKeyframesDeg": [0, -4, -2],
+    "backingOffsetPx": [8, 7]
+  },
+  "timing": {
+    "totalMs": 620,
+    "easing": "cubic-bezier(0.55, 0, 0.85, 0.35)"
+  },
+  "api": {
+    "export": ["selectChoice(choice)", "runChoiceSlash()", "resetChoiceSlash()"],
+    "busyGuard": true,
+    "selectionDoesNotConfirm": true,
+    "sandboxSafe": true,
+    "noNetwork": true
+  },
+  "a11y": {
+    "radiogroup": true,
+    "statusAfterConfirm": "{Choice} selected.",
+    "keepAlternativesUntilConfirm": true,
+    "shardsAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show final selected state; no slash or shard motion"
+  }
+}

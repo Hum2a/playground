@@ -1,0 +1,63 @@
+<div class="choice-slash-demo" data-choice-slash-demo>
+  <p class="choice-slash-demo__question" id="choice-slash-q">DELIVERY SPEED</p>
+
+  <div
+    class="choice-slash-demo__options"
+    role="radiogroup"
+    aria-labelledby="choice-slash-q"
+    data-choice-slash-options
+  >
+    <button
+      type="button"
+      role="radio"
+      class="choice-slash-demo__option"
+      data-choice="standard"
+      aria-checked="false"
+    >
+      <span class="choice-slash-demo__backing" aria-hidden="true"></span>
+      <span class="choice-slash-demo__label">STANDARD</span>
+    </button>
+    <button
+      type="button"
+      role="radio"
+      class="choice-slash-demo__option is-selected"
+      data-choice="express"
+      aria-checked="true"
+    >
+      <span class="choice-slash-demo__backing" aria-hidden="true"></span>
+      <span class="choice-slash-demo__label">EXPRESS</span>
+    </button>
+    <button
+      type="button"
+      role="radio"
+      class="choice-slash-demo__option"
+      data-choice="overnight"
+      aria-checked="false"
+    >
+      <span class="choice-slash-demo__backing" aria-hidden="true"></span>
+      <span class="choice-slash-demo__label">OVERNIGHT</span>
+    </button>
+  </div>
+
+  <div class="choice-slash-demo__stage" data-choice-slash-stage aria-hidden="true"></div>
+
+  <div class="choice-slash-demo__final" data-choice-slash-final hidden>
+    <span class="choice-slash-demo__final-backing" aria-hidden="true"></span>
+    <span class="choice-slash-demo__final-panel" aria-hidden="true"></span>
+    <p class="choice-slash-demo__final-label" data-choice-slash-final-label>EXPRESS</p>
+    <p class="choice-slash-demo__selected-tag">SELECTED</p>
+  </div>
+
+  <div class="choice-slash-demo__controls" data-choice-slash-controls>
+    <button type="button" class="choice-slash-demo__confirm" data-choice-slash-confirm>
+      CONFIRM
+    </button>
+    <button type="button" class="choice-slash-demo__reset" data-choice-slash-reset hidden>
+      RESET
+    </button>
+  </div>
+
+  <p class="choice-slash-demo__status" role="status" aria-live="polite" data-choice-slash-status>
+    Express selected for delivery speed. Confirm to commit.
+  </p>
+</div>
