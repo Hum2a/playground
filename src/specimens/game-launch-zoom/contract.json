@@ -1,0 +1,21 @@
+{
+  "name": "game-launch-zoom",
+  "intent": "Tile zooms to fill stage into launch view.",
+  "catalogue": {
+    "ps": "PS-026",
+    "ref": "SPX-3332"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "api": {
+    "run": "runGameLaunchZoom()",
+    "reset": "resetGameLaunchZoom()"
+  },
+  "reducedMotion": {
+    "behaviour": "Launch view appears at full size instantly"
+  }
+}

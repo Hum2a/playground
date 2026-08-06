@@ -183,6 +183,7 @@ import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionPreview } from './fusion-preview/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { gadgetDeployment } from './gadget-deployment/entry'
+import { gameLaunchZoom } from './game-launch-zoom/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { gridReorderGap } from './grid-reorder-gap/entry'
@@ -679,6 +680,7 @@ export const specimens: Specimen[] = [
   fusionPreview,
   fusionSelectionMerge,
   gadgetDeployment,
+  gameLaunchZoom,
   glassFractureReveal,
   graphicBurstHover,
   gridReorderGap,
