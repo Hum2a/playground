@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/card-to-detail-container-transform.schema.json",
+  "title": "CardToDetailContainerTransform",
+  "description": "Portable contract for card-to-detail container transform with shared title element.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "preview", "geometry", "timing", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "card-to-detail-container-transform" },
+    "intent": {
+      "type": "string",
+      "const": "Middle 304×112px card morphs into 336×548px detail over 420ms; title persists; metadata fades 0–120ms; detail content reveals 160–360ms."
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "heightPx": { "type": "number", "const": 620 }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardWidthPx", "cardHeightPx", "detailWidthPx", "detailHeightPx", "radiusStartPx", "radiusEndPx"],
+      "properties": {
+        "cardWidthPx": { "type": "number", "const": 304 },
+        "cardHeightPx": { "type": "number", "const": 112 },
+        "detailWidthPx": { "type": "number", "const": 336 },
+        "detailHeightPx": { "type": "number", "const": 548 },
+        "radiusStartPx": { "type": "number", "const": 20 },
+        "radiusEndPx": { "type": "number", "const": 28 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "metaFadeMs", "contentRevealStartMs", "contentRevealEndMs"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 420 },
+        "metaFadeMs": { "type": "number", "const": 120 },
+        "contentRevealStartMs": { "type": "number", "const": 160 },
+        "contentRevealEndMs": { "type": "number", "const": 360 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loops", "finalStatic"],
+      "properties": {
+        "loops": { "type": "boolean", "const": false },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateGeometry", "opacityHandoffMs", "triggers"],
+      "properties": {
+        "immediateGeometry": { "type": "boolean", "const": true },
+        "opacityHandoffMs": { "type": "number", "const": 100 },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "scaffold", "card", "detail"],
+      "properties": {
+        "root": { "type": "string", "const": "ctd" },
+        "scaffold": { "type": "string", "const": "ctd__scaffold" },
+        "card": { "type": "string", "const": "ctd__card" },
+        "detail": { "type": "string", "const": "ctd__detail" }
+      }
+    }
+  }
+}

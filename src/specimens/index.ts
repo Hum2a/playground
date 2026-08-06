@@ -25,6 +25,7 @@ import { captureShake } from './capture-shake/entry'
 import { capsuleCollapse } from './capsule-collapse/entry'
 import { capsuleDeploy } from './capsule-deploy/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
+import { cardToDetailContainerTransform } from './card-to-detail-container-transform/entry'
 import { championResolution } from './champion-resolution/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
@@ -263,6 +264,7 @@ export const specimens: Specimen[] = [
   captureBreakout,
   captureShake,
   cardBreakSummon,
+  cardToDetailContainerTransform,
   championResolution,
   chargeRelease,
   choiceExecutionSlash,
