@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/airdrop-transfer-arc.schema.json",
+  "title": "AirdropTransferArc",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "layout", "transfer", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "airdrop-transfer-arc" },
+    "intent": {
+      "type": "string",
+      "const": "Represent sending one file to a discovered nearby recipient using a visible transfer path and explicit acceptance states."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "recipient", "file"],
+      "properties": {
+        "source": { "type": "string", "const": "THIS DEVICE" },
+        "recipient": { "type": "string", "const": "DEVICE // B" },
+        "file": { "type": "string", "const": "REPORT.PDF // 4.2MB" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["separationPx", "brackets"],
+      "properties": {
+        "separationPx": { "type": "number", "const": 280 },
+        "brackets": { "type": "number", "const": 4 }
+      }
+    },
+    "transfer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["acceptDelayMs", "arcMs", "proxyWidthPx", "proxyHeightPx", "progressSteps"],
+      "properties": {
+        "acceptDelayMs": { "type": "number", "const": 260 },
+        "arcMs": { "type": "number", "const": 520 },
+        "proxyWidthPx": { "type": "number", "const": 74 },
+        "proxyHeightPx": { "type": "number", "const": 44 },
+        "progressSteps": {
+          "type": "array",
+          "const": [0, 25, 50, 75, 100]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skipArc", "triggers"],
+      "properties": {
+        "skipArc": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "proxy", "recipient"],
+      "properties": {
+        "root": { "type": "string", "const": "ata" },
+        "proxy": { "type": "string", "const": "ata__proxy" },
+        "recipient": { "type": "string", "const": "ata__device--recipient" }
+      }
+    }
+  }
+}

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **20 / 258** complete.
+- Progress: **21 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 20 |
-| Open | 238 |
+| Done | 21 |
+| Open | 237 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-188 | `SPX-1487` | `airdrop-transfer-arc` | AirDrop Transfer Arc |
 | IOS-172 | `SPX-1471` | `control-centre-module-expansion` | Control Centre Module Expansion |
 | IOS-160 | `SPX-1459` | `quick-look-expansion` | Quick Look Expansion |
 | IOS-154 | `SPX-1453` | `drop-target-magnetism` | Drop Target Magnetism |
@@ -79,7 +80,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — drag-drop
 - [x] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
 - [x] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
-- [ ] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
+- [x] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
 - [ ] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
 - [ ] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
 - [ ] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
@@ -334,7 +335,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [ ] **IOS-186** · `SPX-1485` · **Nearby Device Discovery** — dormant field discovers a fixed set of nearby recipients.
 - [ ] **IOS-187** · `SPX-1486` · **Recipient Acquisition Ring** — selected nearby recipient receives an explicit transfer-ready state.
-- [ ] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — file proxy leaves source and travels toward a recipient representation.
+- [x] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — file proxy leaves source and travels toward a recipient representation.
 - [ ] **IOS-189** · `SPX-1488` · **Transfer Acceptance** — pending incoming item changes from offered to accepted before data movement begins.
 - [ ] **IOS-190** · `SPX-1489` · **Transfer Completion Absorption** — transferred object becomes part of the recipient's content rather than evaporating.
 - [ ] **IOS-191** · `SPX-1490` · **Transfer Rejection Return** — rejected item collapses back toward sender.

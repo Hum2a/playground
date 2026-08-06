@@ -1,6 +1,7 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { adaptiveRecovery } from './adaptive-recovery/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
+import { airdropTransferArc } from './airdrop-transfer-arc/entry'
 import { appLaunchExpansion } from './app-launch-expansion/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
@@ -207,6 +208,7 @@ export const specimens: Specimen[] = [
   achievementEncounter,
   adaptiveRecovery,
   afterimageNavigation,
+  airdropTransferArc,
   appLaunchExpansion,
   azureShardTransition,
   badgeCaseInsert,
