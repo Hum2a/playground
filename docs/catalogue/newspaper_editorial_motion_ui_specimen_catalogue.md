@@ -148,7 +148,7 @@ chronology and information priority.
 
 # 6. Page Turns / Paper Motion
 
-- [ ] **NEWS-045** · `SPX-3567` · ★★★★★ **Broadsheet Page Turn** — A large paper-like plane
+- [x] **NEWS-045** · `SPX-3567` · ★★★★★ **Broadsheet Page Turn** — A large paper-like plane
     curls across the viewport to reveal the next page.
 - [ ] **NEWS-046** · `SPX-3568` · ★★★★★ **Half-Fold Open** — A folded editorial panel opens from
     the centre into a full reading surface.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-045 | SPX-3567 | `broadsheet-page-turn` | Broadsheet Page Turn |
 | NEWS-041 | SPX-3563 | `article-close-return` | Article Close Return |
 | NEWS-039 | SPX-3561 | `reading-progress-rule` | Reading Progress Rule |
 | NEWS-036 | SPX-3558 | `article-open-from-teaser` | Article Open from Teaser |
@@ -697,12 +698,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **18 / 237** complete.
+- Progress: **19 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 219 |
+| Done | 19 |
+| Open | 218 |
 
 ## Core first-wave / build queue
 
@@ -724,7 +725,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-036** · `SPX-3558` · **Article Open from Teaser** · `article-open-from-teaser`
 - [x] **NEWS-039** · `SPX-3561` · **Reading Progress Rule** · `reading-progress-rule`
 - [x] **NEWS-041** · `SPX-3563` · **Article Close Return** · `article-close-return`
-- [ ] **NEWS-045** · `SPX-3567` · **Broadsheet Page Turn** · scaffold `broadsheet-page-turn`
+- [x] **NEWS-045** · `SPX-3567` · **Broadsheet Page Turn** · `broadsheet-page-turn`
 - [ ] **NEWS-046** · `SPX-3568` · **Half-Fold Open** · scaffold `half-fold-open`
 - [ ] **NEWS-047** · `SPX-3569` · **Paper Peel Reveal** · scaffold `paper-peel-reveal`
 - [ ] **NEWS-053** · `SPX-3575` · **Press Roll Reveal** · scaffold `press-roll-reveal`

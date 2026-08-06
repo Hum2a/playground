@@ -1,0 +1,8 @@
+{
+  "name": "broadsheet-page-turn",
+  "ref": "SPX-3567",
+  "title": "Broadsheet Page Turn",
+  "mode": "ticker",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

@@ -570,6 +570,8 @@ import { readingProgressRule } from './reading-progress-rule/entry'
 
 import { articleCloseReturn } from './article-close-return/entry'
 
+import { broadsheetPageTurn } from './broadsheet-page-turn/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1083,6 +1085,7 @@ export const specimens: Specimen[] = [
   articleOpenFromTeaser,
   readingProgressRule,
   articleCloseReturn,
+  broadsheetPageTurn,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
