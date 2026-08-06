@@ -1,0 +1,115 @@
+{
+  "name": "panel-explosion-reveal",
+  "intent": "Solid irregular black cover fractures into seven interlocking comic panels that accelerate away from an off-centre impact, revealing content already underneath.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "impact": {
+    "xPercent": 54,
+    "yPercent": 47,
+    "durationMs": 80,
+    "strokeCount": 4
+  },
+  "panels": [
+    {
+      "id": 1,
+      "region": "upper-left",
+      "clipPath": "polygon(0% 0%, 48% 0%, 52% 42%, 0% 48%)",
+      "exit": { "x": "-110%", "y": "-90%", "rotateDeg": -13 },
+      "delayMs": 0,
+      "redBacking": true,
+      "backingLagMs": 30
+    },
+    {
+      "id": 2,
+      "region": "upper-centre",
+      "clipPath": "polygon(46% 0%, 78% 0%, 72% 40%, 50% 44%)",
+      "exit": { "x": "-20%", "y": "-125%", "rotateDeg": 8 },
+      "delayMs": 20,
+      "redBacking": false
+    },
+    {
+      "id": 3,
+      "region": "upper-right",
+      "clipPath": "polygon(76% 0%, 100% 0%, 100% 46%, 70% 42%)",
+      "exit": { "x": "105%", "y": "-85%", "rotateDeg": 15 },
+      "delayMs": 35,
+      "redBacking": true,
+      "backingLagMs": 65
+    },
+    {
+      "id": 4,
+      "region": "centre-left",
+      "clipPath": "polygon(0% 46%, 50% 42%, 48% 68%, 0% 78%)",
+      "exit": { "x": "-125%", "y": "5%", "rotateDeg": -9 },
+      "delayMs": 55,
+      "redBacking": false
+    },
+    {
+      "id": 5,
+      "region": "centre-right",
+      "clipPath": "polygon(50% 42%, 100% 44%, 100% 72%, 52% 70%)",
+      "exit": { "x": "120%", "y": "-8%", "rotateDeg": 11 },
+      "delayMs": 70,
+      "redBacking": true,
+      "backingLagMs": 100
+    },
+    {
+      "id": 6,
+      "region": "lower-left",
+      "clipPath": "polygon(0% 76%, 48% 66%, 42% 100%, 0% 100%)",
+      "exit": { "x": "-90%", "y": "105%", "rotateDeg": 12 },
+      "delayMs": 90,
+      "redBacking": false
+    },
+    {
+      "id": 7,
+      "region": "lower-right",
+      "clipPath": "polygon(46% 68%, 100% 70%, 100% 100%, 40% 100%)",
+      "exit": { "x": "100%", "y": "115%", "rotateDeg": -14 },
+      "delayMs": 110,
+      "redBacking": false
+    }
+  ],
+  "cracks": {
+    "count": 6,
+    "phaseMs": [80, 220]
+  },
+  "timing": {
+    "impactMs": 80,
+    "crackMs": 140,
+    "separateMs": 400,
+    "hostScaleMs": 300,
+    "easing": "cubic-bezier(0.55, 0, 0.85, 0.35)",
+    "hostScaleFrom": 0.96,
+    "hostScaleTo": 1
+  },
+  "api": {
+    "export": ["runPanelExplosion()", "resetPanelExplosion()"],
+    "busyGuard": true,
+    "deterministicReset": true,
+    "sandboxSafe": true,
+    "noNetwork": true
+  },
+  "a11y": {
+    "coverAriaHidden": true,
+    "hostSemantic": true,
+    "triggerIsButton": true,
+    "doNotAnnouncePanels": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately remove cover; host at scale 1; no crack/flight/scale animation"
+  },
+  "constraints": {
+    "noConfetti": true,
+    "noParticles": true,
+    "noOpacityFadeReveal": true,
+    "noExternalAssets": true
+  }
+}
