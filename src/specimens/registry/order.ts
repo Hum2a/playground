@@ -570,4 +570,5 @@ export const specimenOrder: string[] = [
   'vinyl-spin-up',
   'scratch-recoil',
   'deck-sync-lock',
+  'crossfader-blend',
 ]

@@ -255,7 +255,7 @@ specimens can feel tactile without needing sound.
     waveform forward/back and releases into playback.
 - [x] **MUSIC-086** · `SPX-3845` · ★★★★★ **Deck Sync Lock** — Two tempo values converge and a
     phase indicator aligns.
-- [ ] **MUSIC-087** · `SPX-3846` · ★★★★★ **Crossfader Blend** — A horizontal fader moves between
+- [x] **MUSIC-087** · `SPX-3846` · ★★★★★ **Crossfader Blend** — A horizontal fader moves between
     deck A and B while their visual prominence crossfades.
 - [ ] **MUSIC-088** · `SPX-3847` · ★★★★☆ **Needle Drop** — A tonearm-like indicator lowers onto a
     track position and starts playback.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-087 | SPX-3846 | `crossfader-blend` | Crossfader Blend |
 | MUSIC-086 | SPX-3845 | `deck-sync-lock` | Deck Sync Lock |
 | MUSIC-085 | SPX-3844 | `scratch-recoil` | Scratch Recoil |
 | MUSIC-079 | SPX-3838 | `vinyl-spin-up` | Vinyl Spin-Up |
@@ -886,12 +887,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **23 / 310** complete.
+- Progress: **24 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 23 |
-| Open | 287 |
+| Done | 24 |
+| Open | 286 |
 
 ## Core first-wave / build queue
 
@@ -920,7 +921,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · `vinyl-spin-up`
 - [x] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · `scratch-recoil`
 - [x] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · `deck-sync-lock`
-- [ ] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · scaffold `crossfader-blend`
+- [x] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · `crossfader-blend`
 - [ ] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · scaffold `scrolling-dj-waveform`
 - [ ] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · scaffold `beatgrid-lock`
 - [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`

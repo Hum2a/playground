@@ -1,0 +1,8 @@
+{
+  "name": "crossfader-blend",
+  "ref": "SPX-3846",
+  "title": "Crossfader Blend",
+  "mode": "deck",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
