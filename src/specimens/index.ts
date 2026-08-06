@@ -283,6 +283,7 @@ import { predictiveBackAppShrink } from './predictive-back-app-shrink/entry'
 import { predictiveBackEdgePull } from './predictive-back-edge-pull/entry'
 import { presenceRadarSweep } from './presence-radar-sweep/entry'
 import { pressedControlCompression } from './pressed-control-compression/entry'
+import { previewCardHoverExpand } from './preview-card-hover-expand/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { processingTimeSkip } from './processing-time-skip/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
@@ -723,6 +724,7 @@ export const specimens: Specimen[] = [
   predictiveBackEdgePull,
   presenceRadarSweep,
   pressedControlCompression,
+  previewCardHoverExpand,
   printRegistrationHover,
   processingTimeSkip,
   progressMilestoneBreakthrough,

@@ -1,0 +1,22 @@
+{
+  "name": "preview-card-hover-expand",
+  "intent": "Focused rail card expands while neighbours translate outward without overlapping.",
+  "primitives": ["preview", "hover", "expand"],
+  "geometry": {
+    "cardPx": [112, 148],
+    "expandScale": 1.18,
+    "neighbourTranslatePx": 22,
+    "expandMs": 220
+  },
+  "api": {
+    "expand": "runPreviewExpand(index?)",
+    "collapse": "runPreviewCollapse()"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Geometry changes apply without timed transitions"
+  }
+}
