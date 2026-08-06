@@ -66,6 +66,7 @@ import { hoverCutout } from './hover-cutout/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { irreversibleThreshold } from './irreversible-threshold/entry'
+import { isolatedTimeFreeze } from './isolated-time-freeze/entry'
 import { itemObtained } from './item-obtained/entry'
 import { instantTransmissionNavigation } from './instant-transmission-navigation/entry'
 import { kiChargeMeter } from './ki-charge-meter/entry'
@@ -188,6 +189,7 @@ export const specimens: Specimen[] = [
   inkSplatTransition,
   instantTransmissionNavigation,
   irreversibleThreshold,
+  isolatedTimeFreeze,
   itemObtained,
   kiChargeMeter,
   victoryResultsTally,

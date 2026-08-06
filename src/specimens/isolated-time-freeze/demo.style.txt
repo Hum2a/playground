@@ -1,0 +1,447 @@
+/* SPX-1158 Isolated Time Freeze — portable contract. Do not restyle to host tokens. */
+
+.itf {
+  --itf-ink: #0b0d12;
+  --itf-panel: #161a22;
+  --itf-rule: #2e3644;
+  --itf-mute: #6f7888;
+  --itf-pale: #d5dce8;
+  --itf-white: #f1f4f8;
+  --itf-accent: #8eb4c4;
+  --itf-select: #c4b08e;
+  --itf-freeze-ms: 50ms;
+  --itf-export-ms: 500ms;
+  --itf-hold-ms: 120ms;
+  --itf-resume-ms: 350ms;
+  --itf-ease: cubic-bezier(0.33, 0.1, 0.22, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 0.7rem;
+  overflow: hidden;
+  background: var(--itf-ink);
+  color: var(--itf-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.itf *,
+.itf *::before,
+.itf *::after {
+  box-sizing: border-box;
+}
+
+.itf__toolbar {
+  z-index: 2;
+}
+
+.itf__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--itf-accent);
+  border-radius: 0;
+  background: var(--itf-panel);
+  color: var(--itf-white);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.itf__btn:focus {
+  outline: none;
+}
+
+.itf__btn:focus-visible {
+  outline: 2px solid var(--itf-accent);
+  outline-offset: 3px;
+}
+
+.itf__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.itf__status {
+  min-height: 2.4em;
+  margin: 0;
+  color: rgb(213 220 232 / 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+.itf__clock {
+  margin: 0;
+  color: var(--itf-accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+}
+
+.itf__host {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 230px;
+  padding: 0.85rem 0.5rem;
+}
+
+.itf__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.55rem;
+  width: min(100%, 360px);
+}
+
+.itf__card {
+  position: relative;
+  display: grid;
+  gap: 0.4rem;
+  min-height: 92px;
+  padding: 0.55rem 0.6rem 0.65rem;
+  border: 1px solid var(--itf-rule);
+  background: var(--itf-panel);
+}
+
+.itf__card--c {
+  border-color: var(--itf-select);
+}
+
+.itf__id,
+.itf__state {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.itf__id {
+  color: var(--itf-white);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.itf__state {
+  color: var(--itf-mute);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.itf__card--c .itf__state {
+  color: var(--itf-select);
+}
+
+/* A — three-dot stepped sequence */
+.itf__dots {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: 0.15rem;
+  height: 12px;
+}
+
+.itf__dot {
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--itf-accent);
+  background: transparent;
+  opacity: 0.35;
+  animation: itf-dot-step 1200ms steps(1, end) infinite;
+}
+
+.itf__dot--1 {
+  animation-delay: 0ms;
+}
+
+.itf__dot--2 {
+  animation-delay: 400ms;
+}
+
+.itf__dot--3 {
+  animation-delay: 800ms;
+}
+
+@keyframes itf-dot-step {
+  0%,
+  32% {
+    opacity: 1;
+    background: var(--itf-accent);
+  }
+  33%,
+  100% {
+    opacity: 0.35;
+    background: transparent;
+  }
+}
+
+/* B — horizontal travelling packet */
+.itf__packet-track {
+  position: relative;
+  margin-top: 0.25rem;
+  height: 10px;
+  border: 1px solid var(--itf-rule);
+  overflow: hidden;
+}
+
+.itf__packet {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 4px;
+  background: var(--itf-accent);
+  animation: itf-packet 1600ms linear infinite;
+}
+
+@keyframes itf-packet {
+  0% {
+    left: 2px;
+  }
+  100% {
+    left: calc(100% - 12px);
+  }
+}
+
+/* C — progress rail */
+.itf__rail {
+  position: relative;
+  margin-top: 0.2rem;
+  height: 6px;
+  border: 1px solid var(--itf-rule);
+  background: rgb(11 13 18 / 0.55);
+  overflow: hidden;
+}
+
+.itf__rail-fill {
+  display: block;
+  height: 100%;
+  background: var(--itf-select);
+  transition: width 110ms linear;
+}
+
+/* D — rotating four-segment indicator */
+.itf__spinner {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  margin-top: 0.15rem;
+  animation: itf-spin 1800ms linear infinite;
+}
+
+.itf__seg {
+  position: absolute;
+  width: 7px;
+  height: 3px;
+  background: var(--itf-accent);
+  opacity: 0.35;
+}
+
+.itf__seg--1 {
+  top: 2px;
+  left: 7.5px;
+  opacity: 1;
+}
+
+.itf__seg--2 {
+  top: 9.5px;
+  right: 2px;
+  transform: rotate(90deg);
+}
+
+.itf__seg--3 {
+  bottom: 2px;
+  left: 7.5px;
+  opacity: 0.55;
+}
+
+.itf__seg--4 {
+  top: 9.5px;
+  left: 2px;
+  transform: rotate(90deg);
+  opacity: 0.75;
+}
+
+@keyframes itf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Freeze field — four thin boundary lines with opening at C */
+.itf__field {
+  position: absolute;
+  inset: 0.35rem 0.15rem;
+  z-index: 0;
+  pointer-events: none;
+  max-width: 392px;
+  width: min(100%, 392px);
+  height: calc(100% - 0.7rem);
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+.itf__bound {
+  position: absolute;
+  background: var(--itf-accent);
+  opacity: 0;
+  transform-origin: center;
+}
+
+.itf__bound--top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transform: scaleX(0);
+}
+
+.itf__bound--right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  transform: scaleY(0);
+}
+
+.itf__bound--bottom {
+  bottom: 0;
+  left: 48%;
+  right: 0;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.itf__bound--left {
+  top: 0;
+  left: 0;
+  bottom: 52%;
+  width: 1px;
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.itf[data-state='freeze'] .itf__bound,
+.itf[data-state='export'] .itf__bound,
+.itf[data-state='hold'] .itf__bound {
+  opacity: 0.9;
+}
+
+.itf[data-state='freeze'] .itf__bound--top,
+.itf[data-state='export'] .itf__bound--top,
+.itf[data-state='hold'] .itf__bound--top {
+  transform: scaleX(1);
+  transition: transform var(--itf-freeze-ms) var(--itf-ease), opacity var(--itf-freeze-ms) linear;
+}
+
+.itf[data-state='freeze'] .itf__bound--right,
+.itf[data-state='export'] .itf__bound--right,
+.itf[data-state='hold'] .itf__bound--right {
+  transform: scaleY(1);
+  transition: transform var(--itf-freeze-ms) var(--itf-ease), opacity var(--itf-freeze-ms) linear;
+}
+
+.itf[data-state='freeze'] .itf__bound--bottom,
+.itf[data-state='export'] .itf__bound--bottom,
+.itf[data-state='hold'] .itf__bound--bottom {
+  transform: scaleX(1);
+  transition: transform var(--itf-freeze-ms) var(--itf-ease), opacity var(--itf-freeze-ms) linear;
+}
+
+.itf[data-state='freeze'] .itf__bound--left,
+.itf[data-state='export'] .itf__bound--left,
+.itf[data-state='hold'] .itf__bound--left {
+  transform: scaleY(1);
+  transition: transform var(--itf-freeze-ms) var(--itf-ease), opacity var(--itf-freeze-ms) linear;
+}
+
+.itf[data-state='resume'] .itf__bound,
+.itf[data-state='complete'] .itf__bound {
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+.itf[data-state='freeze'] .itf__card--a,
+.itf[data-state='freeze'] .itf__card--b,
+.itf[data-state='freeze'] .itf__card--d,
+.itf[data-state='export'] .itf__card--a,
+.itf[data-state='export'] .itf__card--b,
+.itf[data-state='export'] .itf__card--d,
+.itf[data-state='hold'] .itf__card--a,
+.itf[data-state='hold'] .itf__card--b,
+.itf[data-state='hold'] .itf__card--d {
+  opacity: 0.72;
+}
+
+.itf[data-state='export'] .itf__card--c,
+.itf[data-state='hold'] .itf__card--c {
+  border-color: var(--itf-select);
+  box-shadow: inset 0 0 0 1px rgb(196 176 142 / 0.25);
+}
+
+.itf--frozen-motion [data-role='frozen'] .itf__motion,
+.itf--frozen-motion [data-role='frozen'] .itf__motion * {
+  animation-play-state: paused !important;
+}
+
+.itf--settled .itf__motion,
+.itf--settled .itf__motion * {
+  animation: none !important;
+}
+
+.itf[data-state='complete'] .itf__card--a .itf__state,
+.itf[data-state='complete'] .itf__card--b .itf__state,
+.itf[data-state='complete'] .itf__card--d .itf__state {
+  color: var(--itf-accent);
+}
+
+.itf[data-state='complete'] .itf__card--c .itf__state {
+  color: var(--itf-select);
+}
+
+.itf[data-state='complete'] .itf__dots,
+.itf[data-state='complete'] .itf__packet,
+.itf[data-state='complete'] .itf__spinner {
+  opacity: 0.25;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .itf .itf__motion,
+  .itf .itf__motion *,
+  .itf .itf__bound,
+  .itf .itf__rail-fill {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .itf .itf__motion,
+[data-force-reduced-motion='true'] .itf .itf__motion *,
+[data-force-reduced-motion='true'] .itf .itf__bound,
+[data-force-reduced-motion='true'] .itf .itf__rail-fill,
+.itf.itf--reduced .itf__motion,
+.itf.itf--reduced .itf__motion *,
+.itf.itf--reduced .itf__bound,
+.itf.itf--reduced .itf__rail-fill {
+  animation: none !important;
+  transition: none !important;
+}
+
+.itf.itf--reduced .itf__card--c .itf__state {
+  color: var(--itf-select);
+}

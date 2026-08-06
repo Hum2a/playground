@@ -1,0 +1,46 @@
+{
+  "name": "isolated-time-freeze",
+  "intent": "Temporarily isolate C // EXPORT while A/B/D freeze in place, then resume surrounding processes from their frozen offsets.",
+  "catalogue": {
+    "db": "DB-193",
+    "ref": "SPX-1158",
+    "checklistTitle": "Time Freeze Interaction",
+    "specimenTitle": "Isolated Time Freeze"
+  },
+  "counts": {
+    "processes": 4,
+    "frozenProcesses": 3,
+    "selectedProcess": 1,
+    "boundaryLines": 4,
+    "progressSteps": 5
+  },
+  "processes": [
+    { "id": "A", "label": "INDEX", "activity": "three-dot-step" },
+    { "id": "B", "label": "SYNC", "activity": "travelling-packet" },
+    { "id": "C", "label": "EXPORT", "activity": "progress-rail", "selected": true },
+    { "id": "D", "label": "CLEANUP", "activity": "four-segment-spin" }
+  ],
+  "timing": {
+    "freezeMs": 50,
+    "exportMs": 500,
+    "holdMs": 120,
+    "resumeMs": 350
+  },
+  "progress": [42, 58, 73, 89, 100],
+  "constraints": {
+    "freezeInPlaceNoRestart": true,
+    "resumeFromFrozenOffset": true,
+    "boundaryOpeningAtC": true,
+    "noGiantGlowAroundC": true,
+    "noLoopingInFinal": true,
+    "noFranchiseNamesInUi": true
+  },
+  "api": {
+    "run": "runIsolatedTimeFreeze()",
+    "reset": "resetIsolatedTimeFreeze()",
+    "restartMessage": "restart"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show C COMPLETE and A/B/D READY; no looping indicators"
+  }
+}

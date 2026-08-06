@@ -1,0 +1,61 @@
+<div class="itf" data-itf data-state="idle">
+  <div class="itf__toolbar">
+    <button type="button" class="itf__btn" data-itf-freeze>
+      FREEZE + EXECUTE C
+    </button>
+  </div>
+
+  <p class="itf__status" role="status" aria-live="polite" data-itf-status>
+    Four processes active. C // EXPORT selected.
+  </p>
+
+  <p class="itf__clock" data-itf-clock>TIME // RUNNING</p>
+
+  <div class="itf__host" aria-hidden="true">
+    <div class="itf__field" data-itf-field>
+      <span class="itf__bound itf__bound--top"></span>
+      <span class="itf__bound itf__bound--right"></span>
+      <span class="itf__bound itf__bound--bottom"></span>
+      <span class="itf__bound itf__bound--left"></span>
+    </div>
+
+    <div class="itf__grid">
+      <article class="itf__card itf__card--a" data-itf-card="a" data-role="frozen">
+        <p class="itf__id">A // INDEX</p>
+        <p class="itf__state" data-itf-state-a>ACTIVE</p>
+        <div class="itf__motion itf__dots" data-itf-motion>
+          <span class="itf__dot itf__dot--1"></span>
+          <span class="itf__dot itf__dot--2"></span>
+          <span class="itf__dot itf__dot--3"></span>
+        </div>
+      </article>
+
+      <article class="itf__card itf__card--b" data-itf-card="b" data-role="frozen">
+        <p class="itf__id">B // SYNC</p>
+        <p class="itf__state" data-itf-state-b>ACTIVE</p>
+        <div class="itf__motion itf__packet-track" data-itf-motion>
+          <span class="itf__packet"></span>
+        </div>
+      </article>
+
+      <article class="itf__card itf__card--c" data-itf-card="c" data-role="selected">
+        <p class="itf__id">C // EXPORT</p>
+        <p class="itf__state" data-itf-state-c>42%</p>
+        <div class="itf__rail" data-itf-rail>
+          <span class="itf__rail-fill" data-itf-fill style="width: 42%"></span>
+        </div>
+      </article>
+
+      <article class="itf__card itf__card--d" data-itf-card="d" data-role="frozen">
+        <p class="itf__id">D // CLEANUP</p>
+        <p class="itf__state" data-itf-state-d>ACTIVE</p>
+        <div class="itf__motion itf__spinner" data-itf-motion>
+          <span class="itf__seg itf__seg--1"></span>
+          <span class="itf__seg itf__seg--2"></span>
+          <span class="itf__seg itf__seg--3"></span>
+          <span class="itf__seg itf__seg--4"></span>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 244** complete.
+- Progress: **22 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 223 |
+| Done | 22 |
+| Open | 222 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-193 | `SPX-1158` | `isolated-time-freeze` | Isolated Time Freeze |
 | DB-159 | `SPX-1124` | `irreversible-threshold` | Irreversible Threshold |
 | DB-192 | `SPX-1157` | `processing-time-skip` | Processing Time Skip |
 | DB-046 | `SPX-1011` | `instant-transmission-navigation` | Instant Transmission Navigation |
@@ -339,7 +340,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Time Manipulation
 
 - [x] **DB-192** ?? `SPX-1157` ?? **Hit Time-Skip** ??? an operation skips its expected intermediate animation frames and appears further ahead.
-- [ ] **DB-193** ?? `SPX-1158` ?? **Time Freeze Interaction** ??? surrounding interface pauses while one selected operation remains active.
+- [x] **DB-193** ?? `SPX-1158` ?? **Time Freeze Interaction** ??? surrounding interface pauses while one selected operation remains active.
 - [ ] **DB-194** ?? `SPX-1159` ?? **Temporal Snapshot** ??? current system state freezes and becomes a restorable checkpoint.
 - [ ] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? recent destructive action visibly reverses through its exact previous states.
 - [ ] **DB-196** ?? `SPX-1161` ?? **Three-Minute Rewind** ??? timeline scrub reconstructs a previous state.
