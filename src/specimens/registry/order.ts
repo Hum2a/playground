@@ -568,4 +568,5 @@ export const specimenOrder: string[] = [
   'patch-cable-connect',
   'signal-flow-pulse',
   'vinyl-spin-up',
+  'scratch-recoil',
 ]

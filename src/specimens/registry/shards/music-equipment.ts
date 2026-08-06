@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { scratchRecoil } from '../../library/music-equipment/scratch-recoil/entry'
 import { vinylSpinUp } from '../../library/music-equipment/vinyl-spin-up/entry'
 import { signalFlowPulse } from '../../library/music-equipment/signal-flow-pulse/entry'
 import { patchCableConnect } from '../../library/music-equipment/patch-cable-connect/entry'
@@ -22,6 +23,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  scratchRecoil,
   vinylSpinUp,
   signalFlowPulse,
   patchCableConnect,

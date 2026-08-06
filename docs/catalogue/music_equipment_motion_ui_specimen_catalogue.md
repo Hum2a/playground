@@ -251,7 +251,7 @@ specimens can feel tactile without needing sound.
     rate while a percentage display updates.
 - [ ] **MUSIC-084** · `SPX-3843` · ★★★★★ **Jog Wheel Nudge** — A platter rotates briefly
     faster/slower then returns to normal speed.
-- [ ] **MUSIC-085** · `SPX-3844` · ★★★★★ **Scratch Recoil** — Dragging the platter scrubs the
+- [x] **MUSIC-085** · `SPX-3844` · ★★★★★ **Scratch Recoil** — Dragging the platter scrubs the
     waveform forward/back and releases into playback.
 - [ ] **MUSIC-086** · `SPX-3845` · ★★★★★ **Deck Sync Lock** — Two tempo values converge and a
     phase indicator aligns.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-085 | SPX-3844 | `scratch-recoil` | Scratch Recoil |
 | MUSIC-079 | SPX-3838 | `vinyl-spin-up` | Vinyl Spin-Up |
 | MUSIC-101 | SPX-3860 | `signal-flow-pulse` | Signal Flow Pulse |
 | MUSIC-097 | SPX-3856 | `patch-cable-connect` | Patch Cable Connect |
@@ -884,12 +885,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **21 / 310** complete.
+- Progress: **22 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 289 |
+| Done | 22 |
+| Open | 288 |
 
 ## Core first-wave / build queue
 
@@ -916,7 +917,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · `velocity-pad-hit`
 - [x] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · `sample-slice-markers`
 - [x] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · `vinyl-spin-up`
-- [ ] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · scaffold `scratch-recoil`
+- [x] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · `scratch-recoil`
 - [ ] **MUSIC-086** · `SPX-3845` · **Deck Sync Lock** · scaffold `deck-sync-lock`
 - [ ] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · scaffold `crossfader-blend`
 - [ ] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · scaffold `scrolling-dj-waveform`
