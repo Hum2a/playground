@@ -105,6 +105,12 @@ Platform interaction language (continuity, detents, materials, ownership). No Ap
 
 Backlog: [`docs/catalogue/ios-macos-specimen-catalogue.md`](catalogue/ios-macos-specimen-catalogue.md) (`IOS-NNN` / `SPX-1300`…`SPX-1557`).
 
+### Android (`android`)
+
+*(franchise only so far — Material / predictive-back / system-surface motion language; no Google or Pixel assets)*
+
+Backlog: [`docs/catalogue/android-specimen-catalogue.md`](catalogue/android-specimen-catalogue.md) (`AND-NNN` / `SPX-1558`…`SPX-1974`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

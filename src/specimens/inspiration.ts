@@ -79,6 +79,10 @@ export const INSPIRATION_DIRECTORY = {
       macos: { label: 'macOS' },
     },
   },
+  android: {
+    label: 'Android',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},

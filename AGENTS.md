@@ -32,7 +32,8 @@ After a new specimen is registered and verified, agents auto-commit it (`Add SPX
 - **Pokémon:** [`docs/catalogue/pokemon-specimen-catalogue.md`](docs/catalogue/pokemon-specimen-catalogue.md) — open rows reserve `SPX-700`–`SPX-965`.
 - **Dragon Ball:** [`docs/catalogue/dragonball-specimen-catalogue.md`](docs/catalogue/dragonball-specimen-catalogue.md) — open rows reserve `SPX-966`–`SPX-1209`.
 - **iOS & macOS:** [`docs/catalogue/ios-macos-specimen-catalogue.md`](docs/catalogue/ios-macos-specimen-catalogue.md) — open rows reserve `SPX-1300`–`SPX-1557`.
+- **Android:** [`docs/catalogue/android-specimen-catalogue.md`](docs/catalogue/android-specimen-catalogue.md) — open rows reserve `SPX-1558`–`SPX-1974`.
 
-When a listed specimen ships, mark it `[x]` in the matching checklist in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Non-catalogue specimens use gaps not reserved by those ranges (typically `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`).
+When a listed specimen ships, mark it `[x]` in the matching checklist in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Non-catalogue specimens use gaps not reserved by those ranges (typically `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`).
 
 See `docs/design-spec.md` for the full product contract.
