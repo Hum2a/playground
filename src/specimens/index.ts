@@ -226,6 +226,7 @@ import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { mapConstruction } from './map-construction/entry'
+import { matchConfidenceMeter } from './match-confidence-meter/entry'
 import { matchStartSlam } from './match-start-slam/entry'
 import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { materialPullToRefresh } from './material-pull-to-refresh/entry'
@@ -698,6 +699,7 @@ export const specimens: Specimen[] = [
   longPressLift,
   mangaCutInNotification,
   mapConstruction,
+  matchConfidenceMeter,
   matchStartSlam,
   matchedCardExpansion,
   materialPullToRefresh,

@@ -1,0 +1,1 @@
+export function runMatchMeter(){document.querySelector('[data-fill]').style.width='94%';document.querySelector('[data-pct]').textContent='94'};document.querySelector('[data-run]')?.addEventListener('click',()=>runMatchMeter())

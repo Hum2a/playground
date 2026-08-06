@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **32 / 197** complete.
+- Progress: **33 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 32 |
-| Open | 165 |
+| Done | 33 |
+| Open | 164 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-105 | `SPX-3214` | `match-confidence-meter` | Match Confidence Meter |
 | NF-010 | `SPX-3119` | `profile-avatar-select-snap` | Profile Avatar Select Snap |
 | NF-009 | `SPX-3118` | `whos-watching-grid-focus` | Who's Watching Grid Focus |
 | NF-083 | `SPX-3192` | `buffer-to-playback-resolve` | Buffer-to-Playback Resolve |
@@ -114,7 +115,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 
 - [x] **NF-009** · `SPX-3118` · **Who's Watching Grid Focus** — `whos-watching-grid-focus`
 - [x] **NF-010** · `SPX-3119` · **Profile Avatar Select Snap** — `profile-avatar-select-snap`
-- [ ] **NF-105** · `SPX-3214` · **Match Confidence Meter** — `match-confidence-meter`
+- [x] **NF-105** · `SPX-3214` · **Match Confidence Meter** — `match-confidence-meter`
 - [ ] **NF-106** · `SPX-3215` · **Thumb Rating Feedback** — `thumb-rating-feedback`
 - [ ] **NF-111** · `SPX-3220` · **Add-to-List Confirmation** — `add-to-list-confirmation`
 - [ ] **NF-112** · `SPX-3221` · **Remove-from-List Undo** — `remove-from-list-undo`
@@ -268,7 +269,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 14. Recommendation / Personalisation
 
 - [ ] **NF-104** · `SPX-3213` · **Because-You-Watched Reveal** — A recommendation explanation appears as secondary metadata on focus
-- [ ] **NF-105** · `SPX-3214` · **Match Confidence Meter** — A compact confidence-like value fills into place as recommendation context appears
+- [x] **NF-105** · `SPX-3214` · **Match Confidence Meter** — A compact confidence-like value fills into place as recommendation context appears
 - [ ] **NF-106** · `SPX-3215` · **Thumb Rating Feedback** — A rating action produces immediate finite confirmation and updates the card state
 - [ ] **NF-107** · `SPX-3216` · **Preference Feedback Morph** — Rating controls morph from neutral into selected preference state
 - [ ] **NF-108** · `SPX-3217` · **Recommendation Row Refresh** — A feedback action causes affected cards to reorder or replace deterministically
