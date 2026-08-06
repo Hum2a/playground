@@ -1,0 +1,83 @@
+{
+  "name": "rank-up-impact",
+  "intent": "Dramatic rank progression celebration: old rank struck and split, radial rings, new rank slam, RANK UP strip, then ability unlock settling to a compact result.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "copy": {
+    "label": "ARCHIVE RANK",
+    "oldRank": "04",
+    "newRank": "05",
+    "trigger": "GAIN RANK",
+    "rankUp": "RANK UP",
+    "newAbility": "NEW ABILITY",
+    "abilityName": "Advanced Filters",
+    "resultRank": "RANK 05",
+    "resultAbility": "Advanced Filters unlocked",
+    "status": "Rank increased to 5. Advanced Filters unlocked."
+  },
+  "timing": {
+    "totalMs": 1550,
+    "anticipateMs": 180,
+    "rejectAtMs": 180,
+    "ringsAtMs": 350,
+    "impactAtMs": 520,
+    "rankUpAtMs": 760,
+    "abilityAtMs": 980,
+    "settleAtMs": 1300,
+    "ringStaggerMs": 45
+  },
+  "classes": {
+    "root": "rui",
+    "anticipate": "rui--anticipate",
+    "reject": "rui--reject",
+    "rings": "rui--rings",
+    "impact": "rui--impact",
+    "rankup": "rui--rankup",
+    "ability": "rui--ability",
+    "settle": "rui--settle",
+    "settled": "rui--settled",
+    "reduced": "rui--reduced",
+    "busy": "rui--busy"
+  },
+  "geometry": {
+    "blackoutClip": "polygon(8% 0%, 100% 4%, 96% 100%, 0% 94%)",
+    "oldHalfTop": "translate(-30px, -20px)",
+    "oldHalfBot": "translate(25px, 30px)",
+    "newEnter": "translateY(80px) scale(2.2) rotate(-8deg)",
+    "newImpact": "scale(0.9) rotate(3deg)",
+    "newSettle": "scale(1) rotate(-1deg)",
+    "stripBackingOffsetPx": [5, 4],
+    "ringCount": 3
+  },
+  "api": {
+    "run": "runRankUp()",
+    "reset": "resetRankUp()",
+    "replay": "replayRankUp()",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": true
+  },
+  "a11y": {
+    "fxAriaHidden": true,
+    "statusRole": "status",
+    "ariaLive": "polite",
+    "announceOnceOnSettle": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show RANK 05 + Advanced Filters unlocked; no strike, rings, slam, or travelling panels"
+  },
+  "constraints": {
+    "noConfetti": true,
+    "noCopyrightedAssets": true,
+    "noExternalFonts": true,
+    "graphicElementBudget": [6, 9],
+    "widthRangePx": [320, 768]
+  }
+}
