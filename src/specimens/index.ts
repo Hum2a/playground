@@ -16,6 +16,7 @@ import { authenticationFailureReset } from './authentication-failure-reset/entry
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
+import { barrierBreachAlert } from './barrier-breach-alert/entry'
 import { bindingWrapLock } from './binding-wrap-lock/entry'
 import { biometricScanAcquisition } from './biometric-scan-acquisition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
@@ -24,6 +25,7 @@ import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
 import { blueprintAssembly } from './blueprint-assembly/entry'
+import { bodyFlickerPageJump } from './body-flicker-page-jump/entry'
 import { bottomSheetDetentSnap } from './bottom-sheet-detent-snap/entry'
 import { boundedTouchRipple } from './bounded-touch-ripple/entry'
 import { bracketWinnerAdvance } from './bracket-winner-advance/entry'
@@ -42,12 +44,18 @@ import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { cardToDetailContainerTransform } from './card-to-detail-container-transform/entry'
+import { chakraChargeField } from './chakra-charge-field/entry'
+import { chakraControlBalance } from './chakra-control-balance/entry'
+import { chakraSignatureMatch } from './chakra-signature-match/entry'
 import { championResolution } from './champion-resolution/entry'
 import { characterFreezeIntroduction } from './character-freeze-introduction/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { circularProgressCompletionMorph } from './circular-progress-completion-morph/entry'
+import { circularSealLock } from './circular-seal-lock/entry'
 import { clockHandWipe } from './clock-hand-wipe/entry'
+import { cloneFailurePop } from './clone-failure-pop/entry'
+import { cloneMergeResult } from './clone-merge-result/entry'
 import { collapsingAppBar } from './collapsing-app-bar/entry'
 import { collectiveCiDeployment } from './collective-ci-deployment/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
@@ -93,6 +101,8 @@ import { dragProxyFormation } from './drag-proxy-formation/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { dropTargetMagnetism } from './drop-target-magnetism/entry'
 import { dualActivitySplit } from './dual-activity-split/entry'
+import { earthWallBlocker } from './earth-wall-blocker/entry'
+import { elementMergeRecipe } from './element-merge-recipe/entry'
 import { emergencyScreenTakeover } from './emergency-screen-takeover/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
@@ -103,19 +113,25 @@ import { entryRegistration } from './entry-registration/entry'
 import { episodeTitleCardInterrupt } from './episode-title-card-interrupt/entry'
 import { erasureDelete } from './erasure-delete/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
+import { errorSubstitutionRecovery } from './error-substitution-recovery/entry'
 import { escalatingBurstMultiplier } from './escalating-burst-multiplier/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
+import { examStartSeal } from './exam-start-seal/entry'
 import { explosiveNotificationBurst } from './explosive-notification-burst/entry'
+import { explosiveTagCountdown } from './explosive-tag-countdown/entry'
 import { extendedFabCollapse } from './extended-fab-collapse/entry'
 import { eyecatchTransition } from './eyecatch-transition/entry'
 import { fabToComposerTransform } from './fab-to-composer-transform/entry'
 import { fadeThrough } from './fade-through/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { fingerprintAcquisitionField } from './fingerprint-acquisition-field/entry'
+import { fireballCommit } from './fireball-commit/entry'
 import { floatingLabelLift } from './floating-label-lift/entry'
+import { focusModeActivation } from './focus-mode-activation/entry'
 import { forgetAMove } from './forget-a-move/entry'
+import { fourPointBarrierConstruct } from './four-point-barrier-construct/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { gadgetDeployment } from './gadget-deployment/entry'
@@ -126,9 +142,11 @@ import { halftoneExpansion } from './halftone-expansion/entry'
 import { handSignComboSequence } from './hand-sign-combo-sequence/entry'
 import { handoffContinuation } from './handoff-continuation/entry'
 import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
+import { healingProgressField } from './healing-progress-field/entry'
 import { heroAssignmentDrag } from './hero-assignment-drag/entry'
 import { heroAssignmentTransfer } from './hero-assignment-transfer/entry'
 import { heroNameSlam } from './hero-name-slam/entry'
+import { highSpeedCardRelocation } from './high-speed-card-relocation/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { holdToMaximumButton } from './hold-to-maximum-button/entry'
@@ -152,6 +170,7 @@ import { largeTitleCollapse } from './large-title-collapse/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
 import { licenseCardIssue } from './license-card-issue/entry'
+import { lightningTargetAcquisition } from './lightning-target-acquisition/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
@@ -171,16 +190,22 @@ import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { missionBoardDispatch } from './mission-board-dispatch/entry'
 import { missionCompleteBurst } from './mission-complete-burst/entry'
+import { missionCompleteStamp } from './mission-complete-stamp/entry'
 import { missionControlSpread } from './mission-control-spread/entry'
 import { missionIncoming } from './mission-incoming/entry'
+import { missionRankReveal } from './mission-rank-reveal/entry'
+import { missionScrollUnroll } from './mission-scroll-unroll/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { moveLearned } from './move-learned/entry'
 import { multiItemDragStack } from './multi-item-drag-stack/entry'
+import { multiKeySeal } from './multi-key-seal/entry'
 import { navigationDrawerEdgePull } from './navigation-drawer-edge-pull/entry'
 import { nearbyDeviceDiscovery } from './nearby-device-discovery/entry'
 import { nearbyFileTransfer } from './nearby-file-transfer/entry'
+import { networkScan360 } from './network-scan-360/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { notificationBannerDrop } from './notification-banner-drop/entry'
 import { notificationExpand } from './notification-expand/entry'
@@ -190,6 +215,7 @@ import { notificationStackExpansion } from './notification-stack-expansion/entry
 import { notificationSwipeDismiss } from './notification-swipe-dismiss/entry'
 import { nowPlayingExpansion } from './now-playing-expansion/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
+import { objectiveChainAdvance } from './objective-chain-advance/entry'
 import { objectiveUpdateSlash } from './objective-update-slash/entry'
 import { overchargeWarning } from './overcharge-warning/entry'
 import { overuseWarning } from './overuse-warning/entry'
@@ -199,6 +225,7 @@ import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { panelToPanelRoute } from './panel-to-panel-route/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
+import { parallelWorkerClones } from './parallel-worker-clones/entry'
 import { partCompatibilitySnap } from './part-compatibility-snap/entry'
 import { performanceMeterBurst } from './performance-meter-burst/entry'
 import { permissionPromptMaterialise } from './permission-prompt-materialise/entry'
@@ -215,6 +242,7 @@ import { powerThresholdBreak } from './power-threshold-break/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { predictiveBackAppShrink } from './predictive-back-app-shrink/entry'
 import { predictiveBackEdgePull } from './predictive-back-edge-pull/entry'
+import { presenceRadarSweep } from './presence-radar-sweep/entry'
 import { pressedControlCompression } from './pressed-control-compression/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { processingTimeSkip } from './processing-time-skip/entry'
@@ -230,6 +258,7 @@ import { quirkCapabilityRadarBuild } from './quirk-capability-radar-build/entry'
 import { quirkCooldownRing } from './quirk-cooldown-ring/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { rankPromotion } from './rank-promotion/entry'
+import { rankPromotionCard } from './rank-promotion-card/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { recentsCardRestore } from './recents-card-restore/entry'
@@ -241,16 +270,23 @@ import { scouterScan } from './scouter-scan/entry'
 import { screenshotExpandToEditor } from './screenshot-expand-to-editor/entry'
 import { screenshotThumbnailArrival } from './screenshot-thumbnail-arrival/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
+import { scrollToPanelTransform } from './scroll-to-panel-transform/entry'
+import { sealReleaseSequence } from './seal-release-sequence/entry'
+import { sealStampConfirmation } from './seal-stamp-confirmation/entry'
 import { searchBarToViewTransform } from './search-bar-to-view-transform/entry'
 import { searchFieldActivation } from './search-field-activation/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
+import { shadowBindSelection } from './shadow-bind-selection/entry'
+import { shadowCloneFanOut } from './shadow-clone-fan-out/entry'
 import { shapeMorphButtonToCard } from './shape-morph-button-to-card/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sharedXAxisNavigation } from './shared-x-axis-navigation/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
+import { shurikenRadialMenu } from './shuriken-radial-menu/entry'
 import { singleToDualPaneTransform } from './single-to-dual-pane-transform/entry'
 import { sliderThumbPickup } from './slider-thumb-pickup/entry'
+import { smokeMaskTransition } from './smoke-mask-transition/entry'
 import { snackbarRise } from './snackbar-rise/entry'
 import { speedLineActionReveal } from './speed-line-action-reveal/entry'
 import { spotlightMaterialise } from './spotlight-materialise/entry'
@@ -258,6 +294,8 @@ import { springSelectionPill } from './spring-selection-pill/entry'
 import { stageManagerStackShift } from './stage-manager-stack-shift/entry'
 import { stateFieldTransfer } from './state-field-transfer/entry'
 import { stateIntensityField } from './state-intensity-field/entry'
+import { substitutionSwap } from './substitution-swap/entry'
+import { summoningSealMaterialise } from './summoning-seal-materialise/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { swipeFullCommit } from './swipe-full-commit/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
@@ -266,34 +304,45 @@ import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
 import { targetAcquisition } from './target-acquisition/entry'
+import { targetDossierReveal } from './target-dossier-reveal/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { teamFormationSnap } from './team-formation-snap/entry'
+import { techniqueMasteryTree } from './technique-mastery-tree/entry'
+import { teleportCardTransfer } from './teleport-card-transfer/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
 import { temporalUndo } from './temporal-undo/entry'
 import { threatLevelEscalation } from './threat-level-escalation/entry'
+import { threePersonCellFormation } from './three-person-cell-formation/entry'
 import { timeSkip } from './time-skip/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { tournamentBracketActivation } from './tournament-bracket-activation/entry'
 import { trainingSimulationStart } from './training-simulation-start/entry'
+import { transformationMorph } from './transformation-morph/entry'
 import { translucentMaterialLift } from './translucent-material-lift/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { universalClipboardTransfer } from './universal-clipboard-transfer/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { versusCardCollision } from './versus-card-collision/entry'
+import { versusClashCard } from './versus-clash-card/entry'
 import { verticalContentStretch } from './vertical-content-stretch/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
 import { volumeSliderHud } from './volume-slider-hud/entry'
+import { vortexHoldToConfirm } from './vortex-hold-to-confirm/entry'
 import { waterlinePageWipe } from './waterline-page-wipe/entry'
+import { waterWavePageTransition } from './water-wave-page-transition/entry'
 import { weaknessHighlightSweep } from './weakness-highlight-sweep/entry'
+import { weakPointDetection } from './weak-point-detection/entry'
 import { wiFiSearchingToConnectedMorph } from './wi-fi-searching-to-connected-morph/entry'
 import { widgetResizeMorph } from './widget-resize-morph/entry'
 import { wildEncounterTransition } from './wild-encounter-transition/entry'
 import { windowMinimiseFunnel } from './window-minimise-funnel/entry'
 import { windowSnapPreview } from './window-snap-preview/entry'
+import { windSliceTransition } from './wind-slice-transition/entry'
 import { winnerAdvance } from './winner-advance/entry'
 import { winnerBannerBreakthrough } from './winner-banner-breakthrough/entry'
+import { wireConnectionDraw } from './wire-connection-draw/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -355,6 +404,7 @@ export const specimens: Specimen[] = [
   authenticationSuccessMorph,
   azureShardTransition,
   badgeCaseInsert,
+  barrierBreachAlert,
   bindingWrapLock,
   biometricScanAcquisition,
   blackoutLoader,
@@ -363,6 +413,7 @@ export const specimens: Specimen[] = [
   blueFlameButtonHover,
   blueFocusBrackets,
   blueprintAssembly,
+  bodyFlickerPageJump,
   bottomSheetDetentSnap,
   boundedTouchRipple,
   bracketWinnerAdvance,
@@ -381,12 +432,18 @@ export const specimens: Specimen[] = [
   captureShake,
   cardBreakSummon,
   cardToDetailContainerTransform,
+  chakraChargeField,
+  chakraControlBalance,
+  chakraSignatureMatch,
   championResolution,
   characterFreezeIntroduction,
   chargeRelease,
   choiceExecutionSlash,
   circularProgressCompletionMorph,
+  circularSealLock,
   clockHandWipe,
+  cloneFailurePop,
+  cloneMergeResult,
   collapsingAppBar,
   collectiveCiDeployment,
   comicCardSelection,
@@ -432,6 +489,8 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   dropTargetMagnetism,
   dualActivitySplit,
+  earthWallBlocker,
+  elementMergeRecipe,
   emergencyScreenTakeover,
   enemyScanReveal,
   energyChargeConfirmation,
@@ -442,19 +501,25 @@ export const specimens: Specimen[] = [
   episodeTitleCardInterrupt,
   erasureDelete,
   errorCorrectionRewrite,
+  errorSubstitutionRecovery,
   escalatingBurstMultiplier,
   evokerMenuSnap,
   evolutionComplete,
   evolutionSilhouetteTransformation,
+  examStartSeal,
   explosiveNotificationBurst,
+  explosiveTagCountdown,
   extendedFabCollapse,
   eyecatchTransition,
   fabToComposerTransform,
   fadeThrough,
   failureShatter,
   fingerprintAcquisitionField,
+  fireballCommit,
   floatingLabelLift,
+  focusModeActivation,
   forgetAMove,
+  fourPointBarrierConstruct,
   fullMoonMilestone,
   fusionSelectionMerge,
   gadgetDeployment,
@@ -465,9 +530,11 @@ export const specimens: Specimen[] = [
   handSignComboSequence,
   handoffContinuation,
   headsUpNotificationDrop,
+  healingProgressField,
   heroAssignmentDrag,
   heroAssignmentTransfer,
   heroNameSlam,
+  highSpeedCardRelocation,
   highSpeedDashNavigation,
   holdToChargeButton,
   holdToMaximumButton,
@@ -491,6 +558,7 @@ export const specimens: Specimen[] = [
   letterScatterAssemble,
   levelUpOverflow,
   licenseCardIssue,
+  lightningTargetAcquisition,
   linkTradeTransfer,
   linkedFusionMerge,
   liquidSplitTransition,
@@ -510,16 +578,22 @@ export const specimens: Specimen[] = [
   menuBarActiveTransfer,
   midnightClockTransition,
   misprintNotification,
+  missionBoardDispatch,
   missionCompleteBurst,
+  missionCompleteStamp,
   missionControlSpread,
   missionIncoming,
+  missionRankReveal,
+  missionScrollUnroll,
   monochromeBattleSlideIn,
   moonPhaseProgress,
   moveLearned,
   multiItemDragStack,
+  multiKeySeal,
   navigationDrawerEdgePull,
   nearbyDeviceDiscovery,
   nearbyFileTransfer,
+  networkScan360,
   newspaperHeadlineDrop,
   notificationBannerDrop,
   notificationExpand,
@@ -529,6 +603,7 @@ export const specimens: Specimen[] = [
   notificationSwipeDismiss,
   nowPlayingExpansion,
   objectiveAcquired,
+  objectiveChainAdvance,
   objectiveUpdateSlash,
   overchargeWarning,
   overuseWarning,
@@ -538,6 +613,7 @@ export const specimens: Specimen[] = [
   panelToPanelRoute,
   paperRipUnlock,
   paperStackShuffle,
+  parallelWorkerClones,
   partCompatibilitySnap,
   performanceMeterBurst,
   permissionPromptMaterialise,
@@ -554,6 +630,7 @@ export const specimens: Specimen[] = [
   precisionMenuSnap,
   predictiveBackAppShrink,
   predictiveBackEdgePull,
+  presenceRadarSweep,
   pressedControlCompression,
   printRegistrationHover,
   processingTimeSkip,
@@ -569,6 +646,7 @@ export const specimens: Specimen[] = [
   quirkCooldownRing,
   radarPulseDiscovery,
   rankPromotion,
+  rankPromotionCard,
   rankUpImpact,
   ransomNoteReveal,
   recentsCardRestore,
@@ -580,16 +658,23 @@ export const specimens: Specimen[] = [
   screenshotExpandToEditor,
   screenshotThumbnailArrival,
   scrollRubberBand,
+  scrollToPanelTransform,
+  sealReleaseSequence,
+  sealStampConfirmation,
   searchBarToViewTransform,
   searchFieldActivation,
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,
+  shadowBindSelection,
+  shadowCloneFanOut,
   shapeMorphButtonToCard,
   sharedResourcePool,
   sharedXAxisNavigation,
   sheetRubberBandLimit,
+  shurikenRadialMenu,
   singleToDualPaneTransform,
   sliderThumbPickup,
+  smokeMaskTransition,
   snackbarRise,
   speedLineActionReveal,
   spotlightMaterialise,
@@ -597,6 +682,8 @@ export const specimens: Specimen[] = [
   stageManagerStackShift,
   stateFieldTransfer,
   stateIntensityField,
+  substitutionSwap,
+  summoningSealMaterialise,
   surfaceBreakReveal,
   swipeFullCommit,
   synchronousFusionMerge,
@@ -605,34 +692,45 @@ export const specimens: Specimen[] = [
   tacticalCommandWheel,
   tacticalTargetLock,
   targetAcquisition,
+  targetDossierReveal,
   tartarusFloorAscension,
   teamFormationSnap,
+  techniqueMasteryTree,
+  teleportCardTransfer,
   temporalFreeze,
   temporalUndo,
   threatLevelEscalation,
+  threePersonCellFormation,
   timeSkip,
   tornEdgeDrawer,
   tournamentBracketActivation,
   trainingSimulationStart,
+  transformationMorph,
   translucentMaterialLift,
   truthShotNotification,
   ultraStateOptimisation,
   universalClipboardTransfer,
   velvetDoorTransition,
   versusCardCollision,
+  versusClashCard,
   verticalContentStretch,
   victoryResultsTally,
   volumeBrightnessHud,
   volumeSliderHud,
+  vortexHoldToConfirm,
   waterlinePageWipe,
+  waterWavePageTransition,
   weaknessHighlightSweep,
+  weakPointDetection,
   wiFiSearchingToConnectedMorph,
   widgetResizeMorph,
   wildEncounterTransition,
   windowMinimiseFunnel,
   windowSnapPreview,
+  windSliceTransition,
   winnerAdvance,
-  winnerBannerBreakthrough,
+  winnerBannerBreakthrough,  wireConnectionDraw,
+
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2344`…`SPX-2918` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), or open NR rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2919+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **1 / 575** complete. complete.
+- Progress: **50 / 575** complete. complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 1 |
-| Open | 574 |
+| Done | 50 |
+| Open | 525 |
 
 ## Visual grammar
 
@@ -33,6 +33,55 @@
 
 | NR | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NR-424 | `SPX-2767` | `technique-mastery-tree` | Technique Mastery Tree |
+| NR-334 | `SPX-2677` | `teleport-card-transfer` | Teleport Card Transfer |
+| NR-301 | `SPX-2644` | `shadow-bind-selection` | Shadow Bind Selection |
+| NR-248 | `SPX-2591` | `three-person-cell-formation` | Three-Person Cell Formation |
+| NR-241 | `SPX-2584` | `target-dossier-reveal` | Target Dossier Reveal |
+| NR-226 | `SPX-2569` | `mission-board-dispatch` | Mission Board Dispatch |
+| NR-217 | `SPX-2560` | `versus-clash-card` | Versus Clash Card |
+| NR-208 | `SPX-2551` | `exam-start-seal` | Exam Start Seal |
+| NR-201 | `SPX-2544` | `rank-promotion-card` | Rank Promotion Card |
+| NR-194 | `SPX-2537` | `mission-complete-stamp` | Mission Complete Stamp |
+| NR-193 | `SPX-2536` | `objective-chain-advance` | Objective Chain Advance |
+| NR-191 | `SPX-2534` | `mission-rank-reveal` | Mission Rank Reveal |
+| NR-184 | `SPX-2527` | `healing-progress-field` | Healing Progress Field |
+| NR-182 | `SPX-2525` | `barrier-breach-alert` | Barrier Breach Alert |
+| NR-179 | `SPX-2522` | `four-point-barrier-construct` | Four-Point Barrier Construct |
+| NR-173 | `SPX-2516` | `summoning-seal-materialise` | Summoning Seal Materialise |
+| NR-167 | `SPX-2510` | `chakra-signature-match` | Chakra Signature Match |
+| NR-166 | `SPX-2509` | `presence-radar-sweep` | Presence Radar Sweep |
+| NR-154 | `SPX-2497` | `network-scan-360` | 360° Network Scan |
+| NR-147 | `SPX-2490` | `weak-point-detection` | Weak-Point Detection |
+| NR-145 | `SPX-2488` | `focus-mode-activation` | Focus Mode Activation |
+| NR-133 | `SPX-2476` | `element-merge-recipe` | Element Merge Recipe |
+| NR-127 | `SPX-2470` | `earth-wall-blocker` | Earth Wall Blocker |
+| NR-121 | `SPX-2464` | `lightning-target-acquisition` | Lightning Target Acquisition |
+| NR-139 | `SPX-2482` | `vortex-hold-to-confirm` | Vortex Hold-to-Confirm |
+| NR-115 | `SPX-2458` | `wind-slice-transition` | Wind Slice Transition |
+| NR-108 | `SPX-2451` | `water-wave-page-transition` | Water Wave Page Transition |
+| NR-101 | `SPX-2444` | `fireball-commit` | Fireball Commit |
+| NR-096 | `SPX-2439` | `smoke-mask-transition` | Smoke Mask Transition |
+| NR-090 | `SPX-2433` | `explosive-tag-countdown` | Explosive Tag Countdown |
+| NR-084 | `SPX-2427` | `wire-connection-draw` | Wire Connection Draw |
+| NR-072 | `SPX-2415` | `shuriken-radial-menu` | Shuriken Radial Menu |
+| NR-067 | `SPX-2410` | `high-speed-card-relocation` | High-Speed Card Relocation |
+| NR-066 | `SPX-2409` | `body-flicker-page-jump` | Body Flicker Page Jump |
+| NR-059 | `SPX-2402` | `transformation-morph` | Transformation Morph |
+| NR-054 | `SPX-2397` | `clone-failure-pop` | Clone Failure Pop |
+| NR-053 | `SPX-2396` | `clone-merge-result` | Clone Merge Result |
+| NR-051 | `SPX-2394` | `parallel-worker-clones` | Parallel Worker Clones |
+| NR-050 | `SPX-2393` | `shadow-clone-fan-out` | Shadow Clone Fan-Out |
+| NR-044 | `SPX-2387` | `error-substitution-recovery` | Error Substitution Recovery |
+| NR-042 | `SPX-2385` | `substitution-swap` | Substitution Swap |
+| NR-036 | `SPX-2379` | `seal-stamp-confirmation` | Seal Stamp Confirmation |
+| NR-035 | `SPX-2378` | `multi-key-seal` | Multi-Key Seal |
+| NR-033 | `SPX-2376` | `seal-release-sequence` | Seal Release Sequence |
+| NR-032 | `SPX-2375` | `circular-seal-lock` | Circular Seal Lock |
+| NR-023 | `SPX-2366` | `scroll-to-panel-transform` | Scroll-to-Panel Transform |
+| NR-022 | `SPX-2365` | `mission-scroll-unroll` | Mission Scroll Unroll |
+| NR-015 | `SPX-2358` | `chakra-control-balance` | Chakra Control Balance |
+| NR-011 | `SPX-2354` | `chakra-charge-field` | Chakra Charge Field |
 | NR-001 | `SPX-2344` | `hand-sign-combo-sequence` | Hand-Sign Combo Sequence |
 
 ## Core first-wave
@@ -40,55 +89,55 @@
 Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbox as the master list — checking either counts.
 
 - [x] **NR-001** · `SPX-2344` · **Hand-Sign Combo Sequence** — hand-sign-sequence-interfaces
-- [ ] **NR-011** · `SPX-2354` · **Chakra Charge Field** — chakra-resource-systems
-- [ ] **NR-015** · `SPX-2358` · **Chakra Control Balance** — chakra-resource-systems
-- [ ] **NR-022** · `SPX-2365` · **Mission Scroll Unroll** — scroll-interfaces
-- [ ] **NR-023** · `SPX-2366` · **Scroll-to-Panel Transform** — scroll-interfaces
-- [ ] **NR-032** · `SPX-2375` · **Circular Seal Lock** — seals-locking-systems
-- [ ] **NR-033** · `SPX-2376` · **Seal Release Sequence** — seals-locking-systems
-- [ ] **NR-035** · `SPX-2378` · **Multi-Key Seal** — seals-locking-systems
-- [ ] **NR-036** · `SPX-2379` · **Seal Stamp Confirmation** — seals-locking-systems
-- [ ] **NR-042** · `SPX-2385` · **Substitution Swap** — substitution-replacement-motion
-- [ ] **NR-044** · `SPX-2387` · **Error Substitution Recovery** — substitution-replacement-motion
-- [ ] **NR-050** · `SPX-2393` · **Shadow Clone Fan-Out** — clone-duplication-systems
-- [ ] **NR-051** · `SPX-2394` · **Parallel Worker Clones** — clone-duplication-systems
-- [ ] **NR-053** · `SPX-2396` · **Clone Merge Result** — clone-duplication-systems
-- [ ] **NR-054** · `SPX-2397` · **Clone Failure Pop** — clone-duplication-systems
-- [ ] **NR-059** · `SPX-2402` · **Transformation Morph** — transformation-disguise
-- [ ] **NR-066** · `SPX-2409` · **Body Flicker Page Jump** — body-flicker-high-speed-navigation
-- [ ] **NR-067** · `SPX-2410` · **High-Speed Card Relocation** — body-flicker-high-speed-navigation
-- [ ] **NR-072** · `SPX-2415` · **Shuriken Radial Menu** — shuriken-projectile-motion
-- [ ] **NR-084** · `SPX-2427` · **Wire Connection Draw** — ninja-wire-connection-systems
-- [ ] **NR-090** · `SPX-2433` · **Explosive Tag Countdown** — paper-bomb-countdown-interfaces
-- [ ] **NR-096** · `SPX-2439` · **Smoke Mask Transition** — smoke-concealment
-- [ ] **NR-101** · `SPX-2444` · **Fireball Commit** — fire-style
-- [ ] **NR-108** · `SPX-2451` · **Water Wave Page Transition** — water-style
-- [ ] **NR-115** · `SPX-2458` · **Wind Slice Transition** — wind-style
-- [ ] **NR-139** · `SPX-2482` · **Vortex Hold-to-Confirm** — rasengan-inspired-interaction-family
-- [ ] **NR-121** · `SPX-2464` · **Lightning Target Acquisition** — lightning-style
-- [ ] **NR-127** · `SPX-2470` · **Earth Wall Blocker** — earth-style
-- [ ] **NR-133** · `SPX-2476` · **Element Merge Recipe** — elemental-combination
-- [ ] **NR-145** · `SPX-2488` · **Focus Mode Activation** — dojutsu-inspired-focus-vision-modes
-- [ ] **NR-147** · `SPX-2490` · **Weak-Point Detection** — dojutsu-inspired-focus-vision-modes
-- [ ] **NR-154** · `SPX-2497` · **360° Network Scan** — byakugan-inspired-network-inspection
-- [ ] **NR-166** · `SPX-2509` · **Presence Radar Sweep** — sensory-detection-interfaces
-- [ ] **NR-167** · `SPX-2510` · **Chakra Signature Match** — sensory-detection-interfaces
-- [ ] **NR-173** · `SPX-2516` · **Summoning Seal Materialise** — summoning-interfaces
-- [ ] **NR-179** · `SPX-2522` · **Four-Point Barrier Construct** — barrier-interfaces
-- [ ] **NR-182** · `SPX-2525` · **Barrier Breach Alert** — barrier-interfaces
-- [ ] **NR-184** · `SPX-2527` · **Healing Progress Field** — medical-ninja-recovery-ui
-- [ ] **NR-191** · `SPX-2534` · **Mission Rank Reveal** — mission-system
-- [ ] **NR-193** · `SPX-2536` · **Objective Chain Advance** — mission-system
-- [ ] **NR-194** · `SPX-2537` · **Mission Complete Stamp** — mission-system
-- [ ] **NR-201** · `SPX-2544` · **Rank Promotion Card** — ninja-rank-promotion
-- [ ] **NR-208** · `SPX-2551` · **Exam Start Seal** — chunin-exam-inspired-testing
-- [ ] **NR-217** · `SPX-2560` · **Versus Clash Card** — tournament-arena
-- [ ] **NR-226** · `SPX-2569` · **Mission Board Dispatch** — village-administration
-- [ ] **NR-241** · `SPX-2584` · **Target Dossier Reveal** — bingo-book-target-dossier
-- [ ] **NR-248** · `SPX-2591` · **Three-Person Cell Formation** — team-formation
-- [ ] **NR-301** · `SPX-2644` · **Shadow Bind Selection** — shadow-technique-interfaces
-- [ ] **NR-334** · `SPX-2677` · **Teleport Card Transfer** — space-time-teleportation-interfaces
-- [ ] **NR-424** · `SPX-2767` · **Technique Mastery Tree** — mentor-training-progression
+- [x] **NR-011** · `SPX-2354` · **Chakra Charge Field** — chakra-resource-systems
+- [x] **NR-015** · `SPX-2358` · **Chakra Control Balance** — chakra-resource-systems
+- [x] **NR-022** · `SPX-2365` · **Mission Scroll Unroll** — scroll-interfaces
+- [x] **NR-023** · `SPX-2366` · **Scroll-to-Panel Transform** — scroll-interfaces
+- [x] **NR-032** · `SPX-2375` · **Circular Seal Lock** — seals-locking-systems
+- [x] **NR-033** · `SPX-2376` · **Seal Release Sequence** — seals-locking-systems
+- [x] **NR-035** · `SPX-2378` · **Multi-Key Seal** — seals-locking-systems
+- [x] **NR-036** · `SPX-2379` · **Seal Stamp Confirmation** — seals-locking-systems
+- [x] **NR-042** · `SPX-2385` · **Substitution Swap** — substitution-replacement-motion
+- [x] **NR-044** · `SPX-2387` · **Error Substitution Recovery** — substitution-replacement-motion
+- [x] **NR-050** · `SPX-2393` · **Shadow Clone Fan-Out** — clone-duplication-systems
+- [x] **NR-051** · `SPX-2394` · **Parallel Worker Clones** — clone-duplication-systems
+- [x] **NR-053** · `SPX-2396` · **Clone Merge Result** — clone-duplication-systems
+- [x] **NR-054** · `SPX-2397` · **Clone Failure Pop** — clone-duplication-systems
+- [x] **NR-059** · `SPX-2402` · **Transformation Morph** — transformation-disguise
+- [x] **NR-066** · `SPX-2409` · **Body Flicker Page Jump** — body-flicker-high-speed-navigation
+- [x] **NR-067** · `SPX-2410` · **High-Speed Card Relocation** — body-flicker-high-speed-navigation
+- [x] **NR-072** · `SPX-2415` · **Shuriken Radial Menu** — shuriken-projectile-motion
+- [x] **NR-084** · `SPX-2427` · **Wire Connection Draw** — ninja-wire-connection-systems
+- [x] **NR-090** · `SPX-2433` · **Explosive Tag Countdown** — paper-bomb-countdown-interfaces
+- [x] **NR-096** · `SPX-2439` · **Smoke Mask Transition** — smoke-concealment
+- [x] **NR-101** · `SPX-2444` · **Fireball Commit** — fire-style
+- [x] **NR-108** · `SPX-2451` · **Water Wave Page Transition** — water-style
+- [x] **NR-115** · `SPX-2458` · **Wind Slice Transition** — wind-style
+- [x] **NR-139** · `SPX-2482` · **Vortex Hold-to-Confirm** — rasengan-inspired-interaction-family
+- [x] **NR-121** · `SPX-2464` · **Lightning Target Acquisition** — lightning-style
+- [x] **NR-127** · `SPX-2470` · **Earth Wall Blocker** — earth-style
+- [x] **NR-133** · `SPX-2476` · **Element Merge Recipe** — elemental-combination
+- [x] **NR-145** · `SPX-2488` · **Focus Mode Activation** — dojutsu-inspired-focus-vision-modes
+- [x] **NR-147** · `SPX-2490` · **Weak-Point Detection** — dojutsu-inspired-focus-vision-modes
+- [x] **NR-154** · `SPX-2497` · **360° Network Scan** — byakugan-inspired-network-inspection
+- [x] **NR-166** · `SPX-2509` · **Presence Radar Sweep** — sensory-detection-interfaces
+- [x] **NR-167** · `SPX-2510` · **Chakra Signature Match** — sensory-detection-interfaces
+- [x] **NR-173** · `SPX-2516` · **Summoning Seal Materialise** — summoning-interfaces
+- [x] **NR-179** · `SPX-2522` · **Four-Point Barrier Construct** — barrier-interfaces
+- [x] **NR-182** · `SPX-2525` · **Barrier Breach Alert** — barrier-interfaces
+- [x] **NR-184** · `SPX-2527` · **Healing Progress Field** — medical-ninja-recovery-ui
+- [x] **NR-191** · `SPX-2534` · **Mission Rank Reveal** — mission-system
+- [x] **NR-193** · `SPX-2536` · **Objective Chain Advance** — mission-system
+- [x] **NR-194** · `SPX-2537` · **Mission Complete Stamp** — mission-system
+- [x] **NR-201** · `SPX-2544` · **Rank Promotion Card** — ninja-rank-promotion
+- [x] **NR-208** · `SPX-2551` · **Exam Start Seal** — chunin-exam-inspired-testing
+- [x] **NR-217** · `SPX-2560` · **Versus Clash Card** — tournament-arena
+- [x] **NR-226** · `SPX-2569` · **Mission Board Dispatch** — village-administration
+- [x] **NR-241** · `SPX-2584` · **Target Dossier Reveal** — bingo-book-target-dossier
+- [x] **NR-248** · `SPX-2591` · **Three-Person Cell Formation** — team-formation
+- [x] **NR-301** · `SPX-2644` · **Shadow Bind Selection** — shadow-technique-interfaces
+- [x] **NR-334** · `SPX-2677` · **Teleport Card Transfer** — space-time-teleportation-interfaces
+- [x] **NR-424** · `SPX-2767` · **Technique Mastery Tree** — mentor-training-progression
 
 ## Hand-Sign / Sequence Interfaces
 
@@ -105,11 +154,11 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Chakra / Resource Systems
 
-- [ ] **NR-011** · `SPX-2354` · **Chakra Charge Field** — holding an action fills an irregular energy boundary around a control.
+- [x] **NR-011** · `SPX-2354` · **Chakra Charge Field** — holding an action fills an irregular energy boundary around a control.
 - [ ] **NR-012** · `SPX-2355` · **Chakra Network Flow** — energy travels through connected nodes to show resource distribution.
 - [ ] **NR-013** · `SPX-2356` · **Chakra Depletion Warning** — resource meter crosses discrete thresholds and changes structural intensity.
 - [ ] **NR-014** · `SPX-2357` · **Chakra Burst Commit** — accumulated resource collapses into a single action on release.
-- [ ] **NR-015** · `SPX-2358` · **Chakra Control Balance** — two opposing inputs must be held within a narrow equilibrium band.
+- [x] **NR-015** · `SPX-2358` · **Chakra Control Balance** — two opposing inputs must be held within a narrow equilibrium band.
 - [ ] **NR-016** · `SPX-2359` · **Chakra Recovery** — depleted meter reconstructs in finite pulses/segments.
 - [ ] **NR-017** · `SPX-2360` · **Chakra Allocation Drag** — resource tokens move between abilities or team members.
 - [ ] **NR-018** · `SPX-2361` · **Reserve Unlock** — exhausted primary meter reveals a smaller secondary reserve.
@@ -119,8 +168,8 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Scroll Interfaces
 
-- [ ] **NR-022** · `SPX-2365` · **Mission Scroll Unroll** — rolled document expands horizontally/vertically into a mission briefing.
-- [ ] **NR-023** · `SPX-2366` · **Scroll-to-Panel Transform** — compact scroll token unfurls into a full information card.
+- [x] **NR-022** · `SPX-2365` · **Mission Scroll Unroll** — rolled document expands horizontally/vertically into a mission briefing.
+- [x] **NR-023** · `SPX-2366` · **Scroll-to-Panel Transform** — compact scroll token unfurls into a full information card.
 - [ ] **NR-024** · `SPX-2367` · **Technique Scroll Reveal** — hidden content appears line-by-line as paper unrolls.
 - [ ] **NR-025** · `SPX-2368` · **Scroll Seal Unlock** — stamped/locked scroll becomes available after a finite seal release.
 - [ ] **NR-026** · `SPX-2369` · **Scroll Inventory Carousel** — rolled documents rotate through selection slots.
@@ -132,11 +181,11 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Seals / Locking Systems
 
-- [ ] **NR-032** · `SPX-2375` · **Circular Seal Lock** — radial marks rotate into alignment to lock content.
-- [ ] **NR-033** · `SPX-2376` · **Seal Release Sequence** — concentric rings disengage in ordered stages before revealing content.
+- [x] **NR-032** · `SPX-2375` · **Circular Seal Lock** — radial marks rotate into alignment to lock content.
+- [x] **NR-033** · `SPX-2376` · **Seal Release Sequence** — concentric rings disengage in ordered stages before revealing content.
 - [ ] **NR-034** · `SPX-2377` · **Forbidden Content Seal** — restricted card is covered by intersecting constraint strips and a central mark.
-- [ ] **NR-035** · `SPX-2378` · **Multi-Key Seal** — several prerequisite nodes must activate before central lock opens.
-- [ ] **NR-036** · `SPX-2379` · **Seal Stamp Confirmation** — action completes with one forceful circular stamp.
+- [x] **NR-035** · `SPX-2378` · **Multi-Key Seal** — several prerequisite nodes must activate before central lock opens.
+- [x] **NR-036** · `SPX-2379` · **Seal Stamp Confirmation** — action completes with one forceful circular stamp.
 - [ ] **NR-037** · `SPX-2380` · **Seal Integrity Meter** — radial segments disappear as protection weakens.
 - [ ] **NR-038** · `SPX-2381` · **Seal Repair** — damaged radial structure reconstructs clockwise.
 - [ ] **NR-039** · `SPX-2382` · **Seal Transfer** — lock token travels from one object to another.
@@ -145,9 +194,9 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Substitution / Replacement Motion
 
-- [ ] **NR-042** · `SPX-2385` · **Substitution Swap** — selected card disappears in a sharp burst and a replacement occupies the exact geometry.
+- [x] **NR-042** · `SPX-2385` · **Substitution Swap** — selected card disappears in a sharp burst and a replacement occupies the exact geometry.
 - [ ] **NR-043** · `SPX-2386` · **Content Substitution Log** — old state leaves a temporary proxy while new state snaps into its slot.
-- [ ] **NR-044** · `SPX-2387` · **Error Substitution Recovery** — failed component is rapidly replaced by fallback UI.
+- [x] **NR-044** · `SPX-2387` · **Error Substitution Recovery** — failed component is rapidly replaced by fallback UI.
 - [ ] **NR-045** · `SPX-2388` · **Substitution Decoy** — clicked object leaves a static placeholder while real content relocates.
 - [ ] **NR-046** · `SPX-2389` · **Swap with Smoke Mask** — abstract smoke-like circles briefly mask a DOM replacement.
 - [ ] **NR-047** · `SPX-2390` · **Table Row Substitution** — stale row exits while updated row occupies identical height.
@@ -156,11 +205,11 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Clone / Duplication Systems
 
-- [ ] **NR-050** · `SPX-2393` · **Shadow Clone Fan-Out** — one source card produces several temporary task proxies that fan into parallel slots.
-- [ ] **NR-051** · `SPX-2394` · **Parallel Worker Clones** — one job visually divides into multiple deterministic worker cards and recombines at completion.
+- [x] **NR-050** · `SPX-2393` · **Shadow Clone Fan-Out** — one source card produces several temporary task proxies that fan into parallel slots.
+- [x] **NR-051** · `SPX-2394` · **Parallel Worker Clones** — one job visually divides into multiple deterministic worker cards and recombines at completion.
 - [ ] **NR-052** · `SPX-2395` · **Clone Load Distribution** — workload bar splits across several copies.
-- [ ] **NR-053** · `SPX-2396` · **Clone Merge Result** — parallel result cards converge into one combined output.
-- [ ] **NR-054** · `SPX-2397` · **Clone Failure Pop** — one worker collapses while remaining workers continue.
+- [x] **NR-053** · `SPX-2396` · **Clone Merge Result** — parallel result cards converge into one combined output.
+- [x] **NR-054** · `SPX-2397` · **Clone Failure Pop** — one worker collapses while remaining workers continue.
 - [ ] **NR-055** · `SPX-2398` · **Clone Capacity Limit** — duplication stops at a visible resource boundary.
 - [ ] **NR-056** · `SPX-2399` · **Clone Selection Spread** — selected item duplicates into several contextual actions.
 - [ ] **NR-057** · `SPX-2400` · **Clone Recall** — distributed proxies return to their source.
@@ -168,7 +217,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Transformation / Disguise
 
-- [ ] **NR-059** · `SPX-2402` · **Transformation Morph** — one profile/card changes into another through a bold silhouette intermediate.
+- [x] **NR-059** · `SPX-2402` · **Transformation Morph** — one profile/card changes into another through a bold silhouette intermediate.
 - [ ] **NR-060** · `SPX-2403` · **Disguise Reveal** — apparent identity peels/retracts to expose underlying profile.
 - [ ] **NR-061** · `SPX-2404` · **Mode Transformation** — basic control gains additional layers and actions in advanced mode.
 - [ ] **NR-062** · `SPX-2405` · **Transformation Timer** — alternate state carries a finite expiry boundary.
@@ -178,8 +227,8 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Body Flicker / High-Speed Navigation
 
-- [ ] **NR-066** · `SPX-2409` · **Body Flicker Page Jump** — destination transition uses compressed directional streaks and an abrupt positional handoff.
-- [ ] **NR-067** · `SPX-2410` · **High-Speed Card Relocation** — selected card leaves a finite afterimage and arrives in another container.
+- [x] **NR-066** · `SPX-2409` · **Body Flicker Page Jump** — destination transition uses compressed directional streaks and an abrupt positional handoff.
+- [x] **NR-067** · `SPX-2410` · **High-Speed Card Relocation** — selected card leaves a finite afterimage and arrives in another container.
 - [ ] **NR-068** · `SPX-2411` · **Instant Route Jump** — map marker compresses into a streak and resolves at destination.
 - [ ] **NR-069** · `SPX-2412` · **Afterimage Navigation** — tab indicator leaves two fading echoes during fast movement.
 - [ ] **NR-070** · `SPX-2413` · **Flicker Menu Open** — action menu appears through fast lateral separation.
@@ -187,7 +236,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Shuriken / Projectile Motion
 
-- [ ] **NR-072** · `SPX-2415` · **Shuriken Radial Menu** — abstract four-point geometry rotates open into action sectors.
+- [x] **NR-072** · `SPX-2415` · **Shuriken Radial Menu** — abstract four-point geometry rotates open into action sectors.
 - [ ] **NR-073** · `SPX-2416` · **Projectile Target Selection** — pointer/keyboard selection launches a small marker into a target slot.
 - [ ] **NR-074** · `SPX-2417` · **Multi-Target Throw** — one action sends deterministic tokens to several selected cards.
 - [ ] **NR-075** · `SPX-2418` · **Deflected Action Return** — invalid action token curves back to source.
@@ -205,7 +254,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Ninja Wire / Connection Systems
 
-- [ ] **NR-084** · `SPX-2427` · **Wire Connection Draw** — thin line rapidly connects two selected nodes.
+- [x] **NR-084** · `SPX-2427` · **Wire Connection Draw** — thin line rapidly connects two selected nodes.
 - [ ] **NR-085** · `SPX-2428` · **Tripwire Threshold** — crossing a configured line triggers one finite alert.
 - [ ] **NR-086** · `SPX-2429` · **Network Restraint** — several connected nodes become constrained by a shared wire polygon.
 - [ ] **NR-087** · `SPX-2430` · **Wire Tension Slider** — drag distance changes line tension and state.
@@ -214,7 +263,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Paper Bomb / Countdown Interfaces
 
-- [ ] **NR-090** · `SPX-2433` · **Explosive Tag Countdown** — attached warning token counts down through increasingly intense structural states.
+- [x] **NR-090** · `SPX-2433` · **Explosive Tag Countdown** — attached warning token counts down through increasingly intense structural states.
 - [ ] **NR-091** · `SPX-2434` · **Timed Delete Tag** — destructive action attaches a visible expiry marker before final removal.
 - [ ] **NR-092** · `SPX-2435` · **Chain Detonation Progress** — one completed stage triggers the next in a finite linked sequence.
 - [ ] **NR-093** · `SPX-2436` · **Disarm Interaction** — hold/sequence action removes countdown before zero.
@@ -223,7 +272,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Smoke / Concealment
 
-- [ ] **NR-096** · `SPX-2439` · **Smoke Mask Transition** — overlapping abstract circles/blur-free shapes cover a swap and disperse.
+- [x] **NR-096** · `SPX-2439` · **Smoke Mask Transition** — overlapping abstract circles/blur-free shapes cover a swap and disperse.
 - [ ] **NR-097** · `SPX-2440` · **Concealed Content Reveal** — information emerges as opacity mask clears from centre outward.
 - [ ] **NR-098** · `SPX-2441` · **Smoke Screen Modal** — background becomes obscured by layered opaque forms while dialog stays crisp.
 - [ ] **NR-099** · `SPX-2442` · **Concealment Meter** — visual density maps to a scalar stealth value.
@@ -231,7 +280,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Fire Style
 
-- [ ] **NR-101** · `SPX-2444` · **Fireball Commit** — charge grows from a compact control then shoots into a target to confirm action.
+- [x] **NR-101** · `SPX-2444` · **Fireball Commit** — charge grows from a compact control then shoots into a target to confirm action.
 - [ ] **NR-102** · `SPX-2445` · **Ignition Toggle** — dormant state catches into an active high-energy mode.
 - [ ] **NR-103** · `SPX-2446` · **Heat Threshold Escalation** — resource/control changes state at safe, warning and critical thresholds.
 - [ ] **NR-104** · `SPX-2447` · **Burning Progress Edge** — determinate progress consumes an edge/strip.
@@ -241,7 +290,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Water Style
 
-- [ ] **NR-108** · `SPX-2451` · **Water Wave Page Transition** — layered curved masks sweep across the viewport to reveal destination.
+- [x] **NR-108** · `SPX-2451` · **Water Wave Page Transition** — layered curved masks sweep across the viewport to reveal destination.
 - [ ] **NR-109** · `SPX-2452` · **Water Clone Split** — one information card divides into translucent parallel copies.
 - [ ] **NR-110** · `SPX-2453` · **Flowing Progress Channel** — determinate progress travels through a curved route.
 - [ ] **NR-111** · `SPX-2454` · **Ripple Selection** — selected point sends one bounded concentric response.
@@ -251,7 +300,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Wind Style
 
-- [ ] **NR-115** · `SPX-2458` · **Wind Slice Transition** — several diagonal cuts sweep through current content and reveal the next state.
+- [x] **NR-115** · `SPX-2458` · **Wind Slice Transition** — several diagonal cuts sweep through current content and reveal the next state.
 - [ ] **NR-116** · `SPX-2459` · **Rasengan-Inspired Orb Charge** — original swirling segmented orb accumulates from pointer hold, then resolves into action.
 - [ ] **NR-117** · `SPX-2460` · **Pressure Burst Button** — activation sends a single expanding distortion ring.
 - [ ] **NR-118** · `SPX-2461` · **Wind Tunnel Navigation** — directional lines compress perspective during page movement.
@@ -260,7 +309,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Lightning Style
 
-- [ ] **NR-121** · `SPX-2464` · **Lightning Target Acquisition** — branching line rapidly finds and locks onto a selected target.
+- [x] **NR-121** · `SPX-2464` · **Lightning Target Acquisition** — branching line rapidly finds and locks onto a selected target.
 - [ ] **NR-122** · `SPX-2465` · **Chidori-Inspired Charge Field** — original angular electrical field densifies around a hold-to-confirm action.
 - [ ] **NR-123** · `SPX-2466` · **Circuit Activation Chain** — nodes activate in fast branching order.
 - [ ] **NR-124** · `SPX-2467` · **Lightning Error Strike** — invalid field receives one sharp finite electrical outline.
@@ -269,7 +318,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Earth Style
 
-- [ ] **NR-127** · `SPX-2470` · **Earth Wall Blocker** — segmented slabs rise to lock/protect a region.
+- [x] **NR-127** · `SPX-2470` · **Earth Wall Blocker** — segmented slabs rise to lock/protect a region.
 - [ ] **NR-128** · `SPX-2471` · **Ground-Up Card Reveal** — card assembles vertically from chunky blocks.
 - [ ] **NR-129** · `SPX-2472` · **Stone Barrier Progress** — protection meter adds/removes visible structural segments.
 - [ ] **NR-130** · `SPX-2473` · **Terrain Raise Selection** — selected item rises as a solid platform while neighbours remain flat.
@@ -278,7 +327,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Elemental Combination
 
-- [ ] **NR-133** · `SPX-2476` · **Element Merge Recipe** — two capability tokens travel into a central synthesis slot and create a new state.
+- [x] **NR-133** · `SPX-2476` · **Element Merge Recipe** — two capability tokens travel into a central synthesis slot and create a new state.
 - [ ] **NR-134** · `SPX-2477` · **Element Compatibility Matrix** — selection highlights valid/invalid combinations.
 - [ ] **NR-135** · `SPX-2478` · **Dual-Nature Activation** — two resource channels must reach threshold before shared action enables.
 - [ ] **NR-136** · `SPX-2479` · **Element Counter Interaction** — opposing states visibly cancel/overpower based on fixed values.
@@ -287,7 +336,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Rasengan-Inspired Interaction Family
 
-- [ ] **NR-139** · `SPX-2482` · **Vortex Hold-to-Confirm** — hold builds concentric rotating segments around a central action.
+- [x] **NR-139** · `SPX-2482` · **Vortex Hold-to-Confirm** — hold builds concentric rotating segments around a central action.
 - [ ] **NR-140** · `SPX-2483` · **Orb Stability Meter** — pointer movement must remain inside tolerance while charge completes.
 - [ ] **NR-141** · `SPX-2484` · **Vortex Release** — accumulated segments compress and shoot into completion state.
 - [ ] **NR-142** · `SPX-2485` · **Orb Growth Thresholds** — compact, medium and maximum states at fixed hold durations.
@@ -296,9 +345,9 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Dojutsu-Inspired Focus / Vision Modes
 
-- [ ] **NR-145** · `SPX-2488` · **Focus Mode Activation** — normal UI narrows into high-contrast analysis mode with a central reticle.
+- [x] **NR-145** · `SPX-2488` · **Focus Mode Activation** — normal UI narrows into high-contrast analysis mode with a central reticle.
 - [ ] **NR-146** · `SPX-2489` · **Motion Prediction Preview** — selected moving element gains a short deterministic future-path ghost.
-- [ ] **NR-147** · `SPX-2490` · **Weak-Point Detection** — scan identifies and brackets critical regions.
+- [x] **NR-147** · `SPX-2490` · **Weak-Point Detection** — scan identifies and brackets critical regions.
 - [ ] **NR-148** · `SPX-2491` · **Copy Pattern Analysis** — observed input sequence is captured and reconstructed beside source.
 - [ ] **NR-149** · `SPX-2492` · **Peripheral Data Reveal** — focus mode exposes metadata around viewport edges.
 - [ ] **NR-150** · `SPX-2493` · **Vision Mode Toggle** — interface morphs between normal, thermal-like and structural analysis views.
@@ -308,7 +357,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Byakugan-Inspired Network Inspection
 
-- [ ] **NR-154** · `SPX-2497` · **360° Network Scan** — radial scan reveals connected nodes around a central subject.
+- [x] **NR-154** · `SPX-2497` · **360° Network Scan** — radial scan reveals connected nodes around a central subject.
 - [ ] **NR-155** · `SPX-2498` · **Dependency Path Highlight** — selected service exposes upstream/downstream links.
 - [ ] **NR-156** · `SPX-2499` · **Critical Node Detection** — scan marks one bottleneck in a graph.
 - [ ] **NR-157** · `SPX-2500` · **Flow Blockage Warning** — a connection path becomes visibly interrupted.
@@ -326,8 +375,8 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Sensory / Detection Interfaces
 
-- [ ] **NR-166** · `SPX-2509` · **Presence Radar Sweep** — finite radial sweep detects fixed targets.
-- [ ] **NR-167** · `SPX-2510` · **Chakra Signature Match** — incoming signal shape compares against known profile and resolves match/no-match.
+- [x] **NR-166** · `SPX-2509` · **Presence Radar Sweep** — finite radial sweep detects fixed targets.
+- [x] **NR-167** · `SPX-2510` · **Chakra Signature Match** — incoming signal shape compares against known profile and resolves match/no-match.
 - [ ] **NR-168** · `SPX-2511` · **Threat Proximity Rings** — concentric zones change as target approaches.
 - [ ] **NR-169** · `SPX-2512` · **Hidden Target Ping** — one detected target sends a finite pulse.
 - [ ] **NR-170** · `SPX-2513` · **Multi-Signature Cluster** — nearby signals group into a compact cluster.
@@ -336,7 +385,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Summoning Interfaces
 
-- [ ] **NR-173** · `SPX-2516` · **Summoning Seal Materialise** — radial seal draws beneath an empty mount point, then content rises from it.
+- [x] **NR-173** · `SPX-2516` · **Summoning Seal Materialise** — radial seal draws beneath an empty mount point, then content rises from it.
 - [ ] **NR-174** · `SPX-2517` · **Summoned Tool Arrival** — inventory object emerges from a circular portal-like mask.
 - [ ] **NR-175** · `SPX-2518` · **Summon Contract Selection** — several contract cards orbit/fan around a central trigger.
 - [ ] **NR-176** · `SPX-2519` · **Summon Resource Cost** — activation consumes a visible resource before content appears.
@@ -345,15 +394,15 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Barrier Interfaces
 
-- [ ] **NR-179** · `SPX-2522` · **Four-Point Barrier Construct** — four corner nodes connect to form a protected region.
+- [x] **NR-179** · `SPX-2522` · **Four-Point Barrier Construct** — four corner nodes connect to form a protected region.
 - [ ] **NR-180** · `SPX-2523` · **Barrier Integrity** — impacts remove segments from a polygonal perimeter.
 - [ ] **NR-181** · `SPX-2524` · **Access Barrier Open** — one edge retracts after valid credential.
-- [ ] **NR-182** · `SPX-2525` · **Barrier Breach Alert** — perimeter fractures at exact breach location.
+- [x] **NR-182** · `SPX-2525` · **Barrier Breach Alert** — perimeter fractures at exact breach location.
 - [ ] **NR-183** · `SPX-2526` · **Barrier Expansion** — protected region grows to include newly selected nodes.
 
 ## Medical Ninja / Recovery UI
 
-- [ ] **NR-184** · `SPX-2527` · **Healing Progress Field** — damaged/error region reconstructs from centre outward.
+- [x] **NR-184** · `SPX-2527` · **Healing Progress Field** — damaged/error region reconstructs from centre outward.
 - [ ] **NR-185** · `SPX-2528` · **Vital Stability Monitor** — several metrics move from critical into stable bands.
 - [ ] **NR-186** · `SPX-2529` · **Recovery Seal** — circular progress completes and converts into stable status badge.
 - [ ] **NR-187** · `SPX-2530` · **Injury Localization Scan** — scan highlights affected region in a diagram.
@@ -363,10 +412,10 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Mission System
 
-- [ ] **NR-191** · `SPX-2534` · **Mission Rank Reveal** — D/C/B/A/S-style generic tier card slams into briefing.
+- [x] **NR-191** · `SPX-2534` · **Mission Rank Reveal** — D/C/B/A/S-style generic tier card slams into briefing.
 - [ ] **NR-192** · `SPX-2535` · **Mission Scroll Incoming** — compact dispatch scroll arrives and unfurls.
-- [ ] **NR-193** · `SPX-2536` · **Objective Chain Advance** — completed objective sends a pulse to the next.
-- [ ] **NR-194** · `SPX-2537` · **Mission Complete Stamp** — briefing receives a large original completion seal.
+- [x] **NR-193** · `SPX-2536` · **Objective Chain Advance** — completed objective sends a pulse to the next.
+- [x] **NR-194** · `SPX-2537` · **Mission Complete Stamp** — briefing receives a large original completion seal.
 - [ ] **NR-195** · `SPX-2538` · **Mission Failure Strike** — objectives freeze/desaturate and receive a finite failure slash.
 - [ ] **NR-196** · `SPX-2539` · **Mission Difficulty Escalation** — assignment unexpectedly changes tier and card structure.
 - [ ] **NR-197** · `SPX-2540` · **Team Assignment** — profile chips move into mission roster.
@@ -376,7 +425,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Ninja Rank / Promotion
 
-- [ ] **NR-201** · `SPX-2544` · **Rank Promotion Card** — profile transforms from one rank treatment into the next.
+- [x] **NR-201** · `SPX-2544` · **Rank Promotion Card** — profile transforms from one rank treatment into the next.
 - [ ] **NR-202** · `SPX-2545` · **Promotion List Climb** — profile moves upward through ranked roster.
 - [ ] **NR-203** · `SPX-2546` · **Rank Badge Assembly** — credential builds from several qualification markers.
 - [ ] **NR-204** · `SPX-2547` · **Rank Requirement Grid** — prerequisites acquire one-by-one.
@@ -386,7 +435,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Chunin-Exam-Inspired Testing
 
-- [ ] **NR-208** · `SPX-2551` · **Exam Start Seal** — test interface remains locked until a central seal snaps open.
+- [x] **NR-208** · `SPX-2551` · **Exam Start Seal** — test interface remains locked until a central seal snaps open.
 - [ ] **NR-209** · `SPX-2552` · **Timed Question Pressure** — question timer progresses through calm/warning/critical states.
 - [ ] **NR-210** · `SPX-2553` · **Answer Lock-In** — selected answer becomes sealed and cannot be changed after commit.
 - [ ] **NR-211** · `SPX-2554` · **Score Reveal Scroll** — result document unfurls to expose score.
@@ -398,7 +447,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Tournament / Arena
 
-- [ ] **NR-217** · `SPX-2560` · **Versus Clash Card** — portable ninja/anime-inspired interaction (blurb omitted in source shortlist).
+- [x] **NR-217** · `SPX-2560` · **Versus Clash Card** — portable ninja/anime-inspired interaction (blurb omitted in source shortlist).
 - [ ] **NR-218** · `SPX-2561` · **Arena Match Start** — portable ninja/anime-inspired interaction (blurb omitted in source shortlist).
 - [ ] **NR-219** · `SPX-2562` · **Winner Advance Bracket** — portable ninja/anime-inspired interaction (blurb omitted in source shortlist).
 - [ ] **NR-220** · `SPX-2563` · **Knockout Result Slam** — portable ninja/anime-inspired interaction (blurb omitted in source shortlist).
@@ -410,7 +459,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Village Administration
 
-- [ ] **NR-226** · `SPX-2569` · **Mission Board Dispatch** — job cards move from unassigned board into team lanes.
+- [x] **NR-226** · `SPX-2569` · **Mission Board Dispatch** — job cards move from unassigned board into team lanes.
 - [ ] **NR-227** · `SPX-2570` · **Ninja Availability Roster** — profile states change between available, deployed and recovery.
 - [ ] **NR-228** · `SPX-2571` · **Village Alert Level** — calm dashboard structurally escalates through threat levels.
 - [ ] **NR-229** · `SPX-2572` · **Gate Access Approval** — credential token passes through a barrier control.
@@ -431,7 +480,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Bingo Book / Target Dossier
 
-- [ ] **NR-241** · `SPX-2584` · **Target Dossier Reveal** — restricted profile opens through redaction/seal layers.
+- [x] **NR-241** · `SPX-2584` · **Target Dossier Reveal** — restricted profile opens through redaction/seal layers.
 - [ ] **NR-242** · `SPX-2585` · **Threat Rank Slam** — target receives oversized danger classification.
 - [ ] **NR-243** · `SPX-2586` · **Known Ability Annotation** — notes and arrows accumulate around profile.
 - [ ] **NR-244** · `SPX-2587` · **Target Status Update** — active/unknown/captured status transforms in-place.
@@ -441,7 +490,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Team Formation
 
-- [ ] **NR-248** · `SPX-2591` · **Three-Person Cell Formation** — three profile cards snap into triangular formation around leader/mission.
+- [x] **NR-248** · `SPX-2591` · **Three-Person Cell Formation** — three profile cards snap into triangular formation around leader/mission.
 - [ ] **NR-249** · `SPX-2592` · **Role Assignment Tokens** — scout/support/lead tokens travel into profiles.
 - [ ] **NR-250** · `SPX-2593` · **Team Compatibility Links** — connectors build between compatible members.
 - [ ] **NR-251** · `SPX-2594` · **Team Swap** — one member substitutes out while replacement occupies same slot.
@@ -518,7 +567,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Shadow Technique Interfaces
 
-- [ ] **NR-301** · `SPX-2644` · **Shadow Bind Selection** — dark geometric extension travels from source to target and locks both.
+- [x] **NR-301** · `SPX-2644` · **Shadow Bind Selection** — dark geometric extension travels from source to target and locks both.
 - [ ] **NR-302** · `SPX-2645` · **Linked Motion State** — two controls become synchronised after connection.
 - [ ] **NR-303** · `SPX-2646` · **Shadow Range Limit** — binding extension stops/resists at maximum range.
 - [ ] **NR-304** · `SPX-2647` · **Bind Release** — connecting shadow retracts back to source.
@@ -569,7 +618,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Space-Time / Teleportation Interfaces
 
-- [ ] **NR-334** · `SPX-2677` · **Teleport Card Transfer** — card compresses into a circular aperture and reconstructs in another slot.
+- [x] **NR-334** · `SPX-2677` · **Teleport Card Transfer** — card compresses into a circular aperture and reconstructs in another slot.
 - [ ] **NR-335** · `SPX-2678` · **Portal Page Transition** — destination expands from a small circular/spiral mask.
 - [ ] **NR-336** · `SPX-2679` · **Marked Destination Jump** — only pre-marked targets accept instant transfer.
 - [ ] **NR-337** · `SPX-2680` · **Warp Inventory Move** — item disappears from source list and materialises in destination.
@@ -704,7 +753,7 @@ Curated implementation priority (50 Best Cursor Prompts shortlist). Same checkbo
 
 ## Mentor / Training Progression
 
-- [ ] **NR-424** · `SPX-2767` · **Technique Mastery Tree** — skill nodes unlock along a branching path.
+- [x] **NR-424** · `SPX-2767` · **Technique Mastery Tree** — skill nodes unlock along a branching path.
 - [ ] **NR-425** · `SPX-2768` · **Mentor Demonstration Replay** — reference sequence plays once then waits for user reproduction.
 - [ ] **NR-426** · `SPX-2769` · **Practice Accuracy Compare** — user input path overlays target path.
 - [ ] **NR-427** · `SPX-2770` · **Mastery Rank-Up** — technique card transforms into mastered state.
