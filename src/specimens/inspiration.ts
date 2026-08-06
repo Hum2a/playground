@@ -181,6 +181,8 @@ export const SUGGESTED_FREE_TAGS = [
   'radial',
   'evolution',
   'identity',
+  'collection',
+  'insert',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

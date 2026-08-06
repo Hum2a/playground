@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/badge-case-insert.schema.json",
+  "title": "BadgeCaseInsert",
+  "description": "Portable contract for docking an earned badge into a collection case. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "phases",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "badge-case-insert" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Badge docks into slot 6 of an 8-slot archive; progress updates only after docking."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "countFrom", "countTo", "action"],
+      "properties": {
+        "title": { "type": "string", "const": "TRIAL ARCHIVE" },
+        "countFrom": { "type": "string", "const": "5 / 8" },
+        "countTo": { "type": "string", "const": "6 / 8" },
+        "action": { "type": "string", "const": "STORE BADGE" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "deep", "brass", "bright", "pale"],
+      "properties": {
+        "near": { "type": "string", "const": "#0e0c08" },
+        "deep": { "type": "string", "const": "#241c12" },
+        "brass": { "type": "string", "const": "#c4a05a" },
+        "bright": { "type": "string", "const": "#f0d78a" },
+        "pale": { "type": "string", "const": "#f6ecd2" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slotPx",
+        "gapPx",
+        "columns",
+        "rows",
+        "slotCount",
+        "initialOccupied",
+        "targetSlot",
+        "incomingStartOffsetPx",
+        "incomingStartScale"
+      ],
+      "properties": {
+        "slotPx": { "type": "number", "const": 58 },
+        "gapPx": { "type": "number", "const": 10 },
+        "columns": { "type": "integer", "const": 4 },
+        "rows": { "type": "integer", "const": 2 },
+        "slotCount": { "type": "integer", "const": 8 },
+        "initialOccupied": { "type": "integer", "const": 5 },
+        "targetSlot": { "type": "integer", "const": 6 },
+        "incomingStartOffsetPx": { "type": "number", "const": 80 },
+        "incomingStartScale": { "type": "number", "const": 1.25 }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targetMs",
+        "travelMs",
+        "dockMs",
+        "progressMs",
+        "travelScaleTo",
+        "dockScale",
+        "slotFrameScale",
+        "trackFrom",
+        "trackTo",
+        "progressAfterDock"
+      ],
+      "properties": {
+        "targetMs": { "type": "number", "const": 100 },
+        "travelMs": { "type": "number", "const": 320 },
+        "dockMs": { "type": "number", "const": 180 },
+        "progressMs": { "type": "number", "const": 200 },
+        "travelScaleTo": { "type": "number", "const": 0.78 },
+        "dockScale": { "type": "array", "const": [0.78, 0.7, 0.8, 0.78] },
+        "slotFrameScale": { "type": "array", "const": [1, 1.06, 1] },
+        "trackFrom": { "type": "number", "const": 62.5 },
+        "trackTo": { "type": "number", "const": 75 },
+        "progressAfterDock": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["textProgress", "liveStatus", "slotLabels"],
+      "properties": {
+        "textProgress": { "type": "boolean", "const": true },
+        "liveStatus": { "type": "boolean", "const": true },
+        "slotLabels": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantStored", "triggers"],
+      "properties": {
+        "instantStored": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "case", "slot", "incoming", "track"],
+      "properties": {
+        "root": { "type": "string", "const": "bci" },
+        "case": { "type": "string", "const": "bci__case" },
+        "slot": { "type": "string", "const": "bci__slot" },
+        "incoming": { "type": "string", "const": "bci__incoming" },
+        "track": { "type": "string", "const": "bci__track" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "store": { "type": "string", "const": "store" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": { "type": "string", "const": "badgeCaseInsert" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "badge-case-insert",
+      "intent": "Badge docks into slot 6 of an 8-slot archive; progress updates only after docking.",
+      "copy": {
+        "title": "TRIAL ARCHIVE",
+        "countFrom": "5 / 8",
+        "countTo": "6 / 8",
+        "action": "STORE BADGE"
+      },
+      "colours": {
+        "near": "#0e0c08",
+        "deep": "#241c12",
+        "brass": "#c4a05a",
+        "bright": "#f0d78a",
+        "pale": "#f6ecd2"
+      },
+      "layout": {
+        "slotPx": 58,
+        "gapPx": 10,
+        "columns": 4,
+        "rows": 2,
+        "slotCount": 8,
+        "initialOccupied": 5,
+        "targetSlot": 6,
+        "incomingStartOffsetPx": 80,
+        "incomingStartScale": 1.25
+      },
+      "phases": {
+        "targetMs": 100,
+        "travelMs": 320,
+        "dockMs": 180,
+        "progressMs": 200,
+        "travelScaleTo": 0.78,
+        "dockScale": [0.78, 0.7, 0.8, 0.78],
+        "slotFrameScale": [1, 1.06, 1],
+        "trackFrom": 62.5,
+        "trackTo": 75,
+        "progressAfterDock": true
+      },
+      "a11y": {
+        "textProgress": true,
+        "liveStatus": true,
+        "slotLabels": true
+      },
+      "reducedMotion": {
+        "instantStored": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "bci",
+        "case": "bci__case",
+        "slot": "bci__slot",
+        "incoming": "bci__incoming",
+        "track": "bci__track"
+      },
+      "behaviour": {
+        "store": "store",
+        "reset": "reset",
+        "api": "badgeCaseInsert"
+      }
+    }
+  ]
+}

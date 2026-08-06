@@ -1,0 +1,70 @@
+<div class="bci" data-badge-case data-state="idle" data-count="5">
+  <header class="bci__header">
+    <h2 class="bci__title">TRIAL ARCHIVE</h2>
+    <p class="bci__count" aria-live="polite" data-bci-count>
+      <span class="bci__count-clip">
+        <span class="bci__count-num bci__count-num--from" data-bci-num-from>5</span>
+        <span class="bci__count-num bci__count-num--to" data-bci-num-to>6</span>
+      </span>
+      <span class="bci__count-rest"> / 8</span>
+    </p>
+  </header>
+
+  <div class="bci__stage" data-bci-stage>
+    <div class="bci__case" data-bci-case role="list" aria-label="Trial archive slots">
+      <div class="bci__slot bci__slot--filled" role="listitem" data-slot="1" aria-label="Slot 1 occupied">
+        <span class="bci__emblem bci__emblem--1" aria-hidden="true"></span>
+      </div>
+      <div class="bci__slot bci__slot--filled" role="listitem" data-slot="2" aria-label="Slot 2 occupied">
+        <span class="bci__emblem bci__emblem--2" aria-hidden="true"></span>
+      </div>
+      <div class="bci__slot bci__slot--filled" role="listitem" data-slot="3" aria-label="Slot 3 occupied">
+        <span class="bci__emblem bci__emblem--3" aria-hidden="true"></span>
+      </div>
+      <div class="bci__slot bci__slot--filled" role="listitem" data-slot="4" aria-label="Slot 4 occupied">
+        <span class="bci__emblem bci__emblem--4" aria-hidden="true"></span>
+      </div>
+      <div class="bci__slot bci__slot--filled" role="listitem" data-slot="5" aria-label="Slot 5 occupied">
+        <span class="bci__emblem bci__emblem--5" aria-hidden="true"></span>
+      </div>
+      <div
+        class="bci__slot bci__slot--empty bci__slot--target"
+        role="listitem"
+        data-slot="6"
+        data-bci-target
+        aria-label="Slot 6 empty target"
+      >
+        <span class="bci__marker bci__marker--tl" aria-hidden="true"></span>
+        <span class="bci__marker bci__marker--tr" aria-hidden="true"></span>
+        <span class="bci__marker bci__marker--bl" aria-hidden="true"></span>
+        <span class="bci__marker bci__marker--br" aria-hidden="true"></span>
+        <span class="bci__emblem bci__emblem--6" aria-hidden="true" data-bci-docked></span>
+      </div>
+      <div class="bci__slot bci__slot--empty" role="listitem" data-slot="7" aria-label="Slot 7 empty"></div>
+      <div class="bci__slot bci__slot--empty" role="listitem" data-slot="8" aria-label="Slot 8 empty"></div>
+    </div>
+
+    <div class="bci__track" aria-hidden="true">
+      <span class="bci__track-fill" data-bci-track></span>
+    </div>
+
+    <div class="bci__incoming" aria-hidden="true" data-bci-incoming>
+      <span class="bci__emblem bci__emblem--6"></span>
+    </div>
+  </div>
+
+  <p class="bci__sr" data-bci-sr>Trial archive 5 of 8 occupied. Slot 6 empty.</p>
+
+  <div class="bci__actions">
+    <button type="button" class="bci__btn bci__btn--go" data-bci-store>
+      STORE BADGE
+    </button>
+    <button type="button" class="bci__btn bci__btn--reset" data-bci-reset hidden>
+      RESET
+    </button>
+  </div>
+
+  <p class="bci__live" role="status" aria-live="polite" data-bci-live>
+    Trial archive 5 of 8. Badge ready to store.
+  </p>
+</div>
