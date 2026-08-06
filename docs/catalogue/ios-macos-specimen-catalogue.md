@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **23 / 258** complete.
+- Progress: **24 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 23 |
-| Open | 235 |
+| Done | 24 |
+| Open | 234 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-209 | `SPX-1508` | `swipe-full-commit` | Swipe Full-Commit |
 | IOS-219 | `SPX-1518` | `pull-to-refresh` | Pull to Refresh |
 | IOS-194 | `SPX-1493` | `handoff-continuation` | Handoff Continuation |
 | IOS-188 | `SPX-1487` | `airdrop-transfer-arc` | AirDrop Transfer Arc |
@@ -85,7 +86,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
 - [x] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
 - [x] **IOS-219** · `SPX-1518` · **Pull to Refresh** — lists-collections
-- [ ] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
+- [x] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — delete-archive-destructive-actions
 - [ ] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
 - [ ] **IOS-231** · `SPX-1530` · **Invalid Field Shake** — error-validation
 - [ ] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — material-blur-layering
@@ -367,7 +368,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 ## Delete, Archive & Destructive Actions
 
 - [ ] **IOS-208** · `SPX-1507` · **Swipe Action Reveal** — horizontal drag progressively exposes contextual actions behind a row.
-- [ ] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — crossing a destructive threshold converts the drag into automatic completion.
+- [x] **IOS-209** · `SPX-1508` · **Swipe Full-Commit** — crossing a destructive threshold converts the drag into automatic completion.
 - [ ] **IOS-210** · `SPX-1509` · **Delete Collapse** — removed row contracts vertically and neighbouring rows reclaim its space.
 - [ ] **IOS-211** · `SPX-1510` · **Undo Toast Arrival** — destructive completion produces a temporary reversible-action surface.
 - [ ] **IOS-212** · `SPX-1511` · **Undo Row Restoration** — deleted row reconstructs into its previous exact list position.

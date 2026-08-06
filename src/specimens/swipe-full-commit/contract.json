@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/swipe-full-commit.schema.json",
+  "title": "SwipeFullCommit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "row", "thresholds", "collapse", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "swipe-full-commit" },
+    "intent": {
+      "type": "string",
+      "const": "A list-row swipe reveals an action, but crossing a second threshold changes the gesture into automatic execution."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["row", "action"],
+      "properties": {
+        "row": { "type": "string", "const": "CACHE // BUILD-04" },
+        "action": { "type": "string", "const": "DELETE" }
+      }
+    },
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 340 },
+        "heightPx": { "type": "number", "const": 64 }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revealPx", "commitPx", "actionOpenPx"],
+      "properties": {
+        "revealPx": { "type": "number", "const": 72 },
+        "commitPx": { "type": "number", "const": 190 },
+        "actionOpenPx": { "type": "number", "const": 88 }
+      }
+    },
+    "collapse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "commitMarkers"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 220 },
+        "commitMarkers": { "type": "number", "const": 1 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantCollapse", "triggers"],
+      "properties": {
+        "instantCollapse": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "row", "action"],
+      "properties": {
+        "root": { "type": "string", "const": "sfc" },
+        "row": { "type": "string", "const": "sfc__row" },
+        "action": { "type": "string", "const": "sfc__action" }
+      }
+    }
+  }
+}

@@ -149,6 +149,7 @@ import { stateFieldTransfer } from './state-field-transfer/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { stateIntensityField } from './state-intensity-field/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
+import { swipeFullCommit } from './swipe-full-commit/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
@@ -358,6 +359,7 @@ export const specimens: Specimen[] = [
   stateFieldTransfer,
   stateIntensityField,
   surfaceBreakReveal,
+  swipeFullCommit,
   synchronousFusionMerge,
   tacticalAlertPing,
   tacticalCommandWheel,
