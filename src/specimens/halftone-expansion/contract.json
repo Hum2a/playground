@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HalftoneExpansion",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": { "type": "string", "const": "halftone-expansion" },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 420 },
+        "totalMs": { "type": "number", "const": 1070 }
+      }
+    }
+  }
+}

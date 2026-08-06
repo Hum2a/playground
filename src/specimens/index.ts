@@ -119,6 +119,7 @@ import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { gridReorderGap } from './grid-reorder-gap/entry'
+import { halftoneExpansion } from './halftone-expansion/entry'
 import { handoffContinuation } from './handoff-continuation/entry'
 import { headsUpNotificationDrop } from './heads-up-notification-drop/entry'
 import { heroAssignmentDrag } from './hero-assignment-drag/entry'
@@ -446,6 +447,7 @@ export const specimens: Specimen[] = [
   glassFractureReveal,
   graphicBurstHover,
   gridReorderGap,
+  halftoneExpansion,
   handoffContinuation,
   headsUpNotificationDrop,
   heroAssignmentDrag,

@@ -1,0 +1,130 @@
+/* SPX-1981 Halftone Expansion — portable contract. */
+
+.htx {
+  --htx-primary: #38a3ff;
+  --htx-ink: #101820;
+  --htx-paper: #f4f7fa;
+  --htx-accent: #ff4d35;
+  --htx-ox: 50%;
+  --htx-oy: 50%;
+  --htx-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  background: var(--htx-ink);
+  color: var(--htx-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.htx *,
+.htx *::before,
+.htx *::after {
+  box-sizing: border-box;
+}
+
+.htx__state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+  height: 100%;
+  padding: 1.25rem;
+}
+
+.htx__kicker {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--htx-primary);
+}
+
+.htx__title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.htx__btn {
+  appearance: none;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  border: 2px solid var(--htx-primary);
+  background: transparent;
+  color: var(--htx-paper);
+  padding: 0.4rem 0.95rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.htx__btn:focus-visible {
+  outline: 2px solid var(--htx-primary);
+  outline-offset: 3px;
+}
+
+.htx__mask {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.htx__dots {
+  position: absolute;
+  left: var(--htx-ox);
+  top: var(--htx-oy);
+  width: 24vmax;
+  height: 24vmax;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--htx-paper) 18%, transparent 19%) 0 0 / 14px 14px,
+    radial-gradient(circle, var(--htx-primary) 22%, transparent 23%) 7px 7px / 14px 14px;
+  background-color: var(--htx-accent);
+  transition: transform 420ms var(--htx-ease), opacity 180ms ease;
+}
+
+.htx__mask--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.htx__mask--active .htx__dots {
+  transform: translate(-50%, -50%) scale(3.2);
+}
+
+.htx__mask--exit .htx__dots {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition-duration: 320ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htx__dots {
+    transition: none !important;
+  }
+
+  .htx__mask--active,
+  .htx__mask--exit {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .htx__dots {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .htx__mask--active,
+[data-force-reduced-motion='true'] .htx__mask--exit {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
