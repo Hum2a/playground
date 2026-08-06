@@ -1,0 +1,8 @@
+{
+  "name": "velocity-pad-hit",
+  "ref": "SPX-3830",
+  "title": "Velocity Pad Hit",
+  "mode": "fader",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

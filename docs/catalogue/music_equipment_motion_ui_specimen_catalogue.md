@@ -218,7 +218,7 @@ specimens can feel tactile without needing sound.
 
 # 9. Samplers / Pads
 
-- [ ] **MUSIC-071** · `SPX-3830` · ★★★★★ **Velocity Pad Hit** — A performance pad compresses and
+- [x] **MUSIC-071** · `SPX-3830` · ★★★★★ **Velocity Pad Hit** — A performance pad compresses and
     blooms according to hit strength.
 - [ ] **MUSIC-072** · `SPX-3831` · ★★★★☆ **Pad Bank Switch** — A 4x4 pad grid changes sample
     labels and colours as banks switch.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-071 | SPX-3830 | `velocity-pad-hit` | Velocity Pad Hit |
 | MUSIC-066 | SPX-3825 | `swing-offset` | Swing Offset |
 | MUSIC-062 | SPX-3821 | `16-step-sequencer-chase` | 16-Step Sequencer Chase |
 | MUSIC-060 | SPX-3819 | `arpeggiator-step-chase` | Arpeggiator Step Chase |
@@ -877,12 +878,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **14 / 310** complete.
+- Progress: **15 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 296 |
+| Done | 15 |
+| Open | 295 |
 
 ## Core first-wave / build queue
 
@@ -906,7 +907,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · `arpeggiator-step-chase`
 - [x] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · `16-step-sequencer-chase`
 - [x] **MUSIC-066** · `SPX-3825` · **Swing Offset** · `swing-offset`
-- [ ] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · scaffold `velocity-pad-hit`
+- [x] **MUSIC-071** · `SPX-3830` · **Velocity Pad Hit** · `velocity-pad-hit`
 - [ ] **MUSIC-073** · `SPX-3832` · **Sample Slice Markers** · scaffold `sample-slice-markers`
 - [ ] **MUSIC-079** · `SPX-3838` · **Vinyl Spin-Up** · scaffold `vinyl-spin-up`
 - [ ] **MUSIC-085** · `SPX-3844` · **Scratch Recoil** · scaffold `scratch-recoil`
