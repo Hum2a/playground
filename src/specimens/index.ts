@@ -97,6 +97,7 @@ import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
 import { enhancedStateReversion } from './enhanced-state-reversion/entry'
 import { entryRegistration } from './entry-registration/entry'
+import { episodeTitleCardInterrupt } from './episode-title-card-interrupt/entry'
 import { erasureDelete } from './erasure-delete/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { escalatingBurstMultiplier } from './escalating-burst-multiplier/entry'
@@ -419,6 +420,7 @@ export const specimens: Specimen[] = [
   energyTransferSync,
   enhancedStateReversion,
   entryRegistration,
+  episodeTitleCardInterrupt,
   erasureDelete,
   errorCorrectionRewrite,
   escalatingBurstMultiplier,

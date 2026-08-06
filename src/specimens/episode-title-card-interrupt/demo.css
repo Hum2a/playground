@@ -1,0 +1,178 @@
+/* SPX-2217 Episode Title Card Interrupt — portable contract. */
+
+.etic {
+  --etic-primary: #38a3ff;
+  --etic-ink: #101820;
+  --etic-paper: #f4f7fa;
+  --etic-accent: #ff4d35;
+  --etic-ease: cubic-bezier(0.18, 0.92, 0.22, 1);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1.1rem 1rem 1.4rem;
+  background: var(--etic-ink);
+  color: var(--etic-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.etic *,
+.etic *::before,
+.etic *::after {
+  box-sizing: border-box;
+}
+
+.etic__trigger {
+  appearance: none;
+  border: 2px solid var(--etic-primary);
+  background: transparent;
+  color: var(--etic-paper);
+  padding: 0.4rem 1rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.etic__trigger:focus-visible {
+  outline: 2px solid var(--etic-primary);
+  outline-offset: 3px;
+}
+
+.etic__app {
+  position: relative;
+  width: min(100%, 340px);
+  padding: 1.1rem 1rem;
+  border: 3px solid var(--etic-paper);
+  background: rgba(244, 247, 250, 0.06);
+  transition: opacity 220ms ease, filter 220ms ease;
+}
+
+.etic__app-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--etic-primary);
+}
+
+.etic__app-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.etic__app-meta {
+  margin: 0.5rem 0 0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.etic__card {
+  position: absolute;
+  inset: 3.2rem 1rem 2.5rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  background: var(--etic-accent);
+  color: var(--etic-paper);
+  border: 4px solid var(--etic-ink);
+  clip-path: polygon(0 0, 100% 0, 100% 86%, 90% 100%, 0 100%);
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 420ms var(--etic-ease), opacity 280ms ease;
+}
+
+.etic__card-ep {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.etic__card-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.etic__card-sub {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.etic__status {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 247, 250, 0.75);
+}
+
+.etic--interrupt .etic__app {
+  opacity: 0.35;
+  filter: grayscale(0.4);
+}
+
+.etic--hold .etic__card,
+.etic--done .etic__card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etic__app,
+  .etic__card {
+    transition: none !important;
+  }
+
+  .etic--interrupt .etic__app,
+  .etic--hold .etic__app,
+  .etic--done .etic__app {
+    opacity: 0.35;
+    filter: grayscale(0.4);
+  }
+
+  .etic--interrupt .etic__card,
+  .etic--hold .etic__card,
+  .etic--done .etic__card {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .etic__app,
+[data-force-reduced-motion='true'] .etic__card {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .etic--interrupt .etic__app,
+[data-force-reduced-motion='true'] .etic--hold .etic__app,
+[data-force-reduced-motion='true'] .etic--done .etic__app {
+  opacity: 0.35;
+  filter: grayscale(0.4);
+}
+
+[data-force-reduced-motion='true'] .etic--interrupt .etic__card,
+[data-force-reduced-motion='true'] .etic--hold .etic__card,
+[data-force-reduced-motion='true'] .etic--done .etic__card {
+  transform: translateY(0);
+  opacity: 1;
+}

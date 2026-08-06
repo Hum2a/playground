@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EpisodeTitleCardInterrupt",
+  "type": "object",
+  "required": ["name", "animation"],
+  "properties": {
+    "name": { "type": "string", "const": "episode-title-card-interrupt" },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 420 },
+        "totalMs": { "type": "number", "const": 1070 }
+      }
+    }
+  }
+}
