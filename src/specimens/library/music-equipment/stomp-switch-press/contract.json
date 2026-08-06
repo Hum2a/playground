@@ -1,0 +1,8 @@
+{
+  "name": "stomp-switch-press",
+  "ref": "SPX-3803",
+  "title": "Stomp Switch Press",
+  "mode": "switch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

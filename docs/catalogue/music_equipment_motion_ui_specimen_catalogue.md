@@ -148,7 +148,7 @@ specimens can feel tactile without needing sound.
 
 # 6. Pedals / Stompboxes
 
-- [ ] **MUSIC-044** · `SPX-3803` · ★★★★★ **Stomp Switch Press** — A footswitch depresses with
+- [x] **MUSIC-044** · `SPX-3803` · ★★★★★ **Stomp Switch Press** — A footswitch depresses with
     tactile travel and toggles a persistent effect LED.
 - [ ] **MUSIC-045** · `SPX-3804` · ★★★★★ **Pedal LED Engage** — An effect status light blooms
     once then settles into its active state.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-044 | SPX-3803 | `stomp-switch-press` | Stomp Switch Press |
 | MUSIC-036 | SPX-3795 | `compressor-threshold-crush` | Compressor Threshold Crush |
 | MUSIC-025 | SPX-3784 | `eq-bypass-flatten` | EQ Bypass Flatten |
 | MUSIC-019 | SPX-3778 | `parametric-eq-node-drag` | Parametric EQ Node Drag |
@@ -871,12 +872,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **8 / 310** complete.
+- Progress: **9 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 8 |
-| Open | 302 |
+| Done | 9 |
+| Open | 301 |
 
 ## Core first-wave / build queue
 
@@ -893,7 +894,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-036** · `SPX-3795` · **Compressor Threshold Crush** · `compressor-threshold-crush`
 - [ ] **MUSIC-039** · `SPX-3798` · **Gain Reduction Slam** · scaffold `gain-reduction-slam`
 - [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
-- [ ] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · scaffold `stomp-switch-press`
+- [x] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · `stomp-switch-press`
 - [ ] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · scaffold `pedalboard-signal-chain`
 - [ ] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · scaffold `tap-tempo-pulse`
 - [ ] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · scaffold `oscillator-wave-morph`

@@ -555,4 +555,5 @@ export const specimenOrder: string[] = [
   'parametric-eq-node-drag',
   'eq-bypass-flatten',
   'compressor-threshold-crush',
+  'stomp-switch-press',
 ]
