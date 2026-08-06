@@ -9,8 +9,6 @@ import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
-import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
-import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
@@ -70,9 +68,7 @@ export const specimens: Specimen[] = [
   tacticalAlertPing,
   inkSplatTransition,
   victoryResultsTally,
-  paperStackShuffle,
   misprintNotification,
-  newspaperHeadlineDrop,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
