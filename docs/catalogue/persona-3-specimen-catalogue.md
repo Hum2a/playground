@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **28 / 238** complete.
+- Progress: **27 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 28 |
-| Open | 210 |
+| Done | 27 |
+| Open | 211 |
 
 ## Visual grammar
 
@@ -54,12 +54,9 @@
 | P3-098 | `SPX-495` | `card-break-summon` | Card Break Summon |
 | P3-031 | `SPX-429` | `crystallised-selection` | Crystallised Selection |
 | P3-009 | `SPX-408` | `surface-break-reveal` | Surface Break Reveal |
-
 | P3-121 | `SPX-518` | `butterfly-success-state` | Butterfly Success State |
 | P3-003 | `SPX-402` | `liquid-split-transition` | Liquid Split Transition |
 | P3-089 | `SPX-486` | `tactical-command-wheel` | Tactical Command Wheel |
-
-
 | P3-064 | `SPX-461` | `full-moon-milestone` | Full Moon Milestone |
 | P3-170 | `SPX-567` | `blue-focus-brackets` | Blue Focus Brackets |
 

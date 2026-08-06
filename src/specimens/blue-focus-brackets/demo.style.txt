@@ -1,0 +1,166 @@
+/* SPX-567 Blue Focus Brackets — portable contract. Do not restyle to host tokens. */
+
+.blue-focus-brackets {
+  --bfb-navy: #071525;
+  --bfb-deep: #0b2f52;
+  --bfb-blue: #2d9bd3;
+  --bfb-pale: #b9e7ff;
+  --bfb-ink: #d7ecf8;
+  --bfb-muted: #6a8aa3;
+  --bfb-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --bfb-enter: 120ms;
+  --bfb-exit: 80ms;
+  --bfb-gap: 4px;
+  --bfb-size: 12px;
+  --bfb-thick: 2px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  overflow: hidden;
+  background: var(--bfb-navy);
+  color: var(--bfb-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.blue-focus-brackets *,
+.blue-focus-brackets *::before,
+.blue-focus-brackets *::after {
+  box-sizing: border-box;
+}
+
+.blue-focus-brackets__hint {
+  margin: 0 0 1.1rem;
+  max-width: 22rem;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--bfb-muted);
+}
+
+.blue-focus-brackets__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.blue-focus-brackets__btn {
+  position: relative;
+  appearance: none;
+  margin: 0;
+  padding: 0.7rem 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--bfb-blue) 35%, transparent);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--bfb-deep) 55%, transparent);
+  color: var(--bfb-ink);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* Replace default ring with brackets; keep a high-contrast fallback outline offset */
+  outline: none;
+}
+
+.blue-focus-brackets__btn:hover {
+  background: color-mix(in srgb, var(--bfb-deep) 78%, var(--bfb-blue));
+  border-color: color-mix(in srgb, var(--bfb-pale) 40%, var(--bfb-blue));
+  /* Hover ≠ focus: no brackets on hover alone */
+}
+
+.blue-focus-brackets__btn:active {
+  background: color-mix(in srgb, var(--bfb-deep) 90%, #000);
+  /* Active/pressed does not lock brackets */
+}
+
+.blue-focus-brackets__label {
+  position: relative;
+  z-index: 1;
+}
+
+.blue-focus-brackets__marks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.blue-focus-brackets__br {
+  position: absolute;
+  width: var(--bfb-size);
+  height: var(--bfb-size);
+  opacity: 0;
+  border-color: var(--bfb-pale);
+  border-style: solid;
+  border-width: 0;
+  transition:
+    opacity var(--bfb-exit) var(--bfb-ease),
+    transform var(--bfb-exit) var(--bfb-ease);
+}
+
+.blue-focus-brackets__br--tl {
+  top: 0;
+  left: 0;
+  border-top-width: var(--bfb-thick);
+  border-left-width: var(--bfb-thick);
+  transform: translate(calc(-1 * var(--bfb-gap)), calc(-1 * var(--bfb-gap)));
+}
+
+.blue-focus-brackets__br--tr {
+  top: 0;
+  right: 0;
+  border-top-width: var(--bfb-thick);
+  border-right-width: var(--bfb-thick);
+  transform: translate(var(--bfb-gap), calc(-1 * var(--bfb-gap)));
+}
+
+.blue-focus-brackets__br--bl {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: var(--bfb-thick);
+  border-left-width: var(--bfb-thick);
+  transform: translate(calc(-1 * var(--bfb-gap)), var(--bfb-gap));
+}
+
+.blue-focus-brackets__br--br {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: var(--bfb-thick);
+  border-right-width: var(--bfb-thick);
+  transform: translate(var(--bfb-gap), var(--bfb-gap));
+}
+
+/* Focus entry: brackets start 4px out, travel inward 120ms — no overshoot */
+.blue-focus-brackets__btn:focus-visible .blue-focus-brackets__br {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition-duration: var(--bfb-enter);
+}
+
+/* High-contrast companion for environments that suppress opacity cues */
+.blue-focus-brackets__btn:focus-visible {
+  border-color: var(--bfb-pale);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bfb-pale) 55%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blue-focus-brackets__br {
+    transition: none !important;
+  }
+
+  .blue-focus-brackets__btn:focus-visible .blue-focus-brackets__br {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+[data-force-reduced-motion='true'] .blue-focus-brackets__br {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .blue-focus-brackets__btn:focus-visible .blue-focus-brackets__br {
+  opacity: 1;
+  transform: translate(0, 0);
+}

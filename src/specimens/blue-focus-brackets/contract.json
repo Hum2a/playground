@@ -1,0 +1,38 @@
+{
+  "name": "blue-focus-brackets",
+  "intent": "Accessible keyboard focus treatment: four angular pale-blue corner brackets appear around the focused control. Focus only — not hover, selected, or active.",
+  "colours": {
+    "navy": "#071525",
+    "deep": "#0b2f52",
+    "blue": "#2d9bd3",
+    "pale": "#b9e7ff",
+    "ink": "#d7ecf8"
+  },
+  "brackets": {
+    "count": 4,
+    "sizePx": 12,
+    "thicknessPx": 2,
+    "entryOffsetPx": 4,
+    "corners": ["tl", "tr", "bl", "br"]
+  },
+  "timing": {
+    "enterMs": 120,
+    "exitMs": 80,
+    "easing": "cubic-bezier(0.33, 0, 0.2, 1)",
+    "noOvershoot": true
+  },
+  "semantics": {
+    "focusVisibleOnly": true,
+    "hoverDistinct": true,
+    "noPersistentSelection": true,
+    "nativeButtons": true
+  },
+  "a11y": {
+    "selector": ":focus-visible",
+    "decorativeAriaHidden": true,
+    "outlineReplacedWithEquivalentVisibleTreatment": true
+  },
+  "reducedMotion": {
+    "behaviour": "Brackets appear immediately at final inset with no travel"
+  }
+}
