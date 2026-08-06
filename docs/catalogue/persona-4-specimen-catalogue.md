@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 191** complete.
+- Progress: **10 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 182 |
+| Done | 10 |
+| Open | 181 |
 
 ## Visual grammar
 
@@ -43,6 +43,7 @@
 | P4-044 | `SPX-2962` | `shadow-self-reveal` | Shadow Self Reveal |
 | P4-052 | `SPX-2970` | `arcana-rank-up` | Arcana Rank-Up |
 | P4-110 | `SPX-3028` | `keep-out-tape-marquee` | KEEP OUT Tape Marquee |
+| P4-069 | `SPX-2987` | `persona-fusion-combine` | Persona Fusion Combine |
 
 ## Core first-wave
 
@@ -57,7 +58,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-044** · `SPX-2962` · **Shadow Self Reveal** — shadow-identity-confrontation
 - [x] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — social-links-bonds
 - [x] **P4-110** · `SPX-3028` · **KEEP OUT Tape Marquee** — yellow-black-graphic-language
-- [ ] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — persona-fusion-compendium
+- [x] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — persona-fusion-compendium
 - [ ] **P4-031** · `SPX-2949` · **Case Breakthrough** — investigation-evidence
 - [ ] **P4-034** · `SPX-2952` · **Suspect Card Reveal** — investigation-evidence
 - [ ] **P4-035** · `SPX-2953` · **Evidence Chain Advance** — investigation-evidence
@@ -191,7 +192,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 ## Persona / Fusion / Compendium
 
-- [ ] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — Two input cards travel into a central synthesis field and become one derived result.
+- [x] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — Two input cards travel into a central synthesis field and become one derived result.
 - [ ] **P4-070** · `SPX-2988` · **Fusion Preview** — Candidate inputs project a deterministic preview of the resulting capability.
 - [ ] **P4-071** · `SPX-2989` · **Skill Inheritance Select** — Selected capability chips travel from source cards into the fusion result.
 - [ ] **P4-072** · `SPX-2990` · **Fusion Result Reveal** — A hidden result card constructs after synthesis completes.

@@ -1,0 +1,19 @@
+{
+  "name": "persona-fusion-combine",
+  "intent": "SIGMA + DELTA cards travel to center; merge into SYNTH result.",
+  "catalogue": { "p4": "P4-069", "ref": "SPX-2987" },
+  "inputs": ["SIGMA", "DELTA"],
+  "output": "SYNTH",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "travelMs": 520, "mergeMs": 480 },
+  "api": {
+    "run": "runPersonaFusionCombine()",
+    "reset": "resetPersonaFusionCombine()"
+  },
+  "reducedMotion": { "behaviour": "SYNTH result visible immediately" }
+}

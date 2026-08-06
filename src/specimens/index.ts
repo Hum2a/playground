@@ -240,6 +240,7 @@ import { performanceMeterBurst } from './performance-meter-burst/entry'
 import { permissionPromptMaterialise } from './permission-prompt-materialise/entry'
 import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
+import { personaFusionCombine } from './persona-fusion-combine/entry'
 import { pictureInPictureCollapse } from './picture-in-picture-collapse/entry'
 import { pipEdgeMagnetism } from './pip-edge-magnetism/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
@@ -639,6 +640,7 @@ export const specimens: Specimen[] = [
   permissionPromptMaterialise,
   permissionRejection,
   personaAwakeningReveal,
+  personaFusionCombine,
   pictureInPictureCollapse,
   pipEdgeMagnetism,
   pixelHpDrain,

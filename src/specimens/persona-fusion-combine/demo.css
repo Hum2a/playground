@@ -1,0 +1,201 @@
+/* SPX-2987 Persona Fusion Combine — portable contract. */
+
+.pfc {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.pfc__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.pfc__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 340px);
+  min-height: 210px;
+  border: 3px solid var(--yellow);
+  background: var(--paper);
+}
+
+.pfc__field {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 88px;
+  height: 88px;
+  margin: -44px 0 0 -44px;
+  border: 2px dashed var(--yellow);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--muted) 0%, transparent 70%);
+  opacity: 0.5;
+}
+
+.pfc__card,
+.pfc__result {
+  position: absolute;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 72px;
+  height: 88px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  transition: transform 520ms cubic-bezier(0.3, 1.1, 0.3, 1), opacity 320ms ease;
+}
+
+.pfc__card--a {
+  left: 12%;
+  top: 32%;
+}
+
+.pfc__card--b {
+  right: 12%;
+  top: 32%;
+}
+
+.pfc__result {
+  left: 50%;
+  top: 50%;
+  margin: -44px 0 0 -36px;
+  width: 72px;
+  height: 88px;
+  border-color: var(--yellow);
+  background: var(--ink);
+  color: var(--yellow);
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.pfc__card-id {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pfc__result .pfc__card-id {
+  color: var(--paper);
+}
+
+.pfc__card-name {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pfc[data-phase='travel'] .pfc__card--a {
+  transform: translate(95px, 18px) scale(0.85);
+}
+
+.pfc[data-phase='travel'] .pfc__card--b {
+  transform: translate(-95px, 18px) scale(0.85);
+}
+
+.pfc[data-phase='merge'] .pfc__card--a,
+.pfc[data-phase='done'] .pfc__card--a {
+  opacity: 0;
+  transform: translate(95px, 18px) scale(0.2);
+}
+
+.pfc[data-phase='merge'] .pfc__card--b,
+.pfc[data-phase='done'] .pfc__card--b {
+  opacity: 0;
+  transform: translate(-95px, 18px) scale(0.2);
+}
+
+.pfc[data-phase='merge'] .pfc__result,
+.pfc[data-phase='done'] .pfc__result {
+  opacity: 1;
+  transform: scale(1);
+  animation: pfc-burst 480ms cubic-bezier(0.2, 1.2, 0.3, 1) forwards;
+}
+
+@keyframes pfc-burst {
+  0% { transform: scale(0.4); opacity: 0; }
+  55% { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pfc[data-phase='done'] .pfc__result {
+  animation: none;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pfc__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pfc__btn {
+  box-sizing: border-box;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pfc__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.pfc__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pfc__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfc__card,
+  .pfc__result {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .pfc__card,
+[data-force-reduced-motion='true'] .pfc__result {
+  animation: none !important;
+  transition: none !important;
+}
