@@ -1,0 +1,27 @@
+---
+description: Sandboxed iframe harness — srcdoc, controls, playback
+globs: src/harness/**
+alwaysApply: false
+---
+
+# Preview harness
+
+## `composeSrcDoc`
+
+- Pure function; fully unit-tested
+- Inject specimen CSS **byte-identical** — no prefix, escape, or rewrite
+- `data-force-reduced-motion="true"` on `<html>` when force mode is on
+- Optional `scaffold` wraps HTML via `{{specimen}}` or concatenation
+- Always include the postMessage control script: `{ type: 'playback', rate }`, `{ type: 'restart' }` via `document.getAnimations()`
+
+## `PreviewFrame`
+
+- `<iframe srcdoc={…} sandbox="allow-scripts" title={`Preview: ${label}`}>`
+- Recompose srcdoc only when inputs change (memoize) — never on every render
+- Scale with `transform` when the container is narrower than the frame width
+- Prefer `tabIndex={-1}` on the iframe when a plate wrapper owns focus order
+
+## `ControlStrip`
+
+- Emits a plain `HarnessControls` state object
+- Owns **no** iframe / postMessage logic — parent wires restart via ref

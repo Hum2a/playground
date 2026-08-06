@@ -1,0 +1,35 @@
+---
+description: Specimen folder layout, imports, and metadata contract
+globs: src/specimens/**
+alwaysApply: false
+---
+
+# Specimens
+
+One folder per specimen under `src/specimens/<id>/`:
+
+| File | Role |
+| --- | --- |
+| `entry.ts` | Metadata + `?raw` / JSON imports → `Specimen` |
+| `demo.html` | Markup fragment (no `<html>`/`<body>`) |
+| `demo.css` | Portable styles (canonical artifact) |
+| `demo.style.txt` | Byte-identical twin of `demo.css` for Vitest |
+| `demo.js` | Optional |
+| `spec.md` | Human portable spec |
+| `contract.json` | Machine-readable contract |
+
+## Imports in `entry.ts`
+
+```ts
+import css from './demo.style.txt?raw'  // ✅ Vitest-safe
+import css from './demo.css?raw'        // ❌ returns "" under Vitest
+```
+
+Keep `demo.css` and `demo.style.txt` in sync (`npm run spec:check` asserts this).
+
+## Metadata
+
+- `id` = URL slug; `ref` = `SPX-NNN`
+- `deps: 'none'` means plain HTML+CSS
+- Overlays need `preview.scaffold` with `{{specimen}}` and a relative + overflow-clipped host
+- Acceptance criteria must be observable, not aspirational

@@ -1,0 +1,26 @@
+---
+description: Catalogue contact sheet, plates, and detail route
+globs: src/catalogue/**
+alwaysApply: false
+---
+
+# Catalogue
+
+## Contact sheet (signature)
+
+- First thing on `/`: every specimen live at reduced scale in a tight grid
+- No headline card, no gradient, no stats — two lines of copy beneath the sheet
+- Everything around it stays grey so the sheet lands
+
+## Plates
+
+Anatomy: mono ref (left) + origin (right) → framed preview → display title → mono tags → `[Copy prompt]` + `[Open →]`.
+
+- Primary copy action only on plates; detail route shows Full / Code / Contract
+- Mount frames with `IntersectionObserver`; unmount when more than one viewport offscreen
+
+## Detail `/s/:id`
+
+- Sticky preview + ControlStrip | tabs Spec / Markup / Styles / Contract / Prompt
+- Real `role="tablist"` with arrow-key navigation
+- Unknown id: empty state linking back to the catalogue with a next step

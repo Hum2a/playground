@@ -1,0 +1,31 @@
+---
+description: Chrome design tokens, type, and restraint
+globs: src/styles/**,src/app/**,src/catalogue/**/*.css,src/playground/**/*.css
+alwaysApply: false
+---
+
+# Design (chrome only)
+
+Tokens live in `src/styles/tokens.css`. Specimens ignore these.
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--ink` | `#12141A` | Page ground |
+| `--panel` | `#1B1E26` | Plate ground |
+| `--rule` | `#2C313C` | Hairlines |
+| `--pewter` | `#767E8C` | Captions / disabled |
+| `--chalk` | `#E6E8EC` | Primary text |
+| `--verdigris` | `#4E9E8F` | Interactive only |
+
+## Type
+
+- Display: Archivo Variable, stretch ~125%, weight 700, `-0.02em`
+- Body: Inter Tight
+- Utility: JetBrains Mono — refs/tags uppercase, `0.08em` tracking, one step smaller than adjacent body
+
+## Restraint
+
+- Hairlines: `1px solid var(--rule)` — no shadows on chrome
+- `border-radius: 2px` on `.plate` only; `0` elsewhere
+- Hover: rule-colour shift + focus ring only — chrome does not move
+- One accent, one use per viewport

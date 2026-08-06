@@ -1,0 +1,24 @@
+---
+description: Product identity and hard invariants for the specimen catalogue
+alwaysApply: true
+---
+
+# Core invariants
+
+**Specimen Archive** at https://playground.humza-butt.space — portable motion artifacts with live sandboxed previews and one-click recreation prompts.
+
+Pages project: `playground` (see `wrangler.toml`). Content lives in git only.
+
+## Non-goals
+
+No accounts, database, server, CMS, auth, or Workers API. Static site only. If a specimen is not in the repo, it does not exist.
+
+## Three rules that override everything else
+
+1. **Monochrome chrome** — Page chrome uses ink/panel/rule/pewter/chalk only. The sole accent is `--verdigris` (`#4E9E8F`), used only for interactive affordances (focus, active, copy confirm). Never decorative, never as a gradient, never on more than one element at a time in a viewport. Specimen colour stays inside iframes.
+
+2. **Sandboxed previews** — Every specimen preview is an `<iframe>` with `sandbox="allow-scripts"` only. Never add `allow-same-origin` (that combination un-sandboxes the frame). Specimens must not read the parent, use storage, or navigate.
+
+3. **Portable specimen CSS** — Never edit specimen CSS to fit the site. No scoping prefixes, no chrome tokens, no renamed classes. Isolation comes from the iframe. What ships in `demo.css` is the contract.
+
+See `AGENTS.md` and `docs/design-spec.md`.

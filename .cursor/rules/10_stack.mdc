@@ -1,0 +1,24 @@
+---
+description: Stack, tooling, and forbidden dependencies
+alwaysApply: true
+---
+
+# Stack
+
+Do not deviate without flagging it.
+
+- **App:** React 19 + Vite + TypeScript, **npm** (not pnpm/yarn)
+- **Chrome CSS:** Vanilla CSS + custom properties in `src/styles/` — no Tailwind, no UI kit, no CSS-in-JS
+- **Routing:** `react-router-dom` (`/`, `/s/:id`, `/playground`)
+- **Fonts:** `@fontsource-variable/{archivo,inter-tight,jetbrains-mono}` self-hosted
+- **Editor (playground only):** CodeMirror 6, lazy-loaded so it never lands in the catalogue bundle
+- **Tests:** Vitest (unit), Playwright (route smokes)
+- **Host:** Cloudflare Pages → `dist`; config in `wrangler.toml`
+
+## Scripts
+
+Prefer `<domain>:<action>` where applicable: `spec:new`, `spec:check`, `deploy:preview`, `deploy:prod`.
+
+## Do not add
+
+Hono, Neon, auth libraries, Workers Functions (unless the task explicitly migrates off static Pages), Tailwind, or a component library.

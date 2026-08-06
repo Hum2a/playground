@@ -1,0 +1,26 @@
+---
+description: Unit, e2e, specimen check, and Lighthouse expectations
+globs: "**/*.{test,spec}.{ts,tsx},e2e/**,scripts/spec-*.mjs,scripts/lighthouse-*.mjs"
+alwaysApply: false
+---
+
+# Testing
+
+## Vitest
+
+- `composeSrcDoc`: CSS fidelity, force attribute, no over-escaping
+- `buildPrompt`: no “playground”, fence escalation, RM clause, snapshot SPX-001
+- Prefer `demo.style.txt?raw` in specimen imports (see `30_specimens`)
+
+## Playwright (`e2e/`)
+
+Smoke floor: catalogue plate count, clipboard copy non-empty, detail five tabs, playground hash restore.
+
+## CLI
+
+- `spec:check` — non-empty html/css/spec/contract, unique id/ref, css twin sync
+- `spec:new <slug>` — scaffold folder matching section 3 of the design spec
+
+## Performance
+
+Lighthouse mobile `/` with sheet paused (reduced motion) ≥ **90**. Fix frame mounting before bundle size.

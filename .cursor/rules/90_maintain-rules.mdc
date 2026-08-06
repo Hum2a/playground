@@ -1,0 +1,28 @@
+---
+description: Keep numbered Cursor rules and AGENTS.md in sync with code changes
+alwaysApply: true
+---
+
+# Maintain Cursor rules
+
+When you **add, remove, or materially change** architecture, surfaces, or invariants, update project guidance in the **same task**.
+
+## Checklist
+
+1. Matching numbered rule under `.cursor/rules/` (table in `.cursor/README.md`)
+2. `AGENTS.md` — one-line bullet if agent-relevant
+3. `.cursor/README.md` — only if you add a **new** `.mdc` file
+4. `docs/design-spec.md` — only for product-contract changes
+
+## When to add a new `.mdc`
+
+- New **domain** with its own globs (e.g. a second app surface)
+- Otherwise **extend** an existing decade (`45_`, `55_`, …); avoid duplicates
+
+## Style
+
+- Actionable and short; paths + invariants over prose
+- Link to `docs/design-spec.md` for deep specs
+- Never document secrets
+
+Skipping rule updates is only OK for typo/comment-only changes with no behavioural impact.

@@ -1,0 +1,26 @@
+---
+description: Playground editor, drafts, share hash, and export
+globs: src/playground/**
+alwaysApply: false
+---
+
+# Playground
+
+## Editor
+
+- Lazy-load CodeMirror (`CodeEditor` chunk) — never ship it in the catalogue bundle
+- Recompose srcdoc on a **300ms debounce**; never remount the iframe on keystroke
+- Seed drafts with the reduced-motion-ready starter in `starter.ts`
+
+## Persistence
+
+- Debounced `localStorage` under `playground:draft:{id}` (+ draft index key)
+- Share: lz-string-compress `{ html, css, js, controls }` into the URL hash
+- Draft rail: new / duplicate / rename / delete
+
+## Export
+
+- Zip via **fflate** (not jszip)
+- Form validates slug id uniqueness against the registry
+- Include `demo.css` + `demo.style.txt`, scaffolded `spec.md` / `contract.json` with TODOs
+- Zip README lists the two manual steps: drop folder + one `index.ts` line

@@ -1,0 +1,26 @@
+---
+description: Source folder map and explicit specimen registry
+alwaysApply: true
+---
+
+# Structure
+
+```
+src/
+  app/          routes, Shell, layout
+  catalogue/    contact sheet, plates, detail
+  playground/   editor, drafts, export
+  harness/      composeSrcDoc, PreviewFrame, ControlStrip
+  prompt/       buildPrompt, CopyButton
+  specimens/    one folder per specimen + index.ts
+  styles/       tokens.css, base.css
+docs/           design-spec.md
+public/         _redirects, _headers, favicon
+```
+
+## Registry
+
+- Specimens register in an **explicit array** in `src/specimens/index.ts`.
+- Adding a specimen = add a folder + one import + one array entry.
+- No dynamic `import.meta.glob`, no magic directory scanning for catalogue content.
+- Refs (`SPX-001`, …) and order stay under human control.

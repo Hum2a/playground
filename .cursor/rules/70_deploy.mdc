@@ -1,0 +1,25 @@
+---
+description: Cloudflare Pages deploy, domain, headers, and CSP
+globs: wrangler.toml,public/_headers,public/_redirects,.github/workflows/**
+alwaysApply: false
+---
+
+# Deploy
+
+- **Pages project:** `playground`
+- **Production URL:** https://playground.humza-butt.space
+- Config: `wrangler.toml` (`name`, `pages_build_output_dir = "./dist"`)
+
+## Pages vs Workers
+
+Custom domains for Pages are attached in the dashboard/API. Do **not** add Worker `[[routes]]` / `custom_domain` entries for this static Pages project.
+
+## Public assets
+
+- `public/_redirects`: `/* /index.html 200`
+- `public/_headers`: immutable `/assets/*`; CSP with `frame-src 'self'` and `'unsafe-inline'` for script/style so srcdoc control scripts and specimen CSS work
+- Verify CSP with `wrangler pages dev`, not by speculation
+
+## CI
+
+GHA: `npm ci` → test → `spec:check` → build → Playwright → `wrangler pages deploy` (reads `wrangler.toml`).
