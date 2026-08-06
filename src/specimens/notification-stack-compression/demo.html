@@ -1,0 +1,30 @@
+<div class="nsc" data-notification-stack-compression data-phase="expanded">
+  <p class="nsc__label">NOTIFICATIONS</p>
+
+  <div class="nsc__stack" data-nsc-stack>
+    <article class="nsc__card" data-nsc-card="0" aria-label="BUILD COMPLETE">
+      <span class="nsc__marker" aria-hidden="true"></span>
+      <h3 class="nsc__title">BUILD COMPLETE</h3>
+      <p class="nsc__body">Release 2.4.0 passed all checks.</p>
+    </article>
+    <article class="nsc__card" data-nsc-card="1" aria-label="REVIEW REQUESTED">
+      <span class="nsc__marker nsc__marker--review" aria-hidden="true"></span>
+      <h3 class="nsc__title">REVIEW REQUESTED</h3>
+      <p class="nsc__body">Mina requested approval on PR #184.</p>
+    </article>
+    <article class="nsc__card" data-nsc-card="2" aria-label="DEPLOY READY">
+      <span class="nsc__marker nsc__marker--deploy" aria-hidden="true"></span>
+      <h3 class="nsc__title">DEPLOY READY</h3>
+      <p class="nsc__body">Staging environment is ready to ship.</p>
+    </article>
+  </div>
+
+  <p class="nsc__counter" data-nsc-counter hidden aria-live="polite">3 NOTIFICATIONS</p>
+
+  <div class="nsc__controls">
+    <button type="button" class="nsc__btn" data-nsc-compress>COMPRESS</button>
+    <button type="button" class="nsc__btn nsc__btn--ghost" data-nsc-expand hidden>EXPAND</button>
+  </div>
+
+  <p class="nsc__status" role="status" aria-live="polite" data-nsc-status>Three notifications expanded.</p>
+</div>

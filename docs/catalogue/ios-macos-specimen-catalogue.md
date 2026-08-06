@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **14 / 258** complete.
+- Progress: **15 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 244 |
+| Done | 15 |
+| Open | 243 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-113 | `SPX-1412` | `notification-stack-compression` | Notification Stack Compression |
 | IOS-100 | `SPX-1399` | `app-launch-expansion` | App Launch Expansion |
 | IOS-093 | `SPX-1392` | `context-menu-bloom` | Context Menu Bloom |
 | IOS-092 | `SPX-1391` | `long-press-lift` | Long-Press Lift |
@@ -66,7 +67,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-092** · `SPX-1391` · **Long-Press Lift** — context-menus-long-press-interaction
 - [x] **IOS-093** · `SPX-1392` · **Context Menu Bloom** — context-menus-long-press-interaction
 - [x] **IOS-100** · `SPX-1399` · **App Launch Expansion** — home-screen-app-grid
-- [ ] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — notifications
+- [x] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — notifications
 - [ ] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — face-id-authentication-inspired
 - [ ] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — search
 - [ ] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
@@ -226,7 +227,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-110** · `SPX-1409` · **Notification Banner Drop** — compact alert enters from the top edge and settles into temporary presence.
 - [ ] **IOS-111** · `SPX-1410` · **Notification Expand** — compact alert grows into richer actions/content while preserving its identity.
 - [ ] **IOS-112** · `SPX-1411` · **Notification Collapse** — expanded notification returns to compact state.
-- [ ] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — several alerts collapse into a layered stack.
+- [x] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — several alerts collapse into a layered stack.
 - [ ] **IOS-114** · `SPX-1413` · **Notification Stack Fan** — compressed stack expands into individually readable notifications.
 - [ ] **IOS-115** · `SPX-1414` · **Notification Swipe Dismiss** — drag reveals dismissal intent and commits after threshold.
 - [ ] **IOS-116** · `SPX-1415` · **Notification Action Resolve** — tapping an inline action transforms the notification into a result state before removal.
