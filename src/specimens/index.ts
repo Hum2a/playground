@@ -122,6 +122,7 @@ import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { homeSwipeUp } from './home-swipe-up/entry'
 import { hoverCutout } from './hover-cutout/entry'
+import { iceWipeTransition } from './ice-wipe-transition/entry'
 import { impactFrameSlam } from './impact-frame-slam/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { incidentDispatchCard } from './incident-dispatch-card/entry'
@@ -438,6 +439,7 @@ export const specimens: Specimen[] = [
   holdToChargeButton,
   homeSwipeUp,
   hoverCutout,
+  iceWipeTransition,
   impactFrameSlam,
   impactFreezeFrame,
   incidentDispatchCard,

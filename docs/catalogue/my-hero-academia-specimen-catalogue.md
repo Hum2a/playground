@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **28 / 369** complete.
+- Progress: **29 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 28 |
-| Open | 341 |
+| Done | 29 |
+| Open | 340 |
 
 ## Visual grammar
 
@@ -60,6 +60,7 @@
 | MHA-129 | `SPX-2103` | `objective-update-slash` | Objective Update Slash |
 | MHA-137 | `SPX-2111` | `maximum-output-breakthrough` | Maximum Output Breakthrough |
 | MHA-144 | `SPX-2118` | `button-impact-shockwave` | Button Impact Shockwave |
+| MHA-158 | `SPX-2132` | `ice-wipe-transition` | Ice Wipe Transition |
 
 ## Core first-wave
 
@@ -90,7 +91,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-128** · `SPX-2102` · **Mission Incoming** — mission-quest-language
 - [x] **MHA-129** · `SPX-2103` · **Objective Update Slash** — mission-quest-language
 - [x] **MHA-137** · `SPX-2111` · **Maximum Output Breakthrough** — plus-ultra-maximum-effort-language
-- [ ] **MHA-158** · `SPX-2132` · **Ice Wipe Transition** — ice-freeze-inspired-effects
+- [x] **MHA-158** · `SPX-2132` · **Ice Wipe Transition** — ice-freeze-inspired-effects
 - [ ] **MHA-169** · `SPX-2143` · **Explosive Notification Burst** — explosion-inspired-effects
 - [ ] **MHA-180** · `SPX-2154` · **Binding Wrap Lock** — capture-binding-effects
 - [ ] **MHA-226** · `SPX-2200` · **Team Formation Snap** — team-up-cooperative-effects
@@ -306,7 +307,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 ## Ice / Freeze-Inspired Effects
 
 - [ ] **MHA-157** · `SPX-2131` · **Freeze Locked State** — content becomes covered by angular translucent crystalline plates.
-- [ ] **MHA-158** · `SPX-2132` · **Ice Wipe Transition** — crystalline facets grow across the screen, then fracture away to reveal destination.
+- [x] **MHA-158** · `SPX-2132` · **Ice Wipe Transition** — crystalline facets grow across the screen, then fracture away to reveal destination.
 - [ ] **MHA-159** · `SPX-2133` · **Frozen Button Unlock** — disabled control sheds crystalline segments as it becomes available.
 - [ ] **MHA-160** · `SPX-2134` · **Temperature Slider Frost** — lower values progressively accumulate edge frost.
 - [ ] **MHA-161** · `SPX-2135` · **Freeze Error Containment** — dangerous content is visually immobilised behind a frozen overlay.

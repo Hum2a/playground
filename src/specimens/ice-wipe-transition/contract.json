@@ -1,0 +1,10 @@
+{
+  "name": "ice-wipe-transition",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "animation": { "growMs": 740, "fractureMs": 380, "totalMs": 1390 }
+}
