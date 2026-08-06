@@ -1,0 +1,17 @@
+{
+  "name": "ratchet-style-rift-transition",
+  "intent": "Content is pulled through a dimensional slit and reconstructs elsewhere.",
+  "primitives": [
+    "rift",
+    "transition"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "timing": {
+    "riftMs": 1200
+  }
+}
