@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **14 / 369** complete.
+- Progress: **15 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 355 |
+| Done | 15 |
+| Open | 354 |
 
 ## Visual grammar
 
@@ -46,6 +46,7 @@
 | MHA-053 | `SPX-2027` | `training-simulation-start` | Training Simulation Start |
 | MHA-056 | `SPX-2030` | `performance-meter-burst` | Performance Meter Burst |
 | MHA-063 | `SPX-2037` | `versus-card-collision` | Versus Card Collision |
+| MHA-064 | `SPX-2038` | `bracket-winner-advance` | Bracket Winner Advance |
 
 ## Core first-wave
 
@@ -65,7 +66,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-053** · `SPX-2027` · **Training Simulation Start** — u-a-style-training-interface
 - [x] **MHA-056** · `SPX-2030` · **Performance Meter Burst** — u-a-style-training-interface
 - [x] **MHA-063** · `SPX-2037` · **Versus Card Collision** — sports-festival-tournament
-- [ ] **MHA-064** · `SPX-2038` · **Bracket Winner Advance** — sports-festival-tournament
+- [x] **MHA-064** · `SPX-2038` · **Bracket Winner Advance** — sports-festival-tournament
 - [ ] **MHA-091** · `SPX-2065` · **Emergency Screen Takeover** — emergency-villain-alert-system
 - [ ] **MHA-092** · `SPX-2066` · **Threat Level Escalation** — emergency-villain-alert-system
 - [ ] **MHA-082** · `SPX-2056` · **Incident Dispatch Card** — hero-agency-dashboard
@@ -165,7 +166,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 ## Sports Festival / Tournament
 
 - [x] **MHA-063** · `SPX-2037` · **Versus Card Collision** — two competitor cards rush from opposite edges and collide at centre.
-- [ ] **MHA-064** · `SPX-2038` · **Bracket Winner Advance** — winner card physically travels along tournament connector into next round.
+- [x] **MHA-064** · `SPX-2038` · **Bracket Winner Advance** — winner card physically travels along tournament connector into next round.
 - [ ] **MHA-065** · `SPX-2039` · **Scoreboard Flip** — numeric score changes through mechanical/comic flip geometry.
 - [ ] **MHA-066** · `SPX-2040` · **Match Start Slam** — giant START treatment briefly owns the viewport then tears away.
 - [ ] **MHA-067** · `SPX-2041` · **Winner Banner Breakthrough** — winner strip pushes through the scoreboard after final result.

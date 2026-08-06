@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/bracket-winner-advance.schema.json",
+  "title": "BracketWinnerAdvance",
+  "description": "Portable contract for bracket winner travel along connector.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "bracket-winner-advance" },
+    "intent": {
+      "type": "string",
+      "examples": ["Winner card travels along connector into next round."]
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "accent"],
+      "properties": {
+        "primary": { "type": "string", "const": "#38A3FF" },
+        "ink": { "type": "string", "const": "#101820" },
+        "paper": { "type": "string", "const": "#F4F7FA" },
+        "accent": { "type": "string", "const": "#FF4D35" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["drawMs", "travelMs", "totalMs"],
+      "properties": {
+        "drawMs": { "type": "number", "const": 420 },
+        "travelMs": { "type": "number", "const": 520 },
+        "totalMs": { "type": "number", "const": 850 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantAdvance", "triggers"],
+      "properties": {
+        "instantAdvance": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "connector", "winner"],
+      "properties": {
+        "root": { "type": "string", "const": "bwa" },
+        "connector": { "type": "string", "const": "bwa__path" },
+        "winner": { "type": "string", "const": "bwa__winner" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "bracketWinnerAdvance" }
+      }
+    }
+  }
+}

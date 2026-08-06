@@ -22,6 +22,7 @@ import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
 import { bottomSheetDetentSnap } from './bottom-sheet-detent-snap/entry'
 import { boundedTouchRipple } from './bounded-touch-ripple/entry'
+import { bracketWinnerAdvance } from './bracket-winner-advance/entry'
 import { branchEvolutionChoice } from './branch-evolution-choice/entry'
 import { branchingEnergySurge } from './branching-energy-surge/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
@@ -324,6 +325,7 @@ export const specimens: Specimen[] = [
   blueFocusBrackets,
   bottomSheetDetentSnap,
   boundedTouchRipple,
+  bracketWinnerAdvance,
   branchEvolutionChoice,
   branchingEnergySurge,
   butterflyEntry,
