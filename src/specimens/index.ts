@@ -4,6 +4,7 @@ import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
+import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
@@ -101,6 +102,7 @@ export const specimens: Specimen[] = [
   decisionShowdown,
   comicCardSelection,
   redactedContentLock,
+  comicPanelScrollReveal,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

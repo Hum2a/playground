@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 301** complete.
+- Progress: **10 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 292 |
+| Done | 10 |
+| Open | 291 |
 
 ## Shipped (mapped to live specimens)
 
@@ -27,6 +27,7 @@
 | P5-122 | `SPX-133` | `redacted-content-lock` | Redacted Content Lock |
 | P5-165 | `SPX-176` | `comic-card-selection` | Comic Card Selection |
 | P5-185 | `SPX-196` | `decision-showdown` | Decision Showdown |
+| P5-201 | `SPX-212` | `comic-panel-scroll-reveal` | Comic Panel Scroll Reveal |
 
 ## Core first-wave
 
@@ -53,7 +54,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P5-165** · `SPX-176` · **Comic Card Selection** — cards
 - [ ] **P5-177** · `SPX-188` · **Jagged Speech Tooltip** — tooltip
 - [x] **P5-185** · `SPX-196` · **Decision Showdown** — confirmation
-- [ ] **P5-201** · `SPX-212` · **Comic Panel Scroll Reveal** — scroll
+- [x] **P5-201** · `SPX-212` · **Comic Panel Scroll Reveal** — scroll
 - [ ] **P5-221** · `SPX-232` · **Overlapping Newspaper Tabs** — tabs
 - [ ] **P5-233** · `SPX-244` · **Filter Slash** — filtering
 - [ ] **P5-301** · `SPX-312` · **Graphic Finisher Completion** — major completion
@@ -308,7 +309,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Scroll effects
 
-- [ ] **P5-201** · `SPX-212` · **Comic Panel Scroll Reveal** — Sections revealed through angled clipping masks.
+- [x] **P5-201** · `SPX-212` · **Comic Panel Scroll Reveal** — Sections revealed through angled clipping masks.
 - [ ] **P5-202** · `SPX-213` · **Headline Scroll Attack** — Giant words enter opposite content movement.
 - [ ] **P5-203** · `SPX-214` · **Diagonal Newspaper Scroll** — Paper strips move at different scroll speeds.
 - [ ] **P5-204** · `SPX-215` · **Microtype Scroll Rail** — Repeating copy responds to scroll direction.

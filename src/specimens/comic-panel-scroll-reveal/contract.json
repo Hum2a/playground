@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/comic-panel-scroll-reveal.schema.json",
+  "title": "ComicPanelScrollReveal",
+  "description": "Portable visual/component contract for an internal-scroll comic panel reveal. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "scroller",
+    "observer",
+    "animation",
+    "variants",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "comic-panel-scroll-reveal" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Scroll-triggered reveal where opposing irregular comic panels separate inside an internal scroll container."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sections", "hint"],
+      "properties": {
+        "hint": { "type": "string", "const": "Scroll to open the panels" },
+        "sections": {
+          "type": "array",
+          "const": [
+            {
+              "heading": "01 // MOTION",
+              "body": "Timing attacks and frozen offsets — motion that reads as impact, not decoration."
+            },
+            {
+              "heading": "02 // TYPOGRAPHY",
+              "body": "Heavy weight, tight tracking, and crooked baselines that still stay readable under pressure."
+            },
+            {
+              "heading": "03 // INTERACTION",
+              "body": "Selection and feedback that recompose the layout — the active piece owns the frame."
+            }
+          ]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "paper", "red"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "scroller": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heightPx", "overflowY"],
+      "properties": {
+        "heightPx": { "type": "number", "const": 380 },
+        "overflowY": { "type": "string", "const": "auto" },
+        "narrowHeightPx": { "type": "number", "const": 320 }
+      }
+    },
+    "observer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["threshold", "root", "oncePerRun", "parentForbidden"],
+      "properties": {
+        "threshold": { "type": "number", "const": 0.35 },
+        "root": { "type": "string", "const": ".cpsr__scroller" },
+        "oncePerRun": { "type": "boolean", "const": true },
+        "parentForbidden": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalMs", "seamMs", "panelExit", "shardLagMs", "headingSettle"],
+      "properties": {
+        "totalMs": { "type": "number", "const": 520 },
+        "seamMs": { "type": "number", "const": 100 },
+        "seamWidenPx": { "type": "number", "const": 8 },
+        "panelExit": {
+          "type": "object",
+          "required": ["startMs", "endMs", "left", "right"],
+          "properties": {
+            "startMs": { "type": "number", "const": 80 },
+            "endMs": { "type": "number", "const": 380 },
+            "left": {
+              "type": "string",
+              "const": "translate(-105%, -8%) rotate(-6deg)"
+            },
+            "right": {
+              "type": "string",
+              "const": "translate(105%, 7%) rotate(8deg)"
+            }
+          }
+        },
+        "shardLagMs": { "type": "number", "const": 35 },
+        "shardDelayMs": { "type": "number", "const": 215 },
+        "shardExitMs": { "type": "number", "const": 270 },
+        "headingSettle": {
+          "type": "object",
+          "required": ["startMs", "endMs", "fromTranslateYPx"],
+          "properties": {
+            "startMs": { "type": "number", "const": 380 },
+            "endMs": { "type": "number", "const": 520 },
+            "fromTranslateYPx": { "type": "number", "const": 5 }
+          }
+        }
+      }
+    },
+    "variants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["v0", "v1", "v2"],
+      "properties": {
+        "v0": {
+          "type": "object",
+          "description": "Horizontal irregular centre seam",
+          "properties": {
+            "leftClip": {
+              "type": "string",
+              "const": "polygon(0% 0%, 54% 0%, 48% 22%, 56% 48%, 47% 72%, 55% 100%, 0% 100%)"
+            },
+            "rightClip": {
+              "type": "string",
+              "const": "polygon(50% 0%, 100% 0%, 100% 100%, 51% 100%, 43% 72%, 52% 48%, 44% 22%)"
+            }
+          }
+        },
+        "v1": {
+          "type": "object",
+          "description": "Upper-left / lower-right split",
+          "properties": {
+            "leftClip": {
+              "type": "string",
+              "const": "polygon(0% 0%, 68% 0%, 42% 38%, 58% 70%, 28% 100%, 0% 100%)"
+            },
+            "rightClip": {
+              "type": "string",
+              "const": "polygon(62% 0%, 100% 0%, 100% 100%, 24% 100%, 54% 70%, 38% 38%)"
+            }
+          }
+        },
+        "v2": {
+          "type": "object",
+          "description": "Lower-left / upper-right split",
+          "properties": {
+            "leftClip": {
+              "type": "string",
+              "const": "polygon(0% 0%, 36% 0%, 58% 40%, 40% 68%, 62% 100%, 0% 100%)"
+            },
+            "rightClip": {
+              "type": "string",
+              "const": "polygon(30% 0%, 100% 0%, 100% 100%, 58% 100%, 36% 68%, 54% 40%)"
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contentInA11yTree", "coverDecorative", "scrollerRegion"],
+      "properties": {
+        "contentInA11yTree": { "type": "boolean", "const": true },
+        "coverDecorative": { "type": "boolean", "const": true },
+        "scrollerRegion": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coversHidden", "contentReadable", "triggers"],
+      "properties": {
+        "coversHidden": { "type": "boolean", "const": true },
+        "contentReadable": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "scroller",
+        "section",
+        "cover",
+        "panel",
+        "revealed"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "cpsr" },
+        "scroller": { "type": "string", "const": "cpsr__scroller" },
+        "section": { "type": "string", "const": "cpsr__section" },
+        "cover": { "type": "string", "const": "cpsr__cover" },
+        "panel": { "type": "string", "const": "cpsr__panel" },
+        "revealed": { "type": "string", "const": "cpsr__section--revealed" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "reset": { "type": "string", "const": "resetComicPanelScroll" },
+        "restartMessageType": { "type": "string", "const": "restart" },
+        "noScrollLibraries": { "type": "boolean", "const": true }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "comic-panel-scroll-reveal",
+      "intent": "Scroll-triggered reveal where opposing irregular comic panels separate inside an internal scroll container.",
+      "copy": {
+        "hint": "Scroll to open the panels",
+        "sections": [
+          {
+            "heading": "01 // MOTION",
+            "body": "Timing attacks and frozen offsets — motion that reads as impact, not decoration."
+          },
+          {
+            "heading": "02 // TYPOGRAPHY",
+            "body": "Heavy weight, tight tracking, and crooked baselines that still stay readable under pressure."
+          },
+          {
+            "heading": "03 // INTERACTION",
+            "body": "Selection and feedback that recompose the layout — the active piece owns the frame."
+          }
+        ]
+      },
+      "colours": {
+        "black": "#090909",
+        "paper": "#f5f1e8",
+        "red": "#e60012"
+      },
+      "scroller": {
+        "heightPx": 380,
+        "overflowY": "auto",
+        "narrowHeightPx": 320
+      },
+      "observer": {
+        "threshold": 0.35,
+        "root": ".cpsr__scroller",
+        "oncePerRun": true,
+        "parentForbidden": true
+      },
+      "animation": {
+        "totalMs": 520,
+        "seamMs": 100,
+        "seamWidenPx": 8,
+        "panelExit": {
+          "startMs": 80,
+          "endMs": 380,
+          "left": "translate(-105%, -8%) rotate(-6deg)",
+          "right": "translate(105%, 7%) rotate(8deg)"
+        },
+        "shardLagMs": 35,
+        "shardDelayMs": 215,
+        "shardExitMs": 270,
+        "headingSettle": {
+          "startMs": 380,
+          "endMs": 520,
+          "fromTranslateYPx": 5
+        }
+      },
+      "a11y": {
+        "contentInA11yTree": true,
+        "coverDecorative": true,
+        "scrollerRegion": true
+      },
+      "reducedMotion": {
+        "coversHidden": true,
+        "contentReadable": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "cpsr",
+        "scroller": "cpsr__scroller",
+        "section": "cpsr__section",
+        "cover": "cpsr__cover",
+        "panel": "cpsr__panel",
+        "revealed": "cpsr__section--revealed"
+      },
+      "behaviour": {
+        "reset": "resetComicPanelScroll",
+        "restartMessageType": "restart",
+        "noScrollLibraries": true
+      }
+    }
+  ]
+}
