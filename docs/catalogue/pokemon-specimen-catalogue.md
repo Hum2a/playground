@@ -6,14 +6,14 @@
 
 - **PK-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
-- Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
+- Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), open PK rows, or DB (`SPX-966`–`SPX-1209`); prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **17 / 266** complete.
+- Progress: **18 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 17 |
-| Open | 249 |
+| Done | 18 |
+| Open | 248 |
 
 ## Visual grammar
 
@@ -49,6 +49,7 @@
 | PK-116 | `SPX-815` | `move-learned` | Move Learned |
 | PK-156 | `SPX-855` | `monochrome-battle-slide-in` | Monochrome Battle Slide-In |
 | PK-247 | `SPX-946` | `radar-pulse-discovery` | Radar Pulse Discovery |
+| PK-117 | `SPX-816` | `forget-a-move` | Forget a Move |
 
 ## Core first-wave
 
@@ -71,7 +72,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-041** · `SPX-740` · **Super Effective Hit** — battle-feedback
 - [x] **PK-103** · `SPX-802` · **Item Obtained** — items-inventory
 - [x] **PK-116** · `SPX-815` · **Move Learned** — moves-abilities
-- [ ] **PK-117** · `SPX-816` · **Forget a Move** — moves-abilities
+- [x] **PK-117** · `SPX-816` · **Forget a Move** — moves-abilities
 - [x] **PK-144** · `SPX-843` · **Gym Badge Earned** — gym-badges
 - [x] **PK-145** · `SPX-844` · **Badge Case Insert** — gym-badges
 
@@ -217,7 +218,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 ## 9. Moves & abilities
 
 - [x] **PK-116** · `SPX-815` · **Move Learned** — An empty capability slot receives and permanently locks a new command.
-- [ ] **PK-117** · `SPX-816` · **Forget a Move** — Four existing capabilities rearrange as one leaves and another takes its exact place.
+- [x] **PK-117** · `SPX-816` · **Forget a Move** — Four existing capabilities rearrange as one leaves and another takes its exact place.
 - [ ] **PK-118** · `SPX-817` · **Move Selection** — Four-command battle menu uses decisive movement to establish selection.
 - [ ] **PK-119** · `SPX-818` · **PP Depletion** — Available action capacity visibly reduces every time a command executes.
 - [ ] **PK-120** · `SPX-819` · **Move Disabled** — One available command becomes temporarily inaccessible.

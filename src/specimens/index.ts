@@ -50,6 +50,7 @@ import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { failureShatter } from './failure-shatter/entry'
+import { forgetAMove } from './forget-a-move/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
 import { glassFractureReveal } from './glass-fracture-reveal/entry'
@@ -202,6 +203,7 @@ export const specimens: Specimen[] = [
   evolutionComplete,
   evolutionSilhouetteTransformation,
   failureShatter,
+  forgetAMove,
   fullMoonMilestone,
   fusionSelectionMerge,
   glassFractureReveal,

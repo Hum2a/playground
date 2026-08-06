@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/forget-a-move.schema.json",
+  "title": "ForgetAMove",
+  "description": "Four capability slots; REPLACE removes one and installs SYNC into the vacant slot. Pokémon PK-117 / SPX-816. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "selection",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "forget-a-move" },
+    "intent": {
+      "type": "string",
+      "const": "Four capabilities SCAN FILTER EXPORT CACHE; incoming SYNC; select one to replace (canonical CACHE); CACHE leaves then SYNC installs in same slot after vacancy pause."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prompt",
+        "capabilities",
+        "incoming",
+        "incomingLabel",
+        "replace",
+        "reset",
+        "announceCanonical"
+      ],
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "const": "REPLACE ONE CAPABILITY"
+        },
+        "capabilities": {
+          "type": "array",
+          "const": ["SCAN", "FILTER", "EXPORT", "CACHE"]
+        },
+        "incoming": { "type": "string", "const": "SYNC" },
+        "incomingLabel": { "type": "string", "const": "INCOMING" },
+        "replace": { "type": "string", "const": "REPLACE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "announceCanonical": {
+          "type": "string",
+          "const": "Replace CACHE with SYNC."
+        },
+        "finalSet": {
+          "type": "array",
+          "const": ["SCAN", "FILTER", "EXPORT", "SYNC"]
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["#141a1e", "#1c242a", "#f2efe4", "#e2a03a", "#d95b4e"]
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radiogroup",
+        "defaultSlot",
+        "cornerBrackets",
+        "noPermanentTextResize"
+      ],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "defaultSlot": { "type": "string", "const": "cache" },
+        "cornerBrackets": { "type": "integer", "const": 4 },
+        "noPermanentTextResize": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compressMs",
+        "breakMs",
+        "vacancyMs",
+        "installMs",
+        "sweepMs",
+        "totalMs",
+        "compressScaleX",
+        "labelExitPx",
+        "syncTravelYPx"
+      ],
+      "properties": {
+        "compressMs": { "type": "number", "const": 80 },
+        "breakMs": { "type": "number", "const": 180 },
+        "vacancyMs": { "type": "number", "const": 100 },
+        "installMs": { "type": "number", "const": 220 },
+        "sweepMs": { "type": "number", "const": 160 },
+        "totalMs": { "type": "number", "const": 740 },
+        "compressScaleX": {
+          "type": "array",
+          "const": [1, 0.9]
+        },
+        "labelExitPx": { "type": "number", "const": 70 },
+        "syncTravelYPx": { "type": "number", "const": -92 },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radiogroup", "announceReplace", "decorativeHidden"],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "announceReplace": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selectionAccessible", "instantSwap", "triggers"],
+      "properties": {
+        "selectionAccessible": { "type": "boolean", "const": true },
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "slotCompressing",
+        "slotBreaking",
+        "slotVacant",
+        "slotInstalling",
+        "slotLocked",
+        "rootInstalling",
+        "rootSweeping"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "forget-move" },
+        "slotCompressing": { "type": "string", "const": "is-compressing" },
+        "slotBreaking": { "type": "string", "const": "is-breaking" },
+        "slotVacant": { "type": "string", "const": "is-vacant" },
+        "slotInstalling": { "type": "string", "const": "is-installing" },
+        "slotLocked": { "type": "string", "const": "is-locked" },
+        "rootInstalling": { "type": "string", "const": "is-installing" },
+        "rootSweeping": { "type": "string", "const": "is-sweeping" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset", "defaultSelect", "ref"],
+      "properties": {
+        "run": { "type": "string", "const": "runForgetMove" },
+        "reset": { "type": "string", "const": "resetForgetMove" },
+        "defaultSelect": { "type": "string", "const": "cache" },
+        "ref": { "type": "string", "const": "SPX-816" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "forget-a-move",
+      "intent": "Four capabilities SCAN FILTER EXPORT CACHE; incoming SYNC; select one to replace (canonical CACHE); CACHE leaves then SYNC installs in same slot after vacancy pause.",
+      "copy": {
+        "capabilities": ["SCAN", "FILTER", "EXPORT", "CACHE"],
+        "incoming": "SYNC",
+        "announceCanonical": "Replace CACHE with SYNC.",
+        "finalSet": ["SCAN", "FILTER", "EXPORT", "SYNC"]
+      },
+      "palette": ["#141a1e", "#1c242a", "#f2efe4", "#e2a03a", "#d95b4e"],
+      "animation": {
+        "compressMs": 80,
+        "breakMs": 180,
+        "vacancyMs": 100,
+        "installMs": 220,
+        "sweepMs": 160,
+        "totalMs": 740
+      },
+      "behaviour": {
+        "run": "runForgetMove",
+        "reset": "resetForgetMove",
+        "defaultSelect": "cache",
+        "ref": "SPX-816"
+      }
+    }
+  ]
+}

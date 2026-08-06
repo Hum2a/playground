@@ -1,0 +1,72 @@
+<div class="forget-move" data-forget-move data-state="idle">
+  <p class="forget-move__prompt" id="forget-move-prompt">REPLACE ONE CAPABILITY</p>
+
+  <div
+    class="forget-move__grid"
+    role="radiogroup"
+    aria-labelledby="forget-move-prompt"
+    data-fm-grid
+  >
+    <button type="button" role="radio" class="forget-move__slot" data-fm-slot="scan" data-fm-label="SCAN" aria-checked="false">
+      <span class="forget-move__brackets" aria-hidden="true">
+        <span class="fm-br fm-br--tl"></span><span class="fm-br fm-br--tr"></span>
+        <span class="fm-br fm-br--bl"></span><span class="fm-br fm-br--br"></span>
+      </span>
+      <span class="forget-move__segments" aria-hidden="true">
+        <span class="fm-seg fm-seg--t"></span><span class="fm-seg fm-seg--r"></span>
+        <span class="fm-seg fm-seg--b"></span><span class="fm-seg fm-seg--l"></span>
+      </span>
+      <span class="forget-move__label" data-fm-slot-label>SCAN</span>
+    </button>
+
+    <button type="button" role="radio" class="forget-move__slot" data-fm-slot="filter" data-fm-label="FILTER" aria-checked="false">
+      <span class="forget-move__brackets" aria-hidden="true">
+        <span class="fm-br fm-br--tl"></span><span class="fm-br fm-br--tr"></span>
+        <span class="fm-br fm-br--bl"></span><span class="fm-br fm-br--br"></span>
+      </span>
+      <span class="forget-move__segments" aria-hidden="true">
+        <span class="fm-seg fm-seg--t"></span><span class="fm-seg fm-seg--r"></span>
+        <span class="fm-seg fm-seg--b"></span><span class="fm-seg fm-seg--l"></span>
+      </span>
+      <span class="forget-move__label" data-fm-slot-label>FILTER</span>
+    </button>
+
+    <button type="button" role="radio" class="forget-move__slot" data-fm-slot="export" data-fm-label="EXPORT" aria-checked="false">
+      <span class="forget-move__brackets" aria-hidden="true">
+        <span class="fm-br fm-br--tl"></span><span class="fm-br fm-br--tr"></span>
+        <span class="fm-br fm-br--bl"></span><span class="fm-br fm-br--br"></span>
+      </span>
+      <span class="forget-move__segments" aria-hidden="true">
+        <span class="fm-seg fm-seg--t"></span><span class="fm-seg fm-seg--r"></span>
+        <span class="fm-seg fm-seg--b"></span><span class="fm-seg fm-seg--l"></span>
+      </span>
+      <span class="forget-move__label" data-fm-slot-label>EXPORT</span>
+    </button>
+
+    <button type="button" role="radio" class="forget-move__slot" data-fm-slot="cache" data-fm-label="CACHE" aria-checked="false">
+      <span class="forget-move__brackets" aria-hidden="true">
+        <span class="fm-br fm-br--tl"></span><span class="fm-br fm-br--tr"></span>
+        <span class="fm-br fm-br--bl"></span><span class="fm-br fm-br--br"></span>
+      </span>
+      <span class="forget-move__segments" aria-hidden="true">
+        <span class="fm-seg fm-seg--t"></span><span class="fm-seg fm-seg--r"></span>
+        <span class="fm-seg fm-seg--b"></span><span class="fm-seg fm-seg--l"></span>
+      </span>
+      <span class="forget-move__label" data-fm-slot-label>CACHE</span>
+    </button>
+
+    <span class="forget-move__sweep" data-fm-sweep aria-hidden="true"></span>
+  </div>
+
+  <div class="forget-move__incoming" data-fm-incoming>
+    <span class="forget-move__incoming-label">INCOMING</span>
+    <span class="forget-move__sync" data-fm-sync>SYNC</span>
+  </div>
+
+  <p class="forget-move__announce" data-fm-announce role="status" aria-live="polite"></p>
+
+  <div class="forget-move__controls">
+    <button type="button" class="forget-move__btn" data-fm-replace disabled>REPLACE</button>
+    <button type="button" class="forget-move__btn forget-move__btn--ghost" data-fm-reset hidden>RESET</button>
+  </div>
+</div>
