@@ -1,0 +1,75 @@
+{
+  "name": "temporal-freeze",
+  "intent": "A vertical freeze boundary travels left→right; each looping subsystem stops exactly when the line crosses it, converting the UI to a frozen blue palette.",
+  "colours": {
+    "normalPaper": "#dce5ea",
+    "normalInk": "#17212b",
+    "frozenVoid": "#020b16",
+    "frozenDeep": "#0b3657",
+    "frozenCyan": "#49bce3",
+    "frozenPale": "#d8f7ff"
+  },
+  "boundary": {
+    "directionFreeze": "left-to-right",
+    "directionResume": "right-to-left",
+    "widthPx": 2,
+    "freezeMs": 700,
+    "resumeMs": 500
+  },
+  "systems": [
+    {
+      "id": "ticker",
+      "xFraction": 0.18,
+      "freezeAtMs": 126,
+      "motion": "horizontal-ticker-markers"
+    },
+    {
+      "id": "dial",
+      "xFraction": 0.5,
+      "freezeAtMs": 350,
+      "motion": "rotating-dial-arm"
+    },
+    {
+      "id": "pulse",
+      "xFraction": 0.82,
+      "freezeAtMs": 574,
+      "motion": "vertical-pulse-bar"
+    }
+  ],
+  "orchestration": {
+    "method": "rAF progress 0→1 maps to --freeze-x; subsystem freezes when progress >= xFraction via element.getAnimations().pause()",
+    "resume": "progress 0→1 maps --freeze-x 1→0; subsystem resumes when freeze-x <= xFraction via play()",
+    "notGlobalPauseOnTrigger": true
+  },
+  "freezeMarks": {
+    "type": "angular-bracket",
+    "colour": "#49bce3",
+    "particles": false
+  },
+  "api": {
+    "freeze": "freezeTemporal()",
+    "resume": "resumeTemporal()",
+    "reset": "resetTemporal()",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart"
+  },
+  "a11y": {
+    "liveRegion": true,
+    "announceFlowing": "Time flowing",
+    "announceFrozen": "Time frozen"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "No looping motion from the start; FREEZE applies full frozen palette immediately; RESUME restores normal palette"
+  },
+  "constraints": {
+    "noImages": true,
+    "noNetwork": true,
+    "noLibraries": true,
+    "worksAt320px": true
+  }
+}

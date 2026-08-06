@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/full-moon-milestone.schema.json",
+  "title": "FullMoonMilestone",
+  "description": "Portable contract for 74→75 progress with symbolic full-moon milestone iconography. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "moon",
+    "phases",
+    "semantics",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "full-moon-milestone" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Numeric 74→75 then symbolic lunar sweep to full moon for Phase III milestone — progress stays 75%."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kicker",
+        "phase",
+        "done",
+        "complete",
+        "reset",
+        "statusIdle",
+        "statusDone"
+      ],
+      "properties": {
+        "kicker": { "type": "string", "const": "PROJECT COMPLETION" },
+        "phase": { "type": "string", "const": "PHASE III" },
+        "done": { "type": "string", "const": "MILESTONE COMPLETE" },
+        "complete": { "type": "string", "const": "COMPLETE MILESTONE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "statusIdle": {
+          "type": "string",
+          "const": "Project completion 74 percent. Phase III milestone pending."
+        },
+        "statusDone": {
+          "type": "string",
+          "const": "Project completion 75 percent. Phase III milestone complete."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "dark", "edge", "lit", "white"],
+      "properties": {
+        "bg": { "type": "string", "const": "#020912" },
+        "dark": { "type": "string", "const": "#071627" },
+        "edge": { "type": "string", "const": "#4aa7d4" },
+        "lit": { "type": "string", "const": "#ccefff" },
+        "white": { "type": "string", "const": "#f4fbff" }
+      }
+    },
+    "moon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "diameterPx",
+        "initialIllum",
+        "thresholdIllum",
+        "symbolicFull",
+        "radialMarks",
+        "shadeMapping"
+      ],
+      "properties": {
+        "diameterPx": { "type": "number", "const": 130 },
+        "initialIllum": { "type": "number", "const": 74 },
+        "thresholdIllum": { "type": "number", "const": 75 },
+        "symbolicFull": { "type": "number", "const": 100 },
+        "radialMarks": { "type": "integer", "const": 8 },
+        "shadeMapping": {
+          "type": "string",
+          "const": "translateX(calc(var(--fmm-illum) * -1%))"
+        }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepMs",
+        "holdMs",
+        "sweepMs",
+        "marksMs",
+        "markStaggerMs"
+      ],
+      "properties": {
+        "stepMs": { "type": "number", "const": 220 },
+        "holdMs": { "type": "number", "const": 100 },
+        "sweepMs": { "type": "number", "const": 300 },
+        "marksMs": { "type": "number", "const": 160 },
+        "markStaggerMs": { "type": "number", "const": 20 }
+      }
+    },
+    "semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finalProgressPercent",
+        "fullMoonIsIconographyOnly",
+        "neverAnnounce100"
+      ],
+      "properties": {
+        "finalProgressPercent": { "type": "number", "const": 75 },
+        "fullMoonIsIconographyOnly": { "type": "boolean", "const": true },
+        "neverAnnounce100": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["progressbar", "moonDecorative", "liveStatus"],
+      "properties": {
+        "progressbar": { "type": "boolean", "const": true },
+        "moonDecorative": { "type": "boolean", "const": true },
+        "liveStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instant75AndFullEmblem", "triggers"],
+      "properties": {
+        "instant75AndFullEmblem": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "moon", "shade", "ring", "phase", "done"],
+      "properties": {
+        "root": { "type": "string", "const": "fmm" },
+        "moon": { "type": "string", "const": "fmm__moon" },
+        "shade": { "type": "string", "const": "fmm__shade" },
+        "ring": { "type": "string", "const": "fmm__ring" },
+        "phase": { "type": "string", "const": "fmm__phase" },
+        "done": { "type": "string", "const": "fmm__done" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "complete": { "type": "string", "const": "complete" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": { "type": "string", "const": "fullMoonMilestone" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "full-moon-milestone",
+      "intent": "Numeric 74→75 then symbolic lunar sweep to full moon for Phase III milestone — progress stays 75%.",
+      "copy": {
+        "kicker": "PROJECT COMPLETION",
+        "phase": "PHASE III",
+        "done": "MILESTONE COMPLETE",
+        "complete": "COMPLETE MILESTONE",
+        "reset": "RESET",
+        "statusIdle": "Project completion 74 percent. Phase III milestone pending.",
+        "statusDone": "Project completion 75 percent. Phase III milestone complete."
+      },
+      "colours": {
+        "bg": "#020912",
+        "dark": "#071627",
+        "edge": "#4aa7d4",
+        "lit": "#ccefff",
+        "white": "#f4fbff"
+      },
+      "moon": {
+        "diameterPx": 130,
+        "initialIllum": 74,
+        "thresholdIllum": 75,
+        "symbolicFull": 100,
+        "radialMarks": 8,
+        "shadeMapping": "translateX(calc(var(--fmm-illum) * -1%))"
+      },
+      "phases": {
+        "stepMs": 220,
+        "holdMs": 100,
+        "sweepMs": 300,
+        "marksMs": 160,
+        "markStaggerMs": 20
+      },
+      "semantics": {
+        "finalProgressPercent": 75,
+        "fullMoonIsIconographyOnly": true,
+        "neverAnnounce100": true
+      },
+      "a11y": {
+        "progressbar": true,
+        "moonDecorative": true,
+        "liveStatus": true
+      },
+      "reducedMotion": {
+        "instant75AndFullEmblem": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "fmm",
+        "moon": "fmm__moon",
+        "shade": "fmm__shade",
+        "ring": "fmm__ring",
+        "phase": "fmm__phase",
+        "done": "fmm__done"
+      },
+      "behaviour": {
+        "complete": "complete",
+        "reset": "reset",
+        "api": "fullMoonMilestone"
+      }
+    }
+  ]
+}

@@ -1,0 +1,356 @@
+/* SPX-451 Temporal Freeze — portable contract. Do not restyle to host tokens. */
+
+.temporal-freeze-demo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 0.85rem 0.6rem;
+  background: #0a0b0e;
+  color: #dce5ea;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.temporal-freeze-demo__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.temporal-freeze {
+  --freeze-x: 0%;
+  --ink: #17212b;
+  --paper: #dce5ea;
+  --frost-void: #020b16;
+  --frost-deep: #0b3657;
+  --frost-cyan: #49bce3;
+  --frost-pale: #d8f7ff;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: min(100%, 340px);
+  height: 200px;
+  border: 1px solid rgba(23, 33, 43, 0.55);
+}
+
+.temporal-freeze__stage {
+  position: absolute;
+  inset: 0;
+}
+
+.temporal-freeze__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.temporal-freeze__bg--normal {
+  background:
+    linear-gradient(180deg, #e8eef2 0%, #dce5ea 100%);
+}
+
+.temporal-freeze__bg--frozen {
+  width: var(--freeze-x);
+  background:
+    linear-gradient(180deg, #0b3657 0%, #020b16 100%);
+  box-shadow: 1px 0 0 rgba(73, 188, 227, 0.35);
+}
+
+.temporal-freeze__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--freeze-x);
+  z-index: 8;
+  width: 2px;
+  margin-left: -1px;
+  background: #49bce3;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(73, 188, 227, 0.55);
+}
+
+.temporal-freeze--sweeping .temporal-freeze__line,
+.temporal-freeze--thawing .temporal-freeze__line {
+  opacity: 1;
+}
+
+/* —— Systems —— */
+.temporal-freeze__system {
+  position: absolute;
+  top: 50%;
+  left: var(--sys-x);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  width: 72px;
+  margin-left: -36px;
+  margin-top: -48px;
+  color: var(--ink);
+}
+
+.temporal-freeze__caption {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.temporal-freeze__bracket {
+  position: absolute;
+  top: -4px;
+  left: -6px;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid #49bce3;
+  border-top: 2px solid #49bce3;
+  opacity: 0;
+  transform: scale(0.6);
+  pointer-events: none;
+}
+
+.temporal-freeze__system--frozen {
+  color: var(--frost-pale);
+}
+
+.temporal-freeze__system--frozen .temporal-freeze__bracket {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Ticker — horizontal looping markers */
+.temporal-freeze__ticker {
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 64px;
+  height: 22px;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.temporal-freeze__system--frozen .temporal-freeze__ticker {
+  border-color: var(--frost-cyan);
+  background: rgba(11, 54, 87, 0.85);
+}
+
+.temporal-freeze__ticker-track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  height: 100%;
+  align-items: center;
+  padding-left: 6px;
+  animation: temporal-ticker 1.1s linear infinite;
+}
+
+.temporal-freeze__ticker-track span {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+}
+
+@keyframes temporal-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-18px);
+  }
+}
+
+/* Dial — rotating arm */
+.temporal-freeze__dial {
+  position: relative;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.35);
+  clip-path: polygon(8% 0, 100% 0, 100% 92%, 92% 100%, 0 100%, 0 8%);
+}
+
+.temporal-freeze__system--frozen .temporal-freeze__dial {
+  border-color: var(--frost-cyan);
+  background: rgba(11, 54, 87, 0.85);
+}
+
+.temporal-freeze__dial-arm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: 16px;
+  margin-left: -1px;
+  margin-top: -16px;
+  background: currentColor;
+  transform-origin: 50% 100%;
+  animation: temporal-dial 1.6s linear infinite;
+}
+
+.temporal-freeze__dial::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: currentColor;
+}
+
+@keyframes temporal-dial {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse — vertical bar */
+.temporal-freeze__pulse {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 18px;
+  height: 52px;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.temporal-freeze__system--frozen .temporal-freeze__pulse {
+  border-color: var(--frost-cyan);
+  background: rgba(11, 54, 87, 0.85);
+}
+
+.temporal-freeze__pulse-bar {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  height: 40%;
+  background: currentColor;
+  animation: temporal-pulse 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes temporal-pulse {
+  from {
+    height: 22%;
+    opacity: 0.55;
+  }
+  to {
+    height: 78%;
+    opacity: 1;
+  }
+}
+
+/* Fully frozen host chrome */
+.temporal-freeze[data-mode='frozen'] {
+  border-color: rgba(73, 188, 227, 0.55);
+}
+
+.temporal-freeze[data-mode='frozen'] .temporal-freeze__bg--frozen {
+  width: 100%;
+}
+
+.temporal-freeze[data-mode='frozen'] .temporal-freeze__line {
+  opacity: 0;
+}
+
+/* Controls */
+.temporal-freeze-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.temporal-freeze-demo__btn {
+  appearance: none;
+  min-width: 6.5rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(220, 229, 234, 0.45);
+  border-radius: 0;
+  background: transparent;
+  color: #dce5ea;
+  font: inherit;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.temporal-freeze-demo__btn--primary {
+  border-color: #49bce3;
+  background: #0b3657;
+  color: #d8f7ff;
+}
+
+.temporal-freeze-demo__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.temporal-freeze-demo__btn:focus-visible {
+  outline: 2px solid #49bce3;
+  outline-offset: 3px;
+}
+
+/* —— Reduced motion: static from the start; no loops —— */
+@media (prefers-reduced-motion: reduce) {
+  .temporal-freeze__ticker-track,
+  .temporal-freeze__dial-arm,
+  .temporal-freeze__pulse-bar {
+    animation: none !important;
+  }
+
+  .temporal-freeze__ticker-track {
+    transform: translateX(-6px);
+  }
+
+  .temporal-freeze__dial-arm {
+    transform: rotate(48deg);
+  }
+
+  .temporal-freeze__pulse-bar {
+    height: 48%;
+    opacity: 0.85;
+  }
+}
+
+[data-force-reduced-motion='true'] .temporal-freeze__ticker-track,
+[data-force-reduced-motion='true'] .temporal-freeze__dial-arm,
+[data-force-reduced-motion='true'] .temporal-freeze__pulse-bar {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .temporal-freeze__ticker-track {
+  transform: translateX(-6px);
+}
+
+[data-force-reduced-motion='true'] .temporal-freeze__dial-arm {
+  transform: rotate(48deg);
+}
+
+[data-force-reduced-motion='true'] .temporal-freeze__pulse-bar {
+  height: 48%;
+  opacity: 0.85;
+}

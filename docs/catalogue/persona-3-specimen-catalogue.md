@@ -121,7 +121,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [ ] **P3-029** · `SPX-427` · **Shard Hover** — interaction.
 - [ ] **P3-030** · `SPX-428` · **Glass Focus Frame** — interaction.
-- [ ] **P3-031** · `SPX-429` · **Crystallised Selection** — interaction.
+- [x] **P3-031** · `SPX-429` · **Crystallised Selection** — interaction.
 - [ ] **P3-032** · `SPX-430` · **Shard Burst Button** — interaction.
 - [ ] **P3-033** · `SPX-431` · **Glass Tab Switcher** — interaction.
 - [ ] **P3-034** · `SPX-432` · **Refraction Hover** — interaction.

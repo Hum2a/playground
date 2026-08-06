@@ -18,6 +18,7 @@ import { criticalThresholdWarning } from './critical-threshold-warning/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
+import { crystallisedSelection } from './crystallised-selection/entry'
 import { darkHourConversion } from './dark-hour-conversion/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { deadlinePanic } from './deadline-panic/entry'
@@ -27,6 +28,7 @@ import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
+import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { failureShatter } from './failure-shatter/entry'
@@ -137,6 +139,7 @@ export const specimens: Specimen[] = [
   crookedMenuStack,
   crossOutReplacement,
   crossOutStatusSwap,
+  crystallisedSelection,
   darkHourConversion,
   dayChangeTear,
   deadlinePanic,
@@ -144,6 +147,7 @@ export const specimens: Specimen[] = [
   deletionGuillotine,
   discoveryTearOpen,
   energyTransferSync,
+  enemyScanReveal,
   errorCorrectionRewrite,
   failureShatter,
   fusionSelectionMerge,

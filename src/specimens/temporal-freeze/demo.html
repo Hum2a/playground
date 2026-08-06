@@ -1,0 +1,61 @@
+<div class="temporal-freeze-demo" data-temporal-freeze-demo>
+  <p class="temporal-freeze-demo__live" data-temporal-live aria-live="polite">
+    Time flowing
+  </p>
+
+  <div class="temporal-freeze" data-temporal-freeze data-mode="flowing">
+    <div class="temporal-freeze__stage" data-temporal-stage>
+      <div class="temporal-freeze__bg temporal-freeze__bg--normal" aria-hidden="true"></div>
+      <div class="temporal-freeze__bg temporal-freeze__bg--frozen" data-temporal-veil aria-hidden="true"></div>
+
+      <div
+        class="temporal-freeze__system temporal-freeze__system--ticker"
+        data-temporal-system="ticker"
+        style="--sys-x: 18%"
+      >
+        <div class="temporal-freeze__ticker">
+          <span class="temporal-freeze__ticker-track" data-temporal-motion aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </span>
+        </div>
+        <p class="temporal-freeze__caption">TICKER</p>
+        <span class="temporal-freeze__bracket" aria-hidden="true"></span>
+      </div>
+
+      <div
+        class="temporal-freeze__system temporal-freeze__system--dial"
+        data-temporal-system="dial"
+        style="--sys-x: 50%"
+      >
+        <div class="temporal-freeze__dial" aria-hidden="true">
+          <span class="temporal-freeze__dial-arm" data-temporal-motion></span>
+        </div>
+        <p class="temporal-freeze__caption">DIAL</p>
+        <span class="temporal-freeze__bracket" aria-hidden="true"></span>
+      </div>
+
+      <div
+        class="temporal-freeze__system temporal-freeze__system--pulse"
+        data-temporal-system="pulse"
+        style="--sys-x: 82%"
+      >
+        <div class="temporal-freeze__pulse" aria-hidden="true">
+          <span class="temporal-freeze__pulse-bar" data-temporal-motion></span>
+        </div>
+        <p class="temporal-freeze__caption">PULSE</p>
+        <span class="temporal-freeze__bracket" aria-hidden="true"></span>
+      </div>
+
+      <div class="temporal-freeze__line" data-temporal-line aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="temporal-freeze-demo__controls">
+    <button type="button" class="temporal-freeze-demo__btn temporal-freeze-demo__btn--primary" data-temporal-freeze-btn>
+      Freeze time
+    </button>
+    <button type="button" class="temporal-freeze-demo__btn" data-temporal-resume-btn disabled>
+      Resume
+    </button>
+  </div>
+</div>
