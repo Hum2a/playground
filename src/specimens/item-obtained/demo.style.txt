@@ -1,0 +1,476 @@
+/* item-obtained — portable specimen styles (SPX-802) */
+
+.iob {
+  --iob-ink: #1a2528;
+  --iob-cream: #f4efda;
+  --iob-gold: #e5b847;
+  --iob-sage: #72a98c;
+  --iob-coral: #d8684e;
+  --iob-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --iob-item-w: 58px;
+  --iob-item-h: 72px;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 1rem 0.85rem 1.15rem;
+  background: #e6e3dc;
+  color: var(--iob-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.iob *,
+.iob *::before,
+.iob *::after {
+  box-sizing: border-box;
+}
+
+.iob__stage {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: var(--iob-cream);
+  border: 2px solid var(--iob-ink);
+  overflow: hidden;
+}
+
+.iob__present {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.iob__item {
+  position: relative;
+  width: var(--iob-item-w);
+  height: var(--iob-item-h);
+  opacity: 0;
+  transform: translateY(30px) scale(0.7) rotate(-8deg);
+  transform-origin: 50% 55%;
+  will-change: transform, opacity;
+}
+
+.iob__facet {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Exactly five primary facets — original abstract gem, no game assets */
+.iob__facet--a {
+  clip-path: polygon(50% 0%, 100% 38%, 50% 48%);
+  background: var(--iob-gold);
+}
+
+.iob__facet--b {
+  clip-path: polygon(50% 0%, 50% 48%, 0% 38%);
+  background: #c9a03a;
+}
+
+.iob__facet--c {
+  clip-path: polygon(0% 38%, 50% 48%, 28% 100%, 0% 72%);
+  background: var(--iob-sage);
+}
+
+.iob__facet--d {
+  clip-path: polygon(100% 38%, 100% 72%, 72% 100%, 50% 48%);
+  background: var(--iob-coral);
+}
+
+.iob__facet--e {
+  clip-path: polygon(28% 100%, 50% 48%, 72% 100%);
+  background: var(--iob-ink);
+}
+
+.iob__label-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+}
+
+.iob__label {
+  margin: 0;
+  font: 800 0.68rem/1 inherit;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.iob__rule {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--iob-ink);
+}
+
+.iob__slot {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.7rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 9.5rem;
+  padding: 0.4rem 0.5rem;
+  background: #fffdf6;
+  border: 2px solid var(--iob-ink);
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  pointer-events: none;
+}
+
+.iob__slot-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 22px;
+}
+
+.iob__slot-gem {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--iob-gold) 35%, var(--iob-sage) 70%, var(--iob-coral));
+  clip-path: polygon(50% 0%, 100% 38%, 72% 100%, 28% 100%, 0% 38%);
+}
+
+.iob__slot-name {
+  flex: 1 1 auto;
+  font: 700 0.58rem/1.2 inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.iob__qty {
+  display: inline-flex;
+  align-items: baseline;
+  font: 800 0.7rem/1 inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.iob__qty-prefix {
+  margin-right: 0.05rem;
+}
+
+.iob__qty-slot {
+  position: relative;
+  display: inline-grid;
+  height: 1em;
+  min-width: 1.35em;
+  overflow: hidden;
+}
+
+.iob__qty-num {
+  grid-area: 1 / 1;
+  display: block;
+}
+
+.iob__qty-num--in {
+  transform: translateY(110%);
+}
+
+.iob--qty-swap .iob__qty-num--out {
+  animation: iob-qty-out 140ms var(--iob-ease) forwards;
+}
+
+.iob--qty-swap .iob__qty-num--in {
+  animation: iob-qty-in 140ms var(--iob-ease) forwards;
+}
+
+.iob--done .iob__qty-num--out {
+  transform: translateY(-110%);
+}
+
+.iob--done .iob__qty-num--in {
+  transform: translateY(0);
+}
+
+@keyframes iob-qty-out {
+  to {
+    transform: translateY(-110%);
+  }
+}
+
+@keyframes iob-qty-in {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.iob__accent {
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--iob-gold);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.iob__accent--a {
+  right: calc(100% + 4px);
+  transform: translateY(-50%);
+}
+
+.iob__accent--b {
+  left: calc(100% + 4px);
+  transform: translateY(-50%);
+}
+
+.iob__obtained {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  z-index: 1;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font: 800 0.72rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--iob-ink);
+}
+
+.iob__obtained[hidden] {
+  display: none !important;
+}
+
+.iob__qty-text {
+  margin: 0;
+  font: 700 0.7rem/1.3 inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--iob-ink);
+}
+
+.iob__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid var(--iob-ink);
+  border-radius: 0;
+  background: var(--iob-ink);
+  color: var(--iob-cream);
+  font: 700 0.65rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.iob__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.iob__btn:focus {
+  outline: none;
+}
+
+.iob__btn:focus-visible {
+  outline: 2px solid var(--iob-sage);
+  outline-offset: 3px;
+}
+
+.iob__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Phase classes —— */
+
+.iob--discover .iob__item {
+  animation: iob-discover 240ms var(--iob-ease) forwards;
+}
+
+.iob--present .iob__item {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+.iob--present .iob__label-block {
+  opacity: 1;
+}
+
+.iob--present .iob__rule {
+  animation: iob-rule 120ms var(--iob-ease) forwards;
+}
+
+.iob--slot-in .iob__slot {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 160ms var(--iob-ease),
+    transform 160ms var(--iob-ease);
+}
+
+.iob--transfer .iob__item {
+  animation: iob-transfer 320ms var(--iob-ease) forwards;
+}
+
+.iob--transfer .iob__label-block {
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+.iob--dock .iob__item {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.iob--dock .iob__slot {
+  opacity: 1;
+  animation: iob-dock 140ms var(--iob-ease) forwards;
+}
+
+.iob--accents .iob__accent {
+  opacity: 1;
+  animation: iob-accent 90ms var(--iob-ease) forwards;
+}
+
+.iob--done .iob__item,
+.iob--done .iob__label-block {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.iob--done .iob__slot {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.iob--done .iob__accent {
+  opacity: 0;
+  width: 0;
+}
+
+.iob--reduced .iob__item,
+.iob--reduced .iob__label-block {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.iob--reduced .iob__slot {
+  opacity: 1;
+  transform: none;
+}
+
+.iob--reduced .iob__obtained {
+  display: block;
+}
+
+@keyframes iob-discover {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.7) rotate(-8deg);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(0) scale(1.08) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes iob-rule {
+  from {
+    width: 0;
+  }
+  to {
+    width: 110px;
+  }
+}
+
+/* Two-stage curved path into lower-right slot — no animation library */
+@keyframes iob-transfer {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  42% {
+    opacity: 1;
+    transform: translate(48px, -28px) scale(0.72) rotate(6deg);
+  }
+  100% {
+    opacity: 0.85;
+    transform: translate(118px, 78px) scale(0.32) rotate(-4deg);
+  }
+}
+
+@keyframes iob-dock {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.94);
+  }
+  70% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes iob-accent {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  55% {
+    width: 14px;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iob__item,
+  .iob__label-block,
+  .iob__rule,
+  .iob__slot,
+  .iob__qty-num,
+  .iob__accent {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .iob__item,
+[data-force-reduced-motion='true'] .iob__label-block,
+[data-force-reduced-motion='true'] .iob__rule,
+[data-force-reduced-motion='true'] .iob__slot,
+[data-force-reduced-motion='true'] .iob__qty-num,
+[data-force-reduced-motion='true'] .iob__accent {
+  animation: none !important;
+  transition: none !important;
+}

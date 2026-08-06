@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/item-obtained.schema.json",
+  "title": "ItemObtained",
+  "description": "Abstract Energy Shard discovery → presentation → inventory dock → qty ×02→×03. Pokemon-inspired. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "values",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "item-obtained" },
+    "intent": {
+      "type": "string",
+      "const": "An external object is discovered, briefly presented, then travels into an inventory slot and increments stored quantity."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["item", "obtain", "obtained", "status"],
+      "properties": {
+        "item": { "type": "string", "const": "ENERGY SHARD" },
+        "obtain": { "type": "string", "const": "OBTAIN ITEM" },
+        "obtained": { "type": "string", "const": "ITEM OBTAINED" },
+        "status": {
+          "type": "string",
+          "const": "Item obtained. Energy Shard quantity 3."
+        }
+      }
+    },
+    "values": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startQty", "endQty"],
+      "properties": {
+        "startQty": { "type": "number", "const": 2 },
+        "endQty": { "type": "number", "const": 3 },
+        "qtyChangesOnlyOnDock": { "type": "boolean", "const": true }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "widthPx",
+        "heightPx",
+        "primaryFacets",
+        "palette",
+        "ruleWidthPx"
+      ],
+      "properties": {
+        "widthPx": { "type": "number", "const": 58 },
+        "heightPx": { "type": "number", "const": 72 },
+        "primaryFacets": { "type": "number", "const": 5 },
+        "ruleWidthPx": { "type": "number", "const": 110 },
+        "completionAccents": { "type": "number", "const": 2 },
+        "palette": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "enum": [
+              "#1a2528",
+              "#f4efda",
+              "#e5b847",
+              "#72a98c",
+              "#d8684e"
+            ]
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "discoverMs",
+        "holdMs",
+        "ruleMs",
+        "transferMs",
+        "dockMs",
+        "accentMs",
+        "totalMs"
+      ],
+      "properties": {
+        "discoverMs": { "type": "number", "const": 240 },
+        "holdMs": { "type": "number", "const": 260 },
+        "ruleMs": { "type": "number", "const": 120 },
+        "transferMs": { "type": "number", "const": 320 },
+        "dockMs": { "type": "number", "const": 140 },
+        "accentMs": { "type": "number", "const": 90 },
+        "totalMs": { "type": "number", "const": 1050 },
+        "discoverScale": {
+          "type": "array",
+          "const": [0.7, 1.08, 1]
+        },
+        "discoverRotateDeg": {
+          "type": "array",
+          "const": [-8, 4, 0]
+        },
+        "discoverTranslateYPx": { "type": "number", "const": 30 },
+        "transferScale": {
+          "type": "array",
+          "const": [1, 0.32]
+        },
+        "transferPath": {
+          "type": "string",
+          "const": "two-stage-curve"
+        },
+        "dockScale": {
+          "type": "array",
+          "const": [1, 0.94, 1.03, 1]
+        },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finalQtyAsText", "noIntermediateAnnounce"],
+      "properties": {
+        "finalQtyAsText": { "type": "boolean", "const": true },
+        "noIntermediateAnnounce": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinal", "triggers"],
+      "properties": {
+        "immediateFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "item", "slot", "facet"],
+      "properties": {
+        "root": { "type": "string", "const": "iob" },
+        "item": { "type": "string", "const": "iob__item" },
+        "slot": { "type": "string", "const": "iob__slot" },
+        "facet": { "type": "string", "const": "iob__facet" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "item-obtained",
+      "values": { "startQty": 2, "endQty": 3 },
+      "geometry": {
+        "widthPx": 58,
+        "heightPx": 72,
+        "primaryFacets": 5
+      },
+      "animation": {
+        "discoverMs": 240,
+        "holdMs": 260,
+        "transferMs": 320,
+        "dockMs": 140,
+        "accentMs": 90,
+        "totalMs": 1050
+      }
+    }
+  ]
+}
