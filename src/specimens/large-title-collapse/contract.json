@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/large-title-collapse.schema.json",
+  "title": "LargeTitleCollapse",
+  "description": "Portable contract for scroll-driven large-to-compact navigation title collapse.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "typography",
+    "scroll",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "large-title-collapse" },
+    "intent": {
+      "type": "string",
+      "const": "Large contextual heading PROJECTS condenses into compact 17px navigation title over 84px scroll with continuous spatial handoff."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "subtitle", "rowCount"],
+      "properties": {
+        "title": { "type": "string", "const": "PROJECTS" },
+        "subtitle": { "type": "string", "const": "12 ACTIVE" },
+        "rowCount": { "type": "number", "const": 12 }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["viewportWidthPx", "viewportHeightPx", "navHeightPx"],
+      "properties": {
+        "viewportWidthPx": { "type": "number", "const": 380 },
+        "viewportHeightPx": { "type": "number", "const": 500 },
+        "navHeightPx": { "type": "number", "const": 52 }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["largeSizePx", "compactSizePx", "translateYPx"],
+      "properties": {
+        "largeSizePx": { "type": "number", "const": 42 },
+        "compactSizePx": { "type": "number", "const": 17 },
+        "translateYPx": { "type": "number", "const": 54 }
+      }
+    },
+    "scroll": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseRangePx", "compactEstablishedPx"],
+      "properties": {
+        "collapseRangePx": { "type": "number", "const": 84 },
+        "compactEstablishedPx": { "type": "number", "const": 72 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusableScroll", "politeStatus"],
+      "properties": {
+        "focusableScroll": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scrollLinkedNoScaleInterpolation", "triggers"],
+      "properties": {
+        "scrollLinkedNoScaleInterpolation": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "nav", "large", "compact", "scroll"],
+      "properties": {
+        "root": { "type": "string", "const": "ltc" },
+        "nav": { "type": "string", "const": "ltc__nav" },
+        "large": { "type": "string", "const": "ltc__large" },
+        "compact": { "type": "string", "const": "ltc__compact" },
+        "scroll": { "type": "string", "const": "ltc__scroll" }
+      }
+    }
+  }
+}

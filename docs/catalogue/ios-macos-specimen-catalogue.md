@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 258** complete.
+- Progress: **11 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 248 |
+| Done | 11 |
+| Open | 247 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-072 | `SPX-1371` | `large-title-collapse` | Large Title Collapse |
 | IOS-054 | `SPX-1353` | `stage-manager-stack-shift` | Stage Manager Stack Shift |
 | IOS-049 | `SPX-1348` | `mission-control-spread` | Mission Control Spread |
 | IOS-040 | `SPX-1339` | `dock-launch-bounce` | Dock Launch Bounce |
@@ -58,7 +59,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
 - [x] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
 - [x] **IOS-062** · `SPX-1361` · **Scroll Rubber Band** — spring-rubber-banding-physical-response
-- [ ] **IOS-072** · `SPX-1371` · **Large Title Collapse** — scroll-content-physics
+- [x] **IOS-072** · `SPX-1371` · **Large Title Collapse** — scroll-content-physics
 - [ ] **IOS-092** · `SPX-1391` · **Long-Press Lift** — context-menus-long-press-interaction
 - [ ] **IOS-093** · `SPX-1392` · **Context Menu Bloom** — context-menus-long-press-interaction
 - [ ] **IOS-100** · `SPX-1399` · **App Launch Expansion** — home-screen-app-grid
@@ -169,7 +170,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Scroll & Content Physics
 
-- [ ] **IOS-072** · `SPX-1371` · **Large Title Collapse** — oversized page heading condenses into a compact navigation-bar title during scroll.
+- [x] **IOS-072** · `SPX-1371` · **Large Title Collapse** — oversized page heading condenses into a compact navigation-bar title during scroll.
 - [ ] **IOS-073** · `SPX-1372` · **Sticky Header Compression** — section header changes height/detail as it becomes pinned.
 - [ ] **IOS-074** · `SPX-1373` · **Scroll Edge Material** — content approaching a constrained edge gains a subtle structural separation cue.
 - [ ] **IOS-075** · `SPX-1374` · **Paging Snap** — free scrolling resolves into a discrete page position after release.

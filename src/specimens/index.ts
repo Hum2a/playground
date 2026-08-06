@@ -86,6 +86,7 @@ import { isolatedTimeFreeze } from './isolated-time-freeze/entry'
 import { itemObtained } from './item-obtained/entry'
 import { instantTransmissionNavigation } from './instant-transmission-navigation/entry'
 import { kiChargeMeter } from './ki-charge-meter/entry'
+import { largeTitleCollapse } from './large-title-collapse/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
 import { linkTradeTransfer } from './link-trade-transfer/entry'
@@ -282,6 +283,7 @@ export const specimens: Specimen[] = [
   isolatedTimeFreeze,
   itemObtained,
   kiChargeMeter,
+  largeTitleCollapse,
   letterScatterAssemble,
   levelUpOverflow,
   linkedFusionMerge,

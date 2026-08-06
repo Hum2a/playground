@@ -1,0 +1,150 @@
+/* large-title-collapse — portable specimen styles. Do not restyle to host tokens. */
+
+.ltc {
+  --ltc-ink: #0f141c;
+  --ltc-panel: #171d28;
+  --ltc-line: #2a3342;
+  --ltc-cream: #e8ecf1;
+  --ltc-muted: #6d7685;
+  --ltc-accent: #4e9e8f;
+  --ltc-scroll: 0;
+  --ltc-font: 42px;
+  --ltc-ty: 0px;
+  --ltc-large-opacity: 1;
+  --ltc-compact-opacity: 0;
+  --ltc-nav-h: 52px;
+  --ltc-large-size: 42px;
+  --ltc-compact-size: 17px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 0 0 2rem;
+  font-family: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ltc-cream);
+  background: var(--ltc-ink);
+}
+
+.ltc *,
+.ltc *::before,
+.ltc *::after {
+  box-sizing: border-box;
+}
+
+.ltc__nav {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  height: var(--ltc-nav-h);
+  padding: 0 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ltc-line) 70%, transparent);
+  background: color-mix(in srgb, var(--ltc-ink) 92%, #000);
+}
+
+.ltc__compact {
+  font-size: var(--ltc-compact-size);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: var(--ltc-compact-opacity);
+  transform: translateY(calc((1 - var(--ltc-compact-opacity)) * 4px));
+  transition: none;
+}
+
+.ltc__scroll {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--ltc-line);
+  background: var(--ltc-panel);
+  outline: none;
+}
+
+.ltc__scroll:focus-visible {
+  outline: 2px solid var(--ltc-accent);
+  outline-offset: -2px;
+}
+
+.ltc__hero {
+  position: relative;
+  padding: 0.35rem 1rem 0.75rem;
+  min-height: 5.5rem;
+}
+
+.ltc__large {
+  margin: 0;
+  font-size: var(--ltc-font);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  opacity: var(--ltc-large-opacity);
+  transform: translateY(var(--ltc-ty));
+  transform-origin: left top;
+  pointer-events: none;
+}
+
+.ltc__subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ltc-muted);
+  opacity: calc(1 - var(--ltc-compact-opacity) * 0.85);
+}
+
+.ltc__list {
+  margin: 0;
+  padding: 0 0 1.25rem;
+  list-style: none;
+}
+
+.ltc__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--ltc-line) 65%, transparent);
+}
+
+.ltc__name {
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.ltc__meta {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ltc-muted);
+}
+
+.ltc__status {
+  margin: 0.55rem 0 0;
+  padding: 0 0.15rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--ltc-muted);
+}
+
+/* Reduced motion: discrete size/position steps tied to scroll */
+
+@media (prefers-reduced-motion: reduce) {
+  .ltc__large {
+    transition: none !important;
+  }
+
+  .ltc__compact {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .ltc__large,
+[data-force-reduced-motion='true'] .ltc__compact {
+  transition: none !important;
+}
