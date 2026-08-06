@@ -1,0 +1,135 @@
+/* material-pull-to-refresh — portable specimen styles. Do not restyle to host tokens. */
+
+.mptr {
+  --mptr-ink: #141218;
+  --mptr-panel: #1e1a22;
+  --mptr-line: #49454f;
+  --mptr-muted: #938f99;
+  --mptr-text: #e8e0ec;
+  --mptr-accent: #7c8bff;
+  --mptr-pull: 0px;
+  --mptr-arc-rotation: 0deg;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--mptr-text);
+  background: var(--mptr-ink);
+}
+
+.mptr *,
+.mptr *::before,
+.mptr *::after {
+  box-sizing: border-box;
+}
+
+.mptr__viewport {
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--mptr-line);
+  background: var(--mptr-panel);
+  touch-action: pan-y;
+}
+
+.mptr__indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  transform: translateY(calc(var(--mptr-pull) - 48px));
+  opacity: calc(min(1, var(--mptr-pull) / 40px));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mptr__arc {
+  transform: rotate(var(--mptr-arc-rotation));
+  transform-origin: center;
+}
+
+.mptr__arc-track {
+  stroke: var(--mptr-line);
+}
+
+.mptr__arc-progress {
+  stroke: var(--mptr-accent);
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.mptr[data-mptr-phase='loading'] .mptr__arc {
+  animation: mptr-spin 900ms linear infinite;
+}
+
+@keyframes mptr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.mptr__feed {
+  margin: 0;
+  padding: calc(var(--mptr-pull) + 0.5rem) 0 0.5rem;
+  list-style: none;
+  transform: translateY(var(--mptr-pull));
+  transition: transform 180ms ease;
+}
+
+.mptr[data-mptr-phase='pulling'] .mptr__feed {
+  transition: none;
+}
+
+.mptr__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--mptr-line);
+  font-size: 0.875rem;
+}
+
+.mptr__row--new {
+  background: color-mix(in srgb, var(--mptr-accent) 12%, transparent);
+}
+
+.mptr__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mptr-accent);
+}
+
+.mptr__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--mptr-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mptr[data-mptr-phase='loading'] .mptr__arc {
+    animation: none;
+  }
+  .mptr__feed {
+    transition-duration: 0ms;
+  }
+}
+
+[data-force-reduced-motion='true'] .mptr[data-mptr-phase='loading'] .mptr__arc {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .mptr__feed {
+  transition-duration: 0ms !important;
+}

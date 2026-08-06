@@ -124,6 +124,7 @@ import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { matchedCardExpansion } from './matched-card-expansion/entry'
+import { materialPullToRefresh } from './material-pull-to-refresh/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
 import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
@@ -378,6 +379,7 @@ export const specimens: Specimen[] = [
   longPressLift,
   mangaCutInNotification,
   matchedCardExpansion,
+  materialPullToRefresh,
   maxRankCompletion,
   measurementOverload,
   memoryFragmentReveal,

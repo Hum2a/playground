@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/material-pull-to-refresh.schema.json",
+  "title": "MaterialPullToRefresh",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "gesture", "refresh", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "material-pull-to-refresh" },
+    "gesture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxDisplayPx", "resistK", "thresholdPx"],
+      "properties": {
+        "maxDisplayPx": { "type": "number", "const": 96 },
+        "resistK": { "type": "number", "const": 140 },
+        "thresholdPx": { "type": "number", "const": 72 }
+      }
+    },
+    "refresh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["holdPx", "loadMs", "rowsInserted"],
+      "properties": {
+        "holdPx": { "type": "number", "const": 64 },
+        "loadMs": { "type": "number", "const": 900 },
+        "rowsInserted": { "type": "number", "const": 1 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noSpin", "triggers"],
+      "properties": {
+        "noSpin": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "viewport", "indicator", "feed"],
+      "properties": {
+        "root": { "type": "string", "const": "mptr" },
+        "viewport": { "type": "string", "const": "mptr__viewport" },
+        "indicator": { "type": "string", "const": "mptr__indicator" },
+        "feed": { "type": "string", "const": "mptr__feed" }
+      }
+    }
+  }
+}
