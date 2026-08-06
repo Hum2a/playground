@@ -210,6 +210,7 @@ import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
 import { singleToDualPaneTransform } from './single-to-dual-pane-transform/entry'
 import { sliderThumbPickup } from './slider-thumb-pickup/entry'
 import { snackbarRise } from './snackbar-rise/entry'
+import { speedLineActionReveal } from './speed-line-action-reveal/entry'
 import { spotlightMaterialise } from './spotlight-materialise/entry'
 import { springSelectionPill } from './spring-selection-pill/entry'
 import { stageManagerStackShift } from './stage-manager-stack-shift/entry'
@@ -497,6 +498,7 @@ export const specimens: Specimen[] = [
   singleToDualPaneTransform,
   sliderThumbPickup,
   snackbarRise,
+  speedLineActionReveal,
   spotlightMaterialise,
   springSelectionPill,
   stageManagerStackShift,

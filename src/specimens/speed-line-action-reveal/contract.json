@@ -1,0 +1,23 @@
+{
+  "name": "speed-line-action-reveal",
+  "intent": "Converging speed lines burst outward to reveal TARGET acquisition readout.",
+  "catalogue": { "mha": "MHA-002", "ref": "SPX-1976" },
+  "copy": {
+    "headline": "TARGET",
+    "eyebrow": "SCAN // RESULT",
+    "sub": "Acquisition complete."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "burstMs": 580, "settleMs": 320 },
+  "api": {
+    "run": "runSpeedLineReveal()",
+    "reset": "resetSpeedLineReveal()",
+    "replay": "replaySpeedLineReveal()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show TARGET; hide lines" }
+}
