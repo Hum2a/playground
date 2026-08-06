@@ -1,0 +1,1 @@
+{"title":"BlinkSelection","type":"object","properties":{"name":{"const":"blink-selection"},"grid":{"const":[3,3]},"initial":{"const":"02"},"final":{"const":"08"},"brackets":{"const":{"count":4,"lengthPx":10,"offsetPx":5}},"timing":{"const":{"departureMs":45,"gapMs":30,"arrivalMs":70,"totalMs":145}},"reducedMotion":{"const":true}}}

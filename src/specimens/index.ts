@@ -1,4 +1,5 @@
 import { achievementEncounter } from './achievement-encounter/entry'
+import { afterimageNavigation } from './afterimage-navigation/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
 import { blackoutLoader } from './blackout-loader/entry'
@@ -191,6 +192,7 @@ export const specimens: Specimen[] = [
   corruptedAccessLock,
   criticalThresholdWarning,
   achievementEncounter,
+  afterimageNavigation,
   tacticalAlertPing,
   inkSplatTransition,
   instantTransmissionNavigation,
@@ -200,6 +202,7 @@ export const specimens: Specimen[] = [
   kiChargeMeter,
   victoryResultsTally,
   blackoutLoader,
+  blinkSelection,
   blueDoorDiscovery,
   blueFlameButtonHover,
   blueFocusBrackets,
