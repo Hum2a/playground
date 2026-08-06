@@ -1,0 +1,300 @@
+/* graphic-burst-hover — portable specimen styles */
+
+.gbh {
+  --gbh-black: #090909;
+  --gbh-red: #e60012;
+  --gbh-paper: #f5f1e8;
+  --gbh-enter: 220ms;
+  --gbh-exit: 150ms;
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  background: #1a1d22;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.gbh *,
+.gbh *::before,
+.gbh *::after {
+  box-sizing: border-box;
+}
+
+.gbh__cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 48px;
+  margin: 0;
+  padding: 0 1rem;
+  border: 2px solid var(--gbh-black);
+  border-radius: 0;
+  background: var(--gbh-paper);
+  color: var(--gbh-black);
+  text-decoration: none;
+  font: 800 0.72rem/1 inherit;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: translateY(0) rotate(0deg) scale(1);
+  transition:
+    transform var(--gbh-exit) cubic-bezier(0.4, 0, 0.5, 1),
+    border-color var(--gbh-exit) steps(1, end),
+    background-color var(--gbh-exit) steps(1, end),
+    color var(--gbh-exit) steps(1, end);
+}
+
+.gbh__cta:focus {
+  outline: none;
+}
+
+.gbh__cta:focus-visible {
+  outline: 2px solid var(--gbh-red);
+  outline-offset: 4px;
+}
+
+.gbh__label {
+  position: relative;
+  z-index: 3;
+}
+
+/* Red irregular backing behind label */
+.gbh__backing {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--gbh-red);
+  clip-path: polygon(0% 10%, 100% 0%, 96% 100%, 4% 92%);
+  opacity: 0;
+  transform: translate(0, 0);
+  pointer-events: none;
+  transition:
+    opacity var(--gbh-exit) steps(1, end),
+    transform var(--gbh-exit) cubic-bezier(0.4, 0, 0.5, 1);
+}
+
+/* Burst shell */
+.gbh__burst {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 0;
+  height: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gbh__shard {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.1);
+  transition:
+    transform var(--gbh-exit) cubic-bezier(0.45, 0, 0.65, 1),
+    opacity var(--gbh-exit) steps(1, end);
+}
+
+/* Long diagonal shards */
+.gbh__shard--long-a {
+  width: 78px;
+  height: 10px;
+  background: var(--gbh-black);
+  clip-path: polygon(0% 20%, 100% 0%, 100% 100%, 0% 80%);
+  --gbh-tx: -48px;
+  --gbh-ty: -38px;
+  --gbh-rot: -38deg;
+  transition-delay: 0ms;
+}
+
+.gbh__shard--long-b {
+  width: 72px;
+  height: 9px;
+  background: var(--gbh-black);
+  clip-path: polygon(0% 0%, 100% 25%, 100% 75%, 0% 100%);
+  --gbh-tx: 50px;
+  --gbh-ty: 36px;
+  --gbh-rot: 28deg;
+  transition-delay: 15ms;
+}
+
+/* Short red wedges */
+.gbh__shard--wedge-a {
+  width: 36px;
+  height: 22px;
+  background: var(--gbh-red);
+  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+  --gbh-tx: 32px;
+  --gbh-ty: -28px;
+  --gbh-rot: 12deg;
+  transition-delay: 40ms;
+}
+
+.gbh__shard--wedge-b {
+  width: 32px;
+  height: 20px;
+  background: var(--gbh-red);
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+  --gbh-tx: -30px;
+  --gbh-ty: 26px;
+  --gbh-rot: -18deg;
+  transition-delay: 55ms;
+}
+
+/* Black triangles */
+.gbh__shard--tri-a {
+  width: 24px;
+  height: 24px;
+  background: var(--gbh-black);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  --gbh-tx: -22px;
+  --gbh-ty: -32px;
+  --gbh-rot: -8deg;
+  transition-delay: 30ms;
+}
+
+.gbh__shard--tri-b {
+  width: 22px;
+  height: 22px;
+  background: var(--gbh-black);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  --gbh-tx: 28px;
+  --gbh-ty: 30px;
+  --gbh-rot: 16deg;
+  transition-delay: 45ms;
+}
+
+/* Thin speed lines */
+.gbh__shard--line-a {
+  width: 58px;
+  height: 3px;
+  background: var(--gbh-paper);
+  --gbh-tx: 55px;
+  --gbh-ty: -12px;
+  --gbh-rot: -6deg;
+  transition-delay: 70ms;
+}
+
+.gbh__shard--line-b {
+  width: 50px;
+  height: 3px;
+  background: var(--gbh-paper);
+  --gbh-tx: -52px;
+  --gbh-ty: 14px;
+  --gbh-rot: 8deg;
+  transition-delay: 80ms;
+}
+
+/* —— Hover / focus-visible active state —— */
+.gbh__cta:hover,
+.gbh__cta:focus-visible {
+  transform: translateY(-2px) rotate(-1deg) scale(1.02);
+  background: var(--gbh-black);
+  color: var(--gbh-paper);
+  border-color: var(--gbh-paper);
+  transition-duration: var(--gbh-enter);
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+.gbh__cta:hover .gbh__backing,
+.gbh__cta:focus-visible .gbh__backing {
+  opacity: 1;
+  transform: translate(6px, 5px);
+  transition-duration: 90ms;
+  transition-timing-function: cubic-bezier(0.2, 0.85, 0.2, 1);
+}
+
+.gbh__cta:hover .gbh__shard,
+.gbh__cta:focus-visible .gbh__shard {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--gbh-tx)), calc(-50% + var(--gbh-ty)))
+    rotate(var(--gbh-rot)) scale(1);
+  transition-duration: var(--gbh-enter);
+  transition-timing-function: cubic-bezier(0.15, 0.85, 0.25, 1);
+}
+
+/* Staggered overshoot feel via delay groups (major first) */
+.gbh__cta:hover .gbh__shard--long-a,
+.gbh__cta:focus-visible .gbh__shard--long-a,
+.gbh__cta:hover .gbh__shard--long-b,
+.gbh__cta:focus-visible .gbh__shard--long-b,
+.gbh__cta:hover .gbh__shard--tri-a,
+.gbh__cta:focus-visible .gbh__shard--tri-a,
+.gbh__cta:hover .gbh__shard--tri-b,
+.gbh__cta:focus-visible .gbh__shard--tri-b {
+  transition-delay: 0ms;
+}
+
+.gbh__cta:hover .gbh__shard--wedge-a,
+.gbh__cta:focus-visible .gbh__shard--wedge-a {
+  transition-delay: 70ms;
+}
+
+.gbh__cta:hover .gbh__shard--wedge-b,
+.gbh__cta:focus-visible .gbh__shard--wedge-b {
+  transition-delay: 85ms;
+}
+
+.gbh__cta:hover .gbh__shard--line-a,
+.gbh__cta:focus-visible .gbh__shard--line-a {
+  transition-delay: 110ms;
+}
+
+.gbh__cta:hover .gbh__shard--line-b,
+.gbh__cta:focus-visible .gbh__shard--line-b {
+  transition-delay: 125ms;
+}
+
+/* Exit: retract faster, delays cleared */
+.gbh__cta:not(:hover):not(:focus-visible) .gbh__shard {
+  transition-delay: 0ms;
+  transition-duration: var(--gbh-exit);
+}
+
+/* Reduced motion — instant final burst, no travel */
+@media (prefers-reduced-motion: reduce) {
+  .gbh__cta,
+  .gbh__backing,
+  .gbh__shard {
+    transition: none !important;
+  }
+
+  .gbh__cta:hover .gbh__shard,
+  .gbh__cta:focus-visible .gbh__shard {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--gbh-tx)), calc(-50% + var(--gbh-ty)))
+      rotate(var(--gbh-rot)) scale(1);
+  }
+
+  .gbh__cta:hover .gbh__backing,
+  .gbh__cta:focus-visible .gbh__backing {
+    opacity: 1;
+    transform: translate(6px, 5px);
+  }
+}
+
+[data-force-reduced-motion='true'] .gbh__cta,
+[data-force-reduced-motion='true'] .gbh__backing,
+[data-force-reduced-motion='true'] .gbh__shard {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .gbh__cta:hover .gbh__shard,
+[data-force-reduced-motion='true'] .gbh__cta:focus-visible .gbh__shard {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--gbh-tx)), calc(-50% + var(--gbh-ty)))
+    rotate(var(--gbh-rot)) scale(1);
+}
+
+[data-force-reduced-motion='true'] .gbh__cta:hover .gbh__backing,
+[data-force-reduced-motion='true'] .gbh__cta:focus-visible .gbh__backing {
+  opacity: 1;
+  transform: translate(6px, 5px);
+}

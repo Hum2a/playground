@@ -1,0 +1,116 @@
+{
+  "name": "graphic-burst-hover",
+  "intent": "CSS-only hover/focus effect: eight angular graphic shards burst outward behind a stable CTA with a red offset backing.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "target": {
+    "widthPx": 180,
+    "heightPx": 48,
+    "label": "VIEW PROJECT",
+    "activeTranslateYPx": -2,
+    "activeRotateDeg": -1,
+    "activeScale": 1.02,
+    "backingOffsetPx": [6, 5]
+  },
+  "timing": {
+    "enterMs": 220,
+    "exitMs": 150,
+    "majorShardWindowMs": [0, 90],
+    "secondaryWindowMs": [90, 160],
+    "settleWindowMs": [160, 220]
+  },
+  "shards": [
+    {
+      "id": "long-a",
+      "kind": "long-diagonal",
+      "sizePx": [78, 10],
+      "travelPx": [-48, -38],
+      "rotateDeg": -38,
+      "color": "#090909",
+      "clipPath": "polygon(0% 20%, 100% 0%, 100% 100%, 0% 80%)"
+    },
+    {
+      "id": "long-b",
+      "kind": "long-diagonal",
+      "sizePx": [72, 9],
+      "travelPx": [50, 36],
+      "rotateDeg": 28,
+      "color": "#090909",
+      "clipPath": "polygon(0% 0%, 100% 25%, 100% 75%, 0% 100%)"
+    },
+    {
+      "id": "wedge-a",
+      "kind": "red-wedge",
+      "sizePx": [36, 22],
+      "travelPx": [32, -28],
+      "rotateDeg": 12,
+      "color": "#e60012",
+      "clipPath": "polygon(0% 50%, 100% 0%, 100% 100%)"
+    },
+    {
+      "id": "wedge-b",
+      "kind": "red-wedge",
+      "sizePx": [32, 20],
+      "travelPx": [-30, 26],
+      "rotateDeg": -18,
+      "color": "#e60012",
+      "clipPath": "polygon(0% 0%, 100% 50%, 0% 100%)"
+    },
+    {
+      "id": "tri-a",
+      "kind": "black-triangle",
+      "sizePx": [24, 24],
+      "travelPx": [-22, -32],
+      "rotateDeg": -8,
+      "color": "#090909",
+      "clipPath": "polygon(50% 0%, 100% 100%, 0% 100%)"
+    },
+    {
+      "id": "tri-b",
+      "kind": "black-triangle",
+      "sizePx": [22, 22],
+      "travelPx": [28, 30],
+      "rotateDeg": 16,
+      "color": "#090909",
+      "clipPath": "polygon(0% 0%, 100% 0%, 50% 100%)"
+    },
+    {
+      "id": "line-a",
+      "kind": "speed-line",
+      "sizePx": [58, 3],
+      "travelPx": [55, -12],
+      "rotateDeg": -6,
+      "color": "#f5f1e8"
+    },
+    {
+      "id": "line-b",
+      "kind": "speed-line",
+      "sizePx": [50, 3],
+      "travelPx": [-52, 14],
+      "rotateDeg": 8,
+      "color": "#f5f1e8"
+    }
+  ],
+  "idle": {
+    "shardScale": 0.1,
+    "shardOpacity": 0
+  },
+  "constraints": {
+    "cssOnly": true,
+    "pointerEventsNoneOnBurst": true,
+    "noRoundedPill": true,
+    "noExternalAssets": true,
+    "focusVisibleRequired": true,
+    "widthRangePx": [320, 768]
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "No shard travel; final burst composition appears/disappears immediately with hover/focus"
+  }
+}

@@ -130,6 +130,7 @@ export const SUGGESTED_FREE_TAGS = [
   'detection',
   'ping',
   'reveal',
+  'impact',
   'paper',
   'peel',
   'unlock',
@@ -137,7 +138,15 @@ export const SUGGESTED_FREE_TAGS = [
   'content-switch',
   'stack',
   'progress',
+  'confirmation',
+  'hold',
   'rank-up',
+  'tear',
+  'hover',
+  'burst',
+  'interruption',
+  'manga',
+  'cut-in',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]
