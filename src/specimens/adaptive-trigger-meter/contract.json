@@ -1,0 +1,18 @@
+{
+  "name": "adaptive-trigger-meter",
+  "ref": "SPX-3364",
+  "ps": "PS-058",
+  "title": "Adaptive Trigger Meter",
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion",
+      "data-force-reduced-motion"
+    ]
+  }
+}

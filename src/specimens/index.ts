@@ -5,6 +5,7 @@ import { activityCompleteBurst } from './activity-complete-burst/entry'
 import { activityExpandDetails } from './activity-expand-details/entry'
 import { activityProgressFill } from './activity-progress-fill/entry'
 import { adaptiveRecovery } from './adaptive-recovery/entry'
+import { adaptiveTriggerMeter } from './adaptive-trigger-meter/entry'
 import { addToListConfirmation } from './add-to-list-confirmation/entry'
 import { afterimageNavigation } from './afterimage-navigation/entry'
 import { airdropTransferArc } from './airdrop-transfer-arc/entry'
@@ -516,6 +517,7 @@ export const specimens: Specimen[] = [
   activityExpandDetails,
   activityProgressFill,
   adaptiveRecovery,
+  adaptiveTriggerMeter,
   addToListConfirmation,
   afterimageNavigation,
   airdropTransferArc,
