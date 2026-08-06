@@ -151,6 +151,7 @@ import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { linkedFusionMerge } from './linked-fusion-merge/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { listToIconViewMorph } from './list-to-icon-view-morph/entry'
+import { lockdownShutter } from './lockdown-shutter/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { longPressLift } from './long-press-lift/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
@@ -483,6 +484,7 @@ export const specimens: Specimen[] = [
   linkedFusionMerge,
   liquidSplitTransition,
   listToIconViewMorph,
+  lockdownShutter,
   lockedChainBreak,
   longPressLift,
   mangaCutInNotification,

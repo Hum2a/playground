@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **44 / 369** complete.
+- Progress: **45 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 44 |
-| Open | 325 |
+| Done | 45 |
+| Open | 324 |
 
 ## Visual grammar
 
@@ -76,6 +76,7 @@
 | MHA-030 | `SPX-2004` | `overuse-warning` | Overuse Warning |
 | MHA-054 | `SPX-2028` | `target-acquisition` | Training Target Acquisition |
 | MHA-067 | `SPX-2041` | `winner-banner-breakthrough` | Winner Banner Breakthrough |
+| MHA-095 | `SPX-2069` | `lockdown-shutter` | Lockdown Shutter |
 
 ## Core first-wave
 
@@ -235,7 +236,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-092** · `SPX-2066` · **Threat Level Escalation** — threat meter steps through five discrete states with increasing structural intensity.
 - [ ] **MHA-093** · `SPX-2067` · **Villain Attack Alert** — urgent card punches into the viewport with location/severity data.
 - [ ] **MHA-094** · `SPX-2068` · **Evacuation Route Activate** — safe route constructs while unsafe regions are struck out.
-- [ ] **MHA-095** · `SPX-2069` · **Lockdown Shutter** — content is progressively covered by segmented security shutters.
+- [x] **MHA-095** · `SPX-2069` · **Lockdown Shutter** — content is progressively covered by segmented security shutters.
 - [ ] **MHA-096** · `SPX-2070` · **Perimeter Breach** — boundary line fractures at a detected breach point.
 - [ ] **MHA-097** · `SPX-2071` · **Emergency Broadcast Strip** — high-priority ticker forcibly replaces normal status strip.
 - [ ] **MHA-098** · `SPX-2072` · **Threat Marker Acquisition** — dangerous target receives expanding angular brackets.

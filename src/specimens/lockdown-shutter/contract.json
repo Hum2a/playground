@@ -1,0 +1,12 @@
+{
+  "name": "lockdown-shutter",
+  "ref": "SPX-2069",
+  "catalogue": { "mha": "MHA-095" },
+  "shutterCount": 5,
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}

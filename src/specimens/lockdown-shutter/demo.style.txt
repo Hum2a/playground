@@ -1,0 +1,196 @@
+/* SPX-2069 Lockdown Shutter — portable contract. */
+
+.lds {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.lds *,
+.lds *::before,
+.lds *::after {
+  box-sizing: border-box;
+}
+
+.lds__panel {
+  position: relative;
+  width: 100%;
+  min-height: 140px;
+  padding: 1.1rem;
+  border: 3px solid var(--paper);
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.lds__content {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.lds__sub {
+  margin: 0.35rem 0 0;
+  font-size: 0.62rem;
+  color: rgb(16 24 32 / 0.55);
+}
+
+.lds__shutters {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.lds__shutter {
+  flex: 1;
+  background: var(--ink);
+  border-bottom: 2px solid var(--accent);
+  transform: translateY(-100%);
+}
+
+.lds[data-phase='close'] .lds__shutter,
+.lds[data-phase='done'] .lds__shutter {
+  animation: lds-close 420ms var(--ease) forwards;
+}
+
+.lds[data-phase='close'] .lds__shutter:nth-child(2),
+.lds[data-phase='done'] .lds__shutter:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.lds[data-phase='close'] .lds__shutter:nth-child(3),
+.lds[data-phase='done'] .lds__shutter:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.lds[data-phase='close'] .lds__shutter:nth-child(4),
+.lds[data-phase='done'] .lds__shutter:nth-child(4) {
+  animation-delay: 180ms;
+}
+
+.lds[data-phase='close'] .lds__shutter:nth-child(5),
+.lds[data-phase='done'] .lds__shutter:nth-child(5) {
+  animation-delay: 240ms;
+}
+
+.lds[data-phase='done'] .lds__shutter {
+  transform: translateY(0);
+}
+
+@keyframes lds-close {
+  to { transform: translateY(0); }
+}
+
+.lds__lock-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  opacity: 0;
+  z-index: 2;
+}
+
+.lds[data-phase='done'] .lds__lock-label {
+  opacity: 1;
+  animation: lds-label 280ms ease 700ms forwards;
+}
+
+@keyframes lds-label {
+  from { opacity: 0; transform: scale(1.2); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.lds__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.lds__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.lds__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.lds__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.lds__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lds[data-phase='close'] .lds__shutter,
+  .lds[data-phase='done'] .lds__shutter,
+  .lds[data-phase='done'] .lds__lock-label {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .lds[data-phase='close'] .lds__shutter,
+[data-force-reduced-motion='true'] .lds[data-phase='done'] .lds__shutter,
+[data-force-reduced-motion='true'] .lds[data-phase='done'] .lds__lock-label {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lds[data-phase='done'] .lds__shutter,
+  .lds[data-phase='close'] .lds__shutter {
+    transform: translateY(0);
+  }
+
+  .lds[data-phase='done'] .lds__lock-label {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .lds[data-phase='done'] .lds__shutter,
+[data-force-reduced-motion='true'] .lds[data-phase='close'] .lds__shutter {
+  transform: translateY(0);
+}
+
+[data-force-reduced-motion='true'] .lds[data-phase='done'] .lds__lock-label {
+  opacity: 1;
+  transform: none;
+}
