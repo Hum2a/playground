@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **0 / 266** complete.
+- Progress: **1 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 0 |
-| Open | 266 |
+| Done | 1 |
+| Open | 265 |
 
 ## Visual grammar
 
@@ -32,15 +32,14 @@
 
 | PK | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
-
-*None shipped yet. When a PK specimen registers, add a row here and flip Progress.*
+| PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
 
 ## Core first-wave
 
 Curated implementation priority (from the former Tier S / S+ queues). Same checkbox as the master list — checking either counts.
 
 - [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — capture-uncertainty
-- [ ] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — evolution-transformation
+- [x] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — evolution-transformation
 - [ ] **PK-032** · `SPX-731` · **Branch Evolution Choice** — evolution-transformation
 - [ ] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — pok-dex
 - [ ] **PK-237** · `SPX-936` · **Raid Ready Check** — multiplayer-collective
@@ -49,7 +48,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-130** · `SPX-829` · **Link Trade Transfer** — trading-transfer
 - [ ] **PK-178** · `SPX-877` · **Poké Radar Pulse** — sinnoh-ds
 - [ ] **PK-001** · `SPX-700` · **Wild Encounter Transition** — encounters-arrivals
-- [ ] **PK-012** · `SPX-711` · **Critical Capture** — capture-uncertainty
+- [x] **PK-012** · `SPX-711` · **Critical Capture** — capture-uncertainty
 - [ ] **PK-013** · `SPX-712` · **Capture Success Stars** — capture-uncertainty
 - [ ] **PK-027** · `SPX-726` · **Evolution Complete** — evolution-transformation
 - [ ] **PK-089** · `SPX-788` · **New Species Discovered** — pok-dex
@@ -76,7 +75,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 ## 2. Capture & uncertainty
 
 - [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — Content enters a closed container which rocks through three discrete uncertainty checks before resolving.
-- [ ] **PK-012** · `SPX-711` · **Critical Capture** — A normally multi-stage uncertain operation unexpectedly compresses into one decisive lock.
+- [x] **PK-012** · `SPX-711` · **Critical Capture** — A normally multi-stage uncertain operation unexpectedly compresses into one decisive lock.
 - [ ] **PK-013** · `SPX-712` · **Capture Success Stars** — A completed uncertain operation receives a restrained three-star confirmation.
 - [ ] **PK-014** · `SPX-713` · **Capture Breakout** — The container begins resolving but bursts open and restores the unresolved state.
 - [ ] **PK-015** · `SPX-714` · **Capture Probability Behaviour** — Confidence is communicated through the stability and motion of the container rather than a conventional percentage bar.
@@ -92,7 +91,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 3. Evolution & transformation
 
-- [ ] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — One abstract silhouette oscillates between old and new forms until the destination identity permanently wins.
+- [x] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — One abstract silhouette oscillates between old and new forms until the destination identity permanently wins.
 - [ ] **PK-026** · `SPX-725` · **Evolution Light Burst** — A component becomes an overexposed abstract shape, restructures and resolves as something new.
 - [ ] **PK-027** · `SPX-726` · **Evolution Complete** — The transformed component settles while the previous identity is formally replaced.
 - [ ] **PK-028** · `SPX-727` · **Evolution Cancelled** — Transformation begins, destabilises and deliberately reconstructs the original state.

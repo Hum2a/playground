@@ -1,0 +1,52 @@
+{
+  "name": "critical-capture",
+  "intent": "Exceptional fast-path capture: a normal enter/close begins, then one unusually sharp lock replaces a three-check uncertainty sequence and immediately confirms VERIFIED.",
+  "colours": {
+    "ink": "#0c1014",
+    "panel": "#161c22",
+    "steel": "#2a343e",
+    "edge": "#4a5866",
+    "pale": "#e8eef4",
+    "muted": "#8a97a4",
+    "crit": "#d8e6f2",
+    "glow": "#9ec4e8"
+  },
+  "copy": {
+    "entity": "ENTITY // 027",
+    "initial": "VERIFYING",
+    "final": "VERIFIED",
+    "trigger": "CAPTURE"
+  },
+  "geometry": {
+    "devicePx": 112,
+    "noOfficialPokeBallArtwork": true,
+    "criticalRays": 4,
+    "rayExtendPx": 18,
+    "confirmRingScale": [1, 1.28]
+  },
+  "timing": {
+    "enterMs": 220,
+    "closeMs": 80,
+    "pauseMs": 100,
+    "lockMs": 170,
+    "lockRotationDeg": [0, 14, -5, 0],
+    "lockScale": [1, 0.94, 1.03, 1],
+    "ringMs": 160,
+    "totalMs": 730,
+    "shakeCount": 1,
+    "noThreeShakeSequence": true,
+    "noLoop": true
+  },
+  "api": {
+    "capture": "runCriticalCapture()",
+    "reset": "runCriticalCaptureReset()",
+    "busyGuard": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show VERIFIED and locked container"
+  }
+}

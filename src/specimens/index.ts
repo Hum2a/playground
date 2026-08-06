@@ -19,6 +19,7 @@ import { completionStrike } from './completion-strike/entry'
 import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
+import { criticalCapture } from './critical-capture/entry'
 import { criticalThresholdWarning } from './critical-threshold-warning/entry'
 import { criticalWeaknessHit } from './critical-weakness-hit/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
@@ -39,6 +40,7 @@ import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
+import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { failureShatter } from './failure-shatter/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
@@ -134,6 +136,7 @@ export const specimens: Specimen[] = [
   dramaticObjectionError,
   azureShardTransition,
   precisionMenuSnap,
+  evolutionSilhouetteTransformation,
   evokerMenuSnap,
   truthShotNotification,
   diagnosticBootSequence,
@@ -213,6 +216,7 @@ export const specimens: Specimen[] = [
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,
+  criticalCapture,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

@@ -1,0 +1,397 @@
+/* SPX-711 Critical Capture — portable contract. Do not restyle to host tokens. */
+
+.crit-cap {
+  --cc-ink: #0c1014;
+  --cc-panel: #161c22;
+  --cc-steel: #2a343e;
+  --cc-edge: #4a5866;
+  --cc-pale: #e8eef4;
+  --cc-muted: #8a97a4;
+  --cc-crit: #d8e6f2;
+  --cc-glow: #9ec4e8;
+  --cc-size: 112px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1rem;
+  padding: 1.25rem 1rem 3.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 42%, rgb(158 196 232 / 0.08), transparent 70%),
+    var(--cc-ink);
+  color: var(--cc-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.crit-cap *,
+.crit-cap *::before,
+.crit-cap *::after {
+  box-sizing: border-box;
+}
+
+.crit-cap__btn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  z-index: 8;
+  transform: translateX(-50%);
+  appearance: none;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--cc-edge);
+  border-radius: 0;
+  background: rgb(42 52 62 / 0.65);
+  color: var(--cc-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.crit-cap__btn:focus-visible {
+  outline: 2px solid var(--cc-glow);
+  outline-offset: 3px;
+}
+
+.crit-cap__btn:hover:not(:disabled) {
+  border-color: var(--cc-glow);
+  background: rgb(158 196 232 / 0.12);
+}
+
+.crit-cap__btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.crit-cap__entity {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  z-index: 4;
+  margin: 0;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--cc-pale);
+  white-space: nowrap;
+  transform-origin: center center;
+}
+
+.crit-cap__status {
+  margin: 0;
+  min-height: 1rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cc-muted);
+}
+
+.crit-cap--done .crit-cap__status,
+.crit-cap--rm.crit-cap--done .crit-cap__status {
+  color: var(--cc-glow);
+}
+
+.crit-cap__device {
+  position: relative;
+  width: var(--cc-size);
+  height: var(--cc-size);
+  z-index: 3;
+  transform-origin: center center;
+}
+
+.crit-cap__ring {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgb(158 196 232 / 0.85);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1);
+}
+
+.crit-cap__shell {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--cc-panel);
+  box-shadow:
+    inset 0 0 0 1px rgb(74 88 102 / 0.85),
+    0 8px 24px rgb(0 0 0 / 0.35);
+}
+
+.crit-cap__half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+}
+
+.crit-cap__half--top {
+  top: 0;
+  background: linear-gradient(180deg, #1e262e 0%, var(--cc-steel) 100%);
+  transform-origin: center bottom;
+}
+
+.crit-cap__half--bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, #12171c 0%, #1a2128 100%);
+  transform-origin: center top;
+}
+
+.crit-cap__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 6px;
+  margin-top: -3px;
+  background: var(--cc-edge);
+  box-shadow: inset 0 1px 0 rgb(232 238 244 / 0.15);
+}
+
+.crit-cap__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 0;
+  height: 0;
+}
+
+.crit-cap__diamond {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  background: var(--cc-pale);
+  border: 1px solid var(--cc-glow);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 3px var(--cc-panel);
+}
+
+.crit-cap__ray {
+  position: absolute;
+  background: var(--cc-crit);
+  box-shadow: 0 0 6px rgb(158 196 232 / 0.7);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.crit-cap__ray--n,
+.crit-cap__ray--s {
+  left: 0;
+  width: 1.5px;
+  height: 0;
+  margin-left: -0.75px;
+}
+
+.crit-cap__ray--n {
+  bottom: 14px;
+}
+
+.crit-cap__ray--s {
+  top: 14px;
+}
+
+.crit-cap__ray--e,
+.crit-cap__ray--w {
+  top: 0;
+  height: 1.5px;
+  width: 0;
+  margin-top: -0.75px;
+}
+
+.crit-cap__ray--e {
+  left: 14px;
+}
+
+.crit-cap__ray--w {
+  right: 14px;
+}
+
+/* —— Enter: entity into capsule —— */
+.crit-cap--enter .crit-cap__entity {
+  animation: crit-cap-enter 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.crit-cap--enter .crit-cap__half--top {
+  animation: crit-cap-open-top 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.crit-cap--enter .crit-cap__half--bottom {
+  animation: crit-cap-open-bottom 220ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes crit-cap-enter {
+  0% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(72px) scale(0.15);
+    opacity: 0;
+  }
+}
+
+@keyframes crit-cap-open-top {
+  0%,
+  55% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes crit-cap-open-bottom {
+  0%,
+  55% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.crit-cap--closed .crit-cap__entity {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.crit-cap--closed .crit-cap__half--top,
+.crit-cap--closed .crit-cap__half--bottom {
+  transform: translateY(0);
+}
+
+/* —— Single sharp lock (not three shakes) —— */
+.crit-cap--lock .crit-cap__device {
+  animation: crit-cap-lock 170ms cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+@keyframes crit-cap-lock {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  28% {
+    transform: rotate(14deg) scale(0.94);
+  }
+  62% {
+    transform: rotate(-5deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* —— Exactly four critical rays (~18px) —— */
+.crit-cap--rays .crit-cap__ray {
+  opacity: 1;
+  animation: crit-cap-ray 120ms cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+.crit-cap--rays .crit-cap__ray--n,
+.crit-cap--rays .crit-cap__ray--s {
+  animation-name: crit-cap-ray-v;
+}
+
+.crit-cap--rays .crit-cap__ray--e,
+.crit-cap--rays .crit-cap__ray--w {
+  animation-name: crit-cap-ray-h;
+}
+
+@keyframes crit-cap-ray-v {
+  0% {
+    height: 0;
+    opacity: 0.2;
+  }
+  45% {
+    height: 18px;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes crit-cap-ray-h {
+  0% {
+    width: 0;
+    opacity: 0.2;
+  }
+  45% {
+    width: 18px;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+/* —— Confirm ring 100% → 128% —— */
+.crit-cap--ring .crit-cap__ring {
+  animation: crit-cap-ring 160ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes crit-cap-ring {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+/* —— Done —— */
+.crit-cap--done .crit-cap__device {
+  transform: rotate(0deg) scale(1);
+}
+
+.crit-cap--done .crit-cap__diamond {
+  background: var(--cc-glow);
+  box-shadow:
+    0 0 0 3px var(--cc-panel),
+    0 0 10px rgb(158 196 232 / 0.45);
+}
+
+.crit-cap--done .crit-cap__entity,
+.crit-cap--rm.crit-cap--done .crit-cap__entity {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .crit-cap--enter .crit-cap__entity,
+  .crit-cap--enter .crit-cap__half--top,
+  .crit-cap--enter .crit-cap__half--bottom,
+  .crit-cap--lock .crit-cap__device,
+  .crit-cap--rays .crit-cap__ray,
+  .crit-cap--ring .crit-cap__ring {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .crit-cap--enter .crit-cap__entity,
+[data-force-reduced-motion='true'] .crit-cap--enter .crit-cap__half--top,
+[data-force-reduced-motion='true'] .crit-cap--enter .crit-cap__half--bottom,
+[data-force-reduced-motion='true'] .crit-cap--lock .crit-cap__device,
+[data-force-reduced-motion='true'] .crit-cap--rays .crit-cap__ray,
+[data-force-reduced-motion='true'] .crit-cap--ring .crit-cap__ring {
+  animation: none !important;
+}
