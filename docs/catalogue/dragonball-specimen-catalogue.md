@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **30 / 244** complete.
+- Progress: **33 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 30 |
-| Open | 214 |
+| Done | 33 |
+| Open | 211 |
 
 ## Visual grammar
 
@@ -34,6 +34,8 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-028 | `SPX-993` | `escalating-burst-multiplier` | Escalating Burst Multiplier |
+| DB-136 | `SPX-1101` | `contextual-vanish-reappear` | Contextual Vanish Reappear |
 | DB-177 | `SPX-1142` | `winner-advance` | Winner Advance |
 | DB-135 | `SPX-1100` | `afterimage-navigation` | Afterimage Navigation |
 | DB-150 | `SPX-1115` | `state-field-transfer` | State Field Transfer |
@@ -45,6 +47,7 @@
 | DB-231 | `SPX-1196` | `collective-ci-deployment` | Collective CI Deployment |
 | DB-057 | `SPX-1022` | `linked-fusion-merge` | Linked Fusion Merge |
 | DB-105 | `SPX-1070` | `seven-part-prerequisite-collection` | Seven-Part Prerequisite Collection |
+| DB-083 | `SPX-1048` | `shared-resource-pool` | Shared Resource Pool |
 | DB-145 | `SPX-1110` | `state-intensity-field` | State Intensity Field |
 | DB-004 | `SPX-969` | `charge-release` | Charge Release |
 | DB-005 | `SPX-970` | `overcharge-warning` | Overcharge Warning |
@@ -85,7 +88,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-071** ?? `SPX-1036` ?? **Beam Clash Resolution** ??? energy-attacks-actions
 - [x] **DB-122** ?? `SPX-1087` ?? **Impact Freeze Frame** ??? impact-combat-feedback
 - [x] **DB-123** ?? `SPX-1088` ?? **Punch Shockwave** ??? impact-combat-feedback
-- [ ] **DB-083** ?? `SPX-1048` ?? **Spirit Bomb Contribution** ??? spirit-bomb-collective-contribution
+- [x] **DB-083** ?? `SPX-1048` ?? **Spirit Bomb Contribution** ??? spirit-bomb-collective-contribution
 - [x] **DB-231** ?? `SPX-1196` ?? **Spirit Bomb CI Pipeline** ??? data-developer-tool-specimens
 - [x] **DB-095** ?? `SPX-1060` ?? **Dragon Radar Search** ??? dragon-radar-search
 - [x] **DB-105** ?? `SPX-1070` ?? **Seven-Item Collection** ??? dragon-balls-collection-completion
@@ -132,7 +135,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-025** ?? `SPX-990` ?? **Transformation Mastered** ??? previously unstable enhanced state becomes calm and inexpensive.
 - [ ] **DB-026** ?? `SPX-991` ?? **Forced Transformation** ??? external trigger causes a component to enter an alternate state.
 - [x] **DB-027** ?? `SPX-992` ?? **Ultra Instinct Activation** ??? interface loses visual noise rather than gaining it, signalling a higher-performance state through calmness.
-- [ ] **DB-028** ?? `SPX-993` ?? **Kaioken Multiplier** ??? existing capability becomes temporarily multiplied without changing core identity.
+- [x] **DB-028** ?? `SPX-993` ?? **Kaioken Multiplier** ??? existing capability becomes temporarily multiplied without changing core identity.
 - [ ] **DB-029** ?? `SPX-994` ?? **Transformation Exhaustion** ??? elevated state collapses into visibly depleted baseline.
 - [ ] **DB-030** ?? `SPX-995` ?? **Power Suppression** ??? high-capability entity deliberately operates at reduced output.
 
@@ -202,7 +205,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Spirit Bomb / Collective Contribution
 
-- [ ] **DB-083** ?? `SPX-1048` ?? **Spirit Bomb Contribution** ??? small energy particles travel from multiple independent sources into one shared objective.
+- [x] **DB-083** ?? `SPX-1048` ?? **Spirit Bomb Contribution** ??? small energy particles travel from multiple independent sources into one shared objective.
 - [ ] **DB-084** ?? `SPX-1049` ?? **Community Progress Orb** ??? contributions physically increase the size of a collective progress object.
 - [ ] **DB-085** ?? `SPX-1050` ?? **Distributed Task Aggregation** ??? several workers complete independently and feed one final operation.
 - [ ] **DB-086** ?? `SPX-1051` ?? **Crowdfunding Completion** ??? many contributions accumulate until a shared threshold is crossed.
@@ -270,7 +273,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 - [x] **DB-134** ?? `SPX-1099` ?? **High-Speed Dash** ??? component exits before its motion trail has time to disappear.
 - [x] **DB-135** ?? `SPX-1100` ?? **Afterimage Navigation** ??? previous component position remains for several frames after state movement.
-- [ ] **DB-136** ?? `SPX-1101` ?? **Vanish / Reappear** ??? target disappears immediately before an incoming interaction arrives.
+- [x] **DB-136** ?? `SPX-1101` ?? **Vanish / Reappear** ??? target disappears immediately before an incoming interaction arrives.
 - [ ] **DB-137** ?? `SPX-1102` ?? **Speed-Line Transition** ??? directional lines dominate the viewport while content moves between states.
 - [ ] **DB-138** ?? `SPX-1103` ?? **Rapid Position Exchange** ??? two entities swap places too quickly for conventional travel.
 - [ ] **DB-139** ?? `SPX-1104` ?? **Pursuit Sequence** ??? one moving entity repeatedly closes distance with another.

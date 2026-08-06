@@ -57,6 +57,7 @@ import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from './energy-charge-confirmation/entry'
 import { energyTransferSync } from './energy-transfer-sync/entry'
+import { escalatingBurstMultiplier } from './escalating-burst-multiplier/entry'
 import { enhancedStateReversion } from './enhanced-state-reversion/entry'
 import { entryRegistration } from './entry-registration/entry'
 import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
@@ -255,6 +256,7 @@ export const specimens: Specimen[] = [
   enemyScanReveal,
   energyChargeConfirmation,
   energyTransferSync,
+  escalatingBurstMultiplier,
   enhancedStateReversion,
   entryRegistration,
   errorCorrectionRewrite,

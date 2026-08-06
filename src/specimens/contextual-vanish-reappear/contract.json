@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/contextual-vanish-reappear.schema.json",
+  "title": "ContextualVanishReappear",
+  "description": "Portable contract for contextual tool relocation: INSPECT vanishes from LEFT with two residual marks, gaps with no travel, then reappears at LINE 72 with two arrival marks and a 28px connector — no destination scan.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "timing",
+    "residues",
+    "connector",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "contextual-vanish-reappear" },
+    "intent": {
+      "type": "string",
+      "const": "Contextual vanish/reappear: INSPECT leaves LEFT after FOCUS ERROR, fully disappears with two residual marks, then reconstructs at LINE 72 with matching arrival marks and a short connector — responsive relocation, not navigational lock."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document",
+        "tool",
+        "error",
+        "anchorLeft",
+        "anchorLine",
+        "trigger",
+        "replay",
+        "statusLeft",
+        "statusLine"
+      ],
+      "properties": {
+        "document": { "type": "string", "const": "DOCUMENT // 04" },
+        "tool": { "type": "string", "const": "INSPECT" },
+        "error": { "type": "string", "const": "ERROR // LINE 72" },
+        "anchorLeft": { "type": "string", "const": "ANCHOR LEFT" },
+        "anchorLine": { "type": "string", "const": "LINE 72" },
+        "trigger": { "type": "string", "const": "FOCUS ERROR" },
+        "replay": { "type": "string", "const": "REPLAY" },
+        "statusLeft": { "type": "string", "const": "Inspect anchored left." },
+        "statusLine": {
+          "type": "string",
+          "const": "Inspect anchored at line 72."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "cream", "muted", "line", "blue", "pale", "warn"],
+      "properties": {
+        "ink": { "type": "string", "const": "#10141a" },
+        "cream": { "type": "string", "const": "#e6eaef" },
+        "muted": { "type": "string", "const": "#6b7582" },
+        "line": { "type": "string", "const": "#2a333e" },
+        "blue": { "type": "string", "const": "#4a8fd4" },
+        "pale": { "type": "string", "const": "#9ec4f0" },
+        "warn": { "type": "string", "const": "#d4a017" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "toolLeft",
+        "toolTopLeft",
+        "toolRight",
+        "errorVerticalPercent",
+        "noTravel"
+      ],
+      "properties": {
+        "toolLeft": { "type": "string", "const": "10px" },
+        "toolTopLeft": { "type": "string", "const": "40%" },
+        "toolRight": { "type": "string", "const": "12px" },
+        "errorVerticalPercent": { "type": "number", "const": 62 },
+        "noTravel": { "type": "boolean", "const": true }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "errorPulseMs",
+        "vanishMs",
+        "residueOutMs",
+        "gapMs",
+        "reappearMs",
+        "connectorMs",
+        "vanishScale",
+        "reappearScale"
+      ],
+      "properties": {
+        "errorPulseMs": { "type": "number", "const": 90 },
+        "vanishMs": { "type": "number", "const": 70 },
+        "residueOutMs": { "type": "number", "const": 60 },
+        "gapMs": { "type": "number", "const": 55 },
+        "reappearMs": { "type": "number", "const": 110 },
+        "connectorMs": { "type": "number", "const": 80 },
+        "vanishScale": { "type": "array", "const": [0.92, 0.3] },
+        "reappearScale": { "type": "array", "const": [0.3, 1.08, 1] }
+      }
+    },
+    "residues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["departCount", "arriveCount"],
+      "properties": {
+        "departCount": { "type": "number", "const": 2 },
+        "arriveCount": { "type": "number", "const": 2 }
+      }
+    },
+    "connector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lengthPx"],
+      "properties": {
+        "lengthPx": { "type": "number", "const": 28 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "exposeContext"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "exposeContext": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateLine72", "triggers"],
+      "properties": {
+        "immediateLine72": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "doc", "tool", "error", "residue", "connector"],
+      "properties": {
+        "root": { "type": "string", "const": "cvr" },
+        "doc": { "type": "string", "const": "cvr__doc" },
+        "tool": { "type": "string", "const": "cvr__tool" },
+        "error": { "type": "string", "const": "cvr__error" },
+        "residue": { "type": "string", "const": "cvr__residue" },
+        "connector": { "type": "string", "const": "cvr__connector" }
+      }
+    }
+  }
+}

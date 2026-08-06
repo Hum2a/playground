@@ -1,0 +1,46 @@
+<div class="cvr" data-contextual-vanish data-phase="idle" data-anchor="left">
+  <p class="cvr__doc-id">DOCUMENT // 04</p>
+
+  <div class="cvr__stage" data-cvr-stage>
+    <article class="cvr__doc" data-cvr-doc>
+      <p class="cvr__line cvr__line--dim">01 · import { scan } from './core'</p>
+      <p class="cvr__line cvr__line--dim">02 · const buffer = load(CACHE)</p>
+      <p class="cvr__line cvr__line--dim">…</p>
+      <p class="cvr__line cvr__line--dim">71 · validate(payload)</p>
+      <p class="cvr__line cvr__line--err" data-cvr-line72>
+        <span class="cvr__lineno">72</span>
+        <span class="cvr__code">throw new Fault('bound')</span>
+        <span class="cvr__error" data-cvr-error aria-hidden="true">
+          <span class="cvr__error-mark"></span>
+          <span class="cvr__error-label">ERROR // LINE 72</span>
+        </span>
+      </p>
+      <p class="cvr__line cvr__line--dim">73 · return payload</p>
+    </article>
+
+    <div class="cvr__tool" data-cvr-tool aria-hidden="true">
+      <span class="cvr__tool-label">INSPECT</span>
+      <span class="cvr__meta" data-cvr-meta>ANCHOR LEFT</span>
+      <span class="cvr__connector" data-cvr-connector aria-hidden="true"></span>
+    </div>
+
+    <div class="cvr__residues cvr__residues--depart" data-cvr-depart aria-hidden="true">
+      <span class="cvr__residue cvr__residue--1"></span>
+      <span class="cvr__residue cvr__residue--2"></span>
+    </div>
+
+    <div class="cvr__residues cvr__residues--arrive" data-cvr-arrive aria-hidden="true">
+      <span class="cvr__residue cvr__residue--1"></span>
+      <span class="cvr__residue cvr__residue--2"></span>
+    </div>
+  </div>
+
+  <div class="cvr__controls">
+    <button type="button" class="cvr__btn" data-cvr-focus>FOCUS ERROR</button>
+    <button type="button" class="cvr__btn cvr__btn--ghost" data-cvr-replay>REPLAY</button>
+  </div>
+
+  <p class="cvr__status" role="status" aria-live="polite" data-cvr-status>
+    Inspect anchored left.
+  </p>
+</div>
