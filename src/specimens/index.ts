@@ -89,6 +89,7 @@ import { hoverCutout } from './hover-cutout/entry'
 import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { interactiveBackSwipe } from './interactive-back-swipe/entry'
+import { invalidFieldShake } from './invalid-field-shake/entry'
 import { irreversibleThreshold } from './irreversible-threshold/entry'
 import { isolatedTimeFreeze } from './isolated-time-freeze/entry'
 import { itemObtained } from './item-obtained/entry'
@@ -301,6 +302,7 @@ export const specimens: Specimen[] = [
   inkSplatTransition,
   instantTransmissionNavigation,
   interactiveBackSwipe,
+  invalidFieldShake,
   irreversibleThreshold,
   isolatedTimeFreeze,
   itemObtained,

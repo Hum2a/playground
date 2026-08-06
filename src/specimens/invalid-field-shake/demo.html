@@ -1,0 +1,26 @@
+<div class="ifs" data-invalid-field-shake data-phase="idle">
+  <form class="ifs__form" data-ifs-form novalidate>
+    <label class="ifs__label" for="ifs-field">PROJECT CODE</label>
+    <div class="ifs__field-wrap" data-ifs-wrap>
+      <input
+        id="ifs-field"
+        class="ifs__field"
+        data-ifs-field
+        type="text"
+        value="ORBIT?"
+        autocomplete="off"
+        spellcheck="false"
+        aria-describedby="ifs-error"
+      />
+      <span class="ifs__tick ifs__tick--error" data-ifs-error-tick aria-hidden="true"></span>
+      <span class="ifs__tick ifs__tick--success" data-ifs-success-tick aria-hidden="true"></span>
+    </div>
+    <div class="ifs__error" id="ifs-error" data-ifs-error role="alert">
+      <span class="ifs__error-text" data-ifs-error-text>Use A–Z, 0–9 or -</span>
+    </div>
+    <button type="submit" class="ifs__submit" data-ifs-submit>SUBMIT</button>
+  </form>
+  <p class="ifs__status" role="status" aria-live="polite" data-ifs-status>
+    Enter a valid project code and submit.
+  </p>
+</div>
