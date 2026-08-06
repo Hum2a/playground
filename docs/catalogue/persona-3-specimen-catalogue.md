@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`) or open P3 rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **7 / 238** complete.
+- Progress: **11 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 231 |
+| Done | 11 |
+| Open | 227 |
 
 ## Visual grammar
 
@@ -40,6 +40,10 @@
 | P3-105 | `SPX-502` | `velvet-door-transition` | Velvet Door Transition |
 | P3-096 | `SPX-493` | `persona-awakening-reveal` | Persona Awakening Reveal |
 | P3-071 | `SPX-468` | `tartarus-floor-ascension` | Tartarus Floor Ascension |
+| P3-007 | `SPX-406` | `ripple-portal-transition` | Ripple Portal Transition |
+| P3-224 | `SPX-621` | `blue-door-discovery` | Blue Door Discovery |
+| P3-107 | `SPX-504` | `butterfly-entry` | Butterfly Entry |
+| P3-001 | `SPX-400` | `waterline-page-wipe` | Waterline Page Wipe |
 
 ## Core first-wave
 
@@ -56,12 +60,12 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P3-083** · `SPX-480` · **Tactical Target Lock** — selection
 - [x] **P3-059** · `SPX-456` · **Moon Phase Progress** — progress
 - [ ] **P3-145** · `SPX-542` · **Social Link Rank Up** — progression
-- [ ] **P3-224** · `SPX-621` · **Blue Door Discovery** — discovery
+- [x] **P3-224** · `SPX-621` · **Blue Door Discovery** — discovery
 - [ ] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — reveal
-- [ ] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transition
-- [ ] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transition
+- [x] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transition
+- [x] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transition
 - [ ] **P3-020** · `SPX-418` · **Glass Fracture Reveal** — reveal
-- [ ] **P3-107** · `SPX-504` · **Butterfly Entry** — arrival
+- [x] **P3-107** · `SPX-504` · **Butterfly Entry** — arrival
 - [ ] **P3-134** · `SPX-531` · **Midnight Clock Transition** — transition
 - [ ] **P3-207** · `SPX-604` · **Scanner Search** — search
 - [ ] **P3-221** · `SPX-618` · **Energy Transfer Sync** — sync
@@ -70,13 +74,13 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ### Transitions
 
-- [ ] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transitions.
+- [x] **P3-001** · `SPX-400` · **Waterline Page Wipe** — transitions.
 - [ ] **P3-002** · `SPX-401` · **Submerged Reveal** — transitions.
 - [ ] **P3-003** · `SPX-402` · **Liquid Split Transition** — transitions.
 - [ ] **P3-004** · `SPX-403` · **Wave Crash Reveal** — transitions.
 - [ ] **P3-005** · `SPX-404` · **Water Curtain Drop** — transitions.
 - [ ] **P3-006** · `SPX-405` · **Tidal Pull Exit** — transitions.
-- [ ] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transitions.
+- [x] **P3-007** · `SPX-406` · **Ripple Portal Transition** — transitions.
 - [ ] **P3-008** · `SPX-407` · **Underwater Distortion Swap** — transitions.
 - [ ] **P3-009** · `SPX-408` · **Surface Break Reveal** — transitions.
 - [ ] **P3-010** · `SPX-409` · **Droplet Collapse Transition** — transitions.
@@ -208,7 +212,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [x] **P3-105** · `SPX-502` · **Velvet Door Transition** — velvet.
 - [ ] **P3-106** · `SPX-503` · **Velvet Curtain Reveal** — velvet.
-- [ ] **P3-107** · `SPX-504` · **Butterfly Entry** — velvet.
+- [x] **P3-107** · `SPX-504` · **Butterfly Entry** — velvet.
 - [ ] **P3-108** · `SPX-505` · **Butterfly Dissolve Exit** — velvet.
 - [ ] **P3-109** · `SPX-506` · **Velvet Selection Glow** — velvet.
 - [ ] **P3-110** · `SPX-507` · **Contract Signature Reveal** — velvet.
@@ -375,7 +379,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Miscellaneous
 
-- [ ] **P3-224** · `SPX-621` · **Blue Door Discovery** — misc.
+- [x] **P3-224** · `SPX-621` · **Blue Door Discovery** — misc.
 - [ ] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — misc.
 - [ ] **P3-226** · `SPX-623` · **Reflection Mismatch Hover** — misc.
 - [ ] **P3-227** · `SPX-624` · **Underwater Typography Reveal** — misc.

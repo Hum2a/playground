@@ -1,0 +1,75 @@
+{
+  "name": "waterline-page-wipe",
+  "intent": "Graphic CSS water mass with a lobed waterline rises from below, fully covers for a hard A↔B swap, then continues upward to reveal the destination — no fluid simulation.",
+  "colours": {
+    "nearBlack": "#020b16",
+    "deepWater": "#063257",
+    "midBlue": "#0b6392",
+    "bright": "#30a5ce",
+    "paleEdge": "#bceeff"
+  },
+  "copy": {
+    "stateA": { "kicker": "SURFACE // 01", "title": "DAY" },
+    "stateB": { "kicker": "SURFACE // 02", "title": "NIGHT" },
+    "trigger": "SUBMERGE",
+    "srA": "Surface 01. Day.",
+    "srB": "Surface 02. Night."
+  },
+  "waterline": {
+    "startPercent": 110,
+    "coveredPercent": -8,
+    "exitPercent": -145,
+    "massHeightPercent": 145,
+    "lobeCount": 6,
+    "foamHeightPx": 3,
+    "lobeDriftPx": { "min": 3, "max": 7 }
+  },
+  "refraction": {
+    "bandHeightPx": 26,
+    "offsetYPx": 2.5,
+    "decorativeOnly": true
+  },
+  "timing": {
+    "riseMs": 520,
+    "coverSwapMs": 460,
+    "totalMs": 850,
+    "settleMs": 180,
+    "loops": false,
+    "continuesUpward": true,
+    "noReverse": true
+  },
+  "swap": {
+    "onlyUnderFullCoverage": true,
+    "noCrossfade": true,
+    "alternatesAB": true
+  },
+  "a11y": {
+    "waterDecorative": true,
+    "activeStateSemantic": true
+  },
+  "reducedMotion": {
+    "immediateStateSwitch": true,
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ]
+  },
+  "constraints": {
+    "noCanvas": true,
+    "noWebGL": true,
+    "noSvgFilters": true,
+    "noFluidSimulation": true,
+    "noSineWaveJs": true,
+    "noPerpetualWaves": true,
+    "noExternalAssets": true,
+    "noNetwork": true
+  },
+  "classNames": {
+    "root": "wl",
+    "host": "wl__host",
+    "water": "wl__water",
+    "mass": "wl__mass",
+    "lobe": "wl__lobe",
+    "refract": "wl__refract"
+  }
+}

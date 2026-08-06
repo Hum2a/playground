@@ -1,13 +1,15 @@
 import { achievementEncounter } from './achievement-encounter/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
+import { blueDoorDiscovery } from './blue-door-discovery/entry'
+import { butterflyEntry } from './butterfly-entry/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
-import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
+import { comingSoonTape } from './coming-soon-tape/entry'
 import { completionStrike } from './completion-strike/entry'
 import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
@@ -48,15 +50,17 @@ import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
-import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
+import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
+import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
+import { waterlinePageWipe } from './waterline-page-wipe/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -115,48 +119,52 @@ export const specimens: Specimen[] = [
   tacticalAlertPing,
   inkSplatTransition,
   victoryResultsTally,
-  paperStackShuffle,
-  misprintNotification,
-  tornEdgeDrawer,
-  newspaperHeadlineDrop,
-  ransomNoteReveal,
-  paperRipUnlock,
-  panelCollapseNavigation,
-  rankUpImpact,
-  crookedMenuStack,
-  letterScatterAssemble,
-  graphicBurstHover,
-  mangaCutInNotification,
-  panelExplosionReveal,
-  holdToChargeButton,
-  lockedChainBreak,
-  discoveryTearOpen,
-  decisionShowdown,
-  deletionGuillotine,
-  comicCardSelection,
-  redactedContentLock,
-  comicPanelScrollReveal,
-  crossOutReplacement,
-  printRegistrationHover,
-  dayChangeTear,
-  deadlinePanic,
-  hoverCutout,
   blackoutLoader,
-  crossOutStatusSwap,
-  errorCorrectionRewrite,
+  blueDoorDiscovery,
+  butterflyEntry,
   choiceExecutionSlash,
-  progressMilestoneBreakthrough,
-  failureShatter,
-  fusionSelectionMerge,
-  permissionRejection,
-  objectiveAcquired,
+  comicCardSelection,
+  comicPanelScrollReveal,
   completionStrike,
   connectionSevered,
-  velvetDoorTransition,
+  crookedMenuStack,
+  crossOutReplacement,
+  crossOutStatusSwap,
   darkHourConversion,
+  dayChangeTear,
+  deadlinePanic,
+  decisionShowdown,
+  deletionGuillotine,
+  discoveryTearOpen,
+  errorCorrectionRewrite,
+  failureShatter,
+  fusionSelectionMerge,
+  graphicBurstHover,
+  holdToChargeButton,
+  hoverCutout,
+  letterScatterAssemble,
+  lockedChainBreak,
+  mangaCutInNotification,
+  misprintNotification,
   moonPhaseProgress,
+  newspaperHeadlineDrop,
+  objectiveAcquired,
+  panelCollapseNavigation,
+  panelExplosionReveal,
+  paperRipUnlock,
+  paperStackShuffle,
+  permissionRejection,
   personaAwakeningReveal,
+  printRegistrationHover,
+  progressMilestoneBreakthrough,
+  rankUpImpact,
+  ransomNoteReveal,
+  redactedContentLock,
+  ripplePortalTransition,
   tartarusFloorAscension,
+  tornEdgeDrawer,
+  velvetDoorTransition,
+  waterlinePageWipe,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
