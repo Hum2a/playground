@@ -1,0 +1,8 @@
+{
+  "name": "document-compare-split",
+  "ref": "SPX-3605",
+  "title": "Document Compare Split",
+  "mode": "roll",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

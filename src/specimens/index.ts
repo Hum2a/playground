@@ -604,6 +604,8 @@ import { documentDeclassification } from './document-declassification/entry'
 
 import { evidenceAnnotation } from './evidence-annotation/entry'
 
+import { documentCompareSplit } from './document-compare-split/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1134,6 +1136,7 @@ export const specimens: Specimen[] = [
   redactionApply,
   documentDeclassification,
   evidenceAnnotation,
+  documentCompareSplit,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
