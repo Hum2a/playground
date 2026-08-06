@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/copy-confirmation-morph.schema.json",
+  "title": "CopyConfirmationMorph",
+  "description": "Portable contract for copy button geometry morphing to confirmation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "control",
+    "sequence",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "copy-confirmation-morph" },
+    "intent": {
+      "type": "string",
+      "const": "Tiny copy control geometry transforms into success state, dwells, then returns."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["token", "labelStart", "labelCopied"],
+      "properties": {
+        "token": { "type": "string", "const": "SPX-042" },
+        "labelStart": { "type": "string", "const": "COPY" },
+        "labelCopied": { "type": "string", "const": "COPIED" }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 72 },
+        "heightPx": { "type": "number", "const": 32 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compressMs", "checkMs", "dwellMs", "returnMs"],
+      "properties": {
+        "compressMs": { "type": "number", "const": 90 },
+        "checkMs": { "type": "number", "const": 120 },
+        "dwellMs": { "type": "number", "const": 900 },
+        "returnMs": { "type": "number", "const": 180 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["labelSwapOnly", "dwellMs", "triggers"],
+      "properties": {
+        "labelSwapOnly": { "type": "boolean", "const": true },
+        "dwellMs": { "type": "number", "const": 900 },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "buttonLive"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "buttonLive": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "button", "label"],
+      "properties": {
+        "root": { "type": "string", "const": "ccm" },
+        "button": { "type": "string", "const": "ccm__btn" },
+        "label": { "type": "string", "const": "ccm__label" }
+      }
+    }
+  }
+}

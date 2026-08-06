@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **27 / 258** complete.
+- Progress: **28 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 231 |
+| Done | 28 |
+| Open | 230 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-250 | `SPX-1549` | `copy-confirmation-morph` | Copy Confirmation Morph |
 | IOS-237 | `SPX-1536` | `translucent-material-lift` | Translucent Material Lift |
 | IOS-231 | `SPX-1530` | `invalid-field-shake` | Invalid Field Shake |
 | IOS-224 | `SPX-1523` | `circular-progress-completion-morph` | Circular Progress Completion Morph |
@@ -93,7 +94,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-224** · `SPX-1523` · **Circular Progress Completion Morph** — progress-completion
 - [x] **IOS-231** · `SPX-1530` · **Invalid Field Shake** — error-validation
 - [x] **IOS-237** · `SPX-1536` · **Translucent Material Lift** — material-blur-layering
-- [ ] **IOS-250** · `SPX-1549` · **Copy Confirmation Morph** — tiny-microinteractions
+- [x] **IOS-250** · `SPX-1549` · **Copy Confirmation Morph** — tiny-microinteractions
 
 ## Navigation & Spatial Continuity
 
@@ -430,7 +431,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Tiny Microinteractions
 
-- [ ] **IOS-250** · `SPX-1549` · **Copy Confirmation Morph** — copy icon/control becomes a finite success state then returns.
+- [x] **IOS-250** · `SPX-1549` · **Copy Confirmation Morph** — copy icon/control becomes a finite success state then returns.
 - [ ] **IOS-251** · `SPX-1550` · **Favourite Heart/Symbol Pop** — selection creates one compact scale/shape response with no particle storm.
 - [ ] **IOS-252** · `SPX-1551` · **Refresh Glyph Rotation** — refresh action performs exactly one meaningful rotation tied to request initiation.
 - [ ] **IOS-253** · `SPX-1552` · **Share Button Lift** — share control physically establishes an outgoing action before presentation appears.

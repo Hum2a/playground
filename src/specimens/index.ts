@@ -40,6 +40,7 @@ import { contextMenuBloom } from './context-menu-bloom/entry'
 import { contextualVanishReappear } from './contextual-vanish-reappear/entry'
 import { contentDeclassification } from './content-declassification/entry'
 import { controlCentreModuleExpansion } from './control-centre-module-expansion/entry'
+import { copyConfirmationMorph } from './copy-confirmation-morph/entry'
 import { coreSeedRegeneration } from './core-seed-regeneration/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { criticalCapture } from './critical-capture/entry'
@@ -253,6 +254,7 @@ export const specimens: Specimen[] = [
   contextMenuBloom,
   contextualVanishReappear,
   controlCentreModuleExpansion,
+  copyConfirmationMorph,
   coreSeedRegeneration,
   corruptedAccessLock,
   criticalCapture,
