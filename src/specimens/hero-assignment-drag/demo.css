@@ -1,0 +1,187 @@
+/* SPX-2304 Hero Assignment Drag — portable contract. */
+
+.had {
+  --had-primary: #38a3ff;
+  --had-ink: #101820;
+  --had-paper: #f4f7fa;
+  --had-accent: #ff4d35;
+  --had-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  background: var(--had-ink);
+  color: var(--had-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.had *,
+.had *::before,
+.had *::after {
+  box-sizing: border-box;
+}
+
+.had__board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: min(100%, 360px);
+  height: 190px;
+}
+
+.had__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.85rem;
+  background: var(--had-paper);
+  color: var(--had-ink);
+  border: 3px solid var(--had-primary);
+  clip-path: polygon(0 6%, 94% 0, 100% 94%, 8% 100%);
+  transition: opacity 200ms ease;
+}
+
+.had__card--placeholder {
+  opacity: 0.35;
+  border-style: dashed;
+}
+
+.had__card-kicker {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--had-primary);
+}
+
+.had__card-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.had__card-meta {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.had__zone {
+  display: grid;
+  place-items: center;
+  border: 3px dashed rgba(244, 247, 250, 0.45);
+  background: rgba(244, 247, 250, 0.04);
+  transition: background 240ms ease, border-color 240ms ease;
+}
+
+.had__zone-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: rgba(244, 247, 250, 0.6);
+}
+
+.had__zone--filled {
+  border-style: solid;
+  border-color: var(--had-accent);
+  background: rgba(255, 77, 53, 0.15);
+}
+
+.had__zone--filled .had__zone-label {
+  color: var(--had-accent);
+}
+
+.had__proxy {
+  position: absolute;
+  left: 12%;
+  top: 28%;
+  z-index: 3;
+  width: 110px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  padding: 0.25rem;
+  background: var(--had-primary);
+  color: var(--had-ink);
+  border: 3px solid var(--had-ink);
+  clip-path: polygon(0 0, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0 70%);
+  transform: translate(0, 0) scale(1);
+}
+
+.had__proxy-title {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.had--dragging .had__proxy {
+  animation: had-drag 740ms var(--had-ease) forwards;
+}
+
+@keyframes had-drag {
+  0% {
+    left: 12%;
+    top: 28%;
+    width: 110px;
+    height: 52px;
+    transform: scale(1);
+  }
+  100% {
+    left: 58%;
+    top: 32%;
+    width: 92px;
+    height: 44px;
+    transform: scale(0.92);
+  }
+}
+
+.had__trigger {
+  appearance: none;
+  border: 2px solid var(--had-primary);
+  background: transparent;
+  color: var(--had-paper);
+  padding: 0.4rem 1rem;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.had__trigger:focus-visible {
+  outline: 2px solid var(--had-primary);
+  outline-offset: 3px;
+}
+
+.had__status {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 247, 250, 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .had__card,
+  .had__zone,
+  .had--dragging .had__proxy {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .had__card,
+[data-force-reduced-motion='true'] .had__zone,
+[data-force-reduced-motion='true'] .had--dragging .had__proxy {
+  transition: none !important;
+  animation: none !important;
+}

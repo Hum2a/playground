@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HeroAssignmentDrag",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": { "type": "string", "const": "hero-assignment-drag" },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 740 }
+      }
+    }
+  }
+}

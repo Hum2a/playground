@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **38 / 369** complete.
+- Progress: **39 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 331 |
+| Done | 39 |
+| Open | 330 |
 
 ## Visual grammar
 
@@ -70,6 +70,7 @@
 | MHA-244 | `SPX-2218` | `eyecatch-transition` | Eyecatch Transition |
 | MHA-309 | `SPX-2283` | `quirk-capability-radar-build` | Quirk Capability Radar Build |
 | MHA-324 | `SPX-2298` | `angular-focus-brackets` | Angular Focus Brackets |
+| MHA-330 | `SPX-2304` | `hero-assignment-drag` | Hero Assignment Drag |
 
 ## Core first-wave
 
@@ -569,7 +570,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Drag & Drop
 
-- [ ] **MHA-330** · `SPX-2304` · **Hero Assignment Drag** — profile card becomes a compact dispatch proxy.
+- [x] **MHA-330** · `SPX-2304` · **Hero Assignment Drag** — profile card becomes a compact dispatch proxy.
 - [ ] **MHA-331** · `SPX-2305` · **Support Item Equip Drag** — equipment proxy snaps into valid slot.
 - [ ] **MHA-332** · `SPX-2306` · **Team Formation Drag** — hero cards create formation gaps.
 - [ ] **MHA-333** · `SPX-2307` · **Training Target Reorder** — Training Target Reorder
