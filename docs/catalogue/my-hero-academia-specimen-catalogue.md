@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 369** complete.
+- Progress: **22 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 348 |
+| Done | 22 |
+| Open | 347 |
 
 ## Visual grammar
 
@@ -53,6 +53,7 @@
 | MHA-083 | `SPX-2057` | `hero-assignment-transfer` | Hero Assignment Transfer |
 | MHA-091 | `SPX-2065` | `emergency-screen-takeover` | Emergency Screen Takeover |
 | MHA-092 | `SPX-2066` | `threat-level-escalation` | Threat Level Escalation |
+| MHA-102 | `SPX-2076` | `decay-delete` | Decay Delete |
 
 ## Core first-wave
 
@@ -77,7 +78,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-092** · `SPX-2066` · **Threat Level Escalation** — emergency-villain-alert-system
 - [x] **MHA-082** · `SPX-2056` · **Incident Dispatch Card** — hero-agency-dashboard
 - [x] **MHA-083** · `SPX-2057` · **Hero Assignment Transfer** — hero-agency-dashboard
-- [ ] **MHA-102** · `SPX-2076` · **Decay Delete** — villain-corruption-motion-language
+- [x] **MHA-102** · `SPX-2076` · **Decay Delete** — villain-corruption-motion-language
 - [ ] **MHA-111** · `SPX-2085` · **Blueprint Assembly** — support-course-gadget-ui
 - [ ] **MHA-112** · `SPX-2086` · **Part Compatibility Snap** — support-course-gadget-ui
 - [ ] **MHA-128** · `SPX-2102` · **Mission Incoming** — mission-quest-language
@@ -222,7 +223,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Villain / Corruption Motion Language
 
-- [ ] **MHA-102** · `SPX-2076` · **Decay Delete** — destructive action causes an element to crumble from contact point outward.
+- [x] **MHA-102** · `SPX-2076` · **Decay Delete** — destructive action causes an element to crumble from contact point outward.
 - [ ] **MHA-103** · `SPX-2077` · **Corruption Spread** — error state propagates through connected interface regions.
 - [ ] **MHA-104** · `SPX-2078` · **Glitching Identity Card** — profile metadata becomes unstable before resolving into restricted state.
 - [ ] **MHA-105** · `SPX-2079` · **Threat Card Intrusion** — hostile card forces existing layout apart rather than appearing politely.

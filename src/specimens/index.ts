@@ -74,6 +74,7 @@ import { darkHourConversionLoader } from './dark-hour-conversion-loader/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { deadlineClock } from './deadline-clock/entry'
 import { deadlinePanic } from './deadline-panic/entry'
+import { decayDelete } from './decay-delete/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
@@ -383,6 +384,7 @@ export const specimens: Specimen[] = [
   dayChangeTear,
   deadlineClock,
   deadlinePanic,
+  decayDelete,
   decisionShowdown,
   delayedDamageBar,
   deletionGuillotine,

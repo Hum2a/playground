@@ -1,0 +1,27 @@
+{
+  "name": "decay-delete",
+  "intent": "Target record crumbles outward on destructive delete.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "decayMs": 580,
+    "settleMs": 1230
+  },
+  "api": {
+    "run": "runDecayDelete()",
+    "reset": "resetDecayDelete()",
+    "replay": "replayDecayDelete()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Target vanishes; void appears immediately"
+  }
+}
