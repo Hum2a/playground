@@ -2,6 +2,9 @@
 
 Static specimen catalogue. Content lives in git; no accounts, database, or CMS.
 
+**Production URL:** https://playground.humza-butt.space  
+**Pages project:** `playground` (see [`wrangler.toml`](./wrangler.toml))
+
 ## Monochrome chrome
 
 Site chrome is monochrome by policy. The only accent is `--verdigris` (`#4E9E8F`), used solely for interactive affordances (focus rings, active states, copy confirmation). Never use it decoratively, as a gradient, or on more than one element at a time in a viewport. Colour on the page otherwise comes only from specimens rendered inside previews.

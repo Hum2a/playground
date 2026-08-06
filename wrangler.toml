@@ -1,0 +1,12 @@
+# Cloudflare Pages — playground.humza-butt.space
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+name = "playground"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-08-06"
+
+# Production hostname: https://playground.humza-butt.space
+# Custom domains for Pages are attached in the dashboard (Workers & Pages →
+# playground → Custom domains), not via [[routes]] (that is Workers-only).
+# Keep this comment in sync with the live domain so deploys and agents know
+# the canonical URL.

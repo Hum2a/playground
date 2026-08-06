@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://playground.humza-butt.space",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -13,8 +14,8 @@
     "lint": "oxlint",
     "spec:new": "node scripts/spec-new.mjs",
     "spec:check": "node scripts/spec-check.mjs",
-    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=playground --branch=preview",
-    "deploy:prod": "npm run build && wrangler pages deploy dist --project-name=playground"
+    "deploy:preview": "npm run build && wrangler pages deploy --branch=preview",
+    "deploy:prod": "npm run build && wrangler pages deploy"
   },
   "dependencies": {
     "@codemirror/commands": "^6.10.4",

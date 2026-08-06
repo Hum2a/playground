@@ -1,32 +1,30 @@
-# React + TypeScript + Vite
+# Specimen Archive
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Live site: **https://playground.humza-butt.space**
 
-Currently, two official plugins are available:
+A static catalogue of portable motion artifacts — live sandboxed previews, recreation prompts, and a playground for exporting new specimens.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- React 19 + Vite + TypeScript
+- Cloudflare Pages (`playground`) → custom domain `playground.humza-butt.space`
+- Config: [`wrangler.toml`](./wrangler.toml)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Scripts
 
-## Expanding the Oxlint configuration
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` | Local Vite dev server |
+| `npm run build` | Production build → `dist` |
+| `npm run test` | Vitest unit tests |
+| `npm run test:e2e` | Playwright smokes |
+| `npm run spec:new -- <slug>` | Scaffold a specimen folder |
+| `npm run spec:check` | Validate the specimen registry |
+| `npm run deploy:preview` | Build + Wrangler Pages preview deploy |
+| `npm run deploy:prod` | Build + Wrangler Pages production deploy |
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Specimens
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+Add a folder under `src/specimens/`, register it in `src/specimens/index.ts`, run `npm run spec:check`.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+See [`docs/design-spec.md`](./docs/design-spec.md) and [`AGENTS.md`](./AGENTS.md).
