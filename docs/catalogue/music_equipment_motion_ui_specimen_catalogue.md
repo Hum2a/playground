@@ -352,7 +352,7 @@ specimens can feel tactile without needing sound.
 
 - [x] **MUSIC-122** · `SPX-3881` · ★★★★★ **Reel Spin-Up** — Two reels accelerate into coordinated
     tape transport.
-- [ ] **MUSIC-123** · `SPX-3882` · ★★★★★ **Tape Thread Route** — A tape path draws through guides
+- [x] **MUSIC-123** · `SPX-3882` · ★★★★★ **Tape Thread Route** — A tape path draws through guides
     and heads before playback becomes ready.
 - [ ] **MUSIC-124** · `SPX-3883` · ★★★★★ **Tape Stop Slack** — Transport stops and the tape path
     gains a small believable slack state.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-123 | SPX-3882 | `tape-thread-route` | Tape Thread Route |
 | MUSIC-122 | SPX-3881 | `reel-spin-up` | Reel Spin-Up |
 | MUSIC-114 | SPX-3873 | `rack-unit-power-on` | Rack Unit Power-On |
 | MUSIC-041 | SPX-3800 | `noise-gate-open` | Noise Gate Open |
@@ -900,12 +901,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **37 / 310** complete.
+- Progress: **38 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 37 |
-| Open | 273 |
+| Done | 38 |
+| Open | 272 |
 
 ## Core first-wave / build queue
 
@@ -945,7 +946,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-109** · `SPX-3868` · **Clock Divider Cascade** · `clock-divider-cascade`
 - [x] **MUSIC-114** · `SPX-3873` · **Rack Unit Power-On** · `rack-unit-power-on`
 - [x] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · `reel-spin-up`
-- [ ] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · scaffold `tape-thread-route`
+- [x] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · `tape-thread-route`
 - [ ] **MUSIC-130** · `SPX-3889` · **Tape Splice** · scaffold `tape-splice`
 - [ ] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · scaffold `tube-warm-up`
 - [ ] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · scaffold `needle-tuner-centre`
