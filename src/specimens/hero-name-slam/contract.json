@@ -1,0 +1,24 @@
+{
+  "name": "hero-name-slam",
+  "intent": "Codename UNIT 07 slams in with angular brackets; role copy settles to ASSIGNED.",
+  "catalogue": { "mha": "MHA-013", "ref": "SPX-1987" },
+  "copy": {
+    "prefix": "UNIT",
+    "code": "07",
+    "roleReady": "OUTPUT // READY",
+    "roleAssigned": "OUTPUT // ASSIGNED"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "slamMs": 740, "settleMs": 320 },
+  "api": {
+    "run": "runHeroNameSlam()",
+    "reset": "resetHeroNameSlam()",
+    "replay": "replayHeroNameSlam()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show settled name and brackets" }
+}

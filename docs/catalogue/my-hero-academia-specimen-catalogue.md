@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **3 / 369** complete.
+- Progress: **4 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 3 |
-| Open | 366 |
+| Done | 4 |
+| Open | 365 |
 
 ## Visual grammar
 
@@ -35,6 +35,7 @@
 | MHA-001 | `SPX-1975` | `impact-frame-slam` | Impact Frame Slam |
 | MHA-002 | `SPX-1976` | `speed-line-action-reveal` | Speed-Line Action Reveal |
 | MHA-003 | `SPX-1977` | `panel-break-transition` | Panel Break Transition |
+| MHA-013 | `SPX-1987` | `hero-name-slam` | Hero Name Slam |
 
 ## Core first-wave
 
@@ -43,7 +44,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-001** · `SPX-1975` · **Impact Frame Slam** — manga-impact-language
 - [x] **MHA-002** · `SPX-1976` · **Speed-Line Action Reveal** — manga-impact-language
 - [x] **MHA-003** · `SPX-1977` · **Panel Break Transition** — manga-impact-language
-- [ ] **MHA-013** · `SPX-1987` · **Hero Name Slam** — hero-introduction-cards
+- [x] **MHA-013** · `SPX-1987` · **Hero Name Slam** — hero-introduction-cards
 - [ ] **MHA-016** · `SPX-1990` · **Character Freeze Introduction** — hero-introduction-cards
 - [ ] **MHA-023** · `SPX-1997` · **Quirk Activation Burst** — quirk-activation
 - [ ] **MHA-026** · `SPX-2000` · **Quirk Cooldown Ring** — quirk-activation
@@ -88,7 +89,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Hero Introduction Cards
 
-- [ ] **MHA-013** · `SPX-1987` · **Hero Name Slam** — a profile/name card enters with huge typography, diagonal colour blocks, and a finite impact settle.
+- [x] **MHA-013** · `SPX-1987` · **Hero Name Slam** — a profile/name card enters with huge typography, diagonal colour blocks, and a finite impact settle.
 - [ ] **MHA-014** · `SPX-1988` · **Codename Reveal** — ordinary identity text flips/slides into a larger codename state.
 - [ ] **MHA-015** · `SPX-1989` · **Stat Card Entrance** — compact profile appears while five capability bars rapidly acquire their values.
 - [ ] **MHA-016** · `SPX-1990` · **Character Freeze Introduction** — active content briefly freezes/desaturates while a profile card cuts across it.
