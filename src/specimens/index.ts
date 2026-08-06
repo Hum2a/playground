@@ -1,6 +1,10 @@
+import { azureShardTransition } from './azure-shard-transition/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
+import { dramaticObjectionError } from './dramatic-objection-error/entry'
+import { precisionMenuSnap } from './precision-menu-snap/entry'
+import { truthShotNotification } from './truth-shot-notification/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -45,6 +49,10 @@ export const specimens: Specimen[] = [
   comingSoonTape,
   comicPanelWipe,
   callingCardSlam,
+  dramaticObjectionError,
+  azureShardTransition,
+  precisionMenuSnap,
+  truthShotNotification,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

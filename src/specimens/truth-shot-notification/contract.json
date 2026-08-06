@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/truth-shot-notification.schema.json",
+  "title": "TruthShotNotification",
+  "description": "Portable contract for a Danganronpa-inspired kinetic truth-shot notification. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "truth-shot-notification" },
+    "intent": {
+      "type": "string",
+      "const": "High-priority clue/fact notification that feels fired into the interface: streak, projectile, impact rings, then an expanding skewed card."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "body", "index"],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "NEW EVIDENCE" },
+        "body": { "type": "string", "const": "Deployment log added" },
+        "index": {
+          "type": "string",
+          "const": "TRUTH 04",
+          "description": "Decorative micro-index; aria-hidden."
+        },
+        "alertText": {
+          "type": "string",
+          "const": "NEW EVIDENCE Deployment log added",
+          "description": "Effective announcement from the alert region."
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cardWidth",
+        "cardClipPath",
+        "cardSkewDegrees",
+        "bulletSizePx",
+        "projectileStartTranslateX",
+        "parentRequirements"
+      ],
+      "properties": {
+        "cardWidth": { "type": "string", "const": "min(88%, 300px)" },
+        "cardClipPath": {
+          "type": "string",
+          "const": "polygon(0% 8%, 96% 0%, 100% 92%, 4% 100%)"
+        },
+        "cardSkewDegrees": { "type": "number", "const": -6 },
+        "bulletSizePx": { "type": "number", "const": 18 },
+        "projectileStartTranslateX": { "type": "string", "const": "-130%" },
+        "ringScaleFrom": { "type": "number", "const": 0.4 },
+        "ringScaleTo": { "type": "number", "const": 1.6 },
+        "parentRequirements": {
+          "type": "array",
+          "const": ["position:relative", "overflow:hidden"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hotPink", "black", "white", "acidYellow"],
+      "properties": {
+        "hotPink": { "type": "string", "const": "#f20f78" },
+        "black": { "type": "string", "const": "#101010" },
+        "white": { "type": "string", "const": "#f6f4ef" },
+        "acidYellow": { "type": "string", "const": "#f4e600" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["projectileMs", "impactMs", "openMs", "totalEnterMs", "exitMs"],
+      "properties": {
+        "projectileMs": { "type": "number", "const": 220 },
+        "impactMs": { "type": "number", "const": 80 },
+        "openMs": { "type": "number", "const": 280 },
+        "totalEnterMs": { "type": "number", "const": 580 },
+        "exitMs": { "type": "number", "const": 320 },
+        "projectileEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.1, 0.9, 0.2, 1.05)"
+        },
+        "openEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.18, 0.9, 0.25, 1.12)"
+        },
+        "exitEasing": {
+          "type": "string",
+          "const": "cubic-bezier(0.45, 0.05, 0.7, 0.2)"
+        },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "cardRole"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "const": {
+            "tag": "div",
+            "className": "truth-shot",
+            "dataAttr": "data-truth-shot"
+          }
+        },
+        "cardRole": { "type": "string", "const": "alert" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cardIsAlert",
+        "decorativeHidden",
+        "indexDecorative",
+        "doNotRelyOnMotionAlone"
+      ],
+      "properties": {
+        "cardIsAlert": { "type": "boolean", "const": true },
+        "decorativeHidden": {
+          "type": "boolean",
+          "const": true,
+          "description": "Streak, projectile, bullet, and rings are aria-hidden."
+        },
+        "indexDecorative": { "type": "boolean", "const": true },
+        "doNotRelyOnMotionAlone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticCard", "triggers"],
+      "properties": {
+        "showStaticCard": {
+          "type": "boolean",
+          "const": true,
+          "description": "Skip streak/projectile/rings; show settled card immediately."
+        },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "streak",
+        "projectile",
+        "bullet",
+        "ring",
+        "card",
+        "eyebrow",
+        "body",
+        "index"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "truth-shot" },
+        "streak": { "type": "string", "const": "truth-shot__streak" },
+        "projectile": { "type": "string", "const": "truth-shot__projectile" },
+        "bullet": { "type": "string", "const": "truth-shot__bullet" },
+        "ring": { "type": "string", "const": "truth-shot__ring" },
+        "card": { "type": "string", "const": "truth-shot__card" },
+        "eyebrow": { "type": "string", "const": "truth-shot__eyebrow" },
+        "body": { "type": "string", "const": "truth-shot__body" },
+        "index": { "type": "string", "const": "truth-shot__index" },
+        "stateFire": { "type": "string", "const": "truth-shot--fire" },
+        "stateImpact": { "type": "string", "const": "truth-shot--impact" },
+        "stateOpen": { "type": "string", "const": "truth-shot--open" },
+        "stateSettled": { "type": "string", "const": "truth-shot--settled" },
+        "stateExit": { "type": "string", "const": "truth-shot--exit" },
+        "stateReduced": { "type": "string", "const": "truth-shot--reduced" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "truth-shot-notification",
+      "intent": "High-priority clue/fact notification that feels fired into the interface: streak, projectile, impact rings, then an expanding skewed card.",
+      "copy": {
+        "eyebrow": "NEW EVIDENCE",
+        "body": "Deployment log added",
+        "index": "TRUTH 04"
+      },
+      "colours": {
+        "hotPink": "#f20f78",
+        "black": "#101010",
+        "white": "#f6f4ef",
+        "acidYellow": "#f4e600"
+      },
+      "animation": {
+        "projectileMs": 220,
+        "impactMs": 80,
+        "openMs": 280,
+        "totalEnterMs": 580,
+        "exitMs": 320,
+        "loops": false
+      },
+      "layout": {
+        "projectileStartTranslateX": "-130%",
+        "ringScaleFrom": 0.4,
+        "ringScaleTo": 1.6,
+        "parentRequirements": ["position:relative", "overflow:hidden"]
+      },
+      "reducedMotion": {
+        "showStaticCard": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      }
+    }
+  ]
+}
