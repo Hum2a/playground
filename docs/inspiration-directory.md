@@ -117,6 +117,18 @@ Backlog: [`docs/catalogue/android-specimen-catalogue.md`](catalogue/android-spec
 
 Backlog: [`docs/catalogue/my-hero-academia-specimen-catalogue.md`](catalogue/my-hero-academia-specimen-catalogue.md) (`MHA-NNN` / `SPX-1975`…`SPX-2343`).
 
+### Naruto (`naruto`)
+
+*(franchise only so far — ninja/anime action-language study; no series-specific assets)*
+
+Backlog: [`docs/catalogue/naruto-specimen-catalogue.md`](catalogue/naruto-specimen-catalogue.md) (`NR-NNN` / `SPX-2344`…`SPX-2918`).
+
+### Netflix / streaming UI (`netflix`)
+
+*(franchise only so far — rails, preview expand, playback chrome, skip/next-up, profiles; no Netflix logos, fonts, or show assets)*
+
+Backlog: [`docs/catalogue/netflix-specimen-catalogue.md`](catalogue/netflix-specimen-catalogue.md) (`NF-NNN` / `SPX-3110`…`SPX-3306`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

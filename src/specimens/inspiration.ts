@@ -91,6 +91,10 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Naruto',
     works: {},
   },
+  netflix: {
+    label: 'Netflix / streaming UI',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},

@@ -40,7 +40,8 @@ Catalogue registry entries are **metadata only**. HTML/CSS/JS/spec/contract live
 - **My Hero Academia:** [`docs/catalogue/my-hero-academia-specimen-catalogue.md`](docs/catalogue/my-hero-academia-specimen-catalogue.md) — open rows reserve `SPX-1975`–`SPX-2343`.
 - **Naruto:** [`docs/catalogue/naruto-specimen-catalogue.md`](docs/catalogue/naruto-specimen-catalogue.md) — open rows reserve `SPX-2344`–`SPX-2918`.
 - **Persona 4:** [`docs/catalogue/persona-4-specimen-catalogue.md`](docs/catalogue/persona-4-specimen-catalogue.md) — open rows reserve `SPX-2919`–`SPX-3109`.
+- **Netflix:** [`docs/catalogue/netflix-specimen-catalogue.md`](docs/catalogue/netflix-specimen-catalogue.md) — open rows reserve `SPX-3110`–`SPX-3306`.
 
-When a listed specimen ships, mark it `[x]` in the matching checklist in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Non-catalogue specimens use gaps not reserved by those ranges (typically `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`).
+When a listed specimen ships, mark it `[x]` in the matching checklist in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Non-catalogue specimens use gaps not reserved by those ranges (typically `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`).
 
 See `docs/design-spec.md` for the full product contract.
