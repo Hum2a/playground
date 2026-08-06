@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **5 / 369** complete.
+- Progress: **6 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 364 |
+| Done | 6 |
+| Open | 363 |
 
 ## Visual grammar
 
@@ -37,6 +37,7 @@
 | MHA-003 | `SPX-1977` | `panel-break-transition` | Panel Break Transition |
 | MHA-013 | `SPX-1987` | `hero-name-slam` | Hero Name Slam |
 | MHA-016 | `SPX-1990` | `character-freeze-introduction` | Character Freeze Introduction |
+| MHA-023 | `SPX-1997` | `quirk-activation-burst` | Quirk Activation Burst |
 
 ## Core first-wave
 
@@ -47,7 +48,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-003** · `SPX-1977` · **Panel Break Transition** — manga-impact-language
 - [x] **MHA-013** · `SPX-1987` · **Hero Name Slam** — hero-introduction-cards
 - [x] **MHA-016** · `SPX-1990` · **Character Freeze Introduction** — hero-introduction-cards
-- [ ] **MHA-023** · `SPX-1997` · **Quirk Activation Burst** — quirk-activation
+- [x] **MHA-023** · `SPX-1997` · **Quirk Activation Burst** — quirk-activation
 - [ ] **MHA-026** · `SPX-2000` · **Quirk Cooldown Ring** — quirk-activation
 - [ ] **MHA-027** · `SPX-2001` · **Power Threshold Break** — quirk-activation
 - [ ] **MHA-034** · `SPX-2008` · **Branching Energy Surge** — one-for-all-style-energy-language
@@ -103,7 +104,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Quirk Activation
 
-- [ ] **MHA-023** · `SPX-1997` · **Quirk Activation Burst** — a dormant control charges for 300ms, releases a finite energy burst, and becomes active.
+- [x] **MHA-023** · `SPX-1997` · **Quirk Activation Burst** — a dormant control charges for 300ms, releases a finite energy burst, and becomes active.
 - [ ] **MHA-024** · `SPX-1998` · **Power Channel Fill** — branching lines fill outward from a source node to indicate capability activation.
 - [ ] **MHA-025** · `SPX-1999` · **Ability Ready Lock-In** — rotating/offset geometry aligns into a stable READY state.
 - [ ] **MHA-026** · `SPX-2000` · **Quirk Cooldown Ring** — activated ability becomes a determinate cooldown indicator and reconstructs the action when complete.

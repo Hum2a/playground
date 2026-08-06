@@ -1,0 +1,176 @@
+/* SPX-1997 Quirk Activation Burst — portable contract. */
+
+.qab {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.85rem 0.65rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.qab__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.qab__stage {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  width: min(100%, 320px);
+  min-height: 200px;
+  border: 3px solid var(--primary);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.qab__burst {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.qab__ray {
+  position: absolute;
+  width: 4px;
+  height: 42%;
+  background: var(--accent);
+  transform-origin: center bottom;
+  transform: rotate(calc(var(--i) * 45deg)) scaleY(0);
+  opacity: 0;
+}
+
+.qab[data-phase='burst'] .qab__ray,
+.qab[data-phase='settle'] .qab__ray,
+.qab[data-phase='done'] .qab__ray {
+  animation: qab-ray 500ms cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.qab[data-phase='burst'] .qab__ray { animation-delay: calc(var(--i) * 18ms); }
+
+@keyframes qab-ray {
+  0% { transform: rotate(calc(var(--i) * 45deg)) scaleY(0); opacity: 0; }
+  35% { opacity: 1; }
+  100% { transform: rotate(calc(var(--i) * 45deg)) scaleY(1.15); opacity: 0; }
+}
+
+.qab[data-phase='done'] .qab__burst {
+  opacity: 0;
+}
+
+.qab__core {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  min-width: 148px;
+  padding: 0.85rem 1rem;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  text-align: center;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transform: scale(1);
+}
+
+.qab[data-phase='burst'] .qab__core {
+  animation: qab-core 500ms cubic-bezier(0.2, 1.1, 0.25, 1) forwards;
+}
+
+@keyframes qab-core {
+  0% { transform: scale(1); border-color: var(--ink); background: var(--paper); }
+  40% { transform: scale(1.12); border-color: var(--accent); background: var(--primary); color: var(--ink); }
+  100% { transform: scale(1); border-color: var(--accent); background: var(--primary); color: var(--ink); }
+}
+
+.qab[data-phase='done'] .qab__core {
+  transform: scale(1);
+  border-color: var(--accent);
+  background: var(--primary);
+  color: var(--ink);
+  animation: none;
+}
+
+.qab__label {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.qab__sublabel {
+  margin: 0.25rem 0 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.qab__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.qab__btn {
+  box-sizing: border-box;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.qab__btn--primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--ink);
+}
+
+.qab__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.qab__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qab__ray,
+  .qab__core { animation: none !important; }
+}
+
+[data-force-reduced-motion='true'] .qab__ray,
+[data-force-reduced-motion='true'] .qab__core { animation: none !important; }
+
+[data-force-reduced-motion='true'] .qab[data-phase='done'] .qab__core,
+.qab[data-phase='done'] .qab__core {
+  border-color: var(--accent);
+  background: var(--primary);
+  color: var(--ink);
+}

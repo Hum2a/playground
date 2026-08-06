@@ -1,0 +1,25 @@
+{
+  "name": "quirk-activation-burst",
+  "intent": "Radial ray burst swaps STANDBY core to ACTIVE.",
+  "catalogue": { "mha": "MHA-023", "ref": "SPX-1997" },
+  "copy": {
+    "standby": "STANDBY",
+    "active": "ACTIVE",
+    "subIdle": "Awaiting activation",
+    "subActive": "Output engaged"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "burstMs": 500, "settleMs": 280 },
+  "rays": 8,
+  "api": {
+    "run": "runQuirkActivationBurst()",
+    "reset": "resetQuirkActivationBurst()",
+    "replay": "replayQuirkActivationBurst()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show ACTIVE; no rays" }
+}
