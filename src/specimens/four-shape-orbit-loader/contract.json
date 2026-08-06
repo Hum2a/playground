@@ -1,0 +1,26 @@
+{
+  "name": "four-shape-orbit-loader",
+  "intent": "Four original geometric symbols orbit and settle into a completion state.",
+  "primitives": [
+    "loader",
+    "orbit",
+    "shapes"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  },
+  "timing": {
+    "orbitMs": 2400,
+    "settleMs": 400
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Settled frame shown instantly; no orbit animation"
+  }
+}

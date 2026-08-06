@@ -189,6 +189,7 @@ import { fogForecastWarning } from './fog-forecast-warning/entry'
 import { fogOfWarCard } from './fog-of-war-card/entry'
 import { forgetAMove } from './forget-a-move/entry'
 import { fourPointBarrierConstruct } from './four-point-barrier-construct/entry'
+import { fourShapeOrbitLoader } from './four-shape-orbit-loader/entry'
 import { fullMoonMilestone } from './full-moon-milestone/entry'
 import { fusionPreview } from './fusion-preview/entry'
 import { fusionSelectionMerge } from './fusion-selection-merge/entry'
@@ -716,6 +717,7 @@ export const specimens: Specimen[] = [
   fogOfWarCard,
   forgetAMove,
   fourPointBarrierConstruct,
+  fourShapeOrbitLoader,
   fullMoonMilestone,
   fusionPreview,
   fusionSelectionMerge,

@@ -1,0 +1,219 @@
+/* Portable specimen CSS (iframe-isolated). */
+
+.fso {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  --ps-panel: #121820;
+  --ps-rule: #1e2a38;
+  --ps-pewter: #8a9aad;
+
+  box-sizing: border-box;
+  width: min(100%, 480px);
+  margin: 0 auto;
+  padding: 16px;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
+  color: var(--ps-chalk);
+}
+
+.fso *,
+.fso *::before,
+.fso *::after {
+  box-sizing: border-box;
+}
+
+.fso__btn {
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ps-ink);
+  background: var(--ps-chalk);
+  border: 1px solid var(--ps-chalk);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.fso__btn:hover:not(:disabled) {
+  background: #fff;
+}
+
+.fso__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.fso__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fso__status {
+  margin: 10px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--ps-pewter);
+}
+
+.fso__shape {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.fso__shape--circle {
+  border-radius: 50%;
+  background: var(--ps-sky);
+}
+
+.fso__shape--square {
+  border-radius: 2px;
+  background: var(--ps-blue);
+}
+
+.fso__shape--cross {
+  position: relative;
+  background: transparent;
+}
+
+.fso__shape--cross::before,
+.fso__shape--cross::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 3px;
+  margin: -1.5px 0 0 -6px;
+  background: var(--ps-chalk);
+  border-radius: 1px;
+}
+
+.fso__shape--cross::before {
+  transform: rotate(45deg);
+}
+
+.fso__shape--cross::after {
+  transform: rotate(-45deg);
+}
+
+.fso__shape--triangle {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid var(--ps-blue);
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fso__anim,
+  .fso__orbit,
+  .fso__shape,
+  .fso__scan,
+  .fso__rift,
+  .fso__ring,
+  .fso__tile,
+  .fso__card,
+  .fso__slab,
+  .fso__token,
+  .fso__panel,
+  .fso__overlay {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .fso__anim,
+[data-force-reduced-motion='true'] .fso__orbit,
+[data-force-reduced-motion='true'] .fso__shape,
+[data-force-reduced-motion='true'] .fso__scan,
+[data-force-reduced-motion='true'] .fso__rift,
+[data-force-reduced-motion='true'] .fso__ring,
+[data-force-reduced-motion='true'] .fso__tile,
+[data-force-reduced-motion='true'] .fso__card,
+[data-force-reduced-motion='true'] .fso__slab,
+[data-force-reduced-motion='true'] .fso__token,
+[data-force-reduced-motion='true'] .fso__panel,
+[data-force-reduced-motion='true'] .fso__overlay {
+  animation: none !important;
+  transition: none !important;
+}
+
+.fso__stage {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 16px;
+}
+
+.fso__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--ps-blue);
+  box-shadow: 0 0 18px rgba(46, 144, 255, 0.55);
+}
+
+.fso__orbit {
+  position: absolute;
+  inset: 0;
+  animation: fso-orbit 2.4s linear infinite;
+}
+
+.fso__orbit .fso__shape {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -7px;
+  transform-origin: 7px 100px;
+}
+
+.fso__orbit .fso__shape:nth-child(1) { transform: rotate(0deg) translateY(0); }
+.fso__orbit .fso__shape:nth-child(2) { transform: rotate(90deg) translateY(0); }
+.fso__orbit .fso__shape:nth-child(3) { transform: rotate(180deg) translateY(0); }
+.fso__orbit .fso__shape:nth-child(4) { transform: rotate(270deg) translateY(0); }
+
+.fso__frame {
+  position: absolute;
+  inset: 28px;
+  border: 1px solid var(--ps-sky);
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.fso.is-complete .fso__orbit {
+  animation: none;
+  opacity: 0;
+}
+
+.fso.is-complete .fso__frame {
+  opacity: 1;
+}
+
+.fso.is-complete .fso__frame .fso__shape,
+.fso.is-complete [data-fso-settled] {
+  position: absolute;
+  opacity: 1;
+}
+
+.fso__controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+@keyframes fso-orbit {
+  to { transform: rotate(360deg); }
+}
+
+.fso.is-complete .fso__hub {
+  background: var(--ps-sky);
+}
