@@ -1,0 +1,1 @@
+const p=document.querySelector('[data-panel]');document.querySelector('[data-open]')?.addEventListener('click',()=>{p.hidden=false});document.querySelector('[data-close]')?.addEventListener('click',()=>{p.hidden=true});export function runMetaReveal(){p.hidden=false}

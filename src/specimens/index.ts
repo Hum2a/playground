@@ -142,6 +142,7 @@ import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
 import { examStartSeal } from './exam-start-seal/entry'
+import { expandedCardMetadataReveal } from './expanded-card-metadata-reveal/entry'
 import { explosiveNotificationBurst } from './explosive-notification-burst/entry'
 import { explosiveTagCountdown } from './explosive-tag-countdown/entry'
 import { extendedFabCollapse } from './extended-fab-collapse/entry'
@@ -593,6 +594,7 @@ export const specimens: Specimen[] = [
   evolutionComplete,
   evolutionSilhouetteTransformation,
   examStartSeal,
+  expandedCardMetadataReveal,
   explosiveNotificationBurst,
   explosiveTagCountdown,
   extendedFabCollapse,

@@ -1,0 +1,25 @@
+﻿# Skip generated and machine-local material from semantic indexing. Unlike
+# .cursorignore, this leaves the files available on demand when necessary.
+.git/
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.vite/
+.wrangler/
+.lighthouseci/
+test-results/
+playwright-report/
+blob-report/
+.wip-aside/
+
+# Local secrets, logs, and editor metadata
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+.vscode/
+.idea/
+.DS_Store
+*.tsbuildinfo
+*.log
