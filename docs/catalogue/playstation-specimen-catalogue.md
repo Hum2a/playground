@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **9 / 216** complete.
+- Progress: **10 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 9 |
-| Open | 207 |
+| Done | 10 |
+| Open | 206 |
 
 ## Visual grammar
 
@@ -41,6 +41,7 @@
 | PS-026 | `SPX-3332` | `game-launch-zoom` | Game Launch Zoom |
 | PS-027 | `SPX-3333` | `resume-activity-handoff` | Resume Activity Handoff |
 | PS-066 | `SPX-3372` | `directional-focus-travel` | Directional Focus Travel |
+| PS-067 | `SPX-3373` | `focus-halo-settle` | Focus Halo Settle |
 
 ## Core first-wave
 
@@ -55,7 +56,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-026** · `SPX-3332` · **Game Launch Zoom** — game-launch-resume
 - [x] **PS-027** · `SPX-3333` · **Resume Activity Handoff** — game-launch-resume
 - [x] **PS-066** · `SPX-3372` · **Directional Focus Travel** — remote-tv-focus-navigation
-- [ ] **PS-067** · `SPX-3373` · **Focus Halo Settle** — remote-tv-focus-navigation
+- [x] **PS-067** · `SPX-3373` · **Focus Halo Settle** — remote-tv-focus-navigation
 - [ ] **PS-033** · `SPX-3339` · **Activity Progress Fill** — activity-cards-progress
 - [ ] **PS-034** · `SPX-3340` · **Activity Complete Burst** — activity-cards-progress
 - [ ] **PS-035** · `SPX-3341` · **Objective Step Advance** — activity-cards-progress
@@ -190,7 +191,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 ## Remote / TV Focus Navigation
 
 - [x] **PS-066** · `SPX-3372` · **Directional Focus Travel** — Focus moves between cards with motion aligned to the user's directional input.
-- [ ] **PS-067** · `SPX-3373` · **Focus Halo Settle** — A soft bright focus boundary catches up to the newly selected object.
+- [x] **PS-067** · `SPX-3373` · **Focus Halo Settle** — A soft bright focus boundary catches up to the newly selected object.
 - [ ] **PS-068** · `SPX-3374` · **Row-to-Row Focus Jump** — Vertical navigation preserves approximate horizontal position.
 - [ ] **PS-069** · `SPX-3375` · **Edge Resistance** — Input against a grid boundary produces restrained spatial resistance.
 - [ ] **PS-070** · `SPX-3376` · **Focus Scale Lift** — Selected object grows slightly while retaining surrounding layout.

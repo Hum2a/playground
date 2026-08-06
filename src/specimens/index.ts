@@ -172,6 +172,7 @@ import { fingerprintAcquisitionField } from './fingerprint-acquisition-field/ent
 import { fingerprintScanMatch } from './fingerprint-scan-match/entry'
 import { fireballCommit } from './fireball-commit/entry'
 import { floatingLabelLift } from './floating-label-lift/entry'
+import { focusHaloSettle } from './focus-halo-settle/entry'
 import { focusModeActivation } from './focus-mode-activation/entry'
 import { fogClearingDataReveal } from './fog-clearing-data-reveal/entry'
 import { fogDeadlineEscalation } from './fog-deadline-escalation/entry'
@@ -670,6 +671,7 @@ export const specimens: Specimen[] = [
   fingerprintScanMatch,
   fireballCommit,
   floatingLabelLift,
+  focusHaloSettle,
   focusModeActivation,
   fogClearingDataReveal,
   fogDeadlineEscalation,
