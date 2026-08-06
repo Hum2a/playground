@@ -9,6 +9,7 @@ import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
+import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
@@ -85,6 +86,7 @@ export const specimens: Specimen[] = [
   panelCollapseNavigation,
   rankUpImpact,
   crookedMenuStack,
+  letterScatterAssemble,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/letter-scatter-assemble.schema.json",
+  "title": "LetterScatterAssemble",
+  "description": "Portable contract for a kinetic letter-scatter headline assemble. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "typography",
+    "letters",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "letter-scatter-assemble"
+    },
+    "intent": {
+      "type": "string",
+      "const": "Scattered letters assemble into a two-line NEW MATERIAL / AVAILABLE headline with overshoot, collision shards, and finale recoil."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line1", "line2", "trigger", "srOnlyLabel"],
+      "properties": {
+        "line1": { "type": "string", "const": "NEW MATERIAL" },
+        "line2": { "type": "string", "const": "AVAILABLE" },
+        "trigger": { "type": "string", "const": "ASSEMBLE" },
+        "srOnlyLabel": {
+          "type": "string",
+          "const": "New material available"
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "red", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontFamily", "layout"],
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "const": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+        },
+        "layout": {
+          "type": "string",
+          "const": "flex lines establish final positions; transforms only for scatter"
+        }
+      }
+    },
+    "letters": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "description": "Frozen initial transforms — no runtime randomness.",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "glyph",
+          "word",
+          "translateXPx",
+          "translateYPx",
+          "rotateDeg",
+          "scale",
+          "overshootXPx",
+          "overshootYPx",
+          "overshootRotateDeg",
+          "delayMs",
+          "durationMs"
+        ]
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "availableWordOffsetMs",
+        "shardAtMs",
+        "shardDurationMs",
+        "finaleLandMs",
+        "recoilMs",
+        "recoilTranslateXPx"
+      ],
+      "properties": {
+        "name": { "type": "string", "const": "lsa-assemble" },
+        "availableWordOffsetMs": { "type": "number", "const": 180 },
+        "shardAtMs": { "type": "number", "const": 520 },
+        "shardDurationMs": { "type": "number", "const": 120 },
+        "shardCount": { "type": "integer", "const": 4 },
+        "finaleLandMs": { "type": "number", "const": 976 },
+        "recoilMs": { "type": "number", "const": 90 },
+        "recoilTranslateXPx": { "type": "number", "const": 2 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "singlePhraseAnnouncement",
+        "lettersDecorative",
+        "doNotReadEachLetter"
+      ],
+      "properties": {
+        "singlePhraseAnnouncement": { "type": "boolean", "const": true },
+        "lettersDecorative": { "type": "boolean", "const": true },
+        "doNotReadEachLetter": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showFinalHeadlineImmediately", "triggers"],
+      "properties": {
+        "showFinalHeadlineImmediately": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "letter", "trigger", "status"],
+      "properties": {
+        "root": { "type": "string", "const": "lsa" },
+        "letter": { "type": "string", "const": "lsa__letter" },
+        "trigger": { "type": "string", "const": "lsa__trigger" },
+        "status": { "type": "string", "const": "lsa__status" },
+        "stateAssemble": { "type": "string", "const": "lsa--assemble" },
+        "stateSettled": { "type": "string", "const": "lsa--settled" },
+        "stateReduced": { "type": "string", "const": "lsa--reduced" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "letter-scatter-assemble",
+      "intent": "Scattered letters assemble into a two-line NEW MATERIAL / AVAILABLE headline with overshoot, collision shards, and finale recoil.",
+      "copy": {
+        "line1": "NEW MATERIAL",
+        "line2": "AVAILABLE",
+        "trigger": "ASSEMBLE",
+        "srOnlyLabel": "New material available"
+      },
+      "colours": {
+        "ink": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "typography": {
+        "fontFamily": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif",
+        "layout": "flex lines establish final positions; transforms only for scatter"
+      },
+      "letters": [
+        {
+          "id": "n",
+          "glyph": "N",
+          "word": "NEW MATERIAL",
+          "translateXPx": -148,
+          "translateYPx": -92,
+          "rotateDeg": -28,
+          "scale": 1.32,
+          "overshootXPx": 4,
+          "overshootYPx": 2,
+          "overshootRotateDeg": 2,
+          "delayMs": 0,
+          "durationMs": 460
+        },
+        {
+          "id": "e1",
+          "glyph": "E",
+          "word": "NEW MATERIAL",
+          "translateXPx": 132,
+          "translateYPx": -98,
+          "rotateDeg": 24,
+          "scale": 0.72,
+          "overshootXPx": -3,
+          "overshootYPx": 3,
+          "overshootRotateDeg": -2,
+          "delayMs": 48,
+          "durationMs": 420
+        },
+        {
+          "id": "w",
+          "glyph": "W",
+          "word": "NEW MATERIAL",
+          "translateXPx": -88,
+          "translateYPx": 108,
+          "rotateDeg": -16,
+          "scale": 1.18,
+          "overshootXPx": 3,
+          "overshootYPx": -2,
+          "overshootRotateDeg": 1,
+          "delayMs": 96,
+          "durationMs": 480
+        },
+        {
+          "id": "m",
+          "glyph": "M",
+          "word": "NEW MATERIAL",
+          "translateXPx": 158,
+          "translateYPx": 36,
+          "rotateDeg": 30,
+          "scale": 0.84,
+          "overshootXPx": -5,
+          "overshootYPx": 1,
+          "overshootRotateDeg": -3,
+          "delayMs": 28,
+          "durationMs": 500
+        },
+        {
+          "id": "a1",
+          "glyph": "A",
+          "word": "NEW MATERIAL",
+          "translateXPx": -156,
+          "translateYPx": 18,
+          "rotateDeg": -32,
+          "scale": 1.38,
+          "overshootXPx": 5,
+          "overshootYPx": -1,
+          "overshootRotateDeg": 2,
+          "delayMs": 124,
+          "durationMs": 440
+        },
+        {
+          "id": "t",
+          "glyph": "T",
+          "word": "NEW MATERIAL",
+          "translateXPx": 62,
+          "translateYPx": -108,
+          "rotateDeg": 14,
+          "scale": 0.7,
+          "overshootXPx": -2,
+          "overshootYPx": 4,
+          "overshootRotateDeg": -1,
+          "delayMs": 72,
+          "durationMs": 390
+        },
+        {
+          "id": "e2",
+          "glyph": "E",
+          "word": "NEW MATERIAL",
+          "translateXPx": -42,
+          "translateYPx": 118,
+          "rotateDeg": -24,
+          "scale": 1.12,
+          "overshootXPx": 2,
+          "overshootYPx": -3,
+          "overshootRotateDeg": 3,
+          "delayMs": 168,
+          "durationMs": 510
+        },
+        {
+          "id": "r",
+          "glyph": "R",
+          "word": "NEW MATERIAL",
+          "translateXPx": 108,
+          "translateYPx": 94,
+          "rotateDeg": 28,
+          "scale": 0.66,
+          "overshootXPx": -4,
+          "overshootYPx": -2,
+          "overshootRotateDeg": -2,
+          "delayMs": 208,
+          "durationMs": 450
+        },
+        {
+          "id": "i",
+          "glyph": "I",
+          "word": "NEW MATERIAL",
+          "translateXPx": -126,
+          "translateYPx": -54,
+          "rotateDeg": 12,
+          "scale": 1.42,
+          "overshootXPx": 6,
+          "overshootYPx": 2,
+          "overshootRotateDeg": 1,
+          "delayMs": 112,
+          "durationMs": 470
+        },
+        {
+          "id": "a2",
+          "glyph": "A",
+          "word": "NEW MATERIAL",
+          "translateXPx": 146,
+          "translateYPx": -74,
+          "rotateDeg": -20,
+          "scale": 0.9,
+          "overshootXPx": -3,
+          "overshootYPx": 3,
+          "overshootRotateDeg": 2,
+          "delayMs": 248,
+          "durationMs": 430
+        },
+        {
+          "id": "l1",
+          "glyph": "L",
+          "word": "NEW MATERIAL",
+          "translateXPx": -74,
+          "translateYPx": 86,
+          "rotateDeg": 32,
+          "scale": 1.24,
+          "overshootXPx": 3,
+          "overshootYPx": -4,
+          "overshootRotateDeg": -1,
+          "delayMs": 188,
+          "durationMs": 490
+        },
+        {
+          "id": "av-a1",
+          "glyph": "A",
+          "word": "AVAILABLE",
+          "translateXPx": 128,
+          "translateYPx": -88,
+          "rotateDeg": -30,
+          "scale": 1.2,
+          "overshootXPx": -4,
+          "overshootYPx": 2,
+          "overshootRotateDeg": 2,
+          "delayMs": 196,
+          "durationMs": 440
+        },
+        {
+          "id": "av-v",
+          "glyph": "V",
+          "word": "AVAILABLE",
+          "translateXPx": -142,
+          "translateYPx": 48,
+          "rotateDeg": 26,
+          "scale": 0.68,
+          "overshootXPx": 5,
+          "overshootYPx": -1,
+          "overshootRotateDeg": -2,
+          "delayMs": 248,
+          "durationMs": 460
+        },
+        {
+          "id": "av-a2",
+          "glyph": "A",
+          "word": "AVAILABLE",
+          "translateXPx": 38,
+          "translateYPx": 116,
+          "rotateDeg": -14,
+          "scale": 1.34,
+          "overshootXPx": -2,
+          "overshootYPx": -3,
+          "overshootRotateDeg": 1,
+          "delayMs": 292,
+          "durationMs": 400
+        },
+        {
+          "id": "av-i",
+          "glyph": "I",
+          "word": "AVAILABLE",
+          "translateXPx": -104,
+          "translateYPx": -102,
+          "rotateDeg": 18,
+          "scale": 0.78,
+          "overshootXPx": 3,
+          "overshootYPx": 4,
+          "overshootRotateDeg": -3,
+          "delayMs": 268,
+          "durationMs": 480
+        },
+        {
+          "id": "av-l1",
+          "glyph": "L",
+          "word": "AVAILABLE",
+          "translateXPx": 160,
+          "translateYPx": 8,
+          "rotateDeg": -26,
+          "scale": 1.08,
+          "overshootXPx": -6,
+          "overshootYPx": 1,
+          "overshootRotateDeg": 2,
+          "delayMs": 336,
+          "durationMs": 420
+        },
+        {
+          "id": "av-a3",
+          "glyph": "A",
+          "word": "AVAILABLE",
+          "translateXPx": -56,
+          "translateYPx": -78,
+          "rotateDeg": 30,
+          "scale": 0.94,
+          "overshootXPx": 2,
+          "overshootYPx": 3,
+          "overshootRotateDeg": -1,
+          "delayMs": 372,
+          "durationMs": 450
+        },
+        {
+          "id": "av-b",
+          "glyph": "B",
+          "word": "AVAILABLE",
+          "translateXPx": 84,
+          "translateYPx": 104,
+          "rotateDeg": -22,
+          "scale": 1.28,
+          "overshootXPx": -3,
+          "overshootYPx": -2,
+          "overshootRotateDeg": 3,
+          "delayMs": 312,
+          "durationMs": 500
+        },
+        {
+          "id": "av-l2",
+          "glyph": "L",
+          "word": "AVAILABLE",
+          "translateXPx": -134,
+          "translateYPx": 92,
+          "rotateDeg": 16,
+          "scale": 0.74,
+          "overshootXPx": 4,
+          "overshootYPx": -3,
+          "overshootRotateDeg": -2,
+          "delayMs": 408,
+          "durationMs": 430
+        },
+        {
+          "id": "av-e",
+          "glyph": "E",
+          "word": "AVAILABLE",
+          "translateXPx": 118,
+          "translateYPx": -64,
+          "rotateDeg": -34,
+          "scale": 1.44,
+          "overshootXPx": -5,
+          "overshootYPx": 2,
+          "overshootRotateDeg": 2,
+          "delayMs": 456,
+          "durationMs": 520
+        }
+      ],
+      "animation": {
+        "name": "lsa-assemble",
+        "availableWordOffsetMs": 180,
+        "shardAtMs": 520,
+        "shardDurationMs": 120,
+        "shardCount": 4,
+        "finaleLandMs": 976,
+        "recoilMs": 90,
+        "recoilTranslateXPx": 2
+      },
+      "a11y": {
+        "singlePhraseAnnouncement": true,
+        "lettersDecorative": true,
+        "doNotReadEachLetter": true
+      },
+      "reducedMotion": {
+        "showFinalHeadlineImmediately": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "lsa",
+        "letter": "lsa__letter",
+        "trigger": "lsa__trigger",
+        "status": "lsa__status",
+        "stateAssemble": "lsa--assemble",
+        "stateSettled": "lsa--settled",
+        "stateReduced": "lsa--reduced"
+      }
+    }
+  ]
+}
