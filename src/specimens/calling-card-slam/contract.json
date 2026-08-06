@@ -1,0 +1,406 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/calling-card-slam.schema.json",
+  "title": "CallingCardSlam",
+  "description": "Portable visual/component contract for a Persona-inspired calling-card announcement slam overlay. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "typography",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "calling-card-slam"
+    },
+    "intent": {
+      "type": "string",
+      "const": "Crooked black-and-white paper card that violently slams onto a host surface for an announcement / unlock / special-message reveal."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "message", "microtype", "srOnlyLabel"],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "NOTICE" },
+        "message": { "type": "string", "const": "NEW MATERIAL" },
+        "microtype": {
+          "type": "string",
+          "const": "TAKE NOTICE · TAKE NOTICE · TAKE NOTICE"
+        },
+        "srOnlyLabel": {
+          "type": "string",
+          "const": "New material available",
+          "description": "Screen-reader status on the host scaffold; not inside decorative shards/backing."
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "minHeightPx",
+        "finalRotationDegrees",
+        "backingOffsetPx",
+        "borderPx",
+        "paperClipPath",
+        "backingClipPath",
+        "parentRequirements"
+      ],
+      "properties": {
+        "width": { "type": "string", "const": "min(82%, 420px)" },
+        "minHeightPx": { "type": "number", "const": 150 },
+        "finalRotationDegrees": { "type": "number", "const": -5 },
+        "backingOffsetPx": {
+          "type": "object",
+          "required": ["x", "y"],
+          "properties": {
+            "x": { "type": "number", "const": 8 },
+            "y": { "type": "number", "const": 10 }
+          }
+        },
+        "borderPx": { "type": "number", "const": 4 },
+        "borderRadiusPx": { "type": "number", "const": 0 },
+        "paperClipPath": {
+          "type": "string",
+          "const": "polygon(1.5% 4%, 98.5% 0.5%, 100% 95.5%, 0% 100%)"
+        },
+        "backingClipPath": {
+          "type": "string",
+          "const": "polygon(0% 3%, 100% 0%, 97% 100%, 2% 96%)"
+        },
+        "parentRequirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "const": ["position:relative", "overflow:hidden"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#080808" },
+        "paper": { "type": "string", "const": "#f2eee3" },
+        "accent": { "type": "string", "const": "#d71920" }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fontFamily", "textTransform"],
+      "properties": {
+        "fontFamily": {
+          "type": "string",
+          "const": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+        },
+        "textTransform": { "type": "string", "const": "uppercase" },
+        "eyebrowLetterSpacingEm": { "type": "number", "const": 0.28 },
+        "messageFontWeight": { "type": "integer", "const": 900 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enter", "exit", "shards", "backingDelayMs"],
+      "properties": {
+        "enter": {
+          "type": "object",
+          "required": [
+            "name",
+            "durationMs",
+            "timingFunction",
+            "keyframes"
+          ],
+          "properties": {
+            "name": { "type": "string", "const": "calling-card-slam" },
+            "durationMs": { "type": "number", "const": 620 },
+            "timingFunction": {
+              "type": "string",
+              "const": "cubic-bezier(0.18, 0.92, 0.22, 1.18)"
+            },
+            "keyframes": {
+              "type": "object",
+              "required": ["from", "impact", "recoil", "to"],
+              "properties": {
+                "from": {
+                  "type": "object",
+                  "const": {
+                    "translateY": "-130%",
+                    "translateX": "20%",
+                    "rotate": "14deg",
+                    "scale": 1.12
+                  }
+                },
+                "impact": {
+                  "type": "object",
+                  "description": "Approximately 380ms (61.3% of 620ms).",
+                  "const": {
+                    "atPercent": 61.3,
+                    "translateY": "4%",
+                    "rotate": "-7deg",
+                    "scale": 0.97
+                  }
+                },
+                "recoil": {
+                  "type": "object",
+                  "const": {
+                    "atPercent": 78,
+                    "translateY": "-2%",
+                    "rotate": "-4deg",
+                    "scale": 1.02
+                  }
+                },
+                "to": {
+                  "type": "object",
+                  "const": {
+                    "translateY": "0",
+                    "rotate": "-5deg",
+                    "scale": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "backingDelayMs": {
+          "type": "number",
+          "const": 35,
+          "description": "Backing slam starts 35ms after the paper layer."
+        },
+        "shards": {
+          "type": "object",
+          "required": ["count", "delayMs", "durationMs", "name"],
+          "properties": {
+            "name": { "type": "string", "const": "calling-card-shard" },
+            "count": { "type": "integer", "const": 5 },
+            "delayMs": { "type": "number", "const": 380 },
+            "durationMs": { "type": "number", "const": 180 }
+          }
+        },
+        "exit": {
+          "type": "object",
+          "required": ["name", "durationMs", "timingFunction", "keyframes"],
+          "properties": {
+            "name": { "type": "string", "const": "calling-card-rip" },
+            "durationMs": { "type": "number", "const": 350 },
+            "timingFunction": {
+              "type": "string",
+              "const": "cubic-bezier(0.4, 0.05, 0.7, 0.2)"
+            },
+            "keyframes": {
+              "type": "object",
+              "required": ["from", "to"],
+              "properties": {
+                "from": {
+                  "type": "object",
+                  "const": { "translateX": "0", "rotate": "-5deg" }
+                },
+                "to": {
+                  "type": "object",
+                  "const": { "translateX": "-140%", "rotate": "-14deg" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "calling-card" },
+            "dataAttr": { "type": "string", "const": "data-calling-card" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": [
+                  "backing",
+                  "paper",
+                  "eyebrow",
+                  "message",
+                  "microtype",
+                  "impact",
+                  "shard",
+                  "replay"
+                ]
+              },
+              "className": { "type": "string" },
+              "ariaHidden": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "backingDecorative",
+        "shardsDecorative",
+        "announceStatusSeparately",
+        "doNotRelyOnMotionAlone"
+      ],
+      "properties": {
+        "backingDecorative": { "type": "boolean", "const": true },
+        "shardsDecorative": { "type": "boolean", "const": true },
+        "announceStatusSeparately": { "type": "boolean", "const": true },
+        "doNotRelyOnMotionAlone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticSettled", "triggers"],
+      "properties": {
+        "showStaticSettled": {
+          "type": "boolean",
+          "const": true,
+          "description": "Skip slam/recoil/shards; show final -5deg composition immediately."
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "backing",
+        "paper",
+        "eyebrow",
+        "message",
+        "microtype",
+        "impact",
+        "shard",
+        "replay"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "calling-card" },
+        "backing": { "type": "string", "const": "calling-card__backing" },
+        "paper": { "type": "string", "const": "calling-card__paper" },
+        "eyebrow": { "type": "string", "const": "calling-card__eyebrow" },
+        "message": { "type": "string", "const": "calling-card__message" },
+        "microtype": { "type": "string", "const": "calling-card__microtype" },
+        "impact": { "type": "string", "const": "calling-card__impact" },
+        "shard": { "type": "string", "const": "calling-card__shard" },
+        "replay": { "type": "string", "const": "calling-card-replay" },
+        "stateEnter": { "type": "string", "const": "calling-card--enter" },
+        "stateExit": { "type": "string", "const": "calling-card--exit" },
+        "stateSettled": { "type": "string", "const": "calling-card--settled" },
+        "stateReduced": { "type": "string", "const": "calling-card--reduced" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "calling-card-slam",
+      "intent": "Crooked black-and-white paper card that violently slams onto a host surface for an announcement / unlock / special-message reveal.",
+      "copy": {
+        "eyebrow": "NOTICE",
+        "message": "NEW MATERIAL",
+        "microtype": "TAKE NOTICE · TAKE NOTICE · TAKE NOTICE",
+        "srOnlyLabel": "New material available"
+      },
+      "layout": {
+        "width": "min(82%, 420px)",
+        "minHeightPx": 150,
+        "finalRotationDegrees": -5,
+        "backingOffsetPx": { "x": 8, "y": 10 },
+        "borderPx": 4,
+        "paperClipPath": "polygon(1.5% 4%, 98.5% 0.5%, 100% 95.5%, 0% 100%)",
+        "backingClipPath": "polygon(0% 3%, 100% 0%, 97% 100%, 2% 96%)",
+        "parentRequirements": ["position:relative", "overflow:hidden"]
+      },
+      "colours": {
+        "ink": "#080808",
+        "paper": "#f2eee3",
+        "accent": "#d71920"
+      },
+      "typography": {
+        "fontFamily": "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif",
+        "textTransform": "uppercase"
+      },
+      "animation": {
+        "enter": {
+          "name": "calling-card-slam",
+          "durationMs": 620,
+          "timingFunction": "cubic-bezier(0.18, 0.92, 0.22, 1.18)"
+        },
+        "backingDelayMs": 35,
+        "shards": {
+          "name": "calling-card-shard",
+          "count": 5,
+          "delayMs": 380,
+          "durationMs": 180
+        },
+        "exit": {
+          "name": "calling-card-rip",
+          "durationMs": 350,
+          "timingFunction": "cubic-bezier(0.4, 0.05, 0.7, 0.2)"
+        }
+      },
+      "a11y": {
+        "backingDecorative": true,
+        "shardsDecorative": true,
+        "announceStatusSeparately": true,
+        "doNotRelyOnMotionAlone": true
+      },
+      "reducedMotion": {
+        "showStaticSettled": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "calling-card",
+        "backing": "calling-card__backing",
+        "paper": "calling-card__paper",
+        "eyebrow": "calling-card__eyebrow",
+        "message": "calling-card__message",
+        "microtype": "calling-card__microtype",
+        "impact": "calling-card__impact",
+        "shard": "calling-card__shard",
+        "replay": "calling-card-replay"
+      }
+    }
+  ]
+}
