@@ -1,0 +1,8 @@
+{
+  "name": "proofreader-mark-reveal",
+  "ref": "SPX-3587",
+  "title": "Proofreader Mark Reveal",
+  "mode": "redact",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

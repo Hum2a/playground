@@ -588,6 +588,8 @@ import { typewriterHeadlineEntry } from './typewriter-headline-entry/entry'
 
 import { copyEditStrikeAndReplace } from './copy-edit-strike-and-replace/entry'
 
+import { proofreaderMarkReveal } from './proofreader-mark-reveal/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1110,6 +1112,7 @@ export const specimens: Specimen[] = [
   proofToFinalToggle,
   typewriterHeadlineEntry,
   copyEditStrikeAndReplace,
+  proofreaderMarkReveal,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
