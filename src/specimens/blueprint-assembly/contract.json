@@ -1,0 +1,27 @@
+{
+  "name": "blueprint-assembly",
+  "intent": "Exploded blueprint parts assemble into finished gadget device.",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "assembleMs": 660,
+    "settleMs": 1310
+  },
+  "api": {
+    "run": "runBlueprintAssembly()",
+    "reset": "resetBlueprintAssembly()",
+    "replay": "replayBlueprintAssembly()",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Device appears immediately; parts hidden"
+  }
+}

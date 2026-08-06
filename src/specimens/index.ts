@@ -20,6 +20,7 @@ import { blinkSelection } from './blink-selection/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
+import { blueprintAssembly } from './blueprint-assembly/entry'
 import { bottomSheetDetentSnap } from './bottom-sheet-detent-snap/entry'
 import { boundedTouchRipple } from './bounded-touch-ripple/entry'
 import { bracketWinnerAdvance } from './bracket-winner-advance/entry'
@@ -330,6 +331,7 @@ export const specimens: Specimen[] = [
   blueDoorDiscovery,
   blueFlameButtonHover,
   blueFocusBrackets,
+  blueprintAssembly,
   bottomSheetDetentSnap,
   boundedTouchRipple,
   bracketWinnerAdvance,
