@@ -309,6 +309,7 @@ import { stateIntensityField } from './state-intensity-field/entry'
 import { substitutionSwap } from './substitution-swap/entry'
 import { summoningSealMaterialise } from './summoning-seal-materialise/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
+import { suspectCardReveal } from './suspect-card-reveal/entry'
 import { swipeFullCommit } from './swipe-full-commit/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
 import { tabIndicatorStretch } from './tab-indicator-stretch/entry'
@@ -710,6 +711,7 @@ export const specimens: Specimen[] = [
   substitutionSwap,
   summoningSealMaterialise,
   surfaceBreakReveal,
+  suspectCardReveal,
   swipeFullCommit,
   synchronousFusionMerge,
   tabIndicatorStretch,
