@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/bottom-sheet-detent-snap.schema.json",
+  "title": "BottomSheetDetentSnap",
+  "description": "Portable contract for a three-detent bottom sheet with velocity-aware spring settling.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "preview",
+    "sheet",
+    "detents",
+    "gesture",
+    "content",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "bottom-sheet-detent-snap" },
+    "intent": {
+      "type": "string",
+      "const": "Bottom sheet with collapsed, medium, and expanded visible heights; nearest detent or velocity override; progressive content reveal."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["host", "sheetTitle", "summary"],
+      "properties": {
+        "host": { "type": "string", "const": "MAP // ROUTE 04" },
+        "sheetTitle": { "type": "string", "const": "ROUTE DETAILS" },
+        "summary": {
+          "type": "string",
+          "const": "North loop · 4.2 km · moderate grade"
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "text", "accent", "pale"],
+      "properties": {
+        "ink": { "type": "string", "const": "#10141c" },
+        "panel": { "type": "string", "const": "#181e28" },
+        "line": { "type": "string", "const": "#2a3340" },
+        "muted": { "type": "string", "const": "#6a7484" },
+        "text": { "type": "string", "const": "#e6ebf2" },
+        "accent": { "type": "string", "const": "#4d8fd0" },
+        "pale": { "type": "string", "const": "#9eb8dc" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heightPx"],
+      "properties": {
+        "heightPx": { "type": "number", "const": 600 }
+      }
+    },
+    "sheet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPercent", "cornerRadiusPx", "handle"],
+      "properties": {
+        "widthPercent": { "type": "number", "const": 100 },
+        "cornerRadiusPx": { "type": "number", "const": 18 },
+        "handle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthPx", "heightPx"],
+          "properties": {
+            "widthPx": { "type": "number", "const": 36 },
+            "heightPx": { "type": "number", "const": 5 }
+          }
+        }
+      }
+    },
+    "detents": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapsedPx", "mediumPx", "expandedPx"],
+      "properties": {
+        "collapsedPx": { "type": "number", "const": 112 },
+        "mediumPx": { "type": "number", "const": 318 },
+        "expandedPx": { "type": "number", "const": 520 }
+      }
+    },
+    "gesture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "velocityThresholdPxMs",
+        "springMs",
+        "maxOvershootPx",
+        "nearestDetentDefault"
+      ],
+      "properties": {
+        "velocityThresholdPxMs": { "type": "number", "const": 0.55 },
+        "springMs": { "type": "number", "const": 320 },
+        "maxOvershootPx": { "type": "number", "const": 8 },
+        "nearestDetentDefault": { "type": "boolean", "const": true }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapsed", "medium", "expanded", "progressiveReveal"],
+      "properties": {
+        "collapsed": { "type": "string", "const": "title + summary" },
+        "medium": { "type": "string", "const": "title + summary + metrics" },
+        "expanded": { "type": "string", "const": "title + summary + metrics + steps" },
+        "progressiveReveal": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loops", "finalStatic"],
+      "properties": {
+        "loops": { "type": "boolean", "const": false },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directDrag", "snapMs", "forcedImmediate", "triggers"],
+      "properties": {
+        "directDrag": { "type": "boolean", "const": true },
+        "snapMs": { "type": "number", "const": 160 },
+        "forcedImmediate": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "stage", "sheet", "grab", "handle", "metrics", "steps"],
+      "properties": {
+        "root": { "type": "string", "const": "bsd" },
+        "stage": { "type": "string", "const": "bsd__stage" },
+        "sheet": { "type": "string", "const": "bsd__sheet" },
+        "grab": { "type": "string", "const": "bsd__grab" },
+        "handle": { "type": "string", "const": "bsd__handle" },
+        "metrics": { "type": "string", "const": "bsd__metrics" },
+        "steps": { "type": "string", "const": "bsd__steps" }
+      }
+    }
+  }
+}

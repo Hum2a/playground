@@ -8,6 +8,7 @@ import { blinkSelection } from './blink-selection/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { blueFlameButtonHover } from './blue-flame-button-hover/entry'
 import { blueFocusBrackets } from './blue-focus-brackets/entry'
+import { bottomSheetDetentSnap } from './bottom-sheet-detent-snap/entry'
 import { branchEvolutionChoice } from './branch-evolution-choice/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
@@ -195,6 +196,7 @@ export const specimens: Specimen[] = [
   blueDoorDiscovery,
   blueFlameButtonHover,
   blueFocusBrackets,
+  bottomSheetDetentSnap,
   branchEvolutionChoice,
   butterflyEntry,
   butterflySuccessState,

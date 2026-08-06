@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **1 / 258** complete.
+- Progress: **2 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 1 |
-| Open | 257 |
+| Done | 2 |
+| Open | 256 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-015 | `SPX-1314` | `bottom-sheet-detent-snap` | Bottom Sheet Detent Snap |
 | IOS-003 | `SPX-1302` | `interactive-back-swipe` | Interactive Back Swipe |
 
 ## Core first-wave
@@ -40,7 +41,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [x] **IOS-003** · `SPX-1302` · **Interactive Back Swipe** — navigation-spatial-continuity
 - [ ] **IOS-004** · `SPX-1303` · **Matched Card Expansion** — navigation-spatial-continuity
-- [ ] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheets-panels-presentation
+- [x] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheets-panels-presentation
 - [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — sheets-panels-presentation
 - [ ] **IOS-027** · `SPX-1326` · **Compact Activity Expansion** — dynamic-island-live-activity-inspired
 - [ ] **IOS-029** · `SPX-1328` · **Dual Activity Split** — dynamic-island-live-activity-inspired
@@ -88,7 +89,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Sheets, Panels & Presentation
 
-- [ ] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheet moves between fixed collapsed, medium and expanded heights with spring settling.
+- [x] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheet moves between fixed collapsed, medium and expanded heights with spring settling.
 - [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — dragging beyond a sheet's maximum detent creates increasing resistance before snapping back.
 - [ ] **IOS-017** · `SPX-1316` · **Sheet Dismiss Pull** — downward drag crosses a threshold and converts an interactive sheet into dismissal.
 - [ ] **IOS-018** · `SPX-1317` · **Popover Materialise** — compact contextual surface grows from its anchor point and establishes directional ownership.

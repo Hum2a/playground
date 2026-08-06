@@ -1,0 +1,251 @@
+/* bottom-sheet-detent-snap — portable specimen styles. Do not restyle to host tokens. */
+
+.bsd {
+  --bsd-ink: #10141c;
+  --bsd-panel: #181e28;
+  --bsd-line: #2a3340;
+  --bsd-muted: #6a7484;
+  --bsd-text: #e6ebf2;
+  --bsd-accent: #4d8fd0;
+  --bsd-pale: #9eb8dc;
+  --bsd-visible: 112px;
+  --bsd-metrics-p: 0;
+  --bsd-steps-p: 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 600px;
+  padding: 0.65rem 0.65rem 1.25rem;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  color: var(--bsd-text);
+  background: var(--bsd-ink);
+}
+
+.bsd *,
+.bsd *::before,
+.bsd *::after {
+  box-sizing: border-box;
+}
+
+.bsd__host-label {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--bsd-pale);
+}
+
+.bsd__stage {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border: 1px solid var(--bsd-line);
+  background: color-mix(in srgb, var(--bsd-panel) 88%, #0a0e14);
+  touch-action: none;
+}
+
+.bsd__map {
+  position: absolute;
+  inset: 0;
+  bottom: 112px;
+  overflow: hidden;
+}
+
+.bsd__map-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--bsd-line) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--bsd-line) 55%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.45;
+}
+
+.bsd__map-route {
+  position: absolute;
+  left: 18%;
+  top: 22%;
+  width: 58%;
+  height: 48%;
+  border: 2px solid var(--bsd-accent);
+  border-radius: 40% 12% 38% 8%;
+  opacity: 0.55;
+}
+
+/* Sheet — width 100%, top corners 18px */
+
+.bsd__sheet {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  height: var(--bsd-visible);
+  max-height: 520px;
+  background: var(--bsd-panel);
+  border: 1px solid var(--bsd-line);
+  border-bottom: none;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -6px 28px color-mix(in srgb, #000 42%, transparent);
+  overflow: hidden;
+  transition: height 320ms cubic-bezier(0.34, 1.18, 0.64, 1);
+}
+
+.bsd.is-dragging .bsd__sheet {
+  transition: none;
+}
+
+.bsd.is-snapping .bsd__sheet {
+  transition: height 320ms cubic-bezier(0.34, 1.18, 0.64, 1);
+}
+
+.bsd.is-snapping-rm .bsd__sheet {
+  transition: height 160ms cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.bsd__grab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.bsd__grab:active {
+  cursor: grabbing;
+}
+
+/* Handle 36 × 5 */
+
+.bsd__handle {
+  display: block;
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--bsd-muted);
+}
+
+.bsd__sheet-inner {
+  padding: 0 1rem 1rem;
+  overflow: hidden;
+}
+
+.bsd__title {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--bsd-pale);
+}
+
+.bsd__summary {
+  margin: 0;
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  color: var(--bsd-muted);
+  line-height: 1.45;
+}
+
+/* Progressive reveal — metrics */
+
+.bsd__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--bsd-line);
+  max-height: calc(var(--bsd-metrics-p) * 72px);
+  opacity: var(--bsd-metrics-p);
+  overflow: hidden;
+  transition:
+    max-height 180ms ease,
+    opacity 140ms ease;
+}
+
+.bsd.is-dragging .bsd__metrics {
+  transition: none;
+}
+
+.bsd__metric-label {
+  display: block;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: var(--bsd-muted);
+}
+
+.bsd__metric-value {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+/* Progressive reveal — steps */
+
+.bsd__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: calc(var(--bsd-steps-p) * 180px);
+  opacity: var(--bsd-steps-p);
+  overflow: hidden;
+  transition:
+    max-height 200ms ease,
+    opacity 160ms ease;
+}
+
+.bsd.is-dragging .bsd__steps {
+  transition: none;
+}
+
+.bsd__steps li {
+  padding: 0.42rem 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.03em;
+  color: var(--bsd-muted);
+  border-bottom: 1px solid color-mix(in srgb, var(--bsd-line) 70%, transparent);
+}
+
+.bsd__status {
+  margin: 0.55rem 0 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  color: var(--bsd-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bsd.is-snapping .bsd__sheet {
+    transition-duration: 160ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+  }
+
+  .bsd__metrics,
+  .bsd__steps {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .bsd.is-snapping .bsd__sheet {
+  transition-duration: 0ms !important;
+}
+
+[data-force-reduced-motion='true'] .bsd__metrics,
+[data-force-reduced-motion='true'] .bsd__steps {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bsd__sheet {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .bsd__sheet {
+  animation: none;
+}
