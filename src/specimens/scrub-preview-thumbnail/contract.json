@@ -1,0 +1,12 @@
+{
+  "name": "scrub-preview-thumbnail",
+  "intent": "Dragging the progress handle reveals a preview card anchored to the current time along the timeline.",
+  "ref": "SPX-3170",
+  "nf": "NF-061",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}

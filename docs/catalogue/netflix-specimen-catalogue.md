@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **7 / 197** complete.
+- Progress: **8 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 190 |
+| Done | 8 |
+| Open | 189 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-061 | `SPX-3170` | `scrub-preview-thumbnail` | Scrub Preview Thumbnail |
 | NF-052 | `SPX-3161` | `playback-controls-fade-in` | Playback Controls Fade-In |
 | NF-089 | `SPX-3198` | `details-panel-expand` | Details Panel Expand |
 | NF-027 | `SPX-3136` | `rail-page-snap` | Rail Page Snap |
@@ -55,7 +56,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-027** · `SPX-3136` · **Rail Page Snap** — `rail-page-snap`
 - [x] **NF-089** · `SPX-3198` · **Details Panel Expand** — `details-panel-expand`
 - [x] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — `playback-controls-fade-in`
-- [ ] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — `scrub-preview-thumbnail`
+- [x] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — `scrub-preview-thumbnail`
 - [ ] **NF-069** · `SPX-3178` · **Skip Intro Appear** — `skip-intro-appear`
 - [ ] **NF-075** · `SPX-3184` · **Next Episode Countdown** — `next-episode-countdown`
 
@@ -187,7 +188,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [ ] **NF-060** · `SPX-3169` · **Keyboard Seek Confirmation** — Arrow/shortcut seeking produces visible time-change feedback
 ## 8. Timeline / Scrubbing
 
-- [ ] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — Dragging the progress handle reveals a preview card anchored to the current time
+- [x] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — Dragging the progress handle reveals a preview card anchored to the current time
 - [ ] **NF-062** · `SPX-3171` · **Timeline Hover Preview** — Pointer movement over the timeline produces a bounded scene-preview proxy
 - [ ] **NF-063** · `SPX-3172` · **Progress Handle Acquire** — The tiny playhead grows only while the user is interacting with the timeline
 - [ ] **NF-064** · `SPX-3173` · **Buffered Range Reveal** — Loaded and played ranges remain visually distinct

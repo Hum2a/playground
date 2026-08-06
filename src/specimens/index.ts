@@ -319,6 +319,7 @@ import { screenshotExpandToEditor } from './screenshot-expand-to-editor/entry'
 import { screenshotThumbnailArrival } from './screenshot-thumbnail-arrival/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
 import { scrollToPanelTransform } from './scroll-to-panel-transform/entry'
+import { scrubPreviewThumbnail } from './scrub-preview-thumbnail/entry'
 import { sealReleaseSequence } from './seal-release-sequence/entry'
 import { sealStampConfirmation } from './seal-stamp-confirmation/entry'
 import { searchBarToViewTransform } from './search-bar-to-view-transform/entry'
@@ -766,6 +767,7 @@ export const specimens: Specimen[] = [
   screenshotThumbnailArrival,
   scrollRubberBand,
   scrollToPanelTransform,
+  scrubPreviewThumbnail,
   sealReleaseSequence,
   sealStampConfirmation,
   searchBarToViewTransform,
