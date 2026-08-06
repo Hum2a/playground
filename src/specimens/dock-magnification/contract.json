@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/dock-magnification.schema.json",
+  "title": "DockMagnification",
+  "description": "Portable contract for pointer-proximity dock magnification with Gaussian scale curve and horizontal redistribution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "geometry",
+    "magnification",
+    "layout",
+    "settle",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "dock-magnification" },
+    "intent": {
+      "type": "string",
+      "const": "Nine abstract tiles magnify by pointer proximity using a Gaussian curve; neighbours redistribute horizontally without overlap; baseline-anchored growth."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tiles", "hint", "statusRest", "statusActive"],
+      "properties": {
+        "tiles": {
+          "type": "array",
+          "const": ["01", "02", "03", "04", "05", "06", "07", "08", "09"]
+        },
+        "hint": { "type": "string", "const": "Move pointer along the dock rail." },
+        "statusRest": { "type": "string", "const": "Dock at rest." },
+        "statusActive": { "type": "string", "const": "Dock magnified." }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tilePx", "gapPx", "paddingPx", "count", "maxScale"],
+      "properties": {
+        "tilePx": { "type": "number", "const": 42 },
+        "gapPx": { "type": "number", "const": 8 },
+        "paddingPx": { "type": "number", "const": 12 },
+        "count": { "type": "number", "const": 9 },
+        "maxScale": { "type": "number", "const": 1.65 }
+      }
+    },
+    "magnification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formula", "sigma", "amplitude", "distanceFromRestCenters"],
+      "properties": {
+        "formula": {
+          "type": "string",
+          "const": "scale = min(1.65, 1 + 0.65 * exp(-(d*d)/(2*70*70)))"
+        },
+        "sigma": { "type": "number", "const": 70 },
+        "amplitude": { "type": "number", "const": 0.65 },
+        "distanceFromRestCenters": { "type": "boolean", "const": true }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["horizontalRedistribution", "transformOrigin", "noOverlap"],
+      "properties": {
+        "horizontalRedistribution": { "type": "boolean", "const": true },
+        "transformOrigin": { "type": "string", "const": "bottom center" },
+        "noOverlap": { "type": "boolean", "const": true }
+      }
+    },
+    "settle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "durationMs", "targetScale"],
+      "properties": {
+        "trigger": { "type": "string", "const": "pointerleave rail" },
+        "durationMs": { "type": "number", "const": 240 },
+        "targetScale": { "type": "number", "const": 1 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loops", "runtimeRandomness"],
+      "properties": {
+        "loops": { "type": "boolean", "const": false },
+        "runtimeRandomness": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusableTiles", "politeStatus"],
+      "properties": {
+        "focusableTiles": { "type": "boolean", "const": true },
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noProximityScaling", "hoverFocusOutline", "triggers"],
+      "properties": {
+        "noProximityScaling": { "type": "boolean", "const": true },
+        "hoverFocusOutline": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "rail", "tile"],
+      "properties": {
+        "root": { "type": "string", "const": "dmagn" },
+        "rail": { "type": "string", "const": "dmagn__rail" },
+        "tile": { "type": "string", "const": "dmagn__tile" }
+      }
+    }
+  }
+}

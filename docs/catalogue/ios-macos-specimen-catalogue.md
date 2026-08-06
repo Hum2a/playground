@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 258** complete.
+- Progress: **7 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 252 |
+| Done | 7 |
+| Open | 251 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-039 | `SPX-1338` | `dock-magnification` | Dock Magnification |
 | IOS-029 | `SPX-1328` | `dual-activity-split` | Dual Activity Split |
 | IOS-027 | `SPX-1326` | `compact-activity-expansion` | Compact Activity Expansion |
 | IOS-004 | `SPX-1303` | `matched-card-expansion` | Matched Card Expansion |
@@ -49,7 +50,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — sheets-panels-presentation
 - [x] **IOS-027** · `SPX-1326` · **Compact Activity Expansion** — dynamic-island-live-activity-inspired
 - [x] **IOS-029** · `SPX-1328` · **Dual Activity Split** — dynamic-island-live-activity-inspired
-- [ ] **IOS-039** · `SPX-1338` · **Dock Magnification** — dock-macos-application-launching
+- [x] **IOS-039** · `SPX-1338` · **Dock Magnification** — dock-macos-application-launching
 - [ ] **IOS-040** · `SPX-1339` · **Dock Launch Bounce** — dock-macos-application-launching
 - [ ] **IOS-049** · `SPX-1348` · **Mission Control Spread** — windows-mission-control-desktop-space
 - [ ] **IOS-054** · `SPX-1353` · **Stage Manager Stack Shift** — windows-mission-control-desktop-space
@@ -123,7 +124,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Dock & macOS Application Launching
 
-- [ ] **IOS-039** · `SPX-1338` · **Dock Magnification** — pointer proximity enlarges neighbouring items according to distance from the cursor.
+- [x] **IOS-039** · `SPX-1338` · **Dock Magnification** — pointer proximity enlarges neighbouring items according to distance from the cursor.
 - [ ] **IOS-040** · `SPX-1339` · **Dock Launch Bounce** — selected application indicator performs a finite launch bounce and resolves into running state.
 - [ ] **IOS-041** · `SPX-1340` · **Dock Attention Bounce** — dormant application requests attention using a deliberately finite repeated bounce.
 - [ ] **IOS-042** · `SPX-1341` · **Dock Minimise Genie Concept** — window geometry funnels toward a compact dock destination.
