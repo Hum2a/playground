@@ -1,0 +1,122 @@
+/* extended-fab-collapse — portable specimen styles. Do not restyle to host tokens. */
+
+.efc {
+  --efc-ink: #12141a;
+  --efc-panel: #1e232d;
+  --efc-line: #2e3644;
+  --efc-muted: #8a939f;
+  --efc-cream: #eceff4;
+  --efc-accent: #6fa8dc;
+  --efc-extended-w: 152px;
+  --efc-collapsed-w: 56px;
+  --efc-fab-h: 56px;
+  --efc-collapse-ms: 240ms;
+  position: relative;
+  width: 390px;
+  max-width: 100%;
+  height: 420px;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--efc-cream);
+  background: var(--efc-ink);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.efc *,
+.efc *::before,
+.efc *::after {
+  box-sizing: border-box;
+}
+
+.efc__feed {
+  height: 100%;
+  padding: 1rem 1rem 5rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.efc__row {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--efc-line);
+  border-radius: 12px;
+  background: var(--efc-panel);
+  font-size: 0.78rem;
+}
+
+.efc__fab {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: var(--efc-extended-w);
+  height: var(--efc-fab-h);
+  padding: 0 1rem 0 0.65rem;
+  border: none;
+  border-radius: calc(var(--efc-fab-h) / 2);
+  background: var(--efc-accent);
+  color: var(--efc-ink);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: width var(--efc-collapse-ms) cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 3;
+}
+
+.efc__fab:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.efc[data-phase='collapsed'] .efc__fab {
+  width: var(--efc-collapsed-w);
+  padding: 0;
+  justify-content: center;
+}
+
+.efc__fab-icon {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.efc__fab-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  max-width: 90px;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  transition:
+    opacity 120ms ease,
+    max-width var(--efc-collapse-ms) ease;
+}
+
+.efc[data-phase='collapsed'] .efc__fab-label {
+  opacity: 0;
+  max-width: 0;
+}
+
+.efc__status {
+  position: absolute;
+  bottom: 0.35rem;
+  left: 1rem;
+  font-size: 0.6rem;
+  color: var(--efc-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .efc__fab,
+  .efc__fab-label {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .efc__fab,
+[data-force-reduced-motion='true'] .efc__fab-label {
+  transition-duration: 0.01ms !important;
+}

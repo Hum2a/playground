@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **48 / 417** complete.
+- Progress: **49 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 48 |
-| Open | 369 |
+| Done | 49 |
+| Open | 368 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-029 | `SPX-1586` | `extended-fab-collapse` | Extended FAB Collapse |
 | AND-083 | `SPX-1640` | `notification-stack-expansion` | Notification Stack Expansion |
 | AND-091 | `SPX-1648` | `quick-settings-expansion` | Quick Settings Expansion |
 | AND-279 | `SPX-1836` | `keyboard-rise-content-avoidance` | Keyboard Rise & Content Avoidance |
@@ -155,7 +156,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [ ] **AND-026** · `SPX-1583` · **FAB Press Compression** — circular action control compresses under contact and rebounds on activation.
 - [ ] **AND-027** · `SPX-1584` · **FAB Expand to Sheet** — floating action control grows into a larger action surface.
 - [ ] **AND-028** · `SPX-1585` · **FAB Morph to Composer** — FAB becomes a text-entry/composer container.
-- [ ] **AND-029** · `SPX-1586` · **Extended FAB Collapse** — label-bearing FAB contracts into icon-only state as content scrolls.
+- [x] **AND-029** · `SPX-1586` · **Extended FAB Collapse** — label-bearing FAB contracts into icon-only state as content scrolls.
 - [ ] **AND-030** · `SPX-1587` · **Extended FAB Expand** — compact FAB regains label when contextual space returns.
 - [ ] **AND-031** · `SPX-1588` · **FAB Hide on Scroll** — downward scroll causes the action to retreat; upward scroll restores it.
 - [ ] **AND-032** · `SPX-1589` · **FAB Speed Dial** — one action expands into a finite radial/vertical family of related actions.

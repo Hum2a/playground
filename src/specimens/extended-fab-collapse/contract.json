@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/extended-fab-collapse.schema.json",
+  "title": "ExtendedFabCollapse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "fab", "thresholds", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "extended-fab-collapse" },
+    "fab": {
+      "type": "object",
+      "required": ["extendedWidthPx", "collapsedWidthPx", "heightPx"],
+      "properties": {
+        "extendedWidthPx": { "type": "number", "const": 152 },
+        "collapsedWidthPx": { "type": "number", "const": 56 },
+        "heightPx": { "type": "number", "const": 56 }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "required": ["collapsePx", "expandPx"],
+      "properties": {
+        "collapsePx": { "type": "number", "const": 48 },
+        "expandPx": { "type": "number", "const": 36 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["collapseMs"],
+      "properties": {
+        "collapseMs": { "type": "number", "const": 240 }
+      }
+    }
+  }
+}
