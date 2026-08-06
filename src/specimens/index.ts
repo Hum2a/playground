@@ -610,6 +610,8 @@ import { marginNoteSlideIn } from './margin-note-slide-in/entry'
 
 import { editorialBracketDraw } from './editorial-bracket-draw/entry'
 
+import { pullQuoteExtraction } from './pull-quote-extraction/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1143,6 +1145,7 @@ export const specimens: Specimen[] = [
   documentCompareSplit,
   marginNoteSlideIn,
   editorialBracketDraw,
+  pullQuoteExtraction,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

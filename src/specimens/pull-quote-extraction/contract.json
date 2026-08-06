@@ -1,0 +1,8 @@
+{
+  "name": "pull-quote-extraction",
+  "ref": "SPX-3615",
+  "title": "Pull Quote Extraction",
+  "mode": "ticker",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
