@@ -1,0 +1,707 @@
+/* SPX-1022 Linked Fusion Merge — portable contract. Do not restyle to host tokens. */
+
+.lfm {
+  --lfm-bg: #0c1016;
+  --lfm-panel: #151b24;
+  --lfm-ink: #e6ebf2;
+  --lfm-muted: #7d8b9c;
+  --lfm-a: #5b8def;
+  --lfm-b: #c9843a;
+  --lfm-link: #d7c36a;
+  --lfm-c: #9a8fd4;
+  --lfm-rule: #2a3340;
+  --lfm-node: 10px;
+  --lfm-gap: 220px;
+  --lfm-ent-w: 100px;
+  --lfm-ent-h: 120px;
+  --lfm-c-w: 126px;
+  --lfm-c-h: 138px;
+
+  --lfm-node-fill: 90ms;
+  --lfm-line-ms: 180ms;
+  --lfm-tension: 120ms;
+  --lfm-converge: 280ms;
+  --lfm-collapse: 100ms;
+  --lfm-expand: 220ms;
+  --lfm-hold: 70ms;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 0.85rem 0.9rem 1rem;
+  color: var(--lfm-ink);
+  background: var(--lfm-bg);
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.lfm *,
+.lfm *::before,
+.lfm *::after {
+  box-sizing: border-box;
+}
+
+.lfm__rel {
+  margin: 0 0 0.55rem;
+  text-align: center;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: var(--lfm-muted);
+}
+
+.lfm.is-active .lfm__rel,
+.lfm.is-tension .lfm__rel,
+.lfm.is-converge .lfm__rel,
+.lfm.is-hold .lfm__rel {
+  color: var(--lfm-link);
+}
+
+.lfm.is-complete .lfm__rel {
+  color: var(--lfm-c);
+}
+
+.lfm__host {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+}
+
+.lfm__stage {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  height: 200px;
+  overflow: visible;
+}
+
+/* —— Entities A / B —— */
+.lfm__ent {
+  position: absolute;
+  top: 28px;
+  width: var(--lfm-ent-w);
+  height: var(--lfm-ent-h);
+  padding: 0.55rem 0.5rem;
+  background: var(--lfm-panel);
+  border: 1px solid var(--lfm-rule);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.lfm__ent--a {
+  left: calc(50% - (var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2));
+  border-color: #3a4f78;
+  box-shadow: inset 0 0 0 1px rgba(91, 141, 239, 0.18);
+}
+
+.lfm__ent--b {
+  left: calc(50% + (var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2));
+  border-color: #6b4a28;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  box-shadow: inset 0 0 0 1px rgba(201, 132, 58, 0.18);
+}
+
+.lfm__ent--c {
+  display: none;
+  left: 50%;
+  top: 18px;
+  width: var(--lfm-c-w);
+  height: var(--lfm-c-h);
+  margin-left: calc(var(--lfm-c-w) / -2);
+  border-color: #5a5280;
+  background: linear-gradient(160deg, #1a1d2a, var(--lfm-panel) 55%);
+  z-index: 5;
+}
+
+.lfm__kicker {
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 10px;
+}
+
+.lfm__ent--a .lfm__kicker {
+  color: var(--lfm-a);
+}
+
+.lfm__ent--b .lfm__kicker {
+  color: var(--lfm-b);
+}
+
+.lfm__ent--c .lfm__kicker {
+  color: var(--lfm-c);
+}
+
+.lfm__meta {
+  margin: 0;
+  color: var(--lfm-muted);
+  letter-spacing: 0.06em;
+  font-size: 9px;
+}
+
+.lfm__badge {
+  margin: 0.35rem 0 0;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 9px;
+  color: var(--lfm-link);
+}
+
+.lfm__bars,
+.lfm__diags,
+.lfm__hybrid {
+  display: block;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 12px;
+  height: 42px;
+}
+
+.lfm__bar {
+  display: block;
+  height: 4px;
+  margin-top: 6px;
+  background: var(--lfm-a);
+  opacity: 0.75;
+}
+
+.lfm__bar:first-child {
+  margin-top: 0;
+  width: 88%;
+}
+
+.lfm__bar:nth-child(2) {
+  width: 70%;
+}
+
+.lfm__bar:nth-child(3) {
+  width: 54%;
+}
+
+.lfm__diag {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: var(--lfm-b);
+  opacity: 0.8;
+  transform-origin: left center;
+}
+
+.lfm__diag:nth-child(1) {
+  top: 6px;
+  transform: rotate(18deg);
+}
+
+.lfm__diag:nth-child(2) {
+  top: 18px;
+  transform: rotate(18deg);
+  width: 78%;
+}
+
+.lfm__diag:nth-child(3) {
+  top: 30px;
+  transform: rotate(18deg);
+  width: 62%;
+}
+
+.lfm__bar--c {
+  background: var(--lfm-a);
+  opacity: 0.85;
+}
+
+.lfm__diag--c {
+  position: absolute;
+  left: 12px;
+  width: 70%;
+  height: 3px;
+  background: var(--lfm-b);
+  opacity: 0.85;
+  transform-origin: left center;
+  transform: rotate(18deg);
+}
+
+.lfm__diag--c:nth-of-type(3) {
+  top: 8px;
+}
+
+.lfm__diag--c:nth-of-type(4) {
+  top: 22px;
+  width: 55%;
+}
+
+.lfm__core {
+  position: absolute;
+  right: 10px;
+  bottom: 4px;
+  width: 14px;
+  height: 14px;
+  background: var(--lfm-link);
+  transform: rotate(45deg);
+  opacity: 0.95;
+}
+
+/* —— Link nodes —— */
+.lfm__node {
+  position: absolute;
+  top: 8px;
+  width: var(--lfm-node);
+  height: var(--lfm-node);
+  border: 1px solid var(--lfm-link);
+  background: transparent;
+  z-index: 3;
+}
+
+.lfm__node--a {
+  right: 8px;
+}
+
+.lfm__node--b {
+  left: 14px;
+}
+
+.lfm.is-linking .lfm__node {
+  background: var(--lfm-link);
+  animation: lfm-node-fill var(--lfm-node-fill) linear both;
+}
+
+/* —— Connection lines —— */
+.lfm__line {
+  position: absolute;
+  top: 41px;
+  height: 1.5px;
+  width: 0;
+  background: var(--lfm-link);
+  transform-origin: left center;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lfm__line--a {
+  left: calc(50% - (var(--lfm-gap) / 2) + (var(--lfm-ent-w) / 2) - 14px);
+}
+
+.lfm__line--b {
+  left: calc(50% + 7px);
+  transform-origin: right center;
+}
+
+.lfm.is-lined .lfm__line--a {
+  opacity: 1;
+  animation: lfm-line-a var(--lfm-line-ms) linear both;
+}
+
+.lfm.is-lined .lfm__line--b {
+  opacity: 1;
+  animation: lfm-line-b var(--lfm-line-ms) linear both;
+}
+
+.lfm.is-converge .lfm__line--a,
+.lfm.is-hold .lfm__line--a,
+.lfm.is-tension .lfm__line--a,
+.lfm.is-active .lfm__line--a {
+  opacity: 1;
+  width: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+}
+
+.lfm.is-converge .lfm__line--b,
+.lfm.is-hold .lfm__line--b,
+.lfm.is-tension .lfm__line--b,
+.lfm.is-active .lfm__line--b {
+  opacity: 1;
+  width: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+  margin-left: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+  transform: translateX(-100%);
+}
+
+.lfm.is-converge .lfm__line--a {
+  animation: lfm-line-retract-a var(--lfm-converge) linear both;
+}
+
+.lfm.is-converge .lfm__line--b {
+  animation: lfm-line-retract-b var(--lfm-converge) linear both;
+}
+
+.lfm.is-expand .lfm__line,
+.lfm.is-complete .lfm__line,
+.lfm.is-collapse .lfm__line {
+  opacity: 0;
+  width: 0;
+}
+
+/* —— Central diamond —— */
+.lfm__diamond {
+  position: absolute;
+  left: 50%;
+  top: 34px;
+  width: 14px;
+  height: 14px;
+  margin: 0 0 0 -7px;
+  opacity: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.lfm__seg {
+  position: absolute;
+  background: var(--lfm-link);
+}
+
+.lfm__seg--n,
+.lfm__seg--s {
+  left: 1px;
+  width: 12px;
+  height: 1.5px;
+}
+
+.lfm__seg--n {
+  top: 0;
+  transform: rotate(45deg);
+  transform-origin: left center;
+}
+
+.lfm__seg--s {
+  bottom: 0;
+  transform: rotate(45deg);
+  transform-origin: right center;
+}
+
+.lfm__seg--e,
+.lfm__seg--w {
+  top: 1px;
+  width: 1.5px;
+  height: 12px;
+}
+
+.lfm__seg--e {
+  right: 0;
+  transform: rotate(45deg);
+  transform-origin: top center;
+}
+
+.lfm__seg--w {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: bottom center;
+}
+
+.lfm.is-diamond .lfm__diamond,
+.lfm.is-active .lfm__diamond,
+.lfm.is-tension .lfm__diamond,
+.lfm.is-converge .lfm__diamond,
+.lfm.is-hold .lfm__diamond {
+  opacity: 1;
+}
+
+.lfm.is-diamond .lfm__seg {
+  animation: lfm-seg-in 80ms ease-out both;
+}
+
+.lfm.is-hold .lfm__diamond {
+  animation: lfm-diamond-grow var(--lfm-hold) linear both;
+}
+
+.lfm.is-expand .lfm__diamond,
+.lfm.is-complete .lfm__diamond,
+.lfm.is-collapse .lfm__diamond {
+  opacity: 0;
+}
+
+/* —— Motion phases —— */
+.lfm.is-tension .lfm__ent--a {
+  animation: lfm-tension-a var(--lfm-tension) ease-in-out both;
+}
+
+.lfm.is-tension .lfm__ent--b {
+  animation: lfm-tension-b var(--lfm-tension) ease-in-out both;
+}
+
+.lfm.is-converge .lfm__ent--a {
+  animation: lfm-converge-a var(--lfm-converge) cubic-bezier(0.4, 0, 0.7, 1) both;
+}
+
+.lfm.is-converge .lfm__ent--b {
+  animation: lfm-converge-b var(--lfm-converge) cubic-bezier(0.4, 0, 0.7, 1) both;
+}
+
+.lfm.is-hold .lfm__ent--a {
+  transform: translateX(calc((var(--lfm-gap) / 2) - 9px - (var(--lfm-ent-w) / 2)))
+    rotate(9deg) scale(0.78);
+}
+
+.lfm.is-hold .lfm__ent--b {
+  transform: translateX(calc((var(--lfm-gap) / -2) + 9px + (var(--lfm-ent-w) / 2)))
+    rotate(-9deg) scale(0.78);
+}
+
+.lfm.is-collapse .lfm__ent--a {
+  left: 50%;
+  margin-left: calc(var(--lfm-ent-w) / -2);
+  transform: rotate(9deg) scale(0.78);
+  animation: lfm-collapse var(--lfm-collapse) ease-in both;
+}
+
+.lfm.is-collapse .lfm__ent--b {
+  left: 50%;
+  margin-left: calc(var(--lfm-ent-w) / -2);
+  transform: rotate(-9deg) scale(0.78);
+  animation: lfm-collapse var(--lfm-collapse) ease-in both;
+}
+
+.lfm.is-expand .lfm__ent--a,
+.lfm.is-expand .lfm__ent--b,
+.lfm.is-complete .lfm__ent--a,
+.lfm.is-complete .lfm__ent--b {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lfm.is-expand .lfm__ent--c,
+.lfm.is-complete .lfm__ent--c,
+.lfm.is-reduced .lfm__ent--c {
+  display: block;
+}
+
+.lfm.is-expand .lfm__ent--c {
+  animation: lfm-expand-c var(--lfm-expand) ease-out both;
+}
+
+.lfm__prov {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  display: none;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--lfm-muted);
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.lfm.is-expand .lfm__prov,
+.lfm.is-complete .lfm__prov,
+.lfm.is-reduced .lfm__prov {
+  display: flex;
+}
+
+.lfm__controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.lfm__btn {
+  appearance: none;
+  border: 1px solid var(--lfm-link);
+  background: transparent;
+  color: var(--lfm-ink);
+  padding: 0.45rem 0.95rem;
+  letter-spacing: 0.12em;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lfm__btn:hover:not(:disabled) {
+  background: rgba(215, 195, 106, 0.1);
+}
+
+.lfm__btn:focus-visible {
+  outline: 2px solid var(--lfm-link);
+  outline-offset: 2px;
+}
+
+.lfm__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.lfm__btn--ghost {
+  border-color: var(--lfm-rule);
+  color: var(--lfm-muted);
+}
+
+.lfm__announce {
+  margin: 0.55rem 0 0;
+  min-height: 1.2em;
+  text-align: center;
+  color: var(--lfm-muted);
+  font-size: 11px;
+}
+
+/* Reduced motion final */
+.lfm.is-reduced .lfm__ent--a,
+.lfm.is-reduced .lfm__ent--b,
+.lfm.is-reduced .lfm__line,
+.lfm.is-reduced .lfm__diamond {
+  display: none;
+}
+
+@keyframes lfm-node-fill {
+  from {
+    background: transparent;
+  }
+  to {
+    background: var(--lfm-link);
+  }
+}
+
+@keyframes lfm-line-a {
+  from {
+    width: 0;
+  }
+  to {
+    width: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+  }
+}
+
+@keyframes lfm-line-b {
+  from {
+    width: 0;
+    margin-left: 0;
+    transform: translateX(0);
+  }
+  to {
+    width: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+    margin-left: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes lfm-line-retract-a {
+  from {
+    width: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+  }
+  to {
+    width: 18px;
+  }
+}
+
+@keyframes lfm-line-retract-b {
+  from {
+    width: calc((var(--lfm-gap) / 2) - (var(--lfm-ent-w) / 2) + 7px);
+  }
+  to {
+    width: 18px;
+  }
+}
+
+@keyframes lfm-seg-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4) rotate(45deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lfm-diamond-grow {
+  from {
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+  }
+  to {
+    width: 34px;
+    height: 34px;
+    margin-left: -17px;
+    top: 24px;
+  }
+}
+
+@keyframes lfm-tension-a {
+  0% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes lfm-tension-b {
+  0% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(-4px);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
+}
+
+@keyframes lfm-converge-a {
+  from {
+    transform: translateX(2px) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translateX(calc((var(--lfm-gap) / 2) - 9px - (var(--lfm-ent-w) / 2)))
+      rotate(9deg) scale(0.78);
+  }
+}
+
+@keyframes lfm-converge-b {
+  from {
+    transform: translateX(-2px) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translateX(calc((var(--lfm-gap) / -2) + 9px + (var(--lfm-ent-w) / 2)))
+      rotate(-9deg) scale(0.78);
+  }
+}
+
+@keyframes lfm-collapse {
+  from {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleX(0.2) scaleY(0.65);
+  }
+}
+
+@keyframes lfm-expand-c {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.85;
+  }
+  65% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lfm__ent,
+  .lfm__line,
+  .lfm__node,
+  .lfm__diamond,
+  .lfm__seg {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .lfm__ent,
+[data-force-reduced-motion='true'] .lfm__line,
+[data-force-reduced-motion='true'] .lfm__node,
+[data-force-reduced-motion='true'] .lfm__diamond,
+[data-force-reduced-motion='true'] .lfm__seg {
+  animation: none !important;
+  transition: none !important;
+}

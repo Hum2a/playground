@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **12 / 244** complete.
+- Progress: **14 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 232 |
+| Done | 14 |
+| Open | 230 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | DB | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| DB-057 | `SPX-1022` | `linked-fusion-merge` | Linked Fusion Merge |
 | DB-105 | `SPX-1070` | `seven-part-prerequisite-collection` | Seven-Part Prerequisite Collection |
 | DB-004 | `SPX-969` | `charge-release` | Charge Release |
 | DB-005 | `SPX-970` | `overcharge-warning` | Overcharge Warning |
@@ -45,6 +46,8 @@
 | DB-220 | `SPX-1185` | `measurement-overload` | Measurement Overload |
 | DB-003 | `SPX-968` | `concentrated-energy-charge` | Concentrated Energy Charge |
 | DB-056 | `SPX-1021` | `synchronous-fusion-merge` | Synchronous Fusion Merge |
+| DB-122 | `SPX-1087` | `impact-freeze-frame` | Impact Freeze Frame |
+| DB-095 | `SPX-1060` | `sector-radar-search` | Sector Radar Search |
 
 ## Core first-wave
 
@@ -60,15 +63,15 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — transformation
 - [x] **DB-027** · `SPX-992` · **Ultra Instinct Activation** — transformation
 - [x] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — fusion
-- [ ] **DB-057** · `SPX-1022` · **Potara Fusion** — fusion
+- [x] **DB-057** · `SPX-1022` · **Potara Fusion** — fusion
 - [x] **DB-046** · `SPX-1011` · **Instant Transmission Navigation** — instant-transmission-navigation
 - [ ] **DB-070** · `SPX-1035` · **Beam Clash** — energy-attacks-actions
 - [ ] **DB-071** · `SPX-1036` · **Beam Clash Resolution** — energy-attacks-actions
-- [ ] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — impact-combat-feedback
+- [x] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — impact-combat-feedback
 - [ ] **DB-123** · `SPX-1088` · **Punch Shockwave** — impact-combat-feedback
 - [ ] **DB-083** · `SPX-1048` · **Spirit Bomb Contribution** — spirit-bomb-collective-contribution
 - [ ] **DB-231** · `SPX-1196` · **Spirit Bomb CI Pipeline** — data-developer-tool-specimens
-- [ ] **DB-095** · `SPX-1060` · **Dragon Radar Search** — dragon-radar-search
+- [x] **DB-095** · `SPX-1060` · **Dragon Radar Search** — dragon-radar-search
 - [x] **DB-105** · `SPX-1070` · **Seven-Item Collection** — dragon-balls-collection-completion
 - [ ] **DB-106** · `SPX-1071` · **Final Item Acquired** — dragon-balls-collection-completion
 - [ ] **DB-184** · `SPX-1149` · **Capsule Collapse** — capsule-corp-compact-storage
@@ -150,7 +153,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 ## Fusion
 
 - [x] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — two entities mirror one another, approach and combine into a new identity.
-- [ ] **DB-057** · `SPX-1022` · **Potara Fusion** — two objects become linked by a shared constraint, then accelerate into a central merge.
+- [x] **DB-057** · `SPX-1022` · **Potara Fusion** — two objects become linked by a shared constraint, then accelerate into a central merge.
 - [ ] **DB-058** · `SPX-1023` · **Data Fusion** — two records enter from opposite sides and produce one enriched record.
 - [ ] **DB-059** · `SPX-1024` · **Branch Merge** — two development branches visually converge into one canonical branch.
 - [ ] **DB-060** · `SPX-1025` · **Account Merge** — two identity records combine while preserving provenance.
@@ -197,7 +200,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Dragon Radar / Search
 
-- [ ] **DB-095** · `SPX-1060` · **Dragon Radar Search** — periodic radar sweeps reveal fixed targets across a compact grid.
+- [x] **DB-095** · `SPX-1060` · **Dragon Radar Search** — periodic radar sweeps reveal fixed targets across a compact grid.
 - [ ] **DB-096** · `SPX-1061` · **Nearest Target Detection** — several results exist but scanner identifies the closest.
 - [ ] **DB-097** · `SPX-1062` · **Seven-Target Collection Radar** — discovered objectives progressively populate a fixed seven-item collection.
 - [ ] **DB-098** · `SPX-1063` · **Target Distance Pulse** — marker frequency increases as user approaches target.
@@ -233,7 +236,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Impact & Combat Feedback
 
-- [ ] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — interaction pauses for ~80ms at exact contact before consequence explodes outward.
+- [x] **DB-122** · `SPX-1087` · **Impact Freeze Frame** — interaction pauses for ~80ms at exact contact before consequence explodes outward.
 - [ ] **DB-123** · `SPX-1088` · **Punch Shockwave** — contact creates expanding concentric distortion rings.
 - [ ] **DB-124** · `SPX-1089` · **Heavy Hit Screen Displacement** — target and environment separate momentarily under impact.
 - [ ] **DB-125** · `SPX-1090` · **Knockback** — target travels away from the source proportional to result magnitude.

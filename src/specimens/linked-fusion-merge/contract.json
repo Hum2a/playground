@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/linked-fusion-merge.schema.json",
+  "title": "LinkedFusionMerge",
+  "description": "External shared link pulls Profile A and B into Profile C. Dragon Ball DB-057 / SPX-1022. Distinct from Synchronous Fusion Merge.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "linked-fusion-merge" },
+    "intent": {
+      "type": "string",
+      "const": "Two unlinked profiles gain a shared midpoint relationship; the link tensions and forces convergence into Profile C with A+B provenance — relationship-driven, not self-synchronised."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileA",
+        "profileB",
+        "profileC",
+        "attrsA",
+        "attrsB",
+        "attrsC",
+        "unlinked",
+        "linkActive",
+        "linkedMerge",
+        "provenance",
+        "announceFinal"
+      ],
+      "properties": {
+        "profileA": { "type": "string", "const": "PROFILE // A" },
+        "profileB": { "type": "string", "const": "PROFILE // B" },
+        "profileC": { "type": "string", "const": "PROFILE // C" },
+        "attrsA": { "type": "string", "const": "12 ATTRIBUTES" },
+        "attrsB": { "type": "string", "const": "8 ATTRIBUTES" },
+        "attrsC": { "type": "string", "const": "20 ATTRIBUTES" },
+        "unlinked": { "type": "string", "const": "UNLINKED" },
+        "linkActive": { "type": "string", "const": "LINK ACTIVE" },
+        "linkedMerge": { "type": "string", "const": "LINKED MERGE" },
+        "provenance": { "type": "string", "const": "A + B" },
+        "announceFinal": {
+          "type": "string",
+          "const": "Profiles A and B merged into Profile C."
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["#0c1016", "#151b24", "#e6ebf2", "#5b8def", "#d7c36a"]
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gapPx",
+        "entitySize",
+        "nodeSize",
+        "diamondSize",
+        "diamondHoldSize",
+        "finalSize",
+        "mergeGapPx"
+      ],
+      "properties": {
+        "gapPx": { "type": "integer", "const": 220 },
+        "entitySize": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["w", "h"],
+          "properties": {
+            "w": { "type": "integer", "const": 100 },
+            "h": { "type": "integer", "const": 120 }
+          }
+        },
+        "nodeSize": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["w", "h"],
+          "properties": {
+            "w": { "type": "integer", "const": 10 },
+            "h": { "type": "integer", "const": 10 }
+          }
+        },
+        "diamondSize": { "type": "integer", "const": 14 },
+        "diamondHoldSize": { "type": "integer", "const": 34 },
+        "finalSize": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["w", "h"],
+          "properties": {
+            "w": { "type": "integer", "const": 126 },
+            "h": { "type": "integer", "const": 138 }
+          }
+        },
+        "mergeGapPx": { "type": "integer", "const": 18 },
+        "aStructure": { "type": "string", "const": "horizontal-bars" },
+        "bStructure": { "type": "string", "const": "diagonal-strokes" },
+        "cInheritsBoth": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeFillMs",
+        "lineMs",
+        "diamondFormMs",
+        "tensionMs",
+        "convergeMs",
+        "diamondHoldMs",
+        "collapseMs",
+        "expandMs",
+        "tensionOffsetPx",
+        "convergeRotationDeg",
+        "convergeScale",
+        "collapseScale",
+        "expandScale"
+      ],
+      "properties": {
+        "nodeFillMs": { "type": "integer", "const": 90 },
+        "lineMs": { "type": "integer", "const": 180 },
+        "diamondFormMs": { "type": "integer", "const": 80 },
+        "tensionMs": { "type": "integer", "const": 120 },
+        "convergeMs": { "type": "integer", "const": 280 },
+        "diamondHoldMs": { "type": "integer", "const": 70 },
+        "collapseMs": { "type": "integer", "const": 100 },
+        "expandMs": { "type": "integer", "const": 220 },
+        "tensionOffsetPx": { "type": "array", "const": [4, -4, 2] },
+        "convergeRotationDeg": { "type": "array", "const": [9, -9] },
+        "convergeScale": { "type": "array", "const": [1, 0.78] },
+        "collapseScale": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y"],
+          "properties": {
+            "x": { "type": "array", "const": [1, 0.2] },
+            "y": { "type": "array", "const": [1, 0.65] }
+          }
+        },
+        "expandScale": { "type": "array", "const": [0.55, 1.08, 1] }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stageAriaHidden", "announceMerged"],
+      "properties": {
+        "stageAriaHidden": { "type": "boolean", "const": true },
+        "announceMerged": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion='true']"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate Profile C with A+B provenance."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "linking",
+        "lined",
+        "diamond",
+        "active",
+        "tension",
+        "converge",
+        "hold",
+        "collapse",
+        "expand",
+        "complete"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "lfm" },
+        "linking": { "type": "string", "const": "is-linking" },
+        "lined": { "type": "string", "const": "is-lined" },
+        "diamond": { "type": "string", "const": "is-diamond" },
+        "active": { "type": "string", "const": "is-active" },
+        "tension": { "type": "string", "const": "is-tension" },
+        "converge": { "type": "string", "const": "is-converge" },
+        "hold": { "type": "string", "const": "is-hold" },
+        "collapse": { "type": "string", "const": "is-collapse" },
+        "expand": { "type": "string", "const": "is-expand" },
+        "complete": { "type": "string", "const": "is-complete" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset", "distinctFromSyncFusion"],
+      "properties": {
+        "run": { "type": "string", "const": "runLinkedFusion" },
+        "reset": { "type": "string", "const": "resetLinkedFusion" },
+        "distinctFromSyncFusion": {
+          "type": "boolean",
+          "const": true,
+          "description": "Merge is driven by external shared link, not mirrored self-synchronisation."
+        }
+      }
+    }
+  }
+}
