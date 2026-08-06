@@ -42,6 +42,7 @@ import { decisionShowdown } from './decision-showdown/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
+import { erasureDelete } from './erasure-delete/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { enemyScanReveal } from './enemy-scan-reveal/entry'
@@ -217,6 +218,7 @@ export const specimens: Specimen[] = [
   decisionShowdown,
   delayedDamageBar,
   pixelHpDrain,
+  erasureDelete,
   deletionGuillotine,
   discoveryTearOpen,
   enemyScanReveal,
