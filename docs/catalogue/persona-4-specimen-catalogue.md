@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), or open P4 rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3110+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **10 / 191** complete.
+- Progress: **11 / 191** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 10 |
-| Open | 181 |
+| Done | 11 |
+| Open | 180 |
 
 ## Visual grammar
 
@@ -44,6 +44,7 @@
 | P4-052 | `SPX-2970` | `arcana-rank-up` | Arcana Rank-Up |
 | P4-110 | `SPX-3028` | `keep-out-tape-marquee` | KEEP OUT Tape Marquee |
 | P4-069 | `SPX-2987` | `persona-fusion-combine` | Persona Fusion Combine |
+| P4-031 | `SPX-2949` | `case-breakthrough` | Case Breakthrough |
 
 ## Core first-wave
 
@@ -59,7 +60,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 - [x] **P4-052** · `SPX-2970` · **Arcana Rank-Up** — social-links-bonds
 - [x] **P4-110** · `SPX-3028` · **KEEP OUT Tape Marquee** — yellow-black-graphic-language
 - [x] **P4-069** · `SPX-2987` · **Persona Fusion Combine** — persona-fusion-compendium
-- [ ] **P4-031** · `SPX-2949` · **Case Breakthrough** — investigation-evidence
+- [x] **P4-031** · `SPX-2949` · **Case Breakthrough** — investigation-evidence
 - [ ] **P4-034** · `SPX-2952` · **Suspect Card Reveal** — investigation-evidence
 - [ ] **P4-035** · `SPX-2953` · **Evidence Chain Advance** — investigation-evidence
 - [ ] **P4-036** · `SPX-2954` · **Deduction Lock-In** — investigation-evidence
@@ -142,7 +143,7 @@ Curated implementation priority (Recommended Build Waves A–E; Wave B #20 is **
 
 - [x] **P4-029** · `SPX-2947` · **Evidence Connection Draw** — Selecting two clues draws a physical connection and creates a relationship state.
 - [x] **P4-030** · `SPX-2948` · **Contradiction Found** — Two evidence cards collide and highlight the exact values that conflict.
-- [ ] **P4-031** · `SPX-2949` · **Case Breakthrough** — A chaotic evidence board reorganises into a solved relationship graph.
+- [x] **P4-031** · `SPX-2949` · **Case Breakthrough** — A chaotic evidence board reorganises into a solved relationship graph.
 - [ ] **P4-032** · `SPX-2950` · **Evidence Pin Drop** — A clue card is pinned into an investigation board with a finite impact.
 - [ ] **P4-033** · `SPX-2951` · **Clue Acquired Stamp** — New evidence receives a bold acquisition treatment and enters the case file.
 - [ ] **P4-034** · `SPX-2952` · **Suspect Card Reveal** — A partially redacted identity card opens as confidence rises.
