@@ -54,6 +54,7 @@ import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
+import { scannerSearch } from './scanner-search/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
@@ -171,6 +172,7 @@ export const specimens: Specimen[] = [
   tornEdgeDrawer,
   velvetDoorTransition,
   waterlinePageWipe,
+  scannerSearch,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

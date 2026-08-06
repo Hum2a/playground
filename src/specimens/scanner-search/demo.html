@@ -1,0 +1,70 @@
+<div class="scanner-search" data-scanner-search>
+  <form class="scanner-search__form" data-scanner-form>
+    <label class="scanner-search__label" for="scanner-search-q">Query</label>
+    <div class="scanner-search__field">
+      <input
+        id="scanner-search-q"
+        class="scanner-search__input"
+        type="search"
+        name="q"
+        value="glass"
+        autocomplete="off"
+        spellcheck="false"
+        data-scanner-input
+      />
+      <button type="submit" class="scanner-search__btn" data-scanner-search-btn>
+        SEARCH
+      </button>
+      <button type="button" class="scanner-search__btn scanner-search__btn--ghost" data-scanner-clear>
+        CLEAR
+      </button>
+    </div>
+  </form>
+
+  <div class="scanner-search__summary" data-scanner-summary aria-hidden="true"></div>
+  <div class="scanner-search__sr" data-scanner-live aria-live="polite"></div>
+
+  <div class="scanner-search__results" data-scanner-results>
+    <div class="scanner-search__scanline" aria-hidden="true" data-scanner-line>
+      <span class="scanner-search__head"></span>
+    </div>
+
+    <ul class="scanner-search__list" data-scanner-list role="list">
+      <li class="scanner-search__row" data-label="Waterline Transition">
+        <span class="scanner-search__brackets" aria-hidden="true"></span>
+        <span class="scanner-search__name">Waterline Transition</span>
+        <span class="scanner-search__status" aria-hidden="true">MATCH</span>
+      </li>
+      <li class="scanner-search__row" data-label="Glass Fracture">
+        <span class="scanner-search__brackets" aria-hidden="true"></span>
+        <span class="scanner-search__name">Glass Fracture</span>
+        <span class="scanner-search__status" aria-hidden="true">MATCH</span>
+      </li>
+      <li class="scanner-search__row" data-label="Moon Phase Progress">
+        <span class="scanner-search__brackets" aria-hidden="true"></span>
+        <span class="scanner-search__name">Moon Phase Progress</span>
+        <span class="scanner-search__status" aria-hidden="true">MATCH</span>
+      </li>
+      <li class="scanner-search__row" data-label="Glass Shard Transition">
+        <span class="scanner-search__brackets" aria-hidden="true"></span>
+        <span class="scanner-search__name">Glass Shard Transition</span>
+        <span class="scanner-search__status" aria-hidden="true">MATCH</span>
+      </li>
+      <li class="scanner-search__row" data-label="Butterfly Entry">
+        <span class="scanner-search__brackets" aria-hidden="true"></span>
+        <span class="scanner-search__name">Butterfly Entry</span>
+        <span class="scanner-search__status" aria-hidden="true">MATCH</span>
+      </li>
+      <li class="scanner-search__row" data-label="Tactical Target Lock">
+        <span class="scanner-search__brackets" aria-hidden="true"></span>
+        <span class="scanner-search__name">Tactical Target Lock</span>
+        <span class="scanner-search__status" aria-hidden="true">MATCH</span>
+      </li>
+    </ul>
+
+    <p class="scanner-search__empty" data-scanner-empty hidden>
+      <span class="scanner-search__empty-line" aria-hidden="true"></span>
+      NO MATCH
+    </p>
+  </div>
+</div>

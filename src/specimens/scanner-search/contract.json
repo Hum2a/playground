@@ -1,0 +1,66 @@
+{
+  "name": "scanner-search",
+  "intent": "Tactical scanline searches a fixed local dataset: rows classify as the line reaches them, matches gain analysis treatment, non-matches subdue then collapse after the scan.",
+  "colours": {
+    "nearBlack": "#020b15",
+    "deepBlue": "#071f38",
+    "blue": "#116b9a",
+    "bright": "#42b9df",
+    "pale": "#d7f6ff",
+    "muted": "#667987"
+  },
+  "dataset": [
+    "Waterline Transition",
+    "Glass Fracture",
+    "Moon Phase Progress",
+    "Glass Shard Transition",
+    "Butterfly Entry",
+    "Tactical Target Lock"
+  ],
+  "defaultQuery": "glass",
+  "matchRule": "case-insensitive substring",
+  "expectedMatches": {
+    "glass": ["Glass Fracture", "Glass Shard Transition"],
+    "moon": ["Moon Phase Progress"],
+    "target": ["Tactical Target Lock"],
+    "xyz": [],
+    "": []
+  },
+  "geometry": {
+    "scanlineHeightPx": 2,
+    "scanlineWidthPercent": 108,
+    "scanlineLeftPercent": -4,
+    "scannerHeadPx": [12, 12],
+    "matchTranslateXPx": 4,
+    "missTranslateXPx": -2,
+    "missOpacity": 0.32
+  },
+  "timing": {
+    "scanMs": 650,
+    "holdAfterScanMs": 80,
+    "collapseMs": 180,
+    "classifyWhen": "scanline reaches row centre",
+    "easing": "cubic-bezier(0.4, 0, 0.2, 1)"
+  },
+  "api": {
+    "search": "runScannerSearch(query?)",
+    "clear": "runScannerClear()",
+    "busyGuard": true,
+    "locksQueryDuringScan": true,
+    "noNetwork": true,
+    "noKeystrokeSearch": true
+  },
+  "a11y": {
+    "realLabelInputButton": true,
+    "resultSummaryVisual": "N MATCHES / NO MATCH panel",
+    "resultSummarySpoken": "N results for query.",
+    "noPerRowAnnouncements": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show filtered rows and result count; no scanline or row travel"
+  }
+}
