@@ -21,4 +21,8 @@ Specimen CSS is never edited to fit the site. It stays verbatim and portable —
 
 Every specimen needs required `facets` (kind / tech / scope / intensity) plus optional free `tags`. See `.cursor/rules/35_taxonomy.mdc` and `src/specimens/taxonomy.ts`.
 
+## New specimen commits
+
+After a new specimen is registered and verified, agents auto-commit it (`Add SPX-NNN …`) without waiting to be asked. See `.cursor/rules/36_specimen-commits.mdc`.
+
 See `docs/design-spec.md` for the full product contract.

@@ -34,3 +34,4 @@ Keep `demo.css` and `demo.style.txt` in sync (`npm run spec:check` asserts this)
 - `deps: 'none'` means plain HTML+CSS
 - Overlays need `preview.scaffold` with `{{specimen}}` and a relative + overflow-clipped host
 - Acceptance criteria must be observable, not aspirational
+- After a new specimen is verified and registered, auto-commit per `36_specimen-commits`
