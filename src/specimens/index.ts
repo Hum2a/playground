@@ -324,6 +324,7 @@ import { trainingSimulationStart } from './training-simulation-start/entry'
 import { transformationMorph } from './transformation-morph/entry'
 import { translucentMaterialLift } from './translucent-material-lift/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
+import { tvScreenDiveTransition } from './tv-screen-dive-transition/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { universalClipboardTransfer } from './universal-clipboard-transfer/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
@@ -716,6 +717,7 @@ export const specimens: Specimen[] = [
   transformationMorph,
   translucentMaterialLift,
   truthShotNotification,
+  tvScreenDiveTransition,
   ultraStateOptimisation,
   universalClipboardTransfer,
   velvetDoorTransition,

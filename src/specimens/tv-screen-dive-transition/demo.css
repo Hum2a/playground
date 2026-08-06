@@ -1,0 +1,197 @@
+/* SPX-2931 TV Screen Dive Transition — portable contract. */
+
+.tsd {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.tsd__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tsd__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 340px);
+  min-height: 200px;
+  border: 3px solid var(--yellow);
+  background: var(--paper);
+  perspective: 520px;
+}
+
+.tsd__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1rem;
+  text-align: center;
+  transform-origin: center center;
+}
+
+.tsd__layer--from {
+  z-index: 2;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.tsd__layer--to {
+  z-index: 1;
+  background: var(--ink);
+  color: var(--paper);
+  opacity: 0;
+  transform: scale(1.4);
+}
+
+.tsd[data-phase='dive'] .tsd__layer--from {
+  animation: tsd-dive-in 680ms cubic-bezier(0.45, 0, 0.75, 1) forwards;
+}
+
+.tsd[data-phase='emerge'] .tsd__layer--from,
+.tsd[data-phase='done'] .tsd__layer--from {
+  opacity: 0;
+  transform: scale(0.15) rotateX(18deg);
+  pointer-events: none;
+}
+
+@keyframes tsd-dive-in {
+  0% { opacity: 1; transform: scale(1) rotateX(0deg); }
+  70% { opacity: 0.4; transform: scale(0.35) rotateX(12deg); }
+  100% { opacity: 0; transform: scale(0.15) rotateX(18deg); }
+}
+
+.tsd[data-phase='emerge'] .tsd__layer--to,
+.tsd[data-phase='done'] .tsd__layer--to {
+  animation: tsd-emerge 520ms cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+@keyframes tsd-emerge {
+  from { opacity: 0; transform: scale(1.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.tsd[data-phase='done'] .tsd__layer--to {
+  animation: none;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tsd__aperture {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 0 0 var(--yellow);
+}
+
+.tsd[data-phase='dive'] .tsd__aperture {
+  animation: tsd-aperture 680ms ease-in forwards;
+}
+
+@keyframes tsd-aperture {
+  0% { opacity: 0; box-shadow: inset 0 0 0 0 var(--yellow); }
+  40% { opacity: 1; box-shadow: inset 0 0 0 4px var(--yellow); }
+  100% { opacity: 0; box-shadow: inset 0 0 80px 40px var(--ink); }
+}
+
+.tsd__eyebrow {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tsd__layer--to .tsd__eyebrow {
+  color: var(--yellow);
+}
+
+.tsd__label {
+  margin: 0;
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tsd__hint {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tsd__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tsd__btn {
+  box-sizing: border-box;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tsd__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.tsd__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tsd__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tsd__layer--from,
+  .tsd__layer--to,
+  .tsd__aperture {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .tsd__layer--from,
+[data-force-reduced-motion='true'] .tsd__layer--to,
+[data-force-reduced-motion='true'] .tsd__aperture {
+  animation: none !important;
+}

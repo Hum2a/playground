@@ -1,0 +1,18 @@
+{
+  "name": "tv-screen-dive-transition",
+  "intent": "UI dives into screen aperture; TV-world destination emerges.",
+  "catalogue": { "p4": "P4-013", "ref": "SPX-2931" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "diveMs": 680, "emergeMs": 520 },
+  "api": {
+    "run": "runTvScreenDive()",
+    "reset": "resetTvScreenDive()",
+    "replay": "replayTvScreenDive()"
+  },
+  "reducedMotion": { "behaviour": "Show destination layer immediately" }
+}
