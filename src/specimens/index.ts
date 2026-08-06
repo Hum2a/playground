@@ -129,6 +129,7 @@ import { heroAssignmentTransfer } from './hero-assignment-transfer/entry'
 import { heroNameSlam } from './hero-name-slam/entry'
 import { highSpeedDashNavigation } from './high-speed-dash-navigation/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
+import { holdToMaximumButton } from './hold-to-maximum-button/entry'
 import { homeSwipeUp } from './home-swipe-up/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { iceWipeTransition } from './ice-wipe-transition/entry'
@@ -465,6 +466,7 @@ export const specimens: Specimen[] = [
   heroNameSlam,
   highSpeedDashNavigation,
   holdToChargeButton,
+  holdToMaximumButton,
   homeSwipeUp,
   hoverCutout,
   iceWipeTransition,

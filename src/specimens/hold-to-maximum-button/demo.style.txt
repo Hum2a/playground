@@ -1,0 +1,150 @@
+/* SPX-2267 Hold-to-Maximum Button — portable contract. */
+
+.htm {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --circ: 326.73;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.htm *,
+.htm *::before,
+.htm *::after {
+  box-sizing: border-box;
+}
+
+.htm__wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.htm__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.htm__ring-track {
+  fill: none;
+  stroke: rgb(244 247 250 / 0.2);
+  stroke-width: 6;
+}
+
+.htm__ring-fill {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 6;
+  stroke-linecap: square;
+  stroke-dasharray: var(--circ);
+  stroke-dashoffset: var(--circ);
+  transition: stroke-dashoffset 80ms linear, stroke 200ms ease;
+}
+
+.htm[data-fill='100'] .htm__ring-fill,
+.htm[data-phase='done'] .htm__ring-fill {
+  stroke: var(--accent);
+}
+
+.htm__output {
+  position: absolute;
+  inset: 22px;
+  margin: 0;
+  padding: 0;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  clip-path: polygon(6% 0, 100% 8%, 94% 100%, 0 92%);
+}
+
+.htm__output:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.htm[data-phase='charging'] .htm__output {
+  border-color: var(--primary);
+}
+
+.htm[data-phase='done'] .htm__output {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.htm__pct {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.htm__hint {
+  margin: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: rgb(244 247 250 / 0.65);
+}
+
+.htm__btn {
+  margin: 0;
+  padding: 0.45rem 0.9rem;
+  border: 3px solid var(--primary);
+  background: var(--ink);
+  color: var(--primary);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+}
+
+.htm__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.htm__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.htm__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htm__ring-fill {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .htm__ring-fill {
+  transition: none;
+}

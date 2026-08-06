@@ -1,0 +1,12 @@
+{
+  "name": "hold-to-maximum-button",
+  "ref": "SPX-2267",
+  "catalogue": { "mha": "MHA-293" },
+  "holdMs": 1200,
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}
