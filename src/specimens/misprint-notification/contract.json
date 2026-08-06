@@ -1,0 +1,106 @@
+{
+  "name": "misprint-notification",
+  "intent": "Notification whose entrance is deliberately misregistered print layers snapping into alignment; settle is still; dismiss separates layers without opacity-only fade.",
+  "colours": {
+    "black": "#090909",
+    "paper": "#f2eee3",
+    "red": "#d71920",
+    "cyan": "#19b7c6"
+  },
+  "copy": {
+    "trigger": "SEND NOTIFICATION",
+    "eyebrow": "NEW MESSAGE",
+    "body": "Your export is ready.",
+    "meta": "14:32",
+    "dismiss": "Dismiss"
+  },
+  "geometry": {
+    "width": "min(86%, 360px)",
+    "borderRadius": 0,
+    "finalRotationDeg": -1,
+    "clipPath": "polygon(0% 3%, 4% 0%, 97% 0%, 100% 4%, 100% 96%, 97% 100%, 3% 100%, 0% 97%)"
+  },
+  "layers": [
+    {
+      "id": "black",
+      "className": "misprint__layer--black",
+      "role": "decorative",
+      "initial": { "translate": [-8, -10], "rotateDeg": -1 },
+      "overshoot": { "translate": [7, 8] },
+      "final": { "translate": [5, 6], "rotateDeg": 0 },
+      "exit": { "translate": [-28, -22], "rotateDeg": -4 }
+    },
+    {
+      "id": "red",
+      "className": "misprint__layer--red",
+      "role": "decorative",
+      "initial": { "translate": [-18, 8], "rotateDeg": -3 },
+      "overshoot": { "translate": [4, 0] },
+      "final": { "translate": [2, 0], "rotateDeg": 0 },
+      "exit": { "translate": [-32, 18], "rotateDeg": -6 }
+    },
+    {
+      "id": "cyan",
+      "className": "misprint__layer--cyan",
+      "role": "decorative",
+      "initial": { "translate": [15, -6], "rotateDeg": 2 },
+      "overshoot": { "translate": [-3, 0] },
+      "final": { "translate": [-1, 1], "rotateDeg": 0 },
+      "exit": { "translate": [30, -16], "rotateDeg": 5 }
+    },
+    {
+      "id": "paper",
+      "className": "misprint__layer--paper",
+      "role": "semantic",
+      "initial": { "translate": [10, 14], "rotateDeg": 4 },
+      "overshoot": { "translate": [-2, -2] },
+      "final": { "translate": [0, 0], "rotateDeg": 0 },
+      "exit": { "translate": [22, 28], "rotateDeg": 3 }
+    }
+  ],
+  "timing": {
+    "easingEnter": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "easingExit": "cubic-bezier(0.55, 0, 0.45, 1)",
+    "enterMs": 460,
+    "approachEndMs": 180,
+    "recoilEndMs": 320,
+    "lockEndMs": 460,
+    "exitMs": 260,
+    "keyframePercents": { "overshoot": 39.1, "recoil": 69.6, "lock": 100 }
+  },
+  "registrationMarks": {
+    "count": 2,
+    "spinDegDuringAlign": 15,
+    "positions": ["top-left", "bottom-right"]
+  },
+  "api": {
+    "show": "showMisprint()",
+    "dismiss": "dismissMisprint()",
+    "replay": "replayMisprint()",
+    "busyGuard": true,
+    "noLoopAfterSettle": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "semanticRole": "status",
+    "ariaLive": "polite",
+    "decorativeLayersAriaHidden": true,
+    "singleSemanticNotification": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show final registered notification; dismiss instantly with no layer separation"
+  },
+  "constraints": {
+    "noRoundedCorners": true,
+    "noOpacityOnlyDismiss": true,
+    "noLoopingGlitch": true,
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noFontFace": true,
+    "replayDeterministic": true
+  }
+}

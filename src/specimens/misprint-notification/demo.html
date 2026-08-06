@@ -1,0 +1,31 @@
+<div class="misprint-demo" data-misprint-demo>
+  <button type="button" class="misprint-demo__trigger" data-misprint-send>
+    SEND NOTIFICATION
+  </button>
+
+  <div class="misprint" data-misprint hidden>
+    <div class="misprint__stack" aria-hidden="true">
+      <div class="misprint__layer misprint__layer--black"></div>
+      <div class="misprint__layer misprint__layer--red"></div>
+      <div class="misprint__layer misprint__layer--cyan"></div>
+    </div>
+
+    <div
+      class="misprint__layer misprint__layer--paper"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      data-misprint-card
+    >
+      <span class="misprint__mark misprint__mark--tl" aria-hidden="true"></span>
+      <span class="misprint__mark misprint__mark--br" aria-hidden="true"></span>
+      <p class="misprint__eyebrow">NEW MESSAGE</p>
+      <p class="misprint__body">Your export is ready.</p>
+      <p class="misprint__meta">14:32</p>
+    </div>
+
+    <button type="button" class="misprint__dismiss" data-misprint-dismiss>
+      Dismiss
+    </button>
+  </div>
+</div>

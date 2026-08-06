@@ -1,0 +1,425 @@
+/* SPX-016 Misprint Notification — portable contract. Do not restyle to host tokens. */
+
+.misprint-demo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  background: #1a1a1a;
+  color: #f2eee3;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.misprint-demo__trigger {
+  appearance: none;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0.55rem 0.9rem;
+  border: 2px solid #f2eee3;
+  border-radius: 0;
+  background: transparent;
+  color: #f2eee3;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.misprint-demo__trigger:focus-visible {
+  outline: 2px solid #d71920;
+  outline-offset: 3px;
+}
+
+.misprint-demo__trigger:hover {
+  background: #f2eee3;
+  color: #090909;
+}
+
+/* —— Notification —— */
+.misprint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: min(86%, 360px);
+  transform: translate(-50%, -50%) rotate(-1deg);
+  pointer-events: none;
+}
+
+.misprint[hidden] {
+  display: none;
+}
+
+.misprint--settled,
+.misprint--enter,
+.misprint--exit,
+.misprint--reduced {
+  pointer-events: auto;
+}
+
+.misprint__stack {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.misprint__layer {
+  box-sizing: border-box;
+  border-radius: 0;
+  clip-path: polygon(
+    0% 3%,
+    4% 0%,
+    97% 0%,
+    100% 4%,
+    100% 96%,
+    97% 100%,
+    3% 100%,
+    0% 97%
+  );
+}
+
+.misprint__layer--black,
+.misprint__layer--red,
+.misprint__layer--cyan {
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+}
+
+.misprint__layer--black {
+  z-index: 1;
+  background: #090909;
+  transform: translate(-8px, -10px) rotate(-1deg);
+}
+
+.misprint__layer--red {
+  z-index: 2;
+  background: #d71920;
+  transform: translate(-18px, 8px) rotate(-3deg);
+  mix-blend-mode: multiply;
+  opacity: 0.92;
+}
+
+.misprint__layer--cyan {
+  z-index: 3;
+  background: #19b7c6;
+  transform: translate(15px, -6px) rotate(2deg);
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+}
+
+.misprint__layer--paper {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem 0.75rem;
+  background: #f2eee3;
+  color: #090909;
+  transform: translate(10px, 14px) rotate(4deg);
+  box-shadow: none;
+}
+
+.misprint__eyebrow {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d71920;
+}
+
+.misprint__body {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.misprint__meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgb(9 9 9 / 0.55);
+}
+
+.misprint__dismiss {
+  appearance: none;
+  position: absolute;
+  right: 0;
+  bottom: -2.1rem;
+  z-index: 5;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 1.5px solid #f2eee3;
+  border-radius: 0;
+  background: transparent;
+  color: #f2eee3;
+  font: inherit;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.misprint__dismiss:focus-visible {
+  outline: 2px solid #d71920;
+  outline-offset: 2px;
+}
+
+.misprint__dismiss:hover {
+  background: #f2eee3;
+  color: #090909;
+}
+
+/* Registration marks */
+.misprint__mark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+}
+
+.misprint__mark::before,
+.misprint__mark::after {
+  content: '';
+  position: absolute;
+  background: #090909;
+}
+
+.misprint__mark::before {
+  left: 4px;
+  top: 0;
+  width: 2px;
+  height: 10px;
+}
+
+.misprint__mark::after {
+  left: 0;
+  top: 4px;
+  width: 10px;
+  height: 2px;
+}
+
+.misprint__mark--tl {
+  top: 6px;
+  left: 6px;
+}
+
+.misprint__mark--br {
+  right: 6px;
+  bottom: 6px;
+}
+
+/* —— Enter: 460ms misregister → overshoot → recoil → lock —— */
+.misprint--enter .misprint__layer--black {
+  animation: misprint-in-black 460ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.misprint--enter .misprint__layer--red {
+  animation: misprint-in-red 460ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.misprint--enter .misprint__layer--cyan {
+  animation: misprint-in-cyan 460ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.misprint--enter .misprint__layer--paper {
+  animation: misprint-in-paper 460ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.misprint--enter .misprint__mark {
+  animation: misprint-mark-spin 460ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes misprint-in-black {
+  0% {
+    transform: translate(-8px, -10px) rotate(-1deg);
+  }
+  39.1% {
+    transform: translate(7px, 8px) rotate(0deg);
+  }
+  69.6% {
+    transform: translate(3px, 4px) rotate(0deg);
+  }
+  100% {
+    transform: translate(5px, 6px) rotate(0deg);
+  }
+}
+
+@keyframes misprint-in-red {
+  0% {
+    transform: translate(-18px, 8px) rotate(-3deg);
+  }
+  39.1% {
+    transform: translate(4px, 0) rotate(0deg);
+  }
+  69.6% {
+    transform: translate(0, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(2px, 0) rotate(0deg);
+  }
+}
+
+@keyframes misprint-in-cyan {
+  0% {
+    transform: translate(15px, -6px) rotate(2deg);
+  }
+  39.1% {
+    transform: translate(-3px, 0) rotate(0deg);
+  }
+  69.6% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+}
+
+@keyframes misprint-in-paper {
+  0% {
+    transform: translate(10px, 14px) rotate(4deg);
+  }
+  39.1% {
+    transform: translate(-2px, -2px) rotate(0deg);
+  }
+  69.6% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes misprint-mark-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  39.1% {
+    transform: rotate(15deg);
+  }
+  69.6% {
+    transform: rotate(-4deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* —— Settled: locked registration, no loop —— */
+.misprint--settled .misprint__layer--black,
+.misprint--reduced .misprint__layer--black {
+  transform: translate(5px, 6px) rotate(0deg);
+}
+
+.misprint--settled .misprint__layer--red,
+.misprint--reduced .misprint__layer--red {
+  transform: translate(2px, 0) rotate(0deg);
+}
+
+.misprint--settled .misprint__layer--cyan,
+.misprint--reduced .misprint__layer--cyan {
+  transform: translate(-1px, 1px) rotate(0deg);
+}
+
+.misprint--settled .misprint__layer--paper,
+.misprint--reduced .misprint__layer--paper {
+  transform: translate(0, 0) rotate(0deg);
+}
+
+/* —— Exit: 260ms layers separate then clip away —— */
+.misprint--exit {
+  animation: misprint-clip-out 260ms cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+.misprint--exit .misprint__layer--black {
+  animation: misprint-out-black 260ms cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+.misprint--exit .misprint__layer--red {
+  animation: misprint-out-red 260ms cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+.misprint--exit .misprint__layer--cyan {
+  animation: misprint-out-cyan 260ms cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+.misprint--exit .misprint__layer--paper {
+  animation: misprint-out-paper 260ms cubic-bezier(0.55, 0, 0.45, 1) forwards;
+}
+
+@keyframes misprint-clip-out {
+  0% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes misprint-out-black {
+  from {
+    transform: translate(5px, 6px) rotate(0deg);
+  }
+  to {
+    transform: translate(-28px, -22px) rotate(-4deg);
+  }
+}
+
+@keyframes misprint-out-red {
+  from {
+    transform: translate(2px, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(-32px, 18px) rotate(-6deg);
+  }
+}
+
+@keyframes misprint-out-cyan {
+  from {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+  to {
+    transform: translate(30px, -16px) rotate(5deg);
+  }
+}
+
+@keyframes misprint-out-paper {
+  from {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(22px, 28px) rotate(3deg);
+  }
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .misprint--enter .misprint__layer,
+  .misprint--enter .misprint__mark,
+  .misprint--exit .misprint__layer,
+  .misprint--exit {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .misprint--enter .misprint__layer,
+[data-force-reduced-motion='true'] .misprint--enter .misprint__mark,
+[data-force-reduced-motion='true'] .misprint--exit .misprint__layer,
+[data-force-reduced-motion='true'] .misprint--exit {
+  animation: none !important;
+}
