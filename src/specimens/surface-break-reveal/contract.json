@@ -1,0 +1,63 @@
+{
+  "name": "surface-break-reveal",
+  "intent": "Content rises from beneath a graphic waterline: submerged portions distort via ±3px clipped duplicates, clear portions stay sharp; crossing bumps the surface with three ripples, then water exits.",
+  "colours": {
+    "nearBlack": "#020b16",
+    "deep": "#073252",
+    "mid": "#0d719c",
+    "bright": "#42b9db",
+    "pale": "#d5f6ff"
+  },
+  "waterline": {
+    "hostPercent": 38,
+    "segments": 5,
+    "reactBumpPx": 8,
+    "ripples": 3
+  },
+  "content": {
+    "initialOffsetPx": 70,
+    "ghostOffsetsPx": [-3, 3],
+    "initial": {
+      "kicker": "DEPTH // ??",
+      "title": "UNKNOWN RECORD"
+    },
+    "final": {
+      "kicker": "RECORD // 045",
+      "title": "RECOVERED"
+    }
+  },
+  "timing": {
+    "ascentMs": 620,
+    "crossMs": 340,
+    "reactMs": 160,
+    "exitMs": 220,
+    "totalMs": 840,
+    "easing": "cubic-bezier(0.33, 0.12, 0.2, 1)"
+  },
+  "api": {
+    "surface": "surfaceBreakReveal()",
+    "reset": "resetSurfaceBreak()",
+    "busyGuard": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "before": "Unknown record submerged.",
+    "after": "Record 045 recovered.",
+    "stageAriaHidden": true,
+    "focusVisible": "2px solid #42b9db"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate recovered clear state; no ascent, ripple, or water exit travel"
+  },
+  "constraints": {
+    "noHeavyBlur": true,
+    "distortionOnlyBelowLine": true,
+    "exactRippleCount": 3,
+    "finalStatic": true,
+    "noExternalAssets": true
+  }
+}

@@ -4,6 +4,7 @@ import { blackoutLoader } from './blackout-loader/entry'
 import { blueDoorDiscovery } from './blue-door-discovery/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
+import { cardBreakSummon } from './card-break-summon/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
@@ -39,7 +40,6 @@ import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
-import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
@@ -59,6 +59,7 @@ import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
+import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
@@ -158,7 +159,6 @@ export const specimens: Specimen[] = [
   holdToChargeButton,
   hoverCutout,
   letterScatterAssemble,
-  liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
   memoryFragmentReveal,
@@ -186,6 +186,8 @@ export const specimens: Specimen[] = [
   velvetDoorTransition,
   waterlinePageWipe,
   scannerSearch,
+  surfaceBreakReveal,
+  cardBreakSummon,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

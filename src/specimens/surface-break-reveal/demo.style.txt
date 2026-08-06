@@ -1,0 +1,485 @@
+/* SPX-408 Surface Break Reveal — portable contract. Do not restyle to host tokens. */
+
+@property --sbr-line-shift {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.sbr {
+  --sbr-ink: #020b16;
+  --sbr-deep: #073252;
+  --sbr-mid: #0d719c;
+  --sbr-bright: #42b9db;
+  --sbr-pale: #d5f6ff;
+  --sbr-line: 38%;
+  --sbr-line-shift: 0px;
+  --sbr-rise: 70px;
+  --sbr-ascent-ms: 620ms;
+  --sbr-react-ms: 160ms;
+  --sbr-exit-ms: 220ms;
+  --sbr-ease: cubic-bezier(0.33, 0.12, 0.2, 1);
+  --sbr-ease-out: cubic-bezier(0.2, 0.75, 0.2, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 0.55rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 0.7rem;
+  overflow: hidden;
+  background: var(--sbr-ink);
+  color: var(--sbr-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.sbr *,
+.sbr *::before,
+.sbr *::after {
+  box-sizing: border-box;
+}
+
+.sbr__toolbar {
+  z-index: 2;
+}
+
+.sbr__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--sbr-bright);
+  border-radius: 0;
+  background: var(--sbr-deep);
+  color: var(--sbr-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sbr__btn:focus {
+  outline: none;
+}
+
+.sbr__btn:focus-visible {
+  outline: 2px solid var(--sbr-bright);
+  outline-offset: 3px;
+}
+
+.sbr__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sbr__status {
+  min-height: 1.2em;
+  margin: 0;
+  color: rgb(213 246 255 / 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+}
+
+.sbr__host {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 240px;
+  height: 240px;
+  border: 1px solid rgb(13 113 156 / 0.5);
+  background:
+    linear-gradient(
+      180deg,
+      #041526 0%,
+      var(--sbr-ink) 42%,
+      #03101c 100%
+    );
+}
+
+/* —— Water mass (below waterline) —— */
+.sbr__water {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sbr__mass {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  top: calc(var(--sbr-line) + var(--sbr-line-shift));
+  bottom: -8%;
+  background: linear-gradient(
+    180deg,
+    rgb(13 113 156 / 0.55) 0%,
+    rgb(7 50 82 / 0.88) 38%,
+    rgb(2 11 22 / 0.96) 100%
+  );
+  border-top: 1.5px solid rgb(66 185 219 / 0.75);
+  transition: none;
+}
+
+.sbr__seg {
+  position: absolute;
+  top: -18px;
+  height: 28px;
+  background: rgb(13 113 156 / 0.7);
+  border: 1px solid rgb(66 185 219 / 0.35);
+  border-bottom: 0;
+}
+
+.sbr__seg--1 {
+  left: -2%;
+  width: 28%;
+  clip-path: polygon(0% 55%, 18% 10%, 52% 0%, 88% 28%, 100% 70%, 0% 100%);
+}
+
+.sbr__seg--2 {
+  left: 22%;
+  width: 24%;
+  top: -22px;
+  clip-path: polygon(0% 40%, 30% 0%, 70% 18%, 100% 8%, 100% 100%, 0% 100%);
+}
+
+.sbr__seg--3 {
+  left: 42%;
+  width: 26%;
+  top: -16px;
+  clip-path: polygon(0% 30%, 22% 8%, 55% 0%, 100% 35%, 90% 100%, 0% 100%);
+}
+
+.sbr__seg--4 {
+  left: 62%;
+  width: 24%;
+  top: -24px;
+  clip-path: polygon(0% 45%, 35% 5%, 72% 0%, 100% 40%, 100% 100%, 0% 100%);
+}
+
+.sbr__seg--5 {
+  left: 78%;
+  width: 26%;
+  top: -14px;
+  clip-path: polygon(0% 35%, 40% 0%, 100% 22%, 100% 100%, 0% 100%);
+}
+
+.sbr__body {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(66 185 219 / 0.12) 0%,
+    transparent 28%
+  );
+}
+
+/* Ripples — exactly three */
+.sbr__ripples {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--sbr-line) + var(--sbr-line-shift));
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sbr__ripple {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1.5px solid rgb(213 246 255 / 0.7);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+}
+
+.sbr__ripple--1 {
+  width: 48px;
+  height: 18px;
+}
+.sbr__ripple--2 {
+  width: 86px;
+  height: 28px;
+}
+.sbr__ripple--3 {
+  width: 128px;
+  height: 38px;
+}
+
+/* —— Content stage —— */
+.sbr__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  transform: translateY(var(--sbr-rise));
+}
+
+.sbr__clear,
+.sbr__sub {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 1.1rem;
+}
+
+/* Clear region: everything above waterline */
+.sbr__clear {
+  z-index: 2;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(var(--sbr-line) + var(--sbr-line-shift)),
+    0 calc(var(--sbr-line) + var(--sbr-line-shift))
+  );
+}
+
+/* Submerged region: everything below waterline */
+.sbr__sub {
+  z-index: 1;
+  clip-path: polygon(
+    0 calc(var(--sbr-line) + var(--sbr-line-shift)),
+    100% calc(var(--sbr-line) + var(--sbr-line-shift)),
+    100% 100%,
+    0 100%
+  );
+}
+
+.sbr__copy {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: start;
+  width: min(100%, 280px);
+}
+
+.sbr__kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sbr-bright);
+}
+
+.sbr__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 6.2vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #f2fbff;
+}
+
+.sbr__copy--final {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sbr__copy--unknown {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Distortion ghosts — offset duplicates, no blur */
+.sbr__ghost {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 1.1rem;
+  opacity: 0.45;
+  color: var(--sbr-pale);
+  pointer-events: none;
+}
+
+.sbr__ghost .sbr__kicker,
+.sbr__ghost .sbr__title {
+  color: rgb(66 185 219 / 0.85);
+}
+
+.sbr__ghost--neg {
+  transform: translateX(-3px);
+  clip-path: polygon(0% 8%, 100% 0%, 100% 92%, 0% 100%);
+}
+
+.sbr__ghost--pos {
+  transform: translateX(3px);
+  clip-path: polygon(0% 0%, 100% 12%, 100% 100%, 0% 88%);
+  opacity: 0.35;
+}
+
+.sbr__sub-main {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0 1.1rem;
+}
+
+.sbr__sub-main .sbr__copy {
+  width: min(100%, 280px);
+}
+
+.sbr__sub-main .sbr__title {
+  color: rgb(213 246 255 / 0.82);
+}
+
+/* —— Phases —— */
+.sbr[data-state='ascending'] .sbr__stage,
+.sbr[data-state='reacting'] .sbr__stage {
+  transition: transform var(--sbr-ascent-ms) var(--sbr-ease);
+  transform: translateY(0);
+}
+
+.sbr[data-state='exiting'] .sbr__stage,
+.sbr[data-state='complete'] .sbr__stage,
+.sbr--reduced .sbr__stage {
+  transform: translateY(0);
+  transition: none;
+}
+
+.sbr[data-state='reacting'] {
+  animation: sbr-line-bump var(--sbr-react-ms) var(--sbr-ease-out) forwards;
+}
+
+.sbr[data-state='reacting'] .sbr__ripples {
+  opacity: 1;
+}
+
+.sbr[data-state='reacting'] .sbr__ripple--1 {
+  animation: sbr-ripple 160ms var(--sbr-ease-out) forwards;
+}
+.sbr[data-state='reacting'] .sbr__ripple--2 {
+  animation: sbr-ripple 160ms var(--sbr-ease-out) 30ms forwards;
+}
+.sbr[data-state='reacting'] .sbr__ripple--3 {
+  animation: sbr-ripple 160ms var(--sbr-ease-out) 55ms forwards;
+}
+
+@keyframes sbr-line-bump {
+  0% {
+    --sbr-line-shift: 0px;
+  }
+  45% {
+    --sbr-line-shift: -8px;
+  }
+  100% {
+    --sbr-line-shift: 0px;
+  }
+}
+
+@keyframes sbr-ripple {
+  0% {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+/* Text swap when recovered */
+.sbr[data-recovered='true'] .sbr__copy--unknown {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sbr[data-recovered='true'] .sbr__copy--final {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sbr[data-recovered='true'] .sbr__ghost {
+  opacity: 0;
+}
+
+/* Water exits below host */
+.sbr[data-state='exiting'] .sbr__mass {
+  animation: sbr-exit var(--sbr-exit-ms) var(--sbr-ease) forwards;
+}
+
+.sbr[data-state='complete'] .sbr__mass,
+.sbr[data-state='complete'] .sbr__water,
+.sbr--reduced .sbr__water {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sbr[data-state='complete'] .sbr__clear,
+.sbr[data-state='complete'] .sbr__sub,
+.sbr--reduced .sbr__clear,
+.sbr--reduced .sbr__sub {
+  clip-path: none;
+}
+
+.sbr[data-state='complete'] .sbr__sub,
+.sbr--reduced .sbr__sub {
+  display: none;
+}
+
+.sbr--reduced .sbr__stage {
+  transform: translateY(0);
+}
+
+.sbr--reduced[data-recovered='true'] .sbr__copy--final {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.sbr--reduced .sbr__copy--unknown {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes sbr-exit {
+  0% {
+    top: var(--sbr-line);
+    opacity: 1;
+  }
+  100% {
+    top: 108%;
+    opacity: 0.85;
+  }
+}
+
+@media (max-width: 360px) {
+  .sbr__host {
+    min-height: 220px;
+    height: 220px;
+  }
+
+  .sbr__title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sbr__stage,
+  .sbr__mass,
+  .sbr__ripple {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .sbr__stage,
+[data-force-reduced-motion='true'] .sbr__mass,
+[data-force-reduced-motion='true'] .sbr__ripple {
+  animation: none !important;
+  transition: none !important;
+}
