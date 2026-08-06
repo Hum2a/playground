@@ -25,4 +25,8 @@ Every specimen needs required `facets` (kind / tech / scope / intensity) plus op
 
 After a new specimen is registered and verified, agents auto-commit it (`Add SPX-NNN …`) without waiting to be asked. See `.cursor/rules/36_specimen-commits.mdc`.
 
+## Persona 5 checklist
+
+Idea backlog with checkboxes and pre-assigned refs: [`docs/catalogue/persona-5-specimen-catalogue.md`](docs/catalogue/persona-5-specimen-catalogue.md). When a listed specimen ships, mark it `[x]` in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Open P5 rows reserve `SPX-015`–`SPX-312`; other new specimens start at `SPX-313+`.
+
 See `docs/design-spec.md` for the full product contract.

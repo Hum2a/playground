@@ -1,0 +1,35 @@
+---
+description: Mark Persona 5 catalogue checklist when a P5 specimen ships
+alwaysApply: true
+---
+
+# Persona 5 catalogue checklist
+
+Backlog: [`docs/catalogue/persona-5-specimen-catalogue.md`](docs/catalogue/persona-5-specimen-catalogue.md).
+
+## IDs
+
+| Id | Role |
+| --- | --- |
+| `P5-NNN` | Stable idea id in the checklist (001–301) |
+| `SPX-NNN` | Registry `ref` in `entry.ts` / `index.ts` |
+
+- Shipped P5 effects keep their **existing** refs (`P5-001`→`SPX-003`, `P5-002`→`SPX-012`, `P5-013`→`SPX-002`).
+- Unbuilt P5 ideas are **pre-assigned** `SPX-015`…`SPX-312` in the checklist — use that ref when implementing; do not invent a different number.
+- Non-catalogue specimens (other franchises / originals) take the next free ref **at or after `SPX-313`**, or any gap not reserved by an open `[ ]` P5 row.
+
+## When a specimen ships
+
+After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
+
+1. Find its row in the checklist (`P5-NNN` / title / assigned `SPX-NNN`).
+2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
+3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / 301`).
+4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
+5. Include the checklist edit in the specimen commit (or the same change set).
+
+Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
+
+## Scope
+
+Only applies to ideas in this Persona 5 checklist. Other inspiration lineages do not use this file.
