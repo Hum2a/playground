@@ -1,0 +1,1 @@
+export function runLightBar(){document.querySelector('[data-bar]').classList.add('is-on');window.setTimeout(()=>{document.querySelector('[data-dst]').hidden=false},420)};document.querySelector('[data-run]')?.addEventListener('click',()=>runLightBar())

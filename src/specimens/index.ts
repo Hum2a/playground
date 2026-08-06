@@ -422,6 +422,7 @@ import { versusCardCollision } from './versus-card-collision/entry'
 import { versusClashCard } from './versus-clash-card/entry'
 import { verticalClipSnap } from './vertical-clip-snap/entry'
 import { verticalContentStretch } from './vertical-content-stretch/entry'
+import { verticalLightBarIntro } from './vertical-light-bar-intro/entry'
 import { vhsTrackingScrub } from './vhs-tracking-scrub/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
@@ -910,6 +911,7 @@ export const specimens: Specimen[] = [
   versusClashCard,
   verticalClipSnap,
   verticalContentStretch,
+  verticalLightBarIntro,
   vhsTrackingScrub,
   victoryResultsTally,
   volumeBrightnessHud,
