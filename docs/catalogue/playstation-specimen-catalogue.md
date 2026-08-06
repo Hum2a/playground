@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **37 / 216** complete.
+- Progress: **38 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 37 |
-| Open | 179 |
+| Done | 38 |
+| Open | 178 |
 
 ## Visual grammar
 
@@ -69,6 +69,7 @@
 | PS-130 | `SPX-3436` | `wake-from-rest` | Wake from Rest |
 | PS-135 | `SPX-3441` | `network-lost-takeover` | Network Lost Takeover |
 | PS-149 | `SPX-3455` | `game-crash-recovery` | Game Crash Recovery |
+| PS-102 | `SPX-3408` | `system-notification-slide` | System Notification Slide |
 
 ## Core first-wave
 
@@ -111,7 +112,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-130** · `SPX-3436` · **Wake from Rest** — rest-mode-power-states
 - [x] **PS-135** · `SPX-3441` · **Network Lost Takeover** — network-connectivity
 - [x] **PS-149** · `SPX-3455` · **Game Crash Recovery** — errors-recovery
-- [ ] **PS-102** · `SPX-3408` · **System Notification Slide** — notifications
+- [x] **PS-102** · `SPX-3408` · **System Notification Slide** — notifications
 - [ ] **PS-110** · `SPX-3416` · **Screenshot Capture Flash** — capture-share
 - [ ] **PS-111** · `SPX-3417` · **Capture Thumbnail Flyout** — capture-share
 - [ ] **PS-011** · `SPX-3317` · **Four-Shape Orbit Loader** — playstation-shapes-geometry
@@ -268,7 +269,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 ## Notifications
 
-- [ ] **PS-102** · `SPX-3408` · **System Notification Slide** — A compact notification slides into a corner/edge and times out cleanly.
+- [x] **PS-102** · `SPX-3408` · **System Notification Slide** — A compact notification slides into a corner/edge and times out cleanly.
 - [ ] **PS-103** · `SPX-3409` · **Screenshot Saved Toast** — Capture confirmation arrives with a tiny preview placeholder.
 - [ ] **PS-104** · `SPX-3410` · **Recording Started Indicator** — A persistent recording state appears without obscuring the active surface.
 - [ ] **PS-105** · `SPX-3411` · **Recording Saved Confirmation** — Capture state resolves into a saved notification.

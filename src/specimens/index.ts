@@ -420,6 +420,7 @@ import { suspectCardReveal } from './suspect-card-reveal/entry'
 import { swipeFullCommit } from './swipe-full-commit/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
 import { systemBootGlow } from './system-boot-glow/entry'
+import { systemNotificationSlide } from './system-notification-slide/entry'
 import { tabIndicatorStretch } from './tab-indicator-stretch/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
@@ -944,6 +945,7 @@ export const specimens: Specimen[] = [
   swipeFullCommit,
   synchronousFusionMerge,
   systemBootGlow,
+  systemNotificationSlide,
   tabIndicatorStretch,
   tacticalAlertPing,
   tacticalCommandWheel,
