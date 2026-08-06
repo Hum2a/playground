@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/chakra-charge-field.schema.json",
+  "title": "ChakraChargeField",
+  "description": "Irregular chakra boundary fills while held; release commits the reached level.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "chargeMs", "commitMs", "colours", "reducedMotion"],
+  "properties": {
+    "name": { "type": "string", "const": "chakra-charge-field" },
+    "chargeMs": { "type": "number", "const": 620 },
+    "commitMs": { "type": "number", "const": 150 },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantCommit"],
+      "properties": {
+        "instantCommit": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}
