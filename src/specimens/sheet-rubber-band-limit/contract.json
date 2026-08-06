@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/sheet-rubber-band-limit.schema.json",
+  "title": "SheetRubberBandLimit",
+  "description": "Portable contract for sheet upward overshoot resistance at expanded detent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "sheet",
+    "overshoot",
+    "settle",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "sheet-rubber-band-limit" },
+    "intent": {
+      "type": "string",
+      "const": "Resistance when draggable sheet is pulled beyond maximum expanded detent."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "const": "TASK DETAILS" }
+      }
+    },
+    "sheet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startDetentPx", "previewHeightPx"],
+      "properties": {
+        "startDetentPx": { "type": "number", "const": 520 },
+        "previewHeightPx": { "type": "number", "const": 600 }
+      }
+    },
+    "overshoot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formula",
+        "maxDisplayPx",
+        "divisor",
+        "contentMoveRatio",
+        "tickThresholdPx",
+        "tickCount"
+      ],
+      "properties": {
+        "formula": {
+          "type": "string",
+          "const": "displayOvershoot = 54 * (1 - exp(-rawOvershoot / 70))"
+        },
+        "maxDisplayPx": { "type": "number", "const": 54 },
+        "divisor": { "type": "number", "const": 70 },
+        "contentMoveRatio": { "type": "number", "const": 0.35 },
+        "tickThresholdPx": { "type": "number", "const": 32 },
+        "tickCount": { "type": "number", "const": 2 }
+      }
+    },
+    "settle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "returnsToSameDetent"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 360 },
+        "returnsToSameDetent": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maxOvershootPx", "immediateSnap", "triggers"],
+      "properties": {
+        "maxOvershootPx": { "type": "number", "const": 8 },
+        "immediateSnap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "sheet", "grab"],
+      "properties": {
+        "root": { "type": "string", "const": "srbl" },
+        "sheet": { "type": "string", "const": "srbl__sheet" },
+        "grab": { "type": "string", "const": "srbl__grab" }
+      }
+    }
+  }
+}

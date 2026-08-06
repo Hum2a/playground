@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **28 / 258** complete.
+- Progress: **29 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 28 |
-| Open | 230 |
+| Done | 29 |
+| Open | 229 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-016 | `SPX-1315` | `sheet-rubber-band-limit` | Sheet Rubber-Band Limit |
 | IOS-250 | `SPX-1549` | `copy-confirmation-morph` | Copy Confirmation Morph |
 | IOS-237 | `SPX-1536` | `translucent-material-lift` | Translucent Material Lift |
 | IOS-231 | `SPX-1530` | `invalid-field-shake` | Invalid Field Shake |
@@ -68,7 +69,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-003** · `SPX-1302` · **Interactive Back Swipe** — navigation-spatial-continuity
 - [x] **IOS-004** · `SPX-1303` · **Matched Card Expansion** — navigation-spatial-continuity
 - [x] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheets-panels-presentation
-- [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — sheets-panels-presentation
+- [x] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — sheets-panels-presentation
 - [x] **IOS-027** · `SPX-1326` · **Compact Activity Expansion** — dynamic-island-live-activity-inspired
 - [x] **IOS-029** · `SPX-1328` · **Dual Activity Split** — dynamic-island-live-activity-inspired
 - [x] **IOS-039** · `SPX-1338` · **Dock Magnification** — dock-macos-application-launching
@@ -116,7 +117,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 ## Sheets, Panels & Presentation
 
 - [x] **IOS-015** · `SPX-1314` · **Bottom Sheet Detent Snap** — sheet moves between fixed collapsed, medium and expanded heights with spring settling.
-- [ ] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — dragging beyond a sheet's maximum detent creates increasing resistance before snapping back.
+- [x] **IOS-016** · `SPX-1315` · **Sheet Rubber-Band Limit** — dragging beyond a sheet's maximum detent creates increasing resistance before snapping back.
 - [ ] **IOS-017** · `SPX-1316` · **Sheet Dismiss Pull** — downward drag crosses a threshold and converts an interactive sheet into dismissal.
 - [ ] **IOS-018** · `SPX-1317` · **Popover Materialise** — compact contextual surface grows from its anchor point and establishes directional ownership.
 - [ ] **IOS-019** · `SPX-1318` · **Popover Re-anchor** — open popover relocates to a newly selected anchor without behaving like an unrelated new popup.
