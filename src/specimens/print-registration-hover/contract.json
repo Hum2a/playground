@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/print-registration-hover.schema.json",
+  "title": "PrintRegistrationHover",
+  "description": "Portable contract for a CSS-only print-plate misregistration hover/focus effect. Distinct from misprint-notification entrance. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "rest",
+    "active",
+    "animation",
+    "narrow",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "print-registration-hover" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Hover/focus separates red and cyan print plates from a stable master label, then snaps them back into registration."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "const": ["PROJECTS", "ARCHIVE", "CONTACT"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "red", "cyan", "paper"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "cyan": { "type": "string", "const": "#17b7c5" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "rest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["red", "cyan"],
+      "properties": {
+        "red": { "type": "string", "const": "translate(1px, 0)" },
+        "cyan": { "type": "string", "const": "translate(-1px, 1px)" }
+      }
+    },
+    "active": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["red", "cyan", "backing", "face", "overshoot"],
+      "properties": {
+        "red": {
+          "type": "object",
+          "required": ["translate", "rotate"],
+          "properties": {
+            "translate": { "type": "string", "const": "12px -4px" },
+            "rotate": { "type": "number", "const": 1.5 }
+          }
+        },
+        "cyan": {
+          "type": "object",
+          "required": ["translate", "rotate"],
+          "properties": {
+            "translate": { "type": "string", "const": "-10px 5px" },
+            "rotate": { "type": "number", "const": -1 }
+          }
+        },
+        "backing": { "type": "string", "const": "3px 3px" },
+        "face": {
+          "type": "object",
+          "required": ["translate", "rotate"],
+          "properties": {
+            "translate": { "type": "string", "const": "0 -1px" },
+            "rotate": { "type": "number", "const": -0.5 }
+          }
+        },
+        "overshoot": {
+          "type": "object",
+          "required": ["atMs", "red", "cyan"],
+          "properties": {
+            "atMs": { "type": "number", "const": 110 },
+            "red": { "type": "string", "const": "14px -5px" },
+            "cyan": { "type": "string", "const": "-12px 6px" }
+          }
+        },
+        "registrationMarks": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enterMs", "exitMs", "enterEase", "exitEase", "noLoop", "noJitter"],
+      "properties": {
+        "enterMs": { "type": "number", "const": 180 },
+        "exitMs": { "type": "number", "const": 130 },
+        "enterEase": {
+          "type": "string",
+          "const": "cubic-bezier(0.22, 0.85, 0.32, 1)"
+        },
+        "exitEase": {
+          "type": "string",
+          "const": "cubic-bezier(0.55, 0, 1, 1)"
+        },
+        "noLoop": { "type": "boolean", "const": true },
+        "noJitter": { "type": "boolean", "const": true }
+      }
+    },
+    "narrow": {
+      "type": "object",
+      "description": "Frozen ≤360px active offsets",
+      "additionalProperties": false,
+      "required": ["maxWidthPx", "red", "cyan", "backing"],
+      "properties": {
+        "maxWidthPx": { "type": "number", "const": 360 },
+        "red": { "type": "string", "const": "9px -3px" },
+        "cyan": { "type": "string", "const": "-8px 4px" },
+        "backing": { "type": "string", "const": "2px 2px" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["singleSemanticLabel", "decorativeHidden", "focusVisibleOutline", "pointerEventsNone"],
+      "properties": {
+        "singleSemanticLabel": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true },
+        "focusVisibleOutline": { "type": "boolean", "const": true },
+        "pointerEventsNone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwitch", "triggers"],
+      "properties": {
+        "instantSwitch": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "item", "face", "plate", "backing", "marks"],
+      "properties": {
+        "root": { "type": "string", "const": "prh" },
+        "item": { "type": "string", "const": "prh__item" },
+        "face": { "type": "string", "const": "prh__face" },
+        "plate": { "type": "string", "const": "prh__plate" },
+        "backing": { "type": "string", "const": "prh__backing" },
+        "marks": { "type": "string", "const": "prh__marks" }
+      }
+    },
+    "tech": { "type": "string", "const": "css-only" },
+    "distinctFrom": {
+      "type": "string",
+      "const": "misprint-notification"
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "print-registration-hover",
+      "intent": "Hover/focus separates red and cyan print plates from a stable master label, then snaps them back into registration.",
+      "copy": { "items": ["PROJECTS", "ARCHIVE", "CONTACT"] },
+      "colours": {
+        "black": "#090909",
+        "red": "#e60012",
+        "cyan": "#17b7c5",
+        "paper": "#f5f1e8"
+      },
+      "rest": {
+        "red": "translate(1px, 0)",
+        "cyan": "translate(-1px, 1px)"
+      },
+      "active": {
+        "red": { "translate": "12px -4px", "rotate": 1.5 },
+        "cyan": { "translate": "-10px 5px", "rotate": -1 },
+        "backing": "3px 3px",
+        "face": { "translate": "0 -1px", "rotate": -0.5 },
+        "overshoot": {
+          "atMs": 110,
+          "red": "14px -5px",
+          "cyan": "-12px 6px"
+        },
+        "registrationMarks": true
+      },
+      "animation": {
+        "enterMs": 180,
+        "exitMs": 130,
+        "enterEase": "cubic-bezier(0.22, 0.85, 0.32, 1)",
+        "exitEase": "cubic-bezier(0.55, 0, 1, 1)",
+        "noLoop": true,
+        "noJitter": true
+      },
+      "narrow": {
+        "maxWidthPx": 360,
+        "red": "9px -3px",
+        "cyan": "-8px 4px",
+        "backing": "2px 2px"
+      },
+      "a11y": {
+        "singleSemanticLabel": true,
+        "decorativeHidden": true,
+        "focusVisibleOutline": true,
+        "pointerEventsNone": true
+      },
+      "reducedMotion": {
+        "instantSwitch": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "prh",
+        "item": "prh__item",
+        "face": "prh__face",
+        "plate": "prh__plate",
+        "backing": "prh__backing",
+        "marks": "prh__marks"
+      },
+      "tech": "css-only",
+      "distinctFrom": "misprint-notification"
+    }
+  ]
+}

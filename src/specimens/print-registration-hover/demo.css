@@ -1,0 +1,340 @@
+/* SPX-045 Print Registration Hover — portable contract. Do not restyle to host tokens. */
+
+.prh {
+  --prh-black: #090909;
+  --prh-red: #e60012;
+  --prh-cyan: #17b7c5;
+  --prh-paper: #f5f1e8;
+  --prh-enter: 180ms;
+  --prh-exit: 130ms;
+  --prh-enter-ease: cubic-bezier(0.22, 0.85, 0.32, 1);
+  --prh-exit-ease: cubic-bezier(0.55, 0, 1, 1);
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.35rem;
+  width: 100%;
+  min-height: 260px;
+  height: 100%;
+  padding: 1.5rem 1.25rem;
+  overflow: hidden;
+  background: #12141a;
+  color: var(--prh-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.prh *,
+.prh *::before,
+.prh *::after {
+  box-sizing: border-box;
+}
+
+.prh__item {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  font: 900 1.35rem/1 inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.prh__item:focus {
+  outline: none;
+}
+
+.prh__item:focus-visible {
+  outline: 2px solid var(--prh-red);
+  outline-offset: 5px;
+}
+
+.prh__backing,
+.prh__plate,
+.prh__marks,
+.prh__mark {
+  pointer-events: none;
+}
+
+.prh__backing {
+  position: absolute;
+  inset: 0.2rem 0.15rem;
+  z-index: 0;
+  background: var(--prh-black);
+  opacity: 0;
+  transform: translate(0, 0);
+  transition:
+    opacity var(--prh-exit) steps(1, end),
+    transform var(--prh-exit) var(--prh-exit-ease);
+}
+
+.prh__plate {
+  position: absolute;
+  inset: 0.35rem 0.55rem;
+  z-index: 1;
+  display: block;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  transition: transform var(--prh-exit) var(--prh-exit-ease);
+}
+
+.prh__plate--cyan {
+  color: var(--prh-cyan);
+  /* Rest: tiny permanent offset ≤1px */
+  transform: translate(-1px, 1px) rotate(0deg);
+}
+
+.prh__plate--red {
+  color: var(--prh-red);
+  transform: translate(1px, 0) rotate(0deg);
+}
+
+.prh__face {
+  position: relative;
+  z-index: 3;
+  display: block;
+  color: var(--prh-paper);
+  transform: translate(0, 0) rotate(0deg);
+  transition: transform var(--prh-exit) var(--prh-exit-ease);
+}
+
+.prh__marks {
+  position: absolute;
+  inset: -6px -10px;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity var(--prh-exit) steps(1, end);
+}
+
+.prh__mark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+.prh__mark::before,
+.prh__mark::after {
+  content: '';
+  position: absolute;
+  background: var(--prh-paper);
+  opacity: 0.85;
+}
+
+.prh__mark::before {
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.prh__mark::after {
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.prh__mark--tl {
+  top: 0;
+  left: 0;
+}
+
+.prh__mark--br {
+  right: 0;
+  bottom: 0;
+}
+
+/* —— Active separation (hover / keyboard focus) —— */
+.prh__item:is(:hover, :focus-visible) .prh__backing {
+  opacity: 0.9;
+  transform: translate(3px, 3px);
+  transition-duration: var(--prh-enter);
+  transition-timing-function: var(--prh-enter-ease);
+}
+
+.prh__item:is(:hover, :focus-visible) .prh__plate--red {
+  animation: prh-red-separate var(--prh-enter) var(--prh-enter-ease) forwards;
+  transition: none;
+}
+
+.prh__item:is(:hover, :focus-visible) .prh__plate--cyan {
+  animation: prh-cyan-separate var(--prh-enter) var(--prh-enter-ease) forwards;
+  transition: none;
+}
+
+.prh__item:is(:hover, :focus-visible) .prh__face {
+  transform: translate(0, -1px) rotate(-0.5deg);
+  transition-duration: var(--prh-enter);
+  transition-timing-function: var(--prh-enter-ease);
+}
+
+.prh__item:is(:hover, :focus-visible) .prh__marks {
+  opacity: 1;
+  transition-duration: var(--prh-enter);
+}
+
+@keyframes prh-red-separate {
+  0% {
+    transform: translate(1px, 0) rotate(0deg);
+  }
+  61% {
+    /* ~110ms of 180ms — overshoot */
+    transform: translate(14px, -5px) rotate(1.5deg);
+  }
+  100% {
+    transform: translate(12px, -4px) rotate(1.5deg);
+  }
+}
+
+@keyframes prh-cyan-separate {
+  0% {
+    transform: translate(-1px, 1px) rotate(0deg);
+  }
+  61% {
+    transform: translate(-12px, 6px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(-10px, 5px) rotate(-1deg);
+  }
+}
+
+@media (max-width: 360px) {
+  .prh {
+    gap: 1.1rem;
+    padding: 1.25rem 0.85rem;
+  }
+
+  .prh__item {
+    font-size: 1.1rem;
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__backing {
+    transform: translate(2px, 2px);
+  }
+
+  @keyframes prh-red-separate {
+    0% {
+      transform: translate(1px, 0) rotate(0deg);
+    }
+    61% {
+      transform: translate(10px, -4px) rotate(1.5deg);
+    }
+    100% {
+      transform: translate(9px, -3px) rotate(1.5deg);
+    }
+  }
+
+  @keyframes prh-cyan-separate {
+    0% {
+      transform: translate(-1px, 1px) rotate(0deg);
+    }
+    61% {
+      transform: translate(-9px, 4px) rotate(-1deg);
+    }
+    100% {
+      transform: translate(-8px, 4px) rotate(-1deg);
+    }
+  }
+}
+
+/* Reduced motion: instant final misregistration / instant restore */
+@media (prefers-reduced-motion: reduce) {
+  .prh__backing,
+  .prh__plate,
+  .prh__face,
+  .prh__marks {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__plate--red {
+    transform: translate(12px, -4px) rotate(1.5deg);
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__plate--cyan {
+    transform: translate(-10px, 5px) rotate(-1deg);
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__backing {
+    opacity: 0.9;
+    transform: translate(3px, 3px);
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__face {
+    transform: translate(0, -1px) rotate(-0.5deg);
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__marks {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .prh__backing,
+[data-force-reduced-motion='true'] .prh__plate,
+[data-force-reduced-motion='true'] .prh__face,
+[data-force-reduced-motion='true'] .prh__marks {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__plate--red {
+  transform: translate(12px, -4px) rotate(1.5deg);
+}
+
+[data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__plate--cyan {
+  transform: translate(-10px, 5px) rotate(-1deg);
+}
+
+[data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__backing {
+  opacity: 0.9;
+  transform: translate(3px, 3px);
+}
+
+[data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__face {
+  transform: translate(0, -1px) rotate(-0.5deg);
+}
+
+[data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__marks {
+  opacity: 1;
+}
+
+@media (max-width: 360px) and (prefers-reduced-motion: reduce) {
+  .prh__item:is(:hover, :focus-visible) .prh__plate--red {
+    transform: translate(9px, -3px) rotate(1.5deg);
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__plate--cyan {
+    transform: translate(-8px, 4px) rotate(-1deg);
+  }
+
+  .prh__item:is(:hover, :focus-visible) .prh__backing {
+    transform: translate(2px, 2px);
+  }
+}
+
+@media (max-width: 360px) {
+  [data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__plate--red {
+    transform: translate(9px, -3px) rotate(1.5deg);
+  }
+
+  [data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__plate--cyan {
+    transform: translate(-8px, 4px) rotate(-1deg);
+  }
+
+  [data-force-reduced-motion='true'] .prh__item:is(:hover, :focus-visible) .prh__backing {
+    transform: translate(2px, 2px);
+  }
+}

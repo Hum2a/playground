@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **11 / 301** complete.
+- Progress: **12 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 11 |
-| Open | 290 |
+| Done | 12 |
+| Open | 289 |
 
 ## Shipped (mapped to live specimens)
 
@@ -29,6 +29,7 @@
 | P5-185 | `SPX-196` | `decision-showdown` | Decision Showdown |
 | P5-201 | `SPX-212` | `comic-panel-scroll-reveal` | Comic Panel Scroll Reveal |
 | P5-044 | `SPX-055` | `cross-out-replacement` | Cross-Out Replacement |
+| P5-034 | `SPX-045` | `print-registration-hover` | Print Registration Hover |
 
 ## Core first-wave
 
@@ -101,7 +102,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P5-031** · `SPX-042` · **Letter Scatter Assemble** — Individual letters fly in and snap into a word.
 - [ ] **P5-032** · `SPX-043` · **Headline Overshoot** — Huge heading flies past position then recoils.
 - [ ] **P5-033** · `SPX-044` · **Text Slice Reveal** — Horizontal slices reveal different parts of a heading.
-- [ ] **P5-034** · `SPX-045` · **Print Registration Hover** — Red/black duplicates separate on hover.
+- [x] **P5-034** · `SPX-045` · **Print Registration Hover** — Red/black duplicates separate on hover.
 - [ ] **P5-035** · `SPX-046` · **Word Collision** — Two words enter from opposite sides and collide.
 - [ ] **P5-036** · `SPX-047` · **Rotating Microtype Ring** — Tiny repeated text orbits an icon.
 - [ ] **P5-037** · `SPX-048` · **Diagonal Microtype Rail** — Repeating tiny copy continuously traverses a diagonal line.

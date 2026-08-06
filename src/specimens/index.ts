@@ -24,6 +24,7 @@ import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
+import { printRegistrationHover } from './print-registration-hover/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
@@ -105,6 +106,7 @@ export const specimens: Specimen[] = [
   redactedContentLock,
   comicPanelScrollReveal,
   crossOutReplacement,
+  printRegistrationHover,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
