@@ -1,0 +1,36 @@
+<div class="coss" data-cross-out-status data-state="idle">
+  <div class="coss__card">
+    <p class="coss__title">EXPORT REQUEST</p>
+    <p class="coss__meta">REQ // 042</p>
+
+    <div class="coss__stage" data-coss-stage>
+      <div class="coss__old" data-coss-old aria-hidden="false">
+        <span class="coss__strip coss__strip--pending">PENDING</span>
+        <span class="coss__slash coss__slash--red" aria-hidden="true"></span>
+        <span class="coss__slash coss__slash--ink" aria-hidden="true"></span>
+      </div>
+
+      <div class="coss__new" data-coss-new aria-hidden="true">
+        <span class="coss__backing" aria-hidden="true"></span>
+        <span class="coss__strip coss__strip--approved">APPROVED</span>
+        <span class="coss__current" aria-hidden="true">CURRENT</span>
+      </div>
+    </div>
+
+    <div class="coss__actions">
+      <button type="button" class="coss__btn coss__btn--advance" data-coss-advance>
+        ADVANCE STATUS
+      </button>
+      <button type="button" class="coss__btn coss__btn--reset" data-coss-reset>
+        RESET
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="coss__live"
+    role="status"
+    aria-live="polite"
+    data-coss-live
+  ></div>
+</div>

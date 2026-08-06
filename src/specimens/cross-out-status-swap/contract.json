@@ -1,0 +1,337 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/cross-out-status-swap.schema.json",
+  "title": "CrossOutStatusSwap",
+  "description": "Portable contract for a discrete status invalidation → authoritative replacement transition. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "pending",
+    "approved",
+    "strikes",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "cross-out-status-swap" },
+    "intent": {
+      "type": "string",
+      "const": "Invalidate a discrete status with opposing graphic strikes, then install a replacement status as the authoritative label in the same region."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "meta",
+        "pending",
+        "approved",
+        "current",
+        "advance",
+        "reset",
+        "announce"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "EXPORT REQUEST" },
+        "meta": { "type": "string", "const": "REQ // 042" },
+        "pending": { "type": "string", "const": "PENDING" },
+        "approved": { "type": "string", "const": "APPROVED" },
+        "current": { "type": "string", "const": "CURRENT" },
+        "advance": { "type": "string", "const": "ADVANCE STATUS" },
+        "reset": { "type": "string", "const": "RESET" },
+        "announce": {
+          "type": "string",
+          "const": "Export request status: approved."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["black", "paper", "red"],
+      "properties": {
+        "black": { "type": "string", "const": "#090909" },
+        "paper": { "type": "string", "const": "#f5f1e8" },
+        "red": { "type": "string", "const": "#e60012" }
+      }
+    },
+    "pending": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "rotateDeg"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 150 },
+        "heightPx": { "type": "number", "const": 48 },
+        "rotateDeg": { "type": "number", "const": -1 }
+      }
+    },
+    "approved": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backingOffset", "enter", "impact", "final"],
+      "properties": {
+        "backingOffset": {
+          "type": "object",
+          "required": ["xPx", "yPx"],
+          "properties": {
+            "xPx": { "type": "number", "const": 7 },
+            "yPx": { "type": "number", "const": 6 }
+          }
+        },
+        "enter": {
+          "type": "object",
+          "properties": {
+            "translate": { "type": "string", "const": "38px 32px" },
+            "rotateDeg": { "type": "number", "const": 8 },
+            "scale": { "type": "number", "const": 1.16 }
+          }
+        },
+        "impact": {
+          "type": "object",
+          "properties": {
+            "translate": { "type": "string", "const": "-3px -1px" },
+            "rotateDeg": { "type": "number", "const": -3 },
+            "scale": { "type": "number", "const": 0.96 }
+          }
+        },
+        "final": {
+          "type": "object",
+          "properties": {
+            "translate": { "type": "string", "const": "0 0" },
+            "rotateDeg": { "type": "number", "const": -1 },
+            "scale": { "type": "number", "const": 1 }
+          }
+        }
+      }
+    },
+    "strikes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["red", "ink"],
+      "properties": {
+        "red": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "const": "lower-left to upper-right"
+            },
+            "rotateDeg": { "type": "number", "const": -7 },
+            "widthPercent": { "type": "number", "const": 118 },
+            "heightPx": { "type": "number", "const": 11 },
+            "durationMs": { "type": "number", "const": 160 }
+          }
+        },
+        "ink": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "const": "opposite of red"
+            },
+            "rotateDeg": { "type": "number", "const": 4 },
+            "heightPx": { "type": "number", "const": 7 },
+            "startMs": { "type": "number", "const": 120 },
+            "durationMs": { "type": "number", "const": 140 }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "rejectStartMs",
+        "attackStartMs",
+        "currentStartMs",
+        "currentMs",
+        "oldReject"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 650 },
+        "rejectStartMs": { "type": "number", "const": 220 },
+        "attackStartMs": { "type": "number", "const": 300 },
+        "currentStartMs": { "type": "number", "const": 500 },
+        "currentMs": { "type": "number", "const": 120 },
+        "oldReject": {
+          "type": "object",
+          "properties": {
+            "rotateFromDeg": { "type": "number", "const": -1 },
+            "rotateToDeg": { "type": "number", "const": 5 },
+            "translate": { "type": "string", "const": "-22px -12px" },
+            "scaleTo": { "type": "number", "const": 0.9 }
+          }
+        },
+        "noLoop": { "type": "boolean", "const": true },
+        "noGreen": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["singleSemanticStatus", "liveRegion"],
+      "properties": {
+        "singleSemanticStatus": { "type": "boolean", "const": true },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSwap", "triggers"],
+      "properties": {
+        "instantSwap": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "old",
+        "new",
+        "slashRed",
+        "slashInk",
+        "approved",
+        "current"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "coss" },
+        "old": { "type": "string", "const": "coss__old" },
+        "new": { "type": "string", "const": "coss__new" },
+        "slashRed": { "type": "string", "const": "coss__slash--red" },
+        "slashInk": { "type": "string", "const": "coss__slash--ink" },
+        "approved": { "type": "string", "const": "coss__strip--approved" },
+        "current": { "type": "string", "const": "coss__current" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "advance": { "type": "string", "const": "advanceCrossOutStatus" },
+        "reset": { "type": "string", "const": "resetCrossOutStatus" },
+        "replay": { "type": "string", "const": "replayCrossOutStatus" },
+        "restartMessageType": { "type": "string", "const": "restart" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "cross-out-status-swap",
+      "intent": "Invalidate a discrete status with opposing graphic strikes, then install a replacement status as the authoritative label in the same region.",
+      "copy": {
+        "title": "EXPORT REQUEST",
+        "meta": "REQ // 042",
+        "pending": "PENDING",
+        "approved": "APPROVED",
+        "current": "CURRENT",
+        "advance": "ADVANCE STATUS",
+        "reset": "RESET",
+        "announce": "Export request status: approved."
+      },
+      "colours": {
+        "black": "#090909",
+        "paper": "#f5f1e8",
+        "red": "#e60012"
+      },
+      "pending": {
+        "widthPx": 150,
+        "heightPx": 48,
+        "rotateDeg": -1
+      },
+      "approved": {
+        "backingOffset": { "xPx": 7, "yPx": 6 },
+        "enter": {
+          "translate": "38px 32px",
+          "rotateDeg": 8,
+          "scale": 1.16
+        },
+        "impact": {
+          "translate": "-3px -1px",
+          "rotateDeg": -3,
+          "scale": 0.96
+        },
+        "final": {
+          "translate": "0 0",
+          "rotateDeg": -1,
+          "scale": 1
+        }
+      },
+      "strikes": {
+        "red": {
+          "direction": "lower-left to upper-right",
+          "rotateDeg": -7,
+          "widthPercent": 118,
+          "heightPx": 11,
+          "durationMs": 160
+        },
+        "ink": {
+          "direction": "opposite of red",
+          "rotateDeg": 4,
+          "heightPx": 7,
+          "startMs": 120,
+          "durationMs": 140
+        }
+      },
+      "animation": {
+        "totalMs": 650,
+        "rejectStartMs": 220,
+        "attackStartMs": 300,
+        "currentStartMs": 500,
+        "currentMs": 120,
+        "oldReject": {
+          "rotateFromDeg": -1,
+          "rotateToDeg": 5,
+          "translate": "-22px -12px",
+          "scaleTo": 0.9
+        },
+        "noLoop": true,
+        "noGreen": true
+      },
+      "a11y": {
+        "singleSemanticStatus": true,
+        "liveRegion": "polite"
+      },
+      "reducedMotion": {
+        "instantSwap": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "coss",
+        "old": "coss__old",
+        "new": "coss__new",
+        "slashRed": "coss__slash--red",
+        "slashInk": "coss__slash--ink",
+        "approved": "coss__strip--approved",
+        "current": "coss__current"
+      },
+      "behaviour": {
+        "advance": "advanceCrossOutStatus",
+        "reset": "resetCrossOutStatus",
+        "replay": "replayCrossOutStatus",
+        "restartMessageType": "restart"
+      }
+    }
+  ]
+}

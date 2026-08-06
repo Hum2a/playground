@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **15 / 301** complete.
+- Progress: **16 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 15 |
-| Open | 286 |
+| Done | 16 |
+| Open | 285 |
 
 ## Shipped (mapped to live specimens)
 
@@ -33,6 +33,7 @@
 | P5-293 | `SPX-304` | `day-change-tear` | Day Change Tear |
 | P5-057 | `SPX-068` | `hover-cutout` | Hover Cutout |
 | P5-115 | `SPX-126` | `blackout-loader` | Blackout Loader |
+| P5-268 | `SPX-279` | `cross-out-status-swap` | Cross-Out Status Swap |
 
 ## Core first-wave
 
@@ -402,7 +403,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-265** · `SPX-276` · **Ready Stamp** — Status transition lands as stamp.
 - [ ] **P5-266** · `SPX-277` · **Failed Blackout** — Failure state visually consumes normal status.
 - [ ] **P5-267** · `SPX-278` · **Queued Paper Stack** — Queue count represented by stacked slips.
-- [ ] **P5-268** · `SPX-279` · **Status Collision** — Old/new status labels physically replace each other.
+- [x] **P5-268** · `SPX-279` · **Status Collision** — Old/new status labels physically replace each other.
 
 ## Breadcrumbs / step navigation
 

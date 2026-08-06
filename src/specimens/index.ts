@@ -10,6 +10,7 @@ import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
+import { crossOutStatusSwap } from './cross-out-status-swap/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
@@ -113,6 +114,7 @@ export const specimens: Specimen[] = [
   dayChangeTear,
   hoverCutout,
   blackoutLoader,
+  crossOutStatusSwap,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
