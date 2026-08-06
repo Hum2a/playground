@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/single-to-dual-pane-transform.schema.json",
+  "title": "SingleToDualPaneTransform",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "layout", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "single-to-dual-pane-transform" },
+    "intent": {
+      "type": "string",
+      "const": "Transform between single-pane and dual master/detail layouts at a fixed breakpoint while preserving selection."
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["breakpointPx", "listPanePx", "transitionMs", "minWidthPx", "maxWidthPx"],
+      "properties": {
+        "breakpointPx": { "type": "number", "const": 600 },
+        "listPanePx": { "type": "number", "const": 260 },
+        "transitionMs": { "type": "number", "const": 320 },
+        "minWidthPx": { "type": "number", "const": 320 },
+        "maxWidthPx": { "type": "number", "const": 760 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLayout", "triggers"],
+      "properties": {
+        "instantLayout": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "list", "detail"],
+      "properties": {
+        "root": { "type": "string", "const": "sdp" },
+        "list": { "type": "string", "const": "sdp__list" },
+        "detail": { "type": "string", "const": "sdp__detail" }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="sdp" data-single-to-dual-pane-transform data-phase="narrow" data-layout="list">
+  <div class="sdp__frame" data-sdp-frame>
+    <div class="sdp__shell" data-sdp-shell>
+      <aside class="sdp__list" data-sdp-list>
+        <button type="button" class="sdp__item is-selected" data-sdp-item="alpha">Alpha module</button>
+        <button type="button" class="sdp__item" data-sdp-item="beta">Beta module</button>
+        <button type="button" class="sdp__item" data-sdp-item="gamma">Gamma module</button>
+      </aside>
+      <div class="sdp__divider" data-sdp-divider aria-hidden="true"></div>
+      <section class="sdp__detail" data-sdp-detail hidden>
+        <h2 class="sdp__detail-title" data-sdp-detail-title>Alpha module</h2>
+        <p class="sdp__detail-copy" data-sdp-detail-copy>
+          Detail pane for the selected list item. Content identity persists across layout transforms.
+        </p>
+      </section>
+    </div>
+  </div>
+
+  <label class="sdp__width-control">
+    <span>Preview width</span>
+    <input type="range" data-sdp-width min="320" max="760" value="360" />
+    <output data-sdp-width-out>360px</output>
+  </label>
+
+  <p class="sdp__status" role="status" aria-live="polite" data-sdp-status>
+    Below 600px: single-pane navigation. At 600px+: dual master/detail layout.
+  </p>
+</div>
