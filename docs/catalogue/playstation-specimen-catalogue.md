@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **46 / 216** complete.
+- Progress: **47 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 46 |
-| Open | 170 |
+| Done | 47 |
+| Open | 169 |
 
 ## Visual grammar
 
@@ -78,6 +78,7 @@
 | PS-071 | `SPX-3377` | `back-navigation-restore` | Back Navigation Restore |
 | PS-088 | `SPX-3394` | `library-grid-focus` | Library Grid Focus |
 | PS-096 | `SPX-3402` | `party-join-handoff` | Party Join Handoff |
+| PS-109 | `SPX-3415` | `controller-disconnected-alert` | Controller Disconnected Alert |
 
 ## Core first-wave
 
@@ -129,7 +130,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-071** · `SPX-3377` · **Back Navigation Restore** — remote-tv-focus-navigation
 - [x] **PS-088** · `SPX-3394` · **Library Grid Focus** — library-collection
 - [x] **PS-096** · `SPX-3402` · **Party Join Handoff** — friends-parties-social
-- [ ] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — notifications
+- [x] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — notifications
 - [ ] **PS-157** · `SPX-3463` · **Dwell-to-Select Ring** — psvr-spatial-ui
 - [ ] **PS-181** · `SPX-3487` · **Horizon-Style Focus Scan** — game-specific-system-like-inspirations
 - [ ] **PS-184** · `SPX-3490` · **Ratchet-Style Rift Transition** — game-specific-system-like-inspirations
@@ -284,7 +285,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-106** · `SPX-3412` · **Friend Request Notification** — A social request arrives with accept/decline actions.
 - [ ] **PS-107** · `SPX-3413` · **Download Complete Toast** — Finished download receives a concise ready-state notification.
 - [ ] **PS-108** · `SPX-3414` · **Trophy Notification** — Achievement card arrives with tier and title hierarchy.
-- [ ] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — Input loss produces a high-priority modal-like interruption.
+- [x] **PS-109** · `SPX-3415` · **Controller Disconnected Alert** — Input loss produces a high-priority modal-like interruption.
 
 ## Capture / Share
 

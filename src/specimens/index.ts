@@ -105,6 +105,7 @@ import { contradictionFound } from './contradiction-found/entry'
 import { controlCenterRise } from './control-center-rise/entry'
 import { controlCentreModuleExpansion } from './control-centre-module-expansion/entry'
 import { controlModuleCollapse } from './control-module-collapse/entry'
+import { controllerDisconnectedAlert } from './controller-disconnected-alert/entry'
 import { controlsIdleDissolve } from './controls-idle-dissolve/entry'
 import { copyConfirmationMorph } from './copy-confirmation-morph/entry'
 import { coreSeedRegeneration } from './core-seed-regeneration/entry'
@@ -638,6 +639,7 @@ export const specimens: Specimen[] = [
   controlCenterRise,
   controlCentreModuleExpansion,
   controlModuleCollapse,
+  controllerDisconnectedAlert,
   controlsIdleDissolve,
   copyConfirmationMorph,
   coreSeedRegeneration,

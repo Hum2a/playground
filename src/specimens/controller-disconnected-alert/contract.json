@@ -1,0 +1,14 @@
+{
+  "name": "controller-disconnected-alert",
+  "intent": "Input loss produces a high-priority modal-like interruption.",
+  "primitives": [
+    "alert",
+    "controller"
+  ],
+  "colours": {
+    "blue": "#2E90FF",
+    "ink": "#0B0F14",
+    "chalk": "#F4F6F8",
+    "sky": "#7EB6FF"
+  }
+}
