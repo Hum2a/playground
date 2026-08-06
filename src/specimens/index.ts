@@ -236,6 +236,7 @@ import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
 import { midnightChannelSignalAcquisition } from './midnight-channel-signal-acquisition/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
+import { minimalBufferSpinner } from './minimal-buffer-spinner/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { missionBoardDispatch } from './mission-board-dispatch/entry'
 import { missionCompleteBurst } from './mission-complete-burst/entry'
@@ -704,6 +705,7 @@ export const specimens: Specimen[] = [
   menuBarActiveTransfer,
   midnightChannelSignalAcquisition,
   midnightClockTransition,
+  minimalBufferSpinner,
   misprintNotification,
   missionBoardDispatch,
   missionCompleteBurst,
