@@ -59,6 +59,7 @@ import { glassFractureReveal } from './glass-fracture-reveal/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
+import { impactFreezeFrame } from './impact-freeze-frame/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { itemObtained } from './item-obtained/entry'
 import { kiChargeMeter } from './ki-charge-meter/entry'
@@ -98,6 +99,7 @@ import { redactedContentLock } from './redacted-content-lock/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
+import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
@@ -227,6 +229,7 @@ export const specimens: Specimen[] = [
   graphicBurstHover,
   holdToChargeButton,
   hoverCutout,
+  impactFreezeFrame,
   letterScatterAssemble,
   levelUpOverflow,
   linkTradeTransfer,
@@ -259,6 +262,7 @@ export const specimens: Specimen[] = [
   ripplePortalTransition,
   scannerSearch,
   scouterScan,
+  sectorRadarSearch,
   sevenPartPrerequisiteCollection,
   surfaceBreakReveal,
   synchronousFusionMerge,
