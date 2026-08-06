@@ -202,6 +202,7 @@ import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { holdToMaximumButton } from './hold-to-maximum-button/entry'
 import { homeGameFocusShift } from './home-game-focus-shift/entry'
 import { homeSwipeUp } from './home-swipe-up/entry'
+import { homeToGameHandoff } from './home-to-game-handoff/entry'
 import { horizontalContentRail } from './horizontal-content-rail/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { iceWipeTransition } from './ice-wipe-transition/entry'
@@ -696,6 +697,7 @@ export const specimens: Specimen[] = [
   holdToMaximumButton,
   homeGameFocusShift,
   homeSwipeUp,
+  homeToGameHandoff,
   horizontalContentRail,
   hoverCutout,
   iceWipeTransition,

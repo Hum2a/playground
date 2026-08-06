@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **4 / 216** complete.
+- Progress: **5 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 212 |
+| Done | 5 |
+| Open | 211 |
 
 ## Visual grammar
 
@@ -36,6 +36,7 @@
 | PS-002 | `SPX-3308` | `activity-card-focus` | Activity Card Focus |
 | PS-003 | `SPX-3309` | `home-game-focus-shift` | Home Game Focus Shift |
 | PS-005 | `SPX-3311` | `context-background-crossfade` | Context Background Crossfade |
+| PS-009 | `SPX-3315` | `home-to-game-handoff` | Home-to-Game Handoff |
 
 ## Core first-wave
 
@@ -45,7 +46,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-002** · `SPX-3308` · **Activity Card Focus** — ps5-home-control-center
 - [x] **PS-003** · `SPX-3309` · **Home Game Focus Shift** — ps5-home-control-center
 - [x] **PS-005** · `SPX-3311` · **Context Background Crossfade** — ps5-home-control-center
-- [ ] **PS-009** · `SPX-3315` · **Home-to-Game Handoff** — ps5-home-control-center
+- [x] **PS-009** · `SPX-3315` · **Home-to-Game Handoff** — ps5-home-control-center
 - [ ] **PS-019** · `SPX-3325` · **System Boot Glow** — console-boot-system-identity
 - [ ] **PS-026** · `SPX-3332` · **Game Launch Zoom** — game-launch-resume
 - [ ] **PS-027** · `SPX-3333` · **Resume Activity Handoff** — game-launch-resume
@@ -103,7 +104,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-006** · `SPX-3312` · **Control Center Dismiss** — The bottom control layer retreats and restores full attention to the current surface.
 - [ ] **PS-007** · `SPX-3313` · **Quick Setting Expand** — A compact control expands into an anchored setting panel.
 - [ ] **PS-008** · `SPX-3314` · **Switcher Card Slide** — Recent games/apps move through a compact horizontal switcher.
-- [ ] **PS-009** · `SPX-3315` · **Home-to-Game Handoff** — Selecting a title expands its identity before transitioning into launch state.
+- [x] **PS-009** · `SPX-3315` · **Home-to-Game Handoff** — Selecting a title expands its identity before transitioning into launch state.
 - [ ] **PS-010** · `SPX-3316` · **Context Menu Bloom** — Secondary actions emerge from the selected object without losing spatial context.
 
 ## PlayStation Shapes / Geometry

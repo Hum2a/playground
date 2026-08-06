@@ -1,0 +1,21 @@
+{
+  "name": "home-to-game-handoff",
+  "intent": "Tile expands then hands off to launch surface.",
+  "catalogue": {
+    "ps": "PS-009",
+    "ref": "SPX-3315"
+  },
+  "colours": {
+    "primary": "#2E90FF",
+    "ink": "#0B0F14",
+    "paper": "#F4F6F8",
+    "soft": "#7EB6FF"
+  },
+  "api": {
+    "run": "runHomeToGameHandoff()",
+    "reset": "resetHomeToGameHandoff()"
+  },
+  "reducedMotion": {
+    "behaviour": "Launch state appears immediately"
+  }
+}
