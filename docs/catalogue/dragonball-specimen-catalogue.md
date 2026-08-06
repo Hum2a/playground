@@ -8,12 +8,12 @@
 - **SPX-NNN** ??? specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`???`SPX-1209` ??? use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`???`SPX-312`), P3 (`SPX-400`???`SPX-635`), PK (`SPX-700`???`SPX-965`), or open DB rows; prefer leftover `SPX-313`???`SPX-399`, `SPX-636`???`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change ??? see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **20 / 244** complete.
+- Progress: **21 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 20 |
-| Open | 224 |
+| Done | 21 |
+| Open | 223 |
 
 ## Visual grammar
 
@@ -53,6 +53,7 @@
 | DB-122 | `SPX-1087` | `impact-freeze-frame` | Impact Freeze Frame |
 | DB-123 | `SPX-1088` | `propagated-shockwave` | Propagated Shockwave |
 | DB-095 | `SPX-1060` | `sector-radar-search` | Sector Radar Search |
+| DB-184 | `SPX-1149` | `capsule-collapse` | Capsule Collapse |
 | DB-163 | `SPX-1128` | `core-seed-regeneration` | Core Seed Regeneration |
 
 ## Core first-wave
@@ -80,7 +81,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-095** ?? `SPX-1060` ?? **Dragon Radar Search** ??? dragon-radar-search
 - [x] **DB-105** ?? `SPX-1070` ?? **Seven-Item Collection** ??? dragon-balls-collection-completion
 - [ ] **DB-106** ?? `SPX-1071` ?? **Final Item Acquired** ??? dragon-balls-collection-completion
-- [ ] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? capsule-corp-compact-storage
+- [x] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? capsule-corp-compact-storage
 - [ ] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? capsule-corp-compact-storage
 - [ ] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? destruction-deletion
 - [ ] **DB-162** ?? `SPX-1127` ?? **Namekian Regeneration** ??? regeneration-recovery
@@ -326,7 +327,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Capsule Corp / Compact Storage
 
-- [ ] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? large complex object compresses into a tiny portable representation.
+- [x] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? large complex object compresses into a tiny portable representation.
 - [ ] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? tiny token expands into a complete functional component.
 - [ ] **DB-186** ?? `SPX-1151` ?? **Component Packing** ??? complex UI collapses into a compact stored state.
 - [ ] **DB-187** ?? `SPX-1152` ?? **Capsule Inventory** ??? several large potential objects represented as tiny indexed tokens.
