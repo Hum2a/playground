@@ -8,7 +8,7 @@ export const moreInfoOverlay: Specimen = {
   origin: { project: 'Original', surface: 'Streaming UI / Netflix-inspired interaction' },
   facets: { kind: 'interaction', tech: 'tiny-js', scope: 'inline', intensity: 'subtle' },
   inspiredBy: { franchise: 'netflix' },
-  tags: ["details","overlay"],
+  tags: ["details","info"],
   deps: 'none',
   motion: { loops: false, respectsReducedMotion: true, reducedMotionNote: 'Transitions skipped; end states remain.' },
   loadPayload: () => import('./payload').then((m) => m.default),

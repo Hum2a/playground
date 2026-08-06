@@ -7,7 +7,7 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: ['Mount inline; import demo.css verbatim.', 'Honour both reduced-motion triggers.'],
-  acceptance: ['Implements Who's Watching Grid Focus', 'Reduced motion preserves semantic state'],
+  acceptance: ["Implements Who's Watching Grid Focus", 'Reduced motion preserves semantic state'],
   scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0c0c0f;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   files: { html, css, js },
   spec,
