@@ -580,6 +580,8 @@ import { pressRollReveal } from './press-roll-reveal/entry'
 
 import { inkRegistrationAlign } from './ink-registration-align/entry'
 
+import { plateSwapTransition } from './plate-swap-transition/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1098,6 +1100,7 @@ export const specimens: Specimen[] = [
   paperPeelReveal,
   pressRollReveal,
   inkRegistrationAlign,
+  plateSwapTransition,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

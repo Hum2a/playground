@@ -175,7 +175,7 @@ chronology and information priority.
     slide into exact registration before content becomes crisp.
 - [ ] **NEWS-055** · `SPX-3577` · ★★★★☆ **Fresh Ink Settle** — Newly revealed type begins
     slightly soft/dense and resolves into sharp print.
-- [ ] **NEWS-056** · `SPX-3578` · ★★★★★ **Plate Swap Transition** — One page composition is
+- [x] **NEWS-056** · `SPX-3578` · ★★★★★ **Plate Swap Transition** — One page composition is
     replaced by another through separated printing-plate layers.
 - [ ] **NEWS-057** · `SPX-3579` · ★★★★☆ **Registration Mark Loader** — Crop/registration marks
     acquire in sequence during a finite processing state.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-056 | SPX-3578 | `plate-swap-transition` | Plate Swap Transition |
 | NEWS-054 | SPX-3576 | `ink-registration-align` | Ink Registration Align |
 | NEWS-053 | SPX-3575 | `press-roll-reveal` | Press Roll Reveal |
 | NEWS-047 | SPX-3569 | `paper-peel-reveal` | Paper Peel Reveal |
@@ -702,12 +703,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **23 / 237** complete.
+- Progress: **24 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 23 |
-| Open | 214 |
+| Done | 24 |
+| Open | 213 |
 
 ## Core first-wave / build queue
 
@@ -734,7 +735,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-047** · `SPX-3569` · **Paper Peel Reveal** · `paper-peel-reveal`
 - [x] **NEWS-053** · `SPX-3575` · **Press Roll Reveal** · `press-roll-reveal`
 - [x] **NEWS-054** · `SPX-3576` · **Ink Registration Align** · `ink-registration-align`
-- [ ] **NEWS-056** · `SPX-3578` · **Plate Swap Transition** · scaffold `plate-swap-transition`
+- [x] **NEWS-056** · `SPX-3578` · **Plate Swap Transition** · `plate-swap-transition`
 - [ ] **NEWS-059** · `SPX-3581` · **Proof-to-Final Toggle** · scaffold `proof-to-final-toggle`
 - [ ] **NEWS-061** · `SPX-3583` · **Typewriter Headline Entry** · scaffold `typewriter-headline-entry`
 - [ ] **NEWS-064** · `SPX-3586` · **Copy Edit Strike-and-Replace** · scaffold `copy-edit-strike-and-replace`

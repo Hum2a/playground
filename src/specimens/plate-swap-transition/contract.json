@@ -1,0 +1,8 @@
+{
+  "name": "plate-swap-transition",
+  "ref": "SPX-3578",
+  "title": "Plate Swap Transition",
+  "mode": "rule",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
