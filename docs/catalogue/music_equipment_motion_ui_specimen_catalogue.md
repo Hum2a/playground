@@ -407,7 +407,7 @@ specimens can feel tactile without needing sound.
 
 # 18. Amplifiers / Guitar Heads
 
-- [ ] **MUSIC-143** · `SPX-3902` · ★★★★★ **Tube Warm-Up** — A dark amplifier slowly acquires warm
+- [x] **MUSIC-143** · `SPX-3902` · ★★★★★ **Tube Warm-Up** — A dark amplifier slowly acquires warm
     valve-like indicators before becoming ready.
 - [ ] **MUSIC-144** · `SPX-3903` · ★★★★★ **Standby-to-Play** — A standby switch transitions the
     amp from warmed state into active output.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-143 | SPX-3902 | `tube-warm-up` | Tube Warm-Up |
 | MUSIC-130 | SPX-3889 | `tape-splice` | Tape Splice |
 | MUSIC-123 | SPX-3882 | `tape-thread-route` | Tape Thread Route |
 | MUSIC-122 | SPX-3881 | `reel-spin-up` | Reel Spin-Up |
@@ -902,12 +903,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **39 / 310** complete.
+- Progress: **40 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 39 |
-| Open | 271 |
+| Done | 40 |
+| Open | 270 |
 
 ## Core first-wave / build queue
 
@@ -949,7 +950,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-122** · `SPX-3881` · **Reel Spin-Up** · `reel-spin-up`
 - [x] **MUSIC-123** · `SPX-3882` · **Tape Thread Route** · `tape-thread-route`
 - [x] **MUSIC-130** · `SPX-3889` · **Tape Splice** · `tape-splice`
-- [ ] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · scaffold `tube-warm-up`
+- [x] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · `tube-warm-up`
 - [ ] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · scaffold `needle-tuner-centre`
 - [ ] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · scaffold `strobe-tuner-lock`
 - [ ] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · scaffold `recording-waveform-grow`

@@ -1,0 +1,8 @@
+{
+  "name": "tube-warm-up",
+  "ref": "SPX-3902",
+  "title": "Tube Warm-Up",
+  "mode": "tuner",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
