@@ -252,6 +252,7 @@ import { materialSwitchToggle } from './material-switch-toggle/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
 import { maximumOutputBreakthrough } from './maximum-output-breakthrough/entry'
 import { measurementOverload } from './measurement-overload/entry'
+import { mediaCardFocusExpand } from './media-card-focus-expand/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
 import { midnightChannelSignalAcquisition } from './midnight-channel-signal-acquisition/entry'
@@ -755,6 +756,7 @@ export const specimens: Specimen[] = [
   maxRankCompletion,
   maximumOutputBreakthrough,
   measurementOverload,
+  mediaCardFocusExpand,
   memoryFragmentReveal,
   menuBarActiveTransfer,
   midnightChannelSignalAcquisition,

@@ -1,0 +1,46 @@
+/* SPX-3379 Media Card Focus Expand — portable PlayStation specimen CSS */
+.ps {
+  --ps-blue: #2E90FF;
+  --ps-ink: #0B0F14;
+  --ps-chalk: #F4F6F8;
+  --ps-sky: #7EB6FF;
+  --ps-panel: #121820;
+  --ps-rule: #1E2A38;
+  --ps-muted: #6B7A8C;
+  box-sizing: border-box;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  padding: 16px;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ps-chalk);
+  background: var(--ps-ink);
+}
+.ps *, .ps *::before, .ps *::after { box-sizing: border-box; }
+.ps__live { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ps__eyebrow { margin: 0 0 10px; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ps-sky); }
+.ps__btn { appearance: none; margin: 0; padding: 8px 14px; border: 1px solid var(--ps-blue); background: rgb(46 144 255 / 0.12); color: var(--ps-chalk); font: inherit; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+.ps__btn:hover:not(:disabled) { border-color: var(--ps-sky); background: rgb(46 144 255 / 0.22); }
+.ps__btn:focus-visible { outline: 2px solid var(--ps-blue); outline-offset: 2px; }
+.ps__btn:disabled { opacity: 0.45; cursor: default; }
+.ps__status { margin: 10px 0 0; font-size: 0.62rem; letter-spacing: 0.06em; color: var(--ps-muted); text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ps *, .ps *::before, .ps *::after { transition: none !important; animation: none !important; }
+}
+[data-force-reduced-motion='true'] .ps,
+[data-force-reduced-motion='true'] .ps *,
+[data-force-reduced-motion='true'] .ps *::before,
+[data-force-reduced-motion='true'] .ps *::after {
+  transition: none !important;
+  animation: none !important;
+}
+.mcfe__rail { display: flex; justify-content: center; gap: 10px; padding: 20px 4px; }
+.mcfe__card { position: relative; width: 88px; height: 120px; padding: 0; border: 1px solid var(--ps-rule); border-radius: 6px; background: var(--ps-panel); overflow: hidden; cursor: pointer; transform: scale(1); transition: transform 200ms ease, border-color 200ms ease, width 200ms ease, height 200ms ease; }
+.mcfe__card:focus-visible { outline: 2px solid var(--ps-blue); outline-offset: 3px; }
+.mcfe__art { position: absolute; inset: 0; background: linear-gradient(145deg, var(--ps-rule), var(--ps-panel)); }
+.mcfe__art--b { background: linear-gradient(145deg, rgb(46 144 255 / 0.25), var(--ps-panel)); }
+.mcfe__art--c { background: linear-gradient(145deg, rgb(126 182 255 / 0.2), var(--ps-panel)); }
+.mcfe__label { position: absolute; left: 0; right: 0; bottom: 0; padding: 6px; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em; text-align: center; background: linear-gradient(transparent, rgb(11 15 20 / 0.92)); }
+.mcfe__meta { position: absolute; left: 0; right: 0; top: 0; padding: 8px; font-size: 0.55rem; line-height: 1.35; color: var(--ps-sky); opacity: 0; transform: translateY(6px); transition: opacity 180ms ease, transform 180ms ease; pointer-events: none; }
+.mcfe__card.is-focus { width: 120px; height: 150px; transform: translateY(-6px) scale(1.04); border-color: var(--ps-blue); z-index: 2; box-shadow: 0 10px 22px rgb(0 0 0 / 0.45); }
+.mcfe__card.is-focus .mcfe__meta { opacity: 1; transform: translateY(0); }

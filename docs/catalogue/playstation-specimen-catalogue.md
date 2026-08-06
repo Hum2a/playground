@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **14 / 216** complete.
+- Progress: **15 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 14 |
-| Open | 202 |
+| Done | 15 |
+| Open | 201 |
 
 ## Visual grammar
 
@@ -46,6 +46,7 @@
 | PS-034 | `SPX-3340` | `activity-complete-burst` | Activity Complete Burst |
 | PS-035 | `SPX-3341` | `objective-step-advance` | Objective Step Advance |
 | PS-038 | `SPX-3344` | `activity-expand-details` | Activity Expand Details |
+| PS-073 | `SPX-3379` | `media-card-focus-expand` | Media Card Focus Expand |
 
 ## Core first-wave
 
@@ -65,7 +66,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-034** · `SPX-3340` · **Activity Complete Burst** — activity-cards-progress
 - [x] **PS-035** · `SPX-3341` · **Objective Step Advance** — activity-cards-progress
 - [x] **PS-038** · `SPX-3344` · **Activity Expand Details** — activity-cards-progress
-- [ ] **PS-073** · `SPX-3379` · **Media Card Focus Expand** — cards-media-tiles
+- [x] **PS-073** · `SPX-3379` · **Media Card Focus Expand** — cards-media-tiles
 - [ ] **PS-074** · `SPX-3380` · **Card-to-Details Morph** — cards-media-tiles
 - [ ] **PS-076** · `SPX-3382` · **Neighbour Push-Out** — cards-media-tiles
 - [ ] **PS-077** · `SPX-3383` · **Card Collapse Return** — cards-media-tiles
@@ -204,7 +205,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 ## Cards / Media Tiles
 
-- [ ] **PS-073** · `SPX-3379` · **Media Card Focus Expand** — Focused card expands to reveal richer metadata and actions.
+- [x] **PS-073** · `SPX-3379` · **Media Card Focus Expand** — Focused card expands to reveal richer metadata and actions.
 - [ ] **PS-074** · `SPX-3380` · **Card-to-Details Morph** — A compact tile becomes a larger information surface with spatial continuity.
 - [ ] **PS-075** · `SPX-3381` · **Card Artwork Parallax** — Abstract artwork layers move subtly as focus shifts.
 - [ ] **PS-076** · `SPX-3382` · **Neighbour Push-Out** — Adjacent cards move aside when the selected tile needs more space.
