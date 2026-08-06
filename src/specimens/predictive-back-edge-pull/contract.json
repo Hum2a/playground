@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/predictive-back-edge-pull.schema.json",
+  "title": "PredictiveBackEdgePull",
+  "description": "Portable contract for Android-inspired predictive back edge gesture with scale, radius, and destination reveal.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "preview",
+    "gesture",
+    "transform",
+    "destination",
+    "indicator",
+    "settle",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "predictive-back-edge-pull" },
+    "intent": {
+      "type": "string",
+      "const": "Edge-initiated back gesture: current page translates at 0.72× drag, scales 1→0.94, radius 0→28px; destination opacity 0.55→1, scale 0.97→1; commit at 112px or velocity >0.55 px/ms."
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 390 },
+        "heightPx": { "type": "number", "const": 720 }
+      }
+    },
+    "gesture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edgeZonePx", "maxDragPx", "translateFactor", "commitPx", "velocityCommitPxMs"],
+      "properties": {
+        "edgeZonePx": { "type": "number", "const": 24 },
+        "maxDragPx": { "type": "number", "const": 140 },
+        "translateFactor": { "type": "number", "const": 0.72 },
+        "commitPx": { "type": "number", "const": 112 },
+        "velocityCommitPxMs": { "type": "number", "const": 0.55 }
+      }
+    },
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scaleMin", "radiusMaxPx"],
+      "properties": {
+        "scaleMin": { "type": "number", "const": 0.94 },
+        "radiusMaxPx": { "type": "number", "const": 28 }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["opacityStart", "scaleStart"],
+      "properties": {
+        "opacityStart": { "type": "number", "const": 0.55 },
+        "scaleStart": { "type": "number", "const": 0.97 }
+      }
+    },
+    "indicator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizeMinPx", "sizeMaxPx"],
+      "properties": {
+        "sizeMinPx": { "type": "number", "const": 24 },
+        "sizeMaxPx": { "type": "number", "const": 36 }
+      }
+    },
+    "settle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commitMs", "cancelMs"],
+      "properties": {
+        "commitMs": { "type": "number", "const": 180 },
+        "cancelMs": { "type": "number", "const": 200 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["loops", "finalStatic"],
+      "properties": {
+        "loops": { "type": "boolean", "const": false },
+        "finalStatic": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["keepThresholds", "noScaleInterpolation", "immediateRelease", "triggers"],
+      "properties": {
+        "keepThresholds": { "type": "boolean", "const": true },
+        "noScaleInterpolation": { "type": "boolean", "const": true },
+        "immediateRelease": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "stage", "destination", "current", "edge", "indicator"],
+      "properties": {
+        "root": { "type": "string", "const": "pbe" },
+        "stage": { "type": "string", "const": "pbe__stage" },
+        "destination": { "type": "string", "const": "pbe__destination" },
+        "current": { "type": "string", "const": "pbe__current" },
+        "edge": { "type": "string", "const": "pbe__edge" },
+        "indicator": { "type": "string", "const": "pbe__indicator" }
+      }
+    }
+  }
+}

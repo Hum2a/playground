@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **0 / 417** complete.
+- Progress: **1 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 0 |
-| Open | 417 |
+| Done | 1 |
+| Open | 416 |
 
 ## Visual grammar
 
@@ -32,13 +32,13 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
-| — | — | — | *(none yet)* |
+| AND-044 | `SPX-1601` | `predictive-back-edge-pull` | Predictive Back Edge Pull |
 
 ## Core first-wave
 
 Curated implementation priority (former Flagship Android Specimens). Same checkbox as the master list — checking either counts.
 
-- [ ] **AND-044** · `SPX-1601` · **Predictive Back Edge Pull** — android-back-gesture
+- [x] **AND-044** · `SPX-1601` · **Predictive Back Edge Pull** — android-back-gesture
 - [ ] **AND-045** · `SPX-1602` · **Predictive Back App Shrink** — android-back-gesture
 - [ ] **AND-001** · `SPX-1558` · **Card-to-Detail Container Transform** — material-container-transform
 - [ ] **AND-002** · `SPX-1559` · **FAB-to-Composer Transform** — material-container-transform
@@ -129,7 +129,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Android Back Gesture
 
-- [ ] **AND-044** · `SPX-1601` · **Predictive Back Edge Pull** — edge gesture progressively previews the destination before commit.
+- [x] **AND-044** · `SPX-1601` · **Predictive Back Edge Pull** — edge gesture progressively previews the destination before commit.
 - [ ] **AND-045** · `SPX-1602` · **Predictive Back App Shrink** — current surface scales/rounds as back gesture advances.
 - [ ] **AND-046** · `SPX-1603` · **Predictive Back Destination Reveal** — previous surface becomes increasingly legible under the active page.
 - [ ] **AND-047** · `SPX-1604` · **Predictive Back Cancel** — insufficient gesture returns current surface to exact original state.
