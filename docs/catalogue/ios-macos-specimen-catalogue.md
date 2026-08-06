@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **48 / 258** complete.
+- Progress: **49 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 48 |
-| Open | 210 |
+| Done | 49 |
+| Open | 209 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-195 | `SPX-1494` | `universal-clipboard-transfer` | Universal Clipboard Transfer |
 | IOS-129 | `SPX-1428` | `authentication-failure-reset` | Authentication Failure Reset |
 | IOS-128 | `SPX-1427` | `authentication-success-morph` | Authentication Success Morph |
 | IOS-173 | `SPX-1472` | `control-module-collapse` | Control Centre Module Collapse |
@@ -372,7 +373,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 ## Continuity / Cross-Device Concepts
 
 - [x] **IOS-194** · `SPX-1493` · **Handoff Continuation** — active task representation transfers from one device frame to another while retaining state.
-- [ ] **IOS-195** · `SPX-1494` · **Universal Clipboard Transfer** — copied object becomes a temporary shared token then materialises on another device.
+- [x] **IOS-195** · `SPX-1494` · **Universal Clipboard Transfer** — copied object becomes a temporary shared token then materialises on another device.
 - [ ] **IOS-196** · `SPX-1495` · **Continuity Camera Acquisition** — desktop placeholder discovers and binds to a nearby camera source.
 - [ ] **IOS-197** · `SPX-1496` · **Sidecar Workspace Extension** — secondary display region attaches to the primary workspace and receives moved content.
 - [ ] **IOS-198** · `SPX-1497` · **Cross-Device Cursor Handoff** — pointer reaches one display boundary and emerges on another contextual surface.

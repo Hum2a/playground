@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/universal-clipboard-transfer.schema.json",
+  "title": "UniversalClipboardTransfer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "token", "corridor", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "universal-clipboard-transfer" },
+    "intent": {
+      "type": "string",
+      "const": "Copied content becomes a temporary transferable token that materialises in another device context."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "destination", "text"],
+      "properties": {
+        "source": { "type": "string", "const": "DESKTOP" },
+        "destination": { "type": "string", "const": "TABLET" },
+        "text": { "type": "string", "const": "BUILD-184" }
+      }
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "liftPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 96 },
+        "heightPx": { "type": "number", "const": 34 },
+        "liftPx": { "type": "number", "const": 8 }
+      }
+    },
+    "corridor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dotCount"],
+      "properties": {
+        "dotCount": { "type": "number", "const": 6 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["absenceGapMs"],
+      "properties": {
+        "absenceGapMs": { "type": "number", "const": 70 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantTransfer", "triggers"],
+      "properties": {
+        "instantTransfer": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "token"],
+      "properties": {
+        "root": { "type": "string", "const": "uct" },
+        "token": { "type": "string", "const": "uct__token" }
+      }
+    }
+  }
+}

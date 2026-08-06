@@ -183,6 +183,7 @@ import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { translucentMaterialLift } from './translucent-material-lift/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
+import { universalClipboardTransfer } from './universal-clipboard-transfer/entry'
 import { velvetDoorTransition } from './velvet-door-transition/entry'
 import { victoryResultsTally } from './victory-results-tally/entry'
 import { volumeBrightnessHud } from './volume-brightness-hud/entry'
@@ -417,6 +418,7 @@ export const specimens: Specimen[] = [
   translucentMaterialLift,
   truthShotNotification,
   ultraStateOptimisation,
+  universalClipboardTransfer,
   velvetDoorTransition,
   victoryResultsTally,
   volumeBrightnessHud,
