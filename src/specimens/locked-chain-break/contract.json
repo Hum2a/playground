@@ -1,0 +1,76 @@
+{
+  "name": "locked-chain-break",
+  "intent": "Restricted card held shut by seven angular graphic chain links; on grant, tension builds, centre link fractures, segments recoil, and content unlocks.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "chain": {
+    "linkCount": 7,
+    "linkWidthPx": 42,
+    "linkHeightPx": 24,
+    "overlapPx": 7,
+    "verticalPosition": "52%",
+    "rotationsDeg": [-18, 18, -18, 18, -18, 18, -18],
+    "redBackingLinks": [2, 6],
+    "linkClipPath": "polygon(8% 0%, 92% 0%, 100% 35%, 92% 100%, 8% 100%, 0% 65%)"
+  },
+  "badge": {
+    "copy": "LOCKED",
+    "face": "#f5f1e8",
+    "backing": "#e60012"
+  },
+  "timing": {
+    "tensionMs": 180,
+    "fractureStartMs": 180,
+    "fractureEndMs": 300,
+    "recoilStartMs": 260,
+    "recoilEndMs": 560,
+    "labelSlashMs": 280,
+    "labelExitMs": 240,
+    "totalMs": 600
+  },
+  "transforms": {
+    "tensionLeftPx": -3,
+    "tensionRightPx": 3,
+    "centreScaleX": 1.08,
+    "badgeScaleX": 0.96,
+    "pieceLeft": "translate(-12px, -8px) rotate(-14deg)",
+    "pieceRight": "translate(14px, 10px) rotate(16deg)",
+    "recoilLeft": "translateX(-125%) rotate(-8deg)",
+    "recoilRight": "translateX(125%) rotate(9deg)",
+    "labelExit": "translateY(70px) rotate(8deg)",
+    "contentReveal": "scale(0.98 → 1)"
+  },
+  "fragments": 3,
+  "api": {
+    "break": "breakLockedChain()",
+    "reset": "resetLockedChain()",
+    "busyGuard": true,
+    "actionDisabledWhileLocked": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart"
+  },
+  "a11y": {
+    "chainAriaHidden": true,
+    "statusLiveRegion": true,
+    "announceOnUnlock": "Access granted. Advanced Material unlocked.",
+    "actionDisabledWhileLocked": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately hide chain and expose unlocked state; no tension, fracture, or recoil"
+  },
+  "constraints": {
+    "noImages": true,
+    "noPhotorealMetal": true,
+    "noExternalChainAssets": true,
+    "noNetwork": true,
+    "noLibraries": true,
+    "abstractGraphicLinksOnly": true
+  }
+}

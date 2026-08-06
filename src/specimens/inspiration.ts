@@ -134,6 +134,8 @@ export const SUGGESTED_FREE_TAGS = [
   'paper',
   'peel',
   'unlock',
+  'locked',
+  'chain',
   'selection',
   'content-switch',
   'stack',

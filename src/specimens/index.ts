@@ -3,10 +3,12 @@ import { azureShardTransition } from './azure-shard-transition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
+import { choiceExecutionSlash } from './choice-execution-slash/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
+import { contentDeclassification } from './content-declassification/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
@@ -15,11 +17,13 @@ import { dayChangeTear } from './day-change-tear/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
+import { errorCorrectionRewrite } from './error-correction-rewrite/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
 import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
+import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
@@ -29,6 +33,7 @@ import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
+import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
@@ -79,6 +84,7 @@ export {
 export const specimens: Specimen[] = [
   comingSoonTape,
   comicPanelWipe,
+  contentDeclassification,
   callingCardSlam,
   callingCardPeel,
   dramaticObjectionError,
@@ -105,6 +111,7 @@ export const specimens: Specimen[] = [
   mangaCutInNotification,
   panelExplosionReveal,
   holdToChargeButton,
+  lockedChainBreak,
   decisionShowdown,
   comicCardSelection,
   redactedContentLock,
@@ -115,6 +122,9 @@ export const specimens: Specimen[] = [
   hoverCutout,
   blackoutLoader,
   crossOutStatusSwap,
+  errorCorrectionRewrite,
+  choiceExecutionSlash,
+  progressMilestoneBreakthrough,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
