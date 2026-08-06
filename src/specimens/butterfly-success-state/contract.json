@@ -69,8 +69,8 @@
           "properties": {
             "ul": { "type": "array", "const": [-34, -28] },
             "ur": { "type": "array", "const": [38, -24] },
-            "ll": { "type": "array", "const": [-30, 36] },
-            "lr": { "type": "array", "const": [32, 40] },
+            "ll": { "type": "array", "const": [-28, 32] },
+            "lr": { "type": "array", "const": [30, 34] },
             "body": { "type": "array", "const": [0, 22] }
           }
         },

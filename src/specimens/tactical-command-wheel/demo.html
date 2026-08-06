@@ -1,0 +1,97 @@
+<div class="tcw" data-tactical-wheel data-selected="0" style="--tcw-rot: 0deg">
+  <div class="tcw__stage">
+    <div class="tcw__ring" data-tcw-ring aria-hidden="true">
+      <div class="tcw__slot tcw__slot--0" style="--slot-angle: 0deg">
+        <span class="tcw__cmd" data-tcw-visual="0">VIEW</span>
+      </div>
+      <div class="tcw__slot tcw__slot--1" style="--slot-angle: 90deg">
+        <span class="tcw__cmd" data-tcw-visual="1">EDIT</span>
+      </div>
+      <div class="tcw__slot tcw__slot--2" style="--slot-angle: 180deg">
+        <span class="tcw__cmd" data-tcw-visual="2">COPY</span>
+      </div>
+      <div class="tcw__slot tcw__slot--3" style="--slot-angle: 270deg">
+        <span class="tcw__cmd" data-tcw-visual="3">DELETE</span>
+      </div>
+    </div>
+
+    <div class="tcw__brackets" aria-hidden="true" data-tcw-brackets>
+      <span class="tcw__bracket tcw__bracket--l"></span>
+      <span class="tcw__bracket tcw__bracket--r"></span>
+    </div>
+
+    <div class="tcw__hub" aria-hidden="true">
+      <p class="tcw__hub-role">COMMAND</p>
+      <p class="tcw__hub-value" data-tcw-hub>VIEW</p>
+    </div>
+
+    <div
+      class="tcw__list"
+      role="radiogroup"
+      aria-label="Tactical commands"
+      data-tcw-list
+    >
+      <button
+        type="button"
+        class="tcw__option tcw__option--active"
+        role="radio"
+        aria-checked="true"
+        tabindex="0"
+        data-tcw-option
+        data-index="0"
+        data-command="VIEW"
+      >
+        VIEW
+      </button>
+      <button
+        type="button"
+        class="tcw__option"
+        role="radio"
+        aria-checked="false"
+        tabindex="-1"
+        data-tcw-option
+        data-index="1"
+        data-command="EDIT"
+      >
+        EDIT
+      </button>
+      <button
+        type="button"
+        class="tcw__option"
+        role="radio"
+        aria-checked="false"
+        tabindex="-1"
+        data-tcw-option
+        data-index="2"
+        data-command="COPY"
+      >
+        COPY
+      </button>
+      <button
+        type="button"
+        class="tcw__option"
+        role="radio"
+        aria-checked="false"
+        tabindex="-1"
+        data-tcw-option
+        data-index="3"
+        data-command="DELETE"
+      >
+        DELETE
+      </button>
+    </div>
+  </div>
+
+  <div class="tcw__controls">
+    <button type="button" class="tcw__nav" data-tcw-prev aria-label="Previous command">
+      ◀
+    </button>
+    <button type="button" class="tcw__nav" data-tcw-next aria-label="Next command">
+      ▶
+    </button>
+  </div>
+
+  <p class="tcw__live" role="status" aria-live="polite" data-tcw-live>
+    VIEW selected.
+  </p>
+</div>

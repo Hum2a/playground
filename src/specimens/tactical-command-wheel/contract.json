@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/tactical-command-wheel.schema.json",
+  "title": "TacticalCommandWheel",
+  "description": "Portable contract for a discrete radial command wheel. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "motion",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "tactical-command-wheel" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Four commands rotate in 90° steps around a hub; the selected command snaps to east with upright labels and late-phase snap."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hubRole", "commands", "statusTemplate"],
+      "properties": {
+        "hubRole": { "type": "string", "const": "COMMAND" },
+        "commands": {
+          "type": "array",
+          "const": ["VIEW", "EDIT", "COPY", "DELETE"]
+        },
+        "statusTemplate": {
+          "type": "string",
+          "const": "{Command} selected."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "deep", "blue", "bright", "pale", "mute"],
+      "properties": {
+        "near": { "type": "string", "const": "#020912" },
+        "deep": { "type": "string", "const": "#09233d" },
+        "blue": { "type": "string", "const": "#1677ad" },
+        "bright": { "type": "string", "const": "#4bc4ee" },
+        "pale": { "type": "string", "const": "#d7f7ff" },
+        "mute": { "type": "string", "const": "#7aa8c0" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radiusPx",
+        "commandCount",
+        "selectedPosition",
+        "stepDeg",
+        "defaultSelected"
+      ],
+      "properties": {
+        "radiusPx": { "type": "number", "const": 95 },
+        "commandCount": { "type": "integer", "const": 4 },
+        "selectedPosition": { "type": "string", "const": "east" },
+        "stepDeg": { "type": "number", "const": 90 },
+        "defaultSelected": { "type": "integer", "const": 0 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "travelMs",
+        "snapMs",
+        "totalMs",
+        "travelPortionDeg",
+        "snapPortionDeg",
+        "uprightCounterRotate",
+        "hubUpdatesAfterSnap",
+        "continuousRotation"
+      ],
+      "properties": {
+        "travelMs": { "type": "number", "const": 160 },
+        "snapMs": { "type": "number", "const": 60 },
+        "totalMs": { "type": "number", "const": 220 },
+        "travelPortionDeg": { "type": "number", "const": 60 },
+        "snapPortionDeg": { "type": "number", "const": 30 },
+        "uprightCounterRotate": { "type": "boolean", "const": true },
+        "hubUpdatesAfterSnap": { "type": "boolean", "const": true },
+        "continuousRotation": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radiogroup",
+        "announceSelection",
+        "decorativeHidden",
+        "notPositionOnly"
+      ],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "announceSelection": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true },
+        "notPositionOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantReposition", "triggers"],
+      "properties": {
+        "instantReposition": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "ring", "cmd", "brackets", "hub", "list"],
+      "properties": {
+        "root": { "type": "string", "const": "tcw" },
+        "ring": { "type": "string", "const": "tcw__ring" },
+        "cmd": { "type": "string", "const": "tcw__cmd" },
+        "brackets": { "type": "string", "const": "tcw__brackets" },
+        "hub": { "type": "string", "const": "tcw__hub" },
+        "list": { "type": "string", "const": "tcw__list" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "select": { "type": "string", "const": "select" },
+        "next": { "type": "string", "const": "next" },
+        "prev": { "type": "string", "const": "prev" },
+        "api": { "type": "string", "const": "tacticalCommandWheel" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "tactical-command-wheel",
+      "intent": "Four commands rotate in 90° steps around a hub; the selected command snaps to east with upright labels and late-phase snap.",
+      "copy": {
+        "hubRole": "COMMAND",
+        "commands": ["VIEW", "EDIT", "COPY", "DELETE"],
+        "statusTemplate": "{Command} selected."
+      },
+      "colours": {
+        "near": "#020912",
+        "deep": "#09233d",
+        "blue": "#1677ad",
+        "bright": "#4bc4ee",
+        "pale": "#d7f7ff",
+        "mute": "#7aa8c0"
+      },
+      "layout": {
+        "radiusPx": 95,
+        "commandCount": 4,
+        "selectedPosition": "east",
+        "stepDeg": 90,
+        "defaultSelected": 0
+      },
+      "motion": {
+        "travelMs": 160,
+        "snapMs": 60,
+        "totalMs": 220,
+        "travelPortionDeg": 60,
+        "snapPortionDeg": 30,
+        "uprightCounterRotate": true,
+        "hubUpdatesAfterSnap": true,
+        "continuousRotation": false
+      },
+      "a11y": {
+        "radiogroup": true,
+        "announceSelection": true,
+        "decorativeHidden": true,
+        "notPositionOnly": true
+      },
+      "reducedMotion": {
+        "instantReposition": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "tcw",
+        "ring": "tcw__ring",
+        "cmd": "tcw__cmd",
+        "brackets": "tcw__brackets",
+        "hub": "tcw__hub",
+        "list": "tcw__list"
+      },
+      "behaviour": {
+        "select": "select",
+        "next": "next",
+        "prev": "prev",
+        "api": "tacticalCommandWheel"
+      }
+    }
+  ]
+}
