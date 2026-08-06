@@ -1,12 +1,37 @@
 {
   "name": "playback-controls-fade-in",
-  "intent": "Pointer or keyboard activity reveals playback controls over content; after a frozen idle window they dissolve.",
-  "ref": "SPX-3161",
-  "nf": "NF-052",
+  "intent": "Pointer, focus, or button activity reveals playback controls over the content; 900ms of inactivity dissolves them again.",
+  "primitives": ["playback", "controls"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "panel2": "#1e1e26",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "timing": {
+    "idleMs": 900,
+    "transitionMs": 200,
+    "easing": "ease",
+    "translateYPx": 6
+  },
+  "triggers": {
+    "reveal": ["mousemove", "mouseenter", "focusin", "keydown", "SHOW CONTROLS button"],
+    "hide": "automatic after idleMs with no reveal trigger"
+  },
+  "a11y": {
+    "playerRole": "group",
+    "playerFocusable": true,
+    "liveStatus": "polite text: Controls visible / Controls hidden"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Show/hide states still apply on the same triggers and timer with no transition"
   }
 }

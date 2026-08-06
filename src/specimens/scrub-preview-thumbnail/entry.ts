@@ -4,17 +4,33 @@ export const scrubPreviewThumbnail: Specimen = {
   id: 'scrub-preview-thumbnail',
   ref: 'SPX-3170',
   title: 'Scrub Preview Thumbnail',
-  blurb: "Dragging the progress handle reveals a preview card anchored to the current time along the timeline.",
-  origin: { project: 'Original', surface: 'Streaming UI / Netflix-inspired interaction' },
-  facets: { kind: 'interaction', tech: 'tiny-js', scope: 'inline', intensity: 'subtle' },
-  inspiredBy: { franchise: 'netflix' },
-  tags: ["scrub","timeline"],
+  blurb:
+    'Dragging the timeline handle reveals a preview thumbnail anchored above the current position, labelled with the time at that point.',
+  origin: {
+    project: 'Original',
+    surface: 'Netflix-inspired streaming timeline scrub (abstract)',
+  },
+  facets: {
+    kind: 'interaction',
+    tech: 'tiny-js',
+    scope: 'inline',
+    intensity: 'subtle',
+  },
+  inspiredBy: {
+    franchise: 'netflix',
+  },
+  tags: ['scrub', 'timeline'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote: 'Motion transitions are skipped; semantic end states remain available.',
+    reducedMotionNote: 'Thumbnail show/hide still occurs on the same triggers with the opacity transition removed.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
-  preview: { width: 440, height: 300, background: 'dark', label: 'Scrub Preview Thumbnail demo' },
+  preview: {
+    width: 440,
+    height: 260,
+    background: 'dark',
+    label: 'Scrub preview thumbnail demo',
+  },
 }

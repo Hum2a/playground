@@ -1,9 +1,18 @@
-<div class="nf" data-nf data-kind="controls">
-  <p class="nf__eyebrow">PLAYBACK CONTROLS</p>
-  <div class="nf__stage" data-stage tabindex="0">
-    <div class="nf__chrome" data-chrome aria-hidden="true">
-      <span>◀︎ 10</span><span>❚❚</span><span>10 ▶︎</span>
+<div class="pcf" data-playback-controls-fade-in>
+  <div
+    class="pcf__player"
+    data-pcf-player
+    tabindex="0"
+    role="group"
+    aria-label="Video player surface — move the pointer, focus, or press Show Controls to reveal controls"
+  >
+    <div class="pcf__scene" aria-hidden="true"></div>
+    <div class="pcf__controls" aria-hidden="true">
+      <span class="pcf__play">▶</span>
+      <div class="pcf__timeline"><div class="pcf__fill"></div></div>
+      <span class="pcf__time">00:42 / 12:08</span>
     </div>
   </div>
-  <button type="button" class="nf__btn" data-nudge>SHOW CONTROLS</button>
+  <button type="button" class="pcf__show" data-pcf-show>SHOW CONTROLS</button>
+  <p class="pcf__status" data-pcf-status aria-live="polite">Controls hidden</p>
 </div>

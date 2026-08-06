@@ -1,12 +1,36 @@
 {
   "name": "scrub-preview-thumbnail",
-  "intent": "Dragging the progress handle reveals a preview card anchored to the current time along the timeline.",
-  "ref": "SPX-3170",
-  "nf": "NF-061",
+  "intent": "Dragging the timeline handle reveals a preview thumbnail anchored above the current handle position, labelled with the time at that point.",
+  "primitives": ["scrub", "timeline"],
+  "colours": {
+    "ink": "#0c0c0f",
+    "panel": "#16161d",
+    "rule": "#2a2a34",
+    "pewter": "#8a8e9b",
+    "chalk": "#eceef2",
+    "amber": "#e8a45a",
+    "teal": "#4ecdc4"
+  },
+  "timing": {
+    "durationSeconds": 1080,
+    "thumbFadeMs": 140,
+    "easing": "ease",
+    "thumbAnchorOffsetPx": 40
+  },
+  "triggers": {
+    "beginScrub": ["pointerdown", "keydown"],
+    "endScrub": ["pointerup", "pointercancel", "blur"]
+  },
+  "a11y": {
+    "rangeLabel": "Seek timeline",
+    "rangeUsesAriaValuetext": true,
+    "liveReadout": "polite text mirrors current/idle time"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
-    ]
+    ],
+    "behaviour": "Thumbnail show/hide still occurs on the same triggers with the opacity transition removed"
   }
 }

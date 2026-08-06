@@ -1,7 +1,22 @@
-<div class="nf" data-nf data-kind="scrub">
-  <p class="nf__eyebrow">SCRUB PREVIEW</p>
-  <div class="nf__stage">
-    <div class="nf__thumb" data-thumb hidden><span data-time>00:00</span></div>
-    <input class="nf__range" data-range type="range" min="0" max="100" value="24" aria-label="Timeline" />
+<div class="spt" data-scrub-preview-thumbnail>
+  <p class="spt__eyebrow">SCRUB PREVIEW THUMBNAIL</p>
+  <div class="spt__stage" data-spt-stage>
+    <div class="spt__thumb" data-spt-thumb hidden aria-hidden="true">
+      <div class="spt__thumb-art"></div>
+      <span class="spt__thumb-time" data-spt-thumb-time>00:00</span>
+    </div>
+    <input
+      class="spt__range"
+      data-spt-range
+      type="range"
+      min="0"
+      max="100"
+      value="24"
+      step="1"
+      aria-label="Seek timeline"
+      aria-valuetext="4 minutes 19 seconds of 18 minutes"
+    />
+    <div class="spt__fill" data-spt-fill aria-hidden="true"></div>
   </div>
+  <p class="spt__readout" data-spt-readout aria-live="polite">Idle at 04:19 / 18:00</p>
 </div>
