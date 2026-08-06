@@ -40,6 +40,7 @@ import { bracketWinnerAdvance } from './bracket-winner-advance/entry'
 import { branchEvolutionChoice } from './branch-evolution-choice/entry'
 import { branchingEnergySurge } from './branching-energy-surge/entry'
 import { broadcastInterruption } from './broadcast-interruption/entry'
+import { bufferToPlaybackResolve } from './buffer-to-playback-resolve/entry'
 import { butterflyEntry } from './butterfly-entry/entry'
 import { butterflySuccessState } from './butterfly-success-state/entry'
 import { buttonImpactShockwave } from './button-impact-shockwave/entry'
@@ -509,6 +510,7 @@ export const specimens: Specimen[] = [
   branchEvolutionChoice,
   branchingEnergySurge,
   broadcastInterruption,
+  bufferToPlaybackResolve,
   butterflyEntry,
   butterflySuccessState,
   buttonImpactShockwave,

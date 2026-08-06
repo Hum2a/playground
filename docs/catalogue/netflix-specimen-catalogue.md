@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **29 / 197** complete.
+- Progress: **30 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 168 |
+| Done | 30 |
+| Open | 167 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-083 | `SPX-3192` | `buffer-to-playback-resolve` | Buffer-to-Playback Resolve |
 | NF-082 | `SPX-3191` | `minimal-buffer-spinner` | Minimal Buffer Spinner |
 | NF-081 | `SPX-3190` | `binge-continuation-transition` | Binge Continuation Transition |
 | NF-076 | `SPX-3185` | `next-up-cancel` | Next-Up Cancel |
@@ -105,7 +106,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-076** · `SPX-3185` · **Next-Up Cancel** — `next-up-cancel`
 - [x] **NF-081** · `SPX-3190` · **Binge Continuation Transition** — `binge-continuation-transition`
 - [x] **NF-082** · `SPX-3191` · **Minimal Buffer Spinner** — `minimal-buffer-spinner`
-- [ ] **NF-083** · `SPX-3192` · **Buffer-to-Playback Resolve** — `buffer-to-playback-resolve`
+- [x] **NF-083** · `SPX-3192` · **Buffer-to-Playback Resolve** — `buffer-to-playback-resolve`
 
 ### Wave D — State and personalisation
 
@@ -237,7 +238,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 11. Loading / Buffering
 
 - [x] **NF-082** · `SPX-3191` · **Minimal Buffer Spinner** — A restrained circular loader appears over paused visual content and disappears without layout shift
-- [ ] **NF-083** · `SPX-3192` · **Buffer-to-Playback Resolve** — Loading state contracts directly into playback state
+- [x] **NF-083** · `SPX-3192` · **Buffer-to-Playback Resolve** — Loading state contracts directly into playback state
 - [ ] **NF-084** · `SPX-3193` · **Title Loading Skeleton** — Poster/title placeholders resolve in a staggered but finite sequence
 - [ ] **NF-085** · `SPX-3194` · **Rail Lazy-Load Reveal** — New cards appear at the end of a rail as the user approaches
 - [ ] **NF-086** · `SPX-3195` · **Connection Slow Warning** — Persistent buffering escalates into a clear network-quality state

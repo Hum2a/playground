@@ -1,0 +1,1 @@
+export function runBufferResolve(){document.querySelector('[data-ring]').hidden=true;document.querySelector('[data-msg]').hidden=false};document.querySelector('[data-go]')?.addEventListener('click',()=>runBufferResolve())
