@@ -1,0 +1,8 @@
+{
+  "name": "loop-region-clamp",
+  "ref": "SPX-3852",
+  "title": "Loop Region Clamp",
+  "mode": "tuner",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

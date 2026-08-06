@@ -573,4 +573,5 @@ export const specimenOrder: string[] = [
   'crossfader-blend',
   'scrolling-dj-waveform',
   'beatgrid-lock',
+  'loop-region-clamp',
 ]

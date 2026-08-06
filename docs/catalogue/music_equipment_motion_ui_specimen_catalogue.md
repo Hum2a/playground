@@ -272,7 +272,7 @@ specimens can feel tactile without needing sound.
     enters at each phrase boundary.
 - [ ] **MUSIC-092** · `SPX-3851` · ★★★★☆ **Phrase Colour Blocks** — Large waveform regions
     acquire section labels such as intro, break and drop.
-- [ ] **MUSIC-093** · `SPX-3852` · ★★★★★ **Loop Region Clamp** — Two loop handles close around a
+- [x] **MUSIC-093** · `SPX-3852` · ★★★★★ **Loop Region Clamp** — Two loop handles close around a
     waveform region and playback cycles inside it.
 - [ ] **MUSIC-094** · `SPX-3853` · ★★★★☆ **Hot Cue Marker Pop** — A coloured cue marker stamps
     above the waveform.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-093 | SPX-3852 | `loop-region-clamp` | Loop Region Clamp |
 | MUSIC-090 | SPX-3849 | `beatgrid-lock` | Beatgrid Lock |
 | MUSIC-089 | SPX-3848 | `scrolling-dj-waveform` | Scrolling DJ Waveform |
 | MUSIC-087 | SPX-3846 | `crossfader-blend` | Crossfader Blend |
@@ -889,12 +890,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **26 / 310** complete.
+- Progress: **27 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 26 |
-| Open | 284 |
+| Done | 27 |
+| Open | 283 |
 
 ## Core first-wave / build queue
 
@@ -926,7 +927,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-087** · `SPX-3846` · **Crossfader Blend** · `crossfader-blend`
 - [x] **MUSIC-089** · `SPX-3848` · **Scrolling DJ Waveform** · `scrolling-dj-waveform`
 - [x] **MUSIC-090** · `SPX-3849` · **Beatgrid Lock** · `beatgrid-lock`
-- [ ] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · scaffold `loop-region-clamp`
+- [x] **MUSIC-093** · `SPX-3852` · **Loop Region Clamp** · `loop-region-clamp`
 - [x] **MUSIC-097** · `SPX-3856` · **Patch Cable Connect** · `patch-cable-connect`
 - [x] **MUSIC-101** · `SPX-3860` · **Signal Flow Pulse** · `signal-flow-pulse`
 - [ ] **MUSIC-105** · `SPX-3864` · **Feedback Loop Warning** · scaffold `feedback-loop-warning`
