@@ -10,7 +10,7 @@ alwaysApply: true
 - Every iframe: descriptive `title` (`Preview: …`)
 - Copy announcements reach an `aria-live="polite"` region
 - Colour is never the only signal for state (pair with label / border / text)
-- Plate keyboard order: preview → copy → open
+- Plate keyboard order: preview → copy → open → playground
 - Detail tabs: real tab semantics + arrow keys (see `55_catalogue`)
 - Decorative specimen roots: `aria-hidden`; announce lock/state outside the tape
 

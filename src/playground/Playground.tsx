@@ -17,9 +17,10 @@ import {
   type HarnessControls,
   type PreviewFrameHandle,
 } from '../harness'
-import { getSpecimen } from '../specimens'
+import { getSpecimen, specimens, type Specimen } from '../specimens'
 import {
   createDraft,
+  createForkDraft,
   deleteDraft,
   duplicateDraft,
   listDrafts,
@@ -68,10 +69,14 @@ export function Playground() {
   const [storageError, setStorageError] = useState<string | null>(null)
   const [railCollapsed, setRailCollapsed] = useState(false)
   const [previewBase, setPreviewBase] = useState(DEFAULT_PREVIEW)
+  const [catalogueQuery, setCatalogueQuery] = useState('')
   const persistTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const previewTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [preview, setPreview] = useState({ html: '', css: '', js: '' })
   const bootstrapped = useRef(false)
+  const catalogueDialogRef = useRef<HTMLDialogElement>(null)
+  const catalogueTriggerRef = useRef<HTMLButtonElement>(null)
+  const catalogueSearchRef = useRef<HTMLInputElement>(null)
 
   const refreshList = useCallback(() => setDrafts(listDrafts()), [])
 
@@ -117,17 +122,7 @@ export function Playground() {
       const specimen = getSpecimen(forkId)
       if (specimen) {
         try {
-          const draft = createDraft(`Fork: ${specimen.title}`)
-          const next = saveDraft({
-            ...draft,
-            html: specimen.files.html,
-            css: specimen.files.css,
-            js: specimen.files.js ?? '',
-            controls: {
-              ...DEFAULT_CONTROLS,
-              background: specimen.preview.background,
-            },
-          })
+          const next = createForkDraft(specimen)
           setPreviewBase({
             width: specimen.preview.width,
             height: specimen.preview.height,
@@ -266,6 +261,48 @@ export function Playground() {
     }
   }
 
+  const filteredCatalogue = useMemo(() => {
+    const q = catalogueQuery.trim().toLowerCase()
+    if (!q) return specimens
+    return specimens.filter(
+      (s) =>
+        s.title.toLowerCase().includes(q) ||
+        s.id.toLowerCase().includes(q) ||
+        s.ref.toLowerCase().includes(q),
+    )
+  }, [catalogueQuery])
+
+  const closeCatalogueDialog = useCallback(() => {
+    const dialog = catalogueDialogRef.current
+    if (dialog?.open) dialog.close()
+    setCatalogueQuery('')
+    catalogueTriggerRef.current?.focus()
+  }, [])
+
+  const openCatalogueDialog = () => {
+    setCatalogueQuery('')
+    const dialog = catalogueDialogRef.current
+    if (dialog && !dialog.open) dialog.showModal()
+    window.requestAnimationFrame(() => catalogueSearchRef.current?.focus())
+  }
+
+  const onForkFromCatalogue = (specimen: Specimen) => {
+    flushSave()
+    try {
+      const next = createForkDraft(specimen)
+      setPreviewBase({
+        width: specimen.preview.width,
+        height: specimen.preview.height,
+      })
+      applyDraft(next)
+      refreshList()
+      setStorageError(null)
+      closeCatalogueDialog()
+    } catch (error) {
+      setStorageError(storageMessage(error))
+    }
+  }
+
   const onDuplicate = () => {
     if (!activeId) return
     flushSave()
@@ -383,6 +420,13 @@ export function Playground() {
               <button type="button" onClick={onNew}>
                 New
               </button>
+              <button
+                type="button"
+                ref={catalogueTriggerRef}
+                onClick={openCatalogueDialog}
+              >
+                From catalogue
+              </button>
               <button type="button" onClick={onDuplicate} disabled={!activeId}>
                 Duplicate
               </button>
@@ -412,6 +456,60 @@ export function Playground() {
           </ul>
         ) : null}
       </aside>
+
+      <dialog
+        ref={catalogueDialogRef}
+        className="playground__catalogue-dialog"
+        aria-labelledby={`${baseId}-catalogue-title`}
+        onClose={() => {
+          setCatalogueQuery('')
+        }}
+        onCancel={(event) => {
+          event.preventDefault()
+          closeCatalogueDialog()
+        }}
+      >
+        <div className="playground__catalogue-dialog-head">
+          <h2 id={`${baseId}-catalogue-title`} className="mono-label">
+            From catalogue
+          </h2>
+          <button type="button" onClick={closeCatalogueDialog}>
+            Cancel
+          </button>
+        </div>
+        <label className="playground__catalogue-search-label" htmlFor={`${baseId}-catalogue-search`}>
+          Filter
+          <input
+            ref={catalogueSearchRef}
+            id={`${baseId}-catalogue-search`}
+            type="search"
+            className="playground__catalogue-search"
+            value={catalogueQuery}
+            onChange={(event) => setCatalogueQuery(event.target.value)}
+            placeholder="Title, ref, or id"
+            autoComplete="off"
+          />
+        </label>
+        <ul className="playground__catalogue-list" role="listbox" aria-label="Specimens">
+          {filteredCatalogue.length === 0 ? (
+            <li className="playground__catalogue-empty">No specimens match.</li>
+          ) : (
+            filteredCatalogue.map((s) => (
+              <li key={s.id}>
+                <button
+                  type="button"
+                  className="playground__catalogue-item"
+                  role="option"
+                  onClick={() => onForkFromCatalogue(s)}
+                >
+                  <span className="playground__catalogue-ref mono-label">{s.ref}</span>
+                  <span className="playground__catalogue-title">{s.title}</span>
+                </button>
+              </li>
+            ))
+          )}
+        </ul>
+      </dialog>
 
       <div className="playground__main">
         <div className="playground__editor-col">

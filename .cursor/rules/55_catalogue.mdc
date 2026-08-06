@@ -17,9 +17,10 @@ alwaysApply: false
 
 ## Plates
 
-Anatomy: mono ref (left) + origin (right) → framed preview → display title → mono **facets** → optional **inspiration** (`Persona · Persona 5`) → optional free tags → `[Copy prompt]` + `[Open →]`.
+Anatomy: mono ref (left) + origin (right) → framed preview → display title → mono **facets** → optional **inspiration** (`Persona · Persona 5`) → optional free tags → `[Copy prompt]` + `[Open →]` + `[Playground →]`.
 
 - Primary copy action only on plates; detail route shows Full / Code / Contract
+- `Playground →` forks via `/playground?fork=<id>` (same seed as detail “Open in playground”)
 - Mount frames with `IntersectionObserver`; unmount when more than one viewport offscreen
 
 ## Filters

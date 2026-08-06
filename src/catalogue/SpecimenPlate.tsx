@@ -149,6 +149,12 @@ export function SpecimenPlate({
         <Link className="specimen-plate__open" to={detailPath}>
           Open →
         </Link>
+        <Link
+          className="specimen-plate__open"
+          to={`/playground?fork=${encodeURIComponent(specimen.id)}`}
+        >
+          Playground →
+        </Link>
       </div>
     </article>
   )

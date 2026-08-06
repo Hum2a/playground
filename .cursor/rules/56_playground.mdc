@@ -16,7 +16,9 @@ alwaysApply: false
 
 - Debounced `localStorage` under `playground:draft:{id}` (+ draft index key)
 - Share: lz-string-compress `{ html, css, js, controls }` into the URL hash
-- Draft rail: new / duplicate / rename / delete
+- Draft rail: new / **from catalogue** / duplicate / rename / delete
+- Catalogue fork: `createForkDraft(specimen)` in `drafts.ts` — new draft `Fork: {title}` with specimen files + preview background; used by `?fork=` bootstrap and the From-catalogue dialog
+- `?fork=<idOrRef>` still seeds once then strips to `/playground`
 
 ## Export
 
