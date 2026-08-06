@@ -1,0 +1,231 @@
+/* SPX-2030 Performance Meter Burst — portable specimen. */
+
+.pmb {
+  --pmb-primary: #38a3ff;
+  --pmb-ink: #101820;
+  --pmb-paper: #f4f7fa;
+  --pmb-accent: #ff4d35;
+  --pmb-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  padding: 1rem;
+  background: var(--pmb-ink);
+  color: var(--pmb-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.pmb *,
+.pmb *::before,
+.pmb *::after {
+  box-sizing: border-box;
+}
+
+.pmb__chart {
+  position: relative;
+  width: min(100%, 320px);
+  padding: 1rem;
+  background: var(--pmb-paper);
+  color: var(--pmb-ink);
+  border: 4px solid var(--pmb-ink);
+  clip-path: polygon(0% 4%, 98% 0%, 100% 96%, 3% 100%);
+}
+
+.pmb__title {
+  margin: 0 0 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: var(--pmb-primary);
+}
+
+.pmb__meter {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.pmb__meter i {
+  position: relative;
+  display: block;
+  height: 14px;
+  background: rgb(16 24 32 / 0.1);
+  border: 2px solid var(--pmb-ink);
+  overflow: visible;
+}
+
+.pmb__meter i::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--pmb-primary);
+  transition: none;
+}
+
+.pmb__meter em {
+  font-style: normal;
+  font-size: 0.58rem;
+  text-align: right;
+}
+
+.pmb__ceiling {
+  position: absolute;
+  left: 5.2rem;
+  right: 2.8rem;
+  top: 38%;
+  height: 2px;
+  background: var(--pmb-ink);
+  opacity: 0.35;
+}
+
+.pmb__meter--burst i::after {
+  background: var(--pmb-accent);
+}
+
+.pmb__run {
+  margin: 0;
+  padding: 0.55rem 1.2rem;
+  border: 3px solid var(--pmb-primary);
+  background: var(--pmb-ink);
+  color: var(--pmb-paper);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+.pmb__run:focus-visible {
+  outline: 2px solid var(--pmb-primary);
+  outline-offset: 3px;
+}
+
+.pmb__status {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgb(244 247 250 / 0.7);
+}
+
+.pmb[data-phase="race"] .pmb__meter:nth-child(2) i::after {
+  animation: pmb-grow 420ms var(--pmb-ease) forwards;
+}
+
+.pmb[data-phase="race"] .pmb__meter:nth-child(3) i::after {
+  animation: pmb-grow 480ms var(--pmb-ease) 80ms forwards;
+}
+
+.pmb[data-phase="race"] .pmb__meter:nth-child(4) i::after {
+  animation: pmb-burst-grow 660ms var(--pmb-ease) 160ms forwards;
+}
+
+.pmb[data-phase="race"] .pmb__meter:nth-child(2) em {
+  animation: pmb-val 420ms var(--pmb-ease) forwards;
+}
+
+.pmb[data-phase="race"] .pmb__meter:nth-child(3) em {
+  animation: pmb-val2 480ms var(--pmb-ease) 80ms forwards;
+}
+
+.pmb[data-phase="race"] .pmb__meter:nth-child(4) em {
+  animation: pmb-val3 660ms var(--pmb-ease) 160ms forwards;
+}
+
+.pmb[data-phase="done"] .pmb__meter i::after {
+  width: var(--pmb-target);
+}
+
+.pmb[data-phase="done"] .pmb__meter--burst i {
+  overflow: visible;
+}
+
+.pmb[data-phase="done"] .pmb__meter--burst i::after {
+  width: var(--pmb-target);
+  box-shadow: 0 -6px 0 0 var(--pmb-accent);
+}
+
+@keyframes pmb-grow {
+  to {
+    width: var(--pmb-target);
+  }
+}
+
+@keyframes pmb-burst-grow {
+  0% {
+    width: 0%;
+  }
+  70% {
+    width: 100%;
+  }
+  100% {
+    width: var(--pmb-target);
+    box-shadow: 0 -6px 0 0 var(--pmb-accent);
+  }
+}
+
+@keyframes pmb-val {
+  to {
+    content: '62%';
+  }
+}
+
+@keyframes pmb-val2 {
+  to {
+    content: '48%';
+  }
+}
+
+@keyframes pmb-val3 {
+  to {
+    content: '94%';
+  }
+}
+
+/* Value updates via JS; em content animated visually through width sync */
+
+@media (prefers-reduced-motion: reduce) {
+  .pmb[data-phase="race"] .pmb__meter i::after,
+  .pmb[data-phase="race"] .pmb__meter em {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .pmb[data-phase="race"] .pmb__meter i::after,
+[data-force-reduced-motion="true"] .pmb[data-phase="race"] .pmb__meter em {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pmb[data-phase="race"] .pmb__meter i::after,
+  .pmb[data-phase="done"] .pmb__meter i::after {
+    width: var(--pmb-target);
+  }
+
+  .pmb[data-phase="race"] .pmb__meter--burst i::after,
+  .pmb[data-phase="done"] .pmb__meter--burst i::after {
+    box-shadow: 0 -6px 0 0 var(--pmb-accent);
+  }
+}
+
+[data-force-reduced-motion="true"] .pmb[data-phase="race"] .pmb__meter i::after,
+[data-force-reduced-motion="true"] .pmb[data-phase="done"] .pmb__meter i::after {
+  width: var(--pmb-target);
+}
+
+[data-force-reduced-motion="true"] .pmb[data-phase="race"] .pmb__meter--burst i::after,
+[data-force-reduced-motion="true"] .pmb[data-phase="done"] .pmb__meter--burst i::after {
+  box-shadow: 0 -6px 0 0 var(--pmb-accent);
+}

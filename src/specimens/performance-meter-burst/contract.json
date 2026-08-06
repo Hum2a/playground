@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/performance-meter-burst.schema.json",
+  "title": "PerformanceMeterBurst",
+  "description": "Portable contract for racing result meters with ceiling burst.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "performance-meter-burst" },
+    "intent": {
+      "type": "string",
+      "examples": ["Bars race to values; OUTPUT breaks graph ceiling."]
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "accent"],
+      "properties": {
+        "primary": { "type": "string", "const": "#38A3FF" },
+        "ink": { "type": "string", "const": "#101820" },
+        "paper": { "type": "string", "const": "#F4F7FA" },
+        "accent": { "type": "string", "const": "#FF4D35" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["burstMs", "totalMs"],
+      "properties": {
+        "burstMs": { "type": "number", "const": 660 },
+        "totalMs": { "type": "number", "const": 900 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantValues", "triggers"],
+      "properties": {
+        "instantValues": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "meter", "burst"],
+      "properties": {
+        "root": { "type": "string", "const": "pmb" },
+        "meter": { "type": "string", "const": "pmb__meter" },
+        "burst": { "type": "string", "const": "pmb__meter--burst" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "api": { "type": "string", "const": "performanceMeterBurst" }
+      }
+    }
+  }
+}
