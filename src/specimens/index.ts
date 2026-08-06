@@ -307,6 +307,7 @@ import { previewCollapseReturn } from './preview-collapse-return/entry'
 import { previewStartCrossfade } from './preview-start-crossfade/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { processingTimeSkip } from './processing-time-skip/entry'
+import { profileAvatarSelectSnap } from './profile-avatar-select-snap/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
 import { propagatedShockwave } from './propagated-shockwave/entry'
 import { pullToRefresh } from './pull-to-refresh/entry'
@@ -778,6 +779,7 @@ export const specimens: Specimen[] = [
   previewStartCrossfade,
   printRegistrationHover,
   processingTimeSkip,
+  profileAvatarSelectSnap,
   progressMilestoneBreakthrough,
   propagatedShockwave,
   pullToRefresh,

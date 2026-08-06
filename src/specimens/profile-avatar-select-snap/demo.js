@@ -1,0 +1,1 @@
+export function runProfileSnap(i=0){document.querySelectorAll('[data-p]').forEach((a,idx)=>{a.classList.toggle('is-on',idx===i);a.classList.toggle('is-dim',idx!==i)});document.querySelector('[data-msg]').textContent='Entering profile…'};document.querySelectorAll('[data-p]').forEach((a,i)=>a.addEventListener('click',()=>runProfileSnap(i)))

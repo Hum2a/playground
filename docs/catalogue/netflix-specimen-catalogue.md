@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+` (PS reserves `SPX-3307`–`SPX-3522`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **31 / 197** complete.
+- Progress: **32 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 31 |
-| Open | 166 |
+| Done | 32 |
+| Open | 165 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-010 | `SPX-3119` | `profile-avatar-select-snap` | Profile Avatar Select Snap |
 | NF-009 | `SPX-3118` | `whos-watching-grid-focus` | Who's Watching Grid Focus |
 | NF-083 | `SPX-3192` | `buffer-to-playback-resolve` | Buffer-to-Playback Resolve |
 | NF-082 | `SPX-3191` | `minimal-buffer-spinner` | Minimal Buffer Spinner |
@@ -112,7 +113,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ### Wave D — State and personalisation
 
 - [x] **NF-009** · `SPX-3118` · **Who's Watching Grid Focus** — `whos-watching-grid-focus`
-- [ ] **NF-010** · `SPX-3119` · **Profile Avatar Select Snap** — `profile-avatar-select-snap`
+- [x] **NF-010** · `SPX-3119` · **Profile Avatar Select Snap** — `profile-avatar-select-snap`
 - [ ] **NF-105** · `SPX-3214` · **Match Confidence Meter** — `match-confidence-meter`
 - [ ] **NF-106** · `SPX-3215` · **Thumb Rating Feedback** — `thumb-rating-feedback`
 - [ ] **NF-111** · `SPX-3220` · **Add-to-List Confirmation** — `add-to-list-confirmation`
@@ -148,7 +149,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 ## 2. Profile / Identity Selection
 
 - [x] **NF-009** · `SPX-3118` · **Who's Watching Grid Focus** — Profile tiles scale and sharpen as keyboard or pointer focus moves between identities
-- [ ] **NF-010** · `SPX-3119` · **Profile Avatar Select Snap** — Selected avatar advances, surrounding profiles recede, and the destination state takes over
+- [x] **NF-010** · `SPX-3119` · **Profile Avatar Select Snap** — Selected avatar advances, surrounding profiles recede, and the destination state takes over
 - [ ] **NF-011** · `SPX-3120` · **Profile Add Tile Morph** — An add-profile tile transforms into a compact creation form
 - [ ] **NF-012** · `SPX-3121` · **Profile Switch Curtain** — Current identity collapses into a dark interstitial before the next profile appears
 - [ ] **NF-013** · `SPX-3122` · **Kids/Profile Mode Shift** — Changing profile visibly changes content density and navigation treatment without redesigning the host
