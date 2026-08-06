@@ -17,6 +17,7 @@ import { arcanaCardDraw } from './arcana-card-draw/entry'
 import { arcanaRankUp } from './arcana-rank-up/entry'
 import { authenticationFailureReset } from './authentication-failure-reset/entry'
 import { authenticationSuccessMorph } from './authentication-success-morph/entry'
+import { autoplayPreviewCountdown } from './autoplay-preview-countdown/entry'
 import { azureShardTransition } from './azure-shard-transition/entry'
 import { badgeCaseInsert } from './badge-case-insert/entry'
 import { badgeEarned } from './badge-earned/entry'
@@ -477,6 +478,7 @@ export const specimens: Specimen[] = [
   arcanaRankUp,
   authenticationFailureReset,
   authenticationSuccessMorph,
+  autoplayPreviewCountdown,
   azureShardTransition,
   badgeCaseInsert,
   badgeEarned,
