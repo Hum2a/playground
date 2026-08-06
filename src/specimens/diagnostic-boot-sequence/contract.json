@@ -1,0 +1,62 @@
+{
+  "name": "diagnostic-boot-sequence",
+  "intent": "Monochrome clinical diagnostic boot overlay with stepped progress and optional host waitUntil hold before SYSTEM READY.",
+  "colours": {
+    "background": "#d8d3bd",
+    "ink": "#34342f",
+    "muted": "#777467"
+  },
+  "typography": {
+    "fontFamily": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+    "noFontFace": true
+  },
+  "lines": [
+    "INITIALIZING INTERFACE...",
+    "CHECKING DISPLAY MODULE... OK",
+    "CHECKING INPUT MODULE... OK",
+    "LOADING LOCAL DATA... OK",
+    "VERIFYING COMPONENTS... OK",
+    "SYSTEM READY"
+  ],
+  "timing": {
+    "lineIntervalMs": 180,
+    "inversionFlashMs": 80,
+    "postReadyPauseMs": 220,
+    "demoHoldAfterLoadingMs": 300,
+    "totalDemoApproxMs": 1500,
+    "progressSteps": 6,
+    "progressMode": "discrete"
+  },
+  "api": {
+    "export": "runDiagnosticBoot(options?)",
+    "waitUntil": {
+      "type": "() => Promise<void>",
+      "when": "After VERIFYING COMPONENTS... OK (line index 4); before SYSTEM READY",
+      "demo": "Omit waitUntil — deterministic finish, never infinite",
+      "integration": "Host passes a promise that resolves when the app is ready; no network inside the specimen"
+    },
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "noNetwork": true
+  },
+  "a11y": {
+    "logAriaHidden": true,
+    "statusRole": "status",
+    "statusLive": "polite",
+    "statusLoading": "Loading",
+    "statusReady": "System ready",
+    "doNotAnnounceEachLine": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "All lines and full progress immediately; no cursor blink; no inversion flash; reveal host"
+  },
+  "texture": {
+    "type": "css-only repeating-linear-gradient horizontal lines",
+    "opacity": 0.06,
+    "noExternalImages": true
+  }
+}

@@ -1,0 +1,222 @@
+/* SPX-008 Diagnostic Boot Sequence — portable contract. Do not restyle to host tokens. */
+
+.diag-boot-demo {
+  --diag-bg: #d8d3bd;
+  --diag-ink: #34342f;
+  --diag-muted: #777467;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  background: var(--diag-bg);
+  color: var(--diag-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.diag-boot {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: var(--diag-bg);
+  color: var(--diag-ink);
+  box-sizing: border-box;
+}
+
+.diag-boot[hidden],
+.diag-boot-demo__host[hidden] {
+  display: none;
+}
+
+.diag-boot__texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--diag-ink) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+.diag-boot__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 20rem);
+}
+
+.diag-boot__header {
+  margin: 0 0 0.85rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--diag-muted);
+}
+
+.diag-boot__log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-height: 7.5rem;
+}
+
+.diag-boot__log li {
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: var(--diag-ink);
+  opacity: 0;
+}
+
+.diag-boot__log li.is-visible {
+  opacity: 1;
+}
+
+.diag-boot__cursor {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.15rem;
+  background: var(--diag-ink);
+  vertical-align: middle;
+  animation: diag-boot-blink 0.7s steps(1, end) infinite;
+}
+
+.diag-boot--done .diag-boot__cursor,
+.diag-boot--holding .diag-boot__cursor {
+  /* holding: keep blink; done: hide via parent hidden */
+}
+
+.diag-boot__progress {
+  margin-top: 1rem;
+  height: 2px;
+  background: color-mix(in srgb, var(--diag-ink) 18%, transparent);
+  overflow: hidden;
+}
+
+.diag-boot__progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--diag-ink);
+  transition: none;
+}
+
+.diag-boot--invert {
+  background: var(--diag-ink);
+  color: var(--diag-bg);
+}
+
+.diag-boot--invert .diag-boot__header,
+.diag-boot--invert .diag-boot__log li {
+  color: var(--diag-bg);
+}
+
+.diag-boot--invert .diag-boot__cursor,
+.diag-boot--invert .diag-boot__progress-fill {
+  background: var(--diag-bg);
+}
+
+.diag-boot--invert .diag-boot__progress {
+  background: color-mix(in srgb, var(--diag-bg) 22%, transparent);
+}
+
+.diag-boot--invert .diag-boot__texture {
+  opacity: 0.08;
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--diag-bg) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+.diag-boot-demo__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.diag-boot-demo__host {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.5rem;
+  background: var(--diag-bg);
+  color: var(--diag-ink);
+  background-image: repeating-linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--diag-ink) 6%, transparent) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+.diag-boot-demo__kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--diag-muted);
+}
+
+.diag-boot-demo__title {
+  margin: 0;
+  font-size: clamp(1.1rem, 5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.diag-boot-demo__note {
+  margin: 0;
+  font-size: 0.7rem;
+  color: var(--diag-muted);
+}
+
+@keyframes diag-boot-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diag-boot__cursor {
+    animation: none;
+    opacity: 1;
+  }
+
+  .diag-boot--invert {
+    /* flash suppressed by JS; keep rule inert */
+  }
+}
+
+[data-force-reduced-motion='true'] .diag-boot__cursor {
+  animation: none;
+  opacity: 1;
+}
