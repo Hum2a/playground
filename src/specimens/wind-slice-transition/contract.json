@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/wind-slice-transition.schema.json",
+  "title": "WindSliceTransition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "activeMs",
+    "settleMs",
+    "colours"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "wind-slice-transition"
+    },
+    "activeMs": {
+      "type": "number",
+      "const": 480
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 160
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "chakra"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#101318"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3A9BD9"
+        }
+      }
+    }
+  }
+}
