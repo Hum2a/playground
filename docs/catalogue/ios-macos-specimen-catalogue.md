@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **18 / 258** complete.
+- Progress: **19 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 240 |
+| Done | 19 |
+| Open | 239 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-160 | `SPX-1459` | `quick-look-expansion` | Quick Look Expansion |
 | IOS-154 | `SPX-1453` | `drop-target-magnetism` | Drop Target Magnetism |
 | IOS-152 | `SPX-1451` | `drag-proxy-formation` | Drag Proxy Formation |
 | IOS-145 | `SPX-1444` | `spotlight-materialise` | Spotlight Materialise |
@@ -75,7 +76,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — search
 - [x] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
 - [x] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — drag-drop
-- [ ] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
+- [x] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
 - [ ] **IOS-172** · `SPX-1471` · **Control Centre Module Expansion** — macos-menu-bar-control-centre
 - [ ] **IOS-188** · `SPX-1487` · **AirDrop Transfer Arc** — airdrop-nearby-transfer-inspired
 - [ ] **IOS-194** · `SPX-1493` · **Handoff Continuation** — continuity-cross-device-concepts
@@ -295,7 +296,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## macOS Finder Inspired
 
-- [ ] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — selected file representation expands into a larger preview without leaving context.
+- [x] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — selected file representation expands into a larger preview without leaving context.
 - [ ] **IOS-161** · `SPX-1460` · **Quick Look Dismiss** — preview collapses back toward the selected file.
 - [ ] **IOS-162** · `SPX-1461` · **File Copy Progress Collapse** — active copy operation condenses into a compact progress indicator.
 - [ ] **IOS-163** · `SPX-1462` · **File Conflict Decision** — duplicate/conflict state presents two competing outcomes and resolves one.
