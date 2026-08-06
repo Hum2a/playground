@@ -1,0 +1,127 @@
+/* menu-bar-active-transfer — portable specimen styles. Do not restyle to host tokens. */
+
+.mbt {
+  --mbt-ink: #0f1218;
+  --mbt-panel: #1a1f28;
+  --mbt-line: #2d3544;
+  --mbt-muted: #7a8496;
+  --mbt-cream: #e8ecf2;
+  --mbt-accent: #6b9fd4;
+  box-sizing: border-box;
+  width: 320px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--mbt-cream);
+}
+
+.mbt *,
+.mbt *::before,
+.mbt *::after {
+  box-sizing: border-box;
+}
+
+.mbt__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 0.35rem;
+  border: 1px solid var(--mbt-line);
+  border-radius: 8px 8px 0 0;
+  background: var(--mbt-panel);
+}
+
+.mbt__heading {
+  height: 32px;
+  padding: 0 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--mbt-cream);
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.mbt__heading.is-active {
+  color: var(--mbt-accent);
+}
+
+.mbt__heading:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: -2px;
+}
+
+.mbt__marker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 2px;
+  background: var(--mbt-accent);
+  opacity: 0;
+  transition:
+    left 120ms cubic-bezier(0.33, 1, 0.2, 1),
+    opacity 100ms ease;
+}
+
+.mbt[data-phase='open'] .mbt__marker {
+  opacity: 1;
+}
+
+.mbt__menu {
+  position: relative;
+  width: 190px;
+  min-height: 0;
+  border: 1px solid var(--mbt-line);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  background: var(--mbt-panel);
+  overflow: hidden;
+  transition:
+    transform 120ms cubic-bezier(0.33, 1, 0.2, 1),
+    height 100ms cubic-bezier(0.33, 1, 0.2, 1);
+}
+
+.mbt__rows {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 80ms ease;
+}
+
+.mbt.is-transferring .mbt__rows {
+  clip-path: inset(50% 0 50% 0);
+}
+
+.mbt__row {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid color-mix(in srgb, var(--mbt-line) 50%, transparent);
+}
+
+.mbt__row:last-child {
+  border-bottom: none;
+}
+
+.mbt__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.68rem;
+  color: var(--mbt-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbt__menu,
+  .mbt__marker,
+  .mbt__rows {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .mbt__menu,
+[data-force-reduced-motion='true'] .mbt__marker,
+[data-force-reduced-motion='true'] .mbt__rows {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}

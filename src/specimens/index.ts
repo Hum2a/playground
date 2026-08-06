@@ -113,6 +113,7 @@ import { matchedCardExpansion } from './matched-card-expansion/entry'
 import { maxRankCompletion } from './max-rank-completion/entry'
 import { measurementOverload } from './measurement-overload/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
+import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
 import { missionControlSpread } from './mission-control-spread/entry'
@@ -343,6 +344,7 @@ export const specimens: Specimen[] = [
   maxRankCompletion,
   measurementOverload,
   memoryFragmentReveal,
+  menuBarActiveTransfer,
   midnightClockTransition,
   misprintNotification,
   missionControlSpread,

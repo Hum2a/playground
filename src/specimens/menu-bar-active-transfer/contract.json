@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/menu-bar-active-transfer.schema.json",
+  "title": "MenuBarActiveTransfer",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "copy", "layout", "animation", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "menu-bar-active-transfer" },
+    "intent": {
+      "type": "string",
+      "const": "An open top-level menu transfers between adjacent headings as the pointer crosses them without fully dismissing and reopening the menu surface."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headings"],
+      "properties": {
+        "headings": {
+          "type": "array",
+          "const": ["FILE", "EDIT", "VIEW"]
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["barHeightPx", "menuWidthPx", "rowCounts"],
+      "properties": {
+        "barHeightPx": { "type": "number", "const": 32 },
+        "menuWidthPx": { "type": "number", "const": 190 },
+        "rowCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file", "edit", "view"],
+          "properties": {
+            "file": { "type": "number", "const": 5 },
+            "edit": { "type": "number", "const": 6 },
+            "view": { "type": "number", "const": 4 }
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transferXMs", "heightMs", "graceMs"],
+      "properties": {
+        "transferXMs": { "type": "number", "const": 120 },
+        "heightMs": { "type": "number", "const": 100 },
+        "graceMs": { "type": "number", "const": 220 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantTransfer", "triggers"],
+      "properties": {
+        "instantTransfer": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "menu"],
+      "properties": {
+        "root": { "type": "string", "const": "mbt" },
+        "menu": { "type": "string", "const": "mbt__menu" }
+      }
+    }
+  }
+}
