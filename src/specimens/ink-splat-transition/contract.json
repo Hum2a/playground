@@ -1,0 +1,220 @@
+{
+  "name": "ink-splat-transition",
+  "intent": "Seven irregular ink blobs with satellite droplets strike and expand to full purple coverage for a content swap, then peel away toward off-centre origins in a non-mirrored exit.",
+  "colours": {
+    "purple": "#7c28d9",
+    "lime": "#b7ef32",
+    "ink": "#17151d",
+    "paper": "#f7f5ed"
+  },
+  "backing": {
+    "className": "ink-splat__backing",
+    "colour": "#7c28d9",
+    "borderRadius": "58% 42% 63% 37% / 48% 55% 45% 52%",
+    "size": "160vmax",
+    "enter": "scaleFromTiny",
+    "exit": "scalePeelToBottomLeft",
+    "enterDelayMs": 280,
+    "enterMs": 240,
+    "exitMs": 520,
+    "exitDelayMs": 40,
+    "exitTransformOrigin": "12% 88%"
+  },
+  "splats": [
+    {
+      "id": 1,
+      "className": "ink-splat__splat--1",
+      "role": "impact",
+      "colour": "#7c28d9",
+      "top": "18%",
+      "left": "22%",
+      "coreSize": ["42vmin", "38vmin"],
+      "borderRadius": "63% 37% 54% 46% / 55% 48% 52% 45%",
+      "delayMs": 0,
+      "enterMs": 220,
+      "exitMs": 480,
+      "exitDelayMs": 0,
+      "exitTo": "up-left",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": -28, "dy": -22, "size": [12, 11] },
+        { "className": "ink-splat__drop--b", "dx": 32, "dy": -18, "size": [9, 10] },
+        { "className": "ink-splat__drop--c", "dx": -18, "dy": 30, "size": [11, 9] },
+        { "className": "ink-splat__drop--d", "dx": 24, "dy": 26, "size": [8, 8] }
+      ]
+    },
+    {
+      "id": 2,
+      "className": "ink-splat__splat--2",
+      "role": "impact",
+      "colour": "#7c28d9",
+      "top": "24%",
+      "left": "72%",
+      "coreSize": ["36vmin", "40vmin"],
+      "borderRadius": "42% 58% 48% 52% / 60% 40% 55% 45%",
+      "delayMs": 70,
+      "enterMs": 220,
+      "exitMs": 460,
+      "exitDelayMs": 40,
+      "exitTo": "up-right",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": 30, "dy": -24, "size": [11, 10] },
+        { "className": "ink-splat__drop--b", "dx": -22, "dy": -16, "size": [8, 9] },
+        { "className": "ink-splat__drop--c", "dx": 18, "dy": 34, "size": [10, 8] }
+      ]
+    },
+    {
+      "id": 3,
+      "className": "ink-splat__splat--3",
+      "role": "impact-accent",
+      "colour": "#b7ef32",
+      "top": "68%",
+      "left": "48%",
+      "coreSize": ["34vmin", "32vmin"],
+      "borderRadius": "55% 45% 62% 38% / 48% 52% 48% 52%",
+      "delayMs": 140,
+      "enterMs": 220,
+      "exitMs": 500,
+      "exitDelayMs": 20,
+      "exitTo": "down",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": -26, "dy": -20, "size": [10, 9] },
+        { "className": "ink-splat__drop--b", "dx": 28, "dy": -15, "size": [8, 8] },
+        { "className": "ink-splat__drop--c", "dx": -20, "dy": 28, "size": [11, 10] },
+        { "className": "ink-splat__drop--d", "dx": 22, "dy": 24, "size": [7, 8] },
+        { "className": "ink-splat__drop--e", "dx": 4, "dy": -36, "size": [9, 7] }
+      ]
+    },
+    {
+      "id": 4,
+      "className": "ink-splat__splat--4",
+      "role": "cover",
+      "colour": "#7c28d9",
+      "top": "42%",
+      "left": "18%",
+      "coreSize": ["78vmin", "72vmin"],
+      "borderRadius": "48% 52% 58% 42% / 55% 45% 52% 48%",
+      "delayMs": 280,
+      "enterMs": 240,
+      "exitMs": 540,
+      "exitDelayMs": 0,
+      "exitTo": "left",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": -36, "dy": -28, "size": [14, 12] },
+        { "className": "ink-splat__drop--b", "dx": 38, "dy": -20, "size": [11, 11] },
+        { "className": "ink-splat__drop--c", "dx": 12, "dy": 36, "size": [13, 10] }
+      ]
+    },
+    {
+      "id": 5,
+      "className": "ink-splat__splat--5",
+      "role": "cover",
+      "colour": "#7c28d9",
+      "top": "38%",
+      "left": "78%",
+      "coreSize": ["72vmin", "80vmin"],
+      "borderRadius": "58% 42% 45% 55% / 48% 52% 58% 42%",
+      "delayMs": 320,
+      "enterMs": 240,
+      "exitMs": 520,
+      "exitDelayMs": 30,
+      "exitTo": "right",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": 34, "dy": -30, "size": [12, 11] },
+        { "className": "ink-splat__drop--b", "dx": -30, "dy": -18, "size": [10, 9] },
+        { "className": "ink-splat__drop--c", "dx": -24, "dy": 32, "size": [11, 12] },
+        { "className": "ink-splat__drop--d", "dx": 28, "dy": 22, "size": [9, 8] }
+      ]
+    },
+    {
+      "id": 6,
+      "className": "ink-splat__splat--6",
+      "role": "cover",
+      "colour": "#7c28d9",
+      "top": "78%",
+      "left": "28%",
+      "coreSize": ["70vmin", "64vmin"],
+      "borderRadius": "40% 60% 52% 48% / 58% 42% 48% 52%",
+      "delayMs": 360,
+      "enterMs": 240,
+      "exitMs": 500,
+      "exitDelayMs": 50,
+      "exitTo": "down-left",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": -32, "dy": 20, "size": [12, 10] },
+        { "className": "ink-splat__drop--b", "dx": 26, "dy": 28, "size": [9, 10] },
+        { "className": "ink-splat__drop--c", "dx": 8, "dy": -34, "size": [11, 9] }
+      ]
+    },
+    {
+      "id": 7,
+      "className": "ink-splat__splat--7",
+      "role": "cover",
+      "colour": "#7c28d9",
+      "top": "12%",
+      "left": "52%",
+      "coreSize": ["68vmin", "62vmin"],
+      "borderRadius": "52% 48% 40% 60% / 45% 55% 50% 50%",
+      "delayMs": 400,
+      "enterMs": 240,
+      "exitMs": 560,
+      "exitDelayMs": 10,
+      "exitTo": "up",
+      "droplets": [
+        { "className": "ink-splat__drop--a", "dx": -20, "dy": -32, "size": [11, 10] },
+        { "className": "ink-splat__drop--b", "dx": 36, "dy": -16, "size": [10, 9] },
+        { "className": "ink-splat__drop--c", "dx": -34, "dy": 18, "size": [9, 11] },
+        { "className": "ink-splat__drop--d", "dx": 22, "dy": 30, "size": [8, 8] }
+      ]
+    }
+  ],
+  "timing": {
+    "enterEasing": "cubic-bezier(0.34, 1.4, 0.64, 1)",
+    "exitEasing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "dropEasing": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "totalMs": 1100,
+    "impactMs": 280,
+    "coverMs": 520,
+    "coveredStartMs": 480,
+    "onCoveredMs": 500,
+    "exitStartMs": 520,
+    "impactStaggerMs": [0, 70, 140],
+    "coverStaggerMs": [280, 320, 360, 400],
+    "scaleFrom": 0.05,
+    "scaleOvershoot": 1.15
+  },
+  "typography": {
+    "fontFamily": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+  },
+  "api": {
+    "export": "runInkTransition(onCovered)",
+    "busyGuard": true,
+    "swapOnlyInsideOnCovered": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "overlayAriaHidden": true,
+    "idlePointerEvents": "none",
+    "doNotFocusOverlay": true,
+    "focusAfterSwap": "newly revealed peer button"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Skip splat travel/expansion; instantly show solid purple coverage, run onCovered, then reveal"
+  },
+  "constraints": {
+    "noImages": true,
+    "noCanvas": true,
+    "noSvgAssets": true,
+    "noExternalTextures": true,
+    "noParticleLib": true,
+    "noFontFace": true,
+    "noNetwork": true,
+    "nonMirroredExits": true,
+    "fullCoverageBeforeSwap": true,
+    "cssBorderRadiusBlobs": true,
+    "purpleExact": "#7c28d9"
+  }
+}

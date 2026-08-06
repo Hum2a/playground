@@ -7,7 +7,9 @@ import { corruptedAccessLock } from './corrupted-access-lock/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
+import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
+import { victoryResultsTally } from './victory-results-tally/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
@@ -59,6 +61,8 @@ export const specimens: Specimen[] = [
   diagnosticBootSequence,
   corruptedAccessLock,
   achievementEncounter,
+  tacticalAlertPing,
+  victoryResultsTally,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {
