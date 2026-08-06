@@ -277,6 +277,7 @@ import { pictureInPictureCollapse } from './picture-in-picture-collapse/entry'
 import { pipEdgeMagnetism } from './pip-edge-magnetism/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
 import { playPauseGlyphMorph } from './play-pause-glyph-morph/entry'
+import { playbackControlsFadeIn } from './playback-controls-fade-in/entry'
 import { postBurstRecovery } from './post-burst-recovery/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
@@ -723,6 +724,7 @@ export const specimens: Specimen[] = [
   pipEdgeMagnetism,
   pixelHpDrain,
   playPauseGlyphMorph,
+  playbackControlsFadeIn,
   postBurstRecovery,
   powerLevelReadout,
   powerStateTransformation,

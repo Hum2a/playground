@@ -1,0 +1,12 @@
+{
+  "name": "playback-controls-fade-in",
+  "intent": "Pointer or keyboard activity reveals playback controls over content; after a frozen idle window they dissolve.",
+  "ref": "SPX-3161",
+  "nf": "NF-052",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}

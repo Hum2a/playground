@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), or open NF rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3307+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 197** complete.
+- Progress: **7 / 197** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 191 |
+| Done | 7 |
+| Open | 190 |
 
 ## Visual grammar
 
@@ -34,6 +34,7 @@
 
 | NF | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NF-052 | `SPX-3161` | `playback-controls-fade-in` | Playback Controls Fade-In |
 | NF-089 | `SPX-3198` | `details-panel-expand` | Details Panel Expand |
 | NF-027 | `SPX-3136` | `rail-page-snap` | Rail Page Snap |
 | NF-025 | `SPX-3134` | `horizontal-content-rail` | Horizontal Content Rail |
@@ -53,7 +54,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [x] **NF-025** · `SPX-3134` · **Horizontal Content Rail** — `horizontal-content-rail`
 - [x] **NF-027** · `SPX-3136` · **Rail Page Snap** — `rail-page-snap`
 - [x] **NF-089** · `SPX-3198` · **Details Panel Expand** — `details-panel-expand`
-- [ ] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — `playback-controls-fade-in`
+- [x] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — `playback-controls-fade-in`
 - [ ] **NF-061** · `SPX-3170` · **Scrub Preview Thumbnail** — `scrub-preview-thumbnail`
 - [ ] **NF-069** · `SPX-3178` · **Skip Intro Appear** — `skip-intro-appear`
 - [ ] **NF-075** · `SPX-3184` · **Next Episode Countdown** — `next-episode-countdown`
@@ -175,7 +176,7 @@ Curated implementation priority (Recommended Build Waves A–E / Top 50). Same c
 - [ ] **NF-051** · `SPX-3160` · **Preview-to-Details Handoff** — Expanded preview smoothly becomes a details panel after explicit selection
 ## 7. Playback Controls
 
-- [ ] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — Pointer/keyboard activity reveals controls over content and inactivity hides them
+- [x] **NF-052** · `SPX-3161` · **Playback Controls Fade-In** — Pointer/keyboard activity reveals controls over content and inactivity hides them
 - [ ] **NF-053** · `SPX-3162` · **Central Play/Pause Pulse** — A brief centre-screen glyph confirms play/pause then disappears
 - [ ] **NF-054** · `SPX-3163` · **Ten-Second Seek Ripple** — Seek action creates a bounded directional feedback pulse and time delta
 - [ ] **NF-055** · `SPX-3164` · **Volume Slider Acquire** — Audio control expands from icon to slider and collapses after use
