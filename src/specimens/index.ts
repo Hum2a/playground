@@ -550,6 +550,8 @@ import { headlineTypesetReveal } from './headline-typeset-reveal/entry'
 
 import { headlineReflow } from './headline-reflow/entry'
 
+import { kickerToHeadlineCascade } from './kicker-to-headline-cascade/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1053,6 +1055,7 @@ export const specimens: Specimen[] = [
   sectionFlagDrop,
   headlineTypesetReveal,
   headlineReflow,
+  kickerToHeadlineCascade,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

@@ -1,0 +1,8 @@
+{
+  "name": "kicker-to-headline-cascade",
+  "ref": "SPX-3543",
+  "title": "Kicker-to-Headline Cascade",
+  "mode": "ticker",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
