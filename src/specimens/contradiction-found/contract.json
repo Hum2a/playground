@@ -1,0 +1,17 @@
+{
+  "name": "contradiction-found",
+  "intent": "Evidence cards collide; conflicting values flash; CONTRADICTION banner.",
+  "catalogue": { "p4": "P4-030", "ref": "SPX-2948" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "collideMs": 420, "flashMs": 360 },
+  "api": {
+    "run": "runContradictionFound()",
+    "reset": "resetContradictionFound()"
+  },
+  "reducedMotion": { "behaviour": "Collided state with highlights immediately" }
+}

@@ -1,0 +1,191 @@
+/* SPX-2948 Contradiction Found — portable contract. */
+
+.cf {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.cf__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cf__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 340px);
+  min-height: 200px;
+  border: 3px solid var(--yellow);
+  background: var(--paper);
+}
+
+.cf__card {
+  position: absolute;
+  top: 22%;
+  box-sizing: border-box;
+  width: 44%;
+  padding: 0.6rem 0.65rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  transition: transform 420ms cubic-bezier(0.3, 1.2, 0.3, 1);
+}
+
+.cf__card--left {
+  left: 4%;
+  transform: translateX(0);
+}
+
+.cf__card--right {
+  right: 4%;
+  transform: translateX(0);
+}
+
+.cf[data-phase='collide'] .cf__card--left,
+.cf[data-phase='done'] .cf__card--left {
+  transform: translateX(52%);
+}
+
+.cf[data-phase='collide'] .cf__card--right,
+.cf[data-phase='done'] .cf__card--right {
+  transform: translateX(-52%);
+}
+
+.cf__label {
+  margin: 0;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cf__value {
+  margin: 0.35rem 0 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cf__meta {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cf__highlight {
+  display: inline-block;
+  padding: 0 0.15rem;
+  background: transparent;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.cf[data-phase='flash'] .cf__highlight,
+.cf[data-phase='done'] .cf__highlight {
+  background: var(--yellow);
+  color: var(--ink);
+  animation: cf-flash 180ms steps(2, end) 2;
+}
+
+@keyframes cf-flash {
+  0%, 100% { background: var(--yellow); }
+  50% { background: var(--ink); color: var(--yellow); }
+}
+
+.cf__banner {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  z-index: 3;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 200ms ease, transform 280ms ease;
+}
+
+.cf[data-phase='done'] .cf__banner {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.cf__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cf__btn {
+  box-sizing: border-box;
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cf__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.cf__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.cf__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf__card,
+  .cf__highlight,
+  .cf__banner {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .cf__card,
+[data-force-reduced-motion='true'] .cf__highlight,
+[data-force-reduced-motion='true'] .cf__banner {
+  animation: none !important;
+  transition: none !important;
+}
