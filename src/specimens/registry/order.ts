@@ -552,4 +552,5 @@ export const specimenOrder: string[] = [
   'analog-vu-needle',
   'led-ladder-meter',
   'peak-hold-marker',
+  'parametric-eq-node-drag',
 ]

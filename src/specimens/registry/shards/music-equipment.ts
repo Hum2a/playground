@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { parametricEqNodeDrag } from '../../library/music-equipment/parametric-eq-node-drag/entry'
 import { peakHoldMarker } from '../../library/music-equipment/peak-hold-marker/entry'
 import { ledLadderMeter } from '../../library/music-equipment/led-ladder-meter/entry'
 import { analogVuNeedle } from '../../library/music-equipment/analog-vu-needle/entry'
@@ -6,6 +7,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  parametricEqNodeDrag,
   peakHoldMarker,
   ledLadderMeter,
   analogVuNeedle,

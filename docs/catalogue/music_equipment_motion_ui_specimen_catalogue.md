@@ -83,7 +83,7 @@ specimens can feel tactile without needing sound.
 
 # 3. Equalisers / Frequency
 
-- [ ] **MUSIC-019** · `SPX-3778` · ★★★★★ **Parametric EQ Node Drag** — Frequency nodes move
+- [x] **MUSIC-019** · `SPX-3778` · ★★★★★ **Parametric EQ Node Drag** — Frequency nodes move
     across a graph while their bell/shelf curves update continuously.
 - [ ] **MUSIC-020** · `SPX-3779` · ★★★★★ **EQ Band Acquire** — Selecting a band enlarges its node
     and reveals frequency, gain and Q controls.
@@ -862,18 +862,19 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-019 | SPX-3778 | `parametric-eq-node-drag` | Parametric EQ Node Drag |
 | MUSIC-013 | SPX-3772 | `peak-hold-marker` | Peak Hold Marker |
 | MUSIC-012 | SPX-3771 | `led-ladder-meter` | LED Ladder Meter |
 | MUSIC-011 | SPX-3770 | `analog-vu-needle` | Analog VU Needle |
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **5 / 310** complete.
+- Progress: **6 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 305 |
+| Done | 6 |
+| Open | 304 |
 
 ## Core first-wave / build queue
 
@@ -882,7 +883,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-011** · `SPX-3770` · **Analog VU Needle** · `analog-vu-needle`
 - [x] **MUSIC-012** · `SPX-3771` · **LED Ladder Meter** · `led-ladder-meter`
 - [x] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · `peak-hold-marker`
-- [ ] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · scaffold `parametric-eq-node-drag`
+- [x] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · `parametric-eq-node-drag`
 - [ ] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · scaffold `eq-bypass-flatten`
 - [ ] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · scaffold `spectrum-bar-dance`
 - [ ] **MUSIC-030** · `SPX-3789` · **Oscilloscope Trace** · scaffold `oscilloscope-trace`
