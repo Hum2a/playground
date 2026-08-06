@@ -8,13 +8,18 @@ import { comingSoonTape } from './coming-soon-tape/entry'
 import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelScrollReveal } from './comic-panel-scroll-reveal/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
+import { completionStrike } from './completion-strike/entry'
+import { connectionSevered } from './connection-severed/entry'
 import { contentDeclassification } from './content-declassification/entry'
-import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
+import { criticalThresholdWarning } from './critical-threshold-warning/entry'
+import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { crossOutReplacement } from './cross-out-replacement/entry'
 import { crossOutStatusSwap } from './cross-out-status-swap/entry'
 import { dayChangeTear } from './day-change-tear/entry'
+import { deadlinePanic } from './deadline-panic/entry'
 import { decisionShowdown } from './decision-showdown/entry'
+import { deletionGuillotine } from './deletion-guillotine/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
@@ -97,6 +102,7 @@ export const specimens: Specimen[] = [
   truthShotNotification,
   diagnosticBootSequence,
   corruptedAccessLock,
+  criticalThresholdWarning,
   achievementEncounter,
   tacticalAlertPing,
   inkSplatTransition,
@@ -116,13 +122,16 @@ export const specimens: Specimen[] = [
   panelExplosionReveal,
   holdToChargeButton,
   lockedChainBreak,
+  discoveryTearOpen,
   decisionShowdown,
+  deletionGuillotine,
   comicCardSelection,
   redactedContentLock,
   comicPanelScrollReveal,
   crossOutReplacement,
   printRegistrationHover,
   dayChangeTear,
+  deadlinePanic,
   hoverCutout,
   blackoutLoader,
   crossOutStatusSwap,
@@ -132,6 +141,8 @@ export const specimens: Specimen[] = [
   failureShatter,
   permissionRejection,
   objectiveAcquired,
+  completionStrike,
+  connectionSevered,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

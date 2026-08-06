@@ -1,0 +1,455 @@
+/* deletion-guillotine — portable specimen styles */
+
+.dg {
+  --dg-ink: #090909;
+  --dg-red: #e60012;
+  --dg-paper: #f5f1e8;
+  --dg-ease: cubic-bezier(0.32, 0.08, 0.45, 1);
+  /*
+   * Complementary cut polygons along the blade diagonal (~ -18deg).
+   * Upper/left: above the diagonal from UL→LR of the cut plane.
+   * Lower/right: below that same diagonal.
+   */
+  --dg-cut-upper: polygon(0% 0%, 100% 0%, 100% 18%, 0% 78%);
+  --dg-cut-lower: polygon(0% 78%, 100% 18%, 100% 100%, 0% 100%);
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  min-height: 280px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #15171c;
+  color: var(--dg-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.dg *,
+.dg *::before,
+.dg *::after {
+  box-sizing: border-box;
+}
+
+.dg__card,
+.dg__confirm,
+.dg__removed {
+  position: relative;
+  z-index: 2;
+  margin: 1.25rem auto;
+  width: min(100% - 1.5rem, 300px);
+  padding: 1.1rem 1rem 1.15rem;
+  background: var(--dg-paper);
+  border: 2px solid var(--dg-ink);
+  transform-origin: 50% 50%;
+}
+
+.dg__eyebrow {
+  margin: 0 0 0.45rem;
+  font: 700 0.58rem/1.2 inherit;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(9 9 9 / 0.5);
+}
+
+.dg__title {
+  margin: 0;
+  font: 900 clamp(1.05rem, 4.5vw, 1.35rem) / 1.1 inherit;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dg__meta {
+  margin: 0.4rem 0 0.95rem;
+  font: 600 0.8rem/1.3 inherit;
+  color: rgb(9 9 9 / 0.7);
+}
+
+.dg__delete,
+.dg__confirm-yes,
+.dg__confirm-no {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--dg-ink);
+  border-radius: 0;
+  font: 800 0.62rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dg__delete,
+.dg__confirm-yes {
+  background: var(--dg-ink);
+  color: var(--dg-paper);
+}
+
+.dg__confirm-no {
+  background: var(--dg-paper);
+  color: var(--dg-ink);
+}
+
+.dg__delete:focus,
+.dg__confirm-yes:focus,
+.dg__confirm-no:focus {
+  outline: none;
+}
+
+.dg__delete:focus-visible,
+.dg__confirm-yes:focus-visible,
+.dg__confirm-no:focus-visible {
+  outline: 2px solid var(--dg-red);
+  outline-offset: 3px;
+}
+
+.dg__confirm-copy {
+  margin: 0 0 0.35rem;
+  font: 800 0.85rem/1.25 inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dg__confirm-note {
+  margin: 0 0 0.85rem;
+  font: 500 0.7rem/1.35 inherit;
+  color: rgb(9 9 9 / 0.6);
+}
+
+.dg__confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.dg__removed {
+  text-align: center;
+  font: 900 0.95rem/1.2 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dg-paper);
+  background: var(--dg-ink);
+  border-color: var(--dg-ink);
+}
+
+.dg__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dg__confirm[hidden],
+.dg__removed[hidden] {
+  display: none !important;
+}
+
+.dg--confirm .dg__card {
+  display: none;
+}
+
+.dg--confirm .dg__confirm {
+  display: block;
+}
+
+.dg--removed .dg__card,
+.dg--removed .dg__confirm {
+  display: none;
+}
+
+.dg--removed .dg__removed {
+  display: block;
+}
+
+/* —— Cut scene stage (decorative copies) —— */
+.dg__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dg--blade .dg__stage,
+.dg--separate .dg__stage,
+.dg--deleted-flash .dg__stage {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dg--blade .dg__card,
+.dg--separate .dg__card,
+.dg--deleted-flash .dg__card {
+  visibility: hidden;
+}
+
+.dg__piece {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(100% - 1.5rem, 300px);
+  height: 9.5rem;
+  margin-left: calc(min(100% - 1.5rem, 300px) / -2);
+  margin-top: -4.75rem;
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  transform: scaleY(0.97);
+}
+
+.dg__piece-face {
+  width: 100%;
+  height: 100%;
+  padding: 1.1rem 1rem;
+  background: var(--dg-paper);
+  border: 2px solid var(--dg-ink);
+  color: var(--dg-ink);
+}
+
+.dg--blade .dg__piece--upper,
+.dg--separate .dg__piece--upper {
+  clip-path: var(--dg-cut-upper);
+  z-index: 2;
+}
+
+.dg--blade .dg__piece--lower,
+.dg--separate .dg__piece--lower {
+  clip-path: var(--dg-cut-lower);
+  z-index: 2;
+}
+
+/* Warn line above card */
+.dg__warn-line {
+  position: absolute;
+  left: 12%;
+  top: 28%;
+  width: 76%;
+  height: 3px;
+  background: var(--dg-red);
+  clip-path: polygon(0% 40%, 100% 0%, 100% 100%, 0% 70%);
+  transform: rotate(-18deg) scaleX(0);
+  transform-origin: 100% 50%;
+  opacity: 0;
+  z-index: 4;
+}
+
+/* Blade: irregular black graphic + ~8px red backing; UR → LL at -18deg */
+.dg__blade {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  width: 160%;
+  height: 2.4rem;
+  transform: translate(55%, -160%) rotate(-18deg);
+  transform-origin: 50% 50%;
+  opacity: 0;
+}
+
+.dg__blade-red,
+.dg__blade-ink {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0% 35%, 8% 0%, 100% 15%, 96% 100%, 4% 90%);
+}
+
+.dg__blade-red {
+  background: var(--dg-red);
+  transform: translate(8px, 6px);
+}
+
+.dg__blade-ink {
+  background: var(--dg-ink);
+}
+
+.dg__deleted {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  z-index: 6;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  background: var(--dg-red);
+  color: var(--dg-paper);
+  font: 900 0.85rem/1 inherit;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%) rotate(-4deg) scale(0.8);
+  opacity: 0;
+}
+
+/* —— Anticipation 0–140ms: live card compress + red line —— */
+.dg--anticipate .dg__card {
+  animation: dg-compress 140ms var(--dg-ease) forwards;
+}
+
+.dg--anticipate .dg__warn-line,
+.dg--blade .dg__warn-line {
+  opacity: 1;
+  z-index: 4;
+}
+
+.dg--anticipate .dg__warn-line {
+  position: absolute;
+  left: 12%;
+  top: 28%;
+  width: 76%;
+  height: 3px;
+  pointer-events: none;
+  animation: dg-line-in 140ms var(--dg-ease) forwards;
+}
+
+/* Place warn line in root flow during anticipate (before stage shows) */
+.dg--anticipate .dg__stage {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dg--anticipate .dg__piece,
+.dg--anticipate .dg__blade,
+.dg--anticipate .dg__deleted {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dg--anticipate .dg__warn-line {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes dg-compress {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0.97);
+  }
+}
+
+@keyframes dg-line-in {
+  from {
+    transform: rotate(-18deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-18deg) scaleX(1);
+  }
+}
+
+/* —— Blade 140–300ms (~160ms travel) —— */
+.dg--blade .dg__warn-line {
+  transform: rotate(-18deg) scaleX(1);
+  opacity: 1;
+}
+
+.dg--blade .dg__blade {
+  opacity: 1;
+  animation: dg-blade-sweep 160ms cubic-bezier(0.4, 0.05, 0.55, 1) forwards;
+}
+
+@keyframes dg-blade-sweep {
+  from {
+    transform: translate(55%, -160%) rotate(-18deg);
+  }
+  to {
+    transform: translate(-55%, 40%) rotate(-18deg);
+  }
+}
+
+/* —— Separation 300–540ms —— */
+.dg--separate .dg__warn-line {
+  opacity: 0;
+}
+
+.dg--separate .dg__blade {
+  opacity: 1;
+  animation: dg-blade-exit 190ms cubic-bezier(0.45, 0.05, 0.7, 0.2) forwards;
+}
+
+.dg--separate .dg__piece--upper {
+  animation: dg-upper-out 240ms cubic-bezier(0.4, 0.05, 0.7, 0.25) forwards;
+}
+
+.dg--separate .dg__piece--lower {
+  animation: dg-lower-out 240ms cubic-bezier(0.4, 0.05, 0.7, 0.25) forwards;
+}
+
+@keyframes dg-blade-exit {
+  from {
+    transform: translate(-55%, 40%) rotate(-18deg);
+  }
+  to {
+    transform: translate(-120%, 130%) rotate(-18deg);
+  }
+}
+
+@keyframes dg-upper-out {
+  from {
+    transform: scaleY(0.97) translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(-75px, -28px) rotate(-8deg);
+  }
+}
+
+@keyframes dg-lower-out {
+  from {
+    transform: scaleY(0.97) translate(0, 0) rotate(0deg);
+  }
+  to {
+    transform: translate(80px, 32px) rotate(10deg);
+  }
+}
+
+/* —— DELETED flash (~300ms) —— */
+.dg--deleted-flash .dg__piece,
+.dg--deleted-flash .dg__blade,
+.dg--deleted-flash .dg__warn-line {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dg--deleted-flash .dg__deleted {
+  opacity: 1;
+  animation: dg-deleted-in 120ms var(--dg-ease) forwards;
+}
+
+@keyframes dg-deleted-in {
+  from {
+    transform: translate(-50%, -50%) rotate(-4deg) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-4deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.dg--removed .dg__stage {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dg__card,
+  .dg__piece,
+  .dg__blade,
+  .dg__warn-line,
+  .dg__deleted {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .dg__card,
+[data-force-reduced-motion='true'] .dg__piece,
+[data-force-reduced-motion='true'] .dg__blade,
+[data-force-reduced-motion='true'] .dg__warn-line,
+[data-force-reduced-motion='true'] .dg__deleted {
+  animation: none !important;
+  transition: none !important;
+}

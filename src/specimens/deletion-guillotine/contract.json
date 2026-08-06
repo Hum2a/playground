@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/deletion-guillotine.schema.json",
+  "title": "DeletionGuillotine",
+  "description": "Portable destructive deletion demo: confirm, blade cut, complementary clip-path halves exit. Visual only — no persistent deletion. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "cut",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "safety",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "deletion-guillotine" },
+    "intent": {
+      "type": "string",
+      "const": "After confirmation, a black irregular blade cuts a project card along a diagonal; complementary clipped halves exit opposite directions."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "meta",
+        "delete",
+        "confirmYes",
+        "confirmNo",
+        "deleted",
+        "removed",
+        "status"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "PROJECT NIGHTFALL" },
+        "meta": { "type": "string", "const": "12 artifacts" },
+        "delete": { "type": "string", "const": "DELETE" },
+        "confirmYes": { "type": "string", "const": "CONFIRM DELETE" },
+        "confirmNo": { "type": "string", "const": "CANCEL" },
+        "deleted": { "type": "string", "const": "DELETED" },
+        "removed": { "type": "string", "const": "PROJECT REMOVED" },
+        "status": {
+          "type": "string",
+          "const": "Project Nightfall removed."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "red", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "cut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bladeRotateDeg",
+        "bladeTravelMs",
+        "redBackingPx",
+        "upperClip",
+        "lowerClip",
+        "upperExit",
+        "lowerExit"
+      ],
+      "properties": {
+        "bladeRotateDeg": { "type": "number", "const": -18 },
+        "bladeTravelMs": { "type": "number", "const": 160 },
+        "redBackingPx": { "type": "number", "const": 8 },
+        "direction": {
+          "type": "string",
+          "const": "upper-right to lower-left"
+        },
+        "upperClip": {
+          "type": "string",
+          "const": "polygon(0% 0%, 100% 0%, 100% 18%, 0% 78%)"
+        },
+        "lowerClip": {
+          "type": "string",
+          "const": "polygon(0% 78%, 100% 18%, 100% 100%, 0% 100%)"
+        },
+        "upperExit": {
+          "type": "object",
+          "const": {
+            "translateXPx": -75,
+            "translateYPx": -28,
+            "rotateDeg": -8
+          }
+        },
+        "lowerExit": {
+          "type": "object",
+          "const": {
+            "translateXPx": 80,
+            "translateYPx": 32,
+            "rotateDeg": 10
+          }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "anticipateMs",
+        "bladeAtMs",
+        "separateAtMs",
+        "deletedAtMs",
+        "removedAtMs"
+      ],
+      "properties": {
+        "anticipateMs": { "type": "number", "const": 140 },
+        "bladeAtMs": { "type": "number", "const": 140 },
+        "bladeTravelMs": { "type": "number", "const": 160 },
+        "separateAtMs": { "type": "number", "const": 300 },
+        "separateDurationMs": { "type": "number", "const": 240 },
+        "deletedAtMs": { "type": "number", "const": 460 },
+        "deletedDurationMs": { "type": "number", "const": 300 },
+        "removedAtMs": { "type": "number", "const": 760 },
+        "anticipateScaleY": { "type": "number", "const": 0.97 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deliberateConfirmation",
+        "singleStatusAnnouncement",
+        "decorativeHidden"
+      ],
+      "properties": {
+        "deliberateConfirmation": { "type": "boolean", "const": true },
+        "singleStatusAnnouncement": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateRemoved", "triggers"],
+      "properties": {
+        "immediateRemoved": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["demoOnlyNoPersistentDeletion"],
+      "properties": {
+        "demoOnlyNoPersistentDeletion": { "type": "boolean", "const": true },
+        "productionOwnsConfirmAndState": { "type": "boolean", "const": true }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "stage", "blade", "removed"],
+      "properties": {
+        "root": { "type": "string", "const": "dg" },
+        "card": { "type": "string", "const": "dg__card" },
+        "stage": { "type": "string", "const": "dg__stage" },
+        "blade": { "type": "string", "const": "dg__blade" },
+        "removed": { "type": "string", "const": "dg__removed" },
+        "stateRemoved": { "type": "string", "const": "dg--removed" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "deletion-guillotine",
+      "intent": "After confirmation, a black irregular blade cuts a project card along a diagonal; complementary clipped halves exit opposite directions.",
+      "copy": {
+        "title": "PROJECT NIGHTFALL",
+        "meta": "12 artifacts",
+        "delete": "DELETE",
+        "confirmYes": "CONFIRM DELETE",
+        "confirmNo": "CANCEL",
+        "deleted": "DELETED",
+        "removed": "PROJECT REMOVED",
+        "status": "Project Nightfall removed."
+      },
+      "colours": {
+        "ink": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "animation": {
+        "anticipateMs": 140,
+        "bladeAtMs": 140,
+        "separateAtMs": 300,
+        "deletedAtMs": 460,
+        "removedAtMs": 760
+      },
+      "a11y": {
+        "deliberateConfirmation": true,
+        "singleStatusAnnouncement": true,
+        "decorativeHidden": true
+      },
+      "reducedMotion": {
+        "immediateRemoved": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "safety": {
+        "demoOnlyNoPersistentDeletion": true,
+        "productionOwnsConfirmAndState": true
+      },
+      "classNames": {
+        "root": "dg",
+        "card": "dg__card",
+        "stage": "dg__stage",
+        "blade": "dg__blade",
+        "removed": "dg__removed"
+      }
+    }
+  ]
+}
