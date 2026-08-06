@@ -1,0 +1,28 @@
+<div class="ess" data-ess data-phase="idle">
+  <p class="ess__live" data-ess-live aria-live="polite">
+    Exam panel locked. Seal intact.
+  </p>
+
+  <p class="ess__system">EXAM // GATE</p>
+
+  <div class="ess__stage" data-ess-stage>
+    <div class="ess__panel">
+      <p class="ess__panel-title">Written Section 1</p>
+      <p class="ess__timer" data-ess-timer>00:00</p>
+      <div class="ess__seal" data-ess-seal aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="72" height="72">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="3" />
+          <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="2" />
+          <path class="ess__seal-crack" d="M50 6 L50 94 M6 50 L94 50" stroke="currentColor" stroke-width="2" />
+        </svg>
+      </div>
+    </div>
+    <p class="ess__status" data-ess-status>LOCKED</p>
+    <p class="ess__hint" data-ess-hint>Press Run to break the seal and begin.</p>
+  </div>
+
+  <div class="ess__controls">
+    <button type="button" class="ess__btn ess__btn--primary" data-ess-run>Run</button>
+    <button type="button" class="ess__btn" data-ess-replay>Replay</button>
+  </div>
+</div>

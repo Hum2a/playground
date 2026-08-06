@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/exam-start-seal.schema.json",
+  "title": "ExamStartSeal",
+  "description": "A locked test panel unlocks and its timer starts when the central seal cracks open.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "crackMs", "openMs", "colours", "reducedMotion"],
+  "properties": {
+    "name": { "type": "string", "const": "exam-start-seal" },
+    "crackMs": { "type": "number", "const": 160 },
+    "openMs": { "type": "number", "const": 260 },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "alarm": { "type": "string", "const": "#D94A38" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateActive"],
+      "properties": {
+        "immediateActive": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}
