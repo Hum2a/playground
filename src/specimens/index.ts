@@ -24,6 +24,7 @@ import { badgeEarned } from './badge-earned/entry'
 import { barrierBreachAlert } from './barrier-breach-alert/entry'
 import { battleResultTally } from './battle-result-tally/entry'
 import { bindingWrapLock } from './binding-wrap-lock/entry'
+import { bingeContinuationTransition } from './binge-continuation-transition/entry'
 import { biometricScanAcquisition } from './biometric-scan-acquisition/entry'
 import { blackoutLoader } from './blackout-loader/entry'
 import { blinkSelection } from './blink-selection/entry'
@@ -491,6 +492,7 @@ export const specimens: Specimen[] = [
   barrierBreachAlert,
   battleResultTally,
   bindingWrapLock,
+  bingeContinuationTransition,
   biometricScanAcquisition,
   blackoutLoader,
   blinkSelection,

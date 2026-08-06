@@ -1,0 +1,1 @@
+export function runBingeContinue(){const el=document.querySelector('[data-ep]');el.style.opacity='0';window.setTimeout(()=>{el.textContent='S1 E3 · Now playing';el.style.opacity='1'},200)};document.querySelector('[data-go]')?.addEventListener('click',()=>runBingeContinue())
