@@ -612,6 +612,8 @@ import { editorialBracketDraw } from './editorial-bracket-draw/entry'
 
 import { pullQuoteExtraction } from './pull-quote-extraction/entry'
 
+import { statCalloutRise } from './stat-callout-rise/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1146,6 +1148,7 @@ export const specimens: Specimen[] = [
   marginNoteSlideIn,
   editorialBracketDraw,
   pullQuoteExtraction,
+  statCalloutRise,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

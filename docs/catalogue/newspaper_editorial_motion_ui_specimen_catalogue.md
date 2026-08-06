@@ -276,7 +276,7 @@ chronology and information priority.
 
 - [x] **NEWS-093** · `SPX-3615` · ★★★★★ **Pull Quote Extraction** — A sentence visually leaves
     the article body and expands into a large callout.
-- [ ] **NEWS-094** · `SPX-3616` · ★★★★★ **Stat Callout Rise** — A key number rises from body
+- [x] **NEWS-094** · `SPX-3616` · ★★★★★ **Stat Callout Rise** — A key number rises from body
     copy into a dominant editorial statistic.
 - [ ] **NEWS-095** · `SPX-3617` · ★★★★☆ **Quote Mark Slam** — Oversized quotation marks frame a
     newly promoted quote.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-094 | SPX-3616 | `stat-callout-rise` | Stat Callout Rise |
 | NEWS-093 | SPX-3615 | `pull-quote-extraction` | Pull Quote Extraction |
 | NEWS-086 | SPX-3608 | `editorial-bracket-draw` | Editorial Bracket Draw |
 | NEWS-085 | SPX-3607 | `margin-note-slide-in` | Margin Note Slide-In |
@@ -718,12 +719,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **39 / 237** complete.
+- Progress: **40 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 39 |
-| Open | 198 |
+| Done | 40 |
+| Open | 197 |
 
 ## Core first-wave / build queue
 
@@ -766,7 +767,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-085** · `SPX-3607` · **Margin Note Slide-In** · `margin-note-slide-in`
 - [x] **NEWS-086** · `SPX-3608` · **Editorial Bracket Draw** · `editorial-bracket-draw`
 - [x] **NEWS-093** · `SPX-3615` · **Pull Quote Extraction** · `pull-quote-extraction`
-- [ ] **NEWS-094** · `SPX-3616` · **Stat Callout Rise** · scaffold `stat-callout-rise`
+- [x] **NEWS-094** · `SPX-3616` · **Stat Callout Rise** · `stat-callout-rise`
 - [ ] **NEWS-100** · `SPX-3622` · **Breaking Ticker Crawl** · scaffold `breaking-ticker-crawl`
 - [ ] **NEWS-101** · `SPX-3623` · **Live Blog Entry Insert** · scaffold `live-blog-entry-insert`
 - [ ] **NEWS-104** · `SPX-3626` · **Ticker Pause on Focus** · scaffold `ticker-pause-on-focus`

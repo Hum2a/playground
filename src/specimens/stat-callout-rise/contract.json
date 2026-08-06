@@ -1,0 +1,8 @@
+{
+  "name": "stat-callout-rise",
+  "ref": "SPX-3616",
+  "title": "Stat Callout Rise",
+  "mode": "tally",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
