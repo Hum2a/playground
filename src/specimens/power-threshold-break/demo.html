@@ -1,0 +1,27 @@
+<div class="ptb" data-ptb data-phase="idle">
+  <p class="ptb__live" data-ptb-live aria-live="polite">Output below threshold.</p>
+
+  <div class="ptb__stage" data-ptb-stage>
+    <div class="ptb__header">
+      <p class="ptb__eyebrow">OUTPUT // METER</p>
+      <p class="ptb__cap" data-ptb-cap>MAX 100</p>
+    </div>
+
+    <div class="ptb__meter" data-ptb-meter>
+      <div class="ptb__fill" data-ptb-fill style="--ptb-pct: 92%"></div>
+      <div class="ptb__threshold" aria-hidden="true"></div>
+      <div class="ptb__shards" data-ptb-shards aria-hidden="true">
+        <span class="ptb__shard"></span>
+        <span class="ptb__shard"></span>
+        <span class="ptb__shard"></span>
+      </div>
+    </div>
+
+    <p class="ptb__status" data-ptb-status>CHARGING</p>
+  </div>
+
+  <div class="ptb__controls">
+    <button type="button" class="ptb__btn ptb__btn--primary" data-ptb-run>Run</button>
+    <button type="button" class="ptb__btn" data-ptb-replay>Replay</button>
+  </div>
+</div>

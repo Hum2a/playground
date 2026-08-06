@@ -178,6 +178,7 @@ import { playPauseGlyphMorph } from './play-pause-glyph-morph/entry'
 import { postBurstRecovery } from './post-burst-recovery/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
 import { powerStateTransformation } from './power-state-transformation/entry'
+import { powerThresholdBreak } from './power-threshold-break/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { predictiveBackAppShrink } from './predictive-back-app-shrink/entry'
 import { predictiveBackEdgePull } from './predictive-back-edge-pull/entry'
@@ -253,6 +254,8 @@ import { winnerAdvance } from './winner-advance/entry'
 import type { Specimen } from './types'
 
 export type { Specimen } from './types'
+export type { SpecimenPayload, SpecimenResolved } from './types'
+export { resolvePayload, resolveSpecimen } from './resolvePayload'
 export type {
   FacetKey,
   SpecimenFacets,
@@ -471,6 +474,7 @@ export const specimens: Specimen[] = [
   postBurstRecovery,
   powerLevelReadout,
   powerStateTransformation,
+  powerThresholdBreak,
   precisionMenuSnap,
   predictiveBackAppShrink,
   predictiveBackEdgePull,

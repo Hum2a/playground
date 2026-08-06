@@ -1,0 +1,25 @@
+{
+  "name": "power-threshold-break",
+  "intent": "Meter at 92% surges through shattering 100% cap to BREAKTHROUGH at 108%.",
+  "catalogue": { "mha": "MHA-027", "ref": "SPX-2001" },
+  "copy": {
+    "eyebrow": "OUTPUT // METER",
+    "cap": "MAX 100",
+    "charging": "CHARGING",
+    "breakthrough": "BREAKTHROUGH"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": { "surgeMs": 500, "settleMs": 300 },
+  "meter": { "startPct": 92, "endPct": 108, "capPct": 100 },
+  "api": {
+    "run": "runPowerThresholdBreak()",
+    "reset": "resetPowerThresholdBreak()",
+    "replay": "replayPowerThresholdBreak()"
+  },
+  "reducedMotion": { "behaviour": "Immediately show 108% BREAKTHROUGH" }
+}
