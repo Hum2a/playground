@@ -13,6 +13,7 @@ import { callingCardSlam } from './calling-card-slam/entry'
 import { captureBreakout } from './capture-breakout/entry'
 import { captureShake } from './capture-shake/entry'
 import { capsuleCollapse } from './capsule-collapse/entry'
+import { capsuleDeploy } from './capsule-deploy/entry'
 import { cardBreakSummon } from './card-break-summon/entry'
 import { chargeRelease } from './charge-release/entry'
 import { choiceExecutionSlash } from './choice-execution-slash/entry'
@@ -118,6 +119,7 @@ import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
 import { tartarusFloorAscension } from './tartarus-floor-ascension/entry'
 import { temporalFreeze } from './temporal-freeze/entry'
+import { temporalUndo } from './temporal-undo/entry'
 import { timeSkip } from './time-skip/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { ultraStateOptimisation } from './ultra-state-optimisation/entry'
@@ -203,6 +205,7 @@ export const specimens: Specimen[] = [
   captureShake,
   captureBreakout,
   capsuleCollapse,
+  capsuleDeploy,
   cardBreakSummon,
   chargeRelease,
   choiceExecutionSlash,
@@ -289,6 +292,7 @@ export const specimens: Specimen[] = [
   tacticalTargetLock,
   tartarusFloorAscension,
   temporalFreeze,
+  temporalUndo,
   timeSkip,
   ultraStateOptimisation,
   tornEdgeDrawer,
