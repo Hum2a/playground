@@ -1,0 +1,8 @@
+{
+  "name": "peak-hold-marker",
+  "ref": "SPX-3772",
+  "title": "Peak Hold Marker",
+  "mode": "sequence",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

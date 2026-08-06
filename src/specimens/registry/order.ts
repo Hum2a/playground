@@ -551,4 +551,5 @@ export const specimenOrder: string[] = [
   'scene-recall-sweep',
   'analog-vu-needle',
   'led-ladder-meter',
+  'peak-hold-marker',
 ]

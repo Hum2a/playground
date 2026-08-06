@@ -66,7 +66,7 @@ specimens can feel tactile without needing sound.
     deterministic level sequence and settles naturally.
 - [x] **MUSIC-012** · `SPX-3771` · ★★★★★ **LED Ladder Meter** — Segmented level bars climb
     through green/amber/red-like zones and fall with controlled decay.
-- [ ] **MUSIC-013** · `SPX-3772` · ★★★★★ **Peak Hold Marker** — A peak indicator remains briefly
+- [x] **MUSIC-013** · `SPX-3772` · ★★★★★ **Peak Hold Marker** — A peak indicator remains briefly
     above the falling meter before dropping.
 - [ ] **MUSIC-014** · `SPX-3773` · ★★★★☆ **Stereo Meter Pair** — Left and right level bars move
     independently around a shared scale.
@@ -862,17 +862,18 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-013 | SPX-3772 | `peak-hold-marker` | Peak Hold Marker |
 | MUSIC-012 | SPX-3771 | `led-ladder-meter` | LED Ladder Meter |
 | MUSIC-011 | SPX-3770 | `analog-vu-needle` | Analog VU Needle |
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **4 / 310** complete.
+- Progress: **5 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 306 |
+| Done | 5 |
+| Open | 305 |
 
 ## Core first-wave / build queue
 
@@ -880,7 +881,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-009** · `SPX-3768` · **Scene Recall Sweep** · `scene-recall-sweep`
 - [x] **MUSIC-011** · `SPX-3770` · **Analog VU Needle** · `analog-vu-needle`
 - [x] **MUSIC-012** · `SPX-3771` · **LED Ladder Meter** · `led-ladder-meter`
-- [ ] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · scaffold `peak-hold-marker`
+- [x] **MUSIC-013** · `SPX-3772` · **Peak Hold Marker** · `peak-hold-marker`
 - [ ] **MUSIC-019** · `SPX-3778` · **Parametric EQ Node Drag** · scaffold `parametric-eq-node-drag`
 - [ ] **MUSIC-025** · `SPX-3784` · **EQ Bypass Flatten** · scaffold `eq-bypass-flatten`
 - [ ] **MUSIC-028** · `SPX-3787` · **Spectrum Bar Dance** · scaffold `spectrum-bar-dance`
