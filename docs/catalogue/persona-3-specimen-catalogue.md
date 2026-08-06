@@ -383,7 +383,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Miscellaneous
 
 - [x] **P3-224** · `SPX-621` · **Blue Door Discovery** — misc.
-- [ ] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — misc.
+- [x] **P3-225** · `SPX-622` · **Memory Fragment Reveal** — misc.
 - [ ] **P3-226** · `SPX-623` · **Reflection Mismatch Hover** — misc.
 - [ ] **P3-227** · `SPX-624` · **Underwater Typography Reveal** — misc.
 - [ ] **P3-228** · `SPX-625` · **Broken Reflection Transition** — misc.

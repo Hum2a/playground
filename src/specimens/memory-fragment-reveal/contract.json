@@ -1,0 +1,112 @@
+{
+  "name": "memory-fragment-reveal",
+  "intent": "Six translucent blue fragments carrying partial memory text converge into MEMORY // 03 / ARCHIVE, then a rule and secondary line confirm restoration — contemplative, not explosive.",
+  "colours": {
+    "nearBlack": "#020b15",
+    "deepBlue": "#08233b",
+    "glass": "#155b85",
+    "bright": "#4bb9df",
+    "pale": "#d8f6ff",
+    "white": "#f5fcff"
+  },
+  "fragments": [
+    {
+      "id": 1,
+      "content": "AR",
+      "depth": "mid",
+      "opacity": 0.8,
+      "scatter": { "x": -95, "y": -45, "rotateDeg": -8 },
+      "clip": "polygon(0% 8%, 94% 0%, 100% 100%, 6% 92%)"
+    },
+    {
+      "id": 2,
+      "content": "CH",
+      "depth": "front",
+      "opacity": 0.96,
+      "scatter": { "x": 65, "y": -70, "rotateDeg": 6 },
+      "clip": "polygon(4% 0%, 100% 10%, 96% 100%, 0% 88%)"
+    },
+    {
+      "id": 3,
+      "content": "IVE",
+      "depth": "front",
+      "opacity": 0.96,
+      "scatter": { "x": 110, "y": 18, "rotateDeg": 9 },
+      "clip": "polygon(0% 12%, 100% 0%, 92% 100%, 8% 90%)"
+    },
+    {
+      "id": 4,
+      "content": "MEMORY",
+      "depth": "rear",
+      "opacity": 0.6,
+      "scatter": { "x": -80, "y": 65, "rotateDeg": -5 },
+      "clip": "polygon(0% 18%, 100% 0%, 96% 100%, 4% 82%)"
+    },
+    {
+      "id": 5,
+      "content": "// 03",
+      "depth": "mid",
+      "opacity": 0.8,
+      "scatter": { "x": 30, "y": 90, "rotateDeg": 7 },
+      "clip": "polygon(0% 0%, 100% 22%, 94% 100%, 6% 78%)"
+    },
+    {
+      "id": 6,
+      "content": "structural rails + notch",
+      "depth": "rear",
+      "opacity": 0.6,
+      "scatter": { "x": -25, "y": -95, "rotateDeg": -4 },
+      "clip": "polygon(0% 30%, 100% 0%, 100% 100%, 0% 70%)"
+    }
+  ],
+  "copy": {
+    "small": "MEMORY // 03",
+    "large": "ARCHIVE",
+    "secondary": "The missing record has been restored.",
+    "reconstruct": "RECONSTRUCT",
+    "scatter": "SCATTER"
+  },
+  "timing": {
+    "easing": "cubic-bezier(0.33, 0.1, 0.25, 1) / cubic-bezier(0.2, 0.7, 0.2, 1)",
+    "startMs": 180,
+    "staggerMs": 42,
+    "travelMs": 340,
+    "alignTickMs": 100,
+    "lastArriveMs": 730,
+    "semanticRevealMs": 646,
+    "lockMs": 180,
+    "lockScale": [0.995, 1.01, 1],
+    "ruleMs": 220,
+    "secondaryMs": 200,
+    "noBounce": true,
+    "noLoop": true
+  },
+  "api": {
+    "reconstruct": "reconstructMemoryFragments()",
+    "scatter": "scatterMemoryFragments()",
+    "busyGuard": true,
+    "deterministicScatter": true,
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "before": "Memory fragmented.",
+    "after": "Memory restored. Archive. The missing record has been restored.",
+    "stageAriaHidden": true,
+    "statusLive": "polite",
+    "focusVisible": "2px solid #4bb9df"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate assembled final state with visible seams, rule, and secondary copy"
+  },
+  "constraints": {
+    "fragmentCount": 6,
+    "meaningfulPartialText": true,
+    "noBlur": true,
+    "seamsRemain": true,
+    "noExternalAssets": true
+  }
+}

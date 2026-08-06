@@ -1,0 +1,108 @@
+<div class="mfr" data-memory-fragment data-state="scattered">
+  <div class="mfr__toolbar">
+    <button type="button" class="mfr__btn" data-mfr-reconstruct>
+      RECONSTRUCT
+    </button>
+    <button type="button" class="mfr__btn mfr__btn--ghost" data-mfr-scatter>
+      SCATTER
+    </button>
+  </div>
+
+  <div
+    class="mfr__status"
+    role="status"
+    aria-live="polite"
+    data-mfr-status
+  >
+    Memory fragmented.
+  </div>
+
+  <div class="mfr__stage" aria-hidden="true">
+    <div class="mfr__board" data-mfr-board>
+      <span class="mfr__bridge" data-mfr-bridge></span>
+
+      <div
+        class="mfr__frag mfr__frag--1 mfr__frag--mid"
+        data-frag="1"
+        style="--sx:-95px;--sy:-45px;--sr:-8deg"
+      >
+        <span class="mfr__face">
+          <span class="mfr__glyph mfr__glyph--lg">AR</span>
+        </span>
+        <span class="mfr__seam mfr__seam--r"></span>
+        <span class="mfr__align"></span>
+      </div>
+
+      <div
+        class="mfr__frag mfr__frag--2 mfr__frag--front"
+        data-frag="2"
+        style="--sx:65px;--sy:-70px;--sr:6deg"
+      >
+        <span class="mfr__face">
+          <span class="mfr__glyph mfr__glyph--lg">CH</span>
+        </span>
+        <span class="mfr__seam mfr__seam--l"></span>
+        <span class="mfr__seam mfr__seam--r"></span>
+        <span class="mfr__align"></span>
+      </div>
+
+      <div
+        class="mfr__frag mfr__frag--3 mfr__frag--front"
+        data-frag="3"
+        style="--sx:110px;--sy:18px;--sr:9deg"
+      >
+        <span class="mfr__face">
+          <span class="mfr__glyph mfr__glyph--lg">IVE</span>
+        </span>
+        <span class="mfr__seam mfr__seam--l"></span>
+        <span class="mfr__align"></span>
+      </div>
+
+      <div
+        class="mfr__frag mfr__frag--4 mfr__frag--rear"
+        data-frag="4"
+        style="--sx:-80px;--sy:65px;--sr:-5deg"
+      >
+        <span class="mfr__face">
+          <span class="mfr__glyph mfr__glyph--sm">MEMORY</span>
+        </span>
+        <span class="mfr__seam mfr__seam--r"></span>
+        <span class="mfr__align"></span>
+      </div>
+
+      <div
+        class="mfr__frag mfr__frag--5 mfr__frag--mid"
+        data-frag="5"
+        style="--sx:30px;--sy:90px;--sr:7deg"
+      >
+        <span class="mfr__face">
+          <span class="mfr__glyph mfr__glyph--sm">// 03</span>
+        </span>
+        <span class="mfr__seam mfr__seam--l"></span>
+        <span class="mfr__align"></span>
+      </div>
+
+      <div
+        class="mfr__frag mfr__frag--6 mfr__frag--rear"
+        data-frag="6"
+        style="--sx:-25px;--sy:-95px;--sr:-4deg"
+      >
+        <span class="mfr__face">
+          <span class="mfr__structure" aria-hidden="true">
+            <span class="mfr__rail"></span>
+            <span class="mfr__rail mfr__rail--short"></span>
+            <span class="mfr__notch"></span>
+          </span>
+        </span>
+        <span class="mfr__align"></span>
+      </div>
+
+      <div class="mfr__finale">
+        <span class="mfr__rule" data-mfr-rule></span>
+        <p class="mfr__secondary" data-mfr-secondary>
+          The missing record has been restored.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
