@@ -85,6 +85,7 @@ import { permissionRejection } from './permission-rejection/entry'
 import { personaAwakeningReveal } from './persona-awakening-reveal/entry'
 import { pixelHpDrain } from './pixel-hp-drain/entry'
 import { powerLevelReadout } from './power-level-readout/entry'
+import { powerStateTransformation } from './power-state-transformation/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { printRegistrationHover } from './print-registration-hover/entry'
 import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough/entry'
@@ -160,6 +161,7 @@ export const specimens: Specimen[] = [
   azureShardTransition,
   badgeCaseInsert,
   powerLevelReadout,
+  powerStateTransformation,
   precisionMenuSnap,
   evokerMenuSnap,
   truthShotNotification,

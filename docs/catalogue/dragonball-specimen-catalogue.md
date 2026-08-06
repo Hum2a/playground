@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), or open DB rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **7 / 244** complete.
+- Progress: **8 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 7 |
-| Open | 237 |
+| Done | 8 |
+| Open | 236 |
 
 ## Visual grammar
 
@@ -41,6 +41,7 @@
 | DB-001 | `SPX-966` | `ki-charge-meter` | Ki Charge Meter |
 | DB-220 | `SPX-1185` | `measurement-overload` | Measurement Overload |
 | DB-003 | `SPX-968` | `concentrated-energy-charge` | Concentrated Energy Charge |
+| DB-056 | `SPX-1021` | `synchronous-fusion-merge` | Synchronous Fusion Merge |
 
 ## Core first-wave
 
