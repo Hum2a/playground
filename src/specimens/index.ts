@@ -311,6 +311,7 @@ import { quirkCapabilityRadarBuild } from './quirk-capability-radar-build/entry'
 import { quirkCooldownRing } from './quirk-cooldown-ring/entry'
 import { radarPulseDiscovery } from './radar-pulse-discovery/entry'
 import { railPageSnap } from './rail-page-snap/entry'
+import { rankChangeSlide } from './rank-change-slide/entry'
 import { rankPromotion } from './rank-promotion/entry'
 import { rankPromotionCard } from './rank-promotion-card/entry'
 import { rankThresholdUnlock } from './rank-threshold-unlock/entry'
@@ -769,6 +770,7 @@ export const specimens: Specimen[] = [
   quirkCooldownRing,
   radarPulseDiscovery,
   railPageSnap,
+  rankChangeSlide,
   rankPromotion,
   rankPromotionCard,
   rankThresholdUnlock,

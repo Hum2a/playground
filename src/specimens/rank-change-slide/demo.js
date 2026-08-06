@@ -1,0 +1,1 @@
+let n=7;const el=document.querySelector('[data-rank]');export function runRankPromote(){el.style.transform='translateY(12px)';window.setTimeout(()=>{n=Math.max(1,n-1);el.textContent=String(n);el.style.transform='translateY(0)'},120)};document.querySelector('[data-up]')?.addEventListener('click',()=>runRankPromote())
