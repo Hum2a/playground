@@ -102,6 +102,7 @@ import { escalatingBurstMultiplier } from './escalating-burst-multiplier/entry'
 import { evokerMenuSnap } from './evoker-menu-snap/entry'
 import { evolutionComplete } from './evolution-complete/entry'
 import { evolutionSilhouetteTransformation } from './evolution-silhouette-transformation/entry'
+import { explosiveNotificationBurst } from './explosive-notification-burst/entry'
 import { extendedFabCollapse } from './extended-fab-collapse/entry'
 import { fabToComposerTransform } from './fab-to-composer-transform/entry'
 import { fadeThrough } from './fade-through/entry'
@@ -419,6 +420,7 @@ export const specimens: Specimen[] = [
   evokerMenuSnap,
   evolutionComplete,
   evolutionSilhouetteTransformation,
+  explosiveNotificationBurst,
   extendedFabCollapse,
   fabToComposerTransform,
   fadeThrough,
