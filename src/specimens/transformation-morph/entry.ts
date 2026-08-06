@@ -4,33 +4,34 @@ export const transformationMorph: Specimen = {
   id: 'transformation-morph',
   ref: 'SPX-2402',
   title: 'Transformation Morph',
-  blurb: 'A profile card morphs through a silhouette into a new identity.',
+  blurb:
+    'One profile card collapses through a bold silhouette intermediate and expands into a second, distinct profile.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — transformation & disguise',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['morph'],
+  tags: ['morph', 'identity', 'silhouette'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the second profile appears immediately with no silhouette intermediate.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 340,
     background: 'dark',
-    label: 'Transformation Morph',
+    label: 'Transformation morph',
   },
 }

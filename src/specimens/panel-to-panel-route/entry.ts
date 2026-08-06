@@ -34,17 +34,5 @@ export const panelToPanelRoute: Specimen = {
 
     label: 'Panel-to-panel route',
   },
-  integration: [
-    'Mount in a relative overflow-hidden frame.',
-    'Import demo.css verbatim; preserve 740ms expansion timing.',
-    'Wire panel selection and Route trigger; reset via resetPanelToPanelRoute().',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Panel selection is visually distinct before routing',
-    'Route trigger expands selected panel then reveals MISSION COMPLETE',
-    'Effect stays clipped to the stage',
-    'Replay resets grid and route layers deterministically',
-    'Reduced motion shows final route state immediately',
-  ],
+
 }

@@ -34,15 +34,5 @@ export const powerThresholdBreak: Specimen = {
 
     label: 'Power threshold break',
   },
-  integration: [
-    'Start fill 92%; surge to 108% over 500ms.',
-    'Threshold line shatter + three accent shards.',
-    'Wire runPowerThresholdBreak / reset / replay.',
-  ],
-  acceptance: [
-    'Run breaks 100% cap with visible threshold shatter',
-    'Final BREAKTHROUGH state at 108% accent fill',
-    'Replay resets to 92% CHARGING',
-    'Reduced motion shows breakthrough immediately',
-  ],
+
 }

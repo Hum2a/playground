@@ -34,19 +34,5 @@ export const weaknessHighlightSweep: Specimen = {
 
     label: 'Weakness highlight sweep',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host.',
-    'Import demo.css verbatim; keep sweep and highlight timings.',
-    'Wire RUN via weaknessHighlightSweep.run(root).',
-    'Replay resets to idle before rerun.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
-  ],
-  acceptance: [
-    'Sweep bar traverses profile diagram left to right',
-    'GUARD sector receives accent border highlight',
-    'Weak bar fills shift to accent colour',
-    'Status announces weakness sector at end',
-    'Replay deterministic; clipped to host; sandbox allow-scripts',
-    'Reduced motion shows static weakness highlight',
-  ],
+
 }

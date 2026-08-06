@@ -4,16 +4,17 @@ export const barrierBreachAlert: Specimen = {
   id: 'barrier-breach-alert',
   ref: 'SPX-2525',
   title: 'Barrier Breach Alert',
-  blurb: 'A perimeter fractures at a breach point with an alert.',
+  blurb:
+    'An intact perimeter fractures at one exact point, flashing the breach location red while the whole field pulses an alert.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / barrier-interfaces — perimeter failure overlays',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'overlay',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -24,13 +25,13 @@ export const barrierBreachAlert: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the fracture and alert state appear immediately without the pulse animation.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Barrier Breach Alert',
+    label: 'Barrier breach alert',
   },
 }

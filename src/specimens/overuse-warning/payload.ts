@@ -8,6 +8,16 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Wire ACTIVATE to runOveruseWarning; RESET restores 25% NOMINAL.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Five deterministic strain steps ending EXHAUSTED',
+    'WARNING shows hatch overlay; accent colour at high strain',
+    'RESET returns to 25% NOMINAL',
+    'Reduced motion skips fill animation',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

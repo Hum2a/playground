@@ -34,17 +34,5 @@ export const maximumOutputBreakthrough: Specimen = {
 
     label: 'Output meter',
   },
-  integration: [
-    'Mount in overflow-visible relative host; import demo.css verbatim.',
-    'Fill 580ms then break 320ms; total 1230ms.',
-    'Wire Breakthrough / Replay to runMaximumOutputBreakthrough.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Meter fills to nominal 100%',
-    'Fill extends past track with burst shard',
-    'MAX+ label appears at breakthrough',
-    'Replay resets meter to 72% idle',
-    'Reduced motion: breakthrough state instant',
-  ],
+
 }

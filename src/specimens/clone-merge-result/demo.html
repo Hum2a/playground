@@ -1,17 +1,35 @@
-<div class="cmr8" data-cmr8 data-phase="idle">
-  <p class="cmr8__live" data-cmr8-live aria-live="polite">Clone Merge Result. Idle.</p>
-  <p class="cmr8__system">NR // NR-053</p>
-  <div class="cmr8__stage" data-cmr8-stage>
-    <div class="cmr8__viz" data-cmr8-viz aria-hidden="true">
-      <span class="cmr8__mark cmr8__mark--a"></span>
-      <span class="cmr8__mark cmr8__mark--b"></span>
-      <span class="cmr8__mark cmr8__mark--c"></span>
-    </div>
-    <p class="cmr8__status" data-cmr8-status>IDLE</p>
-    <p class="cmr8__note" data-cmr8-note>Parallel result cards converge into one combined output.</p>
+<div class="cmr" data-cmr data-state="idle">
+  <p class="cmr__live" data-cmr-live aria-live="polite">
+    Idle. Three clone results are independent.
+  </p>
+
+  <p class="cmr__system">RESULT // MERGE</p>
+
+  <div class="cmr__stage" data-cmr-stage>
+    <article class="cmr__clone cmr__clone--a" data-cmr-clone="0">
+      <p class="cmr__clone-kicker">CLONE A</p>
+      <p class="cmr__clone-value">7</p>
+    </article>
+    <article class="cmr__clone cmr__clone--b" data-cmr-clone="1">
+      <p class="cmr__clone-kicker">CLONE B</p>
+      <p class="cmr__clone-value">4</p>
+    </article>
+    <article class="cmr__clone cmr__clone--c" data-cmr-clone="2">
+      <p class="cmr__clone-kicker">CLONE C</p>
+      <p class="cmr__clone-value">9</p>
+    </article>
+
+    <article class="cmr__output" data-cmr-output>
+      <p class="cmr__output-kicker">OUTPUT</p>
+      <p class="cmr__output-value" data-cmr-output-value>—</p>
+    </article>
+
+    <p class="cmr__status" data-cmr-status>IDLE</p>
+    <p class="cmr__hint" data-cmr-hint>Press Run to merge three clone results.</p>
   </div>
-  <div class="cmr8__controls">
-    <button type="button" class="cmr8__btn cmr8__btn--primary" data-cmr8-run>Merge</button>
-    <button type="button" class="cmr8__btn" data-cmr8-replay>Replay</button>
+
+  <div class="cmr__controls">
+    <button type="button" class="cmr__btn cmr__btn--primary" data-cmr-run>Run</button>
+    <button type="button" class="cmr__btn" data-cmr-replay>Replay</button>
   </div>
 </div>

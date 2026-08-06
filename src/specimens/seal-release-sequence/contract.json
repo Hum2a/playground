@@ -2,43 +2,35 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/seal-release-sequence.schema.json",
   "title": "SealReleaseSequence",
+  "description": "Three concentric rings disengage in stagger while the core glyph crossfades from locked to open.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "ringCount", "ringStaggerMs", "ringAnimMs", "glyphCrossfadeMs", "settleMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "seal-release-sequence"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "seal-release-sequence" },
+    "ringCount": { "type": "number", "const": 3 },
+    "ringStaggerMs": { "type": "number", "const": 120 },
+    "ringAnimMs": { "type": "number", "const": 300 },
+    "glyphCrossfadeMs": { "type": "number", "const": 180 },
+    "settleMs": { "type": "number", "const": 90 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateUnlocked"],
+      "properties": {
+        "immediateUnlocked": { "type": "boolean", "const": true }
       }
     }
   }

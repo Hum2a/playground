@@ -34,13 +34,5 @@ export const allClearReset: Specimen = {
 
     label: 'All-clear reset',
   },
-  integration: [
-    'Starts in alert state; ALL CLEAR triggers runAllClearReset.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Alert retracts and operations panel rebuilds',
-    'RESET restores ALERT overlay',
-    'Reduced motion shows operations immediately',
-  ],
+
 }

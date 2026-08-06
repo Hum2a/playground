@@ -22,6 +22,8 @@ import {
   formatInspiredBy,
   getSpecimen,
   getSpecimenNeighbors,
+  resolveSpecimen,
+  type SpecimenResolved,
 } from '../specimens'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 import { renderMarkdown } from './renderMarkdown'
@@ -38,7 +40,7 @@ const TABS: { id: TabId; label: string }[] = [
 ]
 
 function seedControls(
-  specimen: NonNullable<ReturnType<typeof getSpecimen>>,
+  specimen: { preview: SpecimenResolved['preview'] },
   prefersReduced: boolean,
 ): HarnessControls {
   return {
@@ -53,7 +55,9 @@ function seedControls(
 export function SpecimenDetail() {
   const { id } = useParams<{ id: string }>()
   const [searchParams] = useSearchParams()
-  const specimen = id ? getSpecimen(id) : undefined
+  const meta = id ? getSpecimen(id) : undefined
+  const [specimen, setSpecimen] = useState<SpecimenResolved | null>(null)
+  const [payloadError, setPayloadError] = useState(false)
   const prefersReduced = usePrefersReducedMotion()
   const frameRef = useRef<PreviewFrameHandle>(null)
   const [tab, setTab] = useState<TabId>('spec')
@@ -61,6 +65,27 @@ export function SpecimenDetail() {
   const baseId = useId()
   const seededFor = useRef<string | null>(null)
   const [controls, setControls] = useState<HarnessControls>(DEFAULT_CONTROLS)
+
+  useEffect(() => {
+    if (!meta) {
+      setSpecimen(null)
+      setPayloadError(false)
+      return
+    }
+    let cancelled = false
+    setSpecimen(null)
+    setPayloadError(false)
+    void resolveSpecimen(meta)
+      .then((resolved) => {
+        if (!cancelled) setSpecimen(resolved)
+      })
+      .catch(() => {
+        if (!cancelled) setPayloadError(true)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [meta])
 
   const prompts = useMemo(() => {
     if (!specimen) return null
@@ -73,37 +98,37 @@ export function SpecimenDetail() {
 
   const neighbours = useMemo(
     () =>
-      specimen
-        ? getSpecimenNeighbors(specimen.id)
+      meta
+        ? getSpecimenNeighbors(meta.id)
         : { prev: undefined, next: undefined },
-    [specimen],
+    [meta],
   )
 
   useDocumentTitle(
-    specimen
-      ? `${specimen.title} · ${specimen.ref} — Specimen Archive`
+    meta
+      ? `${meta.title} · ${meta.ref} — Specimen Archive`
       : 'Specimen not found — Specimen Archive',
   )
 
   useEffect(() => {
-    if (!specimen) return
-    if (seededFor.current === specimen.id) return
-    seededFor.current = specimen.id
-    setControls(seedControls(specimen, prefersReduced))
-  }, [specimen, prefersReduced])
+    if (!meta) return
+    if (seededFor.current === meta.id) return
+    seededFor.current = meta.id
+    setControls(seedControls(meta, prefersReduced))
+  }, [meta, prefersReduced])
 
   const catalogueHref = searchParams.toString()
     ? `/?${searchParams.toString()}`
     : '/'
 
-  if (specimen && id && id !== specimen.id) {
+  if (meta && id && id !== meta.id) {
     const qs = searchParams.toString()
     return (
-      <Navigate to={`/s/${specimen.id}${qs ? `?${qs}` : ''}`} replace />
+      <Navigate to={`/s/${meta.id}${qs ? `?${qs}` : ''}`} replace />
     )
   }
 
-  if (!specimen || !prompts) {
+  if (!meta) {
     return (
       <div className="specimen-detail__empty">
         <p>No specimen with id “{id}”.</p>
@@ -111,6 +136,25 @@ export function SpecimenDetail() {
           <Link to="/">Return to the catalogue</Link> and open a plate from the
           list.
         </p>
+      </div>
+    )
+  }
+
+  if (payloadError) {
+    return (
+      <div className="specimen-detail__empty">
+        <p>Could not load specimen payload for “{meta.id}”.</p>
+        <p>
+          <Link to="/">Return to the catalogue</Link>.
+        </p>
+      </div>
+    )
+  }
+
+  if (!specimen || !prompts) {
+    return (
+      <div className="specimen-detail__empty" role="status" aria-live="polite">
+        <p>Loading {meta.title}…</p>
       </div>
     )
   }
@@ -223,7 +267,7 @@ export function SpecimenDetail() {
               label={specimen.preview.label}
               width={specimen.preview.width}
               height={specimen.preview.height}
-              scaffold={specimen.preview.scaffold}
+              scaffold={specimen.scaffold ?? specimen.preview.scaffold}
               controls={controls}
             />
           </div>

@@ -4,33 +4,34 @@ export const earthWallBlocker: Specimen = {
   id: 'earth-wall-blocker',
   ref: 'SPX-2470',
   title: 'Earth Wall Blocker',
-  blurb: 'A wall rises to block and protect a region.',
+  blurb:
+    'Five segmented slabs rise staggered from below to form a protective wall, flipping a zone from EXPOSED to PROTECTED — abstract graphic slabs, no copyrighted iconography.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — earth-style barrier raising',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['blocker'],
+  tags: ['blocker', 'barrier', 'stagger'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the wall resolves directly to raised/PROTECTED with no staggered rise choreography.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 360,
     background: 'dark',
-    label: 'Earth Wall Blocker',
+    label: 'Earth wall blocker',
   },
 }

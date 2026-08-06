@@ -2,43 +2,34 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/presence-radar-sweep.schema.json",
   "title": "PresenceRadarSweep",
+  "description": "A finite radial sweep arcs once across a radar screen, logging three fixed presence blips as it crosses them.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "blipCount", "stepMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "presence-radar-sweep"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "presence-radar-sweep" },
+    "blipCount": { "type": "number", "const": 3 },
+    "stepMs": { "type": "number", "const": 190 },
+    "settleMs": { "type": "number", "const": 110 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "alert": { "type": "string", "const": "#D94A38" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateComplete"],
+      "properties": {
+        "immediateComplete": { "type": "boolean", "const": true }
       }
     }
   }

@@ -290,13 +290,15 @@ Static only. Explicitly **not** the usual scaffold — no Hono, no Neon, no auth
   the whole system)
 - React Router, or a 60-line hash router if you'd rather not add the dep
 - CodeMirror 6 (`@codemirror/lang-html|css|javascript`) — playground route only, lazy-loaded
-- Fonts self-hosted via `@fontsource-variable/*`, subset to latin + the Japanese glyphs the tape
-  needs (`近日公開`) — Noto Sans JP subset, or let the specimen fall back to system JP
+- Catalogue / detail / playground routes are `React.lazy`-split so Shell (LCP wordmark) paints before specimen meta; playground deps (`fflate`, CodeMirror) stay off `/`
+- Specimen folders split light `entry.ts` (metadata + `loadPayload`) from `payload.ts` (`?raw` assets); previews and copy resolve payloads on demand
+- Fonts load after first paint (`import()` from `main.tsx`) with `font-display: optional` to avoid bandwidth contention and font CLS; faces are latin (+ latin-ext) only via `src/styles/fonts-latin.css`
 - Vitest for `buildPrompt` and the srcdoc composer; Playwright for one smoke test per route
 
 Build and host:
 
 - `vite build` → `dist`
+- `npm run analyze` — list hashed asset sizes after build
 - Cloudflare Pages project `playground`, connected to the repo, production branch `main`
 - Custom domain `playground.humza-butt.space` added in Pages; the CNAME is created automatically
   on the `humza-butt.space` zone
@@ -307,10 +309,11 @@ Build and host:
 Scripts, matching the `<domain>:<action>` convention:
 
 ```
-dev            spec:new <slug>      # scaffold a specimen folder
+dev            spec:new <slug>      # scaffold a specimen folder (entry + payload)
 build          spec:check           # validate every entry against contract.json
 preview        deploy:preview
 test           deploy:prod
+analyze        # build + report chunk sizes
 ```
 
 ## 8. Quality floor
@@ -318,8 +321,10 @@ test           deploy:prod
 - Visible focus ring in verdigris on every interactive element, `:focus-visible` only
 - Copy buttons announce via a polite live region: "Prompt copied — 1,842 characters"
 - Every iframe carries a real `title` ("Preview: Coming-soon caution tape")
-- Contact sheet lazy-mounts frames below the fold via `IntersectionObserver`, and unmounts
-  offscreen frames past a threshold so twelve infinite loops don't cook a laptop
+- Contact sheet and plates lazy-mount frames via `IntersectionObserver` (`useFrameVisibility` starts
+  not-visible, sync-checks above-fold hosts, ~50% rootMargin); unmount when outside that margin;
+  placeholders and `PreviewFrame` share the specimen aspect-ratio (CSS container-query scale — no
+  post-paint JS resize) so iframe mount does not shift layout
 - Lighthouse ≥ 90 on mobile for `/` with the sheet paused
 - Works with JS disabled to the extent of showing the spec text — nice to have, not a gate
 

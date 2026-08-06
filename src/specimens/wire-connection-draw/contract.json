@@ -2,43 +2,32 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/wire-connection-draw.schema.json",
   "title": "WireConnectionDraw",
+  "description": "A thin wire rapidly connects two nodes, then both endpoints pulse to confirm a linked connection.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "drawMs", "settleMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "wire-connection-draw"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "wire-connection-draw" },
+    "drawMs": { "type": "number", "const": 180 },
+    "settleMs": { "type": "number", "const": 80 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateLinked"],
+      "properties": {
+        "immediateLinked": { "type": "boolean", "const": true }
       }
     }
   }

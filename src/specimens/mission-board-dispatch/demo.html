@@ -1,17 +1,28 @@
-<div class="mbd2" data-mbd2 data-phase="idle">
-  <p class="mbd2__live" data-mbd2-live aria-live="polite">Mission Board Dispatch. Idle.</p>
-  <p class="mbd2__system">NR // NR-226</p>
-  <div class="mbd2__stage" data-mbd2-stage>
-    <div class="mbd2__viz" data-mbd2-viz aria-hidden="true">
-      <span class="mbd2__mark mbd2__mark--a"></span>
-      <span class="mbd2__mark mbd2__mark--b"></span>
-      <span class="mbd2__mark mbd2__mark--c"></span>
+<div class="mbd" data-mbd data-phase="idle">
+  <p class="mbd__live" data-mbd-live aria-live="polite">
+    Job card unassigned on the board.
+  </p>
+
+  <p class="mbd__system">BOARD // DISPATCH</p>
+
+  <div class="mbd__stage" data-mbd-stage>
+    <div class="mbd__board">
+      <div class="mbd__column mbd__column--pool">
+        <p class="mbd__column-label">Unassigned</p>
+        <div class="mbd__slot mbd__slot--origin"></div>
+      </div>
+      <div class="mbd__column mbd__column--lane">
+        <p class="mbd__column-label">Team Lane</p>
+        <div class="mbd__slot mbd__slot--target" data-mbd-target></div>
+      </div>
+      <span class="mbd__card" data-mbd-card>C-Rank Escort</span>
     </div>
-    <p class="mbd2__status" data-mbd2-status>IDLE</p>
-    <p class="mbd2__note" data-mbd2-note>A mission card dispatches from the board to an assignee.</p>
+    <p class="mbd__status" data-mbd-status>UNASSIGNED</p>
+    <p class="mbd__hint" data-mbd-hint>Press Run to dispatch the job.</p>
   </div>
-  <div class="mbd2__controls">
-    <button type="button" class="mbd2__btn mbd2__btn--primary" data-mbd2-run>Dispatch</button>
-    <button type="button" class="mbd2__btn" data-mbd2-replay>Replay</button>
+
+  <div class="mbd__controls">
+    <button type="button" class="mbd__btn mbd__btn--primary" data-mbd-run>Run</button>
+    <button type="button" class="mbd__btn" data-mbd-replay>Replay</button>
   </div>
 </div>

@@ -4,10 +4,11 @@ export const wireConnectionDraw: Specimen = {
   id: 'wire-connection-draw',
   ref: 'SPX-2427',
   title: 'Wire Connection Draw',
-  blurb: 'A thin wire line rapidly connects two selected nodes.',
+  blurb:
+    'A thin wire rapidly draws between two nodes, then both endpoints pulse to confirm a linked connection.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — ninja wire & connection systems',
   },
   facets: {
     kind: 'interaction',
@@ -18,19 +19,19 @@ export const wireConnectionDraw: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['connection'],
+  tags: ['connection', 'wire', 'linking'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the wire appears fully drawn and LINKED immediately.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 300,
     background: 'dark',
-    label: 'Wire Connection Draw',
+    label: 'Wire connection draw',
   },
 }

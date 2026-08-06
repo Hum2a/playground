@@ -34,13 +34,5 @@ export const holdToMaximumButton: Specimen = {
 
     label: 'Hold-to-maximum button',
   },
-  integration: [
-    'Pointer hold on OUTPUT fills ring; release before 100% cancels.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Hold fills ring to 100% then commits',
-    'Early release stops charge below 100%',
-    'Reduced motion commits immediately on press',
-  ],
+
 }

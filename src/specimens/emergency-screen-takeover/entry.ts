@@ -34,19 +34,5 @@ export const emergencyScreenTakeover: Specimen = {
 
     label: 'System monitor',
   },
-  integration: [
-    'Mount inside relative overflow-hidden host.',
-    'Import demo.css verbatim; freeze 420ms plane sweep.',
-    'Call runEmergencyTakeover() from ALERT.',
-    'Use reset/replay for harness restart.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Calm monitor visible before trigger',
-    'Diagonal planes sweep across viewport',
-    'EMERGENCY takeover copy readable at settle',
-    'Replay restores calm monitor',
-    'Reduced motion shows final alert immediately',
-    'Sandbox-safe with no external resources',
-  ],
+
 }

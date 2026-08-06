@@ -7,17 +7,17 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~340×300+).',
+    'Import demo.css verbatim; freeze the 100ms/180ms/140ms swap timings from contract.json.',
     'Wire runSubstitutionSwap / resetSubstitutionSwap / replaySubstitutionSwap.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Primary, decoy, and resolved states are visually distinct and mutually exclusive',
+    'Decoy layer is always shown before the resolved target, never skipped (except reduced motion)',
+    'Replay resets to the primary layer before rerunning',
+    'Reduced motion jumps straight to the resolved failover target with no decoy or puff',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">

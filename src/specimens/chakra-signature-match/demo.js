@@ -1,21 +1,28 @@
 /**
- * Chakra Signature Match — A signature waveform locks onto a matching profile.
+ * Chakra Signature Match — five signal bars rise to meet a reference profile.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const BAR_COUNT = 5
+const STEP_MS = 170
+const SETTLE_MS = 100
+const TOTAL_MS = BAR_COUNT * STEP_MS + SETTLE_MS
 
 let busy = false
+let matched = 0
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-csm2]') }
+function rootEl() {
+  return document.querySelector('[data-csm]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,67 +36,119 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-csm2-live]')
+  const el = document.querySelector('[data-csm-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-csm2-status]')
+  const el = document.querySelector('[data-csm-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-csm2-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-csm-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-csm2-run], [data-csm2-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-csm-run], [data-csm-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function bars() {
+  return Array.from(document.querySelectorAll('[data-csm-bar]'))
+}
+
+function fills() {
+  return Array.from(document.querySelectorAll('[data-csm-fill]'))
+}
+
+function paint(count, pulseIndex) {
+  const barList = bars()
+  fills().forEach((fill, i) => {
+    const on = i < count
+    const target = fill.dataset.target || '0'
+    fill.style.height = on ? `${target}%` : '0%'
+    fill.setAttribute('data-active', on ? 'true' : 'false')
+    const bar = barList[i]
+    bar?.setAttribute(
+      'aria-label',
+      on ? `Band ${i + 1} matched` : `Band ${i + 1} unmatched`,
+    )
+    if (pulseIndex === i && bar) {
+      bar.setAttribute('data-pulse', 'true')
+      later(STEP_MS, () => bar.removeAttribute('data-pulse'))
+    } else if (bar) {
+      bar.removeAttribute('data-pulse')
+    }
+  })
+}
+
+function showResolved() {
+  matched = BAR_COUNT
+  paint(BAR_COUNT, -1)
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A signature waveform locks onto a matching profile. Resolved.')
-  setLive('Chakra Signature Match. Resolved.')
+  setStatus('MATCH')
+  setHint('Signature confirmed.')
+  setLive('Signature match confirmed. All bands aligned.')
 }
 
 function resetVisual() {
+  matched = 0
+  paint(0, -1)
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('IDLE')
-  setNote('A signature waveform locks onto a matching profile.')
-  setLive('Chakra Signature Match. Idle.')
+  setHint('Press Run to compare signatures.')
+  setLive('Comparison idle. Signature unmatched.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the full comparison (Run / replay).
+ * @returns {Promise<void>}
+ */
 export function runChakraSignatureMatch() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Chakra Signature Match. Active.')
+  setStatus('COMPARING')
+  setLive('Comparing incoming signature.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
-      })
-    })
+    let step = 0
+    const tick = () => {
+      if (step >= BAR_COUNT) {
+        later(SETTLE_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
+        return
+      }
+      matched = step + 1
+      paint(matched, step)
+      setLive(`Band ${matched} of ${BAR_COUNT} aligned.`)
+      step += 1
+      later(STEP_MS, tick)
+    }
+    tick()
   })
 }
 
@@ -110,8 +169,12 @@ export async function replayChakraSignatureMatch() {
 }
 
 function bindUi() {
-  document.querySelector('[data-csm2-run]')?.addEventListener('click', () => { void runChakraSignatureMatch() })
-  document.querySelector('[data-csm2-replay]')?.addEventListener('click', () => { void replayChakraSignatureMatch() })
+  document.querySelector('[data-csm-run]')?.addEventListener('click', () => {
+    void runChakraSignatureMatch()
+  })
+  document.querySelector('[data-csm-replay]')?.addEventListener('click', () => {
+    void replayChakraSignatureMatch()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
@@ -119,5 +182,6 @@ function bindUi() {
   })
 }
 
+void TOTAL_MS
 bindUi()
 resetChakraSignatureMatch()

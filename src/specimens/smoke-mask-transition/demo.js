@@ -1,21 +1,28 @@
 /**
- * Smoke Mask Transition — Abstract smoke discs cover a content swap then disperse.
+ * Smoke Mask Transition — overlapping circles cover a content swap, then disperse.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const TOTAL_MS = 700
+const COVER_AT_MS = 300
+const SETTLE_MS = 140
 
 let busy = false
+/** @type {'a' | 'b'} */
+let surface = 'a'
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-smt1]') }
+function rootEl() {
+  return document.querySelector('[data-smt]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +36,74 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-smt1-live]')
+  const el = document.querySelector('[data-smt-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-smt1-status]')
+  const el = document.querySelector('[data-smt-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-smt1-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-smt-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-smt1-run], [data-smt1-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-smt-run], [data-smt-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Abstract smoke discs cover a content swap then disperse. Resolved.')
-  setLive('Smoke Mask Transition. Resolved.')
+/** @param {'a' | 'b'} next */
+function showSurface(next) {
+  surface = next
+  const root = rootEl()
+  root?.setAttribute('data-surface', next)
+  document.querySelectorAll('[data-smt-panel]').forEach((el) => {
+    el.toggleAttribute('hidden', el.getAttribute('data-smt-panel') !== next)
+  })
+  setStatus(next === 'a' ? 'STATE 01' : 'STATE 02')
+  setLive(next === 'a' ? 'State one in view.' : 'State two concealed and revealed.')
 }
 
-function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('Abstract smoke discs cover a content swap then disperse.')
-  setLive('Smoke Mask Transition. Idle.')
-}
-
-/** @returns {Promise<void>} */
+/**
+ * Run one cover → swap → disperse cycle, alternating states.
+ * @returns {Promise<void>}
+ */
 export function runSmokeMaskTransition() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy) return Promise.resolve()
+
   busy = true
   clearTimers()
-  resetVisual()
   setButtons(false)
-  void root.offsetWidth
+  const next = surface === 'a' ? 'b' : 'a'
+
   if (prefersReducedMotion()) {
-    showDone()
+    showSurface(next)
+    setHint('Press Run to swap under cover.')
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Smoke Mask Transition. Active.')
+
+  root.setAttribute('data-phase', 'idle')
+  void root.offsetWidth
+  root.setAttribute('data-phase', 'run')
+  setHint('Covering.')
+  setLive('Smoke covering the stage.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
+    later(COVER_AT_MS, () => {
+      showSurface(next)
+      setHint('Dispersing.')
+    })
+    later(TOTAL_MS, () => {
       later(SETTLE_MS, () => {
+        root.setAttribute('data-phase', 'idle')
+        setHint('Press Run to swap under cover.')
         busy = false
         setButtons(true)
         resolve()
@@ -96,26 +115,37 @@ export function runSmokeMaskTransition() {
 export function resetSmokeMaskTransition() {
   clearTimers()
   busy = false
-  resetVisual()
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'idle')
+  showSurface('a')
+  setHint('Press Run to swap under cover.')
   setButtons(true)
-  void rootEl()?.offsetWidth
+  void root?.offsetWidth
 }
 
 /** @returns {Promise<void>} */
 export async function replaySmokeMaskTransition() {
   if (busy) return
-  resetSmokeMaskTransition()
-  void rootEl()?.offsetWidth
   await runSmokeMaskTransition()
 }
 
 function bindUi() {
-  document.querySelector('[data-smt1-run]')?.addEventListener('click', () => { void runSmokeMaskTransition() })
-  document.querySelector('[data-smt1-replay]')?.addEventListener('click', () => { void replaySmokeMaskTransition() })
+  document.querySelector('[data-smt-run]')?.addEventListener('click', () => {
+    void runSmokeMaskTransition()
+  })
+  document.querySelector('[data-smt-replay]')?.addEventListener('click', () => {
+    resetSmokeMaskTransition()
+    void rootEl()?.offsetWidth
+    void runSmokeMaskTransition()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') void replaySmokeMaskTransition()
+    if (data.type === 'restart') {
+      resetSmokeMaskTransition()
+      void rootEl()?.offsetWidth
+      void runSmokeMaskTransition()
+    }
   })
 }
 

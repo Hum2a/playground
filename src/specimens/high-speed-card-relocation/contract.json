@@ -2,43 +2,40 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/high-speed-card-relocation.schema.json",
   "title": "HighSpeedCardRelocation",
+  "description": "A selected card leaves exactly two fading afterimages as it relocates at speed into a second container slot.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "ghostCount", "travelMs", "ghostLifeMs", "settleMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "high-speed-card-relocation"
+    "name": { "type": "string", "const": "high-speed-card-relocation" },
+    "ghostCount": { "type": "number", "const": 2 },
+    "travelMs": { "type": "number", "const": 200 },
+    "ghostLifeMs": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 2,
+      "maxItems": 2,
+      "const": [220, 150]
     },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "settleMs": { "type": "number", "const": 40 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateArrival"],
+      "properties": {
+        "immediateArrival": { "type": "boolean", "const": true }
       }
     }
   }

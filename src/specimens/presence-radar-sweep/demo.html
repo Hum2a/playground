@@ -1,17 +1,44 @@
-<div class="prs0" data-prs0 data-phase="idle">
-  <p class="prs0__live" data-prs0-live aria-live="polite">Presence Radar Sweep. Idle.</p>
-  <p class="prs0__system">NR // NR-166</p>
-  <div class="prs0__stage" data-prs0-stage>
-    <div class="prs0__viz" data-prs0-viz aria-hidden="true">
-      <span class="prs0__mark prs0__mark--a"></span>
-      <span class="prs0__mark prs0__mark--b"></span>
-      <span class="prs0__mark prs0__mark--c"></span>
-    </div>
-    <p class="prs0__status" data-prs0-status>IDLE</p>
-    <p class="prs0__note" data-prs0-note>A radar sweep detects presence blips on a field.</p>
+<div class="prs" data-prs data-phase="idle">
+  <p class="prs__live" data-prs-live aria-live="polite">
+    Radar idle. Three presences pending.
+  </p>
+
+  <p class="prs__system">RADAR // PRESENCE SWEEP</p>
+
+  <div class="prs__stage" data-prs-stage>
+    <svg class="prs__screen" viewBox="0 0 200 110" aria-hidden="true">
+      <path class="prs__arc" d="M34 100 A66 66 0 0 1 166 100" fill="none" />
+      <path class="prs__arc prs__arc--mid" d="M56 100 A44 44 0 0 1 144 100" fill="none" />
+      <path class="prs__arc prs__arc--inner" d="M78 100 A22 22 0 0 1 122 100" fill="none" />
+      <line class="prs__baseline" x1="26" y1="100" x2="174" y2="100" />
+
+      <g class="prs__sweep" data-prs-sweep>
+        <line x1="100" y1="100" x2="100" y2="34" />
+      </g>
+
+      <circle class="prs__blip" data-prs-blip data-index="0" cx="57.6" cy="49.3" r="5" />
+      <circle class="prs__blip" data-prs-blip data-index="1" cx="111.5" cy="35" r="5" />
+      <circle class="prs__blip" data-prs-blip data-index="2" cx="154.1" cy="62.1" r="5" />
+    </svg>
+
+    <p class="prs__status" data-prs-status>IDLE</p>
+    <p class="prs__hint" data-prs-hint>Press Run to sweep for presences.</p>
   </div>
-  <div class="prs0__controls">
-    <button type="button" class="prs0__btn prs0__btn--primary" data-prs0-run>Sweep</button>
-    <button type="button" class="prs0__btn" data-prs0-replay>Replay</button>
+
+  <ol class="prs__log" data-prs-log aria-label="Contact log">
+    <li class="prs__log-item" data-prs-log-item data-index="0" data-active="false">
+      CONTACT 01 · BEARING 042°
+    </li>
+    <li class="prs__log-item" data-prs-log-item data-index="1" data-active="false">
+      CONTACT 02 · BEARING 090°
+    </li>
+    <li class="prs__log-item" data-prs-log-item data-index="2" data-active="false">
+      CONTACT 03 · BEARING 138°
+    </li>
+  </ol>
+
+  <div class="prs__controls">
+    <button type="button" class="prs__btn prs__btn--primary" data-prs-run>Run</button>
+    <button type="button" class="prs__btn" data-prs-replay>Replay</button>
   </div>
 </div>

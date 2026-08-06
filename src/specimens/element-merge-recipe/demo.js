@@ -1,8 +1,10 @@
 /**
- * Element Merge Recipe — Two element tokens combine into a result recipe.
+ * Element Merge Recipe — two orbs travel to a central slot, merge, and produce a result token.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
+
+const TRAVEL_MS = 340
+const MERGE_MS = 200
 const SETTLE_MS = 160
 
 let busy = false
@@ -10,12 +12,15 @@ let busy = false
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-emr0]') }
+function rootEl() {
+  return document.querySelector('[data-emr]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,65 +34,85 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-emr0-live]')
+  const el = document.querySelector('[data-emr-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-emr0-status]')
+  const el = document.querySelector('[data-emr-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-emr0-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-emr-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-emr0-run], [data-emr0-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-emr-run], [data-emr-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Two element tokens combine into a result recipe. Resolved.')
-  setLive('Element Merge Recipe. Resolved.')
+function setPhase(phase) {
+  rootEl()?.setAttribute('data-phase', phase)
+}
+
+function showResolved() {
+  setPhase('done')
+  setStatus('RESULT READY')
+  setHint('Result ready. Press Replay to merge again.')
+  setLive('Elements merged. Result ready.')
 }
 
 function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
+  setPhase('idle')
   setStatus('IDLE')
-  setNote('Two element tokens combine into a result recipe.')
-  setLive('Element Merge Recipe. Idle.')
+  setHint('Press Run to merge the two elements.')
+  setLive('Two elements idle. No result.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run travel → merge → result.
+ * @returns {Promise<void>}
+ */
 export function runElementMergeRecipe() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Element Merge Recipe. Active.')
+
+  setPhase('run')
+  setStatus('COMBINING')
+  setHint('Travelling to the slot.')
+  setLive('Elements travelling to the slot.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+    later(TRAVEL_MS, () => {
+      setPhase('merge')
+      setStatus('MERGING')
+      setLive('Merging.')
+
+      later(MERGE_MS, () => {
+        later(SETTLE_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -110,8 +135,12 @@ export async function replayElementMergeRecipe() {
 }
 
 function bindUi() {
-  document.querySelector('[data-emr0-run]')?.addEventListener('click', () => { void runElementMergeRecipe() })
-  document.querySelector('[data-emr0-replay]')?.addEventListener('click', () => { void replayElementMergeRecipe() })
+  document.querySelector('[data-emr-run]')?.addEventListener('click', () => {
+    void runElementMergeRecipe()
+  })
+  document.querySelector('[data-emr-replay]')?.addEventListener('click', () => {
+    void replayElementMergeRecipe()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

@@ -1,21 +1,25 @@
 /**
- * Focus Mode Activation — Angular focus brackets activate inspection mode.
+ * Focus Mode Activation — corner brackets converge on a central reticle, peripheral content dims.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const NARROW_MS = 320
+const SETTLE_MS = 140
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-fma1]') }
+function rootEl() {
+  return document.querySelector('[data-fma]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,66 +33,75 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-fma1-live]')
+  const el = document.querySelector('[data-fma-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-fma1-status]')
+  const el = document.querySelector('[data-fma-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-fma1-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-fma-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-fma1-run], [data-fma1-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-fma-run], [data-fma-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Angular focus brackets activate inspection mode. Resolved.')
-  setLive('Focus Mode Activation. Resolved.')
+function setPhase(phase) {
+  rootEl()?.setAttribute('data-phase', phase)
+}
+
+function showResolved() {
+  setPhase('focused')
+  setStatus('FOCUSED')
+  setHint('Focus mode active. Press Replay to deactivate and reactivate.')
+  setLive('Focus mode active. Brackets converged on the reticle.')
 }
 
 function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('Angular focus brackets activate inspection mode.')
-  setLive('Focus Mode Activation. Idle.')
+  setPhase('idle')
+  setStatus('NORMAL')
+  setHint('Press Run to activate focus mode.')
+  setLive('Normal view. Focus mode inactive.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the converge → focus sequence.
+ * @returns {Promise<void>}
+ */
 export function runFocusModeActivation() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'focused') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Focus Mode Activation. Active.')
+
+  setLive('Focus mode activating.')
+  showResolved()
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
-      })
+    later(NARROW_MS + SETTLE_MS, () => {
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -110,8 +123,12 @@ export async function replayFocusModeActivation() {
 }
 
 function bindUi() {
-  document.querySelector('[data-fma1-run]')?.addEventListener('click', () => { void runFocusModeActivation() })
-  document.querySelector('[data-fma1-replay]')?.addEventListener('click', () => { void replayFocusModeActivation() })
+  document.querySelector('[data-fma-run]')?.addEventListener('click', () => {
+    void runFocusModeActivation()
+  })
+  document.querySelector('[data-fma-replay]')?.addEventListener('click', () => {
+    void replayFocusModeActivation()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

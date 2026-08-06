@@ -4,16 +4,17 @@ export const missionRankReveal: Specimen = {
   id: 'mission-rank-reveal',
   ref: 'SPX-2534',
   title: 'Mission Rank Reveal',
-  blurb: 'A mission rank letter reveals with a stamp settle.',
+  blurb:
+    'A generic D-through-S tier card slams into the briefing panel and a rubber stamp impacts down to confirm the assigned rank.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / mission system — briefing rank reveal overlays',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -24,13 +25,13 @@ export const missionRankReveal: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the rank card and stamp appear already settled with CONFIRMED shown.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Mission Rank Reveal',
+    label: 'Mission rank reveal',
   },
 }

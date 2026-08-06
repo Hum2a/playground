@@ -33,13 +33,5 @@ export const winnerBannerBreakthrough: Specimen = {
 
     label: 'Winner banner breakthrough',
   },
-  integration: [
-    'DECLARE WINNER triggers runWinnerBannerBreakthrough; clip to board overflow.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Banner breaks through scoreboard to WINNER — TEAM A',
-    'RESET hides banner and restores idle',
-    'Reduced motion shows banner immediately',
-  ],
+
 }

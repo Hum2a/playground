@@ -8,6 +8,19 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount in relative overflow-hidden host.',
+    'Burst 420ms; total 1070ms with settle.',
+    'Wire Trigger / Replay to runExplosiveNotificationBurst.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Centre core expands then fades',
+    'Jagged notification card scales in',
+    'ALERT badge readable at settle',
+    'Replay clears card to idle',
+    'Reduced motion: instant card',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;">
   {{specimen}}

@@ -2,43 +2,35 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/element-merge-recipe.schema.json",
   "title": "ElementMergeRecipe",
+  "description": "Two element orbs travel into a central slot, merge in a flash, and produce a dual-tone result token.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "travelMs", "mergeMs", "settleMs", "travelPx", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "element-merge-recipe"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "element-merge-recipe" },
+    "travelMs": { "type": "number", "const": 340 },
+    "mergeMs": { "type": "number", "const": 200 },
+    "settleMs": { "type": "number", "const": 160 },
+    "travelPx": { "type": "number", "const": 104 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "danger", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "danger": { "type": "string", "const": "#D94A38" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateResult"],
+      "properties": {
+        "immediateResult": { "type": "boolean", "const": true }
       }
     }
   }

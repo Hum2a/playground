@@ -1,17 +1,22 @@
-<div class="sbs1" data-sbs1 data-phase="idle">
-  <p class="sbs1__live" data-sbs1-live aria-live="polite">Shadow Bind Selection. Idle.</p>
-  <p class="sbs1__system">NR // NR-301</p>
-  <div class="sbs1__stage" data-sbs1-stage>
-    <div class="sbs1__viz" data-sbs1-viz aria-hidden="true">
-      <span class="sbs1__mark sbs1__mark--a"></span>
-      <span class="sbs1__mark sbs1__mark--b"></span>
-      <span class="sbs1__mark sbs1__mark--c"></span>
+<div class="sbs" data-sbs data-phase="idle">
+  <p class="sbs__live" data-sbs-live aria-live="polite">
+    Target unbound. Shadow source idle.
+  </p>
+
+  <p class="sbs__system">SHADOW // BIND</p>
+
+  <div class="sbs__stage" data-sbs-stage>
+    <div class="sbs__lane">
+      <span class="sbs__card sbs__card--source">SOURCE</span>
+      <span class="sbs__tendril" data-sbs-tendril aria-hidden="true"></span>
+      <span class="sbs__card sbs__card--target" data-sbs-target>TARGET</span>
     </div>
-    <p class="sbs1__status" data-sbs1-status>IDLE</p>
-    <p class="sbs1__note" data-sbs1-note>Shadow tendrils bind and select a target card.</p>
+    <p class="sbs__status" data-sbs-status>FREE</p>
+    <p class="sbs__hint" data-sbs-hint>Press Run to bind the target.</p>
   </div>
-  <div class="sbs1__controls">
-    <button type="button" class="sbs1__btn sbs1__btn--primary" data-sbs1-run>Bind</button>
-    <button type="button" class="sbs1__btn" data-sbs1-replay>Replay</button>
+
+  <div class="sbs__controls">
+    <button type="button" class="sbs__btn sbs__btn--primary" data-sbs-run>Run</button>
+    <button type="button" class="sbs__btn" data-sbs-replay>Replay</button>
   </div>
 </div>

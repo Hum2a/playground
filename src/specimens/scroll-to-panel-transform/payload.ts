@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~360×300+).',
+    'Import demo.css verbatim; freeze the 480ms shape morph from contract.json.',
     'Wire runScrollToPanelTransform / resetScrollToPanelTransform / replayScrollToPanelTransform.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Sealed token and opened panel states are visually distinct',
+    'Same element morphs shape rather than swapping to a different node',
+    'Replay resets the token before rerunning',
+    'Reduced motion shows the fully opened panel with copy visible immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

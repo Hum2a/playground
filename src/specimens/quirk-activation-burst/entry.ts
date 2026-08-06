@@ -34,15 +34,5 @@ export const quirkActivationBurst: Specimen = {
 
     label: 'Quirk activation burst',
   },
-  integration: [
-    'Eight rays at 45° increments; burst 500ms.',
-    'Wire runQuirkActivationBurst / reset / replay.',
-    'Honour reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Activate fires burst then ACTIVE end state',
-    'STANDBY and ACTIVE visually distinct',
-    'Replay resets cleanly',
-    'Reduced motion shows ACTIVE immediately',
-  ],
+
 }

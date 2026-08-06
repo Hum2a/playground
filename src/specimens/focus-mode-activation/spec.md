@@ -1,13 +1,14 @@
 # Focus Mode Activation
 
-Angular focus brackets activate inspection mode.
+Four corner brackets converge from the field edges onto a central reticle (Run auto-play) while peripheral content dims, narrowing the view into a high-contrast analysis mode.
 
 ## Behaviour
 
-- Idle → active (~480ms) → done (held until reset/replay).
-- Reduced motion: immediate done.
+- Idle: brackets at the field corners, reticle hidden, status `NORMAL`.
+- Focused: brackets converge (~320ms), reticle fades in with a crosshair, peripheral dots dim, status `FOCUSED`, held until reset/replay.
+- Reduced motion: activate directly, no convergence/dimming transition.
 
 ## Freeze
 
-- Active: 480ms · settle: 160ms
+- Narrow: 320ms · settle: 140ms
 - Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`

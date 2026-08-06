@@ -8,6 +8,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside a relative overflow-hidden host.',
+    'Import demo.css verbatim; keep staggered bar race timings.',
+    'Wire RUN via performanceMeterBurst.run(root).',
+    'OUTPUT bar must break graph ceiling visually.',
+    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+  ],
+  acceptance: [
+    'Three meters race to POWER 62%, SPEED 48%, OUTPUT 94%',
+    'OUTPUT bar exceeds ceiling with accent shadow',
+    'Staggered start between bars',
+    'Replay resets to 0% idle',
+    'Clipped to host; sandbox allow-scripts',
+    'Reduced motion shows final values immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#101820;">
   {{specimen}}

@@ -1,13 +1,15 @@
 # Three-Person Cell Formation
 
-Three nodes snap into a cell formation.
+Three scattered profile nodes snap into a triangular cell around a shared centre point, then the connecting lines light up to link them (Run auto-play or Replay).
 
 ## Behaviour
 
-- Idle → active (~480ms) → done (held until reset/replay).
-- Reduced motion: immediate done.
+- Idle: nodes scattered outward from the centre, status `SCATTERED`.
+- Active: nodes snap into triangular positions (~260ms).
+- Resolved: connecting lines light and each node pulses once, status `FORMED`, held until reset/replay.
+- Reduced motion: jump straight to the formed, linked state.
 
 ## Freeze
 
-- Active: 480ms · settle: 160ms
+- Snap: 260ms · link: 200ms
 - Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`

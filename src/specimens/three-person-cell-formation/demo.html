@@ -1,17 +1,28 @@
-<div class="tpcf7" data-tpcf7 data-phase="idle">
-  <p class="tpcf7__live" data-tpcf7-live aria-live="polite">Three-Person Cell Formation. Idle.</p>
-  <p class="tpcf7__system">NR // NR-248</p>
-  <div class="tpcf7__stage" data-tpcf7-stage>
-    <div class="tpcf7__viz" data-tpcf7-viz aria-hidden="true">
-      <span class="tpcf7__mark tpcf7__mark--a"></span>
-      <span class="tpcf7__mark tpcf7__mark--b"></span>
-      <span class="tpcf7__mark tpcf7__mark--c"></span>
+<div class="tpcf" data-tpcf data-phase="idle">
+  <p class="tpcf__live" data-tpcf-live aria-live="polite">
+    Cell scattered. Three profiles unformed.
+  </p>
+
+  <p class="tpcf__system">SQUAD // CELL</p>
+
+  <div class="tpcf__stage" data-tpcf-stage>
+    <div class="tpcf__field">
+      <svg class="tpcf__links" viewBox="0 0 200 160" aria-hidden="true">
+        <line class="tpcf__link" data-tpcf-link x1="100" y1="80" x2="100" y2="28" />
+        <line class="tpcf__link" data-tpcf-link x1="100" y1="80" x2="52" y2="122" />
+        <line class="tpcf__link" data-tpcf-link x1="100" y1="80" x2="148" y2="122" />
+      </svg>
+      <span class="tpcf__center" aria-hidden="true"></span>
+      <span class="tpcf__node tpcf__node--lead" data-tpcf-node data-index="0">LEAD</span>
+      <span class="tpcf__node tpcf__node--scout" data-tpcf-node data-index="1">SCOUT</span>
+      <span class="tpcf__node tpcf__node--support" data-tpcf-node data-index="2">SUPPORT</span>
     </div>
-    <p class="tpcf7__status" data-tpcf7-status>IDLE</p>
-    <p class="tpcf7__note" data-tpcf7-note>Three nodes snap into a cell formation.</p>
+    <p class="tpcf__status" data-tpcf-status>SCATTERED</p>
+    <p class="tpcf__hint" data-tpcf-hint>Press Run to form the cell.</p>
   </div>
-  <div class="tpcf7__controls">
-    <button type="button" class="tpcf7__btn tpcf7__btn--primary" data-tpcf7-run>Form</button>
-    <button type="button" class="tpcf7__btn" data-tpcf7-replay>Replay</button>
+
+  <div class="tpcf__controls">
+    <button type="button" class="tpcf__btn tpcf__btn--primary" data-tpcf-run>Run</button>
+    <button type="button" class="tpcf__btn" data-tpcf-replay>Replay</button>
   </div>
 </div>

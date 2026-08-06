@@ -4,33 +4,34 @@ export const bodyFlickerPageJump: Specimen = {
   id: 'body-flicker-page-jump',
   ref: 'SPX-2409',
   title: 'Body Flicker Page Jump',
-  blurb: 'Page content streaks away and resolves as a new view.',
+  blurb:
+    'The current view flickers into compressed directional streaks, then hands off abruptly to a new destination view.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — body flicker & high-speed navigation',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['navigation'],
+  tags: ['navigation', 'streak', 'handoff'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the destination view appears immediately with no streaks.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
     height: 320,
     background: 'dark',
-    label: 'Body Flicker Page Jump',
+    label: 'Body flicker page jump',
   },
 }

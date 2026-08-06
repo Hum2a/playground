@@ -4,33 +4,34 @@ export const lightningTargetAcquisition: Specimen = {
   id: 'lightning-target-acquisition',
   ref: 'SPX-2464',
   title: 'Lightning Target Acquisition',
-  blurb: 'A reticle snaps onto a target with lightning tick marks.',
+  blurb:
+    'A loose reticle snaps onto a target with brief branching marks at the corners, then locks solid — abstract graphic lightning, no copyrighted iconography.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — lightning-style target lock',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['targeting'],
+  tags: ['targeting', 'lock-on', 'acquisition'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the reticle resolves directly to LOCKED with no snap/flicker choreography.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 360,
     background: 'dark',
-    label: 'Lightning Target Acquisition',
+    label: 'Lightning target acquisition',
   },
 }

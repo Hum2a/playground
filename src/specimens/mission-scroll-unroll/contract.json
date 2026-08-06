@@ -2,43 +2,34 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/mission-scroll-unroll.schema.json",
   "title": "MissionScrollUnroll",
+  "description": "Rolled scroll expands and reveals four staggered briefing lines.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "unrollMs", "lineStaggerMs", "lineCount", "settleMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "mission-scroll-unroll"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "mission-scroll-unroll" },
+    "unrollMs": { "type": "number", "const": 480 },
+    "lineStaggerMs": { "type": "number", "const": 70 },
+    "lineCount": { "type": "number", "const": 4 },
+    "settleMs": { "type": "number", "const": 90 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateOpen"],
+      "properties": {
+        "immediateOpen": { "type": "boolean", "const": true }
       }
     }
   }

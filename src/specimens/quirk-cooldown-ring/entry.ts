@@ -34,15 +34,5 @@ export const quirkCooldownRing: Specimen = {
 
     label: 'Quirk cooldown ring',
   },
-  integration: [
-    'SVG ring circumference 289.03; drain 580ms linear.',
-    'Wire runQuirkCooldownRing / reset / replay.',
-    'Honour reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Run drains ring COOLDOWN 100% → READY 0%',
-    'Accent flash on completion',
-    'Replay resets ring to idle READY',
-    'Reduced motion skips drain animation',
-  ],
+
 }

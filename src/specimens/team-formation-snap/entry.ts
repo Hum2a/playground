@@ -34,17 +34,5 @@ export const teamFormationSnap: Specimen = {
 
     label: 'Team formation',
   },
-  integration: [
-    'Mount stage with overflow hidden; import demo.css verbatim.',
-    'Snap 580ms staggered; total 1230ms.',
-    'Wire Form up / Replay to runTeamFormationSnap.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Three cards start scattered',
-    'Cards snap to bottom row slots',
-    'UNIT READY appears at settle',
-    'Replay returns cards to scatter positions',
-    'Reduced motion: instant formation',
-  ],
+
 }

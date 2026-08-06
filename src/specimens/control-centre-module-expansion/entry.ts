@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#0f1218;display:grid;place-items:center;padding:0.75rem;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const controlCentreModuleExpansion: Specimen = {
   id: 'control-centre-module-expansion',
   ref: 'SPX-1471',
@@ -39,29 +27,13 @@ export const controlCentreModuleExpansion: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, instant compact/expanded swap; slider remains functional.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 340,
     height: 260,
     background: 'dark',
-    scaffold,
+
     label: 'Control module expansion',
   },
-  integration: [
-    'Mount inside a relative overflow-clipped host.',
-    'Import demo.css verbatim; freeze 142×72 compact, 320×210 expanded, 340ms expansion.',
-    '62% value persists; slider at 70% width; rows stagger 45ms.',
-    'Collapse preserves any changed slider value.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Compact and expanded states share AUDIO identity',
-    '62% persists through expansion',
-    'Expanded size exactly 320×210',
-    'OUTPUT then BALANCE rows reveal in order',
-    'Changed volume persists after collapse',
-    'Reduced motion: instant state swap',
-  ],
+
 }

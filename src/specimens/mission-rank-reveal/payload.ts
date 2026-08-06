@@ -7,20 +7,21 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~420×320+).',
+    'Import demo.css verbatim; rank card slams in, then the stamp impacts on top, timings from contract.json.',
     'Wire runMissionRankReveal / resetMissionRankReveal / replayMissionRankReveal.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Rank card slams into the briefing panel before the stamp appears',
+    'Stamp only impacts after the rank card has fully settled',
+    'Idle, revealing, and resolved states are visually distinct',
+    'Replay resets card and stamp before rerunning',
+    'Reduced motion shows the settled card and stamp immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

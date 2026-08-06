@@ -1,17 +1,23 @@
-<div class="fc5" data-fc5 data-phase="idle">
-  <p class="fc5__live" data-fc5-live aria-live="polite">Fireball Commit. Idle.</p>
-  <p class="fc5__system">NR // NR-101</p>
-  <div class="fc5__stage" data-fc5-stage>
-    <div class="fc5__viz" data-fc5-viz aria-hidden="true">
-      <span class="fc5__mark fc5__mark--a"></span>
-      <span class="fc5__mark fc5__mark--b"></span>
-      <span class="fc5__mark fc5__mark--c"></span>
+<div class="fbc" data-fbc data-phase="idle">
+  <p class="fbc__live" data-fbc-live aria-live="polite">
+    Charge idle. Target unconfirmed.
+  </p>
+
+  <p class="fbc__system">FLAME // COMMIT</p>
+
+  <div class="fbc__stage" data-fbc-stage>
+    <div class="fbc__track" data-fbc-track>
+      <span class="fbc__node fbc__node--source" aria-hidden="true"></span>
+      <span class="fbc__node fbc__node--target" data-fbc-target aria-hidden="true"></span>
+      <span class="fbc__orb" data-fbc-orb aria-hidden="true"></span>
+      <span class="fbc__impact" data-fbc-impact aria-hidden="true"></span>
     </div>
-    <p class="fc5__status" data-fc5-status>IDLE</p>
-    <p class="fc5__note" data-fc5-note>A charge grows then shoots into a target to confirm.</p>
+    <p class="fbc__status" data-fbc-status>IDLE</p>
+    <p class="fbc__hint" data-fbc-hint>Press Run to charge and commit.</p>
   </div>
-  <div class="fc5__controls">
-    <button type="button" class="fc5__btn fc5__btn--primary" data-fc5-run>Commit</button>
-    <button type="button" class="fc5__btn" data-fc5-replay>Replay</button>
+
+  <div class="fbc__controls">
+    <button type="button" class="fbc__btn fbc__btn--primary" data-fbc-run>Run</button>
+    <button type="button" class="fbc__btn" data-fbc-replay>Replay</button>
   </div>
 </div>

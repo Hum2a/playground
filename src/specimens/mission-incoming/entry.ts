@@ -34,19 +34,5 @@ export const missionIncoming: Specimen = {
 
     label: 'Mission dispatch',
   },
-  integration: [
-    'Mount inside a relative, overflow-hidden host (~360×320).',
-    'Import demo.css verbatim; card enter 420ms, settle hold to 1070ms total.',
-    'Wire Dispatch / Replay to runMissionIncoming / replayMissionIncoming.',
-    'Keep speed lines aria-hidden; announce via aria-live region.',
-    'Honour both reduced-motion triggers with instant settled card.',
-  ],
-  acceptance: [
-    'Dispatch trigger slides mission card in from the right',
-    'ALERT badge and MISSION ref visible at settled state',
-    'Speed lines appear during entry then fade',
-    'Replay resets to idle before re-entering',
-    'Effect clipped to specimen stage',
-    'Reduced motion: card visible immediately without slide',
-  ],
+
 }

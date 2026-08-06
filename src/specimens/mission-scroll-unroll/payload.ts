@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~360×320+).',
+    'Import demo.css verbatim; freeze the 480ms unroll / 70ms line stagger from contract.json.',
     'Wire runMissionScrollUnroll / resetMissionScrollUnroll / replayMissionScrollUnroll.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Rolled and briefed states are visually distinct',
+    'Body height animates open before briefing lines reveal',
+    'Replay resets the scroll before rerunning',
+    'Reduced motion shows the fully open scroll with all lines visible immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

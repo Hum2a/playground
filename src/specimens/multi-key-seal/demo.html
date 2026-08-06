@@ -1,17 +1,36 @@
-<div class="mks4" data-mks4 data-phase="idle">
-  <p class="mks4__live" data-mks4-live aria-live="polite">Multi-Key Seal. Idle.</p>
-  <p class="mks4__system">NR // NR-035</p>
-  <div class="mks4__stage" data-mks4-stage>
-    <div class="mks4__viz" data-mks4-viz aria-hidden="true">
-      <span class="mks4__mark mks4__mark--a"></span>
-      <span class="mks4__mark mks4__mark--b"></span>
-      <span class="mks4__mark mks4__mark--c"></span>
+<div class="mks" data-mks data-phase="idle">
+  <p class="mks__live" data-mks-live aria-live="polite">
+    Seal closed. No key nodes armed.
+  </p>
+
+  <p class="mks__system">FŪINJUTSU // MULTI-KEY SEAL</p>
+
+  <div class="mks__stage" data-mks-stage>
+    <div class="mks__ring">
+      <ol class="mks__nodes" aria-label="Prerequisite key nodes">
+        <li class="mks__node" data-mks-node data-index="0" aria-label="Key node 1 unarmed"></li>
+        <li class="mks__node" data-mks-node data-index="1" aria-label="Key node 2 unarmed"></li>
+        <li class="mks__node" data-mks-node data-index="2" aria-label="Key node 3 unarmed"></li>
+      </ol>
+      <svg class="mks__seal" viewBox="0 0 100 100" width="120" height="120" aria-hidden="true">
+        <g class="mks__petal" data-mks-petal data-index="0">
+          <path d="M50 50 L50 12 A38 38 0 0 1 82 30 Z" />
+        </g>
+        <g class="mks__petal" data-mks-petal data-index="1">
+          <path d="M50 50 L82 30 A38 38 0 0 1 68 82 Z" />
+        </g>
+        <g class="mks__petal" data-mks-petal data-index="2">
+          <path d="M50 50 L68 82 A38 38 0 0 1 18 30 Z" />
+        </g>
+        <circle class="mks__core" data-mks-core cx="50" cy="50" r="9" />
+      </svg>
     </div>
-    <p class="mks4__status" data-mks4-status>IDLE</p>
-    <p class="mks4__note" data-mks4-note>Three prerequisite nodes activate before the seal opens.</p>
+    <p class="mks__status" data-mks-status>SEALED</p>
+    <p class="mks__hint" data-mks-hint>Press Run to arm the three key nodes.</p>
   </div>
-  <div class="mks4__controls">
-    <button type="button" class="mks4__btn mks4__btn--primary" data-mks4-run>Unlock</button>
-    <button type="button" class="mks4__btn" data-mks4-replay>Replay</button>
+
+  <div class="mks__controls">
+    <button type="button" class="mks__btn mks__btn--primary" data-mks-run>Run</button>
+    <button type="button" class="mks__btn" data-mks-replay>Replay</button>
   </div>
 </div>

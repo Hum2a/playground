@@ -34,13 +34,5 @@ export const lockdownShutter: Specimen = {
 
     label: 'Lockdown shutter',
   },
-  integration: [
-    'Panel must use overflow:hidden; wire LOCKDOWN to runLockdownShutter.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Five shutters close in staggered sequence',
-    'LOCKDOWN label visible when covered',
-    'RESET restores operational view',
-  ],
+
 }

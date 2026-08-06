@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:160px;background:#f4f5f7;display:grid;place-items:center;padding:0.75rem;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const buttonLoadingMorph: Specimen = {
   id: 'button-loading-morph',
   ref: 'SPX-1714',
@@ -38,29 +26,13 @@ export const buttonLoadingMorph: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, static arc fills over 900ms with no rotation.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 220,
     height: 180,
     background: 'card',
-    scaffold,
+
     label: 'Button loading morph',
   },
-  integration: [
-    'Mount inside a relative overflow-clipped host.',
-    'Import demo.css verbatim; freeze 160×48 button and 900ms load cycle.',
-    'Wire resetButtonLoadingMorph; ignore clicks while busy.',
-    'Success uses same button surface — no second dialog.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Button width never changes',
-    'Repeated clicks are ignored while busy',
-    'Loading always has a finite completion',
-    'Success state is visually distinct',
-    'Reset restores original label exactly',
-    'Reduced motion: determinate fill, no spin',
-  ],
+
 }

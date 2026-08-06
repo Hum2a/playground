@@ -34,17 +34,5 @@ export const speedLineActionReveal: Specimen = {
 
     label: 'Speed-line action reveal',
   },
-  integration: [
-    'Mount in relative overflow-hidden host.',
-    'Freeze burst 580ms and settle 320ms.',
-    'Wire runSpeedLineReveal / resetSpeedLineReveal / replaySpeedLineReveal.',
-    'Lines must clip to stage; honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Activate triggers one burst reveal to TARGET end state',
-    'Initial concealed and final revealed states are distinct',
-    'No external resources; replay resets cleanly',
-    'Reduced motion shows TARGET immediately',
-    'Palette uses shared MHA study colours',
-  ],
+
 }

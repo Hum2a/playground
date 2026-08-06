@@ -1,17 +1,39 @@
-<div class="fpbc8" data-fpbc8 data-phase="idle">
-  <p class="fpbc8__live" data-fpbc8-live aria-live="polite">Four-Point Barrier Construct. Idle.</p>
-  <p class="fpbc8__system">NR // NR-179</p>
-  <div class="fpbc8__stage" data-fpbc8-stage>
-    <div class="fpbc8__viz" data-fpbc8-viz aria-hidden="true">
-      <span class="fpbc8__mark fpbc8__mark--a"></span>
-      <span class="fpbc8__mark fpbc8__mark--b"></span>
-      <span class="fpbc8__mark fpbc8__mark--c"></span>
-    </div>
-    <p class="fpbc8__status" data-fpbc8-status>IDLE</p>
-    <p class="fpbc8__note" data-fpbc8-note>Four corner nodes connect into a protected region.</p>
+<div class="fpbc" data-fpbc data-phase="idle">
+  <p class="fpbc__live" data-fpbc-live aria-live="polite">
+    Barrier idle. Perimeter open.
+  </p>
+
+  <p class="fpbc__system">WARD // BARRIER CONSTRUCT</p>
+
+  <div class="fpbc__stage" data-fpbc-stage>
+    <svg class="fpbc__field-map" viewBox="0 0 200 200" aria-hidden="true">
+      <rect
+        class="fpbc__fill"
+        data-fpbc-fill
+        data-visible="false"
+        x="30"
+        y="30"
+        width="140"
+        height="140"
+      />
+
+      <line class="fpbc__edge" data-fpbc-edge data-index="0" data-drawn="false" x1="30" y1="30" x2="170" y2="30" pathLength="1" />
+      <line class="fpbc__edge" data-fpbc-edge data-index="1" data-drawn="false" x1="170" y1="30" x2="170" y2="170" pathLength="1" />
+      <line class="fpbc__edge" data-fpbc-edge data-index="2" data-drawn="false" x1="170" y1="170" x2="30" y2="170" pathLength="1" />
+      <line class="fpbc__edge" data-fpbc-edge data-index="3" data-drawn="false" x1="30" y1="170" x2="30" y2="30" pathLength="1" />
+
+      <circle class="fpbc__node" data-fpbc-node data-index="0" data-active="false" cx="30" cy="30" r="8" />
+      <circle class="fpbc__node" data-fpbc-node data-index="1" data-active="false" cx="170" cy="30" r="8" />
+      <circle class="fpbc__node" data-fpbc-node data-index="2" data-active="false" cx="170" cy="170" r="8" />
+      <circle class="fpbc__node" data-fpbc-node data-index="3" data-active="false" cx="30" cy="170" r="8" />
+    </svg>
+
+    <p class="fpbc__status" data-fpbc-status>IDLE</p>
+    <p class="fpbc__hint" data-fpbc-hint>Press Run to construct the barrier.</p>
   </div>
-  <div class="fpbc8__controls">
-    <button type="button" class="fpbc8__btn fpbc8__btn--primary" data-fpbc8-run>Construct</button>
-    <button type="button" class="fpbc8__btn" data-fpbc8-replay>Replay</button>
+
+  <div class="fpbc__controls">
+    <button type="button" class="fpbc__btn fpbc__btn--primary" data-fpbc-run>Run</button>
+    <button type="button" class="fpbc__btn" data-fpbc-replay>Replay</button>
   </div>
 </div>

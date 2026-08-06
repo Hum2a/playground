@@ -1,71 +1,241 @@
 /* SPX-2536 Objective Chain Advance — portable contract. */
-.oca3 {
+
+.oca {
   --ink: #101318;
   --parchment: #e7ddc7;
   --chakra: #3a9bd9;
-  --vermilion: #d94a38;
+  --alert: #d94a38;
   --olive: #69745a;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
   width: 100%;
-  min-height: 280px;
-  padding: 0.8rem 0.65rem;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
   background: var(--ink);
   color: var(--off);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.oca3 *, .oca3 *::before, .oca3 *::after { box-sizing: border-box; }
-.oca3__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+.oca *,
+.oca *::before,
+.oca *::after {
+  box-sizing: border-box;
 }
-.oca3__system {
-  margin: 0; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--chakra);
+
+.oca__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.oca3__stage {
-  position: relative; overflow: hidden; display: grid; gap: 0.55rem; justify-items: center;
-  width: 100%; padding: 1rem 0.75rem; border: 1px solid rgb(58 155 217 / 0.4);
-  background: rgb(244 241 232 / 0.04); min-height: 160px;
+
+.oca__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chakra);
 }
-.oca3__viz {
-  position: relative; width: 140px; height: 100px;
+
+.oca__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+  width: 100%;
+  padding: 1.4rem 0.75rem 1rem;
+  border: 1px solid rgb(58 155 217 / 0.45);
+  background: rgb(244 241 232 / 0.04);
 }
-.oca3__mark {
-  position: absolute; border: 1.5px solid var(--olive); opacity: 0.35;
-  transition: transform 420ms cubic-bezier(0.2,0.85,0.25,1), opacity 420ms ease, border-color 420ms ease;
+
+.oca__chain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
 }
-.oca3__mark--a { left: 20px; top: 28px; width: 100px; height: 44px; }
-.oca3__mark--b { left: 46px; top: 18px; width: 48px; height: 48px; border-radius: 50%; border-color: var(--chakra); }
-.oca3__mark--c { left: 10px; top: 70px; width: 120px; height: 8px; background: rgb(105 116 90 / 0.35); }
-.oca3[data-phase='active'] .oca3__mark--a { opacity: 0.85; border-color: var(--chakra); transform: scaleX(1.05); }
-.oca3[data-phase='active'] .oca3__mark--b { opacity: 1; transform: scale(1.12); }
-.oca3[data-phase='active'] .oca3__mark--c { opacity: 0.9; transform: scaleX(1.08); background: rgb(58 155 217 / 0.45); }
-.oca3[data-phase='done'] .oca3__mark { opacity: 1; border-color: var(--chakra); }
-.oca3[data-phase='done'] .oca3__mark--b { transform: scale(1); box-shadow: 0 0 0 2px rgb(58 155 217 / 0.25); }
-.oca3[data-phase='done'] .oca3__mark--c { background: var(--chakra); }
-.oca3__status {
-  margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 0.12em; color: var(--parchment);
+
+.oca__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  flex: 0 0 auto;
 }
-.oca3[data-phase='done'] .oca3__status { color: var(--chakra); }
-.oca3__note {
-  margin: 0; font-size: 0.68rem; letter-spacing: 0.03em; color: var(--olive); text-align: center; max-width: 28rem;
+
+.oca__node-dot {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1.5px solid var(--olive);
+  border-radius: 999px;
+  color: transparent;
+  background: rgb(16 19 24 / 0.85);
+  transition:
+    border-color 160ms ease-out,
+    color 160ms ease-out,
+    background-color 160ms ease-out,
+    transform 160ms cubic-bezier(0.2, 0.85, 0.25, 1);
 }
-.oca3__controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.oca3__btn {
-  appearance: none; margin: 0; padding: 0.42rem 0.8rem; border: 1px solid var(--olive);
-  background: transparent; color: var(--off); font: inherit; font-size: 0.66rem; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+
+.oca__node[data-state='current'] .oca__node-dot {
+  border-color: var(--chakra);
+  box-shadow: 0 0 0 3px rgb(58 155 217 / 0.18);
 }
-.oca3__btn--primary { border-color: var(--chakra); background: rgb(58 155 217 / 0.14); }
-.oca3__btn:hover:not(:disabled) { border-color: var(--parchment); }
-.oca3__btn:focus-visible { outline: 2px solid var(--chakra); outline-offset: 2px; }
-.oca3__btn:disabled { opacity: 0.45; cursor: default; }
+
+.oca__node[data-state='complete'] .oca__node-dot {
+  border-color: var(--chakra);
+  background: var(--chakra);
+  color: var(--ink);
+}
+
+.oca__node[data-pulse='true'] .oca__node-dot {
+  animation: oca-pulse 200ms ease-out;
+}
+
+@keyframes oca-pulse {
+  0% {
+    transform: scale(0.75);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.oca__node-label {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--olive);
+  transition: color 160ms ease-out;
+}
+
+.oca__node[data-state='current'] .oca__node-label,
+.oca__node[data-state='complete'] .oca__node-label {
+  color: var(--parchment);
+}
+
+.oca__link {
+  position: relative;
+  flex: 1 1 auto;
+  height: 2px;
+  margin: 0 0.25rem 1.1rem;
+  background: var(--olive);
+  opacity: 0.5;
+}
+
+.oca__pulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--chakra);
+  box-shadow: 0 0 6px 1px rgb(58 155 217 / 0.7);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition:
+    left 220ms linear,
+    opacity 120ms ease-out;
+}
+
+.oca__pulse[data-active='true'] {
+  opacity: 1;
+}
+
+.oca__status {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--parchment);
+}
+
+.oca[data-phase='done'] .oca__status {
+  color: var(--chakra);
+}
+
+.oca__hint {
+  margin: 0;
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.oca__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.oca__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.oca__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.oca__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.oca__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.oca__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .oca3__mark { transition: none !important; }
+  .oca__node-dot,
+  .oca__node[data-pulse='true'] .oca__node-dot,
+  .oca__node-label,
+  .oca__pulse {
+    transition: none !important;
+    animation: none !important;
+  }
 }
-html[data-force-reduced-motion='true'] .oca3__mark { transition: none !important; }
+
+html[data-force-reduced-motion='true'] .oca__node-dot,
+html[data-force-reduced-motion='true'] .oca__node[data-pulse='true'] .oca__node-dot,
+html[data-force-reduced-motion='true'] .oca__node-label,
+html[data-force-reduced-motion='true'] .oca__pulse {
+  transition: none !important;
+  animation: none !important;
+}

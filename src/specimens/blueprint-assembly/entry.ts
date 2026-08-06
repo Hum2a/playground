@@ -34,19 +34,5 @@ export const blueprintAssembly: Specimen = {
 
     label: 'Gadget blueprint',
   },
-  integration: [
-    'Mount inside relative overflow-hidden host.',
-    'Import demo.css verbatim; freeze 660ms part convergence.',
-    'Call runBlueprintAssembly() from ASSEMBLE.',
-    'Use reset/replay for harness restart.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Four parts visible at corners before assembly',
-    'Parts converge to center during animation',
-    'Finished CAPTURE RIG device visible at settle',
-    'Replay restores exploded parts',
-    'Reduced motion shows device without convergence',
-    'Sandbox-safe with no external resources',
-  ],
+
 }

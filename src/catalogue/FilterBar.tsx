@@ -3,10 +3,12 @@ import {
   FACET_KEYS,
   FACET_LABELS,
   FACET_VALUES,
-  franchiseLabel,
   type FacetKey,
+} from '../specimens/taxonomy'
+import {
+  franchiseLabel,
   type InspirationFranchiseId,
-} from '../specimens'
+} from '../specimens/inspiration'
 import './filter-bar.css'
 
 export type CatalogueFilters = Record<FacetKey, string | null> & {

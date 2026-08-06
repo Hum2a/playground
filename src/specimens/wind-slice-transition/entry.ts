@@ -4,33 +4,34 @@ export const windSliceTransition: Specimen = {
   id: 'wind-slice-transition',
   ref: 'SPX-2458',
   title: 'Wind Slice Transition',
-  blurb: 'Sharp slice planes cut across to reveal the next state.',
+  blurb:
+    'Four staggered diagonal blades sweep across the stage, exchanging content mid-sweep — abstract graphic cuts, no copyrighted iconography.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — wind-style slice transitions',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['transition'],
+  tags: ['wipe', 'stagger'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the state swaps immediately with no blade sweep.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 360,
     background: 'dark',
-    label: 'Wind Slice Transition',
+    label: 'Wind slice transition',
   },
 }

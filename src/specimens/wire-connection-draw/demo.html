@@ -1,17 +1,36 @@
-<div class="wcd0" data-wcd0 data-phase="idle">
-  <p class="wcd0__live" data-wcd0-live aria-live="polite">Wire Connection Draw. Idle.</p>
-  <p class="wcd0__system">NR // NR-084</p>
-  <div class="wcd0__stage" data-wcd0-stage>
-    <div class="wcd0__viz" data-wcd0-viz aria-hidden="true">
-      <span class="wcd0__mark wcd0__mark--a"></span>
-      <span class="wcd0__mark wcd0__mark--b"></span>
-      <span class="wcd0__mark wcd0__mark--c"></span>
+<div class="wcd" data-wcd data-phase="idle">
+  <p class="wcd__live" data-wcd-live aria-live="polite">
+    Idle. Nodes A and B are unconnected.
+  </p>
+
+  <p class="wcd__system">NODE // LINK</p>
+
+  <div class="wcd__stage" data-wcd-stage>
+    <svg
+      class="wcd__svg"
+      viewBox="0 0 100 40"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <line class="wcd__wire" data-wcd-wire x1="14" y1="20" x2="86" y2="20" />
+    </svg>
+
+    <div class="wcd__node wcd__node--a" data-wcd-node="a" aria-label="Node A unconnected">
+      <span class="wcd__node-dot" aria-hidden="true"></span>
+      <span class="wcd__node-label">NODE A</span>
     </div>
-    <p class="wcd0__status" data-wcd0-status>IDLE</p>
-    <p class="wcd0__note" data-wcd0-note>A thin wire line rapidly connects two selected nodes.</p>
+    <div class="wcd__node wcd__node--b" data-wcd-node="b" aria-label="Node B unconnected">
+      <span class="wcd__node-dot" aria-hidden="true"></span>
+      <span class="wcd__node-label">NODE B</span>
+    </div>
+
+    <p class="wcd__status" data-wcd-status>UNLINKED</p>
+    <p class="wcd__hint" data-wcd-hint>Press Run to draw the connection.</p>
   </div>
-  <div class="wcd0__controls">
-    <button type="button" class="wcd0__btn wcd0__btn--primary" data-wcd0-run>Connect</button>
-    <button type="button" class="wcd0__btn" data-wcd0-replay>Replay</button>
+
+  <div class="wcd__controls">
+    <button type="button" class="wcd__btn wcd__btn--primary" data-wcd-run>Run</button>
+    <button type="button" class="wcd__btn" data-wcd-replay>Replay</button>
   </div>
 </div>

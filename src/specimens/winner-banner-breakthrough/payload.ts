@@ -6,6 +6,15 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'DECLARE WINNER triggers runWinnerBannerBreakthrough; clip to board overflow.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Banner breaks through scoreboard to WINNER — TEAM A',
+    'RESET hides banner and restores idle',
+    'Reduced motion shows banner immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

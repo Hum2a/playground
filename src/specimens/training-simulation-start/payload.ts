@@ -8,6 +8,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside a relative overflow-hidden host.',
+    'Import demo.css verbatim; keep countdown and burst timings.',
+    'Wire START via trainingSimulationStart.start(root).',
+    'Replay resets to standby before rerun.',
+    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+  ],
+  acceptance: [
+    'READY countdown displays 3-2-1-GO sequence',
+    'READY panel explodes into telemetry grid',
+    'Tiles show PULSE, LOAD, and ACTIVE ALERT values',
+    'Replay returns to exact standby idle',
+    'Clipped to host; sandbox allow-scripts; no external assets',
+    'Reduced motion shows live telemetry immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#101820;">
   {{specimen}}

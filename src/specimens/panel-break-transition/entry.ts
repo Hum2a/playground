@@ -34,16 +34,5 @@ export const panelBreakTransition: Specimen = {
 
     label: 'Panel break transition',
   },
-  integration: [
-    'Mount in overflow-hidden host; four shards use frozen clip-paths.',
-    'Wire runPanelBreak / resetPanelBreak / replayPanelBreak.',
-    'Break 480ms; settle 260ms; honour reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Run shatters ANALYSIS overlay into four shards',
-    'COMPLETE readable underneath after break',
-    'Replay resets overlay before rerun',
-    'Reduced motion skips shard translation',
-    'Effect clips to stage',
-  ],
+
 }

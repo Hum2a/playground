@@ -8,6 +8,17 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Start fill 92%; surge to 108% over 500ms.',
+    'Threshold line shatter + three accent shards.',
+    'Wire runPowerThresholdBreak / reset / replay.',
+  ],
+  acceptance: [
+    'Run breaks 100% cap with visible threshold shatter',
+    'Final BREAKTHROUGH state at 108% accent fill',
+    'Replay resets to 92% CHARGING',
+    'Reduced motion shows breakthrough immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

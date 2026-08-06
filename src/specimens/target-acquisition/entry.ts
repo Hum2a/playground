@@ -34,13 +34,5 @@ export const targetAcquisition: Specimen = {
 
     label: 'Training target acquisition',
   },
-  integration: [
-    'Select target then SCAN; wire runTargetAcquisition / resetTargetAcquisition.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Three targets; pick then scan produces brackets + confidence meter',
-    'LOCKED label visible at end state',
-    'Reduced motion shows locked state immediately',
-  ],
+
 }

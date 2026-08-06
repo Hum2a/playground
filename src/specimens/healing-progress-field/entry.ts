@@ -4,16 +4,17 @@ export const healingProgressField: Specimen = {
   id: 'healing-progress-field',
   ref: 'SPX-2527',
   title: 'Healing Progress Field',
-  blurb: 'A damaged region reconstructs from the centre outward.',
+  blurb:
+    'A damaged tile grid reconstructs ring-by-ring from the centre outward until the whole field reads stable and restored.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / medical-ninja recovery UI — field restoration overlays',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'overlay',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -24,13 +25,13 @@ export const healingProgressField: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, every tile appears healed immediately as RESTORED.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Healing Progress Field',
+    label: 'Healing progress field',
   },
 }

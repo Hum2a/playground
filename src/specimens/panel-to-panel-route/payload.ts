@@ -8,6 +8,19 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount in a relative overflow-hidden frame.',
+    'Import demo.css verbatim; preserve 740ms expansion timing.',
+    'Wire panel selection and Route trigger; reset via resetPanelToPanelRoute().',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Panel selection is visually distinct before routing',
+    'Route trigger expands selected panel then reveals MISSION COMPLETE',
+    'Effect stays clipped to the stage',
+    'Replay resets grid and route layers deterministically',
+    'Reduced motion shows final route state immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;">
   {{specimen}}

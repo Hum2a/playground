@@ -2,43 +2,35 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/four-point-barrier-construct.schema.json",
   "title": "FourPointBarrierConstruct",
+  "description": "Four corner nodes connect edge-by-edge around a protected region, then the field fills.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "edgeCount", "edgeMs", "fillMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "four-point-barrier-construct"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "four-point-barrier-construct" },
+    "edgeCount": { "type": "number", "const": 4 },
+    "edgeMs": { "type": "number", "const": 220 },
+    "fillMs": { "type": "number", "const": 260 },
+    "settleMs": { "type": "number", "const": 90 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "alert": { "type": "string", "const": "#D94A38" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateSecured"],
+      "properties": {
+        "immediateSecured": { "type": "boolean", "const": true }
       }
     }
   }

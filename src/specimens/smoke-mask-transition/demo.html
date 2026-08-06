@@ -1,17 +1,37 @@
-<div class="smt1" data-smt1 data-phase="idle">
-  <p class="smt1__live" data-smt1-live aria-live="polite">Smoke Mask Transition. Idle.</p>
-  <p class="smt1__system">NR // NR-096</p>
-  <div class="smt1__stage" data-smt1-stage>
-    <div class="smt1__viz" data-smt1-viz aria-hidden="true">
-      <span class="smt1__mark smt1__mark--a"></span>
-      <span class="smt1__mark smt1__mark--b"></span>
-      <span class="smt1__mark smt1__mark--c"></span>
+<div class="smt" data-smt data-phase="idle" data-surface="a">
+  <p class="smt__live" data-smt-live aria-live="polite">
+    State one in view.
+  </p>
+
+  <p class="smt__system">SMOKE // TRANSITION</p>
+
+  <div class="smt__stage" data-smt-stage>
+    <div class="smt__host">
+      <section class="smt__panel smt__panel--a" data-smt-panel="a">
+        <p class="smt__kicker">STATE // 01</p>
+        <p class="smt__title">IN VIEW</p>
+      </section>
+      <section class="smt__panel smt__panel--b" data-smt-panel="b" hidden>
+        <p class="smt__kicker">STATE // 02</p>
+        <p class="smt__title">CONCEALED</p>
+      </section>
+
+      <div class="smt__cloud" data-smt-cloud aria-hidden="true">
+        <span class="smt__circle smt__circle--1"></span>
+        <span class="smt__circle smt__circle--2"></span>
+        <span class="smt__circle smt__circle--3"></span>
+        <span class="smt__circle smt__circle--4"></span>
+        <span class="smt__circle smt__circle--5"></span>
+        <span class="smt__circle smt__circle--6"></span>
+      </div>
     </div>
-    <p class="smt1__status" data-smt1-status>IDLE</p>
-    <p class="smt1__note" data-smt1-note>Abstract smoke discs cover a content swap then disperse.</p>
+
+    <p class="smt__status" data-smt-status>STATE 01</p>
+    <p class="smt__hint" data-smt-hint>Press Run to swap under cover.</p>
   </div>
-  <div class="smt1__controls">
-    <button type="button" class="smt1__btn smt1__btn--primary" data-smt1-run>Swap</button>
-    <button type="button" class="smt1__btn" data-smt1-replay>Replay</button>
+
+  <div class="smt__controls">
+    <button type="button" class="smt__btn smt__btn--primary" data-smt-run>Run</button>
+    <button type="button" class="smt__btn" data-smt-replay>Replay</button>
   </div>
 </div>

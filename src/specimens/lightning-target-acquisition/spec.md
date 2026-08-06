@@ -1,13 +1,15 @@
 # Lightning Target Acquisition
 
-A reticle snaps onto a target with lightning tick marks.
+A loose reticle snaps onto a fixed target (Run auto-play), with brief branching marks flickering at the corners just before it locks solid.
 
 ## Behaviour
 
-- Idle → active (~480ms) → done (held until reset/replay).
-- Reduced motion: immediate done.
+- Idle: reticle offset from the target, status `IDLE`.
+- Acquiring: reticle travels and settles onto the target (~440ms); branch marks flicker in the final ~180ms.
+- Locked: reticle and target snap to full colour, status `LOCKED`, held until reset/replay.
+- Reduced motion: jump straight to LOCKED.
 
 ## Freeze
 
-- Active: 480ms · settle: 160ms
+- Snap: 440ms · settle: 150ms
 - Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`

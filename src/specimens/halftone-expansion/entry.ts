@@ -34,16 +34,5 @@ export const halftoneExpansion: Specimen = {
 
     label: 'Halftone expansion',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden viewport.',
-    'Import demo.css verbatim; origin is set from trigger click position.',
-    'Swap content while mask is fully expanded (~220ms).',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Activate expands halftone mask from button origin and swaps to COMPLETE',
-    'Mask remains clipped to specimen bounds',
-    'Reset returns to STANDBY via restart message or Reset button',
-    'Reduced motion swaps states without mask travel',
-  ],
+
 }

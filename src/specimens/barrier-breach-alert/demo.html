@@ -1,17 +1,41 @@
-<div class="bba0" data-bba0 data-phase="idle">
-  <p class="bba0__live" data-bba0-live aria-live="polite">Barrier Breach Alert. Idle.</p>
-  <p class="bba0__system">NR // NR-182</p>
-  <div class="bba0__stage" data-bba0-stage>
-    <div class="bba0__viz" data-bba0-viz aria-hidden="true">
-      <span class="bba0__mark bba0__mark--a"></span>
-      <span class="bba0__mark bba0__mark--b"></span>
-      <span class="bba0__mark bba0__mark--c"></span>
-    </div>
-    <p class="bba0__status" data-bba0-status>IDLE</p>
-    <p class="bba0__note" data-bba0-note>A perimeter fractures at a breach point with an alert.</p>
+<div class="bba" data-bba data-phase="secure">
+  <p class="bba__live" data-bba-live aria-live="polite">
+    Perimeter secure. No breach detected.
+  </p>
+
+  <p class="bba__system">WARD // BREACH ALERT</p>
+
+  <div class="bba__stage" data-bba-stage>
+    <svg class="bba__field-map" viewBox="0 0 200 200" aria-hidden="true">
+      <rect class="bba__fill" data-bba-fill x="30" y="30" width="140" height="140" />
+
+      <line class="bba__edge" x1="170" y1="30" x2="170" y2="170" />
+      <line class="bba__edge" x1="170" y1="170" x2="30" y2="170" />
+      <line class="bba__edge" x1="30" y1="170" x2="30" y2="30" />
+      <line class="bba__edge bba__edge--breach" data-bba-edge x1="30" y1="30" x2="170" y2="30" />
+
+      <circle class="bba__node" cx="30" cy="30" r="7" />
+      <circle class="bba__node" cx="170" cy="30" r="7" />
+      <circle class="bba__node" cx="170" cy="170" r="7" />
+      <circle class="bba__node" cx="30" cy="170" r="7" />
+
+      <circle class="bba__halo" data-bba-halo cx="100" cy="30" r="6" />
+
+      <g class="bba__crack" data-bba-crack aria-hidden="true">
+        <path
+          fill="none"
+          stroke-width="2"
+          d="M92 20 L102 30 L94 34 L108 44 L100 30 L112 24"
+        />
+      </g>
+    </svg>
+
+    <p class="bba__status" data-bba-status>SECURE</p>
+    <p class="bba__hint" data-bba-hint>Press Run to simulate a breach.</p>
   </div>
-  <div class="bba0__controls">
-    <button type="button" class="bba0__btn bba0__btn--primary" data-bba0-run>Alert</button>
-    <button type="button" class="bba0__btn" data-bba0-replay>Replay</button>
+
+  <div class="bba__controls">
+    <button type="button" class="bba__btn bba__btn--primary" data-bba-run>Run</button>
+    <button type="button" class="bba__btn" data-bba-replay>Replay</button>
   </div>
 </div>

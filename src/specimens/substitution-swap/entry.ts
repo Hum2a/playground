@@ -4,33 +4,34 @@ export const substitutionSwap: Specimen = {
   id: 'substitution-swap',
   ref: 'SPX-2385',
   title: 'Substitution Swap',
-  blurb: 'Primary content swaps to a decoy log then resolves to the real target.',
+  blurb:
+    'A primary target puffs out and is briefly replaced by a proxy log decoy before the real failover target settles into its place.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction kawarimi study — substitution failover',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['failover'],
+  tags: ['failover', 'swap', 'decoy'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the slot jumps straight to the resolved failover target with no decoy step or puff.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 340,
+    height: 300,
     background: 'dark',
-    label: 'Substitution Swap',
+    label: 'Substitution swap',
   },
 }

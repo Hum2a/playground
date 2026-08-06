@@ -24,3 +24,4 @@ public/         _redirects, _headers, favicon
 - Adding a specimen = add a folder + one import + one array entry.
 - No dynamic `import.meta.glob`, no magic directory scanning for catalogue content.
 - Refs (`SPX-001`, …) and order stay under human control.
+- Each folder splits **light** `entry.ts` (metadata + `loadPayload`) from **`payload.ts`** (`?raw` HTML/CSS/JS + spec + contract). Catalogue ships meta only; previews/detail/copy await `loadPayload` / `resolvePayload`.

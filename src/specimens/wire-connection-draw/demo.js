@@ -1,21 +1,28 @@
 /**
- * Wire Connection Draw — A thin wire line rapidly connects two selected nodes.
+ * Wire Connection Draw — a thin wire rapidly connects two nodes, then both
+ * endpoints pulse to confirm a linked connection.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const DRAW_MS = 180
+const SETTLE_MS = 80
+const TOTAL_MS = DRAW_MS + SETTLE_MS
 
 let busy = false
+let linked = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-wcd0]') }
+function rootEl() {
+  return document.querySelector('[data-wcd]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,66 +36,83 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-wcd0-live]')
+  const el = document.querySelector('[data-wcd-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-wcd0-status]')
+  const el = document.querySelector('[data-wcd-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-wcd0-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-wcd-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-wcd0-run], [data-wcd0-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-wcd-run], [data-wcd-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A thin wire line rapidly connects two selected nodes. Resolved.')
-  setLive('Wire Connection Draw. Resolved.')
+function setNodeLabels(text) {
+  document.querySelectorAll('[data-wcd-node]').forEach((node) => {
+    const id = node.getAttribute('data-wcd-node')
+    node.setAttribute('aria-label', `Node ${id === 'a' ? 'A' : 'B'} ${text}`)
+  })
+}
+
+function showLinked() {
+  linked = true
+  setNodeLabels('connected')
+  rootEl()?.setAttribute('data-phase', 'linked')
+  setStatus('LINKED')
+  setHint('Connection established.')
+  setLive('Wire connected. Nodes A and B linked.')
 }
 
 function resetVisual() {
+  linked = false
+  setNodeLabels('unconnected')
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A thin wire line rapidly connects two selected nodes.')
-  setLive('Wire Connection Draw. Idle.')
+  setStatus('UNLINKED')
+  setHint('Press Run to draw the connection.')
+  setLive('Idle. Nodes A and B are unconnected.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run full draw → link choreography.
+ * @returns {Promise<void>}
+ */
 export function runWireConnectionDraw() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || linked) return Promise.resolve()
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showLinked()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Wire Connection Draw. Active.')
+
+  root.setAttribute('data-phase', 'drawing')
+  setStatus('DRAWING')
+  setHint('Wire drawing between nodes.')
+  setLive('Drawing wire between nodes.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
-      })
+    later(TOTAL_MS, () => {
+      showLinked()
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -110,8 +134,12 @@ export async function replayWireConnectionDraw() {
 }
 
 function bindUi() {
-  document.querySelector('[data-wcd0-run]')?.addEventListener('click', () => { void runWireConnectionDraw() })
-  document.querySelector('[data-wcd0-replay]')?.addEventListener('click', () => { void replayWireConnectionDraw() })
+  document.querySelector('[data-wcd-run]')?.addEventListener('click', () => {
+    void runWireConnectionDraw()
+  })
+  document.querySelector('[data-wcd-replay]')?.addEventListener('click', () => {
+    void replayWireConnectionDraw()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

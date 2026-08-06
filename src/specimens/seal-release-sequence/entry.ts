@@ -4,13 +4,14 @@ export const sealReleaseSequence: Specimen = {
   id: 'seal-release-sequence',
   ref: 'SPX-2376',
   title: 'Seal Release Sequence',
-  blurb: 'Concentric rings disengage outward to unlock content.',
+  blurb:
+    'Three concentric rings disengage outward in stagger, and the locked-glyph core crossfades to an open glyph as the seal unlocks.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction fūinjutsu study — concentric seal release',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
     intensity: 'subtle',
@@ -18,19 +19,19 @@ export const sealReleaseSequence: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['seal'],
+  tags: ['seal', 'unlock', 'stagger'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all three rings appear already disengaged and the core shows the open glyph immediately.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
+    width: 320,
     height: 320,
     background: 'dark',
-    label: 'Seal Release Sequence',
+    label: 'Seal release sequence',
   },
 }

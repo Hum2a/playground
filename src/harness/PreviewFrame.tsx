@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
 } from 'react'
 import { composeSrcDoc } from './composeSrcDoc'
 import type { HarnessControls, PreviewBackground } from './types'
@@ -47,8 +48,6 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
     ref,
   ) {
     const iframeRef = useRef<HTMLIFrameElement>(null)
-    const shellRef = useRef<HTMLDivElement>(null)
-    const [scale, setScale] = useState(1)
     const [remountKey, setRemountKey] = useState(0)
 
     const bg = background ?? controls.background
@@ -92,54 +91,37 @@ export const PreviewFrame = forwardRef<PreviewFrameHandle, PreviewFrameProps>(
     }))
 
     useEffect(() => {
-      const shell = shellRef.current
-      if (!shell) return
-
-      const update = () => {
-        const available = shell.clientWidth
-        setScale(available < frameWidth ? available / frameWidth : 1)
-      }
-
-      update()
-      const observer = new ResizeObserver(update)
-      observer.observe(shell)
-      return () => observer.disconnect()
-    }, [frameWidth])
-
-    useEffect(() => {
       postPlayback()
     }, [controls.playbackRate, srcDoc, remountKey])
 
+    // CSS container-query scale (see preview-frame.css) — no post-paint JS scale
+    // state, which was the main catalogue CLS source on narrow viewports.
     return (
       <div
-        ref={shellRef}
         className={['preview-frame', className].filter(Boolean).join(' ')}
+        style={
+          {
+            '--preview-w': frameWidth,
+            '--preview-h': height,
+            aspectRatio: `${frameWidth} / ${height}`,
+          } as CSSProperties
+        }
       >
-        <div
-          className="preview-frame__scaler"
+        <iframe
+          key={remountKey}
+          ref={iframeRef}
+          className="preview-frame__iframe"
+          title={`Preview: ${label}`}
+          sandbox="allow-scripts"
+          loading="lazy"
+          tabIndex={-1}
+          srcDoc={srcDoc}
+          onLoad={postPlayback}
           style={{
-            width: frameWidth * scale,
-            height: height * scale,
+            width: frameWidth,
+            height,
           }}
-        >
-          <iframe
-            key={remountKey}
-            ref={iframeRef}
-            className="preview-frame__iframe"
-            title={`Preview: ${label}`}
-            sandbox="allow-scripts"
-            loading="lazy"
-            tabIndex={-1}
-            srcDoc={srcDoc}
-            onLoad={postPlayback}
-            style={{
-              width: frameWidth,
-              height,
-              transform: `scale(${scale})`,
-              transformOrigin: 'top left',
-            }}
-          />
-        </div>
+        />
       </div>
     )
   },

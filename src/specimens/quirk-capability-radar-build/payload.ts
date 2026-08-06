@@ -8,6 +8,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount in a relative overflow-hidden frame.',
+    'Import demo.css verbatim; preserve fixed axis values in demo.js.',
+    'Call runQuirkCapabilityRadarBuild() on Analyse; reset via resetQuirkCapabilityRadarBuild().',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Analyse draws polygon to five fixed values deterministically',
+    'PROFILE LOCKED readout appears at completion',
+    'Replay resets polygon to center before rebuild',
+    'Reduced motion shows final polygon immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;">
   {{specimen}}

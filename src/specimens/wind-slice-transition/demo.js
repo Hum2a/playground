@@ -1,21 +1,28 @@
 /**
- * Wind Slice Transition — Sharp slice planes cut across to reveal the next state.
+ * Wind Slice Transition — staggered diagonal blades sweep across, exchanging content mid-sweep.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const TOTAL_MS = 600
+const SWAP_AT_MS = 420
+const SETTLE_MS = 150
 
 let busy = false
+/** @type {'a' | 'b'} */
+let surface = 'a'
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-wst1]') }
+function rootEl() {
+  return document.querySelector('[data-wst]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +36,73 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-wst1-live]')
+  const el = document.querySelector('[data-wst-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-wst1-status]')
+  const el = document.querySelector('[data-wst-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-wst1-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-wst-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-wst1-run], [data-wst1-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-wst-run], [data-wst-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Sharp slice planes cut across to reveal the next state. Resolved.')
-  setLive('Wind Slice Transition. Resolved.')
+/** @param {'a' | 'b'} next */
+function showSurface(next) {
+  surface = next
+  const root = rootEl()
+  root?.setAttribute('data-surface', next)
+  document.querySelectorAll('[data-wst-panel]').forEach((el) => {
+    el.toggleAttribute('hidden', el.getAttribute('data-wst-panel') !== next)
+  })
+  setStatus(next === 'a' ? 'STATE 01' : 'STATE 02')
+  setLive(next === 'a' ? 'State one in view.' : 'State two in view.')
 }
 
-function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('Sharp slice planes cut across to reveal the next state.')
-  setLive('Wind Slice Transition. Idle.')
-}
-
-/** @returns {Promise<void>} */
+/**
+ * Run one staggered blade sweep, alternating states.
+ * @returns {Promise<void>}
+ */
 export function runWindSliceTransition() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy) return Promise.resolve()
+
   busy = true
   clearTimers()
-  resetVisual()
   setButtons(false)
-  void root.offsetWidth
+  const next = surface === 'a' ? 'b' : 'a'
+
   if (prefersReducedMotion()) {
-    showDone()
+    showSurface(next)
+    setHint('Press Run to slice to the next state.')
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Wind Slice Transition. Active.')
+
+  root.setAttribute('data-phase', 'idle')
+  void root.offsetWidth
+  root.setAttribute('data-phase', 'run')
+  setHint('Slicing.')
+  setLive('Wind blades slicing across the stage.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
+    later(SWAP_AT_MS, () => {
+      showSurface(next)
+    })
+    later(TOTAL_MS, () => {
       later(SETTLE_MS, () => {
+        root.setAttribute('data-phase', 'idle')
+        setHint('Press Run to slice to the next state.')
         busy = false
         setButtons(true)
         resolve()
@@ -96,9 +114,12 @@ export function runWindSliceTransition() {
 export function resetWindSliceTransition() {
   clearTimers()
   busy = false
-  resetVisual()
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'idle')
+  showSurface('a')
+  setHint('Press Run to slice to the next state.')
   setButtons(true)
-  void rootEl()?.offsetWidth
+  void root?.offsetWidth
 }
 
 /** @returns {Promise<void>} */
@@ -110,8 +131,12 @@ export async function replayWindSliceTransition() {
 }
 
 function bindUi() {
-  document.querySelector('[data-wst1-run]')?.addEventListener('click', () => { void runWindSliceTransition() })
-  document.querySelector('[data-wst1-replay]')?.addEventListener('click', () => { void replayWindSliceTransition() })
+  document.querySelector('[data-wst-run]')?.addEventListener('click', () => {
+    void runWindSliceTransition()
+  })
+  document.querySelector('[data-wst-replay]')?.addEventListener('click', () => {
+    void replayWindSliceTransition()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

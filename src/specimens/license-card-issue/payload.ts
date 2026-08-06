@@ -6,6 +6,15 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'ISSUE runs staged photo → data → seal sequence.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Three construction stages end at VALID seal',
+    'RESET returns blank card',
+    'Reduced motion shows complete card immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

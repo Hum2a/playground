@@ -8,6 +8,19 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount in overflow-visible relative host; import demo.css verbatim.',
+    'Fill 580ms then break 320ms; total 1230ms.',
+    'Wire Breakthrough / Replay to runMaximumOutputBreakthrough.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Meter fills to nominal 100%',
+    'Fill extends past track with burst shard',
+    'MAX+ label appears at breakthrough',
+    'Replay resets meter to 72% idle',
+    'Reduced motion: breakthrough state instant',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;">
   {{specimen}}

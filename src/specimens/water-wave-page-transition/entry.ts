@@ -4,33 +4,34 @@ export const waterWavePageTransition: Specimen = {
   id: 'water-wave-page-transition',
   ref: 'SPX-2451',
   title: 'Water Wave Page Transition',
-  blurb: 'A wave wipe exchanges page content.',
+  blurb:
+    'A jagged blue wave mask sweeps horizontally across the stage, exchanging page content mid-sweep — graphic CSS water, not a fluid simulation.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — water-style page transitions',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['transition'],
+  tags: ['wipe', 'clip-path'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the page swaps immediately with no wave sweep.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 360,
     background: 'dark',
-    label: 'Water Wave Page Transition',
+    label: 'Water wave page transition',
   },
 }

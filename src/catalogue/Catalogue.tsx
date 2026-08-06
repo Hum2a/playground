@@ -1,14 +1,17 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import {
+  INSPIRATION_DIRECTORY,
+  INSPIRATION_FRANCHISE_IDS,
+  type InspirationFranchiseId,
+} from '../specimens/inspiration'
+import { specimens } from '../specimens'
 import {
   FACET_KEYS,
   FACET_VALUES,
-  INSPIRATION_DIRECTORY,
-  INSPIRATION_FRANCHISE_IDS,
-  specimens,
   type FacetKey,
-  type InspirationFranchiseId,
-} from '../specimens'
+} from '../specimens/taxonomy'
+import type { Specimen } from '../specimens/types'
 import { useDocumentTitle } from '../app/useDocumentTitle'
 import { ContactSheet } from './ContactSheet'
 import {
@@ -56,7 +59,7 @@ function writeParams(
   return params
 }
 
-function matchesQuery(s: (typeof specimens)[number], q: string): boolean {
+function matchesQuery(s: Specimen, q: string): boolean {
   if (!q) return true
   const tokens = q.toLowerCase().split(/\s+/).filter(Boolean)
   if (tokens.length === 0) return true
@@ -95,7 +98,7 @@ function matchesQuery(s: (typeof specimens)[number], q: string): boolean {
 }
 
 function matchesFilters(
-  s: (typeof specimens)[number],
+  s: Specimen,
   filters: CatalogueFilters,
   ignoreKey?: FacetKey | 'franchise' | 'work',
 ): boolean {
@@ -219,6 +222,13 @@ export function Catalogue() {
     setSearchParams({}, { replace: true })
   }
 
+  // Defer plate list until after the contact sheet's first paint (LCP/TBT).
+  const [platesReady, setPlatesReady] = useState(false)
+  useEffect(() => {
+    const id = window.requestAnimationFrame(() => setPlatesReady(true))
+    return () => window.cancelAnimationFrame(id)
+  }, [])
+
   return (
     <div className="catalogue">
       <ContactSheet specimens={specimens} />
@@ -239,23 +249,25 @@ export function Catalogue() {
         onClear={onClear}
       />
       <div className="catalogue__plates" id="catalogue-plates">
-        {filtered.map((specimen) => (
-          <SpecimenPlate
-            key={specimen.id}
-            specimen={specimen}
-            onFacetClick={(key, value) => {
-              if ((FACET_KEYS as readonly string[]).includes(key)) {
-                onFacetChange(key as FacetKey, value)
-              }
-            }}
-            onFranchiseClick={(franchise) => {
-              if (isFranchiseId(franchise)) onFranchiseChange(franchise)
-            }}
-            onTagClick={(tag) => onQueryChange(tag)}
-          />
-        ))}
+        {platesReady
+          ? filtered.map((specimen) => (
+              <SpecimenPlate
+                key={specimen.id}
+                specimen={specimen}
+                onFacetClick={(key, value) => {
+                  if ((FACET_KEYS as readonly string[]).includes(key)) {
+                    onFacetChange(key as FacetKey, value)
+                  }
+                }}
+                onFranchiseClick={(franchise) => {
+                  if (isFranchiseId(franchise)) onFranchiseChange(franchise)
+                }}
+                onTagClick={(tag) => onQueryChange(tag)}
+              />
+            ))
+          : null}
       </div>
-      {filtered.length === 0 ? (
+      {platesReady && filtered.length === 0 ? (
         <div className="catalogue__empty" role="status">
           <p>No specimens match that filter.</p>
           <button type="button" className="catalogue__empty-clear" onClick={onClear}>

@@ -1,71 +1,215 @@
 /* SPX-2427 Wire Connection Draw — portable contract. */
-.wcd0 {
+
+.wcd {
   --ink: #101318;
   --parchment: #e7ddc7;
   --chakra: #3a9bd9;
-  --vermilion: #d94a38;
   --olive: #69745a;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
   width: 100%;
-  min-height: 280px;
-  padding: 0.8rem 0.65rem;
+  min-height: 260px;
+  padding: 0.85rem 0.7rem;
   background: var(--ink);
   color: var(--off);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.wcd0 *, .wcd0 *::before, .wcd0 *::after { box-sizing: border-box; }
-.wcd0__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+.wcd *,
+.wcd *::before,
+.wcd *::after {
+  box-sizing: border-box;
 }
-.wcd0__system {
-  margin: 0; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--chakra);
+
+.wcd__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.wcd0__stage {
-  position: relative; overflow: hidden; display: grid; gap: 0.55rem; justify-items: center;
-  width: 100%; padding: 1rem 0.75rem; border: 1px solid rgb(58 155 217 / 0.4);
-  background: rgb(244 241 232 / 0.04); min-height: 160px;
+
+.wcd__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chakra);
 }
-.wcd0__viz {
-  position: relative; width: 140px; height: 100px;
+
+.wcd__stage {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 130px;
+  padding: 1rem 0.75rem;
+  border: 1px solid rgb(58 155 217 / 0.45);
+  background: rgb(244 241 232 / 0.04);
 }
-.wcd0__mark {
-  position: absolute; border: 1.5px solid var(--olive); opacity: 0.35;
-  transition: transform 420ms cubic-bezier(0.2,0.85,0.25,1), opacity 420ms ease, border-color 420ms ease;
+
+.wcd__svg {
+  position: absolute;
+  inset: 0.5rem 0.75rem;
+  width: calc(100% - 1.5rem);
+  height: calc(100% - 1rem);
+  overflow: visible;
 }
-.wcd0__mark--a { left: 20px; top: 28px; width: 100px; height: 44px; }
-.wcd0__mark--b { left: 46px; top: 18px; width: 48px; height: 48px; border-radius: 50%; border-color: var(--chakra); }
-.wcd0__mark--c { left: 10px; top: 70px; width: 120px; height: 8px; background: rgb(105 116 90 / 0.35); }
-.wcd0[data-phase='active'] .wcd0__mark--a { opacity: 0.85; border-color: var(--chakra); transform: scaleX(1.05); }
-.wcd0[data-phase='active'] .wcd0__mark--b { opacity: 1; transform: scale(1.12); }
-.wcd0[data-phase='active'] .wcd0__mark--c { opacity: 0.9; transform: scaleX(1.08); background: rgb(58 155 217 / 0.45); }
-.wcd0[data-phase='done'] .wcd0__mark { opacity: 1; border-color: var(--chakra); }
-.wcd0[data-phase='done'] .wcd0__mark--b { transform: scale(1); box-shadow: 0 0 0 2px rgb(58 155 217 / 0.25); }
-.wcd0[data-phase='done'] .wcd0__mark--c { background: var(--chakra); }
-.wcd0__status {
-  margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 0.12em; color: var(--parchment);
+
+.wcd__wire {
+  stroke: var(--chakra);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-dasharray: 76;
+  stroke-dashoffset: 76;
+  transition: stroke-dashoffset 180ms linear;
 }
-.wcd0[data-phase='done'] .wcd0__status { color: var(--chakra); }
-.wcd0__note {
-  margin: 0; font-size: 0.68rem; letter-spacing: 0.03em; color: var(--olive); text-align: center; max-width: 28rem;
+
+.wcd[data-phase='drawing'] .wcd__wire,
+.wcd[data-phase='linked'] .wcd__wire {
+  stroke-dashoffset: 0;
 }
-.wcd0__controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.wcd0__btn {
-  appearance: none; margin: 0; padding: 0.42rem 0.8rem; border: 1px solid var(--olive);
-  background: transparent; color: var(--off); font: inherit; font-size: 0.66rem; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+
+.wcd__node {
+  position: absolute;
+  top: 44%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
 }
-.wcd0__btn--primary { border-color: var(--chakra); background: rgb(58 155 217 / 0.14); }
-.wcd0__btn:hover:not(:disabled) { border-color: var(--parchment); }
-.wcd0__btn:focus-visible { outline: 2px solid var(--chakra); outline-offset: 2px; }
-.wcd0__btn:disabled { opacity: 0.45; cursor: default; }
+
+.wcd__node--a {
+  left: 0.75rem;
+}
+
+.wcd__node--b {
+  right: 0.75rem;
+  align-items: flex-end;
+}
+
+.wcd__node-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--olive);
+  background: rgb(16 19 24 / 0.9);
+  transition:
+    border-color 120ms ease-out,
+    background 120ms ease-out,
+    box-shadow 120ms ease-out;
+}
+
+.wcd[data-phase='linked'] .wcd__node-dot {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.35);
+  animation: wcd-node-pulse 220ms ease-out;
+}
+
+@keyframes wcd-node-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(58 155 217 / 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 7px rgb(58 155 217 / 0);
+  }
+}
+
+.wcd__node-label {
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.wcd[data-phase='linked'] .wcd__node-label {
+  color: var(--chakra);
+}
+
+.wcd__status {
+  margin: 0;
+  margin-top: auto;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--parchment);
+}
+
+.wcd[data-phase='drawing'] .wcd__status,
+.wcd[data-phase='linked'] .wcd__status {
+  color: var(--chakra);
+}
+
+.wcd__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.wcd__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.wcd__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wcd__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.wcd__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.wcd__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.wcd__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .wcd0__mark { transition: none !important; }
+  .wcd__wire,
+  .wcd__node-dot {
+    transition: none !important;
+    animation: none !important;
+  }
 }
-html[data-force-reduced-motion='true'] .wcd0__mark { transition: none !important; }
+
+html[data-force-reduced-motion='true'] .wcd__wire,
+html[data-force-reduced-motion='true'] .wcd__node-dot {
+  transition: none !important;
+  animation: none !important;
+}

@@ -4,16 +4,17 @@ export const summoningSealMaterialise: Specimen = {
   id: 'summoning-seal-materialise',
   ref: 'SPX-2516',
   title: 'Summoning Seal Materialise',
-  blurb: 'A seal constructs then materialises a tool panel.',
+  blurb:
+    'A radial seal draws itself beneath an empty mount point, then a panel rises up out of its centre and settles into place.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / summoning-interfaces — ritual construction overlays',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'overlay',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -24,13 +25,13 @@ export const summoningSealMaterialise: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the seal appears fully drawn and the panel is already materialised.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Summoning Seal Materialise',
+    label: 'Summoning seal materialise',
   },
 }

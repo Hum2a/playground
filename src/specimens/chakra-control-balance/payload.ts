@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~380×320+).',
+    'Import demo.css verbatim; freeze the 560ms sweep / 380ms lock-hold / 150ms lock pulse from contract.json.',
     'Wire runChakraControlBalance / resetChakraControlBalance / replayChakraControlBalance.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Left/Right buttons (or ArrowLeft/ArrowRight) hold-nudge the needle; honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Unbalanced, active, and locked states are visually distinct',
+    'Needle must dwell inside the centre band continuously before it locks',
+    'Replay resets the needle before rerunning',
+    'Reduced motion shows the locked, centred needle immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

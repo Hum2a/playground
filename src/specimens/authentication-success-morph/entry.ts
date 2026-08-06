@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0f1218;display:grid;place-items:center;padding:0.75rem;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const authenticationSuccessMorph: Specimen = {
   id: 'authentication-success-morph',
   ref: 'SPX-1427',
@@ -39,28 +27,13 @@ export const authenticationSuccessMorph: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, immediate verified geometry.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 280,
     height: 300,
     background: 'dark',
-    scaffold,
+
     label: 'Authentication success morph',
   },
-  integration: [
-    'Mount inside a relative overflow-clipped host.',
-    'Import demo.css verbatim; freeze bracket/node timings.',
-    'Same nodes become completion geometry — no unrelated icon fade-in.',
-    'CONTINUE disabled until morph completes.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Same nodes become completion geometry',
-    'No unrelated success icon fade-in',
-    'CONTINUE locked before completion',
-    'Final state static',
-    'Reduced motion: instant verified geometry',
-  ],
+
 }

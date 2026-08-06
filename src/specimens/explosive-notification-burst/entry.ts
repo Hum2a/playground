@@ -34,17 +34,5 @@ export const explosiveNotificationBurst: Specimen = {
 
     label: 'Alert burst',
   },
-  integration: [
-    'Mount in relative overflow-hidden host.',
-    'Burst 420ms; total 1070ms with settle.',
-    'Wire Trigger / Replay to runExplosiveNotificationBurst.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Centre core expands then fades',
-    'Jagged notification card scales in',
-    'ALERT badge readable at settle',
-    'Replay clears card to idle',
-    'Reduced motion: instant card',
-  ],
+
 }

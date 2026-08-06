@@ -34,19 +34,5 @@ export const bracketWinnerAdvance: Specimen = {
 
     label: 'Bracket winner advance',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host.',
-    'Import demo.css verbatim; keep connector draw and card travel timings.',
-    'Wire ADVANCE via bracketWinnerAdvance.run(root).',
-    'Winner must travel along visible connector geometry.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
-  ],
-  acceptance: [
-    'Connector path draws from round one to round two',
-    'ALPHA card travels along connector into next slot',
-    'Round-two slot shows ALPHA with accent border',
-    'Replay resets to idle bracket',
-    'Clipped to host; sandbox allow-scripts',
-    'Reduced motion shows advanced slot immediately',
-  ],
+
 }

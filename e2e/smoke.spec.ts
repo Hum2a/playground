@@ -5,9 +5,9 @@ test.describe('smoke', () => {
   test('catalogue renders N plates', async ({ page }) => {
     await page.goto('/')
     const plates = page.locator('.specimen-plate')
-    const count = await plates.count()
-    expect(count).toBeGreaterThan(0)
-    await expect(plates.first()).toContainText('SPX-001')
+    // Plates mount after first paint (deferred for LCP); wait before counting.
+    await expect(plates.first()).toBeVisible({ timeout: 15_000 })
+    await expect(plates.first()).toContainText(/SPX-\d+/i)
   })
 
   test("plate copy button writes a non-empty string to the clipboard", async ({
@@ -17,6 +17,7 @@ test.describe('smoke', () => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write'])
     await page.goto('/')
     const plate = page.locator('.specimen-plate').first()
+    await expect(plate).toBeVisible({ timeout: 15_000 })
     await plate.getByRole('button', { name: /copy prompt/i }).click()
     await expect(plate.getByRole('button', { name: /copied/i })).toBeVisible()
     const text = await page.evaluate(() => navigator.clipboard.readText())

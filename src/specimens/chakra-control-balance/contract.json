@@ -2,43 +2,35 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/chakra-control-balance.schema.json",
   "title": "ChakraControlBalance",
+  "description": "Needle driven by two opposing holds must settle inside a narrow centre band to lock a balanced state.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "sweepMs", "lockHoldMs", "lockPulseMs", "bandPct", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "chakra-control-balance"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "chakra-control-balance" },
+    "sweepMs": { "type": "number", "const": 560 },
+    "lockHoldMs": { "type": "number", "const": 380 },
+    "lockPulseMs": { "type": "number", "const": 150 },
+    "bandPct": { "type": "number", "const": 8 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "alert": { "type": "string", "const": "#D94A38" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLock"],
+      "properties": {
+        "instantLock": { "type": "boolean", "const": true }
       }
     }
   }

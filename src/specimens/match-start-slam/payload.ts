@@ -8,6 +8,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside a relative overflow-hidden host.',
+    'Import demo.css verbatim; keep slam and tear timings.',
+    'Wire START via matchStartSlam.run(root).',
+    'Overlay must clip to host; content revealed after tear.',
+    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+  ],
+  acceptance: [
+    'START overlay slams to full viewport scale',
+    'Overlay tears away in two diagonal halves',
+    'MATCH LIVE content brightens after tear',
+    'Replay resets to pending idle',
+    'Clipped to host; sandbox allow-scripts',
+    'Reduced motion shows live match immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#101820;">
   {{specimen}}

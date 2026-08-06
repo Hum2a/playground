@@ -1,71 +1,276 @@
 /* SPX-2464 Lightning Target Acquisition — portable contract. */
-.lta8 {
+
+.lta {
   --ink: #101318;
   --parchment: #e7ddc7;
   --chakra: #3a9bd9;
-  --vermilion: #d94a38;
+  --danger: #d94a38;
   --olive: #69745a;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
   width: 100%;
-  min-height: 280px;
-  padding: 0.8rem 0.65rem;
+  min-height: 320px;
+  padding: 0.85rem 0.7rem;
   background: var(--ink);
   color: var(--off);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.lta8 *, .lta8 *::before, .lta8 *::after { box-sizing: border-box; }
-.lta8__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+.lta *,
+.lta *::before,
+.lta *::after {
+  box-sizing: border-box;
 }
-.lta8__system {
-  margin: 0; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--chakra);
+
+.lta__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.lta8__stage {
-  position: relative; overflow: hidden; display: grid; gap: 0.55rem; justify-items: center;
-  width: 100%; padding: 1rem 0.75rem; border: 1px solid rgb(58 155 217 / 0.4);
-  background: rgb(244 241 232 / 0.04); min-height: 160px;
+
+.lta__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--off);
 }
-.lta8__viz {
-  position: relative; width: 140px; height: 100px;
+
+.lta__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+  flex: 1;
 }
-.lta8__mark {
-  position: absolute; border: 1.5px solid var(--olive); opacity: 0.35;
-  transition: transform 420ms cubic-bezier(0.2,0.85,0.25,1), opacity 420ms ease, border-color 420ms ease;
+
+.lta__field {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 190px;
+  height: 190px;
+  border: 1px solid rgb(244 241 232 / 0.25);
+  background: rgb(244 241 232 / 0.04);
 }
-.lta8__mark--a { left: 20px; top: 28px; width: 100px; height: 44px; }
-.lta8__mark--b { left: 46px; top: 18px; width: 48px; height: 48px; border-radius: 50%; border-color: var(--chakra); }
-.lta8__mark--c { left: 10px; top: 70px; width: 120px; height: 8px; background: rgb(105 116 90 / 0.35); }
-.lta8[data-phase='active'] .lta8__mark--a { opacity: 0.85; border-color: var(--chakra); transform: scaleX(1.05); }
-.lta8[data-phase='active'] .lta8__mark--b { opacity: 1; transform: scale(1.12); }
-.lta8[data-phase='active'] .lta8__mark--c { opacity: 0.9; transform: scaleX(1.08); background: rgb(58 155 217 / 0.45); }
-.lta8[data-phase='done'] .lta8__mark { opacity: 1; border-color: var(--chakra); }
-.lta8[data-phase='done'] .lta8__mark--b { transform: scale(1); box-shadow: 0 0 0 2px rgb(58 155 217 / 0.25); }
-.lta8[data-phase='done'] .lta8__mark--c { background: var(--chakra); }
-.lta8__status {
-  margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 0.12em; color: var(--parchment);
+
+.lta__target {
+  position: absolute;
+  left: 62%;
+  top: 42%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  margin-top: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--danger);
+  background: rgb(217 74 56 / 0.25);
 }
-.lta8[data-phase='done'] .lta8__status { color: var(--chakra); }
-.lta8__note {
-  margin: 0; font-size: 0.68rem; letter-spacing: 0.03em; color: var(--olive); text-align: center; max-width: 28rem;
+
+.lta[data-phase='locked'] .lta__target {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.3);
 }
-.lta8__controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.lta8__btn {
-  appearance: none; margin: 0; padding: 0.42rem 0.8rem; border: 1px solid var(--olive);
-  background: transparent; color: var(--off); font: inherit; font-size: 0.66rem; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+
+.lta__reticle {
+  position: absolute;
+  left: 62%;
+  top: 42%;
+  width: 58px;
+  height: 58px;
+  margin-left: -29px;
+  margin-top: -29px;
+  transform: translate(-92px, -58px) scale(1.5);
+  opacity: 0.5;
 }
-.lta8__btn--primary { border-color: var(--chakra); background: rgb(58 155 217 / 0.14); }
-.lta8__btn:hover:not(:disabled) { border-color: var(--parchment); }
-.lta8__btn:focus-visible { outline: 2px solid var(--chakra); outline-offset: 2px; }
-.lta8__btn:disabled { opacity: 0.45; cursor: default; }
+
+.lta[data-phase='run'] .lta__reticle {
+  animation: lta-snap 440ms cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+}
+
+.lta[data-phase='locked'] .lta__reticle {
+  transform: translate(0, 0) scale(1);
+  opacity: 1;
+}
+
+@keyframes lta-snap {
+  0% {
+    transform: translate(-92px, -58px) scale(1.5);
+    opacity: 0.5;
+  }
+  70% {
+    transform: translate(6px, 4px) scale(0.92);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+.lta__corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--olive);
+}
+
+.lta[data-phase='run'] .lta__corner,
+.lta[data-phase='locked'] .lta__corner {
+  border-color: var(--chakra);
+}
+
+.lta__corner--tl {
+  top: -2px;
+  left: -2px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.lta__corner--tr {
+  top: -2px;
+  right: -2px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.lta__corner--bl {
+  bottom: -2px;
+  left: -2px;
+  border-right: 0;
+  border-top: 0;
+}
+.lta__corner--br {
+  bottom: -2px;
+  right: -2px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.lta__bolt {
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  background: var(--off);
+  opacity: 0;
+  clip-path: polygon(0% 50%, 45% 0%, 55% 40%, 100% 0%, 60% 100%, 50% 55%, 0% 100%);
+}
+
+.lta__bolt--1 {
+  top: -14px;
+  left: 60%;
+  transform: rotate(18deg);
+}
+.lta__bolt--2 {
+  bottom: -12px;
+  left: -18px;
+  transform: rotate(-24deg);
+}
+.lta__bolt--3 {
+  top: 55%;
+  right: -22px;
+  transform: rotate(8deg);
+}
+
+.lta[data-phase='run'] .lta__bolt {
+  animation: lta-flicker 180ms steps(1, end) 300ms forwards;
+}
+
+@keyframes lta-flicker {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.lta__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--parchment);
+}
+
+.lta[data-phase='locked'] .lta__status {
+  color: var(--chakra);
+}
+
+.lta__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.lta__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.lta__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lta__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.lta__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.lta__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.lta__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .lta8__mark { transition: none !important; }
+  .lta__reticle,
+  .lta__bolt {
+    transition: none !important;
+    animation: none !important;
+  }
 }
-html[data-force-reduced-motion='true'] .lta8__mark { transition: none !important; }
+
+html[data-force-reduced-motion='true'] .lta__reticle,
+html[data-force-reduced-motion='true'] .lta__bolt {
+  transition: none !important;
+  animation: none !important;
+}

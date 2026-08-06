@@ -1,17 +1,37 @@
-<div class="pwc2" data-pwc2 data-phase="idle">
-  <p class="pwc2__live" data-pwc2-live aria-live="polite">Parallel Worker Clones. Idle.</p>
-  <p class="pwc2__system">NR // NR-051</p>
-  <div class="pwc2__stage" data-pwc2-stage>
-    <div class="pwc2__viz" data-pwc2-viz aria-hidden="true">
-      <span class="pwc2__mark pwc2__mark--a"></span>
-      <span class="pwc2__mark pwc2__mark--b"></span>
-      <span class="pwc2__mark pwc2__mark--c"></span>
-    </div>
-    <p class="pwc2__status" data-pwc2-status>IDLE</p>
-    <p class="pwc2__note" data-pwc2-note>A job divides into workers that show parallel progress bars.</p>
+<div class="pwc" data-pwc data-phase="idle">
+  <p class="pwc__live" data-pwc-live aria-live="polite">
+    Idle. Job ready to divide across workers.
+  </p>
+
+  <p class="pwc__system">JOB // PARALLEL</p>
+
+  <div class="pwc__stage" data-pwc-stage>
+    <article class="pwc__job" data-pwc-job>
+      <p class="pwc__job-kicker" data-pwc-job-kicker>JOB</p>
+      <p class="pwc__job-title">Render Batch</p>
+    </article>
+
+    <ol class="pwc__workers" data-pwc-workers aria-label="Parallel worker clones">
+      <li class="pwc__worker" data-pwc-worker="0" style="--pwc-dur: 300ms">
+        <p class="pwc__worker-label">WORKER 1</p>
+        <div class="pwc__bar"><span class="pwc__bar-fill" data-pwc-bar></span></div>
+      </li>
+      <li class="pwc__worker" data-pwc-worker="1" style="--pwc-dur: 240ms">
+        <p class="pwc__worker-label">WORKER 2</p>
+        <div class="pwc__bar"><span class="pwc__bar-fill" data-pwc-bar></span></div>
+      </li>
+      <li class="pwc__worker" data-pwc-worker="2" style="--pwc-dur: 360ms">
+        <p class="pwc__worker-label">WORKER 3</p>
+        <div class="pwc__bar"><span class="pwc__bar-fill" data-pwc-bar></span></div>
+      </li>
+    </ol>
+
+    <p class="pwc__status" data-pwc-status>IDLE</p>
+    <p class="pwc__hint" data-pwc-hint>Press Run to divide across three workers.</p>
   </div>
-  <div class="pwc2__controls">
-    <button type="button" class="pwc2__btn pwc2__btn--primary" data-pwc2-run>Split</button>
-    <button type="button" class="pwc2__btn" data-pwc2-replay>Replay</button>
+
+  <div class="pwc__controls">
+    <button type="button" class="pwc__btn pwc__btn--primary" data-pwc-run>Run</button>
+    <button type="button" class="pwc__btn" data-pwc-replay>Replay</button>
   </div>
 </div>

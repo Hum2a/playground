@@ -1,17 +1,29 @@
-<div class="lta8" data-lta8 data-phase="idle">
-  <p class="lta8__live" data-lta8-live aria-live="polite">Lightning Target Acquisition. Idle.</p>
-  <p class="lta8__system">NR // NR-121</p>
-  <div class="lta8__stage" data-lta8-stage>
-    <div class="lta8__viz" data-lta8-viz aria-hidden="true">
-      <span class="lta8__mark lta8__mark--a"></span>
-      <span class="lta8__mark lta8__mark--b"></span>
-      <span class="lta8__mark lta8__mark--c"></span>
+<div class="lta" data-lta data-phase="idle">
+  <p class="lta__live" data-lta-live aria-live="polite">
+    Reticle idle. Target unlocked.
+  </p>
+
+  <p class="lta__system">LOCK // TARGET</p>
+
+  <div class="lta__stage" data-lta-stage>
+    <div class="lta__field" data-lta-field>
+      <span class="lta__target" data-lta-target aria-hidden="true"></span>
+      <span class="lta__reticle" data-lta-reticle aria-hidden="true">
+        <span class="lta__corner lta__corner--tl"></span>
+        <span class="lta__corner lta__corner--tr"></span>
+        <span class="lta__corner lta__corner--bl"></span>
+        <span class="lta__corner lta__corner--br"></span>
+        <span class="lta__bolt lta__bolt--1"></span>
+        <span class="lta__bolt lta__bolt--2"></span>
+        <span class="lta__bolt lta__bolt--3"></span>
+      </span>
     </div>
-    <p class="lta8__status" data-lta8-status>IDLE</p>
-    <p class="lta8__note" data-lta8-note>A reticle snaps onto a target with lightning tick marks.</p>
+    <p class="lta__status" data-lta-status>IDLE</p>
+    <p class="lta__hint" data-lta-hint>Press Run to acquire the target.</p>
   </div>
-  <div class="lta8__controls">
-    <button type="button" class="lta8__btn lta8__btn--primary" data-lta8-run>Acquire</button>
-    <button type="button" class="lta8__btn" data-lta8-replay>Replay</button>
+
+  <div class="lta__controls">
+    <button type="button" class="lta__btn lta__btn--primary" data-lta-run>Run</button>
+    <button type="button" class="lta__btn" data-lta-replay>Replay</button>
   </div>
 </div>

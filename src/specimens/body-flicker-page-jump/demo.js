@@ -1,21 +1,28 @@
 /**
- * Body Flicker Page Jump — Page content streaks away and resolves as a new view.
+ * Body Flicker Page Jump — view flickers into compressed directional streaks,
+ * then hands off abruptly to a new destination view.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const FLICKER_MS = 140
+const SETTLE_MS = 90
+const TOTAL_MS = FLICKER_MS + SETTLE_MS
 
 let busy = false
+let arrived = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-bfpj2]') }
+function rootEl() {
+  return document.querySelector('[data-bfp]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,66 +36,102 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-bfpj2-live]')
+  const el = document.querySelector('[data-bfp-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-bfpj2-status]')
+  const el = document.querySelector('[data-bfp-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-bfpj2-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-bfp-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-bfpj2-run], [data-bfpj2-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-bfp-run], [data-bfp-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Page content streaks away and resolves as a new view. Resolved.')
-  setLive('Body Flicker Page Jump. Resolved.')
+function viewA() {
+  return document.querySelector('[data-bfp-view-a]')
+}
+
+function viewB() {
+  return document.querySelector('[data-bfp-view-b]')
+}
+
+function swapViews() {
+  const a = viewA()
+  const b = viewB()
+  if (a) a.hidden = true
+  if (b) b.hidden = false
+}
+
+function showArrived() {
+  arrived = true
+  swapViews()
+  rootEl()?.setAttribute('data-phase', 'arrived')
+  setStatus('MISSION BOARD')
+  setHint('Arrived at destination.')
+  setLive('Arrived at Mission Board.')
 }
 
 function resetVisual() {
+  arrived = false
+  const a = viewA()
+  const b = viewB()
+  if (a) a.hidden = false
+  if (b) b.hidden = true
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('Page content streaks away and resolves as a new view.')
-  setLive('Body Flicker Page Jump. Idle.')
+  setStatus('HOME')
+  setHint('Press Run to jump to Mission Board.')
+  setLive('Idle. Viewing HOME.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run full flicker → handoff → settle choreography.
+ * @returns {Promise<void>}
+ */
 export function runBodyFlickerPageJump() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || arrived) return Promise.resolve()
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showArrived()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Body Flicker Page Jump. Active.')
+
+  root.setAttribute('data-phase', 'flickering')
+  setStatus('JUMPING')
+  setHint('View flickering.')
+  setLive('View flickering.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
-      })
+    later(FLICKER_MS, () => {
+      swapViews()
+      root.setAttribute('data-phase', 'settling')
+      setStatus('MISSION BOARD')
+      setHint('Streak residue clearing.')
+      setLive('Handed off to Mission Board.')
+    })
+
+    later(TOTAL_MS, () => {
+      showArrived()
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -110,8 +153,12 @@ export async function replayBodyFlickerPageJump() {
 }
 
 function bindUi() {
-  document.querySelector('[data-bfpj2-run]')?.addEventListener('click', () => { void runBodyFlickerPageJump() })
-  document.querySelector('[data-bfpj2-replay]')?.addEventListener('click', () => { void replayBodyFlickerPageJump() })
+  document.querySelector('[data-bfp-run]')?.addEventListener('click', () => {
+    void runBodyFlickerPageJump()
+  })
+  document.querySelector('[data-bfp-replay]')?.addEventListener('click', () => {
+    void replayBodyFlickerPageJump()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

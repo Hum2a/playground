@@ -1,0 +1,37 @@
+import type { SpecimenPayload } from '../types'
+import html from './demo.html?raw'
+// Vitest's CSS pipeline returns "" for `*.css?raw`; keep demo.css as the portable
+// artifact and import the twin `.txt` for the in-app string.
+import css from './demo.style.txt?raw'
+import js from './demo.js?raw'
+import spec from './spec.md?raw'
+import contract from './contract.json'
+
+const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside a relative overflow-clipped host.',
+    'Import demo.css verbatim; freeze 260ms acceptance, 520ms arc, 74×44 proxy.',
+    'Transfer begins only after ACCEPTED; four acquisition brackets on recipient.',
+    'Progress steps 0,25,50,75,100; proxy compresses into recipient.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Transfer does not begin before acceptance',
+    'Exactly four acquisition brackets on recipient',
+    'One file proxy follows arc path',
+    'Progress reaches 100',
+    'Proxy ends inside recipient, not floating nearby',
+    'Final status RECEIVED',
+    'Reduced motion: skip arc travel',
+  ],
+  scaffold: `
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:240px;background:#0f1218;display:grid;place-items:center;padding:0.75rem;">
+  {{specimen}}
+</div>
+`.trim(),
+  files: { html, css, js },
+  spec,
+  contract,
+}
+
+export default payload

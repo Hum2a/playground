@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~420×320+).',
+    'Import demo.css verbatim; five signal bars rise to fixed target heights from contract.json, tracing the dashed reference line.',
     'Wire runChakraSignatureMatch / resetChakraSignatureMatch / replayChakraSignatureMatch.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Exactly five signal bars rise to meet a dashed reference profile one at a time',
+    'Idle, comparing, and resolved states are visually distinct',
+    'Replay resets all bars before rerunning',
+    'Reduced motion shows all five bars matched immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

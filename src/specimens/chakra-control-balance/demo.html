@@ -1,17 +1,36 @@
-<div class="ccb2" data-ccb2 data-phase="idle">
-  <p class="ccb2__live" data-ccb2-live aria-live="polite">Chakra Control Balance. Idle.</p>
-  <p class="ccb2__system">NR // NR-015</p>
-  <div class="ccb2__stage" data-ccb2-stage>
-    <div class="ccb2__viz" data-ccb2-viz aria-hidden="true">
-      <span class="ccb2__mark ccb2__mark--a"></span>
-      <span class="ccb2__mark ccb2__mark--b"></span>
-      <span class="ccb2__mark ccb2__mark--c"></span>
+<div class="ccb" data-ccb data-phase="idle">
+  <p class="ccb__live" data-ccb-live aria-live="polite">
+    Balance idle. Needle uncentred.
+  </p>
+
+  <p class="ccb__system">CHAKRA // CONTROL BALANCE</p>
+
+  <div class="ccb__stage" data-ccb-stage>
+    <div class="ccb__track" data-ccb-track aria-hidden="true">
+      <div class="ccb__band"></div>
+      <div class="ccb__needle" data-ccb-needle></div>
     </div>
-    <p class="ccb2__status" data-ccb2-status>IDLE</p>
-    <p class="ccb2__note" data-ccb2-note>Two opposing meters must settle inside a narrow equilibrium band.</p>
+    <p class="ccb__status" data-ccb-status>UNBALANCED</p>
+    <p class="ccb__hint" data-ccb-hint>Hold both sides to draw the needle into the centre band.</p>
+
+    <div class="ccb__inputs">
+      <button
+        type="button"
+        class="ccb__input ccb__input--left"
+        data-ccb-left
+        aria-label="Hold left chakra input"
+      >◂ LEFT</button>
+      <button
+        type="button"
+        class="ccb__input ccb__input--right"
+        data-ccb-right
+        aria-label="Hold right chakra input"
+      >RIGHT ▸</button>
+    </div>
   </div>
-  <div class="ccb2__controls">
-    <button type="button" class="ccb2__btn ccb2__btn--primary" data-ccb2-run>Balance</button>
-    <button type="button" class="ccb2__btn" data-ccb2-replay>Replay</button>
+
+  <div class="ccb__controls">
+    <button type="button" class="ccb__btn ccb__btn--primary" data-ccb-run>Run</button>
+    <button type="button" class="ccb__btn" data-ccb-replay>Replay</button>
   </div>
 </div>

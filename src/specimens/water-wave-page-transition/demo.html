@@ -1,17 +1,33 @@
-<div class="wwpt6" data-wwpt6 data-phase="idle">
-  <p class="wwpt6__live" data-wwpt6-live aria-live="polite">Water Wave Page Transition. Idle.</p>
-  <p class="wwpt6__system">NR // NR-108</p>
-  <div class="wwpt6__stage" data-wwpt6-stage>
-    <div class="wwpt6__viz" data-wwpt6-viz aria-hidden="true">
-      <span class="wwpt6__mark wwpt6__mark--a"></span>
-      <span class="wwpt6__mark wwpt6__mark--b"></span>
-      <span class="wwpt6__mark wwpt6__mark--c"></span>
+<div class="wwt" data-wwt data-phase="idle" data-surface="a">
+  <p class="wwt__live" data-wwt-live aria-live="polite">
+    Page one in view.
+  </p>
+
+  <p class="wwt__system">WAVE // TRANSITION</p>
+
+  <div class="wwt__stage" data-wwt-stage>
+    <div class="wwt__host">
+      <section class="wwt__panel wwt__panel--a" data-wwt-panel="a">
+        <p class="wwt__kicker">PAGE // 01</p>
+        <p class="wwt__title">ARRIVAL</p>
+      </section>
+      <section class="wwt__panel wwt__panel--b" data-wwt-panel="b" hidden>
+        <p class="wwt__kicker">PAGE // 02</p>
+        <p class="wwt__title">DESTINATION</p>
+      </section>
+
+      <div class="wwt__wave" data-wwt-wave aria-hidden="true">
+        <span class="wwt__wave-body"></span>
+        <span class="wwt__wave-foam"></span>
+      </div>
     </div>
-    <p class="wwpt6__status" data-wwpt6-status>IDLE</p>
-    <p class="wwpt6__note" data-wwpt6-note>A wave wipe exchanges page content.</p>
+
+    <p class="wwt__status" data-wwt-status>PAGE 01</p>
+    <p class="wwt__hint" data-wwt-hint>Press Run to wipe to the next page.</p>
   </div>
-  <div class="wwpt6__controls">
-    <button type="button" class="wwpt6__btn wwpt6__btn--primary" data-wwpt6-run>Wave</button>
-    <button type="button" class="wwpt6__btn" data-wwpt6-replay>Replay</button>
+
+  <div class="wwt__controls">
+    <button type="button" class="wwt__btn wwt__btn--primary" data-wwt-run>Run</button>
+    <button type="button" class="wwt__btn" data-wwt-replay>Replay</button>
   </div>
 </div>

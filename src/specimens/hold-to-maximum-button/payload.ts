@@ -6,6 +6,15 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Pointer hold on OUTPUT fills ring; release before 100% cancels.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Hold fills ring to 100% then commits',
+    'Early release stops charge below 100%',
+    'Reduced motion commits immediately on press',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

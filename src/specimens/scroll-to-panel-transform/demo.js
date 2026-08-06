@@ -1,21 +1,25 @@
 /**
- * Scroll-to-Panel Transform — A compact scroll token morphs into a readable content panel.
+ * Scroll-to-Panel Transform — a round token morphs shape into a panel.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const MORPH_MS = 480
+const SETTLE_MS = 90
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-stpt5]') }
+function rootEl() {
+  return document.querySelector('[data-stp]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,66 +33,73 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-stpt5-live]')
+  const el = document.querySelector('[data-stp-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-stpt5-status]')
+  const el = document.querySelector('[data-stp-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-stpt5-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-stp-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-stpt5-run], [data-stpt5-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-stp-run], [data-stp-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function showResolved() {
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A compact scroll token morphs into a readable content panel. Resolved.')
-  setLive('Scroll-to-Panel Transform. Resolved.')
+  setStatus('OPENED')
+  setHint('Panel opened.')
+  setLive('Scroll morphed into an opened content panel.')
 }
 
 function resetVisual() {
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A compact scroll token morphs into a readable content panel.')
-  setLive('Scroll-to-Panel Transform. Idle.')
+  setStatus('SEALED')
+  setHint('Press Run to unseal the scroll into a panel.')
+  setLive('Scroll token collapsed. Panel hidden.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the token-to-panel morph (demo Run).
+ * @returns {Promise<void>}
+ */
 export function runScrollToPanelTransform() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Scroll-to-Panel Transform. Active.')
+  setStatus('MORPHING')
+  setLive('Scroll morphing into a panel.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
-      })
+    later(MORPH_MS + SETTLE_MS, () => {
+      showResolved()
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -110,8 +121,12 @@ export async function replayScrollToPanelTransform() {
 }
 
 function bindUi() {
-  document.querySelector('[data-stpt5-run]')?.addEventListener('click', () => { void runScrollToPanelTransform() })
-  document.querySelector('[data-stpt5-replay]')?.addEventListener('click', () => { void replayScrollToPanelTransform() })
+  document.querySelector('[data-stp-run]')?.addEventListener('click', () => {
+    void runScrollToPanelTransform()
+  })
+  document.querySelector('[data-stp-replay]')?.addEventListener('click', () => {
+    void replayScrollToPanelTransform()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

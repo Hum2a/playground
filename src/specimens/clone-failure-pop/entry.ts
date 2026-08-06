@@ -4,33 +4,34 @@ export const cloneFailurePop: Specimen = {
   id: 'clone-failure-pop',
   ref: 'SPX-2397',
   title: 'Clone Failure Pop',
-  blurb: 'One worker collapses while remaining workers continue.',
+  blurb:
+    'One of three parallel worker clones pops and collapses mid-run while the remaining clones continue to completion.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — clone & duplication systems',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['failure'],
+  tags: ['failure', 'clone', 'resilience'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the failed worker and the two completed workers appear in their final states immediately.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 440,
+    height: 340,
     background: 'dark',
-    label: 'Clone Failure Pop',
+    label: 'Clone failure pop',
   },
 }

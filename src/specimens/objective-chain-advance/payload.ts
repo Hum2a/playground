@@ -7,20 +7,21 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~420×320+).',
+    'Import demo.css verbatim; each completed checkpoint sends a pulse to activate the next, timings from contract.json.',
     'Wire runObjectiveChainAdvance / resetObjectiveChainAdvance / replayObjectiveChainAdvance.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Exactly four checkpoints; only one is ever the current active node at a time',
+    'A pulse visibly travels the connecting line before the next checkpoint activates',
+    'Idle, advancing, and resolved states are visually distinct',
+    'Replay resets the chain to checkpoint one before rerunning',
+    'Reduced motion shows all four checkpoints complete immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

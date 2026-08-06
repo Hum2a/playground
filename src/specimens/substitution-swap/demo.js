@@ -1,21 +1,33 @@
 /**
- * Substitution Swap — Primary content swaps to a decoy log then resolves to the real target.
+ * Substitution Swap — primary target swaps through a proxy decoy to the
+ * resolved failover target, with a puff flash at each swap point.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const TO_DECOY_MS = 100
+const DECOY_HOLD_MS = 180
+const TO_RESOLVED_MS = 140
+const PUFF_MS = 120
+const SETTLE_MS = 90
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-ss7]') }
+function rootEl() {
+  return document.querySelector('[data-sbs]')
+}
+
+function slotEl() {
+  return document.querySelector('[data-sbs-slot]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,65 +41,92 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-ss7-live]')
+  const el = document.querySelector('[data-sbs-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-ss7-status]')
+  const el = document.querySelector('[data-sbs-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-ss7-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-sbs-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-ss7-run], [data-ss7-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-sbs-run], [data-sbs-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function pop(slot) {
+  slot.setAttribute('data-pop', 'true')
+  later(PUFF_MS, () => slot.removeAttribute('data-pop'))
+}
+
+function showResolved() {
+  const slot = slotEl()
+  if (!slot) return
+  slot.setAttribute('data-active', 'resolved')
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Primary content swaps to a decoy log then resolves to the real target. Resolved.')
-  setLive('Substitution Swap. Resolved.')
+  setStatus('ACTIVE')
+  setHint('Substitution resolved.')
+  setLive('Substitution resolved. Failover target active.')
 }
 
 function resetVisual() {
+  const slot = slotEl()
+  slot?.setAttribute('data-active', 'primary')
+  slot?.removeAttribute('data-pop')
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('Primary content swaps to a decoy log then resolves to the real target.')
-  setLive('Substitution Swap. Idle.')
+  setStatus('PRIMARY')
+  setHint('Press Run to trigger the substitution.')
+  setLive('Substitution idle. Primary target active.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the primary → decoy → resolved swap sequence (demo Run).
+ * @returns {Promise<void>}
+ */
 export function runSubstitutionSwap() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  const slot = slotEl()
+  if (!root || !slot || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Substitution Swap. Active.')
+  setStatus('SUBSTITUTING')
+  setLive('Substituting primary target with a proxy decoy.')
+  pop(slot)
+  slot.setAttribute('data-active', 'decoy')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+    later(TO_DECOY_MS + DECOY_HOLD_MS, () => {
+      pop(slot)
+      setLive('Swapping proxy decoy for the failover target.')
+      later(TO_RESOLVED_MS, () => {
+        showResolved()
+        later(SETTLE_MS, () => {
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -110,8 +149,12 @@ export async function replaySubstitutionSwap() {
 }
 
 function bindUi() {
-  document.querySelector('[data-ss7-run]')?.addEventListener('click', () => { void runSubstitutionSwap() })
-  document.querySelector('[data-ss7-replay]')?.addEventListener('click', () => { void replaySubstitutionSwap() })
+  document.querySelector('[data-sbs-run]')?.addEventListener('click', () => {
+    void runSubstitutionSwap()
+  })
+  document.querySelector('[data-sbs-replay]')?.addEventListener('click', () => {
+    void replaySubstitutionSwap()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

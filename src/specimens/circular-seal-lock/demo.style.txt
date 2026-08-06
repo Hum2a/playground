@@ -1,71 +1,198 @@
 /* SPX-2375 Circular Seal Lock — portable contract. */
-.csl8 {
+
+.csl {
   --ink: #101318;
   --parchment: #e7ddc7;
   --chakra: #3a9bd9;
-  --vermilion: #d94a38;
   --olive: #69745a;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
   width: 100%;
-  min-height: 280px;
-  padding: 0.8rem 0.65rem;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
   background: var(--ink);
   color: var(--off);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.csl8 *, .csl8 *::before, .csl8 *::after { box-sizing: border-box; }
-.csl8__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+.csl *,
+.csl *::before,
+.csl *::after {
+  box-sizing: border-box;
 }
-.csl8__system {
-  margin: 0; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--chakra);
+
+.csl__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.csl8__stage {
-  position: relative; overflow: hidden; display: grid; gap: 0.55rem; justify-items: center;
-  width: 100%; padding: 1rem 0.75rem; border: 1px solid rgb(58 155 217 / 0.4);
-  background: rgb(244 241 232 / 0.04); min-height: 160px;
+
+.csl__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chakra);
 }
-.csl8__viz {
-  position: relative; width: 140px; height: 100px;
+
+.csl__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.65rem;
+  justify-items: center;
+  width: 100%;
+  padding: 1rem 0.75rem;
+  border: 1px solid rgb(58 155 217 / 0.45);
+  background: rgb(244 241 232 / 0.04);
 }
-.csl8__mark {
-  position: absolute; border: 1.5px solid var(--olive); opacity: 0.35;
-  transition: transform 420ms cubic-bezier(0.2,0.85,0.25,1), opacity 420ms ease, border-color 420ms ease;
+
+.csl__seal {
+  overflow: visible;
 }
-.csl8__mark--a { left: 20px; top: 28px; width: 100px; height: 44px; }
-.csl8__mark--b { left: 46px; top: 18px; width: 48px; height: 48px; border-radius: 50%; border-color: var(--chakra); }
-.csl8__mark--c { left: 10px; top: 70px; width: 120px; height: 8px; background: rgb(105 116 90 / 0.35); }
-.csl8[data-phase='active'] .csl8__mark--a { opacity: 0.85; border-color: var(--chakra); transform: scaleX(1.05); }
-.csl8[data-phase='active'] .csl8__mark--b { opacity: 1; transform: scale(1.12); }
-.csl8[data-phase='active'] .csl8__mark--c { opacity: 0.9; transform: scaleX(1.08); background: rgb(58 155 217 / 0.45); }
-.csl8[data-phase='done'] .csl8__mark { opacity: 1; border-color: var(--chakra); }
-.csl8[data-phase='done'] .csl8__mark--b { transform: scale(1); box-shadow: 0 0 0 2px rgb(58 155 217 / 0.25); }
-.csl8[data-phase='done'] .csl8__mark--c { background: var(--chakra); }
-.csl8__status {
-  margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 0.12em; color: var(--parchment);
+
+.csl__rim {
+  fill: none;
+  stroke: var(--olive);
+  stroke-width: 2;
 }
-.csl8[data-phase='done'] .csl8__status { color: var(--chakra); }
-.csl8__note {
-  margin: 0; font-size: 0.68rem; letter-spacing: 0.03em; color: var(--olive); text-align: center; max-width: 28rem;
+
+.csl__index-marks line {
+  stroke: rgb(105 116 90 / 0.55);
+  stroke-width: 2;
 }
-.csl8__controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.csl8__btn {
-  appearance: none; margin: 0; padding: 0.42rem 0.8rem; border: 1px solid var(--olive);
-  background: transparent; color: var(--off); font: inherit; font-size: 0.66rem; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+
+.csl__ring {
+  transform: rotate(-42deg);
+  transform-origin: 60px 60px;
+  transition: transform 520ms cubic-bezier(0.22, 0.85, 0.25, 1.15);
 }
-.csl8__btn--primary { border-color: var(--chakra); background: rgb(58 155 217 / 0.14); }
-.csl8__btn:hover:not(:disabled) { border-color: var(--parchment); }
-.csl8__btn:focus-visible { outline: 2px solid var(--chakra); outline-offset: 2px; }
-.csl8__btn:disabled { opacity: 0.45; cursor: default; }
+
+.csl[data-phase='active'] .csl__ring,
+.csl[data-phase='done'] .csl__ring {
+  transform: rotate(0deg);
+}
+
+.csl__mark {
+  stroke: var(--parchment);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke 200ms ease-out;
+}
+
+.csl[data-phase='done'] .csl__mark {
+  stroke: var(--chakra);
+}
+
+.csl__core {
+  fill: rgb(16 19 24 / 0.9);
+  stroke: var(--olive);
+  stroke-width: 2;
+  transition: stroke 200ms ease-out;
+}
+
+.csl[data-phase='done'] .csl__core {
+  stroke: var(--chakra);
+}
+
+.csl[data-pulse='true'] .csl__core {
+  animation: csl-pulse 150ms ease-out;
+}
+
+@keyframes csl-pulse {
+  0% {
+    filter: drop-shadow(0 0 0 rgb(58 155 217 / 0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 10px rgb(58 155 217 / 0));
+  }
+}
+
+.csl__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--parchment);
+}
+
+.csl[data-phase='done'] .csl__status {
+  color: var(--chakra);
+}
+
+.csl__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.csl__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.csl__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.csl__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.csl__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.csl__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.csl__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .csl8__mark { transition: none !important; }
+  .csl__ring,
+  .csl__mark,
+  .csl__core,
+  .csl[data-pulse='true'] .csl__core {
+    transition: none !important;
+    animation: none !important;
+  }
 }
-html[data-force-reduced-motion='true'] .csl8__mark { transition: none !important; }
+
+html[data-force-reduced-motion='true'] .csl__ring,
+html[data-force-reduced-motion='true'] .csl__mark,
+html[data-force-reduced-motion='true'] .csl__core,
+html[data-force-reduced-motion='true'] .csl[data-pulse='true'] .csl__core {
+  transition: none !important;
+  animation: none !important;
+}

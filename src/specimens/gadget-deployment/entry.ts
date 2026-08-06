@@ -34,13 +34,5 @@ export const gadgetDeployment: Specimen = {
 
     label: 'Gadget deployment',
   },
-  integration: [
-    'DEPLOY triggers runGadgetDeployment; host clips overflow.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Stowed tile unfolds to controls + STATUS READY',
-    'RESET stows gadget',
-    'Reduced motion shows deployed state immediately',
-  ],
+
 }

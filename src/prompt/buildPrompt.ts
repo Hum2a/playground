@@ -1,4 +1,4 @@
-import type { Specimen } from '../specimens/types'
+import type { SpecimenResolved } from '../specimens/types'
 
 export type PromptMode = 'full' | 'code' | 'contract'
 
@@ -11,12 +11,12 @@ function fenceFor(content: string, language: string): string {
   return `${ticks}${language}\n${content}\n${ticks}`
 }
 
-function originLine(specimen: Specimen): string {
+function originLine(specimen: SpecimenResolved): string {
   const { project, surface } = specimen.origin
   return surface ? `Originally from ${project}, ${surface}.` : `Originally from ${project}.`
 }
 
-function depsLine(specimen: Specimen): string {
+function depsLine(specimen: SpecimenResolved): string {
   if (specimen.deps === 'none') return 'None. Plain HTML and CSS.'
   return specimen.deps.map((d) => `- ${d}`).join('\n')
 }
@@ -43,7 +43,7 @@ function parentRequirements(contract: unknown): string[] {
   return []
 }
 
-function reducedMotionClause(specimen: Specimen): string {
+function reducedMotionClause(specimen: SpecimenResolved): string {
   if (!specimen.motion.respectsReducedMotion) return ''
   const note =
     specimen.motion.reducedMotionNote ??
@@ -51,7 +51,7 @@ function reducedMotionClause(specimen: Specimen): string {
   return note
 }
 
-export function buildPrompt(specimen: Specimen, mode: PromptMode = 'full'): string {
+export function buildPrompt(specimen: SpecimenResolved, mode: PromptMode = 'full'): string {
   if (mode === 'code') {
     const parts = [
       fenceFor(specimen.files.html.trimEnd(), 'html'),
@@ -69,7 +69,7 @@ export function buildPrompt(specimen: Specimen, mode: PromptMode = 'full'): stri
   }
 
   const reqs = parentRequirements(specimen.contract)
-  const hostBlock = specimen.preview.scaffold
+  const hostBlock = (specimen.scaffold ?? specimen.preview.scaffold)
     ? [
         '## Host requirements',
         'Mount inside a container that satisfies:',
@@ -83,13 +83,13 @@ export function buildPrompt(specimen: Specimen, mode: PromptMode = 'full'): stri
     : ''
 
   const integration =
-    specimen.integration?.length
+    (specimen.integration?.length
       ? [
           '## Integration',
           ...specimen.integration.map((step, i) => `${i + 1}. ${step}`),
           '',
         ].join('\n')
-      : ''
+      : '')
 
   const acceptanceItems = [...(specimen.acceptance ?? [])]
   const rm = reducedMotionClause(specimen)

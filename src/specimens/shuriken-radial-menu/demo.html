@@ -1,17 +1,32 @@
-<div class="srm0" data-srm0 data-phase="idle">
-  <p class="srm0__live" data-srm0-live aria-live="polite">Shuriken Radial Menu. Idle.</p>
-  <p class="srm0__system">NR // NR-072</p>
-  <div class="srm0__stage" data-srm0-stage>
-    <div class="srm0__viz" data-srm0-viz aria-hidden="true">
-      <span class="srm0__mark srm0__mark--a"></span>
-      <span class="srm0__mark srm0__mark--b"></span>
-      <span class="srm0__mark srm0__mark--c"></span>
+<div class="srm" data-srm data-phase="closed">
+  <p class="srm__live" data-srm-live aria-live="polite">
+    Menu closed.
+  </p>
+
+  <p class="srm__system">ACTION // RADIAL</p>
+
+  <div class="srm__stage" data-srm-stage>
+    <div class="srm__wheel" data-srm-wheel>
+      <button type="button" class="srm__hub" data-srm-hub aria-label="Open action menu">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+          <path fill="currentColor" d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" />
+        </svg>
+      </button>
+
+      <div class="srm__sectors" data-srm-sectors aria-hidden="true">
+        <button type="button" class="srm__sector srm__sector--n" data-srm-sector tabindex="-1" aria-label="Action north">N</button>
+        <button type="button" class="srm__sector srm__sector--e" data-srm-sector tabindex="-1" aria-label="Action east">E</button>
+        <button type="button" class="srm__sector srm__sector--s" data-srm-sector tabindex="-1" aria-label="Action south">S</button>
+        <button type="button" class="srm__sector srm__sector--w" data-srm-sector tabindex="-1" aria-label="Action west">W</button>
+      </div>
     </div>
-    <p class="srm0__status" data-srm0-status>IDLE</p>
-    <p class="srm0__note" data-srm0-note>Four-point geometry rotates open into action sectors.</p>
+
+    <p class="srm__status" data-srm-status>CLOSED</p>
+    <p class="srm__hint" data-srm-hint>Press Run to open the radial menu.</p>
   </div>
-  <div class="srm0__controls">
-    <button type="button" class="srm0__btn srm0__btn--primary" data-srm0-run>Open</button>
-    <button type="button" class="srm0__btn" data-srm0-replay>Replay</button>
+
+  <div class="srm__controls">
+    <button type="button" class="srm__btn srm__btn--primary" data-srm-run>Run</button>
+    <button type="button" class="srm__btn" data-srm-replay>Replay</button>
   </div>
 </div>

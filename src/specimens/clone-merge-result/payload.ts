@@ -7,20 +7,21 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~400×340+).',
+    'Import demo.css verbatim; freeze converge/merge/expand timings from contract.json.',
     'Wire runCloneMergeResult / resetCloneMergeResult / replayCloneMergeResult.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Three clone result cards converge into one output card',
+    'Idle, converging, merging, and resolved states are visually distinct',
+    'Output card shows the combined result only once merge completes',
+    'Replay resets before rerunning',
+    'Reduced motion shows the merged result immediately',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

@@ -34,19 +34,5 @@ export const analysisScribbleReveal: Specimen = {
 
     label: 'Analysis scribble reveal',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host (~360×360).',
-    'Import demo.css verbatim; keep stroke-dash scribble timings.',
-    'Wire RUN via analysisScribbleReveal.run(root) or the trigger.',
-    'Replay resets to unmarked idle before rerunning.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
-  ],
-  acceptance: [
-    'Circle, arrow, and underline marks draw in sequence on profile panel',
-    'OUTPUT value emphasised in accent at end state',
-    'Status announces annotation completion',
-    'Replay returns to exact idle before rerun',
-    'Clipped to host; no external assets; sandbox allow-scripts',
-    'Reduced motion shows all marks immediately',
-  ],
+
 }

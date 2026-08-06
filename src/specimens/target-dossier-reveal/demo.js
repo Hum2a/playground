@@ -1,21 +1,30 @@
 /**
- * Target Dossier Reveal — A dossier panel reveals target intelligence.
+ * Target Dossier Reveal — a restricted dossier peels its redaction layer and seal to reveal intel.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const PEEL_MS = 260
+const REVEAL_MS = 220
+const TOTAL_MS = PEEL_MS + REVEAL_MS // ~480ms principal sequence
 
 let busy = false
-/** @type {number[]} */
-let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-tdr1]') }
+function rootEl() {
+  return document.querySelector('[data-tdr]')
+}
+
+function intelEl() {
+  return document.querySelector('[data-tdr-intel]')
+}
+
+let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +38,75 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-tdr1-live]')
+  const el = document.querySelector('[data-tdr-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-tdr1-status]')
+  const el = document.querySelector('[data-tdr-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-tdr1-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-tdr-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-tdr1-run], [data-tdr1-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-tdr-run], [data-tdr-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function showResolved() {
+  const intel = intelEl()
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A dossier panel reveals target intelligence. Resolved.')
-  setLive('Target Dossier Reveal. Resolved.')
+  intel?.setAttribute('data-reveal', 'true')
+  setStatus('REVEALED')
+  setHint('Intel declassified.')
+  setLive('Dossier declassified. Intel revealed.')
 }
 
 function resetVisual() {
+  const intel = intelEl()
+  intel?.removeAttribute('data-reveal')
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A dossier panel reveals target intelligence.')
-  setLive('Target Dossier Reveal. Idle.')
+  setStatus('CLASSIFIED')
+  setHint('Press Run to declassify the dossier.')
+  setLive('Dossier classified. Intel redacted.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the full declassification sequence.
+ * @returns {Promise<void>}
+ */
 export function runTargetDossierReveal() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Target Dossier Reveal. Active.')
+  setStatus('DECLASSIFYING')
+  setLive('Seal broken. Redaction layer peeling.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
+    later(PEEL_MS, () => {
+      later(REVEAL_MS, () => {
+        showResolved()
         busy = false
         setButtons(true)
         resolve()
@@ -110,8 +132,12 @@ export async function replayTargetDossierReveal() {
 }
 
 function bindUi() {
-  document.querySelector('[data-tdr1-run]')?.addEventListener('click', () => { void runTargetDossierReveal() })
-  document.querySelector('[data-tdr1-replay]')?.addEventListener('click', () => { void replayTargetDossierReveal() })
+  document.querySelector('[data-tdr-run]')?.addEventListener('click', () => {
+    void runTargetDossierReveal()
+  })
+  document.querySelector('[data-tdr-replay]')?.addEventListener('click', () => {
+    void replayTargetDossierReveal()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
@@ -119,5 +145,6 @@ function bindUi() {
   })
 }
 
+void TOTAL_MS
 bindUi()
 resetTargetDossierReveal()

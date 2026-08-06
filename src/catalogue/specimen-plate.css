@@ -5,6 +5,7 @@
   padding: var(--space-4);
   background: var(--panel);
   border: var(--hairline);
+  contain: layout style;
 }
 
 .specimen-plate__meta {

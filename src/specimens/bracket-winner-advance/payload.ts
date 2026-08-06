@@ -8,6 +8,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside a relative overflow-hidden host.',
+    'Import demo.css verbatim; keep connector draw and card travel timings.',
+    'Wire ADVANCE via bracketWinnerAdvance.run(root).',
+    'Winner must travel along visible connector geometry.',
+    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+  ],
+  acceptance: [
+    'Connector path draws from round one to round two',
+    'ALPHA card travels along connector into next slot',
+    'Round-two slot shows ALPHA with accent border',
+    'Replay resets to idle bracket',
+    'Clipped to host; sandbox allow-scripts',
+    'Reduced motion shows advanced slot immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#101820;">
   {{specimen}}

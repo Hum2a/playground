@@ -4,6 +4,14 @@
   width: 100%;
 }
 
+.catalogue__loading {
+  color: var(--pewter);
+  margin: 0;
+  /* Reserve sheet + filter + first plates so deferred registry load does not CLS. */
+  min-height: 85vh;
+  padding-top: var(--space-7);
+}
+
 .catalogue__plates {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--plate-min), 1fr));

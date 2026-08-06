@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:420px;background:#12141a;display:grid;place-items:center;padding:0;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const screenshotExpandToEditor: Specimen = {
   id: 'screenshot-expand-to-editor',
   ref: 'SPX-1941',
@@ -38,29 +26,13 @@ export const screenshotExpandToEditor: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, immediate geometry switch.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 390,
     height: 700,
     background: 'dark',
-    scaffold,
+
     label: 'Screenshot expand to editor',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host (~390×700).',
-    'Import demo.css verbatim; freeze thumbnail and editor dimensions.',
-    'Controls reveal 180ms after expansion begins.',
-    'Close reverses to thumbnail position.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Editor visibly originates from thumbnail',
-    'Screenshot representation stays continuous',
-    'Controls appear after expansion starts',
-    'Closing reconstructs thumbnail position',
-    'No browser capture APIs',
-    'Reduced motion: immediate geometry switch',
-  ],
+
 }

@@ -8,6 +8,19 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount card in relative overflow-hidden host.',
+    'Wrap sequence 500ms; total 1150ms.',
+    'Wire Restrict / Replay to runBindingWrapLock.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Four strips wrap card from edges',
+    'LOCKED label appears at end',
+    'Card border shifts to accent lock state',
+    'Replay clears strips and lock',
+    'Reduced motion: instant locked state',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#F4F7FA;">
   {{specimen}}

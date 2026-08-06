@@ -1,71 +1,223 @@
 /* SPX-2516 Summoning Seal Materialise — portable contract. */
-.ssm6 {
+
+.ssm {
   --ink: #101318;
   --parchment: #e7ddc7;
   --chakra: #3a9bd9;
-  --vermilion: #d94a38;
+  --alert: #d94a38;
   --olive: #69745a;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
   width: 100%;
-  min-height: 280px;
-  padding: 0.8rem 0.65rem;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
   background: var(--ink);
   color: var(--off);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.ssm6 *, .ssm6 *::before, .ssm6 *::after { box-sizing: border-box; }
-.ssm6__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+.ssm *,
+.ssm *::before,
+.ssm *::after {
+  box-sizing: border-box;
 }
-.ssm6__system {
-  margin: 0; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--chakra);
+
+.ssm__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.ssm6__stage {
-  position: relative; overflow: hidden; display: grid; gap: 0.55rem; justify-items: center;
-  width: 100%; padding: 1rem 0.75rem; border: 1px solid rgb(58 155 217 / 0.4);
-  background: rgb(244 241 232 / 0.04); min-height: 160px;
+
+.ssm__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chakra);
 }
-.ssm6__viz {
-  position: relative; width: 140px; height: 100px;
+
+.ssm__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.6rem;
+  justify-items: center;
+  width: 100%;
+  padding: 0.75rem 0.75rem 1rem;
+  border: 1px solid rgb(58 155 217 / 0.45);
+  background: rgb(244 241 232 / 0.04);
 }
-.ssm6__mark {
-  position: absolute; border: 1.5px solid var(--olive); opacity: 0.35;
-  transition: transform 420ms cubic-bezier(0.2,0.85,0.25,1), opacity 420ms ease, border-color 420ms ease;
+
+.ssm__seal {
+  width: 76%;
+  max-width: 220px;
+  height: auto;
+  overflow: visible;
 }
-.ssm6__mark--a { left: 20px; top: 28px; width: 100px; height: 44px; }
-.ssm6__mark--b { left: 46px; top: 18px; width: 48px; height: 48px; border-radius: 50%; border-color: var(--chakra); }
-.ssm6__mark--c { left: 10px; top: 70px; width: 120px; height: 8px; background: rgb(105 116 90 / 0.35); }
-.ssm6[data-phase='active'] .ssm6__mark--a { opacity: 0.85; border-color: var(--chakra); transform: scaleX(1.05); }
-.ssm6[data-phase='active'] .ssm6__mark--b { opacity: 1; transform: scale(1.12); }
-.ssm6[data-phase='active'] .ssm6__mark--c { opacity: 0.9; transform: scaleX(1.08); background: rgb(58 155 217 / 0.45); }
-.ssm6[data-phase='done'] .ssm6__mark { opacity: 1; border-color: var(--chakra); }
-.ssm6[data-phase='done'] .ssm6__mark--b { transform: scale(1); box-shadow: 0 0 0 2px rgb(58 155 217 / 0.25); }
-.ssm6[data-phase='done'] .ssm6__mark--c { background: var(--chakra); }
-.ssm6__status {
-  margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 0.12em; color: var(--parchment);
+
+.ssm__ring {
+  stroke: var(--chakra);
+  stroke-width: 1.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 300ms ease-out;
+  filter: drop-shadow(0 0 3px rgb(58 155 217 / 0.4));
 }
-.ssm6[data-phase='done'] .ssm6__status { color: var(--chakra); }
-.ssm6__note {
-  margin: 0; font-size: 0.68rem; letter-spacing: 0.03em; color: var(--olive); text-align: center; max-width: 28rem;
+
+.ssm__ring[data-drawn='true'] {
+  stroke-dashoffset: 0;
 }
-.ssm6__controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.ssm6__btn {
-  appearance: none; margin: 0; padding: 0.42rem 0.8rem; border: 1px solid var(--olive);
-  background: transparent; color: var(--off); font: inherit; font-size: 0.66rem; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+
+.ssm__ticks {
+  opacity: 0;
+  transition: opacity 240ms ease-out;
 }
-.ssm6__btn--primary { border-color: var(--chakra); background: rgb(58 155 217 / 0.14); }
-.ssm6__btn:hover:not(:disabled) { border-color: var(--parchment); }
-.ssm6__btn:focus-visible { outline: 2px solid var(--chakra); outline-offset: 2px; }
-.ssm6__btn:disabled { opacity: 0.45; cursor: default; }
+
+.ssm__ticks[data-visible='true'] {
+  opacity: 1;
+}
+
+.ssm__ticks line {
+  stroke: var(--olive);
+  stroke-width: 1.5;
+}
+
+.ssm__panel {
+  position: absolute;
+  left: 50%;
+  bottom: 44%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--olive);
+  background: rgb(16 19 24 / 0.9);
+  color: var(--olive);
+  opacity: 0;
+  transform: translate(-50%, 24px) scale(0.85);
+  transition:
+    opacity 260ms ease-out,
+    transform 260ms cubic-bezier(0.2, 0.85, 0.25, 1),
+    color 200ms ease-out,
+    border-color 200ms ease-out;
+}
+
+.ssm__panel[data-visible='true'] {
+  opacity: 1;
+  color: var(--chakra);
+  border-color: var(--chakra);
+  transform: translate(-50%, 0) scale(1);
+}
+
+.ssm__panel[data-pulse='true'] {
+  animation: ssm-pulse 260ms ease-out;
+}
+
+@keyframes ssm-pulse {
+  0% {
+    transform: translate(-50%, 24px) scale(0.8);
+  }
+  70% {
+    transform: translate(-50%, -4px) scale(1.05);
+  }
+  100% {
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.ssm__panel-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ssm__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--parchment);
+}
+
+.ssm[data-phase='done'] .ssm__status {
+  color: var(--chakra);
+}
+
+.ssm__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.ssm__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.ssm__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ssm__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.ssm__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.ssm__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.ssm__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ssm6__mark { transition: none !important; }
+  .ssm__ring,
+  .ssm__ticks,
+  .ssm__panel,
+  .ssm__panel[data-pulse='true'] {
+    transition: none !important;
+    animation: none !important;
+  }
 }
-html[data-force-reduced-motion='true'] .ssm6__mark { transition: none !important; }
+
+html[data-force-reduced-motion='true'] .ssm__ring,
+html[data-force-reduced-motion='true'] .ssm__ticks,
+html[data-force-reduced-motion='true'] .ssm__panel,
+html[data-force-reduced-motion='true'] .ssm__panel[data-pulse='true'] {
+  transition: none !important;
+  animation: none !important;
+}

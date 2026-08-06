@@ -1,17 +1,31 @@
-<div class="tm0" data-tm0 data-phase="idle">
-  <p class="tm0__live" data-tm0-live aria-live="polite">Transformation Morph. Idle.</p>
-  <p class="tm0__system">NR // NR-059</p>
-  <div class="tm0__stage" data-tm0-stage>
-    <div class="tm0__viz" data-tm0-viz aria-hidden="true">
-      <span class="tm0__mark tm0__mark--a"></span>
-      <span class="tm0__mark tm0__mark--b"></span>
-      <span class="tm0__mark tm0__mark--c"></span>
-    </div>
-    <p class="tm0__status" data-tm0-status>IDLE</p>
-    <p class="tm0__note" data-tm0-note>A profile card morphs through a silhouette into a new identity.</p>
+<div class="trm" data-trm data-phase="idle">
+  <p class="trm__live" data-trm-live aria-live="polite">
+    Idle. Profile A active.
+  </p>
+
+  <p class="trm__system">PROFILE // MORPH</p>
+
+  <div class="trm__stage" data-trm-stage>
+    <article class="trm__card trm__card--a" data-trm-card-a aria-hidden="true">
+      <p class="trm__kicker">PROFILE A</p>
+      <p class="trm__title">Scout</p>
+      <p class="trm__meta">RANK · GENIN</p>
+    </article>
+
+    <div class="trm__silhouette" data-trm-silhouette aria-hidden="true"></div>
+
+    <article class="trm__card trm__card--b" data-trm-card-b aria-hidden="true">
+      <p class="trm__kicker">PROFILE B</p>
+      <p class="trm__title">Sentinel</p>
+      <p class="trm__meta">RANK · CHUNIN</p>
+    </article>
+
+    <p class="trm__status" data-trm-status>PROFILE A</p>
+    <p class="trm__hint" data-trm-hint>Press Run to transform.</p>
   </div>
-  <div class="tm0__controls">
-    <button type="button" class="tm0__btn tm0__btn--primary" data-tm0-run>Morph</button>
-    <button type="button" class="tm0__btn" data-tm0-replay>Replay</button>
+
+  <div class="trm__controls">
+    <button type="button" class="trm__btn trm__btn--primary" data-trm-run>Run</button>
+    <button type="button" class="trm__btn" data-trm-replay>Replay</button>
   </div>
 </div>

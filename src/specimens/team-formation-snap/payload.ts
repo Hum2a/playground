@@ -8,6 +8,19 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount stage with overflow hidden; import demo.css verbatim.',
+    'Snap 580ms staggered; total 1230ms.',
+    'Wire Form up / Replay to runTeamFormationSnap.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Three cards start scattered',
+    'Cards snap to bottom row slots',
+    'UNIT READY appears at settle',
+    'Replay returns cards to scatter positions',
+    'Reduced motion: instant formation',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#101820;">
   {{specimen}}

@@ -1,0 +1,12 @@
+{
+  "name": "details-panel-expand",
+  "intent": "A compact card opens a details panel without navigating away — CLOSE returns to the compact rail state.",
+  "ref": "SPX-3198",
+  "nf": "NF-089",
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ]
+  }
+}

@@ -4,33 +4,34 @@ export const targetDossierReveal: Specimen = {
   id: 'target-dossier-reveal',
   ref: 'SPX-2584',
   title: 'Target Dossier Reveal',
-  blurb: 'A dossier panel reveals target intelligence.',
+  blurb:
+    'A restricted profile dossier opens through a redaction layer and a wax seal to reveal its target intel.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / bingo-book-target-dossier — restricted profile',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'overlay',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['dossier'],
+  tags: ['dossier', 'reveal', 'intel'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the dossier appears already declassified with intel visible.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Target Dossier Reveal',
+    label: 'Target dossier reveal',
   },
 }

@@ -34,16 +34,5 @@ export const eyecatchTransition: Specimen = {
 
     label: 'Eyecatch transition',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden viewport.',
-    'Import demo.css verbatim; call runEyecatchTransition(target) on trigger.',
-    'Swap content at interstitial midpoint while fully covered.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Continue/Return runs one eyecatch sequence then shows the other state',
-    'Interstitial remains clipped to the specimen frame',
-    'Replay via restart message resets to state A',
-    'Reduced motion swaps states without panel travel',
-  ],
+
 }

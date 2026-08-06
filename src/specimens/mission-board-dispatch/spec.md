@@ -1,13 +1,15 @@
 # Mission Board Dispatch
 
-A mission card dispatches from the board to an assignee.
+A job card leaves the unassigned board column and travels into a team lane, docking beside its assignee (Run auto-play or Replay).
 
 ## Behaviour
 
-- Idle → active (~480ms) → done (held until reset/replay).
-- Reduced motion: immediate done.
+- Idle: card sits in the unassigned column, status `UNASSIGNED`.
+- Active: card travels across the board toward the team lane (~260ms).
+- Resolved: card docked in the team lane with a settle pulse, status `ASSIGNED`, held until reset/replay.
+- Reduced motion: jump straight to the docked state.
 
 ## Freeze
 
-- Active: 480ms · settle: 160ms
+- Travel: 260ms · settle: 200ms
 - Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`

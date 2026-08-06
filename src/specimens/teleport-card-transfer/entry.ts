@@ -4,33 +4,34 @@ export const teleportCardTransfer: Specimen = {
   id: 'teleport-card-transfer',
   ref: 'SPX-2677',
   title: 'Teleport Card Transfer',
-  blurb: 'A card teleports from source slot to destination.',
+  blurb:
+    'A card compresses into a circular aperture at its source slot and reconstructs out of a matching aperture at the destination.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / space-time-teleportation-interfaces — card transfer',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['transfer'],
+  tags: ['transfer', 'teleport', 'aperture'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the card appears already reconstructed at the destination.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Teleport Card Transfer',
+    label: 'Teleport card transfer',
   },
 }

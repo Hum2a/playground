@@ -73,12 +73,27 @@ writeFileSync(
   JSON.stringify({ name: slug, todos: ['TODO: fill contract'] }, null, 2) + '\n',
 )
 writeFileSync(
-  join(dir, 'entry.ts'),
-  `import type { Specimen } from '../types'
+  join(dir, 'payload.ts'),
+  `import type { SpecimenPayload } from '../types'
 import html from './demo.html?raw'
+// Vitest's CSS pipeline returns "" for \`*.css?raw\`; keep demo.css as the portable
+// artifact and import the twin \`.txt\` for the in-app string.
 import css from './demo.style.txt?raw'
 import spec from './spec.md?raw'
 import contract from './contract.json'
+
+const payload: SpecimenPayload = {
+  files: { html, css },
+  spec,
+  contract,
+}
+
+export default payload
+`,
+)
+writeFileSync(
+  join(dir, 'entry.ts'),
+  `import type { Specimen } from '../types'
 
 export const specimen: Specimen = {
   id: '${slug}',
@@ -97,9 +112,7 @@ export const specimen: Specimen = {
   tags: [],
   deps: 'none',
   motion: { loops: true, respectsReducedMotion: true },
-  files: { html, css },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,
     height: 240,

@@ -34,19 +34,5 @@ export const threatLevelEscalation: Specimen = {
 
     label: 'Threat meter',
   },
-  integration: [
-    'Mount inside relative overflow-hidden host.',
-    'Import demo.css verbatim; freeze 200ms per level step.',
-    'Call runThreatEscalation() from ESCALATE.',
-    'Use reset/replay for harness restart.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Meter starts at LEVEL 1',
-    'Five discrete levels visible during escalation',
-    'CRITICAL level uses accent colour at maximum intensity',
-    'Readout updates at each step',
-    'Reduced motion jumps to CRITICAL immediately',
-    'Sandbox-safe with no external resources',
-  ],
+
 }

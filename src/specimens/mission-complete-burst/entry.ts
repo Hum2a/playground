@@ -34,13 +34,5 @@ export const missionCompleteBurst: Specimen = {
 
     label: 'Mission complete burst',
   },
-  integration: [
-    'FINALIZE triggers collapse + burst; clip to stage overflow.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Widgets collapse then COMPLETE / RANK A burst shows',
-    'RESET restores four widgets',
-    'Reduced motion shows burst immediately',
-  ],
+
 }

@@ -34,20 +34,5 @@ export const versusCardCollision: Specimen = {
 
     label: 'Versus card collision',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden arena host.',
-    'Import demo.css verbatim; keep rush and impact timings.',
-    'Wire START via versusCardCollision.run(root).',
-    'Cards must start off-screen and collide at centre.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
-  ],
-  acceptance: [
-    'ALPHA and BETA cards rush from opposite edges',
-    'Brief impact flash at collision',
-    'VS label scales up at clash',
-    'Final tilted locked positions',
-    'Replay resets to staged idle',
-    'Clipped to arena; sandbox allow-scripts',
-    'Reduced motion shows clashed state immediately',
-  ],
+
 }

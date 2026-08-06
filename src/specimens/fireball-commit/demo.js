@@ -1,21 +1,27 @@
 /**
- * Fireball Commit — A charge grows then shoots into a target to confirm.
+ * Fireball Commit — charge grows at source, launches across the track, impacts, confirms target.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const CHARGE_MS = 380
+const LAUNCH_MS = 220
+const IMPACT_MS = 200
+const SETTLE_MS = 150
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-fc5]') }
+function rootEl() {
+  return document.querySelector('[data-fbc]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,65 +35,92 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-fc5-live]')
+  const el = document.querySelector('[data-fbc-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-fc5-status]')
+  const el = document.querySelector('[data-fbc-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-fc5-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-fbc-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-fc5-run], [data-fc5-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-fbc-run], [data-fbc-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A charge grows then shoots into a target to confirm. Resolved.')
-  setLive('Fireball Commit. Resolved.')
+function setPhase(phase) {
+  rootEl()?.setAttribute('data-phase', phase)
+}
+
+function showResolved() {
+  setPhase('done')
+  setStatus('CONFIRMED')
+  setHint('Target confirmed. Press Replay to commit again.')
+  setLive('Target confirmed.')
 }
 
 function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
+  setPhase('idle')
   setStatus('IDLE')
-  setNote('A charge grows then shoots into a target to confirm.')
-  setLive('Fireball Commit. Idle.')
+  setHint('Press Run to charge and commit.')
+  setLive('Charge idle. Target unconfirmed.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run charge → launch → impact → confirm.
+ * @returns {Promise<void>}
+ */
 export function runFireballCommit() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Fireball Commit. Active.')
+
+  setPhase('charge')
+  setStatus('CHARGING')
+  setHint('Charging.')
+  setLive('Charging.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+    later(CHARGE_MS, () => {
+      setPhase('launch')
+      setStatus('LAUNCHED')
+      setHint('Travelling to target.')
+      setLive('Launched toward target.')
+
+      later(LAUNCH_MS, () => {
+        setPhase('impact')
+        setStatus('IMPACT')
+        setLive('Impact.')
+
+        later(IMPACT_MS, () => {
+          later(SETTLE_MS, () => {
+            showResolved()
+            busy = false
+            setButtons(true)
+            resolve()
+          })
+        })
       })
     })
   })
@@ -110,8 +143,12 @@ export async function replayFireballCommit() {
 }
 
 function bindUi() {
-  document.querySelector('[data-fc5-run]')?.addEventListener('click', () => { void runFireballCommit() })
-  document.querySelector('[data-fc5-replay]')?.addEventListener('click', () => { void replayFireballCommit() })
+  document.querySelector('[data-fbc-run]')?.addEventListener('click', () => {
+    void runFireballCommit()
+  })
+  document.querySelector('[data-fbc-replay]')?.addEventListener('click', () => {
+    void replayFireballCommit()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

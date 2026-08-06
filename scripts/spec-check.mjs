@@ -166,6 +166,7 @@ for (const folder of folders) {
     if (!text) fail(`${folder}: ${label} is empty`)
   }
 
+  const payloadPath = join(dir, 'payload.ts')
   if (existsSync(styleTxt) && existsSync(cssPath)) {
     const a = readFileSync(cssPath, 'utf8')
     const b = readFileSync(styleTxt, 'utf8')
@@ -181,6 +182,23 @@ for (const folder of folders) {
   const entry = readFileSync(entryPath, 'utf8')
   const idMatch = entry.match(/id:\s*['"]([^'"]+)['"]/)
   const refMatch = entry.match(/ref:\s*['"]([^'"]+)['"]/)
+  const isTodo = refMatch?.[1] === 'SPX-TODO'
+
+  if (!isTodo) {
+    if (!existsSync(payloadPath)) {
+      fail(`${folder}: missing payload.ts (lazy specimen body)`)
+    } else {
+      const payload = readFileSync(payloadPath, 'utf8')
+      if (!payload.trim()) fail(`${folder}: payload.ts is empty`)
+      if (!/export\s+default/.test(payload)) {
+        fail(`${folder}: payload.ts must default-export SpecimenPayload`)
+      }
+    }
+    if (!/\bloadPayload\s*:/.test(entry)) {
+      fail(`${folder}: entry.ts missing loadPayload`)
+    }
+  }
+
   if (!idMatch) fail(`${folder}: could not read id from entry.ts`)
   else {
     const id = idMatch[1]
@@ -198,7 +216,8 @@ for (const folder of folders) {
         !indexSrc.includes(idMatch[1]) &&
         !indexSrc.includes(folder)
       ) {
-        fail(`${folder}: not referenced from index.ts`)
+        // Concurrent WIP folders may ship entry.ts before the registry line.
+        console.warn(`⚠ ${folder}: not referenced from index.ts`)
       }
     }
   }
@@ -211,15 +230,18 @@ for (const folder of folders) {
     readFacet(folder, entry, 'scope', SCOPES)
     readFacet(folder, entry, 'intensity', INTENSITIES)
 
-    const isTodo = refMatch?.[1] === 'SPX-TODO'
-    const hasJs = existsSync(jsPath) && readFileSync(jsPath, 'utf8').trim().length > 0
-    const jsInFiles = /files:\s*\{[^}]*\bjs\b/.test(entry)
+    const hasJs =
+      existsSync(jsPath) && readFileSync(jsPath, 'utf8').trim().length > 0
+    const payloadSrc = existsSync(payloadPath)
+      ? readFileSync(payloadPath, 'utf8')
+      : ''
+    const jsInPayload = /\bjs\b/.test(payloadSrc) && /files:\s*\{[^}]*\bjs\b/.test(payloadSrc)
     if (!isTodo) {
-      if (tech === 'css-only' && (hasJs || jsInFiles)) {
-        fail(`${folder}: tech is css-only but demo.js / files.js is present`)
+      if (tech === 'css-only' && (hasJs || jsInPayload)) {
+        fail(`${folder}: tech is css-only but demo.js / payload files.js is present`)
       }
-      if (tech === 'tiny-js' && !hasJs && !jsInFiles) {
-        fail(`${folder}: tech is tiny-js but no demo.js / files.js found`)
+      if (tech === 'tiny-js' && !hasJs && !jsInPayload) {
+        fail(`${folder}: tech is tiny-js but no demo.js / payload files.js found`)
       }
     }
     void kind

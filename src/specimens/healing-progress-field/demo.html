@@ -1,17 +1,49 @@
-<div class="hpf2" data-hpf2 data-phase="idle">
-  <p class="hpf2__live" data-hpf2-live aria-live="polite">Healing Progress Field. Idle.</p>
-  <p class="hpf2__system">NR // NR-184</p>
-  <div class="hpf2__stage" data-hpf2-stage>
-    <div class="hpf2__viz" data-hpf2-viz aria-hidden="true">
-      <span class="hpf2__mark hpf2__mark--a"></span>
-      <span class="hpf2__mark hpf2__mark--b"></span>
-      <span class="hpf2__mark hpf2__mark--c"></span>
+<div class="hpf" data-hpf data-phase="idle">
+  <p class="hpf__live" data-hpf-live aria-live="polite">
+    Field damaged. Healing pending.
+  </p>
+
+  <p class="hpf__system">MEDIC // FIELD RECOVERY</p>
+
+  <div class="hpf__stage" data-hpf-stage>
+    <div class="hpf__grid" data-hpf-grid aria-label="Damaged field grid">
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="0" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="1" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
+      <div class="hpf__tile" data-hpf-tile data-ring="2" data-healed="false"></div>
     </div>
-    <p class="hpf2__status" data-hpf2-status>IDLE</p>
-    <p class="hpf2__note" data-hpf2-note>A damaged region reconstructs from the centre outward.</p>
+
+    <p class="hpf__status" data-hpf-status>DAMAGED</p>
+    <p class="hpf__hint" data-hpf-hint>Press Run to begin recovery.</p>
   </div>
-  <div class="hpf2__controls">
-    <button type="button" class="hpf2__btn hpf2__btn--primary" data-hpf2-run>Heal</button>
-    <button type="button" class="hpf2__btn" data-hpf2-replay>Replay</button>
+
+  <div class="hpf__controls">
+    <button type="button" class="hpf__btn hpf__btn--primary" data-hpf-run>Run</button>
+    <button type="button" class="hpf__btn" data-hpf-replay>Replay</button>
   </div>
 </div>

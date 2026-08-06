@@ -2,43 +2,36 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/wind-slice-transition.schema.json",
   "title": "WindSliceTransition",
+  "description": "Staggered diagonal blades sweep across the stage, exchanging content mid-sweep.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "bladeCount", "bladeMs", "staggerMs", "swapAtMs", "totalMs", "settleMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "wind-slice-transition"
-    },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "name": { "type": "string", "const": "wind-slice-transition" },
+    "bladeCount": { "type": "number", "const": 4 },
+    "bladeMs": { "type": "number", "const": 380 },
+    "staggerMs": { "type": "number", "const": 70 },
+    "swapAtMs": { "type": "number", "const": 420 },
+    "totalMs": { "type": "number", "const": 600 },
+    "settleMs": { "type": "number", "const": 150 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateSwap"],
+      "properties": {
+        "immediateSwap": { "type": "boolean", "const": true }
       }
     }
   }

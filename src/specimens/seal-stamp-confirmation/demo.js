@@ -1,21 +1,27 @@
 /**
- * Seal Stamp Confirmation — A seal stamp slams to confirm the action.
+ * Seal Stamp Confirmation — one decisive stamp strike leaves an ink mark.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const DESCENT_MS = 220
+const IMPACT_MS = 90
+const INK_BLOOM_MS = 200
+const SETTLE_MS = 90
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-ssc3]') }
+function rootEl() {
+  return document.querySelector('[data-ssc]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,65 +35,83 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-ssc3-live]')
+  const el = document.querySelector('[data-ssc-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-ssc3-status]')
+  const el = document.querySelector('[data-ssc-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-ssc3-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-ssc-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-ssc3-run], [data-ssc3-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-ssc-run], [data-ssc-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A seal stamp slams to confirm the action. Resolved.')
-  setLive('Seal Stamp Confirmation. Resolved.')
+function showResolved() {
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'done')
+  root?.removeAttribute('data-impact')
+  setStatus('FILED')
+  setHint('Stamped and filed.')
+  setLive('Document stamped. Seal mark applied.')
 }
 
 function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A seal stamp slams to confirm the action.')
-  setLive('Seal Stamp Confirmation. Idle.')
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'idle')
+  root?.removeAttribute('data-impact')
+  setStatus('PENDING')
+  setHint('Press Run to strike the seal stamp.')
+  setLive('Document pending. No stamp applied.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the stamp descent, impact, and ink bloom (demo Run).
+ * @returns {Promise<void>}
+ */
 export function runSealStampConfirmation() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Seal Stamp Confirmation. Active.')
+  setStatus('STRIKING')
+  setLive('Stamp descending.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+    later(DESCENT_MS, () => {
+      root.setAttribute('data-impact', 'true')
+      setLive('Stamp struck the document.')
+      later(IMPACT_MS, () => {
+        root.removeAttribute('data-impact')
+        showResolved()
+        later(INK_BLOOM_MS + SETTLE_MS, () => {
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -110,8 +134,12 @@ export async function replaySealStampConfirmation() {
 }
 
 function bindUi() {
-  document.querySelector('[data-ssc3-run]')?.addEventListener('click', () => { void runSealStampConfirmation() })
-  document.querySelector('[data-ssc3-replay]')?.addEventListener('click', () => { void replaySealStampConfirmation() })
+  document.querySelector('[data-ssc-run]')?.addEventListener('click', () => {
+    void runSealStampConfirmation()
+  })
+  document.querySelector('[data-ssc-replay]')?.addEventListener('click', () => {
+    void replaySealStampConfirmation()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

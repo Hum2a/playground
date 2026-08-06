@@ -8,6 +8,19 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount in relative overflow-hidden host.',
+    'Freeze burst 580ms and settle 320ms.',
+    'Wire runSpeedLineReveal / resetSpeedLineReveal / replaySpeedLineReveal.',
+    'Lines must clip to stage; honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Activate triggers one burst reveal to TARGET end state',
+    'Initial concealed and final revealed states are distinct',
+    'No external resources; replay resets cleanly',
+    'Reduced motion shows TARGET immediately',
+    'Palette uses shared MHA study colours',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

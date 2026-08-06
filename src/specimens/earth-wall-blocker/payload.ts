@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~380×360+).',
+    'Import demo.css verbatim; freeze the staggered rise (500ms total) / settle (150ms) from contract.json.',
     'Wire runEarthWallBlocker / resetEarthWallBlocker / replayEarthWallBlocker.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers — resolve straight to raised/PROTECTED.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Five slabs rise with a visible 55ms stagger between each',
+    'Zone label switches from EXPOSED to PROTECTED once the wall is fully up',
+    'Replay lowers and re-raises the wall',
+    'Reduced motion shows the wall raised immediately with no stagger',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
   {{specimen}}
 </div>
 `.trim(),

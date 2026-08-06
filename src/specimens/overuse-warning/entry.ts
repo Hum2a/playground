@@ -34,14 +34,5 @@ export const overuseWarning: Specimen = {
 
     label: 'Overuse warning',
   },
-  integration: [
-    'Wire ACTIVATE to runOveruseWarning; RESET restores 25% NOMINAL.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Five deterministic strain steps ending EXHAUSTED',
-    'WARNING shows hatch overlay; accent colour at high strain',
-    'RESET returns to 25% NOMINAL',
-    'Reduced motion skips fill animation',
-  ],
+
 }

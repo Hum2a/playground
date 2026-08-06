@@ -34,17 +34,5 @@ export const iceWipeTransition: Specimen = {
 
     label: 'Scene transition',
   },
-  integration: [
-    'Mount stage with overflow hidden; import demo.css verbatim.',
-    'Grow 740ms then fracture 380ms; total 1390ms.',
-    'Wire Transition / Replay to runIceWipeTransition.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Six ice shards grow to cover stage',
-    'Shards fracture away revealing scene B',
-    'Replay returns to scene A',
-    'Effect clipped to stage',
-    'Reduced motion: instant scene swap',
-  ],
+
 }

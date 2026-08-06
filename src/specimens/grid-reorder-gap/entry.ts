@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#f4f5f7;display:grid;place-items:center;padding:0.75rem;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const gridReorderGap: Specimen = {
   id: 'grid-reorder-gap',
   ref: 'SPX-1902',
@@ -38,29 +26,13 @@ export const gridReorderGap: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, tiles jump between slots; drag proxy still follows pointer.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,
     height: 320,
     background: 'card',
-    scaffold,
+
     label: 'Grid reorder gap',
   },
-  integration: [
-    'Mount inside a relative overflow-clipped host.',
-    'Import demo.css verbatim; freeze 4×3 grid, 64px tiles, 12px gap.',
-    'Wire resetGridReorderGap; exactly one gap during drag.',
-    'Escape restores original order.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Exactly one gap exists during drag',
-    'Dragged tile is never duplicated',
-    'Reordering uses pointer position, not random swapping',
-    'Cancel restores original ordering',
-    'Drop produces a stable new DOM order',
-    'Reduced motion: tiles jump; proxy follows pointer',
-  ],
+
 }

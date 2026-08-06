@@ -1,17 +1,61 @@
-<div class="oca3" data-oca3 data-phase="idle">
-  <p class="oca3__live" data-oca3-live aria-live="polite">Objective Chain Advance. Idle.</p>
-  <p class="oca3__system">NR // NR-193</p>
-  <div class="oca3__stage" data-oca3-stage>
-    <div class="oca3__viz" data-oca3-viz aria-hidden="true">
-      <span class="oca3__mark oca3__mark--a"></span>
-      <span class="oca3__mark oca3__mark--b"></span>
-      <span class="oca3__mark oca3__mark--c"></span>
-    </div>
-    <p class="oca3__status" data-oca3-status>IDLE</p>
-    <p class="oca3__note" data-oca3-note>An objective chain advances to the next checkpoint.</p>
+<div class="oca" data-oca data-phase="idle">
+  <p class="oca__live" data-oca-live aria-live="polite">
+    Mission idle. Objective one active.
+  </p>
+
+  <p class="oca__system">MISSION // OBJECTIVE CHAIN</p>
+
+  <div class="oca__stage" data-oca-stage>
+    <ol class="oca__chain" data-oca-chain aria-label="Objective chain">
+      <li class="oca__node" data-oca-node data-index="0" data-state="current">
+        <span class="oca__node-dot">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path class="oca__check" fill="none" stroke="currentColor" stroke-width="2.5" d="M5 12l5 5 9-10" />
+          </svg>
+        </span>
+        <span class="oca__node-label">OBJ 1</span>
+      </li>
+      <li class="oca__link" data-oca-link data-index="0">
+        <span class="oca__pulse" data-oca-pulse></span>
+      </li>
+      <li class="oca__node" data-oca-node data-index="1" data-state="pending">
+        <span class="oca__node-dot">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path class="oca__check" fill="none" stroke="currentColor" stroke-width="2.5" d="M5 12l5 5 9-10" />
+          </svg>
+        </span>
+        <span class="oca__node-label">OBJ 2</span>
+      </li>
+      <li class="oca__link" data-oca-link data-index="1">
+        <span class="oca__pulse" data-oca-pulse></span>
+      </li>
+      <li class="oca__node" data-oca-node data-index="2" data-state="pending">
+        <span class="oca__node-dot">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path class="oca__check" fill="none" stroke="currentColor" stroke-width="2.5" d="M5 12l5 5 9-10" />
+          </svg>
+        </span>
+        <span class="oca__node-label">OBJ 3</span>
+      </li>
+      <li class="oca__link" data-oca-link data-index="2">
+        <span class="oca__pulse" data-oca-pulse></span>
+      </li>
+      <li class="oca__node" data-oca-node data-index="3" data-state="pending">
+        <span class="oca__node-dot">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path class="oca__check" fill="none" stroke="currentColor" stroke-width="2.5" d="M5 12l5 5 9-10" />
+          </svg>
+        </span>
+        <span class="oca__node-label">OBJ 4</span>
+      </li>
+    </ol>
+
+    <p class="oca__status" data-oca-status>IN PROGRESS</p>
+    <p class="oca__hint" data-oca-hint>Press Run to advance the chain.</p>
   </div>
-  <div class="oca3__controls">
-    <button type="button" class="oca3__btn oca3__btn--primary" data-oca3-run>Advance</button>
-    <button type="button" class="oca3__btn" data-oca3-replay>Replay</button>
+
+  <div class="oca__controls">
+    <button type="button" class="oca__btn oca__btn--primary" data-oca-run>Run</button>
+    <button type="button" class="oca__btn" data-oca-replay>Replay</button>
   </div>
 </div>

@@ -2,43 +2,40 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/parallel-worker-clones.schema.json",
   "title": "ParallelWorkerClones",
+  "description": "One job divides into three deterministic worker clones with independent progress, then recombines into a completed job.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "name",
-    "activeMs",
-    "settleMs",
-    "colours"
-  ],
+  "required": ["name", "workerCount", "splitMs", "workerDurationsMs", "recombineMs", "colours", "reducedMotion"],
   "properties": {
-    "name": {
-      "type": "string",
-      "const": "parallel-worker-clones"
+    "name": { "type": "string", "const": "parallel-worker-clones" },
+    "workerCount": { "type": "number", "const": 3 },
+    "splitMs": { "type": "number", "const": 120 },
+    "workerDurationsMs": {
+      "type": "array",
+      "items": { "type": "number" },
+      "minItems": 3,
+      "maxItems": 3,
+      "const": [300, 240, 360]
     },
-    "activeMs": {
-      "type": "number",
-      "const": 480
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
+    "recombineMs": { "type": "number", "const": 100 },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "ink",
-        "chakra"
-      ],
+      "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#101318"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9BD9"
-        }
+        "ink": { "type": "string", "const": "#101318" },
+        "parchment": { "type": "string", "const": "#E7DDC7" },
+        "chakra": { "type": "string", "const": "#3A9BD9" },
+        "olive": { "type": "string", "const": "#69745A" },
+        "off": { "type": "string", "const": "#F4F1E8" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateComplete"],
+      "properties": {
+        "immediateComplete": { "type": "boolean", "const": true }
       }
     }
   }

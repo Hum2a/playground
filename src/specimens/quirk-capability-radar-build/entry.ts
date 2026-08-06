@@ -34,16 +34,5 @@ export const quirkCapabilityRadarBuild: Specimen = {
 
     label: 'Capability radar build',
   },
-  integration: [
-    'Mount in a relative overflow-hidden frame.',
-    'Import demo.css verbatim; preserve fixed axis values in demo.js.',
-    'Call runQuirkCapabilityRadarBuild() on Analyse; reset via resetQuirkCapabilityRadarBuild().',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Analyse draws polygon to five fixed values deterministically',
-    'PROFILE LOCKED readout appears at completion',
-    'Replay resets polygon to center before rebuild',
-    'Reduced motion shows final polygon immediately',
-  ],
+
 }

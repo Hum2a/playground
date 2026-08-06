@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DEFAULT_CONTROLS, PreviewFrame } from '../harness'
-import type { Specimen } from '../specimens'
+import type { Specimen } from '../specimens/types'
 import { useFrameVisibility } from './useFrameVisibility'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
+import { useSpecimenPayload } from './useSpecimenPayload'
 import './contact-sheet.css'
 
 interface ContactSheetProps {
@@ -18,18 +19,19 @@ function ContactSheetCell({
   animate: boolean
 }) {
   const { ref, visible } = useFrameVisibility()
+  const { payload, loading } = useSpecimenPayload(specimen, visible)
 
   return (
     <div ref={ref} className="contact-sheet__cell">
-      {visible ? (
+      {visible && payload ? (
         <PreviewFrame
-          html={specimen.files.html}
-          css={specimen.files.css}
-          js={specimen.files.js}
+          html={payload.files.html}
+          css={payload.files.css}
+          js={payload.files.js}
           label={specimen.preview.label}
           width={specimen.preview.width}
           height={specimen.preview.height}
-          scaffold={specimen.preview.scaffold}
+          scaffold={payload.scaffold ?? specimen.preview.scaffold}
           controls={{
             ...DEFAULT_CONTROLS,
             background: specimen.preview.background,
@@ -45,6 +47,7 @@ function ContactSheetCell({
             aspectRatio: `${specimen.preview.width} / ${specimen.preview.height}`,
           }}
           aria-hidden
+          data-loading={loading || undefined}
         />
       )}
       <Link

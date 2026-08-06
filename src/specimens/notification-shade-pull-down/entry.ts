@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:760px;background:#0c1018;display:grid;place-items:center;padding:0.5rem;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const notificationShadePullDown: Specimen = {
   id: 'notification-shade-pull-down',
   ref: 'SPX-1637',
@@ -38,29 +26,13 @@ export const notificationShadePullDown: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, drag and detents preserved; settling snaps instantly.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
     height: 760,
     background: 'dark',
-    scaffold,
+
     label: 'Notification shade pull-down',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host.',
-    'Import demo.css verbatim; freeze max shade 620px and detents.',
-    'Wire resetNotificationShadePullDown on replay.',
-    'Quick controls reveal after 220px drag.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Shade follows direct pointer movement',
-    'At least three meaningful detents exist',
-    'Host remains visible beneath partial shade',
-    'Overdrag meets visible resistance',
-    'Upward drag from shade can dismiss it',
-    'Reduced motion: instant detent snap',
-  ],
+
 }

@@ -34,17 +34,5 @@ export const rivalCardsClash: Specimen = {
 
     label: 'Rival cards clash',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden frame.',
-    'Import demo.css verbatim; preserve 660ms clash and diagonal divider geometry.',
-    'Wire Clash trigger or call runRivalCardsClash(); reset via resetRivalCardsClash() on replay.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion with instant settled state.',
-  ],
-  acceptance: [
-    'Clash trigger runs one deterministic sequence: idle → clash → READY',
-    'Two cards meet at a central diagonal divider without escaping the arena clip',
-    'Replay resets classes and timers before rerunning',
-    'Reduced motion shows final READY composition immediately',
-    'No external assets, storage, parent access, or network',
-  ],
+
 }

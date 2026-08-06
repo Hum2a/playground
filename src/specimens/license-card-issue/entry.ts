@@ -34,13 +34,5 @@ export const licenseCardIssue: Specimen = {
 
     label: 'License card issue',
   },
-  integration: [
-    'ISSUE runs staged photo → data → seal sequence.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Three construction stages end at VALID seal',
-    'RESET returns blank card',
-    'Reduced motion shows complete card immediately',
-  ],
+
 }

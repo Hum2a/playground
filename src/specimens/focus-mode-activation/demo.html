@@ -1,17 +1,37 @@
-<div class="fma1" data-fma1 data-phase="idle">
-  <p class="fma1__live" data-fma1-live aria-live="polite">Focus Mode Activation. Idle.</p>
-  <p class="fma1__system">NR // NR-145</p>
-  <div class="fma1__stage" data-fma1-stage>
-    <div class="fma1__viz" data-fma1-viz aria-hidden="true">
-      <span class="fma1__mark fma1__mark--a"></span>
-      <span class="fma1__mark fma1__mark--b"></span>
-      <span class="fma1__mark fma1__mark--c"></span>
+<div class="fma" data-fma data-phase="idle">
+  <p class="fma__live" data-fma-live aria-live="polite">
+    Normal view. Focus mode inactive.
+  </p>
+
+  <p class="fma__system">FOCUS // MODE</p>
+
+  <div class="fma__stage" data-fma-stage>
+    <div class="fma__field">
+      <div class="fma__periphery" aria-hidden="true">
+        <span class="fma__dot fma__dot--1"></span>
+        <span class="fma__dot fma__dot--2"></span>
+        <span class="fma__dot fma__dot--3"></span>
+        <span class="fma__dot fma__dot--4"></span>
+        <span class="fma__dot fma__dot--5"></span>
+        <span class="fma__dot fma__dot--6"></span>
+      </div>
+
+      <span class="fma__corner fma__corner--tl" aria-hidden="true"></span>
+      <span class="fma__corner fma__corner--tr" aria-hidden="true"></span>
+      <span class="fma__corner fma__corner--bl" aria-hidden="true"></span>
+      <span class="fma__corner fma__corner--br" aria-hidden="true"></span>
+
+      <span class="fma__reticle" data-fma-reticle aria-hidden="true">
+        <span class="fma__crosshair fma__crosshair--h"></span>
+        <span class="fma__crosshair fma__crosshair--v"></span>
+      </span>
     </div>
-    <p class="fma1__status" data-fma1-status>IDLE</p>
-    <p class="fma1__note" data-fma1-note>Angular focus brackets activate inspection mode.</p>
+    <p class="fma__status" data-fma-status>NORMAL</p>
+    <p class="fma__hint" data-fma-hint>Press Run to activate focus mode.</p>
   </div>
-  <div class="fma1__controls">
-    <button type="button" class="fma1__btn fma1__btn--primary" data-fma1-run>Focus</button>
-    <button type="button" class="fma1__btn" data-fma1-replay>Replay</button>
+
+  <div class="fma__controls">
+    <button type="button" class="fma__btn fma__btn--primary" data-fma-run>Run</button>
+    <button type="button" class="fma__btn" data-fma-replay>Replay</button>
   </div>
 </div>

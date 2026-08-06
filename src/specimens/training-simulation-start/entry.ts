@@ -34,19 +34,5 @@ export const trainingSimulationStart: Specimen = {
 
     label: 'Training simulation start',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host.',
-    'Import demo.css verbatim; keep countdown and burst timings.',
-    'Wire START via trainingSimulationStart.start(root).',
-    'Replay resets to standby before rerun.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
-  ],
-  acceptance: [
-    'READY countdown displays 3-2-1-GO sequence',
-    'READY panel explodes into telemetry grid',
-    'Tiles show PULSE, LOAD, and ACTIVE ALERT values',
-    'Replay returns to exact standby idle',
-    'Clipped to host; sandbox allow-scripts; no external assets',
-    'Reduced motion shows live telemetry immediately',
-  ],
+
 }

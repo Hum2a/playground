@@ -34,17 +34,5 @@ export const objectiveUpdateSlash: Specimen = {
 
     label: 'Objective list',
   },
-  integration: [
-    'Mount in a relative host; import demo.css verbatim.',
-    'Wire Advance / Replay to runObjectiveUpdateSlash / replayObjectiveUpdateSlash.',
-    'Slash 280ms then snap 220ms; total hold 1150ms.',
-    'Honour both reduced-motion triggers with instant final state.',
-  ],
-  acceptance: [
-    'TARGET receives visible diagonal slash',
-    'ESCORT becomes active with snap emphasis',
-    'TARGET dims to completed state',
-    'Replay returns to initial TARGET-active layout',
-    'Reduced motion: slash and active swap appear instantly',
-  ],
+
 }

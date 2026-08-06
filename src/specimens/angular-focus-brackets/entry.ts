@@ -34,16 +34,5 @@ export const angularFocusBrackets: Specimen = {
 
     label: 'Angular focus brackets',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden frame.',
-    'Import demo.css verbatim; wire Focus trigger or runAngularFocusBrackets().',
-    'Reset via resetAngularFocusBrackets() on replay.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Focus trigger snaps four brackets onto the target card',
-    'Locked state uses accent bracket colour and outline',
-    'Replay retracts brackets deterministically',
-    'Reduced motion shows locked brackets immediately',
-  ],
+
 }

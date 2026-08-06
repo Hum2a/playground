@@ -1,17 +1,39 @@
-<div class="csm2" data-csm2 data-phase="idle">
-  <p class="csm2__live" data-csm2-live aria-live="polite">Chakra Signature Match. Idle.</p>
-  <p class="csm2__system">NR // NR-167</p>
-  <div class="csm2__stage" data-csm2-stage>
-    <div class="csm2__viz" data-csm2-viz aria-hidden="true">
-      <span class="csm2__mark csm2__mark--a"></span>
-      <span class="csm2__mark csm2__mark--b"></span>
-      <span class="csm2__mark csm2__mark--c"></span>
+<div class="csm" data-csm data-phase="idle">
+  <p class="csm__live" data-csm-live aria-live="polite">
+    Comparison idle. Signature unmatched.
+  </p>
+
+  <p class="csm__system">SCAN // SIGNATURE MATCH</p>
+
+  <div class="csm__stage" data-csm-stage>
+    <svg class="csm__reference" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <polyline points="10,60 30,30 50,45 70,15 90,50" fill="none" />
+    </svg>
+
+    <div class="csm__bars" data-csm-bars>
+      <div class="csm__bar" data-csm-bar data-index="0">
+        <div class="csm__bar-fill" data-csm-fill data-target="40"></div>
+      </div>
+      <div class="csm__bar" data-csm-bar data-index="1">
+        <div class="csm__bar-fill" data-csm-fill data-target="70"></div>
+      </div>
+      <div class="csm__bar" data-csm-bar data-index="2">
+        <div class="csm__bar-fill" data-csm-fill data-target="55"></div>
+      </div>
+      <div class="csm__bar" data-csm-bar data-index="3">
+        <div class="csm__bar-fill" data-csm-fill data-target="85"></div>
+      </div>
+      <div class="csm__bar" data-csm-bar data-index="4">
+        <div class="csm__bar-fill" data-csm-fill data-target="50"></div>
+      </div>
     </div>
-    <p class="csm2__status" data-csm2-status>IDLE</p>
-    <p class="csm2__note" data-csm2-note>A signature waveform locks onto a matching profile.</p>
+
+    <p class="csm__status" data-csm-status>IDLE</p>
+    <p class="csm__hint" data-csm-hint>Press Run to compare signatures.</p>
   </div>
-  <div class="csm2__controls">
-    <button type="button" class="csm2__btn csm2__btn--primary" data-csm2-run>Match</button>
-    <button type="button" class="csm2__btn" data-csm2-replay>Replay</button>
+
+  <div class="csm__controls">
+    <button type="button" class="csm__btn csm__btn--primary" data-csm-run>Run</button>
+    <button type="button" class="csm__btn" data-csm-replay>Replay</button>
   </div>
 </div>

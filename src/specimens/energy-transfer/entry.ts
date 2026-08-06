@@ -34,18 +34,5 @@ export const energyTransfer: Specimen = {
 
     label: 'Energy transfer',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden host (~420×320).',
-    'Import demo.css verbatim; freeze path 280ms, travel 500ms, hit 320ms.',
-    'Wire runEnergyTransfer / resetEnergyTransfer / replayEnergyTransfer.',
-    'Honour both reduced-motion triggers with immediate TRANSFERRED state.',
-  ],
-  acceptance: [
-    'TRANSFER illuminates path then sends one packet source → target',
-    'Target IDLE and TRANSFERRED are visually distinct',
-    'Effect clips to specimen; no external resources',
-    'RESET restores idle target; replay is deterministic',
-    'Reduced motion shows TRANSFERRED immediately',
-    'Palette #38A3FF / #101820 / #F4F7FA / #FF4D35',
-  ],
+
 }

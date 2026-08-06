@@ -1,17 +1,37 @@
-<div class="csl8" data-csl8 data-phase="idle">
-  <p class="csl8__live" data-csl8-live aria-live="polite">Circular Seal Lock. Idle.</p>
-  <p class="csl8__system">NR // NR-032</p>
-  <div class="csl8__stage" data-csl8-stage>
-    <div class="csl8__viz" data-csl8-viz aria-hidden="true">
-      <span class="csl8__mark csl8__mark--a"></span>
-      <span class="csl8__mark csl8__mark--b"></span>
-      <span class="csl8__mark csl8__mark--c"></span>
-    </div>
-    <p class="csl8__status" data-csl8-status>IDLE</p>
-    <p class="csl8__note" data-csl8-note>Radial marks rotate into a locked circular seal.</p>
+<div class="csl" data-csl data-phase="idle">
+  <p class="csl__live" data-csl-live aria-live="polite">
+    Seal unlocked. Ring misaligned.
+  </p>
+
+  <p class="csl__system">FŪINJUTSU // SEAL LOCK</p>
+
+  <div class="csl__stage" data-csl-stage>
+    <svg class="csl__seal" viewBox="0 0 120 120" width="140" height="140" aria-hidden="true">
+      <circle class="csl__rim" cx="60" cy="60" r="52" />
+      <g class="csl__index-marks">
+        <line x1="60" y1="10" x2="60" y2="20" transform="rotate(0 60 60)" />
+        <line x1="60" y1="10" x2="60" y2="20" transform="rotate(60 60 60)" />
+        <line x1="60" y1="10" x2="60" y2="20" transform="rotate(120 60 60)" />
+        <line x1="60" y1="10" x2="60" y2="20" transform="rotate(180 60 60)" />
+        <line x1="60" y1="10" x2="60" y2="20" transform="rotate(240 60 60)" />
+        <line x1="60" y1="10" x2="60" y2="20" transform="rotate(300 60 60)" />
+      </g>
+      <g class="csl__ring" data-csl-ring>
+        <line class="csl__mark" x1="60" y1="14" x2="60" y2="30" transform="rotate(0 60 60)" />
+        <line class="csl__mark" x1="60" y1="14" x2="60" y2="30" transform="rotate(60 60 60)" />
+        <line class="csl__mark" x1="60" y1="14" x2="60" y2="30" transform="rotate(120 60 60)" />
+        <line class="csl__mark" x1="60" y1="14" x2="60" y2="30" transform="rotate(180 60 60)" />
+        <line class="csl__mark" x1="60" y1="14" x2="60" y2="30" transform="rotate(240 60 60)" />
+        <line class="csl__mark" x1="60" y1="14" x2="60" y2="30" transform="rotate(300 60 60)" />
+      </g>
+      <circle class="csl__core" data-csl-core cx="60" cy="60" r="15" />
+    </svg>
+    <p class="csl__status" data-csl-status>UNLOCKED</p>
+    <p class="csl__hint" data-csl-hint>Press Run to rotate the ring into alignment.</p>
   </div>
-  <div class="csl8__controls">
-    <button type="button" class="csl8__btn csl8__btn--primary" data-csl8-run>Lock</button>
-    <button type="button" class="csl8__btn" data-csl8-replay>Replay</button>
+
+  <div class="csl__controls">
+    <button type="button" class="csl__btn csl__btn--primary" data-csl-run>Run</button>
+    <button type="button" class="csl__btn" data-csl-replay>Replay</button>
   </div>
 </div>

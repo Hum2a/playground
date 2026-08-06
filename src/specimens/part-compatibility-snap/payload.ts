@@ -8,6 +8,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside relative overflow-hidden host.',
+    'Import demo.css verbatim; freeze 520ms snap translation.',
+    'Call runPartSnap() from SNAP.',
+    'Use reset/replay for harness restart.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'MODULE-3 starts offset from SLOT A',
+    'Magnetic highlight appears on slot before snap',
+    'Part locks into slot at settle with checkmark',
+    'Replay restores initial positions',
+    'Reduced motion jumps to snapped state',
+    'Sandbox-safe with no external resources',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:280px;border:2px solid #101820;background:#F4F7FA;display:grid;place-items:center;padding:0.5rem;">
   {{specimen}}

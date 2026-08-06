@@ -1,17 +1,32 @@
-<div class="hscr6" data-hscr6 data-phase="idle">
-  <p class="hscr6__live" data-hscr6-live aria-live="polite">High-Speed Card Relocation. Idle.</p>
-  <p class="hscr6__system">NR // NR-067</p>
-  <div class="hscr6__stage" data-hscr6-stage>
-    <div class="hscr6__viz" data-hscr6-viz aria-hidden="true">
-      <span class="hscr6__mark hscr6__mark--a"></span>
-      <span class="hscr6__mark hscr6__mark--b"></span>
-      <span class="hscr6__mark hscr6__mark--c"></span>
+<div class="hcr" data-hcr data-phase="idle">
+  <p class="hcr__live" data-hcr-live aria-live="polite">
+    Idle. Card resting in slot A.
+  </p>
+
+  <p class="hcr__system">CARD // RELOCATE</p>
+
+  <div class="hcr__stage" data-hcr-stage>
+    <div class="hcr__track" data-hcr-track>
+      <div class="hcr__slot hcr__slot--a" data-hcr-slot-a aria-label="Slot A occupied">
+        <span class="hcr__slot-label">SLOT A</span>
+      </div>
+      <div class="hcr__slot hcr__slot--b" data-hcr-slot-b aria-label="Slot B empty">
+        <span class="hcr__slot-label">SLOT B</span>
+      </div>
+
+      <div class="hcr__ghosts" data-hcr-ghosts aria-hidden="true"></div>
+
+      <article class="hcr__card" data-hcr-card aria-hidden="true">
+        <p class="hcr__card-title">FILE.001</p>
+      </article>
     </div>
-    <p class="hscr6__status" data-hscr6-status>IDLE</p>
-    <p class="hscr6__note" data-hscr6-note>A card leaves an afterimage and arrives in another slot.</p>
+
+    <p class="hcr__status" data-hcr-status>SLOT A</p>
+    <p class="hcr__hint" data-hcr-hint>Press Run to relocate at speed.</p>
   </div>
-  <div class="hscr6__controls">
-    <button type="button" class="hscr6__btn hscr6__btn--primary" data-hscr6-run>Relocate</button>
-    <button type="button" class="hscr6__btn" data-hscr6-replay>Replay</button>
+
+  <div class="hcr__controls">
+    <button type="button" class="hcr__btn hcr__btn--primary" data-hcr-run>Run</button>
+    <button type="button" class="hcr__btn" data-hcr-replay>Replay</button>
   </div>
 </div>

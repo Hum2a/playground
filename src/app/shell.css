@@ -91,6 +91,21 @@
   padding-right: max(var(--gutter-inline), env(safe-area-inset-right, 0px));
 }
 
+.route-fallback {
+  /* Reserve first-viewport catalogue space so Suspense → sheet does not CLS. */
+  min-height: min(70vh, 36rem);
+  padding: var(--space-5) 0;
+  color: var(--pewter);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.route-fallback__label {
+  display: block;
+}
+
 .shell__placeholder {
   color: var(--pewter);
   font-size: var(--text-xs);

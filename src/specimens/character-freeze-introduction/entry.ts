@@ -35,15 +35,5 @@ export const characterFreezeIntroduction: Specimen = {
 
     label: 'Character freeze introduction',
   },
-  integration: [
-    'Abstract polygon silhouette only — no character likeness.',
-    'Approach 280ms, freeze 140ms, card 420ms; wire run/reset/replay APIs.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Start runs approach → freeze → card sequence',
-    'Final ANALYST card and frozen silhouette readable',
-    'Replay resets to idle',
-    'Reduced motion shows final pose immediately',
-  ],
+
 }

@@ -1,17 +1,34 @@
-<div class="stpt5" data-stpt5 data-phase="idle">
-  <p class="stpt5__live" data-stpt5-live aria-live="polite">Scroll-to-Panel Transform. Idle.</p>
-  <p class="stpt5__system">NR // NR-023</p>
-  <div class="stpt5__stage" data-stpt5-stage>
-    <div class="stpt5__viz" data-stpt5-viz aria-hidden="true">
-      <span class="stpt5__mark stpt5__mark--a"></span>
-      <span class="stpt5__mark stpt5__mark--b"></span>
-      <span class="stpt5__mark stpt5__mark--c"></span>
+<div class="stp" data-stp data-phase="idle">
+  <p class="stp__live" data-stp-live aria-live="polite">
+    Scroll token collapsed. Panel hidden.
+  </p>
+
+  <p class="stp__system">SCROLL // PANEL MORPH</p>
+
+  <div class="stp__stage" data-stp-stage>
+    <div class="stp__morph" data-stp-morph>
+      <span class="stp__token" data-stp-token aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            d="M6 4h9l4 4v12H6zM15 4v4h4"
+          />
+        </svg>
+      </span>
+      <div class="stp__panel-content" data-stp-panel-content aria-hidden="true">
+        <p class="stp__panel-eyebrow">SCROLL // OPENED</p>
+        <p class="stp__panel-title">Forbidden Technique Record</p>
+        <p class="stp__panel-body">Contents unsealed. Handle with clearance.</p>
+      </div>
     </div>
-    <p class="stpt5__status" data-stpt5-status>IDLE</p>
-    <p class="stpt5__note" data-stpt5-note>A compact scroll token morphs into a readable content panel.</p>
+    <p class="stp__status" data-stp-status>SEALED</p>
+    <p class="stp__hint" data-stp-hint>Press Run to unseal the scroll into a panel.</p>
   </div>
-  <div class="stpt5__controls">
-    <button type="button" class="stpt5__btn stpt5__btn--primary" data-stpt5-run>Transform</button>
-    <button type="button" class="stpt5__btn" data-stpt5-replay>Replay</button>
+
+  <div class="stp__controls">
+    <button type="button" class="stp__btn stp__btn--primary" data-stp-run>Run</button>
+    <button type="button" class="stp__btn" data-stp-replay>Replay</button>
   </div>
 </div>

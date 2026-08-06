@@ -24,3 +24,5 @@ Smoke floor: catalogue plate count, clipboard copy non-empty, detail five tabs, 
 ## Performance
 
 Lighthouse mobile `/` with sheet paused (reduced motion) ≥ **90**. Fix frame mounting before bundle size.
+
+Specimen HTML/CSS/JS/spec/contract live in per-folder `payload.ts` chunks loaded via explicit `loadPayload` (never `import.meta.glob`). Routes are `React.lazy`-split so Shell paints before specimen meta (entry `modulePreload` skips Catalogue/harness/payloads). PreviewFrame sizes with CSS container queries (no post-paint JS scale). Fonts load after first paint. Use `npm run analyze` after build to inspect chunk sizes.

@@ -1,17 +1,33 @@
-<div class="msu1" data-msu1 data-phase="idle">
-  <p class="msu1__live" data-msu1-live aria-live="polite">Mission Scroll Unroll. Idle.</p>
-  <p class="msu1__system">NR // NR-022</p>
-  <div class="msu1__stage" data-msu1-stage>
-    <div class="msu1__viz" data-msu1-viz aria-hidden="true">
-      <span class="msu1__mark msu1__mark--a"></span>
-      <span class="msu1__mark msu1__mark--b"></span>
-      <span class="msu1__mark msu1__mark--c"></span>
+<div class="msu" data-msu data-phase="idle">
+  <p class="msu__live" data-msu-live aria-live="polite">
+    Mission scroll rolled. Briefing hidden.
+  </p>
+
+  <p class="msu__system">MISSION // SCROLL</p>
+
+  <div class="msu__stage" data-msu-stage>
+    <div class="msu__scroll" data-msu-scroll>
+      <div class="msu__cap msu__cap--top" aria-hidden="true"></div>
+      <div class="msu__body" data-msu-body>
+        <div class="msu__sheet">
+          <p class="msu__line msu__line--rank" data-msu-line data-index="0">RANK B</p>
+          <p class="msu__line msu__line--title" data-msu-line data-index="1">
+            Retrieve the Sealed Scroll
+          </p>
+          <div class="msu__rule" data-msu-line data-index="2"></div>
+          <p class="msu__line msu__line--brief" data-msu-line data-index="3">
+            Escort · Recon · No engagement
+          </p>
+        </div>
+      </div>
+      <div class="msu__cap msu__cap--bottom" aria-hidden="true"></div>
     </div>
-    <p class="msu1__status" data-msu1-status>IDLE</p>
-    <p class="msu1__note" data-msu1-note>A rolled mission scroll expands to reveal briefing content.</p>
+    <p class="msu__status" data-msu-status>ROLLED</p>
+    <p class="msu__hint" data-msu-hint>Press Run to unroll the mission scroll.</p>
   </div>
-  <div class="msu1__controls">
-    <button type="button" class="msu1__btn msu1__btn--primary" data-msu1-run>Unroll</button>
-    <button type="button" class="msu1__btn" data-msu1-replay>Replay</button>
+
+  <div class="msu__controls">
+    <button type="button" class="msu__btn msu__btn--primary" data-msu-run>Run</button>
+    <button type="button" class="msu__btn" data-msu-replay>Replay</button>
   </div>
 </div>

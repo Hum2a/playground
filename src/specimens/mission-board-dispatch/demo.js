@@ -1,21 +1,34 @@
 /**
- * Mission Board Dispatch — A mission card dispatches from the board to an assignee.
+ * Mission Board Dispatch — a job card travels from the unassigned column into a team lane.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const TRAVEL_MS = 260
+const SETTLE_MS = 200
+const TOTAL_MS = TRAVEL_MS + SETTLE_MS // ~460ms principal sequence
 
 let busy = false
-/** @type {number[]} */
-let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-mbd2]') }
+function rootEl() {
+  return document.querySelector('[data-mbd]')
+}
+
+function cardEl() {
+  return document.querySelector('[data-mbd-card]')
+}
+
+function targetEl() {
+  return document.querySelector('[data-mbd-target]')
+}
+
+let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +42,99 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-mbd2-live]')
+  const el = document.querySelector('[data-mbd-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-mbd2-status]')
+  const el = document.querySelector('[data-mbd-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-mbd2-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-mbd-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-mbd2-run], [data-mbd2-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-mbd-run], [data-mbd-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function measureOffset() {
+  const card = cardEl()
+  const target = targetEl()
+  if (!card || !target) return { dx: 0, dy: 0 }
+  const cardRect = card.getBoundingClientRect()
+  const targetRect = target.getBoundingClientRect()
+  const dx =
+    targetRect.left + targetRect.width / 2 - (cardRect.left + cardRect.width / 2)
+  const dy =
+    targetRect.top + targetRect.height / 2 - (cardRect.top + cardRect.height / 2)
+  return { dx, dy }
+}
+
+function applyOffset() {
+  const card = cardEl()
+  const { dx, dy } = measureOffset()
+  card?.style.setProperty('--mbd-dx', `${dx}px`)
+  card?.style.setProperty('--mbd-dy', `${dy}px`)
+}
+
+function showResolved() {
+  const card = cardEl()
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A mission card dispatches from the board to an assignee. Resolved.')
-  setLive('Mission Board Dispatch. Resolved.')
+  card?.setAttribute('data-settle', 'true')
+  setStatus('ASSIGNED')
+  setHint('Job dispatched.')
+  setLive('Job card dispatched to the team lane.')
 }
 
 function resetVisual() {
+  const card = cardEl()
+  card?.removeAttribute('data-settle')
+  card?.style.setProperty('--mbd-dx', '0px')
+  card?.style.setProperty('--mbd-dy', '0px')
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A mission card dispatches from the board to an assignee.')
-  setLive('Mission Board Dispatch. Idle.')
+  setStatus('UNASSIGNED')
+  setHint('Press Run to dispatch the job.')
+  setLive('Job card unassigned on the board.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the full dispatch sequence.
+ * @returns {Promise<void>}
+ */
 export function runMissionBoardDispatch() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    applyOffset()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
+  applyOffset()
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Mission Board Dispatch. Active.')
+  setStatus('DISPATCHING')
+  setLive('Job card dispatching to the team lane.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
+    later(TRAVEL_MS, () => {
       later(SETTLE_MS, () => {
+        showResolved()
         busy = false
         setButtons(true)
         resolve()
@@ -110,8 +160,12 @@ export async function replayMissionBoardDispatch() {
 }
 
 function bindUi() {
-  document.querySelector('[data-mbd2-run]')?.addEventListener('click', () => { void runMissionBoardDispatch() })
-  document.querySelector('[data-mbd2-replay]')?.addEventListener('click', () => { void replayMissionBoardDispatch() })
+  document.querySelector('[data-mbd-run]')?.addEventListener('click', () => {
+    void runMissionBoardDispatch()
+  })
+  document.querySelector('[data-mbd-replay]')?.addEventListener('click', () => {
+    void replayMissionBoardDispatch()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
@@ -119,5 +173,6 @@ function bindUi() {
   })
 }
 
+void TOTAL_MS
 bindUi()
 resetMissionBoardDispatch()

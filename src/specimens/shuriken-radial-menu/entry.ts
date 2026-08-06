@@ -4,10 +4,11 @@ export const shurikenRadialMenu: Specimen = {
   id: 'shuriken-radial-menu',
   ref: 'SPX-2415',
   title: 'Shuriken Radial Menu',
-  blurb: 'Four-point geometry rotates open into action sectors.',
+  blurb:
+    'An abstract four-point shuriken glyph rotates open into four radial action sectors, then folds back closed.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — shuriken & projectile motion',
   },
   facets: {
     kind: 'interaction',
@@ -18,19 +19,19 @@ export const shurikenRadialMenu: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['menu'],
+  tags: ['menu', 'radial', 'rotation'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four sectors appear open immediately with no rotation.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 380,
     background: 'dark',
-    label: 'Shuriken Radial Menu',
+    label: 'Shuriken radial menu',
   },
 }

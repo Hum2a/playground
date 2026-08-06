@@ -1,6 +1,6 @@
 import type { HarnessControls } from '../harness'
 import { DEFAULT_CONTROLS } from '../harness'
-import type { Specimen } from '../specimens'
+import type { SpecimenResolved } from '../specimens'
 import { createStarterFiles } from './starter'
 
 export interface PlaygroundDraft {
@@ -90,7 +90,7 @@ export function createDraft(name = 'Untitled draft'): PlaygroundDraft {
 }
 
 /** New draft seeded from a catalogue specimen (same contract as `?fork=`). */
-export function createForkDraft(specimen: Specimen): PlaygroundDraft {
+export function createForkDraft(specimen: SpecimenResolved): PlaygroundDraft {
   const draft = createDraft(`Fork: ${specimen.title}`)
   return saveDraft({
     ...draft,

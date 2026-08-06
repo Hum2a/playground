@@ -1,21 +1,30 @@
 /**
- * Three-Person Cell Formation — Three nodes snap into a cell formation.
+ * Three-Person Cell Formation — three scattered nodes snap into a triangular cell and link.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const SNAP_MS = 260
+const LINK_MS = 200
+const TOTAL_MS = SNAP_MS + LINK_MS // ~460ms principal sequence
 
 let busy = false
-/** @type {number[]} */
-let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-tpcf7]') }
+function rootEl() {
+  return document.querySelector('[data-tpcf]')
+}
+
+function nodes() {
+  return Array.from(document.querySelectorAll('[data-tpcf-node]'))
+}
+
+let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +38,76 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-tpcf7-live]')
+  const el = document.querySelector('[data-tpcf-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-tpcf7-status]')
+  const el = document.querySelector('[data-tpcf-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-tpcf7-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-tpcf-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-tpcf7-run], [data-tpcf7-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-tpcf-run], [data-tpcf-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function showResolved() {
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('Three nodes snap into a cell formation. Resolved.')
-  setLive('Three-Person Cell Formation. Resolved.')
+  nodes().forEach((node) => {
+    node.setAttribute('data-pulse', 'true')
+    later(LINK_MS, () => node.removeAttribute('data-pulse'))
+  })
+  setStatus('FORMED')
+  setHint('Cell formed and linked.')
+  setLive('Three-person cell formed and linked.')
 }
 
 function resetVisual() {
+  nodes().forEach((node) => node.removeAttribute('data-pulse'))
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('Three nodes snap into a cell formation.')
-  setLive('Three-Person Cell Formation. Idle.')
+  setStatus('SCATTERED')
+  setHint('Press Run to form the cell.')
+  setLive('Cell scattered. Three profiles unformed.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the full formation sequence.
+ * @returns {Promise<void>}
+ */
 export function runThreePersonCellFormation() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Three-Person Cell Formation. Active.')
+  setStatus('FORMING')
+  setLive('Profiles snapping into formation.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
+    later(SNAP_MS, () => {
+      later(LINK_MS, () => {
+        showResolved()
         busy = false
         setButtons(true)
         resolve()
@@ -110,8 +133,12 @@ export async function replayThreePersonCellFormation() {
 }
 
 function bindUi() {
-  document.querySelector('[data-tpcf7-run]')?.addEventListener('click', () => { void runThreePersonCellFormation() })
-  document.querySelector('[data-tpcf7-replay]')?.addEventListener('click', () => { void replayThreePersonCellFormation() })
+  document.querySelector('[data-tpcf-run]')?.addEventListener('click', () => {
+    void runThreePersonCellFormation()
+  })
+  document.querySelector('[data-tpcf-replay]')?.addEventListener('click', () => {
+    void replayThreePersonCellFormation()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
@@ -119,5 +146,6 @@ function bindUi() {
   })
 }
 
+void TOTAL_MS
 bindUi()
 resetThreePersonCellFormation()

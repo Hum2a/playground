@@ -4,10 +4,11 @@ export const techniqueMasteryTree: Specimen = {
   id: 'technique-mastery-tree',
   ref: 'SPX-2767',
   title: 'Technique Mastery Tree',
-  blurb: 'A skill-tree node unlocks along a mastery path.',
+  blurb:
+    'Four skill nodes unlock one-by-one along a branching path as a technique is mastered, filling the connecting path as it goes.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / mentor-training-progression — skill tree',
   },
   facets: {
     kind: 'interaction',
@@ -18,19 +19,19 @@ export const techniqueMasteryTree: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['mastery'],
+  tags: ['mastery', 'skill-tree', 'progression'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four nodes appear already unlocked as MASTERED.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Technique Mastery Tree',
+    label: 'Technique mastery tree',
   },
 }

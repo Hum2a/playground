@@ -111,6 +111,7 @@ import { deductionLockIn } from './deduction-lock-in/entry'
 import { delayedDamageBar } from './delayed-damage-bar/entry'
 import { deletionGuillotine } from './deletion-guillotine/entry'
 import { desktopSpaceSwipe } from './desktop-space-swipe/entry'
+import { detailsPanelExpand } from './details-panel-expand/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dialogMaterialise } from './dialog-materialise/entry'
 import { discoveryTearOpen } from './discovery-tear-open/entry'
@@ -556,6 +557,7 @@ export const specimens: Specimen[] = [
   delayedDamageBar,
   deletionGuillotine,
   desktopSpaceSwipe,
+  detailsPanelExpand,
   diagnosticBootSequence,
   dialogMaterialise,
   discoveryTearOpen,

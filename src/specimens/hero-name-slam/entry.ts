@@ -34,15 +34,5 @@ export const heroNameSlam: Specimen = {
 
     label: 'Hero name slam',
   },
-  integration: [
-    'Mount in overflow-hidden host; slam 740ms, settle 320ms.',
-    'Wire runHeroNameSlam / resetHeroNameSlam / replayHeroNameSlam.',
-    'Generic codename only — no franchise names.',
-  ],
-  acceptance: [
-    'Assign triggers slam from off-screen to settled UNIT 07',
-    'Brackets and role copy appear in final state',
-    'Replay resets to idle hidden name',
-    'Reduced motion shows final assigned state immediately',
-  ],
+
 }

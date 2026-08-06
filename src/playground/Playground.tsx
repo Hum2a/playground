@@ -17,7 +17,7 @@ import {
   type HarnessControls,
   type PreviewFrameHandle,
 } from '../harness'
-import { getSpecimen, specimens, type Specimen } from '../specimens'
+import { getSpecimen, resolveSpecimen, specimens, type Specimen } from '../specimens'
 import {
   createDraft,
   createForkDraft,
@@ -121,19 +121,26 @@ export function Playground() {
     if (forkId) {
       const specimen = getSpecimen(forkId)
       if (specimen) {
-        try {
-          const next = createForkDraft(specimen)
-          setPreviewBase({
-            width: specimen.preview.width,
-            height: specimen.preview.height,
+        void resolveSpecimen(specimen)
+          .then((resolved) => {
+            try {
+              const next = createForkDraft(resolved)
+              setPreviewBase({
+                width: resolved.preview.width,
+                height: resolved.preview.height,
+              })
+              applyDraft(next)
+              refreshList()
+              setStorageError(null)
+            } catch (error) {
+              setStorageError(storageMessage(error))
+            }
+            window.history.replaceState(null, '', '/playground')
           })
-          applyDraft(next)
-          refreshList()
-          setStorageError(null)
-        } catch (error) {
-          setStorageError(storageMessage(error))
-        }
-        window.history.replaceState(null, '', '/playground')
+          .catch((error) => {
+            setStorageError(storageMessage(error))
+            window.history.replaceState(null, '', '/playground')
+          })
         return
       }
       window.history.replaceState(null, '', '/playground')
@@ -288,19 +295,25 @@ export function Playground() {
 
   const onForkFromCatalogue = (specimen: Specimen) => {
     flushSave()
-    try {
-      const next = createForkDraft(specimen)
-      setPreviewBase({
-        width: specimen.preview.width,
-        height: specimen.preview.height,
+    void resolveSpecimen(specimen)
+      .then((resolved) => {
+        try {
+          const next = createForkDraft(resolved)
+          setPreviewBase({
+            width: resolved.preview.width,
+            height: resolved.preview.height,
+          })
+          applyDraft(next)
+          refreshList()
+          setStorageError(null)
+          closeCatalogueDialog()
+        } catch (error) {
+          setStorageError(storageMessage(error))
+        }
       })
-      applyDraft(next)
-      refreshList()
-      setStorageError(null)
-      closeCatalogueDialog()
-    } catch (error) {
-      setStorageError(storageMessage(error))
-    }
+      .catch((error) => {
+        setStorageError(storageMessage(error))
+      })
   }
 
   const onDuplicate = () => {

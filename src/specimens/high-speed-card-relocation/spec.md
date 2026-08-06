@@ -1,13 +1,15 @@
 # High-Speed Card Relocation
 
-A card leaves an afterimage and arrives in another slot.
+A selected card leaves exactly two fading afterimages as it relocates at speed from slot A into slot B.
 
 ## Behaviour
 
-- Idle → active (~480ms) → done (held until reset/replay).
-- Reduced motion: immediate done.
+- Idle: card resting in slot A, status `SLOT A`.
+- Travelling: card slides to slot B (~200ms) while two afterimages spawn and fade (220ms / 150ms lifetimes).
+- Arrived: card settles in slot B, slot A labelled `EMPTY`, status `SLOT B`.
+- Reduced motion: card appears directly in slot B, no travel or afterimages.
 
 ## Freeze
 
-- Active: 480ms · settle: 160ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`
+- Travel: 200ms · ghost count: 2 (lifetimes 220ms / 150ms) · settle: 40ms
+- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`

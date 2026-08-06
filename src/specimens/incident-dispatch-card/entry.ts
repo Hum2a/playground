@@ -34,19 +34,5 @@ export const incidentDispatchCard: Specimen = {
 
     label: 'Ops dashboard',
   },
-  integration: [
-    'Mount inside relative overflow-hidden host (~260px tall).',
-    'Import demo.css verbatim; freeze 660ms slide and torn clip geometry.',
-    'Call runIncidentDispatch() from DISPATCH.',
-    'Use reset/replay helpers for deterministic harness restart.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Calm READY dashboard visible before trigger',
-    'Incident card slides in with torn edge geometry',
-    'Dashboard dims during dispatch',
-    'Replay restores initial calm state',
-    'Reduced motion shows card without slide',
-    'Sandbox-safe with no external resources',
-  ],
+
 }

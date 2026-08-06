@@ -1,21 +1,27 @@
 /**
- * Mission Scroll Unroll — A rolled mission scroll expands to reveal briefing content.
+ * Mission Scroll Unroll — rolled scroll expands then reveals briefing lines.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const UNROLL_MS = 480
+const LINE_STAGGER_MS = 70
+const LINE_START_MS = 220
+const SETTLE_MS = 90
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-msu1]') }
+function rootEl() {
+  return document.querySelector('[data-msu]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,66 +35,86 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-msu1-live]')
+  const el = document.querySelector('[data-msu-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-msu1-status]')
+  const el = document.querySelector('[data-msu-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-msu1-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-msu-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-msu1-run], [data-msu1-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-msu-run], [data-msu-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function lines() {
+  return Array.from(document.querySelectorAll('[data-msu-line]'))
+}
+
+function showResolved() {
+  lines().forEach((line) => line.setAttribute('data-visible', 'true'))
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A rolled mission scroll expands to reveal briefing content. Resolved.')
-  setLive('Mission Scroll Unroll. Resolved.')
+  setStatus('BRIEFED')
+  setHint('Briefing revealed.')
+  setLive('Mission scroll fully unrolled. Briefing revealed.')
 }
 
 function resetVisual() {
+  lines().forEach((line) => line.removeAttribute('data-visible'))
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A rolled mission scroll expands to reveal briefing content.')
-  setLive('Mission Scroll Unroll. Idle.')
+  setStatus('ROLLED')
+  setHint('Press Run to unroll the mission scroll.')
+  setLive('Mission scroll rolled. Briefing hidden.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the unroll + briefing reveal (demo Run).
+ * @returns {Promise<void>}
+ */
 export function runMissionScrollUnroll() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Mission Scroll Unroll. Active.')
+  setStatus('UNROLLING')
+  setLive('Unrolling mission scroll.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+    lines().forEach((line, i) => {
+      later(LINE_START_MS + i * LINE_STAGGER_MS, () => {
+        line.setAttribute('data-visible', 'true')
       })
+    })
+
+    const totalMs = Math.max(UNROLL_MS, LINE_START_MS + lines().length * LINE_STAGGER_MS)
+    later(totalMs + SETTLE_MS, () => {
+      showResolved()
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -110,8 +136,12 @@ export async function replayMissionScrollUnroll() {
 }
 
 function bindUi() {
-  document.querySelector('[data-msu1-run]')?.addEventListener('click', () => { void runMissionScrollUnroll() })
-  document.querySelector('[data-msu1-replay]')?.addEventListener('click', () => { void replayMissionScrollUnroll() })
+  document.querySelector('[data-msu-run]')?.addEventListener('click', () => {
+    void runMissionScrollUnroll()
+  })
+  document.querySelector('[data-msu-replay]')?.addEventListener('click', () => {
+    void replayMissionScrollUnroll()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

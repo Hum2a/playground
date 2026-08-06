@@ -34,19 +34,5 @@ export const heroAssignmentTransfer: Specimen = {
 
     label: 'Hero assignment',
   },
-  integration: [
-    'Mount inside relative overflow-hidden host.',
-    'Import demo.css verbatim; freeze 740ms chip transfer path.',
-    'Call runHeroAssignment() from ASSIGN.',
-    'Use reset/replay for deterministic harness restart.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'HERO-12 chip visibly travels toward incident slot',
-    'Slot highlights during transfer',
-    'Final state shows HERO-12 ASSIGNED in slot',
-    'Replay restores roster chip and empty slot',
-    'Reduced motion jumps to assigned state',
-    'Sandbox-safe with no external resources',
-  ],
+
 }

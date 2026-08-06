@@ -1,17 +1,27 @@
-<div class="ewb8" data-ewb8 data-phase="idle">
-  <p class="ewb8__live" data-ewb8-live aria-live="polite">Earth Wall Blocker. Idle.</p>
-  <p class="ewb8__system">NR // NR-127</p>
-  <div class="ewb8__stage" data-ewb8-stage>
-    <div class="ewb8__viz" data-ewb8-viz aria-hidden="true">
-      <span class="ewb8__mark ewb8__mark--a"></span>
-      <span class="ewb8__mark ewb8__mark--b"></span>
-      <span class="ewb8__mark ewb8__mark--c"></span>
+<div class="ewb" data-ewb data-phase="idle">
+  <p class="ewb__live" data-ewb-live aria-live="polite">
+    Zone exposed. Wall down.
+  </p>
+
+  <p class="ewb__system">WALL // BLOCK</p>
+
+  <div class="ewb__stage" data-ewb-stage>
+    <div class="ewb__field">
+      <p class="ewb__zone" data-ewb-zone>EXPOSED</p>
+      <div class="ewb__wall" data-ewb-wall aria-hidden="true">
+        <span class="ewb__slab ewb__slab--1"></span>
+        <span class="ewb__slab ewb__slab--2"></span>
+        <span class="ewb__slab ewb__slab--3"></span>
+        <span class="ewb__slab ewb__slab--4"></span>
+        <span class="ewb__slab ewb__slab--5"></span>
+      </div>
     </div>
-    <p class="ewb8__status" data-ewb8-status>IDLE</p>
-    <p class="ewb8__note" data-ewb8-note>A wall rises to block and protect a region.</p>
+    <p class="ewb__status" data-ewb-status>DOWN</p>
+    <p class="ewb__hint" data-ewb-hint>Press Run to raise the wall.</p>
   </div>
-  <div class="ewb8__controls">
-    <button type="button" class="ewb8__btn ewb8__btn--primary" data-ewb8-run>Raise</button>
-    <button type="button" class="ewb8__btn" data-ewb8-replay>Replay</button>
+
+  <div class="ewb__controls">
+    <button type="button" class="ewb__btn ewb__btn--primary" data-ewb-run>Run</button>
+    <button type="button" class="ewb__btn" data-ewb-replay>Replay</button>
   </div>
 </div>

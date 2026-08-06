@@ -8,6 +8,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount in overflow-hidden host; four shards use frozen clip-paths.',
+    'Wire runPanelBreak / resetPanelBreak / replayPanelBreak.',
+    'Break 480ms; settle 260ms; honour reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Run shatters ANALYSIS overlay into four shards',
+    'COMPLETE readable underneath after break',
+    'Replay resets overlay before rerun',
+    'Reduced motion skips shard translation',
+    'Effect clips to stage',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

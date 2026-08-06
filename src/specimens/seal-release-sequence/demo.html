@@ -1,17 +1,30 @@
-<div class="srs1" data-srs1 data-phase="idle">
-  <p class="srs1__live" data-srs1-live aria-live="polite">Seal Release Sequence. Idle.</p>
-  <p class="srs1__system">NR // NR-033</p>
-  <div class="srs1__stage" data-srs1-stage>
-    <div class="srs1__viz" data-srs1-viz aria-hidden="true">
-      <span class="srs1__mark srs1__mark--a"></span>
-      <span class="srs1__mark srs1__mark--b"></span>
-      <span class="srs1__mark srs1__mark--c"></span>
-    </div>
-    <p class="srs1__status" data-srs1-status>IDLE</p>
-    <p class="srs1__note" data-srs1-note>Concentric rings disengage outward to unlock content.</p>
+<div class="srs" data-srs data-phase="idle">
+  <p class="srs__live" data-srs-live aria-live="polite">
+    Seal engaged. Three rings locked.
+  </p>
+
+  <p class="srs__system">FŪINJUTSU // SEAL RELEASE</p>
+
+  <div class="srs__stage" data-srs-stage>
+    <svg class="srs__seal" viewBox="0 0 120 120" width="140" height="140" aria-hidden="true">
+      <circle class="srs__ring" data-srs-ring data-index="0" cx="60" cy="60" r="46" />
+      <circle class="srs__ring" data-srs-ring data-index="1" cx="60" cy="60" r="34" />
+      <circle class="srs__ring" data-srs-ring data-index="2" cx="60" cy="60" r="22" />
+      <g class="srs__icon srs__icon--locked" data-srs-locked-icon>
+        <rect x="50" y="58" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M53 58v-6a7 7 0 0 1 14 0v6" fill="none" stroke="currentColor" stroke-width="2" />
+      </g>
+      <g class="srs__icon srs__icon--open" data-srs-open-icon>
+        <rect x="50" y="58" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M53 58v-6a7 7 0 0 1 13.9-1.4" fill="none" stroke="currentColor" stroke-width="2" />
+      </g>
+    </svg>
+    <p class="srs__status" data-srs-status>ENGAGED</p>
+    <p class="srs__hint" data-srs-hint>Press Run to disengage the seal rings.</p>
   </div>
-  <div class="srs1__controls">
-    <button type="button" class="srs1__btn srs1__btn--primary" data-srs1-run>Release</button>
-    <button type="button" class="srs1__btn" data-srs1-replay>Replay</button>
+
+  <div class="srs__controls">
+    <button type="button" class="srs__btn srs__btn--primary" data-srs-run>Run</button>
+    <button type="button" class="srs__btn" data-srs-replay>Replay</button>
   </div>
 </div>

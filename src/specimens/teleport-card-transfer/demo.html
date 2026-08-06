@@ -1,17 +1,26 @@
-<div class="tct2" data-tct2 data-phase="idle">
-  <p class="tct2__live" data-tct2-live aria-live="polite">Teleport Card Transfer. Idle.</p>
-  <p class="tct2__system">NR // NR-334</p>
-  <div class="tct2__stage" data-tct2-stage>
-    <div class="tct2__viz" data-tct2-viz aria-hidden="true">
-      <span class="tct2__mark tct2__mark--a"></span>
-      <span class="tct2__mark tct2__mark--b"></span>
-      <span class="tct2__mark tct2__mark--c"></span>
+<div class="tct" data-tct data-phase="idle">
+  <p class="tct__live" data-tct-live aria-live="polite">
+    Card at source slot. Destination empty.
+  </p>
+
+  <p class="tct__system">SPACE-TIME // TRANSFER</p>
+
+  <div class="tct__stage" data-tct-stage>
+    <div class="tct__lane">
+      <div class="tct__slot tct__slot--source">
+        <span class="tct__aperture tct__aperture--source" data-tct-aperture-source aria-hidden="true"></span>
+        <span class="tct__card" data-tct-card>CARD</span>
+      </div>
+      <div class="tct__slot tct__slot--dest" data-tct-dest>
+        <span class="tct__aperture tct__aperture--dest" data-tct-aperture-dest aria-hidden="true"></span>
+      </div>
     </div>
-    <p class="tct2__status" data-tct2-status>IDLE</p>
-    <p class="tct2__note" data-tct2-note>A card teleports from source slot to destination.</p>
+    <p class="tct__status" data-tct-status>SOURCE</p>
+    <p class="tct__hint" data-tct-hint>Press Run to teleport the card.</p>
   </div>
-  <div class="tct2__controls">
-    <button type="button" class="tct2__btn tct2__btn--primary" data-tct2-run>Transfer</button>
-    <button type="button" class="tct2__btn" data-tct2-replay>Replay</button>
+
+  <div class="tct__controls">
+    <button type="button" class="tct__btn tct__btn--primary" data-tct-run>Run</button>
+    <button type="button" class="tct__btn" data-tct-replay>Replay</button>
   </div>
 </div>

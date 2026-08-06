@@ -34,17 +34,5 @@ export const heroAssignmentDrag: Specimen = {
 
     label: 'Hero assignment drag',
   },
-  integration: [
-    'Mount inside a relative overflow-hidden board.',
-    'Import demo.css verbatim; wire Assign trigger or runHeroAssignmentDrag().',
-    'Reset via resetHeroAssignmentDrag() on replay.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Assign trigger condenses card into proxy and moves it toward DISPATCH',
-    'Source card becomes dashed placeholder during assignment',
-    'Dispatch zone shows filled accent state on completion',
-    'Replay resets card, proxy, and zone deterministically',
-    'Reduced motion skips proxy animation',
-  ],
+
 }

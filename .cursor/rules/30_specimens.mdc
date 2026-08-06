@@ -10,7 +10,8 @@ One folder per specimen under `src/specimens/<id>/`:
 
 | File | Role |
 | --- | --- |
-| `entry.ts` | Metadata + `?raw` / JSON imports → `Specimen` |
+| `entry.ts` | Light metadata + `loadPayload: () => import('./payload')` |
+| `payload.ts` | `?raw` / JSON imports → default `SpecimenPayload` |
 | `demo.html` | Markup fragment (no `<html>`/`<body>`) |
 | `demo.css` | Portable styles (canonical artifact) |
 | `demo.style.txt` | Byte-identical twin of `demo.css` for Vitest |
@@ -18,7 +19,7 @@ One folder per specimen under `src/specimens/<id>/`:
 | `spec.md` | Human portable spec |
 | `contract.json` | Machine-readable contract |
 
-## Imports in `entry.ts`
+## Imports in `payload.ts`
 
 ```ts
 import css from './demo.style.txt?raw'  // ✅ Vitest-safe
@@ -26,6 +27,7 @@ import css from './demo.css?raw'        // ❌ returns "" under Vitest
 ```
 
 Keep `demo.css` and `demo.style.txt` in sync (`npm run spec:check` asserts this).
+Do **not** put `?raw` imports in `entry.ts` — that would re-inflate the catalogue bundle.
 
 ## Metadata
 

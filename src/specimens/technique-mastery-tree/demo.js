@@ -1,21 +1,28 @@
 /**
- * Technique Mastery Tree — A skill-tree node unlocks along a mastery path.
+ * Technique Mastery Tree — unlock four skill nodes in order along a filling path.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const NODE_COUNT = 4
+const STEP_MS = 150
+const SETTLE_MS = 100
+const TOTAL_MS = NODE_COUNT * STEP_MS + SETTLE_MS // ~700ms principal sequence
 
 let busy = false
+let unlocked = 0
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-tmt2]') }
+function rootEl() {
+  return document.querySelector('[data-tmt]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,67 +36,118 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-tmt2-live]')
+  const el = document.querySelector('[data-tmt-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-tmt2-status]')
+  const el = document.querySelector('[data-tmt-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-tmt2-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-tmt-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-tmt2-run], [data-tmt2-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-tmt-run], [data-tmt-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
+function nodes() {
+  return Array.from(document.querySelectorAll('[data-tmt-node]'))
+}
+
+function paths() {
+  return Array.from(document.querySelectorAll('[data-tmt-path]'))
+}
+
+function paintNodes(count, pulseIndex) {
+  nodes().forEach((node, i) => {
+    const on = i < count
+    node.setAttribute('data-unlocked', on ? 'true' : 'false')
+    node.setAttribute(
+      'aria-label',
+      on ? `Node ${i + 1} unlocked` : `Node ${i + 1} locked`,
+    )
+    if (pulseIndex === i) {
+      node.setAttribute('data-pulse', 'true')
+      later(STEP_MS, () => node.removeAttribute('data-pulse'))
+    } else {
+      node.removeAttribute('data-pulse')
+    }
+  })
+  paths().forEach((path, i) => {
+    path.setAttribute('data-filled', i < count - 1 ? 'true' : 'false')
+  })
+}
+
+function showResolved() {
+  unlocked = NODE_COUNT
+  paintNodes(NODE_COUNT, -1)
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A skill-tree node unlocks along a mastery path. Resolved.')
-  setLive('Technique Mastery Tree. Resolved.')
+  setStatus('MASTERED')
+  setHint('Technique mastered.')
+  setLive('Technique mastery tree complete. All four nodes unlocked.')
 }
 
 function resetVisual() {
+  unlocked = 0
+  paintNodes(0, -1)
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A skill-tree node unlocks along a mastery path.')
-  setLive('Technique Mastery Tree. Idle.')
+  setStatus('LOCKED')
+  setHint('Press Run or keys 1–4 in order.')
+  setLive('Technique tree locked. Four nodes pending.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run full unlock sequence.
+ * @returns {Promise<void>}
+ */
 export function runTechniqueMasteryTree() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
+
   root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Technique Mastery Tree. Active.')
+  setStatus('UNLOCKING')
+  setLive('Unlocking technique nodes.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
-      })
-    })
+    let step = 0
+    const tick = () => {
+      if (step >= NODE_COUNT) {
+        later(SETTLE_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
+        return
+      }
+      unlocked = step + 1
+      paintNodes(unlocked, step)
+      setLive(`Node ${unlocked} of ${NODE_COUNT} unlocked.`)
+      step += 1
+      later(STEP_MS, tick)
+    }
+    tick()
   })
 }
 
@@ -109,9 +167,43 @@ export async function replayTechniqueMasteryTree() {
   await runTechniqueMasteryTree()
 }
 
+/**
+ * Manual key path: keys 1–4 in order unlock one node each.
+ * @param {number} index 0-based
+ */
+function unlockOne(index) {
+  const root = rootEl()
+  if (!root || busy || root.getAttribute('data-phase') === 'done') return
+  if (index !== unlocked) return
+  if (prefersReducedMotion()) {
+    showResolved()
+    return
+  }
+  root.setAttribute('data-phase', 'active')
+  setStatus('UNLOCKING')
+  unlocked = index + 1
+  paintNodes(unlocked, index)
+  setLive(`Node ${unlocked} of ${NODE_COUNT} unlocked.`)
+  if (unlocked >= NODE_COUNT) {
+    later(SETTLE_MS, () => showResolved())
+  }
+}
+
 function bindUi() {
-  document.querySelector('[data-tmt2-run]')?.addEventListener('click', () => { void runTechniqueMasteryTree() })
-  document.querySelector('[data-tmt2-replay]')?.addEventListener('click', () => { void replayTechniqueMasteryTree() })
+  document.querySelector('[data-tmt-run]')?.addEventListener('click', () => {
+    void runTechniqueMasteryTree()
+  })
+  document.querySelector('[data-tmt-replay]')?.addEventListener('click', () => {
+    void replayTechniqueMasteryTree()
+  })
+  window.addEventListener('keydown', (event) => {
+    if (event.metaKey || event.ctrlKey || event.altKey) return
+    const n = Number(event.key)
+    if (n >= 1 && n <= NODE_COUNT) {
+      event.preventDefault()
+      unlockOne(n - 1)
+    }
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
@@ -119,5 +211,6 @@ function bindUi() {
   })
 }
 
+void TOTAL_MS
 bindUi()
 resetTechniqueMasteryTree()

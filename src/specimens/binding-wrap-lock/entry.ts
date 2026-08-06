@@ -34,17 +34,5 @@ export const bindingWrapLock: Specimen = {
 
     label: 'Target card',
   },
-  integration: [
-    'Mount card in relative overflow-hidden host.',
-    'Wrap sequence 500ms; total 1150ms.',
-    'Wire Restrict / Replay to runBindingWrapLock.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Four strips wrap card from edges',
-    'LOCKED label appears at end',
-    'Card border shifts to accent lock state',
-    'Replay clears strips and lock',
-    'Reduced motion: instant locked state',
-  ],
+
 }

@@ -7,17 +7,18 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
+    'Mount inside a relative host (~420×300+).',
+    'Import demo.css verbatim; freeze flicker/handoff/settle timings from contract.json.',
     'Wire runBodyFlickerPageJump / resetBodyFlickerPageJump / replayBodyFlickerPageJump.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'View A flickers with directional streaks before an abrupt swap to view B',
+    'Idle, flickering, and arrived states are visually distinct',
+    'The swap itself is a hard handoff, not a crossfade',
+    'Replay resets to view A before rerunning',
+    'Reduced motion shows view B immediately with no streaks',
+    'No external assets; sandbox-safe; clipped to stage',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">

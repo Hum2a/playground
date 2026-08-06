@@ -1,21 +1,26 @@
 /**
- * Barrier Breach Alert — A perimeter fractures at a breach point with an alert.
+ * Barrier Breach Alert — an intact perimeter fractures at one fixed point.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const ALARM_MS = 700
+const SETTLE_MS = 60
+const TOTAL_MS = ALARM_MS + SETTLE_MS
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-bba0]') }
+function rootEl() {
+  return document.querySelector('[data-bba]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +34,71 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-bba0-live]')
+  const el = document.querySelector('[data-bba-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-bba0-status]')
+  const el = document.querySelector('[data-bba-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-bba0-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-bba-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-bba0-run], [data-bba0-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-bba-run], [data-bba-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A perimeter fractures at a breach point with an alert. Resolved.')
-  setLive('Barrier Breach Alert. Resolved.')
+function showResolved() {
+  rootEl()?.setAttribute('data-phase', 'breached')
+  setStatus('BREACH DETECTED')
+  setHint('Perimeter compromised at marked point.')
+  setLive('Barrier breached. Alert active at the fracture point.')
 }
 
 function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A perimeter fractures at a breach point with an alert.')
-  setLive('Barrier Breach Alert. Idle.')
+  rootEl()?.setAttribute('data-phase', 'secure')
+  setStatus('SECURE')
+  setHint('Press Run to simulate a breach.')
+  setLive('Perimeter secure. No breach detected.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the breach sequence (Run / replay).
+ * @returns {Promise<void>}
+ */
 export function runBarrierBreachAlert() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'breached') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Barrier Breach Alert. Active.')
+
+  root.setAttribute('data-phase', 'breaching')
+  setStatus('BREACHING')
+  setLive('Perimeter fracturing. Alert incoming.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
+    later(ALARM_MS, () => {
       later(SETTLE_MS, () => {
+        showResolved()
         busy = false
         setButtons(true)
         resolve()
@@ -110,8 +124,12 @@ export async function replayBarrierBreachAlert() {
 }
 
 function bindUi() {
-  document.querySelector('[data-bba0-run]')?.addEventListener('click', () => { void runBarrierBreachAlert() })
-  document.querySelector('[data-bba0-replay]')?.addEventListener('click', () => { void replayBarrierBreachAlert() })
+  document.querySelector('[data-bba-run]')?.addEventListener('click', () => {
+    void runBarrierBreachAlert()
+  })
+  document.querySelector('[data-bba-replay]')?.addEventListener('click', () => {
+    void replayBarrierBreachAlert()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
@@ -119,5 +137,6 @@ function bindUi() {
   })
 }
 
+void TOTAL_MS
 bindUi()
 resetBarrierBreachAlert()

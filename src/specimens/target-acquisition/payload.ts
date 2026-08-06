@@ -8,6 +8,15 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Select target then SCAN; wire runTargetAcquisition / resetTargetAcquisition.',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Three targets; pick then scan produces brackets + confidence meter',
+    'LOCKED label visible at end state',
+    'Reduced motion shows locked state immediately',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

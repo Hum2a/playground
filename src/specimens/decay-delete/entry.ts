@@ -34,19 +34,5 @@ export const decayDelete: Specimen = {
 
     label: 'Target record',
   },
-  integration: [
-    'Mount inside relative overflow-hidden host.',
-    'Import demo.css verbatim; freeze 580ms shard crumble with staggered delays.',
-    'Call runDecayDelete() from DELETE.',
-    'Use reset/replay for harness restart.',
-    'Honour both reduced-motion triggers.',
-  ],
-  acceptance: [
-    'Target record visible before delete',
-    'Shards crumble outward from contact region',
-    'RECORD REMOVED void appears at settle',
-    'Replay restores target record',
-    'Reduced motion skips crumble animation',
-    'Sandbox-safe with no external resources',
-  ],
+
 }

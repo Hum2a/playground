@@ -1,71 +1,284 @@
 /* SPX-2476 Element Merge Recipe — portable contract. */
-.emr0 {
+
+.emr {
   --ink: #101318;
   --parchment: #e7ddc7;
   --chakra: #3a9bd9;
-  --vermilion: #d94a38;
+  --danger: #d94a38;
   --olive: #69745a;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.7rem;
   width: 100%;
-  min-height: 280px;
-  padding: 0.8rem 0.65rem;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
   background: var(--ink);
   color: var(--off);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.emr0 *, .emr0 *::before, .emr0 *::after { box-sizing: border-box; }
-.emr0__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+.emr *,
+.emr *::before,
+.emr *::after {
+  box-sizing: border-box;
 }
-.emr0__system {
-  margin: 0; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--chakra);
+
+.emr__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.emr0__stage {
-  position: relative; overflow: hidden; display: grid; gap: 0.55rem; justify-items: center;
-  width: 100%; padding: 1rem 0.75rem; border: 1px solid rgb(58 155 217 / 0.4);
-  background: rgb(244 241 232 / 0.04); min-height: 160px;
+
+.emr__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chakra);
 }
-.emr0__viz {
-  position: relative; width: 140px; height: 100px;
+
+.emr__stage {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+  align-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgb(58 155 217 / 0.4);
+  background: rgb(244 241 232 / 0.04);
 }
-.emr0__mark {
-  position: absolute; border: 1.5px solid var(--olive); opacity: 0.35;
-  transition: transform 420ms cubic-bezier(0.2,0.85,0.25,1), opacity 420ms ease, border-color 420ms ease;
+
+.emr__track {
+  position: relative;
+  width: 240px;
+  max-width: 100%;
+  height: 56px;
 }
-.emr0__mark--a { left: 20px; top: 28px; width: 100px; height: 44px; }
-.emr0__mark--b { left: 46px; top: 18px; width: 48px; height: 48px; border-radius: 50%; border-color: var(--chakra); }
-.emr0__mark--c { left: 10px; top: 70px; width: 120px; height: 8px; background: rgb(105 116 90 / 0.35); }
-.emr0[data-phase='active'] .emr0__mark--a { opacity: 0.85; border-color: var(--chakra); transform: scaleX(1.05); }
-.emr0[data-phase='active'] .emr0__mark--b { opacity: 1; transform: scale(1.12); }
-.emr0[data-phase='active'] .emr0__mark--c { opacity: 0.9; transform: scaleX(1.08); background: rgb(58 155 217 / 0.45); }
-.emr0[data-phase='done'] .emr0__mark { opacity: 1; border-color: var(--chakra); }
-.emr0[data-phase='done'] .emr0__mark--b { transform: scale(1); box-shadow: 0 0 0 2px rgb(58 155 217 / 0.25); }
-.emr0[data-phase='done'] .emr0__mark--c { background: var(--chakra); }
-.emr0__status {
-  margin: 0; font-size: 0.9rem; font-weight: 900; letter-spacing: 0.12em; color: var(--parchment);
+
+.emr__slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  margin-top: -15px;
+  border: 2px dashed var(--olive);
+  border-radius: 50%;
 }
-.emr0[data-phase='done'] .emr0__status { color: var(--chakra); }
-.emr0__note {
-  margin: 0; font-size: 0.68rem; letter-spacing: 0.03em; color: var(--olive); text-align: center; max-width: 28rem;
+
+.emr__orb {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  border-radius: 50%;
+  transform: translateX(0);
 }
-.emr0__controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.emr0__btn {
-  appearance: none; margin: 0; padding: 0.42rem 0.8rem; border: 1px solid var(--olive);
-  background: transparent; color: var(--off); font: inherit; font-size: 0.66rem; font-weight: 800;
-  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+
+.emr__orb--a {
+  left: 4px;
+  background: radial-gradient(circle at 35% 35%, #cfe9f7, var(--chakra) 60%, #1c5a7c 100%);
 }
-.emr0__btn--primary { border-color: var(--chakra); background: rgb(58 155 217 / 0.14); }
-.emr0__btn:hover:not(:disabled) { border-color: var(--parchment); }
-.emr0__btn:focus-visible { outline: 2px solid var(--chakra); outline-offset: 2px; }
-.emr0__btn:disabled { opacity: 0.45; cursor: default; }
+
+.emr__orb--b {
+  left: 212px;
+  background: radial-gradient(circle at 35% 35%, #f4b39c, var(--danger) 60%, #7a2317 100%);
+}
+
+.emr[data-phase='run'] .emr__orb--a {
+  animation: emr-travel-a 340ms ease-in forwards;
+}
+
+.emr[data-phase='run'] .emr__orb--b {
+  animation: emr-travel-b 340ms ease-in forwards;
+}
+
+@keyframes emr-travel-a {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(104px);
+  }
+}
+
+@keyframes emr-travel-b {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-104px);
+  }
+}
+
+.emr[data-phase='merge'] .emr__orb--a,
+.emr[data-phase='merge'] .emr__orb--b,
+.emr[data-phase='done'] .emr__orb--a,
+.emr[data-phase='done'] .emr__orb--b {
+  transform: translateX(0);
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+}
+
+.emr[data-phase='merge'] .emr__orb--a {
+  transform: translateX(104px);
+}
+
+.emr[data-phase='merge'] .emr__orb--b {
+  transform: translateX(-104px);
+}
+
+.emr__flash {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(244 241 232 / 0.9), rgb(244 241 232 / 0) 70%);
+  opacity: 0;
+  transform: scale(0.3);
+  pointer-events: none;
+}
+
+.emr[data-phase='merge'] .emr__flash {
+  animation: emr-flash 200ms ease-out forwards;
+}
+
+@keyframes emr-flash {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+
+.emr__result {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34px;
+  height: 34px;
+  margin-left: -17px;
+  margin-top: -17px;
+  border-radius: 50%;
+  background: conic-gradient(var(--chakra) 0deg 180deg, var(--danger) 180deg 360deg);
+  box-shadow: 0 0 0 2px var(--off);
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.emr[data-phase='done'] .emr__result {
+  animation: emr-result-in 220ms cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+}
+
+@keyframes emr-result-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.emr__status {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  color: var(--parchment);
+}
+
+.emr[data-phase='done'] .emr__status {
+  color: var(--chakra);
+}
+
+.emr__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+  text-align: center;
+}
+
+.emr__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.emr__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--olive);
+  background: transparent;
+  color: var(--off);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.emr__btn--primary {
+  border-color: var(--chakra);
+  background: rgb(58 155 217 / 0.14);
+}
+
+.emr__btn:hover:not(:disabled) {
+  border-color: var(--parchment);
+}
+
+.emr__btn:focus-visible {
+  outline: 2px solid var(--chakra);
+  outline-offset: 2px;
+}
+
+.emr__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .emr0__mark { transition: none !important; }
+  .emr__orb,
+  .emr__flash,
+  .emr__result {
+    transition: none !important;
+    animation: none !important;
+  }
 }
-html[data-force-reduced-motion='true'] .emr0__mark { transition: none !important; }
+
+html[data-force-reduced-motion='true'] .emr__orb,
+html[data-force-reduced-motion='true'] .emr__flash,
+html[data-force-reduced-motion='true'] .emr__result {
+  transition: none !important;
+  animation: none !important;
+}

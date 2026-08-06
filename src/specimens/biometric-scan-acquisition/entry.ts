@@ -1,16 +1,4 @@
 import type { Specimen } from '../types'
-import html from './demo.html?raw'
-import css from './demo.style.txt?raw'
-import js from './demo.js?raw'
-import spec from './spec.md?raw'
-import contract from './contract.json'
-
-const scaffold = `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0c1018;display:grid;place-items:center;padding:1rem;">
-  {{specimen}}
-</div>
-`.trim()
-
 export const biometricScanAcquisition: Specimen = {
   id: 'biometric-scan-acquisition',
   ref: 'SPX-1426',
@@ -39,30 +27,13 @@ export const biometricScanAcquisition: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, immediately show all 16 nodes acquired and VERIFIED.',
   },
-  files: { html, css, js },
-  spec,
-  contract,
+  loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 280,
     height: 320,
     background: 'dark',
-    scaffold,
+
     label: 'Identity scan acquisition',
   },
-  integration: [
-    'Mount inside a relative overflow-clipped host (~280×320).',
-    'Import demo.css verbatim; freeze field 180×180, 16 nodes, passes 420ms.',
-    'Wire startBiometricScan on START SCAN; openVault after VERIFIED.',
-    'Four brackets move inward 6px at validation; hold 120ms.',
-    'Honour both reduced-motion triggers with instant verified state.',
-  ],
-  acceptance: [
-    'Exactly 16 nodes in asymmetric geometry',
-    'Exactly two scan passes at 420ms each',
-    'First pass activates 10 nodes; second activates 6',
-    'OPEN VAULT locked before verification',
-    'Four acquisition brackets move inward 6px',
-    'Action unlocks only after VERIFIED',
-    'Reduced motion: instant all nodes acquired',
-  ],
+
 }

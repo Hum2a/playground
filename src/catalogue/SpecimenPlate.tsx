@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DEFAULT_CONTROLS, PreviewFrame } from '../harness'
 import { buildPrompt, CopyButton } from '../prompt'
-import type { Specimen } from '../specimens'
-import { formatInspiredBy } from '../specimens'
+import { formatInspiredBy } from '../specimens/inspiration'
+import { resolveSpecimen } from '../specimens/resolvePayload'
+import type { Specimen } from '../specimens/types'
 import { useFrameVisibility } from './useFrameVisibility'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
+import { useSpecimenPayload } from './useSpecimenPayload'
 import './specimen-plate.css'
 
 interface SpecimenPlateProps {
@@ -22,11 +24,11 @@ export function SpecimenPlate({
   onTagClick,
 }: SpecimenPlateProps) {
   const { ref, visible } = useFrameVisibility()
+  const { payload, loading } = useSpecimenPayload(specimen, visible)
   const prefersReduced = usePrefersReducedMotion()
   const [play, setPlay] = useState(false)
   const detailPath = `/s/${specimen.id}`
   const animate = !prefersReduced || play
-  const prompt = buildPrompt(specimen, 'full')
 
   useEffect(() => {
     if (prefersReduced) setPlay(false)
@@ -46,15 +48,15 @@ export function SpecimenPlate({
         tabIndex={0}
         aria-label={`Preview: ${specimen.preview.label}`}
       >
-        {visible ? (
+        {visible && payload ? (
           <PreviewFrame
-            html={specimen.files.html}
-            css={specimen.files.css}
-            js={specimen.files.js}
+            html={payload.files.html}
+            css={payload.files.css}
+            js={payload.files.js}
             label={specimen.preview.label}
             width={specimen.preview.width}
             height={specimen.preview.height}
-            scaffold={specimen.preview.scaffold}
+            scaffold={payload.scaffold ?? specimen.preview.scaffold}
             controls={{
               ...DEFAULT_CONTROLS,
               background: specimen.preview.background,
@@ -70,6 +72,7 @@ export function SpecimenPlate({
               aspectRatio: `${specimen.preview.width} / ${specimen.preview.height}`,
             }}
             aria-hidden
+            data-loading={loading || undefined}
           />
         )}
         {prefersReduced ? (
@@ -145,7 +148,13 @@ export function SpecimenPlate({
       ) : null}
 
       <div className="specimen-plate__actions">
-        <CopyButton text={prompt} mode="full" />
+        <CopyButton
+          getText={async () => {
+            const resolved = await resolveSpecimen(specimen)
+            return buildPrompt(resolved, 'full')
+          }}
+          mode="full"
+        />
         <Link className="specimen-plate__open" to={detailPath}>
           Open →
         </Link>

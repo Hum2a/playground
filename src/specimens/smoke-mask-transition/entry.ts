@@ -4,33 +4,34 @@ export const smokeMaskTransition: Specimen = {
   id: 'smoke-mask-transition',
   ref: 'SPX-2439',
   title: 'Smoke Mask Transition',
-  blurb: 'Abstract smoke discs cover a content swap then disperse.',
+  blurb:
+    'Overlapping abstract circles billow in to fully cover the stage, a content swap happens under cover, then the circles disperse to reveal the new state — graphic CSS smoke, no photographic assets.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction action-language study — smoke-concealment transitions',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['transition'],
+  tags: ['reveal', 'cover'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the state swaps immediately with no circle cover/disperse choreography.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 380,
+    height: 360,
     background: 'dark',
-    label: 'Smoke Mask Transition',
+    label: 'Smoke mask transition',
   },
 }

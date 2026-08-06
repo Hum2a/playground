@@ -1,21 +1,25 @@
 /**
- * Earth Wall Blocker — A wall rises to block and protect a region.
+ * Earth Wall Blocker — five segmented slabs rise staggered to protect a zone.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const RISE_TOTAL_MS = 500
+const SETTLE_MS = 150
 
 let busy = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-ewb8]') }
+function rootEl() {
+  return document.querySelector('[data-ewb]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,62 +33,83 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-ewb8-live]')
+  const el = document.querySelector('[data-ewb-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-ewb8-status]')
+  const el = document.querySelector('[data-ewb-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-ewb8-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-ewb-hint]')
+  if (el) el.textContent = text
+}
+
+function setZone(text) {
+  const el = document.querySelector('[data-ewb-zone]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-ewb8-run], [data-ewb8-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-ewb-run], [data-ewb-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
-function showDone() {
-  rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A wall rises to block and protect a region. Resolved.')
-  setLive('Earth Wall Blocker. Resolved.')
+function setPhase(phase) {
+  rootEl()?.setAttribute('data-phase', phase)
+}
+
+function showResolved() {
+  setPhase('raised')
+  setZone('PROTECTED')
+  setStatus('WALL UP')
+  setHint('Wall raised. Press Replay to lower and raise again.')
+  setLive('Wall raised. Zone protected.')
 }
 
 function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('IDLE')
-  setNote('A wall rises to block and protect a region.')
-  setLive('Earth Wall Blocker. Idle.')
+  setPhase('idle')
+  setZone('EXPOSED')
+  setStatus('DOWN')
+  setHint('Press Run to raise the wall.')
+  setLive('Zone exposed. Wall down.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run the staggered slab rise.
+ * @returns {Promise<void>}
+ */
 export function runEarthWallBlocker() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'raised') {
+    return Promise.resolve()
+  }
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
-    showDone()
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Earth Wall Blocker. Active.')
+
+  setPhase('run')
+  setStatus('RISING')
+  setHint('Rising.')
+  setLive('Wall rising.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
+    later(RISE_TOTAL_MS, () => {
       later(SETTLE_MS, () => {
+        showResolved()
         busy = false
         setButtons(true)
         resolve()
@@ -110,8 +135,12 @@ export async function replayEarthWallBlocker() {
 }
 
 function bindUi() {
-  document.querySelector('[data-ewb8-run]')?.addEventListener('click', () => { void runEarthWallBlocker() })
-  document.querySelector('[data-ewb8-replay]')?.addEventListener('click', () => { void replayEarthWallBlocker() })
+  document.querySelector('[data-ewb-run]')?.addEventListener('click', () => {
+    void runEarthWallBlocker()
+  })
+  document.querySelector('[data-ewb-replay]')?.addEventListener('click', () => {
+    void replayEarthWallBlocker()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

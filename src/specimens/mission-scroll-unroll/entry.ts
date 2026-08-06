@@ -4,13 +4,14 @@ export const missionScrollUnroll: Specimen = {
   id: 'mission-scroll-unroll',
   ref: 'SPX-2365',
   title: 'Mission Scroll Unroll',
-  blurb: 'A rolled mission scroll expands to reveal briefing content.',
+  blurb:
+    'A rolled parchment scroll unrolls between its caps, revealing a mission briefing panel line by line.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / ninja-fiction mission-briefing language — scroll reveal',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
     intensity: 'subtle',
@@ -18,19 +19,19 @@ export const missionScrollUnroll: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['scroll'],
+  tags: ['scroll', 'reveal', 'briefing'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the scroll appears fully unrolled with all briefing lines visible immediately.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 320,
+    width: 360,
+    height: 340,
     background: 'dark',
-    label: 'Mission Scroll Unroll',
+    label: 'Mission scroll unroll',
   },
 }

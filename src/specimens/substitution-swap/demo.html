@@ -1,17 +1,32 @@
-<div class="ss7" data-ss7 data-phase="idle">
-  <p class="ss7__live" data-ss7-live aria-live="polite">Substitution Swap. Idle.</p>
-  <p class="ss7__system">NR // NR-042</p>
-  <div class="ss7__stage" data-ss7-stage>
-    <div class="ss7__viz" data-ss7-viz aria-hidden="true">
-      <span class="ss7__mark ss7__mark--a"></span>
-      <span class="ss7__mark ss7__mark--b"></span>
-      <span class="ss7__mark ss7__mark--c"></span>
+<div class="sbs" data-sbs data-phase="idle">
+  <p class="sbs__live" data-sbs-live aria-live="polite">
+    Substitution idle. Primary target active.
+  </p>
+
+  <p class="sbs__system">KAWARIMI // SUBSTITUTION</p>
+
+  <div class="sbs__stage" data-sbs-stage>
+    <div class="sbs__slot" data-sbs-slot>
+      <div class="sbs__layer sbs__layer--primary" data-sbs-layer="primary">
+        <span class="sbs__layer-eyebrow">PRIMARY</span>
+        <span class="sbs__layer-title">Target Node</span>
+      </div>
+      <div class="sbs__layer sbs__layer--decoy" data-sbs-layer="decoy" aria-hidden="true">
+        <span class="sbs__layer-eyebrow">LOG</span>
+        <span class="sbs__layer-title">Proxy Decoy</span>
+      </div>
+      <div class="sbs__layer sbs__layer--resolved" data-sbs-layer="resolved" aria-hidden="true">
+        <span class="sbs__layer-eyebrow">ACTIVE</span>
+        <span class="sbs__layer-title">Failover Target</span>
+      </div>
+      <span class="sbs__puff" data-sbs-puff aria-hidden="true"></span>
     </div>
-    <p class="ss7__status" data-ss7-status>IDLE</p>
-    <p class="ss7__note" data-ss7-note>Primary content swaps to a decoy log then resolves to the real target.</p>
+    <p class="sbs__status" data-sbs-status>PRIMARY</p>
+    <p class="sbs__hint" data-sbs-hint>Press Run to trigger the substitution.</p>
   </div>
-  <div class="ss7__controls">
-    <button type="button" class="ss7__btn ss7__btn--primary" data-ss7-run>Swap</button>
-    <button type="button" class="ss7__btn" data-ss7-replay>Replay</button>
+
+  <div class="sbs__controls">
+    <button type="button" class="sbs__btn sbs__btn--primary" data-sbs-run>Run</button>
+    <button type="button" class="sbs__btn" data-sbs-replay>Replay</button>
   </div>
 </div>

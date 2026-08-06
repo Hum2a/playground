@@ -12,7 +12,10 @@ const LABELS: Record<CopyMode, string> = {
 }
 
 interface CopyButtonProps {
-  text: string
+  /** Eager text. Prefer `getText` when the string is expensive to build. */
+  text?: string
+  /** Lazy text resolver — called only on copy click. */
+  getText?: () => string | Promise<string>
   mode?: CopyMode
   label?: string
   className?: string
@@ -20,6 +23,7 @@ interface CopyButtonProps {
 
 export function CopyButton({
   text,
+  getText,
   mode = 'full',
   label,
   className,
@@ -52,18 +56,21 @@ export function CopyButton({
         ]
           .filter(Boolean)
           .join(' ')}
-        onClick={() =>
-          void copy(
-            text,
-            mode === 'code'
-              ? 'code'
-              : mode === 'contract'
-                ? 'contract'
-                : mode === 'text'
-                  ? 'text'
-                  : 'prompt',
-          )
-        }
+        onClick={() => {
+          void (async () => {
+            const resolved = getText ? await getText() : (text ?? '')
+            await copy(
+              resolved,
+              mode === 'code'
+                ? 'code'
+                : mode === 'contract'
+                  ? 'contract'
+                  : mode === 'text'
+                    ? 'text'
+                    : 'prompt',
+            )
+          })()
+        }}
       >
         {buttonLabel}
       </button>
@@ -75,7 +82,7 @@ export function CopyButton({
           ref={fallbackRef}
           className="copy-button__fallback"
           readOnly
-          value={lastText || text}
+          value={lastText || text || ''}
           aria-label="Prompt text — select and copy manually"
         />
       ) : null}

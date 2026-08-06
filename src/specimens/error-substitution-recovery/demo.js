@@ -87,9 +87,7 @@ function resetVisual() {
  */
 export function runErrorSubstitutionRecovery() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'recovered') {
-    return Promise.resolve()
-  }
+  if (!root || busy || recovered) return Promise.resolve()
 
   busy = true
   clearTimers()

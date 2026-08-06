@@ -1,17 +1,24 @@
-<div class="mrr9" data-mrr9 data-phase="idle">
-  <p class="mrr9__live" data-mrr9-live aria-live="polite">Mission Rank Reveal. Idle.</p>
-  <p class="mrr9__system">NR // NR-191</p>
-  <div class="mrr9__stage" data-mrr9-stage>
-    <div class="mrr9__viz" data-mrr9-viz aria-hidden="true">
-      <span class="mrr9__mark mrr9__mark--a"></span>
-      <span class="mrr9__mark mrr9__mark--b"></span>
-      <span class="mrr9__mark mrr9__mark--c"></span>
+<div class="mrr" data-mrr data-phase="idle">
+  <p class="mrr__live" data-mrr-live aria-live="polite">
+    Briefing idle. Rank pending.
+  </p>
+
+  <p class="mrr__system">BRIEFING // MISSION RANK</p>
+
+  <div class="mrr__stage" data-mrr-stage>
+    <div class="mrr__card" data-mrr-card data-visible="false">
+      <span class="mrr__card-label">RANK</span>
+      <span class="mrr__card-letter">B</span>
     </div>
-    <p class="mrr9__status" data-mrr9-status>IDLE</p>
-    <p class="mrr9__note" data-mrr9-note>A mission rank letter reveals with a stamp settle.</p>
+
+    <div class="mrr__stamp" data-mrr-stamp data-visible="false">CONFIRMED</div>
+
+    <p class="mrr__status" data-mrr-status>PENDING</p>
+    <p class="mrr__hint" data-mrr-hint>Press Run to reveal the mission rank.</p>
   </div>
-  <div class="mrr9__controls">
-    <button type="button" class="mrr9__btn mrr9__btn--primary" data-mrr9-run>Reveal</button>
-    <button type="button" class="mrr9__btn" data-mrr9-replay>Replay</button>
+
+  <div class="mrr__controls">
+    <button type="button" class="mrr__btn mrr__btn--primary" data-mrr-run>Run</button>
+    <button type="button" class="mrr__btn" data-mrr-replay>Replay</button>
   </div>
 </div>

@@ -1,17 +1,58 @@
-<div class="ssm6" data-ssm6 data-phase="idle">
-  <p class="ssm6__live" data-ssm6-live aria-live="polite">Summoning Seal Materialise. Idle.</p>
-  <p class="ssm6__system">NR // NR-173</p>
-  <div class="ssm6__stage" data-ssm6-stage>
-    <div class="ssm6__viz" data-ssm6-viz aria-hidden="true">
-      <span class="ssm6__mark ssm6__mark--a"></span>
-      <span class="ssm6__mark ssm6__mark--b"></span>
-      <span class="ssm6__mark ssm6__mark--c"></span>
+<div class="ssm" data-ssm data-phase="idle">
+  <p class="ssm__live" data-ssm-live aria-live="polite">
+    Summoning idle. Seal undrawn.
+  </p>
+
+  <p class="ssm__system">RITUAL // SUMMON</p>
+
+  <div class="ssm__stage" data-ssm-stage>
+    <svg class="ssm__seal" viewBox="0 0 200 200" aria-hidden="true">
+      <circle
+        class="ssm__ring ssm__ring--outer"
+        data-ssm-ring-outer
+        data-drawn="false"
+        cx="100"
+        cy="170"
+        r="70"
+        pathLength="1"
+        fill="none"
+      />
+      <circle
+        class="ssm__ring ssm__ring--inner"
+        data-ssm-ring-inner
+        data-drawn="false"
+        cx="100"
+        cy="170"
+        r="46"
+        pathLength="1"
+        fill="none"
+      />
+      <g class="ssm__ticks" data-ssm-ticks data-visible="false">
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(0 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(45 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(90 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(135 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(180 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(225 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(270 100 170)" />
+        <line x1="100" y1="100" x2="100" y2="88" transform="rotate(315 100 170)" />
+      </g>
+    </svg>
+
+    <div class="ssm__panel" data-ssm-panel data-visible="false">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+        <path fill="none" stroke="currentColor" stroke-width="2" d="M8 12h8M12 8v8" />
+      </svg>
+      <span class="ssm__panel-label">TOOL</span>
     </div>
-    <p class="ssm6__status" data-ssm6-status>IDLE</p>
-    <p class="ssm6__note" data-ssm6-note>A seal constructs then materialises a tool panel.</p>
+
+    <p class="ssm__status" data-ssm-status>IDLE</p>
+    <p class="ssm__hint" data-ssm-hint>Press Run to draw the seal.</p>
   </div>
-  <div class="ssm6__controls">
-    <button type="button" class="ssm6__btn ssm6__btn--primary" data-ssm6-run>Summon</button>
-    <button type="button" class="ssm6__btn" data-ssm6-replay>Replay</button>
+
+  <div class="ssm__controls">
+    <button type="button" class="ssm__btn ssm__btn--primary" data-ssm-run>Run</button>
+    <button type="button" class="ssm__btn" data-ssm-replay>Replay</button>
   </div>
 </div>

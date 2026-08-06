@@ -4,33 +4,34 @@ export const shadowBindSelection: Specimen = {
   id: 'shadow-bind-selection',
   ref: 'SPX-2644',
   title: 'Shadow Bind Selection',
-  blurb: 'Shadow tendrils bind and select a target card.',
+  blurb:
+    'A dark geometric extension travels from a source anchor to a target card and locks both together as one bound selection.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / shadow-technique-interfaces — bound selection',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['selection'],
+  tags: ['selection', 'shadow', 'bind'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the source and target appear already bound.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
-    label: 'Shadow Bind Selection',
+    label: 'Shadow bind selection',
   },
 }

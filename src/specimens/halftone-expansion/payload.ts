@@ -8,6 +8,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
+  integration: [
+    'Mount inside a relative overflow-hidden viewport.',
+    'Import demo.css verbatim; origin is set from trigger click position.',
+    'Swap content while mask is fully expanded (~220ms).',
+    'Honour both reduced-motion triggers.',
+  ],
+  acceptance: [
+    'Activate expands halftone mask from button origin and swaps to COMPLETE',
+    'Mask remains clipped to specimen bounds',
+    'Reset returns to STANDBY via restart message or Reset button',
+    'Reduced motion swaps states without mask travel',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;">
   {{specimen}}

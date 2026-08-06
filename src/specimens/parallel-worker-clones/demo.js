@@ -1,21 +1,30 @@
 /**
- * Parallel Worker Clones — A job divides into workers that show parallel progress bars.
+ * Parallel Worker Clones — one job divides into three deterministic worker
+ * clones with independent progress, then recombines into a completed job.
  * iframe-safe; no storage / parent / network.
  */
-const ACTIVE_MS = 480
-const SETTLE_MS = 160
+
+const SPLIT_MS = 120
+const WORKER_DURATIONS = [300, 240, 360]
+const WORK_MS = Math.max(...WORKER_DURATIONS)
+const RECOMBINE_MS = 100
+const TOTAL_MS = SPLIT_MS + WORK_MS + RECOMBINE_MS
 
 let busy = false
+let done = false
 /** @type {number[]} */
 let timers = []
 
 function prefersReducedMotion() {
-  const forced = document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
 
-function rootEl() { return document.querySelector('[data-pwc2]') }
+function rootEl() {
+  return document.querySelector('[data-pwc]')
+}
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -29,66 +38,109 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-pwc2-live]')
+  const el = document.querySelector('[data-pwc-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-pwc2-status]')
+  const el = document.querySelector('[data-pwc-status]')
   if (el) el.textContent = text
 }
 
-function setNote(text) {
-  const el = document.querySelector('[data-pwc2-note]')
+function setHint(text) {
+  const el = document.querySelector('[data-pwc-hint]')
+  if (el) el.textContent = text
+}
+
+function setJobKicker(text) {
+  const el = document.querySelector('[data-pwc-job-kicker]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-pwc2-run], [data-pwc2-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-pwc-run], [data-pwc-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
+function bars() {
+  return Array.from(document.querySelectorAll('[data-pwc-bar]'))
+}
+
 function showDone() {
+  done = true
+  bars().forEach((bar) => {
+    bar.style.width = '100%'
+  })
+  setJobKicker('JOB · COMPLETE')
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('DONE')
-  setNote('A job divides into workers that show parallel progress bars. Resolved.')
-  setLive('Parallel Worker Clones. Resolved.')
+  setStatus('RECOMBINED')
+  setHint('All three workers merged into one completed job.')
+  setLive('Workers recombined. Job complete.')
 }
 
 function resetVisual() {
+  done = false
+  bars().forEach((bar) => {
+    bar.style.width = '0%'
+  })
+  setJobKicker('JOB')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('IDLE')
-  setNote('A job divides into workers that show parallel progress bars.')
-  setLive('Parallel Worker Clones. Idle.')
+  setHint('Press Run to divide across three workers.')
+  setLive('Idle. Job ready to divide across workers.')
 }
 
-/** @returns {Promise<void>} */
+/**
+ * Auto-run full split → parallel-work → recombine choreography.
+ * @returns {Promise<void>}
+ */
 export function runParallelWorkerClones() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return Promise.resolve()
+  if (!root || busy || done) return Promise.resolve()
+
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
   void root.offsetWidth
+
   if (prefersReducedMotion()) {
     showDone()
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
-  root.setAttribute('data-phase', 'active')
-  setStatus('ACTIVE')
-  setLive('Parallel Worker Clones. Active.')
+
+  root.setAttribute('data-phase', 'splitting')
+  setStatus('SPLITTING')
+  setHint('Job dividing into workers.')
+  setLive('Job splitting into three workers.')
+
   return new Promise((resolve) => {
-    later(ACTIVE_MS, () => {
-      showDone()
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+    later(SPLIT_MS, () => {
+      root.setAttribute('data-phase', 'working')
+      setStatus('WORKING')
+      setHint('Workers running in parallel.')
+      setLive('Workers running in parallel.')
+      bars().forEach((bar) => {
+        void bar.offsetWidth
+        bar.style.width = '100%'
       })
+    })
+
+    later(SPLIT_MS + WORK_MS, () => {
+      root.setAttribute('data-phase', 'recombining')
+      setStatus('RECOMBINING')
+      setHint('Merging worker output.')
+      setLive('Recombining worker output.')
+    })
+
+    later(TOTAL_MS, () => {
+      showDone()
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -110,8 +162,12 @@ export async function replayParallelWorkerClones() {
 }
 
 function bindUi() {
-  document.querySelector('[data-pwc2-run]')?.addEventListener('click', () => { void runParallelWorkerClones() })
-  document.querySelector('[data-pwc2-replay]')?.addEventListener('click', () => { void replayParallelWorkerClones() })
+  document.querySelector('[data-pwc-run]')?.addEventListener('click', () => {
+    void runParallelWorkerClones()
+  })
+  document.querySelector('[data-pwc-replay]')?.addEventListener('click', () => {
+    void replayParallelWorkerClones()
+  })
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
