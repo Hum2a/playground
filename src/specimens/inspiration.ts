@@ -136,6 +136,8 @@ export const SUGGESTED_FREE_TAGS = [
   'selection',
   'content-switch',
   'stack',
+  'progress',
+  'rank-up',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]

@@ -1,0 +1,388 @@
+/* SPX-018 Newspaper Headline Drop — portable contract. Do not restyle to host tokens. */
+
+.newspaper-drop-demo {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 240px;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a1a;
+  color: #eee9da;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.newspaper-drop-demo__host {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  box-sizing: border-box;
+  padding: 1.25rem 1.1rem;
+  transition: transform 70ms linear;
+}
+
+.newspaper-drop-demo__host--nudge {
+  transform: translateY(3px);
+}
+
+.newspaper-drop-demo__kicker {
+  margin: 0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a8678;
+}
+
+.newspaper-drop-demo__body {
+  margin: 0;
+  max-width: 16rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: #c8c3b4;
+}
+
+.newspaper-drop-demo__trigger {
+  appearance: none;
+  margin-top: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid #cf1723;
+  border-radius: 0;
+  background: transparent;
+  color: #eee9da;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.newspaper-drop-demo__trigger:focus-visible {
+  outline: 2px solid #cf1723;
+  outline-offset: 3px;
+}
+
+.newspaper-drop-demo__trigger:hover {
+  background: rgba(207, 23, 35, 0.18);
+}
+
+/* —— Overlay strip —— */
+.newspaper-drop {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.newspaper-drop--enter,
+.newspaper-drop--settled,
+.newspaper-drop--exit,
+.newspaper-drop--reduced {
+  visibility: visible;
+}
+
+.newspaper-drop__strip {
+  position: absolute;
+  top: 28%;
+  left: -8%;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 116%;
+  height: 170px;
+  padding: 0.85rem 1.35rem 0.75rem 1.5rem;
+  border-radius: 0;
+  background: #eee9da;
+  color: #101010;
+  clip-path: polygon(
+    0% 4%,
+    98% 0%,
+    100% 12%,
+    99% 88%,
+    100% 100%,
+    2% 97%,
+    0% 78%,
+    1% 22%
+  );
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  transform: translateY(-135%) rotate(5deg);
+  transform-origin: 50% 50%;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.newspaper-drop--settled .newspaper-drop__strip,
+.newspaper-drop--reduced .newspaper-drop__strip {
+  pointer-events: auto;
+}
+
+.newspaper-drop__pub {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #cf1723;
+}
+
+.newspaper-drop__headline {
+  margin: 0.2rem 0 0;
+  max-width: 100%;
+  font-family: ui-serif, Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.85rem, 9vw, 2.65rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.newspaper-drop__rule {
+  width: 42%;
+  max-width: 9rem;
+  height: 2px;
+  margin: 0.55rem 0 0.4rem;
+  background: #101010;
+}
+
+.newspaper-drop__meta {
+  margin: 0;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #101010;
+  opacity: 0.78;
+}
+
+.newspaper-drop__scraps {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.newspaper-drop__scrap {
+  position: absolute;
+  background: #101010;
+  opacity: 0.12;
+}
+
+.newspaper-drop__scrap--1 {
+  top: 18%;
+  right: 12%;
+  width: 28px;
+  height: 52px;
+  clip-path: polygon(8% 0%, 100% 6%, 88% 100%, 0% 92%);
+}
+
+.newspaper-drop__scrap--2 {
+  bottom: 14%;
+  right: 22%;
+  width: 18px;
+  height: 36px;
+  clip-path: polygon(0% 10%, 92% 0%, 100% 100%, 12% 88%);
+}
+
+.newspaper-drop__dismiss {
+  appearance: none;
+  position: absolute;
+  top: 0.7rem;
+  right: 1.6rem;
+  padding: 0.28rem 0.5rem;
+  border: 1px solid #101010;
+  border-radius: 0;
+  background: transparent;
+  color: #101010;
+  font: inherit;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.newspaper-drop__dismiss:focus-visible {
+  outline: 2px solid #cf1723;
+  outline-offset: 2px;
+}
+
+.newspaper-drop__dismiss:hover {
+  background: rgba(16, 16, 16, 0.08);
+}
+
+/* —— Impact marks —— */
+.newspaper-drop__marks {
+  position: absolute;
+  top: calc(28% + 150px);
+  left: 8%;
+  z-index: 1;
+  width: 84%;
+  height: 24px;
+  pointer-events: none;
+}
+
+.newspaper-drop__mark {
+  position: absolute;
+  opacity: 0;
+  background: #101010;
+}
+
+.newspaper-drop__mark--1 {
+  left: 12%;
+  top: 2px;
+  width: 10px;
+  height: 7px;
+  clip-path: polygon(0% 40%, 70% 0%, 100% 100%, 20% 90%);
+}
+
+.newspaper-drop__mark--2 {
+  left: 48%;
+  top: 6px;
+  width: 14px;
+  height: 6px;
+  background: #cf1723;
+  clip-path: polygon(10% 0%, 100% 30%, 80% 100%, 0% 70%);
+}
+
+.newspaper-drop__mark--3 {
+  left: 72%;
+  top: 0;
+  width: 8px;
+  height: 9px;
+  clip-path: polygon(0% 0%, 100% 20%, 70% 100%, 10% 80%);
+}
+
+/* —— Enter: fall → rebound → settle (480ms) —— */
+.newspaper-drop--enter .newspaper-drop__strip {
+  animation: newspaper-drop-enter 480ms cubic-bezier(0.55, 0.05, 0.8, 0.4) forwards;
+}
+
+@keyframes newspaper-drop-enter {
+  0% {
+    transform: translateY(-135%) rotate(5deg);
+    animation-timing-function: cubic-bezier(0.55, 0.05, 0.8, 0.4);
+  }
+  62.5% {
+    /* 300/480 */
+    transform: translateY(5%) rotate(-3deg);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  81.25% {
+    /* 390/480 */
+    transform: translateY(-2%) rotate(-1deg);
+    animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+}
+
+.newspaper-drop--impact .newspaper-drop__mark {
+  animation: newspaper-drop-mark 160ms ease-out forwards;
+}
+
+.newspaper-drop--impact .newspaper-drop__mark--2 {
+  animation-delay: 20ms;
+}
+
+.newspaper-drop--impact .newspaper-drop__mark--3 {
+  animation-delay: 35ms;
+}
+
+@keyframes newspaper-drop-mark {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) translateY(-4px);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85) translateY(2px);
+  }
+}
+
+.newspaper-drop--settled .newspaper-drop__strip {
+  transform: translateY(0) rotate(-2deg);
+}
+
+/* —— Exit: sideways eject (340ms) —— */
+.newspaper-drop--exit .newspaper-drop__strip {
+  animation: newspaper-drop-exit 340ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes newspaper-drop-exit {
+  0% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  100% {
+    transform: translate(125%, -8%) rotate(7deg);
+  }
+}
+
+/* —— Replay control —— */
+.newspaper-drop-replay {
+  appearance: none;
+  position: absolute;
+  right: 0.65rem;
+  bottom: 0.55rem;
+  z-index: 4;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid #8a8678;
+  border-radius: 0;
+  background: #101010;
+  color: #eee9da;
+  font: inherit;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.newspaper-drop-replay:focus-visible {
+  outline: 2px solid #cf1723;
+  outline-offset: 2px;
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .newspaper-drop--enter .newspaper-drop__strip,
+  .newspaper-drop--exit .newspaper-drop__strip,
+  .newspaper-drop--impact .newspaper-drop__mark {
+    animation: none !important;
+  }
+
+  .newspaper-drop-demo__host--nudge {
+    transform: none;
+  }
+
+  .newspaper-drop--reduced .newspaper-drop__strip,
+  .newspaper-drop--settled .newspaper-drop__strip {
+    transform: translateY(0) rotate(-2deg);
+  }
+}
+
+[data-force-reduced-motion='true'] .newspaper-drop--enter .newspaper-drop__strip,
+[data-force-reduced-motion='true'] .newspaper-drop--exit .newspaper-drop__strip,
+[data-force-reduced-motion='true'] .newspaper-drop--impact .newspaper-drop__mark {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .newspaper-drop-demo__host--nudge {
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .newspaper-drop--reduced .newspaper-drop__strip,
+[data-force-reduced-motion='true'] .newspaper-drop--settled .newspaper-drop__strip {
+  transform: translateY(0) rotate(-2deg);
+}

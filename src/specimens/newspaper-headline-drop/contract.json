@@ -1,0 +1,106 @@
+{
+  "name": "newspaper-headline-drop",
+  "intent": "Oversized newsprint headline strip drops onto a host with overshoot and rebound, presents high-priority copy, then ejects sideways on dismiss.",
+  "colours": {
+    "newsprint": "#eee9da",
+    "ink": "#101010",
+    "red": "#cf1723",
+    "host": "#1a1a1a",
+    "muted": "#8a8678"
+  },
+  "strip": {
+    "className": "newspaper-drop__strip",
+    "width": "116%",
+    "left": "-8%",
+    "top": "28%",
+    "heightPx": 170,
+    "borderRadius": 0,
+    "settleRotateDeg": -2,
+    "clipPath": "polygon(0% 4%, 98% 0%, 100% 12%, 99% 88%, 100% 100%, 2% 97%, 0% 78%, 1% 22%)",
+    "copy": {
+      "pub": "ARCHIVE DAILY",
+      "headline": "NEW SPECIMEN DISCOVERED",
+      "meta": "ISSUE 07 // 14:32"
+    }
+  },
+  "marks": [
+    {
+      "className": "newspaper-drop__mark--1",
+      "left": "12%",
+      "colour": "#101010",
+      "size": [10, 7]
+    },
+    {
+      "className": "newspaper-drop__mark--2",
+      "left": "48%",
+      "colour": "#cf1723",
+      "size": [14, 6]
+    },
+    {
+      "className": "newspaper-drop__mark--3",
+      "left": "72%",
+      "colour": "#101010",
+      "size": [8, 9]
+    }
+  ],
+  "hostNudge": {
+    "className": "newspaper-drop-demo__host--nudge",
+    "translateYPx": 3,
+    "durationMs": 70
+  },
+  "timing": {
+    "fallEasing": "cubic-bezier(0.55, 0.05, 0.8, 0.4)",
+    "reboundEasing": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "settleEasing": "cubic-bezier(0.33, 1, 0.68, 1)",
+    "exitEasing": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "enterMs": 480,
+    "impactAtMs": 300,
+    "reboundAtMs": 390,
+    "nudgeMs": 70,
+    "marksMs": 160,
+    "exitMs": 340
+  },
+  "transforms": {
+    "idle": "translateY(-135%) rotate(5deg)",
+    "impact": "translateY(5%) rotate(-3deg)",
+    "rebound": "translateY(-2%) rotate(-1deg)",
+    "settled": "translateY(0) rotate(-2deg)",
+    "exit": "translate(125%, -8%) rotate(7deg)"
+  },
+  "typography": {
+    "sans": "ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif",
+    "serif": "ui-serif, Georgia, Times New Roman, serif",
+    "mono": "ui-monospace, Cascadia Code, Segoe UI Mono, Menlo, monospace"
+  },
+  "api": {
+    "drop": "dropNewspaperHeadline()",
+    "dismiss": "dismissNewspaperHeadline()",
+    "replay": "replayNewspaperHeadline()",
+    "busyGuard": true,
+    "sandboxSafe": true,
+    "restartMessage": "restart"
+  },
+  "a11y": {
+    "stripRole": "alert",
+    "marksAriaHidden": true,
+    "scrapsAriaHidden": true,
+    "dismissFocusable": true,
+    "rootAriaHiddenWhenIdle": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show settled strip at -2deg; dismiss clears instantly; no fall, rebound, nudge, or marks"
+  },
+  "constraints": {
+    "noImages": true,
+    "noFontFace": true,
+    "noNetwork": true,
+    "noCanvas": true,
+    "sidewaysDismiss": true,
+    "deterministicReplay": true,
+    "noProlongedShake": true
+  }
+}
