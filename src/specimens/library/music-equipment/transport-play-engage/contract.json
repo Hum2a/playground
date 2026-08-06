@@ -1,0 +1,8 @@
+{
+  "name": "transport-play-engage",
+  "ref": "SPX-3935",
+  "title": "Transport Play Engage",
+  "mode": "switch",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

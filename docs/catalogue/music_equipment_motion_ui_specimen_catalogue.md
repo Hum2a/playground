@@ -498,7 +498,7 @@ specimens can feel tactile without needing sound.
 
 # 23. DAW Transport / Timeline
 
-- [ ] **MUSIC-176** · `SPX-3935` · ★★★★★ **Transport Play Engage** — A play control latches and
+- [x] **MUSIC-176** · `SPX-3935` · ★★★★★ **Transport Play Engage** — A play control latches and
     the timeline playhead begins moving.
 - [ ] **MUSIC-177** · `SPX-3936` · ★★★★☆ **Stop Return** — Stopping freezes playback and
     optionally returns the playhead to a stored start point.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-176 | SPX-3935 | `transport-play-engage` | Transport Play Engage |
 | MUSIC-170 | SPX-3929 | `auto-gain-scan` | Auto Gain Scan |
 | MUSIC-165 | SPX-3924 | `recording-waveform-grow` | Recording Waveform Grow |
 | MUSIC-151 | SPX-3910 | `strobe-tuner-lock` | Strobe Tuner Lock |
@@ -907,12 +908,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **44 / 310** complete.
+- Progress: **45 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 44 |
-| Open | 266 |
+| Done | 45 |
+| Open | 265 |
 
 ## Core first-wave / build queue
 
@@ -959,7 +960,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · `strobe-tuner-lock`
 - [x] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · `recording-waveform-grow`
 - [x] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · `auto-gain-scan`
-- [ ] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · scaffold `transport-play-engage`
+- [x] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · `transport-play-engage`
 - [ ] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · scaffold `loop-brace-clamp`
 - [ ] **MUSIC-185** · `SPX-3944` · **Waveform Trim Handles** · scaffold `waveform-trim-handles`
 - [ ] **MUSIC-189** · `SPX-3948` · **Crossfade Overlap** · scaffold `crossfade-overlap`
