@@ -596,4 +596,5 @@ export const specimenOrder: string[] = [
   'waveform-trim-handles',
   'crossfade-overlap',
   'quantize-sweep',
+  'automation-point-draw',
 ]

@@ -563,7 +563,7 @@ specimens can feel tactile without needing sound.
 
 # 26. Automation / Modulation
 
-- [ ] **MUSIC-201** · `SPX-3960` · ★★★★★ **Automation Point Draw** — A point appears on a
+- [x] **MUSIC-201** · `SPX-3960` · ★★★★★ **Automation Point Draw** — A point appears on a
     parameter lane and connects into the existing curve.
 - [ ] **MUSIC-202** · `SPX-3961` · ★★★★★ **Automation Curve Bend** — A line segment changes from
     linear to curved response.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-201 | SPX-3960 | `automation-point-draw` | Automation Point Draw |
 | MUSIC-197 | SPX-3956 | `quantize-sweep` | Quantize Sweep |
 | MUSIC-189 | SPX-3948 | `crossfade-overlap` | Crossfade Overlap |
 | MUSIC-185 | SPX-3944 | `waveform-trim-handles` | Waveform Trim Handles |
@@ -912,12 +913,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **49 / 310** complete.
+- Progress: **50 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 261 |
+| Done | 50 |
+| Open | 260 |
 
 ## Core first-wave / build queue
 
@@ -969,7 +970,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-185** · `SPX-3944` · **Waveform Trim Handles** · `waveform-trim-handles`
 - [x] **MUSIC-189** · `SPX-3948` · **Crossfade Overlap** · `crossfade-overlap`
 - [x] **MUSIC-197** · `SPX-3956` · **Quantize Sweep** · `quantize-sweep`
-- [ ] **MUSIC-201** · `SPX-3960` · **Automation Point Draw** · scaffold `automation-point-draw`
+- [x] **MUSIC-201** · `SPX-3960` · **Automation Point Draw** · `automation-point-draw`
 - [x] **MUSIC-213** · `SPX-3972` · **Loop Record Ring** · `loop-record-ring`
 
 # Recommended Build Waves

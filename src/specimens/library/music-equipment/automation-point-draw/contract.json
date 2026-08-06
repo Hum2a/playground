@@ -1,0 +1,8 @@
+{
+  "name": "automation-point-draw",
+  "ref": "SPX-3960",
+  "title": "Automation Point Draw",
+  "mode": "tuner",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}
