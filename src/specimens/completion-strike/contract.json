@@ -1,0 +1,58 @@
+{
+  "name": "completion-strike",
+  "intent": "Marking a task complete fires a decisive graphic strike, then the row recomposes into a compact COMPLETE state without deletion.",
+  "colours": {
+    "black": "#090909",
+    "red": "#e60012",
+    "paper": "#f5f1e8"
+  },
+  "scaffold": {
+    "task": "BUILD PREVIEW",
+    "meta": "SPX // 042",
+    "action": "MARK COMPLETE"
+  },
+  "row": {
+    "idleHeightPx": 72,
+    "completeHeightPx": 48
+  },
+  "strike": {
+    "rotateDeg": -3,
+    "red": { "startMs": 100, "durationMs": 160, "heightPx": 9 },
+    "ink": { "startMs": 220, "durationMs": 140, "heightPx": 5 },
+    "clipPath": "polygon(0% 22%, 100% 0%, 100% 78%, 0% 100%)",
+    "ariaHidden": true
+  },
+  "timing": {
+    "compressMs": [0, 140],
+    "titleScaleX": 0.98,
+    "contractMs": [300, 520],
+    "markMs": [420, 620],
+    "badgeMs": [560, 720],
+    "totalMs": 720,
+    "easing": "cubic-bezier(0.55, 0, 0.85, 0.35)"
+  },
+  "mark": {
+    "type": "two-angular-bars",
+    "unicodeCheckForbidden": true,
+    "shortThenLong": true
+  },
+  "api": {
+    "export": ["runCompletionStrike()", "resetCompletionStrike()"],
+    "busyGuard": true,
+    "undoInstant": true,
+    "sandboxSafe": true,
+    "noNetwork": true
+  },
+  "a11y": {
+    "role": "checkbox",
+    "statusAfterComplete": "Build Preview completed.",
+    "strikesAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately render compact completed state; no strike or mark construction"
+  }
+}

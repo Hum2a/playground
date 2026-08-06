@@ -1,0 +1,364 @@
+/* SPX-330 Completion Strike — portable contract. Do not restyle to host tokens. */
+
+.completion-strike {
+  --cs-black: #090909;
+  --cs-red: #e60012;
+  --cs-paper: #f5f1e8;
+  --cs-ease: cubic-bezier(0.55, 0, 0.85, 0.35);
+  --cs-row-h: 72px;
+  --cs-row-h-done: 48px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.25rem 1rem 1rem;
+  overflow: hidden;
+  background: var(--cs-black);
+  color: var(--cs-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.completion-strike__row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 22rem;
+  min-height: var(--cs-row-h);
+  height: var(--cs-row-h);
+  padding: 0 0.85rem 0 1rem;
+  border: 2px solid var(--cs-paper);
+  background: var(--cs-black);
+  overflow: hidden;
+}
+
+.completion-strike__body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.completion-strike__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform-origin: left center;
+  white-space: nowrap;
+}
+
+.completion-strike__meta {
+  margin: 0;
+  margin-left: auto;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cs-paper) 72%, transparent);
+  white-space: nowrap;
+  transform: translateX(0);
+}
+
+.completion-strike__actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.completion-strike__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid var(--cs-paper);
+  border-radius: 0;
+  background: var(--cs-red);
+  color: var(--cs-paper);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.completion-strike__btn--undo {
+  background: transparent;
+}
+
+.completion-strike__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.completion-strike__btn:focus-visible,
+.completion-strike__row:focus-visible {
+  outline: 2px solid var(--cs-red);
+  outline-offset: 3px;
+}
+
+.completion-strike__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Strikes */
+.completion-strike__strike {
+  position: absolute;
+  left: -8%;
+  top: 48%;
+  z-index: 3;
+  width: 118%;
+  height: 7px;
+  pointer-events: none;
+  transform: rotate(-3deg) translateX(-110%);
+  transform-origin: center;
+  clip-path: polygon(0% 22%, 100% 0%, 100% 78%, 0% 100%);
+  opacity: 0;
+}
+
+.completion-strike__strike--red {
+  background: var(--cs-red);
+  height: 9px;
+}
+
+.completion-strike__strike--ink {
+  top: 54%;
+  height: 5px;
+  background: var(--cs-black);
+  border: 1px solid var(--cs-paper);
+  mix-blend-mode: normal;
+  z-index: 4;
+}
+
+/* Angular check — two bars, not Unicode */
+.completion-strike__mark {
+  position: absolute;
+  right: 5.6rem;
+  top: 50%;
+  z-index: 5;
+  width: 1.35rem;
+  height: 1.1rem;
+  transform: translateY(-42%);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.completion-strike__bar {
+  position: absolute;
+  display: block;
+  background: var(--cs-red);
+  transform-origin: left center;
+  clip-path: polygon(0% 12%, 100% 0%, 100% 100%, 0% 88%);
+}
+
+.completion-strike__bar--short {
+  left: 0;
+  bottom: 0.12rem;
+  width: 0.48rem;
+  height: 0.22rem;
+  transform: rotate(42deg) scaleX(0);
+}
+
+.completion-strike__bar--long {
+  left: 0.28rem;
+  bottom: 0.05rem;
+  width: 1.05rem;
+  height: 0.24rem;
+  transform: rotate(-48deg) scaleX(0);
+}
+
+.completion-strike__badge {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  z-index: 5;
+  margin: 0;
+  padding: 0.12rem 0.35rem;
+  background: var(--cs-paper);
+  color: var(--cs-black);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: translate(8px, -50%) scale(0.92);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* —— Phase: compress title 0–140ms —— */
+.completion-strike.is-compressing .completion-strike__title {
+  animation: cs-compress 140ms var(--cs-ease) forwards;
+}
+
+@keyframes cs-compress {
+  to {
+    transform: scaleX(0.98);
+  }
+}
+
+/* —— Phase: red strike 100–260ms —— */
+.completion-strike.is-red-strike .completion-strike__strike--red {
+  opacity: 1;
+  animation: cs-strike 160ms var(--cs-ease) forwards;
+}
+
+/* —— Phase: ink strike 220–360ms —— */
+.completion-strike.is-ink-strike .completion-strike__strike--ink {
+  opacity: 1;
+  animation: cs-strike 140ms var(--cs-ease) forwards;
+}
+
+@keyframes cs-strike {
+  from {
+    transform: rotate(-3deg) translateX(-110%);
+  }
+  to {
+    transform: rotate(-3deg) translateX(0%);
+  }
+}
+
+/* —— Phase: contract 300–520ms —— */
+.completion-strike.is-contracting .completion-strike__row {
+  animation: cs-contract 220ms var(--cs-ease) forwards;
+}
+
+.completion-strike.is-contracting .completion-strike__meta {
+  animation: cs-meta-right 220ms var(--cs-ease) forwards;
+}
+
+@keyframes cs-contract {
+  to {
+    height: var(--cs-row-h-done);
+    min-height: var(--cs-row-h-done);
+  }
+}
+
+@keyframes cs-meta-right {
+  to {
+    transform: translateX(10px);
+  }
+}
+
+/* —— Phase: mark construct 420–620ms —— */
+.completion-strike.is-marking .completion-strike__mark {
+  opacity: 1;
+}
+
+.completion-strike.is-marking .completion-strike__bar--short {
+  animation: cs-bar-short 90ms var(--cs-ease) forwards;
+}
+
+.completion-strike.is-marking .completion-strike__bar--long {
+  animation: cs-bar-long 110ms var(--cs-ease) 90ms forwards;
+}
+
+@keyframes cs-bar-short {
+  from {
+    transform: rotate(42deg) scaleX(0);
+  }
+  to {
+    transform: rotate(42deg) scaleX(1);
+  }
+}
+
+@keyframes cs-bar-long {
+  from {
+    transform: rotate(-48deg) scaleX(0);
+  }
+  to {
+    transform: rotate(-48deg) scaleX(1);
+  }
+}
+
+/* —— Phase: COMPLETE badge 560–720ms —— */
+.completion-strike.is-badging .completion-strike__badge {
+  animation: cs-badge-snap 160ms cubic-bezier(0.2, 0.9, 0.35, 1.1) forwards;
+}
+
+@keyframes cs-badge-snap {
+  from {
+    opacity: 0;
+    transform: translate(8px, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1);
+  }
+}
+
+/* Settled completed state */
+.completion-strike.is-complete .completion-strike__row {
+  height: var(--cs-row-h-done);
+  min-height: var(--cs-row-h-done);
+}
+
+.completion-strike.is-complete .completion-strike__title {
+  transform: scaleX(0.98);
+  font-size: 0.82rem;
+}
+
+.completion-strike.is-complete .completion-strike__meta {
+  transform: translateX(10px);
+  font-size: 0.52rem;
+}
+
+.completion-strike.is-complete .completion-strike__strike--red,
+.completion-strike.is-complete .completion-strike__strike--ink {
+  opacity: 1;
+  transform: rotate(-3deg) translateX(0%);
+}
+
+.completion-strike.is-complete .completion-strike__mark {
+  opacity: 1;
+}
+
+.completion-strike.is-complete .completion-strike__bar--short {
+  transform: rotate(42deg) scaleX(1);
+}
+
+.completion-strike.is-complete .completion-strike__bar--long {
+  transform: rotate(-48deg) scaleX(1);
+}
+
+.completion-strike.is-complete .completion-strike__badge {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .completion-strike.is-compressing .completion-strike__title,
+  .completion-strike.is-red-strike .completion-strike__strike--red,
+  .completion-strike.is-ink-strike .completion-strike__strike--ink,
+  .completion-strike.is-contracting .completion-strike__row,
+  .completion-strike.is-contracting .completion-strike__meta,
+  .completion-strike.is-marking .completion-strike__bar--short,
+  .completion-strike.is-marking .completion-strike__bar--long,
+  .completion-strike.is-badging .completion-strike__badge {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .completion-strike.is-compressing .completion-strike__title,
+[data-force-reduced-motion='true'] .completion-strike.is-red-strike .completion-strike__strike--red,
+[data-force-reduced-motion='true'] .completion-strike.is-ink-strike .completion-strike__strike--ink,
+[data-force-reduced-motion='true'] .completion-strike.is-contracting .completion-strike__row,
+[data-force-reduced-motion='true'] .completion-strike.is-contracting .completion-strike__meta,
+[data-force-reduced-motion='true'] .completion-strike.is-marking .completion-strike__bar--short,
+[data-force-reduced-motion='true'] .completion-strike.is-marking .completion-strike__bar--long,
+[data-force-reduced-motion='true'] .completion-strike.is-badging .completion-strike__badge {
+  animation: none !important;
+}

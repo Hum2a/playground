@@ -1,0 +1,37 @@
+<div class="completion-strike" data-completion-strike data-state="idle">
+  <div
+    class="completion-strike__row"
+    role="checkbox"
+    aria-checked="false"
+    aria-labelledby="completion-strike-label"
+    data-cs-row
+  >
+    <div class="completion-strike__body" data-cs-body>
+      <p class="completion-strike__title" id="completion-strike-label" data-cs-title>
+        BUILD PREVIEW
+      </p>
+      <p class="completion-strike__meta" data-cs-meta>SPX // 042</p>
+    </div>
+
+    <span class="completion-strike__strike completion-strike__strike--red" aria-hidden="true" data-cs-strike-red></span>
+    <span class="completion-strike__strike completion-strike__strike--ink" aria-hidden="true" data-cs-strike-ink></span>
+
+    <span class="completion-strike__mark" aria-hidden="true" data-cs-mark>
+      <span class="completion-strike__bar completion-strike__bar--short"></span>
+      <span class="completion-strike__bar completion-strike__bar--long"></span>
+    </span>
+
+    <span class="completion-strike__badge" data-cs-badge aria-hidden="true">COMPLETE</span>
+  </div>
+
+  <div class="completion-strike__actions">
+    <button type="button" class="completion-strike__btn completion-strike__btn--go" data-cs-complete>
+      MARK COMPLETE
+    </button>
+    <button type="button" class="completion-strike__btn completion-strike__btn--undo" data-cs-undo hidden>
+      UNDO
+    </button>
+  </div>
+
+  <p class="completion-strike__status" role="status" aria-live="polite" data-cs-status></p>
+</div>
