@@ -1,0 +1,711 @@
+/* SPX-509 Fusion Selection Merge — portable contract. Do not restyle to host tokens. */
+
+.fsm {
+  --fsm-near: #020912;
+  --fsm-deep: #071e38;
+  --fsm-blue: #176da1;
+  --fsm-bright: #43b8e8;
+  --fsm-pale: #d6f5ff;
+  --fsm-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --fsm-w: 140px;
+  --fsm-h: 170px;
+  --fsm-travel: 95px;
+
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 360px;
+  height: 100%;
+  padding: 1rem;
+  background: var(--fsm-near);
+  color: var(--fsm-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.fsm *,
+.fsm *::before,
+.fsm *::after {
+  box-sizing: border-box;
+}
+
+.fsm__stage {
+  position: relative;
+  width: min(100%, 420px);
+  height: 240px;
+  overflow: hidden;
+}
+
+.fsm__card {
+  position: absolute;
+  top: 50%;
+  width: var(--fsm-w);
+  height: var(--fsm-h);
+  margin: 0;
+  padding: 1rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  background: transparent;
+  color: var(--fsm-pale);
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  overflow: hidden;
+}
+
+.fsm__card--a {
+  left: 22%;
+  z-index: 2;
+}
+
+.fsm__card--b {
+  left: 78%;
+  z-index: 2;
+}
+
+.fsm__card--c {
+  left: 50%;
+  z-index: 5;
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(0.15) scaleY(0.9);
+}
+
+.fsm__glass {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    145deg,
+    rgb(23 109 161 / 0.55) 0%,
+    rgb(7 30 56 / 0.92) 55%,
+    rgb(2 9 18 / 0.98) 100%
+  );
+  border: 1px solid rgb(67 184 232 / 0.45);
+  clip-path: polygon(4% 0%, 96% 3%, 100% 88%, 92% 100%, 3% 97%, 0% 12%);
+  pointer-events: none;
+}
+
+.fsm__card--a .fsm__glass {
+  /* Left-edge notch geometry */
+  clip-path: polygon(
+    0% 8%,
+    12% 0%,
+    96% 4%,
+    100% 90%,
+    88% 100%,
+    0% 94%,
+    6% 48%
+  );
+}
+
+.fsm__card--b .fsm__glass {
+  /* Top-right diagonal cut */
+  clip-path: polygon(
+    2% 0%,
+    78% 0%,
+    100% 18%,
+    100% 92%,
+    90% 100%,
+    4% 96%,
+    0% 10%
+  );
+}
+
+.fsm__card--c .fsm__glass {
+  /* Inherits A left notch + B top-right diagonal */
+  clip-path: polygon(
+    0% 8%,
+    12% 0%,
+    78% 0%,
+    100% 18%,
+    100% 90%,
+    88% 100%,
+    0% 94%,
+    6% 48%
+  );
+}
+
+.fsm__notch--a {
+  position: absolute;
+  left: -2px;
+  top: 42%;
+  z-index: 1;
+  width: 14px;
+  height: 22px;
+  background: var(--fsm-near);
+  clip-path: polygon(0 0, 100% 20%, 100% 80%, 0 100%);
+  pointer-events: none;
+}
+
+.fsm__diag--b {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  width: 42px;
+  height: 36px;
+  background: rgb(67 184 232 / 0.35);
+  clip-path: polygon(30% 0, 100% 0, 100% 100%);
+  pointer-events: none;
+}
+
+.fsm__kicker,
+.fsm__label {
+  position: relative;
+  z-index: 2;
+}
+
+.fsm__kicker {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  opacity: 0.7;
+}
+
+.fsm__label {
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.fsm__brackets {
+  position: absolute;
+  inset: 4px 5px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.fsm__bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--fsm-bright);
+}
+
+.fsm__bracket--tl {
+  top: 0;
+  left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.fsm__bracket--tr {
+  top: 0;
+  right: 0;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.fsm__bracket--bl {
+  bottom: 0;
+  left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.fsm__bracket--br {
+  bottom: 0;
+  right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.fsm__seam {
+  position: absolute;
+  top: 18%;
+  bottom: 18%;
+  left: 50%;
+  z-index: 4;
+  width: 0;
+  background: var(--fsm-bright);
+  transform: translateX(-50%);
+  opacity: 0;
+  box-shadow: 0 0 12px rgb(67 184 232 / 0.65);
+  pointer-events: none;
+}
+
+.fsm__cover {
+  position: absolute;
+  inset: 8% 12%;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.fsm__poly {
+  position: absolute;
+  inset: 10% 20%;
+  background: rgb(23 109 161 / 0.72);
+  opacity: 0;
+  transform: scaleX(0.05);
+  transform-origin: center center;
+}
+
+.fsm__poly--1 {
+  clip-path: polygon(0% 8%, 100% 0%, 100% 100%, 0% 92%);
+  background: rgb(7 30 56 / 0.88);
+}
+
+.fsm__poly--2 {
+  inset: 0% 8%;
+  clip-path: polygon(4% 0%, 96% 10%, 100% 100%, 0% 88%);
+  background: rgb(23 109 161 / 0.7);
+}
+
+.fsm__poly--3 {
+  inset: 18% 0%;
+  clip-path: polygon(0% 20%, 100% 0%, 94% 100%, 8% 100%);
+  background: rgb(67 184 232 / 0.45);
+}
+
+.fsm__back {
+  position: absolute;
+  inset: -8px -10px;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fsm__back--1 {
+  background: rgb(7 30 56 / 0.85);
+  clip-path: polygon(0% 10%, 100% 0%, 96% 100%, 4% 90%);
+  transform: translate(6px, 5px);
+}
+
+.fsm__back--2 {
+  background: rgb(23 109 161 / 0.55);
+  clip-path: polygon(6% 0%, 100% 12%, 90% 100%, 0% 88%);
+  transform: translate(-5px, 7px);
+}
+
+.fsm__back--3 {
+  background: rgb(67 184 232 / 0.35);
+  clip-path: polygon(0% 0%, 92% 8%, 100% 100%, 8% 94%);
+  transform: translate(8px, -4px);
+}
+
+.fsm__done {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--fsm-bright);
+  opacity: 0;
+}
+
+.fsm__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fsm__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgb(214 245 255 / 0.55);
+  border-radius: 0;
+  background: transparent;
+  color: var(--fsm-pale);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fsm__btn:hover {
+  background: rgb(67 184 232 / 0.14);
+}
+
+.fsm__btn:focus-visible {
+  outline: 2px solid var(--fsm-bright);
+  outline-offset: 3px;
+}
+
+.fsm__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fsm__btn--ghost {
+  border-color: rgb(214 245 255 / 0.28);
+}
+
+.fsm__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Convergence 0–360ms —— */
+.fsm[data-state='converge'] .fsm__card--a {
+  animation: fsm-a-converge 360ms var(--fsm-ease) forwards;
+}
+
+.fsm[data-state='converge'] .fsm__card--b {
+  animation: fsm-b-converge 360ms var(--fsm-ease) forwards;
+}
+
+/* Hold converged pose through compress / cover */
+.fsm[data-state='compress'] .fsm__card--a,
+.fsm[data-state='cover'] .fsm__card--a {
+  transform: translate(calc(-50% + var(--fsm-travel)), -50%) rotate(5deg)
+    scale(0.9);
+}
+
+.fsm[data-state='compress'] .fsm__card--b,
+.fsm[data-state='cover'] .fsm__card--b {
+  transform: translate(calc(-50% - var(--fsm-travel)), -50%) rotate(-5deg)
+    scale(0.9);
+}
+
+.fsm[data-state='compress'] .fsm__card--a .fsm__label,
+.fsm[data-state='compress'] .fsm__card--a .fsm__kicker,
+.fsm[data-state='cover'] .fsm__card--a .fsm__label,
+.fsm[data-state='cover'] .fsm__card--a .fsm__kicker {
+  animation: fsm-compress-l 180ms var(--fsm-ease) forwards;
+}
+
+.fsm[data-state='compress'] .fsm__card--b .fsm__label,
+.fsm[data-state='compress'] .fsm__card--b .fsm__kicker,
+.fsm[data-state='cover'] .fsm__card--b .fsm__label,
+.fsm[data-state='cover'] .fsm__card--b .fsm__kicker {
+  animation: fsm-compress-r 180ms var(--fsm-ease) forwards;
+}
+
+.fsm[data-state='compress'] .fsm__seam,
+.fsm[data-state='cover'] .fsm__seam {
+  opacity: 1;
+  animation: fsm-seam 180ms var(--fsm-ease) forwards;
+}
+
+/* —— Coverage 420–650ms —— */
+.fsm[data-state='cover'] .fsm__poly--1 {
+  opacity: 1;
+  animation: fsm-poly-grow 230ms var(--fsm-ease) forwards;
+}
+
+.fsm[data-state='cover'] .fsm__poly--2 {
+  opacity: 1;
+  animation: fsm-poly-grow 230ms var(--fsm-ease) 40ms forwards;
+}
+
+.fsm[data-state='cover'] .fsm__poly--3 {
+  opacity: 1;
+  animation: fsm-poly-grow 230ms var(--fsm-ease) 80ms forwards;
+}
+
+.fsm[data-state='cover'] .fsm__card--a,
+.fsm[data-state='cover'] .fsm__card--b {
+  animation: fsm-retract-a 220ms var(--fsm-ease) 80ms forwards;
+}
+
+.fsm[data-state='cover'] .fsm__card--b {
+  animation-name: fsm-retract-b;
+}
+
+.fsm[data-state='result'] .fsm__card--a,
+.fsm[data-state='result'] .fsm__card--b,
+.fsm[data-state='done'] .fsm__card--a,
+.fsm[data-state='done'] .fsm__card--b {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.fsm[data-state='result'] .fsm__seam,
+.fsm[data-state='done'] .fsm__seam {
+  opacity: 0;
+}
+
+.fsm[data-state='result'] .fsm__cover,
+.fsm[data-state='done'] .fsm__cover {
+  opacity: 0;
+  transition: opacity 160ms linear 80ms;
+}
+
+.fsm[data-state='cover'] .fsm__poly--1,
+.fsm[data-state='result'] .fsm__poly--1 {
+  opacity: 1;
+  transform: scaleX(1.15);
+}
+
+.fsm[data-state='cover'] .fsm__poly--2,
+.fsm[data-state='result'] .fsm__poly--2 {
+  opacity: 1;
+  transform: scaleX(1.15);
+}
+
+.fsm[data-state='cover'] .fsm__poly--3,
+.fsm[data-state='result'] .fsm__poly--3 {
+  opacity: 1;
+  transform: scaleX(1.15);
+}
+
+/* —— Result 600–850ms —— */
+.fsm[data-state='result'] .fsm__card--c,
+.fsm[data-state='done'] .fsm__card--c {
+  display: flex;
+  opacity: 1;
+  animation: fsm-result-expand 250ms var(--fsm-ease) forwards;
+}
+
+.fsm[data-state='result'] .fsm__back--1,
+.fsm[data-state='done'] .fsm__back--1 {
+  opacity: 1;
+  animation: fsm-back-in 200ms var(--fsm-ease) both;
+}
+
+.fsm[data-state='result'] .fsm__back--2,
+.fsm[data-state='done'] .fsm__back--2 {
+  opacity: 1;
+  animation: fsm-back-in 200ms var(--fsm-ease) 40ms both;
+}
+
+.fsm[data-state='result'] .fsm__back--3,
+.fsm[data-state='done'] .fsm__back--3 {
+  opacity: 1;
+  animation: fsm-back-in 200ms var(--fsm-ease) 80ms both;
+}
+
+.fsm[data-state='done'] .fsm__done {
+  display: block;
+  opacity: 1;
+  animation: fsm-done-in 160ms var(--fsm-ease) both;
+}
+
+.fsm[data-state='done'] .fsm__card--c {
+  animation: none;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.fsm[data-state='done'] .fsm__back {
+  animation: none;
+  opacity: 1;
+}
+
+.fsm__card--c[hidden],
+.fsm__done[hidden] {
+  display: none !important;
+}
+
+@keyframes fsm-a-converge {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translate(calc(-50% + var(--fsm-travel)), -50%) rotate(5deg)
+      scale(0.9);
+  }
+}
+
+@keyframes fsm-b-converge {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  to {
+    transform: translate(calc(-50% - var(--fsm-travel)), -50%) rotate(-5deg)
+      scale(0.9);
+  }
+}
+
+@keyframes fsm-compress-l {
+  to {
+    transform: translateX(10px) scaleX(0.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes fsm-compress-r {
+  to {
+    transform: translateX(-10px) scaleX(0.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes fsm-seam {
+  from {
+    width: 2px;
+  }
+  to {
+    width: 5px;
+  }
+}
+
+@keyframes fsm-poly-grow {
+  from {
+    opacity: 0.35;
+    transform: scaleX(0.05);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1.15);
+  }
+}
+
+@keyframes fsm-retract-a {
+  from {
+    transform: translate(calc(-50% + var(--fsm-travel)), -50%) rotate(5deg)
+      scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.28);
+    opacity: 0;
+  }
+}
+
+@keyframes fsm-retract-b {
+  from {
+    transform: translate(calc(-50% - var(--fsm-travel)), -50%) rotate(-5deg)
+      scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.28);
+    opacity: 0;
+  }
+}
+
+@keyframes fsm-result-expand {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(0.15) scaleY(0.9);
+  }
+  78% {
+    transform: translate(-50%, -50%) scaleX(1.05) scaleY(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes fsm-back-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fsm-done-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 380px) {
+  .fsm {
+    --fsm-w: 112px;
+    --fsm-h: 140px;
+    --fsm-travel: 72px;
+    min-height: 320px;
+  }
+
+  .fsm__stage {
+    height: 210px;
+  }
+
+  .fsm__label {
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fsm__card,
+  .fsm__seam,
+  .fsm__poly,
+  .fsm__back,
+  .fsm__done,
+  .fsm__label,
+  .fsm__kicker,
+  .fsm__cover {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fsm[data-state='done'] .fsm__card--a,
+  .fsm[data-state='done'] .fsm__card--b {
+    display: none !important;
+  }
+
+  .fsm[data-state='done'] .fsm__card--c {
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .fsm[data-state='done'] .fsm__back {
+    opacity: 1;
+  }
+
+  .fsm[data-state='done'] .fsm__done {
+    display: block !important;
+    opacity: 1;
+  }
+
+  .fsm[data-state='done'] .fsm__cover,
+  .fsm[data-state='done'] .fsm__seam {
+    display: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .fsm__card,
+[data-force-reduced-motion='true'] .fsm__seam,
+[data-force-reduced-motion='true'] .fsm__poly,
+[data-force-reduced-motion='true'] .fsm__back,
+[data-force-reduced-motion='true'] .fsm__done,
+[data-force-reduced-motion='true'] .fsm__label,
+[data-force-reduced-motion='true'] .fsm__kicker,
+[data-force-reduced-motion='true'] .fsm__cover {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__card--a,
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__card--b {
+  display: none !important;
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__card--c {
+  display: flex !important;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__back {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__done {
+  display: block !important;
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__cover,
+[data-force-reduced-motion='true'] .fsm[data-state='done'] .fsm__seam {
+  display: none;
+}

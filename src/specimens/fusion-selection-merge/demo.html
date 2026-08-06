@@ -1,0 +1,74 @@
+<div class="fsm" data-fusion-merge data-state="idle">
+  <div class="fsm__stage" data-fsm-stage>
+    <article
+      class="fsm__card fsm__card--a"
+      data-fsm-source="a"
+      aria-label="Source A, Motion"
+    >
+      <span class="fsm__brackets" aria-hidden="true">
+        <span class="fsm__bracket fsm__bracket--tl"></span>
+        <span class="fsm__bracket fsm__bracket--tr"></span>
+        <span class="fsm__bracket fsm__bracket--bl"></span>
+        <span class="fsm__bracket fsm__bracket--br"></span>
+      </span>
+      <span class="fsm__glass" aria-hidden="true"></span>
+      <span class="fsm__notch fsm__notch--a" aria-hidden="true"></span>
+      <span class="fsm__kicker">SOURCE A</span>
+      <span class="fsm__label">MOTION</span>
+    </article>
+
+    <article
+      class="fsm__card fsm__card--b"
+      data-fsm-source="b"
+      aria-label="Source B, Glass"
+    >
+      <span class="fsm__brackets" aria-hidden="true">
+        <span class="fsm__bracket fsm__bracket--tl"></span>
+        <span class="fsm__bracket fsm__bracket--tr"></span>
+        <span class="fsm__bracket fsm__bracket--bl"></span>
+        <span class="fsm__bracket fsm__bracket--br"></span>
+      </span>
+      <span class="fsm__glass" aria-hidden="true"></span>
+      <span class="fsm__diag fsm__diag--b" aria-hidden="true"></span>
+      <span class="fsm__kicker">SOURCE B</span>
+      <span class="fsm__label">GLASS</span>
+    </article>
+
+    <div class="fsm__seam" data-fsm-seam aria-hidden="true"></div>
+
+    <div class="fsm__cover" data-fsm-cover aria-hidden="true">
+      <span class="fsm__poly fsm__poly--1"></span>
+      <span class="fsm__poly fsm__poly--2"></span>
+      <span class="fsm__poly fsm__poly--3"></span>
+    </div>
+
+    <article
+      class="fsm__card fsm__card--c"
+      data-fsm-result
+      hidden
+      aria-label="Result C, Refraction"
+    >
+      <span class="fsm__back fsm__back--1" aria-hidden="true"></span>
+      <span class="fsm__back fsm__back--2" aria-hidden="true"></span>
+      <span class="fsm__back fsm__back--3" aria-hidden="true"></span>
+      <span class="fsm__glass" aria-hidden="true"></span>
+      <span class="fsm__notch fsm__notch--a" aria-hidden="true"></span>
+      <span class="fsm__diag fsm__diag--b" aria-hidden="true"></span>
+      <span class="fsm__kicker">RESULT C</span>
+      <span class="fsm__label">REFRACTION</span>
+    </article>
+  </div>
+
+  <p class="fsm__done" data-fsm-done hidden>FUSION COMPLETE</p>
+
+  <div class="fsm__controls">
+    <button type="button" class="fsm__btn" data-fsm-fuse>FUSE</button>
+    <button type="button" class="fsm__btn fsm__btn--ghost" data-fsm-reset>
+      RESET
+    </button>
+  </div>
+
+  <p class="fsm__status" role="status" aria-live="polite" data-fsm-status>
+    Source A Motion and Source B Glass selected for merge.
+  </p>
+</div>

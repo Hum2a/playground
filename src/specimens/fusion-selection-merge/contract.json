@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/fusion-selection-merge.schema.json",
+  "title": "FusionSelectionMerge",
+  "description": "Portable contract for A+B→C source-card fusion merge. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "phases",
+    "convergence",
+    "inheritance",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "fusion-selection-merge" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Two selected source cards converge, compress across a blue seam, and dissolve under glass into one inherited result."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceAKicker",
+        "sourceALabel",
+        "sourceBKicker",
+        "sourceBLabel",
+        "resultKicker",
+        "resultLabel",
+        "fuse",
+        "reset",
+        "complete",
+        "statusIdle",
+        "statusDone"
+      ],
+      "properties": {
+        "sourceAKicker": { "type": "string", "const": "SOURCE A" },
+        "sourceALabel": { "type": "string", "const": "MOTION" },
+        "sourceBKicker": { "type": "string", "const": "SOURCE B" },
+        "sourceBLabel": { "type": "string", "const": "GLASS" },
+        "resultKicker": { "type": "string", "const": "RESULT C" },
+        "resultLabel": { "type": "string", "const": "REFRACTION" },
+        "fuse": { "type": "string", "const": "FUSE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "complete": { "type": "string", "const": "FUSION COMPLETE" },
+        "statusIdle": {
+          "type": "string",
+          "const": "Source A Motion and Source B Glass selected for merge."
+        },
+        "statusDone": {
+          "type": "string",
+          "const": "Sources merged into Result C."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "deep", "blue", "bright", "pale"],
+      "properties": {
+        "near": { "type": "string", "const": "#020912" },
+        "deep": { "type": "string", "const": "#071e38" },
+        "blue": { "type": "string", "const": "#176da1" },
+        "bright": { "type": "string", "const": "#43b8e8" },
+        "pale": { "type": "string", "const": "#d6f5ff" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardWidthPx", "cardHeightPx", "leftPercent", "rightPercent"],
+      "properties": {
+        "cardWidthPx": { "type": "number", "const": 140 },
+        "cardHeightPx": { "type": "number", "const": 170 },
+        "leftPercent": { "type": "number", "const": 22 },
+        "rightPercent": { "type": "number", "const": 78 }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalMs",
+        "convergeMs",
+        "compressAtMs",
+        "coverAtMs",
+        "resultAtMs",
+        "doneAtMs"
+      ],
+      "properties": {
+        "totalMs": { "type": "number", "const": 950 },
+        "convergeMs": { "type": "number", "const": 360 },
+        "compressAtMs": { "type": "number", "const": 300 },
+        "coverAtMs": { "type": "number", "const": 420 },
+        "resultAtMs": { "type": "number", "const": 600 },
+        "doneAtMs": { "type": "number", "const": 850 },
+        "busyClearMs": { "type": "number", "const": 950 }
+      }
+    },
+    "convergence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "travelPx",
+        "endScale",
+        "rotateADeg",
+        "rotateBDeg",
+        "seamWidthPx"
+      ],
+      "properties": {
+        "travelPx": { "type": "number", "const": 95 },
+        "endScale": { "type": "number", "const": 0.9 },
+        "rotateADeg": { "type": "number", "const": 5 },
+        "rotateBDeg": { "type": "number", "const": -5 },
+        "seamWidthPx": {
+          "type": "array",
+          "const": [2, 5]
+        },
+        "resultScaleX": {
+          "type": "array",
+          "const": [0.15, 1.05, 1]
+        },
+        "backStaggerMs": {
+          "type": "array",
+          "const": [0, 40, 80]
+        }
+      }
+    },
+    "inheritance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fromA", "fromB", "onResult"],
+      "properties": {
+        "fromA": { "type": "string", "const": "left-edge-notch" },
+        "fromB": { "type": "string", "const": "top-right-diagonal" },
+        "onResult": {
+          "type": "string",
+          "const": "both-notch-and-diagonal"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceMerge", "hideDecorativeSourcesAfter"],
+      "properties": {
+        "announceMerge": { "type": "boolean", "const": true },
+        "hideDecorativeSourcesAfter": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantMerge", "staticComplete", "triggers"],
+      "properties": {
+        "instantMerge": { "type": "boolean", "const": true },
+        "staticComplete": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "cardA", "cardB", "cardC", "seam", "cover"],
+      "properties": {
+        "root": { "type": "string", "const": "fsm" },
+        "cardA": { "type": "string", "const": "fsm__card--a" },
+        "cardB": { "type": "string", "const": "fsm__card--b" },
+        "cardC": { "type": "string", "const": "fsm__card--c" },
+        "seam": { "type": "string", "const": "fsm__seam" },
+        "cover": { "type": "string", "const": "fsm__cover" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "fuse": { "type": "string", "const": "fuse" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": { "type": "string", "const": "fusionSelectionMerge" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "fusion-selection-merge",
+      "intent": "Two selected source cards converge, compress across a blue seam, and dissolve under glass into one inherited result.",
+      "copy": {
+        "sourceAKicker": "SOURCE A",
+        "sourceALabel": "MOTION",
+        "sourceBKicker": "SOURCE B",
+        "sourceBLabel": "GLASS",
+        "resultKicker": "RESULT C",
+        "resultLabel": "REFRACTION",
+        "fuse": "FUSE",
+        "reset": "RESET",
+        "complete": "FUSION COMPLETE",
+        "statusIdle": "Source A Motion and Source B Glass selected for merge.",
+        "statusDone": "Sources merged into Result C."
+      },
+      "colours": {
+        "near": "#020912",
+        "deep": "#071e38",
+        "blue": "#176da1",
+        "bright": "#43b8e8",
+        "pale": "#d6f5ff"
+      },
+      "layout": {
+        "cardWidthPx": 140,
+        "cardHeightPx": 170,
+        "leftPercent": 22,
+        "rightPercent": 78
+      },
+      "phases": {
+        "totalMs": 950,
+        "convergeMs": 360,
+        "compressAtMs": 300,
+        "coverAtMs": 420,
+        "resultAtMs": 600,
+        "doneAtMs": 850,
+        "busyClearMs": 950
+      },
+      "convergence": {
+        "travelPx": 95,
+        "endScale": 0.9,
+        "rotateADeg": 5,
+        "rotateBDeg": -5,
+        "seamWidthPx": [2, 5],
+        "resultScaleX": [0.15, 1.05, 1],
+        "backStaggerMs": [0, 40, 80]
+      },
+      "inheritance": {
+        "fromA": "left-edge-notch",
+        "fromB": "top-right-diagonal",
+        "onResult": "both-notch-and-diagonal"
+      },
+      "a11y": {
+        "announceMerge": true,
+        "hideDecorativeSourcesAfter": true
+      },
+      "reducedMotion": {
+        "instantMerge": true,
+        "staticComplete": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "fsm",
+        "cardA": "fsm__card--a",
+        "cardB": "fsm__card--b",
+        "cardC": "fsm__card--c",
+        "seam": "fsm__seam",
+        "cover": "fsm__cover"
+      },
+      "behaviour": {
+        "fuse": "fuse",
+        "reset": "reset",
+        "api": "fusionSelectionMerge"
+      }
+    }
+  ]
+}
