@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "all-out-completion-burst",
+  "description": "Multiple active entities collapse into a single explosive completion/result state.",
+  "type": "object",
+  "required": [
+    "name",
+    "intent",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "all-out-completion-burst"
+    },
+    "intent": {
+      "type": "string",
+      "const": "Multiple active entities collapse into a single explosive completion/result state."
+    },
+    "colours": {
+      "type": "object",
+      "properties": {
+        "yellow": {
+          "const": "#F5C400"
+        },
+        "ink": {
+          "const": "#101010"
+        },
+        "paper": {
+          "const": "#F7F3E8"
+        },
+        "gray": {
+          "const": "#E8E8E8"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
