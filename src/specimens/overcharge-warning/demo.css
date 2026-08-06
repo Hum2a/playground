@@ -1,0 +1,329 @@
+/* SPX-970 Overcharge Warning — portable contract. Do not restyle to host tokens. */
+
+.ocw {
+  --ocw-bg: #0a0e12;
+  --ocw-panel: #141b22;
+  --ocw-line: #2a3642;
+  --ocw-ink: #e8eef4;
+  --ocw-muted: #8494a3;
+  --ocw-fill: #4e9e8f;
+  --ocw-overflow: #d4a017;
+  --ocw-warn: #c45c26;
+  --ocw-safe-fill: 72%;
+  --ocw-overflow-fill: 0%;
+  --ocw-safe-w: 280px;
+  --ocw-overflow-w: 70px; /* 25% of normal scale */
+  --ocw-step: 150ms;
+  --ocw-hold: 160ms;
+  --ocw-unfold: 180ms;
+
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 1rem 1.05rem 1.1rem;
+  color: var(--ocw-ink);
+  background: var(--ocw-bg);
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.ocw *,
+.ocw *::before,
+.ocw *::after {
+  box-sizing: border-box;
+}
+
+.ocw__title {
+  margin: 0 0 0.75rem;
+  text-align: center;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.ocw__readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 0.55rem;
+}
+
+.ocw__pct {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ocw__status {
+  color: var(--ocw-muted);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 11px;
+  text-align: right;
+}
+
+.ocw.is-at-max .ocw__status {
+  color: var(--ocw-ink);
+}
+
+.ocw.is-overcharged .ocw__status,
+.ocw.is-overcharged .ocw__pct {
+  color: var(--ocw-warn);
+}
+
+.ocw__meter {
+  padding: 0.75rem 0.7rem 0.65rem;
+  background: var(--ocw-panel);
+  border: 1px solid var(--ocw-line);
+}
+
+.ocw.has-frame-shift .ocw__meter {
+  transform: translateX(1px);
+}
+
+.ocw__track {
+  display: flex;
+  align-items: stretch;
+  height: 28px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.ocw__safe {
+  position: relative;
+  width: var(--ocw-safe-w);
+  max-width: min(280px, 72vw);
+  height: 100%;
+  border: 1px solid var(--ocw-line);
+  background: #0c1218;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.ocw__overflow {
+  position: relative;
+  width: 0;
+  height: 100%;
+  border: 1px solid transparent;
+  border-left: none;
+  background: #16100c;
+  overflow: hidden;
+  flex: 0 0 auto;
+  opacity: 0;
+}
+
+.ocw.is-unfolding .ocw__overflow,
+.ocw.is-overflowing .ocw__overflow {
+  width: var(--ocw-overflow-w);
+  border-color: var(--ocw-warn);
+  opacity: 1;
+  transition:
+    width var(--ocw-unfold) ease-out,
+    opacity var(--ocw-unfold) ease-out;
+}
+
+.ocw.is-overflowing .ocw__safe {
+  border-right-color: var(--ocw-fill);
+}
+
+.ocw__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ocw__fill--safe {
+  width: var(--ocw-safe-fill);
+  background: linear-gradient(180deg, #6bb5a6, var(--ocw-fill));
+  transition: width var(--ocw-step) linear;
+}
+
+.ocw__fill--overflow {
+  width: var(--ocw-overflow-fill);
+  background: linear-gradient(180deg, #e0b84a, var(--ocw-overflow));
+  transition: width var(--ocw-step) linear;
+}
+
+.ocw__hatch {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 4px,
+    rgba(20, 12, 6, 0.45) 4px 8px
+  );
+  mix-blend-mode: multiply;
+}
+
+.ocw.has-hatch .ocw__hatch {
+  display: block;
+}
+
+.ocw__warn {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border: 1px solid var(--ocw-ink);
+  background: var(--ocw-warn);
+  opacity: 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.ocw__warn--a {
+  left: 28%;
+}
+
+.ocw__warn--b {
+  left: 58%;
+}
+
+.ocw.has-warn-marks .ocw__warn {
+  opacity: 1;
+}
+
+.ocw__tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ocw__tick--100 {
+  right: 0;
+}
+
+.ocw__tick--125 {
+  right: 0;
+}
+
+.ocw__tick-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--ocw-ink);
+  transform: translateX(-1px);
+}
+
+.ocw__tick--100 .ocw__tick-line {
+  background: var(--ocw-ink);
+}
+
+.ocw__tick--125 .ocw__tick-line {
+  background: var(--ocw-warn);
+}
+
+.ocw__tick-label {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  transform: translateX(-70%);
+  white-space: nowrap;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--ocw-muted);
+  font-weight: 700;
+}
+
+.ocw__tick--125 .ocw__tick-label {
+  color: var(--ocw-warn);
+  transform: translateX(-85%);
+}
+
+.ocw__cap {
+  margin: 1.35rem 0 0;
+  color: var(--ocw-muted);
+  letter-spacing: 0.08em;
+  font-size: 10px;
+}
+
+.ocw__controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.ocw__btn {
+  appearance: none;
+  border: 1px solid var(--ocw-fill);
+  background: transparent;
+  color: var(--ocw-ink);
+  padding: 0.45rem 0.85rem;
+  letter-spacing: 0.1em;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ocw__btn:hover:not(:disabled) {
+  background: rgba(78, 158, 143, 0.12);
+}
+
+.ocw__btn:focus-visible {
+  outline: 2px solid var(--ocw-fill);
+  outline-offset: 2px;
+}
+
+.ocw__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.ocw__btn--ghost {
+  border-color: var(--ocw-line);
+  color: var(--ocw-muted);
+}
+
+.ocw__announce {
+  margin: 0.55rem 0 0;
+  min-height: 1.25em;
+  text-align: center;
+  color: var(--ocw-muted);
+  font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocw__fill--safe,
+  .ocw__fill--overflow,
+  .ocw.is-unfolding .ocw__overflow,
+  .ocw.is-overflowing .ocw__overflow,
+  .ocw.has-frame-shift .ocw__meter {
+    transition: none !important;
+  }
+
+  .ocw.is-overflowing .ocw__overflow,
+  .ocw.is-complete .ocw__overflow {
+    width: var(--ocw-overflow-w);
+    opacity: 1;
+    border-color: var(--ocw-warn);
+  }
+}
+
+[data-force-reduced-motion='true'] .ocw__fill--safe,
+[data-force-reduced-motion='true'] .ocw__fill--overflow,
+[data-force-reduced-motion='true'] .ocw.is-unfolding .ocw__overflow,
+[data-force-reduced-motion='true'] .ocw.is-overflowing .ocw__overflow,
+[data-force-reduced-motion='true'] .ocw.has-frame-shift .ocw__meter {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .ocw.is-overflowing .ocw__overflow,
+[data-force-reduced-motion='true'] .ocw.is-complete .ocw__overflow {
+  width: var(--ocw-overflow-w);
+  opacity: 1;
+  border-color: var(--ocw-warn);
+}

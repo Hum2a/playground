@@ -1,0 +1,47 @@
+<div class="ocw" data-overcharge-warning data-state="idle">
+  <p class="ocw__title" id="ocw-title">COMPUTE RESERVE</p>
+
+  <div class="ocw__readout" aria-hidden="true">
+    <span class="ocw__pct" data-ocw-pct>72%</span>
+    <span class="ocw__status" data-ocw-status>LOADING</span>
+  </div>
+
+  <div
+    class="ocw__meter"
+    data-ocw-meter
+    role="meter"
+    aria-labelledby="ocw-title"
+    aria-valuemin="0"
+    aria-valuemax="125"
+    aria-valuenow="72"
+    aria-valuetext="72 percent of compute reserve"
+  >
+    <div class="ocw__track" data-ocw-track>
+      <div class="ocw__safe" data-ocw-safe>
+        <div class="ocw__fill ocw__fill--safe" data-ocw-fill-safe></div>
+        <span class="ocw__tick ocw__tick--100" data-ocw-tick-100>
+          <span class="ocw__tick-line"></span>
+          <span class="ocw__tick-label">100%</span>
+        </span>
+      </div>
+      <div class="ocw__overflow" data-ocw-overflow aria-hidden="true">
+        <div class="ocw__fill ocw__fill--overflow" data-ocw-fill-overflow></div>
+        <span class="ocw__hatch" data-ocw-hatch aria-hidden="true"></span>
+        <span class="ocw__warn ocw__warn--a" data-ocw-warn="a" aria-hidden="true"></span>
+        <span class="ocw__warn ocw__warn--b" data-ocw-warn="b" aria-hidden="true"></span>
+        <span class="ocw__tick ocw__tick--125" data-ocw-tick-125>
+          <span class="ocw__tick-line"></span>
+          <span class="ocw__tick-label">125%</span>
+        </span>
+      </div>
+    </div>
+    <p class="ocw__cap" data-ocw-cap>SAFE CAPACITY 100% · HARD LIMIT 125%</p>
+  </div>
+
+  <div class="ocw__controls">
+    <button type="button" class="ocw__btn" data-ocw-run>INCREASE LOAD</button>
+    <button type="button" class="ocw__btn ocw__btn--ghost" data-ocw-reset hidden>RESET</button>
+  </div>
+
+  <p class="ocw__announce" data-ocw-announce role="status" aria-live="polite"></p>
+</div>

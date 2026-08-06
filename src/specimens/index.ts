@@ -78,6 +78,7 @@ import { moveLearned } from './move-learned/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
+import { overchargeWarning } from './overcharge-warning/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
@@ -240,6 +241,7 @@ export const specimens: Specimen[] = [
   moonPhaseProgress,
   newspaperHeadlineDrop,
   objectiveAcquired,
+  overchargeWarning,
   panelCollapseNavigation,
   panelExplosionReveal,
   paperRipUnlock,

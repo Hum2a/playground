@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/overcharge-warning.schema.json",
+  "title": "OverchargeWarning",
+  "description": "Compute reserve climbs past 100% into an unfolded 100–125% overflow bay, ending at 118% OVERCHARGED. Dragon Ball DB-005 / SPX-970.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "meter",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "overcharge-warning" },
+    "intent": {
+      "type": "string",
+      "const": "COMPUTE RESERVE from 72% through a calm climb to 100%, then unfolds a dedicated 100–125% overflow region ending at 118% OVERCHARGED without crossing 125%."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "trigger",
+        "nominal",
+        "overcharged",
+        "announceFinal"
+      ],
+      "properties": {
+        "title": { "type": "string", "const": "COMPUTE RESERVE" },
+        "trigger": { "type": "string", "const": "INCREASE LOAD" },
+        "nominal": { "type": "string", "const": "NOMINAL MAXIMUM" },
+        "overcharged": { "type": "string", "const": "OVERCHARGED" },
+        "announceFinal": {
+          "type": "string",
+          "const": "118%, above safe capacity of 100%, hard limit 125%."
+        }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "string",
+        "enum": ["#0a0e12", "#141b22", "#e8eef4", "#4e9e8f", "#c45c26"]
+      }
+    },
+    "meter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initialPct",
+        "safeMaxPct",
+        "hardLimitPct",
+        "finalPct",
+        "steps",
+        "safeWidthPx",
+        "overflowWidthPx"
+      ],
+      "properties": {
+        "initialPct": { "type": "integer", "const": 72 },
+        "safeMaxPct": { "type": "integer", "const": 100 },
+        "hardLimitPct": { "type": "integer", "const": 125 },
+        "finalPct": { "type": "integer", "const": 118 },
+        "steps": {
+          "type": "array",
+          "const": [72, 84, 93, 100, 106, 112, 118]
+        },
+        "safeWidthPx": { "type": "integer", "const": 280 },
+        "overflowWidthPx": {
+          "type": "integer",
+          "const": 70,
+          "description": "25% of normal/safe scale"
+        },
+        "unfoldsOverflowBay": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stepMs",
+        "holdAt100Ms",
+        "warnMarksAt",
+        "frameShiftAt",
+        "hatchAt",
+        "frameShiftPx",
+        "noLoopingShake"
+      ],
+      "properties": {
+        "stepMs": { "type": "integer", "const": 150 },
+        "holdAt100Ms": { "type": "integer", "const": 160 },
+        "warnMarksAt": { "type": "integer", "const": 106 },
+        "frameShiftAt": { "type": "integer", "const": 112 },
+        "hatchAt": { "type": "integer", "const": 118 },
+        "frameShiftPx": { "type": "integer", "const": 1 },
+        "warnMarkCount": { "type": "integer", "const": 2 },
+        "noLoopingShake": { "type": "boolean", "const": true },
+        "noStrobe": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["roleMeter", "announceAboveSafe"],
+      "properties": {
+        "roleMeter": { "type": "boolean", "const": true },
+        "announceAboveSafe": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion='true']"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate 118%, expanded overflow bay, hatching, OVERCHARGED."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "overflowing",
+        "warnMarks",
+        "frameShift",
+        "hatch",
+        "overcharged"
+      ],
+      "properties": {
+        "root": { "type": "string", "const": "ocw" },
+        "overflowing": { "type": "string", "const": "is-overflowing" },
+        "warnMarks": { "type": "string", "const": "has-warn-marks" },
+        "frameShift": { "type": "string", "const": "has-frame-shift" },
+        "hatch": { "type": "string", "const": "has-hatch" },
+        "overcharged": { "type": "string", "const": "is-overcharged" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset"],
+      "properties": {
+        "run": { "type": "string", "const": "runOverchargeWarning" },
+        "reset": { "type": "string", "const": "resetOverchargeWarning" }
+      }
+    }
+  }
+}

@@ -54,7 +54,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [x] **DB-001** · `SPX-966` · **Ki Charge Meter** — ki-charging-progress
 - [x] **DB-003** · `SPX-968` · **Kamehameha Charge** — ki-charging-progress
 - [x] **DB-004** · `SPX-969` · **Charge → Release** — ki-charging-progress
-- [ ] **DB-005** · `SPX-970` · **Overcharge Warning** — ki-charging-progress
+- [x] **DB-005** · `SPX-970` · **Overcharge Warning** — ki-charging-progress
 - [x] **DB-016** · `SPX-981` · **Super Saiyan Transformation** — transformation
 - [x] **DB-027** · `SPX-992` · **Ultra Instinct Activation** — transformation
 - [x] **DB-056** · `SPX-1021` · **Fusion Dance Merge** — fusion
@@ -84,7 +84,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-002** · `SPX-967` · **Power-Up Threshold** — an ordinary progress state becomes increasingly unstable before snapping into READY at 100%.
 - [x] **DB-003** · `SPX-968` · **Kamehameha Charge** — several small energy streams converge into one concentrated action node.
 - [x] **DB-004** · `SPX-969` · **Charge → Release** — holding builds potential energy, releasing converts the stored state into a travelling action.
-- [ ] **DB-005** · `SPX-970` · **Overcharge Warning** — progress safely reaches 100%, then enters an increasingly unstable overflow region.
+- [x] **DB-005** · `SPX-970` · **Overcharge Warning** — progress safely reaches 100%, then enters an increasingly unstable overflow region.
 - [ ] **DB-006** · `SPX-971` · **Ki Reserve Drain** — a stored resource continuously depletes while an enhanced feature remains active.
 - [ ] **DB-007** · `SPX-972` · **Charge Interrupted** — accumulated progress violently disperses when an operation is cancelled.
 - [ ] **DB-008** · `SPX-973` · **Charge Retained** — interrupted progress remains partially stored rather than resetting.
