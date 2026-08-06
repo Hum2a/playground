@@ -1,0 +1,1 @@
+export function runResume(){document.querySelector('[data-fill]').style.width='100%';document.querySelector('.nf__meta').textContent='Playing from 62%'};document.querySelector('[data-go]')?.addEventListener('click',()=>runResume())

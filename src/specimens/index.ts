@@ -332,6 +332,7 @@ import { recentsCardRestore } from './recents-card-restore/entry'
 import { redactedContentLock } from './redacted-content-lock/entry'
 import { redactionReveal } from './redaction-reveal/entry'
 import { removeFromListUndo } from './remove-from-list-undo/entry'
+import { resumePlaybackHandoff } from './resume-playback-handoff/entry'
 import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { rivalCardsClash } from './rival-cards-clash/entry'
 import { scannerSearch } from './scanner-search/entry'
@@ -808,6 +809,7 @@ export const specimens: Specimen[] = [
   redactedContentLock,
   redactionReveal,
   removeFromListUndo,
+  resumePlaybackHandoff,
   ripplePortalTransition,
   rivalCardsClash,
   scannerSearch,
