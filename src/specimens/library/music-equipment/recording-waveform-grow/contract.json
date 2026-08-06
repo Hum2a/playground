@@ -1,0 +1,8 @@
+{
+  "name": "recording-waveform-grow",
+  "ref": "SPX-3924",
+  "title": "Recording Waveform Grow",
+  "mode": "meter",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

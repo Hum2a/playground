@@ -466,7 +466,7 @@ specimens can feel tactile without needing sound.
     around a microphone control.
 - [ ] **MUSIC-164** · `SPX-3923` · ★★★☆☆ **Pop Filter Pulse** — A stylised transient hits a
     filter plane and emerges softened.
-- [ ] **MUSIC-165** · `SPX-3924` · ★★★★★ **Recording Waveform Grow** — A waveform builds from
+- [x] **MUSIC-165** · `SPX-3924` · ★★★★★ **Recording Waveform Grow** — A waveform builds from
     left to right as a finite recording progresses.
 - [ ] **MUSIC-166** · `SPX-3925` · ★★★★★ **Punch-In Region** — A selected timeline region turns
     into an armed replacement-recording state.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-165 | SPX-3924 | `recording-waveform-grow` | Recording Waveform Grow |
 | MUSIC-151 | SPX-3910 | `strobe-tuner-lock` | Strobe Tuner Lock |
 | MUSIC-150 | SPX-3909 | `needle-tuner-centre` | Needle Tuner Centre |
 | MUSIC-143 | SPX-3902 | `tube-warm-up` | Tube Warm-Up |
@@ -905,12 +906,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **42 / 310** complete.
+- Progress: **43 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 42 |
-| Open | 268 |
+| Done | 43 |
+| Open | 267 |
 
 ## Core first-wave / build queue
 
@@ -955,7 +956,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [x] **MUSIC-143** · `SPX-3902` · **Tube Warm-Up** · `tube-warm-up`
 - [x] **MUSIC-150** · `SPX-3909` · **Needle Tuner Centre** · `needle-tuner-centre`
 - [x] **MUSIC-151** · `SPX-3910` · **Strobe Tuner Lock** · `strobe-tuner-lock`
-- [ ] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · scaffold `recording-waveform-grow`
+- [x] **MUSIC-165** · `SPX-3924` · **Recording Waveform Grow** · `recording-waveform-grow`
 - [ ] **MUSIC-170** · `SPX-3929` · **Auto Gain Scan** · scaffold `auto-gain-scan`
 - [ ] **MUSIC-176** · `SPX-3935` · **Transport Play Engage** · scaffold `transport-play-engage`
 - [ ] **MUSIC-179** · `SPX-3938` · **Loop Brace Clamp** · scaffold `loop-brace-clamp`
