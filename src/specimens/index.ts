@@ -68,6 +68,7 @@ import { maxRankCompletion } from './max-rank-completion/entry'
 import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
 import { moonPhaseProgress } from './moon-phase-progress/entry'
 import { newspaperHeadlineDrop } from './newspaper-headline-drop/entry'
 import { objectiveAcquired } from './objective-acquired/entry'
@@ -215,6 +216,7 @@ export const specimens: Specimen[] = [
   memoryFragmentReveal,
   midnightClockTransition,
   misprintNotification,
+  monochromeBattleSlideIn,
   moonPhaseProgress,
   newspaperHeadlineDrop,
   objectiveAcquired,

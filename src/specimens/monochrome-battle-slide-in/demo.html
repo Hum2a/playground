@@ -1,0 +1,53 @@
+<div class="mbs" data-mono-battle data-state="idle">
+  <div class="mbs__screen" data-mbs-screen>
+    <div class="mbs__search" data-mbs-search>
+      <p class="mbs__search-text">SEARCHING...</p>
+      <span class="mbs__cursor" aria-hidden="true"></span>
+    </div>
+
+    <div class="mbs__bands" aria-hidden="true" data-mbs-bands>
+      <span class="mbs__band mbs__band--1"></span>
+      <span class="mbs__band mbs__band--2"></span>
+      <span class="mbs__band mbs__band--3"></span>
+    </div>
+
+    <div class="mbs__field" data-mbs-field>
+      <div class="mbs__side mbs__side--left" data-mbs-left>
+        <div class="mbs__entity mbs__entity--a" aria-hidden="true"></div>
+        <div class="mbs__ground mbs__ground--left" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="mbs__meta mbs__meta--left">
+          <p class="mbs__role">LOCAL</p>
+          <p class="mbs__name">BUILD A</p>
+        </div>
+      </div>
+
+      <div class="mbs__side mbs__side--right" data-mbs-right>
+        <div class="mbs__entity mbs__entity--b" aria-hidden="true"></div>
+        <div class="mbs__ground mbs__ground--right" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="mbs__meta mbs__meta--right">
+          <p class="mbs__role">REMOTE</p>
+          <p class="mbs__name">BUILD B</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="mbs__sr" data-mbs-sr>Searching for confrontation.</p>
+
+  <div class="mbs__actions">
+    <button type="button" class="mbs__btn mbs__btn--go" data-mbs-encounter>
+      ENCOUNTER
+    </button>
+    <button type="button" class="mbs__btn mbs__btn--reset" data-mbs-reset hidden>
+      RESET
+    </button>
+  </div>
+
+  <p class="mbs__live" role="status" aria-live="polite" data-mbs-live>
+    Searching.
+  </p>
+</div>

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), or open PK rows; prefer leftover `SPX-313`–`SPX-399` or `SPX-636`–`SPX-699` / `SPX-966+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **13 / 266** complete.
+- Progress: **14 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 13 |
-| Open | 253 |
+| Done | 14 |
+| Open | 252 |
 
 ## Visual grammar
 
@@ -45,6 +45,7 @@
 | PK-103 | `SPX-802` | `item-obtained` | Item Obtained |
 | PK-130 | `SPX-829` | `link-trade-transfer` | Link Trade Transfer |
 | PK-145 | `SPX-844` | `badge-case-insert` | Badge Case Insert |
+| PK-156 | `SPX-855` | `monochrome-battle-slide-in` | Monochrome Battle Slide-In |
 
 ## Core first-wave
 
@@ -261,7 +262,7 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 
 ## 12. Gen I / Game Boy
 
-- [ ] **PK-156** · `SPX-855` · **Gen I Battle Slide-In** — Chunky monochrome entities slide from opposing sides into confrontation.
+- [x] **PK-156** · `SPX-855` · **Gen I Battle Slide-In** — Chunky monochrome entities slide from opposing sides into confrontation.
 - [ ] **PK-157** · `SPX-856` · **Game Boy Screen Transition** — A four-tone pixel wipe replaces one state with another.
 - [ ] **PK-158** · `SPX-857` · **Pixel Encounter Flash** — Alternating monochrome regions interrupt the current interface.
 - [ ] **PK-159** · `SPX-858` · **RPG Text Box Typewriter** — Restrained low-resolution message progression.

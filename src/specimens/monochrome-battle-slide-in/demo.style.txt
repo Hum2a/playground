@@ -1,0 +1,595 @@
+/* monochrome-battle-slide-in — portable specimen styles */
+
+.mbs {
+  /* Exactly four visible tones — freeze */
+  --mbs-0: #0f1b16;
+  --mbs-1: #40513c;
+  --mbs-2: #8b9c68;
+  --mbs-3: #d6ddb0;
+
+  --mbs-cell: 4px;
+  --mbs-logic: 16;
+  --mbs-size: 64px;
+
+  --mbs-band-ms: 160ms;
+  --mbs-slide-ms: 300ms;
+  --mbs-right-lead-ms: 60ms;
+  --mbs-ground-ms: 120ms;
+  --mbs-meta-ms: 120ms;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  padding: 0.85rem;
+  color: var(--mbs-3);
+  font-family: ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', monospace;
+  background: var(--mbs-0);
+}
+
+.mbs *,
+.mbs *::before,
+.mbs *::after {
+  box-sizing: border-box;
+}
+
+.mbs__screen {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 360px;
+  height: 220px;
+  margin: 0 auto;
+  border: 4px solid var(--mbs-1);
+  background: var(--mbs-0);
+  image-rendering: pixelated;
+}
+
+.mbs__search {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  justify-items: center;
+  z-index: 2;
+}
+
+.mbs[data-state='running'] .mbs__search,
+.mbs[data-state='battle'] .mbs__search {
+  visibility: hidden;
+}
+
+.mbs__search-text {
+  margin: 0;
+  color: var(--mbs-2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.mbs__cursor {
+  width: 8px;
+  height: 8px;
+  background: var(--mbs-3);
+}
+
+.mbs__bands {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.mbs--bands .mbs__bands {
+  visibility: visible;
+}
+
+.mbs__band {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 18px;
+  background: var(--mbs-1);
+  transform: translateX(-100%);
+}
+
+.mbs__band--1 {
+  top: 28px;
+  background: var(--mbs-2);
+}
+
+.mbs__band--2 {
+  top: 92px;
+  background: var(--mbs-1);
+}
+
+.mbs__band--3 {
+  top: 156px;
+  background: var(--mbs-3);
+}
+
+.mbs--bands .mbs__band {
+  animation: mbs-band-sweep var(--mbs-band-ms) steps(4, end) both;
+}
+
+.mbs--bands .mbs__band--2 {
+  animation-name: mbs-band-sweep-rev;
+}
+
+.mbs--bands .mbs__band--3 {
+  animation-delay: 20ms;
+}
+
+@keyframes mbs-band-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes mbs-band-sweep-rev {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.mbs__field {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+}
+
+.mbs--field .mbs__field,
+.mbs[data-state='battle'] .mbs__field {
+  visibility: visible;
+}
+
+.mbs__side {
+  position: absolute;
+  top: 36px;
+  width: var(--mbs-size);
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.mbs__side--left {
+  left: 28%;
+  transform: translate(-50%, 0) translateX(-140%);
+}
+
+.mbs__side--right {
+  left: 72%;
+  transform: translate(-50%, 0) translateX(140%);
+}
+
+.mbs--slide-right .mbs__side--right {
+  animation: mbs-in var(--mbs-slide-ms) steps(6, end) both;
+}
+
+.mbs--slide-left .mbs__side--left {
+  animation: mbs-in var(--mbs-slide-ms) steps(6, end) both;
+}
+
+.mbs[data-state='battle'] .mbs__side--left,
+.mbs[data-state='battle'] .mbs__side--right {
+  animation: none;
+  transform: translate(-50%, 0) translateX(0);
+}
+
+@keyframes mbs-in {
+  from {
+    transform: translate(-50%, 0) translateX(var(--mbs-from-x, -140%));
+  }
+  to {
+    transform: translate(-50%, 0) translateX(0);
+  }
+}
+
+.mbs__side--left {
+  --mbs-from-x: -140%;
+}
+
+.mbs__side--right {
+  --mbs-from-x: 140%;
+}
+
+.mbs__entity {
+  position: relative;
+  width: var(--mbs-size);
+  height: var(--mbs-size);
+  image-rendering: pixelated;
+}
+
+.mbs__entity::before,
+.mbs__entity::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--mbs-cell);
+  height: var(--mbs-cell);
+  background: transparent;
+}
+
+.mbs__entity--a::before {
+  box-shadow:
+    28px 4px 0 0 #8b9c68,
+    32px 4px 0 0 #8b9c68,
+    24px 8px 0 0 #8b9c68,
+    28px 8px 0 0 #8b9c68,
+    32px 8px 0 0 #8b9c68,
+    36px 8px 0 0 #8b9c68,
+    28px 12px 0 0 #8b9c68,
+    32px 12px 0 0 #8b9c68,
+    20px 16px 0 0 #8b9c68,
+    24px 16px 0 0 #8b9c68,
+    28px 16px 0 0 #8b9c68,
+    32px 16px 0 0 #8b9c68,
+    36px 16px 0 0 #8b9c68,
+    40px 16px 0 0 #8b9c68,
+    16px 20px 0 0 #8b9c68,
+    20px 20px 0 0 #8b9c68,
+    40px 20px 0 0 #8b9c68,
+    44px 20px 0 0 #8b9c68,
+    16px 24px 0 0 #8b9c68,
+    20px 24px 0 0 #8b9c68,
+    24px 24px 0 0 #8b9c68,
+    28px 24px 0 0 #8b9c68,
+    32px 24px 0 0 #8b9c68,
+    36px 24px 0 0 #8b9c68,
+    40px 24px 0 0 #8b9c68,
+    44px 24px 0 0 #8b9c68,
+    24px 28px 0 0 #8b9c68,
+    28px 28px 0 0 #8b9c68,
+    32px 28px 0 0 #8b9c68,
+    36px 28px 0 0 #8b9c68,
+    24px 32px 0 0 #8b9c68,
+    28px 32px 0 0 #8b9c68,
+    32px 32px 0 0 #8b9c68,
+    36px 32px 0 0 #8b9c68,
+    20px 36px 0 0 #8b9c68,
+    24px 36px 0 0 #8b9c68,
+    28px 36px 0 0 #8b9c68,
+    32px 36px 0 0 #8b9c68,
+    36px 36px 0 0 #8b9c68,
+    40px 36px 0 0 #8b9c68,
+    16px 40px 0 0 #8b9c68,
+    20px 40px 0 0 #8b9c68,
+    40px 40px 0 0 #8b9c68,
+    44px 40px 0 0 #8b9c68,
+    12px 44px 0 0 #8b9c68,
+    16px 44px 0 0 #8b9c68,
+    20px 44px 0 0 #8b9c68,
+    24px 44px 0 0 #8b9c68,
+    28px 44px 0 0 #8b9c68,
+    32px 44px 0 0 #8b9c68,
+    36px 44px 0 0 #8b9c68,
+    40px 44px 0 0 #8b9c68,
+    44px 44px 0 0 #8b9c68,
+    48px 44px 0 0 #8b9c68,
+    12px 48px 0 0 #8b9c68,
+    16px 48px 0 0 #8b9c68,
+    44px 48px 0 0 #8b9c68,
+    48px 48px 0 0 #8b9c68,
+    8px 52px 0 0 #8b9c68,
+    12px 52px 0 0 #8b9c68,
+    16px 52px 0 0 #8b9c68,
+    44px 52px 0 0 #8b9c68,
+    48px 52px 0 0 #8b9c68,
+    52px 52px 0 0 #8b9c68,
+    8px 56px 0 0 #8b9c68,
+    12px 56px 0 0 #8b9c68,
+    16px 56px 0 0 #8b9c68,
+    20px 56px 0 0 #8b9c68,
+    24px 56px 0 0 #8b9c68,
+    28px 56px 0 0 #8b9c68,
+    32px 56px 0 0 #8b9c68,
+    36px 56px 0 0 #8b9c68,
+    40px 56px 0 0 #8b9c68,
+    44px 56px 0 0 #8b9c68,
+    48px 56px 0 0 #8b9c68,
+    52px 56px 0 0 #8b9c68;
+}
+
+.mbs__entity--a::after {
+  box-shadow:
+    28px 0px 0 0 #d6ddb0,
+    32px 0px 0 0 #d6ddb0,
+    28px 20px 0 0 #d6ddb0,
+    32px 20px 0 0 #d6ddb0,
+    28px 40px 0 0 #d6ddb0,
+    32px 40px 0 0 #d6ddb0;
+}
+
+.mbs__entity--b::before {
+  box-shadow:
+    28px 4px 0 0 #8b9c68,
+    32px 4px 0 0 #8b9c68,
+    24px 8px 0 0 #8b9c68,
+    28px 8px 0 0 #8b9c68,
+    32px 8px 0 0 #8b9c68,
+    36px 8px 0 0 #8b9c68,
+    20px 12px 0 0 #8b9c68,
+    24px 12px 0 0 #8b9c68,
+    36px 12px 0 0 #8b9c68,
+    40px 12px 0 0 #8b9c68,
+    12px 16px 0 0 #8b9c68,
+    16px 16px 0 0 #8b9c68,
+    20px 16px 0 0 #8b9c68,
+    24px 16px 0 0 #8b9c68,
+    28px 16px 0 0 #8b9c68,
+    32px 16px 0 0 #8b9c68,
+    36px 16px 0 0 #8b9c68,
+    40px 16px 0 0 #8b9c68,
+    44px 16px 0 0 #8b9c68,
+    48px 16px 0 0 #8b9c68,
+    8px 20px 0 0 #8b9c68,
+    12px 20px 0 0 #8b9c68,
+    24px 20px 0 0 #8b9c68,
+    28px 20px 0 0 #8b9c68,
+    32px 20px 0 0 #8b9c68,
+    36px 20px 0 0 #8b9c68,
+    48px 20px 0 0 #8b9c68,
+    52px 20px 0 0 #8b9c68,
+    8px 24px 0 0 #8b9c68,
+    12px 24px 0 0 #8b9c68,
+    20px 24px 0 0 #8b9c68,
+    24px 24px 0 0 #8b9c68,
+    36px 24px 0 0 #8b9c68,
+    40px 24px 0 0 #8b9c68,
+    48px 24px 0 0 #8b9c68,
+    52px 24px 0 0 #8b9c68,
+    12px 28px 0 0 #8b9c68,
+    16px 28px 0 0 #8b9c68,
+    20px 28px 0 0 #8b9c68,
+    24px 28px 0 0 #8b9c68,
+    28px 28px 0 0 #8b9c68,
+    32px 28px 0 0 #8b9c68,
+    36px 28px 0 0 #8b9c68,
+    40px 28px 0 0 #8b9c68,
+    44px 28px 0 0 #8b9c68,
+    48px 28px 0 0 #8b9c68,
+    16px 32px 0 0 #8b9c68,
+    20px 32px 0 0 #8b9c68,
+    24px 32px 0 0 #8b9c68,
+    28px 32px 0 0 #8b9c68,
+    32px 32px 0 0 #8b9c68,
+    36px 32px 0 0 #8b9c68,
+    40px 32px 0 0 #8b9c68,
+    44px 32px 0 0 #8b9c68,
+    20px 36px 0 0 #8b9c68,
+    24px 36px 0 0 #8b9c68,
+    28px 36px 0 0 #8b9c68,
+    32px 36px 0 0 #8b9c68,
+    36px 36px 0 0 #8b9c68,
+    40px 36px 0 0 #8b9c68,
+    12px 40px 0 0 #8b9c68,
+    16px 40px 0 0 #8b9c68,
+    44px 40px 0 0 #8b9c68,
+    48px 40px 0 0 #8b9c68,
+    8px 44px 0 0 #8b9c68,
+    12px 44px 0 0 #8b9c68,
+    16px 44px 0 0 #8b9c68,
+    44px 44px 0 0 #8b9c68,
+    48px 44px 0 0 #8b9c68,
+    52px 44px 0 0 #8b9c68,
+    4px 48px 0 0 #8b9c68,
+    8px 48px 0 0 #8b9c68,
+    12px 48px 0 0 #8b9c68,
+    48px 48px 0 0 #8b9c68,
+    52px 48px 0 0 #8b9c68,
+    56px 48px 0 0 #8b9c68,
+    16px 52px 0 0 #8b9c68,
+    20px 52px 0 0 #8b9c68,
+    24px 52px 0 0 #8b9c68,
+    28px 52px 0 0 #8b9c68,
+    32px 52px 0 0 #8b9c68,
+    36px 52px 0 0 #8b9c68,
+    40px 52px 0 0 #8b9c68,
+    44px 52px 0 0 #8b9c68,
+    20px 56px 0 0 #8b9c68,
+    24px 56px 0 0 #8b9c68,
+    36px 56px 0 0 #8b9c68,
+    40px 56px 0 0 #8b9c68;
+}
+
+.mbs__entity--b::after {
+  box-shadow:
+    28px 0px 0 0 #d6ddb0,
+    32px 0px 0 0 #d6ddb0,
+    28px 24px 0 0 #d6ddb0,
+    32px 24px 0 0 #d6ddb0,
+    28px 48px 0 0 #d6ddb0,
+    32px 48px 0 0 #d6ddb0;
+}
+
+.mbs__ground {
+  display: grid;
+  grid-template-columns: repeat(4, 14px);
+  gap: 2px;
+  height: 4px;
+  visibility: hidden;
+}
+
+.mbs__ground span {
+  display: block;
+  height: 4px;
+  background: var(--mbs-1);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.mbs__ground--right span {
+  transform-origin: right center;
+}
+
+.mbs--ground-a .mbs__ground--left,
+.mbs--ground-b .mbs__ground--right,
+.mbs[data-state='battle'] .mbs__ground {
+  visibility: visible;
+}
+
+.mbs--ground-a .mbs__ground--left span,
+.mbs--ground-b .mbs__ground--right span {
+  animation: mbs-chunk var(--mbs-ground-ms) steps(2, end) both;
+}
+
+.mbs--ground-a .mbs__ground--left span:nth-child(2),
+.mbs--ground-b .mbs__ground--right span:nth-child(2) {
+  animation-delay: 30ms;
+}
+
+.mbs--ground-a .mbs__ground--left span:nth-child(3),
+.mbs--ground-b .mbs__ground--right span:nth-child(3) {
+  animation-delay: 60ms;
+}
+
+.mbs--ground-a .mbs__ground--left span:nth-child(4),
+.mbs--ground-b .mbs__ground--right span:nth-child(4) {
+  animation-delay: 90ms;
+}
+
+.mbs[data-state='battle'] .mbs__ground span {
+  animation: none;
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@keyframes mbs-chunk {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.mbs__meta {
+  text-align: center;
+  visibility: hidden;
+  transform: translateY(12px);
+}
+
+.mbs__role {
+  margin: 0;
+  color: var(--mbs-2);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.mbs__name {
+  margin: 0.15rem 0 0;
+  color: var(--mbs-3);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.mbs--meta .mbs__meta,
+.mbs[data-state='battle'] .mbs__meta {
+  visibility: visible;
+  animation: mbs-meta-in var(--mbs-meta-ms) steps(3, end) both;
+}
+
+.mbs[data-state='battle'] .mbs__meta {
+  animation: none;
+  transform: translateY(0);
+}
+
+@keyframes mbs-meta-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mbs__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mbs__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.mbs__btn {
+  appearance: none;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  border: 2px solid var(--mbs-1);
+  background: var(--mbs-0);
+  color: var(--mbs-3);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.mbs__btn:focus {
+  outline: none;
+}
+
+.mbs__btn:focus-visible {
+  outline: 2px solid var(--mbs-3);
+  outline-offset: 2px;
+}
+
+.mbs__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.mbs__live {
+  margin: 0.65rem 0 0;
+  color: var(--mbs-2);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbs--bands .mbs__band,
+  .mbs--slide-left .mbs__side--left,
+  .mbs--slide-right .mbs__side--right,
+  .mbs--ground-a .mbs__ground--left span,
+  .mbs--ground-b .mbs__ground--right span,
+  .mbs--meta .mbs__meta {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .mbs--bands .mbs__band,
+[data-force-reduced-motion='true'] .mbs--slide-left .mbs__side--left,
+[data-force-reduced-motion='true'] .mbs--slide-right .mbs__side--right,
+[data-force-reduced-motion='true'] .mbs--ground-a .mbs__ground--left span,
+[data-force-reduced-motion='true'] .mbs--ground-b .mbs__ground--right span,
+[data-force-reduced-motion='true'] .mbs--meta .mbs__meta {
+  animation: none;
+}

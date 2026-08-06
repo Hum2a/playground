@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/monochrome-battle-slide-in.schema.json",
+  "title": "MonochromeBattleSlideIn",
+  "description": "Portable contract for a four-tone stepped battle confrontation transition. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "palette",
+    "entities",
+    "phases",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "monochrome-battle-slide-in" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Stepped four-tone bands interrupt searching, then opposing abstract pixel entities slide into a static confrontation."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["searching", "leftRole", "leftName", "rightRole", "rightName", "action"],
+      "properties": {
+        "searching": { "type": "string", "const": "SEARCHING..." },
+        "leftRole": { "type": "string", "const": "LOCAL" },
+        "leftName": { "type": "string", "const": "BUILD A" },
+        "rightRole": { "type": "string", "const": "REMOTE" },
+        "rightName": { "type": "string", "const": "BUILD B" },
+        "action": { "type": "string", "const": "ENCOUNTER" }
+      }
+    },
+    "palette": {
+      "type": "array",
+      "const": ["#0f1b16", "#40513c", "#8b9c68", "#d6ddb0"]
+    },
+    "entities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["logicPx", "cellPx", "displayPx", "leftRest", "rightRest"],
+      "properties": {
+        "logicPx": { "type": "integer", "const": 16 },
+        "cellPx": { "type": "number", "const": 4 },
+        "displayPx": { "type": "number", "const": 64 },
+        "leftRest": { "type": "string", "const": "28%" },
+        "rightRest": { "type": "string", "const": "72%" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bandMs",
+        "bandSteps",
+        "bandCount",
+        "rightLeadMs",
+        "slideMs",
+        "slideSteps",
+        "groundChunks",
+        "metaSteps",
+        "noSmoothEasing"
+      ],
+      "properties": {
+        "bandMs": { "type": "number", "const": 160 },
+        "bandSteps": { "type": "integer", "const": 4 },
+        "bandCount": { "type": "integer", "const": 3 },
+        "rightLeadMs": { "type": "number", "const": 60 },
+        "slideMs": { "type": "number", "const": 300 },
+        "slideSteps": { "type": "integer", "const": 6 },
+        "groundChunks": { "type": "integer", "const": 4 },
+        "metaSteps": { "type": "integer", "const": 3 },
+        "noSmoothEasing": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["liveStatus", "decorativeHidden"],
+      "properties": {
+        "liveStatus": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantBattle", "triggers"],
+      "properties": {
+        "instantBattle": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "band", "entity", "ground", "meta"],
+      "properties": {
+        "root": { "type": "string", "const": "mbs" },
+        "band": { "type": "string", "const": "mbs__band" },
+        "entity": { "type": "string", "const": "mbs__entity" },
+        "ground": { "type": "string", "const": "mbs__ground" },
+        "meta": { "type": "string", "const": "mbs__meta" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "run" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": { "type": "string", "const": "monochromeBattleSlideIn" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "monochrome-battle-slide-in",
+      "intent": "Stepped four-tone bands interrupt searching, then opposing abstract pixel entities slide into a static confrontation.",
+      "copy": {
+        "searching": "SEARCHING...",
+        "leftRole": "LOCAL",
+        "leftName": "BUILD A",
+        "rightRole": "REMOTE",
+        "rightName": "BUILD B",
+        "action": "ENCOUNTER"
+      },
+      "palette": ["#0f1b16", "#40513c", "#8b9c68", "#d6ddb0"],
+      "entities": {
+        "logicPx": 16,
+        "cellPx": 4,
+        "displayPx": 64,
+        "leftRest": "28%",
+        "rightRest": "72%"
+      },
+      "phases": {
+        "bandMs": 160,
+        "bandSteps": 4,
+        "bandCount": 3,
+        "rightLeadMs": 60,
+        "slideMs": 300,
+        "slideSteps": 6,
+        "groundChunks": 4,
+        "metaSteps": 3,
+        "noSmoothEasing": true
+      },
+      "a11y": {
+        "liveStatus": true,
+        "decorativeHidden": true
+      },
+      "reducedMotion": {
+        "instantBattle": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "mbs",
+        "band": "mbs__band",
+        "entity": "mbs__entity",
+        "ground": "mbs__ground",
+        "meta": "mbs__meta"
+      },
+      "behaviour": {
+        "run": "run",
+        "reset": "reset",
+        "api": "monochromeBattleSlideIn"
+      }
+    }
+  ]
+}

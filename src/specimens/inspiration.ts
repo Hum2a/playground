@@ -183,6 +183,8 @@ export const SUGGESTED_FREE_TAGS = [
   'identity',
   'collection',
   'insert',
+  'retro',
+  'confrontation',
 ] as const
 
 export type SuggestedFreeTag = (typeof SUGGESTED_FREE_TAGS)[number]
