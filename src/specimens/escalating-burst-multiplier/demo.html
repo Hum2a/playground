@@ -1,0 +1,70 @@
+<div class="ebm" data-escalating-burst data-stage="1">
+  <p class="ebm__system">WORKER // 04</p>
+
+  <div class="ebm__host" data-ebm-host>
+    <div class="ebm__field" aria-hidden="true" data-ebm-field>
+      <span class="ebm__contour ebm__contour--1"></span>
+      <span class="ebm__contour ebm__contour--2"></span>
+      <span class="ebm__contour ebm__contour--3"></span>
+      <span class="ebm__outer" data-ebm-outer></span>
+      <span class="ebm__frag ebm__frag--1"></span>
+      <span class="ebm__frag ebm__frag--2"></span>
+      <span class="ebm__frag ebm__frag--3"></span>
+      <span class="ebm__frag ebm__frag--4"></span>
+      <span class="ebm__frag ebm__frag--5"></span>
+      <span class="ebm__frag ebm__frag--6"></span>
+      <span class="ebm__frag ebm__frag--7"></span>
+      <span class="ebm__frag ebm__frag--8"></span>
+      <span class="ebm__sector ebm__sector--n" data-ebm-sector></span>
+      <span class="ebm__sector ebm__sector--e" data-ebm-sector></span>
+      <span class="ebm__sector ebm__sector--s" data-ebm-sector></span>
+      <span class="ebm__sector ebm__sector--w" data-ebm-sector></span>
+    </div>
+
+    <div class="ebm__mult" aria-hidden="true">
+      <span class="ebm__mult-prev" data-ebm-prev></span>
+      <span class="ebm__mult-curr" data-ebm-curr>1×</span>
+    </div>
+
+    <dl class="ebm__metrics">
+      <div class="ebm__row">
+        <dt>OUTPUT</dt>
+        <dd data-ebm-output>100/s</dd>
+      </div>
+      <div class="ebm__row">
+        <dt>LOAD</dt>
+        <dd data-ebm-load>42%</dd>
+      </div>
+      <div class="ebm__row ebm__row--stability">
+        <dt>STABILITY</dt>
+        <dd>
+          <span data-ebm-stability>100%</span>
+          <span
+            class="ebm__rail"
+            role="meter"
+            aria-label="Stability"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="100"
+            data-ebm-rail
+          >
+            <span class="ebm__rail-fill" data-ebm-rail-fill></span>
+          </span>
+        </dd>
+      </div>
+      <div class="ebm__row">
+        <dt>STATUS</dt>
+        <dd data-ebm-status>NOMINAL</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="ebm__controls">
+    <button type="button" class="ebm__btn" data-ebm-increase>INCREASE MULTIPLIER</button>
+    <button type="button" class="ebm__btn ebm__btn--ghost" data-ebm-reset>RESET</button>
+  </div>
+
+  <p class="ebm__live" role="status" aria-live="polite" data-ebm-live>
+    Worker 04. Multiplier 1 times. Output 100 per second. Load 42 percent. Stability 100 percent. Nominal.
+  </p>
+</div>

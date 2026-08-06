@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/escalating-burst-multiplier.schema.json",
+  "title": "EscalatingBurstMultiplier",
+  "description": "Portable contract for a stackable temporary performance multiplier with escalating field complexity and collapsing stability margin.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "stages",
+    "animation",
+    "field",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "escalating-burst-multiplier" },
+    "intent": {
+      "type": "string",
+      "const": "Stackable temporary performance multiplier: boost → stack → escalating output → collapsing safety margin → maximum temporary UNSTABLE state."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "trigger", "reset"],
+      "properties": {
+        "system": { "type": "string", "const": "WORKER // 04" },
+        "trigger": { "type": "string", "const": "INCREASE MULTIPLIER" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "fg", "mid", "bright", "edge"],
+      "properties": {
+        "bg": { "type": "string", "const": "#0c0e12" },
+        "fg": { "type": "string", "const": "#e8e6df" },
+        "mid": { "type": "string", "const": "#c4a35a" },
+        "bright": { "type": "string", "const": "#e8d48b" },
+        "edge": { "type": "string", "const": "#d97b5c" }
+      }
+    },
+    "stages": {
+      "type": "array",
+      "const": [
+        {
+          "label": "1×",
+          "output": "100/s",
+          "load": 42,
+          "stability": 100,
+          "status": "NOMINAL",
+          "contours": 0,
+          "fragments": 0
+        },
+        {
+          "label": "2×",
+          "output": "200/s",
+          "load": 58,
+          "stability": 91,
+          "status": "NOMINAL",
+          "contours": 1,
+          "fragments": 0
+        },
+        {
+          "label": "4×",
+          "output": "400/s",
+          "load": 72,
+          "stability": 76,
+          "status": "NOMINAL",
+          "contours": 2,
+          "fragments": 0
+        },
+        {
+          "label": "10×",
+          "output": "1,000/s",
+          "load": 89,
+          "stability": 48,
+          "status": "STRAINED",
+          "contours": 3,
+          "fragments": 4
+        },
+        {
+          "label": "20×",
+          "output": "2,000/s",
+          "load": 98,
+          "stability": 17,
+          "status": "UNSTABLE",
+          "contours": 3,
+          "fragments": 8,
+          "brokenOuter": true
+        }
+      ]
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slamMs", "holdMs", "sectorShiftPx", "hostScale", "loops"],
+      "properties": {
+        "slamMs": { "type": "number", "const": 120 },
+        "holdMs": { "type": "number", "const": 100 },
+        "sectorShiftPx": { "type": "number", "const": 3 },
+        "hostScale": {
+          "type": "array",
+          "const": [0.97, 1.025, 1]
+        },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sectorCount", "maxFragments"],
+      "properties": {
+        "sectorCount": { "type": "number", "const": 4 },
+        "maxFragments": { "type": "number", "const": 8 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "stabilityMeter"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "stabilityMeter": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinal", "triggers"],
+      "properties": {
+        "immediateFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "host", "field", "rail", "mult"],
+      "properties": {
+        "root": { "type": "string", "const": "ebm" },
+        "host": { "type": "string", "const": "ebm__host" },
+        "field": { "type": "string", "const": "ebm__field" },
+        "rail": { "type": "string", "const": "ebm__rail" },
+        "mult": { "type": "string", "const": "ebm__mult" }
+      }
+    }
+  }
+}
