@@ -136,6 +136,7 @@ import { scouterScan } from './scouter-scan/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
+import { spotlightMaterialise } from './spotlight-materialise/entry'
 import { stageManagerStackShift } from './stage-manager-stack-shift/entry'
 import { stateFieldTransfer } from './state-field-transfer/entry'
 import { sevenPartPrerequisiteCollection } from './seven-part-prerequisite-collection/entry'
@@ -338,6 +339,7 @@ export const specimens: Specimen[] = [
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,
   sharedResourcePool,
+  spotlightMaterialise,
   stageManagerStackShift,
   stateFieldTransfer,
   stateIntensityField,

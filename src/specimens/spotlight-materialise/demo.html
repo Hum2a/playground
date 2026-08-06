@@ -1,0 +1,33 @@
+<div class="smt" data-spotlight-materialise data-phase="closed">
+  <div class="smt__desktop" data-smt-desktop aria-hidden="true">
+    <div class="smt__panel smt__panel--a">PROJECTS</div>
+    <div class="smt__panel smt__panel--b">BUILD LOG</div>
+    <div class="smt__panel smt__panel--c">DEPLOY</div>
+  </div>
+
+  <button type="button" class="smt__seed" data-smt-trigger aria-label="Open search" aria-expanded="false" aria-controls="smt-panel">
+    <span class="smt__seed-glyph" aria-hidden="true"></span>
+  </button>
+
+  <div class="smt__panel-wrap" id="smt-panel" data-smt-panel hidden>
+    <div class="smt__search-bar">
+      <span class="smt__search-icon" aria-hidden="true"></span>
+      <input
+        type="search"
+        class="smt__input"
+        data-smt-input
+        placeholder="Search commands"
+        aria-label="Search commands"
+        autocomplete="off"
+      />
+    </div>
+    <ul class="smt__results" data-smt-results role="listbox" aria-label="Search results">
+      <li><button type="button" class="smt__result" data-smt-result role="option">Open Project</button></li>
+      <li><button type="button" class="smt__result" data-smt-result role="option">Run Build</button></li>
+      <li><button type="button" class="smt__result" data-smt-result role="option">View Logs</button></li>
+      <li><button type="button" class="smt__result" data-smt-result role="option">Deploy Release</button></li>
+    </ul>
+  </div>
+
+  <p class="smt__status" role="status" aria-live="polite" data-smt-status>Search closed.</p>
+</div>

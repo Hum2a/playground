@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **15 / 258** complete.
+- Progress: **16 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 15 |
-| Open | 243 |
+| Done | 16 |
+| Open | 242 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-145 | `SPX-1444` | `spotlight-materialise` | Spotlight Materialise |
 | IOS-113 | `SPX-1412` | `notification-stack-compression` | Notification Stack Compression |
 | IOS-100 | `SPX-1399` | `app-launch-expansion` | App Launch Expansion |
 | IOS-093 | `SPX-1392` | `context-menu-bloom` | Context Menu Bloom |
@@ -69,7 +70,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 - [x] **IOS-100** · `SPX-1399` · **App Launch Expansion** — home-screen-app-grid
 - [x] **IOS-113** · `SPX-1412` · **Notification Stack Compression** — notifications
 - [ ] **IOS-127** · `SPX-1426` · **Biometric Scan Acquisition** — face-id-authentication-inspired
-- [ ] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — search
+- [x] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — search
 - [ ] **IOS-152** · `SPX-1451` · **Drag Proxy Formation** — drag-drop
 - [ ] **IOS-154** · `SPX-1453` · **Drop Target Magnetism** — drag-drop
 - [ ] **IOS-160** · `SPX-1459` · **Quick Look Expansion** — macos-finder-inspired
@@ -271,7 +272,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 - [ ] **IOS-143** · `SPX-1442` · **Search Field Activation** — compact search affordance expands, gains focus and reorganises neighbouring controls.
 - [ ] **IOS-144** · `SPX-1443` · **Search Cancel Reversion** — active search collapses and restores the prior navigation arrangement.
-- [ ] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — central search surface appears over subdued context with immediate keyboard focus semantics.
+- [x] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — central search surface appears over subdued context with immediate keyboard focus semantics.
 - [ ] **IOS-146** · `SPX-1445` · **Spotlight Result Selection** — active result marker moves rapidly through heterogeneous result rows.
 - [ ] **IOS-147** · `SPX-1446` · **Spotlight Open Handoff** — selected result contracts into an action token then expands into destination content.
 - [ ] **IOS-148** · `SPX-1447` · **Search Result Incremental Arrival** — result groups construct as query specificity increases.

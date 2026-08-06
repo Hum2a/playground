@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/spotlight-materialise.schema.json",
+  "title": "SpotlightMaterialise",
+  "description": "Portable contract for command search overlay materialising from a compact seed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "panel",
+    "sequence",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "spotlight-materialise" },
+    "intent": {
+      "type": "string",
+      "const": "Central search surface materialises from 44×44 seed; background recedes; four results reveal with stagger; ESC restores focus."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["placeholder", "results"],
+      "properties": {
+        "placeholder": { "type": "string", "const": "Search commands" },
+        "results": {
+          "type": "array",
+          "const": ["Open Project", "Run Build", "View Logs", "Deploy Release"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101218" },
+        "panel": { "type": "string", "const": "#1a1f28" },
+        "line": { "type": "string", "const": "#2d3542" },
+        "muted": { "type": "string", "const": "#7c8696" },
+        "cream": { "type": "string", "const": "#e9edf3" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "panel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "barHeightPx", "seedPx", "backgroundScale"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 520 },
+        "heightPx": { "type": "number", "const": 286 },
+        "barHeightPx": { "type": "number", "const": 58 },
+        "seedPx": { "type": "number", "const": 44 },
+        "backgroundScale": { "type": "number", "const": 0.985 }
+      }
+    },
+    "sequence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["barMs", "resultsMs", "staggerMs", "resultCount"],
+      "properties": {
+        "barMs": { "type": "number", "const": 180 },
+        "resultsMs": { "type": "number", "const": 160 },
+        "staggerMs": { "type": "number", "const": 30 },
+        "resultCount": { "type": "number", "const": 4 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusOnOpen", "escClose", "focusRestore"],
+      "properties": {
+        "focusOnOpen": { "type": "boolean", "const": true },
+        "escClose": { "type": "boolean", "const": true },
+        "focusRestore": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateOpen", "triggers"],
+      "properties": {
+        "immediateOpen": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "desktop", "seed", "panel", "input"],
+      "properties": {
+        "root": { "type": "string", "const": "smt" },
+        "desktop": { "type": "string", "const": "smt__desktop" },
+        "seed": { "type": "string", "const": "smt__seed" },
+        "panel": { "type": "string", "const": "smt__panel-wrap" },
+        "input": { "type": "string", "const": "smt__input" }
+      }
+    }
+  }
+}
