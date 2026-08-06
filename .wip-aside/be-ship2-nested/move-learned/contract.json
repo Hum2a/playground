@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/move-learned.schema.json",
+  "title": "MoveLearned",
+  "description": "SYNC token installs into empty capability slot on PROCESS // 04. Pokemon-inspired. Original CSS only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "move-learned" },
+    "intent": {
+      "type": "string",
+      "const": "A newly acquired capability enters the interface and structurally locks into an empty slot."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity",
+        "capabilities",
+        "incoming",
+        "learn",
+        "confirm",
+        "status"
+      ],
+      "properties": {
+        "entity": { "type": "string", "const": "PROCESS // 04" },
+        "capabilities": {
+          "type": "array",
+          "const": ["SCAN", "FILTER", "EXPORT", "— EMPTY —"]
+        },
+        "incoming": { "type": "string", "const": "SYNC" },
+        "learn": { "type": "string", "const": "LEARN" },
+        "confirm": {
+          "type": "array",
+          "const": ["NEW CAPABILITY", "SYNC LEARNED"]
+        },
+        "status": {
+          "type": "string",
+          "const": "New capability learned: Sync."
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slotCount", "slotWidthPx", "slotHeightPx", "tokenWidthPx"],
+      "properties": {
+        "slotCount": { "type": "number", "const": 4 },
+        "emptySlotsInitial": { "type": "number", "const": 1 },
+        "grid": { "type": "string", "const": "2x2" },
+        "slotWidthPx": { "type": "number", "const": 150 },
+        "slotHeightPx": { "type": "number", "const": 42 },
+        "tokenWidthPx": { "type": "number", "const": 80 },
+        "tokenHeightPx": { "type": "number", "const": 30 },
+        "outlineExpandPx": { "type": "number", "const": 4 },
+        "cornerMarkers": { "type": "number", "const": 4 },
+        "angularGeometry": { "type": "boolean", "const": true }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "travelMs",
+        "compressMs",
+        "outlineMs",
+        "sweepMs",
+        "confirmMs",
+        "totalMs"
+      ],
+      "properties": {
+        "travelMs": { "type": "number", "const": 260 },
+        "compressMs": { "type": "number", "const": 60 },
+        "outlineMs": { "type": "number", "const": 140 },
+        "sweepMs": { "type": "number", "const": 110 },
+        "confirmMs": { "type": "number", "const": 180 },
+        "totalMs": { "type": "number", "const": 690 },
+        "travelScale": { "type": "array", "const": [0.8, 1] },
+        "compressScaleY": { "type": "array", "const": [1, 0.82, 1] },
+        "outlineCompletesAfterArrival": { "type": "boolean", "const": true },
+        "noPermanentHighlight": { "type": "boolean", "const": true },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.33, 0, 0.2, 1)"
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["listSemantics", "textConfirmation"],
+      "properties": {
+        "listSemantics": { "type": "boolean", "const": true },
+        "textConfirmation": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinal", "triggers"],
+      "properties": {
+        "immediateFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "slot", "token", "grid"],
+      "properties": {
+        "root": { "type": "string", "const": "mvl" },
+        "slot": { "type": "string", "const": "mvl__slot" },
+        "token": { "type": "string", "const": "mvl__token" },
+        "grid": { "type": "string", "const": "mvl__grid" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "move-learned",
+      "copy": {
+        "entity": "PROCESS // 04",
+        "incoming": "SYNC"
+      },
+      "animation": {
+        "travelMs": 260,
+        "compressMs": 60,
+        "outlineMs": 140,
+        "sweepMs": 110,
+        "totalMs": 690
+      }
+    }
+  ]
+}

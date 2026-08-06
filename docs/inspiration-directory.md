@@ -88,6 +88,12 @@ inspiredBy: {
 
 Backlog: [`docs/catalogue/pokemon-specimen-catalogue.md`](catalogue/pokemon-specimen-catalogue.md) (`PK-NNN` / `SPX-700`…`SPX-965`).
 
+### Dragon Ball (`dragonball`)
+
+*(franchise only so far — ki / scouter / fusion / transmission motion language; no anime or game assets)*
+
+Backlog: [`docs/catalogue/dragonball-specimen-catalogue.md`](catalogue/dragonball-specimen-catalogue.md) (`DB-NNN` / `SPX-966`…`SPX-1209`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

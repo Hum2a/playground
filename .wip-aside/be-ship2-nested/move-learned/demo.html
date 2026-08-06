@@ -1,0 +1,55 @@
+<div class="mvl" data-move-learned data-state="idle">
+  <div class="mvl__panel">
+    <p class="mvl__entity" id="mvl-entity">PROCESS // 04</p>
+
+    <ul class="mvl__grid" data-mvl-grid aria-labelledby="mvl-entity">
+      <li class="mvl__slot mvl__slot--filled">
+        <span class="mvl__cap">SCAN</span>
+      </li>
+      <li class="mvl__slot mvl__slot--filled">
+        <span class="mvl__cap">FILTER</span>
+      </li>
+      <li class="mvl__slot mvl__slot--filled">
+        <span class="mvl__cap">EXPORT</span>
+      </li>
+      <li
+        class="mvl__slot mvl__slot--empty"
+        data-mvl-empty
+      >
+        <span class="mvl__cap mvl__cap--empty" data-mvl-empty-label>— EMPTY —</span>
+        <span class="mvl__cap mvl__cap--sync" data-mvl-sync-label hidden>SYNC</span>
+
+        <span class="mvl__corner mvl__corner--tl" aria-hidden="true"></span>
+        <span class="mvl__corner mvl__corner--tr" aria-hidden="true"></span>
+        <span class="mvl__corner mvl__corner--bl" aria-hidden="true"></span>
+        <span class="mvl__corner mvl__corner--br" aria-hidden="true"></span>
+
+        <span class="mvl__sweep" data-mvl-sweep aria-hidden="true"></span>
+      </li>
+    </ul>
+
+    <div class="mvl__confirm" data-mvl-confirm aria-hidden="true">
+      <span class="mvl__confirm-slot">
+        <span class="mvl__confirm-line mvl__confirm-line--out" data-mvl-confirm-out>NEW CAPABILITY</span>
+        <span class="mvl__confirm-line mvl__confirm-line--in" data-mvl-confirm-in>SYNC LEARNED</span>
+      </span>
+    </div>
+
+    <span class="mvl__token" data-mvl-token aria-hidden="true">SYNC</span>
+  </div>
+
+  <p class="mvl__list-text" data-mvl-list-text>
+    Capabilities: SCAN, FILTER, EXPORT, empty slot.
+  </p>
+
+  <button type="button" class="mvl__btn" data-mvl-learn>
+    LEARN
+  </button>
+
+  <div
+    class="mvl__status"
+    role="status"
+    aria-live="polite"
+    data-mvl-status
+  ></div>
+</div>

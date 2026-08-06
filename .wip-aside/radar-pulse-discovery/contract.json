@@ -1,0 +1,112 @@
+{
+  "name": "radar-pulse-discovery",
+  "intent": "Spatial search/discovery: a signal originates at a fixed point, three concentric pulses expand through a marker field, and hidden targets react only when a pulse leading edge reaches them — NODE // C is the canonical discovered result.",
+  "primitives": ["search", "radar", "discovery"],
+  "colours": {
+    "ink": "#12141a",
+    "panel": "#1a1d26",
+    "rule": "#2c3140",
+    "pewter": "#8b93a7",
+    "chalk": "#e8eaef",
+    "signal": "#5ec4b0"
+  },
+  "field": {
+    "label": "SECTOR // 07",
+    "sizePx": [420, 320],
+    "ordinaryMarkerCount": 24,
+    "ordinaryMarkersPercent": [
+      [8, 12],
+      [22, 8],
+      [41, 14],
+      [58, 9],
+      [86, 15],
+      [12, 32],
+      [33, 28],
+      [49, 36],
+      [78, 31],
+      [93, 38],
+      [6, 48],
+      [28, 52],
+      [52, 47],
+      [81, 54],
+      [15, 66],
+      [44, 71],
+      [69, 68],
+      [91, 72],
+      [10, 88],
+      [36, 86],
+      [55, 91],
+      [74, 84],
+      [88, 90],
+      [47, 22]
+    ]
+  },
+  "origin": {
+    "percent": [38, 58],
+    "sizePx": [10, 10],
+    "shape": "diamond"
+  },
+  "targets": {
+    "count": 4,
+    "A": { "percent": [18, 24], "reaction": "ping-1-1.5-1" },
+    "B": { "percent": [72, 18], "reaction": "ping-1-1.5-1" },
+    "C": {
+      "percent": [64, 61],
+      "reaction": "canonical-found",
+      "scale": 2.2,
+      "bracketSegments": 4,
+      "label": "NODE // C"
+    },
+    "D": { "percent": [24, 82], "reaction": "two-line-blip" }
+  },
+  "pulses": {
+    "count": 3,
+    "startDelayMs": [0, 180, 360],
+    "expandMs": 900,
+    "diameterPx": [16, 420],
+    "style": "border-only-ring",
+    "loops": false,
+    "clearAfterMs": 1260
+  },
+  "reactionTimingMsFromScan": {
+    "basis": "ring-1 leading edge reach (field 420×320, origin 38%/58%)",
+    "D": 396,
+    "C": 453,
+    "A": 577,
+    "B": 819
+  },
+  "discovery": {
+    "canonical": "C",
+    "linkOriginToC": {
+      "growMs": 180,
+      "lengthPx": 109.6,
+      "angleDeg": 5
+    },
+    "status": {
+      "idle": "NO SIGNAL",
+      "found": "SIGNAL FOUND",
+      "transition": "clipped-replacement"
+    },
+    "finalPersists": ["origin", "C-found", "origin-to-C-link", "SIGNAL FOUND"]
+  },
+  "api": {
+    "scan": "runRadarPulseScan()",
+    "reset": "runRadarPulseReset()",
+    "busyGuard": true,
+    "replayViaScan": true,
+    "noNetwork": true,
+    "noRuntimeRandomPositions": true
+  },
+  "a11y": {
+    "statusAriaLive": "polite",
+    "resultAsText": true,
+    "spatialPulseNotSoleSignal": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show origin, C identified with brackets and NODE // C, origin→C line, and SIGNAL FOUND; no expanding rings"
+  }
+}

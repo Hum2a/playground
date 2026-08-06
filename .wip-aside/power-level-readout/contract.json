@@ -1,0 +1,61 @@
+{
+  "name": "power-level-readout",
+  "intent": "Measurement primitive: an unresolved numeric display walks a deterministic sample ladder that accelerates then converges on a final reading with threshold markers and classification.",
+  "primitives": ["measurement", "analysis", "numeric-resolution"],
+  "colours": {
+    "ink": "#10131a",
+    "panel": "#171b24",
+    "rule": "#2e3545",
+    "pewter": "#8a93a6",
+    "chalk": "#e6e9f0",
+    "signal": "#e8a45a"
+  },
+  "chrome": {
+    "signal": "SIGNAL // ACTIVE",
+    "label": "MEASUREMENT",
+    "initialValue": "----",
+    "finalValueDisplay": "8,471",
+    "classificationBusy": "ANALYSING",
+    "classificationDone": "ABOVE BASELINE",
+    "trigger": "MEASURE"
+  },
+  "typography": {
+    "stack": "ui-monospace, Cascadia Code, Segoe UI Mono, Menlo, Consolas, monospace",
+    "size": "clamp(48px, 14vw, 92px)",
+    "externalFont": false
+  },
+  "samples": [4, 17, 48, 126, 314, 782, 1640, 2917, 4381, 5790, 6844, 7512, 8021, 8310, 8448, 8471],
+  "holdMs": [70, 68, 64, 58, 52, 46, 40, 36, 35, 35, 35, 38, 42, 45, 55, 80],
+  "settleMs": 100,
+  "settleTransform": "translateY(-2px → 0)",
+  "thresholds": {
+    "1000": { "once": true, "feedback": "×10³ marker locks beside display" },
+    "5000": { "once": true, "feedback": "structural line beneath number" },
+    "8000": { "once": true, "feedback": "measurement frame expands outward by 4px" }
+  },
+  "final": {
+    "value": 8471,
+    "brackets": 2,
+    "classificationAfterNumber": true
+  },
+  "api": {
+    "measure": "runPowerLevelReadout()",
+    "reset": "runPowerLevelReset()",
+    "busyGuard": true,
+    "replayViaMeasure": true,
+    "noRandom": true,
+    "noContinuousCounter": true
+  },
+  "a11y": {
+    "announceFinalOnly": true,
+    "liveRegion": "polite",
+    "announcement": "Measurement 8,471. Above baseline."
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show 8,471, thresholds, brackets, and ABOVE BASELINE"
+  }
+}

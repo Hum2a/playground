@@ -1,0 +1,3 @@
+Add SPX-997 Power Level Readout
+
+Deterministic sample ladder converges on 8,471 with threshold markers and ABOVE BASELINE classification.
