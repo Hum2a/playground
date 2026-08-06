@@ -598,6 +598,8 @@ import { retractionTakeover } from './retraction-takeover/entry'
 
 import { blackBarRedactionReveal } from './black-bar-redaction-reveal/entry'
 
+import { redactionApply } from './redaction-apply/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1125,6 +1127,7 @@ export const specimens: Specimen[] = [
   inlineCorrectionReplace,
   retractionTakeover,
   blackBarRedactionReveal,
+  redactionApply,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

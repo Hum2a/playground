@@ -1,0 +1,8 @@
+{
+  "name": "redaction-apply",
+  "ref": "SPX-3600",
+  "title": "Redaction Apply",
+  "mode": "typeset",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
