@@ -59,6 +59,7 @@ import { hoverCutout } from './hover-cutout/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { levelUpOverflow } from './level-up-overflow/entry'
+import { linkTradeTransfer } from './link-trade-transfer/entry'
 import { liquidSplitTransition } from './liquid-split-transition/entry'
 import { lockedChainBreak } from './locked-chain-break/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
@@ -204,6 +205,7 @@ export const specimens: Specimen[] = [
   hoverCutout,
   letterScatterAssemble,
   levelUpOverflow,
+  linkTradeTransfer,
   liquidSplitTransition,
   lockedChainBreak,
   mangaCutInNotification,
