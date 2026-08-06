@@ -1,0 +1,184 @@
+/* authentication-success-morph — portable specimen styles. Do not restyle to host tokens. */
+
+.asm {
+  --asm-ink: #0f1218;
+  --asm-panel: #1a1f28;
+  --asm-line: #2d3544;
+  --asm-muted: #7a8496;
+  --asm-cream: #e8ecf2;
+  --asm-accent: #6b9fd4;
+  --asm-success: #5cb87a;
+  box-sizing: border-box;
+  width: 260px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  color: var(--asm-cream);
+  text-align: center;
+}
+
+.asm *,
+.asm *::before,
+.asm *::after {
+  box-sizing: border-box;
+}
+
+.asm__field {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 0.75rem;
+  border: 1px solid var(--asm-line);
+  border-radius: 12px;
+  background: var(--asm-panel);
+  transition: transform 280ms ease;
+}
+
+.asm[data-phase='verified'] .asm__field {
+  animation: asm-settle 280ms ease;
+}
+
+@keyframes asm-settle {
+  0% { transform: scale(0.98); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.asm__bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--asm-accent);
+  transition: transform 100ms ease;
+}
+
+.asm__bracket--tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.asm__bracket--tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.asm__bracket--bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.asm__bracket--br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.asm[data-phase='verified'] .asm__bracket--tl { transform: translate(6px, 6px); }
+.asm[data-phase='verified'] .asm__bracket--tr { transform: translate(-6px, 6px); }
+.asm[data-phase='verified'] .asm__bracket--bl { transform: translate(6px, -6px); }
+.asm[data-phase='verified'] .asm__bracket--br { transform: translate(-6px, -6px); }
+
+.asm__nodes {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  place-items: center;
+  padding: 2.5rem 1.5rem;
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+.asm__node {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--asm-accent);
+  transition:
+    transform 180ms cubic-bezier(0.33, 1, 0.2, 1),
+    opacity 180ms ease;
+}
+
+.asm[data-phase='verified'] .asm__nodes {
+  opacity: 0;
+}
+
+.asm__check {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5rem;
+  opacity: 0;
+}
+
+.asm__stroke {
+  fill: none;
+  stroke: var(--asm-success);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  transition: stroke-dashoffset 180ms ease;
+}
+
+.asm[data-phase='verified'] .asm__check {
+  opacity: 1;
+}
+
+.asm[data-phase='verified'] .asm__stroke {
+  stroke-dashoffset: 0;
+}
+
+.asm__status-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  transition: clip-path 120ms ease;
+}
+
+.asm[data-phase='verifying'] .asm__status-label {
+  clip-path: inset(0 0 0 0);
+}
+
+.asm[data-phase='verified'] .asm__status-label {
+  clip-path: inset(0 0 0 0);
+  color: var(--asm-success);
+}
+
+.asm__resolve,
+.asm__continue {
+  padding: 0.4rem 0.75rem;
+  margin: 0 0.25rem;
+  border: 1px solid var(--asm-line);
+  border-radius: 8px;
+  background: var(--asm-panel);
+  color: var(--asm-cream);
+  font-size: 0.58rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.asm__continue:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.asm__resolve:focus-visible,
+.asm__continue:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.asm__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.68rem;
+  color: var(--asm-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asm__field,
+  .asm__bracket,
+  .asm__node,
+  .asm__stroke,
+  .asm__status-label {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .asm__field,
+[data-force-reduced-motion='true'] .asm__bracket,
+[data-force-reduced-motion='true'] .asm__node,
+[data-force-reduced-motion='true'] .asm__stroke,
+[data-force-reduced-motion='true'] .asm__status-label {
+  transition-duration: 0.01ms !important;
+  animation: none !important;
+}
