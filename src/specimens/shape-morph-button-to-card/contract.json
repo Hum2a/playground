@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/shape-morph-button-to-card.schema.json",
+  "title": "ShapeMorphButtonToCard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "geometry", "palette", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "shape-morph-button-to-card" },
+    "intent": {
+      "type": "string",
+      "const": "Morph one container from a compact pill action into an expanded information card."
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compactWidthPx", "compactHeightPx", "expandedWidthPx", "expandedHeightPx", "morphMs"],
+      "properties": {
+        "compactWidthPx": { "type": "number", "const": 132 },
+        "compactHeightPx": { "type": "number", "const": 48 },
+        "expandedWidthPx": { "type": "number", "const": 320 },
+        "expandedHeightPx": { "type": "number", "const": 220 },
+        "morphMs": { "type": "number", "const": 360 }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["background", "ink", "accent"],
+      "properties": {
+        "background": { "type": "string", "const": "#DDE7FF" },
+        "ink": { "type": "string", "const": "#17213A" },
+        "accent": { "type": "string", "const": "#405F91" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantMorph", "triggers"],
+      "properties": {
+        "instantMorph": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "container"],
+      "properties": {
+        "root": { "type": "string", "const": "smc" },
+        "container": { "type": "string", "const": "smc__container" }
+      }
+    }
+  }
+}

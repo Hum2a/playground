@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **27 / 417** complete.
+- Progress: **28 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 390 |
+| Done | 28 |
+| Open | 389 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-323 | `SPX-1880` | `shape-morph-button-to-card` | Shape Morph Button-to-Card |
 | AND-317 | `SPX-1874` | `widget-resize-morph` | Widget Resize Morph |
 | AND-311 | `SPX-1868` | `nearby-file-transfer` | Nearby File Transfer |
 | AND-309 | `SPX-1866` | `nearby-device-discovery` | Nearby Device Discovery |
@@ -90,7 +91,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
 - [x] **AND-311** · `SPX-1868` · **File Transfer Arc** — nearby-share-quick-share-inspired
 - [x] **AND-317** · `SPX-1874` · **Widget Resize Morph** — widgets
-- [ ] **AND-323** · `SPX-1880` · **Shape Morph Button-to-Card** — material-you-dynamic-shape-ideas
+- [x] **AND-323** · `SPX-1880` · **Shape Morph Button-to-Card** — material-you-dynamic-shape-ideas
 - [ ] **AND-340** · `SPX-1897` · **Drag Proxy Formation** — drag-drop
 - [ ] **AND-383** · `SPX-1940` · **Screenshot Thumbnail Arrival** — screenshot-selection-inspired
 - [ ] **AND-398** · `SPX-1955` · **Single-to-Dual Pane Transform** — foldable-adaptive-layout-ideas
@@ -554,7 +555,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Material You / Dynamic Shape Ideas
 
-- [ ] **AND-323** · `SPX-1880` · **Shape Morph Button-to-Card** — rounded control changes into larger irregular/rounded content surface.
+- [x] **AND-323** · `SPX-1880` · **Shape Morph Button-to-Card** — rounded control changes into larger irregular/rounded content surface.
 - [ ] **AND-324** · `SPX-1881` · **Pill-to-Squircle Morph** — compact pill becomes broader soft-corner container.
 - [ ] **AND-325** · `SPX-1882` · **Selected Tile Shape Shift** — state change alters container geometry as well as colour.
 - [ ] **AND-326** · `SPX-1883` · **Dynamic Corner Radius Handoff** — shared container changes corner treatment across hierarchy.
