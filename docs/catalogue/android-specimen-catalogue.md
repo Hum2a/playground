@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **21 / 417** complete.
+- Progress: **22 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 21 |
-| Open | 396 |
+| Done | 22 |
+| Open | 395 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-273 | `SPX-1830` | `fingerprint-acquisition-field` | Fingerprint Acquisition Field |
 | AND-205 | `SPX-1762` | `collapsing-app-bar` | Collapsing App Bar |
 | AND-200 | `SPX-1757` | `vertical-content-stretch` | Vertical Content Stretch |
 | AND-193 | `SPX-1750` | `material-pull-to-refresh` | Material Pull-to-Refresh |
@@ -79,7 +80,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [x] **AND-193** · `SPX-1750` · **Material Pull-to-Refresh** — pull-to-refresh-overscroll
 - [x] **AND-200** · `SPX-1757` · **Vertical Content Stretch** — android-12-stretch-edge-effects
 - [x] **AND-205** · `SPX-1762` · **Collapsing App Bar** — scroll-behaviour
-- [ ] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — biometric-unlock-inspired
+- [x] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — biometric-unlock-inspired
 - [ ] **AND-257** · `SPX-1814` · **Picture-in-Picture Collapse** — split-screen-multi-window
 - [ ] **AND-309** · `SPX-1866` · **Nearby Device Discovery** — nearby-share-quick-share-inspired
 - [ ] **AND-311** · `SPX-1868` · **File Transfer Arc** — nearby-share-quick-share-inspired
@@ -474,7 +475,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 
 ## Biometric / Unlock Inspired
 
-- [ ] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — abstract touch target progressively acquires fixed ridge/segment geometry.
+- [x] **AND-273** · `SPX-1830` · **Fingerprint Acquisition Field** — abstract touch target progressively acquires fixed ridge/segment geometry.
 - [ ] **AND-274** · `SPX-1831` · **Fingerprint Success Resolve** — acquisition geometry becomes verified state.
 - [ ] **AND-275** · `SPX-1832` · **Fingerprint Failure Pulse** — failed acquisition rejects once and returns to retry state.
 - [ ] **AND-276** · `SPX-1833` · **Under-Display Sensor Prompt** — touch region gains finite acquisition guidance.

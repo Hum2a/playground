@@ -1,0 +1,150 @@
+/* fingerprint-acquisition-field — portable specimen styles. Do not restyle to host tokens. */
+
+.faf {
+  --faf-ink: #141218;
+  --faf-panel: #1e1a22;
+  --faf-line: #49454f;
+  --faf-muted: #938f99;
+  --faf-text: #e8e0ec;
+  --faf-accent: #7c8bff;
+  --faf-success: #6dd58c;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--faf-text);
+  background: var(--faf-ink);
+}
+
+.faf *,
+.faf *::before,
+.faf *::after {
+  box-sizing: border-box;
+}
+
+.faf__card {
+  width: 280px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 1.75rem;
+  border: 1px solid var(--faf-line);
+  border-radius: 16px;
+  background: var(--faf-panel);
+  text-align: center;
+}
+
+.faf__heading {
+  margin: 0 0 0.35rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.faf__hint {
+  margin: 0 0 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--faf-muted);
+}
+
+.faf__target {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--faf-accent) 8%, transparent);
+  cursor: pointer;
+}
+
+.faf__target:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 4px;
+}
+
+.faf__seg {
+  fill: none;
+  stroke: var(--faf-line);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke 120ms ease, transform 180ms ease;
+}
+
+.faf__seg.is-lit {
+  stroke: var(--faf-accent);
+}
+
+.faf__seg.is-contracted {
+  transform-origin: 44px 44px;
+  transform: scale(0.92);
+}
+
+.faf__check {
+  fill: none;
+  stroke: var(--faf-success);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.8);
+  transform-origin: center;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.faf__check.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.faf.is-fail-pulse .faf__target {
+  animation: faf-fail 220ms ease;
+}
+
+@keyframes faf-fail {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 0 4px color-mix(in srgb, #e57373 50%, transparent); }
+}
+
+.faf__retry {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--faf-line);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--faf-text);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.faf__retry:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.faf__status {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--faf-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faf__seg,
+  .faf__check,
+  .faf.is-fail-pulse .faf__target {
+    transition-duration: 0ms;
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .faf__seg,
+[data-force-reduced-motion='true'] .faf__check,
+[data-force-reduced-motion='true'] .faf.is-fail-pulse .faf__target {
+  transition-duration: 0ms !important;
+  animation: none !important;
+}
