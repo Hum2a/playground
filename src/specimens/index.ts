@@ -602,6 +602,8 @@ import { redactionApply } from './redaction-apply/entry'
 
 import { documentDeclassification } from './document-declassification/entry'
 
+import { evidenceAnnotation } from './evidence-annotation/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1131,6 +1133,7 @@ export const specimens: Specimen[] = [
   blackBarRedactionReveal,
   redactionApply,
   documentDeclassification,
+  evidenceAnnotation,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

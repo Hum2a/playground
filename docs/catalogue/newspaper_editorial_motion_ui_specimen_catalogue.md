@@ -242,7 +242,7 @@ chronology and information priority.
     into an anonymous protected treatment.
 - [ ] **NEWS-081** · `SPX-3603` · ★★★★☆ **Leaked Document Stamp** — A document receives an
     original LEAKED/RECEIVED-style editorial stamp.
-- [ ] **NEWS-082** · `SPX-3604` · ★★★★★ **Evidence Annotation** — Boxes, arrows and margin notes
+- [x] **NEWS-082** · `SPX-3604` · ★★★★★ **Evidence Annotation** — Boxes, arrows and margin notes
     isolate important regions in a document.
 - [ ] **NEWS-083** · `SPX-3605` · ★★★★★ **Document Compare Split** — Two document versions open
     side-by-side with changed passages highlighted.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-082 | SPX-3604 | `evidence-annotation` | Evidence Annotation |
 | NEWS-079 | SPX-3601 | `document-declassification` | Document Declassification |
 | NEWS-078 | SPX-3600 | `redaction-apply` | Redaction Apply |
 | NEWS-077 | SPX-3599 | `black-bar-redaction-reveal` | Black-Bar Redaction Reveal |
@@ -713,12 +714,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **34 / 237** complete.
+- Progress: **35 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 34 |
-| Open | 203 |
+| Done | 35 |
+| Open | 202 |
 
 ## Core first-wave / build queue
 
@@ -756,7 +757,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-077** · `SPX-3599` · **Black-Bar Redaction Reveal** · `black-bar-redaction-reveal`
 - [x] **NEWS-078** · `SPX-3600` · **Redaction Apply** · `redaction-apply`
 - [x] **NEWS-079** · `SPX-3601` · **Document Declassification** · `document-declassification`
-- [ ] **NEWS-082** · `SPX-3604` · **Evidence Annotation** · scaffold `evidence-annotation`
+- [x] **NEWS-082** · `SPX-3604` · **Evidence Annotation** · `evidence-annotation`
 - [ ] **NEWS-083** · `SPX-3605` · **Document Compare Split** · scaffold `document-compare-split`
 - [ ] **NEWS-085** · `SPX-3607` · **Margin Note Slide-In** · scaffold `margin-note-slide-in`
 - [ ] **NEWS-086** · `SPX-3608` · **Editorial Bracket Draw** · scaffold `editorial-bracket-draw`
