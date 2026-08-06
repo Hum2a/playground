@@ -106,7 +106,7 @@ chronology and information priority.
     between widths while preserving reading order.
 - [x] **NEWS-028** · `SPX-3550` · ★★★★★ **Lead Column Expansion** — One article column widens
     and neighbouring columns compress around it.
-- [ ] **NEWS-029** · `SPX-3551` · ★★★★★ **Grid Rule Construction** — Editorial rules draw in to
+- [x] **NEWS-029** · `SPX-3551` · ★★★★★ **Grid Rule Construction** — Editorial rules draw in to
     construct the page skeleton before content appears.
 - [ ] **NEWS-030** · `SPX-3552` · ★★★★★ **Modular Page Replate** — Story modules exchange size
     and priority like a newspaper page being replated.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-029 | SPX-3551 | `grid-rule-construction` | Grid Rule Construction |
 | NEWS-028 | SPX-3550 | `lead-column-expansion` | Lead Column Expansion |
 | NEWS-027 | SPX-3549 | `column-reflow` | Column Reflow |
 | NEWS-022 | SPX-3544 | `headline-correction-strike` | Headline Correction Strike |
@@ -691,12 +692,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **12 / 237** complete.
+- Progress: **13 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 12 |
-| Open | 225 |
+| Done | 13 |
+| Open | 224 |
 
 ## Core first-wave / build queue
 
@@ -712,7 +713,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-022** · `SPX-3544` · **Headline Correction Strike** · `headline-correction-strike`
 - [x] **NEWS-027** · `SPX-3549` · **Column Reflow** · `column-reflow`
 - [x] **NEWS-028** · `SPX-3550` · **Lead Column Expansion** · `lead-column-expansion`
-- [ ] **NEWS-029** · `SPX-3551` · **Grid Rule Construction** · scaffold `grid-rule-construction`
+- [x] **NEWS-029** · `SPX-3551` · **Grid Rule Construction** · `grid-rule-construction`
 - [ ] **NEWS-030** · `SPX-3552` · **Modular Page Replate** · scaffold `modular-page-replate`
 - [ ] **NEWS-033** · `SPX-3555` · **Grid Collapse to Mobile** · scaffold `grid-collapse-to-mobile`
 - [ ] **NEWS-036** · `SPX-3558` · **Article Open from Teaser** · scaffold `article-open-from-teaser`

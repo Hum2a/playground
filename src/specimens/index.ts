@@ -558,6 +558,8 @@ import { columnReflow } from './column-reflow/entry'
 
 import { leadColumnExpansion } from './lead-column-expansion/entry'
 
+import { gridRuleConstruction } from './grid-rule-construction/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1065,6 +1067,7 @@ export const specimens: Specimen[] = [
   headlineCorrectionStrike,
   columnReflow,
   leadColumnExpansion,
+  gridRuleConstruction,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
