@@ -202,7 +202,6 @@ export const specimens: Specimen[] = [
   kiChargeMeter,
   victoryResultsTally,
   blackoutLoader,
-  blinkSelection,
   blueDoorDiscovery,
   blueFlameButtonHover,
   blueFocusBrackets,
