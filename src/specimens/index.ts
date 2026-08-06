@@ -182,6 +182,7 @@ import { overchargeWarning } from './overcharge-warning/entry'
 import { panelBreakTransition } from './panel-break-transition/entry'
 import { panelCollapseNavigation } from './panel-collapse-navigation/entry'
 import { panelExplosionReveal } from './panel-explosion-reveal/entry'
+import { panelToPanelRoute } from './panel-to-panel-route/entry'
 import { paperRipUnlock } from './paper-rip-unlock/entry'
 import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { partCompatibilitySnap } from './part-compatibility-snap/entry'
@@ -503,6 +504,7 @@ export const specimens: Specimen[] = [
   panelBreakTransition,
   panelCollapseNavigation,
   panelExplosionReveal,
+  panelToPanelRoute,
   paperRipUnlock,
   paperStackShuffle,
   partCompatibilitySnap,

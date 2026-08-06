@@ -1,0 +1,25 @@
+<div class="ppr" data-panel-to-panel-route data-phase="idle">
+  <button type="button" class="ppr__trigger" data-ppr-trigger>Route</button>
+  <div class="ppr__stage">
+    <div class="ppr__grid" data-ppr-grid>
+      <button type="button" class="ppr__panel ppr__panel--a" data-ppr-panel="0" aria-label="Panel A">
+        <span class="ppr__index">01</span>
+        <span class="ppr__copy">ANALYSIS</span>
+      </button>
+      <button type="button" class="ppr__panel ppr__panel--b" data-ppr-panel="1" aria-label="Panel B">
+        <span class="ppr__index">02</span>
+        <span class="ppr__copy">TARGET</span>
+      </button>
+      <button type="button" class="ppr__panel ppr__panel--c" data-ppr-panel="2" aria-label="Panel C">
+        <span class="ppr__index">03</span>
+        <span class="ppr__copy">OUTPUT</span>
+      </button>
+    </div>
+    <div class="ppr__route" data-ppr-route hidden>
+      <p class="ppr__route-kicker">ROUTE LOCKED</p>
+      <h2 class="ppr__route-title">MISSION COMPLETE</h2>
+      <p class="ppr__route-meta">Panel 02 expanded into next state.</p>
+    </div>
+  </div>
+  <p class="ppr__status" data-ppr-status>Select a panel, then Route.</p>
+</div>

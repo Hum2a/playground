@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **33 / 369** complete.
+- Progress: **34 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 33 |
-| Open | 336 |
+| Done | 34 |
+| Open | 335 |
 
 ## Visual grammar
 
@@ -65,6 +65,7 @@
 | MHA-180 | `SPX-2154` | `binding-wrap-lock` | Binding Wrap Lock |
 | MHA-226 | `SPX-2200` | `team-formation-snap` | Team Formation Snap |
 | MHA-232 | `SPX-2206` | `rival-cards-clash` | Rival Cards Clash |
+| MHA-237 | `SPX-2211` | `panel-to-panel-route` | Panel-to-Panel Route |
 
 ## Core first-wave
 
@@ -435,7 +436,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 ## Manga Page Navigation
 
-- [ ] **MHA-237** · `SPX-2211` · **Panel-to-Panel Route** — selected comic panel grows into the next content state.
+- [x] **MHA-237** · `SPX-2211` · **Panel-to-Panel Route** — selected comic panel grows into the next content state.
 - [ ] **MHA-238** · `SPX-2212` · **Page Turn with Ink Reveal** — page flips while new content appears through halftone mask.
 - [ ] **MHA-239** · `SPX-2213` · **Gutter Wipe** — black/white comic gutter expands until it becomes the next page boundary.
 - [ ] **MHA-240** · `SPX-2214` · **Four-Panel Sequence** — four UI states advance through manga-panel rhythm.

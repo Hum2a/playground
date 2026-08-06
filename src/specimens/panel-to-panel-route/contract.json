@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PanelToPanelRoute",
+  "type": "object",
+  "required": ["name", "animation"],
+  "properties": {
+    "name": { "type": "string", "const": "panel-to-panel-route" },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "primaryMs": { "type": "number", "const": 740 },
+        "totalMs": { "type": "number", "const": 1390 }
+      }
+    }
+  }
+}
