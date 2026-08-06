@@ -18,7 +18,7 @@ export const episodeTitleCardInterrupt: Specimen = {
   inspiredBy: {
     franchise: 'my-hero-academia',
   },
-  tags: ['title-card', 'interrupt', 'overlay', 'comic'],
+  tags: ['title-card', 'interrupt', 'comic'],
   deps: 'none',
   motion: {
     loops: false,
