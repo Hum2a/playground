@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/search-field-activation.schema.json",
+  "title": "SearchFieldActivation",
+  "description": "Portable contract for compact search expanding into focused input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "header",
+    "activation",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "search-field-activation" },
+    "intent": {
+      "type": "string",
+      "const": "Compact search expands to focused input; title retracts; ADD shifts out; CANCEL restores header."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "placeholder", "add", "cancel"],
+      "properties": {
+        "title": { "type": "string", "const": "LIBRARY" },
+        "placeholder": { "type": "string", "const": "Search library" },
+        "add": { "type": "string", "const": "ADD" },
+        "cancel": { "type": "string", "const": "CANCEL" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "line", "muted", "cream", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101218" },
+        "panel": { "type": "string", "const": "#1a1f28" },
+        "line": { "type": "string", "const": "#2d3542" },
+        "muted": { "type": "string", "const": "#7c8696" },
+        "cream": { "type": "string", "const": "#e9edf3" },
+        "accent": { "type": "string", "const": "#6fa3d8" }
+      }
+    },
+    "header": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "searchCompactPx", "searchExpandedPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 360 },
+        "searchCompactPx": { "type": "number", "const": 38 },
+        "searchExpandedPx": { "type": "number", "const": 276 }
+      }
+    },
+    "activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titleRetractMs", "expandMs", "placeholderDelayRatio"],
+      "properties": {
+        "titleRetractMs": { "type": "number", "const": 120 },
+        "expandMs": { "type": "number", "const": 260 },
+        "placeholderDelayRatio": { "type": "number", "const": 0.55 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantLayout", "triggers"],
+      "properties": {
+        "instantLayout": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "header", "title", "search", "cancel"],
+      "properties": {
+        "root": { "type": "string", "const": "sfa" },
+        "header": { "type": "string", "const": "sfa__header" },
+        "title": { "type": "string", "const": "sfa__title" },
+        "search": { "type": "string", "const": "sfa__search-expanded" },
+        "cancel": { "type": "string", "const": "sfa__cancel" }
+      }
+    }
+  }
+}

@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or open IOS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1558+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **34 / 258** complete.
+- Progress: **35 / 258** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 34 |
-| Open | 224 |
+| Done | 35 |
+| Open | 223 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | IOS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| IOS-143 | `SPX-1442` | `search-field-activation` | Search Field Activation |
 | IOS-127 | `SPX-1426` | `biometric-scan-acquisition` | Biometric Scan Acquisition |
 | IOS-111 | `SPX-1410` | `notification-expand` | Notification Expand |
 | IOS-110 | `SPX-1409` | `notification-banner-drop` | Notification Banner Drop |
@@ -288,7 +289,7 @@ Curated implementation priority (former Flagship Cross-Platform Specimens). Same
 
 ## Search
 
-- [ ] **IOS-143** · `SPX-1442` · **Search Field Activation** — compact search affordance expands, gains focus and reorganises neighbouring controls.
+- [x] **IOS-143** · `SPX-1442` · **Search Field Activation** — compact search affordance expands, gains focus and reorganises neighbouring controls.
 - [ ] **IOS-144** · `SPX-1443` · **Search Cancel Reversion** — active search collapses and restores the prior navigation arrangement.
 - [x] **IOS-145** · `SPX-1444` · **Spotlight Materialise** — central search surface appears over subdued context with immediate keyboard focus semantics.
 - [ ] **IOS-146** · `SPX-1445` · **Spotlight Result Selection** — active result marker moves rapidly through heterogeneous result rows.

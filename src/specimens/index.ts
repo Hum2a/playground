@@ -148,6 +148,7 @@ import { ripplePortalTransition } from './ripple-portal-transition/entry'
 import { scannerSearch } from './scanner-search/entry'
 import { scouterScan } from './scouter-scan/entry'
 import { scrollRubberBand } from './scroll-rubber-band/entry'
+import { searchFieldActivation } from './search-field-activation/entry'
 import { sectorRadarSearch } from './sector-radar-search/entry'
 import { sharedResourcePool } from './shared-resource-pool/entry'
 import { sheetRubberBandLimit } from './sheet-rubber-band-limit/entry'
@@ -368,6 +369,7 @@ export const specimens: Specimen[] = [
   scannerSearch,
   scouterScan,
   scrollRubberBand,
+  searchFieldActivation,
   sectorRadarSearch,
   sevenPartPrerequisiteCollection,
   sharedResourcePool,
