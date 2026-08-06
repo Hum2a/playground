@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/evolution-complete.schema.json",
+  "title": "EvolutionComplete",
+  "description": "Portable contract for post-evolution canonical registration. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "entity",
+    "phases",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "evolution-complete" },
+    "intent": {
+      "type": "string",
+      "examples": [
+        "Form 02 settles, a registration ring contracts with four cardinals, then a sweep locks CANONICAL while previous identity archives."
+      ]
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statusFrom", "statusTo", "previous", "action"],
+      "properties": {
+        "id": { "type": "string", "const": "FORM // 02" },
+        "statusFrom": { "type": "string", "const": "UNREGISTERED" },
+        "statusTo": { "type": "string", "const": "CANONICAL" },
+        "previous": { "type": "string", "const": "PREVIOUS // FORM 01" },
+        "action": { "type": "string", "const": "REGISTER" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["near", "body", "glow", "ring"],
+      "properties": {
+        "near": { "type": "string", "const": "#0c0a12" },
+        "body": { "type": "string", "const": "#9b86c9" },
+        "glow": { "type": "string", "const": "#f7f2ff" },
+        "ring": { "type": "string", "const": "#d9c8f5" }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "clipPath", "startScale", "startTranslateYPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 145 },
+        "heightPx": { "type": "number", "const": 175 },
+        "clipPath": {
+          "type": "string",
+          "const": "polygon(50% 0%, 42% 10%, 30% 2%, 26% 16%, 14% 8%, 18% 24%, 6% 36%, 10% 48%, 2% 58%, 12% 70%, 8% 88%, 22% 100%, 50% 88%, 78% 100%, 92% 88%, 88% 70%, 98% 58%, 90% 48%, 94% 36%, 82% 24%, 86% 8%, 74% 16%, 70% 2%, 58% 10%)"
+        },
+        "startScale": { "type": "number", "const": 1.08 },
+        "startTranslateYPx": { "type": "number", "const": -6 }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "settleMs",
+        "ringMs",
+        "markersMs",
+        "sweepMs",
+        "archiveMs",
+        "ringFrom",
+        "ringTo",
+        "cardinalCount",
+        "statusNoFade"
+      ],
+      "properties": {
+        "settleMs": { "type": "number", "const": 180 },
+        "ringMs": { "type": "number", "const": 260 },
+        "markersMs": { "type": "number", "const": 90 },
+        "sweepMs": { "type": "number", "const": 160 },
+        "archiveMs": { "type": "number", "const": 180 },
+        "ringFrom": { "type": "number", "const": 1.6 },
+        "ringTo": { "type": "number", "const": 1.12 },
+        "cardinalCount": { "type": "integer", "const": 4 },
+        "statusNoFade": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["explicitIdentityText", "liveStatus", "decorativeHidden"],
+      "properties": {
+        "explicitIdentityText": { "type": "boolean", "const": true },
+        "liveStatus": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantCanonical", "triggers"],
+      "properties": {
+        "instantCanonical": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "entity", "ring", "cardinal", "sweep", "prev"],
+      "properties": {
+        "root": { "type": "string", "const": "ec" },
+        "entity": { "type": "string", "const": "ec__entity" },
+        "ring": { "type": "string", "const": "ec__ring" },
+        "cardinal": { "type": "string", "const": "ec__cardinal" },
+        "sweep": { "type": "string", "const": "ec__sweep" },
+        "prev": { "type": "string", "const": "ec__prev" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "properties": {
+        "run": { "type": "string", "const": "run" },
+        "reset": { "type": "string", "const": "reset" },
+        "api": { "type": "string", "const": "evolutionComplete" }
+      }
+    },
+    "exampleInstance": { "type": "object" }
+  },
+  "examples": [
+    {
+      "name": "evolution-complete",
+      "intent": "Form 02 settles, a registration ring contracts with four cardinals, then a sweep locks CANONICAL while previous identity archives.",
+      "copy": {
+        "id": "FORM // 02",
+        "statusFrom": "UNREGISTERED",
+        "statusTo": "CANONICAL",
+        "previous": "PREVIOUS // FORM 01",
+        "action": "REGISTER"
+      },
+      "colours": {
+        "near": "#0c0a12",
+        "body": "#9b86c9",
+        "glow": "#f7f2ff",
+        "ring": "#d9c8f5"
+      },
+      "entity": {
+        "widthPx": 145,
+        "heightPx": 175,
+        "clipPath": "polygon(50% 0%, 42% 10%, 30% 2%, 26% 16%, 14% 8%, 18% 24%, 6% 36%, 10% 48%, 2% 58%, 12% 70%, 8% 88%, 22% 100%, 50% 88%, 78% 100%, 92% 88%, 88% 70%, 98% 58%, 90% 48%, 94% 36%, 82% 24%, 86% 8%, 74% 16%, 70% 2%, 58% 10%)",
+        "startScale": 1.08,
+        "startTranslateYPx": -6
+      },
+      "phases": {
+        "settleMs": 180,
+        "ringMs": 260,
+        "markersMs": 90,
+        "sweepMs": 160,
+        "archiveMs": 180,
+        "ringFrom": 1.6,
+        "ringTo": 1.12,
+        "cardinalCount": 4,
+        "statusNoFade": true
+      },
+      "a11y": {
+        "explicitIdentityText": true,
+        "liveStatus": true,
+        "decorativeHidden": true
+      },
+      "reducedMotion": {
+        "instantCanonical": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "ec",
+        "entity": "ec__entity",
+        "ring": "ec__ring",
+        "cardinal": "ec__cardinal",
+        "sweep": "ec__sweep",
+        "prev": "ec__prev"
+      },
+      "behaviour": {
+        "run": "run",
+        "reset": "reset",
+        "api": "evolutionComplete"
+      }
+    }
+  ]
+}
