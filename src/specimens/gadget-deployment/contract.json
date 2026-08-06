@@ -1,0 +1,12 @@
+{
+  "name": "gadget-deployment",
+  "ref": "SPX-2088",
+  "catalogue": { "mha": "MHA-114" },
+  "gadget": "GRAPPLE UNIT",
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}

@@ -1,0 +1,210 @@
+/* SPX-2088 Gadget Deployment — portable contract. */
+
+.gdd {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.gdd *,
+.gdd *::before,
+.gdd *::after {
+  box-sizing: border-box;
+}
+
+.gdd__host {
+  width: 100%;
+}
+
+.gdd__tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+  cursor: default;
+}
+
+.gdd__tile-face {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: opacity 320ms var(--ease);
+}
+
+.gdd[data-phase='deploy'] .gdd__tile-face,
+.gdd[data-phase='done'] .gdd__tile-face {
+  opacity: 0.35;
+}
+
+.gdd__icon {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--primary);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  background: rgb(56 163 255 / 0.2);
+}
+
+.gdd__tile-label {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.gdd__deploy {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 3px solid var(--primary);
+  background: var(--paper);
+  color: var(--ink);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transform-origin: top center;
+  transform: scaleY(0);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.gdd[data-phase='deploy'] .gdd__deploy {
+  animation: gdd-unfold 520ms var(--ease) forwards;
+}
+
+.gdd[data-phase='done'] .gdd__deploy {
+  transform: scaleY(1);
+  opacity: 1;
+  max-height: 200px;
+}
+
+.gdd[data-phase='done'] .gdd__deploy[hidden] {
+  display: block;
+}
+
+@keyframes gdd-unfold {
+  0% { transform: scaleY(0); opacity: 0; max-height: 0; }
+  100% { transform: scaleY(1); opacity: 1; max-height: 200px; }
+}
+
+.gdd__deploy-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--primary);
+}
+
+.gdd__controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.gdd__ctrl {
+  margin: 0;
+  padding: 0.35rem 0.65rem;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.gdd__ctrl:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.gdd__status {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gdd__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.gdd__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.gdd__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.gdd__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.gdd__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gdd[data-phase='deploy'] .gdd__deploy,
+  .gdd__tile-face {
+    animation: none;
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .gdd[data-phase='deploy'] .gdd__deploy,
+[data-force-reduced-motion='true'] .gdd__tile-face {
+  animation: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gdd[data-phase='done'] .gdd__deploy,
+  .gdd[data-phase='deploy'] .gdd__deploy {
+    transform: scaleY(1);
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+[data-force-reduced-motion='true'] .gdd[data-phase='done'] .gdd__deploy,
+[data-force-reduced-motion='true'] .gdd[data-phase='deploy'] .gdd__deploy {
+  transform: scaleY(1);
+  opacity: 1;
+  max-height: 200px;
+}

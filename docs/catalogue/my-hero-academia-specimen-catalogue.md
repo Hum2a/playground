@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **45 / 369** complete.
+- Progress: **46 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 45 |
-| Open | 324 |
+| Done | 46 |
+| Open | 323 |
 
 ## Visual grammar
 
@@ -77,6 +77,7 @@
 | MHA-054 | `SPX-2028` | `target-acquisition` | Training Target Acquisition |
 | MHA-067 | `SPX-2041` | `winner-banner-breakthrough` | Winner Banner Breakthrough |
 | MHA-095 | `SPX-2069` | `lockdown-shutter` | Lockdown Shutter |
+| MHA-114 | `SPX-2088` | `gadget-deployment` | Gadget Deployment |
 
 ## Core first-wave
 
@@ -261,7 +262,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 - [x] **MHA-111** · `SPX-2085` · **Blueprint Assembly** — gadget diagram constructs from exploded components into a finished device.
 - [x] **MHA-112** · `SPX-2086` · **Part Compatibility Snap** — dragged component magnetically locks into a valid slot.
 - [ ] **MHA-113** · `SPX-2087` · **Prototype Boot Sequence** — several hardware subsystems initialise in deterministic order.
-- [ ] **MHA-114** · `SPX-2088` · **Gadget Deployment** — compact equipment card unfolds into controls/status.
+- [x] **MHA-114** · `SPX-2088` · **Gadget Deployment** — compact equipment card unfolds into controls/status.
 - [ ] **MHA-115** · `SPX-2089` · **Exploded Diagram Expand** — assembled object separates into labelled component layers.
 - [ ] **MHA-116** · `SPX-2090` · **Calibration Reticle** — tuning controls align four markers into calibrated state.
 - [ ] **MHA-117** · `SPX-2091` · **Support Item Equip** — item chip travels into a profile equipment slot.
