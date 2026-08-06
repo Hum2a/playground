@@ -1,0 +1,1 @@
+export function runAddToList(){document.querySelector('[data-msg]').textContent='Added to My List';document.querySelector('[data-add]').textContent='✓ IN LIST'};document.querySelector('[data-add]')?.addEventListener('click',()=>runAddToList())
