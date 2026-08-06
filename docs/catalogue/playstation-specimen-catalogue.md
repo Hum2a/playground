@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **29 / 216** complete.
+- Progress: **30 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 29 |
-| Open | 187 |
+| Done | 30 |
+| Open | 186 |
 
 ## Visual grammar
 
@@ -61,6 +61,7 @@
 | PS-063 | `SPX-3369` | `trigger-breakpoint-confirm` | Trigger Breakpoint Confirm |
 | PS-140 | `SPX-3446` | `cloud-sync-progress` | Cloud Sync Progress |
 | PS-146 | `SPX-3452` | `save-conflict-compare` | Save Conflict Compare |
+| PS-083 | `SPX-3389` | `purchase-confirm-hold` | Purchase Confirm Hold |
 
 ## Core first-wave
 
@@ -95,7 +96,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-063** · `SPX-3369` · **Trigger Breakpoint Confirm** — dualsense-controller-feedback-visuals
 - [x] **PS-140** · `SPX-3446` · **Cloud Sync Progress** — network-connectivity
 - [x] **PS-146** · `SPX-3452` · **Save Conflict Compare** — save-data-cloud
-- [ ] **PS-083** · `SPX-3389` · **Purchase Confirm Hold** — playstation-store-commerce
+- [x] **PS-083** · `SPX-3389` · **Purchase Confirm Hold** — playstation-store-commerce
 - [ ] **PS-021** · `SPX-3327` · **Resume-from-Rest Wake** — console-boot-system-identity
 - [ ] **PS-030** · `SPX-3336` · **Quick Resume Snapshot** — game-launch-resume
 - [ ] **PS-031** · `SPX-3337` · **Game Close Return** — game-launch-resume
@@ -232,7 +233,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [ ] **PS-080** · `SPX-3386` · **Store Hero Crossfade** — Featured product context exchanges through a restrained cinematic crossfade.
 - [ ] **PS-081** · `SPX-3387` · **Price Drop Reveal** — A changed price receives a concise acquisition treatment.
 - [ ] **PS-082** · `SPX-3388` · **Add-to-Cart Morph** — Purchase action transforms into a persistent cart state.
-- [ ] **PS-083** · `SPX-3389` · **Purchase Confirm Hold** — A hold-to-confirm interaction fills toward a purchase threshold.
+- [x] **PS-083** · `SPX-3389` · **Purchase Confirm Hold** — A hold-to-confirm interaction fills toward a purchase threshold.
 - [ ] **PS-084** · `SPX-3390` · **Cart Item Transfer** — Selected product visually moves into a cart indicator.
 - [ ] **PS-085** · `SPX-3391` · **Wishlist Save Morph** — Save action converts from neutral into persistent saved state.
 - [ ] **PS-086** · `SPX-3392` · **Edition Compare Expand** — Product editions unfold into a side-by-side feature comparison.

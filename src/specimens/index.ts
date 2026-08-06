@@ -343,6 +343,7 @@ import { progressMilestoneBreakthrough } from './progress-milestone-breakthrough
 import { propagatedShockwave } from './propagated-shockwave/entry'
 import { psNeighbourPushOut } from './ps-neighbour-push-out/entry'
 import { pullToRefresh } from './pull-to-refresh/entry'
+import { purchaseConfirmHold } from './purchase-confirm-hold/entry'
 import { quickAppSwitchSwipe } from './quick-app-switch-swipe/entry'
 import { quickLookExpansion } from './quick-look-expansion/entry'
 import { quickSettingsExpansion } from './quick-settings-expansion/entry'
@@ -859,6 +860,7 @@ export const specimens: Specimen[] = [
   propagatedShockwave,
   psNeighbourPushOut,
   pullToRefresh,
+  purchaseConfirmHold,
   quickAppSwitchSwipe,
   quickLookExpansion,
   quickSettingsExpansion,
