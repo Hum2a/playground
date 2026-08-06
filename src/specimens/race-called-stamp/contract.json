@@ -1,0 +1,8 @@
+{
+  "name": "race-called-stamp",
+  "ref": "SPX-3633",
+  "title": "Race Called Stamp",
+  "mode": "edit",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
