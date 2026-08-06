@@ -1,0 +1,8 @@
+{
+  "name": "tap-tempo-pulse",
+  "ref": "SPX-3809",
+  "title": "Tap Tempo Pulse",
+  "mode": "deck",
+  "externalAssets": false,
+  "reducedMotion": "Immediate engaged state."
+}

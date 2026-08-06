@@ -1,4 +1,5 @@
 import type { Specimen } from '../../types'
+import { tapTempoPulse } from '../../library/music-equipment/tap-tempo-pulse/entry'
 import { loopRegionClamp } from '../../library/music-equipment/loop-region-clamp/entry'
 import { beatgridLock } from '../../library/music-equipment/beatgrid-lock/entry'
 import { scrollingDjWaveform } from '../../library/music-equipment/scrolling-dj-waveform/entry'
@@ -28,6 +29,7 @@ import { sceneRecallSweep } from '../../library/music-equipment/scene-recall-swe
 import { motorisedFaderRecall } from '../../library/music-equipment/motorised-fader-recall/entry'
 
 export const shard: Specimen[] = [
+  tapTempoPulse,
   loopRegionClamp,
   beatgridLock,
   scrollingDjWaveform,

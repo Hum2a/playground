@@ -574,4 +574,5 @@ export const specimenOrder: string[] = [
   'scrolling-dj-waveform',
   'beatgrid-lock',
   'loop-region-clamp',
+  'tap-tempo-pulse',
 ]

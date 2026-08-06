@@ -160,7 +160,7 @@ specimens can feel tactile without needing sound.
     with a glowing signal path that reroutes when bypassed.
 - [ ] **MUSIC-049** · `SPX-3808` · ★★★★☆ **True Bypass Route** — Disabling a pedal visibly
     redirects the signal around its processing block.
-- [ ] **MUSIC-050** · `SPX-3809` · ★★★★★ **Tap Tempo Pulse** — Repeated taps establish a tempo
+- [x] **MUSIC-050** · `SPX-3809` · ★★★★★ **Tap Tempo Pulse** — Repeated taps establish a tempo
     and a status LED adopts the measured cadence.
 - [ ] **MUSIC-051** · `SPX-3810` · ★★★★☆ **Pedal Preset Recall** — Multiple knobs jump to a saved
     configuration with finite mechanical motion.
@@ -862,6 +862,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 
 | MUSIC | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| MUSIC-050 | SPX-3809 | `tap-tempo-pulse` | Tap Tempo Pulse |
 | MUSIC-093 | SPX-3852 | `loop-region-clamp` | Loop Region Clamp |
 | MUSIC-090 | SPX-3849 | `beatgrid-lock` | Beatgrid Lock |
 | MUSIC-089 | SPX-3848 | `scrolling-dj-waveform` | Scrolling DJ Waveform |
@@ -890,12 +891,12 @@ The original ranked Top 50 and its recommended build waves are retained below.
 | MUSIC-009 | SPX-3768 | `scene-recall-sweep` | Scene Recall Sweep |
 | MUSIC-002 | SPX-3761 | `motorised-fader-recall` | Motorised Fader Recall |
 
-- Progress: **27 / 310** complete.
+- Progress: **28 / 310** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 27 |
-| Open | 283 |
+| Done | 28 |
+| Open | 282 |
 
 ## Core first-wave / build queue
 
@@ -914,7 +915,7 @@ The original ranked Top 50 and its recommended build waves are retained below.
 - [ ] **MUSIC-041** · `SPX-3800` · **Noise Gate Open** · scaffold `noise-gate-open`
 - [x] **MUSIC-044** · `SPX-3803` · **Stomp Switch Press** · `stomp-switch-press`
 - [x] **MUSIC-048** · `SPX-3807` · **Pedalboard Signal Chain** · `pedalboard-signal-chain`
-- [ ] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · scaffold `tap-tempo-pulse`
+- [x] **MUSIC-050** · `SPX-3809` · **Tap Tempo Pulse** · `tap-tempo-pulse`
 - [x] **MUSIC-057** · `SPX-3816` · **Oscillator Wave Morph** · `oscillator-wave-morph`
 - [x] **MUSIC-060** · `SPX-3819` · **Arpeggiator Step Chase** · `arpeggiator-step-chase`
 - [x] **MUSIC-062** · `SPX-3821` · **16-Step Sequencer Chase** · `16-step-sequencer-chase`
