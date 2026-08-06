@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), or open MHA rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-2344+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **47 / 369** complete.
+- Progress: **48 / 369** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 47 |
-| Open | 322 |
+| Done | 48 |
+| Open | 321 |
 
 ## Visual grammar
 
@@ -79,6 +79,7 @@
 | MHA-095 | `SPX-2069` | `lockdown-shutter` | Lockdown Shutter |
 | MHA-114 | `SPX-2088` | `gadget-deployment` | Gadget Deployment |
 | MHA-221 | `SPX-2195` | `license-card-issue` | License Card Issue |
+| MHA-130 | `SPX-2104` | `mission-complete-burst` | Mission Complete Burst |
 
 ## Core first-wave
 
@@ -285,7 +286,7 @@ Curated implementation priority (former Top 30 Recommended First Builds). Same c
 
 - [x] **MHA-128** · `SPX-2102` · **Mission Incoming** — mission card enters as a high-energy dispatch.
 - [x] **MHA-129** · `SPX-2103` · **Objective Update Slash** — completed objective is struck through and next objective snaps active.
-- [ ] **MHA-130** · `SPX-2104` · **Mission Complete Burst** — all active telemetry collapses into one giant completion result.
+- [x] **MHA-130** · `SPX-2104` · **Mission Complete Burst** — all active telemetry collapses into one giant completion result.
 - [ ] **MHA-131** · `SPX-2105` · **Objective Chain Advance** — completion energy travels down a linked sequence of tasks.
 - [ ] **MHA-132** · `SPX-2106` · **Optional Objective Reveal** — hidden secondary goal unfolds after primary action.
 - [ ] **MHA-133** · `SPX-2107` · **Mission Failed Freeze** — active UI freezes, desaturates and receives failure treatment.

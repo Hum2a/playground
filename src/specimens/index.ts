@@ -168,6 +168,7 @@ import { memoryFragmentReveal } from './memory-fragment-reveal/entry'
 import { menuBarActiveTransfer } from './menu-bar-active-transfer/entry'
 import { midnightClockTransition } from './midnight-clock-transition/entry'
 import { misprintNotification } from './misprint-notification/entry'
+import { missionCompleteBurst } from './mission-complete-burst/entry'
 import { missionControlSpread } from './mission-control-spread/entry'
 import { missionIncoming } from './mission-incoming/entry'
 import { monochromeBattleSlideIn } from './monochrome-battle-slide-in/entry'
@@ -503,6 +504,7 @@ export const specimens: Specimen[] = [
   menuBarActiveTransfer,
   midnightClockTransition,
   misprintNotification,
+  missionCompleteBurst,
   missionControlSpread,
   missionIncoming,
   monochromeBattleSlideIn,

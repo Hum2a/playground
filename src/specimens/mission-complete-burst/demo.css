@@ -1,0 +1,205 @@
+/* SPX-2104 Mission Complete Burst — portable contract. */
+
+.mcb {
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.mcb *,
+.mcb *::before,
+.mcb *::after {
+  box-sizing: border-box;
+}
+
+.mcb__stage {
+  position: relative;
+  width: 100%;
+  min-height: 160px;
+  padding: 0.75rem;
+  border: 3px solid var(--paper);
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.mcb__widgets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.mcb__widget {
+  padding: 0.45rem 0.5rem;
+  border: 2px solid rgb(244 247 250 / 0.35);
+  background: var(--ink);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  transition: transform 400ms var(--ease), opacity 400ms var(--ease);
+}
+
+.mcb__widget strong {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.mcb[data-phase='collapse'] .mcb__widget,
+.mcb[data-phase='done'] .mcb__widget {
+  animation: mcb-collapse 420ms var(--ease) forwards;
+}
+
+.mcb[data-phase='collapse'] .mcb__widget:nth-child(2),
+.mcb[data-phase='done'] .mcb__widget:nth-child(2) {
+  animation-delay: 40ms;
+}
+
+.mcb[data-phase='collapse'] .mcb__widget:nth-child(3),
+.mcb[data-phase='done'] .mcb__widget:nth-child(3) {
+  animation-delay: 80ms;
+}
+
+.mcb[data-phase='collapse'] .mcb__widget:nth-child(4),
+.mcb[data-phase='done'] .mcb__widget:nth-child(4) {
+  animation-delay: 120ms;
+}
+
+@keyframes mcb-collapse {
+  to {
+    transform: translate(var(--tx, 0), var(--ty, 0)) scale(0);
+    opacity: 0;
+  }
+}
+
+.mcb__widget:nth-child(1) { --tx: 40%; --ty: 40%; }
+.mcb__widget:nth-child(2) { --tx: -40%; --ty: 40%; }
+.mcb__widget:nth-child(3) { --tx: 40%; --ty: -40%; }
+.mcb__widget:nth-child(4) { --tx: -40%; --ty: -40%; }
+
+.mcb__burst {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background: var(--primary);
+  color: var(--ink);
+  opacity: 0;
+  transform: scale(0.5);
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+}
+
+.mcb[data-phase='burst'] .mcb__burst,
+.mcb[data-phase='done'] .mcb__burst {
+  animation: mcb-burst 500ms var(--ease) 400ms forwards;
+}
+
+.mcb[data-phase='done'] .mcb__burst {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes mcb-burst {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.mcb__complete {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.mcb__rank {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.mcb__btn {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--paper);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  clip-path: polygon(4% 0, 100% 6%, 96% 100%, 0 94%);
+}
+
+.mcb__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.mcb__btn--ghost {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.mcb__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.mcb__live {
+  margin: 0;
+  font-size: 0.6rem;
+  color: rgb(244 247 250 / 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcb[data-phase] .mcb__widget,
+  .mcb[data-phase] .mcb__burst {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .mcb[data-phase] .mcb__widget,
+[data-force-reduced-motion='true'] .mcb[data-phase] .mcb__burst {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcb[data-phase='done'] .mcb__widget {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .mcb[data-phase='done'] .mcb__burst {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .mcb[data-phase='done'] .mcb__widget {
+  opacity: 0;
+  transform: scale(0);
+}
+
+[data-force-reduced-motion='true'] .mcb[data-phase='done'] .mcb__burst {
+  opacity: 1;
+  transform: scale(1);
+}

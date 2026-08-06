@@ -1,0 +1,12 @@
+{
+  "name": "mission-complete-burst",
+  "ref": "SPX-2104",
+  "catalogue": { "mha": "MHA-130" },
+  "result": { "complete": "COMPLETE", "rank": "RANK A" },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  }
+}
