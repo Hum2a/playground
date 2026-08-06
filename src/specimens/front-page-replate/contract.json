@@ -1,0 +1,8 @@
+{
+  "name": "front-page-replate",
+  "ref": "SPX-3524",
+  "title": "Front Page Replate",
+  "mode": "replate",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}

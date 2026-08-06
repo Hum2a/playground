@@ -536,6 +536,8 @@ export {
 /** Explicit specimen registry. Add one import per specimen. */
 import { breakingNewsBannerSlam } from './breaking-news-banner-slam/entry'
 
+import { frontPageReplate } from './front-page-replate/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1032,6 +1034,7 @@ export const specimens: Specimen[] = [
   wireConnectionDraw,
   yellowImpactWipe,
   breakingNewsBannerSlam,
+  frontPageReplate,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {
