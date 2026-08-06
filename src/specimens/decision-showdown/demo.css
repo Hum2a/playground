@@ -1,0 +1,480 @@
+/* decision-showdown — portable specimen styles */
+
+.dsd {
+  --dsd-ink: #090909;
+  --dsd-red: #e60012;
+  --dsd-paper: #f5f1e8;
+  --dsd-ease: cubic-bezier(0.28, 0.82, 0.32, 1);
+  --dsd-active: 62%;
+  --dsd-inactive: 23%;
+
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  min-height: 260px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 1.1rem 0.85rem 1.35rem;
+  background: #14171c;
+  color: var(--dsd-paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.dsd *,
+.dsd *::before,
+.dsd *::after {
+  box-sizing: border-box;
+}
+
+.dsd__question {
+  position: relative;
+  z-index: 3;
+  margin: 0.15rem 0 1rem;
+  text-align: center;
+  font: 800 clamp(0.95rem, 3.8vw, 1.15rem) / 1.2 inherit;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dsd-paper);
+}
+
+.dsd__hint {
+  position: relative;
+  z-index: 3;
+  margin: 0.85rem 0 0;
+  text-align: center;
+  font: 500 0.62rem/1.35 inherit;
+  letter-spacing: 0.04em;
+  color: rgb(245 241 232 / 0.55);
+}
+
+.dsd__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Arena: both sides always share the row —— */
+.dsd__arena {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.35rem;
+  width: 100%;
+  min-height: 7.5rem;
+  isolation: isolate;
+}
+
+.dsd__choice {
+  position: relative;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0.85rem 0.55rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  overflow: visible;
+  transition:
+    flex-basis 160ms var(--dsd-ease),
+    flex-grow 160ms var(--dsd-ease),
+    transform 160ms var(--dsd-ease),
+    opacity 160ms var(--dsd-ease);
+}
+
+.dsd__choice:focus {
+  outline: none;
+}
+
+.dsd__choice:focus-visible {
+  outline: 2px solid var(--dsd-red);
+  outline-offset: 3px;
+  z-index: 4;
+}
+
+.dsd__choice:hover:not(.dsd__choice--active):not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.dsd__choice--yes {
+  justify-content: flex-start;
+  transform-origin: left center;
+}
+
+.dsd__choice--no {
+  justify-content: flex-end;
+  transform-origin: right center;
+}
+
+/* Default: NO active */
+.dsd[data-choice='no'] .dsd__choice--no,
+.dsd[data-choice='yes'] .dsd__choice--yes {
+  flex: 1 1 var(--dsd-active);
+  max-width: 68%;
+}
+
+.dsd[data-choice='no'] .dsd__choice--yes,
+.dsd[data-choice='yes'] .dsd__choice--no {
+  flex: 0 1 var(--dsd-inactive);
+  max-width: 28%;
+}
+
+/* Inactive retreat */
+.dsd[data-choice='no'] .dsd__choice--yes {
+  transform: translateX(-12px) scale(0.82);
+  opacity: 0.88;
+}
+
+.dsd[data-choice='yes'] .dsd__choice--no {
+  transform: translateX(20px) scale(0.82);
+  opacity: 0.88;
+}
+
+.dsd[data-choice='yes'] .dsd__choice--yes:hover,
+.dsd[data-choice='no'] .dsd__choice--no:hover {
+  transform: none;
+}
+
+/* Panels / backings — distinct silhouettes, not mirrors */
+.dsd__backing,
+.dsd__panel {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dsd__choice--yes .dsd__panel {
+  background: var(--dsd-ink);
+  clip-path: polygon(0% 6%, 92% 0%, 100% 78%, 96% 100%, 4% 94%, 0% 22%);
+}
+
+.dsd__choice--yes .dsd__backing {
+  background: var(--dsd-red);
+  clip-path: polygon(0% 8%, 90% 0%, 100% 76%, 94% 100%, 2% 96%, 0% 24%);
+  transform: translate(8px, 6px);
+}
+
+.dsd__choice--no .dsd__panel {
+  background: var(--dsd-paper);
+  clip-path: polygon(8% 0%, 100% 10%, 100% 88%, 94% 100%, 0% 92%, 4% 18%);
+}
+
+.dsd__choice--no .dsd__backing {
+  background: var(--dsd-ink);
+  clip-path: polygon(10% 0%, 100% 8%, 100% 90%, 92% 100%, 0% 94%, 6% 16%);
+  transform: translate(-7px, 5px);
+}
+
+.dsd__choice:not(.dsd__choice--active) .dsd__panel,
+.dsd__choice:not(.dsd__choice--active) .dsd__backing {
+  opacity: 0;
+}
+
+.dsd__choice--active .dsd__backing {
+  opacity: 1;
+}
+
+.dsd__choice--yes.dsd__choice--active .dsd__panel {
+  background: var(--dsd-ink);
+}
+
+.dsd__choice--no.dsd__choice--active .dsd__panel {
+  background: var(--dsd-paper);
+  border: 0;
+}
+
+.dsd__label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition:
+    font-size 160ms var(--dsd-ease),
+    color 120ms steps(2, end),
+    transform 160ms var(--dsd-ease);
+}
+
+.dsd__choice:not(.dsd__choice--active) .dsd__label {
+  font-size: clamp(1rem, 4.2vw, 1.375rem); /* ~22px */
+  color: var(--dsd-paper);
+  padding: 0.35rem 0.45rem;
+  background: var(--dsd-ink);
+  clip-path: polygon(0% 10%, 100% 0%, 96% 100%, 4% 90%);
+}
+
+.dsd__choice--no:not(.dsd__choice--active) .dsd__label {
+  background: var(--dsd-paper);
+  color: var(--dsd-ink);
+  clip-path: polygon(6% 0%, 100% 12%, 92% 100%, 0% 88%);
+}
+
+.dsd__choice--active .dsd__label {
+  font-size: clamp(1.6rem, 7vw, 2.375rem); /* ~38px */
+  padding: 0.2rem 0.35rem;
+  background: transparent;
+  clip-path: none;
+}
+
+.dsd__choice--yes.dsd__choice--active .dsd__label {
+  color: var(--dsd-paper);
+}
+
+.dsd__choice--yes.dsd__choice--active .dsd__label::after {
+  content: '!';
+}
+
+.dsd__choice--no.dsd__choice--active .dsd__label {
+  color: var(--dsd-ink);
+}
+
+/* Slash travels between sides during switch */
+.dsd__slash {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  left: 50%;
+  z-index: 5;
+  width: 3px;
+  background: var(--dsd-red);
+  transform: translateX(-50%) rotate(18deg) scaleY(0);
+  transform-origin: 50% 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dsd--switching .dsd__slash {
+  animation: dsd-slash 120ms steps(2, end) 180ms forwards;
+}
+
+@keyframes dsd-slash {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) rotate(18deg) scaleY(0.2);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(18deg) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20%) rotate(22deg) scaleY(1.05);
+  }
+}
+
+/* Transition phases */
+.dsd--contract .dsd__choice--active .dsd__label {
+  transform: scale(0.9);
+}
+
+.dsd--attack[data-choice='yes'] .dsd__choice--yes {
+  animation: dsd-attack-left 160ms var(--dsd-ease) forwards;
+}
+
+.dsd--attack[data-choice='no'] .dsd__choice--no {
+  animation: dsd-attack-right 160ms var(--dsd-ease) forwards;
+}
+
+@keyframes dsd-attack-left {
+  0% {
+    transform: translateX(-48px) scale(0.85);
+  }
+  70% {
+    transform: translateX(4px) scale(1.05);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes dsd-attack-right {
+  0% {
+    transform: translateX(56px) scale(0.85);
+  }
+  70% {
+    transform: translateX(-4px) scale(1.05);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.dsd--settle .dsd__arena {
+  transform: translate(1px, 0);
+  transition: transform 40ms linear;
+}
+
+/* Confirmation: YES expands to cover */
+.dsd--confirm-yes .dsd__choice--yes {
+  z-index: 6;
+  animation: dsd-yes-cover 260ms cubic-bezier(0.4, 0.05, 0.7, 0.25) forwards;
+}
+
+.dsd--confirm-yes .dsd__choice--no,
+.dsd--confirm-yes .dsd__question,
+.dsd--confirm-yes .dsd__hint,
+.dsd--confirm-yes .dsd__slash {
+  opacity: 0;
+  transition: opacity 120ms linear;
+}
+
+@keyframes dsd-yes-cover {
+  0% {
+    flex-basis: var(--dsd-active);
+    transform: scale(1);
+  }
+  100% {
+    position: absolute;
+    inset: -8% -6%;
+    flex: none;
+    width: auto;
+    max-width: none;
+    transform: scale(1.08);
+  }
+}
+
+.dsd--confirm-yes .dsd__choice--yes .dsd__backing {
+  opacity: 1;
+  transform: translate(10px, 8px) scale(1.05);
+}
+
+/* Confirmation: NO sweeps from right */
+.dsd--confirm-no .dsd__choice--no {
+  z-index: 6;
+  animation: dsd-no-sweep 220ms cubic-bezier(0.45, 0.05, 0.55, 1) forwards;
+}
+
+.dsd--confirm-no .dsd__choice--yes,
+.dsd--confirm-no .dsd__question,
+.dsd--confirm-no .dsd__hint {
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+
+@keyframes dsd-no-sweep {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    position: absolute;
+    inset: 8% -4% 8% 8%;
+    max-width: none;
+    transform: translateX(0) scale(1.02);
+  }
+}
+
+/* Outcome plate */
+.dsd__outcome {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  background: var(--dsd-ink);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 80ms linear;
+}
+
+.dsd__outcome-text {
+  font: 900 clamp(1.6rem, 8vw, 2.6rem) / 1 inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dsd-paper);
+}
+
+.dsd--outcome-deleted .dsd__outcome,
+.dsd--outcome-cancelled .dsd__outcome {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dsd--outcome-deleted .dsd__outcome {
+  background: var(--dsd-ink);
+}
+
+.dsd--outcome-deleted .dsd__outcome-text {
+  color: var(--dsd-red);
+}
+
+.dsd--outcome-cancelled .dsd__outcome {
+  background: var(--dsd-paper);
+}
+
+.dsd--outcome-cancelled .dsd__outcome-text {
+  color: var(--dsd-ink);
+}
+
+.dsd--busy .dsd__choice {
+  pointer-events: none;
+}
+
+.dsd--outcome-deleted .dsd__arena,
+.dsd--outcome-cancelled .dsd__arena,
+.dsd--outcome-deleted .dsd__question,
+.dsd--outcome-cancelled .dsd__question,
+.dsd--outcome-deleted .dsd__hint,
+.dsd--outcome-cancelled .dsd__hint {
+  visibility: hidden;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dsd__choice,
+  .dsd__label,
+  .dsd__slash,
+  .dsd__outcome {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .dsd--attack[data-choice='yes'] .dsd__choice--yes,
+  .dsd--attack[data-choice='no'] .dsd__choice--no,
+  .dsd--confirm-yes .dsd__choice--yes,
+  .dsd--confirm-no .dsd__choice--no {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .dsd__choice,
+[data-force-reduced-motion='true'] .dsd__label,
+[data-force-reduced-motion='true'] .dsd__slash,
+[data-force-reduced-motion='true'] .dsd__outcome {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .dsd--attack[data-choice='yes'] .dsd__choice--yes,
+[data-force-reduced-motion='true'] .dsd--attack[data-choice='no'] .dsd__choice--no,
+[data-force-reduced-motion='true'] .dsd--confirm-yes .dsd__choice--yes,
+[data-force-reduced-motion='true'] .dsd--confirm-no .dsd__choice--no {
+  animation: none !important;
+}
+
+@media (max-width: 360px) {
+  .dsd {
+    --dsd-active: 68%;
+    --dsd-inactive: 22%;
+    min-height: 240px;
+    padding: 0.85rem 0.55rem 1.1rem;
+  }
+
+  .dsd__arena {
+    min-height: 6.5rem;
+  }
+}

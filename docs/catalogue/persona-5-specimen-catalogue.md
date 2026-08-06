@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use `SPX-313+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **6 / 301** complete.
+- Progress: **9 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 6 |
-| Open | 295 |
+| Done | 9 |
+| Open | 292 |
 
 ## Shipped (mapped to live specimens)
 
@@ -24,6 +24,9 @@
 | P5-031 | `SPX-042` | `letter-scatter-assemble` | Letter Scatter Assemble |
 | P5-045 | `SPX-056` | `crooked-menu-stack` | Crooked Menu Stack |
 | P5-093 | `SPX-104` | `manga-cut-in-notification` | Manga Cut-In Notification |
+| P5-122 | `SPX-133` | `redacted-content-lock` | Redacted Content Lock |
+| P5-165 | `SPX-176` | `comic-card-selection` | Comic Card Selection |
+| P5-185 | `SPX-196` | `decision-showdown` | Decision Showdown |
 
 ## Core first-wave
 
@@ -42,14 +45,14 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-065** · `SPX-076` · **Graphic Burst Hover** — hover
 - [ ] **P5-082** · `SPX-093` · **Hold-to-Charge Button** — confirmation
 - [x] **P5-093** · `SPX-104` · **Manga Cut-In Notification** — notification
-- [ ] **P5-122** · `SPX-133` · **Redacted Content Lock** — locked state
+- [x] **P5-122** · `SPX-133` · **Redacted Content Lock** — locked state
 - [ ] **P5-123** · `SPX-134` · **Calling Card Lock** — locked state
 - [ ] **P5-133** · `SPX-144` · **Input Focus Attack** — form
 - [ ] **P5-145** · `SPX-156` · **Confidant Rank Up** — progression
 - [ ] **P5-146** · `SPX-157` · **XP Counter Slam** — progression
-- [ ] **P5-165** · `SPX-176` · **Comic Card Selection** — cards
+- [x] **P5-165** · `SPX-176` · **Comic Card Selection** — cards
 - [ ] **P5-177** · `SPX-188` · **Jagged Speech Tooltip** — tooltip
-- [ ] **P5-185** · `SPX-196` · **Decision Showdown** — confirmation
+- [x] **P5-185** · `SPX-196` · **Decision Showdown** — confirmation
 - [ ] **P5-201** · `SPX-212` · **Comic Panel Scroll Reveal** — scroll
 - [ ] **P5-221** · `SPX-232` · **Overlapping Newspaper Tabs** — tabs
 - [ ] **P5-233** · `SPX-244` · **Filter Slash** — filtering
@@ -202,7 +205,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Locked / disabled / coming soon
 
 - [ ] **P5-121** · `SPX-132` · **Phantom Graffiti Lock** — Animated painted slash covers unavailable content.
-- [ ] **P5-122** · `SPX-133` · **Redacted Content Lock** — Black censor bars aggressively conceal card.
+- [x] **P5-122** · `SPX-133` · **Redacted Content Lock** — Black censor bars aggressively conceal card.
 - [ ] **P5-123** · `SPX-134` · **Calling Card Lock** — Paper notice pinned diagonally over content.
 - [ ] **P5-124** · `SPX-135` · **Crossed-Out Card** — Two giant irregular strokes form X.
 - [ ] **P5-125** · `SPX-136` · **Restricted Newspaper** — Newspaper clipping overlays inaccessible area.
@@ -257,7 +260,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Cards
 
-- [ ] **P5-165** · `SPX-176` · **Comic Card Selection** — Selected card physically escapes grid alignment.
+- [x] **P5-165** · `SPX-176` · **Comic Card Selection** — Selected card physically escapes grid alignment.
 - [ ] **P5-166** · `SPX-177` · **Card Backing Separation** — Hard backing moves opposite foreground.
 - [ ] **P5-167** · `SPX-178` · **Card Corner Peel** — Corner exposes hidden metadata.
 - [ ] **P5-168** · `SPX-179` · **Card Slash Reveal** — Diagonal cut exposes alternate state.
@@ -283,7 +286,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Modals / dialogs
 
-- [ ] **P5-185** · `SPX-196` · **Decision Showdown** — YES and NO attack from opposite sides.
+- [x] **P5-185** · `SPX-196` · **Decision Showdown** — YES and NO attack from opposite sides.
 - [ ] **P5-186** · `SPX-197` · **Confirmation Blackout** — Background becomes graphic black field before dialog.
 - [ ] **P5-187** · `SPX-198` · **Paper Notice Dialog** — Dialog slams down as irregular paper.
 - [ ] **P5-188** · `SPX-199` · **Comic Frame Modal** — Four panels construct modal perimeter.

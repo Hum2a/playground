@@ -3,15 +3,12 @@ import { azureShardTransition } from './azure-shard-transition/entry'
 import { callingCardPeel } from './calling-card-peel/entry'
 import { callingCardSlam } from './calling-card-slam/entry'
 import { comingSoonTape } from './coming-soon-tape/entry'
-import { comicCardSelection } from './comic-card-selection/entry'
 import { comicPanelWipe } from './comic-panel-wipe/entry'
 import { crookedMenuStack } from './crooked-menu-stack/entry'
 import { corruptedAccessLock } from './corrupted-access-lock/entry'
-import { decisionShowdown } from './decision-showdown/entry'
 import { diagnosticBootSequence } from './diagnostic-boot-sequence/entry'
 import { dramaticObjectionError } from './dramatic-objection-error/entry'
 import { graphicBurstHover } from './graphic-burst-hover/entry'
-import { holdToChargeButton } from './hold-to-charge-button/entry'
 import { inkSplatTransition } from './ink-splat-transition/entry'
 import { letterScatterAssemble } from './letter-scatter-assemble/entry'
 import { mangaCutInNotification } from './manga-cut-in-notification/entry'
@@ -24,7 +21,6 @@ import { paperStackShuffle } from './paper-stack-shuffle/entry'
 import { precisionMenuSnap } from './precision-menu-snap/entry'
 import { ransomNoteReveal } from './ransom-note-reveal/entry'
 import { rankUpImpact } from './rank-up-impact/entry'
-import { redactedContentLock } from './redacted-content-lock/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tornEdgeDrawer } from './torn-edge-drawer/entry'
 import { truthShotNotification } from './truth-shot-notification/entry'
@@ -95,12 +91,8 @@ export const specimens: Specimen[] = [
   crookedMenuStack,
   letterScatterAssemble,
   graphicBurstHover,
-  comicCardSelection,
-  redactedContentLock,
-  panelExplosionReveal,
   mangaCutInNotification,
-  holdToChargeButton,
-  decisionShowdown,
+  panelExplosionReveal,
 ]
 
 export function getSpecimen(id: string): Specimen | undefined {

@@ -1,0 +1,59 @@
+<div
+  class="dsd"
+  data-decision-showdown
+  data-choice="no"
+>
+  <p class="dsd__question" id="dsd-question">DELETE THIS DRAFT?</p>
+
+  <div
+    class="dsd__arena"
+    role="radiogroup"
+    aria-labelledby="dsd-question"
+    data-dsd-arena
+  >
+    <button
+      type="button"
+      class="dsd__choice dsd__choice--yes"
+      role="radio"
+      aria-checked="false"
+      tabindex="-1"
+      data-dsd-choice="yes"
+    >
+      <span class="dsd__backing" aria-hidden="true"></span>
+      <span class="dsd__panel" aria-hidden="true"></span>
+      <span class="dsd__label">YES</span>
+    </button>
+
+    <span class="dsd__slash" aria-hidden="true" data-dsd-slash></span>
+
+    <button
+      type="button"
+      class="dsd__choice dsd__choice--no dsd__choice--active"
+      role="radio"
+      aria-checked="true"
+      tabindex="0"
+      data-dsd-choice="no"
+    >
+      <span class="dsd__backing" aria-hidden="true"></span>
+      <span class="dsd__panel" aria-hidden="true"></span>
+      <span class="dsd__label">NO</span>
+    </button>
+  </div>
+
+  <p class="dsd__hint" id="dsd-hint">
+    Arrow keys to choose. Enter or Space to confirm. Escape cancels.
+  </p>
+
+  <div class="dsd__outcome" aria-hidden="true" data-dsd-outcome>
+    <span class="dsd__outcome-text" data-dsd-outcome-text></span>
+  </div>
+
+  <div
+    class="dsd__status"
+    role="status"
+    aria-live="polite"
+    data-dsd-status
+  >
+    NO selected. Draft kept.
+  </div>
+</div>

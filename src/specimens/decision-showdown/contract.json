@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/decision-showdown.schema.json",
+  "title": "DecisionShowdown",
+  "description": "Portable contract for an opposing YES/NO confirmation showdown. Visual demo only — no destructive persistence. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "layout",
+    "polygons",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "decision-showdown" },
+    "intent": {
+      "type": "string",
+      "const": "Two-choice confirmation where YES and NO compete as opposing graphic forces; selection expands one side and retreats the other."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question",
+        "yes",
+        "no",
+        "defaultChoice",
+        "outcomeDeleted",
+        "outcomeCancelled"
+      ],
+      "properties": {
+        "question": { "type": "string", "const": "DELETE THIS DRAFT?" },
+        "yes": { "type": "string", "const": "YES" },
+        "yesActiveSuffix": { "type": "string", "const": "!" },
+        "no": { "type": "string", "const": "NO" },
+        "defaultChoice": { "type": "string", "const": "no" },
+        "outcomeDeleted": { "type": "string", "const": "DELETED" },
+        "outcomeCancelled": { "type": "string", "const": "CANCELLED" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "red", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hostMaxWidthPx",
+        "hostMinHeightPx",
+        "activeWidthPercent",
+        "inactiveWidthPercent",
+        "activeWidthPercentNarrow",
+        "inactiveRetreat"
+      ],
+      "properties": {
+        "hostMaxWidthPx": { "type": "number", "const": 420 },
+        "hostMinHeightPx": { "type": "number", "const": 260 },
+        "activeWidthPercent": { "type": "number", "const": 62 },
+        "inactiveWidthPercent": { "type": "number", "const": 23 },
+        "activeWidthPercentNarrow": { "type": "number", "const": 68 },
+        "inactiveLabelPx": { "type": "number", "const": 22 },
+        "activeLabelPx": { "type": "number", "const": 38 },
+        "inactiveRetreat": {
+          "type": "object",
+          "required": ["yesTranslateXPx", "noTranslateXPx", "scale"],
+          "properties": {
+            "yesTranslateXPx": { "type": "number", "const": -12 },
+            "noTranslateXPx": { "type": "number", "const": 20 },
+            "scale": { "type": "number", "const": 0.82 }
+          }
+        },
+        "yesBackingOffsetPx": {
+          "type": "object",
+          "const": { "x": 8, "y": 6 }
+        },
+        "noBackingOffsetPx": {
+          "type": "object",
+          "const": { "x": -7, "y": 5 }
+        }
+      }
+    },
+    "polygons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["yesPanel", "yesBacking", "noPanel", "noBacking"],
+      "description": "Distinct silhouettes — not mirrored copies.",
+      "properties": {
+        "yesPanel": {
+          "type": "string",
+          "const": "polygon(0% 6%, 92% 0%, 100% 78%, 96% 100%, 4% 94%, 0% 22%)"
+        },
+        "yesBacking": {
+          "type": "string",
+          "const": "polygon(0% 8%, 90% 0%, 100% 76%, 94% 100%, 2% 96%, 0% 24%)"
+        },
+        "noPanel": {
+          "type": "string",
+          "const": "polygon(8% 0%, 100% 10%, 100% 88%, 94% 100%, 0% 92%, 4% 18%)"
+        },
+        "noBacking": {
+          "type": "string",
+          "const": "polygon(10% 0%, 100% 8%, 100% 90%, 92% 100%, 0% 94%, 6% 16%)"
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selectionTotalMs",
+        "contractMs",
+        "yesCoverMs",
+        "noSweepMs"
+      ],
+      "properties": {
+        "selectionTotalMs": { "type": "number", "const": 340 },
+        "contractMs": { "type": "number", "const": 90 },
+        "slashDelayMs": { "type": "number", "const": 180 },
+        "slashDurationMs": { "type": "number", "const": 120 },
+        "attackTranslateYesPx": { "type": "number", "const": 48 },
+        "attackTranslateNoPx": { "type": "number", "const": 56 },
+        "yesCoverMs": { "type": "number", "const": 260 },
+        "noSweepMs": { "type": "number", "const": 220 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "radiogroup",
+        "ariaChecked",
+        "statusAnnouncesSelection",
+        "decorativeGeometryHidden"
+      ],
+      "properties": {
+        "radiogroup": { "type": "boolean", "const": true },
+        "ariaChecked": { "type": "boolean", "const": true },
+        "statusAnnouncesSelection": { "type": "boolean", "const": true },
+        "decorativeGeometryHidden": { "type": "boolean", "const": true },
+        "noRealDestructiveAction": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instantSelection", "instantOutcome", "triggers"],
+      "properties": {
+        "instantSelection": { "type": "boolean", "const": true },
+        "instantOutcome": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "choiceYes", "choiceNo", "outcome"],
+      "properties": {
+        "root": { "type": "string", "const": "dsd" },
+        "choiceYes": { "type": "string", "const": "dsd__choice--yes" },
+        "choiceNo": { "type": "string", "const": "dsd__choice--no" },
+        "outcome": { "type": "string", "const": "dsd__outcome" },
+        "stateSwitching": { "type": "string", "const": "dsd--switching" },
+        "outcomeDeleted": {
+          "type": "string",
+          "const": "dsd--outcome-deleted"
+        },
+        "outcomeCancelled": {
+          "type": "string",
+          "const": "dsd--outcome-cancelled"
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "decision-showdown",
+      "intent": "Two-choice confirmation where YES and NO compete as opposing graphic forces; selection expands one side and retreats the other.",
+      "copy": {
+        "question": "DELETE THIS DRAFT?",
+        "yes": "YES",
+        "no": "NO",
+        "defaultChoice": "no",
+        "outcomeDeleted": "DELETED",
+        "outcomeCancelled": "CANCELLED"
+      },
+      "colours": {
+        "ink": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "layout": {
+        "hostMaxWidthPx": 420,
+        "hostMinHeightPx": 260,
+        "activeWidthPercent": 62,
+        "inactiveWidthPercent": 23,
+        "activeWidthPercentNarrow": 68,
+        "inactiveRetreat": {
+          "yesTranslateXPx": -12,
+          "noTranslateXPx": 20,
+          "scale": 0.82
+        }
+      },
+      "polygons": {
+        "yesPanel": "polygon(0% 6%, 92% 0%, 100% 78%, 96% 100%, 4% 94%, 0% 22%)",
+        "yesBacking": "polygon(0% 8%, 90% 0%, 100% 76%, 94% 100%, 2% 96%, 0% 24%)",
+        "noPanel": "polygon(8% 0%, 100% 10%, 100% 88%, 94% 100%, 0% 92%, 4% 18%)",
+        "noBacking": "polygon(10% 0%, 100% 8%, 100% 90%, 92% 100%, 0% 94%, 6% 16%)"
+      },
+      "animation": {
+        "selectionTotalMs": 340,
+        "contractMs": 90,
+        "yesCoverMs": 260,
+        "noSweepMs": 220
+      },
+      "a11y": {
+        "radiogroup": true,
+        "ariaChecked": true,
+        "statusAnnouncesSelection": true,
+        "decorativeGeometryHidden": true,
+        "noRealDestructiveAction": true
+      },
+      "reducedMotion": {
+        "instantSelection": true,
+        "instantOutcome": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "dsd",
+        "choiceYes": "dsd__choice--yes",
+        "choiceNo": "dsd__choice--no",
+        "outcome": "dsd__outcome"
+      }
+    }
+  ]
+}
