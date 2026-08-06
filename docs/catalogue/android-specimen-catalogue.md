@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), or open AND rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **49 / 417** complete.
+- Progress: **50 / 417** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 368 |
+| Done | 50 |
+| Open | 367 |
 
 ## Visual grammar
 
@@ -32,6 +32,7 @@
 
 | AND | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| AND-147 | `SPX-1704` | `tab-indicator-stretch` | Tab Indicator Stretch |
 | AND-029 | `SPX-1586` | `extended-fab-collapse` | Extended FAB Collapse |
 | AND-083 | `SPX-1640` | `notification-stack-expansion` | Notification Stack Expansion |
 | AND-091 | `SPX-1648` | `quick-settings-expansion` | Quick Settings Expansion |
@@ -316,7 +317,7 @@ Curated implementation priority (former Flagship Android Specimens). Same checkb
 - [ ] **AND-144** · `SPX-1701` · **Tab Indicator Slide** — one underline/pill tracks selection between tabs.
 - [ ] **AND-145** · `SPX-1702` · **Scrollable Tab Momentum** — selected offscreen tab causes restrained tab-strip repositioning.
 - [ ] **AND-146** · `SPX-1703` · **Tab Content Shared Axis** — content direction reflects selected tab direction.
-- [ ] **AND-147** · `SPX-1704` · **Tab Indicator Stretch** — active marker elongates while travelling then returns to normal width.
+- [x] **AND-147** · `SPX-1704` · **Tab Indicator Stretch** — active marker elongates while travelling then returns to normal width.
 - [ ] **AND-148** · `SPX-1705` · **Tab Re-selection Pulse** — selecting current tab produces finite content-to-top acknowledgement.
 - [ ] **AND-149** · `SPX-1706` · **Tab Badge Arrival** — status badge appears without disturbing tab alignment.
 

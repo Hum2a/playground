@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/tab-indicator-stretch.schema.json",
+  "title": "TabIndicatorStretch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "indicator", "timing"],
+  "properties": {
+    "name": { "type": "string", "const": "tab-indicator-stretch" },
+    "indicator": {
+      "type": "object",
+      "required": ["widthPx", "heightPx", "maxStretchPx", "stripWidthPx"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 34 },
+        "heightPx": { "type": "number", "const": 3 },
+        "maxStretchPx": { "type": "number", "const": 70 },
+        "stripWidthPx": { "type": "number", "const": 336 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["transitionMs"],
+      "properties": {
+        "transitionMs": { "type": "number", "const": 300 }
+      }
+    }
+  }
+}

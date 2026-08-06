@@ -217,6 +217,7 @@ import { stateIntensityField } from './state-intensity-field/entry'
 import { surfaceBreakReveal } from './surface-break-reveal/entry'
 import { swipeFullCommit } from './swipe-full-commit/entry'
 import { synchronousFusionMerge } from './synchronous-fusion-merge/entry'
+import { tabIndicatorStretch } from './tab-indicator-stretch/entry'
 import { tacticalAlertPing } from './tactical-alert-ping/entry'
 import { tacticalCommandWheel } from './tactical-command-wheel/entry'
 import { tacticalTargetLock } from './tactical-target-lock/entry'
@@ -502,6 +503,7 @@ export const specimens: Specimen[] = [
   surfaceBreakReveal,
   swipeFullCommit,
   synchronousFusionMerge,
+  tabIndicatorStretch,
   tacticalAlertPing,
   tacticalCommandWheel,
   tacticalTargetLock,
