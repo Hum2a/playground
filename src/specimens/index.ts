@@ -620,6 +620,8 @@ import { liveBlogEntryInsert } from './live-blog-entry-insert/entry'
 
 import { tickerPauseOnFocus } from './ticker-pause-on-focus/entry'
 
+import { electionNeedleSweep } from './election-needle-sweep/entry'
+
 export const specimens: Specimen[] = [
   achievementEncounter,
   activeBottomNavPillTransfer,
@@ -1158,6 +1160,7 @@ export const specimens: Specimen[] = [
   breakingTickerCrawl,
   liveBlogEntryInsert,
   tickerPauseOnFocus,
+  electionNeedleSweep,
 ]
 
 export function getSpecimen(idOrRef: string): Specimen | undefined {

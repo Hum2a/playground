@@ -314,7 +314,7 @@ chronology and information priority.
 
 # 14. Data / Charts / Election Night
 
-- [ ] **NEWS-108** · `SPX-3630` · ★★★★★ **Election Needle Sweep** — A gauge needle moves toward
+- [x] **NEWS-108** · `SPX-3630` · ★★★★★ **Election Needle Sweep** — A gauge needle moves toward
     a reported result and settles at an exact value.
 - [ ] **NEWS-109** · `SPX-3631` · ★★★★★ **Seat Count Tally** — Party/category counts increment
     into a fixed results grid.
@@ -678,6 +678,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 
 | NEWS | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
+| NEWS-108 | SPX-3630 | `election-needle-sweep` | Election Needle Sweep |
 | NEWS-104 | SPX-3626 | `ticker-pause-on-focus` | Ticker Pause on Focus |
 | NEWS-101 | SPX-3623 | `live-blog-entry-insert` | Live Blog Entry Insert |
 | NEWS-100 | SPX-3622 | `breaking-ticker-crawl` | Breaking Ticker Crawl |
@@ -722,12 +723,12 @@ Each row is also tracked in the master list above; the five waves are operationa
 | NEWS-002 | SPX-3524 | `front-page-replate` | Front Page Replate |
 | NEWS-001 | SPX-3523 | `breaking-news-banner-slam` | Breaking News Banner Slam |
 
-- Progress: **43 / 237** complete.
+- Progress: **44 / 237** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 43 |
-| Open | 194 |
+| Done | 44 |
+| Open | 193 |
 
 ## Core first-wave / build queue
 
@@ -774,7 +775,7 @@ Each row is also tracked in the master list above; the five waves are operationa
 - [x] **NEWS-100** · `SPX-3622` · **Breaking Ticker Crawl** · `breaking-ticker-crawl`
 - [x] **NEWS-101** · `SPX-3623` · **Live Blog Entry Insert** · `live-blog-entry-insert`
 - [x] **NEWS-104** · `SPX-3626` · **Ticker Pause on Focus** · `ticker-pause-on-focus`
-- [ ] **NEWS-108** · `SPX-3630` · **Election Needle Sweep** · scaffold `election-needle-sweep`
+- [x] **NEWS-108** · `SPX-3630` · **Election Needle Sweep** · `election-needle-sweep`
 - [ ] **NEWS-109** · `SPX-3631` · **Seat Count Tally** · scaffold `seat-count-tally`
 - [ ] **NEWS-110** · `SPX-3632` · **Map Result Fill** · scaffold `map-result-fill`
 - [ ] **NEWS-111** · `SPX-3633` · **Race Called Stamp** · scaffold `race-called-stamp`

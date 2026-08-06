@@ -1,0 +1,8 @@
+{
+  "name": "election-needle-sweep",
+  "ref": "SPX-3630",
+  "title": "Election Needle Sweep",
+  "mode": "rule",
+  "reducedMotion": "Immediate final state.",
+  "noExternalAssets": true
+}
