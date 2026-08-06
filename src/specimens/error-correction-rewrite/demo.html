@@ -1,0 +1,36 @@
+<div class="ecr" data-error-correction data-state="idle">
+  <label class="ecr__label" id="ecr-label" for="ecr-field">EMAIL</label>
+
+  <div
+    class="ecr__field"
+    id="ecr-field"
+    role="group"
+    aria-labelledby="ecr-label"
+    data-ecr-field
+  >
+    <span class="ecr__stable ecr__stable--pre">humza@</span>
+
+    <span class="ecr__slot" data-ecr-slot>
+      <span class="ecr__wrong" data-ecr-wrong aria-hidden="false">gmial</span>
+      <span class="ecr__right" data-ecr-right aria-hidden="true">gmail</span>
+      <span class="ecr__underline" aria-hidden="true"></span>
+      <span class="ecr__strike" aria-hidden="true"></span>
+      <span class="ecr__badge" aria-hidden="true">WRONG</span>
+    </span>
+
+    <span class="ecr__stable ecr__stable--suf">.com</span>
+  </div>
+
+  <p class="ecr__corrected" data-ecr-corrected aria-hidden="true">CORRECTED</p>
+
+  <button type="button" class="ecr__trigger" data-ecr-trigger>
+    CHECK VALUE
+  </button>
+
+  <div
+    class="ecr__status"
+    role="status"
+    aria-live="polite"
+    data-ecr-status
+  ></div>
+</div>

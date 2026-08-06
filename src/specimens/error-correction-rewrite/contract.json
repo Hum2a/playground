@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/error-correction-rewrite.schema.json",
+  "title": "ErrorCorrectionRewrite",
+  "description": "Portable localised typo correction: underline, WRONG mark, strike, extract, replace fragment. Visual demo only. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "fragments",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "error-correction-rewrite" },
+    "intent": {
+      "type": "string",
+      "const": "Incorrect substring is underlined, marked WRONG, struck, extracted, and replaced while surrounding text stays stable."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "prefix",
+        "wrongFragment",
+        "rightFragment",
+        "suffix",
+        "badge",
+        "corrected",
+        "trigger",
+        "status"
+      ],
+      "properties": {
+        "label": { "type": "string", "const": "EMAIL" },
+        "prefix": { "type": "string", "const": "humza@" },
+        "wrongFragment": { "type": "string", "const": "gmial" },
+        "rightFragment": { "type": "string", "const": "gmail" },
+        "suffix": { "type": "string", "const": ".com" },
+        "badge": { "type": "string", "const": "WRONG" },
+        "corrected": { "type": "string", "const": "CORRECTED" },
+        "trigger": { "type": "string", "const": "CHECK VALUE" },
+        "status": {
+          "type": "string",
+          "const": "Correction: gmial replaced with gmail."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "red", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#090909" },
+        "red": { "type": "string", "const": "#e60012" },
+        "paper": { "type": "string", "const": "#f5f1e8" }
+      }
+    },
+    "fragments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["underline", "strike", "wrongExit", "rightEnter"],
+      "properties": {
+        "underline": {
+          "type": "object",
+          "const": {
+            "heightPx": 5,
+            "rotateDeg": -2,
+            "widthPercent": 104,
+            "direction": "ltr"
+          }
+        },
+        "strike": {
+          "type": "object",
+          "const": {
+            "heightPx": 9,
+            "rotateDeg": -3,
+            "widthPercent": 108,
+            "clipPath": "polygon(0% 30%, 8% 0%, 100% 25%, 94% 100%, 0% 80%)"
+          }
+        },
+        "wrongExit": {
+          "type": "object",
+          "const": {
+            "translateYPx": -24,
+            "rotateDeg": -7,
+            "scale": 0.9
+          }
+        },
+        "rightEnter": {
+          "type": "object",
+          "const": {
+            "from": { "translateYPx": 28, "rotateDeg": 6, "scale": 1.12 },
+            "impact": { "translateYPx": -2, "rotateDeg": -2, "scale": 0.97 },
+            "to": { "translateYPx": 0, "rotateDeg": 0, "scale": 1 }
+          }
+        },
+        "badgeRotateDeg": { "type": "number", "const": 4 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "isolateMs",
+        "wrongAtMs",
+        "strikeAtMs",
+        "extractAtMs",
+        "correctAtMs",
+        "totalMs"
+      ],
+      "properties": {
+        "isolateMs": { "type": "number", "const": 140 },
+        "wrongAtMs": { "type": "number", "const": 120 },
+        "wrongDurationMs": { "type": "number", "const": 140 },
+        "strikeAtMs": { "type": "number", "const": 220 },
+        "extractAtMs": { "type": "number", "const": 300 },
+        "correctAtMs": { "type": "number", "const": 380 },
+        "totalMs": { "type": "number", "const": 580 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["singleStatusAnnouncement", "decorativeHidden"],
+      "properties": {
+        "singleStatusAnnouncement": { "type": "boolean", "const": true },
+        "decorativeHidden": { "type": "boolean", "const": true },
+        "demoOnlyNoRealDataMutation": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateCorrection", "triggers"],
+      "properties": {
+        "immediateCorrection": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "enum": [
+              "prefers-reduced-motion: reduce",
+              "data-force-reduced-motion=true"
+            ]
+          }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "wrong", "right", "trigger", "corrected"],
+      "properties": {
+        "root": { "type": "string", "const": "ecr" },
+        "wrong": { "type": "string", "const": "ecr__wrong" },
+        "right": { "type": "string", "const": "ecr__right" },
+        "trigger": { "type": "string", "const": "ecr__trigger" },
+        "corrected": { "type": "string", "const": "ecr__corrected" },
+        "stateSettled": { "type": "string", "const": "ecr--settled" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "name": "error-correction-rewrite",
+      "intent": "Incorrect substring is underlined, marked WRONG, struck, extracted, and replaced while surrounding text stays stable.",
+      "copy": {
+        "label": "EMAIL",
+        "prefix": "humza@",
+        "wrongFragment": "gmial",
+        "rightFragment": "gmail",
+        "suffix": ".com",
+        "badge": "WRONG",
+        "corrected": "CORRECTED",
+        "trigger": "CHECK VALUE",
+        "status": "Correction: gmial replaced with gmail."
+      },
+      "colours": {
+        "ink": "#090909",
+        "red": "#e60012",
+        "paper": "#f5f1e8"
+      },
+      "animation": {
+        "isolateMs": 140,
+        "wrongAtMs": 120,
+        "strikeAtMs": 220,
+        "extractAtMs": 300,
+        "correctAtMs": 380,
+        "totalMs": 580
+      },
+      "a11y": {
+        "singleStatusAnnouncement": true,
+        "decorativeHidden": true,
+        "demoOnlyNoRealDataMutation": true
+      },
+      "reducedMotion": {
+        "immediateCorrection": true,
+        "triggers": [
+          "prefers-reduced-motion: reduce",
+          "data-force-reduced-motion=true"
+        ]
+      },
+      "classNames": {
+        "root": "ecr",
+        "wrong": "ecr__wrong",
+        "right": "ecr__right",
+        "trigger": "ecr__trigger",
+        "corrected": "ecr__corrected"
+      }
+    }
+  ]
+}
