@@ -100,6 +100,7 @@ import { dayChangeCard } from './day-change-card/entry'
 import { dayChangeTear } from './day-change-tear/entry'
 import { deadlineClock } from './deadline-clock/entry'
 import { deadlinePanic } from './deadline-panic/entry'
+import { deadlinePressureMeter } from './deadline-pressure-meter/entry'
 import { decayDelete } from './decay-delete/entry'
 import { decisionShowdown } from './decision-showdown/entry'
 import { deductionLockIn } from './deduction-lock-in/entry'
@@ -533,6 +534,7 @@ export const specimens: Specimen[] = [
   dayChangeTear,
   deadlineClock,
   deadlinePanic,
+  deadlinePressureMeter,
   decayDelete,
   decisionShowdown,
   deductionLockIn,
