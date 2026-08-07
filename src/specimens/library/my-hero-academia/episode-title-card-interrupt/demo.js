@@ -3,10 +3,12 @@
  */
 
 const PRIMARY_MS = 420
-const TOTAL_MS = 1070
+const HOLD_MS = 500
+const RESUME_MS = 320
 
 let busy = false
-let timer = null
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -18,64 +20,103 @@ function root() {
   return document.querySelector('[data-episode-title-card-interrupt]')
 }
 
-function setStatus(text) {
-  const el = document.querySelector('[data-etic-status]')
+function card() {
+  return document.querySelector('[data-etic-card]')
+}
+
+function clearTimers() {
+  for (const id of timers) window.clearTimeout(id)
+  timers = []
+}
+
+function later(ms, fn) {
+  const id = window.setTimeout(fn, ms)
+  timers.push(id)
+  return id
+}
+
+function setLive(text) {
+  const el = document.querySelector('[data-etic-live]')
+  if (el) el.textContent = text
+}
+
+function setAppMeta(text) {
+  const el = document.querySelector('[data-etic-app-meta]')
   if (el) el.textContent = text
 }
 
 export function resetEpisodeTitleCardInterrupt() {
-  if (timer !== null) window.clearTimeout(timer)
+  clearTimers()
   busy = false
   const el = root()
-  const card = document.querySelector('[data-etic-card]')
-  if (!el || !card) return
-  el.classList.remove('etic--interrupt', 'etic--hold', 'etic--done')
+  const c = card()
+  if (!el || !c) return
+  el.classList.remove('etic--interrupt', 'etic--hold', 'etic--resume')
   el.setAttribute('data-phase', 'idle')
-  card.setAttribute('aria-hidden', 'true')
-  setStatus('Application running.')
+  c.setAttribute('aria-hidden', 'true')
+  setAppMeta('Status: ACTIVE — awaiting next directive.')
+  setLive('Application running.')
+}
+
+function resumeSession() {
+  const el = root()
+  const c = card()
+  if (!el || !c) return
+  el.classList.remove('etic--interrupt', 'etic--hold')
+  el.classList.add('etic--resume')
+  el.setAttribute('data-phase', 'resuming')
+  c.setAttribute('aria-hidden', 'true')
+  setAppMeta('Status: ACTIVE — awaiting next directive.')
+  setLive('Resuming live session…')
+
+  later(RESUME_MS, () => {
+    el.classList.remove('etic--resume')
+    el.setAttribute('data-phase', 'idle')
+    setLive('Application running.')
+    busy = false
+  })
 }
 
 export function runEpisodeTitleCardInterrupt() {
   const el = root()
-  const card = document.querySelector('[data-etic-card]')
-  if (!el || !card || busy) return Promise.resolve()
+  const c = card()
+  if (!el || !c || busy) return Promise.resolve()
   busy = true
+  clearTimers()
 
   if (prefersReducedMotion()) {
-    el.classList.add('etic--interrupt', 'etic--hold', 'etic--done')
+    el.classList.add('etic--interrupt', 'etic--hold')
     el.setAttribute('data-phase', 'interrupted')
-    card.setAttribute('aria-hidden', 'false')
-    setStatus('Title card: OUTPUT MAXIMUM.')
-    busy = false
+    c.setAttribute('aria-hidden', 'false')
+    setLive('Title card: OUTPUT MAXIMUM. Application paused.')
+    later(HOLD_MS, () => {
+      resumeSession()
+    })
     return Promise.resolve()
   }
 
   el.classList.add('etic--interrupt')
   el.setAttribute('data-phase', 'interrupting')
-  setStatus('State paused for title card…')
+  setLive('Application paused for title card…')
 
   return new Promise((resolve) => {
-    timer = window.setTimeout(() => {
+    later(PRIMARY_MS, () => {
       el.classList.add('etic--hold')
-      card.setAttribute('aria-hidden', 'false')
+      c.setAttribute('aria-hidden', 'false')
       el.setAttribute('data-phase', 'interrupted')
-      setStatus('Title card: OUTPUT MAXIMUM.')
-      window.setTimeout(() => {
-        el.classList.add('etic--done')
-        busy = false
-        timer = null
-        resolve()
-      }, TOTAL_MS - PRIMARY_MS)
-    }, PRIMARY_MS)
+      setLive('Title card: OUTPUT MAXIMUM. Application paused.')
+
+      later(HOLD_MS, () => {
+        resumeSession()
+        later(RESUME_MS, resolve)
+      })
+    })
   })
 }
 
 function bind() {
   document.querySelector('[data-etic-trigger]')?.addEventListener('click', () => {
-    if (root()?.classList.contains('etic--done')) {
-      resetEpisodeTitleCardInterrupt()
-      return
-    }
+    if (busy) return
     void runEpisodeTitleCardInterrupt()
   })
 
@@ -88,3 +129,4 @@ function bind() {
 }
 
 bind()
+resetEpisodeTitleCardInterrupt()

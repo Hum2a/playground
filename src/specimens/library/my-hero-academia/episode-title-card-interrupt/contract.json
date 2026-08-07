@@ -1,16 +1,51 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EpisodeTitleCardInterrupt",
-  "type": "object",
-  "required": ["name", "animation"],
-  "properties": {
-    "name": { "type": "string", "const": "episode-title-card-interrupt" },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 420 },
-        "totalMs": { "type": "number", "const": 1070 }
-      }
-    }
-  }
+  "name": "episode-title-card-interrupt",
+  "intent": "Live application shell pauses (dims + PAUSED meta), a finite title card interrupts (EPISODE // 12 / OUTPUT MAXIMUM), holds, then host UI resumes.",
+  "catalogue": { "mha": "MHA-243", "ref": "SPX-2217" },
+  "copy": {
+    "appKicker": "LIVE SESSION",
+    "appTitle": "OUTPUT MONITOR",
+    "appMetaActive": "Status: ACTIVE — awaiting next directive.",
+    "appMetaPaused": "Status: ACTIVE — awaiting next directive. [PAUSED]",
+    "cardEp": "EPISODE // 12",
+    "cardTitle": "OUTPUT MAXIMUM",
+    "cardSub": "MISSION BRIEFING",
+    "liveRunning": "Application running.",
+    "livePausing": "Application paused for title card…",
+    "liveInterrupted": "Title card: OUTPUT MAXIMUM. Application paused.",
+    "liveResuming": "Resuming live session…"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "primaryMs": 420,
+    "holdMs": 500,
+    "resumeMs": 320,
+    "totalMs": 1240
+  },
+  "geometry": {
+    "cardInset": "3.2rem 1rem 2.5rem",
+    "cardClip": "polygon(0 0, 100% 0, 100% 86%, 90% 100%, 0 100%)",
+    "appDimOpacity": 0.35,
+    "appDimGrayscale": 0.4
+  },
+  "api": {
+    "run": "runEpisodeTitleCardInterrupt()",
+    "reset": "resetEpisodeTitleCardInterrupt()"
+  },
+  "reducedMotion": {
+    "behaviour": "Show dimmed app + title card immediately; hold 500ms; resume without slide animation"
+  },
+  "acceptance": [
+    "Interrupt dims host app (opacity 0.35, grayscale 0.4) and app meta shows [PAUSED]",
+    "Title card slides in over 420ms and holds for 500ms with EPISODE // 12 copy",
+    "After hold, card dismisses over 320ms and host app returns to full opacity without [PAUSED]",
+    "Polite aria-live announces pause, title card, and resume phases",
+    "Reduced motion shows paused + card states instantly then resumes after holdMs",
+    "Restart message resets to idle running state deterministically"
+  ]
 }

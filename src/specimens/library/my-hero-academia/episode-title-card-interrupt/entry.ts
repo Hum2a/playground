@@ -4,10 +4,10 @@ export const episodeTitleCardInterrupt: Specimen = {
   ref: 'SPX-2217',
   title: 'Episode Title Card Interrupt',
   blurb:
-    'Live application state pauses for a stark finite title-card reveal before holding on the interrupted briefing.',
+    'Live application state pauses for a stark title-card reveal, holds, then resumes the host UI.',
   origin: {
     project: 'Original',
-    surface: 'My Hero Academia-inspired comic/anime action language',
+    surface: 'Broadcast interrupt — finite title card over a dimmed live shell',
   },
   facets: {
     kind: 'overlay',
@@ -24,15 +24,13 @@ export const episodeTitleCardInterrupt: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under reduced motion, the title card appears immediately over a dimmed app shell.',
+      'Under reduced motion, the paused shell and title card appear instantly, hold, then resume without slide.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,
     height: 320,
     background: 'dark',
-
     label: 'Episode title card interrupt',
   },
-
 }
