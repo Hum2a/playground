@@ -61,10 +61,12 @@
         "bandSteps",
         "bandCount",
         "rightLeadMs",
+        "rightLeadsLeft",
         "slideMs",
         "slideSteps",
         "groundChunks",
         "metaSteps",
+        "metaAlignment",
         "noSmoothEasing"
       ],
       "properties": {
@@ -72,10 +74,12 @@
         "bandSteps": { "type": "integer", "const": 4 },
         "bandCount": { "type": "integer", "const": 3 },
         "rightLeadMs": { "type": "number", "const": 60 },
+        "rightLeadsLeft": { "type": "boolean", "const": true },
         "slideMs": { "type": "number", "const": 300 },
         "slideSteps": { "type": "integer", "const": 6 },
         "groundChunks": { "type": "integer", "const": 4 },
         "metaSteps": { "type": "integer", "const": 3 },
+        "metaAlignment": { "type": "string", "const": "side-aligned" },
         "noSmoothEasing": { "type": "boolean", "const": true }
       }
     },
@@ -154,10 +158,12 @@
         "bandSteps": 4,
         "bandCount": 3,
         "rightLeadMs": 60,
+        "rightLeadsLeft": true,
         "slideMs": 300,
         "slideSteps": 6,
         "groundChunks": 4,
         "metaSteps": 3,
+        "metaAlignment": "side-aligned",
         "noSmoothEasing": true
       },
       "a11y": {

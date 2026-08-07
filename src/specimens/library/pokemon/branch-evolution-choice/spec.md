@@ -43,7 +43,9 @@ Growth uses `pathLength="100"` + `stroke-dashoffset` draw.
 
 ## Selection
 
-- Radiogroup of three radios; arrow keys move selection
+- Radiogroup of three radios; roving `tabindex` keeps only the selected option
+  in the tab order
+- Arrow keys move selection; Home/End select the first/last branch
 - Selected: larger node, stronger branch stroke, two brackets
 - Unselected: subdued paths/nodes (still visible)
 
@@ -51,6 +53,8 @@ Growth uses `pathLength="100"` + `stroke-dashoffset` draw.
 
 Unselected branches retract to the fork; selected thickens; current entity
 travels to the destination and becomes `BUILD // {NAME}`.
+The selected destination remains visible during travel while the polite status
+names both the retained branch and the branches that retract.
 
 ## Reduced motion
 

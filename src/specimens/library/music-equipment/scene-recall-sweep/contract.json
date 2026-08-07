@@ -1,8 +1,14 @@
 {
   "name": "scene-recall-sweep",
-  "ref": "SPX-3768",
-  "title": "Scene Recall Sweep",
-  "mode": "meter",
+  "title": "Scene Recall",
+  "operation": "scene recall",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "RECALL 07 / RESET",
+  "states": {
+    "idle": "Scene slots 01?08 are standing by.",
+    "action": "RECALL 07 is engaged.",
+    "final": "Scene 07 recalled: sweep settled on slot 07."
+  }
 }

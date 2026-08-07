@@ -10,7 +10,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inline; keep the 58×72px five-facet gem and lower-right inventory slot as the portable contract.',
-    'Call runItemObtained from OBTAIN ITEM; never increment quantity before docking.',
+    'Call runItemObtained from OBTAIN ITEM; never increment quantity before docking, and retain the docked ×03 terminal state.',
     'Transfer uses a two-stage CSS path (no animation library); exactly two completion accents.',
     'Announce final quantity once via the status region — skip intermediate counts.',
     'Honour prefers-reduced-motion and data-force-reduced-motion with an immediate final state.',
@@ -19,7 +19,7 @@ const payload: SpecimenPayload = {
     'Item visibly appears outside inventory with exactly five primary facets',
     'Item is presented before storage, then physically travels into the slot',
     'Quantity remains ×02 until docking, then becomes ×03',
-    'Exactly two completion accents; final state static at ENERGY SHARD ×03',
+    'Exactly two completion accents; final state is static with ENERGY SHARD ×03 and ITEM OBTAINED text',
     'Reduced motion immediately shows ×03 and ITEM OBTAINED',
   ],
   scaffold: `

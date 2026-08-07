@@ -10,7 +10,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inline; keep the 300×12px bar and clipped level slot as the portable contract.',
-    'Call runLevelUpOverflow from ADD XP; never animate 87%→25% directly.',
+    'Call runLevelUpOverflow from ADD XP; preserve exact carryover (87 + 38 = 125, so 13 fills level 12 and 25 starts level 13); never animate 87%→25% directly.',
     'Reset progressbar semantics when the level increments (0/100 then 25/100).',
     'Exactly two threshold ticks at 100%; announce final level and XP once.',
     'Honour prefers-reduced-motion and data-force-reduced-motion with an immediate final state.',

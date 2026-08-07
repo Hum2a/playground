@@ -4,6 +4,10 @@
 
 An abstract silhouette (Form A) charges, then decisively alternates with a related taller silhouette (Form B) on a timing curve that gives the new identity progressively more screen time until Form B locks permanently. Not a crossfade — geometry swaps. Metadata updates after the transformation settles.
 
+This is the identity-change half of the evolution pair. Follow it with
+[Evolution Complete](../evolution-complete/spec.md) only when Form B must be
+registered; this specimen does not register, archive, or canonicalize a form.
+
 ## DOM structure
 
 - `.est[data-evolution-silhouette]` — root; `data-state` idle | running | evolved; `data-form` a | b

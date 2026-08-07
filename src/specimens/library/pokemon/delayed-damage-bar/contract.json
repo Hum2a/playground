@@ -89,7 +89,8 @@
         "trailDrainMs",
         "impactMs",
         "deltaMs",
-        "numericRollMs"
+        "numericRollMs",
+        "currentBeforeTrail"
       ],
       "properties": {
         "primaryMs": { "type": "number", "const": 180 },
@@ -103,6 +104,7 @@
         "deltaMs": { "type": "number", "const": 500 },
         "deltaRisePx": { "type": "number", "const": 6 },
         "numericRollMs": { "type": "number", "const": 80 },
+        "currentBeforeTrail": { "type": "boolean", "const": true },
         "totalMs": { "type": "number", "const": 920 },
         "easing": {
           "type": "string",

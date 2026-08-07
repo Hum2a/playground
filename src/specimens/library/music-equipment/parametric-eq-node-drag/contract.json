@@ -2,7 +2,14 @@
   "name": "parametric-eq-node-drag",
   "ref": "SPX-3778",
   "title": "Parametric EQ Node Drag",
-  "mode": "deck",
+  "operation": "EQ adjustment",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

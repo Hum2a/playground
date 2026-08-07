@@ -10,13 +10,14 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; keep frozen scan 620ms, thresholds 30%/55%, and seven index values.',
+    'Import demo.css verbatim; keep the title and metadata lanes legible at the 380px preview, frozen scan 620ms, thresholds 30%/55%, and seven index values.',
     'Wire register/reset via window.entryRegistration or the controls.',
     'Never announce intermediate index numbers to assistive tech — only idle and final registration.',
     'Honour prefers-reduced-motion and data-force-reduced-motion with an immediate registered record.',
   ],
   acceptance: [
     'Initial metadata visibly UNKNOWN / UNREGISTERED',
+    'ENTRY title remains aligned above the scan record; metadata labels and values remain legible at the 380px preview',
     'Scanner travels left→right in ~620ms; silhouette resolves behind the beam',
     'NAME reveals at 30%, CLASS at 55%; STATUS waits until lock',
     'Index cycles exactly seven deterministic values then locks 086',

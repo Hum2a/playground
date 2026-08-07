@@ -1,0 +1,110 @@
+[
+  {
+    "id": "mission-rank-reveal",
+    "ref": "SPX-2534",
+    "title": "Mission Rank Reveal",
+    "why": "Rank glyph slams 56px then wax stamp settles at -12°, transform-led not opacity fade."
+  },
+  {
+    "id": "mission-board-dispatch",
+    "ref": "SPX-2569",
+    "title": "Mission Board Dispatch",
+    "why": "Frozen 148×0px travel into the team lane with measurable dock settle — fixes undefined path constants."
+  },
+  {
+    "id": "rank-promotion-card",
+    "ref": "SPX-2544",
+    "title": "Rank Promotion Card",
+    "why": "Freeze Genin→Chunin collapse/expand morph phases with measurable glow settle."
+  },
+  {
+    "id": "target-dossier-reveal",
+    "ref": "SPX-2584",
+    "title": "Target Dossier Reveal",
+    "why": "Three redaction bands lift on 0/90/180ms stagger before seal snap — not a single peel."
+  },
+  {
+    "id": "versus-clash-card",
+    "ref": "SPX-2560",
+    "title": "Versus Clash Card",
+    "why": "Opposing cards slam 28px inward with frozen clash hold — impact, not fade."
+  },
+  {
+    "id": "objective-chain-advance",
+    "ref": "SPX-2536",
+    "title": "Objective Chain Advance",
+    "why": "Four checkpoints latch on frozen complete/pulse timings ending in MISSION CLEAR."
+  },
+  {
+    "id": "technique-mastery-tree",
+    "ref": "SPX-2767",
+    "title": "Technique Mastery Tree",
+    "why": "Four mastery nodes unlock in order with edge draw — frozen step ms, not generic skill chrome."
+  },
+  {
+    "id": "three-person-cell-formation",
+    "ref": "SPX-2591",
+    "title": "Three-Person Cell Formation",
+    "why": "Three nodes snap to frozen triangle posts then draw links — formation, not a fade-in huddle."
+  },
+  {
+    "id": "chakra-charge-field",
+    "ref": "SPX-2354",
+    "title": "Chakra Charge Field",
+    "why": "Irregular boundary grows through frozen diameter steps to READY — not a linear bar alone."
+  },
+  {
+    "id": "chakra-control-balance",
+    "ref": "SPX-2358",
+    "title": "Chakra Control Balance",
+    "why": "Needle locks inside frozen ±0.08 band after 380ms hold — measurable equilibrium."
+  },
+  {
+    "id": "chakra-signature-match",
+    "ref": "SPX-2510",
+    "title": "Chakra Signature Match",
+    "why": "Five waveform bars rise to frozen sample targets then latch MATCH."
+  },
+  {
+    "id": "healing-progress-field",
+    "ref": "SPX-2527",
+    "title": "Healing Progress Field",
+    "why": "25-tile field restores ring-by-ring on frozen 220ms stagger to RESTORED."
+  },
+  {
+    "id": "focus-mode-activation",
+    "ref": "SPX-2488",
+    "title": "Focus Mode Activation",
+    "why": "Corner brackets converge to a frozen inset on host content — analysis focus, not a fade dim alone."
+  },
+  {
+    "id": "weak-point-detection",
+    "ref": "SPX-2490",
+    "title": "Weak-Point Detection",
+    "why": "Scan brackets four weak points in frozen order on host content."
+  },
+  {
+    "id": "presence-radar-sweep",
+    "ref": "SPX-2509",
+    "title": "Presence Radar Sweep",
+    "why": "Finite phosphor sweep logs three blips at frozen bearings — one arc, then rest."
+  },
+  {
+    "id": "network-scan-360",
+    "ref": "SPX-2497",
+    "title": "360° Network Scan",
+    "why": "360° phosphor sweep discovers five hub nodes at frozen 72° bearings in order."
+  },
+  {
+    "id": "four-point-barrier-construct",
+    "ref": "SPX-2522",
+    "title": "Four-Point Barrier Construct",
+    "why": "Corners → edges → fill on frozen 220/260ms timings — construct, not a fade box."
+  },
+  {
+    "id": "barrier-breach-alert",
+    "ref": "SPX-2525",
+    "title": "Barrier Breach Alert",
+    "why": "Single fracture at -18° latches alert once — no looping flash after settle."
+  }
+]

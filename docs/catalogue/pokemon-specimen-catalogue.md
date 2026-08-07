@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (SPX-015–SPX-312), P3 (SPX-400–SPX-635), open PK rows, DB (SPX-966–SPX-1209), IOS (SPX-1300–SPX-1557), AND (SPX-1558–SPX-1974), or MHA (SPX-1975–SPX-2343); prefer leftover SPX-313–SPX-399, SPX-636–SPX-699, SPX-1210–SPX-1299, or SPX-3110+ (NR reserves SPX-2344–SPX-2918; P4 reserves SPX-2919–SPX-3109).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **18 / 266** complete.
+- Progress: **20 / 266** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 248 |
+| Done | 20 |
+| Open | 246 |
 
 ## Visual grammar
 
@@ -33,6 +33,8 @@
 | PK | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
 | PK-001 | `SPX-700` | `wild-encounter-transition` | Wild Encounter Transition |
+| PK-010 | `SPX-010` | `achievement-encounter` | Legendary Encounter |
+| PK-011 | `SPX-710` | `capture-shake` | Capture Shake |
 | PK-012 | `SPX-711` | `critical-capture` | Critical Capture |
 | PK-032 | `SPX-731` | `branch-evolution-choice` | Branch Evolution Choice |
 | PK-025 | `SPX-724` | `evolution-silhouette-transformation` | Evolution Silhouette Transformation |
@@ -55,7 +57,8 @@
 
 Curated implementation priority (from the former Tier S / S+ queues). Same checkbox as the master list — checking either counts.
 
-- [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — capture-uncertainty
+- [x] **PK-010** · `SPX-010` · **Legendary Encounter** — encounters-arrivals
+- [x] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — capture-uncertainty
 - [x] **PK-025** · `SPX-724` · **Evolution Silhouette Transformation** — evolution-transformation
 - [x] **PK-032** · `SPX-731` · **Branch Evolution Choice** — evolution-transformation
 - [x] **PK-087** · `SPX-786` · **Pokédex Entry Registration** — pok-dex
@@ -87,11 +90,11 @@ Curated implementation priority (from the former Tier S / S+ queues). Same check
 - [ ] **PK-007** · `SPX-706` · **Double Battle Arrival** — A single-target layout restructures itself as two entities arrive sequentially.
 - [ ] **PK-008** · `SPX-707` · **Trainer Challenge** — An opposing identity card enters aggressively and temporarily blocks normal progression.
 - [ ] **PK-009** · `SPX-708` · **Horde Encounter** — One expected result unexpectedly expands into several related entities.
-- [ ] **PK-010** · `SPX-709` · **Legendary Encounter** — Long restrained anticipation resolves into one unusually dominant reveal
+- [x] **PK-010** · `SPX-010` · **Legendary Encounter** — Long restrained anticipation resolves into one unusually dominant reveal
 
 ## 2. Capture & uncertainty
 
-- [ ] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — Content enters a closed container which rocks through three discrete uncertainty checks before resolving.
+- [x] **PK-011** · `SPX-710` · **Poké Ball Capture Shake** — Content enters a closed container which rocks through three discrete uncertainty checks before resolving.
 - [x] **PK-012** · `SPX-711` · **Critical Capture** — A normally multi-stage uncertain operation unexpectedly compresses into one decisive lock.
 - [ ] **PK-013** · `SPX-712` · **Capture Success Stars** — A completed uncertain operation receives a restrained three-star confirmation.
 - [x] **PK-014** · `SPX-713` · **Capture Breakout** — The container begins resolving but bursts open and restores the unresolved state.

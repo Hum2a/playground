@@ -2,7 +2,11 @@
   "name": "strobe-tuner-lock",
   "ref": "SPX-3910",
   "title": "Strobe Tuner Lock",
-  "mode": "fader",
+  "operation": "strobe pitch lock",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "LOCK / RESET"
 }

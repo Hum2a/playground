@@ -1,8 +1,15 @@
 {
   "name": "loop-region-clamp",
-  "ref": "SPX-3852",
   "title": "Loop Region Clamp",
-  "mode": "tuner",
+  "operation": "clamp",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "CLAMP / RESET"
 }

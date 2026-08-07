@@ -1,0 +1,249 @@
+# Improve shipped Naruto specimens
+
+## Diagnosis
+
+**50** live specimens under [`src/specimens/library/naruto/`](src/specimens/library/naruto/), wired via [`src/specimens/registry/shards/naruto.ts`](src/specimens/registry/shards/naruto.ts). Checklist: [`docs/catalogue/naruto-specimen-catalogue.md`](docs/catalogue/naruto-specimen-catalogue.md) (50 / 575).
+
+Against [`docs/ideation/system-brief.md`](docs/ideation/system-brief.md), good specimens are **specific, portable, contractable, one-job**. The Naruto set fails that bar in execution:
+
+| Issue | Evidence |
+| --- | --- |
+| Visual monoculture | Shared tokens `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8` in essentially every contract |
+| Shared demo harness | `SYSTEM // …` → stage → STATUS → Run/Replay; ~150–230 lines of timer boilerplate |
+| Dead stubs | HTML uses `etc3` / `ns36` / `esr7` + checklist chrome (`NR // NR-xxx`) while CSS/JS expect richer markup |
+| Thin contracts | Often palette + 1–2 timings; contrast DB [`measurement-overload`](src/specimens/library/dragonball/) / Persona fusion merge (sequences, geometry, hold beats) |
+| Soft acceptance | Boilerplate “states distinct / sandbox-safe” instead of measurable outcomes |
+| Metaphor dilution | Seals rotate/fade; clones read as kanban cards; elements share blue-beige orbs |
+
+A11y/reduced-motion hygiene is mostly fine (both CSS triggers + JS paths). The problem is **artifact identity**, not chrome compliance.
+
+```mermaid
+flowchart LR
+  subgraph wave0 [Wave0 Broken]
+    etc[explosive-tag-countdown]
+    esr[error-substitution-recovery]
+    ns[network-scan-360]
+  end
+  subgraph wave1 [Wave1 SkinBreak]
+    palettes[6 palette families]
+    harness[Trim RunReplay chrome]
+    scaffolds[Real overlay scaffolds]
+  end
+  subgraph wave2 [Wave2 Metaphor]
+    seals[Seals and signs]
+    clones[Clones and failover]
+    elements[Elements and transitions]
+    mission[Mission UI]
+    sensory[Sensory overlays]
+  end
+  subgraph wave3 [Wave3 Contracts]
+    freeze[Freeze geometry and sequences]
+    accept[Rewrite acceptance]
+    intensity[Recalibrate intensity]
+  end
+  wave0 --> wave1 --> wave2 --> wave3
+```
+
+## Shared quality bar (apply to every specimen)
+
+For each improvement pass, require:
+
+1. **One composition** that reads as a named software primitive (confirm, failover, dispatch…), not “Naruto HUD demo.”
+2. **Palette family unique to its motif** (no default parchment/chakra five-pack unless that motif *is* mission paper).
+3. **Frozen contract**: colours, phase timings, geometry (angles, counts, travel px), copy strings as `const`.
+4. **Observable acceptance** with numbers; delete soft sandbox trailers as standalone criteria.
+5. **Progressive motion that matches metaphor** (reconstruct / clip / stamp / streak) — not opacity fade as primary language.
+6. **Reduced motion**: immediate final state that still communicates the outcome; keep both CSS triggers.
+7. **Portable CSS**: edit only inside the specimen folder; sync `demo.style.txt` twin; no chrome tokens.
+8. **Overlay hosts**: real `preview.scaffold` (relative + overflow) when the effect overlays content.
+9. Recalibrate `intensity` (`subtle` → `graphic` for multi-phase/loud effects).
+10. Strip visible checklist IDs (`NR // NR-090`). Prefer auto-play + `postMessage` restart over heavy Run/Replay chrome where the metaphor is a transition.
+
+**Palette families** (assign once, then apply per specimen):
+
+- **Seal lacquer** — deep ink, vermillion, ash paper
+- **Clone ash** — charcoal, muted violet afterimage, paper white
+- **Fire ember** — near-black, ember orange, soot grey
+- **Water / wind** — cool cyan / steel edge (distinct from each other)
+- **Mission paper** — warm paper, wax-seal red, ink
+- **Sensor phosphor** — CRT/sensor green-blue on near-black (radar, scan, signature)
+
+Reference quality: Dragon Ball measurement-overload (frozen sequence + hold); Persona fusion merge (travel/seam/scale acceptance).
+
+---
+
+## Wave 0 — Fix broken specimens first
+
+These HTML stubs do not match their CSS/JS. Restore markup (or rewrite JS to a deliberate viz), then verify Run in preview.
+
+### `explosive-tag-countdown` (NR-090 / SPX-2433)
+- Replace stub `.etc3` HTML with real tag/digit/burst structure matching `.etc` CSS/JS.
+- Freeze countdown `3→2→1`, pulse escalation, clear state timings in contract.
+- Acceptance: exact digit hold times; final CLEAR static; no checklist label.
+
+### `error-substitution-recovery` (NR-044 / SPX-2387)
+- Restore primary + decoy/fallback cards for `.esr` selectors.
+- Sequence: error → decoy present → primary recovers; intensity → `graphic`.
+- Acceptance: decoy visible mid-sequence; primary restored; early cancel rules if any.
+
+### `network-scan-360` (NR-154 / SPX-2497)
+- Rebuild hub + 5 nodes at frozen bearings + sweep arm; align `data-ns360` (or rewrite JS to match intentional HTML).
+- Freeze angles `0/72/144/216/288`, step ms, discovery order.
+- Acceptance: sweep completes one revolution; nodes discover in order; final inventory readable.
+
+Also: quick selector smoke across all 50 (grep `data-` roots vs JS `querySelector`) to catch any more HTML/CSS drift.
+
+---
+
+## Wave 1 — Break monoculture (all 50, light pass)
+
+Do this as a **franchise skin pass** before deep metaphor work:
+
+- Reassign each specimen to a palette family; update CSS vars + `contract.json` colours + twin `.txt`.
+- Rename system labels to software primitives (`WORKER // …`, `SEAL // …`) — never `NR // NR-xxx`.
+- Trim Run/Replay chrome on transitions/overlays; keep controls only where interaction *is* the specimen (hold, radial, multi-key).
+- Add real `preview.scaffold` for overlays: weak-point, focus-mode, barriers, stamps, dossier, radar, etc.
+
+---
+
+## Wave 2–3 — Per-specimen creative improvements
+
+Grouped by motif. Each item is an individual pass: metaphor motion → contract freeze → acceptance → intensity.
+
+### Seals / signs / gates
+
+**`hand-sign-combo-sequence`** — Distinct glyph geometry per slot; acquire as snap/latch not fade; optional ready-hold; contract per-sign transforms + `130ms`/`90ms`.
+
+**`circular-seal-lock`** — Radial ticks + rotate-to-align; progressive ring engagement; freeze tick count, lock angle, settle ms.
+
+**`seal-release-sequence`** — Staggered ring disengage outward; open glyph last; freeze stagger array.
+
+**`multi-key-seal`** — Keys arm as prerequisites then petals open; freeze key count + petal angles; intensity `graphic`.
+
+**`seal-stamp-confirmation`** — Overshoot → settle angle → single ring pulse; host briefing card scaffold; wax-red palette.
+
+**`summoning-seal-materialise`** — Draw-stroke seal then panel expands from seal center (clip/scale, not fade).
+
+**`exam-start-seal`** — Gate unlock as seal break → active exam surface; freeze unlock phases.
+
+### Clones / substitution / morph
+
+**`shadow-clone-fan-out`** — Spawn from one origin (puff/split silhouette), staggered workers; not kanban cards; freeze origin + stagger.
+
+**`parallel-worker-clones`** — Parallel bars with clone identity marks; recombine inherits worker traits.
+
+**`clone-merge-result`** — Reabsorption into one result (inward travel), not card stack; freeze travel px.
+
+**`clone-failure-pop`** — Failed clone leaves residue then clears; freeze pop ms + residue count.
+
+**`substitution-swap`** — Log → decoy → true target; mid-state decoy-only; freeze swap timings.
+
+**`error-substitution-recovery`** — After Wave 0: polish decoy residue and recovery latch.
+
+**`transformation-morph`** — Collapse → ink intermediate → expand with trait inheritance (fusion-merge lesson).
+
+### Speed / teleport / menu / wire
+
+**`body-flicker-page-jump`** — Streaks + destination identity; freeze streak count/angle; no fade-as-travel.
+
+**`high-speed-card-relocation`** — Afterimages along path; card absent mid-travel; freeze path length.
+
+**`teleport-card-transfer`** — Keep aperture metaphor; freeze mid empty hold + aperture diameters; phosphor/space palette.
+
+**`shuriken-radial-menu`** — Sector angles/radii in contract; intensity `graphic`; less fan HUD, more tool palette.
+
+**`wire-connection-draw`** — Stroke draw with pathLength; snap at end; freeze path + duration.
+
+**`shadow-bind-selection`** — Bind tendrils lock selection; freeze bind count + lock ms.
+
+### Elements / transitions / commit
+
+**`fireball-commit`** — Ember charge → launch → impact confirm; fire palette; freeze charge/launch ms.
+
+**`earth-wall-blocker`** — Faceted slabs rise with stagger; freeze slab count + rise px.
+
+**`lightning-target-acquisition`** — Branch-bolt reticle → LOCKED; freeze branch geometry.
+
+**`element-merge-recipe`** — Dual inputs → fusion flash → result token; freeze merge seam.
+
+**`vortex-hold-to-confirm`** — Best interaction already; break shared palette; lead acceptance with early-release cancels; expose CSS hold vars fully.
+
+**`smoke-mask-transition`** — Unique smoke clip language; mid-cover content swap; freeze mask keyframes.
+
+**`water-wave-page-transition`** — Wave wipe with water palette distinct from wind; freeze clip path steps.
+
+**`wind-slice-transition`** — Blade sweep angles + stagger slices; freeze blade count/deg.
+
+**`scroll-to-panel-transform`** — Morph scroll→panel with measurable scale/clip; not crossfade.
+
+### Mission / rank / paper
+
+**`mission-scroll-unroll`** — Physical unroll (height/clip); freeze unroll ms + final briefing lines.
+
+**`mission-rank-reveal`** — Rank glyph + wax stamp settle; freeze overshoot angle.
+
+**`mission-complete-stamp`** — Slam + ring once; host card scaffold; wax palette; measurable stamp angle.
+
+**`mission-board-dispatch`** — Card travel path into lane; freeze path + dock settle.
+
+**`rank-promotion-card`** — Profile restructure (old→new rank); freeze morph phases.
+
+**`target-dossier-reveal`** — Redaction bands lift; freeze band count + reveal order.
+
+**`versus-clash-card`** — Opposing slam + impact hold; freeze travel px + clash ms.
+
+**`objective-chain-advance`** — Checkpoint latch sequence; freeze step ms + final CLEAR.
+
+**`technique-mastery-tree`** — Node unlock cascade with edge draw; freeze node ids/order; avoid generic skill-tree chrome.
+
+**`three-person-cell-formation`** — Three nodes + links assemble; freeze positions + link draw.
+
+### Chakra / sensory / barriers
+
+**`chakra-charge-field`** — Irregular boundary growth to READY; freeze diameters per step.
+
+**`chakra-control-balance`** — Needle/dual fill to lock; freeze lock threshold + wobble.
+
+**`chakra-signature-match`** — Waveform align to MATCH; freeze align threshold + sample points.
+
+**`healing-progress-field`** — Tile restore order; freeze tile count + stagger.
+
+**`focus-mode-activation`** — Brackets converge on host content; real scaffold; freeze bracket inset.
+
+**`weak-point-detection`** — Brackets appear on host; freeze point count + order.
+
+**`presence-radar-sweep`** — Strong geometry already; phosphor palette; freeze blip coords + sweep duration in contract.
+
+**`network-scan-360`** — After Wave 0: polish discovery log + phosphor skin.
+
+**`four-point-barrier-construct`** — Corners → edges → fill; freeze corner coords + edge draw ms.
+
+**`barrier-breach-alert`** — Single fracture + alert latch (no loop flash); freeze fracture angle.
+
+**`explosive-tag-countdown`** — After Wave 0: polish intensity escalation + clear hold.
+
+---
+
+## Execution protocol (each specimen)
+
+1. Open folder under `library/naruto/<id>/`.
+2. Implement HTML/CSS/JS changes; sync `demo.style.txt`.
+3. Harden `contract.json` + `spec.md` + `entry.ts` (blurb, acceptance, intensity, scaffold, reducedMotionNote).
+4. Preview in catalogue; verify reduced-motion force.
+5. `npm run spec:check` (and build when touching many).
+6. One commit per specimen (or per Wave 0 batch of 3): `Improve SPX-NNNN <title>` — why-focused.
+
+Do **not** restyle to site chrome; do **not** invent new NR rows here — this is polish of shipped 50.
+
+## Suggested schedule
+
+| Wave | Scope | Outcome |
+| --- | --- | --- |
+| 0 | 3 broken | All previews actually run |
+| 1 | 50 light skin | Contact sheet no longer one HUD |
+| 2a | Seals + clones (~15) | Core metaphors land |
+| 2b | Elements + transitions + vortex (~12) | Motion craft |
+| 2c | Mission + sensory (~20) | Paper + overlay story |
+| 3 | All | Contracts/acceptance/intensity at measurement-overload bar |
+
+If after Waves 1–2 two specimens still read as twins (e.g. seal-stamp vs mission-complete-stamp), differentiate harder before polishing both.

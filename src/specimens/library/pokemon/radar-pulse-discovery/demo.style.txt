@@ -31,10 +31,12 @@
 }
 
 .radar-pulse__chrome {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
+  column-gap: 12px;
+  row-gap: 4px;
   margin-bottom: 10px;
 }
 
@@ -50,6 +52,14 @@
   font-size: 11px;
   letter-spacing: 0.06em;
   color: var(--rp-chalk);
+}
+
+.radar-pulse__edge {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: var(--rp-pewter);
 }
 
 .radar-pulse__status-clip {
@@ -335,7 +345,8 @@
   position: absolute;
   left: 18px;
   top: -2px;
-  font-size: 9px;
+  font-size: 10px;
+  font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--rp-signal);
   white-space: nowrap;
@@ -438,6 +449,26 @@
 .radar-pulse__btn:disabled {
   opacity: 0.55;
   cursor: wait;
+}
+
+@media (max-width: 340px) {
+  .radar-pulse {
+    padding: 10px;
+  }
+
+  .radar-pulse__chrome {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .radar-pulse__status,
+  .radar-pulse__edge {
+    grid-column: auto;
+  }
+
+  .radar-pulse__field {
+    min-height: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

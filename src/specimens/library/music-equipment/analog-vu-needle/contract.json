@@ -2,7 +2,14 @@
   "name": "analog-vu-needle",
   "ref": "SPX-3770",
   "title": "Analog VU Needle",
-  "mode": "scope",
+  "operation": "VU reading",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

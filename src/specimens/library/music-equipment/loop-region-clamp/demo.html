@@ -1,12 +1,6 @@
-<div class="me me--tuner" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>LOOP REGION CLAMP</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Loop Region Clamp</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Loop Region Clamp ready.</p>
+<div class="music-operation music-operation--region" data-operation data-state="idle">
+  <header class="music-operation__head"><span>EDIT BAY</span><b>LOOP REGION CLAMP</b><strong class="music-operation__state" data-state-label>IDLE</strong></header>
+  <div class="music-operation__stage" aria-hidden="true"><svg viewBox="0 0 160 150" preserveAspectRatio="none"><path class="guide" d="M 16 88 H 144"/><path class="operation-path" d="M 20 88 H 42 L 50 62 58 105 68 50 80 118 92 54 104 109 116 65 128 94 140 88"/><circle class="marker" cx="38" cy="88" r="4" /><circle class="marker" cx="80" cy="72" r="4" /><circle class="marker" cx="122" cy="88" r="4" /></svg><span class="music-operation__legend" data-readout>READY / FIXED DATA</span></div>
+  <button type="button" data-run>CLAMP</button><button type="button" data-reset hidden>RESET</button>
+  <p role="status" aria-live="polite" data-status>Loop Region Clamp idle. Ready to clamp.</p>
 </div>

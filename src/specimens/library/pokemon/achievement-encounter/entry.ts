@@ -2,12 +2,12 @@ import type { Specimen } from '../../../types'
 export const achievementEncounter: Specimen = {
   id: 'achievement-encounter',
   ref: 'SPX-010',
-  title: 'Achievement Encounter',
+  title: 'Legendary Encounter',
   blurb:
-    'Achievement unlock staged as a rare encounter: battle streaks, a sky/grass arena, a flashing geometric badge, then a rising message box.',
+    'An original abstract rare encounter: restrained streaks reveal an arena, a geometric signal flashes into view, then a message identifies the anomaly.',
   origin: {
     project: 'Original',
-    surface: 'Classic creature-battle encounter presentation language',
+    surface: 'Abstract rare-encounter reveal language',
   },
   facets: {
     kind: 'overlay',
@@ -18,13 +18,13 @@ export const achievementEncounter: Specimen = {
   inspiredBy: {
     franchise: 'pokemon',
   },
-  tags: ['battle', 'announcement', 'achievement'],
+  tags: ['encounter', 'rare', 'reveal'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Streak sweep is skipped under prefers-reduced-motion or data-force-reduced-motion; final arena, badge, and message appear immediately with a one-shot status announcement.',
+      'Streak sweep is skipped under prefers-reduced-motion or data-force-reduced-motion; final arena, signal, and message appear immediately with a one-shot status announcement.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
@@ -32,7 +32,7 @@ export const achievementEncounter: Specimen = {
     height: 280,
     background: 'card',
 
-    label: 'Achievement unlock encounter',
+    label: 'Abstract legendary encounter',
   },
 
 }

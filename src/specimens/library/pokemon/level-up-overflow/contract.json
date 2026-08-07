@@ -46,6 +46,7 @@
         "maxXp",
         "startXp",
         "reward",
+        "carryoverEquation",
         "overflowXp"
       ],
       "properties": {
@@ -54,6 +55,7 @@
         "maxXp": { "type": "number", "const": 100 },
         "startXp": { "type": "number", "const": 87 },
         "reward": { "type": "number", "const": 38 },
+        "carryoverEquation": { "type": "string", "const": "87 + 38 = 125; consume 13 to reach 100, carry 25 into level 13" },
         "phase1Consume": { "type": "number", "const": 13 },
         "overflowXp": { "type": "number", "const": 25 },
         "startPercent": { "type": "number", "const": 87 },

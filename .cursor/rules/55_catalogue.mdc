@@ -11,6 +11,7 @@ alwaysApply: false
 - `/` begins with the filter bar and its filtered plate results; do not render an unfiltered preview grid above it.
 - Content is near full-bleed (`--content-max: none`); `--plate-min` densifies above `90rem` / `120rem`.
 - Filters sync to the URL (`?kind=&q=`…); sticky filter bar + skip link; result count + clear.
+- The always-visible `View` chooser supports compact, standard, large, and extra-large plates; store a non-default selection in `?view=` and recalibrate the windowed grid with that size.
 
 ## Plates
 

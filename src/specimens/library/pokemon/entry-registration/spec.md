@@ -30,6 +30,8 @@ Trigger: `REGISTER`
 - Vertical beam, **2px**, left → right over **620ms**
 - Behind beam: structured geometry (`--er-scan` clip)
 - Ahead: soft unknown silhouette
+- Keep `ENTRY // …` aligned above the two-column record; labels and values must
+  remain separately legible in the compact `380px` preview.
 
 ## Metadata thresholds
 

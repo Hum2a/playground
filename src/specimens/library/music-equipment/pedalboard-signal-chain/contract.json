@@ -2,7 +2,14 @@
   "name": "pedalboard-signal-chain",
   "ref": "SPX-3807",
   "title": "Pedalboard Signal Chain",
-  "mode": "sequence",
+  "operation": "pedal routing",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

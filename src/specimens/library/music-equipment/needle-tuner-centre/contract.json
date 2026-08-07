@@ -2,7 +2,11 @@
   "name": "needle-tuner-centre",
   "ref": "SPX-3909",
   "title": "Needle Tuner Centre",
-  "mode": "timeline",
+  "operation": "needle centring",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "CENTRE / RESET"
 }

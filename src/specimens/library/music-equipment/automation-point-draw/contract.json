@@ -1,8 +1,15 @@
 {
   "name": "automation-point-draw",
-  "ref": "SPX-3960",
   "title": "Automation Point Draw",
-  "mode": "tuner",
+  "operation": "draw",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "DRAW / RESET"
 }

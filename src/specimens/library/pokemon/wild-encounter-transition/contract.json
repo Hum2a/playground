@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/wild-encounter-transition.schema.json",
   "title": "WildEncounterTransition",
-  "description": "Portable contract for an abrupt wild-encounter interruption: one disturbance, seven opposing horizontal bands, a growing central encounter plate with abstract CSS entity geometry, then full destination takeover without crossfade.",
+  "description": "Portable contract for an abrupt wild-encounter interruption: one disturbance, seven opposing horizontal bands, a growing central encounter plate with abstract CSS entity geometry, then full destination takeover without a blank frame or crossfade.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -154,11 +154,12 @@
     "takeover": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["fromHeight", "toHeight", "durationMs", "noCrossfade"],
+      "required": ["fromHeight", "toHeight", "durationMs", "noBlankFrame", "noCrossfade"],
       "properties": {
         "fromHeight": { "type": "string", "const": "38%" },
         "toHeight": { "type": "string", "const": "100%" },
         "durationMs": { "type": "number", "const": 320 },
+        "noBlankFrame": { "type": "boolean", "const": true },
         "noCrossfade": { "type": "boolean", "const": true }
       }
     },
@@ -171,6 +172,7 @@
         "entityStartMs",
         "takeoverStartMs",
         "loops",
+        "noBlankFrame",
         "noCrossfade"
       ],
       "properties": {
@@ -179,6 +181,7 @@
         "entityStartMs": { "type": "number", "const": 160 },
         "takeoverStartMs": { "type": "number", "const": 400 },
         "loops": { "type": "boolean", "const": false },
+        "noBlankFrame": { "type": "boolean", "const": true },
         "noCrossfade": { "type": "boolean", "const": true }
       }
     },

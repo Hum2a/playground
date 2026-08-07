@@ -1,8 +1,14 @@
 {
   "name": "clock-divider-cascade",
-  "ref": "SPX-3868",
-  "title": "Clock Divider Cascade",
-  "mode": "switch",
+  "title": "Clock Divider",
+  "operation": "clock divider",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "SEND CLOCK / RESET",
+  "states": {
+    "idle": "Master clock ready ? divisions are held.",
+    "action": "SEND CLOCK is engaged.",
+    "final": "Clock cascade complete: ?1, ?2, ?4 and ?8 received one pulse."
+  }
 }

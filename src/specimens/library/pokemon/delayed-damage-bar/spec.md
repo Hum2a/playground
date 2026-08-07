@@ -53,10 +53,10 @@ of recent change. Original palette and geometry — no game assets.
 | Phase | Window | Effect |
 | --- | --- | --- |
 | Impact | 0–100ms | Track `0 → 3px → -2px → 0` once |
-| Numeric | ≤80ms | `164 → 96` (short roll or immediate) |
+| Numeric | 0–80ms | Current value `164 → 96` commits before the old-value trail moves |
 | Primary | 0–180ms | Fill `82% → 48%`; colour flips when crossing 50% |
 | Delta | 0–500ms | `-68` rises `6px` and fades out |
-| Trail hold | 180–500ms | Trail stays at **82%** |
+| Trail hold | 180–500ms | Trail alone stays at the prior **82%** after numeric/primary have reached their new state |
 | Trail drain | 500–920ms | Trail `82% → 48%` over **420ms** |
 
 ## Reduced motion

@@ -1,8 +1,15 @@
 {
   "name": "quantize-sweep",
-  "ref": "SPX-3956",
   "title": "Quantize Sweep",
-  "mode": "tape",
+  "operation": "quantize",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "QUANTIZE / RESET"
 }

@@ -2,7 +2,14 @@
   "name": "feedback-loop-warning",
   "ref": "SPX-3864",
   "title": "Feedback Loop Warning",
-  "mode": "meter",
+  "operation": "feedback protection",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

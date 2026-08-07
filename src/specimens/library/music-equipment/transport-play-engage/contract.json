@@ -1,8 +1,14 @@
 {
   "name": "transport-play-engage",
-  "ref": "SPX-3935",
-  "title": "Transport Play Engage",
-  "mode": "switch",
+  "title": "Transport",
+  "operation": "transport",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "PLAY / STOP",
+  "states": {
+    "idle": "Transport is stopped at 01:01:000.",
+    "action": "PLAY is engaged.",
+    "final": "Transport playing: position locked at 01:01:004."
+  }
 }

@@ -1,8 +1,15 @@
 {
   "name": "tape-splice",
-  "ref": "SPX-3889",
   "title": "Tape Splice",
-  "mode": "tape",
+  "operation": "splice",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "SPLICE / RESET"
 }

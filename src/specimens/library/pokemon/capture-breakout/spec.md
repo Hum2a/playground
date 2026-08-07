@@ -7,6 +7,7 @@ interrupted and the entity breaks out. Rebuild from this document, `demo.css`,
 
 ## Visual intent
 
+- **Family:** failure sibling of `capture-shake`; it completes two of that specimen's uncertainty checks before interrupting the third.
 - Same capture-device family as Capture Shake (generic geometry — no Poké Ball art)
 - Attempt accepted → processing → resolution failed → unresolved state restored
 - Exactly **two** complete checks; third visibly interrupted (~40%)

@@ -1,8 +1,14 @@
 {
   "name": "16-step-sequencer-chase",
-  "ref": "SPX-3821",
-  "title": "16-Step Sequencer Chase",
-  "mode": "tuner",
+  "title": "16 Step Chase",
+  "operation": "16 step chase",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "RUN PATTERN / RESET",
+  "states": {
+    "idle": "Pattern 01 armed ? cursor at step 01.",
+    "action": "RUN PATTERN is engaged.",
+    "final": "Pattern 01 complete: cursor arrived at step 16."
+  }
 }

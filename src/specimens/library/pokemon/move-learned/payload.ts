@@ -10,7 +10,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inline; keep the 2×2 × 150×42px angular slots and 80×30px SYNC token as the portable contract.',
-    'Call runMoveLearned from LEARN; complete the empty outline only after token arrival.',
+    'Call runMoveLearned from LEARN; use replayMoveLearned for a deterministic restart after any terminal state.',
     'Exactly four corner markers during approach; no permanent celebratory highlight after lock.',
     'Expose capabilities as list text; announce Sync learned once via the status region.',
     'Honour prefers-reduced-motion and data-force-reduced-motion with an immediate final state.',
@@ -20,6 +20,8 @@ const payload: SpecimenPayload = {
     'SYNC exists outside the grid, then physically enters the empty slot',
     'Empty outline completes only after arrival; four corner markers during installation',
     'Final SYNC slot matches existing capabilities; no permanent celebration',
+    'Observable states progress idle → approach → installing → locking → confirming → done; terminal REPLAY restarts from idle',
+    'Status names learning, installation/lock, and learned terminal text',
     'Reduced motion immediately shows all four capabilities including SYNC',
   ],
   scaffold: `

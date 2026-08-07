@@ -4,5 +4,4 @@ import css from './demo.style.txt?raw'
 import js from './demo.js?raw'
 import spec from './spec.md?raw'
 import contract from './contract.json'
-const payload: SpecimenPayload = { files: { html, css, js }, spec, contract, integration: ['Import the portable CSS verbatim.', 'Use ENGAGE and RESET to control state.', 'Honor both reduced-motion triggers.'], acceptance: ['Uses original manufacturer-neutral hardware geometry.', 'Uses deterministic visual state only; no audio or external assets.', 'Preserves an accessible static engaged state.'] }
-export default payload
+export default { files:{html,css,js},spec,contract,integration:['Import portable CSS verbatim.','Use ARM, COMMIT, and RESET for the fixed state sequence.','Honor both reduced-motion triggers.'],acceptance:['Renders the stomp switch with operation-specific fixed data.','Exposes explicit idle, action, and final states in visible and live text.','Uses no audio, network access, storage, or randomness.'] } satisfies SpecimenPayload

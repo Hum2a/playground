@@ -38,6 +38,9 @@ Canonical demo: Level 12 · 87/100 · +38 XP → Level 13 · 25/100.
 | Overflow | `25` XP (25%) |
 | Bar | `300×12px` |
 
+Carryover is exact: `87 + 38 = 125`; level 12 consumes `13` XP to reach 100,
+then level 13 begins at the remaining `25 / 100`.
+
 ## Timing (from ADD XP)
 
 | Phase | Window (ms) | Effect |

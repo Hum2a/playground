@@ -11,13 +11,13 @@ const payload: SpecimenPayload = {
   integration: [
     'Mount inline; keep bar width ~280px and height 18px as the portable contract.',
     'Call runDelayedDamage from DAMAGE; put any real state mutation in your host — this specimen is visual only.',
-    'Primary reaches destination in 180ms; trail holds 320ms then drains 420ms (82%→48%).',
+    'Commit the numeric current value before the old-value trail moves; primary reaches destination in 180ms, then the trail holds 320ms and drains 420ms (82%→48%).',
     'Use role=meter with aria-valuetext; pair colour with Healthy/Low resource text.',
     'Honour prefers-reduced-motion and data-force-reduced-motion with an immediate final state.',
   ],
   acceptance: [
     'Starts at 164/200 (82%) and ends at 96/200 (48%)',
-    'Primary bar reaches destination first; trailing layer visibly lags then catches up',
+    'Numeric current value commits first; primary bar reaches destination before the trailing old-value layer visibly lags then catches up',
     'Fill colour crosses into low-resource palette only when value goes below 50%',
     'Single 100ms impact shake; -68 annotation rises 6px over ~500ms; no looping',
     'Reduced motion updates all layers immediately; meter exposes 96 of 200',

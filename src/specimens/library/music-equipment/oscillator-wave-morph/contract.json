@@ -2,7 +2,14 @@
   "name": "oscillator-wave-morph",
   "ref": "SPX-3816",
   "title": "Oscillator Wave Morph",
-  "mode": "patch",
+  "operation": "wave morph",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

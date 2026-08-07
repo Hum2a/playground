@@ -1,8 +1,14 @@
 {
   "name": "tap-tempo-pulse",
-  "ref": "SPX-3809",
-  "title": "Tap Tempo Pulse",
-  "mode": "deck",
+  "title": "Tap Tempo",
+  "operation": "tap tempo",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "TAP ?4 / RESET",
+  "states": {
+    "idle": "Tempo estimator waits at 120 BPM.",
+    "action": "TAP ?4 is engaged.",
+    "final": "Four fixed taps resolved to 120 BPM."
+  }
 }

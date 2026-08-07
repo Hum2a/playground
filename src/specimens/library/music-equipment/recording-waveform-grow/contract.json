@@ -1,8 +1,15 @@
 {
   "name": "recording-waveform-grow",
-  "ref": "SPX-3924",
   "title": "Recording Waveform Grow",
-  "mode": "meter",
+  "operation": "record",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "RECORD / RESET"
 }

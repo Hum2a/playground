@@ -40,6 +40,50 @@
   gap: var(--space-2);
 }
 
+.filter-bar__view {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.filter-bar__view-label {
+  color: var(--pewter);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.filter-bar__view-option {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  color: var(--pewter);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  padding: var(--space-1) var(--space-2);
+  text-transform: uppercase;
+}
+
+.filter-bar__view-option:hover {
+  border-color: var(--pewter);
+  color: var(--chalk);
+}
+
+.filter-bar__view-option[aria-pressed='true'] {
+  border-color: var(--chalk);
+  color: var(--chalk);
+}
+
+.filter-bar__view-option:focus-visible {
+  outline: 2px solid var(--verdigris);
+  outline-offset: 2px;
+}
+
 .filter-bar__active-note {
   color: var(--verdigris);
 }

@@ -12,7 +12,7 @@ export const radarPulseDiscovery: Specimen = {
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
-    scope: 'fullscreen',
+    scope: 'card',
     intensity: 'subtle',
   },
   inspiredBy: {

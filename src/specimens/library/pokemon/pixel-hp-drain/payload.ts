@@ -12,14 +12,14 @@ const payload: SpecimenPayload = {
     'Mount inline; keep exactly 20 blocks — scale visually if needed, never change count.',
     'Import demo.css verbatim; use only the four frozen tones; no width transitions on blocks.',
     'Call runPixelHpDrain / runPixelHpReset; update HP via discrete filled-class toggles.',
-    'Expose numeric HP via text and role=meter; treat blocks as supplementary.',
+    'Expose numeric HP via text and role=meter; treat blocks as supplementary and announce only the settled result.',
     'Honour both reduced-motion triggers with an immediate 7/20 final state.',
   ],
   acceptance: [
     'Exactly 20 logical blocks; starts with 18 filled; removes exactly 11 right-to-left',
-    'Numeric value decreases alongside blocks to HP 7/20; no smooth width animation',
+    'Numeric value decreases alongside discrete blocks to HP 7/20; no smooth width animation or continuous trail',
     'Crosses the 10/20 mid-tone threshold; ends at 7 (LOW not shown)',
-    'Four-tone palette only; impact is a 2px stepped shove; reduced motion is immediate',
+    'Four-tone palette only; impact is a 2px stepped shove; reduced motion is immediate and announces the static result',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101b16;display:grid;place-items:center;">

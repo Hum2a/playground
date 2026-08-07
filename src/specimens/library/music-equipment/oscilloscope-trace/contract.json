@@ -2,7 +2,14 @@
   "name": "oscilloscope-trace",
   "ref": "SPX-3789",
   "title": "Oscilloscope Trace",
-  "mode": "tuner",
+  "operation": "scope trace",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

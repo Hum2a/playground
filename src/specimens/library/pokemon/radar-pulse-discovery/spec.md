@@ -15,12 +15,13 @@ Spatial search / discovery primitive. A fixed origin emits three staggered conce
 | C lock | scale 2.2 · 4 bracket segments · `NODE // C` |
 | Link | origin → C · 109.6px · ~5° · 180ms |
 | Status | `NO SIGNAL` → `SIGNAL FOUND` (clip) |
+| Text signal | `LEADING EDGE // D → C → A → B` |
 
 ## Behaviour
 
 1. Idle: field + origin + `NO SIGNAL`.
 2. SCAN: emit three border-only rings (no infinite radar loop).
-3. Targets react by distance order (D → C → A → B).
+3. The readable leading-edge line states the frozen distance order (D → C → A → B); targets react at that pulse edge.
 4. C expands, brackets form, link grows, status becomes `SIGNAL FOUND`.
 5. After ring 3 finishes (~1260ms), rings clear; origin–C connection and found marker remain.
 6. SCAN again resets and replays.
@@ -28,6 +29,12 @@ Spatial search / discovery primitive. A fixed origin emits three staggered conce
 ## Reduced motion
 
 Immediate found state: origin, C identified, link, `SIGNAL FOUND`. No expanding rings.
+
+## Card boundary and compact readability
+
+This is a bounded card primitive: its `420×320` field, chrome, and SCAN control
+travel together. At narrow card widths, the chrome stacks without clipping and
+the leading-edge text remains a readable non-motion signal.
 
 ## API
 

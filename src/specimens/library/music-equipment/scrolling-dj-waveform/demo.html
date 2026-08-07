@@ -1,12 +1,6 @@
-<div class="me me--patch" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>SCROLLING DJ WAVEFORM</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Scrolling DJ Waveform</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Scrolling DJ Waveform ready.</p>
+<div class="music-effect waveform" data-music-effect data-state="idle">
+  <header><span>DECK A</span><b>SCROLLING DJ WAVEFORM</b><strong data-me-state>READY</strong></header>
+  <section class="waveform__display" aria-hidden="true"><div class="waveform__ruler"><i>01:12</i><i>01:16</i><i>01:20</i></div><div class="waveform__bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b class="waveform__playhead"></b><span class="waveform__cue">CUE 01:20</span></section>
+  <button type="button" data-me-run>SCROLL TO CUE</button><button type="button" data-me-reset hidden>RESET</button>
+  <p role="status" aria-live="polite" data-me-status>Waveform is parked at 01:12.</p>
 </div>

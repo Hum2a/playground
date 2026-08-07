@@ -1,9 +1,9 @@
 {
   "name": "achievement-encounter",
-  "intent": "Achievement unlock staged as a rare creature-battle encounter: streaks, arena, badge flash, then message box — without Pokémon assets.",
+  "intent": "Original abstract rare encounter: streaks, arena, signal flash, then an anomaly-identification message — without Pokémon assets.",
   "colours": {
-    "grass": "#65a85b",
-    "sky": "#9bd7ef",
+    "ground": "#54664b",
+    "sky": "#9fc8cf",
     "ink": "#20252a",
     "paper": "#f7f4df",
     "gold": "#e9b83f",
@@ -11,24 +11,24 @@
   },
   "dimensions": {
     "minHeightPx": 240,
-    "badgeSizePx": 96,
+    "signalSizePx": 96,
     "streakCount": 8,
     "messageInsetPercent": 8
   },
   "copy": {
-    "trigger": "UNLOCK ACHIEVEMENT",
-    "message": "A RARE ACHIEVEMENT APPEARED!",
-    "title": "EARLY ADOPTER",
-    "badgeCode": "ACHV-07",
-    "badgeGlyph": "★",
-    "statusAnnounce": "Achievement unlocked: Early Adopter"
+    "trigger": "BEGIN ENCOUNTER",
+    "message": "A RARE PRESENCE EMERGES.",
+    "title": "ANOMALY 010",
+    "signalCode": "SIGNAL-10",
+    "signalGlyph": "✦",
+    "statusAnnounce": "Rare encounter identified: Anomaly 010"
   },
   "classes": {
     "root": "ae",
     "active": "ae--active",
     "streaks": "ae--streaks",
     "arena": "ae--arena",
-    "badge": "ae--badge",
+    "signal": "ae--signal",
     "message": "ae--message",
     "settled": "ae--settled",
     "reduced": "ae--reduced"
@@ -37,7 +37,7 @@
     "totalMs": 1250,
     "streakMs": 350,
     "arenaMs": 250,
-    "badgeMs": 400,
+    "signalMs": 400,
     "messageMs": 250,
     "easing": "steps(2–4, end)"
   },
@@ -51,7 +51,7 @@
   },
   "a11y": {
     "trigger": "button",
-    "decorativeAriaHidden": ["streaks", "arena", "badge", "message"],
+    "decorativeAriaHidden": ["streaks", "arena", "signal", "message"],
     "statusRole": "status",
     "ariaLive": "polite",
     "announceOnceOnSettle": true
@@ -61,7 +61,7 @@
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "Skip streaks; immediately show arena + badge + message; still announce once"
+    "behaviour": "Skip streaks; immediately show arena + signal + message; still announce once"
   },
   "constraints": {
     "noPokemonAssets": true,

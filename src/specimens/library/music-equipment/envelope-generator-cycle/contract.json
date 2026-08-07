@@ -2,7 +2,14 @@
   "name": "envelope-generator-cycle",
   "ref": "SPX-3865",
   "title": "Envelope Generator Cycle",
-  "mode": "scope",
+  "operation": "envelope cycle",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

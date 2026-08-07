@@ -1,9 +1,6 @@
 # Automation Point Draw
 
-A portable, manufacturer-neutral music equipment motion primitive using original labels and deterministic visual signals only.
+Three fixed automation points draw a deterministic gain curve. The portable payload uses only fixed SVG geometry and a button-driven idle ? action ? final state; it has no audio, network access, external assets, storage, or randomness.
 
 ## Reduced motion
-The engaged state is rendered without choreography.
-
-## Controls
-Use ENGAGE and RESET to demonstrate the state transition.
+Both supported reduced-motion triggers show the final fixed result immediately.

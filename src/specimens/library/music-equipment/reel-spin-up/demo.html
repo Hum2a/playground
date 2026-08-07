@@ -1,12 +1,6 @@
-<div class="me me--deck" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>REEL SPIN-UP</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Reel Spin-Up</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Reel Spin-Up ready.</p>
+<div class="music-operation music-operation--reel" data-operation data-state="idle">
+  <header class="music-operation__head"><span>EDIT BAY</span><b>REEL SPIN-UP</b><strong class="music-operation__state" data-state-label>IDLE</strong></header>
+  <div class="music-operation__stage" aria-hidden="true"><svg viewBox="0 0 160 150" preserveAspectRatio="none"><path class="guide" d="M 16 88 H 144"/><path class="operation-path" d="M 44 88 A 24 24 0 1 1 43 88 M 116 88 A 24 24 0 1 1 115 88 M 44 64 V 112 M 20 88 H 68 M 116 64 V 112 M 92 88 H 140"/><circle class="marker" cx="38" cy="88" r="4" /><circle class="marker" cx="80" cy="72" r="4" /><circle class="marker" cx="122" cy="88" r="4" /></svg><span class="music-operation__legend" data-readout>READY / FIXED DATA</span></div>
+  <button type="button" data-run>SPIN UP</button><button type="button" data-reset hidden>RESET</button>
+  <p role="status" aria-live="polite" data-status>Reel Spin-Up idle. Ready to spin up.</p>
 </div>

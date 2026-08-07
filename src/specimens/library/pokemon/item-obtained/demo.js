@@ -148,13 +148,8 @@ export function runItemObtained() {
     })
 
     later(tDone, () => {
-      clearPhases(root)
-      root.classList.add('iob--done')
-      root.setAttribute('data-state', 'done')
-      setQtyLive(root, '03')
-      done = true
-      busy = false
-      setStatus(root, 'Item obtained. Energy Shard quantity 3.')
+      // Terminal inventory state is explicit in both motion paths.
+      setFinal(root)
       resolve()
     })
   })

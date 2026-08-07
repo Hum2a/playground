@@ -2,7 +2,7 @@
 
 ## Visual intent
 
-Retro confrontation transition in Game Boy spatial language: `SEARCHING...` is interrupted by three stepped pixel bands, then abstract LOCAL / REMOTE entities step in from opposite sides (right leads by 60ms), gain four-chunk ground lines, and receive stepped labels. Final face-off is static. No Pokémon sprites, trainers, or fonts.
+Retro confrontation transition in Game Boy spatial language: `SEARCHING...` is interrupted by three stepped pixel bands, then abstract LOCAL / REMOTE entities step in from opposite sides (**REMOTE/right starts exactly 60ms first**), gain four-chunk ground lines, and receive stepped labels aligned to their own sides. Final face-off is static. No Pokémon sprites, trainers, or fonts.
 
 ## DOM structure
 
@@ -25,7 +25,7 @@ Retro confrontation transition in Game Boy spatial language: `SEARCHING...` is i
 
 ### Palette (exactly four)
 
-`#0f1b16` · `#40513c` · `#8b9c68` · `#d6ddb0`
+`#0f1b16` · `#40513c` · `#8b9c68` · `#d6ddb0` — no fifth visible tone.
 
 ### Entities
 
@@ -36,11 +36,11 @@ Logical `16 × 16` pixels, rendered at `4px` cells (`64 × 64` display) via froz
 | Phase | Value |
 | --- | --- |
 | Bands | `160ms` · `steps(4, end)` |
-| Right lead | `60ms` |
+| Right lead | REMOTE/right starts exactly `60ms` before LOCAL/left |
 | Slide | `300ms` · `steps(6, end)` |
 | Rest positions | left `28%` · right `72%` |
 | Ground chunks | `4` · `steps(2, end)` staggered |
-| Meta | `steps(3, end)` · `120ms` |
+| Meta | `steps(3, end)` · `120ms` · left/right-aligned to its entity |
 
 No smooth modern easing on decorative motion.
 

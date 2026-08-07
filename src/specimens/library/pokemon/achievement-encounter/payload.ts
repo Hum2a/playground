@@ -10,19 +10,19 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative, overflow-hidden host (~240px tall) so streaks and arena clip cleanly.',
-    'Import demo.css verbatim; keep the frozen grass/sky/ink/paper/gold palette and phase timings.',
-    'Call runAchievementEncounter() from your unlock control, or use the built-in UNLOCK ACHIEVEMENT button.',
+    'Import demo.css verbatim; keep the frozen ground/sky/ink/paper/gold palette and phase timings.',
+    'Call runAchievementEncounter() from your encounter control, or use the built-in BEGIN ENCOUNTER button.',
     'Wire replayAchievementEncounter() for re-triggers / harness Restart; do not append duplicate overlay nodes.',
-    'Keep the role=status live region so “Achievement unlocked: Early Adopter” announces once on settle.',
+    'Keep the role=status live region so “Rare encounter identified: Anomaly 010” announces once on settle.',
     'Honour both prefers-reduced-motion and data-force-reduced-motion with the instant final pose.',
   ],
   acceptance: [
-    'Reads as an encounter reveal without Pokémon names, characters, balls, logos, or sprites',
-    'Achievement starts concealed; trigger reveals the sequence',
-    'Message box appears after badge reveal (~1000ms into the sequence)',
+    'Reads as an abstract rare encounter without Pokémon names, characters, balls, logos, or sprites',
+    'Encounter starts concealed; trigger reveals the sequence',
+    'Message box appears after signal reveal (~1000ms into the sequence)',
     'No continuous motion after the ~1250ms settle',
-    'Reduced motion skips streaks and shows static arena + badge + message',
-    'Status region announces the achievement title once',
+    'Reduced motion skips streaks and shows static arena + signal + message',
+    'Status region announces the anomaly identity once',
     'No images, network, or dependencies; works ~320–768px',
   ],
   scaffold: `

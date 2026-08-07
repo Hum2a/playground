@@ -1,12 +1,1 @@
-<div class="me me--fader" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>COMPRESSOR THRESHOLD CRUSH</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Compressor Threshold Crush</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Compressor Threshold Crush ready.</p>
-</div>
+<div class="unit threshold" data-unit data-state="idle"><div class="unit__top"><b>THRESHOLD CRUSH</b><span class="unit__state" data-state-label>BYPASS</span></div><div class="unit__display" aria-hidden="true"><div class="threshold__graph"><i class="threshold__axis-x"></i><i class="threshold__axis-y"></i><i class="threshold__line"></i><i class="threshold__knee"></i></div><div class="threshold__legend">IN <span>0 dB</span> / OUT <b>-8 dB</b></div><output class="threshold__readout" data-readout>THRESHOLD -8 dB</output></div><button type="button" data-run>CRUSH SIGNAL</button><button type="button" data-reset hidden>RESET</button><p class="unit__status" role="status" aria-live="polite" data-status>Signal transfer is linear above the threshold.</p></div>

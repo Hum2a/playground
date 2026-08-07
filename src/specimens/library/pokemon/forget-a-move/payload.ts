@@ -11,7 +11,7 @@ const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~420×360+).',
     'Import demo.css verbatim; keep compress / break / vacancy / install / sweep timings.',
-    'Wire REPLACE via runForgetMove; RESET / harness restart via resetForgetMove.',
+    'Wire REPLACE via runForgetMove; use resetForgetMove to restore idle or replayForgetMove for a deterministic restart.',
     'Default selection is CACHE; selected slot shows exactly four corner brackets without permanent text resize.',
     'Announce “Replace {label} with SYNC.” once on REPLACE; honour both reduced-motion triggers.',
   ],
@@ -20,8 +20,9 @@ const payload: SpecimenPayload = {
     'Radiogroup selects one slot; selected has exactly four angular corner brackets',
     'REPLACE compresses, breaks outline into four segments, holds vacant 100ms, then installs SYNC',
     'Final set is SCAN FILTER EXPORT SYNC after a 160ms horizontal sweep',
+    'Observable states progress idle → compressing → breaking → vacant → installing → locking → done',
     'Reduced motion: selection usable; REPLACE instantly swaps label to SYNC',
-    'Status announces Replace CACHE with SYNC. (canonical)',
+    'Status names the selected replacement, then confirms the terminal locked set',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#141a1e;display:grid;place-items:center;padding:1rem;">

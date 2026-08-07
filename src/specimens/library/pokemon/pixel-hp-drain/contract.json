@@ -1,58 +1,138 @@
 {
-  "name": "pixel-hp-drain",
-  "intent": "Retro segmented HP drain: 20 discrete blocks deplete right-to-left one at a time with stepped numeric updates — no smooth width animation.",
-  "colours": {
-    "tone0": "#101b16",
-    "tone1": "#40513d",
-    "tone2": "#8c9c69",
-    "tone3": "#d8dfb4"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/pixel-hp-drain.schema.json",
+  "title": "PixelHpDrain",
+  "description": "Portable contract for a discrete, pixel-block HP drain. Unlike delayed-damage-bar, this specimen never interpolates a continuous width.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "colours", "copy", "geometry", "thresholds", "timing", "api", "a11y", "reducedMotion", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "pixel-hp-drain" },
+    "intent": {
+      "type": "string",
+      "const": "Retro segmented HP drain: 20 discrete blocks deplete right-to-left one at a time with stepped numeric updates — no smooth width animation."
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tone0", "tone1", "tone2", "tone3"],
+      "properties": {
+        "tone0": { "type": "string", "const": "#101b16" },
+        "tone1": { "type": "string", "const": "#40513d" },
+        "tone2": { "type": "string", "const": "#8c9c69" },
+        "tone3": { "type": "string", "const": "#d8dfb4" }
+      }
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "initial", "damage", "final", "trigger", "low", "status"],
+      "properties": {
+        "unit": { "type": "string", "const": "UNIT // A" },
+        "initial": { "type": "string", "const": "HP 18 / 20" },
+        "damage": { "type": "string", "const": "-11" },
+        "final": { "type": "string", "const": "HP 7 / 20" },
+        "trigger": { "type": "string", "const": "DAMAGE" },
+        "low": { "type": "string", "const": "LOW" },
+        "status": { "type": "string", "const": "HP 7 of 20." }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blockCount", "blockPx", "gapPx", "startFilled", "damageBlocks", "endFilled", "impactTranslatePx", "direction"],
+      "properties": {
+        "blockCount": { "type": "integer", "const": 20 },
+        "blockPx": { "type": "array", "const": [10, 14] },
+        "gapPx": { "type": "number", "const": 2 },
+        "startFilled": { "type": "integer", "const": 18 },
+        "damageBlocks": { "type": "integer", "const": 11 },
+        "endFilled": { "type": "integer", "const": 7 },
+        "impactTranslatePx": { "type": "number", "const": 2 },
+        "direction": { "type": "string", "const": "right-to-left" }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["midAtFilled", "midTone", "lowAtFilled", "lowTone", "lowLabel", "canonicalFinalCrossesMidNotLow"],
+      "properties": {
+        "midAtFilled": { "type": "integer", "const": 10 },
+        "midTone": { "type": "string", "const": "#8c9c69" },
+        "lowAtFilled": { "type": "integer", "const": 5 },
+        "lowTone": { "type": "string", "const": "#40513d" },
+        "lowLabel": { "type": "string", "const": "LOW" },
+        "canonicalFinalCrossesMidNotLow": { "type": "boolean", "const": true }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["impactStepMs", "blockMs", "noWidthTransition", "steppedOnly"],
+      "properties": {
+        "impactStepMs": { "type": "number", "const": 45 },
+        "blockMs": { "type": "number", "const": 45 },
+        "noWidthTransition": { "type": "boolean", "const": true },
+        "steppedOnly": { "type": "boolean", "const": true }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["damage", "reset", "busyGuard"],
+      "properties": {
+        "damage": { "type": "string", "const": "runPixelHpDrain()" },
+        "reset": { "type": "string", "const": "runPixelHpReset()" },
+        "busyGuard": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["numericExposure", "blocksSupplementary", "completionStatus"],
+      "properties": {
+        "numericExposure": { "type": "string", "const": "HP N / 20 via text + role=meter" },
+        "blocksSupplementary": { "type": "boolean", "const": true },
+        "completionStatus": { "type": "string", "const": "HP 7 of 20." }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        },
+        "behaviour": { "type": "string", "const": "Immediately show seven filled blocks and HP 7/20" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "bar", "block", "status"],
+      "properties": {
+        "root": { "type": "string", "const": "pixel-hp" },
+        "bar": { "type": "string", "const": "pixel-hp__bar" },
+        "block": { "type": "string", "const": "pixel-hp__block" },
+        "status": { "type": "string", "const": "pixel-hp__status" }
+      }
+    }
   },
-  "copy": {
-    "unit": "UNIT // A",
-    "initial": "HP 18 / 20",
-    "damage": "-11",
-    "final": "HP 7 / 20",
-    "trigger": "DAMAGE",
-    "low": "LOW"
-  },
-  "geometry": {
-    "blockCount": 20,
-    "blockPx": [10, 14],
-    "gapPx": 2,
-    "startFilled": 18,
-    "damageBlocks": 11,
-    "endFilled": 7,
-    "impactTranslatePx": 2,
-    "direction": "right-to-left"
-  },
-  "thresholds": {
-    "midAtFilled": 10,
-    "midTone": "#8c9c69",
-    "lowAtFilled": 5,
-    "lowTone": "#40513d",
-    "lowLabel": "LOW",
-    "canonicalFinalCrossesMidNotLow": true
-  },
-  "timing": {
-    "impactStepMs": 45,
-    "blockMs": 45,
-    "noWidthTransition": true,
-    "steppedOnly": true
-  },
-  "api": {
-    "damage": "runPixelHpDrain()",
-    "reset": "runPixelHpReset()",
-    "busyGuard": true
-  },
-  "a11y": {
-    "numericExposure": "HP N / 20 via text + role=meter",
-    "blocksSupplementary": true
-  },
-  "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Immediately show seven filled blocks and HP 7/20"
-  }
+  "examples": [
+    {
+      "name": "pixel-hp-drain",
+      "intent": "Retro segmented HP drain: 20 discrete blocks deplete right-to-left one at a time with stepped numeric updates — no smooth width animation.",
+      "colours": { "tone0": "#101b16", "tone1": "#40513d", "tone2": "#8c9c69", "tone3": "#d8dfb4" },
+      "copy": { "unit": "UNIT // A", "initial": "HP 18 / 20", "damage": "-11", "final": "HP 7 / 20", "trigger": "DAMAGE", "low": "LOW", "status": "HP 7 of 20." },
+      "geometry": { "blockCount": 20, "blockPx": [10, 14], "gapPx": 2, "startFilled": 18, "damageBlocks": 11, "endFilled": 7, "impactTranslatePx": 2, "direction": "right-to-left" },
+      "thresholds": { "midAtFilled": 10, "midTone": "#8c9c69", "lowAtFilled": 5, "lowTone": "#40513d", "lowLabel": "LOW", "canonicalFinalCrossesMidNotLow": true },
+      "timing": { "impactStepMs": 45, "blockMs": 45, "noWidthTransition": true, "steppedOnly": true },
+      "api": { "damage": "runPixelHpDrain()", "reset": "runPixelHpReset()", "busyGuard": true },
+      "a11y": { "numericExposure": "HP N / 20 via text + role=meter", "blocksSupplementary": true, "completionStatus": "HP 7 of 20." },
+      "reducedMotion": { "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"], "behaviour": "Immediately show seven filled blocks and HP 7/20" },
+      "classNames": { "root": "pixel-hp", "bar": "pixel-hp__bar", "block": "pixel-hp__block", "status": "pixel-hp__status" }
+    }
+  ]
 }

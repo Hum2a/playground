@@ -2,7 +2,14 @@
   "name": "stomp-switch-press",
   "ref": "SPX-3803",
   "title": "Stomp Switch Press",
-  "mode": "switch",
+  "operation": "stomp switch",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

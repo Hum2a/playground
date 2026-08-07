@@ -245,6 +245,10 @@ purposeful: visitors can immediately narrow the archive rather than loading an u
 duplicate of every preview. Per-plate play is always available, and motion-sensitive visitors
 can keep individual previews static.
 
+The filter bar includes a persistent Explorer-style view chooser: compact, standard, large, and
+extra-large. Its non-default selection is stored in `?view=` so the chosen preview density can be
+shared without changing the applied filters.
+
 ### Restraint list
 
 - One accent, one use.

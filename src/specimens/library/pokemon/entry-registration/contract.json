@@ -10,6 +10,7 @@
     "intent",
     "copy",
     "colours",
+    "layout",
     "scan",
     "thresholds",
     "indexCycle",
@@ -63,6 +64,16 @@
         "coral": { "type": "string", "const": "#cf5a47" },
         "gold": { "type": "string", "const": "#e5b24b" },
         "sage": { "type": "string", "const": "#78a88c" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compactPreviewPx", "titleAlignment", "metadataLegible"],
+      "properties": {
+        "compactPreviewPx": { "type": "number", "const": 380 },
+        "titleAlignment": { "type": "string", "const": "above-record" },
+        "metadataLegible": { "type": "boolean", "const": true }
       }
     },
     "scan": {
@@ -166,6 +177,11 @@
         "coral": "#cf5a47",
         "gold": "#e5b24b",
         "sage": "#78a88c"
+      },
+      "layout": {
+        "compactPreviewPx": 380,
+        "titleAlignment": "above-record",
+        "metadataLegible": true
       },
       "scan": {
         "durationMs": 620,

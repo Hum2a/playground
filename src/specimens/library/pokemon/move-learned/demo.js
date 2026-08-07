@@ -93,6 +93,8 @@ function setFinal(root) {
   )
   const btn = root.querySelector('[data-mvl-learn]')
   if (btn) btn.disabled = true
+  const replay = root.querySelector('[data-mvl-replay]')
+  if (replay) replay.hidden = false
   done = true
   busy = false
   setStatus(root, 'New capability learned: Sync.')
@@ -111,9 +113,11 @@ export function runMoveLearned() {
   clearPhases(root)
   root.classList.add('mvl--busy')
   root.setAttribute('data-state', 'running')
-  setStatus(root, '')
+  setStatus(root, 'Learning Sync.')
   const btn = root.querySelector('[data-mvl-learn]')
   if (btn) btn.disabled = true
+  const replay = root.querySelector('[data-mvl-replay]')
+  if (replay) replay.hidden = true
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
@@ -127,21 +131,26 @@ export function runMoveLearned() {
   const tDone = tConfirm + CONFIRM_MS
 
   return new Promise((resolve) => {
+    root.setAttribute('data-state', 'approach')
     root.classList.add('mvl--approach')
 
     later(tInstall, () => {
+      root.setAttribute('data-state', 'installing')
       root.classList.remove('mvl--approach')
       root.classList.add('mvl--install')
     })
 
     later(tLock, () => {
+      root.setAttribute('data-state', 'locking')
       root.classList.remove('mvl--install')
       root.classList.add('mvl--lock')
       showSyncInSlot(root)
       setListText(root, 'Capabilities: SCAN, FILTER, EXPORT, SYNC.')
+      setStatus(root, 'Sync installed. Locking capability set.')
     })
 
     later(tConfirm, () => {
+      root.setAttribute('data-state', 'confirming')
       root.classList.add('mvl--confirm')
     })
 
@@ -156,6 +165,7 @@ export function runMoveLearned() {
       )
       done = true
       busy = false
+      if (replay) replay.hidden = false
       setStatus(root, 'New capability learned: Sync.')
       resolve()
     })
@@ -192,8 +202,9 @@ export function resetMoveLearned() {
   const btn = root.querySelector('[data-mvl-learn]')
   if (btn) {
     btn.disabled = false
-    btn.focus({ preventScroll: true })
   }
+  const replay = root.querySelector('[data-mvl-replay]')
+  if (replay) replay.hidden = true
   void root.offsetWidth
   return Promise.resolve()
 }
@@ -203,8 +214,14 @@ export function resetMoveLearned() {
  * @returns {Promise<void>}
  */
 export async function replayMoveLearned() {
-  if (busy) return
+  const root = rootEl()
+  if (!root) return
+  if (busy) {
+    clearTimers()
+    busy = false
+  }
   await resetMoveLearned()
+  await runMoveLearned()
 }
 
 function bindUi() {
@@ -213,6 +230,9 @@ function bindUi() {
 
   root.querySelector('[data-mvl-learn]')?.addEventListener('click', () => {
     void runMoveLearned()
+  })
+  root.querySelector('[data-mvl-replay]')?.addEventListener('click', () => {
+    void replayMoveLearned()
   })
 
   window.addEventListener('message', (event) => {

@@ -1,8 +1,8 @@
-/* achievement-encounter — portable specimen styles */
+/* achievement-encounter — portable abstract rare-encounter styles */
 
 .ae {
-  --ae-grass: #65a85b;
-  --ae-sky: #9bd7ef;
+  --ae-ground: #54664b;
+  --ae-sky: #9fc8cf;
   --ae-ink: #20252a;
   --ae-paper: #f7f4df;
   --ae-gold: #e9b83f;
@@ -151,7 +151,7 @@
 }
 
 .ae--arena .ae__arena,
-.ae--badge .ae__arena,
+.ae--signal .ae__arena,
 .ae--message .ae__arena,
 .ae--settled .ae__arena {
   opacity: 1;
@@ -170,7 +170,7 @@
 .ae__grass {
   position: absolute;
   inset: 55% 0 0 0;
-  background: var(--ae-grass);
+  background: var(--ae-ground);
   clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
 }
 
@@ -186,8 +186,8 @@
   transform: skewX(-18deg);
 }
 
-/* —— Badge —— */
-.ae__badge {
+/* —— Rare signal —— */
+.ae__signal {
   position: absolute;
   z-index: 2;
   top: 18%;
@@ -199,15 +199,15 @@
   transform: scale(0.4);
 }
 
-.ae--badge .ae__badge,
-.ae--message .ae__badge,
-.ae--settled .ae__badge {
+.ae--signal .ae__signal,
+.ae--message .ae__signal,
+.ae--settled .ae__signal {
   opacity: 1;
   transform: scale(1);
-  animation: ae-badge-appear 400ms steps(4, end) forwards;
+  animation: ae-signal-appear 400ms steps(4, end) forwards;
 }
 
-.ae__badge-ring {
+.ae__signal-ring {
   position: absolute;
   inset: 0;
   border: 3px solid var(--ae-ink);
@@ -227,7 +227,7 @@
   );
 }
 
-.ae__badge-core {
+.ae__signal-core {
   position: absolute;
   inset: 16px;
   display: flex;
@@ -240,20 +240,20 @@
   background: var(--ae-paper);
 }
 
-.ae__badge-star {
+.ae__signal-star {
   font-size: 1.35rem;
   line-height: 1;
   color: var(--ae-gold);
 }
 
-.ae__badge-code {
+.ae__signal-code {
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--ae-ink);
 }
 
-.ae__badge-flash {
+.ae__signal-flash {
   position: absolute;
   inset: -6px;
   background: var(--ae-paper);
@@ -273,11 +273,11 @@
   pointer-events: none;
 }
 
-.ae--badge .ae__badge-flash {
-  animation: ae-badge-flash 160ms steps(2, end) 180ms 1;
+.ae--signal .ae__signal-flash {
+  animation: ae-signal-flash 160ms steps(2, end) 180ms 1;
 }
 
-@keyframes ae-badge-appear {
+@keyframes ae-signal-appear {
   0% {
     opacity: 0;
     transform: scale(0.35);
@@ -299,7 +299,7 @@
   }
 }
 
-@keyframes ae-badge-flash {
+@keyframes ae-signal-flash {
   0% { opacity: 0.95; }
   100% { opacity: 0; }
 }
@@ -376,13 +376,13 @@
 }
 
 .ae--settled .ae__streak,
-.ae--settled .ae__badge,
-.ae--settled .ae__badge-flash,
+.ae--settled .ae__signal,
+.ae--settled .ae__signal-flash,
 .ae--settled .ae__message {
   animation: none;
 }
 
-.ae--settled .ae__badge {
+.ae--settled .ae__signal {
   opacity: 1;
   transform: scale(1);
   filter: none;
@@ -397,8 +397,8 @@
 @media (prefers-reduced-motion: reduce) {
   .ae__streak,
   .ae__arena,
-  .ae__badge,
-  .ae__badge-flash,
+  .ae__signal,
+  .ae__signal-flash,
   .ae__message,
   .ae__message-title {
     animation: none !important;
@@ -410,7 +410,7 @@
   }
 
   .ae--reduced .ae__arena,
-  .ae--reduced .ae__badge,
+  .ae--reduced .ae__signal,
   .ae--reduced .ae__message,
   .ae--reduced .ae__message-title {
     opacity: 1;
@@ -421,8 +421,8 @@
 
 [data-force-reduced-motion='true'] .ae__streak,
 [data-force-reduced-motion='true'] .ae__arena,
-[data-force-reduced-motion='true'] .ae__badge,
-[data-force-reduced-motion='true'] .ae__badge-flash,
+[data-force-reduced-motion='true'] .ae__signal,
+[data-force-reduced-motion='true'] .ae__signal-flash,
 [data-force-reduced-motion='true'] .ae__message,
 [data-force-reduced-motion='true'] .ae__message-title {
   animation: none !important;
@@ -434,7 +434,7 @@
 }
 
 [data-force-reduced-motion='true'] .ae--reduced .ae__arena,
-[data-force-reduced-motion='true'] .ae--reduced .ae__badge,
+[data-force-reduced-motion='true'] .ae--reduced .ae__signal,
 [data-force-reduced-motion='true'] .ae--reduced .ae__message,
 [data-force-reduced-motion='true'] .ae--reduced .ae__message-title {
   opacity: 1;

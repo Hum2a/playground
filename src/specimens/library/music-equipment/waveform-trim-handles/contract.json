@@ -1,8 +1,15 @@
 {
   "name": "waveform-trim-handles",
-  "ref": "SPX-3944",
   "title": "Waveform Trim Handles",
-  "mode": "deck",
+  "operation": "trim",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "TRIM / RESET"
 }

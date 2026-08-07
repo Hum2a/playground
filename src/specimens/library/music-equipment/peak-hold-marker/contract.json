@@ -2,7 +2,14 @@
   "name": "peak-hold-marker",
   "ref": "SPX-3772",
   "title": "Peak Hold Marker",
-  "mode": "sequence",
+  "operation": "peak hold",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

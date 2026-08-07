@@ -481,6 +481,14 @@
   transform: translateY(12px);
 }
 
+.mbs__meta--left {
+  text-align: left;
+}
+
+.mbs__meta--right {
+  text-align: right;
+}
+
 .mbs__role {
   margin: 0;
   color: var(--mbs-2);

@@ -1,8 +1,14 @@
 {
   "name": "motorised-fader-recall",
-  "ref": "SPX-3761",
-  "title": "Motorised Fader Recall",
-  "mode": "fader",
+  "title": "Fader Recall",
+  "operation": "fader recall",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "RECALL SCENE / RESET",
+  "states": {
+    "idle": "Target scene armed ? four motors parked.",
+    "action": "RECALL SCENE is engaged.",
+    "final": "Scene 04 recalled: channel faders reached fixed targets."
+  }
 }

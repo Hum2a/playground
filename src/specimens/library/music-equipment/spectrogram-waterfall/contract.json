@@ -2,7 +2,14 @@
   "name": "spectrogram-waterfall",
   "ref": "SPX-3791",
   "title": "Spectrogram Waterfall",
-  "mode": "timeline",
+  "operation": "spectrogram capture",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

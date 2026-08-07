@@ -2,7 +2,11 @@
   "name": "vinyl-spin-up",
   "ref": "SPX-3838",
   "title": "Vinyl Spin-Up",
-  "mode": "scope",
+  "operation": "vinyl spin-up",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "storage": false,
+  "reducedMotion": "Immediately resolves to the labelled final state.",
+  "interaction": "Start action / Reset to idle"
 }

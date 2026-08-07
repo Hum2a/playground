@@ -1,0 +1,302 @@
+[
+  {
+    "id": "MANGA-001",
+    "ref": "SPX-4070",
+    "title": "Panel Grid Assemble",
+    "slug": "panel-grid-assemble"
+  },
+  {
+    "id": "MANGA-002",
+    "ref": "SPX-4071",
+    "title": "Panel Expand Focus",
+    "slug": "panel-expand-focus"
+  },
+  {
+    "id": "MANGA-003",
+    "ref": "SPX-4072",
+    "title": "Diagonal Panel Wipe",
+    "slug": "diagonal-panel-wipe"
+  },
+  {
+    "id": "MANGA-004",
+    "ref": "SPX-4073",
+    "title": "Panel Shatter Transition",
+    "slug": "panel-shatter-transition"
+  },
+  {
+    "id": "MANGA-011",
+    "ref": "SPX-4080",
+    "title": "Manga Page Turn",
+    "slug": "manga-page-turn"
+  },
+  {
+    "id": "MANGA-013",
+    "ref": "SPX-4082",
+    "title": "Double-Page Spread Open",
+    "slug": "double-page-spread-open"
+  },
+  {
+    "id": "MANGA-019",
+    "ref": "SPX-4088",
+    "title": "Radial Speed Burst",
+    "slug": "radial-speed-burst"
+  },
+  {
+    "id": "MANGA-020",
+    "ref": "SPX-4089",
+    "title": "Directional Speed Wipe",
+    "slug": "directional-speed-wipe"
+  },
+  {
+    "id": "MANGA-028",
+    "ref": "SPX-4097",
+    "title": "Black Impact Frame",
+    "slug": "black-impact-frame"
+  },
+  {
+    "id": "MANGA-032",
+    "ref": "SPX-4101",
+    "title": "Hit Stop Freeze",
+    "slug": "hit-stop-freeze"
+  },
+  {
+    "id": "MANGA-036",
+    "ref": "SPX-4105",
+    "title": "Speech Balloon Pop",
+    "slug": "speech-balloon-pop"
+  },
+  {
+    "id": "MANGA-037",
+    "ref": "SPX-4106",
+    "title": "Shout Balloon Burst",
+    "slug": "shout-balloon-burst"
+  },
+  {
+    "id": "MANGA-043",
+    "ref": "SPX-4112",
+    "title": "Dialogue Choice Balloons",
+    "slug": "dialogue-choice-balloons"
+  },
+  {
+    "id": "MANGA-045",
+    "ref": "SPX-4114",
+    "title": "SFX Slam",
+    "slug": "sfx-slam"
+  },
+  {
+    "id": "MANGA-048",
+    "ref": "SPX-4117",
+    "title": "SFX Crack",
+    "slug": "sfx-crack"
+  },
+  {
+    "id": "MANGA-053",
+    "ref": "SPX-4122",
+    "title": "Screentone Reveal",
+    "slug": "screentone-reveal"
+  },
+  {
+    "id": "MANGA-054",
+    "ref": "SPX-4123",
+    "title": "Halftone Zoom",
+    "slug": "halftone-zoom"
+  },
+  {
+    "id": "MANGA-061",
+    "ref": "SPX-4130",
+    "title": "Brush Stroke Wipe",
+    "slug": "brush-stroke-wipe"
+  },
+  {
+    "id": "MANGA-063",
+    "ref": "SPX-4132",
+    "title": "Ink Slash Transition",
+    "slug": "ink-slash-transition"
+  },
+  {
+    "id": "MANGA-065",
+    "ref": "SPX-4134",
+    "title": "Ink Circle Selection",
+    "slug": "ink-circle-selection"
+  },
+  {
+    "id": "MANGA-067",
+    "ref": "SPX-4136",
+    "title": "Ink Pool Expand",
+    "slug": "ink-pool-expand"
+  },
+  {
+    "id": "MANGA-070",
+    "ref": "SPX-4139",
+    "title": "Ink Splatter Burst",
+    "slug": "ink-splatter-burst"
+  },
+  {
+    "id": "MANGA-071",
+    "ref": "SPX-4140",
+    "title": "Splatter Wipe",
+    "slug": "splatter-wipe"
+  },
+  {
+    "id": "MANGA-077",
+    "ref": "SPX-4146",
+    "title": "Reaction Panel Pop",
+    "slug": "reaction-panel-pop"
+  },
+  {
+    "id": "MANGA-078",
+    "ref": "SPX-4147",
+    "title": "Shock Reaction Zoom",
+    "slug": "shock-reaction-zoom"
+  },
+  {
+    "id": "MANGA-084",
+    "ref": "SPX-4153",
+    "title": "Eye Close-Up Cut",
+    "slug": "eye-close-up-cut"
+  },
+  {
+    "id": "MANGA-087",
+    "ref": "SPX-4156",
+    "title": "Twin Focus Split",
+    "slug": "twin-focus-split"
+  },
+  {
+    "id": "MANGA-090",
+    "ref": "SPX-4159",
+    "title": "Shock Burst Background",
+    "slug": "shock-burst-background"
+  },
+  {
+    "id": "MANGA-091",
+    "ref": "SPX-4160",
+    "title": "Gloom Vertical Lines",
+    "slug": "gloom-vertical-lines"
+  },
+  {
+    "id": "MANGA-097",
+    "ref": "SPX-4166",
+    "title": "Empty White Silence",
+    "slug": "empty-white-silence"
+  },
+  {
+    "id": "MANGA-098",
+    "ref": "SPX-4167",
+    "title": "Comic Panel Push",
+    "slug": "comic-panel-push"
+  },
+  {
+    "id": "MANGA-102",
+    "ref": "SPX-4171",
+    "title": "Inset-to-Fullscreen",
+    "slug": "inset-to-fullscreen"
+  },
+  {
+    "id": "MANGA-104",
+    "ref": "SPX-4173",
+    "title": "Panel Cascade",
+    "slug": "panel-cascade"
+  },
+  {
+    "id": "MANGA-106",
+    "ref": "SPX-4175",
+    "title": "Chapter Number Slam",
+    "slug": "chapter-number-slam"
+  },
+  {
+    "id": "MANGA-113",
+    "ref": "SPX-4182",
+    "title": "Attack Commit Slash",
+    "slug": "attack-commit-slash"
+  },
+  {
+    "id": "MANGA-115",
+    "ref": "SPX-4184",
+    "title": "Critical Hit Burst",
+    "slug": "critical-hit-burst"
+  },
+  {
+    "id": "MANGA-118",
+    "ref": "SPX-4187",
+    "title": "Finisher Full Spread",
+    "slug": "finisher-full-spread"
+  },
+  {
+    "id": "MANGA-121",
+    "ref": "SPX-4190",
+    "title": "Transformation Panel Sequence",
+    "slug": "transformation-panel-sequence"
+  },
+  {
+    "id": "MANGA-127",
+    "ref": "SPX-4196",
+    "title": "Charge-Up Hold",
+    "slug": "charge-up-hold"
+  },
+  {
+    "id": "MANGA-134",
+    "ref": "SPX-4203",
+    "title": "Black Page Takeover",
+    "slug": "black-page-takeover"
+  },
+  {
+    "id": "MANGA-135",
+    "ref": "SPX-4204",
+    "title": "Distorted Panel Gutter",
+    "slug": "distorted-panel-gutter"
+  },
+  {
+    "id": "MANGA-141",
+    "ref": "SPX-4210",
+    "title": "Uncanny Repeat Panel",
+    "slug": "uncanny-repeat-panel"
+  },
+  {
+    "id": "MANGA-149",
+    "ref": "SPX-4218",
+    "title": "Rival Split Screen",
+    "slug": "rival-split-screen"
+  },
+  {
+    "id": "MANGA-155",
+    "ref": "SPX-4224",
+    "title": "Training Montage Panels",
+    "slug": "training-montage-panels"
+  },
+  {
+    "id": "MANGA-156",
+    "ref": "SPX-4225",
+    "title": "Clue Panel Pin",
+    "slug": "clue-panel-pin"
+  },
+  {
+    "id": "MANGA-158",
+    "ref": "SPX-4227",
+    "title": "Deduction Panel Chain",
+    "slug": "deduction-panel-chain"
+  },
+  {
+    "id": "MANGA-170",
+    "ref": "SPX-4239",
+    "title": "Magic Circle Ink Draw",
+    "slug": "magic-circle-ink-draw"
+  },
+  {
+    "id": "MANGA-183",
+    "ref": "SPX-4252",
+    "title": "Manga Alert Panel",
+    "slug": "manga-alert-panel"
+  },
+  {
+    "id": "MANGA-188",
+    "ref": "SPX-4257",
+    "title": "Achievement Spread",
+    "slug": "achievement-spread"
+  },
+  {
+    "id": "MANGA-221",
+    "ref": "SPX-4290",
+    "title": "Dashboard Panel Replate",
+    "slug": "dashboard-panel-replate"
+  }
+]

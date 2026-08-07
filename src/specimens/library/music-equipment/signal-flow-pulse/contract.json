@@ -2,7 +2,14 @@
   "name": "signal-flow-pulse",
   "ref": "SPX-3860",
   "title": "Signal Flow Pulse",
-  "mode": "fader",
+  "operation": "signal route",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

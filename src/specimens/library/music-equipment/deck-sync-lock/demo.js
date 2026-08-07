@@ -1,1 +1,37 @@
-;(function(){const root=document.querySelector('[data-me-root]');if(!root)return;const run=root.querySelector('[data-me-run]'),reset=root.querySelector('[data-me-reset]'),status=root.querySelector('[data-me-status]'),announcement=root.querySelector('[data-me-announcement]');const engage=()=>{root.dataset.state='done';status.textContent='LOCKED';run.hidden=true;reset.hidden=false;announcement.textContent='Deck Sync Lock engaged.'};run.addEventListener('click',engage);reset.addEventListener('click',()=>{root.dataset.state='idle';status.textContent='READY';run.hidden=false;reset.hidden=true;announcement.textContent='Deck Sync Lock ready.'});if(matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.dataset.forceReducedMotion==='true')engage()})()
+(() => {
+  const root = document.querySelector('[data-music-effect]')
+  if (!root) return
+  const start = root.querySelector('[data-me-run]')
+  const reset = root.querySelector('[data-me-reset]')
+  const label = root.querySelector('[data-me-state]')
+  const status = root.querySelector('[data-me-status]')
+  let timer
+  const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.forceReducedMotion === 'true'
+  const set = (state, text, message) => {
+    root.dataset.state = state
+    label.textContent = text
+    status.textContent = message
+  }
+  const finish = () => {
+    timer = undefined
+    set('final', 'SYNC LOCKED', 'Both decks are locked at 124.0 BPM.')
+    start.hidden = true
+    reset.hidden = false
+  }
+  const engage = () => {
+    clearTimeout(timer)
+    set('action', 'MATCHING', 'Matching in progress.')
+    start.disabled = true
+    if (reduced()) { finish(); return }
+    timer = setTimeout(finish, 560)
+  }
+  start.addEventListener('click', engage)
+  reset.addEventListener('click', () => {
+    clearTimeout(timer)
+    set('idle', 'READY', 'Deck B is 0.8 BPM behind deck A.')
+    start.disabled = false
+    start.hidden = false
+    reset.hidden = true
+  })
+  if (reduced()) engage()
+})()

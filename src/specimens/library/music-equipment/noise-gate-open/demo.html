@@ -1,12 +1,1 @@
-<div class="me me--scope" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>NOISE GATE OPEN</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Noise Gate Open</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Noise Gate Open ready.</p>
-</div>
+<div class="unit gate" data-unit data-state="idle"><div class="unit__top"><b>NOISE GATE</b><span class="unit__state" data-state-label>CLOSED</span></div><div class="unit__display" aria-hidden="true"><div class="gate__track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gate__threshold">THRESHOLD <b>-48</b></div><div class="gate__door"><span>GATE</span></div><output class="gate__readout" data-readout>INPUT -62 dB</output></div><button type="button" data-run>OPEN GATE</button><button type="button" data-reset hidden>RESET</button><p class="unit__status" role="status" aria-live="polite" data-status>Input remains below the fixed gate threshold.</p></div>

@@ -9,6 +9,10 @@ import {
   franchiseLabel,
   type InspirationFranchiseId,
 } from '../specimens/inspiration'
+import {
+  CATALOGUE_VIEW_OPTIONS,
+  type CatalogueView,
+} from './view-options'
 import './filter-bar.css'
 
 export type CatalogueFilters = Record<FacetKey, string | null> & {
@@ -42,6 +46,8 @@ interface FilterBarProps {
   onWorkChange: (value: string | null) => void
   onQueryChange: (query: string) => void
   onClear: () => void
+  view: CatalogueView
+  onViewChange: (view: CatalogueView) => void
 }
 
 function hasActiveFilters(filters: CatalogueFilters, query: string) {
@@ -64,6 +70,8 @@ export function FilterBar({
   onWorkChange,
   onQueryChange,
   onClear,
+  view,
+  onViewChange,
 }: FilterBarProps) {
   const active = hasActiveFilters(filters, query)
   const bodyId = useId()
@@ -117,6 +125,20 @@ export function FilterBar({
             ) : null}
           </p>
           <div className="filter-bar__top-actions">
+            <div className="filter-bar__view" role="group" aria-label="View size">
+              <span className="filter-bar__view-label">View</span>
+              {CATALOGUE_VIEW_OPTIONS.map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  className="filter-bar__view-option"
+                  aria-pressed={view === option.id}
+                  onClick={() => onViewChange(option.id)}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
             {scrolledPast ? (
               <button
                 type="button"

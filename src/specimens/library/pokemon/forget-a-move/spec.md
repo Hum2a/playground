@@ -12,6 +12,10 @@ commits the final set: `SCAN` `FILTER` `EXPORT` `SYNC`.
 Pokémon-inspired forget-a-move language — abstract capability tokens only.
 PK-117 / SPX-816.
 
+This is the replacement half of the capability pair. For a capability entering
+an already empty slot without removing an existing one, use
+[Move Learned](../move-learned/spec.md).
+
 ## DOM structure
 
 ```
@@ -57,6 +61,15 @@ PK-117 / SPX-816.
 
 Total ≈ 740ms.
 
+## Observable state order and replay
+
+`data-state` progresses deterministically through
+`idle → compressing → breaking → vacant → installing → locking → done`. The
+status first names the selected replacement, then confirms `SYNC replaced
+{outgoing}. Capability set locked.` at the terminal state. `RESET` restores
+the exact idle state; `replayForgetMove()` and a harness `restart` message
+reset before running the same selected default sequence.
+
 ## Selection
 
 - Radiogroup of four radios; default `CACHE` on bind
@@ -76,12 +89,13 @@ Triggers: `prefers-reduced-motion: reduce` and
 
 - `role="radiogroup"` + `role="radio"` with `aria-checked`
 - Arrow / Home / End move selection; Space / Enter or REPLACE confirms
-- Status region announces `Replace CACHE with SYNC.` (canonical) once on REPLACE
+- Status names the selected replacement and terminal locked set in text
 - Decorative brackets, segments, and sweep: `aria-hidden`
 
 ## Porting
 
-Import `demo.css` verbatim. API: `runForgetMove` / `resetForgetMove`.
+Import `demo.css` verbatim. API: `runForgetMove` / `resetForgetMove` /
+`replayForgetMove`.
 Root class: `forget-move`. Slot phases: `is-compressing` `is-breaking`
 `is-vacant` `is-installing` `is-locked`. Root phases: `is-installing`
 `is-sweeping`.

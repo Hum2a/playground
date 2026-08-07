@@ -22,6 +22,7 @@ const payload: SpecimenPayload = {
     'Charge: brighten + three contracting rings over 280ms',
     'Scale grows ~1→1.12 during instability; exactly eight radial marks rotate 45° once',
     'Final identity is static Form B with FORM // 02 / ADVANCED after resolve',
+    'Stops at transformed Form B; registration, canonical status, and archival are intentionally absent',
     'Reduced motion immediate; no glow loop or particles; sandbox-safe',
   ],
   scaffold: `

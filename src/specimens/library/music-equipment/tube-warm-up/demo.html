@@ -1,12 +1,1 @@
-<div class="me me--tuner" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>TUBE WARM-UP</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Tube Warm-Up</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Tube Warm-Up ready.</p>
-</div>
+<div class="unit tube" data-unit data-state="idle"><div class="unit__top"><b>TUBE WARM-UP</b><span class="unit__state" data-state-label>OFFLINE</span></div><div class="unit__display" aria-hidden="true"><div class="tube__glass"><div class="tube__filament"></div><i></i><i></i><i></i><i></i></div><div class="tube__scale"><span>0%</span><span>50%</span><span>100%</span></div><output class="tube__readout" data-readout>HEATER 0%</output></div><button type="button" data-run>WARM TUBE</button><button type="button" data-reset hidden>RESET</button><p class="unit__status" role="status" aria-live="polite" data-status>Valve heater is cold and offline.</p></div>

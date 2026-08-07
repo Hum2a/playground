@@ -167,7 +167,8 @@ export function runDelayedDamage() {
 
   root.classList.add('ddb--impact', 'ddb--delta', 'ddb--primary')
 
-  // Sync numeric quickly while primary bar eases
+  // Current-value readout commits before the old-value trail moves; the trail is
+  // intentionally the only layer allowed to preserve the pre-hit value.
   void rollNumeric(root, START_HP, END_HP, NUMERIC_ROLL_MS)
 
   // Drive primary width after enabling transition

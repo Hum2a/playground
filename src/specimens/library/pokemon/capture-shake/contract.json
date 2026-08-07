@@ -114,11 +114,15 @@
     "a11y": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["statusText", "politeLive", "decorativeDevice"],
+      "required": ["statusText", "politeLive", "decorativeDevice", "checkAnnouncements"],
       "properties": {
         "statusText": { "type": "boolean", "const": true },
         "politeLive": { "type": "boolean", "const": true },
-        "decorativeDevice": { "type": "boolean", "const": true }
+        "decorativeDevice": { "type": "boolean", "const": true },
+        "checkAnnouncements": {
+          "type": "array",
+          "const": ["Capture check 1 of 3.", "Capture check 2 of 3.", "Capture check 3 of 3."]
+        }
       }
     },
     "reducedMotion": {

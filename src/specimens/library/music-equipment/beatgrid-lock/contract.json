@@ -2,7 +2,11 @@
   "name": "beatgrid-lock",
   "ref": "SPX-3849",
   "title": "Beatgrid Lock",
-  "mode": "tape",
+  "operation": "beatgrid lock",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "storage": false,
+  "reducedMotion": "Immediately resolves to the labelled final state.",
+  "interaction": "Start action / Reset to idle"
 }

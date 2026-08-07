@@ -1,8 +1,15 @@
 {
   "name": "reel-spin-up",
-  "ref": "SPX-3881",
   "title": "Reel Spin-Up",
-  "mode": "deck",
+  "operation": "spin up",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "SPIN UP / RESET"
 }

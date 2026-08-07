@@ -1,4 +1,4 @@
-/* SPX-321 Capture Shake — portable contract. Do not restyle to host tokens. */
+/* SPX-710 Capture Shake — portable contract. Do not restyle to host tokens. */
 
 .capture-shake {
   --cs-ink: #171c20;
@@ -471,6 +471,18 @@
 
 .capture-shake__status-word--done {
   color: var(--cs-paper);
+}
+
+.capture-shake__sr-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Controls */

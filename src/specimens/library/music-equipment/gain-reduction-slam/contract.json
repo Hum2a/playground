@@ -2,7 +2,11 @@
   "name": "gain-reduction-slam",
   "ref": "SPX-3798",
   "title": "Gain Reduction Slam",
-  "mode": "meter",
+  "operation": "gain reduction clamp",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "SLAM / RESET"
 }

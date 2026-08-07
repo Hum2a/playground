@@ -173,10 +173,15 @@
     "behaviour": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["run", "reset", "defaultSelect", "ref"],
+      "required": ["run", "reset", "replay", "states", "defaultSelect", "ref"],
       "properties": {
         "run": { "type": "string", "const": "runForgetMove" },
         "reset": { "type": "string", "const": "resetForgetMove" },
+        "replay": { "type": "string", "const": "replayForgetMove" },
+        "states": {
+          "type": "array",
+          "const": ["idle", "compressing", "breaking", "vacant", "installing", "locking", "done"]
+        },
         "defaultSelect": { "type": "string", "const": "cache" },
         "ref": { "type": "string", "const": "SPX-816" }
       }
@@ -204,6 +209,8 @@
       "behaviour": {
         "run": "runForgetMove",
         "reset": "resetForgetMove",
+        "replay": "replayForgetMove",
+        "states": ["idle", "compressing", "breaking", "vacant", "installing", "locking", "done"],
         "defaultSelect": "cache",
         "ref": "SPX-816"
       }

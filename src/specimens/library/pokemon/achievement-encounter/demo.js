@@ -1,15 +1,15 @@
 /**
- * Achievement Encounter — tiny portable API.
+ * Achievement Encounter — tiny portable rare-encounter API.
  * Works inside sandbox="allow-scripts" (no parent / storage / network).
  */
 
 const STREAK_MS = 350
 const ARENA_MS = 250
-const BADGE_MS = 400
+const SIGNAL_MS = 400
 const MESSAGE_MS = 250
-/** Full sequence = STREAK + ARENA + BADGE + MESSAGE = 1250ms */
+/** Full sequence = STREAK + ARENA + SIGNAL + MESSAGE = 1250ms */
 
-const PHASES = ['ae--streaks', 'ae--arena', 'ae--badge', 'ae--message', 'ae--settled', 'ae--reduced', 'ae--active']
+const PHASES = ['ae--streaks', 'ae--arena', 'ae--signal', 'ae--message', 'ae--settled', 'ae--reduced', 'ae--active']
 
 let busy = false
 let settled = false
@@ -44,7 +44,7 @@ function announce(root) {
   if (!status) return
   status.textContent = ''
   void status.offsetWidth
-  status.textContent = 'Achievement unlocked: Early Adopter'
+  status.textContent = 'Rare encounter identified: Anomaly 010'
   announced = true
 }
 
@@ -75,7 +75,7 @@ export function runAchievementEncounter() {
   if (status) status.textContent = ''
 
   if (prefersReducedMotion()) {
-    root.classList.add('ae--reduced', 'ae--settled', 'ae--arena', 'ae--badge', 'ae--message')
+    root.classList.add('ae--reduced', 'ae--settled', 'ae--arena', 'ae--signal', 'ae--message')
     announce(root)
     busy = false
     settled = true
@@ -90,7 +90,7 @@ export function runAchievementEncounter() {
       root.classList.add('ae--arena')
 
       window.setTimeout(() => {
-        root.classList.add('ae--badge')
+        root.classList.add('ae--signal')
 
         window.setTimeout(() => {
           root.classList.add('ae--message')
@@ -102,14 +102,14 @@ export function runAchievementEncounter() {
             settled = true
             resolve()
           }, MESSAGE_MS)
-        }, BADGE_MS)
+        }, SIGNAL_MS)
       }, ARENA_MS)
     }, STREAK_MS)
   })
 }
 
 /**
- * Reset to the trigger state (concealed achievement).
+ * Reset to the trigger state (concealed encounter).
  * @returns {Promise<void>}
  */
 export function resetAchievementEncounter() {

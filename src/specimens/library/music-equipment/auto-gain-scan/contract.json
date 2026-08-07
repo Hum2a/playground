@@ -2,7 +2,11 @@
   "name": "auto-gain-scan",
   "ref": "SPX-3929",
   "title": "Auto Gain Scan",
-  "mode": "scope",
+  "operation": "automatic gain scan",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "SCAN / RESET"
 }

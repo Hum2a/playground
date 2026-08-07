@@ -134,7 +134,7 @@ function applyInstantReplace(root, targetId, outgoing) {
   busy = false
   setSlotInteractive(root, false)
   setControls(root, { replace: false, resetVisible: true })
-  setAnnounce(root, `Replace ${outgoing} with SYNC.`)
+  setAnnounce(root, `SYNC replaced ${outgoing}. Capability set locked.`)
 }
 
 /**
@@ -168,14 +168,17 @@ export function runForgetMove() {
   }
 
   return new Promise((resolve) => {
+    root.dataset.state = 'compressing'
     slot.classList.add('is-compressing')
 
     later(COMPRESS_MS, () => {
+      root.dataset.state = 'breaking'
       slot.classList.remove('is-compressing')
       slot.classList.add('is-breaking')
     })
 
     later(COMPRESS_MS + BREAK_MS, () => {
+      root.dataset.state = 'vacant'
       slot.classList.remove('is-breaking')
       slot.classList.add('is-vacant')
       const label = slot.querySelector('[data-fm-slot-label]')
@@ -183,6 +186,7 @@ export function runForgetMove() {
     })
 
     later(COMPRESS_MS + BREAK_MS + VACANCY_MS, () => {
+      root.dataset.state = 'installing'
       slot.classList.remove('is-vacant')
       slot.classList.add('is-installing')
       root.classList.add('is-installing')
@@ -192,6 +196,7 @@ export function runForgetMove() {
     })
 
     later(COMPRESS_MS + BREAK_MS + VACANCY_MS + INSTALL_MS, () => {
+      root.dataset.state = 'locking'
       slot.classList.remove('is-installing')
       root.classList.remove('is-installing')
       slot.classList.add('is-locked')
@@ -208,6 +213,7 @@ export function runForgetMove() {
         done = true
         busy = false
         setControls(root, { replace: false, resetVisible: true })
+        setAnnounce(root, `SYNC replaced ${outgoing}. Capability set locked.`)
         resolve()
       },
     )
@@ -256,6 +262,19 @@ export function resetForgetMove() {
   setControls(root, { replace: true, resetVisible: false })
   void root.offsetWidth
   return Promise.resolve()
+}
+
+/**
+ * Restore the initial choice and run the same replacement sequence.
+ * @returns {Promise<void>}
+ */
+export async function replayForgetMove() {
+  if (busy) {
+    clearTimers()
+    busy = false
+  }
+  await resetForgetMove()
+  await runForgetMove()
 }
 
 function bindUi() {
@@ -316,7 +335,7 @@ function bindUi() {
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') void resetForgetMove()
+    if (data.type === 'restart') void replayForgetMove()
   })
 
   // Default select CACHE on bind

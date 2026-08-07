@@ -2,7 +2,14 @@
   "name": "patch-cable-connect",
   "ref": "SPX-3856",
   "title": "Patch Cable Connect",
-  "mode": "timeline",
+  "operation": "patch connection",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

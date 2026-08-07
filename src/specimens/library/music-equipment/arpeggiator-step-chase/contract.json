@@ -1,8 +1,14 @@
 {
   "name": "arpeggiator-step-chase",
-  "ref": "SPX-3819",
-  "title": "Arpeggiator Step Chase",
-  "mode": "tape",
+  "title": "Arpeggiator",
+  "operation": "arpeggiator",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "CHASE NOTES / RESET",
+  "states": {
+    "idle": "C minor up pattern armed at C3.",
+    "action": "CHASE NOTES is engaged.",
+    "final": "Arpeggio complete: C3 ? Eb3 ? G3 ? C4."
+  }
 }

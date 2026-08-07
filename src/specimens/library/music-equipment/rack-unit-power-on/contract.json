@@ -2,7 +2,11 @@
   "name": "rack-unit-power-on",
   "ref": "SPX-3873",
   "title": "Rack Unit Power-On",
-  "mode": "sequence",
+  "operation": "rack power sequence",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "POWER / RESET"
 }

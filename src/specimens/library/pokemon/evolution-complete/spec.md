@@ -4,6 +4,10 @@
 
 Terminal registration after an identity transformation. Form 02 is already present but `UNREGISTERED`. It settles from an elevated pose, a thin registration ring contracts, four cardinal markers lock, a hard left→right sweep replaces the status with `CANONICAL`, and `PREVIOUS // FORM 01` slides into an archive position. Continuity, not deletion.
 
+This is the registration half of the evolution pair. It begins after
+[Evolution Silhouette Transformation](../evolution-silhouette-transformation/spec.md)
+has already produced Form 02; it does not transform Form 01 into Form 02.
+
 ## DOM structure
 
 - `.ec[data-evolution-complete]` — root; `data-state` idle | running | canonical

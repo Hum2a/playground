@@ -85,11 +85,17 @@ function setStatusWords(done) {
   if (fin) fin.setAttribute('aria-hidden', done ? 'false' : 'true')
 }
 
+function setAccessibleStatus(message) {
+  const text = document.querySelector('[data-cs-status-text]')
+  if (text) text.textContent = message
+}
+
 function applyCaptured(root) {
   clearPhases(root)
   root.classList.add('is-closed', 'is-resolve')
   root.setAttribute('data-state', 'captured')
   setStatusWords(true)
+  setAccessibleStatus('Capture complete. Captured.')
   captured = true
   busy = false
   setTriggers({ go: false, reset: true })
@@ -100,6 +106,7 @@ function applyReducedSettled(root) {
   root.classList.add('is-rm-settled', 'is-closed')
   root.setAttribute('data-state', 'captured')
   setStatusWords(true)
+  setAccessibleStatus('Capture complete. Captured without motion.')
   captured = true
   busy = false
   setTriggers({ go: false, reset: true })
@@ -118,6 +125,7 @@ export function runCaptureShake() {
   clearPhases(root)
   root.setAttribute('data-state', 'capturing')
   setTriggers({ go: false, reset: false })
+  setAccessibleStatus('Capture started. Enclosing unknown specimen.')
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
@@ -153,6 +161,7 @@ export function runCaptureShake() {
       root.classList.remove('is-settling')
       root.setAttribute('data-state', 'checking')
       root.classList.add('is-checking')
+      setAccessibleStatus('Capture checks ready. Three checks remain.')
     })
 
     t += T.settleWait
@@ -160,6 +169,7 @@ export function runCaptureShake() {
     // Shake 1
     later(t, () => {
       root.classList.add('is-shake-1')
+      setAccessibleStatus('Capture check 1 of 3.')
     })
     t += T.shake1
     later(t, () => {
@@ -170,6 +180,7 @@ export function runCaptureShake() {
     // Shake 2
     later(t, () => {
       root.classList.add('is-shake-2')
+      setAccessibleStatus('Capture check 2 of 3.')
     })
     t += T.shake2
     later(t, () => {
@@ -180,6 +191,7 @@ export function runCaptureShake() {
     // Shake 3
     later(t, () => {
       root.classList.add('is-shake-3')
+      setAccessibleStatus('Capture check 3 of 3.')
     })
     t += T.shake3
     later(t, () => {
@@ -193,6 +205,7 @@ export function runCaptureShake() {
       root.classList.add('is-resolve')
       root.setAttribute('data-state', 'captured')
       setStatusWords(true)
+      setAccessibleStatus('Capture complete. Captured.')
       setTriggers({ go: false, reset: true })
       captured = true
       busy = false
@@ -213,6 +226,7 @@ export function resetCaptureShake() {
   clearPhases(root)
   root.setAttribute('data-state', 'idle')
   setStatusWords(false)
+  setAccessibleStatus('Capture unresolved. Ready to begin.')
   setTriggers({ go: true, reset: false })
 }
 

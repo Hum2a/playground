@@ -13,7 +13,8 @@
     "animation",
     "a11y",
     "reducedMotion",
-    "classNames"
+    "classNames",
+    "behaviour"
   ],
   "properties": {
     "name": { "type": "string", "const": "move-learned" },
@@ -133,6 +134,19 @@
         "token": { "type": "string", "const": "mvl__token" },
         "grid": { "type": "string", "const": "mvl__grid" }
       }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["states", "terminalControl", "replay"],
+      "properties": {
+        "states": {
+          "type": "array",
+          "const": ["idle", "approach", "installing", "locking", "confirming", "done"]
+        },
+        "terminalControl": { "type": "string", "const": "REPLAY" },
+        "replay": { "type": "string", "const": "replayMoveLearned" }
+      }
     }
   },
   "examples": [
@@ -148,6 +162,11 @@
         "outlineMs": 140,
         "sweepMs": 110,
         "totalMs": 690
+      },
+      "behaviour": {
+        "states": ["idle", "approach", "installing", "locking", "confirming", "done"],
+        "terminalControl": "REPLAY",
+        "replay": "replayMoveLearned"
       }
     }
   ]

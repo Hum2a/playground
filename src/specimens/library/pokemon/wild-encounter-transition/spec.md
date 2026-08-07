@@ -6,6 +6,9 @@ central high-contrast plate grows beneath, an abstract CSS entity arrives, then
 the plate expands until the destination fully replaces State A. No crossfade.
 No canvas, WebGL, images, audio, network, or storage.
 
+State A remains visible until the clipped destination plate is visible; never
+show a blank host between them.
+
 ## Visual intent
 
 Route scan → single jolt → opposing band sweep → encounter seam → entity →
@@ -66,6 +69,7 @@ geometry — not a recreation of any specific Pokémon game transition.
 - Origin: vertical centre
 - Height **4px → 38%** over **~180ms** via clipped height (not opacity)
 - High-contrast ink plate reveals underneath departing bands
+- Keep either State A or the clipped plate visible throughout — no blank frame
 
 ## Entity
 
@@ -78,6 +82,8 @@ geometry — not a recreation of any specific Pokémon game transition.
 - Plate height **38% → 100%** over **~320ms** (clipped expansion)
 - Metadata locks: `UNKNOWN ENTITY` / `SIGNAL DETECTED`
 - Primary transition is clipped movement — not a crossfade
+- The destination plate is present before takeover; no opacity transition may
+  leave the host blank
 
 ## Frozen motion (~720ms)
 

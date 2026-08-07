@@ -7,6 +7,10 @@ Pokemon-inspired move-learn language — original angular geometry only.
 
 Canonical demo: PROCESS // 04 · SCAN / FILTER / EXPORT / empty → LEARN → SYNC.
 
+This is the additive half of the capability pair. For an occupied-slot
+replacement with a deliberate vacancy, use
+[Forget a Move](../forget-a-move/spec.md).
+
 ## DOM structure
 
 ```
@@ -46,11 +50,22 @@ Canonical demo: PROCESS // 04 · SCAN / FILTER / EXPORT / empty → LEARN → SY
 
 Immediate four capabilities including SYNC + confirmation text.
 
+## Observable state order and replay
+
+`data-state` progresses deterministically through
+`idle → approach → installing → locking → confirming → done`. The polite status
+announces `Learning Sync.`, then `Sync installed. Locking capability set.`, and
+finally `New capability learned: Sync.` The terminal `REPLAY` control and
+`replayMoveLearned()` both reset the same initial values before starting the
+sequence again; a harness `restart` message uses that replay path.
+
 ## Accessibility
 
 - Capabilities as list items + readable `.mvl__list-text`
-- Status announces learned state once — not animation-only
+- `LEARN` is disabled while active; terminal `REPLAY` is a real button
+- Status exposes the ordered text states, so installation is not animation-only
 
 ## Porting
 
-Import `demo.css` verbatim. API: `runMoveLearned` / `resetMoveLearned` / `replayMoveLearned`.
+Import `demo.css` verbatim. API: `runMoveLearned` / `resetMoveLearned` /
+`replayMoveLearned`.

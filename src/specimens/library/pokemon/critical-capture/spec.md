@@ -7,6 +7,7 @@ and `contract.json`.
 
 ## Visual intent
 
+- **Family:** decisive success sibling of `capture-shake`; it replaces that specimen's three uncertainty checks with one lock.
 - Generic archive capture capsule — **no** official Poké Ball artwork
 - Normally uncertain operation → exceptional confidence → compressed resolution
 - **Exactly one** resolution movement (not three shakes)

@@ -43,7 +43,9 @@ Both repository triggers: immediately `HP 7 / 20` with seven filled blocks.
 
 ## Accessibility
 
-Expose exact HP numerically (`role="meter"` + live text). Blocks are supplementary.
+Expose exact HP numerically (`role="meter"` + visible text). Blocks are supplementary;
+announce only the settled `HP 7 of 20.` result so individual block removals do not
+create a stream of live-region updates.
 
 ## Porting checklist
 

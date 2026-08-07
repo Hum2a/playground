@@ -1,8 +1,15 @@
 {
   "name": "sample-slice-markers",
-  "ref": "SPX-3832",
   "title": "Sample Slice Markers",
-  "mode": "meter",
+  "operation": "slice",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "SLICE / RESET"
 }

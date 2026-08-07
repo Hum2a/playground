@@ -10,13 +10,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~460×340+; scales down near 320px).',
-    'Import demo.css verbatim; keep frozen ±10px path offsets and phase timings.',
+    'Import demo.css verbatim; keep frozen ±10px path offsets, endpoint route causality (A→B VECTOR, B→A PRISM), and phase timings.',
     'Call trade/reset via window.linkTradeTransfer or the controls.',
     'Do not update ownership labels until entities arrive at opposite endpoints.',
     'Honour prefers-reduced-motion and data-force-reduced-motion with an immediate swap.',
   ],
   acceptance: [
-    'Two endpoints NODE // A and NODE // B with VECTOR and PRISM',
+    'Two endpoints NODE // A and NODE // B: VECTOR departs A for B while PRISM departs B for A',
     'Link segments join (~160ms); both entities shrink and depart together',
     'Paths offset ±10px; entities cross at centre with one diamond flash',
     'Ownership text swaps only after arrival; link tears down (~180ms)',

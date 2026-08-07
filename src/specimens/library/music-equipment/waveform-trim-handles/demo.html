@@ -1,12 +1,6 @@
-<div class="me me--deck" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>WAVEFORM TRIM HANDLES</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Waveform Trim Handles</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Waveform Trim Handles ready.</p>
+<div class="music-operation music-operation--trim" data-operation data-state="idle">
+  <header class="music-operation__head"><span>EDIT BAY</span><b>WAVEFORM TRIM HANDLES</b><strong class="music-operation__state" data-state-label>IDLE</strong></header>
+  <div class="music-operation__stage" aria-hidden="true"><svg viewBox="0 0 160 150" preserveAspectRatio="none"><path class="guide" d="M 16 88 H 144"/><path class="operation-path" d="M 22 88 H 42 L 50 58 58 112 68 48 78 108 90 62 102 116 112 54 124 102 138 76"/><circle class="marker" cx="38" cy="88" r="4" /><circle class="marker" cx="80" cy="72" r="4" /><circle class="marker" cx="122" cy="88" r="4" /></svg><span class="music-operation__legend" data-readout>READY / FIXED DATA</span></div>
+  <button type="button" data-run>TRIM</button><button type="button" data-reset hidden>RESET</button>
+  <p role="status" aria-live="polite" data-status>Waveform Trim Handles idle. Ready to trim.</p>
 </div>

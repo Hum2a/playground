@@ -281,7 +281,12 @@
   transform: translate(-50%, -50%) scale(0.88);
 }
 
-.bec[data-state='confirm'] .bec__option.is-kept,
+.bec[data-state='confirm'] .bec__option.is-kept {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.08);
+  pointer-events: none;
+}
+
 .bec[data-state='done'] .bec__option.is-kept {
   opacity: 0;
   pointer-events: none;

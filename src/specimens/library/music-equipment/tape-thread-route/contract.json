@@ -1,8 +1,15 @@
 {
   "name": "tape-thread-route",
-  "ref": "SPX-3882",
   "title": "Tape Thread Route",
-  "mode": "patch",
+  "operation": "thread",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "THREAD / RESET"
 }

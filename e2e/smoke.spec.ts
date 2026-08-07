@@ -10,6 +10,18 @@ test.describe('smoke', () => {
     await expect(plates.first()).toContainText(/SPX-\d+/i)
   })
 
+  test('catalogue view size persists alongside filters', async ({ page }) => {
+    await page.goto('/?kind=transition&view=large')
+    const catalogue = page.locator('.catalogue')
+    const large = page.getByRole('button', { name: 'Large', exact: true })
+    await expect(large).toHaveAttribute('aria-pressed', 'true')
+    await expect(catalogue).toHaveAttribute('data-view', 'large')
+
+    await page.getByRole('button', { name: 'Compact', exact: true }).click()
+    await expect(catalogue).toHaveAttribute('data-view', 'compact')
+    await expect(page).toHaveURL(/kind=transition.*view=compact|view=compact.*kind=transition/)
+  })
+
   test("plate copy button writes a non-empty string to the clipboard", async ({
     page,
     context,

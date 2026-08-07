@@ -1,8 +1,14 @@
 {
   "name": "velocity-pad-hit",
-  "ref": "SPX-3830",
-  "title": "Velocity Pad Hit",
-  "mode": "fader",
+  "title": "Velocity Pad",
+  "operation": "velocity pad",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "STRIKE PAD / RESET",
+  "states": {
+    "idle": "Pad 07 waits at velocity 000.",
+    "action": "STRIKE PAD is engaged.",
+    "final": "Pad 07 struck: fixed velocity 112 registered."
+  }
 }

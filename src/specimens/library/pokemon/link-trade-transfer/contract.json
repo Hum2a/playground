@@ -11,6 +11,7 @@
     "copy",
     "layout",
     "paths",
+    "routes",
     "phases",
     "a11y",
     "reducedMotion",
@@ -74,6 +75,15 @@
         "vectorOffsetYPx": { "type": "number", "const": -10 },
         "prismOffsetYPx": { "type": "number", "const": 10 },
         "crossFlash": { "type": "boolean", "const": true }
+      }
+    },
+    "routes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vector", "prism"],
+      "properties": {
+        "vector": { "type": "string", "const": "A-to-B" },
+        "prism": { "type": "string", "const": "B-to-A" }
       }
     },
     "phases": {
@@ -171,6 +181,10 @@
         "vectorOffsetYPx": -10,
         "prismOffsetYPx": 10,
         "crossFlash": true
+      },
+      "routes": {
+        "vector": "A-to-B",
+        "prism": "B-to-A"
       },
       "phases": {
         "linkMs": 160,

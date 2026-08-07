@@ -1,8 +1,15 @@
 {
   "name": "crossfade-overlap",
-  "ref": "SPX-3948",
   "title": "Crossfade Overlap",
-  "mode": "patch",
+  "operation": "crossfade",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ],
+  "reducedMotion": "Shows the final fixed result immediately.",
+  "interaction": "CROSSFADE / RESET"
 }

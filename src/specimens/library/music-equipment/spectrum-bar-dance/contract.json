@@ -2,7 +2,14 @@
   "name": "spectrum-bar-dance",
   "ref": "SPX-3787",
   "title": "Spectrum Bar Dance",
-  "mode": "tape",
+  "operation": "spectrum scan",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Renders final fixed result immediately.",
+  "interaction": "ARM → COMMIT / RESET",
+  "states": [
+    "idle",
+    "action",
+    "final"
+  ]
 }

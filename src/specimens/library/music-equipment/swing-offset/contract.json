@@ -1,8 +1,14 @@
 {
   "name": "swing-offset",
-  "ref": "SPX-3825",
   "title": "Swing Offset",
-  "mode": "timeline",
+  "operation": "swing offset",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "reducedMotion": "Immediate final state with the result announced in text.",
+  "interaction": "APPLY 58% / RESET",
+  "states": {
+    "idle": "Straight sixteenths are aligned at 50%.",
+    "action": "APPLY 58% is engaged.",
+    "final": "Swing applied: offbeats moved to a fixed 58%."
+  }
 }

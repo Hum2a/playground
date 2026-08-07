@@ -144,9 +144,6 @@
     clearTimers(ctx)
     setButtons(root, { evolve: false, choose: false })
 
-    const opts = root.querySelector('[data-bec-options]')
-    if (opts) opts.hidden = false
-
     if (prefersReducedMotion(root)) {
       showBranchesImmediate(root)
       ctx.busy = false
@@ -229,7 +226,15 @@
     }
 
     const name = list[index]?.dataset.name || 'future'
-    setStatus(root, `Becoming ${name}.`)
+    const retracted = list
+      .filter((_, i) => i !== index)
+      .map((btn) => btn.dataset.name)
+      .filter(Boolean)
+      .join(' and ')
+    setStatus(
+      root,
+      `${name} branch retained. ${retracted} branches retract. Becoming ${name}.`,
+    )
 
     later(ctx, Math.max(RETRACT_MS, TRAVEL_MS) + 40, () => {
       finishChosen(root, index)

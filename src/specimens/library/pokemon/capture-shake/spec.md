@@ -31,7 +31,7 @@ Immediate closed device, three static stars, CAPTURED text. No enter, shakes, or
 
 ## Accessibility
 
-Success is readable as **CAPTURED** text. Decorative device/stars are `aria-hidden`. Polite live region on status. Visible focus on controls.
+Success is readable as **CAPTURED** text. Decorative device/stars are `aria-hidden`. A polite `role="status"` region announces capture start, each numbered check (`1 of 3` through `3 of 3`), and completion. Visible focus on controls.
 
 ## Porting to another stack
 

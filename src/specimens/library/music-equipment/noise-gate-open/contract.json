@@ -2,7 +2,11 @@
   "name": "noise-gate-open",
   "ref": "SPX-3800",
   "title": "Noise Gate Open",
-  "mode": "scope",
+  "operation": "noise-gate threshold open",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "OPEN / RESET"
 }

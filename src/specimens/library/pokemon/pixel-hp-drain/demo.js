@@ -42,6 +42,14 @@ function rootEl() {
   return document.querySelector('[data-pixel-hp]')
 }
 
+function setStatus(root, text) {
+  const status = root.querySelector('[data-php-status]')
+  if (!status) return
+  status.textContent = ''
+  void status.offsetWidth
+  status.textContent = text
+}
+
 function blocks() {
   return Array.from(document.querySelectorAll('[data-php-block]'))
 }
@@ -116,6 +124,7 @@ export function runPixelHpDrain() {
     if (delta) delta.classList.remove('is-on')
     setBusy(false)
     busy = false
+    setStatus(root, `HP ${END} of ${MAX}.`)
     return Promise.resolve()
   }
 
@@ -141,6 +150,7 @@ export function runPixelHpDrain() {
           if (delta) delta.classList.remove('is-on')
           setBusy(false)
           busy = false
+          setStatus(root, `HP ${END} of ${MAX}.`)
           resolve()
           return
         }
@@ -169,6 +179,7 @@ export function runPixelHpReset() {
   setHp(START)
   setState('idle')
   setBusy(false)
+  if (root) setStatus(root, '')
   return Promise.resolve()
 }
 

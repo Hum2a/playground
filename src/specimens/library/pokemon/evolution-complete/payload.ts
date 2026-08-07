@@ -17,6 +17,7 @@ const payload: SpecimenPayload = {
   ],
   acceptance: [
     'Begins with Form 02 already present and UNREGISTERED',
+    'Never performs Form 01→02 transformation; this sequence registers an already transformed form',
     'Entity settles from scale 1.08 / translateY(-6px) to rest over ~180ms',
     'Registration ring contracts ~160% → 112% over ~260ms',
     'Exactly four cardinal markers lock onto the ring',

@@ -1,12 +1,1 @@
-<div class="me me--scope" data-me-root data-state="idle">
-  <header><span>STUDIO UNIT 04</span><b>AUTO GAIN SCAN</b><em data-me-status>READY</em></header>
-  <div class="me__panel">
-    <div class="me__display">Auto Gain Scan</div>
-    <div class="me__meter"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="me__control"><span></span><span></span><span></span><span></span></div>
-    <div class="me__signal" aria-hidden="true"></div>
-  </div>
-  <button type="button" data-me-run>ENGAGE</button>
-  <button type="button" data-me-reset hidden>RESET</button>
-  <p class="me__announcement" aria-live="polite" data-me-announcement>Auto Gain Scan ready.</p>
-</div>
+<div class="unit gain-scan" data-unit data-state="idle"><div class="unit__top"><b>AUTO GAIN</b><span class="unit__state" data-state-label>STANDBY</span></div><div class="unit__display" aria-hidden="true"><div class="gain-scan__meter"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gain-scan__target">TARGET <b>-14</b> dBFS</div><div class="gain-scan__scan"></div><output class="gain-scan__readout" data-readout>INPUT -18.0 dBFS</output></div><button type="button" data-run>SCAN INPUT</button><button type="button" data-reset hidden>RESET</button><p class="unit__status" role="status" aria-live="polite" data-status>Fixed input level is ready to scan.</p></div>

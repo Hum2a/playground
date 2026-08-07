@@ -2,7 +2,11 @@
   "name": "compressor-threshold-crush",
   "ref": "SPX-3795",
   "title": "Compressor Threshold Crush",
-  "mode": "fader",
+  "operation": "compressor transfer curve",
+  "deterministic": true,
   "externalAssets": false,
-  "reducedMotion": "Immediate engaged state."
+  "audio": false,
+  "reducedMotion": "Completes immediately while retaining the final readout.",
+  "states": ["idle", "action", "final"],
+  "interaction": "CRUSH / RESET"
 }

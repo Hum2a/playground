@@ -111,11 +111,13 @@
     "a11y": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["radiogroup", "textLabels", "liveStatus"],
+      "required": ["radiogroup", "rovingTabindex", "textLabels", "liveStatus", "retractionStatus"],
       "properties": {
         "radiogroup": { "type": "boolean", "const": true },
+        "rovingTabindex": { "type": "boolean", "const": true },
         "textLabels": { "type": "boolean", "const": true },
-        "liveStatus": { "type": "boolean", "const": true }
+        "liveStatus": { "type": "boolean", "const": true },
+        "retractionStatus": { "type": "boolean", "const": true }
       }
     },
     "reducedMotion": {
@@ -196,8 +198,10 @@
       },
       "a11y": {
         "radiogroup": true,
+        "rovingTabindex": true,
         "textLabels": true,
-        "liveStatus": true
+        "liveStatus": true,
+        "retractionStatus": true
       },
       "reducedMotion": {
         "instantStructure": true,

@@ -368,6 +368,10 @@
   width: 0;
 }
 
+.iob--done .iob__obtained {
+  display: block;
+}
+
 .iob--reduced .iob__item,
 .iob--reduced .iob__label-block {
   opacity: 0;

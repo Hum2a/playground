@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const captureShake: Specimen = {
   id: 'capture-shake',
-  ref: 'SPX-321',
+  ref: 'SPX-710',
   title: 'Capture Shake',
   blurb:
     'An abstract entity drops into an original circular capture device; three discrete resolution shakes with pauses resolve to CAPTURED and three star polygons.',

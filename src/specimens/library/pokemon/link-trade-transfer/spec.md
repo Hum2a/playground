@@ -14,6 +14,10 @@ Do **not** reproduce Pokémon art, logos, sprites, fonts, or franchise branding.
 
 Trigger: `TRADE` · Complete label: `TRADE COMPLETE`
 
+Route causality is fixed: **VECTOR travels A → B**, so endpoint B receives
+VECTOR; **PRISM travels B → A**, so endpoint A receives PRISM. Do not swap
+those route labels with their receiving endpoints.
+
 ## Layout (frozen)
 
 | Token | Value |

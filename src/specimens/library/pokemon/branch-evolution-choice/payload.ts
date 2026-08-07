@@ -18,8 +18,8 @@ const payload: SpecimenPayload = {
   acceptance: [
     'One current BUILD // STANDARD; exactly three futures',
     'Branches physically grow from a shared ~45px stem (not fade-only cards)',
-    'Keyboard left/right selects; emphasis stays on branch geometry',
-    'CHOOSE retracts unselected branches (~220ms); current travels the kept path',
+    'Arrow / Home / End use roving tabindex to select; emphasis stays on branch geometry',
+    'CHOOSE keeps the selected destination readable while unselected branches retract (~220ms); status names both outcomes',
     'Final identity is BUILD // {chosen}; other futures gone; static',
     'Reduced motion usable; no external assets; sandbox allow-scripts',
   ],

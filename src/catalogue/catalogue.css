@@ -18,6 +18,22 @@
   gap: var(--space-4);
 }
 
+.catalogue[data-view='compact'] .catalogue__plates {
+  --plate-min: 220px;
+}
+
+.catalogue[data-view='standard'] .catalogue__plates {
+  --plate-min: 280px;
+}
+
+.catalogue[data-view='large'] .catalogue__plates {
+  --plate-min: 380px;
+}
+
+.catalogue[data-view='extra-large'] .catalogue__plates {
+  --plate-min: 520px;
+}
+
 .catalogue__empty {
   color: var(--pewter);
   font-size: var(--text-xs);

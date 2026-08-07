@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import {
   INSPIRATION_DIRECTORY,
@@ -20,6 +20,12 @@ import {
 } from './FilterBar'
 import { SpecimenPlate } from './SpecimenPlate'
 import { useGridWindow } from './useGridWindow'
+import {
+  catalogueViewOption,
+  DEFAULT_CATALOGUE_VIEW,
+  isCatalogueView,
+  type CatalogueView,
+} from './view-options'
 import './catalogue.css'
 
 function isFranchiseId(value: string): value is InspirationFranchiseId {
@@ -48,6 +54,7 @@ function filtersFromParams(params: URLSearchParams): CatalogueFilters {
 function writeParams(
   filters: CatalogueFilters,
   query: string,
+  view: CatalogueView,
 ): URLSearchParams {
   const params = new URLSearchParams()
   for (const key of FACET_KEYS) {
@@ -56,6 +63,7 @@ function writeParams(
   if (filters.franchise) params.set('franchise', filters.franchise)
   if (filters.work) params.set('work', filters.work)
   if (query.trim()) params.set('q', query.trim())
+  if (view !== DEFAULT_CATALOGUE_VIEW) params.set('view', view)
   return params
 }
 
@@ -127,6 +135,11 @@ export function Catalogue() {
     [searchParams],
   )
   const query = searchParams.get('q') ?? ''
+  const requestedView = searchParams.get('view')
+  const view: CatalogueView = isCatalogueView(requestedView)
+    ? requestedView
+    : DEFAULT_CATALOGUE_VIEW
+  const viewOption = catalogueViewOption(view)
 
   const usedFranchises = useMemo(() => {
     const set = new Set<InspirationFranchiseId>()
@@ -198,8 +211,12 @@ export function Catalogue() {
     return disabled
   }, [filters, query, workOptions])
 
-  function patchParams(nextFilters: CatalogueFilters, nextQuery: string) {
-    setSearchParams(writeParams(nextFilters, nextQuery), { replace: true })
+  function patchParams(
+    nextFilters: CatalogueFilters,
+    nextQuery: string,
+    nextView = view,
+  ) {
+    setSearchParams(writeParams(nextFilters, nextQuery, nextView), { replace: true })
   }
 
   function onFacetChange(key: FacetKey, value: string | null) {
@@ -219,31 +236,23 @@ export function Catalogue() {
   }
 
   function onClear() {
-    setSearchParams({}, { replace: true })
+    patchParams(EMPTY_FILTERS, '', view)
   }
 
   const platesRef = useRef<HTMLDivElement>(null)
-  const [plateMin, setPlateMin] = useState(280)
-  useEffect(() => {
-    const el = platesRef.current
-    if (!el) return
-    const raw = getComputedStyle(el).getPropertyValue('--plate-min').trim()
-    const px = Number.parseFloat(raw)
-    if (Number.isFinite(px) && px > 0) setPlateMin(px)
-  }, [])
 
   const plateWin = useGridWindow({
     containerRef: platesRef,
     itemCount: filtered.length,
-    minTrackPx: plateMin,
+    minTrackPx: viewOption.minTrackPx,
     gapPx: 16,
-    estimateRowHeight: 420,
+    estimateRowHeight: viewOption.rowHeight,
     overscanRows: 2,
   })
   const plateSlice = filtered.slice(plateWin.start, plateWin.end)
 
   return (
-    <div className="catalogue">
+    <div className="catalogue" data-view={view}>
       <FilterBar
         filters={filters}
         franchises={usedFranchises}
@@ -259,6 +268,8 @@ export function Catalogue() {
         onWorkChange={onWorkChange}
         onQueryChange={onQueryChange}
         onClear={onClear}
+        view={view}
+        onViewChange={(nextView) => patchParams(filters, query, nextView)}
       />
       <div
         ref={platesRef}

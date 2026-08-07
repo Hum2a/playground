@@ -1,9 +1,6 @@
-# Scene Recall Sweep
+# Scene Recall
 
-A portable, manufacturer-neutral music equipment motion primitive using original labels and deterministic visual signals only.
+A portable, manufacturer-neutral operation with explicit idle, action, and final states. A selection sweep crosses eight scene slots and settles on the fixed target, scene 07. It uses no audio, network access, storage, clocks, or randomness.
 
 ## Reduced motion
-The engaged state is rendered without choreography.
-
-## Controls
-Use ENGAGE and RESET to demonstrate the state transition.
+The final state is applied immediately and its result remains available in the live status text.

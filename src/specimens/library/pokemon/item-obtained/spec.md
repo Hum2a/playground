@@ -42,10 +42,11 @@ Canonical demo: ENERGY SHARD ×02 → OBTAIN ITEM → ×03.
 | Discovery | 0–240 | Enter from `translateY(30px)`; scale `.7 → 1.08 → 1`; rotate `-8 → 4 → 0` |
 | Present | 240–500 | Hold centred; label; rule `0 → 110px` (120ms) |
 | Transfer | 500–820 | Slot reveals; item scales `1 → .32` on two-stage curve (320ms) |
-| Dock | 820–960 | Slot `1 → .94 → 1.03 → 1` (140ms); qty `02 → 03` |
+| Dock | 820–960 | Slot `1 → .94 → 1.03 → 1` (140ms); only after the item docks, qty `02 → 03` |
 | Accents | 960–1050 | Exactly two lines, ~90ms |
 
-Do **not** change quantity before docking.
+Do **not** change quantity before docking. The terminal state keeps the filled
+inventory row, `ENERGY SHARD ×03`, and visible `ITEM OBTAINED` text after accents end.
 
 ## Reduced motion
 
