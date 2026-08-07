@@ -1,9 +1,9 @@
 /**
- * Button Impact Shockwave — angular shockwave through parent card.
+ * Button Impact Shockwave — angular shockwave echoes from button origin through card.
  * iframe-safe; no storage / parent / network.
  */
 
-const IMPACT_MS = 660
+const IMPACT_MS = 720
 const SETTLE_MS = 650
 const TOTAL_MS = IMPACT_MS + SETTLE_MS
 

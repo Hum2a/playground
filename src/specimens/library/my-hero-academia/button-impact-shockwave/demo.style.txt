@@ -1,10 +1,16 @@
-/* button-impact-shockwave — portable specimen styles. Do not restyle to host tokens. */
+/* SPX-2118 Button Impact Shockwave — portable contract. */
 
 .bis {
-  --bis-primary: #38a3ff;
-  --bis-ink: #101820;
-  --bis-paper: #f4f7fa;
-  --bis-accent: #ff4d35;
+  --primary: #38a3ff;
+  --ink: #101820;
+  --paper: #f4f7fa;
+  --accent: #ff4d35;
+  --ease: cubic-bezier(0.15, 0.85, 0.25, 1);
+  --impact-ms: 720;
+  --origin-x-pct: 50;
+  --origin-y-pct: 50;
+  --echo-count: 3;
+  --ring-max-scale: 14;
 
   box-sizing: border-box;
   position: relative;
@@ -16,8 +22,8 @@
   min-height: 300px;
   padding: 1rem;
   overflow: hidden;
-  background: var(--bis-paper);
-  color: var(--bis-ink);
+  background: var(--paper);
+  color: var(--ink);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
@@ -41,23 +47,9 @@
   position: relative;
   width: min(100%, 300px);
   padding: 1rem 1rem 1.1rem;
-  border: 3px solid var(--bis-ink);
-  background: var(--bis-paper);
+  border: 3px solid var(--ink);
+  background: var(--paper);
   overflow: hidden;
-}
-
-.bis__wave {
-  position: absolute;
-  left: 50%;
-  top: 72%;
-  width: 20px;
-  height: 20px;
-  margin: -10px 0 0 -10px;
-  border: 3px solid var(--bis-primary);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  opacity: 0;
-  transform: scale(0.2);
-  pointer-events: none;
 }
 
 .bis__eyebrow {
@@ -65,7 +57,7 @@
   font-size: 0.58rem;
   font-weight: 800;
   letter-spacing: 0.2em;
-  color: var(--bis-primary);
+  color: var(--primary);
 }
 
 .bis__title {
@@ -76,13 +68,22 @@
   text-transform: uppercase;
 }
 
+.bis__origin {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .bis__btn {
+  position: relative;
+  z-index: 2;
   margin: 0;
   padding: 0.5rem 1rem;
-  border: 3px solid var(--bis-ink);
+  border: 3px solid var(--ink);
   border-radius: 0;
-  background: var(--bis-accent);
-  color: var(--bis-paper);
+  background: var(--accent);
+  color: var(--paper);
   font: inherit;
   font-size: 0.68rem;
   font-weight: 900;
@@ -92,7 +93,7 @@
 }
 
 .bis__btn:focus-visible {
-  outline: 2px solid var(--bis-primary);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -101,12 +102,35 @@
   cursor: not-allowed;
 }
 
+.bis__ring {
+  position: absolute;
+  left: calc(var(--origin-x-pct) * 1%);
+  top: calc(var(--origin-y-pct) * 1%);
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid var(--primary);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  opacity: 0;
+  transform: scale(0.15);
+  pointer-events: none;
+}
+
+.bis__ring--2 {
+  border-color: var(--ink);
+}
+
+.bis__ring--3 {
+  border-width: 2px;
+  border-color: var(--primary);
+}
+
 .bis__result {
   margin: 0.65rem 0 0;
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.2em;
-  color: var(--bis-primary);
+  color: var(--primary);
 }
 
 .bis__result[hidden] {
@@ -116,10 +140,10 @@
 .bis__replay {
   margin: 0;
   padding: 0.4rem 0.65rem;
-  border: 2px solid var(--bis-ink);
+  border: 2px solid var(--ink);
   border-radius: 0;
   background: transparent;
-  color: var(--bis-ink);
+  color: var(--ink);
   font: inherit;
   font-size: 0.6rem;
   font-weight: 800;
@@ -129,34 +153,49 @@
 }
 
 .bis__replay:focus-visible {
-  outline: 2px solid var(--bis-primary);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-.bis[data-phase='impact'] .bis__wave {
-  animation: bis-wave 660ms cubic-bezier(0.15, 0.85, 0.25, 1) both;
+.bis[data-phase='impact'] .bis__ring--1 {
+  animation: bis-ring calc(var(--impact-ms) * 1ms) var(--ease) both;
+}
+
+.bis[data-phase='impact'] .bis__ring--2 {
+  animation: bis-ring calc(var(--impact-ms) * 1ms) var(--ease) 90ms both;
+}
+
+.bis[data-phase='impact'] .bis__ring--3 {
+  animation: bis-ring calc(var(--impact-ms) * 1ms) var(--ease) 180ms both;
 }
 
 .bis[data-phase='impact'] .bis__card {
-  animation: bis-card 660ms ease-out both;
+  animation: bis-card calc(var(--impact-ms) * 1ms) ease-out both;
 }
 
-.bis[data-phase='done'] .bis__wave {
+.bis[data-phase='done'] .bis__ring {
   opacity: 0;
 }
 
-@keyframes bis-wave {
+@keyframes bis-ring {
   0% {
-    opacity: 0.9;
-    transform: scale(0.2);
+    opacity: 1;
+    transform: scale(0.15);
   }
-  35% {
-    opacity: 0.75;
-    transform: scale(4.5);
+
+  70% {
+    opacity: 1;
+    transform: scale(calc(var(--ring-max-scale) * 0.85));
   }
+
+  85% {
+    opacity: 1;
+    transform: scale(var(--ring-max-scale));
+  }
+
   100% {
     opacity: 0;
-    transform: scale(8);
+    transform: scale(var(--ring-max-scale));
   }
 }
 
@@ -165,34 +204,36 @@
   100% {
     transform: translateY(0);
   }
-  12% {
-    transform: translateY(3px);
+
+  10% {
+    transform: translateY(4px);
   }
-  24% {
+
+  22% {
     transform: translateY(0);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bis[data-phase='impact'] .bis__wave,
+  .bis[data-phase='impact'] .bis__ring,
   .bis[data-phase='impact'] .bis__card {
     animation: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__wave,
+[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__ring,
 [data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__card {
   animation: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bis[data-phase='done'] .bis__wave,
-  .bis[data-phase='impact'] .bis__wave {
+  .bis[data-phase='done'] .bis__ring,
+  .bis[data-phase='impact'] .bis__ring {
     opacity: 0;
   }
 }
 
-[data-force-reduced-motion='true'] .bis[data-phase='done'] .bis__wave,
-[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__wave {
+[data-force-reduced-motion='true'] .bis[data-phase='done'] .bis__ring,
+[data-force-reduced-motion='true'] .bis[data-phase='impact'] .bis__ring {
   opacity: 0;
 }

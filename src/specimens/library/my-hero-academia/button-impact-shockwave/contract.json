@@ -1,10 +1,62 @@
 {
   "name": "button-impact-shockwave",
+  "intent": "Angular shockwave echoes expand from button origin to card edges — sharp hex rings, not soft ripple.",
+  "catalogue": {
+    "mha": "MHA-144",
+    "ref": "SPX-2118"
+  },
+  "copy": {
+    "eyebrow": "PRIORITY",
+    "title": "Deploy response",
+    "activate": "Activate",
+    "complete": "COMPLETE",
+    "replay": "Replay",
+    "liveReady": "Action ready.",
+    "liveImpact": "Impact shockwave.",
+    "liveDone": "Action complete."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "animation": { "impactMs": 660, "totalMs": 1310 }
+  "timing": {
+    "impactMs": 720,
+    "settleMs": 650,
+    "totalMs": 1370
+  },
+  "shockwave": {
+    "originXPct": 50,
+    "originYPct": 50,
+    "echoCount": 3,
+    "echoDelaysMs": [0, 90, 180],
+    "ringSizePx": 24,
+    "ringBorderPx": 3,
+    "ringMaxScale": 14,
+    "ringClip": "hexagon (6-point)",
+    "opacityHoldUntilPct": 85
+  },
+  "geometry": {
+    "cardMaxWidthPx": 300,
+    "cardBorderPx": 3
+  },
+  "api": {
+    "run": "runButtonImpactShockwave()",
+    "reset": "resetButtonImpactShockwave()",
+    "replay": "replayButtonImpactShockwave()"
+  },
+  "reducedMotion": {
+    "behaviour": "COMPLETE appears immediately; no ring expansion or card nudge"
+  },
+  "acceptance": [
+    "Idle: PRIORITY card with Activate button; live reads action ready",
+    "Activate: three angular hex rings echo from button centre to card edges",
+    "Rings hold full opacity until 85% then cut off — no soft Material fade",
+    "Card nudges on impact; COMPLETE label appears",
+    "Replay resets to idle",
+    "Reduced motion (prefers or data-force) skips ring animation",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Origin percentages, echo count (3), and max scale frozen in contract — angular not ripple"
 }
