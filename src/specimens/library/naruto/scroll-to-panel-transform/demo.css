@@ -6,7 +6,12 @@
   --chakra: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
-  /* wave2 timing surface */
+  --stp-morph-ms: 480ms;
+  --stp-settle-ms: 90ms;
+  --stp-token-px: 64;
+  --stp-panel-h: 176px;
+  --stp-radius-from: 50%;
+  --stp-radius-to: 10px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -55,29 +60,29 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid color-mix(in srgb, var(--chakra) 40%, transparent);
+  background: rgb(247 242 232 / 0.04);
 }
 
 .stp__morph {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: calc(var(--stp-token-px) * 1px);
+  height: calc(var(--stp-token-px) * 1px);
   overflow: hidden;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  border-radius: var(--stp-radius-from);
+  background: color-mix(in srgb, var(--chakra) 28%, transparent);
   border: 1.5px solid var(--chakra);
   transition:
-    width 480ms cubic-bezier(0.2, 0.8, 0.25, 1),
-    height 480ms cubic-bezier(0.2, 0.8, 0.25, 1),
-    border-radius 480ms cubic-bezier(0.2, 0.8, 0.25, 1);
+    width var(--stp-morph-ms) cubic-bezier(0.2, 0.8, 0.25, 1),
+    height var(--stp-morph-ms) cubic-bezier(0.2, 0.8, 0.25, 1),
+    border-radius var(--stp-morph-ms) cubic-bezier(0.2, 0.8, 0.25, 1);
 }
 
 .stp[data-phase='active'] .stp__morph,
 .stp[data-phase='done'] .stp__morph {
   width: 100%;
-  height: 176px;
-  border-radius: 10px;
+  height: var(--stp-panel-h);
+  border-radius: var(--stp-radius-to);
 }
 
 .stp__token {
@@ -86,27 +91,32 @@
   display: grid;
   place-items: center;
   color: var(--chakra);
-  opacity: 1;
-  transition: opacity 150ms ease-out;
+  transform: scale(1);
+  clip-path: inset(0 0 0 0);
+  transition:
+    transform calc(var(--stp-morph-ms) * 0.45) cubic-bezier(0.4, 0, 0.6, 1),
+    clip-path calc(var(--stp-morph-ms) * 0.55) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stp[data-phase='active'] .stp__token,
 .stp[data-phase='done'] .stp__token {
-  opacity: 0;
+  transform: scale(0.35);
+  clip-path: inset(40% 40% 40% 40%);
+  pointer-events: none;
 }
 
 .stp__panel-content {
   position: absolute;
   inset: 0;
   padding: 0.9rem 1rem;
-  opacity: 0;
-  transition: opacity 220ms ease-out;
+  /* reveal by expanding clip — not opacity crossfade */
+  clip-path: inset(50% 50% 50% 50%);
+  transition: clip-path var(--stp-morph-ms) cubic-bezier(0.2, 0.8, 0.25, 1);
 }
 
 .stp[data-phase='active'] .stp__panel-content,
 .stp[data-phase='done'] .stp__panel-content {
-  opacity: 1;
-  transition-delay: 260ms;
+  clip-path: inset(0 0 0 0);
 }
 
 .stp__panel-eyebrow {
@@ -174,7 +184,7 @@
 
 .stp__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: color-mix(in srgb, var(--chakra) 28%, transparent);
 }
 
 .stp__btn:hover:not(:disabled) {

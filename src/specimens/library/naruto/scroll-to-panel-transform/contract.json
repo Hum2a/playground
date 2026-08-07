@@ -1,37 +1,53 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/scroll-to-panel-transform.schema.json",
-  "title": "ScrollToPanelTransform",
-  "description": "A round scroll token morphs shape into a rectangular content panel with a crossfading glyph/copy swap.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "morphMs", "glyphFadeMs", "copyFadeMs", "copyFadeStartMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "scroll-to-panel-transform" },
-    "morphMs": { "type": "number", "const": 480 },
-    "glyphFadeMs": { "type": "number", "const": 150 },
-    "copyFadeMs": { "type": "number", "const": 220 },
-    "copyFadeStartMs": { "type": "number", "const": 260 },
-    "settleMs": { "type": "number", "const": 90 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#1A1612" },
-        "parchment": { "type": "string", "const": "#EBE2D0" },
-        "chakra": { "type": "string", "const": "#B83228" },
-        "olive": { "type": "string", "const": "#6A5E4E" },
-        "off": { "type": "string", "const": "#F7F2E8" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateOpen"],
-      "properties": {
-        "immediateOpen": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "scroll-to-panel-transform",
+  "intent": "A round scroll token morphs via scale/clip into a rectangular panel — one continuous container, not a content crossfade.",
+  "catalogue": { "nr": "NR-023", "ref": "SPX-2366" },
+  "copy": {
+    "system": "MORPH // SCROLL PANEL",
+    "idle": "SEALED",
+    "morphing": "MORPHING",
+    "opened": "OPENED"
+  },
+  "geometry": {
+    "tokenPx": 64,
+    "panelHPx": 176,
+    "radiusFrom": "50%",
+    "radiusToPx": 10,
+    "reveal": "clip-path inset expand (not opacity crossfade)"
+  },
+  "timing": {
+    "morphMs": 480,
+    "settleMs": 90
+  },
+  "colours": {
+    "ink": "#1A1612",
+    "parchment": "#EBE2D0",
+    "chakra": "#B83228",
+    "olive": "#6A5E4E",
+    "off": "#F7F2E8",
+    "palette": "paper"
+  },
+  "api": {
+    "run": "runScrollToPanelTransform()",
+    "reset": "resetScrollToPanelTransform()",
+    "replay": "replayScrollToPanelTransform()"
+  },
+  "cssVars": [
+    "--stp-morph-ms",
+    "--stp-settle-ms",
+    "--stp-token-px",
+    "--stp-panel-h",
+    "--stp-radius-from",
+    "--stp-radius-to"
+  ],
+  "reducedMotion": {
+    "behaviour": "Panel appears fully expanded with content visible; no morph"
+  },
+  "acceptance": [
+    "Token morphs width/height/radius in morphMs 480 from 64px circle to full-width × panelHPx 176 panel",
+    "Panel copy reveals via clip-path inset expand — no opacity crossfade of glyph↔copy",
+    "Token exits via scale + clip inset collapse (not a fade-only swap)",
+    "After settleMs 90 status is OPENED",
+    "Reduced motion (prefers or data-force) shows OPENED panel immediately with transitions disabled"
+  ]
 }

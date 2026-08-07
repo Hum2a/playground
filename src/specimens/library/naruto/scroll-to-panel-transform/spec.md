@@ -1,15 +1,16 @@
 # Scroll-to-Panel Transform
 
-A small round scroll token (64×64, fully rounded) morphs its width, height, and corner radius into a full rectangular content panel (100%×176, 10px radius) as a single continuous element — the token glyph crossfades out while panel copy crossfades in.
+A round scroll token morphs via scale/clip into a rectangular content panel.
 
 ## Behaviour
 
-- Idle: round token only, status `SEALED`.
-- Morphing: shape (width/height/border-radius) animates over 480ms; token glyph fades out first (150ms), panel copy fades in from ~260ms (220ms).
-- Resolved: full panel with copy, status `OPENED`.
-- Reduced motion: panel appears fully expanded with copy visible immediately; no shape morph.
+- Idle: 64px circular token, status `SEALED`.
+- Morph: container expands; token collapses via scale+clip; panel copy reveals via clip-path inset (not opacity crossfade).
+- Opened: full panel, status `OPENED`.
+- Reduced motion: OPENED immediately.
 
 ## Freeze
 
-- Shape morph: 480ms · glyph fade-out: 150ms · copy fade-in: 220ms starting at 260ms · settle: 90ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Morph: 480ms · settle: 90ms · token: 64px · panel height: 176px
+- Reveal language: clip-path inset expand (not opacity crossfade)
+- Palette (paper): `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`
