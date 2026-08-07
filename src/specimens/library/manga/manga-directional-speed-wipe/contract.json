@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/manga-directional-speed-wipe.schema.json",
+  "title": "MangaDirectionalSpeedWipe",
+  "description": "Right-to-left navigation wipe bridged by exactly 24 predetermined manga speed lines.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "direction",
+    "lineCount",
+    "travelMs",
+    "totalMs",
+    "shiftPx",
+    "ink",
+    "easing",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "manga-directional-speed-wipe" },
+    "direction": { "type": "string", "const": "right-to-left" },
+    "lineCount": { "type": "number", "const": 24 },
+    "lineLengthPx": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number", "const": 80 },
+        "max": { "type": "number", "const": 260 }
+      }
+    },
+    "lineThicknessPx": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "number", "const": 2 },
+        "max": { "type": "number", "const": 6 }
+      }
+    },
+    "angleDegMax": { "type": "number", "const": 2 },
+    "travelMs": { "type": "number", "const": 520 },
+    "totalMs": { "type": "number", "const": 580 },
+    "shiftPx": { "type": "number", "const": 38 },
+    "outgoing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "type": "number", "const": 0 },
+        "to": { "type": "number", "const": -38 }
+      }
+    },
+    "incoming": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "type": "number", "const": 38 },
+        "to": { "type": "number", "const": 0 }
+      }
+    },
+    "ink": { "type": "string", "const": "#111111" },
+    "easing": { "type": "string", "const": "cubic-bezier(.7,0,.2,1)" },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateSwap", "noTravellingLines"],
+      "properties": {
+        "immediateSwap": { "type": "boolean", "const": true },
+        "noTravellingLines": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

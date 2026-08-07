@@ -145,6 +145,7 @@ export const SUGGESTED_FREE_TAGS = [
   'bilingual',
   'comic',
   'wipe',
+  'speed-lines',
   'clip-path',
   'stagger',
   'parallax',

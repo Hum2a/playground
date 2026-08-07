@@ -1,0 +1,228 @@
+/* SPX-4089 Directional Speed Wipe — portable contract. */
+
+.mdsw {
+  --ink: #111111;
+  --paper: #f4f1e8;
+  --mute: #6a6558;
+  --mid: #3a3a3a;
+  --ease: cubic-bezier(0.7, 0, 0.2, 1);
+  --travel: 520ms;
+  --shift: 38px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
+  background: #e8e4d8;
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.mdsw *,
+.mdsw *::before,
+.mdsw *::after {
+  box-sizing: border-box;
+}
+
+.mdsw__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mdsw__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.mdsw__host {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 180px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.mdsw__surface {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 0.35rem;
+  padding: 1.1rem 1.15rem;
+  transition:
+    transform var(--travel) var(--ease),
+    opacity var(--travel) var(--ease);
+  will-change: transform, opacity;
+}
+
+.mdsw__surface--out {
+  z-index: 1;
+  background: var(--paper);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mdsw__surface--in {
+  z-index: 1;
+  background: #ebe7db;
+  transform: translateX(var(--shift));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mdsw[data-phase='wipe'] .mdsw__surface--out {
+  transform: translateX(calc(var(--shift) * -1));
+  opacity: 0.55;
+}
+
+.mdsw[data-phase='wipe'] .mdsw__surface--in,
+.mdsw[data-phase='done'] .mdsw__surface--in {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mdsw[data-phase='done'] .mdsw__surface--out {
+  transform: translateX(calc(var(--shift) * -1));
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.mdsw__label {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.mdsw__copy {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--mid);
+}
+
+.mdsw__lines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mdsw__line {
+  position: absolute;
+  left: 100%;
+  top: var(--top);
+  width: var(--len);
+  height: var(--th);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ink) 14%,
+    var(--ink) 86%,
+    transparent 100%
+  );
+  clip-path: polygon(0 42%, 100% 0, 100% 100%, 0 58%);
+  opacity: 0;
+  transform: translateX(0) rotate(var(--ang));
+  transform-origin: left center;
+}
+
+.mdsw[data-phase='wipe'] .mdsw__line {
+  animation: mdsw-travel var(--travel) var(--ease) var(--delay) forwards;
+}
+
+@keyframes mdsw-travel {
+  0% {
+    opacity: 1;
+    transform: translateX(0) rotate(var(--ang));
+  }
+  100% {
+    opacity: 0;
+    /* Clear host left-to-right: own length + ~host width. */
+    transform: translateX(calc(-100% - 420px)) rotate(var(--ang));
+  }
+}
+
+.mdsw[data-phase='done'] .mdsw__line,
+.mdsw[data-phase='idle'] .mdsw__line {
+  animation: none;
+  opacity: 0;
+}
+
+.mdsw__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.mdsw__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mdsw__btn--primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.mdsw__btn:hover:not(:disabled) {
+  outline: 1px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.mdsw__btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.mdsw__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mdsw__surface {
+    transition: none !important;
+  }
+
+  .mdsw__line {
+    animation: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .mdsw__surface {
+  transition: none !important;
+}
+
+html[data-force-reduced-motion='true'] .mdsw__line {
+  animation: none !important;
+}

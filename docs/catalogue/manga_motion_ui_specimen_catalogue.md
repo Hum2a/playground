@@ -78,7 +78,7 @@ artist.
 
 - [ ] **MANGA-019** · `SPX-4088` · ★★★★★ **Radial Speed Burst** — Dense black motion lines
     radiate from a focal point during a priority action.
-- [ ] **MANGA-020** · `SPX-4089` · ★★★★★ **Directional Speed Wipe** — Parallel speed lines carry
+- [x] **MANGA-020** · `SPX-4089` · ★★★★★ **Directional Speed Wipe** — Parallel speed lines carry
     the current surface away in a chosen direction.
 - [ ] **MANGA-021** · `SPX-4090` · ★★★☆☆ **Tunnel Speed Lines** — A portable manga-inspired
     specimen exploring tunnel speed lines as a self-contained UI/motion
@@ -936,13 +936,14 @@ The original ranked Top 50 and recommended build waves are retained below.
 | MANGA-003 | `SPX-4072` | `manga-diagonal-panel-wipe` | Manga Diagonal Panel Wipe |
 | MANGA-004 | `SPX-4073` | `manga-panel-shatter-transition` | Manga Panel Shatter Transition |
 | MANGA-011 | `SPX-4080` | `manga-page-turn` | Manga Page Turn |
+| MANGA-020 | `SPX-4089` | `manga-directional-speed-wipe` | Directional Speed Wipe |
 
-- Progress: **4 / 270** complete.
+- Progress: **5 / 270** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 4 |
-| Open | 266 |
+| Done | 5 |
+| Open | 265 |
 
 ## Core first-wave / build queue
 
@@ -953,7 +954,7 @@ The original ranked Top 50 and recommended build waves are retained below.
 - [x] **MANGA-011** · `SPX-4080` · **Manga Page Turn**
 - [ ] **MANGA-013** · `SPX-4082` · **Double-Page Spread Open** · scaffold `double-page-spread-open`
 - [ ] **MANGA-019** · `SPX-4088` · **Radial Speed Burst** · scaffold `radial-speed-burst`
-- [ ] **MANGA-020** · `SPX-4089` · **Directional Speed Wipe** · scaffold `manga-directional-speed-wipe`
+- [x] **MANGA-020** · `SPX-4089` · **Directional Speed Wipe**
 - [ ] **MANGA-028** · `SPX-4097` · **Black Impact Frame** · scaffold `black-impact-frame`
 - [ ] **MANGA-032** · `SPX-4101` · **Hit Stop Freeze** · scaffold `hit-stop-freeze`
 - [ ] **MANGA-036** · `SPX-4105` · **Speech Balloon Pop** · scaffold `speech-balloon-pop`
