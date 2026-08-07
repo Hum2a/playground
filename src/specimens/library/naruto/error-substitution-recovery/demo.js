@@ -1,14 +1,14 @@
 /**
- * Error Substitution Recovery — fault → decoy residue → recovery latch.
+ * Error Substitution Recovery — fault → decoy residue → latched fallback recovery.
  * iframe-safe; no storage / parent / network.
  */
 
 const FAULT_MS = 170
-const SUB_MS = 100
+const SUB_MS = 120
 const LATCH_MS = 140
-const RESIDUE_MS = 180
 const SETTLE_MS = 90
-const TOTAL_MS = FAULT_MS + SUB_MS + LATCH_MS + RESIDUE_MS + SETTLE_MS
+const RESIDUE_COUNT = 4
+const TOTAL_MS = FAULT_MS + SUB_MS + LATCH_MS + SETTLE_MS
 
 let busy = false
 let recovered = false
@@ -70,11 +70,11 @@ function showRecovered() {
   setBadges('FAULTED', 'ACTIVE')
   const root = rootEl()
   root?.setAttribute('data-phase', 'recovered')
-  root?.setAttribute('data-residue', 'clear')
-  later(RESIDUE_MS, () => root?.removeAttribute('data-residue'))
+  root?.setAttribute('data-latched', 'true')
+  root?.removeAttribute('data-residue')
   setStatus('RECOVERED')
-  setHint('Fallback latched ACTIVE.')
-  setLive('Fault recovered. Fallback Service B latched ACTIVE; primary FAULTED.')
+  setHint('Fallback latched active.')
+  setLive('Fault recovered. Fallback service latched ACTIVE.')
 }
 
 function resetVisual() {
@@ -82,6 +82,7 @@ function resetVisual() {
   setBadges('NOMINAL', 'STANDBY')
   const root = rootEl()
   root?.setAttribute('data-phase', 'idle')
+  root?.removeAttribute('data-latched')
   root?.removeAttribute('data-residue')
   setStatus('NOMINAL')
   setHint('Press Run to simulate a fault.')
@@ -89,7 +90,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run fault → substitute with residue → latch recovered.
+ * Auto-run full fault → substitute → latch recover choreography.
  * @returns {Promise<void>}
  */
 export function runErrorSubstitutionRecovery() {
@@ -120,14 +121,20 @@ export function runErrorSubstitutionRecovery() {
       root.setAttribute('data-phase', 'substituting')
       root.setAttribute('data-residue', 'true')
       setStatus('SUBSTITUTING')
-      setHint('Decoy residue present; swapping.')
+      setHint('Decoy residue visible; acquiring fallback.')
       setBadges('FAULTED', 'ACQUIRING')
-      setLive('Substituting fallback. Decoy residue visible.')
+      setLive(`Substituting fallback with ${RESIDUE_COUNT} decoy residue marks.`)
     })
-    later(FAULT_MS + SUB_MS + LATCH_MS, () => {
-      showRecovered()
+    later(FAULT_MS + SUB_MS, () => {
+      root.setAttribute('data-phase', 'recovered')
+      root.setAttribute('data-latched', 'true')
+      root.removeAttribute('data-residue')
+      setBadges('FAULTED', 'ACTIVE')
+      setStatus('LATCHING')
+      setLive('Recovery latch closing on fallback.')
     })
     later(TOTAL_MS, () => {
+      showRecovered()
       busy = false
       setButtons(true)
       resolve()

@@ -1,24 +1,15 @@
 {
   "name": "error-substitution-recovery",
-  "intent": "Primary faults, decoy residue appears while fallback acquires, then recovery latches Service B ACTIVE.",
-  "catalogue": { "nr": "NR-044", "ref": "SPX-2387" },
-  "copy": {
-    "system": "FAILOVER // SUBSTITUTION",
-    "nominal": "NOMINAL",
-    "fault": "FAULT DETECTED",
-    "substituting": "SUBSTITUTING",
-    "recovered": "RECOVERED"
+  "intent": "Primary fault triggers decoy residue, then a recovery latch settles the fallback service ACTIVE.",
+  "geometry": {
+    "residueCount": 4
   },
   "timing": {
     "faultMs": 170,
-    "subMs": 100,
+    "subMs": 120,
     "latchMs": 140,
-    "residueMs": 180,
     "settleMs": 90,
-    "totalMs": 680
-  },
-  "geometry": {
-    "residueCount": 3
+    "totalMs": 520
   },
   "colours": {
     "ink": "#12141A",
@@ -27,7 +18,7 @@
     "danger": "#A85868",
     "mute": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "clone-ash"
   },
   "api": {
     "run": "runErrorSubstitutionRecovery()",
@@ -35,11 +26,11 @@
     "replay": "replayErrorSubstitutionRecovery()"
   },
   "reducedMotion": {
-    "behaviour": "Shows RECOVERED with Service B ACTIVE immediately"
+    "behaviour": "Recovered fallback already latched ACTIVE"
   },
   "acceptance": [
-    "Primary faults at faultMs 170 then fallback acquires over subMs 100 with 3 residue dots",
-    "Recovery latch scale-pulses latchMs 140; Service B ACTIVE / primary FAULTED",
-    "Swaps use clip-path translate — not opacity fade; reduced motion shows recovered immediately"
+    "Primary faults at 170ms; decoy fallback acquires with 4 residue marks at +120ms",
+    "Recovery latch closes over 140ms; Service B ACTIVE with primary FAULTED",
+    "Reduced motion shows recovered fallback immediately"
   ]
 }

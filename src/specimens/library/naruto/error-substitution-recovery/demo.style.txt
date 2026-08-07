@@ -8,9 +8,9 @@
   --mute: #6e6a78;
   --off: #f0eef4;
   --esr-fault-ms: 170ms;
-  --esr-sub-ms: 100ms;
+  --esr-sub-ms: 120ms;
   --esr-latch-ms: 140ms;
-  --esr-residue-ms: 180ms;
+  --esr-settle-ms: 90ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -61,7 +61,7 @@
   width: 100%;
   padding: 1rem 0.75rem;
   border: 1px solid rgb(122 107 154 / 0.45);
-  background: rgb(240 238 244 / 0.04);
+  background: rgb(240 238 244 / 0.03);
 }
 
 .esr__slot {
@@ -69,29 +69,30 @@
   display: grid;
   width: 100%;
   max-width: 260px;
-  height: 5.5rem;
+  height: 5.8rem;
 }
 
 .esr__card {
   grid-area: 1 / 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.2rem;
   padding: 0.6rem 0.75rem;
   border: 1.5px solid var(--mute);
-  background: rgb(16 19 24 / 0.9);
-  transform: scale(1) translateX(0);
-  clip-path: inset(0 0 0 0);
+  background: rgb(16 19 24 / 0.95);
+  transform: scale(0.92);
+  clip-path: circle(0% at 50% 50%);
   transition:
-    transform var(--esr-sub-ms) ease-out,
-    clip-path var(--esr-sub-ms) steps(1, end),
-    border-color 100ms ease-out;
+    transform var(--esr-sub-ms) cubic-bezier(0.2, 0.9, 0.25, 1),
+    clip-path var(--esr-sub-ms) cubic-bezier(0.2, 0.9, 0.25, 1),
+    border-color 120ms ease-out;
 }
 
-.esr__card--fallback {
-  clip-path: inset(0 0 0 100%);
-  transform: scale(0.96) translateX(12px);
+.esr__card--primary {
+  transform: scale(1);
+  clip-path: circle(140% at 50% 50%);
 }
 
 .esr__card-kicker {
@@ -134,82 +135,81 @@
     transform: translateX(0) scale(1);
   }
   25% {
-    transform: translateX(-4px) scale(1);
+    transform: translateX(-3px) scale(1);
   }
   75% {
-    transform: translateX(4px) scale(1);
+    transform: translateX(3px) scale(1);
   }
 }
 
-.esr[data-phase='substituting'] .esr__card--primary {
-  clip-path: inset(0 100% 0 0);
-  transform: scale(0.94) translateX(-14px);
+.esr[data-phase='substituting'] .esr__card--primary,
+.esr[data-phase='recovered'] .esr__card--primary {
+  transform: scale(0.7);
+  clip-path: circle(0% at 50% 50%);
   border-color: var(--danger);
 }
 
 .esr[data-phase='substituting'] .esr__card--fallback {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1) translateX(0);
+  transform: scale(1);
+  clip-path: circle(140% at 50% 50%);
   border-color: var(--ash);
-}
-
-.esr[data-phase='recovered'] .esr__card--primary {
-  clip-path: inset(0 100% 0 0);
-  transform: scale(0.9) translateX(-18px);
+  border-style: dashed;
 }
 
 .esr[data-phase='recovered'] .esr__card--fallback {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1) translateX(0);
+  transform: scale(1);
+  clip-path: circle(140% at 50% 50%);
   border-color: var(--ash);
+  border-style: solid;
   box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.45);
-  animation: esr-latch var(--esr-latch-ms) ease-out;
-}
-
-@keyframes esr-latch {
-  0% {
-    transform: scale(1.06) translateX(0);
-  }
-  100% {
-    transform: scale(1) translateX(0);
-  }
 }
 
 .esr__residue {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
 }
 
-.esr__residue i {
+.esr__residue span {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 0.4rem;
+  height: 0.4rem;
   background: var(--danger);
   transform: scale(0);
-  transition: transform var(--esr-residue-ms) cubic-bezier(0.2, 1.2, 0.3, 1);
+  transition: transform 100ms cubic-bezier(0.2, 1.2, 0.3, 1);
 }
 
-.esr__residue i:nth-child(1) {
-  top: 20%;
-  left: 18%;
-}
-.esr__residue i:nth-child(2) {
-  top: 48%;
-  left: 46%;
-}
-.esr__residue i:nth-child(3) {
-  bottom: 22%;
-  right: 20%;
-}
+.esr__residue span:nth-child(1) { left: 14%; top: 22%; }
+.esr__residue span:nth-child(2) { left: 70%; top: 18%; }
+.esr__residue span:nth-child(3) { left: 22%; top: 70%; }
+.esr__residue span:nth-child(4) { left: 68%; top: 66%; }
 
-.esr[data-residue='true'] .esr__residue i {
+.esr[data-phase='substituting'] .esr__residue span,
+.esr[data-residue='true'] .esr__residue span {
   transform: scale(1);
 }
 
-.esr[data-residue='clear'] .esr__residue i {
-  transform: scale(0) translateY(6px);
+.esr[data-phase='substituting'] .esr__residue span:nth-child(2) { transition-delay: 30ms; }
+.esr[data-phase='substituting'] .esr__residue span:nth-child(3) { transition-delay: 50ms; }
+.esr[data-phase='substituting'] .esr__residue span:nth-child(4) { transition-delay: 70ms; }
+
+.esr[data-phase='recovered'] .esr__residue span {
+  transform: scale(0);
+  transition-delay: 0ms;
+}
+
+.esr__latch {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--ash);
+  transform: scale(1.08);
+  clip-path: inset(50% 50% 50% 50%);
+  pointer-events: none;
+  transition: clip-path var(--esr-latch-ms) cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
+.esr[data-phase='recovered'][data-latched='true'] .esr__latch {
+  clip-path: inset(0 0 0 0);
 }
 
 .esr__status {
@@ -260,7 +260,7 @@
 
 .esr__btn--primary {
   border-color: var(--ash);
-  background: rgb(122 107 154 / 0.18);
+  background: rgb(122 107 154 / 0.22);
 }
 
 .esr__btn:hover:not(:disabled) {
@@ -279,18 +279,36 @@
 
 @media (prefers-reduced-motion: reduce) {
   .esr__card,
-  .esr[data-phase='error'] .esr__card--primary,
-  .esr[data-phase='recovered'] .esr__card--fallback,
-  .esr__residue i {
+  .esr__residue span,
+  .esr__latch,
+  .esr[data-phase='error'] .esr__card--primary {
     transition: none !important;
     animation: none !important;
+  }
+
+  .esr[data-phase='recovered'] .esr__card--fallback {
+    clip-path: none;
+    transform: scale(1);
+  }
+
+  .esr[data-phase='recovered'] .esr__latch {
+    clip-path: inset(0 0 0 0);
   }
 }
 
 html[data-force-reduced-motion='true'] .esr__card,
-html[data-force-reduced-motion='true'] .esr[data-phase='error'] .esr__card--primary,
-html[data-force-reduced-motion='true'] .esr[data-phase='recovered'] .esr__card--fallback,
-html[data-force-reduced-motion='true'] .esr__residue i {
+html[data-force-reduced-motion='true'] .esr__residue span,
+html[data-force-reduced-motion='true'] .esr__latch,
+html[data-force-reduced-motion='true'] .esr[data-phase='error'] .esr__card--primary {
   transition: none !important;
   animation: none !important;
+}
+
+html[data-force-reduced-motion='true'] .esr[data-phase='recovered'] .esr__card--fallback {
+  clip-path: none;
+  transform: scale(1);
+}
+
+html[data-force-reduced-motion='true'] .esr[data-phase='recovered'] .esr__latch {
+  clip-path: inset(0 0 0 0);
 }
