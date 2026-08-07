@@ -2,33 +2,83 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/focus-mode-activation.schema.json",
   "title": "FocusModeActivation",
-  "description": "Corner brackets converge on a central reticle while peripheral content dims, activating a high-contrast focus mode.",
+  "description": "Corner brackets converge to a frozen inset on host content.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "narrowMs", "settleMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "bracketInsetPx",
+    "narrowMs",
+    "settleMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "focus-mode-activation" },
-    "narrowMs": { "type": "number", "const": 320 },
-    "settleMs": { "type": "number", "const": 140 },
+    "name": {
+      "type": "string",
+      "const": "focus-mode-activation"
+    },
+    "bracketInsetPx": {
+      "type": "number",
+      "const": 18
+    },
+    "narrowMs": {
+      "type": "number",
+      "const": 240
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 120
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "danger", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off",
+        "alert"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "danger": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#3DCEA8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateFocus"],
+      "required": [
+        "immediateFocused"
+      ],
       "properties": {
-        "immediateFocus": { "type": "boolean", "const": true }
+        "immediateFocused": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }

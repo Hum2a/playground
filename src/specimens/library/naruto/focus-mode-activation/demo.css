@@ -8,6 +8,8 @@
   --olive: #1a6b58;
   --off: #d7f5ec;
   /* wave2 timing surface */
+  --fma-inset: 18px;
+  --fma-narrow-ms: 240ms;
   box-sizing: border-box;
   position: relative;
   display: flex;

@@ -5,7 +5,7 @@ export const focusModeActivation: Specimen = {
   ref: 'SPX-2488',
   title: 'Focus Mode Activation',
   blurb:
-    'Four corner brackets converge on a central reticle while peripheral content dims, narrowing the view into a high-contrast analysis mode — abstract graphic vision mode, no copyrighted iconography.',
+    'Four focus brackets converge to an 18px inset on the host while periphery dims into FOCUSED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — heightened-vision focus modes',
@@ -25,12 +25,14 @@ export const focusModeActivation: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, focus mode activates directly with no bracket convergence or dimming transition.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, brackets appear already inset at 18px as FOCUSED.',
   },
-  acceptance: [
-    'Brackets converge to frozen inset on host content',
-    'Focus mode on without continuous loop',
-    'Reduced motion shows focus on immediately',
+    acceptance: [
+    'Four brackets converge to 18px inset on the host over 240ms',
+    'Periphery dims while reticle settles FOCUSED',
+    'Replay returns brackets outward / NORMAL before rerunning',
+    'Reduced motion shows FOCUSED brackets at inset immediately',
+    'preview.scaffold provides the relative overflow host',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

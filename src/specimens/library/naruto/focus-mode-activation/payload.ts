@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze the narrow (320ms) / settle (140ms) timing from contract.json.',
-    'Wire runFocusModeActivation / resetFocusModeActivation / replayFocusModeActivation.',
-    'Honour both reduced-motion triggers — activate focus mode directly with no convergence/dimming transition.',
+    'Mount with preview.scaffold relative overflow host.',
+    'Import demo.css verbatim; freeze bracketInsetPx 18 / narrow 240ms from contract.json.',
+    'Wire runFocusModeActivation / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Four corner brackets visibly converge from the field edges onto a central reticle',
-    'Peripheral dots dim once focus mode is active',
-    'Replay deactivates and reactivates focus mode',
-    'Reduced motion activates focus mode immediately with no transition',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Four brackets converge to 18px inset on the host over 240ms',
+    'Periphery dims while reticle settles FOCUSED',
+    'Replay returns brackets outward / NORMAL before rerunning',
+    'Reduced motion shows FOCUSED brackets at inset immediately',
+    'preview.scaffold provides the relative overflow host',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),
