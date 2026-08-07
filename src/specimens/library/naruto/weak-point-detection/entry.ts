@@ -19,7 +19,7 @@ export const weakPointDetection: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ["detection","brackets","scan"],
+  tags: ['detection', 'brackets', 'scan'],
   deps: 'none',
   motion: {
     loops: false,
@@ -27,15 +27,12 @@ export const weakPointDetection: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all weak-point brackets appear DETECTED immediately.',
   },
-    acceptance: [
-    'Exactly 4 weak-point brackets appear in order 0→1→2→3',
-    'Each bracket latches with stepMs 160; scan line tracks active point',
-    'Preview uses relative+overflow scaffold host',
-    'Replay clears markers before rerunning',
-    'Reduced motion shows all brackets DETECTED immediately',
-  ], at stepMs 160',
+  acceptance: [
+    'Exactly 4 weak-point brackets appear in order 0→1→2→3 at stepMs 160',
     'Host content remains visible under brackets throughout',
     'Status DETECTED only after marker 4 + settleMs 100',
+    'Preview uses relative+overflow scaffold host',
+    'Reduced motion shows all brackets DETECTED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
