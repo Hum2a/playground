@@ -5,6 +5,9 @@
   --qcrd-ink: #101820;
   --qcrd-paper: #f4f7fa;
   --qcrd-accent: #ff4d35;
+  --qcrd-build-ms: 580;
+  --qcrd-axis-stagger-ms: 90;
+  --qcrd-axis-build-ms: 220;
 
   display: flex;
   flex-direction: column;
@@ -131,6 +134,18 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   white-space: nowrap;
+}
+
+.qcrd__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,9 +1,12 @@
 /**
- * Quirk Capability Radar Build — radar polygon draws to fixed values.
+ * Quirk Capability Radar Build — radar polygon draws with per-axis stagger.
  */
 
-const PRIMARY_MS = 580
-const TOTAL_MS = 1230
+const BUILD_MS = 580
+const AXIS_STAGGER_MS = 90
+const AXIS_BUILD_MS = 220
+const SETTLE_MS = 650
+const TOTAL_MS = BUILD_MS + SETTLE_MS
 
 const CENTER = { x: 100, y: 100 }
 const AXES = [
@@ -13,6 +16,7 @@ const AXES = [
   { x: 55, y: 165 },
   { x: 30, y: 75 },
 ]
+const AXIS_LABELS = ['POWER', 'SPEED', 'RANGE', 'TECH', 'CONTROL']
 const VALUES = [0.82, 0.64, 0.48, 0.71, 0.9]
 
 let busy = false
@@ -45,12 +49,31 @@ function polygonPoints(strengths) {
     .join(' ')
 }
 
+function strengthsAt(elapsed) {
+  return VALUES.map((target, i) => {
+    const start = i * AXIS_STAGGER_MS
+    const t = Math.min(Math.max((elapsed - start) / AXIS_BUILD_MS, 0), 1)
+    const eased = 1 - Math.pow(1 - t, 2)
+    return target * eased
+  })
+}
+
 function fillEl() {
   return document.querySelector('[data-qcrd-fill]')
 }
 
 function readout() {
   return document.querySelector('[data-qcrd-readout]')
+}
+
+function setLive(text) {
+  const el = document.querySelector('[data-qcrd-live]')
+  if (el) el.textContent = text
+}
+
+function announceLocked() {
+  if (readout()) readout().textContent = 'PROFILE LOCKED'
+  setLive('Profile locked. Capability scan complete.')
 }
 
 export function resetQuirkCapabilityRadarBuild() {
@@ -63,6 +86,7 @@ export function resetQuirkCapabilityRadarBuild() {
   root.setAttribute('data-phase', 'idle')
   fill.setAttribute('points', polygonPoints([0, 0, 0, 0, 0]))
   if (readout()) readout().textContent = 'AWAITING SCAN'
+  setLive('Awaiting capability scan.')
 }
 
 export function runQuirkCapabilityRadarBuild() {
@@ -71,12 +95,13 @@ export function runQuirkCapabilityRadarBuild() {
   if (!root || !fill || busy) return Promise.resolve()
   busy = true
   root.setAttribute('data-phase', 'building')
+  setLive('Scanning capability profile.')
 
   if (prefersReducedMotion()) {
     fill.setAttribute('points', polygonPoints(VALUES))
     root.classList.add('qcrd--built')
     root.setAttribute('data-phase', 'complete')
-    if (readout()) readout().textContent = 'PROFILE LOCKED'
+    announceLocked()
     busy = false
     return Promise.resolve()
   }
@@ -85,21 +110,21 @@ export function runQuirkCapabilityRadarBuild() {
 
   return new Promise((resolve) => {
     const tick = (now) => {
-      const t = Math.min((now - t0) / PRIMARY_MS, 1)
-      const eased = 1 - Math.pow(1 - t, 2)
-      const strengths = VALUES.map((v) => v * eased)
+      const elapsed = now - t0
+      const strengths = strengthsAt(elapsed)
       fill.setAttribute('points', polygonPoints(strengths))
-      if (t < 1) {
+      if (elapsed < BUILD_MS) {
         raf = requestAnimationFrame(tick)
       } else {
+        fill.setAttribute('points', polygonPoints(VALUES))
         root.classList.add('qcrd--built')
         root.setAttribute('data-phase', 'complete')
-        if (readout()) readout().textContent = 'PROFILE LOCKED'
+        announceLocked()
         window.setTimeout(() => {
           busy = false
           raf = null
           resolve()
-        }, TOTAL_MS - PRIMARY_MS)
+        }, SETTLE_MS)
       }
     }
     raf = requestAnimationFrame(tick)

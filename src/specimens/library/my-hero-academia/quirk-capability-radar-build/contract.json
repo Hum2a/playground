@@ -1,19 +1,57 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "QuirkCapabilityRadarBuild",
-  "type": "object",
-  "required": ["name", "values"],
-  "properties": {
-    "name": { "type": "string", "const": "quirk-capability-radar-build" },
-    "values": {
-      "type": "array",
-      "const": [0.82, 0.64, 0.48, 0.71, 0.9]
-    },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 580 }
-      }
-    }
-  }
+  "name": "quirk-capability-radar-build",
+  "intent": "Five-axis capability radar polygon builds from center with per-axis stagger to frozen profile values, then locks with PROFILE LOCKED readout announced via aria-live.",
+  "catalogue": { "mha": "MHA-309", "ref": "SPX-2283" },
+  "copy": {
+    "trigger": "Analyse",
+    "awaiting": "AWAITING SCAN",
+    "locked": "PROFILE LOCKED",
+    "liveIdle": "Awaiting capability scan.",
+    "liveBuilding": "Scanning capability profile.",
+    "liveLocked": "Profile locked. Capability scan complete."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "buildMs": 580,
+    "axisStaggerMs": 90,
+    "axisBuildMs": 220,
+    "settleMs": 650,
+    "totalMs": 1230
+  },
+  "geometry": {
+    "viewBox": "0 0 200 200",
+    "center": { "x": 100, "y": 100 },
+    "frameMaxWidthPx": 280,
+    "axisTips": [
+      { "x": 100, "y": 20 },
+      { "x": 170, "y": 75 },
+      { "x": 145, "y": 165 },
+      { "x": 55, "y": 165 },
+      { "x": 30, "y": 75 }
+    ]
+  },
+  "axes": {
+    "labels": ["POWER", "SPEED", "RANGE", "TECH", "CONTROL"],
+    "values": [0.82, 0.64, 0.48, 0.71, 0.9]
+  },
+  "api": {
+    "run": "runQuirkCapabilityRadarBuild()",
+    "reset": "resetQuirkCapabilityRadarBuild()"
+  },
+  "reducedMotion": {
+    "behaviour": "Show final polygon, PROFILE LOCKED readout, and aria-live lock announcement immediately"
+  },
+  "acceptance": [
+    "Idle shows collapsed polygon at center with AWAITING SCAN",
+    "Analyse builds each axis in stagger order (90ms offset, 220ms per axis) to frozen values",
+    "Completion shows accent polygon, PROFILE LOCKED readout, and aria-live lock announcement",
+    "Replay resets polygon to center before rebuild",
+    "Reduced motion (prefers or data-force) shows final profile immediately",
+    "No network; labels and values match contract axes block"
+  ]
 }

@@ -10,13 +10,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount in a relative overflow-hidden frame.',
-    'Import demo.css verbatim; preserve fixed axis values in demo.js.',
+    'Import demo.css verbatim; preserve frozen axis labels/values and 90ms stagger.',
     'Call runQuirkCapabilityRadarBuild() on Analyse; reset via resetQuirkCapabilityRadarBuild().',
-    'Honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers; aria-live announces PROFILE LOCKED.',
   ],
   acceptance: [
-    'Analyse draws polygon to five fixed values deterministically',
-    'PROFILE LOCKED readout appears at completion',
+    'Analyse draws polygon with per-axis stagger to five frozen values',
+    'PROFILE LOCKED readout and aria-live announcement at completion',
     'Replay resets polygon to center before rebuild',
     'Reduced motion shows final polygon immediately',
   ],
