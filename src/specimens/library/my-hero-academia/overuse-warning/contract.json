@@ -1,13 +1,48 @@
 {
   "name": "overuse-warning",
-  "ref": "SPX-2004",
-  "catalogue": { "mha": "MHA-030" },
-  "levels": [25, 45, 65, 85, 100],
-  "labels": ["NOMINAL", "ELEVATED", "STRAINED", "WARNING", "EXHAUSTED"],
+  "intent": "Repeated ACTIVATE escalates OUTPUT STRAIN through five frozen steps; WARNING+ adds hazard corner plates and one-shot ink jitter; ACTIVATE disabled at EXHAUSTED.",
+  "catalogue": { "mha": "MHA-030", "ref": "SPX-2004" },
+  "copy": {
+    "title": "OUTPUT STRAIN",
+    "activate": "ACTIVATE",
+    "reset": "RESET",
+    "warning": "WARNING",
+    "labels": ["NOMINAL", "ELEVATED", "STRAINED", "WARNING", "EXHAUSTED"],
+    "live": "Strain {label} at {pct}%."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "stepMs": 580,
+    "jitterMs": 120
+  },
+  "geometry": {
+    "meterHeightPx": 32,
+    "hazardPlatePx": 18,
+    "framePaddingPx": 6
+  },
+  "levels": {
+    "percent": [25, 45, 65, 85, 100],
+    "labels": ["NOMINAL", "ELEVATED", "STRAINED", "WARNING", "EXHAUSTED"]
+  },
+  "api": {
+    "run": "runOveruseWarning()",
+    "reset": "resetOveruseWarning()",
+    "replay": "replayOveruseWarning()"
+  },
+  "reducedMotion": {
+    "behaviour": "Skip fill transition and ink jitter; jump directly to each level's final width and chrome"
+  },
+  "acceptance": [
+    "Five deterministic strain steps at 580ms fill per ACTIVATE",
+    "WARNING (85%) and EXHAUSTED (100%) show hazard corner plates and hatch overlay",
+    "Entering WARNING+ triggers one-shot 120ms ink jitter on root",
+    "ACTIVATE disabled at EXHAUSTED; RESET returns to 25% NOMINAL",
+    "Reduced motion (prefers or data-force) skips fill and jitter animations",
+    "No network; aria-live announces each strain level"
+  ]
 }

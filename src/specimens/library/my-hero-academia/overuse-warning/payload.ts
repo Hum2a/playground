@@ -10,13 +10,14 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Wire ACTIVATE to runOveruseWarning; RESET restores 25% NOMINAL.',
+    'Preserve 580ms step fill; hazard plates and 120ms jitter at WARNING+.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Five deterministic strain steps ending EXHAUSTED',
-    'WARNING shows hatch overlay; accent colour at high strain',
-    'RESET returns to 25% NOMINAL',
-    'Reduced motion skips fill animation',
+    'Five deterministic strain steps at 580ms per ACTIVATE',
+    'WARNING+ shows hazard plates, hatch overlay, and one-shot ink jitter',
+    'ACTIVATE disabled at EXHAUSTED; RESET returns to 25% NOMINAL',
+    'Reduced motion skips fill and jitter animations',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">

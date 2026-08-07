@@ -1,5 +1,7 @@
 const LEVELS = [25, 45, 65, 85, 100]
 const LABELS = ['NOMINAL', 'ELEVATED', 'STRAINED', 'WARNING', 'EXHAUSTED']
+const STEP_MS = 580
+const JITTER_MS = 120
 
 let level = 0
 
@@ -13,9 +15,18 @@ function root() {
   return document.querySelector('[data-overuse-warning]')
 }
 
+function triggerJitter(r) {
+  if (prefersReducedMotion()) return
+  r.classList.remove('ouw--jitter')
+  void r.offsetWidth
+  r.classList.add('ouw--jitter')
+  window.setTimeout(() => r.classList.remove('ouw--jitter'), JITTER_MS)
+}
+
 function apply(lvl) {
   const r = root()
   if (!r) return
+  const prev = level
   level = lvl
   const pct = LEVELS[lvl]
   r.dataset.level = String(lvl)
@@ -37,6 +48,8 @@ function apply(lvl) {
   const reset = r.querySelector('[data-ouw-reset]')
   if (run) run.disabled = lvl >= 4
   if (reset) reset.hidden = lvl < 4
+  if (lvl >= 3 && prev < 3) triggerJitter(r)
+  if (lvl === 4 && prev < 4) triggerJitter(r)
 }
 
 export function runOveruseWarning() {
