@@ -1,14 +1,15 @@
 /**
- * Technique Mastery Tree — unlock four skill nodes in order along a filling path.
+ * Technique Mastery Tree — named scroll nodes unlock with edge draw cascade.
  * iframe-safe; no storage / parent / network.
  */
 
-const NODE_COUNT = 4
-const NODE_IDS = ['n1', 'n2', 'n3', 'n4']
-const EDGE_DRAW_MS = 150
-const STEP_MS = 150
+const NODE_IDS = ["ROOT","FORM","FLOW","PEAK"]
+const NODE_ORDER = [0,1,2,3]
+const NODE_COUNT = NODE_IDS.length
+const NODE_MS = 140
+const EDGE_MS = 160
 const SETTLE_MS = 100
-const TOTAL_MS = NODE_COUNT * STEP_MS + SETTLE_MS // ~700ms principal sequence
+const TOTAL_MS = NODE_COUNT * NODE_MS + (NODE_COUNT - 1) * EDGE_MS + SETTLE_MS
 
 let busy = false
 let unlocked = 0
@@ -58,56 +59,50 @@ function setButtons(on) {
   })
 }
 
-function nodes() {
+function nodeEls() {
   return Array.from(document.querySelectorAll('[data-tmt-node]'))
 }
 
-function paths() {
+function edgeEls() {
   return Array.from(document.querySelectorAll('[data-tmt-path]'))
 }
 
-function paintNodes(count, pulseIndex) {
-  nodes().forEach((node, i) => {
+function paint(count, pulseIndex) {
+  nodeEls().forEach((node, i) => {
+    const id = NODE_IDS[i]
     const on = i < count
     node.setAttribute('data-unlocked', on ? 'true' : 'false')
-    node.setAttribute(
-      'aria-label',
-      on ? `Node ${i + 1} unlocked` : `Node ${i + 1} locked`,
-    )
+    node.setAttribute('aria-label', on ? `${id} unlocked` : `${id} locked`)
     if (pulseIndex === i) {
       node.setAttribute('data-pulse', 'true')
-      later(STEP_MS, () => node.removeAttribute('data-pulse'))
+      later(NODE_MS, () => node.removeAttribute('data-pulse'))
     } else {
       node.removeAttribute('data-pulse')
     }
   })
-  paths().forEach((path, i) => {
-    path.setAttribute('data-filled', i < count - 1 ? 'true' : 'false')
+  edgeEls().forEach((edge, i) => {
+    edge.setAttribute('data-filled', i < count - 1 ? 'true' : 'false')
   })
 }
 
 function showResolved() {
   unlocked = NODE_COUNT
-  paintNodes(NODE_COUNT, -1)
+  paint(NODE_COUNT, -1)
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('MASTERED')
-  setHint('Technique mastered.')
-  setLive('Technique mastery tree complete. All four nodes unlocked.')
+  setHint('Technique scroll mastered.')
+  setLive('Technique mastery complete. ROOT→FORM→FLOW→PEAK unlocked.')
 }
 
 function resetVisual() {
   unlocked = 0
-  paintNodes(0, -1)
+  paint(0, -1)
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('LOCKED')
   setHint('Press Run or keys 1–4 in order.')
-  setLive('Technique tree locked. Four nodes pending.')
+  setLive('Scroll sealed. Four technique nodes pending.')
 }
 
-/**
- * Auto-run full unlock sequence.
- * @returns {Promise<void>}
- */
 export function runTechniqueMasteryTree() {
   const root = rootEl()
   if (!root || busy || root.getAttribute('data-phase') === 'done') {
@@ -129,7 +124,7 @@ export function runTechniqueMasteryTree() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('UNLOCKING')
-  setLive('Unlocking technique nodes.')
+  setLive('Drawing technique cascade.')
 
   return new Promise((resolve) => {
     let step = 0
@@ -143,11 +138,12 @@ export function runTechniqueMasteryTree() {
         })
         return
       }
+      const idx = NODE_ORDER[step]
       unlocked = step + 1
-      paintNodes(unlocked, step)
-      setLive(`Node ${unlocked} of ${NODE_COUNT} unlocked.`)
+      paint(unlocked, idx)
+      setLive(`${NODE_IDS[idx]} unlocked (${unlocked}/${NODE_COUNT}).`)
       step += 1
-      later(STEP_MS, tick)
+      later(NODE_MS + (step < NODE_COUNT ? EDGE_MS : 0), tick)
     }
     tick()
   })
@@ -161,7 +157,6 @@ export function resetTechniqueMasteryTree() {
   void rootEl()?.offsetWidth
 }
 
-/** @returns {Promise<void>} */
 export async function replayTechniqueMasteryTree() {
   if (busy) return
   resetTechniqueMasteryTree()
@@ -169,10 +164,6 @@ export async function replayTechniqueMasteryTree() {
   await runTechniqueMasteryTree()
 }
 
-/**
- * Manual key path: keys 1–4 in order unlock one node each.
- * @param {number} index 0-based
- */
 function unlockOne(index) {
   const root = rootEl()
   if (!root || busy || root.getAttribute('data-phase') === 'done') return
@@ -184,11 +175,9 @@ function unlockOne(index) {
   root.setAttribute('data-phase', 'active')
   setStatus('UNLOCKING')
   unlocked = index + 1
-  paintNodes(unlocked, index)
-  setLive(`Node ${unlocked} of ${NODE_COUNT} unlocked.`)
-  if (unlocked >= NODE_COUNT) {
-    later(SETTLE_MS, () => showResolved())
-  }
+  paint(unlocked, index)
+  setLive(`${NODE_IDS[index]} unlocked (${unlocked}/${NODE_COUNT}).`)
+  if (unlocked >= NODE_COUNT) later(SETTLE_MS, () => showResolved())
 }
 
 function bindUi() {
@@ -214,7 +203,5 @@ function bindUi() {
 }
 
 void TOTAL_MS
-void NODE_IDS
-void EDGE_DRAW_MS
 bindUi()
 resetTechniqueMasteryTree()

@@ -1,7 +1,8 @@
 # Technique Mastery Tree
 
-Nodes **n1→n4** unlock with **150ms** steps; edges draw **150ms** between unlocks.
+Four technique nodes unlock in order (150ms steps) with connecting path draw until MASTERED.
 
 ## Freeze
 
-- nodeIds: n1,n2,n3,n4 · stepMs: 150 · edgeDrawMs: 150
+- Nodes: 4 · order: 0→3 · stepMs: 150 · settleMs: 100
+- Palette (mission paper): `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`

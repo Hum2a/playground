@@ -7,7 +7,11 @@
   --alarm: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
-  /* wave2 timing surface */
+  --tmt-step-ms: 150ms;
+  --tmt-settle-ms: 100ms;
+  --tmt-node-ms: 140ms;
+  --tmt-edge-ms: 160ms;
+  --tmt-settle-ms: 100ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -56,78 +60,78 @@
   justify-items: center;
   width: 100%;
   padding: 1.2rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(184 50 40 / 0.45);
+  background:
+    linear-gradient(180deg, rgb(247 242 232 / 0.05), transparent 40%),
+    rgb(26 22 18 / 0.9);
 }
 
-.tmt__row {
+.tmt__tree {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 20rem;
+  max-width: 22rem;
 }
 
 .tmt__node {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 50%;
+  min-width: 3.1rem;
+  height: 2rem;
+  padding: 0 0.35rem;
   border: 1.5px solid var(--olive);
-  background: rgb(16 19 24 / 0.85);
+  background: rgb(26 22 18 / 0.95);
   color: var(--olive);
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  transform: translateY(6px) scale(0.92);
   transition:
-    color 150ms ease-out,
-    border-color 150ms ease-out,
-    transform 150ms cubic-bezier(0.2, 0.85, 0.25, 1);
+    color var(--tmt-node-ms) ease-out,
+    border-color var(--tmt-node-ms) ease-out,
+    transform var(--tmt-node-ms) cubic-bezier(0.2, 0.9, 0.25, 1.15),
+    box-shadow var(--tmt-node-ms) ease-out;
 }
 
 .tmt__node[data-unlocked='true'] {
-  color: var(--chakra);
+  color: var(--parchment);
   border-color: var(--chakra);
-  transform: scale(1.08);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chakra) 45%, transparent);
+  transform: translateY(0) scale(1);
+  box-shadow: inset 0 0 0 1px rgb(184 50 40 / 0.35);
 }
 
 .tmt__node[data-pulse='true'] {
-  animation: tmt-pulse 150ms ease-out;
+  animation: tmt-snap var(--tmt-node-ms) cubic-bezier(0.15, 0.95, 0.25, 1.15);
 }
 
-@keyframes tmt-pulse {
+@keyframes tmt-snap {
   0% {
-    transform: scale(0.85);
+    transform: translateY(6px) scale(0.92);
   }
-  60% {
-    transform: scale(1.22);
+  55% {
+    transform: translateY(-2px) scale(1.08);
   }
   100% {
-    transform: scale(1.08);
+    transform: translateY(0) scale(1);
   }
 }
 
-.tmt__path {
+.tmt__edge {
   flex: 1 1 auto;
   height: 2px;
+  margin: 0 0.15rem;
   background: var(--olive);
-  opacity: 0.4;
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 150ms ease-out;
-  transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 150ms linear, background-color 90ms ease-out;
+  transform: scaleX(0);
+  transition: transform var(--tmt-edge-ms) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tmt__path[data-filled='true'] {
-  opacity: 1;
+.tmt__edge[data-filled='true'] {
   background: var(--chakra);
-  transform: scaleX(1);
   transform: scaleX(1);
 }
 
@@ -174,7 +178,7 @@
 
 .tmt__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(184 50 40 / 0.14);
 }
 
 .tmt__btn:hover:not(:disabled) {
@@ -194,15 +198,31 @@
 @media (prefers-reduced-motion: reduce) {
   .tmt__node,
   .tmt__node[data-pulse='true'],
-  .tmt__path {
+  .tmt__edge {
     transition: none !important;
     animation: none !important;
+  }
+
+  .tmt__node {
+    transform: translateY(0) scale(1);
+  }
+
+  .tmt__node:not([data-unlocked='true']) {
+    transform: translateY(0) scale(0.94);
   }
 }
 
 html[data-force-reduced-motion='true'] .tmt__node,
 html[data-force-reduced-motion='true'] .tmt__node[data-pulse='true'],
-html[data-force-reduced-motion='true'] .tmt__path {
+html[data-force-reduced-motion='true'] .tmt__edge {
   transition: none !important;
   animation: none !important;
+}
+
+html[data-force-reduced-motion='true'] .tmt__node {
+  transform: translateY(0) scale(1);
+}
+
+html[data-force-reduced-motion='true'] .tmt__node:not([data-unlocked='true']) {
+  transform: translateY(0) scale(0.94);
 }
