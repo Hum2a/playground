@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runPresenceRadarSweep / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Sweep arcs once; three blips at frozen coords (57.6,49.3), (111.5,35), (154.1,62.1)',
-    'Contacts log in bearing order 042° → 090° → 138°',
-    'Resolved shows COMPLETE with all three contacts active',
-    'Replay clears blips/log before rerunning',
-    'Reduced motion shows all contacts COMPLETE immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),

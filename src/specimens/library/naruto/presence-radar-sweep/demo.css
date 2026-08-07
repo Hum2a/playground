@@ -7,6 +7,10 @@
   --alert: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --prs-step-ms: 190ms;
+  --prs-settle-ms: 110ms;
+  --prs-start-deg: -70deg;
+  --prs-end-deg: 70deg;
   /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;

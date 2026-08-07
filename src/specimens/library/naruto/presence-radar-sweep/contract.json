@@ -1,106 +1,46 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/presence-radar-sweep.schema.json",
-  "title": "PresenceRadarSweep",
-  "description": "Finite radar sweep logs three frozen presence blips.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "blipCount",
-    "blips",
-    "stepMs",
-    "settleMs",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "presence-radar-sweep"
-    },
-    "blipCount": {
-      "type": "number",
-      "const": 3
-    },
-    "blips": {
-      "type": "array",
-      "const": [
-        {
-          "x": 57.6,
-          "y": 49.3,
-          "bearing": 42
-        },
-        {
-          "x": 111.5,
-          "y": 35,
-          "bearing": 90
-        },
-        {
-          "x": 154.1,
-          "y": 62.1,
-          "bearing": 138
-        }
-      ]
-    },
-    "stepMs": {
-      "type": "number",
-      "const": 190
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 110
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off",
-        "alert"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#070B0E"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8E8DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#1A6B58"
-        },
-        "off": {
-          "type": "string",
-          "const": "#D7F5EC"
-        },
-        "alert": {
-          "type": "string",
-          "const": "#3DCEA8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateComplete"
-      ],
-      "properties": {
-        "immediateComplete": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "presence-radar-sweep",
+  "intent": "A finite -70°→70° phosphor sweep logs three presence blips at -40°/10°/55° then rests.",
+  "catalogue": {
+    "nr": "NR-166",
+    "ref": "SPX-2509"
+  },
+  "geometry": {
+    "blipCount": 3,
+    "bearingsDeg": [
+      -40,
+      10,
+      55
+    ],
+    "startDeg": -70,
+    "endDeg": 70
+  },
+  "timing": {
+    "stepMs": 190,
+    "settleMs": 110,
+    "totalMs": 680
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "alert": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor-phosphor"
+  },
+  "api": {
+    "run": "runPresenceRadarSweep()",
+    "reset": "resetPresenceRadarSweep()",
+    "replay": "replayPresenceRadarSweep()"
+  },
+  "reducedMotion": {
+    "behaviour": "Resolved Presence Radar Sweep state immediately"
+  },
+  "acceptance": [
+    "Sweep arcs from -70° to 70° once; blips at bearings [-40,10,55] log as crossed",
+    "Contact log lists all three bearings; beam rests after settleMs 110",
+    "Replay clears log and parks beam at start before rerunning",
+    "Reduced motion shows three blips logged with beam at rest"
+  ]
 }
