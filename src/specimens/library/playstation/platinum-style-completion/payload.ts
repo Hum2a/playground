@@ -7,18 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Wire UNLOCK FINAL to is-platinum state."
+    'Wire Unlock final to collection→locking→transform→master.',
+    'Import demo.css verbatim; freeze collapse 320ms / master 480ms from contract.json.',
+    'Keep the collection grid collapsing into the master emblem (not a fifth slot only).',
+    'RM selectors must stay on .psc__grid / .psc__slot / .psc__master only — no mega-kit orphans.',
   ],
   acceptance: [
-      "Grid shows 4 of 5 slots earned initially",
-      "UNLOCK FINAL reveals platinum master panel",
-      "Reduced motion shows final state without glow animation"
+    'Starts at 4 of 5 earned with one empty final slot.',
+    'Unlocking the final slot collapses the collection and reveals MASTER COMPLETE.',
+    'Master emblem shows four geometric shapes replacing the slot grid.',
+    'Reduced motion jumps to master with no collapse/transform animation.',
   ],
-  scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;padding:12px;">
+  scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}
-</div>
-`.trim(),
+</div>`.trim(),
   files: { html, css, js },
   spec,
   contract,

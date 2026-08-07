@@ -1,18 +1,43 @@
-<div class="psc" data-psc>
-  <div class="psc__grid" data-psc-grid aria-hidden="true">
-    <div class="psc__slot" data-psc-slot="0"></div>
-    <div class="psc__slot" data-psc-slot="1"></div>
-    <div class="psc__slot" data-psc-slot="2"></div>
-    <div class="psc__slot" data-psc-slot="3"></div>
-    <div class="psc__slot psc__slot--final" data-psc-slot="4"></div>
+<div class="psc" data-psc data-phase="collection">
+  <p class="psc__live" data-psc-live aria-live="polite">Collection: 4 of 5 earned.</p>
+  <p class="psc__eyebrow">COLLECTION → MASTER</p>
+  <div class="psc__stage">
+    <div class="psc__grid" data-psc-grid>
+      <div class="psc__slot is-earned" data-psc-slot="0">
+        <span class="psc__mark psc__mark--bronze" aria-hidden="true"></span>
+        <span class="psc__slot-label">B1</span>
+      </div>
+      <div class="psc__slot is-earned" data-psc-slot="1">
+        <span class="psc__mark psc__mark--bronze" aria-hidden="true"></span>
+        <span class="psc__slot-label">B2</span>
+      </div>
+      <div class="psc__slot is-earned" data-psc-slot="2">
+        <span class="psc__mark psc__mark--silver" aria-hidden="true"></span>
+        <span class="psc__slot-label">S1</span>
+      </div>
+      <div class="psc__slot is-earned" data-psc-slot="3">
+        <span class="psc__mark psc__mark--gold" aria-hidden="true"></span>
+        <span class="psc__slot-label">G1</span>
+      </div>
+      <div class="psc__slot psc__slot--final" data-psc-slot="4">
+        <span class="psc__mark psc__mark--empty" aria-hidden="true"></span>
+        <span class="psc__slot-label">?</span>
+      </div>
+    </div>
+    <div class="psc__master" data-psc-master hidden>
+      <div class="psc__emblem" aria-hidden="true">
+        <span class="psc__shape psc__shape--circle"></span>
+        <span class="psc__shape psc__shape--cross"></span>
+        <span class="psc__shape psc__shape--square"></span>
+        <span class="psc__shape psc__shape--triangle"></span>
+      </div>
+      <p class="psc__master-label">MASTER COMPLETE</p>
+      <p class="psc__master-sub">Collection transformed</p>
+    </div>
   </div>
-  <div class="psc__platinum" data-psc-platinum hidden aria-hidden="true">
-    <span class="psc__shape psc__shape--circle"></span>
-    <span class="psc__shape psc__shape--cross"></span>
-    <span class="psc__shape psc__shape--square"></span>
-    <span class="psc__shape psc__shape--triangle"></span>
-    <p class="psc__platinum-label">MASTER COMPLETE</p>
+  <div class="psc__controls">
+    <button type="button" class="psc__btn" data-psc-unlock>Unlock final</button>
+    <button type="button" class="psc__btn psc__btn--ghost" data-psc-reset>Reset</button>
   </div>
-  <button type="button" class="psc__btn" data-psc-unlock>UNLOCK FINAL</button>
-  <p class="psc__status" data-psc-status aria-live="polite">4 of 5 earned — one remaining</p>
+  <p class="psc__status" data-psc-status>4 of 5 earned — unlock the final slot to transform the collection.</p>
 </div>

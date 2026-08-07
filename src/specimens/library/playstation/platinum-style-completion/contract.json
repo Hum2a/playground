@@ -1,14 +1,103 @@
 {
-  "name": "platinum-style-completion",
-  "intent": "Completing the final achievement transforms the collection into a master completion state.",
-  "primitives": [
-    "trophy",
-    "completion"
-  ],
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/platinum-style-completion.schema.json",
+  "title": "PlatinumStyleCompletion",
+  "description": "Completing the final achievement transforms the collection into a master completion state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "platinum-style-completion" },
+    "intent": {
+      "type": "string",
+      "const": "Completing the final achievement transforms the collection into a master completion state."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-046" },
+        "ref": { "type": "string", "const": "SPX-3352" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 420 },
+        "heightPx": { "type": "number", "const": 340 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slotCount", "initialEarned", "masterShapes"],
+      "properties": {
+        "slotCount": { "type": "number", "const": 5 },
+        "initialEarned": { "type": "number", "const": 4 },
+        "masterShapes": {
+          "type": "array",
+          "const": ["circle", "cross", "square", "triangle"]
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseMs", "masterMs", "phases"],
+      "properties": {
+        "collapseMs": { "type": "number", "const": 320 },
+        "masterMs": { "type": "number", "const": 480 },
+        "phases": {
+          "type": "array",
+          "const": ["collection", "locking", "transform", "master"]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior", "selectors"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Jump to master emblem; no collapse/transform animation."
+        },
+        "selectors": {
+          "type": "array",
+          "const": [".psc__grid", ".psc__slot", ".psc__master"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft", "platinum"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" },
+        "platinum": { "type": "string", "const": "#C8D4E0" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "grid", "master", "slot"],
+      "properties": {
+        "root": { "type": "string", "const": "psc" },
+        "grid": { "type": "string", "const": "psc__grid" },
+        "master": { "type": "string", "const": "psc__master" },
+        "slot": { "type": "string", "const": "psc__slot" }
+      }
+    }
   }
 }
