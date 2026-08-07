@@ -108,5 +108,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Arm 220ms then count 3→2→1 with rising pulse intensity (480/340/220ms)",
+    "Burst 240ms then CLEAR with clearHoldMs 220",
+    "Intensity escalation via pulse duration, not opacity-only flash",
+    "Replay restores IDLE before rerunning",
+    "Reduced motion shows CLEAR immediately"
+  ]
 }
