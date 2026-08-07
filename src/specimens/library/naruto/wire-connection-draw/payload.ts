@@ -8,7 +8,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~400×280+).',
-    'Import demo.css verbatim; freeze pathLength 100 / drawMs 180 / snapMs 90 / settleMs 80 from contract.json.',
+    'Import demo.css verbatim; freeze drawMs 180 / settleMs 80 / pathLength 76 from contract.json.',
     'Wire runWireConnectionDraw / resetWireConnectionDraw / replayWireConnectionDraw.',
     'Honour both reduced-motion triggers — show LINKED immediately.',
   ],

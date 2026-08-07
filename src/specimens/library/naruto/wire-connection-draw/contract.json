@@ -1,22 +1,35 @@
 {
   "name": "wire-connection-draw",
-  "intent": "A wire stroke-draws via pathLength 100 in 180ms, then snaps with a width pulse to LINKED.",
-  "catalogue": { "nr": "NR-084", "ref": "SPX-2427" },
+  "intent": "SVG wire draws via pathLength 76 in drawMs 180 from node A→B, then endpoints snap/pulse to LINKED in settleMs 80.",
+  "catalogue": {
+    "nr": "NR-084",
+    "ref": "SPX-2427"
+  },
   "copy": {
     "system": "LINK // WIRE",
-    "idle": "UNLINKED",
-    "drawing": "DRAWING",
+    "unlinked": "UNLINKED",
     "linked": "LINKED"
   },
   "geometry": {
-    "pathLength": 100,
-    "endpoints": ["A", "B"],
-    "line": { "x1": 14, "y1": 20, "x2": 86, "y2": 20 }
+    "viewBox": [
+      0,
+      0,
+      100,
+      40
+    ],
+    "line": {
+      "x1": 14,
+      "y1": 20,
+      "x2": 86,
+      "y2": 20
+    },
+    "pathLength": 76
   },
   "timing": {
     "drawMs": 180,
-    "snapMs": 90,
-    "settleMs": 80
+    "settleMs": 80,
+    "snapMs": 60,
+    "totalMs": 260
   },
   "colours": {
     "ink": "#070B0E",
@@ -31,14 +44,19 @@
     "reset": "resetWireConnectionDraw()",
     "replay": "replayWireConnectionDraw()"
   },
-  "cssVars": ["--wcd-draw-ms", "--wcd-snap-ms", "--wcd-settle-ms", "--wcd-path-length"],
+  "cssVars": [
+    "--wcd-draw-ms",
+    "--wcd-settle-ms",
+    "--wcd-path-length",
+    "--wcd-snap-ms"
+  ],
   "reducedMotion": {
-    "behaviour": "Wire appears fully drawn as LINKED immediately"
+    "behaviour": "Fully drawn LINKED wire immediately"
   },
   "acceptance": [
-    "SVG line uses pathLength 100; stroke-dashoffset animates 100→0 in drawMs 180",
-    "After draw, snapMs 90 width pulse then status LINKED with endpoint pulse",
-    "Replay resets dashoffset to full before redrawing",
-    "Reduced motion (prefers or data-force) shows LINKED immediately with animations disabled"
+    "Wire stroke draws pathLength 76 in drawMs 180 (dashoffset, not fade)",
+    "Endpoints pulse then status LINKED after settleMs 80",
+    "Replay clears stroke to UNLINKED before re-drawing",
+    "Reduced motion (prefers or data-force) shows fully drawn LINKED immediately"
   ]
 }
