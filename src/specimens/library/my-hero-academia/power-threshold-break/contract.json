@@ -1,12 +1,12 @@
 {
   "name": "power-threshold-break",
-  "intent": "Meter at 92% surges through shattering 100% cap to BREAKTHROUGH at 108%.",
+  "intent": "Meter surges past 100% cap with tear geometry; torn frame settles on BREAKTHROUGH stamp.",
   "catalogue": { "mha": "MHA-027", "ref": "SPX-2001" },
   "copy": {
-    "eyebrow": "OUTPUT // METER",
-    "cap": "MAX 100",
     "charging": "CHARGING",
-    "breakthrough": "BREAKTHROUGH"
+    "breakthrough": "BREAKTHROUGH",
+    "stamp": "BREAKTHROUGH",
+    "cap": "MAX 100"
   },
   "colours": {
     "primary": "#38A3FF",
@@ -14,12 +14,24 @@
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
+  "geometry": {
+    "startPct": 92,
+    "capPct": 100,
+    "overshootPct": 108,
+    "tearPieces": 3
+  },
   "timing": { "surgeMs": 500, "settleMs": 300 },
-  "meter": { "startPct": 92, "endPct": 108, "capPct": 100 },
   "api": {
     "run": "runPowerThresholdBreak()",
     "reset": "resetPowerThresholdBreak()",
     "replay": "replayPowerThresholdBreak()"
   },
-  "reducedMotion": { "behaviour": "Immediately show 108% BREAKTHROUGH" }
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Instant torn frame at 108% with BREAKTHROUGH stamp"
+  },
+  "waveC": "Cap tear geometry past 100%, BREAKTHROUGH as torn meter frame stamp"
 }

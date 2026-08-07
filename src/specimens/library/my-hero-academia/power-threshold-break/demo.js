@@ -59,12 +59,16 @@ function setStatus(text) {
 function showBreakthrough() {
   setFill(108)
   setStatus('BREAKTHROUGH')
+  const stamp = document.querySelector('[data-ptb-breakthrough]')
+  if (stamp) stamp.removeAttribute('hidden')
   setLive('Threshold broken.')
 }
 
 function resetVisual() {
   setFill(92)
   setStatus('CHARGING')
+  const stamp = document.querySelector('[data-ptb-breakthrough]')
+  if (stamp) stamp.setAttribute('hidden', '')
   setLive('Output below threshold.')
 }
 
