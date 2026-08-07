@@ -10,6 +10,16 @@ Scouter-style analyser (`ANALYSER // MK-4`) designed for **0 — 9,999**. Incomi
 4. Exactly **three** right-side fragments separate (**12–24px**); one diagonal fracture at **−18deg**; status **RANGE EXCEEDED**.
 5. Final state stays static and readable.
 
+## Fragment table (frozen)
+
+| Fragment | Final transform |
+| --- | --- |
+| 1 | `translate(18px, -8px) rotate(8deg)` |
+| 2 | `translate(24px, 2px) rotate(-4deg)` |
+| 3 | `translate(12px, 10px) rotate(12deg)` |
+
+Fracture: single diagonal at **−18deg**. Do not randomise offsets — values live in `contract.json` → `examples[0].overflow.fragmentOffsets`.
+
 ## Reduced motion
 
 Immediate final broken-frame overflow.
