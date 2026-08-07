@@ -1,15 +1,48 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "HeroAssignmentDrag",
-  "type": "object",
-  "required": ["name"],
-  "properties": {
-    "name": { "type": "string", "const": "hero-assignment-drag" },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 740 }
-      }
-    }
-  }
+  "name": "hero-assignment-drag",
+  "intent": "Hero profile card HERO // 07 condenses into a compact dispatch proxy and travels to the DISPATCH drop zone over 740ms.",
+  "catalogue": { "mha": "MHA-330", "ref": "SPX-2304" },
+  "copy": {
+    "cardKicker": "HERO // 07",
+    "cardTitle": "UNIT READY",
+    "cardMeta": "RANK 04 · OUTPUT",
+    "zoneLabel": "DISPATCH",
+    "proxyTitle": "HERO // 07",
+    "liveIdle": "Assign HERO // 07 to dispatch zone.",
+    "liveDragging": "Condensing profile into dispatch proxy…",
+    "liveAssigned": "HERO // 07 assigned to dispatch.",
+    "liveCancelled": "Assignment cancelled. HERO // 07 returned to roster."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "primaryMs": 740
+  },
+  "geometry": {
+    "boardWidthPx": 360,
+    "boardHeightPx": 190,
+    "boardGapPx": 12,
+    "proxyStart": { "leftPct": 12, "topPct": 28, "widthPx": 110, "heightPx": 52, "scale": 1 },
+    "proxyEnd": { "leftPct": 58, "topPct": 32, "widthPx": 92, "heightPx": 44, "scale": 0.92 }
+  },
+  "api": {
+    "run": "runHeroAssignmentDrag()",
+    "reset": "resetHeroAssignmentDrag()",
+    "cancel": "cancelHeroAssignmentDrag()"
+  },
+  "reducedMotion": {
+    "behaviour": "Source becomes dashed placeholder; dispatch zone filled immediately; no proxy travel"
+  },
+  "acceptance": [
+    "Assign condenses card into proxy and animates proxy from start geometry to drop zone over 740ms",
+    "Source card becomes dashed placeholder during drag; dispatch zone shows filled accent state on completion",
+    "Frozen proxy dimensions via --had-proxy-w-start/--had-proxy-w-end and board gap via --had-board-gap",
+    "Keyboard: Enter/Space on card or Assign button triggers assign; Escape cancels in-flight drag",
+    "Polite aria-live announces idle, dragging, assigned, and cancelled states",
+    "Reset button restores card, proxy, and zone; reduced motion skips proxy animation"
+  ]
 }

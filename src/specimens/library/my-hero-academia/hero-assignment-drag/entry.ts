@@ -7,7 +7,7 @@ export const heroAssignmentDrag: Specimen = {
     'A hero profile card condenses into a compact dispatch proxy and travels into the dispatch zone.',
   origin: {
     project: 'Original',
-    surface: 'My Hero Academia-inspired comic/anime action language',
+    surface: 'Roster dispatch — profile condenses into a drop-zone proxy',
   },
   facets: {
     kind: 'interaction',
@@ -31,8 +31,6 @@ export const heroAssignmentDrag: Specimen = {
     width: 400,
     height: 320,
     background: 'dark',
-
     label: 'Hero assignment drag',
   },
-
 }

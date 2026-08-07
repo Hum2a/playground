@@ -5,6 +5,20 @@
   --had-ink: #101820;
   --had-paper: #f4f7fa;
   --had-accent: #ff4d35;
+  --had-board-w: 360px;
+  --had-board-h: 190px;
+  --had-board-gap: 12px;
+  --had-proxy-w-start: 110px;
+  --had-proxy-h-start: 52px;
+  --had-proxy-w-end: 92px;
+  --had-proxy-h-end: 44px;
+  --had-proxy-left-start: 12%;
+  --had-proxy-top-start: 28%;
+  --had-proxy-left-end: 58%;
+  --had-proxy-top-end: 32%;
+  --had-proxy-scale-start: 1;
+  --had-proxy-scale-end: 0.92;
+  --had-primary-ms: 740ms;
   --had-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
 
   display: flex;
@@ -27,13 +41,25 @@
   box-sizing: border-box;
 }
 
+.had__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .had__board {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  width: min(100%, 360px);
-  height: 190px;
+  gap: var(--had-board-gap);
+  width: min(100%, var(--had-board-w));
+  height: var(--had-board-h);
 }
 
 .had__card {
@@ -46,6 +72,12 @@
   border: 3px solid var(--had-primary);
   clip-path: polygon(0 6%, 94% 0, 100% 94%, 8% 100%);
   transition: opacity 200ms ease;
+  cursor: pointer;
+}
+
+.had__card:focus-visible {
+  outline: 2px solid var(--had-primary);
+  outline-offset: 3px;
 }
 
 .had__card--placeholder {
@@ -101,11 +133,11 @@
 
 .had__proxy {
   position: absolute;
-  left: 12%;
-  top: 28%;
+  left: var(--had-proxy-left-start);
+  top: var(--had-proxy-top-start);
   z-index: 3;
-  width: 110px;
-  height: 52px;
+  width: var(--had-proxy-w-start);
+  height: var(--had-proxy-h-start);
   display: grid;
   place-items: center;
   padding: 0.25rem;
@@ -113,7 +145,7 @@
   color: var(--had-ink);
   border: 3px solid var(--had-ink);
   clip-path: polygon(0 0, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0 70%);
-  transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) scale(var(--had-proxy-scale-start));
 }
 
 .had__proxy-title {
@@ -123,23 +155,23 @@
 }
 
 .had--dragging .had__proxy {
-  animation: had-drag 740ms var(--had-ease) forwards;
+  animation: had-drag var(--had-primary-ms) var(--had-ease) forwards;
 }
 
 @keyframes had-drag {
   0% {
-    left: 12%;
-    top: 28%;
-    width: 110px;
-    height: 52px;
-    transform: scale(1);
+    left: var(--had-proxy-left-start);
+    top: var(--had-proxy-top-start);
+    width: var(--had-proxy-w-start);
+    height: var(--had-proxy-h-start);
+    transform: scale(var(--had-proxy-scale-start));
   }
   100% {
-    left: 58%;
-    top: 32%;
-    width: 92px;
-    height: 44px;
-    transform: scale(0.92);
+    left: var(--had-proxy-left-end);
+    top: var(--had-proxy-top-end);
+    width: var(--had-proxy-w-end);
+    height: var(--had-proxy-h-end);
+    transform: scale(var(--had-proxy-scale-end));
   }
 }
 
@@ -159,15 +191,6 @@
 .had__trigger:focus-visible {
   outline: 2px solid var(--had-primary);
   outline-offset: 3px;
-}
-
-.had__status {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(244, 247, 250, 0.75);
 }
 
 @media (prefers-reduced-motion: reduce) {
