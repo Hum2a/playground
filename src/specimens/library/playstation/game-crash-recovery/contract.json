@@ -3,23 +3,38 @@
   "ref": "SPX-3455",
   "ps": "PS-149",
   "title": "Game Crash Recovery",
+  "intent": "Play surface folds into an inset crash dialog with retry and close.",
   "palette": {
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
+    "sky": "#7EB6FF",
     "panel": "#121820",
     "panel2": "#1a2330",
     "rule": "#243044",
     "pewter": "#8a9bb0"
   },
-  "behaviour": "Game opacity 0.15; error panel rises with CE code and two actions.",
+  "timing": {
+    "foldMs": 280,
+    "panelMs": 360
+  },
+  "crash": {
+    "foldRotateXDeg": 62,
+    "foldScale": 0.92,
+    "foldOpacity": 0.22,
+    "code": "CE-34878-0"
+  },
+  "acceptance": [
+    "Crashed phase folds play surface with rotateX 62deg over 280ms",
+    "Error panel reaches opacity 1 over 360ms with RETRY and CLOSE APP",
+    "RETRY or CLOSE APP restores playing phase"
+  ],
   "trigger": "SIMULATE CRASH / RETRY / CLOSE APP",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; fold and panel transitions removed"
   }
 }

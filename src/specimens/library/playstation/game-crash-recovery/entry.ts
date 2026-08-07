@@ -17,6 +17,7 @@ export const gameCrashRecovery: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["crash","error","recovery"],
   deps: 'none',
