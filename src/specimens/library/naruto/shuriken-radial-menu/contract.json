@@ -1,24 +1,36 @@
 {
   "name": "shuriken-radial-menu",
-  "intent": "Four-point hub rotates open into N/E/S/W sectors at 0/90/180/270° and radius 3.6rem.",
-  "catalogue": { "nr": "NR-072", "ref": "SPX-2415" },
+  "intent": "Four-point hub opens into four sectors at N/E/S/W (angles 0/90/180/270) on radius 3.6rem over openMs 260.",
+  "catalogue": {
+    "nr": "NR-072",
+    "ref": "SPX-2415"
+  },
   "copy": {
-    "system": "MENU // SHURIKEN",
-    "idle": "CLOSED",
-    "opening": "OPENING",
-    "open": "OPEN"
+    "system": "MENU // RADIAL",
+    "closed": "CLOSED",
+    "open": "OPEN",
+    "sectors": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
   },
   "geometry": {
     "sectorCount": 4,
-    "sectorDeg": [0, 90, 180, 270],
-    "sectorLabels": ["N", "E", "S", "W"],
-    "radiusRem": 3.6,
-    "hubRotateDeg": 135
+    "anglesDeg": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "radius": "3.6rem",
+    "hubPx": 48
   },
   "timing": {
-    "openMs": 280,
-    "staggerMs": 40,
-    "settleMs": 40
+    "openMs": 260,
+    "settleMs": 40,
+    "totalMs": 300
   },
   "colours": {
     "ink": "#0C1014",
@@ -35,22 +47,18 @@
   },
   "cssVars": [
     "--srm-open-ms",
-    "--srm-stagger-ms",
     "--srm-settle-ms",
+    "--srm-sector-count",
     "--srm-radius",
-    "--srm-sector-deg-n",
-    "--srm-sector-deg-e",
-    "--srm-sector-deg-s",
-    "--srm-sector-deg-w"
+    "--srm-hub-px"
   ],
   "reducedMotion": {
-    "behaviour": "All four sectors appear open immediately; no rotation"
+    "behaviour": "Sectors appear open immediately; no rotation"
   },
   "acceptance": [
-    "Exactly 4 sectors open to sectorDeg [0,90,180,270] at radiusRem 3.6",
-    "Sectors stagger by staggerMs 40 (N→E→S→W) within openMs 280",
-    "Hub rotates hubRotateDeg 135 while opening",
-    "Selecting a sector commits that label; replay closes then reopens",
-    "Reduced motion (prefers or data-force) shows all sectors open immediately"
+    "Exactly 4 sectors open to anglesDeg [0,90,180,270] at radius 3.6rem in openMs 260",
+    "Selecting a sector commits that label; menu can fold closed",
+    "No continuous idle spin; reduced motion shows open sectors immediately",
+    "Replay closes then re-opens through the same geometry"
   ]
 }

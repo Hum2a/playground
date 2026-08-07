@@ -5,7 +5,7 @@ export const shurikenRadialMenu: Specimen = {
   ref: 'SPX-2415',
   title: 'Shuriken Radial Menu',
   blurb:
-    'Four sectors open to 0°/90°/180°/270° at 3.6rem radius (40ms stagger) from a rotating hub — graphic tool palette.',
+    'A four-point hub opens into N/E/S/W sectors at 3.6rem radius in 260ms — tool palette radial, not a spinning fan HUD.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — shuriken & projectile motion',
@@ -28,9 +28,9 @@ export const shurikenRadialMenu: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, all four sectors appear open immediately with no rotation.',
   },
   acceptance: [
-    'Sectors at 0/90/180/270° and radius 3.6rem',
-    '40ms stagger open within 280ms',
-    'Reduced motion shows sectors open immediately',
+    '4 sectors at 0/90/180/270° open to 3.6rem radius in 260ms',
+    'Selecting a sector commits that label',
+    'Reduced motion shows open sectors immediately (no spin)',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
