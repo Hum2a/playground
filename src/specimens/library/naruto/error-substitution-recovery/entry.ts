@@ -4,7 +4,7 @@ export const errorSubstitutionRecovery: Specimen = {
   id: 'error-substitution-recovery',
   ref: 'SPX-2387',
   title: 'Error Substitution Recovery',
-  blurb: 'An error triggers decoy substitution then recovers the primary.',
+  blurb: 'Fault on Service A swaps in a decoy fallback (Service B) after 170ms, then latches recovered — failover, not celebration.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study',
@@ -13,7 +13,7 @@ export const errorSubstitutionRecovery: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',

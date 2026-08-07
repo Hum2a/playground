@@ -1,17 +1,68 @@
-<div class="ns36" data-ns36 data-phase="idle">
-  <p class="ns36__live" data-ns36-live aria-live="polite">360° Network Scan. Idle.</p>
-  <p class="ns36__system">NR // NR-154</p>
-  <div class="ns36__stage" data-ns36-stage>
-    <div class="ns36__viz" data-ns36-viz aria-hidden="true">
-      <span class="ns36__mark ns36__mark--a"></span>
-      <span class="ns36__mark ns36__mark--b"></span>
-      <span class="ns36__mark ns36__mark--c"></span>
+<div class="ns360" data-ns360 data-phase="idle">
+  <p class="ns360__live" data-ns360-live aria-live="polite">
+    Network scan idle. Five nodes pending.
+  </p>
+
+  <p class="ns360__system">SCAN // 360 NETWORK</p>
+
+  <div class="ns360__stage" data-ns360-stage>
+    <div class="ns360__radar" aria-hidden="true">
+      <span class="ns360__ring ns360__ring--outer"></span>
+      <span class="ns360__ring ns360__ring--mid"></span>
+      <span class="ns360__hub" data-ns360-hub></span>
+      <span class="ns360__sweep" data-ns360-sweep></span>
+      <span class="ns360__link" data-ns360-link data-index="0" style="--a: 0deg"></span>
+      <span class="ns360__link" data-ns360-link data-index="1" style="--a: 72deg"></span>
+      <span class="ns360__link" data-ns360-link data-index="2" style="--a: 144deg"></span>
+      <span class="ns360__link" data-ns360-link data-index="3" style="--a: 216deg"></span>
+      <span class="ns360__link" data-ns360-link data-index="4" style="--a: 288deg"></span>
+      <span
+        class="ns360__node"
+        data-ns360-node
+        data-index="0"
+        data-active="false"
+        style="--a: 0deg"
+        aria-label="Node 1 pending"
+      ></span>
+      <span
+        class="ns360__node"
+        data-ns360-node
+        data-index="1"
+        data-active="false"
+        style="--a: 72deg"
+        aria-label="Node 2 pending"
+      ></span>
+      <span
+        class="ns360__node"
+        data-ns360-node
+        data-index="2"
+        data-active="false"
+        style="--a: 144deg"
+        aria-label="Node 3 pending"
+      ></span>
+      <span
+        class="ns360__node"
+        data-ns360-node
+        data-index="3"
+        data-active="false"
+        style="--a: 216deg"
+        aria-label="Node 4 pending"
+      ></span>
+      <span
+        class="ns360__node"
+        data-ns360-node
+        data-index="4"
+        data-active="false"
+        style="--a: 288deg"
+        aria-label="Node 5 pending"
+      ></span>
     </div>
-    <p class="ns36__status" data-ns36-status>IDLE</p>
-    <p class="ns36__note" data-ns36-note>A 360° sweep discovers network nodes around a hub.</p>
+    <p class="ns360__status" data-ns360-status>IDLE</p>
+    <p class="ns360__hint" data-ns360-hint>Press Run to sweep the network.</p>
   </div>
-  <div class="ns36__controls">
-    <button type="button" class="ns36__btn ns36__btn--primary" data-ns36-run>Scan</button>
-    <button type="button" class="ns36__btn" data-ns36-replay>Replay</button>
+
+  <div class="ns360__controls">
+    <button type="button" class="ns360__btn ns360__btn--primary" data-ns360-run>Scan</button>
+    <button type="button" class="ns360__btn" data-ns360-replay>Replay</button>
   </div>
 </div>

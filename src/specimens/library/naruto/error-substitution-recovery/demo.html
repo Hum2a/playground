@@ -1,17 +1,29 @@
-<div class="esr7" data-esr7 data-phase="idle">
-  <p class="esr7__live" data-esr7-live aria-live="polite">Error Substitution Recovery. Idle.</p>
-  <p class="esr7__system">NR // NR-044</p>
-  <div class="esr7__stage" data-esr7-stage>
-    <div class="esr7__viz" data-esr7-viz aria-hidden="true">
-      <span class="esr7__mark esr7__mark--a"></span>
-      <span class="esr7__mark esr7__mark--b"></span>
-      <span class="esr7__mark esr7__mark--c"></span>
+<div class="esr" data-esr data-phase="idle">
+  <p class="esr__live" data-esr-live aria-live="polite">
+    Service nominal. No fault detected.
+  </p>
+
+  <p class="esr__system">FAILOVER // SUBSTITUTION</p>
+
+  <div class="esr__stage" data-esr-stage>
+    <div class="esr__slot" data-esr-slot>
+      <article class="esr__card esr__card--primary" data-esr-primary>
+        <p class="esr__card-kicker">PRIMARY</p>
+        <p class="esr__card-title">Service A</p>
+        <p class="esr__card-badge" data-esr-badge-primary>NOMINAL</p>
+      </article>
+      <article class="esr__card esr__card--fallback" data-esr-fallback>
+        <p class="esr__card-kicker">FALLBACK</p>
+        <p class="esr__card-title">Service B</p>
+        <p class="esr__card-badge" data-esr-badge-fallback>STANDBY</p>
+      </article>
     </div>
-    <p class="esr7__status" data-esr7-status>IDLE</p>
-    <p class="esr7__note" data-esr7-note>An error triggers decoy substitution then recovers the primary.</p>
+    <p class="esr__status" data-esr-status>NOMINAL</p>
+    <p class="esr__hint" data-esr-hint>Press Run to simulate a fault.</p>
   </div>
-  <div class="esr7__controls">
-    <button type="button" class="esr7__btn esr7__btn--primary" data-esr7-run>Recover</button>
-    <button type="button" class="esr7__btn" data-esr7-replay>Replay</button>
+
+  <div class="esr__controls">
+    <button type="button" class="esr__btn esr__btn--primary" data-esr-run>Recover</button>
+    <button type="button" class="esr__btn" data-esr-replay>Replay</button>
   </div>
 </div>

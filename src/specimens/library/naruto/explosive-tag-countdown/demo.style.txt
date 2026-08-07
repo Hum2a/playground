@@ -1,11 +1,11 @@
 /* SPX-2433 Explosive Tag Countdown — portable contract. */
 
 .etc {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
+  --ink: #0c0806;
+  --parchment: #c4b8a8;
+  --ember: #e07030;
   --danger: #d94a38;
-  --olive: #69745a;
+  --soot: #5a5048;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;
@@ -67,7 +67,7 @@
   place-items: center;
   width: 6.2rem;
   height: 6.2rem;
-  border: 2px solid var(--olive);
+  border: 2px solid var(--soot);
   background: var(--parchment);
   color: var(--ink);
   transform: scale(1) rotate(0deg);
@@ -91,7 +91,7 @@
 .etc__ring {
   position: absolute;
   inset: 0.35rem;
-  border: 2px solid var(--olive);
+  border: 2px solid var(--soot);
   opacity: 0.55;
 }
 
@@ -202,22 +202,22 @@
 
 /* Done / cleared */
 .etc[data-phase='done'] .etc__tag {
-  border-color: var(--olive);
+  border-color: var(--soot);
   background: rgb(231 221 199 / 0.55);
   transform: scale(1);
 }
 
 .etc[data-phase='done'] .etc__ring {
-  border-color: var(--olive);
+  border-color: var(--soot);
   opacity: 0.4;
 }
 
 .etc[data-phase='done'] .etc__digit {
-  color: var(--olive);
+  color: var(--soot);
 }
 
 .etc[data-phase='done'] .etc__status {
-  color: var(--chakra);
+  color: var(--ember);
 }
 
 .etc__status {
@@ -232,7 +232,7 @@
   margin: 0;
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  color: var(--olive);
+  color: var(--soot);
   text-align: center;
 }
 
@@ -246,7 +246,7 @@
   appearance: none;
   margin: 0;
   padding: 0.45rem 0.85rem;
-  border: 1px solid var(--olive);
+  border: 1px solid var(--soot);
   background: transparent;
   color: var(--off);
   font: inherit;
@@ -267,7 +267,7 @@
 }
 
 .etc__btn:focus-visible {
-  outline: 2px solid var(--chakra);
+  outline: 2px solid var(--ember);
   outline-offset: 2px;
 }
 

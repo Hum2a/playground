@@ -1,17 +1,21 @@
-<div class="etc3" data-etc3 data-phase="idle">
-  <p class="etc3__live" data-etc3-live aria-live="polite">Explosive Tag Countdown. Idle.</p>
-  <p class="etc3__system">NR // NR-090</p>
-  <div class="etc3__stage" data-etc3-stage>
-    <div class="etc3__viz" data-etc3-viz aria-hidden="true">
-      <span class="etc3__mark etc3__mark--a"></span>
-      <span class="etc3__mark etc3__mark--b"></span>
-      <span class="etc3__mark etc3__mark--c"></span>
+<div class="etc" data-etc data-phase="idle" data-level="0">
+  <p class="etc__live" data-etc-live aria-live="polite">Tag idle. Countdown pending.</p>
+
+  <p class="etc__system">TAG // COUNTDOWN</p>
+
+  <div class="etc__stage" data-etc-stage>
+    <div class="etc__tag" data-etc-tag aria-hidden="true">
+      <span class="etc__fold"></span>
+      <span class="etc__ring"></span>
+      <span class="etc__digit" data-etc-digit>–</span>
+      <span class="etc__flash"></span>
     </div>
-    <p class="etc3__status" data-etc3-status>IDLE</p>
-    <p class="etc3__note" data-etc3-note>A warning tag counts down through intensity states then resolves.</p>
+    <p class="etc__status" data-etc-status>IDLE</p>
+    <p class="etc__hint" data-etc-hint>Press Run to arm the tag.</p>
   </div>
-  <div class="etc3__controls">
-    <button type="button" class="etc3__btn etc3__btn--primary" data-etc3-run>Arm</button>
-    <button type="button" class="etc3__btn" data-etc3-replay>Replay</button>
+
+  <div class="etc__controls">
+    <button type="button" class="etc__btn etc__btn--primary" data-etc-run>Arm</button>
+    <button type="button" class="etc__btn" data-etc-replay>Replay</button>
   </div>
 </div>
