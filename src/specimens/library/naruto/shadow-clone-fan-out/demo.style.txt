@@ -101,16 +101,18 @@
   position: absolute;
   left: 50%;
   top: 17%;
-  transform: translate(-50%, -50%);
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 2px;
   background: var(--chakra);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chakra) 25%, transparent);
   opacity: 0;
   transition:
-    left 180ms ease-out,
-    top 180ms ease-out,
-    opacity 140ms ease-out;
+    left 180ms cubic-bezier(0.2, 0.85, 0.25, 1),
+    top 180ms cubic-bezier(0.2, 0.85, 0.25, 1),
+    opacity 100ms ease-out,
+    transform 180ms cubic-bezier(0.2, 0.85, 0.25, 1);
 }
 
 .scf__clone[data-scf-clone='1'] {
@@ -146,7 +148,7 @@
 .scf__slot[data-filled='true'] {
   border-style: solid;
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.12);
+  background: color-mix(in srgb, var(--chakra) 12%, transparent);
 }
 
 .scf__slot-label {

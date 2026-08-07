@@ -117,6 +117,7 @@ function resetVisual() {
     c.style.left = '50%'
     c.style.top = '17%'
     c.style.opacity = '0'
+    c.style.transform = 'translate(-50%, -50%) scale(0.2)'
   })
   TARGETS.forEach((_, i) => resetSlot(i))
   setSourceKicker('SOURCE')
@@ -156,6 +157,7 @@ export function runShadowCloneFanOut() {
   list.forEach((clone, i) => {
     void clone.offsetWidth
     clone.style.opacity = '1'
+    clone.style.transform = 'translate(-50%, -50%) scale(1)'
     clone.style.left = TARGETS[i].left
     clone.style.top = TARGETS[i].top
   })
