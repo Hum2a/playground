@@ -5,7 +5,7 @@ export const shadowBindSelection: Specimen = {
   ref: 'SPX-2644',
   title: 'Shadow Bind Selection',
   blurb:
-    'A dark geometric extension travels from a source anchor to a target card and locks both together as one bound selection.',
+    'Three shadow tendrils extend from source to target on a 60ms stagger, then lock both into one bound selection.',
   origin: {
     project: 'Original',
     surface: 'Naruto / shadow-technique-interfaces — bound selection',
@@ -28,9 +28,9 @@ export const shadowBindSelection: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the source and target appear already bound.',
   },
   acceptance: [
-    'Bind tendrils lock selection with frozen count and lock ms',
-    'Selected target cannot move until released',
-    'Reduced motion shows already bound',
+    'Exactly 3 tendrils extend with 60ms stagger over 260ms then lock for 220ms',
+    'Lock uses scale + pulse on target — not opacity fade as primary',
+    'Reduced motion shows already BOUND',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

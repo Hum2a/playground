@@ -1,13 +1,17 @@
 /**
- * Shadow Bind Selection — a shadow tendril extends from source to target and locks both.
+ * Shadow Bind Selection — three bind tendrils extend then lock selection.
  * iframe-safe; no storage / parent / network.
  */
 
+const BIND_COUNT = 3
 const EXTEND_MS = 260
+const STAGGER_MS = 60
 const LOCK_MS = 220
-const TOTAL_MS = EXTEND_MS + LOCK_MS // ~480ms principal sequence
+const TOTAL_MS = EXTEND_MS + STAGGER_MS * (BIND_COUNT - 1) + LOCK_MS
 
 let busy = false
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -17,14 +21,12 @@ function prefersReducedMotion() {
 }
 
 function rootEl() {
-  return document.querySelector('[data-sbs]')
+  return document.querySelector('[data-sbd]')
 }
 
 function targetEl() {
-  return document.querySelector('[data-sbs-target]')
+  return document.querySelector('[data-sbd-target]')
 }
-
-let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -38,22 +40,22 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-sbs-live]')
+  const el = document.querySelector('[data-sbd-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-sbs-status]')
+  const el = document.querySelector('[data-sbd-status]')
   if (el) el.textContent = text
 }
 
 function setHint(text) {
-  const el = document.querySelector('[data-sbs-hint]')
+  const el = document.querySelector('[data-sbd-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-sbs-run], [data-sbs-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-sbd-run], [data-sbd-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
@@ -64,7 +66,7 @@ function showResolved() {
   target?.setAttribute('data-lock', 'true')
   setStatus('BOUND')
   setHint('Target bound.')
-  setLive('Target bound to shadow source.')
+  setLive(`Target locked by ${BIND_COUNT} shadow tendrils.`)
 }
 
 function resetVisual() {
@@ -77,7 +79,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run the full bind sequence.
+ * Auto-run tendril extend → lock.
  * @returns {Promise<void>}
  */
 export function runShadowBindSelection() {
@@ -101,10 +103,12 @@ export function runShadowBindSelection() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('BINDING')
-  setLive('Shadow tendril extending toward target.')
+  setLive(`${BIND_COUNT} shadow tendrils extending.`)
 
   return new Promise((resolve) => {
-    later(EXTEND_MS, () => {
+    const extendEnd = EXTEND_MS + STAGGER_MS * (BIND_COUNT - 1)
+    later(extendEnd, () => {
+      setLive('Tendrils reached target — locking.')
       later(LOCK_MS, () => {
         showResolved()
         busy = false
@@ -132,10 +136,10 @@ export async function replayShadowBindSelection() {
 }
 
 function bindUi() {
-  document.querySelector('[data-sbs-run]')?.addEventListener('click', () => {
+  document.querySelector('[data-sbd-run]')?.addEventListener('click', () => {
     void runShadowBindSelection()
   })
-  document.querySelector('[data-sbs-replay]')?.addEventListener('click', () => {
+  document.querySelector('[data-sbd-replay]')?.addEventListener('click', () => {
     void replayShadowBindSelection()
   })
   window.addEventListener('message', (event) => {
