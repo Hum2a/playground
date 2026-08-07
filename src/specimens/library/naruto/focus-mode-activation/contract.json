@@ -76,5 +76,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Four corner brackets converge to frozen inset 18px over narrowMs 240",
+    "Focus mode latches FOCUSED without continuous loop",
+    "Preview uses relative+overflow scaffold host",
+    "Replay restores NORMAL before rerunning",
+    "Reduced motion shows FOCUSED immediately"
+  ]
 }
