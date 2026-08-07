@@ -81,5 +81,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Needle must settle within lock threshold ±0.08 and hold lockHoldMs 380",
+    "Auto-run applies frozen wobble amplitude 0.035 while seeking centre",
+    "Resolved latches LOCKED with lock pulse 150ms",
+    "Replay restores unbalanced needle before rerunning",
+    "Reduced motion shows LOCKED immediately"
+  ]
 }
