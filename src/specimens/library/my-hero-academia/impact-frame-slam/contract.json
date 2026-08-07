@@ -1,9 +1,10 @@
 {
   "name": "impact-frame-slam",
-  "intent": "Comic impact-frame flash plus status slam STANDBY → ALERT with corner wedges inside a clipped panel.",
+  "intent": "Hard ink impact panel flash plus status slam STANDBY → ALERT with frozen corner wedges inside a clipped panel.",
   "catalogue": {
     "mha": "MHA-001",
-    "ref": "SPX-1975"
+    "ref": "SPX-1975",
+    "title": "Impact Frame Slam"
   },
   "copy": {
     "from": "STANDBY",
@@ -21,7 +22,44 @@
   "timing": {
     "flashMs": 90,
     "slamMs": 500,
-    "settleMs": 280
+    "settleMs": 280,
+    "wedgeAnimMs": 280,
+    "fromOutMs": 220
+  },
+  "geometry": {
+    "stage": {
+      "widthMaxPx": 360,
+      "minHeightPx": 168,
+      "borderPx": 3,
+      "clipCornerPx": 14
+    },
+    "impactPanel": {
+      "type": "hard-ink",
+      "fill": "paper",
+      "hatchAngleDeg": -35,
+      "hatchInkPx": 2,
+      "hatchGapPx": 4,
+      "insetFramePx": 4
+    },
+    "wedges": {
+      "widthPx": 18,
+      "heightPx": 3,
+      "insetPx": 10,
+      "corners": ["tl", "tr", "bl", "br"],
+      "staggerMs": {
+        "tl": 0,
+        "tr": 40,
+        "bl": 60,
+        "br": 80
+      },
+      "scaleKeyframes": [0.4, 1.2, 1]
+    },
+    "statusSlam": {
+      "translateStartPct": 120,
+      "scaleStart": 1.35,
+      "overshootScale": 1.08,
+      "reboundScale": 0.97
+    }
   },
   "api": {
     "run": "runImpactFrameSlam()",
@@ -29,6 +67,20 @@
     "replay": "replayImpactFrameSlam()"
   },
   "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
     "behaviour": "Immediately show ALERT with static wedges; no flash or slam"
-  }
+  },
+  "acceptance": [
+    "Flash: hard ink hatch panel (paper fill, no blend) over 90ms steps(2)",
+    "Slam: STANDBY exits up; ALERT enters from 120% / scale 1.35 over 500ms",
+    "Settle: four accent wedges at frozen 18×3px, 10px inset, stagger 0/40/60/80ms",
+    "Done: ALERT locked, wedges static, note reads Impact registered.",
+    "Stage clip-path corners frozen at 14px chamfer inside 360px panel",
+    "Reduced motion (prefers or data-force) shows ALERT + wedges immediately",
+    "No network; effect clipped to stage"
+  ],
+  "waveD": "Blend flash replaced with hard ink impact panel; wedge geometry frozen"
 }
