@@ -19,7 +19,8 @@ const payload: SpecimenPayload = {
     'A owns BOOST with exactly three contours; B starts with none',
     'Seven-segment channel; contours collapse outer→inner; one 18×18 transfer token',
     'Midpoint handoff: A NONE / B PENDING; never both ACTIVE',
-    'B rebuilds inner→outer then ACTIVE; channel retracts; final static',
+    'B rebuilds inner→outer with ignite flash; channel retracts; final static',
+    'Four wisps peel from donor during collapse; token travels with trail + pulse',
     'Reduced motion immediately shows final ownership',
   ],
   scaffold: `

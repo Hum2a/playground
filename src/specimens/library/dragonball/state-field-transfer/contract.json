@@ -21,7 +21,7 @@
     "name": { "type": "string", "const": "state-field-transfer" },
     "intent": {
       "type": "string",
-      "const": "Node A collapses three field contours into one transfer token that travels a seven-segment channel; ownership hands off at midpoint; Node B rebuilds the field. Never ACTIVE on both."
+      "const": "Node A's three-contour field sheds wisps and collapses into a token; a lit conduit carries token + trail to Node B; receiver ignites and rebuilds the field. Never ACTIVE on both."
     },
     "copy": {
       "type": "object",
@@ -64,6 +64,7 @@
         "gapPx",
         "contourCount",
         "segmentCount",
+        "wispCount",
         "tokenSizePx",
         "collapseOrder",
         "rebuildOrder"
@@ -72,6 +73,7 @@
         "gapPx": { "type": "integer", "const": 240 },
         "contourCount": { "type": "integer", "const": 3 },
         "segmentCount": { "type": "integer", "const": 7 },
+        "wispCount": { "type": "integer", "const": 4 },
         "tokenSizePx": { "type": "integer", "const": 18 },
         "collapseOrder": {
           "type": "array",

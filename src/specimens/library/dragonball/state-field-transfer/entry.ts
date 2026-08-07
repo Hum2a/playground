@@ -4,7 +4,7 @@ export const stateFieldTransfer: Specimen = {
   ref: 'SPX-1115',
   title: 'State Field Transfer',
   blurb:
-    'Node A collapses its three-contour boost into an 18px token, travels a seven-segment channel with a midpoint ownership handoff, then rebuilds the field on Node B — never ACTIVE on both at once.',
+    'Node A sheds wisps as its three-contour field collapses into a token that rides a lit conduit with trail and pulse to Node B, ignites on arrival, and rebuilds — never ACTIVE on both at once.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball–inspired state/aura transfer (abstract)',

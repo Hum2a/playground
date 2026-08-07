@@ -43,8 +43,8 @@
   align-items: center;
   justify-content: center;
   gap: var(--sft-gap);
-  min-height: 200px;
-  padding: 1.5rem 0.5rem;
+  min-height: 210px;
+  padding: 1.75rem 0.5rem;
 }
 
 .sft__node {
@@ -56,6 +56,7 @@
   background: var(--sft-panel);
   border: 1px solid #2a3340;
   flex: 0 0 auto;
+  overflow: visible;
 }
 
 .sft__name {
@@ -122,13 +123,14 @@
   transform: rotate(45deg);
 }
 
+/* Donor field — three contours + wisps */
 .sft__field {
   position: absolute;
   left: 50%;
   top: 62%;
-  width: 78px;
-  height: 78px;
-  margin: -39px 0 0 -39px;
+  width: 88px;
+  height: 88px;
+  margin: -44px 0 0 -44px;
   pointer-events: none;
 }
 
@@ -143,6 +145,122 @@
 .sft.has-field-b .sft__field--b,
 .sft.is-rebuilding .sft__field--b {
   display: block;
+}
+
+.sft__contour {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--sft-field);
+  transform: rotate(45deg);
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgb(110 184 255 / 0.3);
+}
+
+.sft.has-field-a .sft__field--a .sft__contour--outer {
+  animation: sft-idle-pulse 1.8s ease-in-out infinite;
+}
+
+.sft__contour--middle {
+  inset: 10px;
+  opacity: 0.75;
+}
+
+.sft__contour--inner {
+  inset: 20px;
+  opacity: 0.95;
+  border-color: var(--sft-field-hot);
+}
+
+@keyframes sft-idle-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgb(110 184 255 / 0.25);
+  }
+  50% {
+    box-shadow: 0 0 16px rgb(183 220 255 / 0.55);
+  }
+}
+
+/* Aura wisps — peel off donor during collapse */
+.sft__wisp {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sft-field-hot);
+  opacity: 0;
+  box-shadow: 0 0 8px rgb(183 220 255 / 0.8);
+}
+
+.sft__wisp--1 {
+  left: 8px;
+  top: 20px;
+}
+
+.sft__wisp--2 {
+  right: 6px;
+  top: 28px;
+}
+
+.sft__wisp--3 {
+  left: 24px;
+  bottom: 10px;
+}
+
+.sft__wisp--4 {
+  right: 18px;
+  bottom: 16px;
+}
+
+.sft.is-collapsing .sft__wisp {
+  animation: sft-wisp-out 180ms ease-in both;
+}
+
+.sft.is-collapsing .sft__wisp--1 {
+  animation-delay: 0ms;
+}
+
+.sft.is-collapsing .sft__wisp--2 {
+  animation-delay: 30ms;
+}
+
+.sft.is-collapsing .sft__wisp--3 {
+  animation-delay: 60ms;
+}
+
+.sft.is-collapsing .sft__wisp--4 {
+  animation-delay: 90ms;
+}
+
+@keyframes sft-wisp-out {
+  0% {
+    opacity: 0.85;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx, 0), var(--dy, -18px)) scale(0.2);
+  }
+}
+
+.sft.is-collapsing .sft__wisp--1 {
+  --dx: -12px;
+  --dy: -14px;
+}
+
+.sft.is-collapsing .sft__wisp--2 {
+  --dx: 14px;
+  --dy: -10px;
+}
+
+.sft.is-collapsing .sft__wisp--3 {
+  --dx: -8px;
+  --dy: 16px;
+}
+
+.sft.is-collapsing .sft__wisp--4 {
+  --dx: 10px;
+  --dy: 12px;
 }
 
 .sft.is-collapsing .sft__field--a .sft__contour--outer {
@@ -169,33 +287,54 @@
   animation: sft-rebuild var(--sft-rebuild) ease-out calc(var(--sft-stagger-in) * 2) both;
 }
 
-.sft__contour {
+/* Receiver ignite flash */
+.sft__ignite {
   position: absolute;
-  inset: 0;
-  border: 1.5px solid var(--sft-field);
-  transform: rotate(45deg);
-  opacity: 0.9;
-  box-shadow: 0 0 8px rgb(110 184 255 / 0.25);
+  left: 50%;
+  top: 62%;
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+  border-radius: 50%;
+  background: var(--sft-field-hot);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.sft__contour--middle {
-  inset: 10px;
-  opacity: 0.75;
+.sft.is-arriving .sft__ignite,
+.sft.is-rebuilding .sft__ignite {
+  animation: sft-ignite 220ms ease-out both;
 }
 
-.sft__contour--inner {
-  inset: 20px;
-  opacity: 0.95;
-  border-color: var(--sft-field-hot);
+@keyframes sft-ignite {
+  0% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgb(183 220 255 / 0);
+    transform: scale(0.5);
+  }
+  35% {
+    opacity: 1;
+    box-shadow:
+      0 0 24px 8px rgb(183 220 255 / 0.65),
+      0 0 48px 16px rgb(110 184 255 / 0.35);
+    transform: scale(2.8);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 transparent;
+    transform: scale(4);
+  }
 }
 
+/* Channel + conduit */
 .sft__channel {
   position: absolute;
   left: 50%;
   top: 62%;
   width: var(--sft-gap);
-  height: 10px;
-  margin: -5px 0 0 calc(var(--sft-gap) / -2);
+  height: 14px;
+  margin: -7px 0 0 calc(var(--sft-gap) / -2);
   display: flex;
   align-items: center;
   gap: 4px;
@@ -204,12 +343,58 @@
   z-index: 3;
 }
 
+.sft__conduit {
+  position: absolute;
+  inset: 5px 0;
+  background: linear-gradient(
+    90deg,
+    rgb(110 184 255 / 0.08),
+    rgb(110 184 255 / 0.18),
+    rgb(110 184 255 / 0.08)
+  );
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
 .sft.is-channeling .sft__channel,
 .sft.is-travelling .sft__channel,
 .sft.is-arriving .sft__channel,
 .sft.is-rebuilding .sft__channel,
 .sft.is-retracting .sft__channel {
   opacity: 1;
+}
+
+.sft.is-channeling .sft__conduit {
+  animation: sft-conduit-in var(--sft-channel-ms) ease-out forwards;
+}
+
+.sft.is-retracting .sft__conduit {
+  animation: sft-conduit-out var(--sft-channel-ms) ease-in forwards;
+}
+
+@keyframes sft-conduit-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sft-conduit-out {
+  from {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
 }
 
 .sft.is-channeling .sft__seg {
@@ -265,6 +450,7 @@
   height: 3px;
 }
 
+/* Travelling token + trail */
 .sft__token {
   position: absolute;
   left: 0;
@@ -276,9 +462,77 @@
   z-index: 4;
 }
 
+.sft__trail {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: 0;
+  height: 4px;
+  margin-top: -2px;
+  background: linear-gradient(90deg, transparent, rgb(183 220 255 / 0.75));
+  border-radius: 2px;
+  transform-origin: right center;
+  pointer-events: none;
+}
+
 .sft.is-travelling .sft__token {
   opacity: 1;
   animation: sft-travel var(--sft-travel-ms) linear both;
+}
+
+.sft.is-travelling .sft__trail {
+  animation: sft-trail var(--sft-travel-ms) linear both;
+}
+
+@keyframes sft-trail {
+  from {
+    width: 0;
+    opacity: 0.9;
+  }
+  15% {
+    width: 36px;
+  }
+  to {
+    width: 52px;
+    opacity: 0.35;
+  }
+}
+
+.sft__pulse {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: rgb(183 220 255 / 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.sft.is-travelling .sft__pulse {
+  animation: sft-pulse-travel var(--sft-travel-ms) linear both;
+}
+
+@keyframes sft-pulse-travel {
+  0% {
+    opacity: 0;
+    left: 0;
+    transform: scale(0.6);
+  }
+  8% {
+    opacity: 0.7;
+  }
+  92% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    left: 100%;
+    transform: scale(1.4);
+  }
 }
 
 .sft.is-arriving .sft__token {
@@ -297,6 +551,7 @@
   position: absolute;
   border: 1.5px solid var(--sft-field-hot);
   transform: rotate(45deg);
+  box-shadow: 0 0 8px rgb(183 220 255 / 0.55);
 }
 
 .sft__mark--1 {
@@ -311,7 +566,7 @@
 .sft__mark--3 {
   inset: 6px;
   opacity: 0.95;
-  background: rgb(110 184 255 / 0.25);
+  background: rgb(110 184 255 / 0.35);
 }
 
 .sft__controls {
@@ -362,7 +617,8 @@
 
 .sft.is-reduced .sft__field--a,
 .sft.is-reduced .sft__channel,
-.sft.is-reduced .sft__token {
+.sft.is-reduced .sft__token,
+.sft.is-reduced .sft__wisp {
   display: none !important;
 }
 
@@ -395,14 +651,14 @@
   }
   to {
     opacity: 0;
-    transform: rotate(45deg) scale(0.15);
+    transform: rotate(45deg) scale(0.12);
   }
 }
 
 @keyframes sft-rebuild {
   from {
     opacity: 0;
-    transform: rotate(45deg) scale(0.2);
+    transform: rotate(45deg) scale(0.15);
   }
   to {
     opacity: 0.9;
@@ -431,15 +687,25 @@
 @media (prefers-reduced-motion: reduce) {
   .sft__seg,
   .sft__contour,
-  .sft__token {
+  .sft__token,
+  .sft__wisp,
+  .sft__conduit,
+  .sft__pulse,
+  .sft__trail,
+  .sft__ignite,
+  .sft.has-field-a .sft__field--a .sft__contour--outer {
     animation: none !important;
-    transition: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .sft__seg,
-[data-force-reduced-motion='true'] .sft__contour,
-[data-force-reduced-motion='true'] .sft__token {
+html[data-force-reduced-motion='true'] .sft__seg,
+html[data-force-reduced-motion='true'] .sft__contour,
+html[data-force-reduced-motion='true'] .sft__token,
+html[data-force-reduced-motion='true'] .sft__wisp,
+html[data-force-reduced-motion='true'] .sft__conduit,
+html[data-force-reduced-motion='true'] .sft__pulse,
+html[data-force-reduced-motion='true'] .sft__trail,
+html[data-force-reduced-motion='true'] .sft__ignite,
+html[data-force-reduced-motion='true'] .sft.has-field-a .sft__field--a .sft__contour--outer {
   animation: none !important;
-  transition: none !important;
 }
