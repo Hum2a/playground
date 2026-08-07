@@ -5,7 +5,7 @@ export const techniqueMasteryTree: Specimen = {
   ref: 'SPX-2767',
   title: 'Technique Mastery Tree',
   blurb:
-    'Four skill nodes unlock one-by-one along a branching path as a technique is mastered, filling the connecting path as it goes.',
+    'Four technique nodes unlock in order (n1→n4) while edges draw between them into MASTERED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / mentor-training-progression — skill tree',
@@ -14,7 +14,7 @@ export const techniqueMasteryTree: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'graphic',
+    intensity: 'subtle',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -25,12 +25,14 @@ export const techniqueMasteryTree: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all four nodes appear already unlocked as MASTERED.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four nodes and edges appear mastered immediately.',
   },
-  acceptance: [
-    'Nodes unlock in frozen order with edge draw',
-    'MASTERED state on completed nodes',
-    'Reduced motion shows nodes MASTERED',
+    acceptance: [
+    'Exactly 4 nodes unlock in order n1→n4 with 150ms steps',
+    'Each unlock draws the preceding edge (scaleX 0→1) before the next node',
+    'Resolved shows MASTERED with all nodes and edges filled',
+    'Replay locks all nodes/edges before rerunning',
+    'Reduced motion shows MASTERED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

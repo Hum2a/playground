@@ -119,11 +119,15 @@
   transform-origin: left;
   transform: scaleX(0);
   transition: transform 150ms ease-out;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 150ms linear, background-color 90ms ease-out;
 }
 
 .tmt__path[data-filled='true'] {
   opacity: 1;
   background: var(--chakra);
+  transform: scaleX(1);
   transform: scaleX(1);
 }
 

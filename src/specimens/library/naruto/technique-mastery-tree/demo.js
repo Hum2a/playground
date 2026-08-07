@@ -4,6 +4,8 @@
  */
 
 const NODE_COUNT = 4
+const NODE_IDS = ['n1', 'n2', 'n3', 'n4']
+const EDGE_DRAW_MS = 150
 const STEP_MS = 150
 const SETTLE_MS = 100
 const TOTAL_MS = NODE_COUNT * STEP_MS + SETTLE_MS // ~700ms principal sequence
@@ -212,5 +214,7 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void NODE_IDS
+void EDGE_DRAW_MS
 bindUi()
 resetTechniqueMasteryTree()
