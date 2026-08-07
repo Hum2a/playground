@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; four corner nodes connect edge-by-edge before the field fills, timings from contract.json.',
-    'Wire runFourPointBarrierConstruct / resetFourPointBarrierConstruct / replayFourPointBarrierConstruct.',
-    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
+    'Mount with preview.scaffold host.',
+    'Import demo.css verbatim; freeze corner coords / edge 220ms / fill 260ms from contract.json.',
+    'Wire runFourPointBarrierConstruct / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Exactly four corner nodes; each activates as the connecting edge reaches it',
-    'Protected field only fills once all four edges have closed the perimeter',
-    'Idle, constructing, and resolved states are visually distinct',
-    'Replay resets all nodes/edges/field before rerunning',
-    'Reduced motion shows the closed barrier and filled field immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Corners activate at (30,30)(170,30)(170,170)(30,170) before edges draw',
+    'Four edges draw at 220ms each, then fill 260ms into SECURE',
+    'Replay clears corners/edges/fill before reconstructing',
+    'Reduced motion shows SECURE barrier immediately',
+    'preview.scaffold hosts the overlay',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),

@@ -2,12 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/four-point-barrier-construct.schema.json",
   "title": "FourPointBarrierConstruct",
-  "description": "Four corner nodes connect edge-by-edge around a protected region, then the field fills.",
+  "description": "Corners → edges → fill barrier construction with frozen coords.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "name",
+    "cornerCoords",
     "edgeCount",
+    "cornerMs",
     "edgeMs",
     "fillMs",
     "colours",
@@ -18,21 +20,42 @@
       "type": "string",
       "const": "four-point-barrier-construct"
     },
+    "cornerCoords": {
+      "type": "array",
+      "const": [
+        {
+          "x": 30,
+          "y": 30
+        },
+        {
+          "x": 170,
+          "y": 30
+        },
+        {
+          "x": 170,
+          "y": 170
+        },
+        {
+          "x": 30,
+          "y": 170
+        }
+      ]
+    },
     "edgeCount": {
       "type": "number",
       "const": 4
     },
+    "cornerMs": {
+      "type": "number",
+      "const": 90
+    },
     "edgeMs": {
       "type": "number",
-      "const": 120
+      "const": 220
     },
     "fillMs": {
       "type": "number",
-      "const": 160
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 90
+      "const": 260
     },
     "colours": {
       "type": "object",
@@ -41,9 +64,9 @@
         "ink",
         "parchment",
         "chakra",
-        "alert",
         "olive",
-        "off"
+        "off",
+        "alert"
       ],
       "properties": {
         "ink": {
@@ -58,10 +81,6 @@
           "type": "string",
           "const": "#3DCEA8"
         },
-        "alert": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
         "olive": {
           "type": "string",
           "const": "#1A6B58"
@@ -69,6 +88,10 @@
         "off": {
           "type": "string",
           "const": "#D7F5EC"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#3DCEA8"
         }
       }
     },
@@ -76,18 +99,14 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "immediateSecured"
+        "immediateSecure"
       ],
       "properties": {
-        "immediateSecured": {
+        "immediateSecure": {
           "type": "boolean",
           "const": true
         }
       }
-    },
-    "cornerCount": {
-      "type": "number",
-      "const": 4
     }
   }
 }

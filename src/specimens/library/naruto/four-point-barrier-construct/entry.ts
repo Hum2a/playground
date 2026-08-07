@@ -5,7 +5,7 @@ export const fourPointBarrierConstruct: Specimen = {
   ref: 'SPX-2522',
   title: 'Four-Point Barrier Construct',
   blurb:
-    'Four corner nodes activate in turn and connect edge-by-edge, sealing a protected region that fills in once the perimeter closes.',
+    'Four corners light, edges draw (220ms each), then the field fills (260ms) into a SECURE barrier.',
   origin: {
     project: 'Original',
     surface: 'Naruto / barrier-interfaces — protective ward construction overlays',
@@ -25,12 +25,14 @@ export const fourPointBarrierConstruct: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all four corners connect and the field fills immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the barrier appears SECURE with corners, edges, and fill immediately.',
   },
-  acceptance: [
-    'Corners then edges then fill with frozen coords/ms',
-    'Field filled only after edges complete',
-    'Reduced motion shows connected filled field',
+    acceptance: [
+    'Corners activate at (30,30)(170,30)(170,170)(30,170) before edges draw',
+    'Four edges draw at 220ms each, then fill 260ms into SECURE',
+    'Replay clears corners/edges/fill before reconstructing',
+    'Reduced motion shows SECURE barrier immediately',
+    'preview.scaffold hosts the overlay',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

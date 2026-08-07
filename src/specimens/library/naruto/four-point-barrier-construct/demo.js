@@ -4,8 +4,13 @@
  */
 
 const EDGE_COUNT = 4
-const EDGE_MS = 220
-const FILL_MS = 260
+const CORNER_COORDS = [
+  { x: 30, y: 30 },
+  { x: 170, y: 30 },
+  { x: 170, y: 170 },
+  { x: 30, y: 170 },
+]
+const CORNER_MS = 90
 const SETTLE_MS = 90
 const TOTAL_MS = EDGE_COUNT * EDGE_MS + FILL_MS + SETTLE_MS
 
@@ -205,3 +210,6 @@ function bindUi() {
 void TOTAL_MS
 bindUi()
 resetFourPointBarrierConstruct()
+
+void CORNER_COORDS
+void CORNER_MS
