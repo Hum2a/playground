@@ -1,9 +1,13 @@
 <div class="hgfs" data-hgfs data-focus="1">
   <p class="hgfs__live" data-hgfs-live aria-live="polite">TITLE B focused.</p>
-  <div class="hgfs__ambient" data-hgfs-ambient data-animate aria-hidden="true"></div>
-  <div class="hgfs__tiles">
-    <button type="button" class="hgfs__tile" data-hgfs-tile="0">TITLE A</button>
-    <button type="button" class="hgfs__tile is-focused" data-hgfs-tile="1">TITLE B</button>
-    <button type="button" class="hgfs__tile" data-hgfs-tile="2">TITLE C</button>
+  <div class="hgfs__ambient" data-hgfs-ambient aria-hidden="true">
+    <div class="hgfs__plane hgfs__plane--a" data-hgfs-plane="0"></div>
+    <div class="hgfs__plane hgfs__plane--b is-active" data-hgfs-plane="1"></div>
+    <div class="hgfs__plane hgfs__plane--c" data-hgfs-plane="2"></div>
+  </div>
+  <div class="hgfs__tiles" role="group" aria-label="Home game tiles">
+    <button type="button" class="hgfs__tile" data-hgfs-tile="0" aria-pressed="false">TITLE A</button>
+    <button type="button" class="hgfs__tile is-focused" data-hgfs-tile="1" aria-pressed="true">TITLE B</button>
+    <button type="button" class="hgfs__tile" data-hgfs-tile="2" aria-pressed="false">TITLE C</button>
   </div>
 </div>

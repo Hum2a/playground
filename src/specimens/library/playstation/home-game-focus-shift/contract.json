@@ -1,17 +1,94 @@
 {
-  "name": "home-game-focus-shift",
-  "intent": "Tile focus shifts ambient background context.",
-  "catalogue": {
-    "ps": "PS-003",
-    "ref": "SPX-3309"
-  },
-  "colours": {
-    "primary": "#2E90FF",
-    "ink": "#0B0F14",
-    "paper": "#F4F6F8",
-    "soft": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "behaviour": "Background swaps instantly without crossfade"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/home-game-focus-shift.schema.json",
+  "title": "HomeGameFocusShift",
+  "description": "Home tile focus swaps a title-keyed multi-plane ambient backdrop while the focused tile lifts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "home-game-focus-shift" },
+    "intent": {
+      "type": "string",
+      "const": "Tile focus shifts a title-keyed multi-plane ambient background while navigation continuity is preserved."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-003" },
+        "ref": { "type": "string", "const": "SPX-3309" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 400 },
+        "heightPx": { "type": "number", "const": 300 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tileCount", "planeCount", "focusScale", "liftPx"],
+      "properties": {
+        "tileCount": { "type": "number", "const": 3 },
+        "planeCount": { "type": "number", "const": 3 },
+        "focusScale": { "type": "number", "const": 1.04 },
+        "liftPx": { "type": "number", "const": 6 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ambientTravelMs", "tileTravelMs", "easing"],
+      "properties": {
+        "ambientTravelMs": { "type": "number", "const": 520 },
+        "tileTravelMs": { "type": "number", "const": 280 },
+        "easing": { "type": "string", "const": "ease" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable .hgfs__plane and .hgfs__tile transitions; ambient and lift snap instantly."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "ambient", "plane", "tile", "focused"],
+      "properties": {
+        "root": { "type": "string", "const": "hgfs" },
+        "ambient": { "type": "string", "const": "hgfs__ambient" },
+        "plane": { "type": "string", "const": "hgfs__plane" },
+        "tile": { "type": "string", "const": "hgfs__tile" },
+        "focused": { "type": "string", "const": "is-focused" }
+      }
+    }
   }
 }
