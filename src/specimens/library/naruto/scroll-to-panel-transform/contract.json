@@ -1,23 +1,25 @@
 {
   "name": "scroll-to-panel-transform",
-  "intent": "A round scroll token morphs via scale/clip into a rectangular panel — one continuous container, not a content crossfade.",
-  "catalogue": { "nr": "NR-023", "ref": "SPX-2366" },
+  "intent": "Round 64px scroll token morphs width/height/radius into a 176px panel over morphMs 480 — scale/clip, not crossfade.",
+  "catalogue": {
+    "nr": "NR-023",
+    "ref": "SPX-2366"
+  },
   "copy": {
     "system": "MORPH // SCROLL PANEL",
-    "idle": "SEALED",
-    "morphing": "MORPHING",
-    "opened": "OPENED"
+    "idle": "SCROLL",
+    "done": "PANEL"
   },
   "geometry": {
     "tokenPx": 64,
     "panelHPx": 176,
     "radiusFrom": "50%",
-    "radiusToPx": 10,
-    "reveal": "clip-path inset expand (not opacity crossfade)"
+    "radiusTo": "10px"
   },
   "timing": {
     "morphMs": 480,
-    "settleMs": 90
+    "settleMs": 90,
+    "contentDelayMs": 260
   },
   "colours": {
     "ink": "#1A1612",
@@ -25,7 +27,7 @@
     "chakra": "#B83228",
     "olive": "#6A5E4E",
     "off": "#F7F2E8",
-    "palette": "paper"
+    "palette": "mission"
   },
   "api": {
     "run": "runScrollToPanelTransform()",
@@ -35,19 +37,18 @@
   "cssVars": [
     "--stp-morph-ms",
     "--stp-settle-ms",
+    "--stp-content-delay-ms",
     "--stp-token-px",
-    "--stp-panel-h",
-    "--stp-radius-from",
+    "--stp-panel-h-px",
     "--stp-radius-to"
   ],
   "reducedMotion": {
-    "behaviour": "Panel appears fully expanded with content visible; no morph"
+    "behaviour": "Expanded panel shown immediately; no morph transition"
   },
   "acceptance": [
-    "Token morphs width/height/radius in morphMs 480 from 64px circle to full-width × panelHPx 176 panel",
-    "Panel copy reveals via clip-path inset expand — no opacity crossfade of glyph↔copy",
-    "Token exits via scale + clip inset collapse (not a fade-only swap)",
-    "After settleMs 90 status is OPENED",
-    "Reduced motion (prefers or data-force) shows OPENED panel immediately with transitions disabled"
+    "Token morphs from tokenPx 64 circle to full-width panelHPx 176 with radius 50%→10px in morphMs 480",
+    "Panel copy appears after contentDelayMs 260 (not a crossfade of two separate cards)",
+    "Status reads PANEL after settleMs 90",
+    "Reduced motion (prefers or data-force) shows expanded panel immediately with transitions disabled"
   ]
 }

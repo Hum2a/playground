@@ -5,7 +5,7 @@ export const scrollToPanelTransform: Specimen = {
   ref: 'SPX-2366',
   title: 'Scroll-to-Panel Transform',
   blurb:
-    'A 64px scroll token morphs via scale and clip-path (480ms) into a 176px panel — one continuous container, no content crossfade.',
+    'A 64px round scroll token morphs width/height/radius into a 176px panel over 480ms — continuous shape transform, not a crossfade.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction scroll-language study — token-to-panel morph',
@@ -28,9 +28,9 @@ export const scrollToPanelTransform: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the panel appears fully expanded with content visible immediately; no shape morph plays.',
   },
   acceptance: [
-    'Morph uses scale/clip (not opacity crossfade)',
-    'Token 64px → panel 176px in 480ms',
-    'Reduced motion shows OPENED immediately',
+    '64px circle morphs to 176px panel (radius 50%→10px) in 480ms',
+    'Panel copy delays 260ms; no dual-card crossfade',
+    'Reduced motion shows expanded panel immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

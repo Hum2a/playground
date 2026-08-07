@@ -1,16 +1,15 @@
 # Scroll-to-Panel Transform
 
-A round scroll token morphs via scale/clip into a rectangular content panel.
+A compact round scroll token morphs its own shape and size into a full rectangular content panel.
 
 ## Behaviour
 
-- Idle: 64px circular token, status `SEALED`.
-- Morph: container expands; token collapses via scale+clip; panel copy reveals via clip-path inset (not opacity crossfade).
-- Opened: full panel, status `OPENED`.
-- Reduced motion: OPENED immediately.
+- Idle: 64px circular token, status scroll.
+- Morph: width/height/radius animate 480ms into 176px panel.
+- Content: briefing copy fades in after 260ms delay on the same surface.
+- Reduced motion: expanded panel immediately.
 
 ## Freeze
 
-- Morph: 480ms · settle: 90ms · token: 64px · panel height: 176px
-- Reveal language: clip-path inset expand (not opacity crossfade)
-- Palette (paper): `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`
+- Morph: 480ms · settle: 90ms · content delay: 260ms · token: 64px · panelH: 176px
+- Palette: `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`

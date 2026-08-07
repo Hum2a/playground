@@ -6,6 +6,8 @@
   --chakra: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
+  --stp-content-delay-ms: 260ms;
+  --stp-panel-h-px: 176;
   --stp-morph-ms: 480ms;
   --stp-settle-ms: 90ms;
   --stp-token-px: 64;
