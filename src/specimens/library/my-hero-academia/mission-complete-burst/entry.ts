@@ -5,7 +5,7 @@ export const missionCompleteBurst: Specimen = {
   ref: 'SPX-2104',
   title: 'Mission Complete Burst',
   blurb:
-    'Four telemetry widgets collapse inward then burst into a giant COMPLETE panel with RANK A.',
+    'Telemetry widgets collapse in order; COMPLETE and RANK A slam in as an angular stamp.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia–inspired mission debrief UI',
@@ -24,7 +24,7 @@ export const missionCompleteBurst: Specimen = {
   motion: {
     loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote: 'COMPLETE burst appears immediately without widget collapse.',
+    reducedMotionNote: 'COMPLETE stamp appears immediately without widget collapse.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
