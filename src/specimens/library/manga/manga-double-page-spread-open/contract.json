@@ -1,0 +1,24 @@
+{
+  "id": "manga-double-page-spread-open",
+  "ref": "SPX-3973",
+  "title": "Manga Double-Page Spread Open",
+  "tokens": {
+    "--mdps-paper": "#F4F1E8",
+    "--mdps-ink": "#111111",
+    "--mdps-duration": "680ms",
+    "--mdps-ease": "cubic-bezier(0.2, 0.75, 0.15, 1)",
+    "initialPageWidth": "42%",
+    "initialGap": "16%",
+    "finalPageWidth": "50%",
+    "initialSpine": "4px",
+    "finalSpine": "1px",
+    "headlineScale": "0.72 → 1",
+    "headlineOpacity": "0.15 → 1"
+  },
+  "timeline": {
+    "expandMs": 680,
+    "ease": "cubic-bezier(0.2, 0.75, 0.15, 1)"
+  },
+  "states": ["idle", "open"],
+  "reducedMotion": "immediate final double-page spread; no expand"
+}
