@@ -1,45 +1,90 @@
 {
-  "name": "weak-point-detection",
-  "intent": "A scan sweep brackets four weak points in order on 160ms steps across the host diagram.",
-  "catalogue": {
-    "nr": "NR-147",
-    "ref": "SPX-2490"
-  },
-  "geometry": {
-    "markerCount": 4,
-    "order": [
-      0,
-      1,
-      2,
-      3
-    ]
-  },
-  "timing": {
-    "stepMs": 160,
-    "settleMs": 100,
-    "totalMs": 740
-  },
-  "colours": {
-    "ink": "#070B0E",
-    "parchment": "#C8E8DC",
-    "chakra": "#3DCEA8",
-    "alert": "#3DCEA8",
-    "olive": "#1A6B58",
-    "off": "#D7F5EC",
-    "palette": "sensor-phosphor"
-  },
-  "api": {
-    "run": "runWeakPointDetection()",
-    "reset": "resetWeakPointDetection()",
-    "replay": "replayWeakPointDetection()"
-  },
-  "reducedMotion": {
-    "behaviour": "Resolved Weak-Point Detection state immediately"
-  },
-  "acceptance": [
-    "Exactly 4 markers bracket in order [0,1,2,3] at stepMs 160",
-    "Host content remains visible under brackets throughout",
-    "Status DETECTED only after marker 4 + settleMs 100",
-    "Reduced motion shows all four brackets immediately"
-  ]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/weak-point-detection.schema.json",
+  "title": "WeakPointDetection",
+  "description": "Brackets appear on host in frozen count and order.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "pointCount",
+    "pointOrder",
+    "stepMs",
+    "settleMs",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "weak-point-detection"
+    },
+    "pointCount": {
+      "type": "number",
+      "const": 4
+    },
+    "pointOrder": {
+      "type": "array",
+      "const": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "stepMs": {
+      "type": "number",
+      "const": 160
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 100
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immediateDetected"
+      ],
+      "properties": {
+        "immediateDetected": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
 }

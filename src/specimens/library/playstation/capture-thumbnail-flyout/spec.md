@@ -1,23 +1,28 @@
 # Capture Thumbnail Flyout
 
-A small captured-frame placeholder travels from centre into a saved-preview corner dock — thumbnail flyout after capture.
+A captured-frame placeholder arcs from centre into the bottom-left saved dock. Distinct from Screenshot Capture Flash (shutter only — no travel).
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3417` / `PS-111` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | 120×68 centre thumb → 56×32 bottom-left dock over 520ms. |
-| Trigger | CAPTURE button |
+| Travel | `640ms` |
+| Path | centre → upper-left arc (`-42px,-36px` @ 35%) → bottom-left dock |
+| Start size | `120×68` |
+| Dock size | `56×32` |
+| Easing | `cubic-bezier(0.22, 1, 0.36, 1)` |
+| Trigger | CAPTURE |
+
+## Acceptance
+
+1. CAPTURE reveals a centre thumbnail that arcs toward the SAVED dock.
+2. After `640ms` the thumb rests docked at bottom-left.
+3. No full-stage shutter blades (that is Screenshot Capture Flash).
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
-
-## Accessibility
-
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
+Thumb snaps to docked size/position; travel keyframes removed under both RM hooks.
 
 ## Porting
 

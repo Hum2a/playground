@@ -7,9 +7,11 @@
   --alert: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --wpd-point-count: 4;
   --wpd-step-ms: 160ms;
   --wpd-settle-ms: 100ms;
-  /* wave2 timing surface */
+  --wpd-step-ms: 160ms;
+  --wpd-settle-ms: 100ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -58,7 +60,7 @@
   justify-items: center;
   width: 100%;
   padding: 0.85rem 0.75rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(61 206 168 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -83,7 +85,7 @@
     var(--chakra) 80%,
     transparent
   );
-  box-shadow: 0 0 8px 1px color-mix(in srgb, var(--chakra) 45%, transparent);
+  box-shadow: 0 0 8px 1px rgb(61 206 168 / 0.45);
   transition: top 160ms linear;
   pointer-events: none;
 }
@@ -186,7 +188,7 @@
 
 .wpd__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(61 206 168 / 0.45);
 }
 
 .wpd__btn:hover:not(:disabled) {

@@ -6,10 +6,10 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
+    integration: [
     'Mount inside a relative host (~420×340+).',
-    'Import demo.css verbatim; freeze angles 0/72/144/216/288 and step 160ms from contract.json.',
-    'Wire runNetworkScan360 / reset / replay.',
+    'Import demo.css verbatim; freeze anglesDeg and stepMs 150 from contract.json.',
+    'Wire runNetworkScan360 / resetNetworkScan360 / replayNetworkScan360.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: contract.acceptance,

@@ -3,23 +3,37 @@
   "ref": "SPX-3441",
   "ps": "PS-135",
   "title": "Network Lost Takeover",
+  "intent": "Play surface dims and scales under a full offline takeover panel.",
   "palette": {
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
+    "sky": "#7EB6FF",
     "panel": "#121820",
-    "panel2": "#1a2330",
     "rule": "#243044",
     "pewter": "#8a9bb0"
   },
-  "behaviour": "Content scale 0.88 + blur; offline panel opacity 1.",
-  "trigger": "LOSE CONNECTION / RETRY",
+  "timing": {
+    "dimMs": 400,
+    "panelFadeMs": 360
+  },
+  "offline": {
+    "contentScale": 0.78,
+    "contentBlurPx": 5,
+    "contentOpacity": 0.18,
+    "veilOpacity": 0.55
+  },
+  "acceptance": [
+    "Offline phase scales play surface to 0.78 with blur and opacity 0.18",
+    "Offline panel reaches opacity 1 over the dimmed surface",
+    "RETRY restores online phase"
+  ],
+  "trigger": "LOSE CONNECTION / RETRY / RESTORE",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; dim and panel transitions removed"
   }
 }

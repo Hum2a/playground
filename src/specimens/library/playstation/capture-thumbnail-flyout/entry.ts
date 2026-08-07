@@ -17,6 +17,7 @@ export const captureThumbnailFlyout: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["capture","thumbnail","flyout"],
   deps: 'none',

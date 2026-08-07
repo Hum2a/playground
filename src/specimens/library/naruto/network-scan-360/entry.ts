@@ -5,7 +5,7 @@ export const networkScan360: Specimen = {
   ref: 'SPX-2497',
   title: '360° Network Scan',
   blurb:
-    'A 360° phosphor sweep wires five nodes at 0/72/144/216/288° on 150ms discovery steps.',
+    'A 360° phosphor sweep discovers five nodes at frozen bearings, logging STANDBY→FOUND as each links.',
   origin: {
     project: 'Original',
     surface: 'Naruto / sensory network — 360° scan',
@@ -25,10 +25,15 @@ export const networkScan360: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved 360° Network Scan state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all five nodes appear FOUND/MAPPED immediately.',
   },
-  acceptance: [
-    'Sweep discovers nodes at anglesDeg [0,72,144,216,288] in order at stepMs 150',
+    acceptance: [
+    'Sweep wires five nodes at frozen bearings 0/72/144/216/288°',
+    'Discovery log flips STANDBY→FOUND per node as sweep crosses',
+    'Phosphor skin (ink/phosphor/phosphorDim)',
+    'Replay clears nodes and log before rerunning',
+    'Reduced motion shows all nodes FOUND / MAPPED immediately',
+  ], in order at stepMs 150',
     'Links activate with nodes; inventory complete only after node 5 + settleMs 100',
     'Replay deactivates all five nodes/links before rerunning',
   ],

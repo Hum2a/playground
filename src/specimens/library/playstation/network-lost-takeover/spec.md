@@ -1,23 +1,29 @@
 # Network Lost Takeover
 
-Active content recedes into a clear offline state — play surface scales back as a network-lost panel takes over.
+Active play surface dims and scales back under a full-stage offline panel. Distinct from Game Crash Recovery (fold dialog with actions) — here the network panel owns the viewport.
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3441` / `PS-135` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | Content scale 0.88 + blur; offline panel opacity 1. |
-| Trigger | LOSE CONNECTION / RETRY |
+| Content scale | `0.78` |
+| Content blur | `5px` + brightness `0.55` |
+| Content opacity | `0.18` |
+| Veil | ink at `0.55` opacity |
+| Dim duration | `400ms` |
+| Panel fade | `360ms` |
+| Trigger | LOSE CONNECTION / RETRY / RESTORE |
+
+## Acceptance
+
+1. Online: play HUD readable; offline panel hidden.
+2. Offline: play surface visibly smaller, blurred, and dimmed under the panel; RETRY restores online.
+3. Status announces phase; colour is not the only signal.
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
-
-## Accessibility
-
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
+Dim and panel opacity snap to end states; transitions removed under both RM hooks.
 
 ## Porting
 

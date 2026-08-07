@@ -17,6 +17,7 @@ export const networkLostTakeover: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["network","offline","takeover"],
   deps: 'none',
