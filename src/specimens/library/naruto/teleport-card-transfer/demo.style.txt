@@ -7,6 +7,7 @@
   --alarm: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  /* wave2 timing surface */
   --tct-dx: 0px;
   --tct-dy: 0px;
   --tct-scale: 1;
