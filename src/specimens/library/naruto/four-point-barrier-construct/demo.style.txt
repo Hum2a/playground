@@ -7,6 +7,9 @@
   --alert: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --fpbc-edge-ms: 220ms;
+  --fpbc-fill-ms: 260ms;
+  --fpbc-settle-ms: 90ms;
   /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;

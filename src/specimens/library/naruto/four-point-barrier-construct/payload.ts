@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runFourPointBarrierConstruct / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Corners activate at (30,30)(170,30)(170,170)(30,170) before edges draw',
-    'Four edges draw at 220ms each, then fill 260ms into SECURE',
-    'Replay clears corners/edges/fill before reconstructing',
-    'Reduced motion shows SECURE barrier immediately',
-    'preview.scaffold hosts the overlay',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),
