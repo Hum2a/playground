@@ -5,7 +5,7 @@ export const wireConnectionDraw: Specimen = {
   ref: 'SPX-2427',
   title: 'Wire Connection Draw',
   blurb:
-    'A wire draws pathLength 76 between nodes in 180ms, then endpoints snap to LINKED (80ms) — stroke-draw link, not a fade.',
+    'A pathLength-100 stroke draws in 180ms between nodes A and B, then snaps (90ms) to LINKED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — wire / binding tools',
@@ -28,9 +28,9 @@ export const wireConnectionDraw: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the wire appears fully drawn as LINKED with no stroke animation.',
   },
   acceptance: [
-    'Wire draws pathLength 76 in 180ms via dashoffset',
-    'Endpoints pulse; LINKED after 80ms settle',
-    'Reduced motion shows fully drawn LINKED',
+    'pathLength 100 stroke draws in 180ms then snap 90ms',
+    'Endpoints pulse on LINKED',
+    'Reduced motion shows LINKED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

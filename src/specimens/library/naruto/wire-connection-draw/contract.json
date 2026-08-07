@@ -1,35 +1,22 @@
 {
   "name": "wire-connection-draw",
-  "intent": "SVG wire draws via pathLength 76 in drawMs 180 from node A→B, then endpoints snap/pulse to LINKED in settleMs 80.",
-  "catalogue": {
-    "nr": "NR-084",
-    "ref": "SPX-2427"
-  },
+  "intent": "SVG wire draws via pathLength 100 in drawMs 180 from node A→B, then endpoints snap/pulse to LINKED in settleMs 80.",
+  "catalogue": { "nr": "NR-084", "ref": "SPX-2427" },
   "copy": {
     "system": "LINK // WIRE",
     "unlinked": "UNLINKED",
     "linked": "LINKED"
   },
   "geometry": {
-    "viewBox": [
-      0,
-      0,
-      100,
-      40
-    ],
-    "line": {
-      "x1": 14,
-      "y1": 20,
-      "x2": 86,
-      "y2": 20
-    },
-    "pathLength": 76
+    "viewBox": [0, 0, 100, 40],
+    "line": { "x1": 14, "y1": 20, "x2": 86, "y2": 20 },
+    "pathLength": 100
   },
   "timing": {
     "drawMs": 180,
     "settleMs": 80,
-    "snapMs": 60,
-    "totalMs": 260
+    "snapMs": 90,
+    "totalMs": 350
   },
   "colours": {
     "ink": "#070B0E",
@@ -44,18 +31,13 @@
     "reset": "resetWireConnectionDraw()",
     "replay": "replayWireConnectionDraw()"
   },
-  "cssVars": [
-    "--wcd-draw-ms",
-    "--wcd-settle-ms",
-    "--wcd-path-length",
-    "--wcd-snap-ms"
-  ],
+  "cssVars": ["--wcd-draw-ms", "--wcd-settle-ms", "--wcd-path-length", "--wcd-snap-ms"],
   "reducedMotion": {
     "behaviour": "Fully drawn LINKED wire immediately"
   },
   "acceptance": [
-    "Wire stroke draws pathLength 76 in drawMs 180 (dashoffset, not fade)",
-    "Endpoints pulse then status LINKED after settleMs 80",
+    "Wire stroke draws pathLength 100 in drawMs 180 (dashoffset, not fade)",
+    "Endpoints pulse then status LINKED after snapMs 90 + settleMs 80",
     "Replay clears stroke to UNLINKED before re-drawing",
     "Reduced motion (prefers or data-force) shows fully drawn LINKED immediately"
   ]
