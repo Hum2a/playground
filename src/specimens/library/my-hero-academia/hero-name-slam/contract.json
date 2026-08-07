@@ -1,12 +1,15 @@
 {
   "name": "hero-name-slam",
-  "intent": "Codename UNIT 07 slams in with angular brackets; role copy settles to ASSIGNED.",
-  "catalogue": { "mha": "MHA-013", "ref": "SPX-1987" },
+  "intent": "Codename UNIT 07 slams in with angular brackets; role copy settles OUTPUT // READY → OUTPUT // ASSIGNED.",
+  "catalogue": { "mha": "MHA-013", "ref": "SPX-1987", "title": "Hero Name Slam" },
   "copy": {
     "prefix": "UNIT",
     "code": "07",
     "roleReady": "OUTPUT // READY",
-    "roleAssigned": "OUTPUT // ASSIGNED"
+    "roleAssigned": "OUTPUT // ASSIGNED",
+    "liveIdle": "Codename pending.",
+    "liveSlam": "Name slam.",
+    "liveDone": "Codename assigned."
   },
   "colours": {
     "primary": "#38A3FF",
@@ -14,11 +17,37 @@
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "timing": { "slamMs": 740, "settleMs": 320 },
+  "timing": {
+    "slamMs": 740,
+    "settleMs": 320,
+    "bracketDelayMs": 280,
+    "roleSettleMs": 280
+  },
+  "geometry": {
+    "bracketWidthPx": 26,
+    "bracketHeightPct": 78,
+    "bracketBorderPx": 4,
+    "slamScaleStart": 1.5,
+    "slamSkewStartDeg": -8
+  },
   "api": {
     "run": "runHeroNameSlam()",
     "reset": "resetHeroNameSlam()",
     "replay": "replayHeroNameSlam()"
   },
-  "reducedMotion": { "behaviour": "Immediately show settled name and brackets" }
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "behaviour": "Immediately show settled name, brackets, and OUTPUT // ASSIGNED"
+  },
+  "acceptance": [
+    "UNIT 07 slams from scale 1.5 / skew -8deg over 740ms with overshoot",
+    "Angular brackets scaleY from 0.2 at 280ms delay",
+    "Role copy swaps to OUTPUT // ASSIGNED at settle phase (320ms after slam)",
+    "Done state locks name, brackets, and assigned role",
+    "Reduced motion (prefers or data-force) shows final assigned state immediately"
+  ],
+  "waveC": "Sharper codename brackets; OUTPUT // ASSIGNED settle phase; frozen slamMs"
 }
