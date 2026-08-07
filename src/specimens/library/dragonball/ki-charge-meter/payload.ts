@@ -17,9 +17,10 @@ const payload: SpecimenPayload = {
   acceptance: [
     'Exactly 24 deterministic diamonds/lines consume in four groups of six.',
     'Groups accelerate at 420/340/270/200ms with 30ms internal stagger.',
-    'Node grows discretely 34/46/58/70/82px only after each group completes.',
+    'Vessel staging rings appear per group; node grows 34/46/58/70/82px after each group.',
     'Completion shows four cardinal lines and a 160ms 1→.92→1.05→1 compression.',
-    'Final state is static 100% READY; reduced motion is immediate.',
+    'Final state is static 100% READY; reduced motion is immediate full vessel.',
+    'window.kiChargeMeter.charge / reset / replay mirror exported functions.',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:350px;background:#111924;">

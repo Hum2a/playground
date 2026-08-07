@@ -87,4 +87,9 @@ function bindUi() {
     if (event.data && event.data.type === 'restart') void replayKiChargeMeter()
   })
 }
+window.kiChargeMeter = {
+  charge: runKiChargeMeter,
+  reset: resetKiChargeMeter,
+  replay: replayKiChargeMeter,
+}
 bindUi()

@@ -1,24 +1,75 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/ki-charge-meter.schema.json",
+  "$id": "https://playground.humza-butt.space/contracts/ki-charge-meter.schema.json",
   "title": "KiChargeMeter",
-  "description": "Portable deterministic progress aggregation contract.",
+  "description": "Portable deterministic progress aggregation: 24 fixed units converge in four accelerating groups into a parchment charge vessel. SPX-966.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "copy", "units", "groups", "nodeSizes", "completion", "reducedMotion"],
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "units",
+    "groups",
+    "nodeSizes",
+    "vesselRings",
+    "completion",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
   "properties": {
-    "name": { "const": "ki-charge-meter" },
+    "name": { "type": "string", "const": "ki-charge-meter" },
+    "intent": {
+      "type": "string",
+      "const": "Distributed unfinished work converges in four accelerating batches into a central charge vessel with staging rings; final state is static READY."
+    },
     "copy": {
       "type": "object",
-      "required": ["operation", "trigger", "states"],
+      "additionalProperties": false,
+      "required": ["operation", "trigger", "states", "readyAnnounce"],
       "properties": {
-        "operation": { "const": "BUILD // RELEASE" },
-        "trigger": { "const": "CHARGE" },
-        "states": { "const": [0, 25, 50, 75, 100] }
+        "operation": { "type": "string", "const": "BUILD // RELEASE" },
+        "trigger": { "type": "string", "const": "CHARGE" },
+        "states": {
+          "type": "array",
+          "const": [0, 25, 50, 75, 100]
+        },
+        "readyAnnounce": {
+          "type": "string",
+          "const": "Build release is 100 percent. Ready."
+        }
       }
     },
-    "units": { "const": 24 },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper", "vessel", "energy", "glow", "ready"],
+      "properties": {
+        "ink": { "type": "string", "const": "#1a2420" },
+        "paper": { "type": "string", "const": "#d4cfc0" },
+        "vessel": { "type": "string", "const": "#3d5248" },
+        "energy": { "type": "string", "const": "#c4782a" },
+        "glow": { "type": "string", "const": "#e8a84a" },
+        "ready": { "type": "string", "const": "#8b5e2a" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fieldWidthPx", "fieldHeightPx", "cornerCount"],
+      "properties": {
+        "fieldWidthPx": { "type": "integer", "const": 320 },
+        "fieldHeightPx": { "type": "integer", "const": 220 },
+        "cornerCount": { "type": "integer", "const": 4 }
+      }
+    },
+    "units": { "type": "integer", "const": 24 },
     "groups": {
+      "type": "array",
       "const": [
         { "count": 6, "durationMs": 420, "staggerMs": 30 },
         { "count": 6, "durationMs": 340, "staggerMs": 30 },
@@ -26,14 +77,84 @@
         { "count": 6, "durationMs": 200, "staggerMs": 30 }
       ]
     },
-    "nodeSizes": { "const": [34, 46, 58, 70, 82] },
-    "completion": {
-      "const": {
-        "compressMs": 160,
-        "lineCount": 4,
-        "status": "READY"
+    "nodeSizes": {
+      "type": "array",
+      "const": [34, 46, 58, 70, 82]
+    },
+    "vesselRings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "diametersPx"],
+      "properties": {
+        "count": { "type": "integer", "const": 4 },
+        "diametersPx": {
+          "type": "array",
+          "const": [56, 72, 88, 104]
+        }
       }
     },
-    "reducedMotion": { "const": "Immediate 100% READY with all units consumed." }
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compressMs", "compressScale", "lineCount", "status"],
+      "properties": {
+        "compressMs": { "type": "integer", "const": 160 },
+        "compressScale": {
+          "type": "array",
+          "const": [1, 0.92, 1.05, 1]
+        },
+        "lineCount": { "type": "integer", "const": 4 },
+        "status": { "type": "string", "const": "READY" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["liveStatus", "focusRing"],
+      "properties": {
+        "liveStatus": { "type": "boolean", "const": true },
+        "focusRing": { "type": "string", "const": "#c4782a" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion=\"true\"]"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate 100% READY with 82px node, all vessel rings, four cardinal lines; no particle travel."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "groupPrefix", "stagePrefix", "ready"],
+      "properties": {
+        "root": { "type": "string", "const": "kcm" },
+        "groupPrefix": { "type": "string", "const": "kcm--group-" },
+        "stagePrefix": { "type": "string", "const": "kcm--stage-" },
+        "ready": { "type": "string", "const": "kcm--ready" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset", "replay", "windowApi"],
+      "properties": {
+        "run": { "type": "string", "const": "runKiChargeMeter" },
+        "reset": { "type": "string", "const": "resetKiChargeMeter" },
+        "replay": { "type": "string", "const": "replayKiChargeMeter" },
+        "windowApi": { "type": "string", "const": "window.kiChargeMeter" }
+      }
+    }
   }
 }

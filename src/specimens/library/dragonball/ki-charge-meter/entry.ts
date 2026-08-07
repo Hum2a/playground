@@ -4,7 +4,7 @@ export const kiChargeMeter: Specimen = {
   ref: 'SPX-966',
   title: 'Ki Charge Meter',
   blurb:
-    'Twenty-four fixed energy units converge in four accelerating groups, growing a flat circular-diamond operation node into a static READY state.',
+    'Twenty-four fixed units converge on a parchment charge vessel in four accelerating groups; staging rings and a growing diamond node settle to static 100% READY.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball ki-charge–inspired progress aggregation (abstract)',
