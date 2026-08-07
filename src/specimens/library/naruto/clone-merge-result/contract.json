@@ -1,6 +1,6 @@
 {
   "name": "clone-merge-result",
-  "intent": "Three clone result cards reabsorb inward by frozen travel px, scale to zero at the merge point, then the combined output expands.",
+  "intent": "Three clone results travel inward by frozen px offsets and reabsorb into one summed output.",
   "catalogue": { "nr": "NR-053", "ref": "SPX-2396" },
   "copy": {
     "system": "CLONE // MERGE",
@@ -10,18 +10,17 @@
     "merged": "MERGED"
   },
   "geometry": {
-    "cloneCount": 3,
     "values": [7, 4, 9],
     "mergedValue": 20,
-    "travelPx": {
-      "a": { "x": 72, "y": 48 },
-      "b": { "x": -72, "y": 48 },
-      "c": { "x": 0, "y": -28 }
-    }
+    "travelPx": [
+      [72, 48],
+      [-72, 48],
+      [0, -36]
+    ]
   },
   "timing": {
-    "convergeMs": 220,
-    "mergeMs": 140,
+    "convergeMs": 240,
+    "mergeMs": 120,
     "expandMs": 140,
     "totalMs": 500
   },
@@ -31,7 +30,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-ash"
+    "palette": "clone-violet"
   },
   "api": {
     "run": "runCloneMergeResult()",
@@ -39,13 +38,11 @@
     "replay": "replayCloneMergeResult()"
   },
   "reducedMotion": {
-    "behaviour": "Output shows merged value 20 immediately; clones hidden; no travel"
+    "behaviour": "Output shows 20 immediately; clones hidden"
   },
   "acceptance": [
-    "Clones A/B/C travel inward by (72,48)/(-72,48)/(0,-28) px over convergeMs 220",
-    "At merge point clones scale to 0 over mergeMs 140 (reabsorption, not fade-as-primary)",
-    "Output expands from scale 0.72 to 1.06 showing mergedValue 20 over expandMs 140",
-    "Replay resets clones to idle positions and output to —",
-    "Reduced motion (prefers or data-force) shows MERGED 20 immediately"
+    "Clones travel inward by travelPx [[72,48],[-72,48],[0,-36]] over convergeMs 240",
+    "Reabsorption uses translate+scale (not opacity fade) then output expands to 20",
+    "Reduced motion shows merged result 20 immediately"
   ]
 }

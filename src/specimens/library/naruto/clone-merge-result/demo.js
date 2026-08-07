@@ -1,21 +1,20 @@
 /**
- * Clone Merge Result — three parallel clone result cards converge into one
- * combined output card.
+ * Clone Merge Result — inward reabsorption travel in frozen px.
  * iframe-safe; no storage / parent / network.
  */
 
 const VALUES = [7, 4, 9]
 const MERGED_VALUE = VALUES.reduce((a, b) => a + b, 0)
+const TRAVEL_PX = [
+  [72, 48],
+  [-72, 48],
+  [0, -36],
+]
 
-const CONVERGE_MS = 220
-const MERGE_MS = 140
+const CONVERGE_MS = 240
+const MERGE_MS = 120
 const EXPAND_MS = 140
 const TOTAL_MS = CONVERGE_MS + MERGE_MS + EXPAND_MS
-const TRAVEL_PX = {
-  a: { x: 72, y: 48 },
-  b: { x: -72, y: 48 },
-  c: { x: 0, y: -28 },
-}
 
 let busy = false
 let resolved = false
@@ -76,7 +75,7 @@ function showResolved() {
   rootEl()?.setAttribute('data-state', 'resolved')
   setStatus('MERGED')
   setHint(`Combined output: ${MERGED_VALUE}.`)
-  setLive(`Clone results merged. Combined output ${MERGED_VALUE}.`)
+  setLive(`Clones reabsorbed by ${TRAVEL_PX.map((p) => p.join('×')).join(' / ')}px. Output ${MERGED_VALUE}.`)
 }
 
 function resetVisual() {
@@ -89,7 +88,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run full converge → merge → resolve choreography.
+ * Auto-run converge → merge → resolve with frozen travel px.
  * @returns {Promise<void>}
  */
 export function runCloneMergeResult() {
@@ -111,17 +110,17 @@ export function runCloneMergeResult() {
 
   root.setAttribute('data-state', 'converging')
   setStatus('CONVERGING')
-  setHint('Clone results converging.')
+  setHint('Clones traveling inward.')
   setLive(
-    `Clones traveling inward A(${TRAVEL_PX.a.x},${TRAVEL_PX.a.y}) B(${TRAVEL_PX.b.x},${TRAVEL_PX.b.y}) C(${TRAVEL_PX.c.x},${TRAVEL_PX.c.y}).`,
+    `Clones traveling ${TRAVEL_PX[0].join(',')} / ${TRAVEL_PX[1].join(',')} / ${TRAVEL_PX[2].join(',')} px.`,
   )
 
   return new Promise((resolve) => {
     later(CONVERGE_MS, () => {
       root.setAttribute('data-state', 'merging')
       setStatus('MERGING')
-      setHint('Merging into one output.')
-      setLive('Merging clone results.')
+      setHint('Reabsorbing into one output.')
+      setLive('Reabsorbing clones into output.')
     })
 
     later(CONVERGE_MS + MERGE_MS, () => {

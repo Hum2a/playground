@@ -5,7 +5,7 @@ export const cloneMergeResult: Specimen = {
   ref: 'SPX-2396',
   title: 'Clone Merge Result',
   blurb:
-    'Three clone results reabsorb inward by frozen travel px (72/48, −72/48, 0/−28) into one merged output of 20.',
+    'Three clone results travel inward by frozen px offsets and reabsorb into one summed output card.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — clone & duplication systems',
@@ -19,17 +19,17 @@ export const cloneMergeResult: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['merge', 'reabsorption', 'clone', 'travel'],
+  tags: ['merge', 'convergence', 'clone'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the three clone results are already merged into output 20.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the three clone results are already merged into the output card.',
   },
   acceptance: [
-    'Clones travel inward by frozen px then scale to 0 at merge',
-    'Output expands to mergedValue 20',
+    'Clones travel [[72,48],[-72,48],[0,-36]] px inward over 240ms then reabsorb',
+    'Motion is translate+scale reabsorption — not opacity fade; output becomes 20',
     'Reduced motion shows merged result immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
