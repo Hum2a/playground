@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; sweep arcs once across three fixed blip angles from contract.json.',
-    'Wire runPresenceRadarSweep / resetPresenceRadarSweep / replayPresenceRadarSweep.',
-    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
+    'Mount with preview.scaffold host.',
+    'Import demo.css verbatim; freeze blip coords and 190ms step from contract.json.',
+    'Wire runPresenceRadarSweep / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Exactly three presence blips on the radar; each logs a contact as the sweep crosses it',
-    'Idle, sweeping, and resolved states are visually distinct',
-    'Replay resets the sweep and contact log before rerunning',
-    'Reduced motion shows all three contacts logged immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Sweep arcs once; three blips at frozen coords (57.6,49.3), (111.5,35), (154.1,62.1)',
+    'Contacts log in bearing order 042° → 090° → 138°',
+    'Resolved shows COMPLETE with all three contacts active',
+    'Replay clears blips/log before rerunning',
+    'Reduced motion shows all contacts COMPLETE immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),

@@ -5,7 +5,7 @@ export const presenceRadarSweep: Specimen = {
   ref: 'SPX-2509',
   title: 'Presence Radar Sweep',
   blurb:
-    'A finite radial sweep arcs once across a radar screen, logging three fixed presence blips into a contact list as it crosses them.',
+    'A finite radar sweep logs three frozen presence blips at fixed coords and bearings into COMPLETE.',
   origin: {
     project: 'Original',
     surface: 'Naruto / sensory-detection interfaces — presence tracking overlays',
@@ -25,12 +25,14 @@ export const presenceRadarSweep: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all three blips appear logged immediately with the sweep beam parked at rest.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all three contacts appear COMPLETE immediately.',
   },
-  acceptance: [
-    'Blips at frozen bearings appear as sweep crosses them',
-    'Contact log lists bearings; sweep rests when done',
-    'Reduced motion shows blips logged with beam at rest',
+    acceptance: [
+    'Sweep arcs once; three blips at frozen coords (57.6,49.3), (111.5,35), (154.1,62.1)',
+    'Contacts log in bearing order 042° → 090° → 138°',
+    'Resolved shows COMPLETE with all three contacts active',
+    'Replay clears blips/log before rerunning',
+    'Reduced motion shows all contacts COMPLETE immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
