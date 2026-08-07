@@ -5,7 +5,7 @@ export const handSignComboSequence: Specimen = {
   ref: 'SPX-2344',
   title: 'Hand-Sign Combo Sequence',
   blurb:
-    'Four abstract command glyphs acquire one-by-one into a READY sequence — ritualised shortcut input without copyrighted sign art.',
+    'Four distinct glyphs (peak, ring, bars, plate) snap-latch one-by-one into a READY command sequence.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — command sequences',
@@ -14,18 +14,18 @@ export const handSignComboSequence: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['command-sequence', 'input', 'ritual'],
+  tags: ['command-sequence', 'input', 'ritual', 'snap'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all four signs appear acquired immediately as READY.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four signs appear acquired immediately as READY with no snap.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

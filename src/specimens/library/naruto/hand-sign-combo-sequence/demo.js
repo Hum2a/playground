@@ -1,12 +1,14 @@
 /**
- * Hand-Sign Combo Sequence — acquire four abstract glyphs in order.
+ * Hand-Sign Combo Sequence — snap-latch four distinct glyphs in order.
  * iframe-safe; no storage / parent / network.
  */
 
 const SIGN_COUNT = 4
 const STEP_MS = 130
+const SNAP_MS = 110
 const SETTLE_MS = 90
-const TOTAL_MS = SIGN_COUNT * STEP_MS + SETTLE_MS // ~610ms principal sequence
+const READY_HOLD_MS = 220
+const GLYPHS = ['peak', 'ring', 'bars', 'plate']
 
 let busy = false
 let acquired = 0
@@ -63,33 +65,43 @@ function slots() {
 function paintSlots(count, pulseIndex) {
   slots().forEach((slot, i) => {
     const on = i < count
+    const glyph = GLYPHS[i] || `sign-${i + 1}`
     slot.setAttribute('data-acquired', on ? 'true' : 'false')
     slot.setAttribute(
       'aria-label',
-      on ? `Sign ${i + 1} acquired` : `Sign ${i + 1} pending`,
+      on ? `Sign ${i + 1} (${glyph}) acquired` : `Sign ${i + 1} (${glyph}) pending`,
     )
     if (pulseIndex === i) {
       slot.setAttribute('data-pulse', 'true')
-      later(STEP_MS, () => slot.removeAttribute('data-pulse'))
+      later(SNAP_MS, () => slot.removeAttribute('data-pulse'))
     } else {
       slot.removeAttribute('data-pulse')
     }
   })
 }
 
-function showResolved() {
+function showResolved(withHold) {
+  const root = rootEl()
   acquired = SIGN_COUNT
   paintSlots(SIGN_COUNT, -1)
-  rootEl()?.setAttribute('data-phase', 'done')
+  root?.setAttribute('data-phase', 'done')
   setStatus('READY')
   setHint('Sequence complete.')
   setLive('Command sequence ready. All four signs acquired.')
+  if (withHold && root && !prefersReducedMotion()) {
+    root.setAttribute('data-ready-hold', 'true')
+    later(READY_HOLD_MS, () => root.removeAttribute('data-ready-hold'))
+  } else {
+    root?.removeAttribute('data-ready-hold')
+  }
 }
 
 function resetVisual() {
   acquired = 0
   paintSlots(0, -1)
-  rootEl()?.setAttribute('data-phase', 'idle')
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'idle')
+  root?.removeAttribute('data-ready-hold')
   setStatus('IDLE')
   setHint('Press Run or keys 1–4 in order.')
   setLive('Command sequence idle. Four signs pending.')
@@ -112,7 +124,7 @@ export function runHandSignComboSequence() {
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
-    showResolved()
+    showResolved(false)
     busy = false
     setButtons(true)
     return Promise.resolve()
@@ -127,16 +139,18 @@ export function runHandSignComboSequence() {
     const tick = () => {
       if (step >= SIGN_COUNT) {
         later(SETTLE_MS, () => {
-          showResolved()
-          busy = false
-          setButtons(true)
-          resolve()
+          showResolved(true)
+          later(READY_HOLD_MS, () => {
+            busy = false
+            setButtons(true)
+            resolve()
+          })
         })
         return
       }
       acquired = step + 1
       paintSlots(acquired, step)
-      setLive(`Sign ${acquired} of ${SIGN_COUNT} acquired.`)
+      setLive(`Sign ${acquired} of ${SIGN_COUNT} (${GLYPHS[step]}) snap-latched.`)
       step += 1
       later(STEP_MS, tick)
     }
@@ -169,16 +183,16 @@ function acquireOne(index) {
   if (!root || busy || root.getAttribute('data-phase') === 'done') return
   if (index !== acquired) return
   if (prefersReducedMotion()) {
-    showResolved()
+    showResolved(false)
     return
   }
   root.setAttribute('data-phase', 'active')
   setStatus('ACQUIRING')
   acquired = index + 1
   paintSlots(acquired, index)
-  setLive(`Sign ${acquired} of ${SIGN_COUNT} acquired.`)
+  setLive(`Sign ${acquired} of ${SIGN_COUNT} (${GLYPHS[index]}) snap-latched.`)
   if (acquired >= SIGN_COUNT) {
-    later(SETTLE_MS, () => showResolved())
+    later(SETTLE_MS, () => showResolved(true))
   }
 }
 
@@ -204,6 +218,5 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
 bindUi()
 resetHandSignComboSequence()

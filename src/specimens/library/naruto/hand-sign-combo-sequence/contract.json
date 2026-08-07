@@ -1,37 +1,53 @@
 ﻿{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/hand-sign-combo-sequence.schema.json",
-  "title": "HandSignComboSequence",
-  "description": "Four abstract command glyphs snap-acquire one-by-one into a resolved READY sequence.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "signCount", "stepMs", "settleMs", "acquireFrom", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "hand-sign-combo-sequence" },
-    "signCount": { "type": "number", "const": 4 },
-    "stepMs": { "type": "number", "const": 130 },
-    "settleMs": { "type": "number", "const": 90 },
-    "acquireFrom": { "type": "string", "const": "scale(0.78) translateY(6px)" },
-    "acquireTo": { "type": "string", "const": "scale(1) translateY(0)" },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#140C0C" },
-        "parchment": { "type": "string", "const": "#E8DCC8" },
-        "chakra": { "type": "string", "const": "#C43C2E" },
-        "olive": { "type": "string", "const": "#6B5048" },
-        "off": { "type": "string", "const": "#F3EBE0" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateReady"],
-      "properties": {
-        "immediateReady": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "hand-sign-combo-sequence",
+  "intent": "Four distinct command glyphs snap-latch one-by-one into a READY sequence — ritualised shortcut input without copyrighted sign art.",
+  "catalogue": { "nr": "NR-001", "ref": "SPX-2344" },
+  "copy": {
+    "system": "COMBO // HAND SIGNS",
+    "idle": "IDLE",
+    "acquiring": "ACQUIRING",
+    "ready": "READY",
+    "hintIdle": "Press Run or keys 1–4 in order.",
+    "hintReady": "Sequence complete.",
+    "liveIdle": "Command sequence idle. Four signs pending.",
+    "liveReady": "Command sequence ready. All four signs acquired."
+  },
+  "geometry": {
+    "signCount": 4,
+    "glyphs": ["peak", "ring", "bars", "plate"],
+    "slotPx": 48,
+    "pendingTranslateYPx": 10,
+    "pendingScale": 0.82,
+    "snapScale": 1.08
+  },
+  "timing": {
+    "stepMs": 130,
+    "snapMs": 110,
+    "settleMs": 90,
+    "readyHoldMs": 220,
+    "totalMs": 830
+  },
+  "colours": {
+    "ink": "#140C0C",
+    "parchment": "#E8DCC8",
+    "chakra": "#C43C2E",
+    "olive": "#6B5048",
+    "off": "#F3EBE0",
+    "palette": "seal-lacquer"
+  },
+  "api": {
+    "run": "runHandSignComboSequence()",
+    "reset": "resetHandSignComboSequence()",
+    "replay": "replayHandSignComboSequence()"
+  },
+  "reducedMotion": {
+    "behaviour": "All four signs appear acquired as READY immediately; no snap or ready-hold motion"
+  },
+  "acceptance": [
+    "Exactly four slots with distinct glyphs peak/ring/bars/plate (data-glyph)",
+    "Each acquire snaps from translateY 10px / scale 0.82 through snapScale 1.08 to rest in snapMs 110",
+    "Auto-run steps every stepMs 130; after fourth sign settleMs 90 then READY with readyHoldMs 220",
+    "Keys 1–4 acquire only in order; wrong key ignored; replay clears all data-acquired before rerun",
+    "Reduced motion (prefers or data-force) shows READY immediately with no snap animation"
+  ]
 }

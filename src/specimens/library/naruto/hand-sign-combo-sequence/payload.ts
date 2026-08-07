@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze four signs at 130ms steps from contract.json.',
+    'Import demo.css verbatim; freeze stepMs 130 / snapMs 110 / settleMs 90 / readyHoldMs 220 from contract.json.',
     'Wire runHandSignComboSequence / resetHandSignComboSequence / replayHandSignComboSequence.',
     'Optional keys 1–4 acquire in order; honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Exactly four glyph slots; acquire one-by-one to READY',
-    'Idle, active, and resolved states are visually distinct',
-    'Replay resets all slots before rerunning',
-    'Reduced motion shows READY immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#140C0C;">
   {{specimen}}
 </div>
 `.trim(),
