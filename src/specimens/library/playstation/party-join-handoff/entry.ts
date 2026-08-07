@@ -17,6 +17,7 @@ export const partyJoinHandoff: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["party","social","expand"],
   deps: 'none',

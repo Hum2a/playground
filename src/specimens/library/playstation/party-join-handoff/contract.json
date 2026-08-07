@@ -1,14 +1,33 @@
 {
   "name": "party-join-handoff",
-  "intent": "A party card expands into an active voice/session state.",
-  "primitives": [
-    "party",
-    "social"
-  ],
+  "ref": "SPX-3402",
+  "ps": "PS-096",
+  "title": "Party Join Handoff",
+  "intent": "Party invite expands into an active voice session with LIVE roster state.",
+  "primitives": ["party", "voice", "social"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
+  },
+  "timing": {
+    "handoffMs": 350
+  },
+  "session": {
+    "badge": "LIVE",
+    "speakingMeters": true
+  },
+  "acceptance": [
+    "JOIN reveals Voice Session with LIVE badge over 350ms",
+    "Speaking member shows voice meters; status announces LIVE",
+    "LEAVE restores invite card"
+  ],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Session appears instantly; meter pulse removed"
   }
 }

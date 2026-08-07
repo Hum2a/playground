@@ -1,16 +1,19 @@
-/* Portable specimen CSS (iframe-isolated). */
+/* SPX-3402 Party Join Handoff — portable. Invite → live voice session; no shape-kit RM. */
 
 .pjh {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
   --ps-panel: #121820;
   --ps-rule: #1e2a38;
   --ps-pewter: #8a9aad;
+  --handoff-ms: 350ms;
 
   box-sizing: border-box;
-  width: min(100%, 480px);
+  position: relative;
+  width: min(100%, 400px);
+  min-height: 200px;
   margin: 0 auto;
   padding: 16px;
   font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
@@ -21,6 +24,14 @@
 .pjh *::before,
 .pjh *::after {
   box-sizing: border-box;
+}
+
+.pjh__eyebrow {
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ps-pewter);
 }
 
 .pjh__btn {
@@ -35,8 +46,20 @@
   cursor: pointer;
 }
 
+.pjh__btn--ghost {
+  color: var(--ps-sky);
+  background: transparent;
+  border-color: var(--ps-blue);
+}
+
 .pjh__btn:hover:not(:disabled) {
   background: #fff;
+  color: var(--ps-ink);
+}
+
+.pjh__btn--ghost:hover:not(:disabled) {
+  background: rgb(46 144 255 / 0.12);
+  color: var(--ps-sky);
 }
 
 .pjh__btn:focus-visible {
@@ -44,103 +67,12 @@
   outline-offset: 2px;
 }
 
-.pjh__btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
 .pjh__status {
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   font-size: 10px;
   letter-spacing: 0.08em;
   text-align: center;
   color: var(--ps-pewter);
-}
-
-.pjh__shape {
-  display: block;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.pjh__shape--circle {
-  border-radius: 50%;
-  background: var(--ps-sky);
-}
-
-.pjh__shape--square {
-  border-radius: 2px;
-  background: var(--ps-blue);
-}
-
-.pjh__shape--cross {
-  position: relative;
-  background: transparent;
-}
-
-.pjh__shape--cross::before,
-.pjh__shape--cross::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 12px;
-  height: 3px;
-  margin: -1.5px 0 0 -6px;
-  background: var(--ps-chalk);
-  border-radius: 1px;
-}
-
-.pjh__shape--cross::before {
-  transform: rotate(45deg);
-}
-
-.pjh__shape--cross::after {
-  transform: rotate(-45deg);
-}
-
-.pjh__shape--triangle {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 12px solid var(--ps-blue);
-  background: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pjh__anim,
-  .pjh__orbit,
-  .pjh__shape,
-  .pjh__scan,
-  .pjh__rift,
-  .pjh__ring,
-  .pjh__tile,
-  .pjh__card,
-  .pjh__slab,
-  .pjh__token,
-  .pjh__panel,
-  .pjh__overlay {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-[data-force-reduced-motion='true'] .pjh__anim,
-[data-force-reduced-motion='true'] .pjh__orbit,
-[data-force-reduced-motion='true'] .pjh__shape,
-[data-force-reduced-motion='true'] .pjh__scan,
-[data-force-reduced-motion='true'] .pjh__rift,
-[data-force-reduced-motion='true'] .pjh__ring,
-[data-force-reduced-motion='true'] .pjh__tile,
-[data-force-reduced-motion='true'] .pjh__card,
-[data-force-reduced-motion='true'] .pjh__slab,
-[data-force-reduced-motion='true'] .pjh__token,
-[data-force-reduced-motion='true'] .pjh__panel,
-[data-force-reduced-motion='true'] .pjh__overlay {
-  animation: none !important;
-  transition: none !important;
 }
 
 .pjh__card,
@@ -149,7 +81,9 @@
   border: 1px solid var(--ps-rule);
   border-radius: 4px;
   background: var(--ps-panel);
-  transition: opacity 350ms ease, transform 350ms ease;
+  transition:
+    opacity var(--handoff-ms) ease,
+    transform var(--handoff-ms) ease;
 }
 
 .pjh__card-title,
@@ -168,18 +102,13 @@
 .pjh.is-active .pjh__card {
   position: absolute;
   opacity: 0;
-  transform: scale(0.9);
+  transform: scale(0.92) translateY(-8px);
   pointer-events: none;
-}
-
-.pjh {
-  position: relative;
-  min-height: 160px;
 }
 
 .pjh__session {
   opacity: 0;
-  transform: translateY(12px) scale(0.96);
+  transform: translateY(14px) scale(0.96);
   border-color: var(--ps-sky);
 }
 
@@ -188,29 +117,119 @@
   transform: translateY(0) scale(1);
 }
 
+.pjh__session-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.pjh__live {
+  padding: 3px 8px;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: var(--ps-ink);
+  background: var(--ps-blue);
+  border-radius: 2px;
+}
+
 .pjh__roster {
   margin: 0 0 14px;
   padding: 0;
   list-style: none;
+}
+
+.pjh__member {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
   font-size: 10px;
 }
 
-.pjh__roster li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.pjh__dot {
-  width: 8px;
-  height: 8px;
+.pjh__avatar {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--ps-blue);
-  animation: pjh-pulse 1.4s ease infinite;
+  border: 1px solid var(--ps-rule);
+  background: #1a2430;
 }
 
-@keyframes pjh-pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+.pjh__name {
+  letter-spacing: 0.06em;
+}
+
+.pjh__meters {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  opacity: 0.25;
+}
+
+.pjh__meters i {
+  display: block;
+  width: 3px;
+  height: 4px;
+  border-radius: 1px;
+  background: var(--ps-sky);
+}
+
+.pjh__member.is-speaking .pjh__meters {
+  opacity: 1;
+}
+
+.pjh__member.is-speaking .pjh__meters i {
+  animation: pjh-voice 900ms ease-in-out infinite;
+}
+
+.pjh__member.is-speaking .pjh__meters i:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.pjh__member.is-speaking .pjh__meters i:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.pjh__member.is-speaking .pjh__avatar {
+  border-color: var(--ps-blue);
+  box-shadow: 0 0 0 2px rgb(46 144 255 / 0.25);
+}
+
+@keyframes pjh-voice {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 12px;
+  }
+}
+
+.pjh [hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pjh__card,
+  .pjh__session {
+    transition: none !important;
+  }
+
+  .pjh__member.is-speaking .pjh__meters i {
+    animation: none !important;
+    height: 8px;
+  }
+}
+
+[data-force-reduced-motion='true'] .pjh__card,
+[data-force-reduced-motion='true'] .pjh__session {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .pjh__member.is-speaking .pjh__meters i {
+  animation: none !important;
+  height: 8px;
 }

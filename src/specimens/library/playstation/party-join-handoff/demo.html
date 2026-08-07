@@ -1,17 +1,33 @@
 <div class="pjh" data-pjh>
+  <p class="pjh__eyebrow">Party Join Handoff</p>
   <div class="pjh__card" data-pjh-card>
     <p class="pjh__card-title">Party Invite</p>
-    <p class="pjh__card-meta">3 friends waiting</p>
+    <p class="pjh__card-meta">3 friends waiting · voice ready</p>
     <button type="button" class="pjh__btn" data-pjh-join>JOIN PARTY</button>
   </div>
   <div class="pjh__session" data-pjh-session hidden>
-    <p class="pjh__session-title">Active Session</p>
-    <ul class="pjh__roster" aria-hidden="true">
-      <li><span class="pjh__dot"></span>You</li>
-      <li><span class="pjh__dot"></span>Friend A</li>
-      <li><span class="pjh__dot"></span>Friend B</li>
+    <div class="pjh__session-head">
+      <p class="pjh__session-title">Voice Session</p>
+      <span class="pjh__live" data-pjh-live>LIVE</span>
+    </div>
+    <ul class="pjh__roster">
+      <li class="pjh__member is-speaking">
+        <span class="pjh__avatar" aria-hidden="true"></span>
+        <span class="pjh__name">You</span>
+        <span class="pjh__meters" aria-hidden="true"><i></i><i></i><i></i></span>
+      </li>
+      <li class="pjh__member">
+        <span class="pjh__avatar" aria-hidden="true"></span>
+        <span class="pjh__name">Friend A</span>
+        <span class="pjh__meters" aria-hidden="true"><i></i><i></i><i></i></span>
+      </li>
+      <li class="pjh__member">
+        <span class="pjh__avatar" aria-hidden="true"></span>
+        <span class="pjh__name">Friend B</span>
+        <span class="pjh__meters" aria-hidden="true"><i></i><i></i><i></i></span>
+      </li>
     </ul>
-    <button type="button" class="pjh__btn" data-pjh-leave>LEAVE</button>
+    <button type="button" class="pjh__btn pjh__btn--ghost" data-pjh-leave>LEAVE</button>
   </div>
-  <p class="pjh__status" data-pjh-status aria-live="polite">Invite card — not joined</p>
+  <p class="pjh__status" data-pjh-status aria-live="polite">Invite card — not in voice session</p>
 </div>
