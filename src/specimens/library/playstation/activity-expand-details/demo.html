@@ -1,17 +1,55 @@
-<div class="ps aed" data-aed data-phase="compact">
-  <p class="ps__live" data-aed-live aria-live="polite">Compact activity card.</p>
-  <p class="ps__eyebrow">ACTIVITY DETAILS</p>
-  <button type="button" class="aed__card" data-aed-toggle aria-expanded="false">
-    <span class="aed__compact">
-      <strong>Daily Challenge</strong>
-      <span>2 / 5 tasks</span>
-    </span>
-    <span class="aed__details" hidden>
-      <span class="aed__row">▸ Clear training route</span>
-      <span class="aed__row">▸ Collect 3 markers</span>
-      <span class="aed__row aed__reward">Reward · 120 XP</span>
-      <span class="aed__actions"><span>Resume</span><span>Track</span></span>
-    </span>
-  </button>
-  <p class="ps__status" data-aed-status>Compact — activate to expand details.</p>
+<div class="aed" data-aed data-phase="compact">
+  <p class="aed__live" data-aed-live aria-live="polite">Compact activity card.</p>
+  <p class="aed__eyebrow">ACTIVITY DETAILS</p>
+  <article class="aed__card" data-aed-card>
+    <button
+      type="button"
+      class="aed__header"
+      data-aed-toggle
+      aria-expanded="false"
+      aria-controls="aed-details"
+      id="aed-toggle"
+    >
+      <span class="aed__title-block">
+        <strong class="aed__title">Daily Challenge</strong>
+        <span class="aed__meta">Objective · Active</span>
+      </span>
+      <span class="aed__summary">
+        <span class="aed__count" data-aed-count>2 / 5</span>
+        <span class="aed__chev" aria-hidden="true"></span>
+      </span>
+    </button>
+    <div
+      class="aed__details"
+      id="aed-details"
+      role="region"
+      aria-labelledby="aed-toggle"
+      data-aed-details
+      hidden
+    >
+      <section class="aed__section">
+        <h3 class="aed__section-label">Tasks</h3>
+        <ul class="aed__tasks">
+          <li class="aed__task is-done"><span class="aed__check" aria-hidden="true"></span>Clear training route</li>
+          <li class="aed__task is-done"><span class="aed__check" aria-hidden="true"></span>Collect 3 markers</li>
+          <li class="aed__task"><span class="aed__check" aria-hidden="true"></span>Beat time trial</li>
+          <li class="aed__task"><span class="aed__check" aria-hidden="true"></span>Share a capture</li>
+          <li class="aed__task"><span class="aed__check" aria-hidden="true"></span>Finish without retry</li>
+        </ul>
+      </section>
+      <section class="aed__section">
+        <h3 class="aed__section-label">Rewards</h3>
+        <div class="aed__rewards">
+          <span class="aed__reward">120 XP</span>
+          <span class="aed__reward aed__reward--soft">Badge fragment</span>
+        </div>
+      </section>
+      <div class="aed__actions" role="group" aria-label="Activity actions">
+        <span class="aed__action">Resume</span>
+        <span class="aed__action">Track</span>
+        <span class="aed__action aed__action--ghost">Dismiss</span>
+      </div>
+    </div>
+  </article>
+  <p class="aed__status" data-aed-status>Compact — expand to reveal tasks, rewards, and actions.</p>
 </div>
