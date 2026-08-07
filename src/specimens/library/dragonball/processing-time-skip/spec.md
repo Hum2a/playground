@@ -35,7 +35,7 @@
 | REQUEST | 180ms | Stage 1 runs normally |
 | Freeze | 60ms | CACHE HIT; interface held |
 | Slices | instant at skip | Exactly 3 lines across PARSE / SEARCH / ASSEMBLE |
-| Compress | 70ms | Mid labels `scaleX(1 → .1)` then become `SKIPPED` |
+| Compress | 70ms | Mid stages collapse + diagonal strike; labels compress then `SKIPPED` |
 | Marker gap | 45ms | Marker gone at REQUEST; reappears at RESULT (no travel) |
 | RESULT | with SKIPPED | Activates; shows `24ms` |
 

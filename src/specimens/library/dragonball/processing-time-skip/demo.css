@@ -164,6 +164,45 @@
   border-style: dashed;
   border-color: var(--pts-skip);
   background: rgb(21 25 32 / 0.65);
+  min-height: 36px;
+  transform: scaleY(0.72);
+  transform-origin: center center;
+}
+
+.pts__strike {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.pts__strike::before {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 50%;
+  height: 1px;
+  background: var(--pts-skip);
+  transform: rotate(-14deg) scaleX(0);
+  transform-origin: center;
+}
+
+.pts__stage[data-status='skipped'] .pts__strike,
+.pts[data-state='skip'] .pts__mid .pts__strike,
+.pts[data-state='marker'] .pts__mid .pts__strike,
+.pts[data-state='result'] .pts__mid .pts__strike,
+.pts[data-state='complete'] .pts__mid .pts__strike {
+  opacity: 1;
+}
+
+.pts[data-state='skip'] .pts__mid .pts__strike::before,
+.pts[data-state='marker'] .pts__mid .pts__strike::before,
+.pts[data-state='result'] .pts__mid .pts__strike::before,
+.pts[data-state='complete'] .pts__mid .pts__strike::before,
+.pts__stage[data-status='skipped'] .pts__strike::before {
+  transform: rotate(-14deg) scaleX(1);
+  transition: transform 80ms var(--pts-snap);
 }
 
 .pts__label {
@@ -362,6 +401,21 @@
 .pts[data-state='marker'] .pts__slice--3,
 .pts[data-state='result'] .pts__slice--3 {
   transform: translateX(-100%) scaleY(1);
+}
+
+.pts[data-state='skip'] .pts__mid .pts__stage {
+  animation: pts-collapse var(--pts-compress-ms) var(--pts-ease) both;
+}
+
+@keyframes pts-collapse {
+  0% {
+    min-height: 88px;
+    transform: scaleY(1);
+  }
+  100% {
+    min-height: 36px;
+    transform: scaleY(0.72);
+  }
 }
 
 .pts[data-state='skip'] .pts__mid .pts__label {

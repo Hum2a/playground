@@ -24,7 +24,9 @@
   },
   "geometry": {
     "midLabelCompressScaleX": 0.1,
-    "sliceCount": 3
+    "sliceCount": 3,
+    "skippedCollapseScaleY": 0.72,
+    "skippedStrikeDeg": -14
   },
   "constraints": {
     "midStagesNeverActive": true,
