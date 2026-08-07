@@ -1,6 +1,11 @@
 {
   "name": "synchronous-fusion-merge",
   "intent": "Two distinct source entities synchronise with mirrored motion, converge, hold ~12px apart, compress through six radial lines, and resolve as hybrid MODEL C with A/B provenance.",
+  "differentiation": {
+    "vs": "linked-fusion-merge",
+    "thisDriver": "self-synchronisation",
+    "otherDriver": "external midpoint link"
+  },
   "colours": {
     "ink": "#0a0a0c",
     "panel": "#16161c",

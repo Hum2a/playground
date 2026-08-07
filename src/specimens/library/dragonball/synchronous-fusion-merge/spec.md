@@ -4,6 +4,14 @@
 
 Two independent software entities (**SOURCE // A** rectangular DATA, **SOURCE // B** diamond RULES) synchronise with mirrored motion, then converge, hold, compress through six radial lines, and resolve as **MODEL // C** — a hybrid geometry with A/B provenance markers. Inspired by Dragon Ball fusion symmetry — no characters or franchise symbols.
 
+## Differentiation vs Linked Fusion (`SPX-1022`)
+
+| | Synchronous (`SPX-1021`) | Linked (`SPX-1022`) |
+| --- | --- | --- |
+| Driver | Self-synchronisation (mirrored motion, sync segments) | External midpoint **link** (nodes → diamond → tension) |
+| Copy | `SOURCE // A·B` → `MODEL // C` | `PROFILE // A·B` → `PROFILE // C` via `LINK ACTIVE` |
+| Tell | Entities align *before* converge | Relationship forms first, then pulls |
+
 ## DOM structure
 
 ```
