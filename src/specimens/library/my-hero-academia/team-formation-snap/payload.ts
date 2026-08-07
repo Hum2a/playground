@@ -10,16 +10,16 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount stage with overflow hidden; import demo.css verbatim.',
-    'Snap 580ms staggered; total 1230ms.',
-    'Wire Form up / Replay to runTeamFormationSnap.',
+    'Frozen scatter offsets and 0/60/120ms snap stagger via CSS vars.',
+    'Snap 580ms + UNIT READY stamp 180ms; wire Form up / Replay.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Three cards start scattered',
-    'Cards snap to bottom row slots',
-    'UNIT READY appears at settle',
+    'Three cards start at frozen scatter positions',
+    'Cards snap to bottom row on stagger ladder',
+    'UNIT READY end stamp slams in after snap',
     'Replay returns cards to scatter positions',
-    'Reduced motion: instant formation',
+    'Reduced motion: instant formation with stamp',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#101820;">

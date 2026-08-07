@@ -1,13 +1,14 @@
 import type { Specimen } from '../../../types'
+
 export const teamFormationSnap: Specimen = {
   id: 'team-formation-snap',
   ref: 'SPX-2200',
   title: 'Team Formation Snap',
   blurb:
-    'Three scattered profile cards snap into a bottom-row formation with UNIT READY confirmation.',
+    'Three scattered profile cards snap into frozen bottom-row slots; UNIT READY end stamp slams in at settle.',
   origin: {
     project: 'Original',
-    surface: 'anime/comic action language study',
+    surface: 'My Hero Academia–inspired team formation UI',
   },
   facets: {
     kind: 'transition',
@@ -24,7 +25,7 @@ export const teamFormationSnap: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under reduced motion, cards appear in formation immediately with UNIT READY.',
+      'Under reduced motion, cards appear in formation immediately with UNIT READY stamp.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

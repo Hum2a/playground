@@ -1,10 +1,30 @@
-/* team-formation-snap — portable specimen styles. Do not restyle to host tokens. */
+/* SPX-2200 Team Formation Snap — portable contract. */
 
 .tfs {
   --tfs-primary: #38a3ff;
   --tfs-ink: #101820;
   --tfs-paper: #f4f7fa;
   --tfs-accent: #ff4d35;
+  --tfs-ease: cubic-bezier(0.15, 0.85, 0.25, 1);
+  --tfs-snap-ms: 580;
+  --tfs-stagger-b-ms: 60;
+  --tfs-stagger-c-ms: 120;
+  --tfs-stamp-ms: 180;
+  --tfs-settle-ms: 650;
+  --tfs-card-width: 28%;
+  --tfs-row-bottom: 18px;
+  --tfs-card-a-scatter-left: 8%;
+  --tfs-card-a-scatter-top: 12%;
+  --tfs-card-b-scatter-left: 52%;
+  --tfs-card-b-scatter-top: 8%;
+  --tfs-card-c-scatter-left: 30%;
+  --tfs-card-c-scatter-top: 48%;
+  --tfs-slot-1-left: 6%;
+  --tfs-slot-2-left: 36%;
+  --tfs-slot-3-left: 66%;
+  --tfs-overshoot-bottom: 22px;
+  --tfs-stamp-rotate-deg: -6;
+  --tfs-stamp-scale-start: 1.35;
 
   box-sizing: border-box;
   position: relative;
@@ -45,28 +65,28 @@
 
 .tfs__slot {
   position: absolute;
-  bottom: 18px;
-  width: 28%;
+  bottom: var(--tfs-row-bottom);
+  width: var(--tfs-card-width);
   height: 72px;
   border: 2px dashed rgb(56 163 255 / 0.45);
   opacity: 0;
 }
 
 .tfs__slot--1 {
-  left: 6%;
+  left: var(--tfs-slot-1-left);
 }
 
 .tfs__slot--2 {
-  left: 36%;
+  left: var(--tfs-slot-2-left);
 }
 
 .tfs__slot--3 {
-  left: 66%;
+  left: var(--tfs-slot-3-left);
 }
 
 .tfs__card {
   position: absolute;
-  width: 28%;
+  width: var(--tfs-card-width);
   min-width: 72px;
   padding: 0.5rem 0.4rem;
   border: 3px solid var(--tfs-ink);
@@ -79,18 +99,18 @@
 }
 
 .tfs__card--a {
-  left: 8%;
-  top: 12%;
+  left: var(--tfs-card-a-scatter-left);
+  top: var(--tfs-card-a-scatter-top);
 }
 
 .tfs__card--b {
-  left: 52%;
-  top: 8%;
+  left: var(--tfs-card-b-scatter-left);
+  top: var(--tfs-card-b-scatter-top);
 }
 
 .tfs__card--c {
-  left: 30%;
-  top: 48%;
+  left: var(--tfs-card-c-scatter-left);
+  top: var(--tfs-card-c-scatter-top);
 }
 
 .tfs__id {
@@ -106,17 +126,27 @@
   letter-spacing: 0.1em;
 }
 
-.tfs__ready {
+.tfs__stamp {
   margin: 0;
-  text-align: center;
+  align-self: center;
+  padding: 0.35rem 1rem;
+  border: 3px solid var(--tfs-accent);
+  background: rgb(16 24 32 / 0.72);
+  opacity: 0;
+  transform: rotate(calc(var(--tfs-stamp-rotate-deg) * 1deg))
+    scale(var(--tfs-stamp-scale-start));
+}
+
+.tfs__stamp[hidden] {
+  display: none;
+}
+
+.tfs__stamp-text {
+  display: block;
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.22em;
   color: var(--tfs-accent);
-}
-
-.tfs__ready[hidden] {
-  display: none;
 }
 
 .tfs__controls {
@@ -156,140 +186,192 @@
 }
 
 .tfs[data-phase='snap'] .tfs__card--a {
-  animation: tfs-snap-a 580ms cubic-bezier(0.15, 0.85, 0.25, 1) both;
+  animation: tfs-snap-a calc(var(--tfs-snap-ms) * 1ms) var(--tfs-ease) both;
 }
 
 .tfs[data-phase='snap'] .tfs__card--b {
-  animation: tfs-snap-b 580ms cubic-bezier(0.15, 0.85, 0.25, 1) 60ms both;
+  animation: tfs-snap-b calc(var(--tfs-snap-ms) * 1ms) var(--tfs-ease)
+    calc(var(--tfs-stagger-b-ms) * 1ms) both;
 }
 
 .tfs[data-phase='snap'] .tfs__card--c {
-  animation: tfs-snap-c 580ms cubic-bezier(0.15, 0.85, 0.25, 1) 120ms both;
+  animation: tfs-snap-c calc(var(--tfs-snap-ms) * 1ms) var(--tfs-ease)
+    calc(var(--tfs-stagger-c-ms) * 1ms) both;
+}
+
+.tfs[data-phase='stamp'] .tfs__stamp,
+.tfs[data-phase='done'] .tfs__stamp {
+  display: block;
+}
+
+.tfs[data-phase='stamp'] .tfs__stamp {
+  animation: tfs-stamp-in calc(var(--tfs-stamp-ms) * 1ms)
+    cubic-bezier(0.32, 0.1, 0.2, 1.35) forwards;
 }
 
 .tfs[data-phase='done'] .tfs__slot {
   opacity: 1;
 }
 
-.tfs[data-phase='done'] .tfs__card--a {
-  left: 6%;
+.tfs[data-phase='done'] .tfs__card--a,
+.tfs[data-phase='stamp'] .tfs__card--a {
+  left: var(--tfs-slot-1-left);
   top: auto;
-  bottom: 18px;
+  bottom: var(--tfs-row-bottom);
 }
 
-.tfs[data-phase='done'] .tfs__card--b {
-  left: 36%;
+.tfs[data-phase='done'] .tfs__card--b,
+.tfs[data-phase='stamp'] .tfs__card--b {
+  left: var(--tfs-slot-2-left);
   top: auto;
-  bottom: 18px;
+  bottom: var(--tfs-row-bottom);
 }
 
-.tfs[data-phase='done'] .tfs__card--c {
-  left: 66%;
+.tfs[data-phase='done'] .tfs__card--c,
+.tfs[data-phase='stamp'] .tfs__card--c {
+  left: var(--tfs-slot-3-left);
   top: auto;
-  bottom: 18px;
+  bottom: var(--tfs-row-bottom);
+}
+
+.tfs[data-phase='done'] .tfs__stamp {
+  opacity: 1;
+  transform: rotate(calc(var(--tfs-stamp-rotate-deg) * 1deg)) scale(1);
 }
 
 @keyframes tfs-snap-a {
   0% {
-    left: 8%;
-    top: 12%;
+    left: var(--tfs-card-a-scatter-left);
+    top: var(--tfs-card-a-scatter-top);
   }
   70% {
-    left: 4%;
-    bottom: 22px;
+    left: calc(var(--tfs-slot-1-left) - 2%);
+    bottom: var(--tfs-overshoot-bottom);
     top: auto;
   }
   100% {
-    left: 6%;
-    bottom: 18px;
+    left: var(--tfs-slot-1-left);
+    bottom: var(--tfs-row-bottom);
     top: auto;
   }
 }
 
 @keyframes tfs-snap-b {
   0% {
-    left: 52%;
-    top: 8%;
+    left: var(--tfs-card-b-scatter-left);
+    top: var(--tfs-card-b-scatter-top);
   }
   70% {
-    left: 34%;
-    bottom: 22px;
+    left: calc(var(--tfs-slot-2-left) - 2%);
+    bottom: var(--tfs-overshoot-bottom);
     top: auto;
   }
   100% {
-    left: 36%;
-    bottom: 18px;
+    left: var(--tfs-slot-2-left);
+    bottom: var(--tfs-row-bottom);
     top: auto;
   }
 }
 
 @keyframes tfs-snap-c {
   0% {
-    left: 30%;
-    top: 48%;
+    left: var(--tfs-card-c-scatter-left);
+    top: var(--tfs-card-c-scatter-top);
   }
   70% {
-    left: 64%;
-    bottom: 22px;
+    left: calc(var(--tfs-slot-3-left) - 2%);
+    bottom: var(--tfs-overshoot-bottom);
     top: auto;
   }
   100% {
-    left: 66%;
-    bottom: 18px;
+    left: var(--tfs-slot-3-left);
+    bottom: var(--tfs-row-bottom);
     top: auto;
+  }
+}
+
+@keyframes tfs-stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(calc(var(--tfs-stamp-rotate-deg) * 1deg))
+      scale(var(--tfs-stamp-scale-start));
+  }
+  to {
+    opacity: 1;
+    transform: rotate(calc(var(--tfs-stamp-rotate-deg) * 1deg)) scale(1);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tfs[data-phase='snap'] .tfs__card {
+  .tfs[data-phase='snap'] .tfs__card,
+  .tfs[data-phase='stamp'] .tfs__stamp {
     animation: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .tfs[data-phase='snap'] .tfs__card {
+[data-force-reduced-motion='true'] .tfs[data-phase='snap'] .tfs__card,
+[data-force-reduced-motion='true'] .tfs[data-phase='stamp'] .tfs__stamp {
   animation: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .tfs[data-phase='done'] .tfs__card--a,
+  .tfs[data-phase='stamp'] .tfs__card--a,
   .tfs[data-phase='snap'] .tfs__card--a {
-    left: 6%;
+    left: var(--tfs-slot-1-left);
     top: auto;
-    bottom: 18px;
+    bottom: var(--tfs-row-bottom);
   }
 
   .tfs[data-phase='done'] .tfs__card--b,
+  .tfs[data-phase='stamp'] .tfs__card--b,
   .tfs[data-phase='snap'] .tfs__card--b {
-    left: 36%;
+    left: var(--tfs-slot-2-left);
     top: auto;
-    bottom: 18px;
+    bottom: var(--tfs-row-bottom);
   }
 
   .tfs[data-phase='done'] .tfs__card--c,
+  .tfs[data-phase='stamp'] .tfs__card--c,
   .tfs[data-phase='snap'] .tfs__card--c {
-    left: 66%;
+    left: var(--tfs-slot-3-left);
     top: auto;
-    bottom: 18px;
+    bottom: var(--tfs-row-bottom);
+  }
+
+  .tfs[data-phase='done'] .tfs__stamp,
+  .tfs[data-phase='stamp'] .tfs__stamp {
+    opacity: 1;
+    transform: rotate(calc(var(--tfs-stamp-rotate-deg) * 1deg)) scale(1);
   }
 }
 
 [data-force-reduced-motion='true'] .tfs[data-phase='done'] .tfs__card--a,
+[data-force-reduced-motion='true'] .tfs[data-phase='stamp'] .tfs__card--a,
 [data-force-reduced-motion='true'] .tfs[data-phase='snap'] .tfs__card--a {
-  left: 6%;
+  left: var(--tfs-slot-1-left);
   top: auto;
-  bottom: 18px;
+  bottom: var(--tfs-row-bottom);
 }
 
 [data-force-reduced-motion='true'] .tfs[data-phase='done'] .tfs__card--b,
+[data-force-reduced-motion='true'] .tfs[data-phase='stamp'] .tfs__card--b,
 [data-force-reduced-motion='true'] .tfs[data-phase='snap'] .tfs__card--b {
-  left: 36%;
+  left: var(--tfs-slot-2-left);
   top: auto;
-  bottom: 18px;
+  bottom: var(--tfs-row-bottom);
 }
 
 [data-force-reduced-motion='true'] .tfs[data-phase='done'] .tfs__card--c,
+[data-force-reduced-motion='true'] .tfs[data-phase='stamp'] .tfs__card--c,
 [data-force-reduced-motion='true'] .tfs[data-phase='snap'] .tfs__card--c {
-  left: 66%;
+  left: var(--tfs-slot-3-left);
   top: auto;
-  bottom: 18px;
+  bottom: var(--tfs-row-bottom);
+}
+
+[data-force-reduced-motion='true'] .tfs[data-phase='done'] .tfs__stamp,
+[data-force-reduced-motion='true'] .tfs[data-phase='stamp'] .tfs__stamp {
+  opacity: 1;
+  transform: rotate(calc(var(--tfs-stamp-rotate-deg) * 1deg)) scale(1);
 }

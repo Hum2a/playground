@@ -4,8 +4,11 @@
  */
 
 const SNAP_MS = 580
+const STAGGER_B_MS = 60
+const STAGGER_C_MS = 120
+const STAMP_MS = 180
 const SETTLE_MS = 650
-const TOTAL_MS = SNAP_MS + SETTLE_MS
+const TOTAL_MS = SNAP_MS + STAMP_MS + SETTLE_MS
 
 let busy = false
 /** @type {number[]} */
@@ -48,15 +51,15 @@ function setButtons(on) {
   })
 }
 
-function showReady() {
-  const ready = document.querySelector('[data-tfs-ready]')
-  if (ready) ready.hidden = false
-  setLive('Formation complete.')
+function showStamp() {
+  const stamp = document.querySelector('[data-tfs-stamp]')
+  if (stamp) stamp.hidden = false
+  setLive('Formation complete — UNIT READY.')
 }
 
 function resetVisual() {
-  const ready = document.querySelector('[data-tfs-ready]')
-  if (ready) ready.hidden = true
+  const stamp = document.querySelector('[data-tfs-stamp]')
+  if (stamp) stamp.hidden = true
   setLive('Units scattered.')
 }
 
@@ -76,7 +79,7 @@ export function runTeamFormationSnap() {
 
   if (prefersReducedMotion()) {
     setPhase('done')
-    showReady()
+    showStamp()
     busy = false
     setButtons(true)
     return Promise.resolve()
@@ -87,12 +90,15 @@ export function runTeamFormationSnap() {
 
   return new Promise((resolve) => {
     later(SNAP_MS, () => {
-      showReady()
-      setPhase('done')
-      later(SETTLE_MS, () => {
-        busy = false
-        setButtons(true)
-        resolve()
+      setPhase('stamp')
+      showStamp()
+      later(STAMP_MS, () => {
+        setPhase('done')
+        later(SETTLE_MS, () => {
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })

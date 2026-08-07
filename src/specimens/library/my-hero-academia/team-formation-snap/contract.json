@@ -1,10 +1,69 @@
 {
   "name": "team-formation-snap",
+  "intent": "Three scattered profile cards snap into frozen bottom-row slots on a stagger ladder; UNIT READY end stamp slams in after settle.",
+  "catalogue": { "mha": "MHA-226", "ref": "SPX-2200" },
+  "copy": {
+    "stamp": "UNIT READY",
+    "formUp": "Form up",
+    "replay": "Replay",
+    "liveScattered": "Units scattered.",
+    "liveSnap": "Snapping into formation.",
+    "liveReady": "Formation complete — UNIT READY.",
+    "cards": [
+      { "id": "A-01", "role": "STRIKE" },
+      { "id": "B-02", "role": "SUPPORT" },
+      { "id": "C-03", "role": "RECON" }
+    ]
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "animation": { "snapMs": 580, "totalMs": 1230 }
+  "timing": {
+    "snapMs": 580,
+    "staggerBMs": 60,
+    "staggerCMs": 120,
+    "stampMs": 180,
+    "settleMs": 650,
+    "totalMs": 1410
+  },
+  "geometry": {
+    "cardWidthPercent": 28,
+    "rowBottomPx": 18,
+    "overshootBottomPx": 22,
+    "scatter": {
+      "a": { "leftPercent": 8, "topPercent": 12 },
+      "b": { "leftPercent": 52, "topPercent": 8 },
+      "c": { "leftPercent": 30, "topPercent": 48 }
+    },
+    "slots": {
+      "1": { "leftPercent": 6 },
+      "2": { "leftPercent": 36 },
+      "3": { "leftPercent": 66 }
+    },
+    "stamp": {
+      "rotateDeg": -6,
+      "scaleStart": 1.35
+    }
+  },
+  "api": {
+    "run": "runTeamFormationSnap()",
+    "reset": "resetTeamFormationSnap()",
+    "replay": "replayTeamFormationSnap()"
+  },
+  "reducedMotion": {
+    "behaviour": "Cards appear in formation immediately with UNIT READY stamp visible"
+  },
+  "acceptance": [
+    "Idle: three cards at frozen scatter offsets; stamp hidden",
+    "Form up: cards snap to slots on 0/60/120ms stagger over 580ms",
+    "Stamp: UNIT READY slams in over 180ms after snap completes",
+    "Done: dashed slot outlines visible; Replay enabled",
+    "Replay returns cards to scatter positions",
+    "Reduced motion (prefers or data-force) shows formation + stamp immediately",
+    "No network; effect clipped to stage"
+  ],
+  "waveB": "Card offsets/stagger frozen via CSS vars; plain label replaced with accent end stamp"
 }
