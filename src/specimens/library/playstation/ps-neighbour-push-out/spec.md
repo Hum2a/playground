@@ -21,6 +21,12 @@ distances, then restore when focus moves.
 - Click a card → expand + neighbours translate aside.
 - Changing focus restores previous neighbours and yields new ones.
 
+## Acceptance
+
+- Focused card expands to 112px at scale 1.06.
+- Neighbours yield by frozen 20 / 24 / 36px push distances, then restore.
+- Reduced motion applies expand and offsets instantly.
+
 ## Reduced motion
 
 Both triggers disable `.pnpo__card` transitions so expand/push snap.
