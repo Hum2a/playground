@@ -1,6 +1,15 @@
 {
   "name": "blueprint-assembly",
-  "intent": "Exploded blueprint parts assemble into finished gadget device.",
+  "intent": "Exploded blueprint parts at frozen positions converge into CAPTURE RIG device; dashed rules and LOCKED settle stamp.",
+  "catalogue": { "mha": "MHA-111", "ref": "SPX-2085" },
+  "copy": {
+    "label": "GADGET BLUEPRINT",
+    "assemble": "ASSEMBLE",
+    "deviceTag": "UNIT READY",
+    "deviceName": "CAPTURE RIG",
+    "settleStamp": "LOCKED",
+    "liveReady": "Capture Rig assembled and ready."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
@@ -9,19 +18,39 @@
   },
   "timing": {
     "assembleMs": 660,
-    "settleMs": 1310
+    "stampMs": 220,
+    "settleMs": 1310,
+    "totalMs": 1310
+  },
+  "geometry": {
+    "exploded": {
+      "a": { "topPercent": 8, "leftPercent": 6 },
+      "b": { "topPercent": 10, "rightPercent": 8 },
+      "c": { "bottomPercent": 12, "leftPercent": 10 },
+      "d": { "bottomPercent": 10, "rightPercent": 6 }
+    },
+    "center": { "topPercent": 50, "leftPercent": 50 },
+    "rules": {
+      "horizontal": { "topPercent": 50, "leftPercent": 8, "widthPercent": 84 },
+      "vertical": { "topPercent": 12, "leftPercent": 50, "heightPercent": 76 },
+      "diagonal": { "topPercent": 18, "leftPercent": 14, "widthPercent": 72, "rotateDeg": 24 }
+    },
+    "settleStamp": { "rotateDeg": -8, "delayMs": 680 }
   },
   "api": {
     "run": "runBlueprintAssembly()",
     "reset": "resetBlueprintAssembly()",
-    "replay": "replayBlueprintAssembly()",
-    "sandboxSafe": true
+    "replay": "replayBlueprintAssembly()"
   },
   "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Device appears immediately; parts hidden"
-  }
+    "behaviour": "CAPTURE RIG device and LOCKED stamp appear immediately; parts hidden"
+  },
+  "acceptance": [
+    "Idle: four parts at frozen exploded offsets; dashed blueprint rules visible",
+    "Assemble: parts converge to center over 660ms",
+    "Settle: CAPTURE RIG device scales in; LOCKED stamp slams at 680ms",
+    "Reduced motion (prefers or data-force) shows device + stamp immediately",
+    "No network; effect clipped to host"
+  ],
+  "waveC": "Exploded positions, blueprint rules, and CAPTURE RIG settle stamp frozen in contract"
 }

@@ -1,10 +1,24 @@
-/* blueprint-assembly — portable specimen styles */
+/* SPX-2085 Blueprint Assembly — portable contract. */
 
 .bpa {
   --bpa-primary: #38a3ff;
   --bpa-ink: #101820;
   --bpa-paper: #f4f7fa;
   --bpa-accent: #ff4d35;
+  --bpa-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --bpa-assemble-ms: 660;
+  --bpa-settle-ms: 1310;
+  --bpa-stamp-ms: 220;
+  --bpa-part-a-top: 8%;
+  --bpa-part-a-left: 6%;
+  --bpa-part-b-top: 10%;
+  --bpa-part-b-right: 8%;
+  --bpa-part-c-bottom: 12%;
+  --bpa-part-c-left: 10%;
+  --bpa-part-d-bottom: 10%;
+  --bpa-part-d-right: 6%;
+  --bpa-center-top: 50%;
+  --bpa-center-left: 50%;
 
   box-sizing: border-box;
   position: relative;
@@ -73,6 +87,39 @@
     linear-gradient(color-mix(in srgb, var(--bpa-primary) 12%, transparent) 1px, transparent 1px) 0 0 / 16px 16px;
 }
 
+.bpa__rule {
+  position: absolute;
+  pointer-events: none;
+  border: 0;
+  background: transparent;
+}
+
+.bpa__rule--h {
+  top: 50%;
+  left: 8%;
+  width: 84%;
+  height: 0;
+  border-top: 2px dashed color-mix(in srgb, var(--bpa-primary) 55%, transparent);
+}
+
+.bpa__rule--v {
+  top: 12%;
+  left: 50%;
+  width: 0;
+  height: 76%;
+  border-left: 2px dashed color-mix(in srgb, var(--bpa-primary) 55%, transparent);
+}
+
+.bpa__rule--d {
+  top: 18%;
+  left: 14%;
+  width: 72%;
+  height: 0;
+  border-top: 2px dashed color-mix(in srgb, var(--bpa-accent) 45%, transparent);
+  transform: rotate(24deg);
+  transform-origin: left center;
+}
+
 .bpa__part {
   position: absolute;
   width: 52px;
@@ -83,32 +130,38 @@
   background: color-mix(in srgb, var(--bpa-primary) 25%, var(--bpa-paper));
   font-size: 0.72rem;
   font-weight: 900;
-  transition: transform 660ms cubic-bezier(0.22, 1, 0.36, 1), opacity 280ms ease 520ms;
+  transition:
+    top calc(var(--bpa-assemble-ms) * 1ms) var(--bpa-ease),
+    left calc(var(--bpa-assemble-ms) * 1ms) var(--bpa-ease),
+    right calc(var(--bpa-assemble-ms) * 1ms) var(--bpa-ease),
+    bottom calc(var(--bpa-assemble-ms) * 1ms) var(--bpa-ease),
+    transform calc(var(--bpa-assemble-ms) * 1ms) var(--bpa-ease),
+    opacity 280ms ease 520ms;
 }
 
 .bpa__part--a {
-  top: 8%;
-  left: 6%;
+  top: var(--bpa-part-a-top);
+  left: var(--bpa-part-a-left);
 }
 
 .bpa__part--b {
-  top: 10%;
-  right: 8%;
+  top: var(--bpa-part-b-top);
+  right: var(--bpa-part-b-right);
 }
 
 .bpa__part--c {
-  bottom: 12%;
-  left: 10%;
+  bottom: var(--bpa-part-c-bottom);
+  left: var(--bpa-part-c-left);
 }
 
 .bpa__part--d {
-  bottom: 10%;
-  right: 6%;
+  bottom: var(--bpa-part-d-bottom);
+  right: var(--bpa-part-d-right);
 }
 
 .bpa--assemble .bpa__part {
-  top: 50%;
-  left: 50%;
+  top: var(--bpa-center-top);
+  left: var(--bpa-center-left);
   right: auto;
   bottom: auto;
   transform: translate(-50%, -50%) scale(0.2);
@@ -155,6 +208,36 @@
   letter-spacing: 0.08em;
 }
 
+.bpa__settle-stamp {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  padding: 0.15rem 0.4rem;
+  border: 2px solid var(--bpa-paper);
+  background: var(--bpa-accent);
+  font-size: 0.48rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  transform: rotate(-8deg) scale(1.4);
+}
+
+.bpa--settled .bpa__settle-stamp {
+  animation: bpa-stamp calc(var(--bpa-stamp-ms) * 1ms) cubic-bezier(0.34, 1.56, 0.64, 1) 680ms forwards;
+}
+
+@keyframes bpa-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-14deg) scale(1.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+}
+
 .bpa__status {
   position: absolute;
   width: 1px;
@@ -169,8 +252,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .bpa__part,
-  .bpa__device {
+  .bpa__device,
+  .bpa__settle-stamp,
+  .bpa--settled .bpa__settle-stamp {
     transition: none !important;
+    animation: none !important;
   }
 
   .bpa--assemble .bpa__part {
@@ -182,11 +268,19 @@
     opacity: 1;
     transform: scale(1);
   }
+
+  .bpa--settled .bpa__settle-stamp {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
 }
 
 [data-force-reduced-motion='true'] .bpa__part,
-[data-force-reduced-motion='true'] .bpa__device {
+[data-force-reduced-motion='true'] .bpa__device,
+[data-force-reduced-motion='true'] .bpa__settle-stamp,
+[data-force-reduced-motion='true'] .bpa--settled .bpa__settle-stamp {
   transition: none !important;
+  animation: none !important;
 }
 
 [data-force-reduced-motion='true'] .bpa--assemble .bpa__part {
@@ -197,4 +291,9 @@
 [data-force-reduced-motion='true'] .bpa--settled .bpa__device {
   opacity: 1;
   transform: scale(1);
+}
+
+[data-force-reduced-motion='true'] .bpa--settled .bpa__settle-stamp {
+  opacity: 1;
+  transform: rotate(-8deg) scale(1);
 }
