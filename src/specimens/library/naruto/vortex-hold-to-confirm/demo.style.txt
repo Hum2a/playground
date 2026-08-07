@@ -8,6 +8,8 @@
   --off: #d7f5ec;
   --vhc-hold-ms: 900ms;
   --vhc-cancel-ms: 200ms;
+  --vhc-confirm-pulse-ms: 180ms;
+  --vhc-ring-count: 3;
   box-sizing: border-box;
   position: relative;
   display: flex;

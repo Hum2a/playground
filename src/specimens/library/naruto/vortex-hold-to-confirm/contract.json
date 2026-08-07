@@ -1,98 +1,50 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/vortex-hold-to-confirm.schema.json",
-  "title": "VortexHoldToConfirm",
-  "description": "Holding a central core builds concentric rotating rings; releasing early cancels, holding the full threshold confirms.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "holdMs",
-    "cancelMs",
-    "confirmPulseMs",
-    "ringCount",
-    "colours",
-    "reducedMotion"
+  "name": "vortex-hold-to-confirm",
+  "intent": "Hold a central core 900ms to build three rotating rings; early release cancels — never confirms before threshold.",
+  "catalogue": { "nr": "NR-139", "ref": "SPX-2482" },
+  "copy": {
+    "system": "HOLD // VORTEX",
+    "idle": "IDLE",
+    "holding": "HOLDING",
+    "cancelled": "CANCELLED",
+    "confirmed": "CONFIRMED"
+  },
+  "geometry": {
+    "ringCount": 3,
+    "corePx": 108
+  },
+  "timing": {
+    "holdMs": 900,
+    "cancelMs": 200,
+    "confirmPulseMs": 180
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor"
+  },
+  "api": {
+    "run": "runVortexHoldToConfirm()",
+    "reset": "resetVortexHoldToConfirm()",
+    "replay": "replayVortexHoldToConfirm()"
+  },
+  "cssVars": [
+    "--vhc-hold-ms",
+    "--vhc-cancel-ms",
+    "--vhc-confirm-pulse-ms",
+    "--vhc-ring-count"
   ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "vortex-hold-to-confirm"
-    },
-    "holdMs": {
-      "type": "number",
-      "const": 900
-    },
-    "cancelMs": {
-      "type": "number",
-      "const": 200
-    },
-    "confirmPulseMs": {
-      "type": "number",
-      "const": 180
-    },
-    "ringCount": {
-      "type": "number",
-      "const": 3
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#070B0E"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8E8DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#1A6B58"
-        },
-        "off": {
-          "type": "string",
-          "const": "#D7F5EC"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "thresholdRetained",
-        "immediateAutoConfirm"
-      ],
-      "properties": {
-        "thresholdRetained": {
-          "type": "boolean",
-          "const": true
-        },
-        "immediateAutoConfirm": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    },
-    "cssVars": {
-      "type": "object",
-      "const": {
-        "holdMs": "900ms",
-        "cancelMs": "200ms",
-        "ringCount": 3
-      }
-    }
-  }
+  "reducedMotion": {
+    "behaviour": "Manual holds still require holdMs 900 but skip rotating rings; Run/Replay resolve immediately to CONFIRMED"
+  },
+  "acceptance": [
+    "Early release before holdMs 900 never confirms — status CANCELLED and rings retreat in cancelMs 200",
+    "Full hold of holdMs 900 builds ringCount 3 then CONFIRMED with confirmPulseMs 180",
+    "CSS exposes --vhc-hold-ms / --vhc-cancel-ms / --vhc-confirm-pulse-ms matching timing consts",
+    "Replay resets to IDLE before another hold cycle",
+    "Reduced motion (prefers or data-force) keeps the 900ms threshold on manual hold; Run/Replay resolve immediately"
+  ]
 }

@@ -5,7 +5,7 @@ export const vortexHoldToConfirm: Specimen = {
   ref: 'SPX-2482',
   title: 'Vortex Hold-to-Confirm',
   blurb:
-    'Holding a central core builds three concentric rotating rings; releasing early cancels, holding the full 900ms confirms — original geometry, no copyrighted iconography.',
+    'Early release before 900ms cancels; a full hold builds three rotating rings then CONFIRMED — CSS hold vars exposed.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — spinning-core hold interaction',
@@ -19,18 +19,18 @@ export const vortexHoldToConfirm: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['hold', 'confirmation', 'progress'],
+  tags: ['hold', 'confirmation', 'progress', 'cancel'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Manual pointer/keyboard holds still require the full 900ms but skip the rotating ring animation in favour of a static engaged state under prefers-reduced-motion or data-force-reduced-motion; Run/Replay resolve directly to CONFIRMED.',
+      'Manual pointer/keyboard holds still require the full 900ms but skip the rotating ring animation under prefers-reduced-motion or data-force-reduced-motion; Run/Replay resolve directly to CONFIRMED.',
   },
   acceptance: [
-    'Early release before 900ms never confirms',
-    'Full hold builds 3 rings then CONFIRMED',
-    'Reduced motion retains threshold then auto-confirms',
+    'Early release before 900ms never confirms (CANCELLED)',
+    'Full 900ms hold builds 3 rings then CONFIRMED',
+    'CSS exposes --vhc-hold-ms / --vhc-cancel-ms / --vhc-confirm-pulse-ms',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
