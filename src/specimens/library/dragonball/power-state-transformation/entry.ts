@@ -31,8 +31,22 @@ export const powerStateTransformation: Specimen = {
     width: 360,
     height: 380,
     background: 'dark',
-
     label: 'Power state transformation',
+    scaffold: `
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#171b20;">
+  {{specimen}}
+</div>
+`.trim(),
   },
-
+  integration: [
+    'Mount inside a relative overflow-hidden host so rays and field clip cleanly.',
+    'Import demo.css verbatim; freeze polygons, 10 marks, 8 rays, and ~920ms timeline from contract.json.',
+    'Wire runPowerStateTransform / resetPowerStateTransform; honour both reduced-motion triggers with immediate Ascended.',
+  ],
+  acceptance: [
+    'ENGINE // 04 identity persists Base → Ascended',
+    'Exactly ten pressure marks and eight burst rays',
+    'STATE Ascended; THROUGHPUT 3.0×; CHANNELS 6',
+    'Reduced motion lands Ascended + final metrics immediately',
+  ],
 }
