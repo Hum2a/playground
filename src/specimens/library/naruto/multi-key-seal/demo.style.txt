@@ -6,6 +6,16 @@
   --chakra: #c43c2e;
   --olive: #6b5048;
   --off: #f3ebe0;
+  --mks-key-step-ms: 150ms;
+  --mks-arm-ms: 120ms;
+  --mks-petal-ms: 300ms;
+  --mks-pulse-ms: 150ms;
+  --mks-petal-0-x: 0px;
+  --mks-petal-0-y: -13px;
+  --mks-petal-1-x: 11px;
+  --mks-petal-1-y: 7px;
+  --mks-petal-2-x: -11px;
+  --mks-petal-2-y: 7px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -54,8 +64,8 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(196 60 46 / 0.45);
+  background: rgb(243 235 224 / 0.04);
 }
 
 .mks__ring {
@@ -72,37 +82,75 @@
 
 .mks__node {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: rgb(16 19 24 / 0.9);
+  background: rgb(20 12 12 / 0.92);
   border: 2px solid var(--olive);
+  color: var(--olive);
+  transform: scale(0.72);
   transition:
-    background-color 150ms ease-out,
-    border-color 150ms ease-out,
-    box-shadow 150ms ease-out;
+    transform var(--mks-arm-ms) cubic-bezier(0.2, 0.95, 0.25, 1.2),
+    background-color 90ms ease-out,
+    border-color 90ms ease-out,
+    color 90ms ease-out,
+    box-shadow 90ms ease-out;
+}
+
+.mks__node::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: scale(0);
+  transition: transform var(--mks-arm-ms) cubic-bezier(0.2, 0.95, 0.25, 1.2);
 }
 
 .mks__node[data-index='0'] {
-  top: -2px;
+  top: -4px;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -9px;
 }
 
 .mks__node[data-index='1'] {
-  bottom: 12px;
-  right: 4px;
+  bottom: 10px;
+  right: 2px;
 }
 
 .mks__node[data-index='2'] {
-  bottom: 12px;
-  left: 4px;
+  bottom: 10px;
+  left: 2px;
 }
 
 .mks__node[data-armed='true'] {
-  background: var(--chakra);
+  background: rgb(196 60 46 / 0.22);
   border-color: var(--chakra);
-  box-shadow: 0 0 8px 2px color-mix(in srgb, var(--chakra) 45%, transparent);
+  color: var(--chakra);
+  transform: scale(1);
+  box-shadow: 0 0 0 2px rgb(196 60 46 / 0.28);
+}
+
+.mks__node[data-armed='true']::before {
+  transform: scale(1);
+}
+
+.mks__node[data-pulse='true'] {
+  animation: mks-arm-snap var(--mks-arm-ms) cubic-bezier(0.15, 0.95, 0.25, 1.2);
+}
+
+@keyframes mks-arm-snap {
+  0% {
+    transform: scale(0.72);
+  }
+  55% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .mks__seal {
@@ -111,41 +159,39 @@
   overflow: visible;
 }
 
+.mks__petal {
+  transform-origin: 50px 50px;
+  transition: transform var(--mks-petal-ms) cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
 .mks__petal path {
-  fill: color-mix(in srgb, var(--chakra) 45%, transparent);
+  fill: rgb(196 60 46 / 0.22);
   stroke: var(--olive);
   stroke-width: 1.5;
-}
-
-.mks__petal {
-  transition: transform 300ms cubic-bezier(0.2, 0.8, 0.25, 1);
-}
-
-.mks__petal path {
   transition:
-    fill 300ms ease-out,
-    stroke 300ms ease-out;
+    fill var(--mks-petal-ms) ease-out,
+    stroke var(--mks-petal-ms) ease-out;
 }
 
 .mks[data-phase='done'] .mks__petal path {
-  fill: color-mix(in srgb, var(--chakra) 45%, transparent);
+  fill: rgb(196 60 46 / 0.12);
   stroke: var(--chakra);
 }
 
 .mks[data-phase='done'] .mks__petal[data-index='0'] {
-  transform: translate(0, -13px);
+  transform: translate(var(--mks-petal-0-x), var(--mks-petal-0-y));
 }
 
 .mks[data-phase='done'] .mks__petal[data-index='1'] {
-  transform: translate(11px, 7px);
+  transform: translate(var(--mks-petal-1-x), var(--mks-petal-1-y));
 }
 
 .mks[data-phase='done'] .mks__petal[data-index='2'] {
-  transform: translate(-11px, 7px);
+  transform: translate(var(--mks-petal-2-x), var(--mks-petal-2-y));
 }
 
 .mks__core {
-  fill: rgb(16 19 24 / 0.9);
+  fill: rgb(20 12 12 / 0.92);
   stroke: var(--olive);
   stroke-width: 2;
   transition: stroke 200ms ease-out;
@@ -156,15 +202,18 @@
 }
 
 .mks[data-pulse='true'] .mks__core {
-  animation: mks-pulse 150ms ease-out;
+  animation: mks-pulse var(--mks-pulse-ms) ease-out;
 }
 
 @keyframes mks-pulse {
   0% {
-    filter: drop-shadow(0 0 0 color-mix(in srgb, var(--chakra) 45%, transparent));
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
   }
   100% {
-    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--chakra) 45%, transparent));
+    transform: scale(1);
   }
 }
 
@@ -211,7 +260,7 @@
 
 .mks__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(196 60 46 / 0.14);
 }
 
 .mks__btn:hover:not(:disabled) {
@@ -230,6 +279,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mks__node,
+  .mks__node[data-pulse='true'],
   .mks__petal,
   .mks__petal path,
   .mks__core,
@@ -240,6 +290,7 @@
 }
 
 html[data-force-reduced-motion='true'] .mks__node,
+html[data-force-reduced-motion='true'] .mks__node[data-pulse='true'],
 html[data-force-reduced-motion='true'] .mks__petal,
 html[data-force-reduced-motion='true'] .mks__petal path,
 html[data-force-reduced-motion='true'] .mks__core,

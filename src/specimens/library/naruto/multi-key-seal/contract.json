@@ -1,37 +1,54 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/multi-key-seal.schema.json",
-  "title": "MultiKeySeal",
-  "description": "Three prerequisite key nodes arm in order before triangular seal petals rotate open.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "keyCount", "keyStepMs", "petalOpenMs", "corePulseMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "multi-key-seal" },
-    "keyCount": { "type": "number", "const": 3 },
-    "keyStepMs": { "type": "number", "const": 150 },
-    "petalOpenMs": { "type": "number", "const": 300 },
-    "corePulseMs": { "type": "number", "const": 150 },
-    "settleMs": { "type": "number", "const": 90 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#140C0C" },
-        "parchment": { "type": "string", "const": "#E8DCC8" },
-        "chakra": { "type": "string", "const": "#C43C2E" },
-        "olive": { "type": "string", "const": "#6B5048" },
-        "off": { "type": "string", "const": "#F3EBE0" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateOpen"],
-      "properties": {
-        "immediateOpen": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "multi-key-seal",
+  "intent": "Three prerequisite key nodes snap-arm in order, then triangular seal petals translate open to frozen offsets.",
+  "catalogue": { "nr": "NR-035", "ref": "SPX-2378" },
+  "copy": {
+    "system": "SEAL // MULTI-KEY",
+    "sealed": "SEALED",
+    "arming": "ARMING",
+    "open": "OPEN",
+    "hintIdle": "Press Run to arm the three key nodes.",
+    "hintOpen": "Seal opened."
+  },
+  "geometry": {
+    "keyCount": 3,
+    "petalOffsetsPx": [
+      { "x": 0, "y": -13 },
+      { "x": 11, "y": 7 },
+      { "x": -11, "y": 7 }
+    ],
+    "armScaleFrom": 0.72,
+    "armScaleSnap": 1.18
+  },
+  "timing": {
+    "keyStepMs": 150,
+    "armMs": 120,
+    "petalOpenMs": 300,
+    "corePulseMs": 150,
+    "settleMs": 90,
+    "totalMs": 840
+  },
+  "colours": {
+    "ink": "#140C0C",
+    "parchment": "#E8DCC8",
+    "chakra": "#C43C2E",
+    "olive": "#6B5048",
+    "off": "#F3EBE0",
+    "palette": "seal-lacquer"
+  },
+  "api": {
+    "run": "runMultiKeySeal()",
+    "reset": "resetMultiKeySeal()",
+    "replay": "replayMultiKeySeal()"
+  },
+  "reducedMotion": {
+    "behaviour": "All three keys appear armed and petals already open as OPEN"
+  },
+  "acceptance": [
+    "Exactly three key nodes snap-arm from scale 0.72 through 1.18 to 1.0 on keyStepMs 150 cadence",
+    "Only after all three armed do petals translate to offsets (0,-13)/(11,7)/(-11,7) over petalOpenMs 300",
+    "Core pulses once for corePulseMs 150 when status becomes OPEN",
+    "Keys 1–3 arm only in order; replay clears data-armed before rerun",
+    "Reduced motion (prefers or data-force) shows OPEN with all keys armed immediately"
+  ]
 }

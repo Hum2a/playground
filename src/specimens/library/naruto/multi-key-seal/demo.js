@@ -1,13 +1,19 @@
 /**
- * Multi-Key Seal — three prerequisite key nodes must arm before petals open.
+ * Multi-Key Seal — three prerequisite keys snap-arm, then petals open.
  * iframe-safe; no storage / parent / network.
  */
 
 const KEY_COUNT = 3
 const KEY_STEP_MS = 150
+const ARM_MS = 120
 const PETAL_OPEN_MS = 300
 const CORE_PULSE_MS = 150
 const SETTLE_MS = 90
+const PETAL_OFFSETS = [
+  { x: 0, y: -13 },
+  { x: 11, y: 7 },
+  { x: -11, y: 7 },
+]
 
 let busy = false
 let armed = 0
@@ -61,11 +67,17 @@ function setButtons(on) {
   })
 }
 
-function paintNodes(count) {
+function paintNodes(count, pulseIndex) {
   nodes().forEach((node, i) => {
     const on = i < count
     node.setAttribute('data-armed', on ? 'true' : 'false')
     node.setAttribute('aria-label', `Key node ${i + 1} ${on ? 'armed' : 'unarmed'}`)
+    if (pulseIndex === i) {
+      node.setAttribute('data-pulse', 'true')
+      later(ARM_MS, () => node.removeAttribute('data-pulse'))
+    } else {
+      node.removeAttribute('data-pulse')
+    }
   })
 }
 
@@ -76,13 +88,15 @@ function openSeal() {
   root.setAttribute('data-pulse', 'true')
   setStatus('OPEN')
   setHint('Seal opened.')
-  setLive('All three key nodes armed. Seal open.')
+  setLive(
+    `All three keys armed. Petals opened to offsets ${PETAL_OFFSETS.map((p) => `(${p.x},${p.y})`).join(' ')}.`,
+  )
   later(CORE_PULSE_MS, () => root.removeAttribute('data-pulse'))
 }
 
 function resetVisual() {
   armed = 0
-  paintNodes(0)
+  paintNodes(0, -1)
   const root = rootEl()
   root?.setAttribute('data-phase', 'idle')
   root?.removeAttribute('data-pulse')
@@ -108,7 +122,7 @@ export function runMultiKeySeal() {
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
-    paintNodes(KEY_COUNT)
+    paintNodes(KEY_COUNT, -1)
     openSeal()
     busy = false
     setButtons(true)
@@ -134,8 +148,8 @@ export function runMultiKeySeal() {
         return
       }
       armed = step + 1
-      paintNodes(armed)
-      setLive(`Key node ${armed} of ${KEY_COUNT} armed.`)
+      paintNodes(armed, step)
+      setLive(`Key node ${armed} of ${KEY_COUNT} snap-armed.`)
       step += 1
       later(KEY_STEP_MS, tick)
     }
@@ -168,15 +182,15 @@ function armOne(index) {
   if (!root || busy || root.getAttribute('data-phase') === 'done') return
   if (index !== armed) return
   if (prefersReducedMotion()) {
-    paintNodes(KEY_COUNT)
+    paintNodes(KEY_COUNT, -1)
     openSeal()
     return
   }
   root.setAttribute('data-phase', 'arming')
   setStatus('ARMING')
   armed = index + 1
-  paintNodes(armed)
-  setLive(`Key node ${armed} of ${KEY_COUNT} armed.`)
+  paintNodes(armed, index)
+  setLive(`Key node ${armed} of ${KEY_COUNT} snap-armed.`)
   if (armed >= KEY_COUNT) {
     later(PETAL_OPEN_MS, () => openSeal())
   }

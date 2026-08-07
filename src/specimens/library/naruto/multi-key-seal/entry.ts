@@ -5,10 +5,10 @@ export const multiKeySeal: Specimen = {
   ref: 'SPX-2378',
   title: 'Multi-Key Seal',
   blurb:
-    'Three prerequisite key nodes arm one by one; only once all three are lit do the seal petals open outward.',
+    'Three prerequisite keys snap-arm in order, then triangular petals open to frozen offsets and the seal reads OPEN.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction fūinjutsu study — multi-key seal opening',
+    surface: 'Naruto / ninja-fiction fūinjutsu study — multi-key seal',
   },
   facets: {
     kind: 'interaction',
@@ -19,23 +19,18 @@ export const multiKeySeal: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['seal', 'prerequisite', 'unlock'],
+  tags: ['seal', 'prerequisite', 'petals', 'keys'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all three key nodes appear armed and the seal petals appear already open.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all three keys appear armed and petals already open.',
   },
-  acceptance: [
-    'Exactly N keys arm before petals open',
-    'Petal angles frozen in contract; unlock is progressive',
-    'Reduced motion shows armed+open immediately',
-  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 360,
-    height: 360,
+    width: 340,
+    height: 340,
     background: 'dark',
     label: 'Multi-key seal',
   },

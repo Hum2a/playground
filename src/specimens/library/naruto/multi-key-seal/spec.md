@@ -1,16 +1,16 @@
 # Multi-Key Seal
 
-Three prerequisite key nodes must each arm before the seal opens. Run auto-arms them in order (150ms apart, 3 keys); once the third arms, three triangular petals rotate outward and the core brightens.
+Three prerequisite key nodes **snap-arm** in order, then triangular seal petals translate open to frozen offsets.
 
 ## Behaviour
 
-- Idle: three unarmed key nodes, closed seal petals, status `SEALED`.
-- Arming: nodes light up left-to-right, ~150ms apart.
-- Opening: once all three armed, petals rotate outward over 300ms; core pulses.
-- Resolved: petals open, core lit, status `OPEN`.
-- Reduced motion: all key nodes appear armed and petals appear already open.
+- Sealed: three unarmed nodes at scale 0.72; petals closed; status `SEALED`.
+- Arming: nodes snap through scale 1.18 every 150ms (keys 1–3 in order).
+- Open: petals translate to (0,−13) / (11,7) / (−11,7) over 300ms; core pulse; status `OPEN`.
+- Reduced motion: jump to OPEN with all keys armed.
 
 ## Freeze
 
-- Key step: 150ms × 3 · petal open: 300ms · core pulse: 150ms · settle: 90ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Keys: 3 · step: 150ms · arm snap: 120ms · petal: 300ms · pulse: 150ms
+- Petal offsets px: `(0,-13)`, `(11,7)`, `(-11,7)`
+- Palette (seal lacquer): `#140C0C` / `#E8DCC8` / `#C43C2E` / `#6B5048` / `#F3EBE0`

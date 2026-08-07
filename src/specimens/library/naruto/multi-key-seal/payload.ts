@@ -7,20 +7,14 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~360×340+).',
-    'Import demo.css verbatim; freeze the 150ms key step / 300ms petal open from contract.json.',
+    'Mount inside a relative host (~340×320+).',
+    'Import demo.css verbatim; freeze keyStepMs 150 and petalOffsetsPx from contract.json.',
     'Wire runMultiKeySeal / resetMultiKeySeal / replayMultiKeySeal.',
-    'Optional keys 1–3 arm nodes in order; honour both reduced-motion triggers.',
+    'Optional keys 1–3 arm in order; honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Exactly three key nodes; all must arm before petals open',
-    'Sealed, arming, and open states are visually distinct',
-    'Replay resets all nodes and petals before rerunning',
-    'Reduced motion shows all nodes armed and petals open immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#140C0C;">
   {{specimen}}
 </div>
 `.trim(),
