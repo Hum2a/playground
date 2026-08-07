@@ -160,12 +160,10 @@
   padding: 0.3rem 0.4rem;
   border: 1px solid var(--tba-faint);
   background: var(--tba-panel);
-  opacity: 0.55;
+  opacity: 1;
+  clip-path: inset(0 100% 0 0);
   transform: translateX(0);
-  transition:
-    opacity 80ms linear,
-    transform 80ms var(--tba-ease),
-    border-color 80ms linear;
+  transition: border-color 80ms linear;
 }
 
 .tba__node--a {
@@ -427,9 +425,19 @@
 .tba[data-state='guides'] [data-pair].tba__node--p,
 .tba[data-state='ready'] [data-pair].tba__node--p,
 .tba.tba--reduced [data-pair].tba__node--p {
-  opacity: 1;
   border-color: var(--tba-accent);
-  transform: translateX(3px);
+  animation: tba-node-build var(--tba-path-ms) var(--tba-ease) both;
+}
+
+@keyframes tba-node-build {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateX(3px);
+  }
 }
 
 .tba[data-pairs='1'] [data-pair='0'].tba__seg,
@@ -523,17 +531,23 @@
   border-style: solid;
 }
 
-/* Idle faint structure visible */
+/* Idle — seeded labels visible, subdued */
+.tba[data-state='idle'] .tba__node--p {
+  opacity: 0.48;
+  clip-path: inset(0 0 0 0);
+  border-color: var(--tba-faint);
+}
+
 .tba[data-state='idle'] .tba__seg {
   transform: scaleX(1);
 }
 
-.tba[data-state='ready'] [data-pair].tba__seg,
-.tba[data-state='guides'] [data-pair].tba__seg {
+.tba[data-state='ready'] [data-pair].tba__node--p,
+.tba[data-state='guides'] [data-pair].tba__node--p,
+.tba.tba--reduced [data-pair].tba__node--p {
   animation: none;
-  transform: scaleX(1);
-  opacity: 1;
-  border-color: var(--tba-accent);
+  clip-path: inset(0 0 0 0);
+  transform: translateX(3px);
 }
 
 /* Reduced motion */
@@ -565,6 +579,20 @@
 .tba.tba--reduced .tba__junc {
   opacity: 1;
   transform: scale(1);
+}
+
+.tba[data-state='ready'] [data-pair].tba__seg,
+.tba[data-state='guides'] [data-pair].tba__seg {
+  animation: none;
+  transform: scaleX(1);
+  opacity: 1;
+  border-color: var(--tba-accent);
+}
+
+.tba.tba--reduced .tba__node--p {
+  clip-path: inset(0 0 0 0);
+  transform: translateX(3px);
+  border-color: var(--tba-accent);
 }
 
 .tba.tba--reduced .tba__seg {

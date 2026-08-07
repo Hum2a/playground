@@ -36,7 +36,9 @@
     "boardPx": [480, 300],
     "junctionPx": [8, 8],
     "nodeInwardShiftPx": 3,
-    "scaleBelowPx": 480
+    "scaleBelowPx": 480,
+    "nodeReveal": "clip-path inset(0 100% 0 0) → inset(0 0 0 0); not opacity fade-in",
+    "segmentBuild": "scaleX(0 → 1) from left spine"
   },
   "constraints": {
     "activationOnlyNoWinners": true,

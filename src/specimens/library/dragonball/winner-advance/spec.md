@@ -23,9 +23,9 @@
 | --- | --- | --- |
 | Compare | 120ms | Score emphasis |
 | Hold | 100ms | Delta `+13` |
-| Identify | 140ms | NOVA `translateX(3px)` + 2 brackets; KITE ELIMINATED |
+| Identify | 140ms | NOVA `translateX(3px)` + 2 brackets; KITE strike + ELIMINATED |
 | Emerge | 90ms | Token `54×26` from winner |
-| Travel | 320ms | Token along path (follows corners) |
+| Travel | 320ms | Path draws; token along elbow; KITE collapses |
 | Dock | 100ms | Slot `1 → 1.08 → 1`; SEMI = NOVA |
 
 ## States

@@ -35,6 +35,9 @@
   "constraints": {
     "originalWinnerNodeRemains": true,
     "eliminatedRemainsVisible": true,
+    "eliminatedStrike": true,
+    "eliminatedCollapse": "scaleY(0.82) on travel",
+    "pathDrawOnTravel": true,
     "tokenFollowsPathCorners": true,
     "noLoopingInFinal": true,
     "noFranchiseAssets": true

@@ -28,8 +28,8 @@
 
 | Phase | Duration | Effect |
 | --- | --- | --- |
-| Pair stagger | 70ms | A/B, C/D, E/F, G/H; both nodes +3px inward |
-| Path construct | 140ms | Exactly 8 first-stage segments |
+| Pair stagger | 70ms | A/B, C/D, E/F, G/H; nodes clip-reveal +3px inward |
+| Path construct | 140ms | Exactly 8 first-stage segments scale from spine |
 | Junction | after path | 8×8px · scale `0 → 1.15 → 1` · exactly 4 |
 | Guides | ~160ms | SF then final paths strengthen |
 | Label | clip | `ROUND // QF` |
