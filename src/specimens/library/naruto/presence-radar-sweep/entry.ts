@@ -19,7 +19,7 @@ export const presenceRadarSweep: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ["radar","sweep","presence"],
+  tags: ['radar', 'sweep', 'presence'],
   deps: 'none',
   motion: {
     loops: false,
@@ -27,15 +27,12 @@ export const presenceRadarSweep: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all three blips appear COMPLETE immediately.',
   },
-    acceptance: [
+  acceptance: [
     'Sweep duration frozen at sweepMs 570 across three blip steps',
     'Blip coordinates frozen: (57.6,49.3), (111.5,35), (154.1,62.1)',
-    'Phosphor palette; blips latch by scale, not opacity-only',
-    'Replay clears blips before rerunning',
-    'Reduced motion shows COMPLETE with all blips immediately',
-  ], log as crossed',
     'Contact log lists all three bearings; beam rests after settleMs 110',
-    'Replay clears log and parks beam at start before rerunning',
+    'Phosphor palette; blips latch by scale, not opacity-only',
+    'Reduced motion shows COMPLETE with all blips immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
