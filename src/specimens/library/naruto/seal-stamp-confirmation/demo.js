@@ -1,12 +1,14 @@
 /**
- * Seal Stamp Confirmation — one decisive stamp strike leaves an ink mark.
+ * Seal Stamp Confirmation — descent, impact squash, overshoot settle, one ring pulse.
  * iframe-safe; no storage / parent / network.
  */
 
 const DESCENT_MS = 220
 const IMPACT_MS = 90
-const INK_BLOOM_MS = 200
-const SETTLE_MS = 90
+const SETTLE_MS = 180
+const RING_MS = 280
+const OVERSHOOT_DEG = -14
+const SETTLE_DEG = -6
 
 let busy = false
 /** @type {number[]} */
@@ -55,26 +57,33 @@ function setButtons(on) {
   })
 }
 
-function showResolved() {
+function showResolved(withRing) {
   const root = rootEl()
   root?.setAttribute('data-phase', 'done')
   root?.removeAttribute('data-impact')
   setStatus('FILED')
-  setHint('Stamped and filed.')
-  setLive('Document stamped. Seal mark applied.')
+  setHint(`Stamped at ${SETTLE_DEG}°.`)
+  setLive(`Document stamped. Seal settled at ${SETTLE_DEG}°.`)
+  if (withRing && root && !prefersReducedMotion()) {
+    root.setAttribute('data-ring', 'true')
+    later(RING_MS, () => root.removeAttribute('data-ring'))
+  } else {
+    root?.removeAttribute('data-ring')
+  }
 }
 
 function resetVisual() {
   const root = rootEl()
   root?.setAttribute('data-phase', 'idle')
   root?.removeAttribute('data-impact')
+  root?.removeAttribute('data-ring')
   setStatus('PENDING')
   setHint('Press Run to strike the seal stamp.')
   setLive('Document pending. No stamp applied.')
 }
 
 /**
- * Auto-run the stamp descent, impact, and ink bloom (demo Run).
+ * Auto-run the stamp descent, impact, settle, and one ring pulse.
  * @returns {Promise<void>}
  */
 export function runSealStampConfirmation() {
@@ -90,7 +99,7 @@ export function runSealStampConfirmation() {
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
-    showResolved()
+    showResolved(false)
     busy = false
     setButtons(true)
     return Promise.resolve()
@@ -106,8 +115,11 @@ export function runSealStampConfirmation() {
       setLive('Stamp struck the document.')
       later(IMPACT_MS, () => {
         root.removeAttribute('data-impact')
-        showResolved()
-        later(INK_BLOOM_MS + SETTLE_MS, () => {
+        showResolved(true)
+        setLive(
+          `Ink mark overshot ${OVERSHOOT_DEG}° then settled to ${SETTLE_DEG}°; ring pulsed once.`,
+        )
+        later(SETTLE_MS + RING_MS, () => {
           busy = false
           setButtons(true)
           resolve()

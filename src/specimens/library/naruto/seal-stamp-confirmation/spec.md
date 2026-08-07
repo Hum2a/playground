@@ -1,15 +1,16 @@
 # Seal Stamp Confirmation
 
-A stamp descends onto a document in one decisive strike (220ms fast ease-in), squashes on impact (90ms), then an ink seal mark blooms into view on the paper (200ms).
+A stamp descends and strikes a briefing card. The ink mark overshoots to **−14°**, settles at **−6°**, and a confirmation ring pulses **once**.
 
 ## Behaviour
 
-- Idle: stamp raised above the document, no mark, status `PENDING`.
-- Striking: stamp descends and squashes on contact.
-- Resolved: stamp settles back slightly, ink mark visible on the document, status `FILED`.
-- Reduced motion: stamp appears already struck (lowered) with the ink mark visible immediately.
+- Pending: paper without mark; stamp raised; status `PENDING`.
+- Striking: stamp descends 220ms, impacts 90ms.
+- Filed: mark settles at −6°; ring pulse 280ms once; status `FILED`.
+- Reduced motion: FILED mark already settled; no descent/ring.
 
 ## Freeze
 
-- Descent: 220ms · impact squash: 90ms · ink bloom: 200ms · settle: 90ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`
+- Descent: 220ms · impact: 90ms · settle: 180ms · ring: 280ms
+- Overshoot: −14° · settle: −6°
+- Palette (seal lacquer): `#140C0C` / `#E8DCC8` / `#C43C2E` / `#6B5048` / `#F3EBE0`

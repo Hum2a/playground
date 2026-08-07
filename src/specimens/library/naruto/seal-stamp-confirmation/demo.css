@@ -7,6 +7,12 @@
   --alert: #c43c2e;
   --olive: #6b5048;
   --off: #f3ebe0;
+  --ssc-descent-ms: 220ms;
+  --ssc-impact-ms: 90ms;
+  --ssc-settle-ms: 180ms;
+  --ssc-ring-ms: 280ms;
+  --ssc-overshoot-deg: -14deg;
+  --ssc-settle-deg: -6deg;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -50,20 +56,24 @@
 .ssc__stage {
   position: relative;
   overflow: hidden;
+  display: grid;
+  gap: 0.45rem;
+  justify-items: center;
   width: 100%;
-  min-height: 230px;
-  padding: 0;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  min-height: 250px;
+  padding: 0.75rem 0.75rem 0.85rem;
+  border: 1px solid rgb(196 60 46 / 0.45);
+  background: rgb(243 235 224 / 0.04);
 }
 
 .ssc__paper {
-  position: absolute;
-  inset: 46px 18px 46px;
-  padding: 0.9rem 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 16rem;
+  min-height: 8.5rem;
+  padding: 0.9rem 1rem 2.4rem;
   background: var(--parchment);
   color: var(--ink);
-  border-radius: 6px;
   box-shadow: 0 6px 14px rgb(0 0 0 / 0.35);
 }
 
@@ -83,52 +93,74 @@
 .ssc__mark {
   position: absolute;
   left: 50%;
-  top: 66%;
-  transform: translate(-50%, -50%) scale(0.5);
-  opacity: 0;
-  color: var(--alert);
+  bottom: 0.85rem;
   z-index: 2;
-  transition:
-    opacity 200ms ease-out,
-    transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--alert);
+  transform: translateX(-50%) scale(0) rotate(var(--ssc-overshoot-deg));
+  transform-origin: center;
+  transition: transform var(--ssc-settle-ms) cubic-bezier(0.2, 1.15, 0.3, 1);
+}
+
+.ssc__mark-ring {
+  position: absolute;
+  inset: -6px;
+  border: 2px solid var(--alert);
+  border-radius: 50%;
+  transform: scale(0.55);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .ssc[data-phase='done'] .ssc__mark {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateX(-50%) scale(1) rotate(var(--ssc-settle-deg));
+}
+
+.ssc[data-ring='true'] .ssc__mark-ring {
+  animation: ssc-ring-once var(--ssc-ring-ms) ease-out 1;
+}
+
+@keyframes ssc-ring-once {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
 }
 
 .ssc__stamp {
   position: absolute;
   left: 50%;
-  top: 66%;
+  top: 58%;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: var(--olive);
   transform: translate(-50%, -220%);
-  transition: transform 220ms cubic-bezier(0.6, 0, 0.9, 0.35);
+  transition: transform var(--ssc-descent-ms) cubic-bezier(0.55, 0.05, 0.85, 0.35);
 }
 
 .ssc[data-phase='active'] .ssc__stamp,
 .ssc[data-phase='done'] .ssc__stamp {
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -42%);
 }
 
 .ssc[data-impact='true'] .ssc__stamp {
-  animation: ssc-squash 90ms ease-out;
+  animation: ssc-squash var(--ssc-impact-ms) ease-out;
 }
 
 @keyframes ssc-squash {
   0% {
-    transform: translate(-50%, -50%) scaleY(1);
+    transform: translate(-50%, -42%) scaleY(1);
   }
   50% {
-    transform: translate(-50%, -50%) scaleY(0.72);
+    transform: translate(-50%, -42%) scaleY(0.72);
   }
   100% {
-    transform: translate(-50%, -50%) scaleY(1);
+    transform: translate(-50%, -42%) scaleY(1);
   }
 }
 
@@ -136,14 +168,12 @@
   width: 14px;
   height: 24px;
   background: currentColor;
-  border-radius: 3px 3px 0 0;
 }
 
 .ssc__stamp-head {
   width: 72px;
   height: 28px;
   background: currentColor;
-  border-radius: 5px;
   border: 1px solid rgb(0 0 0 / 0.4);
 }
 
@@ -190,7 +220,7 @@
 
 .ssc__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(196 60 46 / 0.14);
 }
 
 .ssc__btn:hover:not(:disabled) {
@@ -210,7 +240,8 @@
 @media (prefers-reduced-motion: reduce) {
   .ssc__mark,
   .ssc__stamp,
-  .ssc[data-impact='true'] .ssc__stamp {
+  .ssc[data-impact='true'] .ssc__stamp,
+  .ssc[data-ring='true'] .ssc__mark-ring {
     transition: none !important;
     animation: none !important;
   }
@@ -218,7 +249,8 @@
 
 html[data-force-reduced-motion='true'] .ssc__mark,
 html[data-force-reduced-motion='true'] .ssc__stamp,
-html[data-force-reduced-motion='true'] .ssc[data-impact='true'] .ssc__stamp {
+html[data-force-reduced-motion='true'] .ssc[data-impact='true'] .ssc__stamp,
+html[data-force-reduced-motion='true'] .ssc[data-ring='true'] .ssc__mark-ring {
   transition: none !important;
   animation: none !important;
 }

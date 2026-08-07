@@ -7,20 +7,14 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~340×300+).',
-    'Import demo.css verbatim; freeze the 220ms descent / 90ms impact / 200ms ink bloom from contract.json.',
+    'Mount inside a relative host (~340×320+), ideally over a briefing card scaffold.',
+    'Import demo.css verbatim; freeze overshootDeg −14 / settleDeg −6 / ringMs 280 from contract.json.',
     'Wire runSealStampConfirmation / resetSealStampConfirmation / replaySealStampConfirmation.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Pending and filed states are visually distinct',
-    'Exactly one stamp strike; ink mark only appears after impact',
-    'Replay resets the stamp and mark before rerunning',
-    'Reduced motion shows the stamp already struck with the ink mark visible immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#140C0C;">
   {{specimen}}
 </div>
 `.trim(),
