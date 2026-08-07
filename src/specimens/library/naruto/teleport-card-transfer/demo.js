@@ -1,15 +1,17 @@
 /**
- * Teleport Card Transfer — a card compresses at its source aperture and
- * reconstructs at the destination aperture.
+ * Teleport Card Transfer — aperture compress → empty hold → reconstruct.
  * iframe-safe; no storage / parent / network.
  */
 
 const COMPRESS_MS = 200
-const MID_HOLD_MS = 120
+const EMPTY_HOLD_MS = 120
 const RECONSTRUCT_MS = 220
-const TOTAL_MS = COMPRESS_MS + MID_HOLD_MS + RECONSTRUCT_MS
+const APERTURE_FROM_PX = 8
+const APERTURE_TO_PX = 72
 
 let busy = false
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -37,8 +39,6 @@ function sourceApertureEl() {
 function destApertureEl() {
   return document.querySelector('[data-tct-aperture-dest]')
 }
-
-let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -87,9 +87,6 @@ function measureOffset() {
 
 function showResolved() {
   rootEl()?.setAttribute('data-phase', 'done')
-  const dest = destApertureEl()
-  dest?.setAttribute('data-open', 'true')
-  later(RECONSTRUCT_MS, () => dest?.removeAttribute('data-open'))
   setStatus('ARRIVED')
   setHint('Card reconstructed at destination.')
   setLive('Card arrived at destination.')
@@ -104,7 +101,6 @@ function resetVisual() {
     card.style.setProperty('--tct-dx', '0px')
     card.style.setProperty('--tct-dy', '0px')
     card.style.setProperty('--tct-scale', '1')
-    card.style.setProperty('--tct-opacity', '1')
     void card.offsetWidth
     card.removeAttribute('data-instant')
   }
@@ -115,7 +111,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run the full teleport sequence.
+ * Compress → empty mid hold → reconstruct at destination.
  * @returns {Promise<void>}
  */
 export function runTeleportCardTransfer() {
@@ -146,22 +142,22 @@ export function runTeleportCardTransfer() {
     return Promise.resolve()
   }
 
-  root.setAttribute('data-phase', 'active')
-  setStatus('IN TRANSIT')
-  setLive('Card compressing at source aperture.')
-
   const card = cardEl()
+  root.setAttribute('data-phase', 'compress')
   sourceApertureEl()?.setAttribute('data-open', 'true')
-  card?.style.setProperty('--tct-scale', '0')
-  card?.style.setProperty('--tct-opacity', '0')
+  setStatus('COMPRESS')
+  setLive('Card compressing into source aperture.')
+  setHint(`Aperture ${APERTURE_FROM_PX}→${APERTURE_TO_PX}px.`)
 
   return new Promise((resolve) => {
     later(COMPRESS_MS, () => {
+      root.setAttribute('data-phase', 'empty')
       sourceApertureEl()?.removeAttribute('data-open')
       setStatus('EMPTY')
-      setLive('Empty hold. Card in transit.')
-      // Mid empty hold — card stays invisible at neither slot
-      later(MID_HOLD_MS, () => {
+      setLive('Mid-transfer empty hold.')
+      setHint(`Empty hold ${EMPTY_HOLD_MS}ms.`)
+
+      later(EMPTY_HOLD_MS, () => {
         const { dx, dy } = measureOffset()
         if (card) {
           card.setAttribute('data-instant', 'true')
@@ -169,12 +165,14 @@ export function runTeleportCardTransfer() {
           card.style.setProperty('--tct-dy', `${dy}px`)
           void card.offsetWidth
           card.removeAttribute('data-instant')
-          void card.offsetWidth
-          destApertureEl()?.setAttribute('data-open', 'true')
-          card.style.setProperty('--tct-scale', '1')
-          card.style.setProperty('--tct-opacity', '1')
         }
+        destApertureEl()?.setAttribute('data-open', 'true')
+        root.setAttribute('data-phase', 'reconstruct')
+        setStatus('RECONSTRUCT')
+        setLive('Card reconstructing at destination aperture.')
+
         later(RECONSTRUCT_MS, () => {
+          destApertureEl()?.removeAttribute('data-open')
           showResolved()
           busy = false
           setButtons(true)
@@ -215,6 +213,8 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
 bindUi()
 resetTeleportCardTransfer()
+requestAnimationFrame(() => {
+  void runTeleportCardTransfer()
+})

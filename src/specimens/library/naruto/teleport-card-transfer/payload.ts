@@ -8,9 +8,9 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~420×340+).',
-    'Import demo.css verbatim; freeze compressMs 200 / midHoldMs 120 / reconstructMs 220 / aperture 8→72px from contract.json.',
+    'Import demo.css verbatim; freeze compressMs 200 / emptyHoldMs 120 / reconstructMs 220 / apertureFromPx 8 / apertureToPx 72 from contract.json.',
     'Wire runTeleportCardTransfer / resetTeleportCardTransfer / replayTeleportCardTransfer.',
-    'Honour both reduced-motion triggers — show ARRIVED immediately.',
+    'Honour both reduced-motion triggers — reconstructed destination immediately.',
   ],
   acceptance: contract.acceptance,
   scaffold: `

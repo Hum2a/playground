@@ -1,22 +1,20 @@
 {
   "name": "teleport-card-transfer",
-  "intent": "Card compresses at source aperture, holds empty mid-transfer 120ms, then reconstructs at destination aperture.",
+  "intent": "Card compresses into an 8→72px phosphor aperture (200ms), holds empty 120ms, then reconstructs from a matching destination aperture (220ms).",
   "catalogue": { "nr": "NR-334", "ref": "SPX-2677" },
   "copy": {
     "system": "TRANSFER // TELEPORT",
-    "idle": "SOURCE",
-    "transit": "IN TRANSIT",
+    "source": "SOURCE",
     "empty": "EMPTY",
     "arrived": "ARRIVED"
   },
   "geometry": {
     "apertureFromPx": 8,
-    "apertureToPx": 72,
-    "cardAbsentMidHold": true
+    "apertureToPx": 72
   },
   "timing": {
     "compressMs": 200,
-    "midHoldMs": 120,
+    "emptyHoldMs": 120,
     "reconstructMs": 220,
     "totalMs": 540
   },
@@ -36,19 +34,18 @@
   },
   "cssVars": [
     "--tct-compress-ms",
-    "--tct-mid-hold-ms",
+    "--tct-empty-hold-ms",
     "--tct-reconstruct-ms",
     "--tct-aperture-from",
     "--tct-aperture-to"
   ],
   "reducedMotion": {
-    "behaviour": "Card appears already reconstructed at destination"
+    "behaviour": "Card reconstructed at destination immediately"
   },
   "acceptance": [
-    "Compress at source apertureFromPx 8 → apertureToPx 72 over compressMs 200",
-    "Mid empty hold midHoldMs 120 with card opacity 0 / neither slot occupied",
-    "Reconstruct at destination over reconstructMs 220 then status ARRIVED",
-    "Replay returns card to source before rerunning",
-    "Reduced motion (prefers or data-force) shows ARRIVED immediately"
+    "Source aperture opens apertureFromPx 8 → apertureToPx 72 during compressMs 200; card clips to circle then vanishes",
+    "Mid empty hold emptyHoldMs 120 with card visibility hidden before destination reconstruct",
+    "Destination reconstructs only after reconstructMs 220 following empty hold",
+    "Reduced motion (prefers or data-force) shows reconstructed destination immediately"
   ]
 }
