@@ -1,34 +1,25 @@
-# Mission Incoming (portable recreation spec)
-
-Mission dispatch card enters as a high-energy alert — slides in from the right
-with diagonal speed lines and an ALERT badge. Rebuild from this document,
-`demo.css`, `demo.js`, and `contract.json`. No character likenesses or assets.
+# Mission Incoming
 
 ## Visual intent
 
-- Idle dispatch channel with empty stage
-- Mission card enters from right with overshoot settle
-- Speed lines flash during entry
-- Settled card shows MISSION ref, ALERT badge, and body copy
+Mission dispatch card enters from the right with six tapered speed lines. Idle state shows a dashed empty-slot silhouette where the card will land.
 
-## Palette
+## Frozen speed lines
 
-| Token | Value |
+Six tapered lines with rotations `-14°` … `14°` and Y offsets `-28px` … `30px`.
+
+## Timing
+
+| Phase | Duration |
 | --- | --- |
-| Primary | `#38A3FF` |
-| Ink | `#101820` |
-| Paper | `#F4F7FA` |
-| Accent | `#FF4D35` |
+| Enter | 420ms |
+| Settle | 650ms |
+| Total | 1070ms |
 
-## Motion
+## API
 
-Primary enter: `420ms`. Total sequence: `1070ms` (enter + settle hold).
+- `runMissionIncoming()`
+- `resetMissionIncoming()`
+- `replayMissionIncoming()`
 
-## Reduced motion
-
-Show the settled mission card immediately. No slide, speed lines, or overshoot.
-
-## Behaviour (tiny JS)
-
-- `runMissionIncoming` / `replayMissionIncoming` / `resetMissionIncoming`
-- Dispatch and Replay buttons; harness `{ type: 'restart' }`
+Wave C: copy strings, line rotations, and idle silhouette frozen in contract.
