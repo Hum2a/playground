@@ -81,5 +81,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "25-tile field restores ring-by-ring (tileCount 25)",
+    "Ring stagger 220ms; centre→outer order",
+    "Tiles restore via scale/saturation, not opacity-only fade",
+    "Replay damages all tiles before rerunning",
+    "Reduced motion shows RESTORED immediately"
+  ]
 }
