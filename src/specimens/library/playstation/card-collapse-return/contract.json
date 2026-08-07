@@ -1,17 +1,94 @@
 {
-  "name": "card-collapse-return",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "expandScale": 1.26
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/card-collapse-return.schema.json",
+  "title": "CardCollapseReturn",
+  "description": "Expanded tile collapses back to exact original rail geometry; RM snaps original bounds.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "card-collapse-return" },
+    "intent": {
+      "type": "string",
+      "const": "Expanded tile reconstructs its exact original geometry on return."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-077" },
+        "ref": { "type": "string", "const": "SPX-3383" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 480 },
+        "heightPx": { "type": "number", "const": 260 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardCount", "cardWidthPx", "cardHeightPx", "expandScale", "liftPx"],
+      "properties": {
+        "cardCount": { "type": "number", "const": 3 },
+        "cardWidthPx": { "type": "number", "const": 96 },
+        "cardHeightPx": { "type": "number", "const": 132 },
+        "expandScale": { "type": "number", "const": 1.26 },
+        "liftPx": { "type": "number", "const": 16 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseMs", "labelMs", "easing"],
+      "properties": {
+        "collapseMs": { "type": "number", "const": 200 },
+        "labelMs": { "type": "number", "const": 160 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.4, 0, 0.2, 1)" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable card/label transitions; expand and collapse snap to original 96×132 bounds."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blue", "ink", "chalk", "sky"],
+      "properties": {
+        "blue": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "chalk": { "type": "string", "const": "#F4F6F8" },
+        "sky": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "expanded", "return"],
+      "properties": {
+        "root": { "type": "string", "const": "ccr" },
+        "card": { "type": "string", "const": "ccr__card" },
+        "expanded": { "type": "string", "const": "is-expanded" },
+        "return": { "type": "string", "const": "ccr__return" }
+      }
+    }
+  }
 }

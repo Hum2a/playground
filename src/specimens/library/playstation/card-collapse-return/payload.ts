@@ -7,15 +7,16 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inside scaffold host; import demo.css verbatim.",
-      "Honour both reduced-motion triggers — end states remain visible.",
-      "Listen for `{ type: \"restart\" }` postMessage where applicable."
+    'Toggle is-expanded on one .ccr__card; disable siblings while expanded.',
+    'Collapse must restore exact 96×132 geometry (paired with card-to-details-morph timings language).',
+    'Import demo.css verbatim.',
+    'Preserve RM overrides so return snaps original bounds.',
   ],
   acceptance: [
-      "Uses PlayStation palette: #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF",
-      "No PS logos, glyphs, or game art",
-      "iframe-safe — no parent access, storage, or navigation",
-      "Reduced motion shows final states instantly"
+    'Expand lifts one tile by 16px at scale 1.26 and shows RETURN; siblings disable.',
+    'Second activate collapses to exact original 96×132 rail geometry.',
+    'Collapse travel is 200ms with transform-origin bottom center.',
+    'Reduced motion snaps expand and return to original bounds with no transition.',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#0B0F14;display:grid;place-items:center;padding:16px;">
