@@ -1,42 +1,44 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/parallel-worker-clones.schema.json",
-  "title": "ParallelWorkerClones",
-  "description": "One job divides into three deterministic worker clones with independent progress, then recombines into a completed job.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "workerCount", "splitMs", "workerDurationsMs", "recombineMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "parallel-worker-clones" },
-    "workerCount": { "type": "number", "const": 3 },
-    "splitMs": { "type": "number", "const": 120 },
-    "workerDurationsMs": {
-      "type": "array",
-      "items": { "type": "number" },
-      "minItems": 3,
-      "maxItems": 3,
-      "const": [300, 240, 360]
-    },
-    "recombineMs": { "type": "number", "const": 100 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#12141A" },
-        "parchment": { "type": "string", "const": "#D8D4E0" },
-        "chakra": { "type": "string", "const": "#7A6B9A" },
-        "olive": { "type": "string", "const": "#6E6A78" },
-        "off": { "type": "string", "const": "#F0EEF4" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateComplete"],
-      "properties": {
-        "immediateComplete": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "parallel-worker-clones",
+  "intent": "One job divides into three identity-marked workers with frozen durations; recombine inherits ◆▲■ onto the job.",
+  "catalogue": { "nr": "NR-051", "ref": "SPX-2394" },
+  "copy": {
+    "system": "CLONE // PARALLEL",
+    "idle": "IDLE",
+    "splitting": "SPLITTING",
+    "working": "WORKING",
+    "recombining": "RECOMBINING",
+    "done": "RECOMBINED"
+  },
+  "geometry": {
+    "workerCount": 3,
+    "identityMarks": ["◆", "▲", "■"]
+  },
+  "timing": {
+    "splitMs": 120,
+    "workerDurationsMs": [300, 240, 360],
+    "recombineMs": 160,
+    "totalMs": 640
+  },
+  "colours": {
+    "ink": "#12141A",
+    "parchment": "#D8D4E0",
+    "chakra": "#7A6B9A",
+    "olive": "#6E6A78",
+    "off": "#F0EEF4",
+    "palette": "clone-violet"
+  },
+  "api": {
+    "run": "runParallelWorkerClones()",
+    "reset": "resetParallelWorkerClones()",
+    "replay": "replayParallelWorkerClones()"
+  },
+  "reducedMotion": {
+    "behaviour": "Job shows RECOMBINED with inherited marks immediately"
+  },
+  "acceptance": [
+    "Three workers with identity marks ◆▲■ fill over 300/240/360ms then recombine",
+    "Recombined job inherits all three marks; split uses scaleY not opacity fade",
+    "Reduced motion shows completed merge with marks immediately"
+  ]
 }

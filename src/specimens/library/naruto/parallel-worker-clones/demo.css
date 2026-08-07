@@ -6,7 +6,8 @@
   --chakra: #7a6b9a;
   --olive: #6e6a78;
   --off: #f0eef4;
-  /* wave2 timing surface */
+  --pwc-split-ms: 120ms;
+  --pwc-recombine-ms: 160ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -55,8 +56,8 @@
   gap: 0.65rem;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(122 107 154 / 0.45);
+  background: rgb(240 238 244 / 0.04);
 }
 
 .pwc__job {
@@ -66,12 +67,13 @@
   background: rgb(16 19 24 / 0.9);
   text-align: center;
   transition:
-    opacity 150ms ease-out,
-    border-color 150ms ease-out;
+    border-color 150ms ease-out,
+    transform var(--pwc-recombine-ms) cubic-bezier(0.2, 1.1, 0.3, 1);
 }
 
 .pwc[data-phase='done'] .pwc__job {
   border-color: var(--chakra);
+  transform: scale(1.04);
 }
 
 .pwc__job-kicker {
@@ -90,40 +92,54 @@
   color: var(--off);
 }
 
+.pwc__job-marks {
+  margin: 0.25rem 0 0;
+  min-height: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  color: var(--chakra);
+}
+
 .pwc__workers {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 0.5rem;
-  opacity: 0;
-  transform: translateY(-4px);
-  transition:
-    opacity 120ms ease-out,
-    transform 120ms ease-out;
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform var(--pwc-split-ms) cubic-bezier(0.2, 0.9, 0.25, 1);
 }
 
 .pwc[data-phase='splitting'] .pwc__workers,
 .pwc[data-phase='working'] .pwc__workers,
 .pwc[data-phase='recombining'] .pwc__workers,
 .pwc[data-phase='done'] .pwc__workers {
-  opacity: 1;
-  transform: translateY(0);
+  transform: scaleY(1);
 }
 
 .pwc[data-phase='recombining'] .pwc__workers,
 .pwc[data-phase='done'] .pwc__workers {
-  opacity: 0.35;
+  transform: scaleY(0.55) translateY(-6px);
 }
 
 .pwc__worker {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  padding: 0.45rem 0.5rem;
+  padding: 0.55rem 0.5rem 0.45rem;
   border: 1.5px solid var(--olive);
   background: rgb(16 19 24 / 0.85);
+}
+
+.pwc__mark {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.3rem;
+  font-size: 0.55rem;
+  color: var(--chakra);
 }
 
 .pwc__worker-label {
@@ -138,7 +154,7 @@
 .pwc__bar {
   position: relative;
   height: 0.35rem;
-  background: rgb(105 116 90 / 0.3);
+  background: rgb(110 106 120 / 0.35);
   overflow: hidden;
 }
 
@@ -200,7 +216,7 @@
 
 .pwc__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(122 107 154 / 0.18);
 }
 
 .pwc__btn:hover:not(:disabled) {

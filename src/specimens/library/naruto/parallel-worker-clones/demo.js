@@ -1,14 +1,14 @@
 /**
- * Parallel Worker Clones — one job divides into three deterministic worker
- * clones with independent progress, then recombines into a completed job.
+ * Parallel Worker Clones — identity marks on workers; recombine inherits marks.
  * iframe-safe; no storage / parent / network.
  */
 
 const SPLIT_MS = 120
 const WORKER_DURATIONS = [300, 240, 360]
 const WORK_MS = Math.max(...WORKER_DURATIONS)
-const RECOMBINE_MS = 100
+const RECOMBINE_MS = 160
 const TOTAL_MS = SPLIT_MS + WORK_MS + RECOMBINE_MS
+const IDENTITY_MARKS = ['◆', '▲', '■']
 
 let busy = false
 let done = false
@@ -57,6 +57,11 @@ function setJobKicker(text) {
   if (el) el.textContent = text
 }
 
+function setJobMarks(text) {
+  const el = document.querySelector('[data-pwc-job-marks]')
+  if (el) el.textContent = text
+}
+
 function setButtons(on) {
   document.querySelectorAll('[data-pwc-run], [data-pwc-replay]').forEach((btn) => {
     btn.disabled = !on
@@ -73,10 +78,11 @@ function showDone() {
     bar.style.width = '100%'
   })
   setJobKicker('JOB · COMPLETE')
+  setJobMarks(IDENTITY_MARKS.join(''))
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('RECOMBINED')
-  setHint('All three workers merged into one completed job.')
-  setLive('Workers recombined. Job complete.')
+  setHint('Workers merged; job inherited ◆▲■ marks.')
+  setLive('Workers recombined. Job inherited identity marks ◆▲■.')
 }
 
 function resetVisual() {
@@ -85,6 +91,7 @@ function resetVisual() {
     bar.style.width = '0%'
   })
   setJobKicker('JOB')
+  setJobMarks('')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('IDLE')
   setHint('Press Run to divide across three workers.')
@@ -92,7 +99,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run full split → parallel-work → recombine choreography.
+ * Auto-run split → parallel-work → recombine with inherited marks.
  * @returns {Promise<void>}
  */
 export function runParallelWorkerClones() {
@@ -114,15 +121,15 @@ export function runParallelWorkerClones() {
 
   root.setAttribute('data-phase', 'splitting')
   setStatus('SPLITTING')
-  setHint('Job dividing into workers.')
-  setLive('Job splitting into three workers.')
+  setHint('Job dividing into marked workers.')
+  setLive('Job splitting into three identity-marked workers.')
 
   return new Promise((resolve) => {
     later(SPLIT_MS, () => {
       root.setAttribute('data-phase', 'working')
       setStatus('WORKING')
       setHint('Workers running in parallel.')
-      setLive('Workers running in parallel.')
+      setLive('Workers ◆▲■ running in parallel.')
       bars().forEach((bar) => {
         void bar.offsetWidth
         bar.style.width = '100%'
@@ -132,8 +139,8 @@ export function runParallelWorkerClones() {
     later(SPLIT_MS + WORK_MS, () => {
       root.setAttribute('data-phase', 'recombining')
       setStatus('RECOMBINING')
-      setHint('Merging worker output.')
-      setLive('Recombining worker output.')
+      setHint('Merging worker output + marks.')
+      setLive('Recombining; transferring identity marks to job.')
     })
 
     later(TOTAL_MS, () => {
