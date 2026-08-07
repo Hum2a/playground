@@ -274,7 +274,7 @@
   }
 }
 
-/* Residues — exactly two at depart and arrive */
+/* Residues — exactly three angular panel strips at depart and arrive */
 
 .cvr__residues {
   position: absolute;
@@ -302,26 +302,43 @@
 
 .cvr__residue {
   position: absolute;
-  width: 18px;
-  height: 2px;
-  background: var(--cvr-pale);
+  background: #1a222c;
+  border: 1px solid var(--cvr-pale);
 }
 
 .cvr__residue--1 {
-  left: 8px;
-  top: 10px;
-  transform: rotate(-18deg);
+  left: 6px;
+  top: 8px;
+  width: 22px;
+  height: 6px;
+  transform: rotate(-14deg);
 }
 
 .cvr__residue--2 {
-  left: 28px;
-  top: 22px;
-  transform: rotate(14deg);
+  left: 24px;
+  top: 16px;
+  width: 18px;
+  height: 5px;
+  transform: rotate(8deg);
+  border-color: color-mix(in srgb, var(--cvr-blue) 60%, var(--cvr-pale));
+}
+
+.cvr__residue--3 {
+  left: 14px;
+  top: 24px;
+  width: 14px;
+  height: 4px;
+  transform: rotate(-22deg);
+  opacity: 0.7;
 }
 
 .cvr[data-phase='depart-residue'] .cvr__residues--depart {
   opacity: 1;
   animation: cvr-residue-out var(--cvr-residue-ms) ease-in both;
+}
+
+.cvr[data-phase='gap'] .cvr__residues--depart {
+  opacity: 0;
 }
 
 .cvr[data-phase='arrive-residue'] .cvr__residues--arrive,
@@ -331,6 +348,97 @@
 
 .cvr[data-phase='reappear'] .cvr__residues--arrive {
   animation: cvr-residue-out 80ms ease-in 40ms both;
+}
+
+/* Vacant origin — dashed outline where tool was */
+
+.cvr__vacant {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  top: 40%;
+  width: 72px;
+  min-height: 36px;
+  transform: translateY(-50%);
+  border: 2px dashed color-mix(in srgb, var(--cvr-line) 80%, var(--cvr-muted));
+  background: color-mix(in srgb, var(--cvr-ink) 90%, transparent);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cvr__vacant-label {
+  display: block;
+  margin: 0.35rem 0.4rem;
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--cvr-muted);
+}
+
+.cvr[data-phase='gap'] .cvr__vacant,
+.cvr[data-phase='arrive-residue'] .cvr__vacant {
+  opacity: 1;
+}
+
+.cvr[data-phase='reappear'] .cvr__vacant,
+.cvr[data-phase='connect'] .cvr__vacant,
+.cvr[data-phase='done'] .cvr__vacant {
+  opacity: 0;
+}
+
+/* Destination materialisation — scan lines before tool reconstructs */
+
+.cvr__materialise {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  top: var(--cvr-error-y);
+  width: 72px;
+  height: 36px;
+  transform: translateY(-50%);
+  border: 2px solid var(--cvr-pale);
+  background: color-mix(in srgb, var(--cvr-blue) 18%, var(--cvr-ink));
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cvr__materialise-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--cvr-pale);
+  opacity: 0.85;
+  transform: translateY(-8px);
+}
+
+.cvr__materialise-scan--b {
+  opacity: 0.45;
+  transform: translateY(12px);
+}
+
+.cvr[data-phase='arrive-residue'] .cvr__materialise {
+  opacity: 1;
+  animation: cvr-materialise-in 90ms ease-out both;
+}
+
+.cvr[data-phase='reappear'] .cvr__materialise {
+  opacity: 0;
+  transition: opacity 40ms linear;
+}
+
+@keyframes cvr-materialise-in {
+  from {
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 @keyframes cvr-residue-out {
@@ -403,7 +511,8 @@
   .cvr[data-phase='reappear'] .cvr__tool,
   .cvr[data-phase='connect'] .cvr__connector,
   .cvr[data-phase='depart-residue'] .cvr__residues--depart,
-  .cvr[data-phase='reappear'] .cvr__residues--arrive {
+  .cvr[data-phase='reappear'] .cvr__residues--arrive,
+  .cvr[data-phase='arrive-residue'] .cvr__materialise {
     animation: none !important;
   }
 }
@@ -413,6 +522,7 @@
 [data-force-reduced-motion='true'] .cvr[data-phase='reappear'] .cvr__tool,
 [data-force-reduced-motion='true'] .cvr[data-phase='connect'] .cvr__connector,
 [data-force-reduced-motion='true'] .cvr[data-phase='depart-residue'] .cvr__residues--depart,
-[data-force-reduced-motion='true'] .cvr[data-phase='reappear'] .cvr__residues--arrive {
+[data-force-reduced-motion='true'] .cvr[data-phase='reappear'] .cvr__residues--arrive,
+[data-force-reduced-motion='true'] .cvr[data-phase='arrive-residue'] .cvr__materialise {
   animation: none !important;
 }

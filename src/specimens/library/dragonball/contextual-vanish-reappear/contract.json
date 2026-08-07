@@ -112,10 +112,30 @@
     "residues": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["departCount", "arriveCount"],
+      "required": ["departCount", "arriveCount", "shape", "vacantOrigin", "destinationMaterialise"],
       "properties": {
-        "departCount": { "type": "number", "const": 2 },
-        "arriveCount": { "type": "number", "const": 2 }
+        "departCount": { "type": "number", "const": 3 },
+        "arriveCount": { "type": "number", "const": 3 },
+        "shape": {
+          "type": "string",
+          "const": "Angular rigid panel strips with 1px border — not thin hairlines"
+        },
+        "vacantOrigin": {
+          "type": "object",
+          "const": {
+            "label": "VACANT",
+            "visibleDuring": ["gap", "arrive-residue"],
+            "style": "dashed outline at left anchor — empty origin, not travel"
+          }
+        },
+        "destinationMaterialise": {
+          "type": "object",
+          "const": {
+            "phase": "arrive-residue",
+            "durationMs": 90,
+            "technique": "clip-path inset reveal + two scan lines before tool reappear"
+          }
+        }
       }
     },
     "connector": {

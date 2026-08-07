@@ -8,7 +8,7 @@ target lock — the context event chooses the destination.
 ## Visual intent
 
 Left tool → error pulse → compress vanish → residue → gap → residue → reconstruct
-→ connector to LINE 72. Responsive, not navigational Instant Transmission.
+→ connector to LINE 72. Responsive relocation, not navigational lock.
 
 ## DOM structure
 
@@ -61,15 +61,21 @@ Left tool → error pulse → compress vanish → residue → gap → residue �
 | ----- | -------- | ----- |
 | Error pulse | 90ms | scale 1 → 1.12 → 1 |
 | Vanish | 70ms | scale .92 → .3 |
-| Departure residues | 60ms | exactly 2 marks fade |
-| Gap | 55ms | tool absent; no travel |
+| Departure residues | 60ms | exactly 3 panel strips fade |
+| Gap | 55ms | tool absent; VACANT outline at origin |
+| Arrival residues | — | 3 panel strips at LINE 72 |
+| Materialise | 90ms | destination shell clip reveal |
 | Reappear | 110ms | .3 → 1.08 → 1 |
 | Connector | 80ms | width 0 → 28px |
 
-## Residues
+## Residues vs empty origin
 
-- Departure: exactly **2** thin marks at left
-- Arrival: exactly **2** matching marks at LINE 72
+- **Departure:** exactly **3** rigid panel strips (bordered rectangles) at left
+  anchor — evidence the tool was here
+- **Gap:** tool absent; dashed `VACANT` outline marks the empty origin (no travel)
+- **Arrival:** exactly **3** matching panel strips at LINE 72
+- **Materialisation:** destination shell reveals via clip-path + scan lines before
+  INSPECT reconstructs
 
 ## API
 
