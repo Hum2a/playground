@@ -1,15 +1,161 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"ErasureDelete",
-  "type":"object",
-  "required":["name","record","boundary","fragments","identity","final","reducedMotion"],
-  "properties":{
-    "name":{"const":"erasure-delete"},
-    "record":{"const":{"id":"RECORD // 028","sizePx":[280,170],"metadata":["STATUS ACTIVE","LINKS 14","VERSION 07"]}},
-    "boundary":{"const":{"direction":"bottom-right-to-top-left","angleDeg":-18,"thicknessPx":3,"durationMs":620,"mask":"stage-background-void"}},
-    "fragments":{"const":{"count":12,"distancePx":[18,42],"durationMs":[180,260],"deterministic":true}},
-    "identity":{"const":{"lastReadable":true,"holdMs":60}},
-    "final":{"const":{"status":"ERASED","largeCard":false}},
-    "reducedMotion":{"const":"Immediate Record 028 erased confirmation."}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/erasure-delete.schema.json",
+  "title": "ErasureDelete",
+  "description": "Portable contract for diagonal void-mask erasure of RECORD // 028 with twelve rigid panel fragments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "record",
+    "boundary",
+    "fragments",
+    "identity",
+    "final",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "erasure-delete" },
+    "intent": {
+      "type": "string",
+      "const": "Diagonal void mask erases RECORD // 028 bottom-right to top-left; twelve rigid bordered panel fragments shear away — not glass shards."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordId", "statusActive", "statusErased", "trigger", "reset"],
+      "properties": {
+        "recordId": { "type": "string", "const": "RECORD // 028" },
+        "statusActive": { "type": "string", "const": "ACTIVE" },
+        "statusErased": { "type": "string", "const": "ERASED" },
+        "trigger": { "type": "string", "const": "ERASE" },
+        "reset": { "type": "string", "const": "RESET" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "ink", "line", "mark", "panel"],
+      "properties": {
+        "bg": { "type": "string", "const": "#111a21" },
+        "ink": { "type": "string", "const": "#dfe8e6" },
+        "line": { "type": "string", "const": "#71929b" },
+        "mark": { "type": "string", "const": "#c8925e" },
+        "panel": { "type": "string", "const": "#1d2a32" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizePx", "clipPath", "metadata"],
+      "properties": {
+        "sizePx": { "type": "array", "const": [280, 170] },
+        "clipPath": {
+          "type": "string",
+          "const": "polygon(0 0, 94% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%)"
+        },
+        "metadata": {
+          "type": "array",
+          "const": ["STATUS ACTIVE", "LINKS 14", "VERSION 07"]
+        }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direction", "angleDeg", "thicknessPx", "durationMs", "mask"],
+      "properties": {
+        "direction": { "type": "string", "const": "bottom-right-to-top-left" },
+        "angleDeg": { "type": "number", "const": -18 },
+        "thicknessPx": { "type": "number", "const": 3 },
+        "durationMs": { "type": "number", "const": 620 },
+        "mask": {
+          "type": "string",
+          "const": "stage-background-void — content behind boundary is genuinely masked, not faded"
+        }
+      }
+    },
+    "fragments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "type", "notShards", "sizesPx", "distancePx", "durationMs", "staggerMs"],
+      "properties": {
+        "count": { "type": "number", "const": 12 },
+        "type": { "type": "string", "const": "rigid-bordered-rectangles" },
+        "notShards": {
+          "type": "boolean",
+          "const": true,
+          "description": "No diamond clip-paths, no glass-shard triangles, no hairline slivers"
+        },
+        "sizesPx": {
+          "type": "array",
+          "const": [
+            [18, 10], [14, 8], [20, 7], [12, 12], [16, 6], [22, 8],
+            [10, 14], [15, 9], [11, 11], [19, 6], [13, 10], [17, 7]
+          ]
+        },
+        "distancePx": { "type": "array", "const": [18, 44] },
+        "durationMs": { "type": "number", "const": 220 },
+        "staggerMs": { "type": "number", "const": 25 }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lastReadable", "holdMs"],
+      "properties": {
+        "lastReadable": { "type": "boolean", "const": true },
+        "holdMs": { "type": "number", "const": 60 }
+      }
+    },
+    "final": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "largeCard"],
+      "properties": {
+        "status": { "type": "string", "const": "ERASED" },
+        "largeCard": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateErased", "triggers"],
+      "properties": {
+        "immediateErased": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "void", "boundary", "panel"],
+      "properties": {
+        "root": { "type": "string", "const": "ed" },
+        "card": { "type": "string", "const": "ed__card" },
+        "void": { "type": "string", "const": "ed__void" },
+        "boundary": { "type": "string", "const": "ed__boundary" },
+        "panel": { "type": "string", "const": "ed__panel" }
+      }
+    }
   }
 }
