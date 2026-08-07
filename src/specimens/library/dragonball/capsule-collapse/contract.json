@@ -1,1 +1,154 @@
-{"title":"CapsuleCollapse","type":"object","properties":{"name":{"const":"capsule-collapse"},"expanded":{"const":[280,180]},"stages":{"const":[[100,74,130],[56,42,110]]},"token":{"const":[54,34]},"timings":{"const":{"prepareMs":120,"foldMs":220,"encodingMs":100,"dockMs":140}},"metadataOrder":{"const":["REGION","LATENCY","WORKERS"]},"encodingLines":{"const":4},"reducedMotion":{"const":true}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/capsule-collapse.schema.json",
+  "title": "CapsuleCollapse",
+  "description": "Portable contract for hardware capsule storage compression: structural fold stages, lid/seam geometry, stamped ID dock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "geometry",
+    "foldStages",
+    "capsule",
+    "animation",
+    "metadataOrder",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "capsule-collapse" },
+    "intent": {
+      "type": "string",
+      "const": "Physical capsule encode: a service panel structurally folds through two compression stages, four encoding lines seal it, and a stamped hardware capsule docks into storage — never a fade."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "service", "trigger", "reset", "ready", "stored", "finalStatus"],
+      "properties": {
+        "system": { "type": "string", "const": "STORAGE // 03" },
+        "service": { "type": "string", "const": "API-07" },
+        "trigger": { "type": "string", "const": "PACK" },
+        "reset": { "type": "string", "const": "RESET" },
+        "ready": { "type": "string", "const": "Service API-07 ready to pack." },
+        "stored": { "type": "string", "const": "Service API-07 stored." },
+        "finalStatus": { "type": "string", "const": "Service API-07 stored in bay 03." }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper", "ink", "panel", "accent", "cap", "band", "seam", "stamp"],
+      "properties": {
+        "paper": { "type": "string", "const": "#e9e5db" },
+        "ink": { "type": "string", "const": "#19242b" },
+        "panel": { "type": "string", "const": "#f8f5ed" },
+        "accent": { "type": "string", "const": "#5d8c87" },
+        "cap": { "type": "string", "const": "#4a6f6b" },
+        "band": { "type": "string", "const": "#6fa39d" },
+        "seam": { "type": "string", "const": "#3d5c58" },
+        "stamp": { "type": "string", "const": "#f2efe6" }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expanded", "foldStage1", "foldStage2", "dockSlot", "stagePx"],
+      "properties": {
+        "expanded": { "type": "array", "const": [280, 180] },
+        "foldStage1": { "type": "array", "const": [100, 74] },
+        "foldStage2": { "type": "array", "const": [56, 42] },
+        "dockSlot": { "type": "array", "const": [54, 34] },
+        "stagePx": { "type": "object", "const": { "width": 320, "height": 268 } }
+      }
+    },
+    "foldStages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bracketInwardPx", "rowGapPx", "encodingLines", "lidCloseDeg"],
+      "properties": {
+        "bracketInwardPx": { "type": "number", "const": 8 },
+        "rowGapPx": { "type": "object", "const": { "idle": 12, "prepare": 4 } },
+        "encodingLines": { "type": "integer", "const": 4 },
+        "lidCloseDeg": { "type": "number", "const": 88 }
+      }
+    },
+    "capsule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shellPx", "capPx", "stampId", "dockTravelPx"],
+      "properties": {
+        "shellPx": { "type": "array", "const": [88, 36] },
+        "capPx": { "type": "number", "const": 14 },
+        "stampId": { "type": "string", "const": "API-07" },
+        "dockTravelPx": { "type": "number", "const": 60 }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prepareMs",
+        "foldMs",
+        "stage1Ms",
+        "stage2Ms",
+        "encodeMs",
+        "dockMs",
+        "loops"
+      ],
+      "properties": {
+        "prepareMs": { "type": "number", "const": 120 },
+        "foldMs": { "type": "number", "const": 220 },
+        "stage1Ms": { "type": "number", "const": 130 },
+        "stage2Ms": { "type": "number", "const": 110 },
+        "encodeMs": { "type": "number", "const": 100 },
+        "dockMs": { "type": "number", "const": 140 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "metadataOrder": {
+      "type": "array",
+      "const": ["REGION", "LATENCY", "WORKERS"]
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeFinal", "cardLabel"],
+      "properties": {
+        "politeFinal": { "type": "boolean", "const": true },
+        "cardLabel": { "type": "string", "const": "Service API-07" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateStored", "triggers"],
+      "properties": {
+        "immediateStored": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "shell", "stamp", "dock"],
+      "properties": {
+        "root": { "type": "string", "const": "ccp" },
+        "card": { "type": "string", "const": "ccp__card" },
+        "shell": { "type": "string", "const": "ccp__shell" },
+        "stamp": { "type": "string", "const": "ccp__stamp" },
+        "dock": { "type": "string", "const": "ccp__dock" }
+      }
+    }
+  }
+}

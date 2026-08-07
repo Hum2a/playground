@@ -1,15 +1,58 @@
-<div class="ccp" data-capsule-collapse data-state="idle">
+<div class="ccp" data-capsule-collapse data-state="idle" data-phase="idle">
+  <p class="ccp__system">STORAGE // 03</p>
+
   <div class="ccp__stage">
     <section class="ccp__card" data-ccp-card aria-label="Service API-07">
-      <span class="ccp__bracket ccp__bracket--tl"></span><span class="ccp__bracket ccp__bracket--tr"></span><span class="ccp__bracket ccp__bracket--bl"></span><span class="ccp__bracket ccp__bracket--br"></span>
+      <span class="ccp__bracket ccp__bracket--tl" aria-hidden="true"></span>
+      <span class="ccp__bracket ccp__bracket--tr" aria-hidden="true"></span>
+      <span class="ccp__bracket ccp__bracket--bl" aria-hidden="true"></span>
+      <span class="ccp__bracket ccp__bracket--br" aria-hidden="true"></span>
+
       <header class="ccp__title">SERVICE // <strong>API-07</strong></header>
-      <div class="ccp__rows"><span>STATUS <b>HEALTHY</b></span><span data-ccp-region>REGION <b>LONDON</b></span><span data-ccp-latency>LATENCY <b>24ms</b></span><span data-ccp-workers>WORKERS <b>8</b></span></div>
+
+      <div class="ccp__rows">
+        <span>STATUS <b>HEALTHY</b></span>
+        <span data-ccp-region>REGION <b>LONDON</b></span>
+        <span data-ccp-latency>LATENCY <b>24ms</b></span>
+        <span data-ccp-workers>WORKERS <b>8</b></span>
+      </div>
+
       <footer class="ccp__footer">ACTIVE SERVICE</footer>
-      <span class="ccp__encode ccp__encode--1"></span><span class="ccp__encode ccp__encode--2"></span><span class="ccp__encode ccp__encode--3"></span><span class="ccp__encode ccp__encode--4"></span>
+
+      <span class="ccp__encode ccp__encode--1" aria-hidden="true"></span>
+      <span class="ccp__encode ccp__encode--2" aria-hidden="true"></span>
+      <span class="ccp__encode ccp__encode--3" aria-hidden="true"></span>
+      <span class="ccp__encode ccp__encode--4" aria-hidden="true"></span>
     </section>
-    <div class="ccp__rail"><span>STORAGE // 03</span><div class="ccp__token" data-ccp-token><i></i>API-07</div></div>
+
+    <div class="ccp__hardware" data-ccp-hardware aria-hidden="true">
+      <div class="ccp__shell" data-ccp-shell>
+        <span class="ccp__cap ccp__cap--l"></span>
+        <span class="ccp__band">
+          <span class="ccp__seam"></span>
+          <span class="ccp__stamp" data-ccp-stamp>API-07</span>
+        </span>
+        <span class="ccp__cap ccp__cap--r"></span>
+        <span class="ccp__lid" data-ccp-lid></span>
+      </div>
+    </div>
+
+    <div class="ccp__rail">
+      <span class="ccp__rail-label">DOCK // BAY-03</span>
+      <div class="ccp__dock" data-ccp-dock>
+        <span class="ccp__dock-slot"></span>
+      </div>
+    </div>
   </div>
+
   <p class="ccp__message" data-ccp-message>Service API-07 ready to pack.</p>
-  <button class="ccp__button" type="button" data-ccp-pack>PACK</button>
-  <div class="ccp__status" role="status" aria-live="polite" data-ccp-status></div>
+
+  <div class="ccp__controls">
+    <button type="button" class="ccp__button" data-ccp-pack>PACK</button>
+    <button type="button" class="ccp__button ccp__button--ghost" data-ccp-reset>RESET</button>
+  </div>
+
+  <p class="ccp__status" role="status" aria-live="polite" data-ccp-status>
+    Service API-07 ready to pack.
+  </p>
 </div>
