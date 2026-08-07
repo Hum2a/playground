@@ -1,10 +1,66 @@
 {
   "name": "binding-wrap-lock",
+  "intent": "Four binding strips wrap a card; heavy LOCKED stamp overlays when restricted.",
+  "catalogue": {
+    "mha": "MHA-180",
+    "ref": "SPX-2154"
+  },
+  "copy": {
+    "label": "TARGET",
+    "value": "Route 07-B",
+    "locked": "LOCKED",
+    "restrict": "Restrict",
+    "replay": "Replay",
+    "liveUnlocked": "Resource unlocked.",
+    "liveWrap": "Binding strips deploying.",
+    "liveLocked": "Resource locked."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "animation": { "wrapMs": 500, "totalMs": 1150 }
+  "timing": {
+    "wrapMs": 500,
+    "stampMs": 420,
+    "stampDelayMs": 380,
+    "settleMs": 650,
+    "totalMs": 1150
+  },
+  "strips": {
+    "count": 4,
+    "horizontal": { "angleDeg": -2, "topPct": 42, "heightPx": 6, "delayMs": 0 },
+    "vertical": { "angleDeg": 3, "leftPct": 48, "widthPx": 6, "delayMs": 80 },
+    "diagonal1": { "angleDeg": 28, "topPct": 18, "widthPct": 140, "heightPx": 5, "restLeftPct": -8, "delayMs": 140 },
+    "diagonal2": { "angleDeg": -24, "bottomPct": 22, "widthPct": 140, "heightPx": 5, "restLeftPct": -6, "delayMs": 200 }
+  },
+  "stamp": {
+    "text": "LOCKED",
+    "rotationDeg": -10,
+    "borderPx": 4,
+    "fontSizeRem": 0.95,
+    "letterSpacingEm": 0.28
+  },
+  "geometry": {
+    "cardMaxWidthPx": 260,
+    "cardBorderPx": 3
+  },
+  "api": {
+    "run": "runBindingWrapLock()",
+    "reset": "resetBindingWrapLock()",
+    "replay": "replayBindingWrapLock()"
+  },
+  "reducedMotion": {
+    "behaviour": "Strips and LOCKED stamp appear immediately without wrap animation"
+  },
+  "acceptance": [
+    "Idle: TARGET / Route 07-B visible; live reads unlocked",
+    "Restrict: four strips sweep in with staggered delays (0/80/140/200ms)",
+    "Done: heavy LOCKED stamp overlays card centre; accent inset border",
+    "Replay resets strips and stamp to idle",
+    "Reduced motion (prefers or data-force) skips wrap animation",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Strip count (4), angles, and LOCKED stamp geometry frozen in contract — not colour-only"
 }
