@@ -1,0 +1,23 @@
+{
+  "id": "manga-radial-speed-burst",
+  "ref": "SPX-4081",
+  "title": "Manga Radial Speed Burst",
+  "tokens": {
+    "--mrsb-ink": "#111111",
+    "--mrsb-duration": "420ms",
+    "lineCount": 36,
+    "protectedRadiusPx": 72,
+    "outerRadiusPx": 420,
+    "lineThicknessPx": "predetermined 2–7 (no Math.random)",
+    "peakOpacityAtMs": 110,
+    "focalScale": "1 → 1.055 → 1 (~80ms hold)"
+  },
+  "timeline": {
+    "totalMs": 420,
+    "peakMs": 110,
+    "focalHoldMs": 80,
+    "ease": "cubic-bezier(0.2, 0.7, 0.2, 1)"
+  },
+  "states": ["idle", "burst", "emphasised"],
+  "reducedMotion": "12 static restrained rays + focus border; no line movement"
+}
