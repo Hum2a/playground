@@ -6,6 +6,11 @@
   --paper: #f4f7fa;
   --accent: #ff4d35;
   --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --close-ms: 420;
+  --close-stagger-ms: 60;
+  --label-delay-ms: 700;
+  --label-ms: 280;
+  --shutter-count: 5;
 
   box-sizing: border-box;
   display: flex;
@@ -61,35 +66,82 @@
 }
 
 .lds__shutter {
+  position: relative;
   flex: 1;
   background: var(--ink);
-  border-bottom: 2px solid var(--accent);
   transform: translateY(-100%);
+}
+
+.lds__shutter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  right: 4px;
+  height: 3px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    90deg,
+    rgb(244 247 250 / 0.28) 0 2px,
+    transparent 2px 14px
+  );
+  pointer-events: none;
+}
+
+.lds__shutter::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 7px;
+  background: var(--accent);
+  clip-path: polygon(
+    0 0,
+    6px 100%,
+    12px 0,
+    18px 100%,
+    24px 0,
+    30px 100%,
+    36px 0,
+    42px 100%,
+    48px 0,
+    54px 100%,
+    60px 0,
+    66px 100%,
+    72px 0,
+    78px 100%,
+    84px 0,
+    90px 100%,
+    96px 0,
+    100% 100%,
+    100% 0
+  );
 }
 
 .lds[data-phase='close'] .lds__shutter,
 .lds[data-phase='done'] .lds__shutter {
-  animation: lds-close 420ms var(--ease) forwards;
+  animation: lds-close calc(var(--close-ms) * 1ms) var(--ease) forwards;
 }
 
 .lds[data-phase='close'] .lds__shutter:nth-child(2),
 .lds[data-phase='done'] .lds__shutter:nth-child(2) {
-  animation-delay: 60ms;
+  animation-delay: calc(var(--close-stagger-ms) * 1ms);
 }
 
 .lds[data-phase='close'] .lds__shutter:nth-child(3),
 .lds[data-phase='done'] .lds__shutter:nth-child(3) {
-  animation-delay: 120ms;
+  animation-delay: calc(var(--close-stagger-ms) * 2ms);
 }
 
 .lds[data-phase='close'] .lds__shutter:nth-child(4),
 .lds[data-phase='done'] .lds__shutter:nth-child(4) {
-  animation-delay: 180ms;
+  animation-delay: calc(var(--close-stagger-ms) * 3ms);
 }
 
 .lds[data-phase='close'] .lds__shutter:nth-child(5),
 .lds[data-phase='done'] .lds__shutter:nth-child(5) {
-  animation-delay: 240ms;
+  animation-delay: calc(var(--close-stagger-ms) * 4ms);
 }
 
 .lds[data-phase='done'] .lds__shutter {
@@ -97,7 +149,9 @@
 }
 
 @keyframes lds-close {
-  to { transform: translateY(0); }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .lds__lock-label {
@@ -117,12 +171,19 @@
 
 .lds[data-phase='done'] .lds__lock-label {
   opacity: 1;
-  animation: lds-label 280ms ease 700ms forwards;
+  animation: lds-label calc(var(--label-ms) * 1ms) ease calc(var(--label-delay-ms) * 1ms) forwards;
 }
 
 @keyframes lds-label {
-  from { opacity: 0; transform: scale(1.2); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .lds__btn {

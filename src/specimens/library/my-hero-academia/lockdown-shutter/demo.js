@@ -1,4 +1,10 @@
-const CLOSE_MS = 980
+const CLOSE_MS = 420
+const CLOSE_STAGGER_MS = 60
+const SHUTTER_COUNT = 5
+const LABEL_DELAY_MS = 700
+const LABEL_MS = 280
+
+const TOTAL_MS = LABEL_DELAY_MS + LABEL_MS
 
 let busy = false
 /** @type {number | null} */
@@ -54,7 +60,7 @@ export function runLockdownShutter() {
       busy = false
       timer = null
       resolve()
-    }, CLOSE_MS)
+    }, TOTAL_MS)
   })
 }
 

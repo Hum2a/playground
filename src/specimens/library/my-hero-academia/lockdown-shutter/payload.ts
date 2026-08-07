@@ -11,9 +11,9 @@ const payload: SpecimenPayload = {
     'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Five shutters close in staggered sequence',
-    'LOCKDOWN label visible when covered',
-    'RESET restores operational view',
+    'Five riveted shutters cascade closed over operational content',
+    'LOCKDOWN label stamps after content fully covered',
+    'Reduced motion snaps shutters closed with no slide',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">

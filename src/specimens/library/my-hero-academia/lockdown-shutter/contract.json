@@ -1,12 +1,53 @@
 {
   "name": "lockdown-shutter",
-  "ref": "SPX-2069",
-  "catalogue": { "mha": "MHA-095" },
-  "shutterCount": 5,
+  "intent": "Five riveted security shutters cascade over operational content; LOCKDOWN label stamps once fully covered.",
+  "catalogue": {
+    "mha": "MHA-095",
+    "ref": "SPX-2069"
+  },
+  "copy": {
+    "status": "FACILITY STATUS — OPERATIONAL",
+    "sub": "All sectors nominal.",
+    "lockdown": "LOCKDOWN",
+    "liveIdle": "Facility operational.",
+    "liveClose": "Shutter segments closing…",
+    "liveDone": "Facility lockdown active."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "closeMs": 420,
+    "closeStaggerMs": 60,
+    "labelDelayMs": 700,
+    "labelMs": 280,
+    "shutterCount": 5
+  },
+  "geometry": {
+    "stageMaxWidthPx": 400,
+    "panelMinHeightPx": 140,
+    "panelClipCornerPx": 12,
+    "shutterToothHeightPx": 7
+  },
+  "api": {
+    "run": "runLockdownShutter()",
+    "reset": "resetLockdownShutter()",
+    "replay": "replayLockdownShutter()"
+  },
+  "reducedMotion": {
+    "behaviour": "Shutters snap closed and LOCKDOWN label appears immediately; no slide animation"
+  },
+  "acceptance": [
+    "Idle: operational copy visible; shutters hidden above panel; live region reads operational",
+    "LOCKDOWN triggers five shutters to cascade closed over 420ms each with 60ms stagger",
+    "Shutters show rivet line and accent sawtooth teeth along bottom edge",
+    "Done: operational content fully covered; LOCKDOWN label visible at 700ms delay",
+    "RESET restores idle shutters-above and operational copy",
+    "Reduced motion (prefers or data-force) snaps shutters closed with no slide",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Frozen closeMs/stagger/label delays as CSS vars; riveted teeth on shutter segments"
 }
