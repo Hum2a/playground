@@ -1,18 +1,24 @@
 # Haptic Pulse Visualizer
 
-An action button emits a short radial wave pattern representing tactile feedback on each pulse.
+A radial radar silhouette: the core emits concentric expanding rings representing DualSense-style haptic pulses — not a hold meter.
+
+## Freeze
+
+| Item | Value |
+| ---- | ----- |
+| Ref | `SPX-3365` / `PS-059` |
+| Pulse duration | `520ms` |
+| Gap between bursts | `180ms` |
+| Bursts on Run | `3` |
+| Rings per burst | `4` (staggered) |
 
 ## Behaviour
 
-- Each pulse emits visible expanding wave from button centre
-- Run fires three pulses in sequence
-- Replay clears waves before rerun
-- Reduced motion shows static pulse highlight only
-- Live region counts pulses in text
+1. Idle: circular core labelled PULSE inside a radar field.
+2. Each burst activates four concentric rings expanding outward.
+3. Run fires three bursts; live region counts them.
+4. Reduced motion: static radial highlight — no expand animation.
 
 ## Palette
 
-- Blue: #2E90FF
-- Ink: #0B0F14
-- Chalk: #F4F6F8
-- Sky: #7EB6FF
+- Blue: #2E90FF · Ink: #0B0F14 · Chalk: #F4F6F8 · Sky: #7EB6FF

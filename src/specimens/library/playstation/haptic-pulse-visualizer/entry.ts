@@ -4,7 +4,8 @@ export const hapticPulseVisualizer: Specimen = {
   id: 'haptic-pulse-visualizer',
   ref: 'SPX-3365',
   title: 'Haptic Pulse Visualizer',
-  blurb: 'An action button emits a short radial wave pattern representing tactile feedback on each pulse.',
+  blurb:
+    'Radial radar core emits staggered concentric rings for DualSense-style haptic pulses — not a hold meter.',
   origin: {
     project: 'Original',
     surface: 'PlayStation-inspired system UI motion study (abstract)',
@@ -17,18 +18,19 @@ export const hapticPulseVisualizer: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
-  tags: ["dualsense","haptic"],
+  tags: ['dualsense', 'haptic'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote: 'Under reduced motion pulses show a static highlight ring without expanding waves.',
+    reducedMotionNote: 'Under reduced motion a static radial highlight shows without expanding rings.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,
-    height: 320,
+    height: 340,
     background: 'dark',
     label: 'Haptic Pulse Visualizer demo',
   },

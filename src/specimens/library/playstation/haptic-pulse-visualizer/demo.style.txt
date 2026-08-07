@@ -1,18 +1,18 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3365 Haptic Pulse Visualizer — portable contract. */
 
 .hpv {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --pulse-ms: 520ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   width: 100%;
-  min-height: 320px;
+  min-height: 340px;
   padding: 0.85rem 0.7rem;
   background: var(--ps-ink);
   color: var(--ps-chalk);
@@ -57,7 +57,9 @@
   flex: 1;
   padding: 1.1rem 0.75rem;
   border: 1px solid rgb(46 144 255 / 0.35);
-  background: rgb(244 246 248 / 0.03);
+  background:
+    radial-gradient(circle at 50% 42%, rgb(46 144 255 / 0.08), transparent 55%),
+    rgb(244 246 248 / 0.03);
 }
 
 .hpv__status {
@@ -116,89 +118,124 @@
   cursor: default;
 }
 
-.hpv__pulse-host {
+/* Radial radar silhouette — concentric rings, not a hold meter. */
+.hpv__radar {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 168px;
+  height: 168px;
   display: grid;
   place-items: center;
 }
 
-.hpv__btn-pulse {
-  appearance: none;
-  padding: 0.55rem 1rem;
-  border: 1px solid var(--ps-blue);
-  border-radius: 999px;
-  background: rgb(46 144 255 / 0.12);
-  color: var(--ps-chalk);
-  font: inherit;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.hpv__btn-pulse:focus-visible {
-  outline: 2px solid var(--ps-blue);
-  outline-offset: 3px;
-}
-
-.hpv__wave {
+.hpv__ring {
   position: absolute;
-  width: 48px;
-  height: 48px;
+  inset: 18%;
   border-radius: 50%;
-  border: 2px solid var(--ps-sky);
+  border: 2px solid rgb(126 182 255 / 0.55);
   opacity: 0;
   pointer-events: none;
+  transform: scale(0.35);
 }
 
-.hpv__wave[data-active='true'] {
-  animation: hpv-wave 480ms ease-out forwards;
+.hpv__ring[data-active='true'] {
+  animation: hpv-expand var(--pulse-ms) cubic-bezier(0.15, 0.85, 0.25, 1) forwards;
 }
 
-@keyframes hpv-wave {
-  0% { opacity: 0.85; transform: scale(0.6); }
-  100% { opacity: 0; transform: scale(2.8); }
+.hpv__ring--b[data-active='true'] {
+  animation-delay: 70ms;
+  border-color: rgb(46 144 255 / 0.7);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hpv__wave[data-active='true'] {
-    animation: none;
-    opacity: 0.7;
-    transform: scale(1.2);
+.hpv__ring--c[data-active='true'] {
+  animation-delay: 140ms;
+  border-width: 1.5px;
+}
+
+.hpv__ring--d[data-active='true'] {
+  animation-delay: 210ms;
+  border-color: rgb(126 182 255 / 0.35);
+}
+
+@keyframes hpv-expand {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.35);
+  }
+  70% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.15);
   }
 }
 
-html[data-force-reduced-motion='true'] .hpv__wave[data-active='true'] {
-  animation: none;
-  opacity: 0.7;
-  transform: scale(1.2);
+.hpv__core {
+  appearance: none;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  gap: 0.2rem;
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--ps-blue);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 40%, rgb(46 144 255 / 0.35), transparent 60%),
+    rgb(11 15 20 / 0.95);
+  color: var(--ps-chalk);
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 0 0 6px rgb(46 144 255 / 0.08);
+}
+
+.hpv__core:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 4px;
+}
+
+.hpv[data-phase='active'] .hpv__core {
+  border-color: var(--ps-sky);
+  box-shadow: 0 0 0 8px rgb(46 144 255 / 0.16);
+}
+
+.hpv__core-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ps-blue);
+  box-shadow: 0 0 10px rgb(46 144 255 / 0.8);
+}
+
+.hpv__core-label {
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.hpv[data-phase='static'] .hpv__ring--a {
+  opacity: 0.75;
+  transform: scale(1.05);
+  border-color: var(--ps-sky);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hpv__ring-track,
-  .hpv__ring-fill,
-  .hpv__pulse,
-  .hpv__wave,
-  .hpv__sync-beam,
-  .hpv__morph,
-  .hpv__fill,
-  .hpv__notch-glow {
-    transition: none !important;
+  .hpv__ring[data-active='true'] {
     animation: none !important;
   }
+
+  .hpv__core {
+    transition: none !important;
+  }
 }
 
-html[data-force-reduced-motion='true'] .hpv__ring-track,
-html[data-force-reduced-motion='true'] .hpv__ring-fill,
-html[data-force-reduced-motion='true'] .hpv__pulse,
-html[data-force-reduced-motion='true'] .hpv__wave,
-html[data-force-reduced-motion='true'] .hpv__sync-beam,
-html[data-force-reduced-motion='true'] .hpv__morph,
-html[data-force-reduced-motion='true'] .hpv__fill,
-html[data-force-reduced-motion='true'] .hpv__notch-glow {
-  transition: none !important;
+[data-force-reduced-motion='true'] .hpv__ring[data-active='true'] {
   animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .hpv__core {
+  transition: none !important;
 }

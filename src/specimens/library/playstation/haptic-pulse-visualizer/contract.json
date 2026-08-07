@@ -9,10 +9,25 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "pulseMs": 520,
+    "gapMs": 180,
+    "bursts": 3,
+    "ringsPerBurst": 4
+  },
+  "api": {
+    "run": "runHapticPulseVisualizer()",
+    "reset": "resetHapticPulseVisualizer()",
+    "replay": "replayHapticPulseVisualizer()"
+  },
+  "acceptance": [
+    "Core button sits in a radial radar; pulses expand as concentric rings (not a hold meter)",
+    "Run fires three bursts; each burst activates four staggered rings",
+    "Live region announces burst count",
+    "Reduced motion shows a static radial highlight without expanding animation"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "Static radial highlight on core; ring expand animation removed"
   }
 }

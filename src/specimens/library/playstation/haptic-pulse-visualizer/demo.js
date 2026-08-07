@@ -50,37 +50,46 @@ function setButtons(on) {
   })
 }
 
-const PULSE_MS = 480
-const GAP_MS = 200
+const PULSE_MS = 520
+const GAP_MS = 180
+const WAVES = 3
 
-function fireWave(n) {
-  const wave = document.querySelector(`[data-wave="${n}"]`)
-  if (!wave) return
-  wave.setAttribute('data-active', 'false')
-  void wave.offsetWidth
-  wave.setAttribute('data-active', 'true')
-  later(PULSE_MS, () => wave.setAttribute('data-active', 'false'))
+function clearWaves() {
+  document.querySelectorAll('[data-wave]').forEach((w) => {
+    w.setAttribute('data-active', 'false')
+  })
+}
+
+function fireBurst() {
+  clearWaves()
+  void rootEl()?.offsetWidth
+  ;[1, 2, 3, 4].forEach((n) => {
+    const ring = document.querySelector(`[data-wave="${n}"]`)
+    if (ring) ring.setAttribute('data-active', 'true')
+  })
+  later(PULSE_MS + 220, clearWaves)
 }
 
 function resetVisual() {
   rootEl()?.setAttribute('data-phase', 'idle')
-  document.querySelectorAll('[data-wave]').forEach((w) => w.setAttribute('data-active', 'false'))
+  clearWaves()
   setStatus('READY')
-  setHint('Press action or Run for pulses.')
+  setHint('Press pulse or Run for radial waves.')
   setLive('Haptic visualizer idle.')
 }
 
-function runPulses() {
+function runBursts() {
   return new Promise((resolve) => {
     let i = 1
     const next = () => {
-      if (i > 3) {
-        setLive('Three haptic pulses complete.')
+      if (i > WAVES) {
+        setLive('Three radial haptic bursts complete.')
         resolve()
         return
       }
-      fireWave(i)
-      setLive(`Haptic pulse ${i} of 3.`)
+      fireBurst()
+      setLive(`Radial haptic burst ${i} of ${WAVES}.`)
+      setStatus(`BURST ${i}`)
       i += 1
       later(PULSE_MS + GAP_MS, next)
     }
@@ -97,20 +106,23 @@ export function runHapticPulseVisualizer() {
   setButtons(false)
   root.setAttribute('data-phase', 'active')
   setStatus('PULSING')
-  setLive('Emitting haptic pulses.')
+  setLive('Emitting radial haptic waves.')
 
   if (prefersReducedMotion()) {
-    fireWave(1)
-    setLive('Haptic pulse (static highlight).')
+    root.setAttribute('data-phase', 'static')
+    document.querySelector('[data-wave="1"]')?.setAttribute('data-active', 'false')
+    setLive('Haptic pulse (static radial highlight).')
+    setStatus('PULSE')
     busy = false
     setButtons(true)
     return Promise.resolve()
   }
 
-  return runPulses().then(() => {
+  return runBursts().then(() => {
     busy = false
     setButtons(true)
     setStatus('READY')
+    root.setAttribute('data-phase', 'idle')
   })
 }
 
@@ -128,10 +140,20 @@ export async function replayHapticPulseVisualizer() {
 }
 
 document.querySelector('[data-hpv-pulse]')?.addEventListener('click', () => {
-  if (!busy) {
-    busy = true
-    void runPulses().then(() => { busy = false })
+  if (busy) return
+  if (prefersReducedMotion()) {
+    rootEl()?.setAttribute('data-phase', 'static')
+    setLive('Haptic pulse (static radial highlight).')
+    return
   }
+  busy = true
+  rootEl()?.setAttribute('data-phase', 'active')
+  fireBurst()
+  setLive('Single radial haptic burst.')
+  later(PULSE_MS + 40, () => {
+    busy = false
+    rootEl()?.setAttribute('data-phase', 'idle')
+  })
 })
 
 function bindUi() {

@@ -1,16 +1,22 @@
 <div class="hpv" data-hpv data-phase="idle">
   <p class="hpv__live" data-hpv-live aria-live="polite">Haptic visualizer idle.</p>
   <p class="hpv__system">DUALSENSE // HAPTIC PULSE</p>
+
   <div class="hpv__stage">
-    <div class="hpv__pulse-host">
-      <button type="button" class="hpv__btn-pulse" data-hpv-pulse aria-label="Pulse action">ACTION</button>
-      <span class="hpv__wave hpv__wave--1" data-wave="1" aria-hidden="true"></span>
-      <span class="hpv__wave hpv__wave--2" data-wave="2" aria-hidden="true"></span>
-      <span class="hpv__wave hpv__wave--3" data-wave="3" aria-hidden="true"></span>
+    <div class="hpv__radar" aria-hidden="true">
+      <span class="hpv__ring hpv__ring--a" data-wave="1"></span>
+      <span class="hpv__ring hpv__ring--b" data-wave="2"></span>
+      <span class="hpv__ring hpv__ring--c" data-wave="3"></span>
+      <span class="hpv__ring hpv__ring--d" data-wave="4"></span>
+      <button type="button" class="hpv__core" data-hpv-pulse aria-label="Emit haptic pulse">
+        <span class="hpv__core-dot"></span>
+        <span class="hpv__core-label">PULSE</span>
+      </button>
     </div>
     <p class="hpv__status" data-hpv-status>READY</p>
-    <p class="hpv__hint" data-hpv-hint>Press action or Run for pulses.</p>
+    <p class="hpv__hint" data-hpv-hint>Press pulse or Run for radial waves.</p>
   </div>
+
   <div class="hpv__controls">
     <button type="button" class="hpv__btn hpv__btn--primary" data-hpv-run>Run</button>
     <button type="button" class="hpv__btn" data-hpv-replay>Replay</button>

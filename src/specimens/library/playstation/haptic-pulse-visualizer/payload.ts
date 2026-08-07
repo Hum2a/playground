@@ -6,19 +6,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration:   [
-    "Pulse button and Run fire three staggered waves.",
-    "Wire runHapticPulseVisualizer / resetHapticPulseVisualizer / replayHapticPulseVisualizer."
+  integration: [
+    'Pulse core and Run fire three radial bursts of four staggered rings.',
+    'Wire runHapticPulseVisualizer / resetHapticPulseVisualizer / replayHapticPulseVisualizer.',
   ],
-  acceptance:   [
-    "Each pulse emits visible expanding wave from button centre",
-    "Run fires three pulses in sequence",
-    "Replay clears waves before rerun",
-    "Reduced motion shows static pulse highlight only",
-    "Live region counts pulses in text"
+  acceptance: [
+    'Core sits in a radial radar; pulses expand as concentric rings (not a hold meter)',
+    'Run fires three bursts; each burst activates four staggered rings',
+    'Live region announces burst count',
+    'Reduced motion shows a static radial highlight without expanding animation',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0B0F14;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#0B0F14;">
   {{specimen}}
 </div>`.trim(),
   files: { html, css, js },
