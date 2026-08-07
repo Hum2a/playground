@@ -19,10 +19,16 @@ no looping pulse after settle.
     <div class="scouter-scan__stage">
       <div class="scouter-scan__target">…geometry + internals + beam…</div>
       <div class="scouter-scan__brackets">…tl tr bl br…</div>
+      <div class="scouter-scan__ticks">…t r b l…</div>
+      <span class="scouter-scan__crosshair"></span>
     </div>
     <dl class="scouter-scan__report">TARGET / OUTPUT / LATENCY / LOAD / CLASS</dl>
   </div>
-  <button data-ss-scan>SCAN</button>
+  <div class="scouter-scan__controls">
+    <button data-ss-scan>SCAN</button>
+    <button data-ss-reset>RESET</button>
+  </div>
+  <p role="status" aria-live="polite" data-ss-status>…</p>
 </div>
 ```
 
@@ -71,4 +77,4 @@ Immediate locked brackets, fully revealed internals, final metrics, EXTREME.
 
 ## Accessibility
 
-Visible text metrics. Polite live region announces only the final report sentence.
+Visible text metrics (colour is never the only CLASS signal — UNKNOWN vs EXTREME text swap). Polite live region announces only the final report sentence. Both buttons expose `:focus-visible` rings in mid fluorescent (`#a7c950`).
