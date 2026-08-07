@@ -35,4 +35,9 @@ export const captureThumbnailFlyout: Specimen = {
     label: 'Capture Thumbnail Flyout demo',
     scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   },
+  acceptance: [
+    'Thumbnail travels centre → arc mid (−42px, −36px) → bottom-left dock over 640ms.',
+    'Dock highlight activates during travel; no shutter blades — travel is the primary motion.',
+    'Reduced motion snaps the thumb to the docked state with travel animation removed.',
+  ],
 }
