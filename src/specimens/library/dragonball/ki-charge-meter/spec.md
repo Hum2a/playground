@@ -78,3 +78,9 @@ and `READY` announcement. No particle travel.
 
 Progress text exposes discrete percent and status. Polite live region announces
 `READY` once. CHARGE button has `:focus-visible` ring in energy amber.
+
+## Porting
+
+1. Copy `demo.html`, `demo.css`, `demo.js` verbatim; keep the frozen particle table.
+2. Preserve vessel ring staging and cardinal convergence; do not randomise particle paths.
+3. Call `runKiChargeMeter()` / `resetKiChargeMeter()` (or `window.kiChargeMeter`); honour both RM triggers.
