@@ -7,9 +7,11 @@
   --alert: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --hpf-tile-count: 25;
+  --hpf-stagger-ms: 220ms;
+  --hpf-settle-ms: 100ms;
   --hpf-step-ms: 220ms;
   --hpf-settle-ms: 100ms;
-  /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -58,7 +60,7 @@
   justify-items: center;
   width: 100%;
   padding: 0.9rem 0.75rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(61 206 168 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -82,9 +84,10 @@
 }
 
 .hpf__tile[data-healed='true'] {
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
-  border-color: color-mix(in srgb, var(--chakra) 45%, transparent);
-  transform: rotate(0deg) scale(1);
+  transform: scale(1);
+  filter: saturate(1);
+  background: var(--chakra);
+  border-color: var(--parchment);
 }
 
 .hpf__tile[data-pulse='true'] {
@@ -146,7 +149,7 @@
 
 .hpf__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(61 206 168 / 0.45);
 }
 
 .hpf__btn:hover:not(:disabled) {
