@@ -1,8 +1,9 @@
 # Presence Radar Sweep
 
-A finite -70°→70° phosphor sweep logs three presence blips at -40°/10°/55° then rests.
+Phosphor sweep **570ms** with frozen blip coords.
 
 ## Freeze
 
-- Blips: 3 · bearings: -40/10/55 · arc: -70→70 · stepMs: 190 · settleMs: 110
-- Palette (sensor phosphor): `#070B0E` / `#C8E8DC` / `#3DCEA8` / `#1A6B58` / `#D7F5EC`
+- blips: [{"cx":57.6,"cy":49.3,"bearingDeg":42},{"cx":111.5,"cy":35,"bearingDeg":90},{"cx":154.1,"cy":62.1,"bearingDeg":138}]
+- sweepMs: 570 · stepMs: 190 · settleMs: 110
+- Palette: sensor phosphor

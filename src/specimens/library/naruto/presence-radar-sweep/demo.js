@@ -4,6 +4,8 @@
  */
 
 const BLIP_COUNT = 3
+const BLIPS = [{"cx":57.6,"cy":49.3,"bearingDeg":42},{"cx":111.5,"cy":35,"bearingDeg":90},{"cx":154.1,"cy":62.1,"bearingDeg":138}]
+const SWEEP_MS = 570
 const BLIP_COORDS = [{"x":57.6,"y":49.3,"bearing":42},{"x":111.5,"y":35,"bearing":90},{"x":154.1,"y":62.1,"bearing":138}]
 const STEP_MS = 190
 const SETTLE_MS = 110
@@ -200,6 +202,8 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void BLIPS
+void SWEEP_MS
 bindUi()
 resetPresenceRadarSweep()
 

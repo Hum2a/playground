@@ -5,7 +5,7 @@ export const presenceRadarSweep: Specimen = {
   ref: 'SPX-2509',
   title: 'Presence Radar Sweep',
   blurb:
-    'A finite -70°→70° phosphor sweep logs three presence blips at -40°/10°/55° then rests.',
+    'A phosphor radar sweeps once (570ms) logging three frozen presence blips.',
   origin: {
     project: 'Original',
     surface: 'Naruto / sensory detection — presence radar',
@@ -25,10 +25,15 @@ export const presenceRadarSweep: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Presence Radar Sweep state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all three blips appear COMPLETE immediately.',
   },
-  acceptance: [
-    'Sweep arcs from -70° to 70° once; blips at bearings [-40,10,55] log as crossed',
+    acceptance: [
+    'Sweep duration frozen at sweepMs 570 across three blip steps',
+    'Blip coordinates frozen: (57.6,49.3), (111.5,35), (154.1,62.1)',
+    'Phosphor palette; blips latch by scale, not opacity-only',
+    'Replay clears blips before rerunning',
+    'Reduced motion shows COMPLETE with all blips immediately',
+  ], log as crossed',
     'Contact log lists all three bearings; beam rests after settleMs 110',
     'Replay clears log and parks beam at start before rerunning',
   ],
