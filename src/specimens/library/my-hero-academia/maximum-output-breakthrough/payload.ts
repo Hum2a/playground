@@ -10,15 +10,15 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount in overflow-visible relative host; import demo.css verbatim.',
-    'Fill 580ms then break 320ms; total 1230ms.',
+    'Fill 0→100% 580ms then break to 108% 320ms; total 1230ms.',
     'Wire Breakthrough / Replay to runMaximumOutputBreakthrough.',
-    'Honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers; copy table in contract/spec.',
   ],
   acceptance: [
-    'Meter fills to nominal 100%',
-    'Fill extends past track with burst shard',
+    'Idle shows 0% with NOMINAL 100% status',
+    'Fill reaches 100% then extends past track with frozen burst polygon to 108%',
     'MAX+ label appears at breakthrough',
-    'Replay resets meter to 72% idle',
+    'Replay resets meter to 0% idle',
     'Reduced motion: breakthrough state instant',
   ],
   scaffold: `

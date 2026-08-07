@@ -1,10 +1,56 @@
 {
   "name": "maximum-output-breakthrough",
+  "intent": "Output meter charges from 0% to explicit NOMINAL 100%, then tears past the track to 108% with a frozen jagged burst polygon.",
+  "catalogue": { "mha": "MHA-137", "ref": "SPX-2111" },
+  "copy": {
+    "output": "OUTPUT",
+    "nominal": "NOMINAL 100%",
+    "maxPlus": "MAX+",
+    "breakthrough": "Breakthrough",
+    "replay": "Replay",
+    "statusExceeded": "Maximum output exceeded.",
+    "liveIdle": "Output at zero. Nominal limit 100%.",
+    "liveFill": "Filling to nominal 100%.",
+    "liveBreak": "Breaking nominal limit.",
+    "liveDone": "Breakthrough registered at 108%."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "animation": { "fillMs": 580, "breakMs": 320, "totalMs": 1230 }
+  "timing": {
+    "fillMs": 580,
+    "breakMs": 320,
+    "settleMs": 330,
+    "totalMs": 1230
+  },
+  "geometry": {
+    "trackHeightPx": 28,
+    "burstWidthPx": 48,
+    "burstHeightPx": 48,
+    "burstOffsetRightPx": -18,
+    "burstClipPath": "polygon(30% 0, 100% 20%, 70% 50%, 100% 80%, 30% 100%, 0 50%)",
+    "startPct": 0,
+    "nominalPct": 100,
+    "overshootPct": 108,
+    "breakPeakPct": 112
+  },
+  "api": {
+    "run": "runMaximumOutputBreakthrough()",
+    "reset": "resetMaximumOutputBreakthrough()",
+    "replay": "replayMaximumOutputBreakthrough()"
+  },
+  "reducedMotion": {
+    "behaviour": "Immediately show 108% MAX+ with burst polygon at final position"
+  },
+  "acceptance": [
+    "Idle shows 0% fill with NOMINAL 100% status label",
+    "Breakthrough fills 0→100% over 580ms then breaks to 108% with frozen burst clip-path",
+    "Completion shows MAX+ label and breakthrough live announcement",
+    "Replay resets to 0% idle state",
+    "Reduced motion (prefers or data-force) shows 108% breakthrough immediately",
+    "No network; burst geometry matches contract clip-path"
+  ]
 }

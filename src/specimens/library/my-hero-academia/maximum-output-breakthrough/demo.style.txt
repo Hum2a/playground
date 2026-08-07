@@ -1,10 +1,16 @@
-/* maximum-output-breakthrough — portable specimen styles. Do not restyle to host tokens. */
+/* SPX-2111 Maximum Output Breakthrough — portable contract. */
 
 .mob {
   --mob-primary: #38a3ff;
   --mob-ink: #101820;
   --mob-paper: #f4f7fa;
   --mob-accent: #ff4d35;
+  --mob-fill-ms: 580;
+  --mob-break-ms: 320;
+  --mob-start-pct: 0;
+  --mob-nominal-pct: 100;
+  --mob-overshoot-pct: 108;
+  --mob-burst-clip: polygon(30% 0, 100% 20%, 70% 50%, 100% 80%, 30% 100%, 0 50%);
 
   box-sizing: border-box;
   position: relative;
@@ -56,7 +62,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 72%;
+  width: var(--mob-start-pct);
   background: var(--mob-primary);
   transform-origin: 0 50%;
 }
@@ -70,7 +76,7 @@
   margin-top: -24px;
   border: 3px solid var(--mob-accent);
   background: var(--mob-accent);
-  clip-path: polygon(30% 0, 100% 20%, 70% 50%, 100% 80%, 30% 100%, 0 50%);
+  clip-path: var(--mob-burst-clip);
   opacity: 0;
   transform: scale(0.4);
 }
@@ -86,6 +92,7 @@
 
 .mob__max {
   color: var(--mob-primary);
+  font-variant-numeric: tabular-nums;
 }
 
 .mob__status {
@@ -133,25 +140,25 @@
 }
 
 .mob[data-phase='fill'] .mob__fill {
-  animation: mob-fill 580ms cubic-bezier(0.2, 0.85, 0.3, 1) both;
+  animation: mob-fill calc(var(--mob-fill-ms) * 1ms) cubic-bezier(0.2, 0.85, 0.3, 1) both;
 }
 
 .mob[data-phase='break'] .mob__fill,
 .mob[data-phase='done'] .mob__fill {
-  width: 100%;
+  width: var(--mob-nominal-pct);
 }
 
 .mob[data-phase='break'] .mob__fill {
-  animation: mob-break 320ms cubic-bezier(0.15, 0.9, 0.25, 1) both;
+  animation: mob-break calc(var(--mob-break-ms) * 1ms) cubic-bezier(0.15, 0.9, 0.25, 1) both;
 }
 
 .mob[data-phase='break'] .mob__burst,
 .mob[data-phase='done'] .mob__burst {
-  animation: mob-burst 320ms cubic-bezier(0.15, 0.9, 0.25, 1) both;
+  animation: mob-burst calc(var(--mob-break-ms) * 1ms) cubic-bezier(0.15, 0.9, 0.25, 1) both;
 }
 
 .mob[data-phase='done'] .mob__fill {
-  width: 108%;
+  width: var(--mob-overshoot-pct);
 }
 
 .mob[data-phase='done'] .mob__burst {
@@ -165,22 +172,22 @@
 
 @keyframes mob-fill {
   from {
-    width: 72%;
+    width: var(--mob-start-pct);
   }
   to {
-    width: 100%;
+    width: var(--mob-nominal-pct);
   }
 }
 
 @keyframes mob-break {
   0% {
-    width: 100%;
+    width: var(--mob-nominal-pct);
   }
   60% {
     width: 112%;
   }
   100% {
-    width: 108%;
+    width: var(--mob-overshoot-pct);
   }
 }
 
@@ -216,7 +223,7 @@
 @media (prefers-reduced-motion: reduce) {
   .mob[data-phase='done'] .mob__fill,
   .mob[data-phase='break'] .mob__fill {
-    width: 108%;
+    width: var(--mob-overshoot-pct);
   }
 
   .mob[data-phase='done'] .mob__burst,
@@ -228,7 +235,7 @@
 
 [data-force-reduced-motion='true'] .mob[data-phase='done'] .mob__fill,
 [data-force-reduced-motion='true'] .mob[data-phase='break'] .mob__fill {
-  width: 108%;
+  width: var(--mob-overshoot-pct);
 }
 
 [data-force-reduced-motion='true'] .mob[data-phase='done'] .mob__burst,

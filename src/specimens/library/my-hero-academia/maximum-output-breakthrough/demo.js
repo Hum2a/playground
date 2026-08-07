@@ -1,5 +1,5 @@
 /**
- * Maximum Output Breakthrough — meter fills then breaks past container.
+ * Maximum Output Breakthrough — meter fills 0→100% NOMINAL then breaks to 108%.
  * iframe-safe; no storage / parent / network.
  */
 
@@ -7,6 +7,9 @@ const FILL_MS = 580
 const BREAK_MS = 320
 const SETTLE_MS = 330
 const TOTAL_MS = FILL_MS + BREAK_MS + SETTLE_MS
+const START_PCT = 0
+const NOMINAL_PCT = 100
+const OVERSHOOT_PCT = 108
 
 let busy = false
 /** @type {number[]} */
@@ -48,6 +51,11 @@ function setStatus(text) {
   if (el) el.textContent = text
 }
 
+function setPct(pct, label) {
+  const max = document.querySelector('[data-mob-max]')
+  if (max) max.textContent = label ?? `${pct}%`
+}
+
 function setButtons(on) {
   document.querySelectorAll('[data-mob-run], [data-mob-replay]').forEach((btn) => {
     btn.disabled = !on
@@ -55,17 +63,15 @@ function setButtons(on) {
 }
 
 function applyDone() {
-  const max = document.querySelector('[data-mob-max]')
-  if (max) max.textContent = 'MAX+'
+  setPct(OVERSHOOT_PCT, 'MAX+')
   setStatus('Maximum output exceeded.')
-  setLive('Breakthrough registered.')
+  setLive('Breakthrough registered at 108%.')
 }
 
 function resetVisual() {
-  const max = document.querySelector('[data-mob-max]')
-  if (max) max.textContent = '100%'
-  setStatus('Charging…')
-  setLive('Output at nominal limit.')
+  setPct(START_PCT)
+  setStatus('NOMINAL 100%')
+  setLive('Output at zero. Nominal limit 100%.')
 }
 
 /** @returns {Promise<void>} */
@@ -91,10 +97,12 @@ export function runMaximumOutputBreakthrough() {
   }
 
   setPhase('fill')
-  setLive('Filling output meter.')
+  setLive('Filling to nominal 100%.')
+  setPct(START_PCT)
 
   return new Promise((resolve) => {
     later(FILL_MS, () => {
+      setPct(NOMINAL_PCT)
       setPhase('break')
       setLive('Breaking nominal limit.')
       later(BREAK_MS, () => {
