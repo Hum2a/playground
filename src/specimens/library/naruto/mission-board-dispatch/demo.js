@@ -5,7 +5,9 @@
 
 const TRAVEL_MS = 280
 const SETTLE_MS = 160
-const TOTAL_MS = TRAVEL_MS + SETTLE_MS // ~460ms principal sequence
+const TRAVEL_DX_PX = 148
+const TRAVEL_DY_PX = 0
+const TOTAL_MS = TRAVEL_MS + SETTLE_MS
 
 let busy = false
 
