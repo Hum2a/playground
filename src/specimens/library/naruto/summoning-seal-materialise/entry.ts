@@ -5,7 +5,7 @@ export const summoningSealMaterialise: Specimen = {
   ref: 'SPX-2516',
   title: 'Summoning Seal Materialise',
   blurb:
-    'A radial seal draws itself beneath an empty mount point, then a panel rises up out of its centre and settles into place.',
+    'A radial seal draw-strokes itself, then a tool panel expands from the seal centre via clip and scale — not a fade.',
   origin: {
     project: 'Original',
     surface: 'Naruto / summoning-interfaces — ritual construction overlays',
@@ -19,7 +19,7 @@ export const summoningSealMaterialise: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['summon'],
+  tags: ['summon', 'draw-stroke', 'expand'],
   deps: 'none',
   motion: {
     loops: false,
@@ -28,8 +28,8 @@ export const summoningSealMaterialise: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the seal appears fully drawn and the panel is already materialised.',
   },
   acceptance: [
-    'Seal draw-stroke completes before panel expands from center',
-    'Panel uses clip/scale expansion (not fade)',
+    'Outer then inner ring draw-stroke before panel expands',
+    'Panel expands from seal centre via clip/scale (not fade)',
     'Reduced motion shows materialised panel immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

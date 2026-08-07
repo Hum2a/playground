@@ -1,37 +1,64 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/summoning-seal-materialise.schema.json",
-  "title": "SummoningSealMaterialise",
-  "description": "A radial seal draws itself, then a panel rises out of its centre and settles into place.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "ringOuterMs", "ringInnerMs", "panelMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "summoning-seal-materialise" },
-    "ringOuterMs": { "type": "number", "const": 300 },
-    "ringInnerMs": { "type": "number", "const": 260 },
-    "panelMs": { "type": "number", "const": 300 },
-    "settleMs": { "type": "number", "const": 100 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#140C0C" },
-        "parchment": { "type": "string", "const": "#E8DCC8" },
-        "chakra": { "type": "string", "const": "#C43C2E" },
-        "alert": { "type": "string", "const": "#C43C2E" },
-        "olive": { "type": "string", "const": "#6B5048" },
-        "off": { "type": "string", "const": "#F3EBE0" }
-      }
+  "name": "summoning-seal-materialise",
+  "intent": "Draw-stroke a radial seal (outer then inner), snap ticks, then expand a tool panel from the seal centre via clip/scale — not fade.",
+  "catalogue": {
+    "nr": "NR-173",
+    "ref": "SPX-2516"
+  },
+  "copy": {
+    "system": "SEAL // MATERIALISE",
+    "idle": "IDLE",
+    "drawing": "DRAWING",
+    "materialising": "MATERIALISING",
+    "done": "MATERIALISED",
+    "panelLabel": "TOOL"
+  },
+  "geometry": {
+    "outerRadius": 70,
+    "innerRadius": 46,
+    "tickCount": 8,
+    "sealCenter": {
+      "x": 100,
+      "y": 170
     },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateMaterialised"],
-      "properties": {
-        "immediateMaterialised": { "type": "boolean", "const": true }
-      }
+    "panelClipOrigin": "50% 100%",
+    "panelScaleFrom": 0.2
+  },
+  "timing": {
+    "ringOuterMs": 300,
+    "ringInnerMs": 260,
+    "panelMs": 300,
+    "settleMs": 100,
+    "totalMs": 960
+  },
+  "colours": {
+    "ink": "#140C0C",
+    "parchment": "#E8DCC8",
+    "chakra": "#C43C2E",
+    "alert": "#C43C2E",
+    "olive": "#6B5048",
+    "off": "#F3EBE0",
+    "palette": "seal-lacquer"
+  },
+  "api": {
+    "run": "runSummoningSealMaterialise()",
+    "reset": "resetSummoningSealMaterialise()",
+    "replay": "replaySummoningSealMaterialise()"
+  },
+  "reducedMotion": {
+    "behaviour": "Seal fully drawn and panel materialised immediately; no draw or expand motion"
+  },
+  "acceptance": [
+    "Outer ring draw-stroke completes in ringOuterMs 300 before inner ring starts (ringInnerMs 260)",
+    "Eight ticks scale in after inner ring; panel remains clip-path circle(0%) until seal complete",
+    "Panel expands from seal centre via clip-path + scale 0.2→1 over panelMs 300 (not opacity)",
+    "Replay resets data-drawn/data-visible before rerunning",
+    "Reduced motion (prefers or data-force) shows MATERIALISED immediately"
+  ],
+  "properties": {
+    "settleMs": {
+      "type": "number",
+      "const": 100
     }
   }
 }

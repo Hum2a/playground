@@ -7,6 +7,10 @@
   --alert: #c43c2e;
   --olive: #6b5048;
   --off: #f3ebe0;
+  --ssm-outer-ms: 300ms;
+  --ssm-inner-ms: 260ms;
+  --ssm-panel-ms: 300ms;
+  --ssm-settle-ms: 100ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -55,8 +59,8 @@
   justify-items: center;
   width: 100%;
   padding: 0.75rem 0.75rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(196 60 46 / 0.45);
+  background: rgb(243 235 224 / 0.04);
 }
 
 .ssm__seal {
@@ -71,8 +75,12 @@
   stroke-width: 1.5;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset 300ms ease-out;
-  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--chakra) 45%, transparent));
+  transition: stroke-dashoffset var(--ssm-outer-ms) linear;
+  filter: drop-shadow(0 0 3px rgb(196 60 46 / 0.45));
+}
+
+.ssm__ring--inner {
+  transition-duration: var(--ssm-inner-ms);
 }
 
 .ssm__ring[data-drawn='true'] {
@@ -80,12 +88,13 @@
 }
 
 .ssm__ticks {
-  opacity: 0;
-  transition: opacity 240ms ease-out;
+  transform: scale(0.4);
+  transform-origin: 100px 170px;
+  transition: transform 200ms cubic-bezier(0.2, 0.9, 0.25, 1.1);
 }
 
 .ssm__ticks[data-visible='true'] {
-  opacity: 1;
+  transform: scale(1);
 }
 
 .ssm__ticks line {
@@ -103,37 +112,41 @@
   gap: 0.3rem;
   padding: 0.6rem 0.9rem;
   border: 1.5px solid var(--olive);
-  background: rgb(16 19 24 / 0.9);
+  background: rgb(20 12 12 / 0.92);
   color: var(--olive);
-  opacity: 0;
-  transform: translate(-50%, 24px) scale(0.85);
+  clip-path: circle(0% at 50% 100%);
+  transform: translate(-50%, 12px) scale(0.2);
+  transform-origin: 50% 100%;
   transition:
-    opacity 260ms ease-out,
-    transform 260ms cubic-bezier(0.2, 0.85, 0.25, 1),
+    transform var(--ssm-panel-ms) cubic-bezier(0.2, 0.85, 0.25, 1.05),
+    clip-path var(--ssm-panel-ms) cubic-bezier(0.2, 0.85, 0.25, 1.05),
     color 200ms ease-out,
     border-color 200ms ease-out;
 }
 
 .ssm__panel[data-visible='true'] {
-  opacity: 1;
   color: var(--chakra);
   border-color: var(--chakra);
+  clip-path: circle(140% at 50% 100%);
   transform: translate(-50%, 0) scale(1);
 }
 
 .ssm__panel[data-pulse='true'] {
-  animation: ssm-pulse 260ms ease-out;
+  animation: ssm-expand var(--ssm-panel-ms) cubic-bezier(0.2, 0.9, 0.25, 1.1);
 }
 
-@keyframes ssm-pulse {
+@keyframes ssm-expand {
   0% {
-    transform: translate(-50%, 24px) scale(0.8);
+    transform: translate(-50%, 12px) scale(0.2);
+    clip-path: circle(0% at 50% 100%);
   }
   70% {
-    transform: translate(-50%, -4px) scale(1.05);
+    transform: translate(-50%, -2px) scale(1.06);
+    clip-path: circle(120% at 50% 100%);
   }
   100% {
     transform: translate(-50%, 0) scale(1);
+    clip-path: circle(140% at 50% 100%);
   }
 }
 
@@ -187,7 +200,7 @@
 
 .ssm__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(196 60 46 / 0.14);
 }
 
 .ssm__btn:hover:not(:disabled) {
