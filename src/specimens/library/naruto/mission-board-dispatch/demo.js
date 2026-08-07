@@ -174,5 +174,7 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void TRAVEL_DX_PX
+void TRAVEL_DY_PX
 bindUi()
 resetMissionBoardDispatch()

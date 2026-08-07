@@ -120,7 +120,7 @@
 }
 
 .mbd[data-phase='active'] .mbd__card {
-  transition: transform 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--mbd-travel-ms) cubic-bezier(0.22, 0.8, 0.25, 1);
   transform: translate(var(--mbd-dx), var(--mbd-dy));
 }
 
@@ -131,7 +131,7 @@
 }
 
 .mbd[data-phase='done'] .mbd__card[data-settle='true'] {
-  animation: mbd-settle 200ms ease-out;
+  animation: mbd-settle var(--mbd-settle-ms) ease-out;
 }
 
 @keyframes mbd-settle {

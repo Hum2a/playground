@@ -6,22 +6,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze travel/dock timings from contract.json.',
+    integration: [
+    'Mount inside a relative host (~420×300+).',
+    'Import demo.css verbatim; freeze travel 280ms / settle 160ms / fallback +148px from contract.json.',
     'Wire runMissionBoardDispatch / resetMissionBoardDispatch / replayMissionBoardDispatch.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Idle card sits in the unassigned column, status UNASSIGNED',
-    'Active phase moves the card across the board into the team lane',
-    'Resolved phase shows the card docked beside its assignee, status ASSIGNED',
-    'Replay resets the card to the unassigned column before rerunning',
-    'Reduced motion shows the docked state immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    acceptance: [
+    'Idle card sits in Unassigned; lane slot is empty dashed',
+    'Card travels into Team Lane over 280ms (fallback path +148px, 0px)',
+    'Dock settle pulse 160ms then ASSIGNED latches with solid lane border',
+    'Replay returns card to Unassigned before rerunning',
+    'Reduced motion docks card in lane immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
   {{specimen}}
 </div>
 `.trim(),
