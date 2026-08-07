@@ -3,8 +3,8 @@
  * iframe-safe; no storage / parent / network.
  */
 
-const TRAVEL_MS = 280
-const SETTLE_MS = 160
+const TRAVEL_MS = 260
+const SETTLE_MS = 200
 const TRAVEL_DX_PX = 148
 const TRAVEL_DY_PX = 0
 const TOTAL_MS = TRAVEL_MS + SETTLE_MS

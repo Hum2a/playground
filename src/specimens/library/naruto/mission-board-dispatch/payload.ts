@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runMissionBoardDispatch / resetMissionBoardDispatch / replayMissionBoardDispatch.',
     'Honour both reduced-motion triggers.',
   ],
-    acceptance: [
-    'Idle card sits in Unassigned; lane slot is empty dashed',
-    'Card travels into Team Lane over 280ms (fallback path +148px, 0px)',
-    'Dock settle pulse 160ms then ASSIGNED latches with solid lane border',
-    'Replay returns card to Unassigned before rerunning',
-    'Reduced motion docks card in lane immediately',
-  ],
+    acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}
 </div>
 `.trim(),

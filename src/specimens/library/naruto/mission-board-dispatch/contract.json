@@ -1,90 +1,47 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/mission-board-dispatch.schema.json",
-  "title": "MissionBoardDispatch",
-  "description": "Job card travels from Unassigned into Team Lane along a frozen path then docks.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "travelMs",
-    "settleMs",
-    "travelDxPx",
-    "travelDyPx",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "mission-board-dispatch"
-    },
-    "travelMs": {
-      "type": "number",
-      "const": 280
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 160
-    },
-    "travelDxPx": {
-      "type": "number",
-      "const": 148
-    },
-    "travelDyPx": {
-      "type": "number",
-      "const": 0
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "alarm",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#1A1612"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#EBE2D0"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "alarm": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#6A5E4E"
-        },
-        "off": {
-          "type": "string",
-          "const": "#F7F2E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateAssigned"
-      ],
-      "properties": {
-        "immediateAssigned": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "mission-board-dispatch",
+  "intent": "A mission card travels a frozen path from the unassigned pool into a team lane and docks with a settle pulse.",
+  "catalogue": {
+    "nr": "NR-226",
+    "ref": "SPX-2569"
+  },
+  "copy": {
+    "system": "BOARD // DISPATCH",
+    "card": "C-Rank Escort",
+    "idle": "UNASSIGNED",
+    "active": "DISPATCHING",
+    "done": "ASSIGNED"
+  },
+  "geometry": {
+    "travelDxPx": 148,
+    "travelDyPx": 0
+  },
+  "timing": {
+    "travelMs": 260,
+    "settleMs": 200,
+    "totalMs": 460
+  },
+  "colours": {
+    "ink": "#1A1612",
+    "parchment": "#EBE2D0",
+    "chakra": "#B83228",
+    "olive": "#6A5E4E",
+    "off": "#F7F2E8",
+    "palette": "mission-paper",
+    "alarm": "#B83228"
+  },
+  "api": {
+    "run": "runMissionBoardDispatch()",
+    "reset": "resetMissionBoardDispatch()",
+    "replay": "replayMissionBoardDispatch()"
+  },
+  "reducedMotion": {
+    "behaviour": "Card appears already docked in the team lane as ASSIGNED"
+  },
+  "acceptance": [
+    "Card translates along frozen path travelDxPx 148 / travelDyPx 0 over travelMs 260",
+    "Dock settle pulse runs settleMs 200; status becomes ASSIGNED only after",
+    "Replay resets --mbd-dx/--mbd-dy to 0 before rerunning",
+    "Reduced motion docks card immediately at ASSIGNED"
+  ]
 }

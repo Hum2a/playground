@@ -7,6 +7,10 @@
   --alarm: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
+  --mbd-travel-ms: 260ms;
+  --mbd-settle-ms: 200ms;
+  --mbd-travel-dx: 148px;
+  --mbd-travel-dy: 0px;
   --mbd-dx: 0px;
   --mbd-dy: 0px;
   box-sizing: border-box;
