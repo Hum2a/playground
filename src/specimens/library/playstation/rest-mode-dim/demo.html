@@ -1,14 +1,22 @@
-<div class="ps" data-ps="rest-mode-dim">
-  <p class="ps__eyebrow">Rest Mode Dim</p>
-  <div class="ps__stage rmd__stage" data-rmd-stage data-phase="active">
-    <div class="rmd__chrome" aria-hidden="true"><span></span><span></span></div>
-    <div class="ps__grid" aria-hidden="true">
-      <div class="ps__card is-focus"></div>
-      <div class="ps__card"></div>
-      <div class="ps__card"></div>
+<div class="rmd" data-rmd data-phase="active">
+  <p class="rmd__eyebrow">Rest Mode Dim</p>
+
+  <div class="rmd__stage" data-rmd-stage data-phase="active">
+    <div class="rmd__horizon" aria-hidden="true"></div>
+    <div class="rmd__console" aria-hidden="true">
+      <span class="rmd__console-body"></span>
+      <span class="rmd__console-light" data-rmd-light></span>
+      <span class="rmd__console-stand"></span>
     </div>
-    <div class="rmd__sleep" data-rmd-sleep aria-hidden="true">REST</div>
+    <div class="rmd__activity" aria-hidden="true">
+      <span class="rmd__bar"></span>
+      <span class="rmd__bar"></span>
+      <span class="rmd__bar"></span>
+      <span class="rmd__bar"></span>
+    </div>
+    <p class="rmd__sleep" data-rmd-sleep>REST</p>
   </div>
-  <button type="button" class="ps__btn" data-rmd-enter>ENTER REST MODE</button>
-  <p class="ps__status" data-rmd-status aria-live="polite">System active — full luminance.</p>
+
+  <button type="button" class="rmd__btn" data-rmd-enter>ENTER REST MODE</button>
+  <p class="rmd__status" data-rmd-status aria-live="polite">System active — full luminance.</p>
 </div>

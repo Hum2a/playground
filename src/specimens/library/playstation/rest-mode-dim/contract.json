@@ -7,19 +7,24 @@
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
-    "panel": "#121820",
-    "panel2": "#1a2330",
-    "rule": "#243044",
-    "pewter": "#8a9bb0"
+    "blueLight": "#7EB6FF"
   },
-  "behaviour": "Active → dimming (55% brightness) → rest (18%) with REST label.",
+  "timing": {
+    "dimHoldMs": 700,
+    "stageFilterMs": 800,
+    "sleepFadeMs": 600,
+    "activeBrightness": 1,
+    "dimmingBrightness": 0.55,
+    "restBrightness": 0.18
+  },
+  "behaviour": "Active → dimming (55% for 700ms) → rest (18%) with REST label and frozen activity.",
   "trigger": "ENTER REST MODE / WAKE",
+  "silhouette": "console-body + status LED + activity bars (not tile-grid)",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; transitions and activity pulse removed"
   }
 }

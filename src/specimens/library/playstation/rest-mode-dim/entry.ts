@@ -4,7 +4,8 @@ export const restModeDim: Specimen = {
   id: 'rest-mode-dim',
   ref: 'SPX-3435',
   title: 'Rest Mode Dim',
-  blurb: 'The interface gradually reduces luminance and activity into a sleeping state — tiles, chrome, and motion settle into rest.',
+  blurb:
+    'Console-rest silhouette dims 100% → 55% → 18%: activity bars freeze, status LED softens, REST fades in.',
   origin: {
     project: 'Original',
     surface: 'PlayStation-inspired system UI motion (abstract)',
@@ -17,14 +18,15 @@ export const restModeDim: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
-  tags: ["rest","power","dim"],
+  tags: ['rest', 'power', 'dim'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, transitions and animations are removed; semantic end states remain.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, brightness and REST states snap; activity pulse is removed.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

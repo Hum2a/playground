@@ -1,24 +1,29 @@
 # Rest Mode Dim
 
-The interface gradually reduces luminance and activity into a sleeping state — tiles, chrome, and motion settle into rest.
+A console-rest silhouette dims from full luminance through a 55% hold into an 18% sleep state — activity bars freeze, status LED softens, REST label fades in. Distinct from Wake from Rest (black veil lift over tile grid).
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3435` / `PS-129` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | Active → dimming (55% brightness) → rest (18%) with REST label. |
+| Active | `brightness(1)` / full activity pulse |
+| Dimming | `brightness(0.55)` for `700ms` |
+| Rest | `brightness(0.18)` · REST label · activity off |
+| Stage filter ease | `800ms` |
 | Trigger | ENTER REST MODE / WAKE |
+
+## Behaviour
+
+1. Active: console silhouette lit; activity bars pulse.
+2. Dimming: stage filter to 55%; LED softens; bars slow.
+3. Rest: stage filter to 18%; bars hidden; REST label visible.
+4. WAKE returns to active instantly (or via restart message).
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
+Same semantic states — CSS transitions and the activity pulse are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
 
 ## Accessibility
 
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
-
-## Porting
-
-Portable specimen CSS — no site chrome tokens. Isolation comes from the sandboxed iframe.
+Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line.
