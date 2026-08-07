@@ -128,6 +128,27 @@
   pointer-events: none;
 }
 
+.csr[data-phase='regions'] .csr__core-gem,
+.csr[data-phase='fields'] .csr__core-gem {
+  animation: csr-core-pulse 160ms ease-out;
+}
+
+@keyframes csr-core-pulse {
+  0% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+      0 0 0 0 color-mix(in srgb, var(--core) 55%, transparent);
+  }
+  70% {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+      0 0 0 10px transparent;
+  }
+  100% {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  }
+}
+
 .csr[data-phase='regions'] .csr__core,
 .csr[data-phase='fields'] .csr__core,
 .csr[data-phase='complete'] .csr__core,
@@ -659,6 +680,7 @@
   .csr[data-phase='complete'] .csr__brackets,
   .csr[data-phase='skeleton'] .csr__bone,
   .csr[data-phase='regions'] .csr__bone,
+  .csr[data-phase='regions'] .csr__core-gem,
   .csr__region[data-built='true'],
   .csr__field[data-shown='true'] {
     animation: none !important;
@@ -676,6 +698,7 @@
 [data-force-reduced-motion='true'] .csr[data-phase='complete'] .csr__brackets,
 [data-force-reduced-motion='true'] .csr[data-phase='skeleton'] .csr__bone,
 [data-force-reduced-motion='true'] .csr[data-phase='regions'] .csr__bone,
+[data-force-reduced-motion='true'] .csr[data-phase='regions'] .csr__core-gem,
 [data-force-reduced-motion='true'] .csr__region[data-built='true'],
 [data-force-reduced-motion='true'] .csr__field[data-shown='true'] {
   animation: none !important;

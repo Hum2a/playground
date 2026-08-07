@@ -1,69 +1,189 @@
 {
-  "name": "core-seed-regeneration",
-  "intent": "Tiny angular canonical core (Worker 09) verifies, grows six skeleton lines, reconstructs six body regions by clip-expansion, then restores metadata to HEALTHY / STATE RESTORED.",
-  "catalogue": {
-    "db": "DB-163",
-    "ref": "SPX-1128",
-    "catalogueTitle": "Cell Regeneration"
-  },
-  "core": {
-    "sizePx": [18, 18],
-    "shape": "angular pentagon clip-path",
-    "identity": "ID // 09",
-    "checksum": "CHECKSUM // VALID",
-    "persistsThroughout": true
-  },
-  "phases": {
-    "verify": {
-      "durationMs": 140,
-      "brackets": 4,
-      "sweep": true,
-      "status": "CORE VALID"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/core-seed-regeneration.schema.json",
+  "title": "CoreSeedRegeneration",
+  "description": "Portable contract for core-outward reconstruction: verify → skeleton → six regions → metadata → STATE RESTORED.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "core",
+    "phases",
+    "reconstructionOrder",
+    "doneAtMs",
+    "api",
+    "reducedMotion",
+    "constraints",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "core-seed-regeneration" },
+    "intent": {
+      "type": "string",
+      "const": "Tiny angular canonical core (Worker 09) verifies, grows six skeleton lines outward, reconstructs six body regions by clip-expansion from core connection points, then restores metadata to HEALTHY / STATE RESTORED."
     },
-    "skeleton": {
-      "startMs": 140,
-      "durationMs": 220,
-      "lines": 6,
-      "lengthsPx": { "cardinal": 88, "diagonal": 72 }
-    },
-    "regions": {
-      "startMs": 360,
-      "count": 6,
-      "order": ["central", "top", "left", "right", "bottom-left", "bottom-right"],
-      "staggerMs": 45,
-      "expandMs": 160,
-      "technique": "clip-path expansion from connection points — no fade"
-    },
-    "fields": {
-      "startMs": 745,
-      "order": ["role", "queue", "region", "status"],
-      "intervalMs": 110,
-      "values": {
-        "ROLE": "PROCESSOR",
-        "QUEUE": "0",
-        "REGION": "EU-WEST",
-        "STATUS": "HEALTHY"
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coreId",
+        "checksum",
+        "bannerSurvived",
+        "bannerValid",
+        "bannerRestored",
+        "workerTitle",
+        "trigger",
+        "reset"
+      ],
+      "properties": {
+        "coreId": { "type": "string", "const": "ID // 09" },
+        "checksum": { "type": "string", "const": "CHECKSUM // VALID" },
+        "bannerSurvived": { "type": "string", "const": "CORE SURVIVED" },
+        "bannerValid": { "type": "string", "const": "CORE VALID" },
+        "bannerRestored": { "type": "string", "const": "STATE RESTORED" },
+        "workerTitle": { "type": "string", "const": "WORKER // 09" },
+        "trigger": { "type": "string", "const": "Rebuild" },
+        "reset": { "type": "string", "const": "Reset" }
       }
     },
-    "complete": {
-      "startMs": 1185,
-      "bracketsExpandPx": 4,
-      "durationMs": 140,
-      "status": "STATE RESTORED"
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "core", "bone", "accent", "healthy"],
+      "properties": {
+        "ink": { "type": "string", "const": "#16181f" },
+        "panel": { "type": "string", "const": "#eceae4" },
+        "core": { "type": "string", "const": "#2a7a5c" },
+        "bone": { "type": "string", "const": "rgba(232, 230, 225, 0.45)" },
+        "accent": { "type": "string", "const": "#d94a2a" },
+        "healthy": { "type": "string", "const": "#2a7a5c" }
+      }
+    },
+    "core": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sizePx", "shape", "identity", "checksum", "persistsThroughout"],
+      "properties": {
+        "sizePx": { "type": "array", "const": [18, 18] },
+        "shape": { "type": "string", "const": "angular pentagon clip-path" },
+        "identity": { "type": "string", "const": "ID // 09" },
+        "checksum": { "type": "string", "const": "CHECKSUM // VALID" },
+        "persistsThroughout": { "type": "boolean", "const": true }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verify", "skeleton", "regions", "fields", "complete"],
+      "properties": {
+        "verify": {
+          "type": "object",
+          "const": { "durationMs": 140, "brackets": 4, "sweep": true, "status": "CORE VALID" }
+        },
+        "skeleton": {
+          "type": "object",
+          "const": { "startMs": 140, "durationMs": 220, "lines": 6, "lengthsPx": { "cardinal": 88, "diagonal": 72 } }
+        },
+        "regions": {
+          "type": "object",
+          "const": {
+            "startMs": 360,
+            "count": 6,
+            "staggerMs": 45,
+            "expandMs": 160,
+            "technique": "clip-path expansion from core connection points — no fade"
+          }
+        },
+        "fields": {
+          "type": "object",
+          "const": {
+            "startMs": 745,
+            "intervalMs": 110,
+            "values": { "ROLE": "PROCESSOR", "QUEUE": "0", "REGION": "EU-WEST", "STATUS": "HEALTHY" }
+          }
+        },
+        "complete": {
+          "type": "object",
+          "const": { "startMs": 1185, "bracketsExpandPx": 4, "durationMs": 140, "status": "STATE RESTORED" }
+        }
+      }
+    },
+    "reconstructionOrder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frozen", "regions", "fields"],
+      "properties": {
+        "frozen": { "type": "boolean", "const": true },
+        "regions": {
+          "type": "array",
+          "const": ["central", "top", "left", "right", "bottom-left", "bottom-right"]
+        },
+        "fields": {
+          "type": "array",
+          "const": ["role", "queue", "region", "status"]
+        }
+      }
+    },
+    "doneAtMs": { "type": "number", "const": 1325 },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execute", "reset", "restartMessage"],
+      "properties": {
+        "execute": { "type": "string", "const": "runCoreSeedRegeneration()" },
+        "reset": { "type": "string", "const": "resetCoreSeedRegeneration()" },
+        "restartMessage": { "type": "string", "const": "restart" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["behaviour", "triggers"],
+      "properties": {
+        "behaviour": {
+          "type": "string",
+          "const": "Immediately show rebuilt Worker 09 HEALTHY / STATE RESTORED"
+        },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noLooping", "noFadeInRegions", "identityContinuity", "coreOutward"],
+      "properties": {
+        "noLooping": { "type": "boolean", "const": true },
+        "noFadeInRegions": { "type": "boolean", "const": true },
+        "identityContinuity": {
+          "type": "string",
+          "const": "ID // 09 / core gem visible throughout"
+        },
+        "coreOutward": {
+          "type": "string",
+          "const": "Regions expand from core connection points; skeleton lines radiate outward first"
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "core", "skeleton", "region", "field"],
+      "properties": {
+        "root": { "type": "string", "const": "csr" },
+        "core": { "type": "string", "const": "csr__core" },
+        "skeleton": { "type": "string", "const": "csr__skeleton" },
+        "region": { "type": "string", "const": "csr__region" },
+        "field": { "type": "string", "const": "csr__field" }
+      }
     }
-  },
-  "doneAtMs": 1325,
-  "api": {
-    "execute": "runCoreSeedRegeneration()",
-    "reset": "resetCoreSeedRegeneration()",
-    "restartMessage": "restart"
-  },
-  "reducedMotion": {
-    "behaviour": "Immediately show rebuilt Worker 09 HEALTHY / STATE RESTORED"
-  },
-  "constraints": {
-    "noLooping": true,
-    "noFadeInRegions": true,
-    "identityContinuity": "ID // 09 / core gem visible throughout"
   }
 }

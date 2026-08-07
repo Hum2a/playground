@@ -232,3 +232,16 @@ function bindUi() {
 
 bindUi()
 resetCoreSeedRegeneration()
+
+export const CORE_SEED_REGENERATION_CONTRACT = {
+  REGIONS,
+  FIELDS,
+  VERIFY_MS,
+  SKELETON_MS,
+  REGION_STAGGER_MS,
+  REGION_EXPAND_MS,
+  FIELD_MS,
+  COMPLETE_MS,
+  DONE_AT,
+  reconstructionOrderFrozen: true,
+}
