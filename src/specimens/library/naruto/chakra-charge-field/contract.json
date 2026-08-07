@@ -81,5 +81,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Boundary grows through frozen diameters 72→96→118→140px (data-step)",
+    "Each step takes stepMs 140; final READY with readyHoldMs 180",
+    "Motion language is width/height growth, not opacity fade",
+    "Replay resets to 72px idle before rerunning",
+    "Reduced motion shows READY at 140px immediately"
+  ]
 }
