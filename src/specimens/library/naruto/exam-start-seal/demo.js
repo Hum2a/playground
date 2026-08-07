@@ -1,13 +1,12 @@
 /**
- * Exam Start Seal — crack stroke, halves fly apart, exam surface activates.
+ * Exam Start Seal — seal cracks, halves split outward, exam surface activates.
  * iframe-safe; no storage / parent / network.
  */
 
 const CRACK_MS = 160
-const BREAK_MS = 260
-const SURFACE_MS = 220
-const HALF_A = { x: -28, y: -18, rot: -28 }
-const HALF_B = { x: 28, y: 18, rot: 28 }
+const SPLIT_MS = 260
+const ACTIVATE_MS = 180
+const SPLIT_PX = 42
 
 let busy = false
 let tickHandle = null
@@ -97,7 +96,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run the full seal-break sequence.
+ * Auto-run crack → split → activate.
  * @returns {Promise<void>}
  */
 export function runExamStartSeal() {
@@ -119,18 +118,17 @@ export function runExamStartSeal() {
     return Promise.resolve()
   }
 
-  root.setAttribute('data-phase', 'active')
+  root.setAttribute('data-phase', 'cracking')
   setStatus('UNSEALING')
-  setLive('Seal crack stroke drawing.')
+  setLive('Seal crack forming.')
 
   return new Promise((resolve) => {
     later(CRACK_MS, () => {
-      setLive(
-        `Seal halves flying apart (${HALF_A.x},${HALF_A.y}) / (${HALF_B.x},${HALF_B.y}).`,
-      )
-      later(BREAK_MS, () => {
-        showResolved()
-        later(SURFACE_MS, () => {
+      root.setAttribute('data-phase', 'active')
+      setLive(`Seal halves splitting ±${SPLIT_PX}px.`)
+      later(SPLIT_MS, () => {
+        later(ACTIVATE_MS, () => {
+          showResolved()
           busy = false
           setButtons(true)
           resolve()

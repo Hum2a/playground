@@ -1,24 +1,24 @@
 {
   "name": "exam-start-seal",
-  "intent": "A locked exam surface unlocks when the central seal crack-strokes then splits into two halves that fly apart; timer starts on ACTIVE.",
+  "intent": "A locked exam panel unlocks when its central seal cracks and halves split outward, revealing an active timed surface.",
   "catalogue": { "nr": "NR-208", "ref": "SPX-2551" },
   "copy": {
     "system": "GATE // EXAM START",
     "locked": "LOCKED",
     "unsealing": "UNSEALING",
     "active": "ACTIVE",
-    "panelTitle": "Written Section 1"
+    "hintIdle": "Press Run to break the seal and begin.",
+    "hintDone": "Exam in progress."
   },
   "geometry": {
-    "halfA": { "xPx": -28, "yPx": -18, "rotDeg": -28 },
-    "halfB": { "xPx": 28, "yPx": 18, "rotDeg": 28 },
-    "crackDash": 80
+    "splitPx": 42,
+    "halfRotateDeg": 18
   },
   "timing": {
     "crackMs": 160,
-    "breakMs": 260,
-    "surfaceMs": 220,
-    "totalMs": 640
+    "splitMs": 260,
+    "activateMs": 180,
+    "totalMs": 600
   },
   "colours": {
     "ink": "#140C0C",
@@ -35,13 +35,11 @@
     "replay": "replayExamStartSeal()"
   },
   "reducedMotion": {
-    "behaviour": "Panel appears ACTIVE with timer running; seal already removed; no crack or break motion"
+    "behaviour": "Panel appears already ACTIVE with timer running; seal hidden"
   },
   "acceptance": [
-    "Crack stroke draws over crackMs 160 (dash 80→0) before halves move",
-    "Halves translate to (−28,−18)/−28° and (28,18)/28° over breakMs 260 — not opacity fade as primary",
-    "On done, seal hidden and panel surface brightens over surfaceMs 220; timer starts at 00:00",
-    "Replay resets to LOCKED with intact seal and timer 00:00",
-    "Reduced motion (prefers or data-force) shows ACTIVE immediately"
+    "Phases crackMs 160 → splitMs 260 (±42px halves) → activateMs 180 into ACTIVE surface",
+    "Seal break is split translate/rotate — not opacity fade as primary",
+    "Timer starts only on ACTIVE; reduced motion shows unlocked surface immediately"
   ]
 }

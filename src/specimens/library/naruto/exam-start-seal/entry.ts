@@ -5,7 +5,7 @@ export const examStartSeal: Specimen = {
   ref: 'SPX-2551',
   title: 'Exam Start Seal',
   blurb:
-    'A locked exam panel unlocks when the seal crack-strokes and splits into flying halves — then the timer activates.',
+    'A locked exam surface stays dark until the central seal cracks and halves split ±42px — then the timer and panel go ACTIVE.',
   origin: {
     project: 'Original',
     surface: 'Naruto / chunin-exam-inspired-testing — gated activation',
@@ -19,18 +19,18 @@ export const examStartSeal: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['exam', 'seal', 'gate', 'break'],
+  tags: ['exam', 'seal', 'gate'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the panel appears already unlocked and active with no seal break.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the panel appears already unlocked and active.',
   },
   acceptance: [
-    'Crack stroke 160ms then halves fly to frozen offsets',
-    'ACTIVE surface + timer after seal break',
-    'Reduced motion shows unlocked surface immediately',
+    'Unlock phases: crack 160ms → split ±42px over 260ms → activate 180ms',
+    'Seal halves translate/rotate apart (not opacity fade); timer starts on ACTIVE only',
+    'Reduced motion shows unlocked ACTIVE surface immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
