@@ -1,17 +1,32 @@
 <div class="csp" data-csp data-phase="idle">
-  <p class="csp__live" data-csp-live aria-live="polite">Cloud sync idle at local.</p>
+  <p class="csp__live" data-csp-live aria-live="polite">Cloud sync idle. Local and cloud unbalanced.</p>
   <p class="csp__system">CLOUD // SYNC PROGRESS</p>
+
   <div class="csp__stage">
-    <div class="csp__sync-row">
-      <span class="csp__node">LOCAL</span>
-      <div class="csp__track">
-        <span class="csp__sync-beam" data-csp-beam aria-hidden="true"></span>
+    <div class="csp__balance" aria-hidden="true">
+      <div class="csp__side csp__side--local" data-csp-local>
+        <span class="csp__node">LOCAL</span>
+        <div class="csp__meter">
+          <span class="csp__meter-fill" data-csp-local-fill></span>
+        </div>
+        <span class="csp__pct" data-csp-local-pct>0%</span>
       </div>
-      <span class="csp__node">CLOUD</span>
+      <div class="csp__hub" data-csp-hub>
+        <span class="csp__hub-dot"></span>
+        <span class="csp__hub-label" data-csp-hub-label>SYNC</span>
+      </div>
+      <div class="csp__side csp__side--cloud" data-csp-cloud>
+        <span class="csp__node">CLOUD</span>
+        <div class="csp__meter">
+          <span class="csp__meter-fill" data-csp-cloud-fill></span>
+        </div>
+        <span class="csp__pct" data-csp-cloud-pct>0%</span>
+      </div>
     </div>
     <p class="csp__status" data-csp-status>OUT OF SYNC</p>
-    <p class="csp__hint" data-csp-hint>Press Run to sync.</p>
+    <p class="csp__hint" data-csp-hint>Run balances local ↔ cloud meters.</p>
   </div>
+
   <div class="csp__controls">
     <button type="button" class="csp__btn csp__btn--primary" data-csp-run>Run</button>
     <button type="button" class="csp__btn" data-csp-replay>Replay</button>

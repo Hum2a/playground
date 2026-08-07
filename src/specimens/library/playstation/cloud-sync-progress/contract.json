@@ -9,10 +9,25 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "syncMs": 1200,
+    "stepMs": 40,
+    "startLocalPct": 18,
+    "startCloudPct": 42
+  },
+  "api": {
+    "run": "runCloudSyncProgress()",
+    "reset": "resetCloudSyncProgress()",
+    "replay": "replayCloudSyncProgress()"
+  },
+  "acceptance": [
+    "Local and cloud vertical meters start unbalanced (18% / 42%) with visible % labels",
+    "Sync raises both meters toward 100% until hub reads OK",
+    "No DualSense leftover class names in reduced-motion rules",
+    "Live region announces unbalanced → balanced"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "Both meters snap to 100% / SYNCED immediately"
   }
 }

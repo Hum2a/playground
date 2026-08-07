@@ -6,19 +6,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration:   [
-    "Two nodes with centre sync track; beam position follows progress.",
-    "Wire runCloudSyncProgress / resetCloudSyncProgress / replayCloudSyncProgress."
+  integration: [
+    'Local and cloud vertical meters with centre hub; % labels stay visible.',
+    'Wire runCloudSyncProgress / resetCloudSyncProgress / replayCloudSyncProgress.',
   ],
-  acceptance:   [
-    "Local and cloud nodes labelled in text",
-    "Sync beam travels determinately along centre track",
-    "Run completes to SYNCED balanced state",
-    "Replay resets beam to local side",
-    "Reduced motion jumps to SYNCED"
+  acceptance: [
+    'Local and cloud vertical meters start unbalanced (18% / 42%) with visible % labels',
+    'Sync raises both meters toward 100% until hub reads OK',
+    'No DualSense leftover class names in reduced-motion rules',
+    'Live region announces unbalanced → balanced',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0B0F14;">
   {{specimen}}
 </div>`.trim(),
   files: { html, css, js },

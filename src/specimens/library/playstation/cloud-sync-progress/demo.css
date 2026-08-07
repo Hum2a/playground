@@ -1,18 +1,18 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3446 Cloud Sync Progress — portable contract. */
 
 .csp {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --sync-ms: 1200ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   width: 100%;
-  min-height: 300px;
+  min-height: 320px;
   padding: 0.85rem 0.7rem;
   background: var(--ps-ink);
   color: var(--ps-chalk);
@@ -116,13 +116,20 @@
   cursor: default;
 }
 
-.csp__sync-row {
+/* Local ↔ cloud balance — not DualSense leftover UI. */
+.csp__balance {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.75rem;
-  align-items: center;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.65rem;
+  align-items: end;
   width: 100%;
-  max-width: 360px;
+  max-width: 380px;
+}
+
+.csp__side {
+  display: grid;
+  gap: 0.35rem;
+  justify-items: center;
 }
 
 .csp__node {
@@ -132,54 +139,105 @@
   color: var(--ps-sky);
 }
 
-.csp__track {
+.csp__meter {
   position: relative;
-  height: 8px;
-  background: rgb(244 246 248 / 0.12);
-  border-radius: 4px;
+  width: 100%;
+  height: 72px;
+  border: 1px solid rgb(46 144 255 / 0.3);
+  background: rgb(11 15 20 / 0.8);
   overflow: hidden;
 }
 
-.csp__sync-beam {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 24px;
-  margin-left: -12px;
-  background: var(--ps-blue);
-  border-radius: 4px;
-  box-shadow: 0 0 12px rgb(46 144 255 / 0.6);
-  transition: left 50ms linear;
+.csp__side--local .csp__meter {
+  border-radius: 6px 2px 2px 6px;
 }
 
-.csp[data-phase='synced'] .csp__sync-beam {
-  left: 100%;
+.csp__side--cloud .csp__meter {
+  border-radius: 2px 6px 6px 2px;
+}
+
+.csp__meter-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  background: linear-gradient(180deg, rgb(46 144 255 / 0.35), var(--ps-blue));
+  transition: height 50ms linear;
+}
+
+.csp__side--cloud .csp__meter-fill {
+  background: linear-gradient(180deg, rgb(126 182 255 / 0.35), var(--ps-sky));
+}
+
+.csp__pct {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ps-chalk);
+  font-variant-numeric: tabular-nums;
+}
+
+.csp__hub {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+  align-content: center;
+  padding-bottom: 1.6rem;
+  min-width: 48px;
+}
+
+.csp__hub-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgb(244 246 248 / 0.35);
+  background: transparent;
+  transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.csp__hub-label {
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgb(244 246 248 / 0.45);
+}
+
+.csp[data-phase='syncing'] .csp__hub-dot {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.45);
+  box-shadow: 0 0 10px rgb(46 144 255 / 0.55);
+}
+
+.csp[data-phase='synced'] .csp__hub-dot {
+  border-color: var(--ps-sky);
   background: var(--ps-sky);
+  box-shadow: 0 0 12px rgb(126 182 255 / 0.7);
+}
+
+.csp[data-phase='synced'] .csp__hub-label {
+  color: var(--ps-sky);
+}
+
+.csp[data-phase='synced'] .csp__side--local .csp__node,
+.csp[data-phase='synced'] .csp__side--cloud .csp__node {
+  color: var(--ps-chalk);
+}
+
+.csp[data-phase='synced'] .csp__meter {
+  border-color: rgb(126 182 255 / 0.55);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .csp__ring-track,
-  .csp__ring-fill,
-  .csp__pulse,
-  .csp__wave,
-  .csp__sync-beam,
-  .csp__morph,
-  .csp__fill,
-  .csp__notch-glow {
+  .csp__meter-fill,
+  .csp__hub-dot {
     transition: none !important;
     animation: none !important;
   }
 }
 
-html[data-force-reduced-motion='true'] .csp__ring-track,
-html[data-force-reduced-motion='true'] .csp__ring-fill,
-html[data-force-reduced-motion='true'] .csp__pulse,
-html[data-force-reduced-motion='true'] .csp__wave,
-html[data-force-reduced-motion='true'] .csp__sync-beam,
-html[data-force-reduced-motion='true'] .csp__morph,
-html[data-force-reduced-motion='true'] .csp__fill,
-html[data-force-reduced-motion='true'] .csp__notch-glow {
+[data-force-reduced-motion='true'] .csp__meter-fill,
+[data-force-reduced-motion='true'] .csp__hub-dot {
   transition: none !important;
   animation: none !important;
 }

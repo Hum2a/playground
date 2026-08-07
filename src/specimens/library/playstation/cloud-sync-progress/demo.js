@@ -53,25 +53,35 @@ function setButtons(on) {
 const SYNC_MS = 1200
 const STEP_MS = 40
 
-function setBeam(pct) {
-  const beam = document.querySelector('[data-csp-beam]')
-  if (beam) beam.style.left = `${pct}%`
+function setBalance(localPct, cloudPct) {
+  const lf = document.querySelector('[data-csp-local-fill]')
+  const cf = document.querySelector('[data-csp-cloud-fill]')
+  const lp = document.querySelector('[data-csp-local-pct]')
+  const cp = document.querySelector('[data-csp-cloud-pct]')
+  if (lf) lf.style.height = `${localPct}%`
+  if (cf) cf.style.height = `${cloudPct}%`
+  if (lp) lp.textContent = `${localPct}%`
+  if (cp) cp.textContent = `${cloudPct}%`
 }
 
 function resetVisual() {
   rootEl()?.setAttribute('data-phase', 'idle')
-  setBeam(0)
+  setBalance(18, 42)
+  const hub = document.querySelector('[data-csp-hub-label]')
+  if (hub) hub.textContent = 'SYNC'
   setStatus('OUT OF SYNC')
-  setHint('Press Run to sync.')
-  setLive('Cloud sync idle at local.')
+  setHint('Run balances local ↔ cloud meters.')
+  setLive('Cloud sync idle. Local and cloud unbalanced.')
 }
 
 function showSynced() {
   rootEl()?.setAttribute('data-phase', 'synced')
-  setBeam(100)
+  setBalance(100, 100)
+  const hub = document.querySelector('[data-csp-hub-label]')
+  if (hub) hub.textContent = 'OK'
   setStatus('SYNCED')
-  setHint('Local and cloud balanced.')
-  setLive('Cloud sync complete. Balanced.')
+  setHint('Local and cloud balanced at 100%.')
+  setLive('Cloud sync complete. Local and cloud balanced.')
 }
 
 export function runCloudSyncProgress() {
@@ -83,7 +93,9 @@ export function runCloudSyncProgress() {
   setButtons(false)
   root.setAttribute('data-phase', 'syncing')
   setStatus('SYNCING')
-  setLive('Syncing to cloud.')
+  setLive('Balancing local and cloud sync meters.')
+  const hub = document.querySelector('[data-csp-hub-label]')
+  if (hub) hub.textContent = '…'
 
   if (prefersReducedMotion()) {
     showSynced()
@@ -92,6 +104,8 @@ export function runCloudSyncProgress() {
     return Promise.resolve()
   }
 
+  const startLocal = 18
+  const startCloud = 42
   return new Promise((resolve) => {
     let step = 0
     const steps = SYNC_MS / STEP_MS
@@ -103,7 +117,10 @@ export function runCloudSyncProgress() {
         resolve()
         return
       }
-      setBeam(Math.round((step / steps) * 100))
+      const t = step / steps
+      const local = Math.round(startLocal + (100 - startLocal) * t)
+      const cloud = Math.round(startCloud + (100 - startCloud) * t)
+      setBalance(local, cloud)
       step += 1
       later(STEP_MS, tick)
     }
