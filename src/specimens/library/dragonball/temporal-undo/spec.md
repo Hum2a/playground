@@ -17,7 +17,8 @@ Control: **UNDO**
 
 ## Timeline (~650ms)
 
-Appears beneath the deleted state. Needle travels **NOW → −3**.
+`REWIND // SCRUB` label + fill track. Needle travels **NOW → −3** in sync with scrub fill.
+Deleted confirmation erases (clip) as rewind begins — inverse of erasure final appearing.
 
 ## Reverse erasure (620ms)
 

@@ -24,6 +24,8 @@
   },
   "timeline": {
     "ticks": ["NOW", "-1", "-2", "-3"],
+    "scrubLabel": "REWIND // SCRUB",
+    "scrubFillSyncMs": 650,
     "travelMs": 650,
     "holdAtMinus3Ms": 80,
     "retractMs": 160

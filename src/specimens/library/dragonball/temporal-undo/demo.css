@@ -44,6 +44,18 @@
   font-size: 11px;
 }
 
+.tu[data-state='rewinding'] .tu__deleted,
+.tu[data-state='locking'] .tu__deleted {
+  animation: tu-deleted-out 180ms ease-out forwards;
+}
+
+@keyframes tu-deleted-out {
+  to {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
 /* Card — same angular geometry as Erasure Delete */
 .tu__card {
   position: absolute;
@@ -204,6 +216,26 @@
   transform-origin: top center;
 }
 
+.tu__scrub-label {
+  position: absolute;
+  left: 0;
+  top: -14px;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+
+.tu__scrub-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 1px;
+  width: 0%;
+  background: var(--mark);
+  opacity: 0.85;
+}
+
 .tu__tick {
   font-size: 0.55rem;
   font-weight: 700;
@@ -245,6 +277,20 @@
 .tu[data-state='rewinding'] .tu__needle,
 .tu[data-state='locking'] .tu__needle {
   animation: tu-needle 650ms linear forwards;
+}
+
+.tu[data-state='rewinding'] .tu__scrub-fill,
+.tu[data-state='locking'] .tu__scrub-fill {
+  animation: tu-scrub-fill 650ms linear forwards;
+}
+
+@keyframes tu-scrub-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes tu-timeline-in {
@@ -442,6 +488,13 @@
 
 .tu[data-state='locking'] .tu__needle {
   left: calc(100% - 2px);
+  animation: none;
+}
+
+.tu[data-state='locking'] .tu__scrub-fill,
+.tu[data-state='restored'] .tu__scrub-fill,
+.tu[data-state='retracting'] .tu__scrub-fill {
+  width: 100%;
   animation: none;
 }
 
