@@ -1,0 +1,16 @@
+{
+  "name": "manga-page-turn",
+  "ref": "SPX-4080",
+  "title": "Manga Page Turn",
+  "direction": "right-to-left",
+  "durationMs": 760,
+  "perspectivePx": 1100,
+  "paper": "#F4F1E8",
+  "ink": "#111111",
+  "pageEdgePx": 2,
+  "maximumFoldShadowOpacity": 0.22,
+  "easing": "cubic-bezier(.45,.05,.2,1)",
+  "destinationFinalRotation": "0deg",
+  "externalTextures": false,
+  "reducedMotion": "NEXT immediately swaps current and destination pages."
+}

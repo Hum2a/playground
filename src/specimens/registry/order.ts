@@ -264,6 +264,7 @@ export const specimenOrder: string[] = [
   'locked-chain-break',
   'long-press-lift',
   'manga-cut-in-notification',
+  'manga-page-turn',
   'map-construction',
   'match-confidence-meter',
   'match-start-slam',

@@ -20,6 +20,7 @@ import { shard as netflixShard } from './shards/netflix'
 import { shard as playstationShard } from './shards/playstation'
 import { shard as editorialShard } from './shards/editorial'
 import { shard as musicEquipmentShard } from './shards/music-equipment'
+import { shard as mangaShard } from './shards/manga'
 import { shard as originalShard } from './shards/original'
 
 const SHARDS: Specimen[][] = [
@@ -43,6 +44,7 @@ const SHARDS: Specimen[][] = [
   playstationShard,
   editorialShard,
   musicEquipmentShard,
+  mangaShard,
   originalShard,
 ]
 

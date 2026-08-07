@@ -110,6 +110,10 @@ export const INSPIRATION_DIRECTORY = {
     label: 'Music Equipment',
     works: {},
   },
+  manga: {
+    label: 'Manga',
+    works: {},
+  },
   original: {
     label: 'Original',
     works: {},

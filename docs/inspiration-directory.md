@@ -149,6 +149,12 @@ Backlog: [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](
 
 Backlog: [`docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md`](catalogue/music_equipment_motion_ui_specimen_catalogue.md) (`MUSIC-NNN` / `SPX-3760`…`SPX-4069`).
 
+### Manga (`manga`)
+
+*(original panel composition, ink, lettering, screentone, and visual pacing; no published panels, identifiable characters, logos, dialogue, proprietary fonts, or signature compositions)*
+
+Backlog: [`docs/catalogue/manga_motion_ui_specimen_catalogue.md`](catalogue/manga_motion_ui_specimen_catalogue.md) (`MANGA-NNN` / `SPX-4070`…`SPX-4339`).
+
 ### Original (`original`)
 
 Invented here / not tied to a specific game. Prefer omitting `inspiredBy` when truly original unless you want an explicit “Original” filter chip.

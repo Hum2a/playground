@@ -1,0 +1,197 @@
+/* manga-page-turn — portable right-to-left manga reading transition */
+.manga-page-turn {
+  --paper: #f4f1e8;
+  --ink: #111111;
+  --page-edge: 2px;
+  --turn-duration: 760ms;
+  --turn-easing: cubic-bezier(.45, .05, .2, 1);
+  color: var(--ink);
+  font-family: Georgia, serif;
+}
+
+.manga-page-turn * {
+  box-sizing: border-box;
+}
+
+.manga-page-turn__perspective {
+  width: min(100%, 560px);
+  margin: 0 auto;
+  perspective: 1100px;
+}
+
+.manga-page-turn__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 7 / 5;
+  overflow: hidden;
+  background: var(--paper);
+  border: var(--page-edge) solid var(--ink);
+}
+
+.manga-page-turn__page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(12px, 3vw, 24px);
+  background: var(--paper);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.manga-page-turn__page--next {
+  z-index: 1;
+  transform: rotateY(0deg);
+}
+
+.manga-page-turn__page--current {
+  z-index: 2;
+  transform-origin: right center;
+  transform: rotateY(0deg);
+  transition: transform var(--turn-duration) var(--turn-easing);
+}
+
+.manga-page-turn__chapter,
+.manga-page-turn__folio,
+.manga-page-turn__controls button,
+.manga-page-turn__controls p {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.manga-page-turn__chapter {
+  margin: 0 0 10px;
+  border-bottom: var(--page-edge) solid var(--ink);
+  font-size: clamp(8px, 1.8vw, 12px);
+  font-weight: 700;
+  padding-bottom: 6px;
+}
+
+.manga-page-turn__panels {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  grid-template-rows: 1fr .8fr;
+  flex: 1;
+  gap: clamp(6px, 1.5vw, 12px);
+}
+
+.manga-page-turn__panel {
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  border: var(--page-edge) solid var(--ink);
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 9px,
+    rgb(17 17 17 / .08) 9px 10px
+  );
+  font-size: clamp(13px, 3vw, 25px);
+  font-weight: 700;
+  line-height: .9;
+  text-align: center;
+}
+
+.manga-page-turn__panel--wide {
+  grid-row: span 2;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: clamp(18px, 5vw, 42px);
+  transform: skewY(-4deg);
+}
+
+.manga-page-turn__panel--burst {
+  clip-path: polygon(50% 0%, 59% 29%, 82% 10%, 71% 38%, 100% 43%, 72% 52%, 90% 82%, 61% 64%, 52% 100%, 43% 67%, 14% 88%, 30% 58%, 0% 52%, 28% 43%, 10% 16%, 40% 31%);
+}
+
+.manga-page-turn__panel--dark {
+  grid-row: span 2;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: clamp(30px, 9vw, 72px);
+  transform: skewY(5deg);
+}
+
+.manga-page-turn__panel--lines {
+  background: repeating-linear-gradient(
+    -20deg,
+    var(--paper) 0 7px,
+    var(--ink) 7px 8px
+  );
+}
+
+.manga-page-turn__folio {
+  align-self: flex-start;
+  margin: 10px 0 0;
+  border-top: 1px solid var(--ink);
+  font-size: 9px;
+  padding-top: 5px;
+}
+
+.manga-page-turn__fold {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, rgb(17 17 17 / .22), transparent 24%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity calc(var(--turn-duration) * .42) var(--turn-easing);
+}
+
+.manga-page-turn[data-page-state='turning'] .manga-page-turn__page--current {
+  transform: rotateY(-180deg);
+}
+
+.manga-page-turn[data-page-state='turning'] .manga-page-turn__fold {
+  opacity: 1;
+}
+
+.manga-page-turn[data-page-state='second'] .manga-page-turn__page--current {
+  display: none;
+}
+
+.manga-page-turn__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: min(100%, 560px);
+  margin: 10px auto 0;
+}
+
+.manga-page-turn__controls button {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
+.manga-page-turn__controls button:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.manga-page-turn__controls button:disabled {
+  cursor: wait;
+  opacity: .55;
+}
+
+.manga-page-turn__controls p {
+  flex: 1 1 190px;
+  margin: 0;
+  font-size: 9px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manga-page-turn * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .manga-page-turn * {
+  animation: none !important;
+  transition: none !important;
+}
