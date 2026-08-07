@@ -105,11 +105,34 @@
     "cancel": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["availableBelow", "disabledAtOrAbove", "returnsToZero"],
+      "required": [
+        "availableBelow",
+        "disabledAtOrAbove",
+        "returnsToZero",
+        "reversibleVisual",
+        "lockedVisual"
+      ],
       "properties": {
         "availableBelow": { "type": "number", "const": 65 },
         "disabledAtOrAbove": { "type": "number", "const": 65 },
-        "returnsToZero": { "type": "boolean", "const": true }
+        "returnsToZero": { "type": "boolean", "const": true },
+        "reversibleVisual": {
+          "type": "object",
+          "const": {
+            "trackBorder": "dashed cream",
+            "cancelWrap": "dashed cream border + four brackets",
+            "regionLabel": "REVERSIBLE in cream"
+          }
+        },
+        "lockedVisual": {
+          "type": "object",
+          "const": {
+            "trackBorder": "solid warn",
+            "cancelWrap": "solid warn border, CANCEL struck through",
+            "thresholdLabel": "COMMIT // LOCKED in warn",
+            "brackets": "retract outward"
+          }
+        }
       }
     },
     "animation": {

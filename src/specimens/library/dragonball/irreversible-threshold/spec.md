@@ -51,6 +51,13 @@ unavailable.
 Non-colour cues: fixed COMMIT tick + label, four CANCEL brackets, strike-through
 disabled CANCEL, underlined COMMITTED/PURGED text, hatch on committed fill.
 
+## Two unmistakable states
+
+| State | Rail | CANCEL | Region label | Threshold |
+| ----- | ---- | ------ | ------------ | --------- |
+| **REVERSIBLE** (0–64%) | dashed cream border | dashed wrap + 4 brackets, enabled | `REVERSIBLE` cream | `COMMIT` marker |
+| **LOCKED** (≥65%) | solid warn border | struck-through, dashed, disabled | `COMMITTED` warn + underline | `COMMIT // LOCKED` warn |
+
 ## Progress ladder (frozen)
 
 `0 → 18 → 34 → 51 → 64 → 65 → 78 → 91 → 100`

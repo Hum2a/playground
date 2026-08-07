@@ -60,9 +60,13 @@
   color: var(--irt-muted);
 }
 
+.irt[data-region='reversible'][data-phase='running'] .irt__region {
+  color: var(--irt-cream);
+}
+
 .irt[data-region='committed'] .irt__region,
 .irt[data-region='purged'] .irt__region {
-  color: var(--irt-cream);
+  color: var(--irt-warn);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
@@ -71,6 +75,7 @@
 .irt[data-region='cancelled'] .irt__region {
   color: var(--irt-muted);
   font-style: italic;
+  text-decoration: line-through;
 }
 
 /* Rail */
@@ -88,6 +93,18 @@
   background: #0a0c10;
   overflow: hidden;
   transform-origin: center center;
+  transition: border-color 120ms linear;
+}
+
+.irt[data-region='reversible'][data-phase='running'] .irt__track {
+  border-style: dashed;
+  border-color: var(--irt-cream);
+}
+
+.irt[data-region='committed'] .irt__track,
+.irt[data-region='purged'] .irt__track {
+  border-style: solid;
+  border-color: var(--irt-warn);
 }
 
 .irt__fill {
@@ -186,13 +203,20 @@
 }
 
 .irt.irt--committed .irt__threshold-mark {
-  background: color-mix(in srgb, var(--irt-cream) 45%, var(--irt-line));
-  height: 14px;
-  top: 1.1rem;
+  background: var(--irt-warn);
+  height: 18px;
+  top: 0.9rem;
+  width: 3px;
 }
 
 .irt.irt--committed .irt__threshold-label {
-  color: var(--irt-muted);
+  color: var(--irt-warn);
+  font-weight: 700;
+}
+
+.irt.irt--committed .irt__threshold-label::after {
+  content: ' // LOCKED';
+  letter-spacing: 0.08em;
 }
 
 /* Approach indicator just before COMMIT */
@@ -270,6 +294,21 @@
   position: relative;
   display: inline-flex;
   padding: 4px;
+  border: 2px dashed transparent;
+  transition:
+    border-color 90ms ease,
+    background 90ms ease;
+}
+
+.irt[data-phase='running'][data-region='reversible'] .irt__cancel-wrap {
+  border-color: var(--irt-cream);
+  background: color-mix(in srgb, var(--irt-cream) 6%, transparent);
+}
+
+.irt.irt--committed .irt__cancel-wrap {
+  border-color: color-mix(in srgb, var(--irt-warn) 50%, var(--irt-line));
+  border-style: solid;
+  background: color-mix(in srgb, var(--irt-warn) 8%, transparent);
 }
 
 .irt__bracket {
@@ -324,6 +363,13 @@
 
 .irt.irt--committed .irt__btn--cancel {
   text-decoration: line-through;
+  border-style: dashed;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.irt[data-region='purged'] .irt__btn--cancel {
+  display: none;
 }
 
 .irt__status {
