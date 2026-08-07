@@ -107,5 +107,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Sweep duration frozen at sweepMs 570 across three blip steps",
+    "Blip coordinates frozen: (57.6,49.3), (111.5,35), (154.1,62.1)",
+    "Contact log lists all three bearings; beam rests after settleMs 110",
+    "Phosphor palette; blips latch by scale, not opacity-only",
+    "Reduced motion shows COMPLETE with all blips immediately"
+  ]
 }
