@@ -1,30 +1,93 @@
 <div class="spc" data-prerequisite-collection data-state="idle">
   <header class="spc__header">
-    <h2>RELEASE REQUIREMENTS</h2>
+    <p class="spc__label">SIGNAL RADAR // COLLECTION</p>
     <p class="spc__count" data-spc-count>6 / 7</p>
   </header>
-  <div class="spc__field" aria-hidden="true">
-    <div class="spc__boundary"></div><span class="spc__core"></span>
-    <span class="spc__line spc__line--1"></span><span class="spc__line spc__line--2"></span>
-    <span class="spc__line spc__line--3"></span><span class="spc__line spc__line--4"></span>
-    <span class="spc__line spc__line--5"></span><span class="spc__line spc__line--6"></span>
-    <span class="spc__line spc__line--7"></span>
-    <div class="spc__slot spc__slot--spec" style="--x:42px;--y:28px"><i></i><b>SPEC</b></div>
-    <div class="spc__slot spc__slot--test" style="--x:152px;--y:10px"><i></i><b>TEST</b></div>
-    <div class="spc__slot spc__slot--build" style="--x:267px;--y:50px"><i></i><b>BUILD</b></div>
-    <div class="spc__slot spc__slot--review" style="--x:287px;--y:153px"><i></i><b>REVIEW</b></div>
-    <div class="spc__slot spc__slot--security" style="--x:196px;--y:211px"><i></i><b>SECURITY</b></div>
-    <div class="spc__slot spc__slot--sign" style="--x:78px;--y:190px"><i></i><b>SIGN</b></div>
-    <div class="spc__slot spc__slot--approval spc__slot--missing" style="--x:8px;--y:116px" data-spc-approval>
-      <i></i><b>APPROVAL</b><em data-spc-missing>MISSING</em>
+
+  <div class="spc__plate" aria-hidden="true">
+    <div class="spc__grid">
+      <span class="spc__ring spc__ring--1"></span>
+      <span class="spc__ring spc__ring--2"></span>
+      <span class="spc__ring spc__ring--3"></span>
+      <span class="spc__axis spc__axis--h"></span>
+      <span class="spc__axis spc__axis--v"></span>
+      <span class="spc__sweep" data-spc-sweep></span>
     </div>
-    <div class="spc__incoming" data-spc-incoming><i></i><b>APPROVAL</b></div>
+
+    <svg class="spc__web" viewBox="0 0 320 260" preserveAspectRatio="none" aria-hidden="true">
+      <line class="spc__link" data-spc-link="1" x1="58" y1="48" x2="160" y2="130" />
+      <line class="spc__link" data-spc-link="2" x1="118" y1="22" x2="160" y2="130" />
+      <line class="spc__link" data-spc-link="3" x1="248" y1="62" x2="160" y2="130" />
+      <line class="spc__link" data-spc-link="4" x1="272" y1="148" x2="160" y2="130" />
+      <line class="spc__link" data-spc-link="5" x1="198" y1="218" x2="160" y2="130" />
+      <line class="spc__link" data-spc-link="6" x1="72" y1="196" x2="160" y2="130" />
+      <line class="spc__link" data-spc-link="7" x1="18" y1="118" x2="160" y2="130" />
+    </svg>
+
+    <div class="spc__hub" data-spc-hub>
+      <span class="spc__hub-core"></span>
+      <span class="spc__hub-flare spc__hub-flare--a"></span>
+      <span class="spc__hub-flare spc__hub-flare--b"></span>
+    </div>
+
+    <div class="spc__anchor spc__anchor--spec" style="--ax:58px;--ay:48px" data-spc-anchor="spec">
+      <span class="spc__receptacle spc__shape--diamond"></span>
+      <span class="spc__token spc__shape--diamond spc__token--lit"></span>
+      <b class="spc__tag">SPEC</b>
+    </div>
+    <div class="spc__anchor spc__anchor--test" style="--ax:118px;--ay:22px" data-spc-anchor="test">
+      <span class="spc__receptacle spc__shape--square"></span>
+      <span class="spc__token spc__shape--square spc__token--lit"></span>
+      <b class="spc__tag">TEST</b>
+    </div>
+    <div class="spc__anchor spc__anchor--build" style="--ax:248px;--ay:62px" data-spc-anchor="build">
+      <span class="spc__receptacle spc__shape--triangle"></span>
+      <span class="spc__token spc__shape--triangle spc__token--lit"></span>
+      <b class="spc__tag">BUILD</b>
+    </div>
+    <div class="spc__anchor spc__anchor--review" style="--ax:272px;--ay:148px" data-spc-anchor="review">
+      <span class="spc__receptacle spc__shape--hex"></span>
+      <span class="spc__token spc__shape--hex spc__token--lit"></span>
+      <b class="spc__tag">REVIEW</b>
+    </div>
+    <div class="spc__anchor spc__anchor--security" style="--ax:198px;--ay:218px" data-spc-anchor="security">
+      <span class="spc__receptacle spc__shape--cross"></span>
+      <span class="spc__token spc__shape--cross spc__token--lit"></span>
+      <b class="spc__tag">SECURITY</b>
+    </div>
+    <div class="spc__anchor spc__anchor--sign" style="--ax:72px;--ay:196px" data-spc-anchor="sign">
+      <span class="spc__receptacle spc__shape--chevron"></span>
+      <span class="spc__token spc__shape--chevron spc__token--lit"></span>
+      <b class="spc__tag">SIGN</b>
+    </div>
+    <div
+      class="spc__anchor spc__anchor--approval spc__anchor--vacant"
+      style="--ax:18px;--ay:118px"
+      data-spc-approval
+      data-spc-anchor="approval"
+    >
+      <span class="spc__receptacle spc__shape--star"></span>
+      <span class="spc__token spc__shape--star"></span>
+      <b class="spc__tag">APPROVAL</b>
+      <em class="spc__missing" data-spc-missing>VACANT</em>
+    </div>
+
+    <div class="spc__incoming" data-spc-incoming aria-hidden="true">
+      <span class="spc__token spc__shape--star spc__token--lit"></span>
+      <b class="spc__tag">APPROVAL</b>
+    </div>
   </div>
+
   <div class="spc__actions">
-    <button type="button" data-spc-receive>RECEIVE APPROVAL</button>
-    <button type="button" class="spc__publish" data-spc-publish disabled>PUBLISH <span data-spc-lock>LOCKED</span></button>
-    <button type="button" data-spc-reset hidden>RESET</button>
+    <button type="button" class="spc__btn" data-spc-receive>ACQUIRE SIGNAL</button>
+    <button type="button" class="spc__btn spc__btn--publish" data-spc-publish disabled>
+      PUBLISH <span data-spc-lock>LOCKED</span>
+    </button>
+    <button type="button" class="spc__btn spc__btn--ghost" data-spc-reset hidden>RESET</button>
   </div>
+
   <p class="spc__status" role="status" aria-live="polite" data-spc-status>INCOMPLETE</p>
-  <p class="spc__sr" data-spc-sr>6 of 7 release requirements complete. Approval missing. Publish locked.</p>
+  <p class="spc__sr" data-spc-sr>
+    6 of 7 collection signals resolved. Approval slot vacant. Publish locked.
+  </p>
 </div>

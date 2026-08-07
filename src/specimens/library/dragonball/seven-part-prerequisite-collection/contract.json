@@ -1,16 +1,181 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"SevenPartPrerequisiteCollection",
-  "type":"object",
-  "required":["name","requirements","initial","arrival","holdMs","resonance","unlock"],
-  "properties":{
-    "name":{"const":"seven-part-prerequisite-collection"},
-    "requirements":{"const":["SPEC","TEST","BUILD","REVIEW","SECURITY","SIGN","APPROVAL"]},
-    "initial":{"const":{"count":"6 / 7","missing":"APPROVAL","publish":"LOCKED"}},
-    "arrival":{"const":{"durationMs":280,"distancePx":90,"rotation":[-12,0],"scale":[0.7,1],"dockMs":120}},
-    "holdMs":{"const":140},
-    "resonance":{"const":{"lineCount":7,"durationMs":220,"corePx":[4,24],"outerBoundaryCount":1}},
-    "unlock":{"const":{"status":"COMPLETE","publish":"READY"}},
-    "reducedMotion":{"const":"Immediate 7/7 connected PUBLISH READY."}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/seven-part-prerequisite-collection.schema.json",
+  "title": "SevenPartPrerequisiteCollection",
+  "description": "Asymmetric signal-radar collection: seven shape-matched receptacles, one vacant star slot, constellation link on completion. SPX-1070.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "tokens",
+    "geometry",
+    "animation",
+    "a11y",
+    "reducedMotion",
+    "classNames",
+    "behaviour"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "seven-part-prerequisite-collection" },
+    "intent": {
+      "type": "string",
+      "const": "Six distinct glyphs occupy shape-matched radar blips; a seventh star signal acquires into the vacant APPROVAL receptacle; seven hub-ward links and a central flare complete the constellation before PUBLISH unlocks."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "trigger",
+        "vacant",
+        "initialCount",
+        "finalStatus",
+        "publishLocked",
+        "publishReady"
+      ],
+      "properties": {
+        "label": { "type": "string", "const": "SIGNAL RADAR // COLLECTION" },
+        "trigger": { "type": "string", "const": "ACQUIRE SIGNAL" },
+        "vacant": { "type": "string", "const": "VACANT" },
+        "initialCount": { "type": "string", "const": "6 / 7" },
+        "finalStatus": { "type": "string", "const": "COMPLETE" },
+        "publishLocked": { "type": "string", "const": "LOCKED" },
+        "publishReady": { "type": "string", "const": "READY" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "panel", "ink", "teal", "gold", "amber"],
+      "properties": {
+        "bg": { "type": "string", "const": "#0c1418" },
+        "panel": { "type": "string", "const": "#121e24" },
+        "ink": { "type": "string", "const": "#e8f0f2" },
+        "teal": { "type": "string", "const": "#4a9e9a" },
+        "gold": { "type": "string", "const": "#d4a84a" },
+        "amber": { "type": "string", "const": "#e8c060" }
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "const": [
+        { "id": "spec", "shape": "diamond", "label": "SPEC" },
+        { "id": "test", "shape": "square", "label": "TEST" },
+        { "id": "build", "shape": "triangle", "label": "BUILD" },
+        { "id": "review", "shape": "hex", "label": "REVIEW" },
+        { "id": "security", "shape": "cross", "label": "SECURITY" },
+        { "id": "sign", "shape": "chevron", "label": "SIGN" },
+        { "id": "approval", "shape": "star", "label": "APPROVAL", "initial": "vacant" }
+      ]
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["platePx", "hubPx", "linkCount", "anchorPositions"],
+      "properties": {
+        "platePx": {
+          "type": "object",
+          "const": { "w": 320, "h": 260 }
+        },
+        "hubPx": { "type": "object", "const": { "x": 160, "y": 130 } },
+        "linkCount": { "type": "integer", "const": 7 },
+        "anchorPositions": {
+          "type": "array",
+          "const": [
+            { "id": "spec", "x": 58, "y": 48 },
+            { "id": "test", "x": 118, "y": 22 },
+            { "id": "build", "x": 248, "y": 62 },
+            { "id": "review", "x": 272, "y": 148 },
+            { "id": "security", "x": 198, "y": 218 },
+            { "id": "sign", "x": 72, "y": 196 },
+            { "id": "approval", "x": 18, "y": 118 }
+          ]
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "acquireMs",
+        "dockMs",
+        "holdMs",
+        "linkMs",
+        "flareMs",
+        "acquireFrom",
+        "loops"
+      ],
+      "properties": {
+        "acquireMs": { "type": "integer", "const": 300 },
+        "dockMs": { "type": "integer", "const": 120 },
+        "holdMs": { "type": "integer", "const": 140 },
+        "linkMs": { "type": "integer", "const": 240 },
+        "flareMs": { "type": "integer", "const": 280 },
+        "acquireFrom": {
+          "type": "object",
+          "const": { "translate": [-72, -58], "rotate": -18, "scale": 0.55 }
+        },
+        "linkStaggerMs": { "type": "integer", "const": 28 },
+        "loops": { "type": "boolean", "const": false }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "screenReaderSummary"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "screenReaderSummary": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediate 7/7 linked constellation, hub flare, PUBLISH READY."
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "anchor", "receptacle", "token", "link", "hub"],
+      "properties": {
+        "root": { "type": "string", "const": "spc" },
+        "anchor": { "type": "string", "const": "spc__anchor" },
+        "receptacle": { "type": "string", "const": "spc__receptacle" },
+        "token": { "type": "string", "const": "spc__token" },
+        "link": { "type": "string", "const": "spc__link" },
+        "hub": { "type": "string", "const": "spc__hub" }
+      }
+    },
+    "behaviour": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receive", "reset"],
+      "properties": {
+        "receive": {
+          "type": "string",
+          "const": "sevenPartPrerequisiteCollection.receive"
+        },
+        "reset": {
+          "type": "string",
+          "const": "sevenPartPrerequisiteCollection.reset"
+        }
+      }
+    }
   }
 }
