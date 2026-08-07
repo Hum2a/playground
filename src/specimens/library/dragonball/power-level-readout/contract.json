@@ -1,61 +1,173 @@
 {
-  "name": "power-level-readout",
-  "intent": "Measurement primitive: an unresolved numeric display walks a deterministic sample ladder that accelerates then converges on a final reading with threshold markers and classification.",
-  "primitives": ["measurement", "analysis", "numeric-resolution"],
-  "colours": {
-    "ink": "#10131a",
-    "panel": "#171b24",
-    "rule": "#2e3545",
-    "pewter": "#8a93a6",
-    "chalk": "#e6e9f0",
-    "signal": "#e8a45a"
-  },
-  "chrome": {
-    "signal": "SIGNAL // ACTIVE",
-    "label": "MEASUREMENT",
-    "initialValue": "----",
-    "finalValueDisplay": "8,471",
-    "classificationBusy": "ANALYSING",
-    "classificationDone": "ABOVE BASELINE",
-    "trigger": "MEASURE"
-  },
-  "typography": {
-    "stack": "ui-monospace, Cascadia Code, Segoe UI Mono, Menlo, Consolas, monospace",
-    "size": "clamp(48px, 14vw, 92px)",
-    "externalFont": false
-  },
-  "samples": [4, 17, 48, 126, 314, 782, 1640, 2917, 4381, 5790, 6844, 7512, 8021, 8310, 8448, 8471],
-  "holdMs": [70, 68, 64, 58, 52, 46, 40, 36, 35, 35, 35, 38, 42, 45, 55, 80],
-  "settleMs": 100,
-  "settleTransform": "translateY(-2px → 0)",
-  "thresholds": {
-    "1000": { "once": true, "feedback": "×10³ marker locks beside display" },
-    "5000": { "once": true, "feedback": "structural line beneath number" },
-    "8000": { "once": true, "feedback": "measurement frame expands outward by 4px" }
-  },
-  "final": {
-    "value": 8471,
-    "brackets": 2,
-    "classificationAfterNumber": true
-  },
-  "api": {
-    "measure": "runPowerLevelReadout()",
-    "reset": "runPowerLevelReset()",
-    "busyGuard": true,
-    "replayViaMeasure": true,
-    "noRandom": true,
-    "noContinuousCounter": true
-  },
-  "a11y": {
-    "announceFinalOnly": true,
-    "liveRegion": "polite",
-    "announcement": "Measurement 8,471. Above baseline."
-  },
-  "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Immediately show 8,471, thresholds, brackets, and ABOVE BASELINE"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/power-level-readout.schema.json",
+  "title": "PowerLevelReadout",
+  "description": "Scouter-adjacent measurement instrument: fluorescent HUD, brackets, ticks, frozen sample ladder converging on 8,471. SPX-997.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "chrome",
+    "instrument",
+    "samples",
+    "holdMs",
+    "settleMs",
+    "thresholds",
+    "final",
+    "api",
+    "a11y",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "power-level-readout" },
+    "intent": {
+      "type": "string",
+      "const": "Measurement primitive: fluorescent scouter-style instrument walks a deterministic sample ladder that accelerates then converges on 8,471 with brackets, ticks, and threshold markers."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "signal",
+        "label",
+        "initialValue",
+        "finalValueDisplay",
+        "classificationBusy",
+        "classificationDone",
+        "trigger"
+      ],
+      "properties": {
+        "system": { "type": "string", "const": "NODE // 12" },
+        "signal": { "type": "string", "const": "SIGNAL // ACTIVE" },
+        "label": { "type": "string", "const": "MEASUREMENT" },
+        "initialValue": { "type": "string", "const": "----" },
+        "finalValueDisplay": { "type": "string", "const": "8,471" },
+        "classificationBusy": { "type": "string", "const": "ANALYSING" },
+        "classificationDone": { "type": "string", "const": "ABOVE BASELINE" },
+        "trigger": { "type": "string", "const": "MEASURE" }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "fg", "mid", "bright", "signal"],
+      "properties": {
+        "bg": { "type": "string", "const": "#151c1c" },
+        "fg": { "type": "string", "const": "#edf0df" },
+        "mid": { "type": "string", "const": "#a7c950" },
+        "bright": { "type": "string", "const": "#d9e86c" },
+        "signal": { "type": "string", "const": "#e8a45a" }
+      }
+    },
+    "chrome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plateBorder", "fluorescentGlow"],
+      "properties": {
+        "plateBorder": { "type": "string", "const": "rgb(167 201 80 / 0.35)" },
+        "fluorescentGlow": {
+          "type": "string",
+          "const": "Bright green text-shadow on final value"
+        }
+      }
+    },
+    "instrument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brackets", "edgeTicks", "innerTicks", "scaleMarker"],
+      "properties": {
+        "brackets": { "type": "integer", "const": 4 },
+        "edgeTicks": { "type": "integer", "const": 4 },
+        "innerTicks": { "type": "integer", "const": 5 },
+        "scaleMarker": { "type": "string", "const": "×10³" }
+      }
+    },
+    "samples": {
+      "type": "array",
+      "const": [
+        4, 17, 48, 126, 314, 782, 1640, 2917, 4381, 5790, 6844, 7512, 8021, 8310,
+        8448, 8471
+      ]
+    },
+    "holdMs": {
+      "type": "array",
+      "const": [70, 68, 64, 58, 52, 46, 40, 36, 35, 35, 35, 38, 42, 45, 55, 80]
+    },
+    "settleMs": { "type": "integer", "const": 100 },
+    "settleTransform": { "type": "string", "const": "translateY(-2px → 0)" },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["1000", "5000", "8000"],
+      "properties": {
+        "1000": { "type": "string", "const": "×10³ marker locks beside display" },
+        "5000": {
+          "type": "string",
+          "const": "structural rule beneath number + inner ticks"
+        },
+        "8000": {
+          "type": "string",
+          "const": "measurement frame expands outward by 4px + glow"
+        }
+      }
+    },
+    "final": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "brackets", "classificationAfterNumber"],
+      "properties": {
+        "value": { "type": "integer", "const": 8471 },
+        "brackets": { "type": "integer", "const": 4 },
+        "classificationAfterNumber": { "type": "boolean", "const": true }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["measure", "reset", "busyGuard", "replayViaMeasure", "noRandom"],
+      "properties": {
+        "measure": { "type": "string", "const": "runPowerLevelReadout()" },
+        "reset": { "type": "string", "const": "runPowerLevelReset()" },
+        "busyGuard": { "type": "boolean", "const": true },
+        "replayViaMeasure": { "type": "boolean", "const": true },
+        "noRandom": { "type": "boolean", "const": true },
+        "noContinuousCounter": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["announceFinalOnly", "liveRegion", "announcement"],
+      "properties": {
+        "announceFinalOnly": { "type": "boolean", "const": true },
+        "liveRegion": { "type": "string", "const": "polite" },
+        "announcement": {
+          "type": "string",
+          "const": "Measurement 8,471. Above baseline."
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion=\"true\"]"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediately show 8,471, instrument chrome, thresholds, brackets, and ABOVE BASELINE"
+        }
+      }
+    }
   }
 }

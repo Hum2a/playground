@@ -1,28 +1,44 @@
 <div class="plr" data-power-level data-state="idle">
   <header class="plr__chrome">
+    <p class="plr__system">NODE // 12</p>
     <p class="plr__signal">SIGNAL // ACTIVE</p>
   </header>
 
-  <p class="plr__label">MEASUREMENT</p>
+  <div class="plr__plate">
+    <p class="plr__label">MEASUREMENT</p>
 
-  <div class="plr__frame" data-plr-frame>
-    <div class="plr__readout" data-plr-readout>
-      <span class="plr__bracket plr__bracket--l" aria-hidden="true"></span>
-      <span
-        class="plr__value"
-        data-plr-value
-        aria-hidden="true"
-      >----</span>
-      <span class="plr__bracket plr__bracket--r" aria-hidden="true"></span>
-      <span class="plr__scale" data-plr-scale aria-hidden="true">×10³</span>
+    <div class="plr__stage" data-plr-stage>
+      <span class="plr__tick plr__tick--t" aria-hidden="true"></span>
+      <span class="plr__tick plr__tick--r" aria-hidden="true"></span>
+      <span class="plr__tick plr__tick--b" aria-hidden="true"></span>
+      <span class="plr__tick plr__tick--l" aria-hidden="true"></span>
+
+      <span class="plr__bracket plr__bracket--tl" aria-hidden="true"></span>
+      <span class="plr__bracket plr__bracket--tr" aria-hidden="true"></span>
+      <span class="plr__bracket plr__bracket--bl" aria-hidden="true"></span>
+      <span class="plr__bracket plr__bracket--br" aria-hidden="true"></span>
+
+      <div class="plr__frame" data-plr-frame>
+        <div class="plr__readout" data-plr-readout>
+          <span
+            class="plr__value"
+            data-plr-value
+            aria-hidden="true"
+          >----</span>
+          <span class="plr__scale" data-plr-scale aria-hidden="true">×10³</span>
+        </div>
+        <div class="plr__rule" data-plr-rule aria-hidden="true"></div>
+        <div class="plr__ticks-inner" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
     </div>
-    <div class="plr__rule" data-plr-rule aria-hidden="true"></div>
-  </div>
 
-  <p class="plr__class" data-plr-class aria-hidden="true">
-    <span class="plr__class-word plr__class-word--busy" data-plr-class-busy>ANALYSING</span>
-    <span class="plr__class-word plr__class-word--done" data-plr-class-done>ABOVE BASELINE</span>
-  </p>
+    <p class="plr__class" data-plr-class aria-hidden="true">
+      <span class="plr__class-word plr__class-word--busy" data-plr-class-busy>ANALYSING</span>
+      <span class="plr__class-word plr__class-word--done" data-plr-class-done>ABOVE BASELINE</span>
+    </p>
+  </div>
 
   <p class="plr__announce" data-plr-announce aria-live="polite"></p>
 
