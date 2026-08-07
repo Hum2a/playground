@@ -1,71 +1,48 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/bracket-winner-advance.schema.json",
-  "title": "BracketWinnerAdvance",
-  "description": "Portable contract for bracket winner travel along connector.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
-  "properties": {
-    "name": { "type": "string", "const": "bracket-winner-advance" },
-    "intent": {
-      "type": "string",
-      "examples": ["Winner card travels along connector into next round."]
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
-    },
-    "phases": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["drawMs", "travelMs", "totalMs"],
-      "properties": {
-        "drawMs": { "type": "number", "const": 420 },
-        "travelMs": { "type": "number", "const": 520 },
-        "totalMs": { "type": "number", "const": 850 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["instantAdvance", "triggers"],
-      "properties": {
-        "instantAdvance": { "type": "boolean", "const": true },
-        "triggers": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    },
-    "classNames": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["root", "connector", "winner"],
-      "properties": {
-        "root": { "type": "string", "const": "bwa" },
-        "connector": { "type": "string", "const": "bwa__path" },
-        "winner": { "type": "string", "const": "bwa__winner" }
-      }
-    },
-    "behaviour": {
-      "type": "object",
-      "properties": {
-        "api": { "type": "string", "const": "bracketWinnerAdvance" }
-      }
-    }
-  }
+  "name": "bracket-winner-advance",
+  "intent": "Winner travels along connector lane into next-round slot; geometry frozen with measured fallback.",
+  "catalogue": { "mha": "MHA-064", "ref": "SPX-2038", "title": "Bracket Winner Advance" },
+  "copy": {
+    "roundOne": ["ALPHA", "BETA"],
+    "winner": "ALPHA",
+    "liveIdle": "Round one complete.",
+    "liveAdvance": "Winner advancing…",
+    "liveDone": "ALPHA advanced to round two."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "drawMs": 420,
+    "travelMs": 520,
+    "travelDelayMs": 200,
+    "dockMs": 130,
+    "totalMs": 850
+  },
+  "geometry": {
+    "laneWidthPx": 60,
+    "travelDxPx": 168,
+    "travelDyPx": 52,
+    "connectorPath": "M 60 72 C 60 96 60 104 60 128"
+  },
+  "api": {
+    "run": "bracketWinnerAdvance.run(root)",
+    "reset": "bracketWinnerAdvance.reset(root)"
+  },
+  "reducedMotion": {
+    "behaviour": "Connector drawn and ALPHA in round-two slot immediately"
+  },
+  "acceptance": [
+    "Idle: ALPHA vs BETA in round one; round-two slot empty",
+    "Connector draws over 420ms",
+    "ALPHA ghost travels +168px / +52px fallback path into next slot over 520ms (+200ms delay)",
+    "Dock: winner card fades; round-two slot shows ALPHA with accent border",
+    "Replay resets bracket",
+    "Reduced motion (prefers or data-force) shows ALPHA in round two immediately",
+    "No network; polite aria-live on status"
+  ],
+  "waveC": "Winner travel path into next slot; frozen lane geometry with measured fallback"
 }
