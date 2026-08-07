@@ -6,6 +6,15 @@
   --vcc-paper: #f4f7fa;
   --vcc-accent: #ff4d35;
   --vcc-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --vcc-rush-ms: 740;
+  --vcc-impact-tick-ms: 120;
+  --vcc-vs-tilt-deg: -12;
+  --vcc-approach-left: -48%;
+  --vcc-approach-right: -48%;
+  --vcc-clash-left: 8%;
+  --vcc-clash-right: 8%;
+  --vcc-clash-tilt-left: -3deg;
+  --vcc-clash-tilt-right: 3deg;
 
   box-sizing: border-box;
   display: flex;
@@ -67,18 +76,18 @@
 }
 
 .vcc__card--left {
-  left: -48%;
+  left: var(--vcc-approach-left);
 }
 
 .vcc__card--right {
-  right: -48%;
+  right: var(--vcc-approach-right);
 }
 
 .vcc__vs {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(calc(var(--vcc-vs-tilt-deg) * 1deg));
   font-size: 1.1rem;
   font-weight: 900;
   letter-spacing: 0.2em;
@@ -99,6 +108,15 @@
   opacity: 0;
   transform: scale(0.3);
   z-index: 2;
+}
+
+.vcc__tick {
+  position: absolute;
+  inset: 0;
+  border: 4px solid transparent;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 3;
 }
 
 .vcc__run {
@@ -126,11 +144,11 @@
 }
 
 .vcc[data-phase="rush"] .vcc__card--left {
-  animation: vcc-left-rush 740ms var(--vcc-ease) forwards;
+  animation: vcc-left-rush var(--vcc-rush-ms) var(--vcc-ease) forwards;
 }
 
 .vcc[data-phase="rush"] .vcc__card--right {
-  animation: vcc-right-rush 740ms var(--vcc-ease) forwards;
+  animation: vcc-right-rush var(--vcc-rush-ms) var(--vcc-ease) forwards;
 }
 
 .vcc[data-phase="rush"] .vcc__vs {
@@ -141,28 +159,37 @@
   animation: vcc-impact 320ms ease-out 560ms forwards;
 }
 
-.vcc[data-phase="clash"] .vcc__card--left {
-  left: 8%;
-  transform: rotate(-3deg);
+.vcc[data-phase="tick"] .vcc__tick,
+.vcc[data-phase="rush"] .vcc__tick {
+  animation: vcc-impact-tick var(--vcc-impact-tick-ms) ease-out 560ms forwards;
 }
 
-.vcc[data-phase="clash"] .vcc__card--right {
-  right: 8%;
-  transform: rotate(3deg);
+.vcc[data-phase="clash"] .vcc__card--left,
+.vcc[data-phase="tick"] .vcc__card--left {
+  left: var(--vcc-clash-left);
+  transform: rotate(var(--vcc-clash-tilt-left));
 }
 
-.vcc[data-phase="clash"] .vcc__vs {
+.vcc[data-phase="clash"] .vcc__card--right,
+.vcc[data-phase="tick"] .vcc__card--right {
+  right: var(--vcc-clash-right);
+  transform: rotate(var(--vcc-clash-tilt-right));
+}
+
+.vcc[data-phase="clash"] .vcc__vs,
+.vcc[data-phase="tick"] .vcc__vs {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.15);
+  transform: translate(-50%, -50%) rotate(calc(var(--vcc-vs-tilt-deg) * 1deg)) scale(1.15);
 }
 
-.vcc[data-phase="clash"] .vcc__impact {
+.vcc[data-phase="clash"] .vcc__impact,
+.vcc[data-phase="tick"] .vcc__impact {
   opacity: 0;
 }
 
 @keyframes vcc-left-rush {
   0% {
-    left: -48%;
+    left: var(--vcc-approach-left);
     transform: rotate(0deg);
   }
   75% {
@@ -170,14 +197,14 @@
     transform: rotate(-5deg);
   }
   100% {
-    left: 8%;
-    transform: rotate(-3deg);
+    left: var(--vcc-clash-left);
+    transform: rotate(var(--vcc-clash-tilt-left));
   }
 }
 
 @keyframes vcc-right-rush {
   0% {
-    right: -48%;
+    right: var(--vcc-approach-right);
     transform: rotate(0deg);
   }
   75% {
@@ -185,19 +212,19 @@
     transform: rotate(5deg);
   }
   100% {
-    right: 8%;
-    transform: rotate(3deg);
+    right: var(--vcc-clash-right);
+    transform: rotate(var(--vcc-clash-tilt-right));
   }
 }
 
 @keyframes vcc-vs-pop {
   from {
     opacity: 0.35;
-    transform: translate(-50%, -50%) scale(0.6);
+    transform: translate(-50%, -50%) rotate(calc(var(--vcc-vs-tilt-deg) * 1deg)) scale(0.6);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: translate(-50%, -50%) rotate(calc(var(--vcc-vs-tilt-deg) * 1deg)) scale(1.15);
   }
 }
 
@@ -212,11 +239,25 @@
   }
 }
 
+@keyframes vcc-impact-tick {
+  0% {
+    opacity: 1;
+    border-color: var(--vcc-accent);
+    box-shadow: inset 0 0 0 2px rgb(255 77 53 / 0.45);
+  }
+  100% {
+    opacity: 0;
+    border-color: transparent;
+    box-shadow: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vcc[data-phase="rush"] .vcc__card--left,
   .vcc[data-phase="rush"] .vcc__card--right,
   .vcc[data-phase="rush"] .vcc__vs,
-  .vcc[data-phase="rush"] .vcc__impact {
+  .vcc[data-phase="rush"] .vcc__impact,
+  .vcc[data-phase="rush"] .vcc__tick {
     animation: none;
   }
 }
@@ -224,52 +265,61 @@
 [data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--left,
 [data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--right,
 [data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__vs,
-[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__impact {
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__impact,
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__tick {
   animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .vcc[data-phase="rush"] .vcc__card--left,
-  .vcc[data-phase="clash"] .vcc__card--left {
-    left: 8%;
-    transform: rotate(-3deg);
+  .vcc[data-phase="clash"] .vcc__card--left,
+  .vcc[data-phase="tick"] .vcc__card--left {
+    left: var(--vcc-clash-left);
+    transform: rotate(var(--vcc-clash-tilt-left));
   }
 
   .vcc[data-phase="rush"] .vcc__card--right,
-  .vcc[data-phase="clash"] .vcc__card--right {
-    right: 8%;
-    transform: rotate(3deg);
+  .vcc[data-phase="clash"] .vcc__card--right,
+  .vcc[data-phase="tick"] .vcc__card--right {
+    right: var(--vcc-clash-right);
+    transform: rotate(var(--vcc-clash-tilt-right));
   }
 
   .vcc[data-phase="rush"] .vcc__vs,
-  .vcc[data-phase="clash"] .vcc__vs {
+  .vcc[data-phase="clash"] .vcc__vs,
+  .vcc[data-phase="tick"] .vcc__vs {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: translate(-50%, -50%) rotate(calc(var(--vcc-vs-tilt-deg) * 1deg)) scale(1.15);
   }
 
-  .vcc[data-phase="rush"] .vcc__impact {
+  .vcc[data-phase="rush"] .vcc__impact,
+  .vcc[data-phase="rush"] .vcc__tick {
     opacity: 0;
   }
 }
 
 [data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--left,
-[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__card--left {
-  left: 8%;
-  transform: rotate(-3deg);
+[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__card--left,
+[data-force-reduced-motion="true"] .vcc[data-phase="tick"] .vcc__card--left {
+  left: var(--vcc-clash-left);
+  transform: rotate(var(--vcc-clash-tilt-left));
 }
 
 [data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__card--right,
-[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__card--right {
-  right: 8%;
-  transform: rotate(3deg);
+[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__card--right,
+[data-force-reduced-motion="true"] .vcc[data-phase="tick"] .vcc__card--right {
+  right: var(--vcc-clash-right);
+  transform: rotate(var(--vcc-clash-tilt-right));
 }
 
 [data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__vs,
-[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__vs {
+[data-force-reduced-motion="true"] .vcc[data-phase="clash"] .vcc__vs,
+[data-force-reduced-motion="true"] .vcc[data-phase="tick"] .vcc__vs {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.15);
+  transform: translate(-50%, -50%) rotate(calc(var(--vcc-vs-tilt-deg) * 1deg)) scale(1.15);
 }
 
-[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__impact {
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__impact,
+[data-force-reduced-motion="true"] .vcc[data-phase="rush"] .vcc__tick {
   opacity: 0;
 }

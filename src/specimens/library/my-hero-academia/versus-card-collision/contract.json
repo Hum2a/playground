@@ -1,70 +1,54 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/versus-card-collision.schema.json",
-  "title": "VersusCardCollision",
-  "description": "Portable contract for versus card rush collision.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
-  "properties": {
-    "name": { "type": "string", "const": "versus-card-collision" },
-    "intent": {
-      "type": "string",
-      "examples": ["Two cards rush from edges and collide at centre."]
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
-    },
-    "phases": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["rushMs", "totalMs"],
-      "properties": {
-        "rushMs": { "type": "number", "const": 740 },
-        "totalMs": { "type": "number", "const": 900 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["instantClash", "triggers"],
-      "properties": {
-        "instantClash": { "type": "boolean", "const": true },
-        "triggers": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    },
-    "classNames": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["root", "card", "impact"],
-      "properties": {
-        "root": { "type": "string", "const": "vcc" },
-        "card": { "type": "string", "const": "vcc__card" },
-        "impact": { "type": "string", "const": "vcc__impact" }
-      }
-    },
-    "behaviour": {
-      "type": "object",
-      "properties": {
-        "api": { "type": "string", "const": "versusCardCollision" }
-      }
-    }
-  }
+  "name": "versus-card-collision",
+  "intent": "Cards rush from frozen offsets, impact tick flashes, tilted VS locks matchup.",
+  "catalogue": { "mha": "MHA-063", "ref": "SPX-2037", "title": "Versus Card Collision" },
+  "copy": {
+    "fighters": [
+      { "name": "ALPHA", "rank": "RANK A" },
+      { "name": "BETA", "rank": "RANK B" }
+    ],
+    "vs": "VS",
+    "liveIdle": "Competitors staged.",
+    "liveRush": "Cards rushing…",
+    "liveImpact": "Impact.",
+    "liveDone": "Matchup locked."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "rushMs": 740,
+    "impactTickMs": 120,
+    "totalMs": 900
+  },
+  "geometry": {
+    "vsTiltDeg": -12,
+    "approachLeft": "-48%",
+    "approachRight": "-48%",
+    "clashLeft": "8%",
+    "clashRight": "8%",
+    "clashTiltLeftDeg": -3,
+    "clashTiltRightDeg": 3
+  },
+  "api": {
+    "run": "versusCardCollision.run(root)",
+    "reset": "versusCardCollision.reset(root)"
+  },
+  "reducedMotion": {
+    "behaviour": "Cards at clash offsets with tilted VS immediately; no rush or tick"
+  },
+  "acceptance": [
+    "Idle: ALPHA and BETA off-panel at −48%",
+    "Cards rush to 8% clash offsets over 740ms with ±3° tilt",
+    "Impact star bursts at centre; arena border ticks accent 120ms",
+    "VS badge at −12° scales to 1.15× on lock",
+    "Done: matchup locked",
+    "Replay returns cards off-panel",
+    "Reduced motion (prefers or data-force) shows clash immediately",
+    "No network; polite aria-live on status"
+  ],
+  "waveC": "Frozen approach offsets; collision impact tick; VS tilt −12°"
 }

@@ -2,7 +2,15 @@
  * SPX-2037 Versus Card Collision
  */
 ;(function () {
+  /** Frozen approach offsets — matches contract.geometry */
+  const RUSH_MS = 740
+  const IMPACT_TICK_MS = 120
   const TOTAL_MS = 900
+  const VS_TILT_DEG = -12
+  const APPROACH_LEFT = '-48%'
+  const APPROACH_RIGHT = '-48%'
+  const CLASH_LEFT = '8%'
+  const CLASH_RIGHT = '8%'
 
   /** @type {WeakMap<HTMLElement, { timer: number | null, busy: boolean }>} */
   const stateMap = new WeakMap()
@@ -52,10 +60,14 @@
     setStatus(root, 'Cards rushing…')
 
     ctx.timer = window.setTimeout(() => {
-      root.dataset.phase = 'clash'
-      setStatus(root, 'Matchup locked.')
-      ctx.busy = false
-      ctx.timer = null
+      root.dataset.phase = 'tick'
+      setStatus(root, 'Impact.')
+      window.setTimeout(() => {
+        root.dataset.phase = 'clash'
+        setStatus(root, 'Matchup locked.')
+        ctx.busy = false
+        ctx.timer = null
+      }, IMPACT_TICK_MS)
     }, TOTAL_MS)
   }
 
@@ -82,4 +94,11 @@
   } else {
     initAll()
   }
+
+  void RUSH_MS
+  void VS_TILT_DEG
+  void APPROACH_LEFT
+  void APPROACH_RIGHT
+  void CLASH_LEFT
+  void CLASH_RIGHT
 })()
