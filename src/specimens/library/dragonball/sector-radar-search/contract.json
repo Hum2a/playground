@@ -1,19 +1,173 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/sector-radar-search.schema.json",
   "title": "SectorRadarSearch",
+  "description": "Portable contract for an instrument radar: sector grid, conic sweep wedge, blip locks, triangulation, target lock.",
   "type": "object",
-  "required": ["name", "field", "candidates", "sweep", "result", "reducedMotion"],
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "field",
+    "candidates",
+    "sweep",
+    "lock",
+    "result",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
   "properties": {
-    "name": { "const": "sector-radar-search" },
-    "field": { "const": { "widthPx": 320, "heightPx": 320, "radialDivisions": 8, "distanceBands": 4, "originPx": [8, 8] } },
-    "candidates": { "const": [
-      { "id": "A", "coordinate": ["32%", "26%"], "strength": 0.31 },
-      { "id": "B", "coordinate": ["72%", "34%"], "strength": 0.46 },
-      { "id": "C", "coordinate": ["28%", "71%"], "strength": 0.58 },
-      { "id": "D", "coordinate": ["66%", "67%"], "strength": 0.92 }
-    ] },
-    "sweep": { "const": { "rotationsMaximum": 2, "rotationMs": 1200, "timing": "linear", "firstOrder": ["B", "D", "C", "A"] } },
-    "result": { "const": { "signals": 4, "target": "NODE D", "distance": 2.4, "brackets": 4, "triangulationLines": 3 } },
-    "reducedMotion": { "const": { "immediateFinal": true } }
+    "name": { "type": "string", "const": "sector-radar-search" },
+    "intent": {
+      "type": "string",
+      "const": "Instrument radar search: circular sector grid, conic sweep wedge, four fixed blips compare across two passes, Node D locks with brackets and triangulation — not a list search."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "trigger", "reset", "searching", "locked", "finalStatus"],
+      "properties": {
+        "system": { "type": "string", "const": "REGION // 12" },
+        "trigger": { "type": "string", "const": "SEARCH" },
+        "reset": { "type": "string", "const": "RESET" },
+        "searching": { "type": "string", "const": "SEARCHING" },
+        "locked": { "type": "string", "const": "TARGET LOCKED" },
+        "finalStatus": { "type": "string", "const": "Target locked. Node D. Distance 2.4." }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bg", "bezel", "phosphor", "phosphorDim", "phosphorBright", "ink", "warn", "lock"],
+      "properties": {
+        "bg": { "type": "string", "const": "#0a1410" },
+        "bezel": { "type": "string", "const": "#1a2a22" },
+        "phosphor": { "type": "string", "const": "#3dff9a" },
+        "phosphorDim": { "type": "string", "const": "#2ab87a" },
+        "phosphorBright": { "type": "string", "const": "#7dffc4" },
+        "ink": { "type": "string", "const": "#c8e8d4" },
+        "warn": { "type": "string", "const": "#e8c84a" },
+        "lock": { "type": "string", "const": "#f2f6f0" }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "diameterPx",
+        "radialDivisions",
+        "distanceBands",
+        "originPx",
+        "sweepWedgeDeg"
+      ],
+      "properties": {
+        "diameterPx": { "type": "number", "const": 300 },
+        "radialDivisions": { "type": "integer", "const": 8 },
+        "distanceBands": { "type": "integer", "const": 4 },
+        "originPx": { "type": "number", "const": 8 },
+        "sweepWedgeDeg": { "type": "number", "const": 42 }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "const": [
+        { "id": "A", "coordinate": ["32%", "26%"], "strength": 0.31 },
+        { "id": "B", "coordinate": ["72%", "34%"], "strength": 0.46 },
+        { "id": "C", "coordinate": ["28%", "71%"], "strength": 0.58 },
+        { "id": "D", "coordinate": ["66%", "67%"], "strength": 0.92 }
+      ]
+    },
+    "sweep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rotationsMaximum",
+        "rotationMs",
+        "timing",
+        "firstPassOrder",
+        "discoveryMs"
+      ],
+      "properties": {
+        "rotationsMaximum": { "type": "integer", "const": 2 },
+        "rotationMs": { "type": "number", "const": 1200 },
+        "timing": { "type": "string", "const": "linear" },
+        "firstPassOrder": { "type": "array", "const": ["B", "D", "C", "A"] },
+        "discoveryMs": {
+          "type": "object",
+          "const": { "B": 100, "D": 300, "C": 550, "A": 850 }
+        }
+      }
+    },
+    "lock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rejectPass2Ms",
+        "bracketPx",
+        "triangulationLines",
+        "triangulationMs",
+        "triangulationLengthPx"
+      ],
+      "properties": {
+        "rejectPass2Ms": {
+          "type": "object",
+          "const": { "B": 1390, "C": 1640, "A": 1880 }
+        },
+        "bracketPx": { "type": "number", "const": 14 },
+        "triangulationLines": { "type": "integer", "const": 3 },
+        "triangulationMs": { "type": "number", "const": 180 },
+        "triangulationLengthPx": { "type": "number", "const": 230 }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signals", "target", "distance", "totalMs"],
+      "properties": {
+        "signals": { "type": "integer", "const": 4 },
+        "target": { "type": "string", "const": "NODE D" },
+        "distance": { "type": "number", "const": 2.4 },
+        "totalMs": { "type": "number", "const": 2040 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeFinal", "fieldHidden"],
+      "properties": {
+        "politeFinal": { "type": "boolean", "const": true },
+        "fieldHidden": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateLock", "triggers"],
+      "properties": {
+        "immediateLock": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "field", "sweep", "blip", "readout"],
+      "properties": {
+        "root": { "type": "string", "const": "srs" },
+        "field": { "type": "string", "const": "srs__field" },
+        "sweep": { "type": "string", "const": "srs__sweep" },
+        "blip": { "type": "string", "const": "srs__blip" },
+        "readout": { "type": "string", "const": "srs__readout" }
+      }
+    }
   }
 }

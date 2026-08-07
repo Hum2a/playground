@@ -9,15 +9,15 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Preserve all four coordinates, strengths, and the two 1200ms sweep maximum.',
-    'Keep four D brackets and three triangulation lines; no continuing radar loop.',
-    'Expose target Node D and distance 2.4 in text; reduced motion is immediate final state.',
+    'Preserve circular field, 8 sectors, 4 bands, 42° conic sweep wedge, and two 1200ms passes maximum.',
+    'Keep four fixed candidate coordinates/strengths; D (.92) is the only lock target.',
+    'Four brackets and exactly three triangulation lines; no continuing radar loop.',
   ],
   acceptance: [
-    'Exactly four fixed candidates and two sweep rotations maximum',
-    'First rotation reaches exactly four signals with deterministic strengths',
-    'D (.92) locks in the second rotation with four brackets and three lines',
-    'Final state is static with target and distance text',
+    'Instrument reads as circular radar with sweep wedge — not a list search',
+    'Exactly four fixed blips discovered in pass one (B/D/C/A order)',
+    'Pass two rejects B/C/A; D locks with four brackets and three triangulation lines',
+    'Final state is static: TARGET LOCKED, NODE D, distance 2.4',
   ],
   scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:420px;background:#e7e4dc;display:grid;place-items:center;padding:1rem;">{{specimen}}</div>`.trim(),
   files: { html, css, js },

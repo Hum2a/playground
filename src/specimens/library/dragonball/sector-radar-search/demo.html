@@ -1,18 +1,76 @@
-<div class="srs" data-sector-radar data-state="idle">
-  <div class="srs__header">
-    <span>REGION // 12</span><span data-srs-count>SIGNALS // 0</span>
+<div class="srs" data-sector-radar data-state="idle" data-phase="idle">
+  <header class="srs__header">
+    <span class="srs__system">REGION // 12</span>
+    <span class="srs__signals" data-srs-count>SIGNALS // 0</span>
+  </header>
+
+  <div class="srs__instrument">
+    <div class="srs__bezel">
+      <div class="srs__field" data-srs-field aria-hidden="true">
+        <span class="srs__ring srs__ring--1"></span>
+        <span class="srs__ring srs__ring--2"></span>
+        <span class="srs__ring srs__ring--3"></span>
+        <span class="srs__ring srs__ring--4"></span>
+
+        <span class="srs__axis srs__axis--n"></span>
+        <span class="srs__axis srs__axis--e"></span>
+        <span class="srs__axis srs__axis--s"></span>
+        <span class="srs__axis srs__axis--w"></span>
+        <span class="srs__axis srs__axis--ne"></span>
+        <span class="srs__axis srs__axis--se"></span>
+        <span class="srs__axis srs__axis--sw"></span>
+        <span class="srs__axis srs__axis--nw"></span>
+
+        <span class="srs__sweep" data-srs-sweep></span>
+        <span class="srs__sweep-trail" data-srs-trail></span>
+
+        <span class="srs__blip srs__blip--a" data-id="A" data-strength="0.31">
+          <b>A</b><i>0.31</i>
+        </span>
+        <span class="srs__blip srs__blip--b" data-id="B" data-strength="0.46">
+          <b>B</b><i>0.46</i>
+        </span>
+        <span class="srs__blip srs__blip--c" data-id="C" data-strength="0.58">
+          <b>C</b><i>0.58</i>
+        </span>
+        <span class="srs__blip srs__blip--d" data-id="D" data-strength="0.92">
+          <b>D</b><i>0.92</i>
+          <em class="srs__lock srs__lock--tl" aria-hidden="true"></em>
+          <em class="srs__lock srs__lock--tr" aria-hidden="true"></em>
+          <em class="srs__lock srs__lock--bl" aria-hidden="true"></em>
+          <em class="srs__lock srs__lock--br" aria-hidden="true"></em>
+        </span>
+
+        <span class="srs__tri srs__tri--1" data-srs-tri="1"></span>
+        <span class="srs__tri srs__tri--2" data-srs-tri="2"></span>
+        <span class="srs__tri srs__tri--3" data-srs-tri="3"></span>
+
+        <span class="srs__origin" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <dl class="srs__readout">
+      <div class="srs__row">
+        <dt>RESULT</dt>
+        <dd data-srs-result>SEARCHING</dd>
+      </div>
+      <div class="srs__row">
+        <dt>TARGET</dt>
+        <dd data-srs-target>—</dd>
+      </div>
+      <div class="srs__row">
+        <dt>DIST</dt>
+        <dd data-srs-dist>—</dd>
+      </div>
+    </dl>
   </div>
-  <div class="srs__field" data-srs-field aria-hidden="true">
-    <span class="srs__origin"></span>
-    <span class="srs__sweep" data-srs-sweep></span>
-    <span class="srs__candidate srs__candidate--a" data-id="A"><b>A</b><i>0.31</i></span>
-    <span class="srs__candidate srs__candidate--b" data-id="B"><b>B</b><i>0.46</i></span>
-    <span class="srs__candidate srs__candidate--c" data-id="C"><b>C</b><i>0.58</i></span>
-    <span class="srs__candidate srs__candidate--d" data-id="D"><b>D</b><i>0.92</i><em class="srs__bracket srs__bracket--tl"></em><em class="srs__bracket srs__bracket--tr"></em><em class="srs__bracket srs__bracket--bl"></em><em class="srs__bracket srs__bracket--br"></em></span>
-    <span class="srs__tri srs__tri--1"></span><span class="srs__tri srs__tri--2"></span><span class="srs__tri srs__tri--3"></span>
+
+  <div class="srs__controls">
+    <button type="button" class="srs__button" data-srs-search>SEARCH</button>
+    <button type="button" class="srs__button srs__button--ghost" data-srs-reset>RESET</button>
   </div>
-  <p class="srs__result" data-srs-result>SEARCHING</p>
-  <p class="srs__meta" data-srs-meta>Target pending. Distance pending.</p>
-  <button type="button" class="srs__button" data-srs-search>SEARCH</button>
-  <div class="srs__status" role="status" aria-live="polite" data-srs-status></div>
+
+  <p class="srs__status" role="status" aria-live="polite" data-srs-status>
+    Region 12 instrument ready.
+  </p>
 </div>

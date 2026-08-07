@@ -1,19 +1,94 @@
-# Sector Radar Search
+# Sector Radar Search (portable recreation spec)
 
-Original sector-by-sector software search, conceptually inspired by Dragon Radar
-search language without reproducing device graphics or colours.
+Instrument radar for `REGION // 12`: circular sector grid, conic sweep wedge,
+four fixed blips, two finite passes, Node D target lock with brackets and
+triangulation — not a list-style search UI.
 
-## Frozen contract
+## Visual intent
 
-- Field: `320 × 320px`, 8 radial divisions, 4 concentric bands
-- Origin: centre diamond `8 × 8px`
-- Candidates: A `32%,26%` / B `72%,34%` / C `28%,71%` / D `66%,67%`
-- Strengths: A `.31`, B `.46`, C `.58`, D `.92`
-- Sweep: exactly two linear `1200ms` rotations, never loops
-- First pass discovery order: B / D / C / A at 100/300/550/850ms
-- Target lock: D on pass two; 4 × 14px brackets; exactly 3 triangulation lines over 180ms
+Dark phosphor instrument on a bezel-mounted circular field. Eight radial sectors,
+four distance rings, centre origin diamond. A **42° conic sweep wedge** rotates
+twice; blips pop when discovered; pass two rejects B/C/A; D (.92) locks with
+four brackets and three triangulation lines.
 
-Final: `SIGNALS // 4`, `TARGET LOCKED`, `TARGET // NODE D`, `DISTANCE // 2.4`.
+## DOM structure
 
-Reduced motion immediately renders all candidates and D lock. API:
-`runSectorRadarSearch`, `resetSectorRadarSearch`, `replaySectorRadarSearch`.
+```html
+<div class="srs" data-sector-radar data-phase="idle">
+  <header>REGION // 12 · SIGNALS // N</header>
+  <div class="srs__bezel">
+    <div class="srs__field">
+      …rings + axes + sweep wedge + blips + tri lines…
+    </div>
+  </div>
+  <dl class="srs__readout">RESULT / TARGET / DIST</dl>
+  <button data-srs-search>SEARCH</button>
+</div>
+```
+
+## Copy
+
+| Role | Text |
+| ---- | ---- |
+| System | `REGION // 12` |
+| Searching | `SEARCHING` |
+| Locked | `TARGET LOCKED` |
+| Target | `NODE D` |
+| Distance | `2.4` |
+| Trigger | `SEARCH` / `RESET` |
+
+## Colours
+
+| Token | Hex |
+| ----- | --- |
+| Background | `#0a1410` |
+| Bezel | `#1a2a22` |
+| Phosphor | `#3dff9a` |
+| Phosphor dim | `#2ab87a` |
+| Phosphor bright | `#7dffc4` |
+| Ink | `#c8e8d4` |
+| Warn | `#e8c84a` |
+| Lock | `#f2f6f0` |
+
+## Frozen geometry
+
+| Element | Value |
+| ------- | ----- |
+| Field | `300px` diameter (circular) |
+| Radial divisions | 8 |
+| Distance bands | 4 |
+| Origin diamond | `8 × 8px` |
+| Sweep wedge | `42°` conic |
+| Lock brackets | `14 × 14px` × 4 |
+| Triangulation lines | 3 × `230px` over `180ms` |
+
+## Candidates (fixed)
+
+| ID | Position | Strength |
+| -- | -------- | -------- |
+| A | 32%, 26% | 0.31 |
+| B | 72%, 34% | 0.46 |
+| C | 28%, 71% | 0.58 |
+| D | 66%, 67% | 0.92 |
+
+## Frozen motion
+
+| Phase | Timing | Notes |
+| ----- | ------ | ----- |
+| Sweep 1 | 0–1200ms | Wedge rotates; blips B/D/C/A @ 100/300/550/850ms |
+| Sweep 2 | 1200–2400ms | Second rotation; reject B/C/A @ 1390/1640/1880ms |
+| Lock | ~2040ms | D brackets + 3 tri lines; TARGET LOCKED |
+
+Never loops after settle.
+
+## API
+
+- `runSectorRadarSearch()` / `resetSectorRadarSearch()` / `replaySectorRadarSearch()`
+
+## Reduced motion
+
+Immediate locked state: all blips visible, D locked, triangulation lines, final readout.
+
+## Accessibility
+
+Field `aria-hidden`. Polite live region announces final lock sentence only.
