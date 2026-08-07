@@ -19,7 +19,7 @@ export const chakraSignatureMatch: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ["match","waveform","signature"],
+  tags: ['match', 'waveform', 'signature'],
   deps: 'none',
   motion: {
     loops: false,
@@ -27,15 +27,12 @@ export const chakraSignatureMatch: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the signature appears MATCH immediately.',
   },
-    acceptance: [
+  acceptance: [
     'Five sample points [40,70,55,85,50] rise to meet the reference waveform',
-    'Alignment crosses threshold 0.92 then latches MATCH',
-    'Bars grow by height transform, not opacity fade',
-    'Replay clears fills before rerunning',
-    'Reduced motion shows MATCH immediately',
-  ],',
-    'Each bar advances on stepMs 170; MATCH only after bar 5 + settleMs 100',
+    'Each bar advances on stepMs 170; alignment crosses threshold 0.92 then latches MATCH',
+    'MATCH only after bar 5 + settleMs 100; bars grow by height transform, not opacity fade',
     'Replay zeros all bar heights before rerunning',
+    'Reduced motion shows MATCH immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
