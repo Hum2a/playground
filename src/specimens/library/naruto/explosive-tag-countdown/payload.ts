@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×380+).',
-    'Import demo.css verbatim; freeze arm (220ms) → count 3/2/1 (480ms each, pulse speeds up) → burst (240ms) → clear from contract.json.',
+    'Import demo.css verbatim; freeze armMs 220 / stepMs 480 / burstMs 240 / settleMs 200 from contract.json.',
     'Wire runExplosiveTagCountdown / resetExplosiveTagCountdown / replayExplosiveTagCountdown.',
     'Honour both reduced-motion triggers — resolve straight to CLEAR.',
   ],
-  acceptance: [
-    'Idle, armed, counting (3/2/1), burst, and cleared phases are visually distinct',
-    'Pulse speed visibly increases as the count drops from 3 to 1',
-    'Replay resets the tag before rerunning',
-    'Reduced motion shows CLEAR immediately with no countdown',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0C0806;">
   {{specimen}}
 </div>
 `.trim(),

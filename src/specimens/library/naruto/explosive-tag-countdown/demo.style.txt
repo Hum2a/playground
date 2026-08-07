@@ -6,6 +6,12 @@
   --ember: #e07030;
   --danger: #d94a38;
   --soot: #5a5048;
+  --etc-arm-ms: 220ms;
+  --etc-step-ms: 480ms;
+  --etc-burst-ms: 240ms;
+  --etc-settle-ms: 200ms;
+  --etc-digits: 3;
+  --etc-pulse-scale: 1;
   --off: #f4f1e8;
   box-sizing: border-box; /* wave2-polish */
   position: relative;

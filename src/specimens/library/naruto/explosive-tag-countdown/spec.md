@@ -1,17 +1,15 @@
 # Explosive Tag Countdown
 
-A warning tag arms, counts down 3-2-1 through rising-intensity pulses (Run auto-play), detonates, and settles to **CLEAR**.
+An attached warning tag arms, counts 3-2-1 through increasingly urgent pulses, detonates, and settles cleared.
 
 ## Behaviour
 
-- Idle: tag at rest, status `IDLE`.
-- Armed: border and ring flash to warning colour (~220ms).
-- Counting: digit 3 → 2 → 1, ring/digit pulse speeds up each step (480ms per step).
-- Burst: radial flash (~240ms).
-- Cleared: tag desaturates, status `CLEAR`, held until reset/replay.
-- Reduced motion: jump straight to CLEAR.
+- Idle → Arm (220ms).
+- Countdown: 3 → 2 → 1 at 480ms each with rising pulse scale.
+- Burst 240ms → CLEAR after settle 200ms.
+- Reduced motion: CLEAR immediately.
 
 ## Freeze
 
-- Arm: 220ms · step: 480ms × 3 · burst: 240ms · settle: 200ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`
+- Arm: 220ms · step: 480ms · burst: 240ms · settle: 200ms · pulse: 1.04/1.08/1.14
+- Palette: `#0C0806` / `#C4B8A8` / `#E07030` / `#D94A38` / `#5A5048` / `#F4F1E8`

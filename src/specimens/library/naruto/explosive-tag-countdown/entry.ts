@@ -5,7 +5,7 @@ export const explosiveTagCountdown: Specimen = {
   ref: 'SPX-2433',
   title: 'Explosive Tag Countdown',
   blurb:
-    'An attached warning tag arms, counts 3-2-1 through increasingly urgent pulses, detonates, and settles cleared — abstract graphic tag, no copyrighted iconography.',
+    'Tag arms 220ms, counts 3→2→1 at 480ms with escalating pulse (1.04→1.14), bursts 240ms, then CLEAR — abstract warning tag, no copyrighted iconography.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — paper-bomb-style countdown',
@@ -28,7 +28,7 @@ export const explosiveTagCountdown: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the tag resolves directly to CLEAR with no arm/count/burst choreography.',
   },
   acceptance: [
-    'Arm 220ms then digits 3→2→1 at 480ms each',
+    'Arm 220ms then digits 3→2→1 at 480ms each (pulse 1.04/1.08/1.14)',
     'Burst 240ms then CLEAR settle 200ms',
     'Reduced motion shows CLEAR immediately',
   ],
