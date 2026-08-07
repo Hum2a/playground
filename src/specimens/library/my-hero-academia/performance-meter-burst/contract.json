@@ -24,5 +24,12 @@
     ],
     "behaviour": "Instant final bar heights with OUTPUT burst clip visible"
   },
-  "waveC": "Staggered bar race, frozen heights/order, overshoot burst clip on OUTPUT"
+  "waveC": "Staggered bar race, frozen heights/order, overshoot burst clip on OUTPUT",
+  "acceptance": [
+    "Three bars race to frozen heights 62/48/94% with stagger 0/120/240ms",
+    "OUTPUT bar overshoots 72% ceiling with burst clip shard",
+    "Total sequence completes at 960ms",
+    "Reduced motion (prefers or data-force) shows final bar heights immediately",
+    "No network; meter clipped to host"
+  ]
 }
