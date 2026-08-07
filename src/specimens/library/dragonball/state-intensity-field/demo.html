@@ -1,17 +1,67 @@
 <div class="sif" data-state-intensity data-level="1">
-  <header><h2>ENGINE // 04</h2><p>LOAD <b data-sif-load>20%</b></p></header>
-  <div class="sif__stage" aria-hidden="true">
-    <div class="sif__field">
-      <span class="sif__contour sif__contour--1"></span><span class="sif__contour sif__contour--2"></span><span class="sif__contour sif__contour--3"></span><span class="sif__broken"></span>
-      <span class="sif__fragment" style="--x:-43px;--y:-22px"></span><span class="sif__fragment" style="--x:42px;--y:19px"></span>
-      <span class="sif__fragment" style="--x:-57px;--y:8px"></span><span class="sif__fragment" style="--x:53px;--y:-12px"></span>
-      <span class="sif__fragment" style="--x:-32px;--y:47px"></span><span class="sif__fragment" style="--x:31px;--y:-49px"></span>
-      <span class="sif__fragment" style="--x:-65px;--y:-39px"></span><span class="sif__fragment" style="--x:62px;--y:42px"></span>
-      <span class="sif__tick sif__tick--n"></span><span class="sif__tick sif__tick--e"></span><span class="sif__tick sif__tick--s"></span><span class="sif__tick sif__tick--w"></span>
-      <div class="sif__engine"></div>
+  <header class="sif__head">
+    <p class="sif__system">PRESSURE // FIELD</p>
+    <p class="sif__engine-id">ENGINE <b>04</b></p>
+  </header>
+
+  <div class="sif__layout">
+    <div class="sif__stage" aria-hidden="true">
+      <div class="sif__field">
+        <span class="sif__band sif__band--1"></span>
+        <span class="sif__band sif__band--2"></span>
+        <span class="sif__band sif__band--3"></span>
+        <span class="sif__band sif__band--4"></span>
+        <span class="sif__rupture"></span>
+
+        <span class="sif__shard" style="--x: -52px; --y: -28px"></span>
+        <span class="sif__shard" style="--x: 48px; --y: 22px"></span>
+        <span class="sif__shard" style="--x: -64px; --y: 12px"></span>
+        <span class="sif__shard" style="--x: 58px; --y: -18px"></span>
+        <span class="sif__shard" style="--x: -36px; --y: 54px"></span>
+        <span class="sif__shard" style="--x: 34px; --y: -56px"></span>
+        <span class="sif__shard" style="--x: -72px; --y: -44px"></span>
+        <span class="sif__shard" style="--x: 68px; --y: 48px"></span>
+
+        <span class="sif__tick sif__tick--n"></span>
+        <span class="sif__tick sif__tick--e"></span>
+        <span class="sif__tick sif__tick--s"></span>
+        <span class="sif__tick sif__tick--w"></span>
+
+        <div class="sif__engine">
+          <span class="sif__engine-core"></span>
+        </div>
+      </div>
     </div>
+
+    <ol class="sif__ladder" aria-label="Pressure magnitude ladder">
+      <li class="sif__rung" data-sif-rung="4">
+        <span class="sif__rung-bar"></span>
+        <span class="sif__rung-val">95</span>
+        <span class="sif__rung-label">CRITICAL</span>
+      </li>
+      <li class="sif__rung" data-sif-rung="3">
+        <span class="sif__rung-bar"></span>
+        <span class="sif__rung-val">70</span>
+        <span class="sif__rung-label">HIGH</span>
+      </li>
+      <li class="sif__rung" data-sif-rung="2">
+        <span class="sif__rung-bar"></span>
+        <span class="sif__rung-val">45</span>
+        <span class="sif__rung-label">ELEVATED</span>
+      </li>
+      <li class="sif__rung sif__rung--active" data-sif-rung="1">
+        <span class="sif__rung-bar"></span>
+        <span class="sif__rung-val">20</span>
+        <span class="sif__rung-label">NOMINAL</span>
+      </li>
+    </ol>
   </div>
-  <div class="sif__actions"><button type="button" data-sif-increase>INCREASE LOAD</button><button type="button" data-sif-reset hidden>RESET</button></div>
+
+  <div class="sif__actions">
+    <button type="button" class="sif__btn" data-sif-increase>INCREASE LOAD</button>
+    <button type="button" class="sif__btn sif__btn--ghost" data-sif-reset hidden>RESET</button>
+  </div>
+
   <p class="sif__status" role="status" aria-live="polite" data-sif-status>NOMINAL</p>
-  <p class="sif__sr" data-sif-sr>ENGINE 04 load 20 percent. Nominal.</p>
+  <p class="sif__sr" data-sif-sr>ENGINE 04 pressure band 20. Nominal.</p>
 </div>

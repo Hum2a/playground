@@ -1,13 +1,146 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"StateIntensityField",
-  "type":"object",
-  "required":["name","levels","threshold","timing","reducedMotion"],
-  "properties":{
-    "name":{"const":"state-intensity-field"},
-    "levels":{"const":[{"load":20,"contours":1,"fragments":0,"radiusPx":8},{"load":45,"contours":2,"fragments":2,"radiusPx":14},{"load":70,"contours":3,"fragments":4,"radiusPx":22},{"load":95,"contours":3,"brokenBoundary":1,"fragments":8,"radiusPx":34}]},
-    "threshold":{"const":{"criticalPercent":90,"warningTicks":4}},
-    "timing":{"const":{"transitionsMs":[300,300,360],"holdMs":220}},
-    "reducedMotion":{"const":"Immediate static Level 4, 95% CRITICAL."}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/state-intensity-field.schema.json",
+  "title": "StateIntensityField",
+  "description": "Portable contract for a topographic pressure contour field with discrete magnitude ladder bands around ENGINE 04.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "levels",
+    "ladder",
+    "threshold",
+    "timing",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "state-intensity-field" },
+    "intent": {
+      "type": "string",
+      "const": "ENGINE 04 load is read as discrete topographic pressure bands and a labelled magnitude ladder — not a percentage meter."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "engine", "trigger", "statuses"],
+      "properties": {
+        "system": { "type": "string", "const": "PRESSURE // FIELD" },
+        "engine": { "type": "string", "const": "04" },
+        "trigger": { "type": "string", "const": "INCREASE LOAD" },
+        "statuses": {
+          "type": "array",
+          "const": ["NOMINAL", "ELEVATED", "HIGH", "CRITICAL"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["void", "aura", "heat", "band"],
+      "properties": {
+        "void": { "type": "string", "const": "#140a12" },
+        "aura": { "type": "string", "const": "#e8a838" },
+        "heat": { "type": "string", "const": "#d45a28" },
+        "band": { "type": "string", "const": "#c88830" }
+      }
+    },
+    "levels": {
+      "type": "array",
+      "const": [
+        { "load": 20, "bands": 1, "shards": 0, "radiusPx": 8, "status": "NOMINAL" },
+        { "load": 45, "bands": 2, "shards": 2, "radiusPx": 14, "status": "ELEVATED" },
+        { "load": 70, "bands": 3, "shards": 4, "radiusPx": 22, "status": "HIGH" },
+        {
+          "load": 95,
+          "bands": 4,
+          "rupture": 1,
+          "shards": 8,
+          "radiusPx": 34,
+          "status": "CRITICAL"
+        }
+      ]
+    },
+    "ladder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rungs", "bandDiametersPx"],
+      "properties": {
+        "rungs": {
+          "type": "array",
+          "const": [
+            { "threshold": 20, "label": "NOMINAL" },
+            { "threshold": 45, "label": "ELEVATED" },
+            { "threshold": 70, "label": "HIGH" },
+            { "threshold": 95, "label": "CRITICAL" }
+          ]
+        },
+        "bandDiametersPx": {
+          "type": "array",
+          "const": [66, 82, 110, 138]
+        }
+      }
+    },
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["criticalPercent", "warningTicks"],
+      "properties": {
+        "criticalPercent": { "type": "number", "const": 90 },
+        "warningTicks": { "type": "number", "const": 4 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transitionsMs", "holdMs"],
+      "properties": {
+        "transitionsMs": {
+          "type": "array",
+          "const": [300, 300, 360]
+        },
+        "holdMs": { "type": "number", "const": 220 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ladderLabel", "politeStatus", "srDescription"],
+      "properties": {
+        "ladderLabel": { "type": "string", "const": "Pressure magnitude ladder" },
+        "politeStatus": { "type": "boolean", "const": true },
+        "srDescription": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateLevel4", "triggers"],
+      "properties": {
+        "immediateLevel4": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "band", "ladder", "engine"],
+      "properties": {
+        "root": { "type": "string", "const": "sif" },
+        "band": { "type": "string", "const": "sif__band" },
+        "ladder": { "type": "string", "const": "sif__ladder" },
+        "engine": { "type": "string", "const": "sif__engine" }
+      }
+    }
   }
 }

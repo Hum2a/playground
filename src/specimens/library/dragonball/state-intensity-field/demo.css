@@ -1,2 +1,353 @@
-/* Four frozen data-bearing intensity structures: radii 8/14/22/34px. */
-.sif{--ink:#17232a;--paper:#ece9dd;--field:#5a98a0;--critical:#bd7452;min-height:340px;padding:1rem;color:var(--paper);background:var(--ink);font-family:ui-monospace,monospace}.sif *{box-sizing:border-box}.sif header{display:flex;justify-content:space-between;max-width:300px;margin:auto}.sif h2,.sif header p{margin:0;font-size:.72rem;letter-spacing:.13em}.sif header b{color:var(--field)}.sif__stage{height:210px;display:grid;place-items:center}.sif__field{position:relative;width:170px;height:170px}.sif__engine{position:absolute;left:calc(50% - 25px);top:calc(50% - 25px);width:50px;height:50px;border:2px solid var(--paper);clip-path:polygon(20% 0,100% 0,100% 80%,80% 100%,0 100%,0 20%);background:#243940}.sif__engine::after{content:"04";position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:13px}.sif__contour,.sif__broken{position:absolute;left:50%;top:50%;border:1px solid var(--field);border-radius:50%;transform:translate(-50%,-50%);opacity:0;transition:width 180ms ease,height 180ms ease,opacity 100ms ease}.sif__contour--1{width:66px;height:66px}.sif__contour--2{width:78px;height:78px}.sif__contour--3{width:94px;height:94px}.sif__broken{width:118px;height:118px;border-style:dashed;clip-path:polygon(0 0,70% 0,100% 35%,100% 100%,30% 100%,0 65%)}.sif[data-level="1"] .sif__contour--1,.sif[data-level="2"] .sif__contour--1,.sif[data-level="3"] .sif__contour--1,.sif[data-level="4"] .sif__contour--1,.sif[data-level="2"] .sif__contour--2,.sif[data-level="3"] .sif__contour--2,.sif[data-level="4"] .sif__contour--2,.sif[data-level="3"] .sif__contour--3,.sif[data-level="4"] .sif__contour--3,.sif[data-level="4"] .sif__broken{opacity:1}.sif__fragment{position:absolute;left:calc(50% - 3px);top:calc(50% - 3px);width:6px;height:6px;background:var(--field);opacity:0;transform:translate(var(--x),var(--y)) rotate(45deg);transition:opacity 140ms ease}.sif__fragment:nth-of-type(2n){width:9px;height:2px;transform:translate(var(--x),var(--y)) rotate(-22deg)}.sif[data-level="2"] .sif__fragment:nth-of-type(-n+2),.sif[data-level="3"] .sif__fragment:nth-of-type(-n+4),.sif[data-level="4"] .sif__fragment{opacity:1}.sif__tick{position:absolute;left:50%;top:50%;width:2px;height:10px;background:var(--critical);opacity:0}.sif__tick--n{transform:translateY(-72px)}.sif__tick--s{transform:translateY(62px)}.sif__tick--e{transform:translateX(62px) rotate(90deg)}.sif__tick--w{transform:translateX(-72px) rotate(90deg)}.sif[data-level="4"] .sif__tick{opacity:1;transition:opacity 140ms ease}.sif__actions{text-align:center}.sif button{padding:.55rem .8rem;border:1px solid color-mix(in srgb,var(--paper) 45%,transparent);background:transparent;color:var(--paper);font:700 .65rem ui-monospace,monospace;letter-spacing:.12em}.sif button:focus-visible{outline:2px solid var(--field);outline-offset:2px}.sif__status{text-align:center;color:var(--field);letter-spacing:.15em;font-size:.7rem;font-weight:800}.sif[data-level="4"] .sif__status{color:var(--critical)}.sif__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@media(prefers-reduced-motion:reduce){.sif *{transition:none!important}}[data-force-reduced-motion="true"] .sif *{transition:none!important}
+/* state-intensity-field — topographic pressure contour silhouette */
+
+.sif {
+  --sif-void: #140a12;
+  --sif-plate: #1e1020;
+  --sif-paper: #f0e6d8;
+  --sif-aura: #e8a838;
+  --sif-heat: #d45a28;
+  --sif-band: #c88830;
+  --sif-dim: #6a4a68;
+  box-sizing: border-box;
+  min-height: 380px;
+  padding: 0.85rem 0.75rem 1.5rem;
+  color: var(--sif-paper);
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, #2a1428 0%, var(--sif-void) 72%);
+  font-family: 'Archivo', 'Segoe UI', system-ui, sans-serif;
+}
+
+.sif *,
+.sif *::before,
+.sif *::after {
+  box-sizing: border-box;
+}
+
+.sif__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 340px;
+  margin: 0 auto 0.6rem;
+}
+
+.sif__system,
+.sif__engine-id {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.sif__engine-id b {
+  color: var(--sif-aura);
+  font-size: 0.82rem;
+}
+
+.sif__layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.sif__stage {
+  flex: 0 0 210px;
+  height: 210px;
+  display: grid;
+  place-items: center;
+}
+
+.sif__field {
+  position: relative;
+  width: 190px;
+  height: 190px;
+}
+
+.sif__engine {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  z-index: 4;
+}
+
+.sif__engine-core {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--sif-paper);
+  background: linear-gradient(145deg, #3a2038 0%, #1a0e18 100%);
+  clip-path: polygon(22% 0, 100% 0, 100% 78%, 78% 100%, 0 100%, 0 22%);
+}
+
+.sif__engine-core::after {
+  content: '04';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.sif__band,
+.sif__rupture {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1.5px solid var(--sif-band);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 160ms ease, width 220ms ease, height 220ms ease;
+}
+
+.sif__band--1 {
+  width: 66px;
+  height: 66px;
+}
+
+.sif__band--2 {
+  width: 82px;
+  height: 82px;
+  border-color: color-mix(in srgb, var(--sif-aura) 70%, var(--sif-band));
+}
+
+.sif__band--3 {
+  width: 110px;
+  height: 110px;
+}
+
+.sif__band--4 {
+  width: 138px;
+  height: 138px;
+  border-color: var(--sif-aura);
+}
+
+.sif__rupture {
+  width: 168px;
+  height: 168px;
+  border-style: dashed;
+  border-color: var(--sif-heat);
+  clip-path: polygon(0 0, 72% 0, 100% 32%, 100% 100%, 28% 100%, 0 68%);
+}
+
+.sif[data-level='1'] .sif__band--1,
+.sif[data-level='2'] .sif__band--1,
+.sif[data-level='3'] .sif__band--1,
+.sif[data-level='4'] .sif__band--1,
+.sif[data-level='2'] .sif__band--2,
+.sif[data-level='3'] .sif__band--2,
+.sif[data-level='4'] .sif__band--2,
+.sif[data-level='3'] .sif__band--3,
+.sif[data-level='4'] .sif__band--3,
+.sif[data-level='4'] .sif__band--4,
+.sif[data-level='4'] .sif__rupture {
+  opacity: 1;
+}
+
+.sif__shard {
+  position: absolute;
+  left: calc(50% - 3px);
+  top: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  background: var(--sif-aura);
+  opacity: 0;
+  transform: translate(var(--x), var(--y)) rotate(45deg);
+  transition: opacity 140ms ease;
+}
+
+.sif__shard:nth-of-type(2n) {
+  width: 10px;
+  height: 3px;
+  transform: translate(var(--x), var(--y)) rotate(-24deg);
+}
+
+.sif[data-level='2'] .sif__shard:nth-of-type(-n + 2),
+.sif[data-level='3'] .sif__shard:nth-of-type(-n + 4),
+.sif[data-level='4'] .sif__shard {
+  opacity: 1;
+}
+
+.sif__tick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 12px;
+  background: var(--sif-heat);
+  opacity: 0;
+  z-index: 3;
+}
+
+.sif__tick--n {
+  transform: translate(-50%, -88px);
+}
+
+.sif__tick--s {
+  transform: translate(-50%, 76px);
+}
+
+.sif__tick--e {
+  transform: translate(76px, -50%) rotate(90deg);
+}
+
+.sif__tick--w {
+  transform: translate(-88px, -50%) rotate(90deg);
+}
+
+.sif[data-level='4'] .sif__tick {
+  opacity: 1;
+  transition: opacity 140ms ease;
+}
+
+.sif__ladder {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 0 0 96px;
+}
+
+.sif__rung {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 0.35rem;
+  align-items: center;
+  padding: 0.2rem 0.35rem;
+  border-left: 2px solid transparent;
+  opacity: 0.45;
+  transition: opacity 160ms ease, border-color 160ms ease;
+}
+
+.sif__rung-bar {
+  grid-row: 1 / span 2;
+  width: 8px;
+  height: 100%;
+  min-height: 28px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--sif-dim) 80%, transparent);
+}
+
+.sif__rung-val {
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--sif-paper) 70%, transparent);
+}
+
+.sif__rung-label {
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  color: color-mix(in srgb, var(--sif-paper) 55%, transparent);
+}
+
+.sif__rung--active,
+.sif[data-level='2'] [data-sif-rung='2'],
+.sif[data-level='3'] [data-sif-rung='3'],
+.sif[data-level='4'] [data-sif-rung='4'] {
+  opacity: 1;
+  border-left-color: var(--sif-aura);
+}
+
+.sif__rung--active .sif__rung-bar,
+.sif[data-level='2'] [data-sif-rung='2'] .sif__rung-bar,
+.sif[data-level='3'] [data-sif-rung='3'] .sif__rung-bar,
+.sif[data-level='4'] [data-sif-rung='4'] .sif__rung-bar {
+  background: linear-gradient(180deg, var(--sif-aura), color-mix(in srgb, var(--sif-heat) 40%, var(--sif-aura)));
+}
+
+.sif[data-level='4'] [data-sif-rung='4'] .sif__rung-val,
+.sif[data-level='4'] [data-sif-rung='4'] .sif__rung-label {
+  color: var(--sif-heat);
+}
+
+.sif__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.sif__btn {
+  appearance: none;
+  border: 2px solid color-mix(in srgb, var(--sif-aura) 55%, transparent);
+  background: color-mix(in srgb, var(--sif-aura) 10%, var(--sif-plate));
+  color: var(--sif-paper);
+  font: inherit;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.46rem 0.75rem;
+  cursor: pointer;
+}
+
+.sif__btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--sif-aura) 28%, var(--sif-plate));
+}
+
+.sif__btn:focus-visible {
+  outline: 2px solid var(--sif-aura);
+  outline-offset: 2px;
+}
+
+.sif__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sif__btn--ghost {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--sif-paper) 30%, transparent);
+  color: color-mix(in srgb, var(--sif-paper) 65%, transparent);
+}
+
+.sif__status {
+  margin: 0.55rem 0 0;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--sif-aura);
+}
+
+.sif[data-level='4'] .sif__status {
+  color: var(--sif-heat);
+}
+
+.sif__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sif__band,
+  .sif__rupture,
+  .sif__shard,
+  .sif__tick,
+  .sif__rung {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .sif__band,
+[data-force-reduced-motion='true'] .sif__rupture,
+[data-force-reduced-motion='true'] .sif__shard,
+[data-force-reduced-motion='true'] .sif__tick,
+[data-force-reduced-motion='true'] .sif__rung {
+  transition: none !important;
+}
