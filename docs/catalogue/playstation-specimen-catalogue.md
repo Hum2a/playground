@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), IOS (`SPX-1300`–`SPX-1557`), AND (`SPX-1558`–`SPX-1974`), MHA (`SPX-1975`–`SPX-2343`), NR (`SPX-2344`–`SPX-2918`), P4 (`SPX-2919`–`SPX-3109`), NF (`SPX-3110`–`SPX-3306`), or open PS rows; prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **50 / 216** complete.
+- Progress: **47 / 216** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 50 |
-| Open | 166 |
+| Done | 47 |
+| Open | 169 |
 
 ## Visual grammar
 
@@ -28,6 +28,22 @@
 | Focus / cards | directional travel, halo settle, media expand |
 | Capture / cloud / recovery | screenshot flash, sync, crash recovery |
 
+### Design tokens & motion (portable)
+
+Shared cool-blue house style for abstract PS system language — not official product tokens:
+
+| Token | Hex | Role |
+| --- | --- | --- |
+| Primary | `#2E90FF` | Interactive / focus / strips |
+| Soft | `#7EB6FF` | Secondary glow / soft edges |
+| Ink | `#0B0F14` | Stage void |
+| Paper | `#F4F6F8` | Labels / light type |
+| Panel | `#121820` | Elevated surfaces |
+
+Motion curves: calm ease-out for home/focus (`cubic-bezier(0.2, 1, 0.3, 1)`), firmer ease-in for launch/commit. Prefer soft focus bloom and geometric tokens over hard Material ripples. Each specimen must keep a **distinct silhouette** — do not clone `ps__stage` / meter / shape kits across siblings.
+
+Reduced motion: both `prefers-reduced-motion` and `data-force-reduced-motion` must stop **primary** motion, including `transition` on tiles/rails — not only `[data-animate]`.
+
 ## Shipped (mapped to live specimens)
 
 | PS | SPX | Specimen id | Title |
@@ -40,7 +56,6 @@
 | PS-019 | `SPX-3325` | `system-boot-glow` | System Boot Glow |
 | PS-026 | `SPX-3332` | `game-launch-zoom` | Game Launch Zoom |
 | PS-027 | `SPX-3333` | `resume-activity-handoff` | Resume Activity Handoff |
-| PS-066 | `SPX-3372` | `directional-focus-travel` | Directional Focus Travel |
 | PS-067 | `SPX-3373` | `focus-halo-settle` | Focus Halo Settle |
 | PS-033 | `SPX-3339` | `activity-progress-fill` | Activity Progress Fill |
 | PS-034 | `SPX-3340` | `activity-complete-burst` | Activity Complete Burst |
@@ -52,10 +67,8 @@
 | PS-077 | `SPX-3383` | `card-collapse-return` | Card Collapse Return |
 | PS-041 | `SPX-3347` | `trophy-unlock-pop` | Trophy Unlock Pop |
 | PS-042 | `SPX-3348` | `rare-trophy-reveal` | Rare Trophy Reveal |
-| PS-049 | `SPX-3355` | `download-progress-ring` | Download Progress Ring |
 | PS-050 | `SPX-3356` | `download-queue-advance` | Download Queue Advance |
 | PS-051 | `SPX-3357` | `install-phase-transition` | Install Phase Transition |
-| PS-053 | `SPX-3359` | `download-complete-morph` | Download Complete Morph |
 | PS-058 | `SPX-3364` | `adaptive-trigger-meter` | Adaptive Trigger Meter |
 | PS-059 | `SPX-3365` | `haptic-pulse-visualizer` | Haptic Pulse Visualizer |
 | PS-063 | `SPX-3369` | `trigger-breakpoint-confirm` | Trigger Breakpoint Confirm |
@@ -95,7 +108,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-019** · `SPX-3325` · **System Boot Glow** — console-boot-system-identity
 - [x] **PS-026** · `SPX-3332` · **Game Launch Zoom** — game-launch-resume
 - [x] **PS-027** · `SPX-3333` · **Resume Activity Handoff** — game-launch-resume
-- [x] **PS-066** · `SPX-3372` · **Directional Focus Travel** — remote-tv-focus-navigation
+- [ ] **PS-066** · `SPX-3372` · **Directional Focus Travel** — remote-tv-focus-navigation
 - [x] **PS-067** · `SPX-3373` · **Focus Halo Settle** — remote-tv-focus-navigation
 - [x] **PS-033** · `SPX-3339` · **Activity Progress Fill** — activity-cards-progress
 - [x] **PS-034** · `SPX-3340` · **Activity Complete Burst** — activity-cards-progress
@@ -107,10 +120,10 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 - [x] **PS-077** · `SPX-3383` · **Card Collapse Return** — cards-media-tiles
 - [x] **PS-041** · `SPX-3347` · **Trophy Unlock Pop** — trophies-achievements
 - [x] **PS-042** · `SPX-3348` · **Rare Trophy Reveal** — trophies-achievements
-- [x] **PS-049** · `SPX-3355` · **Download Progress Ring** — downloads-installs-updates
+- [ ] **PS-049** · `SPX-3355` · **Download Progress Ring** — downloads-installs-updates
 - [x] **PS-050** · `SPX-3356` · **Download Queue Advance** — downloads-installs-updates
 - [x] **PS-051** · `SPX-3357` · **Install Phase Transition** — downloads-installs-updates
-- [x] **PS-053** · `SPX-3359` · **Download Complete Morph** — downloads-installs-updates
+- [ ] **PS-053** · `SPX-3359` · **Download Complete Morph** — downloads-installs-updates
 - [x] **PS-058** · `SPX-3364` · **Adaptive Trigger Meter** — dualsense-controller-feedback-visuals
 - [x] **PS-059** · `SPX-3365` · **Haptic Pulse Visualizer** — dualsense-controller-feedback-visuals
 - [x] **PS-063** · `SPX-3369` · **Trigger Breakpoint Confirm** — dualsense-controller-feedback-visuals
@@ -207,11 +220,11 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 ## Downloads / Installs / Updates
 
-- [x] **PS-049** · `SPX-3355` · **Download Progress Ring** — A determinate circular progress indicator fills around a content icon.
+- [ ] **PS-049** · `SPX-3355` · **Download Progress Ring** — A determinate circular progress indicator fills around a content icon.
 - [x] **PS-050** · `SPX-3356` · **Download Queue Advance** — Completion hands active queue status to the next item.
 - [x] **PS-051** · `SPX-3357` · **Install Phase Transition** — Download progress converts into an installation phase without resetting context.
 - [ ] **PS-052** · `SPX-3358` · **Copying/Processing Progress** — A secondary processing state uses a distinct progress treatment.
-- [x] **PS-053** · `SPX-3359` · **Download Complete Morph** — Progress control resolves into a ready/play state.
+- [ ] **PS-053** · `SPX-3359` · **Download Complete Morph** — Progress control resolves into a ready/play state.
 - [ ] **PS-054** · `SPX-3360` · **Pause Download Toggle** — Active progress freezes into a paused state and resumes cleanly.
 - [ ] **PS-055** · `SPX-3361` · **Download Error Recovery** — Failed progress becomes retry state then returns to determinate progress.
 - [ ] **PS-056** · `SPX-3362` · **Update Available Badge** — A compact update marker appears without shifting card layout.
@@ -230,7 +243,7 @@ Curated implementation priority (Recommended Build Waves A–E). Same checkbox a
 
 ## Remote / TV Focus Navigation
 
-- [x] **PS-066** · `SPX-3372` · **Directional Focus Travel** — Focus moves between cards with motion aligned to the user's directional input.
+- [ ] **PS-066** · `SPX-3372` · **Directional Focus Travel** — Focus moves between cards with motion aligned to the user's directional input.
 - [x] **PS-067** · `SPX-3373` · **Focus Halo Settle** — A soft bright focus boundary catches up to the newly selected object.
 - [ ] **PS-068** · `SPX-3374` · **Row-to-Row Focus Jump** — Vertical navigation preserves approximate horizontal position.
 - [ ] **PS-069** · `SPX-3375` · **Edge Resistance** — Input against a grid boundary produces restrained spatial resistance.
