@@ -24,7 +24,7 @@ export const networkScan360: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, jump to the final static outcome with no intermediate motion.',
   },
   acceptance: [
     'Sweep hits nodes at 0/72/144/216/288° with 150ms steps',
