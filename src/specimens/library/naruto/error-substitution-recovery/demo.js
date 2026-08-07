@@ -1,12 +1,14 @@
 /**
- * Error Substitution Recovery — fault triggers rapid decoy substitution then recovery.
+ * Error Substitution Recovery — fault → decoy residue → recovery latch.
  * iframe-safe; no storage / parent / network.
  */
 
 const FAULT_MS = 170
 const SUB_MS = 100
+const LATCH_MS = 140
+const RESIDUE_MS = 180
 const SETTLE_MS = 90
-const TOTAL_MS = FAULT_MS + SUB_MS + SETTLE_MS
+const TOTAL_MS = FAULT_MS + SUB_MS + LATCH_MS + RESIDUE_MS + SETTLE_MS
 
 let busy = false
 let recovered = false
@@ -66,23 +68,28 @@ function setBadges(primary, fallback) {
 function showRecovered() {
   recovered = true
   setBadges('FAULTED', 'ACTIVE')
-  rootEl()?.setAttribute('data-phase', 'recovered')
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'recovered')
+  root?.setAttribute('data-residue', 'clear')
+  later(RESIDUE_MS, () => root?.removeAttribute('data-residue'))
   setStatus('RECOVERED')
-  setHint('Fallback service active.')
-  setLive('Fault recovered. Fallback service active.')
+  setHint('Fallback latched ACTIVE.')
+  setLive('Fault recovered. Fallback Service B latched ACTIVE; primary FAULTED.')
 }
 
 function resetVisual() {
   recovered = false
   setBadges('NOMINAL', 'STANDBY')
-  rootEl()?.setAttribute('data-phase', 'idle')
+  const root = rootEl()
+  root?.setAttribute('data-phase', 'idle')
+  root?.removeAttribute('data-residue')
   setStatus('NOMINAL')
   setHint('Press Run to simulate a fault.')
   setLive('Service nominal. No fault detected.')
 }
 
 /**
- * Auto-run full fault → substitute → recover choreography.
+ * Auto-run fault → substitute with residue → latch recovered.
  * @returns {Promise<void>}
  */
 export function runErrorSubstitutionRecovery() {
@@ -111,13 +118,16 @@ export function runErrorSubstitutionRecovery() {
   return new Promise((resolve) => {
     later(FAULT_MS, () => {
       root.setAttribute('data-phase', 'substituting')
+      root.setAttribute('data-residue', 'true')
       setStatus('SUBSTITUTING')
-      setHint('Swapping to fallback.')
+      setHint('Decoy residue present; swapping.')
       setBadges('FAULTED', 'ACQUIRING')
-      setLive('Substituting fallback service.')
+      setLive('Substituting fallback. Decoy residue visible.')
+    })
+    later(FAULT_MS + SUB_MS + LATCH_MS, () => {
+      showRecovered()
     })
     later(TOTAL_MS, () => {
-      showRecovered()
       busy = false
       setButtons(true)
       resolve()

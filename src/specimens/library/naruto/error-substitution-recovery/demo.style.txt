@@ -7,6 +7,10 @@
   --danger: #a85868;
   --mute: #6e6a78;
   --off: #f0eef4;
+  --esr-fault-ms: 170ms;
+  --esr-sub-ms: 100ms;
+  --esr-latch-ms: 140ms;
+  --esr-residue-ms: 180ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -56,8 +60,8 @@
   align-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(122 107 154 / 0.45);
+  background: rgb(240 238 244 / 0.04);
 }
 
 .esr__slot {
@@ -77,17 +81,17 @@
   padding: 0.6rem 0.75rem;
   border: 1.5px solid var(--mute);
   background: rgb(16 19 24 / 0.9);
-  opacity: 0;
-  transform: scale(0.97);
+  transform: scale(1) translateX(0);
+  clip-path: inset(0 0 0 0);
   transition:
-    opacity 100ms ease-out,
-    transform 100ms ease-out,
+    transform var(--esr-sub-ms) ease-out,
+    clip-path var(--esr-sub-ms) steps(1, end),
     border-color 100ms ease-out;
 }
 
-.esr__card--primary {
-  opacity: 1;
-  transform: scale(1);
+.esr__card--fallback {
+  clip-path: inset(0 0 0 100%);
+  transform: scale(0.96) translateX(12px);
 }
 
 .esr__card-kicker {
@@ -117,7 +121,7 @@
 
 .esr[data-phase='error'] .esr__card--primary {
   border-color: var(--danger);
-  animation: esr-shake 160ms ease-in-out;
+  animation: esr-shake var(--esr-fault-ms) ease-in-out;
 }
 
 .esr[data-phase='error'] .esr__card-badge {
@@ -130,44 +134,82 @@
     transform: translateX(0) scale(1);
   }
   25% {
-    transform: translateX(-3px) scale(1);
+    transform: translateX(-4px) scale(1);
   }
   75% {
-    transform: translateX(3px) scale(1);
+    transform: translateX(4px) scale(1);
   }
 }
 
 .esr[data-phase='substituting'] .esr__card--primary {
-  opacity: 0;
-  transform: scale(0.94);
+  clip-path: inset(0 100% 0 0);
+  transform: scale(0.94) translateX(-14px);
   border-color: var(--danger);
 }
 
 .esr[data-phase='substituting'] .esr__card--fallback {
-  opacity: 1;
-  transform: scale(1);
-  animation: esr-flicker 90ms steps(2, end);
-}
-
-@keyframes esr-flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
+  clip-path: inset(0 0 0 0);
+  transform: scale(1) translateX(0);
+  border-color: var(--ash);
 }
 
 .esr[data-phase='recovered'] .esr__card--primary {
-  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform: scale(0.9) translateX(-18px);
 }
 
 .esr[data-phase='recovered'] .esr__card--fallback {
-  opacity: 1;
-  transform: scale(1);
+  clip-path: inset(0 0 0 0);
+  transform: scale(1) translateX(0);
   border-color: var(--ash);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chakra) 45%, transparent);
+  box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.45);
+  animation: esr-latch var(--esr-latch-ms) ease-out;
+}
+
+@keyframes esr-latch {
+  0% {
+    transform: scale(1.06) translateX(0);
+  }
+  100% {
+    transform: scale(1) translateX(0);
+  }
+}
+
+.esr__residue {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.esr__residue i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--danger);
+  transform: scale(0);
+  transition: transform var(--esr-residue-ms) cubic-bezier(0.2, 1.2, 0.3, 1);
+}
+
+.esr__residue i:nth-child(1) {
+  top: 20%;
+  left: 18%;
+}
+.esr__residue i:nth-child(2) {
+  top: 48%;
+  left: 46%;
+}
+.esr__residue i:nth-child(3) {
+  bottom: 22%;
+  right: 20%;
+}
+
+.esr[data-residue='true'] .esr__residue i {
+  transform: scale(1);
+}
+
+.esr[data-residue='clear'] .esr__residue i {
+  transform: scale(0) translateY(6px);
 }
 
 .esr__status {
@@ -218,7 +260,7 @@
 
 .esr__btn--primary {
   border-color: var(--ash);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(122 107 154 / 0.18);
 }
 
 .esr__btn:hover:not(:disabled) {
@@ -238,7 +280,8 @@
 @media (prefers-reduced-motion: reduce) {
   .esr__card,
   .esr[data-phase='error'] .esr__card--primary,
-  .esr[data-phase='substituting'] .esr__card--fallback {
+  .esr[data-phase='recovered'] .esr__card--fallback,
+  .esr__residue i {
     transition: none !important;
     animation: none !important;
   }
@@ -246,7 +289,8 @@
 
 html[data-force-reduced-motion='true'] .esr__card,
 html[data-force-reduced-motion='true'] .esr[data-phase='error'] .esr__card--primary,
-html[data-force-reduced-motion='true'] .esr[data-phase='substituting'] .esr__card--fallback {
+html[data-force-reduced-motion='true'] .esr[data-phase='recovered'] .esr__card--fallback,
+html[data-force-reduced-motion='true'] .esr__residue i {
   transition: none !important;
   animation: none !important;
 }

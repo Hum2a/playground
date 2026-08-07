@@ -4,7 +4,8 @@ export const errorSubstitutionRecovery: Specimen = {
   id: 'error-substitution-recovery',
   ref: 'SPX-2387',
   title: 'Error Substitution Recovery',
-  blurb: 'Fault on Service A swaps in a decoy fallback (Service B) after 170ms, then latches recovered � failover, not celebration.',
+  blurb:
+    'Fault on Service A leaves decoy residue while fallback Service B acquires, then latches RECOVERED — failover, not celebration.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study',
@@ -24,11 +25,11 @@ export const errorSubstitutionRecovery: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, jump to the final static outcome with no intermediate motion.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved RECOVERED state appears immediately.',
   },
   acceptance: [
-    'Primary faults at 170ms then decoy fallback acquires at +100ms',
-    'Recovered state latches Service B ACTIVE with primary FAULTED',
+    'Primary faults at 170ms; decoy residue (3) visible while fallback acquires at +100ms',
+    'Recovery latch 140ms leaves Service B ACTIVE with primary FAULTED',
     'Reduced motion shows recovered fallback immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
