@@ -2,7 +2,17 @@
  * SPX-2017 Analysis Scribble Reveal
  */
 ;(function () {
-  const TOTAL_MS = 780
+  /** Frozen hand-path stroke ladder — matches contract.strokeLadder */
+  const STROKE_CIRCLE_MS = 320
+  const STROKE_ARROW_MS = 280
+  const STROKE_UNDERLINE_MS = 240
+  const STROKE_ARROW_DELAY_MS = 180
+  const STROKE_UNDERLINE_DELAY_MS = 360
+  const NOTE_DELAY_MS = 520
+  const OUTPUT_SETTLE_MS = 200
+  const OUTPUT_DELAY_MS = 720
+  const TOTAL_MS = OUTPUT_DELAY_MS + OUTPUT_SETTLE_MS
+
   const IDLE = 'idle'
   const SCRIBBLE = 'scribble'
   const DONE = 'done'
@@ -85,4 +95,11 @@
   } else {
     initAll()
   }
+
+  void STROKE_CIRCLE_MS
+  void STROKE_ARROW_MS
+  void STROKE_UNDERLINE_MS
+  void STROKE_ARROW_DELAY_MS
+  void STROKE_UNDERLINE_DELAY_MS
+  void NOTE_DELAY_MS
 })()

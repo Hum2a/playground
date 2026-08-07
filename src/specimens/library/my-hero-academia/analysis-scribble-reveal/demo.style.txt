@@ -6,6 +6,14 @@
   --asr-paper: #f4f7fa;
   --asr-accent: #ff4d35;
   --asr-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --asr-stroke-circle-ms: 320;
+  --asr-stroke-arrow-ms: 280;
+  --asr-stroke-underline-ms: 240;
+  --asr-stroke-arrow-delay-ms: 180;
+  --asr-stroke-underline-delay-ms: 360;
+  --asr-note-delay-ms: 520;
+  --asr-output-settle-ms: 200;
+  --asr-output-delay-ms: 720;
 
   box-sizing: border-box;
   position: relative;
@@ -48,6 +56,8 @@
 
 .asr__stats {
   margin: 0;
+  position: relative;
+  z-index: 0;
 }
 
 .asr__row {
@@ -69,12 +79,25 @@
   margin: 0;
 }
 
+.asr__row--output {
+  margin-top: 0.15rem;
+  border-bottom: none;
+  padding-top: 0.5rem;
+  border-top: 2px dashed rgb(16 24 32 / 0.18);
+}
+
+.asr__row--output dd {
+  opacity: 0.45;
+  transition: none;
+}
+
 .asr__scribble {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 
 .asr__mark {
@@ -122,26 +145,27 @@
 }
 
 .asr[data-phase="scribble"] .asr__mark--circle {
-  animation: asr-draw 320ms var(--asr-ease) forwards;
+  animation: asr-draw var(--asr-stroke-circle-ms) var(--asr-ease) forwards;
   opacity: 1;
 }
 
 .asr[data-phase="scribble"] .asr__mark--arrow {
-  animation: asr-draw 280ms var(--asr-ease) 180ms forwards;
+  animation: asr-draw var(--asr-stroke-arrow-ms) var(--asr-ease) var(--asr-stroke-arrow-delay-ms) forwards;
   opacity: 1;
 }
 
 .asr[data-phase="scribble"] .asr__mark--underline {
-  animation: asr-draw 240ms var(--asr-ease) 360ms forwards;
+  animation: asr-draw var(--asr-stroke-underline-ms) var(--asr-ease) var(--asr-stroke-underline-delay-ms) forwards;
   opacity: 1;
 }
 
 .asr[data-phase="scribble"] .asr__note {
-  animation: asr-pop 200ms ease-out 520ms forwards;
+  animation: asr-pop 200ms ease-out var(--asr-note-delay-ms) forwards;
 }
 
-.asr[data-phase="scribble"] [data-asr-output] {
-  color: var(--asr-accent);
+.asr[data-phase="scribble"] .asr__row--output dd,
+.asr[data-phase="done"] .asr__row--output dd {
+  animation: asr-output-settle var(--asr-output-settle-ms) ease-out var(--asr-output-delay-ms) forwards;
 }
 
 .asr[data-phase="done"] .asr__mark {
@@ -155,6 +179,7 @@
 
 .asr[data-phase="done"] [data-asr-output] {
   color: var(--asr-accent);
+  opacity: 1;
 }
 
 @keyframes asr-draw {
@@ -174,15 +199,29 @@
   }
 }
 
+@keyframes asr-output-settle {
+  0% {
+    opacity: 0.45;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    color: var(--asr-accent);
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .asr[data-phase="scribble"] .asr__mark,
-  .asr[data-phase="scribble"] .asr__note {
+  .asr[data-phase="scribble"] .asr__note,
+  .asr[data-phase="scribble"] .asr__row--output dd {
     animation: none;
   }
 }
 
 [data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__mark,
-[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__note {
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__note,
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__row--output dd {
   animation: none;
 }
 
@@ -197,6 +236,12 @@
   .asr[data-phase="done"] .asr__note {
     opacity: 1;
   }
+
+  .asr[data-phase="scribble"] [data-asr-output],
+  .asr[data-phase="done"] [data-asr-output] {
+    color: var(--asr-accent);
+    opacity: 1;
+  }
 }
 
 [data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__mark,
@@ -207,5 +252,11 @@
 
 [data-force-reduced-motion="true"] .asr[data-phase="scribble"] .asr__note,
 [data-force-reduced-motion="true"] .asr[data-phase="done"] .asr__note {
+  opacity: 1;
+}
+
+[data-force-reduced-motion="true"] .asr[data-phase="scribble"] [data-asr-output],
+[data-force-reduced-motion="true"] .asr[data-phase="done"] [data-asr-output] {
+  color: var(--asr-accent);
   opacity: 1;
 }

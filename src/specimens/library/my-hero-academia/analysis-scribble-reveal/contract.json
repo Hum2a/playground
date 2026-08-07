@@ -1,69 +1,43 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/analysis-scribble-reveal.schema.json",
-  "title": "AnalysisScribbleReveal",
-  "description": "Portable contract for rapid analysis annotation marks.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
-  "properties": {
-    "name": { "type": "string", "const": "analysis-scribble-reveal" },
-    "intent": {
-      "type": "string",
-      "examples": ["Structured data annotated with circles, arrows, and scribbles."]
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
-    },
-    "phases": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["totalMs"],
-      "properties": {
-        "totalMs": { "type": "number", "const": 780 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["instantMarks", "triggers"],
-      "properties": {
-        "instantMarks": { "type": "boolean", "const": true },
-        "triggers": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    },
-    "classNames": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["root", "mark", "panel"],
-      "properties": {
-        "root": { "type": "string", "const": "asr" },
-        "mark": { "type": "string", "const": "asr__mark" },
-        "panel": { "type": "string", "const": "asr__panel" }
-      }
-    },
-    "behaviour": {
-      "type": "object",
-      "properties": {
-        "api": { "type": "string", "const": "analysisScribbleReveal" }
-      }
-    }
-  }
+  "name": "analysis-scribble-reveal",
+  "intent": "Hand-path strokes draw in frozen order; OUTPUT settles under annotation layer last.",
+  "catalogue": { "mha": "MHA-043", "ref": "SPX-2017", "title": "Analysis Scribble Reveal" },
+  "copy": {
+    "heading": "ANALYSIS",
+    "stats": { "rank": "B-12", "target": "ZONE-4", "output": "62%" },
+    "liveIdle": "Profile unmarked.",
+    "liveScribble": "Rapid annotation…",
+    "liveDone": "Annotations complete."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "strokeLadder": {
+    "circle": { "drawMs": 320, "delayMs": 0, "d": "M 200 48 A 28 28 0 1 1 199.9 48" },
+    "arrow": { "drawMs": 280, "delayMs": 180, "d": "M 48 140 L 120 100 L 120 88 L 148 88" },
+    "underline": { "drawMs": 240, "delayMs": 360, "d": "M 52 168 L 168 168" },
+    "note": { "delayMs": 520 },
+    "outputSettle": { "delayMs": 720, "durationMs": 200 }
+  },
+  "timing": { "totalMs": 920 },
+  "api": {
+    "run": "analysisScribbleReveal.run(root)",
+    "reset": "analysisScribbleReveal.reset(root)"
+  },
+  "reducedMotion": {
+    "behaviour": "All marks and accent OUTPUT appear instantly"
+  },
+  "acceptance": [
+    "Idle: stats panel with OUTPUT dimmed beneath annotation layer",
+    "Strokes draw in order: circle 320ms → arrow +180ms → underline +360ms → note +520ms",
+    "OUTPUT 62% settles under scribble layer at +720ms in accent",
+    "Done: all marks visible; OUTPUT highlighted",
+    "Replay clears marks before rerunning",
+    "Reduced motion (prefers or data-force) shows complete marks immediately",
+    "No network; polite aria-live on status"
+  ],
+  "waveC": "Frozen hand-path stroke ladder; OUTPUT row under annotations with last settle"
 }
