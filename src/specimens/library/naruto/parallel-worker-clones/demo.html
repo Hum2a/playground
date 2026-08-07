@@ -9,22 +9,50 @@
     <article class="pwc__job" data-pwc-job>
       <p class="pwc__job-kicker" data-pwc-job-kicker>JOB</p>
       <p class="pwc__job-title">Render Batch</p>
-      <p class="pwc__job-marks" data-pwc-job-marks aria-hidden="true"></p>
+      <ul class="pwc__traits" data-pwc-traits aria-label="Inherited worker traits" hidden>
+        <li class="pwc__trait" data-pwc-trait="peak" data-on="false" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M2 13 L8 3 L14 13 Z" />
+          </svg>
+        </li>
+        <li class="pwc__trait" data-pwc-trait="ring" data-on="false" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.6" />
+          </svg>
+        </li>
+        <li class="pwc__trait" data-pwc-trait="bars" data-on="false" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" d="M3 5h10M3 8h10M3 11h6" />
+          </svg>
+        </li>
+      </ul>
     </article>
 
     <ol class="pwc__workers" data-pwc-workers aria-label="Parallel worker clones">
-      <li class="pwc__worker" data-pwc-worker="0" style="--pwc-dur: 300ms">
-        <span class="pwc__mark" data-pwc-mark aria-hidden="true">◆</span>
+      <li class="pwc__worker" data-pwc-worker="0" data-mark="peak" style="--pwc-dur: 300ms; --pwc-from-x: 0px; --pwc-from-y: -36px">
+        <span class="pwc__mark" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="14" height="14">
+            <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M2 13 L8 3 L14 13 Z" />
+          </svg>
+        </span>
         <p class="pwc__worker-label">WORKER 1</p>
         <div class="pwc__bar"><span class="pwc__bar-fill" data-pwc-bar></span></div>
       </li>
-      <li class="pwc__worker" data-pwc-worker="1" style="--pwc-dur: 240ms">
-        <span class="pwc__mark" data-pwc-mark aria-hidden="true">▲</span>
+      <li class="pwc__worker" data-pwc-worker="1" data-mark="ring" style="--pwc-dur: 240ms; --pwc-from-x: 0px; --pwc-from-y: -36px">
+        <span class="pwc__mark" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="14" height="14">
+            <circle cx="8" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.6" />
+          </svg>
+        </span>
         <p class="pwc__worker-label">WORKER 2</p>
         <div class="pwc__bar"><span class="pwc__bar-fill" data-pwc-bar></span></div>
       </li>
-      <li class="pwc__worker" data-pwc-worker="2" style="--pwc-dur: 360ms">
-        <span class="pwc__mark" data-pwc-mark aria-hidden="true">■</span>
+      <li class="pwc__worker" data-pwc-worker="2" data-mark="bars" style="--pwc-dur: 360ms; --pwc-from-x: 0px; --pwc-from-y: -36px">
+        <span class="pwc__mark" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="14" height="14">
+            <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" d="M3 5h10M3 8h10M3 11h6" />
+          </svg>
+        </span>
         <p class="pwc__worker-label">WORKER 3</p>
         <div class="pwc__bar"><span class="pwc__bar-fill" data-pwc-bar></span></div>
       </li>

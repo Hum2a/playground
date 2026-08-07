@@ -1,24 +1,17 @@
 {
   "name": "parallel-worker-clones",
-  "intent": "One job divides into three identity-marked workers with frozen durations; recombine inherits ◆▲■ onto the job.",
-  "catalogue": { "nr": "NR-051", "ref": "SPX-2394" },
-  "copy": {
-    "system": "CLONE // PARALLEL",
-    "idle": "IDLE",
-    "splitting": "SPLITTING",
-    "working": "WORKING",
-    "recombining": "RECOMBINING",
-    "done": "RECOMBINED"
-  },
+  "intent": "One job fans three marked clone workers with independent progress bars, then recombines inheriting their identity marks.",
   "geometry": {
     "workerCount": 3,
-    "identityMarks": ["◆", "▲", "■"]
+    "marks": ["peak", "ring", "bars"],
+    "spawnYPx": -36,
+    "staggerMs": 40
   },
   "timing": {
-    "splitMs": 120,
+    "splitMs": 140,
     "workerDurationsMs": [300, 240, 360],
     "recombineMs": 160,
-    "totalMs": 640
+    "totalMs": 660
   },
   "colours": {
     "ink": "#12141A",
@@ -26,7 +19,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "clone-ash"
   },
   "api": {
     "run": "runParallelWorkerClones()",
@@ -34,11 +27,11 @@
     "replay": "replayParallelWorkerClones()"
   },
   "reducedMotion": {
-    "behaviour": "Job shows RECOMBINED with inherited marks immediately"
+    "behaviour": "Job already complete with all three trait marks inherited"
   },
   "acceptance": [
-    "Three workers with identity marks ◆▲■ fill over 300/240/360ms then recombine",
-    "Recombined job inherits all three marks; split uses scaleY not opacity fade",
-    "Reduced motion shows completed merge with marks immediately"
+    "Three workers spawn via scale/translate from job (not opacity fade) with marks peak/ring/bars",
+    "Bars fill at frozen 300/240/360ms then recombine; job inherits all three marks",
+    "Reduced motion shows RECOMBINED job with traits immediately"
   ]
 }

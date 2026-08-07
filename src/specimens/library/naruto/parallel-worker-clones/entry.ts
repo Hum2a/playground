@@ -5,7 +5,7 @@ export const parallelWorkerClones: Specimen = {
   ref: 'SPX-2394',
   title: 'Parallel Worker Clones',
   blurb:
-    'A job splits into three identity-marked workers (◆▲■) that fill in parallel, then recombine — the job inherits every mark.',
+    'A job puffs out three marked clones (peak / ring / bars) with bars at 300/240/360ms, then reabsorbs them — the job inherits all three identity marks.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — clone & duplication systems',
@@ -25,17 +25,17 @@ export const parallelWorkerClones: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all three worker bars fill and recombine with inherited marks immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the completed job appears immediately with all three inherited marks.',
   },
   acceptance: [
-    'Workers ◆▲■ fill over frozen 300/240/360ms then recombine',
-    'Job inherits all three identity marks on RECOMBINED',
-    'Reduced motion shows completed merge with marks immediately',
+    'Workers spawn via scale/translate with marks peak/ring/bars — not opacity fade',
+    'Bars fill 300/240/360ms then recombine; job inherits three trait marks',
+    'Reduced motion shows RECOMBINED job with traits immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 440,
-    height: 340,
+    height: 360,
     background: 'dark',
     label: 'Parallel worker clones',
   },

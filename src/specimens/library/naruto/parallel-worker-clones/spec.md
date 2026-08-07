@@ -1,17 +1,18 @@
 # Parallel Worker Clones
 
-One job card divides into three deterministic worker clones, each running an independent progress bar, then recombines into one completed job.
+One job **puffs out** three marked clone workers with independent progress bars, then **reabsorbs** them — the job inherits the workers' identity marks.
 
 ## Behaviour
 
-- Idle: single job card, no workers visible, status `IDLE`.
-- Splitting: three worker clones fade in below the job (~120ms).
-- Working: each worker's bar fills at its own fixed rate (300ms / 240ms / 360ms).
-- Recombining: workers dim as output merges back (~100ms).
-- Done: job card marked `JOB · COMPLETE`, status `RECOMBINED`.
-- Reduced motion: all bars fill and recombine immediately.
+- Idle: single job card, workers scaled to origin, status `IDLE`.
+- Splitting: workers scale/translate out from the job (140ms, 40ms stagger) with marks peak / ring / bars.
+- Working: bars fill at 300 / 240 / 360ms.
+- Recombining: workers scale back toward the job; trait marks latch onto the job.
+- Done: `JOB · COMPLETE` with three inherited marks, status `RECOMBINED`.
+- Reduced motion: completed job with traits immediately.
 
 ## Freeze
 
-- Split: 120ms · worker rates: 300 / 240 / 360ms · recombine: 100ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Split: 140ms · stagger: 40ms · rates: 300 / 240 / 360ms · recombine: 160ms
+- Marks: peak, ring, bars · spawnY: −36px
+- Palette (clone ash): `#12141A` / `#D8D4E0` / `#7A6B9A` / `#6E6A78` / `#F0EEF4`

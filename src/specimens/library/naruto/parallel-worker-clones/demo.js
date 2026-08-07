@@ -1,14 +1,16 @@
 /**
- * Parallel Worker Clones — identity marks on workers; recombine inherits marks.
+ * Parallel Worker Clones — job fans three marked clones with independent bars,
+ * then recombines inheriting worker identity marks onto the job.
  * iframe-safe; no storage / parent / network.
  */
 
-const SPLIT_MS = 120
+const SPLIT_MS = 140
+const STAGGER_MS = 40
 const WORKER_DURATIONS = [300, 240, 360]
+const MARKS = ['peak', 'ring', 'bars']
 const WORK_MS = Math.max(...WORKER_DURATIONS)
 const RECOMBINE_MS = 160
 const TOTAL_MS = SPLIT_MS + WORK_MS + RECOMBINE_MS
-const IDENTITY_MARKS = ['◆', '▲', '■']
 
 let busy = false
 let done = false
@@ -57,11 +59,6 @@ function setJobKicker(text) {
   if (el) el.textContent = text
 }
 
-function setJobMarks(text) {
-  const el = document.querySelector('[data-pwc-job-marks]')
-  if (el) el.textContent = text
-}
-
 function setButtons(on) {
   document.querySelectorAll('[data-pwc-run], [data-pwc-replay]').forEach((btn) => {
     btn.disabled = !on
@@ -72,17 +69,34 @@ function bars() {
   return Array.from(document.querySelectorAll('[data-pwc-bar]'))
 }
 
+function traitsEl() {
+  return document.querySelector('[data-pwc-traits]')
+}
+
+function setTraits(on) {
+  const list = traitsEl()
+  if (!list) return
+  if (on) list.removeAttribute('hidden')
+  else list.setAttribute('hidden', '')
+  MARKS.forEach((mark) => {
+    const el = list.querySelector(`[data-pwc-trait="${mark}"]`)
+    if (!el) return
+    el.setAttribute('data-on', on ? 'true' : 'false')
+    el.setAttribute('aria-hidden', on ? 'false' : 'true')
+  })
+}
+
 function showDone() {
   done = true
   bars().forEach((bar) => {
     bar.style.width = '100%'
   })
+  setTraits(true)
   setJobKicker('JOB · COMPLETE')
-  setJobMarks(IDENTITY_MARKS.join(''))
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('RECOMBINED')
-  setHint('Workers merged; job inherited ◆▲■ marks.')
-  setLive('Workers recombined. Job inherited identity marks ◆▲■.')
+  setHint('Job inherited peak / ring / bars marks.')
+  setLive('Workers recombined. Job inherited three clone identity marks.')
 }
 
 function resetVisual() {
@@ -90,8 +104,8 @@ function resetVisual() {
   bars().forEach((bar) => {
     bar.style.width = '0%'
   })
+  setTraits(false)
   setJobKicker('JOB')
-  setJobMarks('')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('IDLE')
   setHint('Press Run to divide across three workers.')
@@ -99,7 +113,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run split → parallel-work → recombine with inherited marks.
+ * Auto-run full split → parallel-work → recombine choreography.
  * @returns {Promise<void>}
  */
 export function runParallelWorkerClones() {
@@ -121,29 +135,30 @@ export function runParallelWorkerClones() {
 
   root.setAttribute('data-phase', 'splitting')
   setStatus('SPLITTING')
-  setHint('Job dividing into marked workers.')
-  setLive('Job splitting into three identity-marked workers.')
+  setHint('Clones puffing out with identity marks.')
+  setLive('Job splitting into three marked workers.')
 
   return new Promise((resolve) => {
-    later(SPLIT_MS, () => {
+    later(SPLIT_MS + STAGGER_MS * 2, () => {
       root.setAttribute('data-phase', 'working')
       setStatus('WORKING')
       setHint('Workers running in parallel.')
-      setLive('Workers ◆▲■ running in parallel.')
+      setLive(`Workers running at ${WORKER_DURATIONS.join('/')}ms.`)
       bars().forEach((bar) => {
         void bar.offsetWidth
         bar.style.width = '100%'
       })
     })
 
-    later(SPLIT_MS + WORK_MS, () => {
+    later(SPLIT_MS + STAGGER_MS * 2 + WORK_MS, () => {
       root.setAttribute('data-phase', 'recombining')
       setStatus('RECOMBINING')
-      setHint('Merging worker output + marks.')
-      setLive('Recombining; transferring identity marks to job.')
+      setHint('Absorbing worker marks into job.')
+      setLive('Recombining — traits transferring to job.')
+      setTraits(true)
     })
 
-    later(TOTAL_MS, () => {
+    later(TOTAL_MS + STAGGER_MS * 2, () => {
       showDone()
       busy = false
       setButtons(true)
