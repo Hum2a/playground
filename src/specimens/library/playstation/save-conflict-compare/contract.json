@@ -9,10 +9,26 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "commitMs": 280
+  },
+  "copy": {
+    "local": { "time": "18:42", "progress": "67%", "chapter": "4" },
+    "cloud": { "time": "19:15", "progress": "72%", "chapter": "5" }
+  },
+  "api": {
+    "run": "runSaveConflictCompare()",
+    "reset": "resetSaveConflictCompare()",
+    "replay": "replaySaveConflictCompare()"
+  },
+  "acceptance": [
+    "Two compare cards show timestamp/progress/chapter side-by-side (not a sync beam)",
+    "Selecting a card enables Keep selected save; commit dims the other side",
+    "Run auto-selects cloud then commits",
+    "Live region announces selection and kept side"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "Selection and commit snap without card motion"
   }
 }

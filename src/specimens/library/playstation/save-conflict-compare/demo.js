@@ -17,6 +17,8 @@ function rootEl() {
 let busy = false
 /** @type {number[]} */
 let timers = []
+/** @type {string} */
+let selection = ''
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -50,41 +52,93 @@ function setButtons(on) {
   })
 }
 
-const EXPAND_MS = 320
+const COMMIT_MS = 280
 
-function resetVisual() {
-  rootEl()?.setAttribute('data-phase', 'compact')
-  setStatus('CONFLICT')
-  setHint('Press Run to compare.')
-  setLive('Save conflict compact.')
+function commitBtn() {
+  return document.querySelector('[data-scc-commit]')
 }
 
-function showExpanded() {
-  rootEl()?.setAttribute('data-phase', 'expanded')
-  setStatus('COMPARING')
-  setHint('Timestamps and progress visible.')
-  setLive('Save versions expanded for compare.')
+function cards() {
+  return Array.from(document.querySelectorAll('[data-scc-save]'))
+}
+
+function syncSelectionUi() {
+  const root = rootEl()
+  root?.setAttribute('data-selection', selection)
+  cards().forEach((card) => {
+    const side = card.getAttribute('data-side')
+    const on = side === selection
+    card.setAttribute('aria-pressed', on ? 'true' : 'false')
+    const label = card.querySelector('[data-scc-select-label]')
+    if (label) label.textContent = on ? 'Selected' : 'Select'
+  })
+  const btn = commitBtn()
+  if (btn) btn.disabled = !selection || root?.getAttribute('data-phase') === 'committed'
+}
+
+function resetVisual() {
+  selection = ''
+  rootEl()?.setAttribute('data-phase', 'compare')
+  syncSelectionUi()
+  setStatus('CONFLICT')
+  setHint('Select a card, then commit — or Run.')
+  setLive('Save conflict — select a version to keep.')
+}
+
+function commitSelection(side) {
+  if (!side) return
+  selection = side
+  syncSelectionUi()
+  rootEl()?.setAttribute('data-phase', 'committed')
+  const label = side === 'cloud' ? 'Cloud' : 'Local'
+  setStatus(`KEPT ${label.toUpperCase()}`)
+  setHint(`${label} save committed. Other side dimmed.`)
+  setLive(`${label} save kept. Conflict resolved.`)
+  const btn = commitBtn()
+  if (btn) {
+    btn.disabled = true
+    btn.textContent = `Kept ${label.toLowerCase()} save`
+  }
+  cards().forEach((card) => {
+    card.disabled = true
+  })
+}
+
+function selectSide(side) {
+  if (rootEl()?.getAttribute('data-phase') === 'committed') return
+  selection = side
+  syncSelectionUi()
+  setStatus(`SELECTED ${side.toUpperCase()}`)
+  setLive(`${side === 'cloud' ? 'Cloud' : 'Local'} save selected.`)
+  setHint('Press Keep selected save to commit.')
+  const btn = commitBtn()
+  if (btn) {
+    btn.disabled = false
+    btn.textContent = 'Keep selected save'
+  }
 }
 
 export function runSaveConflictCompare() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'expanded') return Promise.resolve()
+  if (!root || busy || root.getAttribute('data-phase') === 'committed') return Promise.resolve()
   busy = true
   clearTimers()
   resetVisual()
   setButtons(false)
-  void root.offsetWidth
+  cards().forEach((card) => {
+    card.disabled = false
+  })
+  const btn = commitBtn()
+  if (btn) btn.textContent = 'Keep selected save'
 
-  if (prefersReducedMotion()) {
-    showExpanded()
-    busy = false
-    setButtons(true)
-    return Promise.resolve()
-  }
+  // Deterministic demo: select newer cloud save, then commit.
+  selectSide('cloud')
+  setLive('Auto-selecting newer cloud save.')
 
-  showExpanded()
+  const delay = prefersReducedMotion() ? 40 : COMMIT_MS
   return new Promise((resolve) => {
-    later(EXPAND_MS, () => {
+    later(delay, () => {
+      commitSelection('cloud')
       busy = false
       setButtons(true)
       resolve()
@@ -95,6 +149,11 @@ export function runSaveConflictCompare() {
 export function resetSaveConflictCompare() {
   clearTimers()
   busy = false
+  cards().forEach((card) => {
+    card.disabled = false
+  })
+  const btn = commitBtn()
+  if (btn) btn.textContent = 'Keep selected save'
   resetVisual()
   setButtons(true)
 }
@@ -104,6 +163,18 @@ export async function replaySaveConflictCompare() {
   resetSaveConflictCompare()
   await runSaveConflictCompare()
 }
+
+cards().forEach((card) => {
+  card.addEventListener('click', () => {
+    if (busy || rootEl()?.getAttribute('data-phase') === 'committed') return
+    selectSide(card.getAttribute('data-side') || '')
+  })
+})
+
+commitBtn()?.addEventListener('click', () => {
+  if (busy || !selection || rootEl()?.getAttribute('data-phase') === 'committed') return
+  commitSelection(selection)
+})
 
 function bindUi() {
   document.querySelector('[data-scc-run]')?.addEventListener('click', () => {

@@ -1,18 +1,18 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3452 Save Conflict Compare — portable contract. */
 
 .scc {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --commit-ms: 280ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   width: 100%;
-  min-height: 360px;
+  min-height: 420px;
   padding: 0.85rem 0.7rem;
   background: var(--ps-ink);
   color: var(--ps-chalk);
@@ -50,12 +50,12 @@
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 0.75rem;
+  gap: 0.65rem;
   justify-items: center;
   align-content: center;
   width: 100%;
   flex: 1;
-  padding: 1.1rem 0.75rem;
+  padding: 1rem 0.75rem;
   border: 1px solid rgb(46 144 255 / 0.35);
   background: rgb(244 246 248 / 0.03);
 }
@@ -116,80 +116,140 @@
   cursor: default;
 }
 
-.scc__row {
+/* Two-card compare — not a sync-beam twin. */
+.scc__pair {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
+  gap: 0.55rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
 }
 
-.scc__save {
-  padding: 0.5rem 0.55rem;
-  border: 1px solid rgb(244 246 248 / 0.15);
+.scc__card {
+  appearance: none;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.7rem 0.65rem;
+  border: 1px solid rgb(244 246 248 / 0.18);
   background: rgb(244 246 248 / 0.03);
-  transition: padding 280ms ease, border-color 280ms ease, min-height 280ms ease;
-  min-height: 52px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 200ms ease, background-color 200ms ease, opacity 200ms ease, transform 200ms ease;
 }
 
-.scc[data-phase='expanded'] .scc__save {
-  padding: 0.85rem 0.7rem;
-  min-height: 100px;
-  border-color: rgb(46 144 255 / 0.45);
+.scc__card:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
 }
 
-.scc__save-title {
-  margin: 0 0 0.35rem;
-  font-size: 0.68rem;
+.scc__card[aria-pressed='true'] {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.12);
+  transform: translateY(-2px);
+}
+
+.scc__card[aria-pressed='true'] .scc__select-label {
+  color: var(--ps-ink);
+  background: var(--ps-blue);
+  border-color: var(--ps-blue);
+}
+
+.scc[data-phase='committed'] .scc__card[aria-pressed='false'] {
+  opacity: 0.4;
+}
+
+.scc[data-phase='committed'] .scc__card[aria-pressed='true'] {
+  border-color: var(--ps-sky);
+  background: rgb(126 182 255 / 0.14);
+}
+
+.scc__badge {
+  font-size: 0.52rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   color: var(--ps-sky);
 }
 
-.scc__meta {
-  display: grid;
-  gap: 0.2rem;
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
-  color: rgb(244 246 248 / 0.7);
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: opacity 280ms ease, max-height 280ms ease;
-}
-
-.scc[data-phase='expanded'] .scc__meta {
-  opacity: 1;
-  max-height: 80px;
-}
-
-.scc__diff {
+.scc__badge--cloud {
   color: var(--ps-blue);
-  font-weight: 700;
+}
+
+.scc__card-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+}
+
+.scc__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  color: rgb(244 246 248 / 0.65);
+}
+
+.scc__row--diff .scc__val {
+  color: var(--ps-blue);
+  font-weight: 800;
+}
+
+.scc__key {
+  color: rgb(244 246 248 / 0.45);
+}
+
+.scc__select-label {
+  margin-top: 0.35rem;
+  justify-self: start;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid rgb(244 246 248 / 0.25);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(244 246 248 / 0.55);
+}
+
+.scc__commit {
+  appearance: none;
+  margin: 0.15rem 0 0;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgb(244 246 248 / 0.3);
+  background: transparent;
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.scc__commit:not(:disabled) {
+  border-color: var(--ps-blue);
+  background: rgb(46 144 255 / 0.14);
+}
+
+.scc__commit:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.scc__commit:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scc__ring-track,
-  .scc__ring-fill,
-  .scc__pulse,
-  .scc__wave,
-  .scc__sync-beam,
-  .scc__morph,
-  .scc__fill,
-  .scc__notch-glow {
+  .scc__card {
     transition: none !important;
-    animation: none !important;
   }
 }
 
-html[data-force-reduced-motion='true'] .scc__ring-track,
-html[data-force-reduced-motion='true'] .scc__ring-fill,
-html[data-force-reduced-motion='true'] .scc__pulse,
-html[data-force-reduced-motion='true'] .scc__wave,
-html[data-force-reduced-motion='true'] .scc__sync-beam,
-html[data-force-reduced-motion='true'] .scc__morph,
-html[data-force-reduced-motion='true'] .scc__fill,
-html[data-force-reduced-motion='true'] .scc__notch-glow {
+[data-force-reduced-motion='true'] .scc__card {
   transition: none !important;
-  animation: none !important;
 }

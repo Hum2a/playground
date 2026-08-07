@@ -6,19 +6,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration:   [
-    "Two compact cards expand in parallel on Run.",
-    "Wire runSaveConflictCompare / resetSaveConflictCompare / replaySaveConflictCompare."
+  integration: [
+    'Two compare cards; selection enables commit; Run auto-keeps cloud.',
+    'Wire runSaveConflictCompare / resetSaveConflictCompare / replaySaveConflictCompare.',
   ],
-  acceptance:   [
-    "Idle: two compact save cards side by side",
-    "Run expands both revealing timestamp and progress rows",
-    "Differences highlighted between versions",
-    "Replay collapses cards to compact",
-    "Reduced motion shows expanded metadata immediately"
+  acceptance: [
+    'Two compare cards show timestamp/progress/chapter side-by-side (not a sync beam)',
+    'Selecting a card enables Keep selected save; commit dims the other side',
+    'Run auto-selects cloud then commits',
+    'Live region announces selection and kept side',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#0B0F14;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:420px;background:#0B0F14;">
   {{specimen}}
 </div>`.trim(),
   files: { html, css, js },
