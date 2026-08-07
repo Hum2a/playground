@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze snap/link timings from contract.json.',
+    'Mount inside a relative host (~420×300+).',
+    'Import demo.css verbatim; freeze node positions / snap 260ms / link draw 200ms from contract.json.',
     'Wire runThreePersonCellFormation / resetThreePersonCellFormation / replayThreePersonCellFormation.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Idle shows three nodes scattered away from the centre point, status SCATTERED',
-    'Active phase snaps all three nodes into triangular positions',
-    'Resolved phase lights the connecting lines between nodes, status FORMED',
-    'Replay scatters the nodes before rerunning',
-    'Reduced motion shows the formed, linked state immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Exactly 3 nodes (LEAD/SCOUT/SUPPORT) snap from scattered positions',
+    'Snap completes in 260ms then 3 links draw over 200ms',
+    'Resolved shows FORMED with links fully drawn',
+    'Replay returns nodes to scattered before rerunning',
+    'Reduced motion shows FORMED with links drawn immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
   {{specimen}}
 </div>
 `.trim(),

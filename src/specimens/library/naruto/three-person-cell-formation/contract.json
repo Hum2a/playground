@@ -2,34 +2,99 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/three-person-cell-formation.schema.json",
   "title": "ThreePersonCellFormation",
-  "description": "Three scattered profile nodes snap into a triangular cell and their connecting lines light to link them.",
+  "description": "Three nodes snap into triangle positions then links draw.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "nodeCount", "snapMs", "linkMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "nodeCount",
+    "nodePositions",
+    "snapMs",
+    "linkDrawMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "three-person-cell-formation" },
-    "nodeCount": { "type": "number", "const": 3 },
-    "snapMs": { "type": "number", "const": 260 },
-    "linkMs": { "type": "number", "const": 200 },
+    "name": {
+      "type": "string",
+      "const": "three-person-cell-formation"
+    },
+    "nodeCount": {
+      "type": "number",
+      "const": 3
+    },
+    "nodePositions": {
+      "type": "array",
+      "const": [
+        {
+          "id": "lead",
+          "x": 100,
+          "y": 28
+        },
+        {
+          "id": "scout",
+          "x": 52,
+          "y": 122
+        },
+        {
+          "id": "support",
+          "x": 148,
+          "y": 122
+        }
+      ]
+    },
+    "snapMs": {
+      "type": "number",
+      "const": 260
+    },
+    "linkDrawMs": {
+      "type": "number",
+      "const": 200
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#1A1612" },
-        "parchment": { "type": "string", "const": "#EBE2D0" },
-        "chakra": { "type": "string", "const": "#B83228" },
-        "alarm": { "type": "string", "const": "#B83228" },
-        "olive": { "type": "string", "const": "#6A5E4E" },
-        "off": { "type": "string", "const": "#F7F2E8" }
+        "ink": {
+          "type": "string",
+          "const": "#1A1612"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#EBE2D0"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#6A5E4E"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F7F2E8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateFormed"],
+      "required": [
+        "immediateFormed"
+      ],
       "properties": {
-        "immediateFormed": { "type": "boolean", "const": true }
+        "immediateFormed": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }

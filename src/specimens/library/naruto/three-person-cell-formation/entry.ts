@@ -5,7 +5,7 @@ export const threePersonCellFormation: Specimen = {
   ref: 'SPX-2591',
   title: 'Three-Person Cell Formation',
   blurb:
-    'Three scattered profile nodes snap into a triangular cell formation around a shared mission point, then link.',
+    'LEAD, SCOUT, and SUPPORT snap into triangle slots (260ms) then three links draw (200ms) into FORMED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / team-formation — squad assembly',
@@ -25,12 +25,14 @@ export const threePersonCellFormation: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all three nodes appear already formed and linked.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the three-person cell appears already FORMED with links drawn.',
   },
-  acceptance: [
-    'Three nodes assemble at frozen positions with link draw',
-    'Formation locks when all links complete',
-    'Reduced motion shows formed cell immediately',
+    acceptance: [
+    'Exactly 3 nodes (LEAD/SCOUT/SUPPORT) snap from scattered positions',
+    'Snap completes in 260ms then 3 links draw over 200ms',
+    'Resolved shows FORMED with links fully drawn',
+    'Replay returns nodes to scattered before rerunning',
+    'Reduced motion shows FORMED with links drawn immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

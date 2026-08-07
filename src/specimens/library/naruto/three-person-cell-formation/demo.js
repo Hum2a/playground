@@ -4,7 +4,14 @@
  */
 
 const SNAP_MS = 260
-const LINK_MS = 200
+const LINK_DRAW_MS = 200
+const NODE_COUNT = 3
+const NODE_POSITIONS = [
+  { id: 'lead', x: 100, y: 28 },
+  { id: 'scout', x: 52, y: 122 },
+  { id: 'support', x: 148, y: 122 },
+]
+const LINK_MS = LINK_DRAW_MS
 const TOTAL_MS = SNAP_MS + LINK_MS // ~460ms principal sequence
 
 let busy = false
@@ -147,5 +154,7 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void NODE_COUNT
+void NODE_POSITIONS
 bindUi()
 resetThreePersonCellFormation()
