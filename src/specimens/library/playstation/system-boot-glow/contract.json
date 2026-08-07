@@ -1,21 +1,32 @@
 {
   "name": "system-boot-glow",
-  "intent": "Glow builds then UI resolves.",
-  "catalogue": {
-    "ps": "PS-019",
-    "ref": "SPX-3325"
-  },
-  "colours": {
+  "ref": "SPX-3325",
+  "ps": "PS-019",
+  "title": "System Boot Glow",
+  "palette": {
     "primary": "#2E90FF",
     "ink": "#0B0F14",
     "paper": "#F4F6F8",
     "soft": "#7EB6FF"
   },
+  "timing": {
+    "glowMs": 900,
+    "settleMs": 320,
+    "readyMs": 400,
+    "luminanceStops": [0, 0.55, 1]
+  },
+  "phases": ["dark", "glow", "settle", "ready"],
   "api": {
     "run": "runSystemBootGlow()",
     "reset": "resetSystemBootGlow()"
   },
+  "behaviour": "Dark → glow(55%/900ms) → settle(100%/320ms) → READY(400ms).",
+  "trigger": "Boot button",
   "reducedMotion": {
-    "behaviour": "READY UI shown immediately without glow build"
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Glow and READY UI snap; .sbg__ui transitions removed"
   }
 }
