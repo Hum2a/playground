@@ -5,7 +5,7 @@ export const gadgetDeployment: Specimen = {
   ref: 'SPX-2088',
   title: 'Gadget Deployment',
   blurb:
-    'A stowed GRAPPLE tile unfolds into FIRE/REEL controls with a READY status panel.',
+    'A stowed GRAPPLE tile unfolds a clipped tray; FIRE/REEL pulse one-shot status labels.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia–inspired support equipment UI',

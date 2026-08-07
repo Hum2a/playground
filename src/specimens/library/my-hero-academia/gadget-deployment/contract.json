@@ -1,12 +1,56 @@
 {
   "name": "gadget-deployment",
-  "ref": "SPX-2088",
-  "catalogue": { "mha": "MHA-114" },
-  "gadget": "GRAPPLE UNIT",
+  "intent": "Stowed GRAPPLE tile unfolds a clipped tray panel; FIRE/REEL pulse status labels after deploy.",
+  "catalogue": {
+    "mha": "MHA-114",
+    "ref": "SPX-2088"
+  },
+  "copy": {
+    "tile": "GRAPPLE",
+    "unit": "GRAPPLE UNIT",
+    "ready": "STATUS — READY",
+    "firing": "STATUS — FIRING",
+    "reeling": "STATUS — REELING",
+    "liveStowed": "Gadget stowed.",
+    "liveUnfold": "Unfolding gadget controls…",
+    "liveReady": "Grapple unit deployed and ready.",
+    "liveFire": "Grapple fired.",
+    "liveReel": "Grapple reeling in."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "deployMs": 520,
+    "pulseMs": 480,
+    "tileFadeMs": 320
+  },
+  "geometry": {
+    "stageMaxWidthPx": 400,
+    "tileClipCornerPx": 10,
+    "trayClipCornerPx": 12,
+    "iconSizePx": 28
+  },
+  "api": {
+    "run": "runGadgetDeployment()",
+    "reset": "resetGadgetDeployment()",
+    "replay": "replayGadgetDeployment()"
+  },
+  "reducedMotion": {
+    "behaviour": "Tray and controls appear immediately; no clip-path unfold"
+  },
+  "acceptance": [
+    "Idle: GRAPPLE tile visible; tray and FIRE/REEL controls hidden; live region reads stowed",
+    "DEPLOY triggers clip-path tray unfold over 520ms; tile face dims; live announces unfolding",
+    "Done: tray shows GRAPPLE UNIT + STATUS — READY; FIRE/REEL enabled outside tile",
+    "FIRE pulses STATUS — FIRING (accent) for 480ms then returns READY; live announces fired",
+    "REEL pulses STATUS — REELING (primary) for 480ms then returns READY; live announces reeling",
+    "RESET stows tray, hides controls, re-enables DEPLOY",
+    "Reduced motion (prefers or data-force) skips unfold animation",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "FIRE/REEL are sibling controls (not nested in tile); status pulses are one-shot, not toggles"
 }
