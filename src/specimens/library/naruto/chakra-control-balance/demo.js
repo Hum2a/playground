@@ -6,6 +6,8 @@
 
 const INITIAL_VALUE = -0.68
 const BAND = 0.08
+const LOCK_THRESHOLD = 0.08
+const WOBBLE_AMP = 0.04
 const HALF_LIFE_MS = 90
 const ACCEL_PER_MS = 1 / 450
 const LOCK_HOLD_MS = 380
