@@ -5,7 +5,7 @@ export const transformationMorph: Specimen = {
   ref: 'SPX-2402',
   title: 'Transformation Morph',
   blurb:
-    'Profile A collapses into an ink blot, holds, then expands into Profile B — SPEED carries over as inherited trait.',
+    'Scout collapses to scale 0.12, holds as an ink blot (120ms), then expands into Sentinel — inheriting the PEAK trait mark.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — transformation & disguise',
@@ -19,17 +19,17 @@ export const transformationMorph: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['morph', 'identity', 'silhouette'],
+  tags: ['morph', 'identity', 'ink'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the second profile appears immediately with no ink intermediate.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, Profile B appears immediately with the inherited PEAK mark.',
   },
   acceptance: [
-    'Collapse 160ms → ink hold 120ms → expand 180ms with SPEED trait inheritance',
-    'Intermediate is an ink blot (scale/geometry), not a simple crossfade',
+    'Collapse → ink intermediate (120ms) → expand; collapse scale frozen at 0.12',
+    'Profile B inherits MARK · PEAK — intermediate is not a crossfade',
     'Reduced motion shows Profile B immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

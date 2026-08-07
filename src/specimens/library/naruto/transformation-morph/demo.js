@@ -1,14 +1,15 @@
 /**
- * Transformation Morph — collapse → ink intermediate → expand with traits.
+ * Transformation Morph — Profile A collapses to scale 0.12, ink intermediate
+ * holds, then Profile B expands inheriting the PEAK trait mark.
  * iframe-safe; no storage / parent / network.
  */
 
 const COLLAPSE_MS = 160
-const INK_HOLD_MS = 120
-const EXPAND_MS = 180
-const TOTAL_MS = COLLAPSE_MS + INK_HOLD_MS + EXPAND_MS
-const TRAIT_A = 'SPEED'
-const TRAIT_B = 'SPEED · GUARD'
+const INK_MS = 120
+const EXPAND_MS = 160
+const COLLAPSE_SCALE = 0.12
+const INHERITED_TRAIT = 'MARK · PEAK'
+const TOTAL_MS = COLLAPSE_MS + INK_MS + EXPAND_MS
 
 let busy = false
 let done = false
@@ -58,24 +59,28 @@ function setButtons(on) {
   })
 }
 
+function cardA() {
+  return document.querySelector('[data-trm-card-a]')
+}
+
+function cardB() {
+  return document.querySelector('[data-trm-card-b]')
+}
+
 function showDone() {
   done = true
-  const cardA = document.querySelector('[data-trm-card-a]')
-  const cardB = document.querySelector('[data-trm-card-b]')
-  cardA?.setAttribute('aria-hidden', 'true')
-  cardB?.setAttribute('aria-hidden', 'false')
+  cardA()?.setAttribute('aria-hidden', 'true')
+  cardB()?.removeAttribute('aria-hidden')
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('PROFILE B')
-  setHint(`Transformation complete. Inherited ${TRAIT_A}.`)
-  setLive(`Profile B expanded with inherited traits ${TRAIT_B}.`)
+  setHint(`Transformed. Inherited ${INHERITED_TRAIT}.`)
+  setLive(`Transformation complete. Profile B active with inherited ${INHERITED_TRAIT}.`)
 }
 
 function resetVisual() {
   done = false
-  const cardA = document.querySelector('[data-trm-card-a]')
-  const cardB = document.querySelector('[data-trm-card-b]')
-  cardA?.setAttribute('aria-hidden', 'false')
-  cardB?.setAttribute('aria-hidden', 'true')
+  cardA()?.removeAttribute('aria-hidden')
+  cardB()?.setAttribute('aria-hidden', 'true')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('PROFILE A')
   setHint('Press Run to transform.')
@@ -83,7 +88,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run collapse → ink → expand.
+ * Auto-run collapse → ink → expand choreography.
  * @returns {Promise<void>}
  */
 export function runTransformationMorph() {
@@ -105,22 +110,24 @@ export function runTransformationMorph() {
 
   root.setAttribute('data-phase', 'collapsing')
   setStatus('COLLAPSING')
-  setHint('Profile A collapsing into ink.')
-  setLive('Profile A collapsing.')
+  setHint(`Profile A collapsing to scale ${COLLAPSE_SCALE}.`)
+  setLive(`Profile A collapsing to ${COLLAPSE_SCALE}.`)
 
   return new Promise((resolve) => {
     later(COLLAPSE_MS, () => {
       root.setAttribute('data-phase', 'ink')
       setStatus('INK')
       setHint('Ink intermediate holding.')
-      setLive('Ink blot intermediate — not a crossfade.')
+      setLive('Ink blot intermediate — identity masked.')
+      cardA()?.setAttribute('aria-hidden', 'true')
     })
 
-    later(COLLAPSE_MS + INK_HOLD_MS, () => {
+    later(COLLAPSE_MS + INK_MS, () => {
       root.setAttribute('data-phase', 'expanding')
       setStatus('EXPANDING')
-      setHint('Profile B expanding with traits.')
-      setLive(`Expanding Profile B; inheriting ${TRAIT_A}.`)
+      setHint('Profile B expanding with inherited trait.')
+      setLive(`Profile B expanding; inheriting ${INHERITED_TRAIT}.`)
+      cardB()?.removeAttribute('aria-hidden')
     })
 
     later(TOTAL_MS, () => {

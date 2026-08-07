@@ -1,23 +1,16 @@
 {
   "name": "transformation-morph",
-  "intent": "Profile A collapses into an ink blot intermediate, then expands into Profile B with inherited SPEED trait.",
-  "catalogue": { "nr": "NR-059", "ref": "SPX-2402" },
-  "copy": {
-    "system": "IDENTITY // MORPH",
-    "profileA": "PROFILE A",
-    "ink": "INK",
-    "profileB": "PROFILE B"
-  },
+  "intent": "Profile A collapses through an ink intermediate and expands into Profile B, inheriting the PEAK trait mark.",
   "geometry": {
-    "traitA": "SPEED",
-    "traitB": "SPEED · GUARD",
-    "inkHoldVisible": true
+    "collapseScale": 0.12,
+    "inheritedTrait": "MARK · PEAK",
+    "profiles": ["Scout / GENIN", "Sentinel / CHUNIN"]
   },
   "timing": {
     "collapseMs": 160,
-    "inkHoldMs": 120,
-    "expandMs": 180,
-    "totalMs": 460
+    "inkMs": 120,
+    "expandMs": 160,
+    "totalMs": 440
   },
   "colours": {
     "ink": "#12141A",
@@ -25,7 +18,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "clone-ash"
   },
   "api": {
     "run": "runTransformationMorph()",
@@ -33,11 +26,11 @@
     "replay": "replayTransformationMorph()"
   },
   "reducedMotion": {
-    "behaviour": "Profile B appears immediately with inherited traits"
+    "behaviour": "Profile B with inherited PEAK mark shown immediately"
   },
   "acceptance": [
-    "Sequence collapseMs 160 → inkHoldMs 120 → expandMs 180",
-    "Ink blot intermediate is scale/geometry — not opacity crossfade; B inherits SPEED",
+    "Profile A collapses via scale/clip to 0.12 then ink intermediate holds 120ms",
+    "Profile B expands inheriting MARK · PEAK — not a simple crossfade",
     "Reduced motion shows Profile B immediately"
   ]
 }

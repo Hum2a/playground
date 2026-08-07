@@ -7,8 +7,9 @@
   --olive: #6e6a78;
   --off: #f0eef4;
   --trm-collapse-ms: 160ms;
-  --trm-ink-hold-ms: 120ms;
-  --trm-expand-ms: 180ms;
+  --trm-ink-ms: 120ms;
+  --trm-expand-ms: 160ms;
+  --trm-collapse-scale: 0.12;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -55,12 +56,10 @@
   display: grid;
   gap: 0.65rem;
   justify-items: center;
-  align-items: center;
   width: 100%;
-  min-height: 200px;
   padding: 1rem 0.75rem;
   border: 1px solid rgb(122 107 154 / 0.45);
-  background: rgb(240 238 244 / 0.04);
+  background: rgb(240 238 244 / 0.03);
 }
 
 .trm__card {
@@ -69,19 +68,19 @@
   max-width: 220px;
   padding: 0.65rem 0.85rem;
   border: 1.5px solid var(--olive);
-  background: rgb(16 19 24 / 0.9);
+  background: rgb(16 19 24 / 0.95);
   text-align: center;
-  transform: scale(1);
-  clip-path: inset(0 0 0 0);
+  transform: scale(0.85);
+  clip-path: inset(50% 40% 50% 40%);
   transition:
-    transform var(--trm-collapse-ms) cubic-bezier(0.55, 0, 0.9, 0.4),
-    clip-path var(--trm-collapse-ms) ease-in;
+    transform var(--trm-collapse-ms) cubic-bezier(0.4, 0, 0.2, 1),
+    clip-path var(--trm-collapse-ms) cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 120ms ease-out;
 }
 
-.trm__card--b {
-  transform: scale(0.2);
-  clip-path: circle(0% at 50% 50%);
-  pointer-events: none;
+.trm__card--a {
+  transform: scale(1);
+  clip-path: inset(0 0 0 0);
 }
 
 .trm__kicker {
@@ -100,8 +99,7 @@
   color: var(--off);
 }
 
-.trm__meta,
-.trm__trait {
+.trm__meta {
   margin: 0.1rem 0 0;
   font-size: 0.62rem;
   letter-spacing: 0.06em;
@@ -109,38 +107,59 @@
 }
 
 .trm__trait {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--chakra);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   color: var(--chakra);
-  font-weight: 700;
 }
 
 .trm__ink {
   grid-area: 1 / 1;
   position: relative;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  display: grid;
+  place-items: center;
   transform: scale(0);
-  transition: transform var(--trm-collapse-ms) cubic-bezier(0.2, 1.1, 0.3, 1);
+  transition: transform var(--trm-ink-ms) cubic-bezier(0.2, 1.1, 0.3, 1);
 }
 
 .trm__ink-blot {
   position: absolute;
-  inset: 12%;
-  background: #05070a;
-  border-radius: 42% 58% 48% 52% / 48% 42% 58% 52%;
-  box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.35);
+  border-radius: 50%;
+  background: var(--chakra);
+  mix-blend-mode: screen;
 }
 
-.trm__ink-rim {
-  position: absolute;
-  inset: 0;
-  border: 2px solid var(--chakra);
-  border-radius: 50%;
-  transform: scale(0.7);
+.trm__ink-blot:nth-child(1) {
+  width: 3.2rem;
+  height: 3.2rem;
+  opacity: 0.85;
+}
+.trm__ink-blot:nth-child(2) {
+  width: 2rem;
+  height: 2.4rem;
+  left: 12%;
+  top: 18%;
+  opacity: 0.55;
+  border-radius: 40% 60% 55% 45%;
+}
+.trm__ink-blot:nth-child(3) {
+  width: 1.6rem;
+  height: 1.8rem;
+  right: 10%;
+  bottom: 14%;
+  opacity: 0.45;
+  border-radius: 55% 45% 40% 60%;
 }
 
 .trm[data-phase='collapsing'] .trm__card--a {
-  transform: scale(0.15);
-  clip-path: inset(35% 35% 35% 35%);
+  transform: scale(var(--trm-collapse-scale));
+  clip-path: inset(42% 42% 42% 42%);
 }
 
 .trm[data-phase='collapsing'] .trm__ink,
@@ -148,17 +167,17 @@
   transform: scale(1);
 }
 
-.trm[data-phase='ink'] .trm__ink-rim {
-  animation: trm-ink-pulse var(--trm-ink-hold-ms) ease-in-out;
+.trm[data-phase='ink'] .trm__ink {
+  animation: trm-ink-pulse 110ms ease-in-out;
 }
 
 @keyframes trm-ink-pulse {
   0%,
   100% {
-    transform: scale(0.7);
+    transform: scale(1);
   }
   50% {
-    transform: scale(1);
+    transform: scale(1.08);
   }
 }
 
@@ -167,25 +186,32 @@
   transform: scale(0);
 }
 
-.trm[data-phase='expanding'] .trm__card--a,
-.trm[data-phase='done'] .trm__card--a {
-  transform: scale(0);
-  clip-path: inset(50% 50% 50% 50%);
-  pointer-events: none;
-}
-
 .trm[data-phase='expanding'] .trm__card--b,
 .trm[data-phase='done'] .trm__card--b {
   transform: scale(1);
-  clip-path: circle(140% at 50% 50%);
-  pointer-events: auto;
+  clip-path: inset(0 0 0 0);
   transition-duration: var(--trm-expand-ms);
-  transition-timing-function: cubic-bezier(0.2, 0.95, 0.25, 1.05);
 }
 
 .trm[data-phase='done'] .trm__card--b {
   border-color: var(--chakra);
-  box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.45);
+  box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.4);
+}
+
+.trm[data-phase='done'] .trm__trait {
+  animation: trm-trait-snap 120ms cubic-bezier(0.2, 1.2, 0.3, 1);
+}
+
+@keyframes trm-trait-snap {
+  0% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .trm__status {
@@ -231,7 +257,7 @@
 
 .trm__btn--primary {
   border-color: var(--chakra);
-  background: rgb(122 107 154 / 0.18);
+  background: rgb(122 107 154 / 0.22);
 }
 
 .trm__btn:hover:not(:disabled) {
@@ -251,15 +277,25 @@
 @media (prefers-reduced-motion: reduce) {
   .trm__card,
   .trm__ink,
-  .trm__ink-rim {
+  .trm__trait {
     transition: none !important;
     animation: none !important;
+  }
+
+  .trm[data-phase='done'] .trm__card--b {
+    clip-path: none;
+    transform: scale(1);
   }
 }
 
 html[data-force-reduced-motion='true'] .trm__card,
 html[data-force-reduced-motion='true'] .trm__ink,
-html[data-force-reduced-motion='true'] .trm__ink-rim {
+html[data-force-reduced-motion='true'] .trm__trait {
   transition: none !important;
   animation: none !important;
+}
+
+html[data-force-reduced-motion='true'] .trm[data-phase='done'] .trm__card--b {
+  clip-path: none;
+  transform: scale(1);
 }

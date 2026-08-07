@@ -1,17 +1,18 @@
 # Transformation Morph
 
-Profile A (**Scout**) collapses into an **ink** intermediate, then expands into Profile B (**Sentinel**) with a visible **FROM SCOUT** inheritance mark.
+Profile A **collapses** through an **ink intermediate**, then **expands** into Profile B with **trait inheritance**.
 
 ## Behaviour
 
-- Idle: Scout card visible.
-- Collapsing: Scout scales to 0; ink silhouette expands.
-- Ink: clipped polygon silhouette holds 120ms.
-- Expanding / Done: Sentinel expands; trait mark `FROM SCOUT`.
-- Reduced motion: Sentinel immediately.
+- Idle: Profile A (Scout / GENIN) with PEAK mark, status `PROFILE A`.
+- Collapsing: card scales/clips to 0.12 over 160ms.
+- Ink: blot intermediate holds 120ms.
+- Expanding: Profile B (Sentinel / CHUNIN) expands over 160ms, inheriting PEAK.
+- Done: status `PROFILE B`.
+- Reduced motion: Profile B immediately.
 
 ## Freeze
 
-- Collapse: 140ms · ink hold: 120ms · expand: 150ms
-- Ink clip: hexagon polygon · trait inheritance: FROM SCOUT
+- Collapse: 160ms · ink: 120ms · expand: 160ms · collapseScale: 0.12
+- Inherited trait: `MARK · PEAK`
 - Palette (clone ash): `#12141A` / `#D8D4E0` / `#7A6B9A` / `#6E6A78` / `#F0EEF4`
