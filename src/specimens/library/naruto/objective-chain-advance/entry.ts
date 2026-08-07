@@ -5,7 +5,7 @@ export const objectiveChainAdvance: Specimen = {
   ref: 'SPX-2536',
   title: 'Objective Chain Advance',
   blurb:
-    'Each completed objective in a four-step chain sends a pulse down the connecting line to activate the next checkpoint.',
+    'Four mission checkpoints latch complete (200ms) with a 220ms pulse into the next, ending CLEAR.',
   origin: {
     project: 'Original',
     surface: 'Naruto / mission system — objective checkpoint overlays',
@@ -25,12 +25,14 @@ export const objectiveChainAdvance: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all four checkpoints appear complete immediately as MISSION CLEAR.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four checkpoints appear complete as CLEAR immediately.',
   },
-  acceptance: [
-    'Checkpoints latch in frozen step ms sequence',
-    'Final MISSION CLEAR after last checkpoint',
-    'Reduced motion shows all checkpoints clear',
+    acceptance: [
+    'Exactly 4 checkpoints; idle starts with OBJ 1 current',
+    'Each checkpoint latches complete over 200ms then pulse advances 220ms',
+    'Final state CLEAR with all four nodes complete',
+    'Replay resets to OBJ 1 current before rerunning',
+    'Reduced motion shows CLEAR immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

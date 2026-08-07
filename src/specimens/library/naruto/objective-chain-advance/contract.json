@@ -2,17 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/objective-chain-advance.schema.json",
   "title": "ObjectiveChainAdvance",
-  "description": "Each completed checkpoint in a four-step chain sends a pulse to activate the next.",
+  "description": "Four checkpoints latch in sequence with pulse advance into CLEAR.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "name",
     "checkpointCount",
-    "completeMs",
+    "latchMs",
     "pulseMs",
+    "settleMs",
     "colours",
-    "reducedMotion",
-    "nodeCount"
+    "reducedMotion"
   ],
   "properties": {
     "name": {
@@ -23,7 +23,7 @@
       "type": "number",
       "const": 4
     },
-    "completeMs": {
+    "latchMs": {
       "type": "number",
       "const": 200
     },
@@ -42,7 +42,6 @@
         "ink",
         "parchment",
         "chakra",
-        "alert",
         "olive",
         "off"
       ],
@@ -56,10 +55,6 @@
           "const": "#EBE2D0"
         },
         "chakra": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "alert": {
           "type": "string",
           "const": "#B83228"
         },
@@ -85,10 +80,6 @@
           "const": true
         }
       }
-    },
-    "nodeCount": {
-      "type": "number",
-      "const": 4
     }
   }
 }

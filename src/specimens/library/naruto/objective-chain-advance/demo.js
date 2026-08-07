@@ -4,7 +4,8 @@
  */
 
 const NODE_COUNT = 4
-const COMPLETE_MS = 200
+const LATCH_MS = 200
+const COMPLETE_MS = LATCH_MS
 const PULSE_MS = 220
 const SETTLE_MS = 100
 const TOTAL_MS = (NODE_COUNT - 1) * (COMPLETE_MS + PULSE_MS) + COMPLETE_MS + SETTLE_MS

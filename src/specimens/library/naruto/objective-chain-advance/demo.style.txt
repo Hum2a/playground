@@ -8,6 +8,8 @@
   --olive: #6a5e4e;
   --off: #f7f2e8;
   /* wave2 timing surface */
+  --oca-latch-ms: 200ms;
+  --oca-pulse-ms: 220ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
