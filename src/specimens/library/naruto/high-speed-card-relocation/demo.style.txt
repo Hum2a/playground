@@ -9,7 +9,7 @@
   --hcr-travel-ms: 200ms;
   --hcr-settle-ms: 40ms;
   --hcr-ghost-count: 2;
-  --hcr-path-pct: 50;
+  --hcr-path-pct: 100;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -26,7 +26,7 @@
 .hcr *,
 .hcr *::before,
 .hcr *::after {
-  box-sizing: border-box; /* wave2-polish */
+  box-sizing: border-box;
 }
 
 .hcr__live {

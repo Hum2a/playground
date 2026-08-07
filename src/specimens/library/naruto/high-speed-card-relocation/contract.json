@@ -24,7 +24,8 @@
       220,
       150
     ],
-    "pathPct": 50
+    "pathPct": 100,
+    "cardAbsentMidTravel": true
   },
   "timing": {
     "travelMs": 200,

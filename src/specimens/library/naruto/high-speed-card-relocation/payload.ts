@@ -8,7 +8,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~440×280+).',
-    'Import demo.css verbatim; freeze travelMs 200 / settleMs 40 / ghostCount 2 / leftPct [0,25] from contract.json.',
+    'Import demo.css verbatim; freeze travelMs 200 / ghostCount 2 / leftPct [0,25] / pathPct 100 from contract.json.',
     'Wire runHighSpeedCardRelocation / resetHighSpeedCardRelocation / replayHighSpeedCardRelocation.',
     'Honour both reduced-motion triggers — card appears in slot B immediately.',
   ],
