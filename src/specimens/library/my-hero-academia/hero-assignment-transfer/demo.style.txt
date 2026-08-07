@@ -1,10 +1,22 @@
-/* hero-assignment-transfer — portable specimen styles */
+/* SPX-2057 Hero Assignment Transfer — portable contract. */
 
 .hat {
   --hat-primary: #38a3ff;
   --hat-ink: #101820;
   --hat-paper: #f4f7fa;
   --hat-accent: #ff4d35;
+  --hat-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hat-transfer-ms: 740;
+  --hat-settle-ms: 1390;
+  --hat-tick-ms: 180;
+  --hat-chip-left-start: 1.4rem;
+  --hat-chip-top-start: 3.6rem;
+  --hat-chip-left-end: 10.6rem;
+  --hat-chip-top-end: 6.4rem;
+  --hat-chip-scale-start: 1;
+  --hat-chip-scale-end: 0.92;
+  --hat-tick-size-px: 10;
+  --hat-tick-border-px: 3;
 
   box-sizing: border-box;
   position: relative;
@@ -50,22 +62,34 @@
   border: 2px solid var(--hat-ink);
   background: var(--hat-primary);
   color: var(--hat-paper);
-  transition:
-    transform 740ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 200ms ease;
+  position: absolute;
+  left: var(--hat-chip-left-start);
+  top: var(--hat-chip-top-start);
+  z-index: 3;
+  transform: scale(var(--hat-chip-scale-start));
 }
 
 .hat--assign .hat__chip {
-  position: absolute;
-  left: 1.4rem;
-  top: 3.6rem;
-  z-index: 3;
-  transform: translate(9.2rem, 2.8rem) scale(0.92);
+  animation: hat-transfer calc(var(--hat-transfer-ms) * 1ms) var(--hat-ease) forwards;
 }
 
 .hat--settled .hat__chip {
   opacity: 0;
   pointer-events: none;
+}
+
+@keyframes hat-transfer {
+  0% {
+    left: var(--hat-chip-left-start);
+    top: var(--hat-chip-top-start);
+    transform: scale(var(--hat-chip-scale-start));
+  }
+
+  100% {
+    left: var(--hat-chip-left-end);
+    top: var(--hat-chip-top-end);
+    transform: scale(var(--hat-chip-scale-end));
+  }
 }
 
 .hat__chip-id {
@@ -81,6 +105,7 @@
 }
 
 .hat__slot {
+  position: relative;
   min-height: 64px;
   display: grid;
   place-items: center;
@@ -104,6 +129,77 @@
   color: var(--hat-paper);
 }
 
+.hat__slot-tick {
+  position: absolute;
+  width: var(--hat-tick-size-px);
+  height: var(--hat-tick-size-px);
+  border: var(--hat-tick-border-px) solid var(--hat-primary);
+  opacity: 0;
+  transform: scale(1.4);
+}
+
+.hat__slot-tick--tl {
+  top: -3px;
+  left: -3px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.hat__slot-tick--tr {
+  top: -3px;
+  right: -3px;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.hat__slot-tick--bl {
+  bottom: -3px;
+  left: -3px;
+  border-right: 0;
+  border-top: 0;
+}
+
+.hat__slot-tick--br {
+  bottom: -3px;
+  right: -3px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.hat--settled .hat__slot-tick {
+  border-color: var(--hat-paper);
+  animation: hat-tick-lock calc(var(--hat-tick-ms) * 1ms) var(--hat-ease) forwards;
+}
+
+.hat--settled .hat__slot-tick--tr {
+  animation-delay: 40ms;
+}
+
+.hat--settled .hat__slot-tick--bl {
+  animation-delay: 80ms;
+}
+
+.hat--settled .hat__slot-tick--br {
+  animation-delay: 120ms;
+}
+
+@keyframes hat-tick-lock {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .hat__slot-hint {
   font-size: 0.58rem;
   font-weight: 700;
@@ -115,7 +211,7 @@
 }
 
 .hat--settled .hat__slot::after {
-  content: 'HERO-12 ASSIGNED';
+  content: 'UNIT-12 ASSIGNED';
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -162,22 +258,38 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hat__chip,
-  .hat__slot {
+  .hat__slot,
+  .hat__slot-tick,
+  .hat--assign .hat__chip,
+  .hat--settled .hat__slot-tick {
+    animation: none !important;
     transition: none !important;
   }
 
   .hat--assign .hat__chip {
-    transform: none;
     opacity: 0;
+  }
+
+  .hat--settled .hat__slot-tick {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
 [data-force-reduced-motion='true'] .hat__chip,
-[data-force-reduced-motion='true'] .hat__slot {
+[data-force-reduced-motion='true'] .hat__slot,
+[data-force-reduced-motion='true'] .hat__slot-tick,
+[data-force-reduced-motion='true'] .hat--assign .hat__chip,
+[data-force-reduced-motion='true'] .hat--settled .hat__slot-tick {
+  animation: none !important;
   transition: none !important;
 }
 
 [data-force-reduced-motion='true'] .hat--assign .hat__chip {
-  transform: none;
   opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .hat--settled .hat__slot-tick {
+  opacity: 1;
+  transform: scale(1);
 }

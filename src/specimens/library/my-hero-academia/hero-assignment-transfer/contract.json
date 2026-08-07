@@ -1,6 +1,17 @@
 {
   "name": "hero-assignment-transfer",
-  "intent": "Hero chip travels from roster into incident assignment slot.",
+  "intent": "Unit chip travels along a frozen path from available roster into an incident slot; corner lock ticks snap in on settle.",
+  "catalogue": { "mha": "MHA-083", "ref": "SPX-2057" },
+  "copy": {
+    "rosterLabel": "AVAILABLE",
+    "chipId": "UNIT-12",
+    "chipRole": "SUPPORT",
+    "incidentLabel": "INCIDENT #441",
+    "slotHint": "ASSIGN UNIT",
+    "assigned": "UNIT-12 ASSIGNED",
+    "assign": "ASSIGN",
+    "liveAssigned": "UNIT-12 assigned to Incident 441."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
@@ -9,19 +20,40 @@
   },
   "timing": {
     "transferMs": 740,
-    "settleMs": 1390
+    "tickMs": 180,
+    "settleMs": 1390,
+    "totalMs": 1390
+  },
+  "geometry": {
+    "chipPath": {
+      "leftStartRem": 1.4,
+      "topStartRem": 3.6,
+      "leftEndRem": 10.6,
+      "topEndRem": 6.4,
+      "scaleStart": 1,
+      "scaleEnd": 0.92
+    },
+    "lockTicks": {
+      "sizePx": 10,
+      "borderPx": 3,
+      "staggerMs": [0, 40, 80, 120]
+    }
   },
   "api": {
     "run": "runHeroAssignment()",
     "reset": "resetHeroAssignment()",
-    "replay": "replayHeroAssignment()",
-    "sandboxSafe": true
+    "replay": "replayHeroAssignment()"
   },
   "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Slot shows assigned state immediately"
-  }
+    "behaviour": "Slot shows assigned state with lock ticks immediately; chip hidden"
+  },
+  "acceptance": [
+    "Idle: UNIT-12 chip in roster; dashed empty slot",
+    "Assign: chip animates frozen start→end path over 740ms",
+    "Settle: four corner lock ticks snap in on 0/40/80/120ms stagger",
+    "Slot fills with UNIT-12 ASSIGNED label",
+    "Reduced motion (prefers or data-force) skips travel animation",
+    "No network; effect clipped to host"
+  ],
+  "waveC": "Chip travel path and lock-tick geometry frozen via CSS vars; franchise-neutral UNIT copy"
 }

@@ -54,7 +54,7 @@ export function runHeroAssignment() {
   return new Promise((resolve) => {
     later(transferDelay, () => {
       el.classList.add('hat--settled')
-      setStatus('HERO-12 assigned to Incident 441.')
+      setStatus('UNIT-12 assigned to Incident 441.')
     })
     later(settleDelay, () => {
       settled = true
