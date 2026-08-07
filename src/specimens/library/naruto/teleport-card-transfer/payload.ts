@@ -7,10 +7,10 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze compressMs 200 / reconstructMs 220 / apertureOpenPx 44 / emptyHoldMs 80 from contract.json.',
+    'Mount inside a relative host (~420×340+).',
+    'Import demo.css verbatim; freeze compressMs 200 / midHoldMs 120 / reconstructMs 220 / aperture 8→72px from contract.json.',
     'Wire runTeleportCardTransfer / resetTeleportCardTransfer / replayTeleportCardTransfer.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers — show ARRIVED immediately.',
   ],
   acceptance: contract.acceptance,
   scaffold: `

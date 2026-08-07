@@ -1,24 +1,24 @@
 {
   "name": "teleport-card-transfer",
-  "intent": "Card compresses into a 44px aperture at source (compressMs 200), mid empty hold, then reconstructs from matching aperture at destination (reconstructMs 220).",
-  "catalogue": {
-    "nr": "NR-334",
-    "ref": "SPX-2677"
-  },
+  "intent": "Card compresses at source aperture, holds empty mid-transfer 120ms, then reconstructs at destination aperture.",
+  "catalogue": { "nr": "NR-334", "ref": "SPX-2677" },
   "copy": {
     "system": "TRANSFER // TELEPORT",
-    "source": "SOURCE",
-    "destination": "DESTINATION"
+    "idle": "SOURCE",
+    "transit": "IN TRANSIT",
+    "empty": "EMPTY",
+    "arrived": "ARRIVED"
   },
   "geometry": {
-    "apertureOpenPx": 44,
-    "apertureClosedPx": 0
+    "apertureFromPx": 8,
+    "apertureToPx": 72,
+    "cardAbsentMidHold": true
   },
   "timing": {
     "compressMs": 200,
-    "emptyHoldMs": 80,
+    "midHoldMs": 120,
     "reconstructMs": 220,
-    "totalMs": 420
+    "totalMs": 540
   },
   "colours": {
     "ink": "#070B0E",
@@ -36,18 +36,19 @@
   },
   "cssVars": [
     "--tct-compress-ms",
+    "--tct-mid-hold-ms",
     "--tct-reconstruct-ms",
-    "--tct-aperture-open-px",
-    "--tct-aperture-closed-px",
-    "--tct-empty-hold-ms"
+    "--tct-aperture-from",
+    "--tct-aperture-to"
   ],
   "reducedMotion": {
-    "behaviour": "Card reconstructed at destination immediately"
+    "behaviour": "Card appears already reconstructed at destination"
   },
   "acceptance": [
-    "Source aperture opens to apertureOpenPx 44 during compressMs 200; card gone mid-hold",
-    "Destination reconstructs only after reconstructMs 220 following empty hold",
-    "Both apertures close to 0px when transfer completes",
-    "Reduced motion (prefers or data-force) shows reconstructed destination immediately"
+    "Compress at source apertureFromPx 8 → apertureToPx 72 over compressMs 200",
+    "Mid empty hold midHoldMs 120 with card opacity 0 / neither slot occupied",
+    "Reconstruct at destination over reconstructMs 220 then status ARRIVED",
+    "Replay returns card to source before rerunning",
+    "Reduced motion (prefers or data-force) shows ARRIVED immediately"
   ]
 }

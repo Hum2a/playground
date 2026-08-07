@@ -5,8 +5,11 @@
  */
 
 const COMPRESS_MS = 200
+const MID_HOLD_MS = 120
 const RECONSTRUCT_MS = 220
-const TOTAL_MS = COMPRESS_MS + RECONSTRUCT_MS // ~420ms principal sequence
+const TOTAL_MS = COMPRESS_MS + MID_HOLD_MS + RECONSTRUCT_MS
+const APERTURE_FROM_PX = 8
+const APERTURE_TO_PX = 72
 
 let busy = false
 
@@ -156,22 +159,29 @@ export function runTeleportCardTransfer() {
 
   return new Promise((resolve) => {
     later(COMPRESS_MS, () => {
-      const { dx, dy } = measureOffset()
-      if (card) {
-        card.setAttribute('data-instant', 'true')
-        card.style.setProperty('--tct-dx', `${dx}px`)
-        card.style.setProperty('--tct-dy', `${dy}px`)
-        void card.offsetWidth
-        card.removeAttribute('data-instant')
-        void card.offsetWidth
-        card.style.setProperty('--tct-scale', '1')
-        card.style.setProperty('--tct-opacity', '1')
-      }
-      later(RECONSTRUCT_MS, () => {
-        showResolved()
-        busy = false
-        setButtons(true)
-        resolve()
+      sourceApertureEl()?.removeAttribute('data-open')
+      setStatus('EMPTY')
+      setLive('Empty hold. Card in transit.')
+      // Mid empty hold — card stays invisible at neither slot
+      later(MID_HOLD_MS, () => {
+        const { dx, dy } = measureOffset()
+        if (card) {
+          card.setAttribute('data-instant', 'true')
+          card.style.setProperty('--tct-dx', `${dx}px`)
+          card.style.setProperty('--tct-dy', `${dy}px`)
+          void card.offsetWidth
+          card.removeAttribute('data-instant')
+          void card.offsetWidth
+          destApertureEl()?.setAttribute('data-open', 'true')
+          card.style.setProperty('--tct-scale', '1')
+          card.style.setProperty('--tct-opacity', '1')
+        }
+        later(RECONSTRUCT_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
