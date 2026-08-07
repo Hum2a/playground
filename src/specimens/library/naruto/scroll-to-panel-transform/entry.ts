@@ -14,7 +14,7 @@ export const scrollToPanelTransform: Specimen = {
     kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const scrollToPanelTransform: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the panel appears fully expanded with content visible immediately; no shape morph plays.',
   },
+  acceptance: [
+    'Scroll morphs to panel via scale/clip (not crossfade)',
+    'Morph timings frozen',
+    'Reduced motion shows expanded panel immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,

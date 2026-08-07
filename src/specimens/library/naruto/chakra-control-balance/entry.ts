@@ -27,6 +27,11 @@ export const chakraControlBalance: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the needle jumps straight to the centred, locked-balanced state with no oscillation.',
   },
+  acceptance: [
+    'Needle locks at frozen balance threshold',
+    'Wobble settles before LOCKED',
+    'Reduced motion jumps to locked-balanced',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

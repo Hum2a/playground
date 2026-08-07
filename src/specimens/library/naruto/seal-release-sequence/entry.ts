@@ -14,7 +14,7 @@ export const sealReleaseSequence: Specimen = {
     kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const sealReleaseSequence: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all three rings appear already disengaged and the core shows the open glyph immediately.',
   },
+  acceptance: [
+    'Rings disengage outward on a frozen stagger array',
+    'Open glyph appears only after rings clear',
+    'Reduced motion shows open state immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 320,

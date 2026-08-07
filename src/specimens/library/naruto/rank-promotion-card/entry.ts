@@ -27,6 +27,11 @@ export const rankPromotionCard: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the card shows the promoted rank immediately.',
   },
+  acceptance: [
+    'Old rank morphs to new rank through frozen phases',
+    'Final promoted rank static',
+    'Reduced motion shows promoted rank immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

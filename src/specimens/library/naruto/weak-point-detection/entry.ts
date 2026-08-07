@@ -27,6 +27,11 @@ export const weakPointDetection: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all four weak points appear bracketed immediately with the scan line parked at the base.',
   },
+  acceptance: [
+    'Exactly N weak points bracket in frozen order',
+    'Host content remains visible under brackets',
+    'Reduced motion shows all points bracketed',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#1a1e24;display:grid;place-items:center;padding:1rem;"><div style="position:relative;width:min(100%,280px);height:180px;border:1px solid #2c313c;background:#12141a;padding:1rem;color:#e6e8ec;font:600 12px/1.4 ui-sans-serif,system-ui,sans-serif;">Host card<br/>target surface{{specimen}}</div></div>`,

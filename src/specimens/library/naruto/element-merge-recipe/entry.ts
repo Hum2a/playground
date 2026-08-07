@@ -27,6 +27,11 @@ export const elementMergeRecipe: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the result token appears directly with no travel/merge choreography.',
   },
+  acceptance: [
+    'Dual inputs meet at frozen seam then result token appears',
+    'Result inherits marks from both inputs',
+    'Reduced motion shows result token directly',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

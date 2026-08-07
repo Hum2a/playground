@@ -27,6 +27,11 @@ export const fourPointBarrierConstruct: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all four corners connect and the field fills immediately.',
   },
+  acceptance: [
+    'Corners then edges then fill with frozen coords/ms',
+    'Field filled only after edges complete',
+    'Reduced motion shows connected filled field',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#070b0e;display:grid;place-items:center;padding:1rem;">{{specimen}}</div>`,

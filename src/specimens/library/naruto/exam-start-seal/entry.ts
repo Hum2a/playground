@@ -27,6 +27,11 @@ export const examStartSeal: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the panel appears already unlocked and active.',
   },
+  acceptance: [
+    'Seal break unlocks into active exam surface',
+    'Unlock phases frozen in contract',
+    'Reduced motion shows unlocked surface immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

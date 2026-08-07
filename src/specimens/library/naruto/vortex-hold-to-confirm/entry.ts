@@ -27,6 +27,11 @@ export const vortexHoldToConfirm: Specimen = {
     reducedMotionNote:
       'Manual pointer/keyboard holds still require the full 900ms but skip the rotating ring animation in favour of a static engaged state under prefers-reduced-motion or data-force-reduced-motion; Run/Replay resolve directly to CONFIRMED.',
   },
+  acceptance: [
+    'Early release before 900ms never confirms',
+    'Full hold builds 3 rings then CONFIRMED',
+    'Reduced motion retains threshold then auto-confirms',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

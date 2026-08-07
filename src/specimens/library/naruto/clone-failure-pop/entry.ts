@@ -27,6 +27,11 @@ export const cloneFailurePop: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the failed worker and the two completed workers appear in their final states immediately.',
   },
+  acceptance: [
+    'Failed clone pops leaving frozen residue then clears',
+    'Surviving clones remain; residue timing in contract',
+    'Reduced motion shows final failed/complete states',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 440,

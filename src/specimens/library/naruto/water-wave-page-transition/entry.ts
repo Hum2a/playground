@@ -27,6 +27,11 @@ export const waterWavePageTransition: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the page swaps immediately with no wave sweep.',
   },
+  acceptance: [
+    'Wave wipe uses frozen clip-path steps',
+    'Page B identity visible after wipe completes',
+    'Reduced motion instant page swap',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

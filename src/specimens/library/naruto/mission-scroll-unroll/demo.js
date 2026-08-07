@@ -1,12 +1,15 @@
 /**
- * Mission Scroll Unroll — rolled scroll expands then reveals briefing lines.
+ * Mission Scroll Unroll — physical height expand then briefing lines unclip.
  * iframe-safe; no storage / parent / network.
  */
 
 const UNROLL_MS = 480
 const LINE_STAGGER_MS = 70
-const LINE_START_MS = 220
+const LINE_START_MS = 280
 const SETTLE_MS = 90
+const LINE_COUNT = 4
+const ROLLED_HEIGHT_PX = 16
+const OPEN_HEIGHT_PX = 190
 
 let busy = false
 /** @type {number[]} */
@@ -109,7 +112,10 @@ export function runMissionScrollUnroll() {
       })
     })
 
-    const totalMs = Math.max(UNROLL_MS, LINE_START_MS + lines().length * LINE_STAGGER_MS)
+    const totalMs = Math.max(
+      UNROLL_MS,
+      LINE_START_MS + (LINE_COUNT - 1) * LINE_STAGGER_MS + 200,
+    )
     later(totalMs + SETTLE_MS, () => {
       showResolved()
       busy = false
@@ -149,5 +155,7 @@ function bindUi() {
   })
 }
 
+void ROLLED_HEIGHT_PX
+void OPEN_HEIGHT_PX
 bindUi()
 resetMissionScrollUnroll()

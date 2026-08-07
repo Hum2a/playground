@@ -27,6 +27,11 @@ export const missionScrollUnroll: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the scroll appears fully unrolled with all briefing lines visible immediately.',
   },
+  acceptance: [
+    'Scroll unrolls by frozen height/clip ms',
+    'Briefing lines visible when fully unrolled',
+    'Reduced motion fully unrolled immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,

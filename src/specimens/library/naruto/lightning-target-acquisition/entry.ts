@@ -27,6 +27,11 @@ export const lightningTargetAcquisition: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the reticle resolves directly to LOCKED with no snap/flicker choreography.',
   },
+  acceptance: [
+    'Branch-bolt reticle acquires then LOCKED',
+    'Branch geometry frozen in contract',
+    'Reduced motion shows LOCKED immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

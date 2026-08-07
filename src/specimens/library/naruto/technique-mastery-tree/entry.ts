@@ -14,7 +14,7 @@ export const techniqueMasteryTree: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const techniqueMasteryTree: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all four nodes appear already unlocked as MASTERED.',
   },
+  acceptance: [
+    'Nodes unlock in frozen order with edge draw',
+    'MASTERED state on completed nodes',
+    'Reduced motion shows nodes MASTERED',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

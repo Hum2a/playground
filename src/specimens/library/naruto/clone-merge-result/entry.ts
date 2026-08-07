@@ -27,6 +27,11 @@ export const cloneMergeResult: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the three clone results are already merged into the output card.',
   },
+  acceptance: [
+    'Clones travel inward by frozen px and reabsorb into one result',
+    'Final output inherits worker traits',
+    'Reduced motion shows merged result immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 400,

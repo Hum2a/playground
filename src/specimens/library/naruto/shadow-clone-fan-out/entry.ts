@@ -27,6 +27,11 @@ export const shadowCloneFanOut: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all three worker slots fill immediately with no clone travel.',
   },
+  acceptance: [
+    'Clones spawn from a single origin with frozen stagger',
+    'Worker count and travel are contract-frozen',
+    'Reduced motion fills slots immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

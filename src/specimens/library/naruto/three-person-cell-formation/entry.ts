@@ -27,6 +27,11 @@ export const threePersonCellFormation: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all three nodes appear already formed and linked.',
   },
+  acceptance: [
+    'Three nodes assemble at frozen positions with link draw',
+    'Formation locks when all links complete',
+    'Reduced motion shows formed cell immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

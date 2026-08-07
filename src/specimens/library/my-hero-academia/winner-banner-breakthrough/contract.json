@@ -1,12 +1,56 @@
 {
   "name": "winner-banner-breakthrough",
-  "ref": "SPX-2041",
-  "catalogue": { "mha": "MHA-067" },
-  "banner": "WINNER — TEAM A",
+  "intent": "After scores settle, a jagged WINNER banner tears through the scoreboard; winner score ticks twice on impact.",
+  "catalogue": {
+    "mha": "MHA-067",
+    "ref": "SPX-2041"
+  },
+  "copy": {
+    "head": "MATCH RESULT",
+    "teamA": "TEAM A",
+    "teamB": "TEAM B",
+    "vs": "VS",
+    "scoreA": "12",
+    "scoreB": "8",
+    "banner": "WINNER — TEAM A",
+    "liveIdle": "Scores settled. Awaiting declaration.",
+    "liveBreak": "Banner breaking through…",
+    "liveDone": "Team A declared winner."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "breakMs": 740,
+    "tickMs": 180,
+    "tickDelayMs": 520
+  },
+  "geometry": {
+    "stageMaxWidthPx": 400,
+    "boardClipCornerPx": 12,
+    "bannerSlotHeightPx": 36,
+    "bannerTearNotchCount": 12
+  },
+  "api": {
+    "run": "runWinnerBannerBreakthrough()",
+    "reset": "resetWinnerBannerBreakthrough()",
+    "replay": "replayWinnerBannerBreakthrough()"
+  },
+  "reducedMotion": {
+    "behaviour": "Banner appears in slot immediately; no slide breakthrough or score ticks"
+  },
+  "acceptance": [
+    "Idle: MATCH RESULT scoreboard with TEAM A 12 vs TEAM B 8; banner hidden off-panel",
+    "DECLARE WINNER slides jagged banner through scoreboard over 740ms",
+    "Banner uses torn-edge clip-path on leading and trailing edges",
+    "Winner score (TEAM A) ticks twice at 520ms delay with accent colour",
+    "Done: banner visible; DECLARE disabled; RESET shown",
+    "RESET restores idle scores and hidden banner",
+    "Reduced motion (prefers or data-force) shows banner instantly without slide",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Frozen break/tick timing; jagged tear clip-path; scoreboard reaction ticks on winner"
 }

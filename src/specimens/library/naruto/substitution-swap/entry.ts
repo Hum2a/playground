@@ -27,6 +27,11 @@ export const substitutionSwap: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the slot jumps straight to the resolved failover target with no decoy step or puff.',
   },
+  acceptance: [
+    'Mid-sequence shows decoy only before true target restores',
+    'Swap timings frozen (log → decoy → target)',
+    'Reduced motion jumps to failover target',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 340,

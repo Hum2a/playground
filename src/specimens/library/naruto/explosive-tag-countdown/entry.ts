@@ -27,6 +27,11 @@ export const explosiveTagCountdown: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the tag resolves directly to CLEAR with no arm/count/burst choreography.',
   },
+  acceptance: [
+    'Arm 220ms then digits 3→2→1 at 480ms each',
+    'Burst 240ms then CLEAR settle 200ms',
+    'Reduced motion shows CLEAR immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

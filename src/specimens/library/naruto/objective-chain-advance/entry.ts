@@ -27,6 +27,11 @@ export const objectiveChainAdvance: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all four checkpoints appear complete immediately as MISSION CLEAR.',
   },
+  acceptance: [
+    'Checkpoints latch in frozen step ms sequence',
+    'Final MISSION CLEAR after last checkpoint',
+    'Reduced motion shows all checkpoints clear',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

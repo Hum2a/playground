@@ -27,6 +27,11 @@ export const wireConnectionDraw: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the wire appears fully drawn and LINKED immediately.',
   },
+  acceptance: [
+    'Wire draws via pathLength to LINKED then snaps',
+    'Path and duration frozen in contract',
+    'Reduced motion shows fully drawn LINKED',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

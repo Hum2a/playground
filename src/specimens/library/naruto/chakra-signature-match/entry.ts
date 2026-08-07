@@ -27,6 +27,11 @@ export const chakraSignatureMatch: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the incoming waveform snaps directly onto the reference and MATCH shows immediately.',
   },
+  acceptance: [
+    'Waveform aligns to frozen threshold then MATCH',
+    'Sample points frozen in contract',
+    'Reduced motion snaps to MATCH',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070b0e;display:grid;place-items:center;padding:1rem;">{{specimen}}</div>`,

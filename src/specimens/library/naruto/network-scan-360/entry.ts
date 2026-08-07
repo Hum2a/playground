@@ -13,7 +13,7 @@ export const networkScan360: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -26,6 +26,11 @@ export const networkScan360: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
   },
+  acceptance: [
+    'Sweep hits nodes at 0/72/144/216/288° with 150ms steps',
+    'Five links activate in order; final MAPPED',
+    'Reduced motion shows all five mapped immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

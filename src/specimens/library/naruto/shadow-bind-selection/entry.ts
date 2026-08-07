@@ -27,6 +27,11 @@ export const shadowBindSelection: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the source and target appear already bound.',
   },
+  acceptance: [
+    'Bind tendrils lock selection with frozen count and lock ms',
+    'Selected target cannot move until released',
+    'Reduced motion shows already bound',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

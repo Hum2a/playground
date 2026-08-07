@@ -14,7 +14,7 @@ export const highSpeedCardRelocation: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const highSpeedCardRelocation: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the card appears directly in slot B with no travel or afterimages.',
   },
+  acceptance: [
+    'Card absent mid-travel with afterimages along frozen path',
+    'Ends docked in destination slot',
+    'Reduced motion places card in slot B immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 440,

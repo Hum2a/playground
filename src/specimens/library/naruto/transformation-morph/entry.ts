@@ -27,6 +27,11 @@ export const transformationMorph: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the second profile appears immediately with no silhouette intermediate.',
   },
+  acceptance: [
+    'Collapse → ink intermediate → expand with trait inheritance',
+    'Intermediate is not a simple crossfade',
+    'Reduced motion shows second profile immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

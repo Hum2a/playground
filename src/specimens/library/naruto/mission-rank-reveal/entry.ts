@@ -27,6 +27,11 @@ export const missionRankReveal: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the rank card and stamp appear already settled with CONFIRMED shown.',
   },
+  acceptance: [
+    'Rank glyph + stamp settle with frozen overshoot angle',
+    'Final CONFIRMED static',
+    'Reduced motion shows settled rank immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

@@ -27,6 +27,11 @@ export const earthWallBlocker: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the wall resolves directly to raised/PROTECTED with no staggered rise choreography.',
   },
+  acceptance: [
+    'Faceted slabs rise with frozen count and rise px',
+    'Final PROTECTED after last slab settles',
+    'Reduced motion shows raised wall immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

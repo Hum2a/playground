@@ -14,7 +14,7 @@ export const shurikenRadialMenu: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const shurikenRadialMenu: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all four sectors appear open immediately with no rotation.',
   },
+  acceptance: [
+    'Sectors open to frozen angles and radii',
+    'No continuous rotation under reduced motion',
+    'Selection commits one sector',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

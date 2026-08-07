@@ -27,6 +27,11 @@ export const missionBoardDispatch: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the card appears already docked in the assigned lane.',
   },
+  acceptance: [
+    'Card travels frozen path into destination lane and docks',
+    'Lane shows dispatched card identity',
+    'Reduced motion shows card docked immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

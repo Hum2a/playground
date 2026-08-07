@@ -27,6 +27,11 @@ export const versusClashCard: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, both cards appear already clashed in place.',
   },
+  acceptance: [
+    'Cards travel frozen px then clash-hold',
+    'Impact settles both cards in clash pose',
+    'Reduced motion shows already clashed',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

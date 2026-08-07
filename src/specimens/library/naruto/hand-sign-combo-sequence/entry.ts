@@ -27,6 +27,11 @@ export const handSignComboSequence: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all four signs appear acquired immediately as READY with no snap.',
   },
+  acceptance: [
+    'Four distinct glyphs acquire with snap (not fade) at 130ms steps',
+    'Ready hold settles 90ms; final READY shows all four locked',
+    'Reduced motion shows all four READY immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

@@ -1,4 +1,6 @@
 const BREAK_MS = 740
+const TICK_MS = 180
+const TICK_DELAY_MS = 520
 
 let busy = false
 /** @type {number | null} */

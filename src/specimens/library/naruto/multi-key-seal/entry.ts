@@ -14,7 +14,7 @@ export const multiKeySeal: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const multiKeySeal: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all three key nodes appear armed and the seal petals appear already open.',
   },
+  acceptance: [
+    'Exactly N keys arm before petals open',
+    'Petal angles frozen in contract; unlock is progressive',
+    'Reduced motion shows armed+open immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,

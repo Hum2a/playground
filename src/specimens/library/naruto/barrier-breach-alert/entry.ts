@@ -27,6 +27,11 @@ export const barrierBreachAlert: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the fracture and alert state appear immediately without the pulse animation.',
   },
+  acceptance: [
+    'Exactly one fracture at frozen angle; alert latches',
+    'No looping flash after latch',
+    'Reduced motion shows fracture/alert without pulse',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070b0e;display:grid;place-items:center;padding:1rem;"><div style="position:relative;width:min(100%,280px);height:160px;border:1px solid #1a6b58;background:#0a1210;">{{specimen}}</div></div>`,

@@ -26,6 +26,11 @@ export const chakraChargeField: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
   },
+  acceptance: [
+    'Boundary grows through frozen diameters to READY',
+    'Growth is irregular not a linear bar only',
+    'Reduced motion shows resolved READY immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

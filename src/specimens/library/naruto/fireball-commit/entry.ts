@@ -27,6 +27,11 @@ export const fireballCommit: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the target resolves directly to CONFIRMED with no charge/launch/impact choreography.',
   },
+  acceptance: [
+    'Charge → launch → impact confirm with frozen ms',
+    'Target shows CONFIRMED after impact',
+    'Reduced motion shows CONFIRMED without charge/launch',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

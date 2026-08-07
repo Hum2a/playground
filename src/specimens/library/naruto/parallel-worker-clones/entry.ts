@@ -27,6 +27,11 @@ export const parallelWorkerClones: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all three worker bars fill and recombine immediately.',
   },
+  acceptance: [
+    'Parallel bars fill then recombine inheriting worker marks',
+    'Progress commits are discrete and frozen',
+    'Reduced motion shows completed merge immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 440,

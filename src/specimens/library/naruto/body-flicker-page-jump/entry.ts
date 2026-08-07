@@ -27,6 +27,11 @@ export const bodyFlickerPageJump: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the destination view appears immediately with no streaks.',
   },
+  acceptance: [
+    'Streaks fire then destination identity appears',
+    'Streak count/angle frozen; no fade-as-travel',
+    'Reduced motion shows destination immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

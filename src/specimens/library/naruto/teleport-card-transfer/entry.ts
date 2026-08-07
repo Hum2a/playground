@@ -27,6 +27,11 @@ export const teleportCardTransfer: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the card appears already reconstructed at the destination.',
   },
+  acceptance: [
+    'Mid-transfer empty hold with frozen aperture diameters',
+    'Card reconstructs at destination only after aperture closes',
+    'Reduced motion shows reconstructed destination',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

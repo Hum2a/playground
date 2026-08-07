@@ -14,7 +14,7 @@ export const circularSealLock: Specimen = {
     kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -27,6 +27,11 @@ export const circularSealLock: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the ring appears already aligned and locked with no rotation.',
   },
+  acceptance: [
+    'Ring rotates to align with frozen tick marks then locks',
+    'Settle angle and tick count are contract-frozen',
+    'Reduced motion shows locked ring immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 320,

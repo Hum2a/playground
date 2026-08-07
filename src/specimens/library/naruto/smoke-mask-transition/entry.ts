@@ -27,6 +27,11 @@ export const smokeMaskTransition: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the state swaps immediately with no circle cover/disperse choreography.',
   },
+  acceptance: [
+    'Smoke mask covers then content identity swaps mid-cover',
+    'Mask keyframes frozen; A≠B after swap',
+    'Reduced motion instant swaps without choreography',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,

@@ -27,6 +27,11 @@ export const windSliceTransition: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the state swaps immediately with no blade sweep.',
   },
+  acceptance: [
+    'Blade sweeps at frozen angles with stagger',
+    'Content swaps under slices; blade count in contract',
+    'Reduced motion instant swap',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 380,
