@@ -1,27 +1,47 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ObjectiveUpdateSlash",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "colours", "animation"],
-  "properties": {
-    "name": { "type": "string", "const": "objective-update-slash" },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "primary": { "const": "#38A3FF" },
-        "ink": { "const": "#101820" },
-        "paper": { "const": "#F4F7FA" },
-        "accent": { "const": "#FF4D35" }
-      }
-    },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "slashMs": { "const": 280 },
-        "snapMs": { "const": 220 },
-        "totalMs": { "const": 1150 }
-      }
-    }
-  }
+  "name": "objective-update-slash",
+  "intent": "Strike TARGET with a hard −8° slash, then ESCORT impacts and settles active.",
+  "catalogue": { "mha": "MHA-129", "ref": "SPX-2103", "title": "Objective Update Slash" },
+  "copy": {
+    "objectives": ["TARGET", "ESCORT"],
+    "liveIdle": "Objectives active.",
+    "liveSlash": "Completing TARGET.",
+    "liveSnap": "Activating ESCORT.",
+    "liveDone": "Objective updated — ESCORT active."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "slashMs": 280,
+    "snapImpactMs": 160,
+    "snapSettleMs": 120,
+    "settleHoldMs": 400
+  },
+  "geometry": {
+    "slashAngleDeg": -8,
+    "slashHeightPx": 6,
+    "slashClipNotchPct": 4
+  },
+  "api": {
+    "run": "runObjectiveUpdateSlash()",
+    "reset": "resetObjectiveUpdateSlash()",
+    "replay": "replayObjectiveUpdateSlash()"
+  },
+  "reducedMotion": {
+    "behaviour": "Slash at −8° and ESCORT active state appear instantly"
+  },
+  "acceptance": [
+    "Idle: TARGET active, ESCORT dimmed",
+    "Advance draws hard −8° parallelogram slash across TARGET over 280ms",
+    "ESCORT impacts at scale 1.06 over 160ms then settles to active over 120ms",
+    "Done: TARGET struck through, ESCORT highlighted with primary border",
+    "Replay restores idle before rerunning",
+    "Reduced motion (prefers or data-force) shows done state immediately",
+    "No network; polite aria-live on status"
+  ],
+  "waveC": "Frozen slash angle −8°; ESCORT impact→settle ladder; hard strike-through clip-path"
 }

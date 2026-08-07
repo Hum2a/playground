@@ -5,6 +5,10 @@
   --ous-ink: #101820;
   --ous-paper: #f4f7fa;
   --ous-accent: #ff4d35;
+  --ous-slash-angle-deg: -8;
+  --ous-slash-ms: 280;
+  --ous-snap-impact-ms: 160;
+  --ous-snap-settle-ms: 120;
 
   box-sizing: border-box;
   position: relative;
@@ -78,15 +82,18 @@
 
 .ous__slash {
   position: absolute;
-  left: 0.5rem;
-  right: 0.5rem;
+  left: 0.35rem;
+  right: 0.35rem;
   top: 50%;
-  height: 4px;
-  margin-top: -2px;
+  height: 6px;
+  margin-top: -3px;
   background: var(--ous-accent);
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  clip-path: polygon(0 40%, 100% 0, 100% 60%, 0 100%);
+  transform: scaleX(0) rotate(calc(var(--ous-slash-angle-deg) * 1deg));
+  transform-origin: 0% 50%;
+  clip-path: polygon(0 30%, 4% 0%, 100% 18%, 96% 100%, 0 70%);
+  box-shadow:
+    0 1px 0 rgb(255 77 53 / 0.55),
+    2px 2px 0 var(--ous-ink);
 }
 
 .ous__controls {
@@ -126,22 +133,27 @@
 }
 
 .ous[data-phase='slash'] .ous__slash {
-  animation: ous-slash 280ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+  animation: ous-slash var(--ous-slash-ms) cubic-bezier(0.2, 0.9, 0.3, 1) both;
 }
 
 .ous[data-phase='slash'] .ous__item[data-ous-item='1'],
 .ous[data-phase='snap'] .ous__item[data-ous-item='1'],
+.ous[data-phase='settle'] .ous__item[data-ous-item='1'],
 .ous[data-phase='done'] .ous__item[data-ous-item='1'] {
-  animation: ous-complete 220ms ease-out 280ms both;
+  animation: ous-complete 220ms ease-out var(--ous-slash-ms) both;
 }
 
-.ous[data-phase='snap'] .ous__item[data-ous-item='2'],
+.ous[data-phase='snap'] .ous__item[data-ous-item='2'] {
+  animation: ous-snap-impact var(--ous-snap-impact-ms) cubic-bezier(0.15, 0.85, 0.25, 1.35) both;
+}
+
+.ous[data-phase='settle'] .ous__item[data-ous-item='2'],
 .ous[data-phase='done'] .ous__item[data-ous-item='2'] {
-  animation: ous-snap 220ms cubic-bezier(0.15, 0.85, 0.25, 1) both;
+  animation: ous-snap-settle var(--ous-snap-settle-ms) cubic-bezier(0.34, 1.15, 0.4, 1) both;
 }
 
 .ous[data-phase='done'] .ous__item[data-ous-item='1'] .ous__slash {
-  transform: scaleX(1);
+  transform: scaleX(1) rotate(calc(var(--ous-slash-angle-deg) * 1deg));
 }
 
 .ous[data-phase='done'] .ous__item[data-ous-item='1'] {
@@ -150,17 +162,17 @@
 
 .ous[data-phase='done'] .ous__item[data-ous-item='2'] {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translateX(0);
   border-color: var(--ous-primary);
   box-shadow: 4px 4px 0 var(--ous-primary);
 }
 
 @keyframes ous-slash {
   0% {
-    transform: scaleX(0);
+    transform: scaleX(0) rotate(calc(var(--ous-slash-angle-deg) * 1deg));
   }
   100% {
-    transform: scaleX(1);
+    transform: scaleX(1) rotate(calc(var(--ous-slash-angle-deg) * 1deg));
   }
 }
 
@@ -172,13 +184,23 @@
   }
 }
 
-@keyframes ous-snap {
+@keyframes ous-snap-impact {
   0% {
     opacity: 0.45;
-    transform: scale(0.92) translateX(-8px);
+    transform: scale(0.9) translateX(-12px);
   }
-  70% {
-    transform: scale(1.04) translateX(2px);
+  100% {
+    opacity: 1;
+    transform: scale(1.06) translateX(3px);
+    border-color: var(--ous-primary);
+    box-shadow: 6px 6px 0 var(--ous-primary);
+  }
+}
+
+@keyframes ous-snap-settle {
+  0% {
+    transform: scale(1.06) translateX(3px);
+    box-shadow: 6px 6px 0 var(--ous-primary);
   }
   100% {
     opacity: 1;
@@ -191,25 +213,27 @@
 @media (prefers-reduced-motion: reduce) {
   .ous[data-phase='slash'] .ous__slash,
   .ous[data-phase='slash'] .ous__item,
-  .ous[data-phase='snap'] .ous__item {
+  .ous[data-phase='snap'] .ous__item,
+  .ous[data-phase='settle'] .ous__item {
     animation: none !important;
   }
 }
 
 [data-force-reduced-motion='true'] .ous[data-phase='slash'] .ous__slash,
 [data-force-reduced-motion='true'] .ous[data-phase='slash'] .ous__item,
-[data-force-reduced-motion='true'] .ous[data-phase='snap'] .ous__item {
+[data-force-reduced-motion='true'] .ous[data-phase='snap'] .ous__item,
+[data-force-reduced-motion='true'] .ous[data-phase='settle'] .ous__item {
   animation: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ous[data-phase='done'] .ous__item[data-ous-item='1'] .ous__slash,
   .ous[data-phase='slash'] .ous__item[data-ous-item='1'] .ous__slash {
-    transform: scaleX(1);
+    transform: scaleX(1) rotate(calc(var(--ous-slash-angle-deg) * 1deg));
   }
 }
 
 [data-force-reduced-motion='true'] .ous[data-phase='done'] .ous__item[data-ous-item='1'] .ous__slash,
 [data-force-reduced-motion='true'] .ous[data-phase='slash'] .ous__item[data-ous-item='1'] .ous__slash {
-  transform: scaleX(1);
+  transform: scaleX(1) rotate(calc(var(--ous-slash-angle-deg) * 1deg));
 }

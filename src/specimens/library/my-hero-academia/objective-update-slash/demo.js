@@ -3,10 +3,13 @@
  * iframe-safe; no storage / parent / network.
  */
 
+/** Frozen slash angle — matches contract geometry.slashAngleDeg */
+const SLASH_ANGLE_DEG = -8
 const SLASH_MS = 280
-const SNAP_MS = 220
-const SETTLE_MS = 650
-const TOTAL_MS = SLASH_MS + SNAP_MS + SETTLE_MS
+const SNAP_IMPACT_MS = 160
+const SNAP_SETTLE_MS = 120
+const SETTLE_MS = 400
+const TOTAL_MS = SLASH_MS + SNAP_IMPACT_MS + SNAP_SETTLE_MS + SETTLE_MS
 
 let busy = false
 /** @type {number[]} */
@@ -56,7 +59,9 @@ function applyDone() {
   item1?.classList.remove('ous__item--active')
   item1?.classList.add('ous__item--done')
   item2?.classList.add('ous__item--active')
-  if (slash) slash.style.transform = 'scaleX(1)'
+  if (slash) {
+    slash.style.transform = `scaleX(1) rotate(${SLASH_ANGLE_DEG}deg)`
+  }
   setLive('Objective updated — ESCORT active.')
 }
 
@@ -100,13 +105,16 @@ export function runObjectiveUpdateSlash() {
     later(SLASH_MS, () => {
       setPhase('snap')
       setLive('Activating ESCORT.')
-      later(SNAP_MS, () => {
-        applyDone()
-        setPhase('done')
-        later(SETTLE_MS, () => {
-          busy = false
-          setButtons(true)
-          resolve()
+      later(SNAP_IMPACT_MS, () => {
+        setPhase('settle')
+        later(SNAP_SETTLE_MS, () => {
+          applyDone()
+          setPhase('done')
+          later(SETTLE_MS, () => {
+            busy = false
+            setButtons(true)
+            resolve()
+          })
         })
       })
     })
@@ -146,3 +154,5 @@ function bindUi() {
 
 bindUi()
 resetObjectiveUpdateSlash()
+void SLASH_ANGLE_DEG
+void TOTAL_MS
