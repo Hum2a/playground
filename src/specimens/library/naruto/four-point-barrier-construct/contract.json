@@ -108,5 +108,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Corners activate at frozen coords [{\"x\":30,\"y\":30},{\"x\":170,\"y\":30},{\"x\":170,\"y\":170},{\"x\":30,\"y\":170}]",
+    "Edges draw edge-by-edge over edgeMs 160, then fillMs 180",
+    "Seal lacquer palette; stroke draw not opacity-only",
+    "Replay clears edges/fill before rerunning",
+    "Reduced motion shows SECURED immediately"
+  ]
 }
