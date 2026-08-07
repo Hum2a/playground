@@ -1,14 +1,14 @@
 {
   "name": "body-flicker-page-jump",
-  "intent": "Five directional streaks compress the source view in flickerMs 140, then destination identity appears after settleMs 90 — no fade-as-travel.",
+  "intent": "Five directional streaks compress the source view in flickerMs 140 (scaleX, not fade), then destination identity appears after settleMs 90.",
   "catalogue": {
     "nr": "NR-066",
     "ref": "SPX-2409"
   },
   "copy": {
     "system": "JUMP // BODY FLICKER",
-    "origin": "ORIGIN",
-    "destination": "DESTINATION"
+    "origin": "HOME",
+    "destination": "MISSION BOARD"
   },
   "geometry": {
     "streakCount": 5,
@@ -48,9 +48,9 @@
     "behaviour": "Destination view shown immediately; streaks suppressed"
   },
   "acceptance": [
-    "Exactly 5 streaks at angles [-6,-2,0,3,7] fire for flickerMs 140 (scaleX, not opacity fade)",
-    "Destination identity appears after settleMs 90; origin view is gone mid-flicker",
-    "Replay returns to origin before re-jumping",
+    "Exactly 5 streaks at angles [-6,-2,0,3,7] fire for flickerMs 140 via scaleX (not opacity fade-as-travel)",
+    "Origin view is hidden mid-flicker; destination identity after settleMs 90",
+    "Replay returns to HOME before re-jumping",
     "Reduced motion (prefers or data-force) shows destination immediately with animations disabled"
   ]
 }

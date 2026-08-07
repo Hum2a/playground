@@ -168,3 +168,6 @@ function bindUi() {
 
 bindUi()
 resetBodyFlickerPageJump()
+requestAnimationFrame(() => {
+  void runBodyFlickerPageJump()
+})

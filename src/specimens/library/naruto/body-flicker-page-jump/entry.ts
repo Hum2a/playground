@@ -5,7 +5,7 @@ export const bodyFlickerPageJump: Specimen = {
   ref: 'SPX-2409',
   title: 'Body Flicker Page Jump',
   blurb:
-    'Five directional streaks (−6°…7°) compress the view in 140ms, then the destination identity snaps in after 90ms — body-flicker jump, no fade-as-travel.',
+    'Five directional streaks (−6°…7°) compress the view in 140ms, then Mission Board snaps in after 90ms — body-flicker jump, no fade-as-travel.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — body flicker & high-speed navigation',
@@ -28,8 +28,8 @@ export const bodyFlickerPageJump: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the destination view appears immediately with no streaks.',
   },
   acceptance: [
-    '5 streaks at [-6,-2,0,3,7]° fire for 140ms (scaleX travel)',
-    'Destination identity after 90ms settle; no fade-as-travel',
+    '5 streaks at [-6,-2,0,3,7]° fire for 140ms (scaleX)',
+    'Origin hidden mid-flicker; destination after 90ms',
     'Reduced motion shows destination immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

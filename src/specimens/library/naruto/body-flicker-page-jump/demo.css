@@ -10,7 +10,7 @@
   --bfp-settle-ms: 90ms;
   --bfp-streak-count: 5;
   --bfp-streak-angle: 0deg;
-  box-sizing: border-box; /* wave2-polish */
+  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
 .bfp *,
 .bfp *::before,
 .bfp *::after {
-  box-sizing: border-box; /* wave2-polish */
+  box-sizing: border-box;
 }
 
 .bfp__live {
@@ -59,7 +59,7 @@
   width: 100%;
   padding: 1rem 0.75rem;
   border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  background: rgb(238 242 244 / 0.04);
 }
 
 .bfp__viewport {
@@ -98,7 +98,12 @@
   color: var(--off);
 }
 
-.bfp[data-phase='arrived'] .bfp__view-kicker {
+.bfp[data-phase='flickering'] .bfp__view--a {
+  visibility: hidden;
+}
+
+.bfp[data-phase='arrived'] .bfp__view-kicker,
+.bfp[data-phase='settling'] .bfp__view-kicker {
   color: var(--chakra);
 }
 
@@ -119,13 +124,20 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--chakra) 45%,
-    var(--chakra) 55%,
+    var(--chakra) 40%,
+    var(--off) 50%,
+    var(--chakra) 60%,
     transparent 100%
   );
-  transform: scaleX(0);
+  transform: scaleX(0) rotate(var(--bfp-streak-angle));
   transform-origin: left center;
 }
+
+.bfp__streak--1 { --bfp-streak-angle: -6deg; }
+.bfp__streak--2 { --bfp-streak-angle: -2deg; }
+.bfp__streak--3 { --bfp-streak-angle: 0deg; }
+.bfp__streak--4 { --bfp-streak-angle: 3deg; }
+.bfp__streak--5 { --bfp-streak-angle: 7deg; }
 
 .bfp[data-phase='flickering'] .bfp__streaks {
   opacity: 1;
@@ -143,33 +155,19 @@
 
 @keyframes bfp-streak-flash {
   0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
+  100% { opacity: 1; }
+  50% { opacity: 0.45; }
 }
 
 @keyframes bfp-streak-sweep {
-  0% {
-    transform: scaleX(0);
-  }
-  60% {
-    transform: scaleX(1);
-  }
-  100% {
-    transform: scaleX(1);
-  }
+  0% { transform: scaleX(0) rotate(var(--bfp-streak-angle)); }
+  55% { transform: scaleX(1.05) rotate(var(--bfp-streak-angle)); }
+  100% { transform: scaleX(1) rotate(var(--bfp-streak-angle)); }
 }
 
 @keyframes bfp-streak-fade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 .bfp__status {
@@ -180,11 +178,9 @@
   color: var(--parchment);
 }
 
-.bfp[data-phase='flickering'] .bfp__status {
-  color: var(--chakra);
-}
-
-.bfp[data-phase='arrived'] .bfp__status {
+.bfp[data-phase='flickering'] .bfp__status,
+.bfp[data-phase='arrived'] .bfp__status,
+.bfp[data-phase='settling'] .bfp__status {
   color: var(--chakra);
 }
 
@@ -219,7 +215,7 @@
 
 .bfp__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: color-mix(in srgb, var(--chakra) 28%, transparent);
 }
 
 .bfp__btn:hover:not(:disabled) {
