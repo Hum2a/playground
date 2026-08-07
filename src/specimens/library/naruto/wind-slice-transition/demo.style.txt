@@ -12,7 +12,10 @@
   --wst-blade-ms: 380ms;
   --wst-stagger-ms: 70ms;
   --wst-blade-count: 4;
-  --wst-skew-deg: -16deg;
+  --wst-skew-1: -22deg;
+  --wst-skew-2: -16deg;
+  --wst-skew-3: -10deg;
+  --wst-skew-4: -4deg;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -123,27 +126,33 @@
   top: 0;
   width: 30%;
   height: 100%;
+  --wst-skew-deg: var(--wst-skew-2);
   transform: skewX(var(--wst-skew-deg)) translateX(-220%);
   opacity: 0;
+  clip-path: polygon(0 0, 72% 0, 100% 50%, 72% 100%, 0 100%, 16% 50%);
 }
 
 .wst__blade--1 {
   left: 0%;
+  --wst-skew-deg: var(--wst-skew-1);
   background: linear-gradient(100deg, var(--off), var(--olive) 70%);
 }
 
 .wst__blade--2 {
   left: 22%;
+  --wst-skew-deg: var(--wst-skew-2);
   background: linear-gradient(100deg, var(--parchment), var(--olive) 75%);
 }
 
 .wst__blade--3 {
   left: 44%;
+  --wst-skew-deg: var(--wst-skew-3);
   background: linear-gradient(100deg, var(--off), var(--olive) 65%);
 }
 
 .wst__blade--4 {
   left: 66%;
+  --wst-skew-deg: var(--wst-skew-4);
   background: linear-gradient(100deg, var(--parchment), var(--olive) 70%);
 }
 
