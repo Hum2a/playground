@@ -7,6 +7,11 @@
   --rpr-accent: #ff4d35;
   --rpr-row-h: 44px;
   --rpr-gap: 6px;
+  --rpr-promote-ms: 580;
+  --rpr-badge-delay-ms: 680;
+  --rpr-settle-ms: 1230;
+  --rpr-stamp-angle: -14deg;
+  --rpr-delta-y: calc(-1 * (var(--rpr-row-h) + var(--rpr-gap)));
 
   box-sizing: border-box;
   position: relative;
@@ -85,7 +90,10 @@
   padding: 0 0.55rem;
   border: 2px solid var(--rpr-ink);
   background: var(--rpr-paper);
-  transition: transform 580ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform calc(var(--rpr-promote-ms) * 1ms) cubic-bezier(0.18, 1.2, 0.32, 1),
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .rpr__row[data-rpr-row='1'] {
@@ -109,14 +117,14 @@
 }
 
 .rpr--promote .rpr__row--promote {
-  transform: translateY(calc(-1 * (var(--rpr-row-h) + var(--rpr-gap))));
+  transform: translateY(var(--rpr-delta-y)) scale(1.02);
   z-index: 2;
   border-color: var(--rpr-primary);
-  box-shadow: 4px 4px 0 var(--rpr-ink);
+  box-shadow: 5px 5px 0 var(--rpr-ink);
 }
 
 .rpr--promote .rpr__row[data-rpr-row='3'] {
-  transform: translateY(calc(var(--rpr-row-h) + var(--rpr-gap)));
+  transform: translateY(calc(-1 * var(--rpr-delta-y)));
 }
 
 .rpr__num {
@@ -124,6 +132,11 @@
   font-size: 0.72rem;
   font-weight: 900;
   font-variant-numeric: tabular-nums;
+  color: var(--rpr-ink);
+}
+
+.rpr--settled .rpr__row--promote .rpr__num {
+  color: var(--rpr-primary);
 }
 
 .rpr__name {
@@ -133,31 +146,48 @@
   letter-spacing: 0.06em;
 }
 
-.rpr__badge {
-  padding: 0.15rem 0.35rem;
+.rpr__stamp {
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  padding: 0.2rem 0.45rem;
   border: 2px solid var(--rpr-accent);
   background: var(--rpr-accent);
   color: var(--rpr-paper);
-  font-size: 0.52rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
   opacity: 0;
-  transform: scale(0.6);
-  transition:
-    opacity 220ms ease 680ms,
-    transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1) 680ms;
+  transform: translateY(-50%) rotate(calc(var(--rpr-stamp-angle) - 8deg)) scale(1.8);
+  transform-origin: center center;
+  transition: none;
+  pointer-events: none;
 }
 
-.rpr--promote .rpr__badge {
+.rpr--promote .rpr__stamp {
+  animation: rpr-stamp 320ms cubic-bezier(0.2, 1.15, 0.35, 1) calc(var(--rpr-badge-delay-ms) * 1ms) forwards;
+}
+
+@keyframes rpr-stamp {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) rotate(calc(var(--rpr-stamp-angle) - 8deg)) scale(1.8);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-50%) rotate(calc(var(--rpr-stamp-angle) + 4deg)) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) rotate(var(--rpr-stamp-angle)) scale(1);
+  }
+}
+
+.rpr--settled .rpr__stamp {
   opacity: 1;
-  transform: scale(1);
-}
-
-.rpr--settled .rpr__row--promote .rpr__num::after {
-  content: ' → #3';
-  color: var(--rpr-primary);
-  font-size: 0.58rem;
+  transform: translateY(-50%) rotate(var(--rpr-stamp-angle)) scale(1);
+  animation: none;
 }
 
 .rpr__status {
@@ -174,8 +204,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rpr__row,
-  .rpr__badge {
+  .rpr__stamp {
     transition: none !important;
+    animation: none !important;
   }
 
   .rpr--promote .rpr__row--promote,
@@ -191,15 +222,17 @@
     top: calc((var(--rpr-row-h) + var(--rpr-gap)) * 3);
   }
 
-  .rpr--promote .rpr__badge {
+  .rpr--promote .rpr__stamp,
+  .rpr--settled .rpr__stamp {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(-50%) rotate(var(--rpr-stamp-angle)) scale(1);
   }
 }
 
 [data-force-reduced-motion='true'] .rpr__row,
-[data-force-reduced-motion='true'] .rpr__badge {
+[data-force-reduced-motion='true'] .rpr__stamp {
   transition: none !important;
+  animation: none !important;
 }
 
 [data-force-reduced-motion='true'] .rpr--promote .rpr__row--promote,
@@ -215,7 +248,8 @@
   top: calc((var(--rpr-row-h) + var(--rpr-gap)) * 3);
 }
 
-[data-force-reduced-motion='true'] .rpr--promote .rpr__badge {
+[data-force-reduced-motion='true'] .rpr--promote .rpr__stamp,
+[data-force-reduced-motion='true'] .rpr--settled .rpr__stamp {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(-50%) rotate(var(--rpr-stamp-angle)) scale(1);
 }

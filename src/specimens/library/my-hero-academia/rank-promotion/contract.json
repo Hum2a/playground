@@ -1,6 +1,17 @@
 {
   "name": "rank-promotion",
-  "intent": "Profile at rank #4 promotes upward; displaced rank shifts down; RANK UP badge settles.",
+  "intent": "UNIT-07 at rank #4 surges upward one row; UNIT-22 shifts down; RANK UP stamp slams at frozen angle.",
+  "catalogue": { "mha": "MHA-075", "ref": "SPX-2049", "title": "Rank Promotion" },
+  "copy": {
+    "label": "HERO RANKING",
+    "trigger": "PROMOTE",
+    "stamp": "RANK UP",
+    "promotedUnit": "UNIT-07",
+    "displacedUnit": "UNIT-22",
+    "fromRank": 4,
+    "toRank": 3,
+    "livePromoted": "UNIT-07 promoted from #4 to #3."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
@@ -12,6 +23,14 @@
     "badgeAtMs": 680,
     "settleMs": 1230
   },
+  "geometry": {
+    "rowHeightPx": 44,
+    "rowGapPx": 6,
+    "deltaY": "-50px",
+    "stampAngleDeg": -14,
+    "stampOvershootDeg": 4,
+    "surgeScale": 1.02
+  },
   "api": {
     "run": "runRankPromotion()",
     "reset": "resetRankPromotion()",
@@ -20,9 +39,18 @@
   },
   "reducedMotion": {
     "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
     ],
-    "behaviour": "Jump rows to final positions; show badge immediately"
-  }
+    "behaviour": "Rows jump to final positions; #3 num and RANK UP stamp appear immediately"
+  },
+  "acceptance": [
+    "UNIT-07 row translates -50px (one row + gap) with 1.02 surge scale over 580ms",
+    "UNIT-22 row translates +50px during same window",
+    "Rank num updates from #4 to #3 at 680ms",
+    "RANK UP stamp overshoots at -14deg settle angle",
+    "Settled state locks at 1230ms; PROMOTE disabled",
+    "Reduced motion (prefers or data-force) jumps to final ranks and stamp"
+  ],
+  "waveC": "Frozen row delta; RANK UP stamp with overshoot; #4→#3 num swap"
 }

@@ -3,7 +3,7 @@
  */
 
 const PROMOTE_MS = 580
-const BADGE_MS = 900
+const BADGE_MS = 680
 const SETTLE_MS = 1230
 
 let busy = false
@@ -45,19 +45,21 @@ export function runRankPromotion() {
   busy = true
   clearTimers()
   const trigger = el.querySelector('[data-rpr-trigger]')
-  const badge = el.querySelector('[data-rpr-badge]')
+  const stamp = el.querySelector('[data-rpr-stamp]')
+  const num = el.querySelector('[data-rpr-num]')
   if (trigger) trigger.disabled = true
 
   el.classList.remove('rpr--settled')
   el.classList.add('rpr--promote')
-  if (badge) badge.removeAttribute('hidden')
+  if (stamp) stamp.removeAttribute('hidden')
 
   const badgeDelay = prefersReducedMotion() ? 0 : BADGE_MS
   const settleDelay = prefersReducedMotion() ? 0 : SETTLE_MS
 
   return new Promise((resolve) => {
     later(badgeDelay, () => {
-      setStatus('UNIT-07 promoted to rank 3.')
+      if (num) num.textContent = '#3'
+      setStatus('UNIT-07 promoted from #4 to #3.')
     })
     later(settleDelay, () => {
       el.classList.add('rpr--settled')
@@ -78,9 +80,11 @@ export function resetRankPromotion() {
   el.classList.remove('rpr--promote', 'rpr--settled')
 
   const trigger = el.querySelector('[data-rpr-trigger]')
-  const badge = el.querySelector('[data-rpr-badge]')
+  const stamp = el.querySelector('[data-rpr-stamp]')
+  const num = el.querySelector('[data-rpr-num]')
   if (trigger) trigger.disabled = false
-  if (badge) badge.setAttribute('hidden', '')
+  if (stamp) stamp.setAttribute('hidden', '')
+  if (num) num.textContent = '#4'
 
   setStatus('')
   void el.offsetWidth
