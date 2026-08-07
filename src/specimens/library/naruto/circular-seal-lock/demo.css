@@ -6,6 +6,12 @@
   --chakra: #c43c2e;
   --olive: #6b5048;
   --off: #f3ebe0;
+  --csl-rotate-ms: 520ms;
+  --csl-engage-ms: 180ms;
+  --csl-lock-pulse-ms: 150ms;
+  --csl-offset-deg: -42deg;
+  --csl-lock-deg: 0deg;
+  --csl-tick-count: 12;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -54,8 +60,8 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(196 60 46 / 0.45);
+  background: rgb(243 235 224 / 0.04);
 }
 
 .csl__seal {
@@ -69,53 +75,92 @@
 }
 
 .csl__index-marks line {
-  stroke: rgb(105 116 90 / 0.55);
-  stroke-width: 2;
+  stroke: rgb(107 80 72 / 0.55);
+  stroke-width: 1.5;
+  stroke-linecap: square;
+  transition: stroke 120ms ease-out;
+}
+
+.csl__index-marks line[data-major='true'] {
+  stroke: rgb(107 80 72 / 0.85);
+  stroke-width: 2.25;
+}
+
+.csl[data-phase='active'] .csl__index-marks line,
+.csl[data-phase='done'] .csl__index-marks line {
+  stroke: rgb(232 220 200 / 0.55);
+}
+
+.csl[data-phase='done'] .csl__index-marks line[data-major='true'] {
+  stroke: var(--chakra);
 }
 
 .csl__ring {
-  transform: rotate(-42deg);
+  transform: rotate(var(--csl-offset-deg));
   transform-origin: 60px 60px;
-  transition: transform 520ms cubic-bezier(0.22, 0.85, 0.25, 1.15);
+  transition: transform var(--csl-rotate-ms) cubic-bezier(0.22, 0.85, 0.25, 1.12);
 }
 
 .csl[data-phase='active'] .csl__ring,
 .csl[data-phase='done'] .csl__ring {
-  transform: rotate(0deg);
+  transform: rotate(var(--csl-lock-deg));
 }
 
 .csl__mark {
   stroke: var(--parchment);
   stroke-width: 3;
   stroke-linecap: round;
-  transition: stroke 200ms ease-out;
+  transition: stroke var(--csl-engage-ms) ease-out;
 }
 
 .csl[data-phase='done'] .csl__mark {
   stroke: var(--chakra);
 }
 
+.csl__engage {
+  fill: none;
+  stroke: var(--chakra);
+  stroke-width: 2.5;
+  stroke-linecap: butt;
+  stroke-dasharray: 327;
+  stroke-dashoffset: 327;
+  transform-origin: 60px 60px;
+  transition: stroke-dashoffset var(--csl-rotate-ms) linear;
+}
+
+.csl[data-phase='active'] .csl__engage,
+.csl[data-phase='done'] .csl__engage {
+  stroke-dashoffset: 0;
+}
+
 .csl__core {
-  fill: rgb(16 19 24 / 0.9);
+  fill: rgb(20 12 12 / 0.92);
   stroke: var(--olive);
   stroke-width: 2;
-  transition: stroke 200ms ease-out;
+  transition: stroke var(--csl-engage-ms) ease-out;
 }
 
 .csl[data-phase='done'] .csl__core {
   stroke: var(--chakra);
+  fill: rgb(196 60 46 / 0.18);
 }
 
 .csl[data-pulse='true'] .csl__core {
-  animation: csl-pulse 150ms ease-out;
+  animation: csl-pulse var(--csl-lock-pulse-ms) ease-out;
 }
 
 @keyframes csl-pulse {
   0% {
-    filter: drop-shadow(0 0 0 color-mix(in srgb, var(--chakra) 45%, transparent));
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgb(196 60 46 / 0.7));
+  }
+  55% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 8px rgb(196 60 46 / 0.55));
   }
   100% {
-    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--chakra) 45%, transparent));
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgb(196 60 46 / 0));
   }
 }
 
@@ -162,7 +207,7 @@
 
 .csl__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(196 60 46 / 0.14);
 }
 
 .csl__btn:hover:not(:disabled) {
@@ -182,7 +227,9 @@
 @media (prefers-reduced-motion: reduce) {
   .csl__ring,
   .csl__mark,
+  .csl__engage,
   .csl__core,
+  .csl__index-marks line,
   .csl[data-pulse='true'] .csl__core {
     transition: none !important;
     animation: none !important;
@@ -191,7 +238,9 @@
 
 html[data-force-reduced-motion='true'] .csl__ring,
 html[data-force-reduced-motion='true'] .csl__mark,
+html[data-force-reduced-motion='true'] .csl__engage,
 html[data-force-reduced-motion='true'] .csl__core,
+html[data-force-reduced-motion='true'] .csl__index-marks line,
 html[data-force-reduced-motion='true'] .csl[data-pulse='true'] .csl__core {
   transition: none !important;
   animation: none !important;

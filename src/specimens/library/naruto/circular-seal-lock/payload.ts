@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~320×300+).',
-    'Import demo.css verbatim; freeze the 520ms rotation / -42° offset from contract.json.',
+    'Import demo.css verbatim; freeze −42°→0° / 520ms rotate / 12 ticks from contract.json.',
     'Wire runCircularSealLock / resetCircularSealLock / replayCircularSealLock.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Unlocked (misaligned) and locked (aligned) states are visually distinct',
-    'Ring rotates to align exactly with the fixed index marks',
-    'Replay resets the ring before rerunning',
-    'Reduced motion shows the ring already aligned and locked',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#140C0C;">
   {{specimen}}
 </div>
 `.trim(),

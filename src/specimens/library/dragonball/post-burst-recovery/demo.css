@@ -77,6 +77,53 @@
   transition: transform 140ms ease;
 }
 
+.pbr__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  border: 1px solid var(--pbr-rule);
+  background: conic-gradient(
+    var(--pbr-warm) calc(var(--pbr-ring, 0) * 1%),
+    transparent 0
+  );
+  opacity: 0.92;
+  transition: background 140ms linear;
+}
+
+.pbr.is-running .pbr__ring {
+  animation: pbr-ring-pulse 320ms ease-in-out infinite alternate;
+}
+
+@keyframes pbr-ring-pulse {
+  from {
+    filter: brightness(1);
+  }
+  to {
+    filter: brightness(1.12);
+  }
+}
+
+.pbr.is-ready .pbr__ring,
+.pbr.is-rm .pbr__ring {
+  background: conic-gradient(var(--pbr-ok) 100%, transparent 0);
+  animation: pbr-ring-settle 200ms ease-out forwards;
+}
+
+@keyframes pbr-ring-settle {
+  0% {
+    transform: scale(1.06);
+    filter: brightness(1.1);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
 .pbr.is-ready .pbr__shell,
 .pbr.is-rm .pbr__shell {
   transform: scale(1);
@@ -283,7 +330,8 @@
   .pbr__shell,
   .pbr__struct,
   .pbr__rail-fill,
-  .pbr__tick {
+  .pbr__tick,
+  .pbr__ring {
     transition: none !important;
     animation: none !important;
   }
@@ -292,7 +340,8 @@
 [data-force-reduced-motion='true'] .pbr__shell,
 [data-force-reduced-motion='true'] .pbr__struct,
 [data-force-reduced-motion='true'] .pbr__rail-fill,
-[data-force-reduced-motion='true'] .pbr__tick {
+[data-force-reduced-motion='true'] .pbr__tick,
+[data-force-reduced-motion='true'] .pbr__ring {
   transition: none !important;
   animation: none !important;
 }

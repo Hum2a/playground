@@ -18,7 +18,8 @@
     "initialStatus": "RECOVERING",
     "finalStatus": "READY",
     "trigger": "RESTORE",
-    "initialScale": 0.96
+    "initialScale": 0.96,
+    "cooldownRing": "conic-gradient --pbr-ring 0→100; warm while recovering, ok at READY"
   },
   "stages": [
     { "recovery": 0, "load": 71, "capacity": 38, "structures": 2 },

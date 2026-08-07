@@ -1,10 +1,15 @@
 /**
- * Circular Seal Lock — a ring of radial marks rotates into alignment and locks.
+ * Circular Seal Lock — radial ticks + rotate-to-align with progressive engage stroke.
  * iframe-safe; no storage / parent / network.
  */
 
 const ROTATE_MS = 520
+const ENGAGE_MS = 180
 const LOCK_PULSE_MS = 150
+const INITIAL_OFFSET_DEG = -42
+const LOCK_DEG = 0
+const TICK_COUNT = 12
+const MARK_COUNT = 6
 
 let busy = false
 /** @type {number[]} */
@@ -58,8 +63,8 @@ function showResolved() {
   root?.setAttribute('data-phase', 'done')
   root?.setAttribute('data-pulse', 'true')
   setStatus('LOCKED')
-  setHint('Seal locked.')
-  setLive('Seal ring aligned and locked.')
+  setHint('Seal locked at 0°.')
+  setLive(`Seal ring aligned from ${INITIAL_OFFSET_DEG}° to ${LOCK_DEG}° and locked.`)
   later(LOCK_PULSE_MS, () => root?.removeAttribute('data-pulse'))
 }
 
@@ -69,7 +74,7 @@ function resetVisual() {
   root?.removeAttribute('data-pulse')
   setStatus('UNLOCKED')
   setHint('Press Run to rotate the ring into alignment.')
-  setLive('Seal unlocked. Ring misaligned.')
+  setLive(`Seal unlocked. Ring misaligned at ${INITIAL_OFFSET_DEG}°.`)
 }
 
 /**
@@ -97,12 +102,14 @@ export function runCircularSealLock() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('ALIGNING')
-  setLive('Rotating seal ring into alignment.')
+  setLive(
+    `Rotating seal ring ${INITIAL_OFFSET_DEG}° → ${LOCK_DEG}° across ${TICK_COUNT} index ticks.`,
+  )
 
   return new Promise((resolve) => {
     later(ROTATE_MS, () => {
       showResolved()
-      later(LOCK_PULSE_MS, () => {
+      later(LOCK_PULSE_MS + ENGAGE_MS, () => {
         busy = false
         setButtons(true)
         resolve()
@@ -141,5 +148,6 @@ function bindUi() {
   })
 }
 
+void MARK_COUNT
 bindUi()
 resetCircularSealLock()

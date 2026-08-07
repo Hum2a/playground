@@ -1,12 +1,59 @@
 {
   "name": "mission-complete-burst",
-  "ref": "SPX-2104",
-  "catalogue": { "mha": "MHA-130" },
-  "result": { "complete": "COMPLETE", "rank": "RANK A" },
+  "intent": "Four telemetry widgets collapse in fixed order; COMPLETE / RANK A slams in as an angular stamp panel.",
+  "catalogue": {
+    "mha": "MHA-130",
+    "ref": "SPX-2104"
+  },
+  "copy": {
+    "widgets": [
+      { "label": "ALT", "value": "12m" },
+      { "label": "SPD", "value": "84" },
+      { "label": "OBJ", "value": "3/3" },
+      { "label": "SIG", "value": "STABLE" }
+    ],
+    "complete": "COMPLETE",
+    "rank": "RANK A",
+    "liveIdle": "Mission telemetry active.",
+    "liveCollapse": "Collapsing telemetry…",
+    "liveStamp": "Completion stamp.",
+    "liveDone": "Mission complete. Rank A."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "collapseMs": 420,
+    "collapseStaggerMs": 40,
+    "widgetCount": 4,
+    "burstDelayMs": 400,
+    "stampMs": 360
+  },
+  "geometry": {
+    "stageMaxWidthPx": 400,
+    "stageMinHeightPx": 160,
+    "stageClipCornerPx": 12,
+    "stampClipCornerPx": 8
+  },
+  "api": {
+    "run": "runMissionCompleteBurst()",
+    "reset": "resetMissionCompleteBurst()",
+    "replay": "replayMissionCompleteBurst()"
+  },
+  "reducedMotion": {
+    "behaviour": "Widgets hidden and COMPLETE / RANK A stamp appears immediately; no collapse or stamp animation"
+  },
+  "acceptance": [
+    "Idle: four telemetry widgets visible; burst panel hidden",
+    "FINALIZE collapses widgets in order ALT→SPD→OBJ→SIG with 40ms stagger over 420ms each",
+    "After 400ms delay, angular COMPLETE stamp slams in over 360ms (clip-path, no soft glow)",
+    "Done: COMPLETE and RANK A visible; widgets hidden; live announces rank",
+    "RESET restores idle widgets and hides burst",
+    "Reduced motion (prefers or data-force) shows stamp immediately without collapse",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Frozen collapse order/stagger; angular stamp via clip-path rotation, not scale glow"
 }

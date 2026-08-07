@@ -1,36 +1,52 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/circular-seal-lock.schema.json",
-  "title": "CircularSealLock",
-  "description": "A ring of radial marks rotates into alignment with fixed index marks and locks with a settling pulse.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "rotateMs", "initialOffsetDeg", "lockPulseMs", "markCount", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "circular-seal-lock" },
-    "rotateMs": { "type": "number", "const": 520 },
-    "initialOffsetDeg": { "type": "number", "const": -42 },
-    "lockPulseMs": { "type": "number", "const": 150 },
-    "markCount": { "type": "number", "const": 6 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#140C0C" },
-        "parchment": { "type": "string", "const": "#E8DCC8" },
-        "chakra": { "type": "string", "const": "#C43C2E" },
-        "olive": { "type": "string", "const": "#6B5048" },
-        "off": { "type": "string", "const": "#F3EBE0" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateLocked"],
-      "properties": {
-        "immediateLocked": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "circular-seal-lock",
+  "intent": "A ring of six radial marks rotates from −42° to 0° while a progressive engage stroke fills the rim; twelve index ticks light as the seal locks.",
+  "catalogue": { "nr": "NR-032", "ref": "SPX-2375" },
+  "copy": {
+    "system": "SEAL // LOCK RING",
+    "unlocked": "UNLOCKED",
+    "aligning": "ALIGNING",
+    "locked": "LOCKED",
+    "hintIdle": "Press Run to rotate the ring into alignment.",
+    "hintLocked": "Seal locked at 0°."
+  },
+  "geometry": {
+    "tickCount": 12,
+    "majorTickEvery": 60,
+    "markCount": 6,
+    "initialOffsetDeg": -42,
+    "lockDeg": 0,
+    "rimRadius": 52,
+    "coreRadius": 15,
+    "engageDash": 327
+  },
+  "timing": {
+    "rotateMs": 520,
+    "engageMs": 180,
+    "lockPulseMs": 150,
+    "totalMs": 850
+  },
+  "colours": {
+    "ink": "#140C0C",
+    "parchment": "#E8DCC8",
+    "chakra": "#C43C2E",
+    "olive": "#6B5048",
+    "off": "#F3EBE0",
+    "palette": "seal-lacquer"
+  },
+  "api": {
+    "run": "runCircularSealLock()",
+    "reset": "resetCircularSealLock()",
+    "replay": "replayCircularSealLock()"
+  },
+  "reducedMotion": {
+    "behaviour": "Ring appears already at 0° LOCKED with engage stroke complete; no rotation"
+  },
+  "acceptance": [
+    "Idle ring sits at initialOffsetDeg −42; Run rotates to lockDeg 0 over rotateMs 520",
+    "Exactly 12 index ticks (6 major every 60°) and 6 rotating marks; engage stroke dash 327 draws during rotation",
+    "On lock, core pulses once for lockPulseMs 150 and major ticks turn vermillion",
+    "Replay resets to −42° UNLOCKED before rerunning",
+    "Reduced motion (prefers or data-force) shows LOCKED at 0° immediately with no rotate animation"
+  ]
 }

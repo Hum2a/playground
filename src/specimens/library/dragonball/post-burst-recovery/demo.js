@@ -60,6 +60,7 @@ function applyStage(stage, index) {
   const root = rootEl()
   if (!root) return
   root.setAttribute('data-stage', String(index))
+  root.style.setProperty('--pbr-ring', String(stage.recovery))
   const load = document.querySelector('[data-pbr-load]')
   const cap = document.querySelector('[data-pbr-capacity]')
   const status = document.querySelector('[data-pbr-status]')
@@ -92,6 +93,7 @@ function applyRecoveringStart() {
   if (!root) return
   clearPhases()
   root.setAttribute('data-state', 'recovering')
+  root.style.setProperty('--pbr-ring', '0')
   applyStage(STAGES[0], 0)
   setAnnounce(
     'Task complete. Worker 04 recovering. Load 71 percent. Capacity 38 percent. Status recovering.',

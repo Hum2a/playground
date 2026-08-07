@@ -1,4 +1,11 @@
-const TOTAL_MS = 900
+const COLLAPSE_MS = 420
+const COLLAPSE_STAGGER_MS = 40
+const WIDGET_COUNT = 4
+const BURST_DELAY_MS = 400
+const STAMP_MS = 360
+
+const COLLAPSE_TOTAL_MS = (WIDGET_COUNT - 1) * COLLAPSE_STAGGER_MS + COLLAPSE_MS
+const TOTAL_MS = BURST_DELAY_MS + STAMP_MS
 
 let busy = false
 /** @type {number | null} */
@@ -51,15 +58,15 @@ export function runMissionCompleteBurst() {
   return new Promise((resolve) => {
     timer = window.setTimeout(() => {
       r.dataset.phase = 'burst'
-      setLive('Completion burst.')
+      setLive('Completion stamp.')
 
       timer = window.setTimeout(() => {
         applyDone()
         busy = false
         timer = null
         resolve()
-      }, 500)
-    }, 400)
+      }, TOTAL_MS)
+    }, COLLAPSE_TOTAL_MS)
   })
 }
 

@@ -5,7 +5,7 @@ export const circularSealLock: Specimen = {
   ref: 'SPX-2375',
   title: 'Circular Seal Lock',
   blurb:
-    'A ring of radial marks rotates into alignment with fixed index marks, locking a circular seal with a settling pulse.',
+    'Twelve radial ticks and a −42° mark ring rotate-to-align at 0° while an engage stroke fills the rim and the core locks.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction fūinjutsu study — radial seal lock',
@@ -19,19 +19,14 @@ export const circularSealLock: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['seal', 'lock', 'rotate'],
+  tags: ['seal', 'lock', 'rotate', 'ticks'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the ring appears already aligned and locked with no rotation.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the ring appears already aligned at 0° and locked with no rotation.',
   },
-  acceptance: [
-    'Ring rotates to align with frozen tick marks then locks',
-    'Settle angle and tick count are contract-frozen',
-    'Reduced motion shows locked ring immediately',
-  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 320,

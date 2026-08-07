@@ -8,7 +8,8 @@ Cooldown / resource recovery after successful over-performance. The boosted task
 | --- | --- |
 | Worker | `WORKER // 04` |
 | Task | `TASK COMPLETE` (always visible) |
-| Start | load 71% · capacity 38% · RECOVERING · scale `.96` |
+| Start | load 71% · capacity 38% · RECOVERING · scale `.96` · cooldown ring 0% |
+| Recovery ring | conic-gradient warm fill 0→100%; pulses while running; settles green at READY |
 | Recovery rail | 0 → 20 → 45 → 70 → 88 → 100 |
 | Load | 71 → 66 → 59 → 52 → 46 → 42 |
 | Capacity | 38 → 46 → 59 → 74 → 89 → 100 |
