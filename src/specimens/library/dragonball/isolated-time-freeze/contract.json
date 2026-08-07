@@ -30,6 +30,8 @@
   "constraints": {
     "freezeInPlaceNoRestart": true,
     "resumeFromFrozenOffset": true,
+    "frozenVisual": "grayscale + LOCK badge + dashed border",
+    "focusPeerMovesAlone": true,
     "boundaryOpeningAtC": true,
     "noGiantGlowAroundC": true,
     "noLoopingInFinal": true,

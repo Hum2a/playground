@@ -144,6 +144,21 @@
   color: var(--itf-select);
 }
 
+.itf__lock {
+  position: absolute;
+  top: 0.38rem;
+  right: 0.42rem;
+  padding: 0.1rem 0.22rem;
+  border: 1px solid var(--itf-mute);
+  color: var(--itf-mute);
+  font-size: 0.42rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* A — three-dot stepped sequence */
 .itf__dots {
   display: flex;
@@ -384,7 +399,16 @@
 .itf[data-state='hold'] .itf__card--a,
 .itf[data-state='hold'] .itf__card--b,
 .itf[data-state='hold'] .itf__card--d {
-  opacity: 0.72;
+  opacity: 0.68;
+  filter: grayscale(0.82) brightness(0.78);
+  border-style: dashed;
+  border-color: var(--itf-mute);
+}
+
+.itf[data-state='freeze'] [data-role='frozen'] .itf__lock,
+.itf[data-state='export'] [data-role='frozen'] .itf__lock,
+.itf[data-state='hold'] [data-role='frozen'] .itf__lock {
+  opacity: 1;
 }
 
 .itf[data-state='export'] .itf__card--c,
@@ -440,6 +464,17 @@
 .itf.itf--reduced .itf__rail-fill {
   animation: none !important;
   transition: none !important;
+}
+
+.itf.itf--reduced [data-role='frozen'] {
+  opacity: 0.68;
+  filter: grayscale(0.82) brightness(0.78);
+  border-style: dashed;
+  border-color: var(--itf-mute);
+}
+
+.itf.itf--reduced [data-role='frozen'] .itf__lock {
+  opacity: 1;
 }
 
 .itf.itf--reduced .itf__card--c .itf__state {

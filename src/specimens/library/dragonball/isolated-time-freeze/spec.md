@@ -39,7 +39,7 @@ Four processes run restrained local activity. On **FREEZE + EXECUTE C**, A / B /
 
 | Phase | Duration | Effect |
 | --- | --- | --- |
-| Freeze | 50ms | Pause A/B/D animations in place; boundary constructs |
+| Freeze | 50ms | Pause A/B/D; desaturate + LOCK badge; boundary constructs |
 | Export | 500ms | Progress `42 → 58 → 73 → 89 → 100` |
 | Hold | 120ms | `EXPORT COMPLETE` |
 | Resume | 350ms | Boundary retracts; A/B/D continue (not restart) |
