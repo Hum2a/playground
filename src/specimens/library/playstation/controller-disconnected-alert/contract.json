@@ -1,14 +1,33 @@
 {
   "name": "controller-disconnected-alert",
-  "intent": "Input loss produces a high-priority modal-like interruption.",
-  "primitives": [
-    "alert",
-    "controller"
-  ],
+  "ref": "SPX-3415",
+  "ps": "PS-109",
+  "title": "Controller Disconnected Alert",
+  "intent": "Input loss produces a high-priority system modal over the play surface.",
+  "primitives": ["alert", "controller", "system-modal"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
+  },
+  "timing": {
+    "overlayFadeMs": 220
+  },
+  "modal": {
+    "priority": "SYSTEM",
+    "border": "ps-blue"
+  },
+  "acceptance": [
+    "Disconnect reveals a blue-bordered SYSTEM modal over dimmed play",
+    "DISMISS hides modal and restores connected status",
+    "No shape-kit tokens appear in this specimen"
+  ],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Overlay appears instantly without fade"
   }
 }

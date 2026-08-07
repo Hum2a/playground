@@ -1,13 +1,14 @@
-/* Portable specimen CSS (iframe-isolated). */
+/* SPX-3415 Controller Disconnected Alert — portable. System-priority modal; no shape-kit twin. */
 
 .cda {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
   --ps-panel: #121820;
   --ps-rule: #1e2a38;
   --ps-pewter: #8a9aad;
+  --fade-ms: 220ms;
 
   box-sizing: border-box;
   width: min(100%, 480px);
@@ -23,137 +24,26 @@
   box-sizing: border-box;
 }
 
-.cda__btn {
-  padding: 8px 14px;
-  font: inherit;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--ps-ink);
-  background: var(--ps-chalk);
-  border: 1px solid var(--ps-chalk);
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.cda__btn:hover:not(:disabled) {
-  background: #fff;
-}
-
-.cda__btn:focus-visible {
-  outline: 2px solid var(--ps-blue);
-  outline-offset: 2px;
-}
-
-.cda__btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.cda__status {
-  margin: 10px 0 0;
+.cda__eyebrow {
+  margin: 0 0 10px;
   font-size: 10px;
-  letter-spacing: 0.08em;
-  text-align: center;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--ps-pewter);
 }
 
-.cda__shape {
-  display: block;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.cda__shape--circle {
-  border-radius: 50%;
-  background: var(--ps-sky);
-}
-
-.cda__shape--square {
-  border-radius: 2px;
-  background: var(--ps-blue);
-}
-
-.cda__shape--cross {
+.cda__stage {
   position: relative;
-  background: transparent;
-}
-
-.cda__shape--cross::before,
-.cda__shape--cross::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 12px;
-  height: 3px;
-  margin: -1.5px 0 0 -6px;
-  background: var(--ps-chalk);
-  border-radius: 1px;
-}
-
-.cda__shape--cross::before {
-  transform: rotate(45deg);
-}
-
-.cda__shape--cross::after {
-  transform: rotate(-45deg);
-}
-
-.cda__shape--triangle {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 12px solid var(--ps-blue);
-  background: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cda__anim,
-  .cda__orbit,
-  .cda__shape,
-  .cda__scan,
-  .cda__rift,
-  .cda__ring,
-  .cda__tile,
-  .cda__card,
-  .cda__slab,
-  .cda__token,
-  .cda__panel,
-  .cda__overlay {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-[data-force-reduced-motion='true'] .cda__anim,
-[data-force-reduced-motion='true'] .cda__orbit,
-[data-force-reduced-motion='true'] .cda__shape,
-[data-force-reduced-motion='true'] .cda__scan,
-[data-force-reduced-motion='true'] .cda__rift,
-[data-force-reduced-motion='true'] .cda__ring,
-[data-force-reduced-motion='true'] .cda__tile,
-[data-force-reduced-motion='true'] .cda__card,
-[data-force-reduced-motion='true'] .cda__slab,
-[data-force-reduced-motion='true'] .cda__token,
-[data-force-reduced-motion='true'] .cda__panel,
-[data-force-reduced-motion='true'] .cda__overlay {
-  animation: none !important;
-  transition: none !important;
-}
-
-.cda {
-  position: relative;
+  margin-bottom: 12px;
+  border: 1px solid var(--ps-rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ps-panel);
 }
 
 .cda__play {
   padding: 20px;
   min-height: 140px;
-  background: var(--ps-panel);
-  border: 1px solid var(--ps-rule);
-  border-radius: 4px;
-  margin-bottom: 12px;
 }
 
 .cda__play-label {
@@ -167,6 +57,7 @@
   height: 80px;
   background: linear-gradient(135deg, #15202c, #0e141c);
   border-radius: 3px;
+  border: 1px solid var(--ps-rule);
 }
 
 .cda__overlay {
@@ -174,8 +65,8 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(11, 15, 20, 0.82);
-  animation: cda-fade-in 250ms ease;
+  background: rgb(11 15 20 / 0.78);
+  animation: cda-fade-in var(--fade-ms) ease;
 }
 
 .cda__modal {
@@ -183,17 +74,30 @@
   padding: 18px;
   text-align: center;
   background: var(--ps-panel);
-  border: 1px solid #c44;
+  border: 1px solid var(--ps-blue);
   border-radius: 4px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  box-shadow:
+    0 0 0 1px rgb(46 144 255 / 0.25),
+    0 16px 40px rgb(0 0 0 / 0.55);
+}
+
+.cda__priority {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 8px;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  color: var(--ps-ink);
+  background: var(--ps-blue);
+  border-radius: 2px;
 }
 
 .cda__icon {
   display: block;
-  width: 36px;
-  height: 24px;
+  width: 40px;
+  height: 26px;
   margin: 0 auto 10px;
-  border: 2px solid #e66;
+  border: 2px solid var(--ps-sky);
   border-radius: 8px 8px 4px 4px;
   position: relative;
 }
@@ -203,10 +107,10 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 16px;
+  width: 18px;
   height: 2px;
-  margin: -1px 0 0 -8px;
-  background: #e66;
+  margin: -1px 0 0 -9px;
+  background: var(--ps-sky);
   transform: rotate(-35deg);
 }
 
@@ -214,7 +118,7 @@
   margin: 0 0 6px;
   font-size: 12px;
   letter-spacing: 0.08em;
-  color: #f8b4b4;
+  color: var(--ps-chalk);
 }
 
 .cda__body {
@@ -223,12 +127,69 @@
   color: var(--ps-pewter);
 }
 
-.cda__trigger {
+.cda__btn {
   display: block;
-  margin: 0 auto 8px;
+  margin: 0 auto;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ps-ink);
+  background: var(--ps-chalk);
+  border: 1px solid var(--ps-chalk);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.cda__btn--ghost {
+  display: inline-block;
+  color: var(--ps-sky);
+  background: transparent;
+  border-color: var(--ps-blue);
+}
+
+.cda__btn:hover:not(:disabled) {
+  background: #fff;
+  color: var(--ps-ink);
+}
+
+.cda__btn--ghost:hover:not(:disabled) {
+  background: rgb(46 144 255 / 0.12);
+  color: var(--ps-sky);
+}
+
+.cda__btn:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 2px;
+}
+
+.cda__status {
+  margin: 10px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--ps-pewter);
+}
+
+.cda [hidden] {
+  display: none !important;
 }
 
 @keyframes cda-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cda__overlay {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .cda__overlay {
+  animation: none !important;
 }

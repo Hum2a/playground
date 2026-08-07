@@ -1,3 +1,7 @@
+/**
+ * Controller Disconnected Alert (SPX-3415) — system-priority modal over play.
+ */
+
 function status(t) {
   const el = document.querySelector('[data-cda-status]')
   if (el) el.textContent = t
@@ -6,7 +10,7 @@ function status(t) {
 function show() {
   const overlay = document.querySelector('[data-cda-overlay]')
   if (overlay) overlay.hidden = false
-  status('Alert — controller disconnected')
+  status('System alert — controller disconnected')
 }
 
 function hide() {
@@ -18,7 +22,9 @@ function hide() {
 function bind() {
   document.querySelector('[data-cda-trigger]')?.addEventListener('click', show)
   document.querySelector('[data-cda-dismiss]')?.addEventListener('click', hide)
-  addEventListener('message', (e) => { if (e.data?.type === 'restart') hide() })
+  addEventListener('message', (e) => {
+    if (e.data?.type === 'restart') hide()
+  })
 }
 
 bind()

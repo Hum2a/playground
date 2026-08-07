@@ -17,6 +17,7 @@ export const controllerDisconnectedAlert: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["alert","controller","modal"],
   deps: 'none',
