@@ -5,6 +5,7 @@
  */
 
 const TRAVEL_MS = 150
+const FLASH_MS = 50
 /** Exact freeze hold — must match --impact-freeze and contract. */
 const FREEZE_MS = 80
 const WEDGE_MS = 110
@@ -117,20 +118,22 @@ export function runImpactFreeze() {
 
   return new Promise((resolve) => {
     later(TRAVEL_MS, () => {
-      // Contact: hard freeze — visible hold for FREEZE_MS
       hardFreezeAnimations()
-      setPhase('freeze')
+      setPhase('flash')
       setLive('Impact')
 
-      later(FREEZE_MS, () => {
-        // Consequence only after freeze
-        setPhase('release')
-        setLive('Settling')
+      later(FLASH_MS, () => {
+        setPhase('freeze')
 
-        later(Math.max(WEDGE_MS, SETTLE_MS), () => {
-          later(APPLY_MS, () => {
-            finishApplied()
-            resolve()
+        later(FREEZE_MS, () => {
+          setPhase('release')
+          setLive('Settling')
+
+          later(Math.max(WEDGE_MS, SETTLE_MS), () => {
+            later(APPLY_MS, () => {
+              finishApplied()
+              resolve()
+            })
           })
         })
       })

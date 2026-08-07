@@ -101,6 +101,53 @@
   animation: none;
 }
 
+/* Contact flash — 2-frame accent burst, then static hold */
+.iff__flash {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgb(240 180 41 / 0.55) 48%,
+    rgb(255 248 245 / 0.85) 50%,
+    rgb(240 180 41 / 0.55) 52%,
+    transparent 70%
+  );
+}
+
+.iff[data-phase='flash'] .iff__flash {
+  animation: iff-flash 50ms steps(2, end) forwards;
+}
+
+.iff[data-phase='freeze'] .iff__flash {
+  opacity: 0.35;
+  background: rgb(255 248 245 / 0.92);
+  animation: none;
+}
+
+@keyframes iff-flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.35;
+    background: rgb(255 248 245 / 0.92);
+  }
+}
+
+.iff[data-phase='freeze'] .iff__target {
+  transform: translateX(3px) scaleX(0.96);
+  animation: none;
+  filter: contrast(1.12);
+  box-shadow: inset 0 0 0 2px rgb(217 74 42 / 0.45);
+}
+
 .iff[data-phase='release'] .iff__token,
 .iff[data-phase='applied'] .iff__token {
   animation: iff-collapse 110ms ease-in forwards;
@@ -130,9 +177,9 @@
   transform-origin: 50% 50%;
 }
 
-.iff[data-phase='freeze'] .iff__target {
-  transform: translateX(3px) scaleX(0.96);
-  animation: none;
+.iff[data-phase='release'] .iff__flash,
+.iff[data-phase='applied'] .iff__flash {
+  opacity: 0;
 }
 
 .iff[data-phase='release'] .iff__target {
@@ -297,16 +344,22 @@
 
 @media (prefers-reduced-motion: reduce) {
   .iff[data-phase='travel'] .iff__token,
+  .iff[data-phase='flash'] .iff__flash,
   .iff[data-phase='release'] .iff__token,
   .iff[data-phase='release'] .iff__target,
   .iff[data-phase='release'] .iff__wedge {
     animation: none !important;
   }
+
+  .iff[data-phase='freeze'] .iff__flash {
+    opacity: 0;
+  }
 }
 
-[data-force-reduced-motion='true'] .iff[data-phase='travel'] .iff__token,
-[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__token,
-[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__target,
-[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__wedge {
+html[data-force-reduced-motion='true'] .iff[data-phase='travel'] .iff__token,
+html[data-force-reduced-motion='true'] .iff[data-phase='flash'] .iff__flash,
+html[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__token,
+html[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__target,
+html[data-force-reduced-motion='true'] .iff[data-phase='release'] .iff__wedge {
   animation: none !important;
 }

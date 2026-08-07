@@ -1,58 +1,175 @@
 {
-  "name": "impact-freeze-frame",
-  "intent": "Compact hit-stop feedback: action approaches target, freezes exactly 80ms at contact with static impact wedges, then exaggerated settle and PENDING→APPLIED.",
-  "catalogue": {
-    "db": "DB-122",
-    "ref": "SPX-1087"
-  },
-  "cssVariables": {
-    "--impact-freeze": "80ms"
-  },
-  "travel": {
-    "startOffsetPx": -90,
-    "distancePx": 90,
-    "durationMs": 150,
-    "contactOffsetPx": 0,
-    "acceleration": {
-      "firstPx": 60,
-      "firstKeyTime": "67%",
-      "finalPx": 30,
-      "note": "final 30px completes in remaining ~33% of travel"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/impact-freeze-frame.schema.json",
+  "title": "ImpactFreezeFrame",
+  "description": "Portable contract for compact hit-stop: travel → 2-frame flash → exact 80ms freeze → exaggerated settle.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "cssVariables",
+    "travel",
+    "flash",
+    "freeze",
+    "release",
+    "state",
+    "api",
+    "reducedMotion",
+    "constraints"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "impact-freeze-frame" },
+    "intent": {
+      "type": "string",
+      "const": "True hit-stop: approach → contact flash frames → exact 80ms frozen hold with static wedges → exaggerated settle → PENDING→APPLIED."
     },
-    "easing": "cubic-bezier(0.55, 0.05, 0.95, 0.45) + stepped keyframe accel"
-  },
-  "freeze": {
-    "durationMs": 80,
-    "method": "phase hold + getAnimations().pause(); not a slowdown",
-    "target": { "scaleX": 0.96, "translateXPx": 3 },
-    "wedges": { "count": 6, "lengthPx": 8, "staticDuringHold": true }
-  },
-  "release": {
-    "wedges": { "extendPx": [8, 28], "durationMs": 110 },
-    "targetSettle": {
-      "translateXPx": [3, 8, -2, 0],
-      "scale": [0.96, 1.025, 1],
-      "durationMs": 130
+    "cssVariables": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["--impact-freeze"],
+      "properties": {
+        "--impact-freeze": { "type": "string", "const": "80ms" }
+      }
     },
-    "token": "collapses into target (no bounce back)"
-  },
-  "state": {
-    "from": "PENDING",
-    "to": "APPLIED",
-    "when": "after release",
-    "technique": "vertical clip-path"
-  },
-  "api": {
-    "execute": "runImpactFreeze()",
-    "reset": "resetImpactFreeze()",
-    "restartMessage": "restart"
-  },
-  "reducedMotion": {
-    "behaviour": "Immediately show APPLIED; no travel or hit-stop"
-  },
-  "constraints": {
-    "noLooping": true,
-    "noFranchiseNamesInUi": true,
-    "portableForButtonsCards": true
+    "travel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startOffsetPx", "distancePx", "durationMs", "acceleration"],
+      "properties": {
+        "startOffsetPx": { "type": "number", "const": -90 },
+        "distancePx": { "type": "number", "const": 90 },
+        "durationMs": { "type": "number", "const": 150 },
+        "acceleration": {
+          "type": "object",
+          "required": ["firstPx", "firstKeyTime", "finalPx"],
+          "properties": {
+            "firstPx": { "type": "number", "const": 60 },
+            "firstKeyTime": { "type": "string", "const": "67%" },
+            "finalPx": { "type": "number", "const": 30 }
+          }
+        }
+      }
+    },
+    "flash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "frames", "technique"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 50 },
+        "frames": { "type": "integer", "const": 2 },
+        "technique": { "type": "string", "const": "steps(2,end) diagonal sweep → hold wash" },
+        "peakOpacity": { "type": "number", "const": 1 },
+        "holdOpacity": { "type": "number", "const": 0.35 }
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["durationMs", "method", "target", "wedges"],
+      "properties": {
+        "durationMs": { "type": "number", "const": 80 },
+        "method": {
+          "type": "string",
+          "const": "phase hold + getAnimations().pause(); not a slowdown"
+        },
+        "target": {
+          "type": "object",
+          "required": ["scaleX", "translateXPx", "contrastBoost", "insetBorder"],
+          "properties": {
+            "scaleX": { "type": "number", "const": 0.96 },
+            "translateXPx": { "type": "number", "const": 3 },
+            "contrastBoost": { "type": "number", "const": 1.12 },
+            "insetBorder": { "type": "string", "const": "2px rgba(217,74,42,.45)" }
+          }
+        },
+        "wedges": {
+          "type": "object",
+          "required": ["count", "lengthPx", "staticDuringHold"],
+          "properties": {
+            "count": { "type": "integer", "const": 6 },
+            "lengthPx": { "type": "number", "const": 8 },
+            "staticDuringHold": { "type": "boolean", "const": true }
+          }
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wedges", "targetSettle", "token"],
+      "properties": {
+        "wedges": {
+          "type": "object",
+          "required": ["extendPx", "durationMs"],
+          "properties": {
+            "extendPx": { "type": "array", "const": [8, 28] },
+            "durationMs": { "type": "number", "const": 110 }
+          }
+        },
+        "targetSettle": {
+          "type": "object",
+          "required": ["translateXPx", "scale", "durationMs"],
+          "properties": {
+            "translateXPx": {
+              "type": "array",
+              "const": [3, 8, -2, 0]
+            },
+            "scale": { "type": "array", "const": [0.96, 1.025, 1] },
+            "durationMs": { "type": "number", "const": 130 }
+          }
+        },
+        "token": { "type": "string", "const": "collapses into target (no bounce back)" }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "when", "technique"],
+      "properties": {
+        "from": { "type": "string", "const": "PENDING" },
+        "to": { "type": "string", "const": "APPLIED" },
+        "when": { "type": "string", "const": "after release" },
+        "technique": { "type": "string", "const": "vertical clip-path" }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execute", "reset"],
+      "properties": {
+        "execute": { "type": "string", "const": "runImpactFreeze()" },
+        "reset": { "type": "string", "const": "resetImpactFreeze()" },
+        "restartMessage": { "type": "string", "const": "restart" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["behaviour", "triggers"],
+      "properties": {
+        "behaviour": {
+          "type": "string",
+          "const": "Immediately show APPLIED; no travel, flash, or hit-stop"
+        },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noLooping", "noFranchiseNamesInUi", "portableForButtonsCards"],
+      "properties": {
+        "noLooping": { "type": "boolean", "const": true },
+        "noFranchiseNamesInUi": { "type": "boolean", "const": true },
+        "portableForButtonsCards": { "type": "boolean", "const": true }
+      }
+    }
   }
 }
