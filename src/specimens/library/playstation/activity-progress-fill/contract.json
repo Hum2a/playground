@@ -1,24 +1,93 @@
 {
-  "name": "activity-progress-fill",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "steps": [
-    0,
-    28,
-    55,
-    82,
-    100
-  ],
-  "fillMs": 480
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/activity-progress-fill.schema.json",
+  "title": "ActivityProgressFill",
+  "description": "Determinate activity progress fills in discrete steps toward a fixed 100% completion boundary.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "activity-progress-fill" },
+    "intent": {
+      "type": "string",
+      "const": "Determinate fill advances in frozen steps toward a visible 100% completion boundary."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-033" },
+        "ref": { "type": "string", "const": "SPX-3339" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 400 },
+        "heightPx": { "type": "number", "const": 280 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["steps", "completionBoundaryPercent"],
+      "properties": {
+        "steps": {
+          "type": "array",
+          "const": [0, 28, 55, 82, 100]
+        },
+        "completionBoundaryPercent": { "type": "number", "const": 100 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fillMs", "easing"],
+      "properties": {
+        "fillMs": { "type": "number", "const": 480 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.4, 0, 0.2, 1)" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable fill/card transitions; Advance jumps to 100% completion boundary."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "fill", "boundary", "chip"],
+      "properties": {
+        "root": { "type": "string", "const": "apf" },
+        "fill": { "type": "string", "const": "apf__fill" },
+        "boundary": { "type": "string", "const": "apf__boundary" },
+        "chip": { "type": "string", "const": "apf__chip" }
+      }
+    }
+  }
 }
