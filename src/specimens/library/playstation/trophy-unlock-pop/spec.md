@@ -28,6 +28,12 @@ Honour both `prefers-reduced-motion: reduce` and
 `[data-force-reduced-motion="true"]` by jumping to the settled toast with no
 enter/shine animation.
 
+## Acceptance
+
+- Unlock plays enter (320ms) → shine (480ms) → settled (200ms).
+- Shine sweeps once only; toast then holds.
+- Reduced motion jumps to settled with no enter/shine.
+
 ## API
 
 - `runTrophyUnlockPop()` — play phases
