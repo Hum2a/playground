@@ -27,7 +27,7 @@ export const networkScan360: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all five nodes appear discovered immediately.',
   },
-    acceptance: [
+  acceptance: [
     'Five nodes at frozen bearings 0/72/144/216/288 discover in order',
     'Sweep completes one revolution; discovery log marks each node',
     'Resolved inventory shows all five nodes active',
