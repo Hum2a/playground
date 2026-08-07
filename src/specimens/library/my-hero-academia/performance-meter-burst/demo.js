@@ -1,8 +1,8 @@
 /**
- * SPX-2030 Performance Meter Burst
+ * SPX-2030 Performance Meter Burst — staggered bar race with OUTPUT overshoot clip.
  */
 ;(function () {
-  const TOTAL_MS = 900
+  const TOTAL_MS = 960
   const VALUES = ['62%', '48%', '94%']
 
   /** @type {WeakMap<HTMLElement, { timer: number | null, busy: boolean }>} */
@@ -68,13 +68,13 @@
     root.dataset.phase = 'race'
     setStatus(root, 'Bars racing…')
 
+    const delays = [420, 600, 820]
     meters(root).forEach((m, i) => {
       const val = m.querySelector('[data-pmb-val]')
       const target = VALUES[i]
-      const delay = i * 80 + 420
       ctx.timer = window.setTimeout(() => {
         if (val && target) val.textContent = target
-      }, delay)
+      }, delays[i])
     })
 
     ctx.timer = window.setTimeout(() => {

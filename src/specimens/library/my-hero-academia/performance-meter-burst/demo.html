@@ -1,20 +1,22 @@
-<div class="pmb" data-meter-burst data-phase="idle">
+<div class="pmb" data-meter-burst data-phase="idle"
+  style="--pmb-bar-1: 62%; --pmb-bar-2: 48%; --pmb-bar-3: 94%; --pmb-order-1: 0ms; --pmb-order-2: 120ms; --pmb-order-3: 240ms">
   <div class="pmb__chart">
     <p class="pmb__title">RESULTS</p>
-    <div class="pmb__meter" style="--pmb-target: 62%">
+    <div class="pmb__meter pmb__meter--1" data-pmb-order="1">
       <span>POWER</span>
       <i data-pmb-bar></i>
       <em data-pmb-val>0%</em>
     </div>
-    <div class="pmb__meter" style="--pmb-target: 48%">
+    <div class="pmb__meter pmb__meter--2" data-pmb-order="2">
       <span>SPEED</span>
       <i data-pmb-bar></i>
       <em data-pmb-val>0%</em>
     </div>
-    <div class="pmb__meter pmb__meter--burst" style="--pmb-target: 94%">
+    <div class="pmb__meter pmb__meter--burst pmb__meter--3" data-pmb-order="3">
       <span>OUTPUT</span>
       <i data-pmb-bar></i>
       <em data-pmb-val>0%</em>
+      <span class="pmb__burst-clip" aria-hidden="true"></span>
     </div>
     <span class="pmb__ceiling" aria-hidden="true"></span>
   </div>
