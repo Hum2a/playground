@@ -4,7 +4,7 @@ export const rivalCardsClash: Specimen = {
   ref: 'SPX-2206',
   title: 'Rival Cards Clash',
   blurb:
-    'Two rival profile cards slam from opposite sides into a central diagonal divider and lock in a READY state.',
+    'Rival cards slam a frozen diagonal divider; halftone burst and ink slash settle READY.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia-inspired comic/anime action language',

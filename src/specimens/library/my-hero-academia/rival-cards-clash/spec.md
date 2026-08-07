@@ -1,30 +1,74 @@
 # Rival Cards Clash (portable recreation spec)
 
-Two rival profile cards slam from opposite sides into a central diagonal
-divider, locking in a READY state. Rebuild from this document and `contract.json`.
+Two rival profile cards slam from opposite sides into a central diagonal divider,
+locking in a **READY** state with halftone burst and ink slash. Rebuild from this
+document and `contract.json`. Original study — no franchise assets.
 
-## Visual intent
+## Copy
 
-- Palette: `#38A3FF` primary, `#101820` ink, `#F4F7FA` paper, `#FF4D35` accent
-- Left card ALPHA (blue border) and right card BETA (accent border)
-- Central diagonal divider rotates ~18deg
-- Primary clash ~660ms; READY overlay settles by ~1310ms total
+| Role | Text |
+| ---- | ---- |
+| Clash | `Clash` |
+| Replay | `Replay` |
+| Left | `ALPHA` |
+| Right | `BETA` |
+| Impact | `READY` |
+| Status idle | `Awaiting rival clash.` |
+| Status clashing | `Cards slamming into divider…` |
+| Status ready | `Rivals locked — READY.` |
 
-## Interaction
+## Colours
 
-- Trigger: **Clash** button
-- Idle: cards off-screen at sides
-- Active: cards meet at center divider
-- Settled: READY label over dimmed arena
-- Replay: second click resets then reruns
+| Token | Hex |
+| ----- | --- |
+| Primary | `#38A3FF` |
+| Ink | `#101820` |
+| Paper | `#F4F7FA` |
+| Accent | `#FF4D35` |
+
+## Timing
+
+| Phase | Duration |
+| ----- | -------- |
+| Card slam | 660ms |
+| Total sequence | 1310ms |
+| Impact fade | 280ms |
+| Slash reveal | 240ms |
+| Halftone burst | 200ms |
+
+## Geometry
+
+| Token | Value |
+| ----- | ----- |
+| Arena | 340×200px |
+| Divider angle | 18° |
+| Divider top | −10% |
+| Divider height | 120% |
+| Divider width | 6px |
+| Idle silhouettes | 18% width at arena edges |
+
+## API
+
+```js
+runRivalCardsClash()
+resetRivalCardsClash()
+replayRivalCardsClash()
+```
+
+## Wave D
+
+Impact overlay adds halftone burst and accent-outlined ink slash behind READY.
 
 ## Reduced motion
 
 Instant settled composition — cards at center, divider visible, READY shown.
 
-## Porting
+## Acceptance
 
-1. Copy DOM + CSS + JS verbatim.
-2. Call `runRivalCardsClash()` or wire the trigger button.
-3. Listen for harness `{ type: 'restart' }` → `resetRivalCardsClash()`.
-4. No external assets, fonts, or network.
+1. Idle: off-screen cards; edge silhouettes; polite aria-live on status only.
+2. Clash: 660ms slam; silhouettes fade.
+3. Settled: halftone + slash + READY; Replay enabled.
+4. Replay resets and reruns.
+5. Divider frozen at contract geometry.
+6. `prefers-reduced-motion` or `data-force-reduced-motion="true"` → instant settle.
+7. No network.

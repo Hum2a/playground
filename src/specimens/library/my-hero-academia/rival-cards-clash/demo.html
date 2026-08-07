@@ -1,6 +1,11 @@
 <div class="rcc" data-rival-cards-clash data-phase="idle">
-  <button type="button" class="rcc__trigger" data-rcc-trigger>Clash</button>
-  <div class="rcc__arena" aria-live="polite">
+  <div class="rcc__controls">
+    <button type="button" class="rcc__trigger" data-rcc-clash>Clash</button>
+    <button type="button" class="rcc__trigger rcc__trigger--ghost" data-rcc-replay hidden>Replay</button>
+  </div>
+  <div class="rcc__arena">
+    <div class="rcc__silhouette rcc__silhouette--left" aria-hidden="true"></div>
+    <div class="rcc__silhouette rcc__silhouette--right" aria-hidden="true"></div>
     <div class="rcc__divider" aria-hidden="true"></div>
     <div class="rcc__card rcc__card--left" data-rcc-card="left">
       <span class="rcc__tag">TARGET</span>
@@ -13,8 +18,10 @@
       <span class="rcc__rank">RANK 03</span>
     </div>
     <div class="rcc__impact" aria-hidden="true">
+      <span class="rcc__halftone" aria-hidden="true"></span>
+      <span class="rcc__slash" aria-hidden="true"></span>
       <span class="rcc__impact-label">READY</span>
     </div>
   </div>
-  <p class="rcc__status" data-rcc-status>Awaiting rival clash.</p>
+  <p class="rcc__status" role="status" aria-live="polite" data-rcc-status>Awaiting rival clash.</p>
 </div>

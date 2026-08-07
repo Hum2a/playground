@@ -7,6 +7,7 @@ const PRIMARY_MS = 660
 const TOTAL_MS = 1310
 
 let busy = false
+/** @type {number | null} */
 let resetTimer = null
 
 function prefersReducedMotion() {
@@ -24,25 +25,36 @@ function setStatus(text) {
   if (el) el.textContent = text
 }
 
+function setControls({ clashDisabled, replayHidden }) {
+  const clash = document.querySelector('[data-rcc-clash]')
+  const replay = document.querySelector('[data-rcc-replay]')
+  if (clash) clash.disabled = clashDisabled
+  if (replay) replay.hidden = replayHidden
+}
+
 export function resetRivalCardsClash() {
   if (resetTimer !== null) window.clearTimeout(resetTimer)
+  resetTimer = null
   busy = false
   const el = root()
   if (!el) return
   el.classList.remove('rcc--active', 'rcc--settled')
   el.setAttribute('data-phase', 'idle')
   setStatus('Awaiting rival clash.')
+  setControls({ clashDisabled: false, replayHidden: true })
 }
 
 export function runRivalCardsClash() {
   const el = root()
   if (!el || busy) return Promise.resolve()
   busy = true
+  setControls({ clashDisabled: true, replayHidden: true })
 
   if (prefersReducedMotion()) {
     el.classList.add('rcc--active', 'rcc--settled')
     el.setAttribute('data-phase', 'ready')
     setStatus('Rivals locked — READY.')
+    setControls({ clashDisabled: true, replayHidden: false })
     busy = false
     return Promise.resolve()
   }
@@ -57,6 +69,7 @@ export function runRivalCardsClash() {
       el.classList.add('rcc--settled')
       el.setAttribute('data-phase', 'ready')
       setStatus('Rivals locked — READY.')
+      setControls({ clashDisabled: true, replayHidden: false })
     }, PRIMARY_MS)
 
     resetTimer = window.setTimeout(() => {
@@ -67,16 +80,20 @@ export function runRivalCardsClash() {
   })
 }
 
+export async function replayRivalCardsClash() {
+  if (busy) return
+  resetRivalCardsClash()
+  void root()?.offsetWidth
+  await runRivalCardsClash()
+}
+
 function bind() {
-  document.querySelector('[data-rcc-trigger]')?.addEventListener('click', () => {
-    const el = root()
-    if (!el) return
-    if (el.classList.contains('rcc--settled')) {
-      resetRivalCardsClash()
-      window.setTimeout(() => void runRivalCardsClash(), 40)
-      return
-    }
+  document.querySelector('[data-rcc-clash]')?.addEventListener('click', () => {
     void runRivalCardsClash()
+  })
+
+  document.querySelector('[data-rcc-replay]')?.addEventListener('click', () => {
+    void replayRivalCardsClash()
   })
 
   window.addEventListener('message', (event) => {

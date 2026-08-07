@@ -1,41 +1,63 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RivalCardsClash",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "colours", "animation", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "rival-cards-clash" },
-    "colours": {
-      "type": "object",
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
-    },
-    "animation": {
-      "type": "object",
-      "required": ["primaryMs", "totalMs"],
-      "properties": {
-        "primaryMs": { "type": "number", "const": 660 },
-        "totalMs": { "type": "number", "const": 1310 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "required": ["triggers"],
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-          }
-        }
-      }
-    }
-  }
+  "name": "rival-cards-clash",
+  "intent": "Two rival profile cards slam from off-screen into a frozen diagonal divider; impact halftone burst and ink slash settle READY.",
+  "catalogue": {
+    "mha": "MHA-232",
+    "ref": "SPX-2206"
+  },
+  "copy": {
+    "clash": "Clash",
+    "replay": "Replay",
+    "leftLabel": "ALPHA",
+    "rightLabel": "BETA",
+    "impact": "READY",
+    "statusIdle": "Awaiting rival clash.",
+    "statusClashing": "Cards slamming into divider…",
+    "statusReady": "Rivals locked — READY."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "primaryMs": 660,
+    "totalMs": 1310,
+    "impactFadeMs": 280,
+    "slashMs": 240,
+    "halftoneMs": 200
+  },
+  "geometry": {
+    "arenaWidthPx": 340,
+    "arenaHeightPx": 200,
+    "dividerAngleDeg": 18,
+    "dividerTopPercent": -10,
+    "dividerHeightPercent": 120,
+    "dividerWidthPx": 6,
+    "cardWidthPercent": 42,
+    "cardOffscreenPercent": 48,
+    "cardSettledInsetPercent": 4,
+    "silhouetteWidthPercent": 18,
+    "slashWidthPercent": 72,
+    "slashHeightPx": 6
+  },
+  "api": {
+    "run": "runRivalCardsClash()",
+    "reset": "resetRivalCardsClash()",
+    "replay": "replayRivalCardsClash()"
+  },
+  "reducedMotion": {
+    "behaviour": "Instant settled composition — cards at center, divider visible, halftone/slash/READY shown"
+  },
+  "acceptance": [
+    "Idle: cards off-screen; edge silhouettes visible at arena sides; aria-live on status only",
+    "Clash: cards slam over 660ms; silhouettes fade; divider brightens on settle",
+    "Settled: halftone burst + ink slash + READY label; Replay shown, Clash disabled",
+    "Replay resets then reruns clash sequence",
+    "Divider frozen at 18deg, -10% top, 120% height, 6px width",
+    "Reduced motion (prefers or data-force) shows settled state immediately",
+    "No network; effect clipped to arena"
+  ],
+  "waveD": "Impact overlay adds halftone burst and accent-outlined ink slash behind READY label"
 }
