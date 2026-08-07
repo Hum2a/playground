@@ -10,18 +10,18 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative overflow-hidden host; import demo.css verbatim.',
-    'Rest grid at 28% opacity → waking glow → awake with focus halo on centre tile.',
+    'RESTORE FOCUS: brightness 0.38 → 0.72 (560ms) → 1.0 + solid halo (≠ black veil).',
     'Honour both reduced-motion triggers — remove motion, keep end states.',
-    'Sandbox-safe: no parent access, storage, or navigation.',
   ],
   acceptance: [
-    'Resume-from-Rest Wake behaviour matches freeze table',
-    'Trigger: WAKE button',
-    'PlayStation palette: #2E90FF #0B0F14 #F4F6F8 #7EB6FF',
-    'Reduced motion: instant state changes, no travel or keyframes',
-    'Live status announces phase changes outside decorative roots',
+    'Asleep shows dimmed dock with dashed ghost ring — not a full black veil',
+    'Waking raises stage brightness to ~72% over 560ms',
+    'Awake shows solid focus halo; ghost ring and FOCUS MEMORY label hide',
+    'Distinct from wake-from-rest (black lift) and rest-mode-dim (console dim)',
+    'Reduced motion snaps asleep→awake with no brightness travel',
   ],
-  scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
+  scaffold:
+    '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   files: { html, css, js },
   spec,
   contract,

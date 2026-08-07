@@ -1,14 +1,20 @@
-<div class="ps" data-ps="resume-from-rest-wake">
-  <p class="ps__eyebrow">Resume-from-Rest Wake</p>
-  <div class="ps__stage rfw__stage" data-rfw-stage data-phase="asleep">
-    <div class="ps__grid" data-rfw-grid aria-hidden="true">
-      <div class="ps__card"></div>
-      <div class="ps__card is-focus" data-rfw-focus></div>
-      <div class="ps__card"></div>
+<div class="rfw" data-rfw data-phase="asleep">
+  <p class="rfw__eyebrow">Resume-from-Rest Wake</p>
+
+  <div class="rfw__stage" data-rfw-stage>
+    <p class="rfw__memory" data-rfw-memory aria-hidden="true">FOCUS MEMORY</p>
+
+    <div class="rfw__dock" data-rfw-dock aria-hidden="true">
+      <span class="rfw__tile"></span>
+      <span class="rfw__tile rfw__tile--focus" data-rfw-focus>
+        <span class="rfw__ghost" data-rfw-ghost></span>
+      </span>
+      <span class="rfw__tile"></span>
     </div>
-    <div class="rfw__veil" data-rfw-veil aria-hidden="true"></div>
-    <div class="ps__halo rfw__halo" data-rfw-halo aria-hidden="true"></div>
+
+    <div class="rfw__halo" data-rfw-halo aria-hidden="true"></div>
   </div>
-  <button type="button" class="ps__btn" data-rfw-wake>WAKE</button>
-  <p class="ps__status" data-rfw-status aria-live="polite">Rest mode — interface dimmed, focus memory retained.</p>
+
+  <button type="button" class="rfw__btn" data-rfw-wake>RESTORE FOCUS</button>
+  <p class="rfw__status" data-rfw-status aria-live="polite">Asleep — dock dimmed, focus memory retained (not black).</p>
 </div>

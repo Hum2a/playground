@@ -7,19 +7,25 @@
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
-    "panel": "#121820",
-    "panel2": "#1a2330",
-    "rule": "#243044",
-    "pewter": "#8a9bb0"
+    "blueLight": "#7EB6FF"
   },
-  "behaviour": "Rest grid at 28% opacity → waking glow → awake with focus halo on centre tile.",
-  "trigger": "WAKE button",
+  "timing": {
+    "wakeMs": 560,
+    "haloMs": 280,
+    "asleepBrightness": 0.38,
+    "wakingBrightness": 0.72,
+    "awakeBrightness": 1
+  },
+  "phases": ["asleep", "waking", "awake"],
+  "story": "focus-restore (≠ black-veil wake-from-rest)",
+  "silhouette": "dim dock + dashed ghost ring → solid focus halo",
+  "behaviour": "brightness 0.38 → 0.72 (560ms) → 1.0 + focus halo; ghost clears.",
+  "trigger": "RESTORE FOCUS",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; brightness and halo transitions removed"
   }
 }

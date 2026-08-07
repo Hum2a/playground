@@ -1,14 +1,18 @@
-/* PlayStation specimen — portable iframe-isolated CSS */
+/* SPX-3327 Resume-from-Rest Wake — portable. Focus restore (≠ black lift). */
 
-.ps {
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-blue: #2E90FF;
-  --ps-blue-light: #7EB6FF;
+.rfw {
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-blue: #2e90ff;
+  --ps-blue-light: #7eb6ff;
   --ps-panel: #121820;
-  --ps-panel-2: #1a2330;
   --ps-rule: #243044;
   --ps-pewter: #8a9bb0;
+  --wake-ms: 560ms;
+  --halo-ms: 280ms;
+  --asleep-bright: 0.38;
+  --waking-bright: 0.72;
+  --awake-bright: 1;
 
   box-sizing: border-box;
   width: min(100%, 440px);
@@ -18,13 +22,13 @@
   color: var(--ps-chalk);
 }
 
-.ps *,
-.ps *::before,
-.ps *::after {
+.rfw *,
+.rfw *::before,
+.rfw *::after {
   box-sizing: border-box;
 }
 
-.ps__eyebrow {
+.rfw__eyebrow {
   margin: 0 0 10px;
   font: 10px/1.2 ui-monospace, 'Cascadia Code', monospace;
   letter-spacing: 0.14em;
@@ -32,16 +36,27 @@
   color: var(--ps-pewter);
 }
 
-.ps__stage {
+.rfw__stage {
   position: relative;
-  min-height: 200px;
+  min-height: 210px;
   border: 1px solid var(--ps-rule);
   border-radius: 4px;
-  background: var(--ps-panel);
+  background: linear-gradient(180deg, #141c28, var(--ps-panel));
   overflow: hidden;
+  filter: brightness(var(--asleep-bright)) saturate(0.55);
+  transition:
+    filter var(--wake-ms) ease;
 }
 
-.ps__btn {
+.rfw[data-phase='waking'] .rfw__stage {
+  filter: brightness(var(--waking-bright)) saturate(0.85);
+}
+
+.rfw[data-phase='awake'] .rfw__stage {
+  filter: brightness(var(--awake-bright)) saturate(1);
+}
+
+.rfw__btn {
   margin-top: 12px;
   padding: 8px 14px;
   font: 10px/1 ui-monospace, monospace;
@@ -54,112 +69,110 @@
   cursor: pointer;
 }
 
-.ps__btn:focus-visible {
+.rfw__btn:focus-visible {
   outline: 2px solid var(--ps-blue);
   outline-offset: 2px;
 }
 
-.ps__btn:disabled {
+.rfw__btn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-.ps__status {
+.rfw__status {
   margin: 10px 0 0;
   font: 10px/1.4 ui-monospace, monospace;
   letter-spacing: 0.06em;
   color: var(--ps-pewter);
 }
 
-.ps__grid {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 12px;
-  transition: opacity 600ms ease, filter 600ms ease;
+.rfw__memory {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  margin: 0;
+  font: 9px/1 ui-monospace, monospace;
+  letter-spacing: 0.16em;
+  color: var(--ps-blue-light);
+  opacity: 0.75;
+  transition: opacity var(--halo-ms) ease;
 }
 
-.ps__card {
-  width: 72px;
-  height: 96px;
+.rfw[data-phase='awake'] .rfw__memory {
+  opacity: 0;
+}
+
+.rfw__dock {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  transform: translateY(-50%);
+}
+
+.rfw__tile {
+  position: relative;
+  width: 70px;
+  height: 94px;
   border: 1px solid var(--ps-rule);
   border-radius: 3px;
-  background: linear-gradient(155deg, var(--ps-panel-2), var(--ps-rule));
-  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms ease, box-shadow 280ms ease;
+  background: linear-gradient(155deg, #1a2330, #141c28);
 }
 
-.ps__card.is-focus {
-  border-color: var(--ps-blue);
-  box-shadow: 0 0 0 2px rgba(46, 144, 255, 0.35);
+.rfw__tile--focus {
+  border-color: rgb(46 144 255 / 0.35);
 }
 
-.ps__halo {
+/* Ghost ring = remembered focus while asleep */
+.rfw__ghost {
   position: absolute;
-  inset: auto;
-  pointer-events: none;
-  border: 2px solid var(--ps-blue);
-  border-radius: 4px;
+  inset: -4px;
+  border: 1.5px dashed rgb(126 182 255 / 0.55);
+  border-radius: 5px;
+  opacity: 0.85;
+  transition: opacity var(--halo-ms) ease;
+}
+
+.rfw[data-phase='awake'] .rfw__ghost {
   opacity: 0;
-  transition: opacity 400ms ease, box-shadow 400ms ease;
-  box-shadow: 0 0 18px rgba(46, 144, 255, 0.45);
 }
 
-.ps [hidden] {
-  display: none !important;
-}
-
-
-.rfw__stage[data-phase="asleep"] .ps__grid { opacity: 0.28; filter: brightness(0.45) saturate(0.6); }
-.rfw__stage[data-phase="waking"] .ps__grid { opacity: 0.72; filter: brightness(0.78) saturate(0.85); }
-.rfw__stage[data-phase="awake"] .ps__grid { opacity: 1; filter: none; }
-.rfw__veil {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 40%, rgba(46, 144, 255, 0.22), transparent 65%);
-  opacity: 0;
-  transition: opacity 500ms ease;
-  pointer-events: none;
-}
-.rfw__stage[data-phase="waking"] .rfw__veil { opacity: 1; }
-.rfw__stage[data-phase="awake"] .rfw__veil { opacity: 0; }
 .rfw__halo {
-  width: 76px;
-  height: 100px;
+  position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(calc(-50% + 0px), -50%);
+  width: 78px;
+  height: 102px;
+  margin: -51px 0 0 -39px;
+  border: 2px solid var(--ps-blue);
+  border-radius: 5px;
+  box-shadow: 0 0 18px rgb(46 144 255 / 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--halo-ms) ease;
 }
-.rfw__stage[data-phase="awake"] .rfw__halo { opacity: 1; }
 
+.rfw[data-phase='awake'] .rfw__halo {
+  opacity: 1;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .ps__stage,
-  .ps__card,
-  .ps__flash,
-  .ps__thumb,
-  .ps__notify,
-  .ps__overlay,
-  .ps__game,
-  .ps__grid,
-  .ps__halo,
-  .ps__error,
-  .ps__offline {
+  .rfw__stage,
+  .rfw__memory,
+  .rfw__ghost,
+  .rfw__halo {
     transition: none !important;
     animation: none !important;
   }
 }
-[data-force-reduced-motion="true"] .ps__stage,
-[data-force-reduced-motion="true"] .ps__card,
-[data-force-reduced-motion="true"] .ps__flash,
-[data-force-reduced-motion="true"] .ps__thumb,
-[data-force-reduced-motion="true"] .ps__notify,
-[data-force-reduced-motion="true"] .ps__overlay,
-[data-force-reduced-motion="true"] .ps__game,
-[data-force-reduced-motion="true"] .ps__grid,
-[data-force-reduced-motion="true"] .ps__halo,
-[data-force-reduced-motion="true"] .ps__error,
-[data-force-reduced-motion="true"] .ps__offline {
+
+[data-force-reduced-motion='true'] .rfw__stage,
+[data-force-reduced-motion='true'] .rfw__memory,
+[data-force-reduced-motion='true'] .rfw__ghost,
+[data-force-reduced-motion='true'] .rfw__halo {
   transition: none !important;
   animation: none !important;
 }
