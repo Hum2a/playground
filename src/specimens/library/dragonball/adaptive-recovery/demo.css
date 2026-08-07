@@ -1,4 +1,4 @@
-/* Adaptive Recovery — portable specimen CSS (iframe-isolated). */
+/* SPX-1211 Adaptive Recovery — portable specimen CSS (iframe-isolated). */
 
 .ar {
   --ar-ink: #101218;
@@ -9,6 +9,7 @@
   --ar-fail: #c45b5b;
   --ar-ok: #5faf9a;
   --ar-adapt: #d4a45a;
+  --ar-scar: rgb(196 91 91 / 0.65);
 
   box-sizing: border-box;
   width: min(100%, 420px);
@@ -146,74 +147,179 @@
   position: relative;
   padding: 14px 12px 12px;
   border: 1px solid var(--ar-rule);
-  min-height: 148px;
+  min-height: 168px;
 }
 
-.ar__seg {
+.ar__structure {
+  position: absolute;
+  inset: 8px 10px 10px;
+  pointer-events: none;
+}
+
+.ar__beam {
   position: absolute;
   background: var(--ar-rule);
   opacity: 0.35;
   transform-origin: left center;
-  transition: opacity 140ms ease, transform 180ms ease;
+  transition: opacity 180ms ease, transform 200ms ease, background-color 180ms ease;
 }
 
-.ar__seg--1 {
-  left: 0;
-  top: 0;
-  width: 28%;
+.ar__beam--h1 {
+  left: 8%;
+  top: 18%;
+  width: 72%;
   height: 2px;
-  transform: scaleX(0.35);
+  transform: scaleX(0.25);
 }
 
-.ar__seg--2 {
-  right: 0;
-  top: 0;
+.ar__beam--h2 {
+  left: 6%;
+  top: 48%;
+  width: 78%;
+  height: 2px;
+  transform: scaleX(0.15);
+}
+
+.ar__beam--h3 {
+  left: 10%;
+  bottom: 22%;
+  width: 65%;
+  height: 2px;
+  transform: scaleX(0.3);
+}
+
+.ar__beam--v1 {
+  left: 18%;
+  top: 12%;
   width: 2px;
-  height: 34%;
+  height: 68%;
+  transform-origin: top center;
+  transform: scaleY(0.2);
+}
+
+.ar__beam--v2 {
+  left: 48%;
+  top: 10%;
+  width: 2px;
+  height: 72%;
   transform-origin: top center;
   transform: scaleY(0.35);
 }
 
-.ar__seg--3 {
-  left: 0;
-  bottom: 0;
-  width: 42%;
-  height: 2px;
-  transform: scaleX(0.4);
-}
-
-.ar__seg--4 {
-  left: 0;
-  top: 0;
+.ar__beam--v3 {
+  right: 18%;
+  top: 14%;
   width: 2px;
-  height: 40%;
+  height: 64%;
   transform-origin: top center;
-  transform: scaleY(0.3);
+  transform: scaleY(0.18);
 }
 
-.ar.is-recovering .ar__seg--1 {
-  opacity: 0.7;
-  transform: scaleX(0.7);
+.ar.is-recovering .ar__beam--h1 {
+  opacity: 0.65;
+  transform: scaleX(0.55);
 }
-.ar.is-recovering .ar__seg--2 {
+.ar.is-recovering .ar__beam--h2 {
+  opacity: 0.6;
+  transform: scaleX(0.45);
+}
+.ar.is-recovering .ar__beam--h3 {
+  opacity: 0.7;
+  transform: scaleX(0.6);
+}
+.ar.is-recovering .ar__beam--v1 {
+  opacity: 0.65;
+  transform: scaleY(0.5);
+}
+.ar.is-recovering .ar__beam--v2 {
   opacity: 0.7;
   transform: scaleY(0.65);
 }
-.ar.is-recovering .ar__seg--3 {
-  opacity: 0.8;
-  transform: scaleX(0.85);
-}
-.ar.is-recovering .ar__seg--4 {
-  opacity: 0.85;
-  transform: scaleY(0.9);
+.ar.is-recovering .ar__beam--v3 {
+  opacity: 0.6;
+  transform: scaleY(0.45);
 }
 
-.ar.is-baseline .ar__seg,
-.ar.is-adapting .ar__seg,
-.ar.is-adapted .ar__seg,
-.ar.is-rm .ar__seg {
-  opacity: 1;
+.ar.is-baseline .ar__beam,
+.ar.is-adapting .ar__beam,
+.ar.is-adapted .ar__beam,
+.ar.is-rm .ar__beam {
+  opacity: 0.85;
+  background: var(--ar-pewter);
   transform: scaleX(1) scaleY(1);
+}
+
+.ar__scar {
+  position: absolute;
+  left: 22%;
+  top: 28%;
+  width: 48%;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--ar-scar) 0 6px,
+    transparent 6px 10px
+  );
+  transform: rotate(-22deg);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.ar.is-baseline .ar__scar,
+.ar.is-adapting .ar__scar,
+.ar.is-adapted .ar__scar,
+.ar.is-rm .ar__scar {
+  opacity: 1;
+}
+
+.ar__reinf {
+  position: absolute;
+  height: 3px;
+  background: var(--ar-adapt);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  box-shadow: 0 0 6px rgb(212 164 90 / 0.35);
+  transition: opacity 160ms ease, transform 200ms ease;
+}
+
+.ar__reinf--1 {
+  left: 14%;
+  top: 34%;
+  width: 55%;
+}
+
+.ar__reinf--2 {
+  left: 20%;
+  top: 52%;
+  width: 48%;
+}
+
+.ar__reinf--3 {
+  left: 26%;
+  bottom: 30%;
+  width: 42%;
+}
+
+.ar.is-adapt-capacity .ar__reinf--1,
+.ar.is-adapted .ar__reinf--1,
+.ar.is-rm .ar__reinf--1 {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.ar.is-adapt-retries .ar__reinf--2,
+.ar.is-adapted .ar__reinf--2,
+.ar.is-rm .ar__reinf--2 {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.ar.is-adapt-latency .ar__reinf--3,
+.ar.is-adapted .ar__reinf--3,
+.ar.is-rm .ar__reinf--3 {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .ar__state {
@@ -238,6 +344,8 @@
   display: grid;
   gap: 10px;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .ar__metric {
@@ -377,7 +485,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ar__health-fill,
-  .ar__seg,
+  .ar__beam,
+  .ar__scar,
+  .ar__reinf,
   .ar__old,
   .ar__new,
   .ar__strut {
@@ -387,7 +497,9 @@
 }
 
 [data-force-reduced-motion='true'] .ar__health-fill,
-[data-force-reduced-motion='true'] .ar__seg,
+[data-force-reduced-motion='true'] .ar__beam,
+[data-force-reduced-motion='true'] .ar__scar,
+[data-force-reduced-motion='true'] .ar__reinf,
 [data-force-reduced-motion='true'] .ar__old,
 [data-force-reduced-motion='true'] .ar__new,
 [data-force-reduced-motion='true'] .ar__strut {

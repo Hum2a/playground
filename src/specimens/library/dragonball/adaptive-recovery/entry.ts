@@ -4,7 +4,7 @@ export const adaptiveRecovery: Specimen = {
   ref: 'SPX-1211',
   title: 'Adaptive Recovery',
   blurb:
-    'A failed worker reconstructs through a frozen health ladder, briefly matches its prior baseline, then adapts three metrics upward — previous baseline stays visible beside the new one.',
+    'A failed worker’s truss frame shows structural damage, rebuilds through a health ladder, retains a scar remnant, then gains three reinforcement struts and upgraded metrics.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball–inspired Zenkai-style post-failure adaptation (abstract)',
@@ -24,15 +24,13 @@ export const adaptiveRecovery: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Health ladder and adaptation motion are skipped; adapted metrics and ADAPTED status appear immediately.',
+      'Health ladder and adaptation motion are skipped; reinforced truss with scar and ADAPTED metrics appear immediately.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 480,
+    height: 500,
     background: 'dark',
-
-    label: 'Adaptive recovery demo',
+    label: 'Structural scar rebuild',
   },
-
 }

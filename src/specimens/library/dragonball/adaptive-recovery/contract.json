@@ -1,74 +1,192 @@
 {
-  "name": "adaptive-recovery",
-  "intent": "Post-failure improvement: a failed system recovers to its prior baseline, then adapts three metrics to a stronger new baseline while keeping the previous baseline visible for comparison.",
-  "primitives": ["recovery", "adaptation", "improvement"],
-  "colours": {
-    "ink": "#101218",
-    "panel": "#171b22",
-    "rule": "#2d3442",
-    "pewter": "#8b93a5",
-    "chalk": "#e7eaf1",
-    "fail": "#c45b5b",
-    "ok": "#5faf9a",
-    "adapt": "#d4a45a"
-  },
-  "chrome": {
-    "system": "WORKER // 06",
-    "initialStatus": "FAILED",
-    "finalStatus": "ADAPTED",
-    "trigger": "RECOVER",
-    "previousBaselineLabel": "PREVIOUS BASELINE",
-    "newBaselineLabel": "NEW BASELINE"
-  },
-  "baselines": {
-    "previous": {
-      "capacity": 100,
-      "retries": 2,
-      "latencyMs": 84
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/adaptive-recovery.schema.json",
+  "title": "AdaptiveRecovery",
+  "description": "Post-failure structural rebuild: damaged truss → health ladder → scar remnant → reinforced struts + adapted metrics. SPX-1211.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "baselines",
+    "structure",
+    "health",
+    "timing",
+    "adaptation",
+    "api",
+    "a11y",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "adaptive-recovery" },
+    "intent": {
+      "type": "string",
+      "const": "Post-failure adaptation as visible structural rebuild: damaged truss → health ladder → scar remnant → three reinforcement struts + upgraded metrics."
     },
-    "next": {
-      "capacity": 128,
-      "retries": 4,
-      "latencyMs": 61
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "initialStatus",
+        "finalStatus",
+        "trigger",
+        "previousBaselineLabel",
+        "newBaselineLabel"
+      ],
+      "properties": {
+        "system": { "type": "string", "const": "WORKER // 06" },
+        "initialStatus": { "type": "string", "const": "FAILED" },
+        "finalStatus": { "type": "string", "const": "ADAPTED" },
+        "trigger": { "type": "string", "const": "RECOVER" },
+        "previousBaselineLabel": { "type": "string", "const": "PREVIOUS BASELINE" },
+        "newBaselineLabel": { "type": "string", "const": "NEW BASELINE" }
+      }
     },
-    "deltas": {
-      "capacity": "+28 CAPACITY",
-      "retries": "+2 RETRIES",
-      "latency": "−23ms LATENCY"
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "panel", "rule", "pewter", "chalk", "fail", "ok", "adapt"],
+      "properties": {
+        "ink": { "type": "string", "const": "#101218" },
+        "panel": { "type": "string", "const": "#171b22" },
+        "rule": { "type": "string", "const": "#2d3442" },
+        "pewter": { "type": "string", "const": "#8b93a5" },
+        "chalk": { "type": "string", "const": "#e7eaf1" },
+        "fail": { "type": "string", "const": "#c45b5b" },
+        "ok": { "type": "string", "const": "#5faf9a" },
+        "adapt": { "type": "string", "const": "#d4a45a" }
+      }
+    },
+    "baselines": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previous", "next", "deltas"],
+      "properties": {
+        "previous": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["capacity", "retries", "latencyMs"],
+          "properties": {
+            "capacity": { "type": "integer", "const": 100 },
+            "retries": { "type": "integer", "const": 2 },
+            "latencyMs": { "type": "integer", "const": 84 }
+          }
+        },
+        "next": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["capacity", "retries", "latencyMs"],
+          "properties": {
+            "capacity": { "type": "integer", "const": 128 },
+            "retries": { "type": "integer", "const": 4 },
+            "latencyMs": { "type": "integer", "const": 61 }
+          }
+        },
+        "deltas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["capacity", "retries", "latency"],
+          "properties": {
+            "capacity": { "type": "string", "const": "+28 CAPACITY" },
+            "retries": { "type": "string", "const": "+2 RETRIES" },
+            "latency": { "type": "string", "const": "−23ms LATENCY" }
+          }
+        }
+      }
+    },
+    "structure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trussBeams", "scar", "reinforcementStruts"],
+      "properties": {
+        "trussBeams": { "type": "integer", "const": 6 },
+        "scar": {
+          "type": "string",
+          "const": "Dashed diagonal scar appears at baseline hold; persists through adapted state"
+        },
+        "reinforcementStruts": { "type": "integer", "const": 3 }
+      }
+    },
+    "health": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "sequence", "stepMs", "recoverDurationMs"],
+      "properties": {
+        "initial": { "type": "integer", "const": 18 },
+        "sequence": {
+          "type": "array",
+          "const": [18, 36, 57, 78, 100]
+        },
+        "stepMs": { "type": "integer", "const": 175 },
+        "recoverDurationMs": { "type": "integer", "const": 700 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baselineHoldMs", "adaptStaggerMs", "adaptClipMs", "adaptDoneMs"],
+      "properties": {
+        "baselineHoldMs": { "type": "integer", "const": 120 },
+        "adaptStaggerMs": {
+          "type": "array",
+          "const": [0, 140, 280]
+        },
+        "adaptClipMs": { "type": "integer", "const": 180 },
+        "adaptDoneMs": { "type": "integer", "const": 480 }
+      }
+    },
+    "adaptation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metrics", "replacement"],
+      "properties": {
+        "metrics": {
+          "type": "array",
+          "const": ["capacity", "retries", "latency"]
+        },
+        "replacement": { "type": "string", "const": "clipped" }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recover", "reset", "busyGuard", "replayViaRecover"],
+      "properties": {
+        "recover": { "type": "string", "const": "runAdaptiveRecovery()" },
+        "reset": { "type": "string", "const": "runAdaptiveRecoveryReset()" },
+        "busyGuard": { "type": "boolean", "const": true },
+        "replayViaRecover": { "type": "boolean", "const": true }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exposePreviousAndNewBaseline", "liveRegion"],
+      "properties": {
+        "exposePreviousAndNewBaseline": { "type": "boolean", "const": true },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behaviour"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "@media (prefers-reduced-motion: reduce)",
+            "[data-force-reduced-motion=\"true\"]"
+          ]
+        },
+        "behaviour": {
+          "type": "string",
+          "const": "Immediately show health 100%, reinforced truss with scar, adapted metrics, deltas, NEW BASELINE, and ADAPTED"
+        }
+      }
     }
-  },
-  "health": {
-    "initial": 18,
-    "sequence": [18, 36, 57, 78, 100],
-    "stepMs": 175,
-    "recoverDurationMs": 700
-  },
-  "timing": {
-    "baselineHoldMs": 120,
-    "adaptStaggerMs": [0, 140, 280],
-    "adaptClipMs": 180,
-    "adaptDoneMs": 480
-  },
-  "adaptation": {
-    "structuralElements": 3,
-    "metrics": ["capacity", "retries", "latency"],
-    "replacement": "clipped"
-  },
-  "api": {
-    "recover": "runAdaptiveRecovery()",
-    "reset": "runAdaptiveRecoveryReset()",
-    "busyGuard": true,
-    "replayViaRecover": true
-  },
-  "a11y": {
-    "exposePreviousAndNewBaseline": true,
-    "liveRegion": "polite"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Immediately show health 100%, adapted metrics, deltas, NEW BASELINE, and ADAPTED"
   }
 }
