@@ -1,15 +1,27 @@
-<div class="ps rtr" data-rtr data-phase="idle">
-  <p class="ps__live" data-rtr-live aria-live="polite">Rare trophy hidden.</p>
-  <p class="ps__eyebrow">RARE TROPHY</p>
+<div class="rtr" data-rtr data-phase="idle">
+  <p class="rtr__live" data-rtr-live aria-live="polite">Rare trophy concealed behind veil.</p>
+  <p class="rtr__eyebrow">RARE TROPHY REVEAL</p>
   <div class="rtr__stage">
-    <div class="rtr__veil" data-rtr-veil aria-hidden="true"></div>
+    <div class="rtr__veil" data-rtr-veil aria-hidden="true">
+      <span class="rtr__veil-label">CONCEALED</span>
+    </div>
+    <div class="rtr__rays" data-rtr-rays aria-hidden="true">
+      <span style="--a:0deg"></span>
+      <span style="--a:30deg"></span>
+      <span style="--a:60deg"></span>
+      <span style="--a:90deg"></span>
+      <span style="--a:120deg"></span>
+      <span style="--a:150deg"></span>
+    </div>
     <article class="rtr__card" data-rtr-card hidden>
-      <span class="rtr__tier">GOLD</span>
+      <span class="rtr__tier" data-rtr-tier>GOLD</span>
       <h2 class="rtr__name">Perfect Run</h2>
       <p class="rtr__desc">Complete all objectives without retry</p>
-      <div class="rtr__rays" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     </article>
   </div>
-  <button type="button" class="ps__btn" data-rtr-run>Reveal</button>
-  <p class="ps__status" data-rtr-status>Press Reveal for rare trophy sequence.</p>
+  <div class="rtr__controls">
+    <button type="button" class="rtr__btn" data-rtr-run>Reveal</button>
+    <button type="button" class="rtr__btn rtr__btn--ghost" data-rtr-reset>Reset</button>
+  </div>
+  <p class="rtr__status" data-rtr-status>Idle — reveal uses veil → rays → tier hold (not a toast pop).</p>
 </div>

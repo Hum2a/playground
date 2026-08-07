@@ -1,18 +1,99 @@
 {
-  "name": "rare-trophy-reveal",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "revealMs": 520,
-  "veilMs": 220
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/rare-trophy-reveal.schema.json",
+  "title": "RareTrophyReveal",
+  "description": "Higher-tier achievement reveal via veil, rays, and gold tier hold — distinct from unlock toast.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "rare-trophy-reveal" },
+    "intent": {
+      "type": "string",
+      "const": "Higher-tier achievement uses veil, rays, and tier hold — not an unlock toast."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-042" },
+        "ref": { "type": "string", "const": "SPX-3348" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 420 },
+        "heightPx": { "type": "number", "const": 360 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tier", "rayCount", "title"],
+      "properties": {
+        "tier": { "type": "string", "const": "GOLD" },
+        "rayCount": { "type": "number", "const": 6 },
+        "title": { "type": "string", "const": "Perfect Run" }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["veilMs", "raysMs", "tierHoldMs", "settleMs", "phases"],
+      "properties": {
+        "veilMs": { "type": "number", "const": 280 },
+        "raysMs": { "type": "number", "const": 420 },
+        "tierHoldMs": { "type": "number", "const": 360 },
+        "settleMs": { "type": "number", "const": 220 },
+        "phases": {
+          "type": "array",
+          "const": ["idle", "veil", "rays", "tier", "done"]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Skip veil/rays/tier motion; show settled gold card immediately."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft", "gold"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" },
+        "gold": { "type": "string", "const": "#E8C56A" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "veil", "rays", "tier", "card"],
+      "properties": {
+        "root": { "type": "string", "const": "rtr" },
+        "veil": { "type": "string", "const": "rtr__veil" },
+        "rays": { "type": "string", "const": "rtr__rays" },
+        "tier": { "type": "string", "const": "rtr__tier" },
+        "card": { "type": "string", "const": "rtr__card" }
+      }
+    }
+  }
 }

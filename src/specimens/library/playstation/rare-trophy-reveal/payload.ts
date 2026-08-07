@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inside scaffold host; import demo.css verbatim.",
-      "Honour both reduced-motion triggers — end states remain visible.",
-      "Listen for `{ type: \"restart\" }` postMessage where applicable."
+    'Wire Reveal to idle→veil→rays→tier→done (not unlock-toast phases).',
+    'Import demo.css verbatim; freeze veil 280 / rays 420 / tier-hold 360 / settle 220ms.',
+    'Keep CONCEALED veil, 6 rays, and GOLD tier hold as the silhouette.',
+    'Preserve both reduced-motion overrides on veil, rays, card, and tier.',
   ],
   acceptance: [
-      "Uses PlayStation palette: #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF",
-      "No PS logos, glyphs, or game art",
-      "iframe-safe — no parent access, storage, or navigation",
-      "Reduced motion shows final states instantly"
+    'Reveal sequence is veil → rays → GOLD tier hold → done (not enter/shine toast).',
+    'Striped CONCEALED veil thins before the card appears.',
+    'Exactly 6 rays bloom; GOLD badge overshoots and holds for 360ms.',
+    'Reduced motion shows the settled gold card with no veil/rays/tier motion.',
   ],
-  scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#0B0F14;display:grid;place-items:center;padding:16px;">
+  scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}
-</div>
-`.trim(),
+</div>`.trim(),
   files: { html, css, js },
   spec,
   contract,
