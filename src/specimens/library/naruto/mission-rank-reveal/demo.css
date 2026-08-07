@@ -7,8 +7,13 @@
   --alert: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
-  --mrr-stamp-overshoot: -22deg;
-  --mrr-stamp-settle: -12deg;
+  --mrr-card-ms: 280ms;
+  --mrr-stamp-ms: 240ms;
+  --mrr-travel-y: 56px;
+  --mrr-approach-deg: -8deg;
+  --mrr-stamp-approach-deg: -18deg;
+  --mrr-stamp-settle-deg: -12deg;
+  --mrr-stamp-approach-scale: 2.4;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -74,15 +79,13 @@
   border: 2px solid var(--olive);
   background: var(--parchment);
   color: var(--ink);
-  opacity: 0;
-  transform: translateY(-70px) rotate(-6deg) scale(0.9);
-  transition:
-    opacity 220ms ease-out,
-    transform 280ms cubic-bezier(0.34, 1.4, 0.4, 1);
+  visibility: hidden;
+  transform: translateY(calc(var(--mrr-travel-y) * -1)) rotate(var(--mrr-approach-deg)) scale(0.92);
+  transition: transform var(--mrr-card-ms) cubic-bezier(0.34, 1.45, 0.4, 1);
 }
 
 .mrr__card[data-visible='true'] {
-  opacity: 1;
+  visibility: visible;
   border-color: var(--chakra);
   transform: translateY(0) rotate(0deg) scale(1);
 }
@@ -110,25 +113,24 @@
   font-weight: 900;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0;
-  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-overshoot)) scale(2.4);
-  transition: none;
+  visibility: hidden;
+  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-approach-deg)) scale(var(--mrr-stamp-approach-scale));
+  transition: transform var(--mrr-stamp-ms) cubic-bezier(0.2, 0.9, 0.25, 1);
   pointer-events: none;
 }
 
 .mrr__stamp[data-phase='impact'] {
-  opacity: 0.95;
-  transition:
-    opacity 80ms linear,
-    transform 180ms cubic-bezier(0.2, 0.9, 0.25, 1.35);
-  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-overshoot)) scale(1.08);
+  visibility: visible;
+  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.25, 1.35);
+  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-approach-deg)) scale(1.08);
 }
 
 .mrr__stamp[data-phase='settle'],
 .mrr__stamp[data-visible='true'] {
+  visibility: visible;
   opacity: 0.92;
   transition: transform 120ms cubic-bezier(0.34, 1.2, 0.4, 1);
-  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-settle)) scale(1);
+  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-settle-deg)) scale(1);
 }
 
 .mrr__status {

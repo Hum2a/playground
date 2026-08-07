@@ -5,13 +5,13 @@ export const missionRankReveal: Specimen = {
   ref: 'SPX-2534',
   title: 'Mission Rank Reveal',
   blurb:
-    'A Rank B card lands in the briefing, then a wax stamp impacts at −22° and settles to −12° CONFIRMED.',
+    'Rank B glyph slams 56px into the briefing, then a wax stamp settles at -12° to confirm.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / mission system — briefing rank reveal overlays',
+    surface: 'Naruto / mission system — briefing rank reveal',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
     intensity: 'graphic',
@@ -19,21 +19,19 @@ export const missionRankReveal: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['rank'],
+  tags: ["rank","stamp","briefing"],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, Rank B and the −12° CONFIRMED stamp appear already settled.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the rank card and stamp appear already settled at RANK CONFIRMED.',
   },
-    acceptance: [
-    'Rank B card lands over 280ms before the wax stamp appears',
-    'Stamp impacts at −22° overshoot then settles to −12° over 120ms',
-    'Resolved shows RANK CONFIRMED with settled stamp angle',
-    'Replay clears card and stamp before rerunning',
-    'Reduced motion shows settled card + −12° stamp immediately',
-  ],,
+  acceptance: [
+    'Card travels 56px from -8°; stamp settles at -12° after stampMs 240',
+    'RANK CONFIRMED only after settleMs 100',
+    'Reduced motion shows settled card + stamp immediately',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,

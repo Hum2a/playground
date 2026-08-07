@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runMissionRankReveal / resetMissionRankReveal / replayMissionRankReveal.',
     'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
   ],
-    acceptance: [
-    'Rank B card lands over 280ms before the wax stamp appears',
-    'Stamp impacts at −22° overshoot then settles to −12° over 120ms',
-    'Resolved shows RANK CONFIRMED with settled stamp angle',
-    'Replay clears card and stamp before rerunning',
-    'Reduced motion shows settled card + −12° stamp immediately',
-  ],
+    acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}
 </div>
 `.trim(),

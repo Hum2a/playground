@@ -1,104 +1,53 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/mission-rank-reveal.schema.json",
-  "title": "MissionRankReveal",
-  "description": "Rank B card lands, then a wax stamp impacts at −22° and settles to −12°.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "rank",
-    "cardMs",
-    "stampImpactMs",
-    "stampSettleMs",
-    "stampOvershootDeg",
-    "stampSettleDeg",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "mission-rank-reveal"
-    },
-    "rank": {
-      "type": "string",
-      "const": "B"
-    },
-    "cardMs": {
-      "type": "number",
-      "const": 280
-    },
-    "stampImpactMs": {
-      "type": "number",
-      "const": 180
-    },
-    "stampSettleMs": {
-      "type": "number",
-      "const": 120
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 90
-    },
-    "stampOvershootDeg": {
-      "type": "number",
-      "const": -22
-    },
-    "stampSettleDeg": {
-      "type": "number",
-      "const": -12
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "alert",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#1A1612"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#EBE2D0"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "alert": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#6A5E4E"
-        },
-        "off": {
-          "type": "string",
-          "const": "#F7F2E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateConfirmed"
-      ],
-      "properties": {
-        "immediateConfirmed": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "mission-rank-reveal",
+  "intent": "Rank glyph card slams into the briefing with a frozen overshoot, then a wax stamp impacts and settles at a fixed angle to confirm.",
+  "catalogue": {
+    "nr": "NR-191",
+    "ref": "SPX-2534"
+  },
+  "copy": {
+    "system": "RANK // REVEAL",
+    "idle": "PENDING",
+    "confirmed": "RANK CONFIRMED",
+    "stamp": "CONFIRMED",
+    "rank": "B"
+  },
+  "geometry": {
+    "cardTravelYPx": 56,
+    "cardApproachDeg": -8,
+    "stampApproachScale": 2.4,
+    "stampApproachDeg": -18,
+    "stampSettleDeg": -12
+  },
+  "timing": {
+    "cardMs": 280,
+    "stampImpactMs": 180,
+    "stampSettleMs": 120,
+    "settleMs": 90,
+    "totalMs": 670
+  },
+  "colours": {
+    "ink": "#1A1612",
+    "parchment": "#EBE2D0",
+    "chakra": "#B83228",
+    "olive": "#6A5E4E",
+    "off": "#F7F2E8",
+    "palette": "mission-paper",
+    "alert": "#B83228"
+  },
+  "api": {
+    "run": "runMissionRankReveal()",
+    "reset": "resetMissionRankReveal()",
+    "replay": "replayMissionRankReveal()"
+  },
+  "reducedMotion": {
+    "behaviour": "Card and stamp appear already settled at RANK CONFIRMED"
+  },
+  "acceptance": [
+    "Rank B card travels 56px down from approachDeg -8 — transform-led, not opacity-only",
+    "Stamp approaches at scale 2.4 / -18° (impactMs 180) then settles at -12° (stampSettleMs 120)",
+    "Status reaches RANK CONFIRMED only after settleMs 90",
+    "Replay clears both data-visible flags and stamp data-phase before rerunning",
+    "Reduced motion (prefers or data-force) shows settled card + stamp immediately"
+  ]
 }
