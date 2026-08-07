@@ -7,6 +7,14 @@
   --olive: #1a6b58;
   --off: #d7f5ec;
   /* wave2 timing surface */
+  --ccf-r0: 42% 58% 48% 52% / 52% 48% 55% 45%;
+  --ccf-r1: 48% 52% 60% 40% / 45% 55% 42% 58%;
+  --ccf-r2: 55% 45% 52% 48% / 58% 42% 50% 50%;
+  --ccf-r3: 50% 50% 45% 55% / 48% 52% 58% 42%;
+  --ccf-d0: 72px;
+  --ccf-d1: 96px;
+  --ccf-d2: 118px;
+  --ccf-d3: 140px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -100,6 +108,10 @@
     22% 12%
   );
   transition: border-color 150ms ease-out;
+  width: var(--ccf-d0);
+  height: var(--ccf-d0);
+  border-radius: var(--ccf-r0);
+  transition: width 80ms linear, height 80ms linear, border-radius 80ms linear;
 }
 
 .ccf[data-phase='done'] .ccf__boundary {
@@ -215,3 +227,8 @@ html[data-force-reduced-motion='true'] .ccf[data-pulse='true'] .ccf__boundary {
   transition: none !important;
   animation: none !important;
 }
+
+.ccf[data-step='1'] .ccf__boundary { width: var(--ccf-d1); height: var(--ccf-d1); border-radius: var(--ccf-r1); }
+.ccf[data-step='2'] .ccf__boundary { width: var(--ccf-d2); height: var(--ccf-d2); border-radius: var(--ccf-r2); }
+.ccf[data-step='3'] .ccf__boundary,
+.ccf[data-phase='done'] .ccf__boundary { width: var(--ccf-d3); height: var(--ccf-d3); border-radius: var(--ccf-r3); }

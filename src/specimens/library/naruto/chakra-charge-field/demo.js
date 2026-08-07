@@ -5,6 +5,9 @@
 
 const CHARGE_MS = 620
 const COMMIT_MS = 150
+const DIAMETERS_PX = [72, 96, 118, 140]
+const STEP_THRESHOLDS = [0.25, 0.5, 0.75, 1]
+const COMMIT_MS = 150
 
 /** @type {'idle'|'charging'|'done'} */
 let phase = 'idle'
@@ -69,6 +72,12 @@ function setP(p) {
   currentP = Math.max(0, Math.min(1, p))
   const root = rootEl()
   root?.style.setProperty('--p', String(currentP))
+  let step = 0
+  for (let i = 0; i < STEP_THRESHOLDS.length; i++) {
+    if (currentP >= STEP_THRESHOLDS[i]) step = i + 1
+  }
+  if (step === 0) root?.removeAttribute('data-step')
+  else root?.setAttribute('data-step', String(Math.min(step, 3)))
   const pctEl = document.querySelector('[data-ccf-pct]')
   if (pctEl) pctEl.textContent = `${Math.round(currentP * 100)}%`
 }
@@ -250,3 +259,6 @@ function bindUi() {
 
 bindUi()
 resetChakraChargeField()
+
+void DIAMETERS_PX
+void STEP_THRESHOLDS

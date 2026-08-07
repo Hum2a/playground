@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~360×320+).',
-    'Import demo.css verbatim; freeze the 620ms charge / 150ms commit settle from contract.json.',
-    'Wire runChakraChargeField / resetChakraChargeField / replayChakraChargeField.',
-    'Pointer and Space both hold-to-charge on the core; releasing commits the reached level; honour both reduced-motion triggers.',
+    'Mount inside a relative host (~360×300+).',
+    'Import demo.css verbatim; freeze diameters [72,96,118,140] and charge 620ms from contract.json.',
+    'Wire hold-to-charge plus runChakraChargeField / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Idle, charging, and committed states are visually distinct',
-    'Releasing mid-charge commits the current percentage rather than cancelling',
-    'Replay resets the field before rerunning',
-    'Reduced motion commits at 100% instantly on press (manual or Run)',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Hold charges an irregular boundary through diameters 72→96→118→140px',
+    'Release commits current level; full charge settles READY',
+    'Run auto-charges to 100% over 620ms then commits 150ms',
+    'Replay returns to 0% / idle boundary before rerunning',
+    'Reduced motion shows READY at full diameter immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),
