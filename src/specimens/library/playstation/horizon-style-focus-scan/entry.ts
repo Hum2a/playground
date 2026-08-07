@@ -17,6 +17,7 @@ export const horizonStyleFocusScan: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["scan","reticle","metadata"],
   deps: 'none',

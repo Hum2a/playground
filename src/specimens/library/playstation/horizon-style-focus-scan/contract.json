@@ -1,14 +1,32 @@
 {
   "name": "horizon-style-focus-scan",
-  "intent": "A scanning reticle reveals metadata around a selected target.",
-  "primitives": [
-    "scan",
-    "reticle"
-  ],
+  "ref": "SPX-3487",
+  "ps": "PS-181",
+  "title": "Horizon-Style Focus Scan",
+  "intent": "Bracket reticle scans a terrain artifact and reveals a metadata panel.",
+  "primitives": ["scan", "reticle", "metadata"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
+    "sky": "#7EB6FF",
+    "sand": "#C4A574",
+    "moss": "#5A7A4A"
+  },
+  "timing": {
+    "scanMs": 1100,
+    "revealMs": 400
+  },
+  "acceptance": [
+    "SCAN runs 1100ms sweep with locking brackets",
+    "Metadata panel reveals TYPE / RARITY / VALUE",
+    "Terrain + artifact silhouette (not generic dark HUD)"
+  ],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Metadata revealed instantly; scan keyframes removed"
   }
 }

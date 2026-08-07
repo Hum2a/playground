@@ -1,13 +1,23 @@
 <div class="hfs" data-hfs>
+  <p class="hfs__eyebrow">Horizon-Style Focus Scan</p>
   <div class="hfs__stage" aria-hidden="true">
+    <div class="hfs__terrain"></div>
     <div class="hfs__target" data-hfs-target>
-      <div class="hfs__reticle" data-hfs-reticle></div>
+      <div class="hfs__artifact"></div>
+      <div class="hfs__reticle" data-hfs-reticle>
+        <span class="hfs__corner hfs__corner--tl"></span>
+        <span class="hfs__corner hfs__corner--tr"></span>
+        <span class="hfs__corner hfs__corner--bl"></span>
+        <span class="hfs__corner hfs__corner--br"></span>
+        <span class="hfs__sweep"></span>
+      </div>
     </div>
-    <div class="hfs__meta" data-hfs-meta hidden>
-      <span class="hfs__chip">TYPE: ARTIFACT</span>
-      <span class="hfs__chip">RARITY: UNCOMMON</span>
-      <span class="hfs__chip">VALUE: 240</span>
-    </div>
+    <aside class="hfs__meta" data-hfs-meta hidden>
+      <p class="hfs__meta-title">Scan result</p>
+      <div class="hfs__row"><span>TYPE</span><strong>Artifact</strong></div>
+      <div class="hfs__row"><span>RARITY</span><strong>Uncommon</strong></div>
+      <div class="hfs__row"><span>VALUE</span><strong>240</strong></div>
+    </aside>
   </div>
   <button type="button" class="hfs__btn" data-hfs-scan>SCAN TARGET</button>
   <p class="hfs__status" data-hfs-status aria-live="polite">Target idle — metadata hidden</p>
