@@ -6,22 +6,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze fold/settle timings from contract.json.',
+    integration: [
+    'Mount inside a relative host (~420×300+).',
+    'Import demo.css verbatim; freeze collapse 140ms / expand 180ms / glow 280ms and GENIN→CHUNIN from contract.json.',
     'Wire runRankPromotionCard / resetRankPromotionCard / replayRankPromotionCard.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Idle card shows current rank badge, status CURRENT',
-    'Active phase folds the current badge away and reveals the next rank',
-    'Resolved phase shows the promoted badge glowing, status PROMOTED',
-    'Replay resets to the current rank before rerunning',
-    'Reduced motion shows the promoted rank immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    acceptance: [
+    'Idle shows GENIN badge only (CURRENT)',
+    'Morph phases: collapse 140ms → expand CHUNIN 180ms → glow 280ms',
+    'Resolved shows CHUNIN with PROMOTED status',
+    'Replay restores GENIN before rerunning',
+    'Reduced motion shows CHUNIN / PROMOTED immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
   {{specimen}}
 </div>
 `.trim(),

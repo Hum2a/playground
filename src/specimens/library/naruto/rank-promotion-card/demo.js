@@ -3,9 +3,12 @@
  * iframe-safe; no storage / parent / network.
  */
 
-const FOLD_MS = 260
-const GLOW_MS = 320
-const TOTAL_MS = FOLD_MS + GLOW_MS // ~580ms principal sequence
+const COLLAPSE_MS = 140
+const EXPAND_MS = 180
+const GLOW_MS = 280
+const FROM_RANK = 'GENIN'
+const TO_RANK = 'CHUNIN'
+const TOTAL_MS = COLLAPSE_MS + EXPAND_MS + GLOW_MS
 
 let busy = false
 
@@ -99,17 +102,21 @@ export function runRankPromotionCard() {
     return Promise.resolve()
   }
 
-  root.setAttribute('data-phase', 'active')
+  root.setAttribute('data-phase', 'collapse')
   setStatus('PROMOTING')
-  setLive('Rank promotion in progress.')
+  setLive('Collapsing Genin badge.')
 
   return new Promise((resolve) => {
-    later(FOLD_MS, () => {
-      later(GLOW_MS, () => {
-        showResolved()
-        busy = false
-        setButtons(true)
-        resolve()
+    later(COLLAPSE_MS, () => {
+      root.setAttribute('data-phase', 'expand')
+      setLive('Expanding Chunin badge.')
+      later(EXPAND_MS, () => {
+        later(GLOW_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -146,5 +153,7 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void FROM_RANK
+void TO_RANK
 bindUi()
 resetRankPromotionCard()

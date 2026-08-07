@@ -5,7 +5,7 @@ export const rankPromotionCard: Specimen = {
   ref: 'SPX-2544',
   title: 'Rank Promotion Card',
   blurb:
-    'A ninja profile card transforms from one rank treatment into the next — the current badge folds away and the new rank settles in.',
+    'A profile badge morphs GENIN→CHUNIN through collapse (140ms), expand (180ms), and glow (280ms) phases.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-rank-promotion — profile transformation',
@@ -25,13 +25,15 @@ export const rankPromotionCard: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the card shows the promoted rank immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the profile shows CHUNIN / PROMOTED immediately with no morph.',
   },
-  acceptance: [
-    'Old rank morphs to new rank through frozen phases',
-    'Final promoted rank static',
-    'Reduced motion shows promoted rank immediately',
-  ],
+    acceptance: [
+    'Idle shows GENIN badge only (CURRENT)',
+    'Morph phases: collapse 140ms → expand CHUNIN 180ms → glow 280ms',
+    'Resolved shows CHUNIN with PROMOTED status',
+    'Replay restores GENIN before rerunning',
+    'Reduced motion shows CHUNIN / PROMOTED immediately',
+  ],,
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
