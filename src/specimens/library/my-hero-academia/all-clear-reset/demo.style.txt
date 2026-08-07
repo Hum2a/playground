@@ -55,7 +55,7 @@
 
 .acr[data-phase='rebuild'] .acr__normal,
 .acr[data-phase='done'] .acr__normal {
-  animation: acr-rebuild calc(var(--rebuild-ms) * 1ms) var(--ease) calc(var(--rebuild-delay-ms) * 1ms) forwards;
+  animation: acr-rebuild calc(var(--rebuild-ms) * 1ms) var(--ease) forwards;
 }
 
 .acr[data-phase='done'] .acr__normal {
@@ -174,7 +174,7 @@
 
 .acr[data-phase='stamp'] .acr__stamp,
 .acr[data-phase='rebuild'] .acr__stamp {
-  animation: acr-stamp calc(var(--stamp-ms) * 1ms) var(--ease) calc(var(--stamp-delay-ms) * 1ms) forwards;
+  animation: acr-stamp calc(var(--stamp-ms) * 1ms) var(--ease) forwards;
 }
 
 .acr[data-phase='rebuild'] .acr__stamp,

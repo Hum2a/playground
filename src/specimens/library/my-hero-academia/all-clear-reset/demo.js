@@ -4,9 +4,6 @@ const STAMP_DELAY_MS = 360
 const REBUILD_MS = 500
 const REBUILD_DELAY_MS = 120
 
-const STAMP_END_MS = STAMP_DELAY_MS + STAMP_MS
-const TOTAL_MS = STAMP_END_MS + REBUILD_DELAY_MS + REBUILD_MS
-
 let busy = false
 /** @type {number | null} */
 let timer = null
@@ -71,8 +68,8 @@ export function runAllClearReset() {
           busy = false
           timer = null
           resolve()
-        }, REBUILD_DELAY_MS + REBUILD_MS)
-      }, STAMP_MS)
+        }, REBUILD_MS)
+      }, STAMP_MS + REBUILD_DELAY_MS)
     }, STAMP_DELAY_MS)
   })
 }
