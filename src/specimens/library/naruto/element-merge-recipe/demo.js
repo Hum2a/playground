@@ -60,9 +60,9 @@ function setPhase(phase) {
 
 function showResolved() {
   setPhase('done')
-  setStatus('RESULT READY')
-  setHint('Result ready. Press Replay to merge again.')
-  setLive('Elements merged. Result ready.')
+  setStatus('MERGED')
+  setHint('Merged. Press Replay to combine again.')
+  setLive('Elements merged. Dual-tone result ready.')
 }
 
 function resetVisual() {

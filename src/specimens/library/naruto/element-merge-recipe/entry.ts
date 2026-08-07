@@ -5,7 +5,7 @@ export const elementMergeRecipe: Specimen = {
   ref: 'SPX-2476',
   title: 'Element Merge Recipe',
   blurb:
-    'Two element orbs travel from opposite sides into a central slot, merge in a flash, and produce a dual-tone result token — abstract graphic combination, no copyrighted iconography.',
+    'Two orbs travel 104px into a 3×44px seam flash (340ms → 200ms), then a dual-tone result token appears — abstract combination recipe.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — elemental-combination recipes',
@@ -19,17 +19,17 @@ export const elementMergeRecipe: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['merge', 'combination', 'recipe'],
+  tags: ['merge', 'combination', 'recipe', 'seam'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the result token appears directly with no travel/merge choreography.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the result token appears directly with no travel/seam choreography.',
   },
   acceptance: [
-    'Dual inputs meet at frozen seam then result token appears',
-    'Result inherits marks from both inputs',
+    'Dual inputs meet at 3×44px seam flash then result appears',
+    'Result is dual-tone chakra|danger halves',
     'Reduced motion shows result token directly',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

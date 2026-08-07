@@ -7,6 +7,12 @@
   --danger: #d94a38;
   --olive: #5a5048;
   --off: #f4f1e8;
+  --emr-travel-ms: 340ms;
+  --emr-merge-ms: 200ms;
+  --emr-settle-ms: 160ms;
+  --emr-travel-px: 104px;
+  --emr-seam-w: 3px;
+  --emr-seam-h: 44px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -57,7 +63,7 @@
   width: 100%;
   flex: 1;
   padding: 1.1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--chakra) 40%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -92,20 +98,22 @@
 
 .emr__orb--a {
   left: 4px;
-  background: radial-gradient(circle at 35% 35%, #cfe9f7, var(--chakra) 60%, #1c5a7c 100%);
+  background: radial-gradient(circle at 35% 35%, #f4c89c, var(--chakra) 60%, #7a4010 100%);
+  box-shadow: inset -2px 0 0 rgb(12 8 6 / 0.35);
 }
 
 .emr__orb--b {
   left: 212px;
   background: radial-gradient(circle at 35% 35%, #f4b39c, var(--danger) 60%, #7a2317 100%);
+  box-shadow: inset 2px 0 0 rgb(12 8 6 / 0.35);
 }
 
 .emr[data-phase='run'] .emr__orb--a {
-  animation: emr-travel-a 340ms ease-in forwards;
+  animation: emr-travel-a var(--emr-travel-ms) ease-in forwards;
 }
 
 .emr[data-phase='run'] .emr__orb--b {
-  animation: emr-travel-b 340ms ease-in forwards;
+  animation: emr-travel-b var(--emr-travel-ms) ease-in forwards;
 }
 
 @keyframes emr-travel-a {
@@ -113,7 +121,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(104px);
+    transform: translateX(var(--emr-travel-px));
   }
 }
 
@@ -122,7 +130,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-104px);
+    transform: translateX(calc(var(--emr-travel-px) * -1));
   }
 }
 
@@ -130,17 +138,49 @@
 .emr[data-phase='merge'] .emr__orb--b,
 .emr[data-phase='done'] .emr__orb--a,
 .emr[data-phase='done'] .emr__orb--b {
-  transform: translateX(0);
   opacity: 0;
-  transition: opacity 120ms ease-out;
+  transition: opacity 100ms ease-out;
 }
 
 .emr[data-phase='merge'] .emr__orb--a {
-  transform: translateX(104px);
+  transform: translateX(var(--emr-travel-px));
 }
 
 .emr[data-phase='merge'] .emr__orb--b {
-  transform: translateX(-104px);
+  transform: translateX(calc(var(--emr-travel-px) * -1));
+}
+
+.emr__seam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--emr-seam-w);
+  height: var(--emr-seam-h);
+  margin-left: calc(var(--emr-seam-w) / -2);
+  margin-top: calc(var(--emr-seam-h) / -2);
+  background: linear-gradient(180deg, transparent, var(--off), transparent);
+  opacity: 0;
+  transform: scaleY(0.2);
+  pointer-events: none;
+}
+
+.emr[data-phase='merge'] .emr__seam {
+  animation: emr-seam var(--emr-merge-ms) ease-out forwards;
+}
+
+@keyframes emr-seam {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  35% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(1.4);
+  }
 }
 
 .emr__flash {
@@ -152,14 +192,14 @@
   margin-left: -20px;
   margin-top: -20px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(244 241 232 / 0.9), rgb(244 241 232 / 0) 70%);
+  background: radial-gradient(circle, rgb(244 241 232 / 0.85), rgb(224 112 48 / 0.35) 45%, transparent 70%);
   opacity: 0;
   transform: scale(0.3);
   pointer-events: none;
 }
 
 .emr[data-phase='merge'] .emr__flash {
-  animation: emr-flash 200ms ease-out forwards;
+  animation: emr-flash var(--emr-merge-ms) ease-out forwards;
 }
 
 @keyframes emr-flash {
@@ -250,7 +290,7 @@
 
 .emr__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: color-mix(in srgb, var(--chakra) 28%, transparent);
 }
 
 .emr__btn:hover:not(:disabled) {
@@ -269,6 +309,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .emr__orb,
+  .emr__seam,
   .emr__flash,
   .emr__result {
     transition: none !important;
@@ -277,6 +318,7 @@
 }
 
 html[data-force-reduced-motion='true'] .emr__orb,
+html[data-force-reduced-motion='true'] .emr__seam,
 html[data-force-reduced-motion='true'] .emr__flash,
 html[data-force-reduced-motion='true'] .emr__result {
   transition: none !important;

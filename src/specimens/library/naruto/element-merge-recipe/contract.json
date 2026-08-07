@@ -1,37 +1,56 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/element-merge-recipe.schema.json",
-  "title": "ElementMergeRecipe",
-  "description": "Two element orbs travel into a central slot, merge in a flash, and produce a dual-tone result token.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "travelMs", "mergeMs", "settleMs", "travelPx", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "element-merge-recipe" },
-    "travelMs": { "type": "number", "const": 340 },
-    "mergeMs": { "type": "number", "const": 200 },
-    "settleMs": { "type": "number", "const": 160 },
-    "travelPx": { "type": "number", "const": 104 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "danger", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#0C0806" },
-        "parchment": { "type": "string", "const": "#C4B8A8" },
-        "chakra": { "type": "string", "const": "#E07030" },
-        "danger": { "type": "string", "const": "#D94A38" },
-        "olive": { "type": "string", "const": "#5A5048" },
-        "off": { "type": "string", "const": "#F4F1E8" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateResult"],
-      "properties": {
-        "immediateResult": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "element-merge-recipe",
+  "intent": "Dual element inputs travel 104px into a central seam flash, then resolve as a dual-tone result token.",
+  "catalogue": { "nr": "NR-133", "ref": "SPX-2476" },
+  "copy": {
+    "system": "RECIPE // ELEMENT MERGE",
+    "idle": "IDLE",
+    "merging": "MERGING",
+    "complete": "MERGED"
+  },
+  "geometry": {
+    "travelPx": 104,
+    "trackPx": 240,
+    "seamWPx": 3,
+    "seamHPx": 44,
+    "resultPx": 34
+  },
+  "timing": {
+    "travelMs": 340,
+    "mergeMs": 200,
+    "settleMs": 160,
+    "resultInMs": 220
+  },
+  "colours": {
+    "ink": "#0C0806",
+    "parchment": "#C4B8A8",
+    "chakra": "#E07030",
+    "danger": "#D94A38",
+    "olive": "#5A5048",
+    "off": "#F4F1E8",
+    "palette": "fire"
+  },
+  "api": {
+    "run": "runElementMergeRecipe()",
+    "reset": "resetElementMergeRecipe()",
+    "replay": "replayElementMergeRecipe()"
+  },
+  "cssVars": [
+    "--emr-travel-ms",
+    "--emr-merge-ms",
+    "--emr-settle-ms",
+    "--emr-travel-px",
+    "--emr-seam-w",
+    "--emr-seam-h"
+  ],
+  "reducedMotion": {
+    "behaviour": "Result token appears directly; no travel or seam flash"
+  },
+  "acceptance": [
+    "Two orbs travel travelPx 104 from opposite sides in travelMs 340 into the centre slot",
+    "Merge phase shows a vertical seam flash (seamWPx 3 × seamHPx 44) for mergeMs 200 before inputs vanish",
+    "Result token is dual-tone conic (chakra|danger halves) after settleMs 160",
+    "Replay resets both inputs and clears the result before rerunning",
+    "Reduced motion (prefers or data-force) shows the result immediately with animations disabled"
+  ]
 }

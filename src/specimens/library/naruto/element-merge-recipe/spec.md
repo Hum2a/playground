@@ -1,16 +1,16 @@
 # Element Merge Recipe
 
-Two element orbs travel from opposite sides into a central slot (Run auto-play), merge in a radial flash, and leave behind a dual-tone result token.
+Two element orbs travel into a central seam flash and produce a dual-tone result.
 
 ## Behaviour
 
-- Idle: two orbs at rest at either side, status `IDLE`.
-- Combining: orbs travel 104px each toward the centre (~340ms).
-- Merging: orbs fade, radial flash plays (~200ms).
-- Result: dual-tone token appears in the slot, status `RESULT READY`, held until reset/replay.
-- Reduced motion: jump straight to the result token.
+- Idle: orbs at opposite sides, no result.
+- Travel: both orbs move 104px toward centre (340ms).
+- Merge: vertical seam flash (3×44px) + radial flash (200ms).
+- Done: dual-tone result token; status `MERGED`.
+- Reduced motion: result immediately.
 
 ## Freeze
 
-- Travel: 340ms · merge: 200ms · settle: 160ms · travel distance: 104px each
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`
+- Travel: 340ms / 104px · merge: 200ms · settle: 160ms · seam: 3×44px
+- Palette (fire): `#0C0806` / `#C4B8A8` / `#E07030` / `#D94A38` / `#5A5048` / `#F4F1E8`

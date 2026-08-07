@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×340+).',
-    'Import demo.css verbatim; freeze travel (340ms) → merge (200ms) → settle (160ms) from contract.json.',
+    'Import demo.css verbatim; freeze travelMs 340 / mergeMs 200 / settleMs 160 / travelPx 104 / seam 3×44 from contract.json.',
     'Wire runElementMergeRecipe / resetElementMergeRecipe / replayElementMergeRecipe.',
     'Honour both reduced-motion triggers — show the result token directly.',
   ],
-  acceptance: [
-    'Two orbs travel from opposite sides into the same central slot',
-    'A radial flash marks the merge moment; a dual-tone result token appears after',
-    'Replay resets the slot before rerunning',
-    'Reduced motion shows the result token immediately with no travel/merge',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0C0806;">
   {{specimen}}
 </div>
 `.trim(),
