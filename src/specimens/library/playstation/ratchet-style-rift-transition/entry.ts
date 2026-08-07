@@ -17,6 +17,7 @@ export const ratchetStyleRiftTransition: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ['rift', 'dimensional', 'slit'],
   deps: 'none',

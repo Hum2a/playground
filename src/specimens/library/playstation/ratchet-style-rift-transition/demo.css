@@ -1,13 +1,16 @@
-/* Portable specimen CSS (iframe-isolated). */
+/* SPX-3490 Ratchet-Style Rift Transition — portable. Maximal slit travel; cleaned kit RM. */
 
 .rrt {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
   --ps-panel: #121820;
   --ps-rule: #1e2a38;
   --ps-pewter: #8a9aad;
+  --slit-ms: 420ms;
+  --travel-ms: 620ms;
+  --emerge-ms: 520ms;
 
   box-sizing: border-box;
   width: min(100%, 480px);
@@ -23,7 +26,17 @@
   box-sizing: border-box;
 }
 
+.rrt__eyebrow {
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ps-pewter);
+}
+
 .rrt__btn {
+  display: block;
+  margin: 0 auto;
   padding: 8px 14px;
   font: inherit;
   font-size: 11px;
@@ -57,97 +70,11 @@
   color: var(--ps-pewter);
 }
 
-.rrt__shape {
-  display: block;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.rrt__shape--circle {
-  border-radius: 50%;
-  background: var(--ps-sky);
-}
-
-.rrt__shape--square {
-  border-radius: 2px;
-  background: var(--ps-blue);
-}
-
-.rrt__shape--cross {
-  position: relative;
-  background: transparent;
-}
-
-.rrt__shape--cross::before,
-.rrt__shape--cross::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 12px;
-  height: 3px;
-  margin: -1.5px 0 0 -6px;
-  background: var(--ps-chalk);
-  border-radius: 1px;
-}
-
-.rrt__shape--cross::before {
-  transform: rotate(45deg);
-}
-
-.rrt__shape--cross::after {
-  transform: rotate(-45deg);
-}
-
-.rrt__shape--triangle {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 12px solid var(--ps-blue);
-  background: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .rrt__anim,
-  .rrt__orbit,
-  .rrt__shape,
-  .rrt__scan,
-  .rrt__rift,
-  .rrt__ring,
-  .rrt__tile,
-  .rrt__card,
-  .rrt__slab,
-  .rrt__token,
-  .rrt__panel,
-  .rrt__overlay {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-[data-force-reduced-motion='true'] .rrt__anim,
-[data-force-reduced-motion='true'] .rrt__orbit,
-[data-force-reduced-motion='true'] .rrt__shape,
-[data-force-reduced-motion='true'] .rrt__scan,
-[data-force-reduced-motion='true'] .rrt__rift,
-[data-force-reduced-motion='true'] .rrt__ring,
-[data-force-reduced-motion='true'] .rrt__tile,
-[data-force-reduced-motion='true'] .rrt__card,
-[data-force-reduced-motion='true'] .rrt__slab,
-[data-force-reduced-motion='true'] .rrt__token,
-[data-force-reduced-motion='true'] .rrt__panel,
-[data-force-reduced-motion='true'] .rrt__overlay {
-  animation: none !important;
-  transition: none !important;
-}
-
 .rrt__stage {
   position: relative;
-  height: 220px;
+  height: 230px;
   margin-bottom: 14px;
-  background: var(--ps-ink);
+  background: radial-gradient(ellipse at center, #152030, var(--ps-ink));
   border: 1px solid var(--ps-rule);
   border-radius: 4px;
   overflow: hidden;
@@ -155,7 +82,7 @@
 
 .rrt__panel {
   position: absolute;
-  inset: 20px;
+  inset: 18px;
   display: grid;
   place-content: center;
   gap: 10px;
@@ -164,48 +91,121 @@
   letter-spacing: 0.2em;
   border: 1px solid var(--ps-rule);
   border-radius: 4px;
-  background: linear-gradient(160deg, #152030, #0d1218);
-  transition: transform 600ms cubic-bezier(0.55, 0, 0.15, 1), opacity 400ms ease;
+  background: linear-gradient(160deg, #1a3050, #0d1218);
+  transition:
+    transform var(--travel-ms) cubic-bezier(0.55, 0, 0.15, 1),
+    opacity 360ms ease,
+    filter var(--travel-ms) ease;
 }
 
-.rrt__panel .rrt__shape {
+.rrt__glyph {
+  display: block;
   margin: 0 auto;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+}
+
+.rrt__glyph--circle {
+  border-radius: 50%;
+  background: var(--ps-sky);
+}
+
+.rrt__glyph--triangle {
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 20px solid var(--ps-blue);
+  background: transparent;
 }
 
 .rrt__rift {
   position: absolute;
   left: 50%;
   top: 0;
+  width: 28px;
+  height: 100%;
+  margin-left: -14px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.rrt__slit {
+  position: absolute;
+  left: 50%;
+  top: 0;
   width: 4px;
   height: 100%;
   margin-left: -2px;
-  background: var(--ps-sky);
-  box-shadow: 0 0 24px var(--ps-blue), 0 0 48px rgba(46, 144, 255, 0.4);
+  background: linear-gradient(180deg, transparent, var(--ps-sky), var(--ps-blue), var(--ps-sky), transparent);
+  box-shadow:
+    0 0 18px var(--ps-blue),
+    0 0 42px rgb(46 144 255 / 0.55),
+    0 0 72px rgb(126 182 255 / 0.35);
   transform: scaleY(0);
   transform-origin: center;
-  transition: transform 400ms ease;
+  transition: transform var(--slit-ms) cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
-.rrt.is-open .rrt__rift {
+.rrt__flare {
+  position: absolute;
+  inset: 10% -40px;
+  background: radial-gradient(ellipse at center, rgb(126 182 255 / 0.45), transparent 65%);
+  opacity: 0;
+  transition: opacity var(--slit-ms) ease;
+}
+
+.rrt.is-open .rrt__slit {
   transform: scaleY(1);
 }
 
+.rrt.is-open .rrt__flare {
+  opacity: 1;
+}
+
 .rrt.is-traveling .rrt__panel--a {
-  transform: translateX(-120%) skewX(-8deg);
+  transform: translateX(-130%) skewX(-12deg) scaleX(0.7);
   opacity: 0;
+  filter: brightness(1.4) blur(2px);
 }
 
 .rrt.is-traveling .rrt__panel--b {
   display: grid;
-  animation: rrt-emerge 500ms 600ms ease forwards;
+  animation: rrt-emerge var(--emerge-ms) ease forwards;
+  animation-delay: 180ms;
   opacity: 0;
-  transform: translateX(120%) skewX(8deg);
+  transform: translateX(130%) skewX(12deg) scaleX(0.7);
 }
 
 @keyframes rrt-emerge {
-  to { opacity: 1; transform: translateX(0) skewX(0); }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0) scaleX(1);
+  }
 }
 
-.rrt__btn { display: block; margin: 0 auto; }
+.rrt [hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rrt__slit,
+  .rrt__flare,
+  .rrt__panel {
+    transition: none !important;
+  }
+
+  .rrt__panel--b {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .rrt__slit,
+[data-force-reduced-motion='true'] .rrt__flare,
+[data-force-reduced-motion='true'] .rrt__panel {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .rrt__panel--b {
+  animation: none !important;
+}

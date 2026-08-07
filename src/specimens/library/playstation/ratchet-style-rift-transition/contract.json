@@ -1,10 +1,10 @@
 {
   "name": "ratchet-style-rift-transition",
-  "intent": "Content is pulled through a dimensional slit and reconstructs elsewhere.",
-  "primitives": [
-    "rift",
-    "transition"
-  ],
+  "ref": "SPX-3490",
+  "ps": "PS-184",
+  "title": "Ratchet-Style Rift Transition",
+  "intent": "Content is pulled through a luminous dimensional slit and reconstructs as Zone B.",
+  "primitives": ["rift", "slit", "transition"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
@@ -12,6 +12,21 @@
     "sky": "#7EB6FF"
   },
   "timing": {
-    "riftMs": 1200
+    "slitMs": 420,
+    "travelMs": 620,
+    "emergeMs": 520,
+    "emergeDelayMs": 180
+  },
+  "acceptance": [
+    "OPEN RIFT expands slit over 420ms with flare",
+    "Zone A travels/skews away over 620ms",
+    "Zone B emerges over 520ms after 180ms delay"
+  ],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Zone B shown instantly; slit/travel animations removed"
   }
 }
