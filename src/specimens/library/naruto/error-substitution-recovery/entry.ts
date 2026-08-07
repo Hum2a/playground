@@ -24,7 +24,7 @@ export const errorSubstitutionRecovery: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, jump to the final static outcome with no intermediate motion.',
   },
   acceptance: [
     'Primary faults at 170ms then decoy fallback acquires at +100ms',
