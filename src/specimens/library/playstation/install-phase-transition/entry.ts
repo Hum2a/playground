@@ -34,4 +34,10 @@ export const installPhaseTransition: Specimen = {
     background: 'dark',
     label: 'Install Phase Transition demo',
   },
+  acceptance: [
+    'Download phase fills a circular ring on the same card.',
+    'Phase label changes DOWNLOAD → INSTALL; geometry morphs ring → four install bars over 320ms.',
+    'Install continues on bars without resetting the card; done state shows READY.',
+    'Reduced motion jumps directly to READY with install bars full.',
+  ],
 }
