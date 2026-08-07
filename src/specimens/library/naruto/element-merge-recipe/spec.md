@@ -1,16 +1,16 @@
 # Element Merge Recipe
 
-Two element orbs travel into a central seam flash and produce a dual-tone result.
+Two marked element orbs travel into a central seam, flash-merge, and leave a dual-tone result that inherits both marks.
 
 ## Behaviour
 
-- Idle: orbs at opposite sides, no result.
-- Travel: both orbs move 104px toward centre (340ms).
-- Merge: vertical seam flash (3×44px) + radial flash (200ms).
-- Done: dual-tone result token; status `MERGED`.
-- Reduced motion: result immediately.
+- Idle: orbs at rest with distinct marks (triangle / dot), status `IDLE`.
+- Combining: each orb travels 104px toward the 30px seam (340ms).
+- Merging: inputs hide, radial flash (200ms).
+- Result: dual-tone token with inherited marks, status `RESULT READY`.
+- Reduced motion: jump straight to the result token.
 
 ## Freeze
 
-- Travel: 340ms / 104px · merge: 200ms · settle: 160ms · seam: 3×44px
-- Palette (fire): `#0C0806` / `#C4B8A8` / `#E07030` / `#D94A38` / `#5A5048` / `#F4F1E8`
+- Travel: 340ms · merge: 200ms · settle: 160ms · result: 220ms · travelPx: 104 · seamPx: 30
+- Palette: `#0C0806` / `#C4B8A8` / `#E07030` / `#D94A38` / `#5A5048` / `#F4F1E8`

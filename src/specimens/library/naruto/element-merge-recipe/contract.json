@@ -1,25 +1,32 @@
 {
   "name": "element-merge-recipe",
-  "intent": "Dual element inputs travel 104px into a central seam flash, then resolve as a dual-tone result token.",
-  "catalogue": { "nr": "NR-133", "ref": "SPX-2476" },
+  "intent": "Two marked orbs travel 104px into a 30px seam, flash-merge, then a dual-tone result token inherits both marks.",
+  "catalogue": {
+    "nr": "NR-133",
+    "ref": "SPX-2476"
+  },
   "copy": {
     "system": "RECIPE // ELEMENT MERGE",
     "idle": "IDLE",
+    "combining": "COMBINING",
     "merging": "MERGING",
-    "complete": "MERGED"
+    "done": "RESULT READY"
   },
   "geometry": {
     "travelPx": 104,
+    "seamPx": 30,
     "trackPx": 240,
-    "seamWPx": 3,
-    "seamHPx": 44,
-    "resultPx": 34
+    "inputMarks": [
+      "triangle",
+      "dot"
+    ],
+    "resultHalfDeg": 180
   },
   "timing": {
     "travelMs": 340,
     "mergeMs": 200,
     "settleMs": 160,
-    "resultInMs": 220
+    "resultMs": 220
   },
   "colours": {
     "ink": "#0C0806",
@@ -40,17 +47,16 @@
     "--emr-merge-ms",
     "--emr-settle-ms",
     "--emr-travel-px",
-    "--emr-seam-w",
-    "--emr-seam-h"
+    "--emr-result-ms",
+    "--emr-seam-px"
   ],
   "reducedMotion": {
-    "behaviour": "Result token appears directly; no travel or seam flash"
+    "behaviour": "Result token appears directly; no travel/merge flash"
   },
   "acceptance": [
-    "Two orbs travel travelPx 104 from opposite sides in travelMs 340 into the centre slot",
-    "Merge phase shows a vertical seam flash (seamWPx 3 × seamHPx 44) for mergeMs 200 before inputs vanish",
-    "Result token is dual-tone conic (chakra|danger halves) after settleMs 160",
-    "Replay resets both inputs and clears the result before rerunning",
-    "Reduced motion (prefers or data-force) shows the result immediately with animations disabled"
+    "Orbs A/B travel travelPx 104 into seamPx 30 in travelMs 340",
+    "Merge flash mergeMs 200 then dual-tone result (180° halves) inherits triangle+dot marks",
+    "Status RESULT READY after settleMs 160; Replay resets to IDLE",
+    "Reduced motion (prefers or data-force) shows RESULT READY immediately with animations disabled"
   ]
 }

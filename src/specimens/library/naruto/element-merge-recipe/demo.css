@@ -7,6 +7,8 @@
   --danger: #d94a38;
   --olive: #5a5048;
   --off: #f4f1e8;
+  --emr-result-ms: 220ms;
+  --emr-seam-px: 30;
   --emr-travel-ms: 340ms;
   --emr-merge-ms: 200ms;
   --emr-settle-ms: 160ms;
@@ -94,6 +96,23 @@
   margin-top: -12px;
   border-radius: 50%;
   transform: translateX(0);
+}
+
+.emr__mark {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  background: var(--off);
+}
+.emr__mark--a {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.emr__mark--b {
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
 }
 
 .emr__orb--a {
@@ -213,6 +232,27 @@
   }
 }
 
+.emr__result::before,
+.emr__result::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 1px;
+  background: var(--off);
+}
+.emr__result::before {
+  left: 6px;
+  box-shadow: 0 0 0 1px rgb(224 112 48 / 0.9);
+}
+.emr__result::after {
+  right: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgb(217 74 56 / 0.9);
+}
+
 .emr__result {
   position: absolute;
   left: 50%;
@@ -229,7 +269,7 @@
 }
 
 .emr[data-phase='done'] .emr__result {
-  animation: emr-result-in 220ms cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+  animation: emr-result-in var(--emr-result-ms) cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
 }
 
 @keyframes emr-result-in {
