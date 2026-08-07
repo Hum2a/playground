@@ -7,7 +7,10 @@
   --danger: #a85868;
   --olive: #6e6a78;
   --off: #f0eef4;
-  /* wave2 timing surface */
+  --cfp-pop-ms: 140ms;
+  --cfp-residue-hold-ms: 200ms;
+  --cfp-residue-clear-ms: 180ms;
+  --cfp-finish-ms: 320ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -56,8 +59,8 @@
   gap: 0.65rem;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(122 107 154 / 0.45);
+  background: rgb(240 238 244 / 0.04);
 }
 
 .cfp__workers {
@@ -69,6 +72,7 @@
 }
 
 .cfp__worker {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -76,11 +80,9 @@
   padding: 0.45rem 0.5rem;
   border: 1.5px solid var(--olive);
   background: rgb(16 19 24 / 0.85);
-  opacity: 1;
   transform: scale(1);
   transition:
-    opacity 140ms ease-in,
-    transform 140ms ease-in,
+    transform var(--cfp-pop-ms) ease-in,
     border-color 140ms ease-out;
 }
 
@@ -96,7 +98,7 @@
 .cfp__bar {
   position: relative;
   height: 0.35rem;
-  background: rgb(105 116 90 / 0.3);
+  background: rgb(110 106 120 / 0.35);
   overflow: hidden;
 }
 
@@ -105,7 +107,7 @@
   height: 100%;
   width: 0%;
   background: var(--chakra);
-  transition: width 320ms linear;
+  transition: width var(--cfp-finish-ms) linear;
 }
 
 .cfp__worker-state {
@@ -118,22 +120,34 @@
 }
 
 .cfp[data-phase='running'] .cfp__bar-fill,
+.cfp[data-phase='residue'] .cfp__bar-fill,
 .cfp[data-phase='done'] .cfp__bar-fill {
   width: 100%;
 }
 
 .cfp__worker[data-outcome='failed'] .cfp__bar-fill {
   background: var(--danger);
+  width: 38% !important;
 }
 
 .cfp__worker[data-outcome='failed'] {
   border-color: var(--danger);
-  opacity: 0.45;
-  transform: scale(0.9) rotate(-2deg);
+  transform: scale(0.82) rotate(-3deg);
 }
 
 .cfp__worker[data-outcome='failed'] .cfp__worker-state {
   color: var(--danger);
+}
+
+.cfp__worker[data-outcome='cleared'] {
+  border-color: rgb(110 106 120 / 0.35);
+  transform: scale(0.55);
+}
+
+.cfp__worker[data-outcome='cleared'] .cfp__bar-fill,
+.cfp__worker[data-outcome='cleared'] .cfp__worker-label,
+.cfp__worker[data-outcome='cleared'] .cfp__worker-state {
+  visibility: hidden;
 }
 
 .cfp__worker[data-outcome='succeeded'] {
@@ -144,6 +158,51 @@
   color: var(--chakra);
 }
 
+.cfp__residue {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cfp__residue i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--danger);
+  transform: scale(0);
+  transition: transform var(--cfp-pop-ms) cubic-bezier(0.2, 1.2, 0.3, 1);
+}
+
+.cfp__residue i:nth-child(1) {
+  top: 18%;
+  left: 22%;
+}
+.cfp__residue i:nth-child(2) {
+  top: 28%;
+  right: 18%;
+}
+.cfp__residue i:nth-child(3) {
+  top: 55%;
+  left: 40%;
+}
+.cfp__residue i:nth-child(4) {
+  bottom: 22%;
+  left: 16%;
+}
+.cfp__residue i:nth-child(5) {
+  bottom: 18%;
+  right: 24%;
+}
+
+.cfp__worker[data-residue='true'] .cfp__residue i {
+  transform: scale(1);
+}
+
+.cfp__worker[data-residue='clearing'] .cfp__residue i {
+  transform: scale(0) translateY(8px);
+  transition-duration: var(--cfp-residue-clear-ms);
+}
+
 .cfp__status {
   margin: 0;
   font-size: 0.95rem;
@@ -152,10 +211,8 @@
   color: var(--parchment);
 }
 
-.cfp[data-phase='running'] .cfp__status {
-  color: var(--chakra);
-}
-
+.cfp[data-phase='running'] .cfp__status,
+.cfp[data-phase='residue'] .cfp__status,
 .cfp[data-phase='done'] .cfp__status {
   color: var(--chakra);
 }
@@ -191,7 +248,7 @@
 
 .cfp__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(122 107 154 / 0.18);
 }
 
 .cfp__btn:hover:not(:disabled) {
@@ -210,12 +267,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .cfp__worker,
-  .cfp__bar-fill {
+  .cfp__bar-fill,
+  .cfp__residue i {
     transition: none !important;
   }
 }
 
 html[data-force-reduced-motion='true'] .cfp__worker,
-html[data-force-reduced-motion='true'] .cfp__bar-fill {
+html[data-force-reduced-motion='true'] .cfp__bar-fill,
+html[data-force-reduced-motion='true'] .cfp__residue i {
   transition: none !important;
 }

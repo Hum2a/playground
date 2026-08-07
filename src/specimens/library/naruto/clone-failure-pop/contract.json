@@ -1,38 +1,47 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/clone-failure-pop.schema.json",
-  "title": "CloneFailurePop",
-  "description": "One of three parallel worker clones pops and collapses mid-run while the remaining clones continue to completion.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "workerCount", "failIndex", "failAtMs", "finishMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "clone-failure-pop" },
-    "workerCount": { "type": "number", "const": 3 },
-    "failIndex": { "type": "number", "const": 1 },
-    "failAtMs": { "type": "number", "const": 150 },
-    "finishMs": { "type": "number", "const": 320 },
-    "settleMs": { "type": "number", "const": 80 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "danger", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#12141A" },
-        "parchment": { "type": "string", "const": "#D8D4E0" },
-        "chakra": { "type": "string", "const": "#7A6B9A" },
-        "danger": { "type": "string", "const": "#A85868" },
-        "olive": { "type": "string", "const": "#6E6A78" },
-        "off": { "type": "string", "const": "#F0EEF4" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateFinalStates"],
-      "properties": {
-        "immediateFinalStates": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "clone-failure-pop",
+  "intent": "One of three workers pops mid-run, leaves five residue fragments, then clears while survivors finish.",
+  "catalogue": { "nr": "NR-054", "ref": "SPX-2397" },
+  "copy": {
+    "system": "CLONE // FAILURE",
+    "idle": "IDLE",
+    "running": "RUNNING",
+    "done": "2 SUCCEEDED · 1 CLEARED"
+  },
+  "geometry": {
+    "workerCount": 3,
+    "failIndex": 1,
+    "residueCount": 5,
+    "failBarWidthPct": 38
+  },
+  "timing": {
+    "failAtMs": 150,
+    "popMs": 140,
+    "residueHoldMs": 200,
+    "residueClearMs": 180,
+    "finishMs": 320,
+    "settleMs": 80
+  },
+  "colours": {
+    "ink": "#12141A",
+    "parchment": "#D8D4E0",
+    "chakra": "#7A6B9A",
+    "danger": "#A85868",
+    "olive": "#6E6A78",
+    "off": "#F0EEF4",
+    "palette": "clone-violet"
+  },
+  "api": {
+    "run": "runCloneFailurePop()",
+    "reset": "resetCloneFailurePop()",
+    "replay": "replayCloneFailurePop()"
+  },
+  "reducedMotion": {
+    "behaviour": "Final states: workers 1+3 DONE, worker 2 CLEARED"
+  },
+  "acceptance": [
+    "Worker index 1 fails at failAtMs 150 with popMs 140 scale collapse",
+    "Exactly 5 residue fragments hold residueHoldMs 200 then clear over residueClearMs 180",
+    "Survivors reach DONE; reduced motion shows final failed/cleared states"
+  ]
 }
