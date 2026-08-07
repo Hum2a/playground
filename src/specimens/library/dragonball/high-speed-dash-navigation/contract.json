@@ -1,53 +1,150 @@
 {
-  "name": "high-speed-dash-navigation",
-  "intent": "Extreme-speed nav OVERVIEW→LOGS (320px) with opposite anticipation, five fixed speed traces, METRICS pass reaction, brake stretch, and four lock ticks.",
-  "catalogue": {
-    "db": "DB-134",
-    "ref": "SPX-1099",
-    "catalogueTitle": "High-Speed Dash"
-  },
-  "destinations": ["OVERVIEW", "METRICS", "LOGS"],
-  "distancePx": {
-    "overviewToLogs": 320,
-    "overviewToMetrics": 160
-  },
-  "timingsMs": {
-    "anticipate": 55,
-    "launch": 80,
-    "cruise": 170,
-    "brake": 110,
-    "lock": 90,
-    "travelTotal": 360
-  },
-  "anticipate": {
-    "oppositePx": 4,
-    "compressScaleX": 0.9
-  },
-  "launch": { "distancePx": 40, "durationMs": 80 },
-  "cruise": { "distancePx": 225, "durationMs": 170 },
-  "brake": {
-    "distancePx": 55,
-    "durationMs": 110,
-    "stretchScaleX": 1.12
-  },
-  "traces": {
-    "count": 5,
-    "lengthsPx": [18, 30, 44, 62, 78]
-  },
-  "metricsPass": { "translateYPx": [-2, 0], "durationMs": 90 },
-  "lock": { "cornerTicks": 4, "durationMs": 90, "status": "ACTIVE // LOGS" },
-  "api": {
-    "execute": "runHighSpeedDash()",
-    "reset": "resetHighSpeedDash()",
-    "restartMessage": "restart"
-  },
-  "reducedMotion": {
-    "behaviour": "Immediately select LOGS"
-  },
-  "constraints": {
-    "noTeleport": true,
-    "noRandomTrails": true,
-    "noResidualTraces": true,
-    "noLooping": true
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/high-speed-dash-navigation.schema.json",
+  "title": "HighSpeedDashNavigation",
+  "description": "Portable contract for extreme-speed nav with motion streak, residual ghosts, and velocity-language arrival.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "destinations",
+    "distancePx",
+    "timingsMs",
+    "motionStreak",
+    "arrival",
+    "api",
+    "reducedMotion",
+    "constraints"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "high-speed-dash-navigation" },
+    "intent": {
+      "type": "string",
+      "const": "OVERVIEW→LOGS (320px) with anticipation, layered speed traces, two residual ghosts, body streak shadow, and lock overshoot — selection arrives with velocity language."
+    },
+    "destinations": {
+      "type": "array",
+      "const": ["OVERVIEW", "METRICS", "LOGS"]
+    },
+    "distancePx": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overviewToLogs", "overviewToMetrics"],
+      "properties": {
+        "overviewToLogs": { "type": "number", "const": 320 },
+        "overviewToMetrics": { "type": "number", "const": 160 }
+      }
+    },
+    "timingsMs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anticipate", "launch", "cruise", "brake", "lock", "travelTotal"],
+      "properties": {
+        "anticipate": { "type": "number", "const": 55 },
+        "launch": { "type": "number", "const": 80 },
+        "cruise": { "type": "number", "const": 170 },
+        "brake": { "type": "number", "const": 110 },
+        "lock": { "type": "number", "const": 90 },
+        "travelTotal": { "type": "number", "const": 360 }
+      }
+    },
+    "anticipate": {
+      "type": "object",
+      "required": ["oppositePx", "compressScaleX"],
+      "properties": {
+        "oppositePx": { "type": "number", "const": 4 },
+        "compressScaleX": { "type": "number", "const": 0.9 }
+      }
+    },
+    "launch": { "type": "object", "properties": { "distancePx": { "const": 40 }, "durationMs": { "const": 80 } } },
+    "cruise": { "type": "object", "properties": { "distancePx": { "const": 225 }, "durationMs": { "const": 170 } } },
+    "brake": {
+      "type": "object",
+      "required": ["distancePx", "durationMs", "stretchScaleX"],
+      "properties": {
+        "distancePx": { "type": "number", "const": 55 },
+        "durationMs": { "type": "number", "const": 110 },
+        "stretchScaleX": { "type": "number", "const": 1.12 }
+      }
+    },
+    "motionStreak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["traces", "ghosts", "bodyShadow"],
+      "properties": {
+        "traces": {
+          "type": "object",
+          "required": ["count", "lengthsPx"],
+          "properties": {
+            "count": { "type": "integer", "const": 5 },
+            "lengthsPx": { "type": "array", "const": [18, 30, 44, 62, 78] }
+          }
+        },
+        "ghosts": {
+          "type": "object",
+          "required": ["count", "lagPx"],
+          "properties": {
+            "count": { "type": "integer", "const": 2 },
+            "lagPx": { "type": "array", "const": [20, 36] }
+          }
+        },
+        "bodyShadow": {
+          "type": "string",
+          "const": "3-tier left streak during travel only"
+        }
+      }
+    },
+    "arrival": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lockOvershootPx", "lockStretchScaleX", "cornerTicks"],
+      "properties": {
+        "lockOvershootPx": { "type": "number", "const": 8 },
+        "lockStretchScaleX": { "type": "number", "const": 1.08 },
+        "cornerTicks": { "type": "integer", "const": 4 },
+        "status": { "type": "string", "const": "ACTIVE // LOGS" }
+      }
+    },
+    "metricsPass": {
+      "type": "object",
+      "properties": {
+        "translateYPx": { "type": "array", "const": [-2, 0] },
+        "durationMs": { "type": "number", "const": 90 }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execute", "reset"],
+      "properties": {
+        "execute": { "type": "string", "const": "runHighSpeedDash()" },
+        "reset": { "type": "string", "const": "resetHighSpeedDash()" },
+        "restartMessage": { "type": "string", "const": "restart" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["behaviour", "triggers"],
+      "properties": {
+        "behaviour": { "type": "string", "const": "Immediately select LOGS at translateX(320px)" },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noTeleport", "noRandomTrails", "noResidualTraces", "noLooping"],
+      "properties": {
+        "noTeleport": { "type": "boolean", "const": true },
+        "noRandomTrails": { "type": "boolean", "const": true },
+        "noResidualTraces": { "type": "boolean", "const": true },
+        "noLooping": { "type": "boolean", "const": true }
+      }
+    }
   }
 }
