@@ -11,6 +11,8 @@
   --ess-split-ms: 260ms;
   --ess-activate-ms: 180ms;
   --ess-split-px: 42px;
+  --ess-half-rot: 18deg;
+  --ess-crack-h: 72px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -102,7 +104,7 @@
   font-weight: 900;
   font-variant-numeric: tabular-nums;
   color: var(--olive);
-  transition: color 180ms ease-out;
+  transition: color var(--ess-activate-ms) ease-out;
 }
 
 .ess[data-phase='done'] .ess__timer {
@@ -117,6 +119,7 @@
   justify-content: center;
   color: var(--alarm);
   pointer-events: none;
+  transition: transform var(--ess-activate-ms) ease-in;
 }
 
 .ess__seal-half {
@@ -137,27 +140,31 @@
   height: 0;
   background: var(--parchment);
   transform: scaleY(0);
-  transition: transform var(--ess-crack-ms) ease-out, height var(--ess-crack-ms) ease-out;
+  transform-origin: center;
+  transition:
+    transform var(--ess-crack-ms) ease-out,
+    height var(--ess-crack-ms) ease-out;
 }
 
 .ess[data-phase='cracking'] .ess__crack,
 .ess[data-phase='active'] .ess__crack,
 .ess[data-phase='done'] .ess__crack {
-  height: 72px;
+  height: var(--ess-crack-h);
   transform: scaleY(1);
 }
 
 .ess[data-phase='active'] .ess__seal-half--l,
 .ess[data-phase='done'] .ess__seal-half--l {
-  transform: translateX(calc(var(--ess-split-px) * -1)) rotate(-18deg);
+  transform: translateX(calc(var(--ess-split-px) * -1)) rotate(calc(var(--ess-half-rot) * -1));
 }
 
 .ess[data-phase='active'] .ess__seal-half--r,
 .ess[data-phase='done'] .ess__seal-half--r {
-  transform: translateX(var(--ess-split-px)) rotate(18deg);
+  transform: translateX(var(--ess-split-px)) rotate(var(--ess-half-rot));
 }
 
 .ess[data-phase='done'] .ess__seal {
+  transform: scale(0.4);
   visibility: hidden;
 }
 
@@ -225,7 +232,8 @@
   .ess__panel,
   .ess__timer,
   .ess__seal-half,
-  .ess__crack {
+  .ess__crack,
+  .ess__seal {
     transition: none !important;
     animation: none !important;
   }
@@ -234,7 +242,8 @@
 html[data-force-reduced-motion='true'] .ess__panel,
 html[data-force-reduced-motion='true'] .ess__timer,
 html[data-force-reduced-motion='true'] .ess__seal-half,
-html[data-force-reduced-motion='true'] .ess__crack {
+html[data-force-reduced-motion='true'] .ess__crack,
+html[data-force-reduced-motion='true'] .ess__seal {
   transition: none !important;
   animation: none !important;
 }

@@ -7,6 +7,8 @@ const CRACK_MS = 160
 const SPLIT_MS = 260
 const ACTIVATE_MS = 180
 const SPLIT_PX = 42
+const HALF_ROT_DEG = 18
+const CRACK_HEIGHT_PX = 72
 
 let busy = false
 let tickHandle = null
@@ -120,12 +122,12 @@ export function runExamStartSeal() {
 
   root.setAttribute('data-phase', 'cracking')
   setStatus('UNSEALING')
-  setLive('Seal crack forming.')
+  setLive(`Seal crack forming (${CRACK_HEIGHT_PX}px).`)
 
   return new Promise((resolve) => {
     later(CRACK_MS, () => {
       root.setAttribute('data-phase', 'active')
-      setLive(`Seal halves splitting ±${SPLIT_PX}px.`)
+      setLive(`Seal halves splitting ±${SPLIT_PX}px / ±${HALF_ROT_DEG}°.`)
       later(SPLIT_MS, () => {
         later(ACTIVATE_MS, () => {
           showResolved()
