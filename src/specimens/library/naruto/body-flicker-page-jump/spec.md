@@ -1,17 +1,15 @@
 # Body Flicker Page Jump
 
-The current view flickers into compressed directional streaks, then abruptly hands off to a new destination view.
+The current view flickers into compressed directional streaks, then hands off abruptly to a new destination view.
 
 ## Behaviour
 
-- Idle: viewing HOME, status `HOME`.
-- Flickering: three horizontal streaks flash and sweep across the viewport (~140ms).
-- Handoff: at the end of the flicker, HOME is swapped for Mission Board instantly (no crossfade).
-- Settling: residual streak opacity fades out (~90ms).
-- Arrived: status `MISSION BOARD`, held until reset/replay.
-- Reduced motion: destination view appears immediately, no streaks.
+- Idle: origin view.
+- Flickering: 5 angled streaks sweep 140ms; origin suppressed.
+- Settling: streaks fade 90ms; destination identity visible.
+- Reduced motion: destination immediately.
 
 ## Freeze
 
-- Flicker: 140ms · settle: 90ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Flicker: 140ms · settle: 90ms · streaks: 5 · angles: -6/-2/0/3/7°
+- Palette: `#0C1014` / `#D0D6DC` / `#8AA0B4` / `#5A6870` / `#EEF2F4`

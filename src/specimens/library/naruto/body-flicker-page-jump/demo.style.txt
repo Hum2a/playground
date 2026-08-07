@@ -6,6 +6,10 @@
   --chakra: #8aa0b4;
   --olive: #5a6870;
   --off: #eef2f4;
+  --bfp-flicker-ms: 140ms;
+  --bfp-settle-ms: 90ms;
+  --bfp-streak-count: 5;
+  --bfp-streak-angle: 0deg;
   box-sizing: border-box; /* wave2-polish */
   position: relative;
   display: flex;
@@ -125,16 +129,16 @@
 
 .bfp[data-phase='flickering'] .bfp__streaks {
   opacity: 1;
-  animation: bfp-streak-flash 140ms steps(3, end);
+  animation: bfp-streak-flash var(--bfp-flicker-ms) steps(3, end);
 }
 
 .bfp[data-phase='flickering'] .bfp__streak {
-  animation: bfp-streak-sweep 140ms linear;
+  animation: bfp-streak-sweep var(--bfp-flicker-ms) linear;
 }
 
 .bfp[data-phase='settling'] .bfp__streaks {
   opacity: 1;
-  animation: bfp-streak-fade 90ms ease-out forwards;
+  animation: bfp-streak-fade var(--bfp-settle-ms) ease-out forwards;
 }
 
 @keyframes bfp-streak-flash {
