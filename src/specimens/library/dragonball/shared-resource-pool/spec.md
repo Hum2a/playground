@@ -75,3 +75,9 @@ SHIP 15, pool 10 LOW, with no arc or unit travel.
 ## Accessibility
 
 Ledger values are plain text. Polite status announces pool and consumer totals.
+
+## Porting
+
+1. Copy `demo.html`, `demo.css`, `demo.js` verbatim; keep orbit geometry and arc paths.
+2. Freeze 20 five-capacity units → BUILD 8 / TEST 7 / SHIP 3 (40/35/15), pool end 10 LOW.
+3. Call `window.sharedResourcePool.allocate()` / `.reset()`; honour both reduced-motion triggers.
