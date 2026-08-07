@@ -5,7 +5,7 @@ export const chakraSignatureMatch: Specimen = {
   ref: 'SPX-2510',
   title: 'Chakra Signature Match',
   blurb:
-    'An incoming waveform draws in and morphs to align with a reference signature, locking into a resolved MATCH readout.',
+    'Five chakra waveform samples align past a 0.92 threshold into MATCH.',
   origin: {
     project: 'Original',
     surface: 'Naruto / sensory-detection interfaces — signature comparison overlays',
@@ -25,12 +25,14 @@ export const chakraSignatureMatch: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the incoming waveform snaps directly onto the reference and MATCH shows immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the signature appears MATCH immediately.',
   },
-  acceptance: [
-    'Waveform aligns to frozen threshold then MATCH',
-    'Sample points frozen in contract',
-    'Reduced motion snaps to MATCH',
+    acceptance: [
+    'Five waveform sample points must reach align threshold 0.92 to MATCH',
+    'Bands acquire in frozen order with step timing from contract',
+    'Resolved shows MATCH with aligned signature',
+    'Replay misaligns samples before rerunning',
+    'Reduced motion shows MATCH immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

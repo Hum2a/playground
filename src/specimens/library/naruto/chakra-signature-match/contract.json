@@ -2,34 +2,94 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/chakra-signature-match.schema.json",
   "title": "ChakraSignatureMatch",
-  "description": "Five signal bars rise to meet a reference profile, resolving to a confirmed match.",
+  "description": "Waveform samples align to MATCH above frozen threshold.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "bandCount", "stepMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "bandCount",
+    "alignThreshold",
+    "samplePoints",
+    "stepMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "chakra-signature-match" },
-    "bandCount": { "type": "number", "const": 5 },
-    "stepMs": { "type": "number", "const": 170 },
-    "settleMs": { "type": "number", "const": 100 },
+    "name": {
+      "type": "string",
+      "const": "chakra-signature-match"
+    },
+    "bandCount": {
+      "type": "number",
+      "const": 5
+    },
+    "alignThreshold": {
+      "type": "number",
+      "const": 0.92
+    },
+    "samplePoints": {
+      "type": "array",
+      "const": [
+        0.12,
+        0.28,
+        0.5,
+        0.72,
+        0.88
+      ]
+    },
+    "stepMs": {
+      "type": "number",
+      "const": 140
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off",
+        "alert"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "alert": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#3DCEA8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateMatch"],
+      "required": [
+        "immediateMatch"
+      ],
       "properties": {
-        "immediateMatch": { "type": "boolean", "const": true }
+        "immediateMatch": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }

@@ -185,3 +185,6 @@ function bindUi() {
 void TOTAL_MS
 bindUi()
 resetChakraSignatureMatch()
+
+void ALIGN_THRESHOLD
+void SAMPLE_POINTS
