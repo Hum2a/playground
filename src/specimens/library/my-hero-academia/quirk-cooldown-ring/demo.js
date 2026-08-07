@@ -1,18 +1,23 @@
 /**
- * Quirk Cooldown Ring — ring drains from full to empty then flips to READY.
+ * Quirk Cooldown Ring — ARMED 100% → COOLDOWN drain with ticking % → READY 0%.
+ * Circumference 289.03 (r=46). Stroke 8. Drain 580ms. Ready flash 320ms.
  */
 
 const DRAIN_MS = 580
 const READY_MS = 320
 const CIRC = 289.03
+const TICK_MS = 40
 
 let busy = false
 /** @type {number[]} */
 let timers = []
+/** @type {number | null} */
+let pctInterval = null
 
 function prefersReducedMotion() {
   const forced =
-    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+    document.documentElement.getAttribute('data-force-reduced-motion') ===
+    'true'
   const media = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return forced || media
 }
@@ -24,6 +29,10 @@ function rootEl() {
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
   timers = []
+  if (pctInterval != null) {
+    window.clearInterval(pctInterval)
+    pctInterval = null
+  }
 }
 
 function later(ms, fn) {
@@ -42,9 +51,11 @@ function setLive(text) {
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-qcr-run], [data-qcr-replay]').forEach((btn) => {
-    btn.disabled = !on
-  })
+  document
+    .querySelectorAll('[data-qcr-run], [data-qcr-replay]')
+    .forEach((btn) => {
+      btn.disabled = !on
+    })
 }
 
 function setRingOffset(offset) {
@@ -62,6 +73,13 @@ function setLabel(text) {
   if (el) el.textContent = text
 }
 
+function showArmed() {
+  setLabel('ARMED')
+  setPct('100%')
+  setRingOffset(0)
+  setLive('Capability armed at full charge.')
+}
+
 function showCooldownStart() {
   setLabel('COOLDOWN')
   setPct('100%')
@@ -73,14 +91,20 @@ function showReady() {
   setLabel('READY')
   setPct('0%')
   setRingOffset(CIRC)
-  setLive('Cooldown ready.')
+  setLive('Cooldown complete. Capability ready.')
 }
 
-function resetVisual() {
-  setLabel('READY')
-  setPct('100%')
-  setRingOffset(0)
-  setLive('Cooldown ready.')
+function startPctTicker() {
+  const started = performance.now()
+  pctInterval = window.setInterval(() => {
+    const t = Math.min(1, (performance.now() - started) / DRAIN_MS)
+    const pct = Math.max(0, Math.round(100 * (1 - t)))
+    setPct(`${pct}%`)
+    if (t >= 1 && pctInterval != null) {
+      window.clearInterval(pctInterval)
+      pctInterval = null
+    }
+  }, TICK_MS)
 }
 
 /** @returns {Promise<void>} */
@@ -106,9 +130,14 @@ export function runQuirkCooldownRing() {
   }
 
   setPhase('drain')
+  startPctTicker()
 
   return new Promise((resolve) => {
     later(DRAIN_MS, () => {
+      if (pctInterval != null) {
+        window.clearInterval(pctInterval)
+        pctInterval = null
+      }
       setPhase('ready-flash')
       showReady()
 
@@ -125,7 +154,7 @@ export function runQuirkCooldownRing() {
 export function resetQuirkCooldownRing() {
   clearTimers()
   busy = false
-  resetVisual()
+  showArmed()
   setPhase('idle')
   setButtons(true)
   const root = rootEl()

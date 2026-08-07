@@ -4,7 +4,7 @@ export const quirkCooldownRing: Specimen = {
   ref: 'SPX-2000',
   title: 'Quirk Cooldown Ring',
   blurb:
-    'A comic stroke ring drains from 100% to empty then pops to READY with accent-coloured completion readout.',
+    'Idle ARMED at full charge; Run drains a comic stroke ring through COOLDOWN with a ticking percent, then settles READY at empty with accent tick caps.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia–inspired ability cooldown / readiness ring language',
@@ -24,15 +24,13 @@ export const quirkCooldownRing: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, READY shows immediately with empty ring.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, READY shows immediately at 0% with empty accent ring and no drain.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 320,
     height: 340,
     background: 'dark',
-
     label: 'Quirk cooldown ring',
   },
-
 }

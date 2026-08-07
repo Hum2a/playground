@@ -9,15 +9,17 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'SVG ring circumference 289.03; drain 580ms linear.',
-    'Wire runQuirkCooldownRing / reset / replay.',
-    'Honour reduced-motion triggers.',
+    'Idle ARMED @ 100% full ring (r=46, circ 289.03); Run drains COOLDOWN 580ms linear with 40ms percent ticks; settle READY @ 0% accent empty ring + 320ms flash.',
+    'Four angular tick caps at cardinal points (contract.geometry.ticks); stroke-linecap butt — not a rounded Material spinner.',
+    'Wire runQuirkCooldownRing / resetQuirkCooldownRing / replayQuirkCooldownRing; honour prefers-reduced-motion and data-force-reduced-motion.',
   ],
   acceptance: [
-    'Run drains ring COOLDOWN 100% → READY 0%',
-    'Accent flash on completion',
-    'Replay resets ring to idle READY',
-    'Reduced motion skips drain animation',
+    'Idle shows ARMED 100% with full primary ring and four tick caps',
+    'Run drains COOLDOWN with ticking percent → READY 0% accent ring',
+    'Replay returns to ARMED 100% then re-runs',
+    'Reduced motion skips drain and shows READY 0% immediately',
+    'Live region announces armed / draining / ready states',
+    'No network; effect clipped to stage',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;display:grid;place-items:center;padding:1rem;">

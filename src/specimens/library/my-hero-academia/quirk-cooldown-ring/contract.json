@@ -1,20 +1,60 @@
 {
   "name": "quirk-cooldown-ring",
-  "intent": "Stroke ring drains 100% to empty then flips to READY.",
-  "catalogue": { "mha": "MHA-026", "ref": "SPX-2000" },
-  "copy": { "cooldown": "COOLDOWN", "ready": "READY" },
+  "intent": "Capability readiness ring: idle ARMED at 100% full stroke; Run drains COOLDOWN with ticking percent; settle READY at 0% empty ring with accent ticks.",
+  "catalogue": {
+    "mha": "MHA-026",
+    "ref": "SPX-2000"
+  },
+  "copy": {
+    "armed": "ARMED",
+    "cooldown": "COOLDOWN",
+    "ready": "READY",
+    "liveArmed": "Capability armed at full charge.",
+    "liveDrain": "Cooldown draining.",
+    "liveReady": "Cooldown complete. Capability ready."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
-    "accent": "#FF4D35"
+    "accent": "#FF4D35",
+    "tick": "#1A2836",
+    "track": "#C5D4E3"
   },
-  "timing": { "drainMs": 580, "readyMs": 320 },
-  "ring": { "circumference": 289.03, "radius": 46 },
+  "timing": {
+    "drainMs": 580,
+    "readyMs": 320,
+    "tickMs": 40
+  },
+  "geometry": {
+    "viewBox": "0 0 120 120",
+    "radius": 46,
+    "circumference": 289.03,
+    "strokeWidth": 8,
+    "stageMaxWidthPx": 280,
+    "svgSizePx": 168,
+    "svgRotateDeg": -90,
+    "ticks": [
+      { "x": 58, "y": 10, "w": 4, "h": 10 },
+      { "x": 100, "y": 58, "w": 10, "h": 4 },
+      { "x": 58, "y": 100, "w": 4, "h": 10 },
+      { "x": 10, "y": 58, "w": 10, "h": 4 }
+    ]
+  },
   "api": {
     "run": "runQuirkCooldownRing()",
     "reset": "resetQuirkCooldownRing()",
     "replay": "replayQuirkCooldownRing()"
   },
-  "reducedMotion": { "behaviour": "Immediately show READY with empty ring" }
+  "reducedMotion": {
+    "behaviour": "Skip drain; immediately show READY label, 0%, empty accent ring and accent ticks"
+  },
+  "acceptance": [
+    "Idle shows ARMED and 100% with full primary ring and four angular tick caps",
+    "Run sets COOLDOWN and drains strokeDashoffset 0→289.03 over 580ms while percent ticks toward 0%",
+    "Completion shows READY, 0%, empty accent ring for 320ms ready-flash then done",
+    "Replay returns to ARMED 100% then re-runs drain",
+    "Reduced motion (prefers or data-force) shows READY 0% immediately with no drain animation",
+    "No network; effect stays inside clipped stage"
+  ]
 }

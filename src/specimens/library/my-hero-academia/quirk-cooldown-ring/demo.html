@@ -1,14 +1,21 @@
 <div class="qcr" data-qcr data-phase="idle">
-  <p class="qcr__live" data-qcr-live aria-live="polite">Cooldown ready.</p>
+  <p class="qcr__live" data-qcr-live aria-live="polite">Capability armed at full charge.</p>
 
   <div class="qcr__stage" data-qcr-stage>
     <svg class="qcr__svg" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
       <circle class="qcr__track" cx="60" cy="60" r="46" fill="none" />
       <circle class="qcr__ring" data-qcr-ring cx="60" cy="60" r="46" fill="none" />
+      <!-- Angular tick caps at 12/3/6/9 o'clock (viewBox before -90deg rotate of svg) -->
+      <g class="qcr__ticks">
+        <rect class="qcr__tick" x="58" y="10" width="4" height="10" />
+        <rect class="qcr__tick" x="100" y="58" width="10" height="4" />
+        <rect class="qcr__tick" x="58" y="100" width="4" height="10" />
+        <rect class="qcr__tick" x="10" y="58" width="10" height="4" />
+      </g>
     </svg>
 
     <div class="qcr__readout" data-qcr-readout>
-      <p class="qcr__label" data-qcr-label>READY</p>
+      <p class="qcr__label" data-qcr-label>ARMED</p>
       <p class="qcr__pct" data-qcr-pct>100%</p>
     </div>
   </div>
