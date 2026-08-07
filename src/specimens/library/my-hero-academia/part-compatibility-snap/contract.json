@@ -1,6 +1,15 @@
 {
   "name": "part-compatibility-snap",
-  "intent": "Component magnetically snaps into compatible slot.",
+  "intent": "Component magnetically approaches compatible slot with eased pull, then snaps in with corner lock ticks.",
+  "catalogue": { "mha": "MHA-112", "ref": "SPX-2086" },
+  "copy": {
+    "label": "COMPATIBILITY CHECK",
+    "slot": "SLOT A",
+    "part": "MODULE-3",
+    "snap": "SNAP",
+    "liveMagnet": "Magnetic pull toward compatible slot.",
+    "liveSnapped": "MODULE-3 snapped into Slot A. Compatible."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
@@ -10,19 +19,33 @@
   "timing": {
     "magnetMs": 180,
     "snapMs": 520,
-    "settleMs": 1100
+    "tickMs": 160,
+    "settleMs": 1100,
+    "totalMs": 1100
+  },
+  "geometry": {
+    "magnetGapPx": 14,
+    "magnetEase": "cubic-bezier(0.34, 1.2, 0.64, 1)",
+    "snapEase": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "partRest": { "leftPx": 16, "bottomPx": 16 },
+    "partSnapped": { "left": "calc(100% - 128px)", "bottom": "calc(100% - 96px)" },
+    "lockTicks": { "sizePx": 8, "staggerMs": [0, 35, 70, 105] }
   },
   "api": {
     "run": "runPartSnap()",
     "reset": "resetPartSnap()",
-    "replay": "replayPartSnap()",
-    "sandboxSafe": true
+    "replay": "replayPartSnap()"
   },
   "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Part appears snapped in slot immediately"
-  }
+    "behaviour": "Part appears snapped in slot with lock ticks immediately"
+  },
+  "acceptance": [
+    "Idle: MODULE-3 at rest; dashed SLOT A",
+    "Magnet: 180ms eased approach with 14px gap halo",
+    "Snap: part travels to frozen position over 520ms",
+    "Four corner ticks snap in on stagger ladder",
+    "Reduced motion (prefers or data-force) shows snapped state immediately",
+    "No network; effect clipped to host"
+  ],
+  "waveC": "Magnet gap, snap ms, and lock-tick stagger frozen via CSS vars"
 }
