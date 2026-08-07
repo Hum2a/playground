@@ -1,8 +1,8 @@
 # Target Dossier Reveal
 
-Three redaction bands lift in order **0 → 1 → 2** (110ms stagger, 160ms lift).
+Three redaction bands lift top-to-bottom, then the wax seal snaps away to reveal **Target 0311**.
 
 ## Freeze
 
-- Bands: 3 · order: [0,1,2] · stagger: 110ms · lift: 160ms · reveal: 180ms
-- Palette: mission paper
+- Bands: 3 · stagger: [0, 90, 180] ms · bandMs: 200 · sealMs: 160
+- Palette (mission paper): `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`

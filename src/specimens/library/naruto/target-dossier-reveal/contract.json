@@ -1,99 +1,54 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/target-dossier-reveal.schema.json",
-  "title": "TargetDossierReveal",
-  "description": "Three redaction bands lift in frozen order to reveal dossier intel.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "bandCount",
-    "bandOrder",
-    "bandStaggerMs",
-    "bandLiftMs",
-    "revealMs",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "target-dossier-reveal"
-    },
-    "bandCount": {
-      "type": "number",
-      "const": 3
-    },
-    "bandOrder": {
-      "type": "array",
-      "const": [
-        0,
-        1,
-        2
-      ]
-    },
-    "bandStaggerMs": {
-      "type": "number",
-      "const": 110
-    },
-    "bandLiftMs": {
-      "type": "number",
-      "const": 160
-    },
-    "revealMs": {
-      "type": "number",
-      "const": 180
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "alarm",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#1A1612"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#EBE2D0"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "alarm": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#6A5E4E"
-        },
-        "off": {
-          "type": "string",
-          "const": "#F7F2E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateRevealed"
-      ],
-      "properties": {
-        "immediateRevealed": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "target-dossier-reveal",
+  "intent": "Three redaction bands lift top-to-bottom on a frozen stagger, then the wax seal snaps away to reveal intel.",
+  "catalogue": {
+    "nr": "NR-241",
+    "ref": "SPX-2584"
+  },
+  "copy": {
+    "system": "INTEL // DOSSIER",
+    "idle": "CLASSIFIED",
+    "active": "DECLASSIFYING",
+    "done": "REVEALED",
+    "seal": "SEALED",
+    "target": "Target 0311"
+  },
+  "geometry": {
+    "bandCount": 3,
+    "sealSettleDeg": -8
+  },
+  "timing": {
+    "bandStaggerMs": [
+      0,
+      90,
+      180
+    ],
+    "bandMs": 200,
+    "sealMs": 160,
+    "totalMs": 540
+  },
+  "colours": {
+    "ink": "#1A1612",
+    "parchment": "#EBE2D0",
+    "chakra": "#B83228",
+    "olive": "#6A5E4E",
+    "off": "#F7F2E8",
+    "palette": "mission-paper",
+    "alarm": "#B83228"
+  },
+  "api": {
+    "run": "runTargetDossierReveal()",
+    "reset": "resetTargetDossierReveal()",
+    "replay": "replayTargetDossierReveal()"
+  },
+  "reducedMotion": {
+    "behaviour": "All bands lifted and seal gone; REVEALED immediately"
+  },
+  "acceptance": [
+    "Exactly 3 redaction bands lift top-to-bottom on staggerMs [0,90,180]",
+    "Each band retracts via scaleY over bandMs 200 — not a single opacity fade",
+    "Seal snaps away after last band (sealMs 160); intel readable as REVEALED",
+    "Replay restores all three bands + SEALED before rerunning",
+    "Reduced motion shows all bands lifted and REVEALED immediately"
+  ]
 }
