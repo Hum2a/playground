@@ -2,9 +2,12 @@
  * SPX-2027 Training Simulation Start
  */
 ;(function () {
+  /** Frozen countdown ladder — matches contract.countdownLadder */
   const COUNT_STEPS = ['3', '2', '1', 'GO']
   const STEP_MS = 380
   const BURST_MS = 580
+  const TILE_SNAP_MS = 220
+  const TILE_STAGGER_MS = 80
   const LIVE_MS = 400
 
   /** @type {WeakMap<HTMLElement, { timers: number[], busy: boolean }>} */
@@ -45,11 +48,30 @@
     if (load) load.textContent = '84%'
   }
 
+  function clearCountCards(root) {
+    root.querySelectorAll('.tss__count-card').forEach((card) => {
+      card.removeAttribute('data-active')
+      card.style.opacity = '0'
+    })
+  }
+
+  function showCountCard(root, value) {
+    clearCountCards(root)
+    const card = root.querySelector(`.tss__count-card[data-count="${value}"]`)
+    if (card) {
+      card.setAttribute('data-active', 'true')
+      card.style.opacity = '1'
+    }
+    const countEl = root.querySelector('[data-tss-count]')
+    if (countEl) countEl.textContent = value
+  }
+
   function reset(root) {
     const ctx = getCtx(root)
     clearTimers(ctx)
     ctx.busy = false
     root.dataset.phase = 'idle'
+    clearCountCards(root)
     const count = root.querySelector('[data-tss-count]')
     if (count) count.textContent = '3'
     const pulse = root.querySelector('[data-tss-pulse]')
@@ -69,6 +91,7 @@
 
   function burst(root) {
     const ctx = getCtx(root)
+    clearCountCards(root)
     root.dataset.phase = 'burst'
     setStatus(root, 'Simulation active.')
     later(ctx, BURST_MS + LIVE_MS, () => goLive(root))
@@ -76,12 +99,11 @@
 
   function runCountdown(root) {
     const ctx = getCtx(root)
-    const countEl = root.querySelector('[data-tss-count]')
     let step = 0
 
     function tick() {
-      if (!countEl) return
-      countEl.textContent = COUNT_STEPS[step]
+      const value = COUNT_STEPS[step]
+      showCountCard(root, value)
       root.dataset.phase = 'count'
       void root.offsetWidth
       step += 1
@@ -136,4 +158,8 @@
   } else {
     initAll()
   }
+
+  void STEP_MS
+  void TILE_SNAP_MS
+  void TILE_STAGGER_MS
 })()

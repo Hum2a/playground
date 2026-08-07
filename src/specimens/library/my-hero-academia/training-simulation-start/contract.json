@@ -1,70 +1,51 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/training-simulation-start.schema.json",
-  "title": "TrainingSimulationStart",
-  "description": "Portable contract for READY countdown to telemetry burst.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
-  "properties": {
-    "name": { "type": "string", "const": "training-simulation-start" },
-    "intent": {
-      "type": "string",
-      "examples": ["READY countdown explodes into active telemetry."]
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
-    },
-    "phases": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["stepMs", "burstMs"],
-      "properties": {
-        "stepMs": { "type": "number", "const": 380 },
-        "burstMs": { "type": "number", "const": 580 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["instantTelemetry", "triggers"],
-      "properties": {
-        "instantTelemetry": { "type": "boolean", "const": true },
-        "triggers": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    },
-    "classNames": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["root", "ready", "telemetry"],
-      "properties": {
-        "root": { "type": "string", "const": "tss" },
-        "ready": { "type": "string", "const": "tss__ready" },
-        "telemetry": { "type": "string", "const": "tss__telemetry" }
-      }
-    },
-    "behaviour": {
-      "type": "object",
-      "properties": {
-        "api": { "type": "string", "const": "trainingSimulationStart" }
-      }
-    }
-  }
+  "name": "training-simulation-start",
+  "intent": "Hard 3-2-1-GO count cards snap, then telemetry tiles stagger in.",
+  "catalogue": { "mha": "MHA-053", "ref": "SPX-2027", "title": "Training Simulation Start" },
+  "copy": {
+    "ready": "READY",
+    "countdown": ["3", "2", "1", "GO"],
+    "telemetry": { "pulse": "118", "load": "84%", "alert": "ACTIVE" },
+    "liveIdle": "Simulation standby.",
+    "liveCount": "Countdown…",
+    "liveBurst": "Simulation active.",
+    "liveDone": "Telemetry live."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "countdownLadder": {
+    "steps": ["3", "2", "1", "GO"],
+    "stepMs": 380
+  },
+  "timing": {
+    "burstMs": 580,
+    "tileSnapMs": 220,
+    "tileStaggerMs": 80,
+    "liveMs": 400
+  },
+  "geometry": {
+    "countCardClipPx": 10,
+    "tileClipSkewPct": 6
+  },
+  "api": {
+    "run": "trainingSimulationStart.start(root)",
+    "reset": "trainingSimulationStart.reset(root)"
+  },
+  "reducedMotion": {
+    "behaviour": "Telemetry tiles appear live immediately; no countdown cards"
+  },
+  "acceptance": [
+    "Idle: READY panel with START",
+    "Each countdown step snaps as a hard angular card over 380ms: 3 → 2 → 1 → GO",
+    "After GO, ready panel bursts; telemetry tiles snap in with 80ms stagger",
+    "Live: PULSE 118, LOAD 84%, ALERT ACTIVE",
+    "Replay resets countdown and telemetry",
+    "Reduced motion (prefers or data-force) shows telemetry live immediately",
+    "No network; polite aria-live on status"
+  ],
+  "waveC": "Frozen stepMs 380; hard count cards; telemetry tile snap stagger"
 }

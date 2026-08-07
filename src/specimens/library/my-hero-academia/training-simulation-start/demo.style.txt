@@ -6,6 +6,11 @@
   --tss-paper: #f4f7fa;
   --tss-accent: #ff4d35;
   --tss-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --tss-step-ms: 380;
+  --tss-burst-ms: 580;
+  --tss-tile-snap-ms: 220;
+  --tss-tile-stagger-ms: 80;
+  --tss-live-ms: 400;
 
   box-sizing: border-box;
   position: relative;
@@ -48,12 +53,48 @@
   color: var(--tss-primary);
 }
 
+.tss__count-stack {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.tss__count-card {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  min-width: 4.5rem;
+  min-height: 3.5rem;
+  padding: 0.35rem 0.75rem;
+  border: 3px solid var(--tss-ink);
+  background: var(--tss-paper);
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--tss-accent);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  opacity: 0;
+  transform: scale(0.55) rotate(-6deg);
+}
+
+.tss__count-card--go {
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  color: var(--tss-primary);
+  border-color: var(--tss-primary);
+}
+
 .tss__count {
   margin: 0.35rem 0 0;
   font-size: 3rem;
   font-weight: 900;
   line-height: 1;
   color: var(--tss-accent);
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
 }
 
 .tss__telemetry {
@@ -81,6 +122,8 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   clip-path: polygon(0% 6%, 100% 0%, 94% 100%, 4% 94%);
+  opacity: 0;
+  transform: translateY(12px) scale(0.88);
 }
 
 .tss__tile strong {
@@ -121,23 +164,36 @@
   color: rgb(244 247 250 / 0.7);
 }
 
-.tss[data-phase="count"] .tss__count {
-  animation: tss-pop 280ms var(--tss-ease);
+.tss[data-phase="count"] .tss__count-card[data-active="true"] {
+  animation: tss-card-snap var(--tss-step-ms) var(--tss-ease);
 }
 
 .tss[data-phase="burst"] .tss__ready {
   opacity: 0;
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
 .tss[data-phase="burst"] .tss__telemetry {
-  animation: tss-burst-in 580ms var(--tss-ease) forwards;
+  opacity: 1;
+  transform: scale(1);
   pointer-events: auto;
+}
+
+.tss[data-phase="burst"] [data-tss-tile="0"] {
+  animation: tss-tile-snap var(--tss-tile-snap-ms) var(--tss-ease) 0ms forwards;
+}
+
+.tss[data-phase="burst"] [data-tss-tile="1"] {
+  animation: tss-tile-snap var(--tss-tile-snap-ms) var(--tss-ease) var(--tss-tile-stagger-ms) forwards;
+}
+
+.tss[data-phase="burst"] [data-tss-tile="2"] {
+  animation: tss-tile-snap var(--tss-tile-snap-ms) var(--tss-ease) calc(var(--tss-tile-stagger-ms) * 2) forwards;
 }
 
 .tss[data-phase="live"] .tss__ready {
   opacity: 0;
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
 .tss[data-phase="live"] .tss__telemetry {
@@ -146,29 +202,22 @@
   pointer-events: auto;
 }
 
-@keyframes tss-pop {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.4;
-  }
-  60% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.tss[data-phase="live"] .tss__tile {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
-@keyframes tss-burst-in {
+@keyframes tss-card-snap {
   0% {
     opacity: 0;
-    transform: scale(0.5) rotate(-4deg);
+    transform: scale(0.55) rotate(-6deg);
   }
-  55% {
+  35% {
     opacity: 1;
-    transform: scale(1.08) rotate(2deg);
+    transform: scale(1.14) rotate(2deg);
+  }
+  70% {
+    transform: scale(0.96) rotate(-1deg);
   }
   100% {
     opacity: 1;
@@ -176,15 +225,30 @@
   }
 }
 
+@keyframes tss-tile-snap {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.88);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .tss[data-phase="count"] .tss__count,
-  .tss[data-phase="burst"] .tss__telemetry {
+  .tss[data-phase="count"] .tss__count-card,
+  .tss[data-phase="burst"] .tss__tile {
     animation: none;
   }
 }
 
-[data-force-reduced-motion="true"] .tss[data-phase="count"] .tss__count,
-[data-force-reduced-motion="true"] .tss[data-phase="burst"] .tss__telemetry {
+[data-force-reduced-motion="true"] .tss[data-phase="count"] .tss__count-card,
+[data-force-reduced-motion="true"] .tss[data-phase="burst"] .tss__tile {
   animation: none;
 }
 
@@ -199,6 +263,12 @@
     opacity: 1;
     transform: scale(1);
   }
+
+  .tss[data-phase="burst"] .tss__tile,
+  .tss[data-phase="live"] .tss__tile {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 [data-force-reduced-motion="true"] .tss[data-phase="burst"] .tss__ready,
@@ -210,4 +280,10 @@
 [data-force-reduced-motion="true"] .tss[data-phase="live"] .tss__telemetry {
   opacity: 1;
   transform: scale(1);
+}
+
+[data-force-reduced-motion="true"] .tss[data-phase="burst"] .tss__tile,
+[data-force-reduced-motion="true"] .tss[data-phase="live"] .tss__tile {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
