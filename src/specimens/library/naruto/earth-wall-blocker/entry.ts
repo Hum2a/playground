@@ -5,7 +5,7 @@ export const earthWallBlocker: Specimen = {
   ref: 'SPX-2470',
   title: 'Earth Wall Blocker',
   blurb:
-    'Five segmented slabs rise staggered from below to form a protective wall, flipping a zone from EXPOSED to PROTECTED — abstract graphic slabs, no copyrighted iconography.',
+    'Five faceted slabs rise 118px with a 55ms stagger (280ms each) to wall off a zone — EXPOSED flips to PROTECTED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — earth-style barrier raising',
@@ -19,7 +19,7 @@ export const earthWallBlocker: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['blocker', 'barrier', 'stagger'],
+  tags: ['blocker', 'barrier', 'stagger', 'facet'],
   deps: 'none',
   motion: {
     loops: false,
@@ -28,8 +28,8 @@ export const earthWallBlocker: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the wall resolves directly to raised/PROTECTED with no staggered rise choreography.',
   },
   acceptance: [
-    'Faceted slabs rise with frozen count and rise px',
-    'Final PROTECTED after last slab settles',
+    'Five faceted slabs rise 118px with 55ms stagger',
+    'PROTECTED only after last slab settles',
     'Reduced motion shows raised wall immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

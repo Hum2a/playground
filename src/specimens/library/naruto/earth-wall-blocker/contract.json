@@ -1,37 +1,55 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/earth-wall-blocker.schema.json",
-  "title": "EarthWallBlocker",
-  "description": "Five segmented slabs rise staggered from below to form a protective wall.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "slabCount", "slabMs", "staggerMs", "riseTotalMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "earth-wall-blocker" },
-    "slabCount": { "type": "number", "const": 5 },
-    "slabMs": { "type": "number", "const": 280 },
-    "staggerMs": { "type": "number", "const": 55 },
-    "riseTotalMs": { "type": "number", "const": 500 },
-    "settleMs": { "type": "number", "const": 150 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#0C0806" },
-        "parchment": { "type": "string", "const": "#C4B8A8" },
-        "chakra": { "type": "string", "const": "#E07030" },
-        "olive": { "type": "string", "const": "#5A5048" },
-        "off": { "type": "string", "const": "#F4F1E8" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateRaise"],
-      "properties": {
-        "immediateRaise": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "earth-wall-blocker",
+  "intent": "Five faceted stone slabs rise staggered from below to form a protective wall — EXPOSED flips to PROTECTED.",
+  "catalogue": { "nr": "NR-127", "ref": "SPX-2470" },
+  "copy": {
+    "system": "BARRIER // EARTH WALL",
+    "idle": "DOWN",
+    "rising": "RISING",
+    "raised": "WALL UP",
+    "zoneExposed": "EXPOSED",
+    "zoneProtected": "PROTECTED"
+  },
+  "geometry": {
+    "slabCount": 5,
+    "risePx": 118,
+    "facet": "polygon clip-path per slab",
+    "heightsPct": [86, 92, 100, 92, 86]
+  },
+  "timing": {
+    "slabMs": 280,
+    "staggerMs": 55,
+    "riseTotalMs": 500,
+    "settleMs": 150
+  },
+  "colours": {
+    "ink": "#0C0806",
+    "parchment": "#C4B8A8",
+    "chakra": "#E07030",
+    "olive": "#5A5048",
+    "off": "#F4F1E8",
+    "palette": "fire"
+  },
+  "api": {
+    "run": "runEarthWallBlocker()",
+    "reset": "resetEarthWallBlocker()",
+    "replay": "replayEarthWallBlocker()"
+  },
+  "cssVars": [
+    "--ewb-slab-ms",
+    "--ewb-stagger-ms",
+    "--ewb-rise-total-ms",
+    "--ewb-settle-ms",
+    "--ewb-rise-px"
+  ],
+  "reducedMotion": {
+    "behaviour": "Wall resolves directly to raised/PROTECTED; no staggered rise"
+  },
+  "acceptance": [
+    "Exactly 5 faceted slabs (clip-path polygons) with alternating heights 86/92/100/92/86%",
+    "Each slab rises risePx 118 with slabMs 280 and staggerMs 55 between starts (riseTotalMs 500)",
+    "Zone label switches EXPOSED → PROTECTED and status WALL UP after settleMs 150",
+    "Replay lowers all slabs then re-runs the stagger rise",
+    "Reduced motion (prefers or data-force) shows raised wall immediately with animations disabled"
+  ]
 }

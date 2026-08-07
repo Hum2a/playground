@@ -1,15 +1,15 @@
 # Earth Wall Blocker
 
-Five segmented slabs rise staggered from below (Run auto-play) to form a protective wall, flipping the zone label from **EXPOSED** to **PROTECTED**.
+Five faceted stone slabs rise staggered from below to form a protective wall.
 
 ## Behaviour
 
-- Idle: slabs down, zone `EXPOSED`, status `DOWN`.
-- Rising: five slabs rise with a 55ms stagger between each (~500ms total, includes a small overshoot).
-- Raised: zone `PROTECTED`, status `WALL UP`, held until reset/replay.
-- Reduced motion: jump straight to raised/PROTECTED.
+- Idle: slabs hidden below, zone `EXPOSED`, status `DOWN`.
+- Run: slabs rise with clip-path facets and 55ms stagger (280ms each, 500ms total).
+- Raised: zone `PROTECTED`, status `WALL UP`.
+- Reduced motion: wall raised immediately.
 
 ## Freeze
 
-- Slab rise: 280ms · stagger: 55ms · total: 500ms · settle: 150ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Slabs: 5 · rise: 118px · slab: 280ms · stagger: 55ms · total: 500ms · settle: 150ms
+- Palette (fire): `#0C0806` / `#C4B8A8` / `#E07030` / `#5A5048` / `#F4F1E8`

@@ -6,6 +6,12 @@
   --chakra: #e07030;
   --olive: #5a5048;
   --off: #f4f1e8;
+  --ewb-slab-ms: 280ms;
+  --ewb-stagger-ms: 55ms;
+  --ewb-rise-total-ms: 500ms;
+  --ewb-settle-ms: 150ms;
+  --ewb-rise-px: 118;
+  --ewb-slab-count: 5;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -65,7 +71,7 @@
   width: 100%;
   min-height: 190px;
   height: 190px;
-  border: 1px solid rgb(105 116 90 / 0.55);
+  border: 1px solid rgb(90 80 72 / 0.55);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -90,16 +96,39 @@
   bottom: 0;
   z-index: 2;
   display: flex;
-  height: 62%;
+  align-items: flex-end;
+  height: calc(var(--ewb-rise-px) * 1px);
   pointer-events: none;
 }
 
 .ewb__slab {
+  position: relative;
   flex: 1;
+  height: 100%;
   margin: 0 1px;
-  background: linear-gradient(180deg, var(--olive), #3f4634);
-  border-top: 2px solid rgb(231 221 199 / 0.5);
+  background:
+    linear-gradient(135deg, transparent 0 12%, rgb(196 184 168 / 0.18) 12% 14%, transparent 14%),
+    linear-gradient(180deg, #8a7a68 0%, var(--olive) 42%, #3a342c 100%);
+  border-top: 2px solid rgb(196 184 168 / 0.55);
+  clip-path: polygon(0 8%, 12% 0, 88% 0, 100% 10%, 100% 100%, 0 100%);
   transform: translateY(100%);
+  box-shadow: inset -3px 0 0 rgb(12 8 6 / 0.35);
+}
+
+.ewb__slab--2,
+.ewb__slab--4 {
+  clip-path: polygon(0 0, 90% 0, 100% 14%, 100% 100%, 0 100%, 0 12%);
+  height: 92%;
+}
+
+.ewb__slab--3 {
+  clip-path: polygon(4% 0, 96% 0, 100% 18%, 100% 100%, 0 100%, 0 16%);
+  height: 100%;
+}
+
+.ewb__slab--1,
+.ewb__slab--5 {
+  height: 86%;
 }
 
 .ewb[data-phase='raised'] .ewb__slab {
@@ -108,24 +137,24 @@
 }
 
 .ewb[data-phase='run'] .ewb__slab--1 {
-  animation: ewb-rise 280ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  animation: ewb-rise var(--ewb-slab-ms) cubic-bezier(0.2, 0.85, 0.25, 1) both;
   animation-delay: 0ms;
 }
 .ewb[data-phase='run'] .ewb__slab--2 {
-  animation: ewb-rise 280ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
-  animation-delay: 55ms;
+  animation: ewb-rise var(--ewb-slab-ms) cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  animation-delay: calc(var(--ewb-stagger-ms) * 1);
 }
 .ewb[data-phase='run'] .ewb__slab--3 {
-  animation: ewb-rise 280ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
-  animation-delay: 110ms;
+  animation: ewb-rise var(--ewb-slab-ms) cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  animation-delay: calc(var(--ewb-stagger-ms) * 2);
 }
 .ewb[data-phase='run'] .ewb__slab--4 {
-  animation: ewb-rise 280ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
-  animation-delay: 165ms;
+  animation: ewb-rise var(--ewb-slab-ms) cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  animation-delay: calc(var(--ewb-stagger-ms) * 3);
 }
 .ewb[data-phase='run'] .ewb__slab--5 {
-  animation: ewb-rise 280ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
-  animation-delay: 220ms;
+  animation: ewb-rise var(--ewb-slab-ms) cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  animation-delay: calc(var(--ewb-stagger-ms) * 4);
 }
 
 @keyframes ewb-rise {
@@ -183,7 +212,7 @@
 
 .ewb__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: color-mix(in srgb, var(--chakra) 28%, transparent);
 }
 
 .ewb__btn:hover:not(:disabled) {
