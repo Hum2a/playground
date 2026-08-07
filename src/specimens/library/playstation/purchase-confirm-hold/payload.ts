@@ -6,19 +6,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration:   [
-    "Hold button with determinate ring fill over 850ms.",
-    "Wire runPurchaseConfirmHold / resetPurchaseConfirmHold / replayPurchaseConfirmHold."
+  integration: [
+    'Store card CTA fills over 850ms; price and legal stay visible.',
+    'Wire runPurchaseConfirmHold / resetPurchaseConfirmHold / replayPurchaseConfirmHold.',
   ],
-  acceptance:   [
-    "Idle ring empty; holding fills clockwise",
-    "Release before 850ms cancels",
-    "Full hold confirms purchase",
-    "Reduced motion keeps threshold without ring sweep",
-    "Run performs deterministic confirm cycle"
+  acceptance: [
+    'Store card shows price and legal line — not a DualSense trigger silhouette',
+    'Hold fills the CTA bar over 850ms; early release cancels',
+    'Confirm swaps CTA label to Purchased · $19.99',
+    'Live region announces purchase confirm or cancel',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#0B0F14;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:380px;background:#0B0F14;">
   {{specimen}}
 </div>`.trim(),
   files: { html, css, js },

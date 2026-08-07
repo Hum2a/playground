@@ -51,61 +51,73 @@ function setButtons(on) {
 }
 
 const HOLD_MS = 850
-const CIRC = 263.89
+const TICK_MS = 50
 let holding = false
 
-function setRing(pct) {
+function setFill(pct) {
   const fill = document.querySelector('[data-pch-fill]')
-  if (fill) fill.style.strokeDashoffset = String(CIRC * (1 - pct / 100))
+  if (fill) fill.style.width = `${pct}%`
 }
 
 function resetVisual() {
   rootEl()?.setAttribute('data-phase', 'idle')
-  setRing(0)
+  setFill(0)
+  const label = document.querySelector('[data-pch-label]')
+  if (label) label.textContent = 'Hold to buy · $19.99'
   setStatus('IDLE')
-  setHint('Hold to confirm purchase.')
+  setHint('Hold the store CTA to confirm.')
   setLive('Purchase hold idle.')
 }
 
 function confirm() {
   holding = false
   rootEl()?.setAttribute('data-phase', 'confirmed')
-  setRing(100)
+  setFill(100)
+  const label = document.querySelector('[data-pch-label]')
+  if (label) label.textContent = 'Purchased · $19.99'
   setStatus('PURCHASED')
   setHint('Purchase confirmed.')
-  setLive('Purchase confirmed.')
+  setLive('Purchase confirmed for $19.99.')
 }
 
 function startHold() {
   if (holding || busy) return
+  if (rootEl()?.getAttribute('data-phase') === 'confirmed') return
   holding = true
   rootEl()?.setAttribute('data-phase', 'holding')
   setStatus('HOLDING')
+  setLive('Holding store purchase CTA.')
   setButtons(false)
   const start = performance.now()
   const tick = () => {
     if (!holding) return
     const elapsed = performance.now() - start
     const pct = Math.min((elapsed / HOLD_MS) * 100, 100)
-    setRing(pct)
+    setFill(pct)
     if (elapsed >= HOLD_MS) {
       confirm()
       busy = false
       setButtons(true)
       return
     }
-    later(50, tick)
+    later(TICK_MS, tick)
   }
   if (prefersReducedMotion()) {
-    later(HOLD_MS, () => { if (holding) confirm(); busy = false; setButtons(true) })
-  } else tick()
+    later(HOLD_MS, () => {
+      if (holding) confirm()
+      busy = false
+      setButtons(true)
+    })
+  } else {
+    tick()
+  }
 }
 
 function cancelHold() {
   if (!holding) return
   holding = false
   rootEl()?.setAttribute('data-phase', 'cancelled')
-  setRing(0)
+  setFill(0)
   setStatus('CANCELLED')
   setLive('Purchase cancelled.')
   later(200, resetVisual)
@@ -136,9 +148,14 @@ export async function replayPurchaseConfirmHold() {
 }
 
 document.querySelector('[data-pch-purchase]')?.addEventListener('pointerdown', (e) => {
-  if (e.button === 0 && !busy && rootEl()?.getAttribute('data-phase') !== 'confirmed') startHold()
+  if (e.button === 0 && !busy && rootEl()?.getAttribute('data-phase') !== 'confirmed') {
+    startHold()
+  }
 })
 document.querySelector('[data-pch-purchase]')?.addEventListener('pointerup', () => {
+  if (holding && rootEl()?.getAttribute('data-phase') !== 'confirmed') cancelHold()
+})
+document.querySelector('[data-pch-purchase]')?.addEventListener('pointercancel', () => {
   if (holding && rootEl()?.getAttribute('data-phase') !== 'confirmed') cancelHold()
 })
 

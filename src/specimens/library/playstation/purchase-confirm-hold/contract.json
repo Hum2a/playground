@@ -9,10 +9,28 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "holdMs": 850,
+    "tickMs": 50
+  },
+  "copy": {
+    "price": "$19.99",
+    "title": "Title Pack",
+    "legal": "Non-refundable digital licence · Instant delivery · Study demo"
+  },
+  "api": {
+    "run": "runPurchaseConfirmHold()",
+    "reset": "resetPurchaseConfirmHold()",
+    "replay": "replayPurchaseConfirmHold()"
+  },
+  "acceptance": [
+    "Store card shows price and legal line — not a DualSense trigger silhouette",
+    "Hold fills the CTA bar over 850ms; early release cancels",
+    "Confirm swaps CTA label to Purchased · $19.99",
+    "Live region announces purchase confirm or cancel"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "850ms hold threshold preserved; CTA fill transition removed"
   }
 }

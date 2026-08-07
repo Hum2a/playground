@@ -1,18 +1,22 @@
 <div class="pch" data-pch data-phase="idle">
   <p class="pch__live" data-pch-live aria-live="polite">Purchase hold idle.</p>
   <p class="pch__system">STORE // CONFIRM HOLD</p>
+
   <div class="pch__stage">
-    <button type="button" class="pch__purchase" data-pch-purchase aria-label="Hold to confirm purchase">
-      <svg viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">
-        <circle class="pch__ring-track" cx="50" cy="50" r="42" fill="none" stroke-width="5" />
-        <circle class="pch__ring-fill" cx="50" cy="50" r="42" fill="none" stroke-width="5"
-          stroke-linecap="round" transform="rotate(-90 50 50)" data-pch-fill />
-      </svg>
-      <span class="pch__label">HOLD</span>
-    </button>
+    <article class="pch__card">
+      <p class="pch__eyebrow">Digital edition</p>
+      <h2 class="pch__title">Title Pack</h2>
+      <p class="pch__price" data-pch-price>$19.99</p>
+      <p class="pch__legal">Non-refundable digital licence · Instant delivery · Study demo</p>
+      <button type="button" class="pch__cta" data-pch-purchase aria-label="Hold to confirm purchase">
+        <span class="pch__cta-fill" data-pch-fill aria-hidden="true"></span>
+        <span class="pch__cta-label" data-pch-label>Hold to buy · $19.99</span>
+      </button>
+    </article>
     <p class="pch__status" data-pch-status>IDLE</p>
-    <p class="pch__hint" data-pch-hint>Hold to confirm purchase.</p>
+    <p class="pch__hint" data-pch-hint>Hold the store CTA to confirm.</p>
   </div>
+
   <div class="pch__controls">
     <button type="button" class="pch__btn pch__btn--primary" data-pch-run>Run</button>
     <button type="button" class="pch__btn" data-pch-replay>Replay</button>

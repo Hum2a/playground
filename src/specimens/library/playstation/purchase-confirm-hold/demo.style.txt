@@ -1,18 +1,18 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3389 Purchase Confirm Hold — portable contract. */
 
 .pch {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --hold-ms: 850ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   width: 100%;
-  min-height: 360px;
+  min-height: 380px;
   padding: 0.85rem 0.7rem;
   background: var(--ps-ink);
   color: var(--ps-chalk);
@@ -116,69 +116,119 @@
   cursor: default;
 }
 
-.pch__purchase {
-  position: relative;
-  width: 100px;
-  height: 100px;
+/* Store product CTA — not a DualSense trigger twin. */
+.pch__card {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 280px;
+  padding: 1rem 0.95rem 0.9rem;
+  border: 1px solid rgb(46 144 255 / 0.4);
+  background:
+    linear-gradient(180deg, rgb(46 144 255 / 0.1), transparent 42%),
+    rgb(244 246 248 / 0.03);
+}
+
+.pch__eyebrow {
   margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ps-sky);
+}
+
+.pch__title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: var(--ps-chalk);
+}
+
+.pch__price {
+  margin: 0.15rem 0 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--ps-blue);
+}
+
+.pch__legal {
+  margin: 0 0 0.55rem;
+  font-size: 0.58rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: rgb(244 246 248 / 0.5);
+}
+
+.pch__cta {
+  position: relative;
+  appearance: none;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--ps-blue);
+  background: rgb(11 15 20 / 0.9);
+  color: var(--ps-chalk);
+  font: inherit;
   cursor: pointer;
   touch-action: none;
 }
 
-.pch__purchase:focus-visible {
+.pch__cta:focus-visible {
   outline: 2px solid var(--ps-blue);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
-.pch__ring-track { stroke: rgb(244 246 248 / 0.15); }
-.pch__ring-fill {
-  stroke: var(--ps-blue);
-  stroke-dasharray: 263.89;
-  stroke-dashoffset: 263.89;
-  transition: stroke-dashoffset 50ms linear;
-}
-
-.pch__label {
+.pch__cta-fill {
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: var(--ps-chalk);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--ps-blue);
+  opacity: 0.85;
+  transition: width 50ms linear;
   pointer-events: none;
 }
 
-.pch[data-phase='confirmed'] .pch__label {
-  color: var(--ps-blue);
+.pch__cta-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pch[data-phase='holding'] .pch__cta {
+  border-color: var(--ps-sky);
+}
+
+.pch[data-phase='confirmed'] .pch__cta {
+  border-color: var(--ps-sky);
+  background: rgb(46 144 255 / 0.2);
+}
+
+.pch[data-phase='confirmed'] .pch__cta-label {
+  color: var(--ps-chalk);
+}
+
+.pch[data-phase='confirmed'] .pch__price {
+  color: var(--ps-sky);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pch__ring-track,
-  .pch__ring-fill,
-  .pch__pulse,
-  .pch__wave,
-  .pch__sync-beam,
-  .pch__morph,
-  .pch__fill,
-  .pch__notch-glow {
+  .pch__cta-fill {
     transition: none !important;
-    animation: none !important;
   }
 }
 
-html[data-force-reduced-motion='true'] .pch__ring-track,
-html[data-force-reduced-motion='true'] .pch__ring-fill,
-html[data-force-reduced-motion='true'] .pch__pulse,
-html[data-force-reduced-motion='true'] .pch__wave,
-html[data-force-reduced-motion='true'] .pch__sync-beam,
-html[data-force-reduced-motion='true'] .pch__morph,
-html[data-force-reduced-motion='true'] .pch__fill,
-html[data-force-reduced-motion='true'] .pch__notch-glow {
+[data-force-reduced-motion='true'] .pch__cta-fill {
   transition: none !important;
-  animation: none !important;
 }
