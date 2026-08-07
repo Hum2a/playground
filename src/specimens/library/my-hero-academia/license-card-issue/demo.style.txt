@@ -6,6 +6,9 @@
   --paper: #f4f7fa;
   --accent: #ff4d35;
   --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --photo-ms: 320;
+  --data-ms: 400;
+  --seal-ms: 400;
 
   box-sizing: border-box;
   display: flex;
@@ -68,7 +71,7 @@
 .lci[data-phase='data'] .lci__photo,
 .lci[data-phase='seal'] .lci__photo,
 .lci[data-phase='done'] .lci__photo {
-  animation: lci-pop 320ms var(--ease) forwards;
+  animation: lci-pop calc(var(--photo-ms) * 1ms) var(--ease) forwards;
 }
 
 .lci[data-phase='done'] .lci__photo {
@@ -77,7 +80,10 @@
 }
 
 @keyframes lci-pop {
-  to { opacity: 1; transform: scale(1); }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .lci__data {
@@ -123,22 +129,42 @@
 }
 
 @keyframes lci-slide {
-  to { opacity: 1; transform: translateX(0); }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .lci__seal {
   position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  width: 48px;
-  height: 48px;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  width: 52px;
+  height: 52px;
   opacity: 0;
-  transform: scale(0.3) rotate(-20deg);
+  transform: scale(0.25) rotate(-18deg);
+}
+
+.lci__seal-outer {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--accent);
+  clip-path: polygon(
+    50% 0%,
+    93% 7%,
+    100% 50%,
+    93% 93%,
+    50% 100%,
+    7% 93%,
+    0% 50%,
+    7% 7%
+  );
+  opacity: 0.35;
 }
 
 .lci__seal-ring {
   position: absolute;
-  inset: 0;
+  inset: 4px;
   border: 3px solid var(--accent);
   border-radius: 50%;
 }
@@ -149,24 +175,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.48rem;
+  font-size: 0.5rem;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   color: var(--accent);
 }
 
 .lci[data-phase='seal'] .lci__seal,
 .lci[data-phase='done'] .lci__seal {
-  animation: lci-seal 400ms var(--ease) forwards;
+  animation: lci-seal calc(var(--seal-ms) * 1ms) var(--ease) forwards;
 }
 
 .lci[data-phase='done'] .lci__seal {
   opacity: 1;
-  transform: scale(1) rotate(0);
+  transform: scale(1) rotate(-6deg);
 }
 
 @keyframes lci-seal {
-  to { opacity: 1; transform: scale(1) rotate(0); }
+  0% {
+    opacity: 0;
+    transform: scale(0.25) rotate(-18deg);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.12) rotate(4deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-6deg);
+  }
 }
 
 .lci__btn {
@@ -225,6 +264,10 @@
     transform: none;
   }
 
+  .lci[data-phase='done'] .lci__seal {
+    transform: rotate(-6deg);
+  }
+
   .lci[data-phase='done'] .lci__data {
     opacity: 1;
   }
@@ -235,6 +278,10 @@
 [data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__seal {
   opacity: 1;
   transform: none;
+}
+
+[data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__seal {
+  transform: rotate(-6deg);
 }
 
 [data-force-reduced-motion='true'] .lci[data-phase='done'] .lci__data {

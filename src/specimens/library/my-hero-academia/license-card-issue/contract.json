@@ -1,12 +1,65 @@
 {
   "name": "license-card-issue",
-  "ref": "SPX-2195",
-  "catalogue": { "mha": "MHA-221" },
-  "stages": ["photo", "data", "seal"],
+  "intent": "Blank credential constructs through photo frame, data lines, and VALID seal stamp.",
+  "catalogue": {
+    "mha": "MHA-221",
+    "ref": "SPX-2195"
+  },
+  "copy": {
+    "id": "ID — H-2847",
+    "class": "CLASS — PROVISIONAL",
+    "rank": "RANK — TRAINEE",
+    "seal": "VALID",
+    "issue": "ISSUE",
+    "reset": "RESET",
+    "liveBlank": "Blank credential slot.",
+    "liveConstruct": "Constructing credential…",
+    "liveData": "Printing data fields…",
+    "liveSeal": "Applying seal…",
+    "liveDone": "Provisional license issued."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "phases": {
+    "order": ["idle", "photo", "data", "seal", "done"],
+    "photoMs": 320,
+    "dataMs": 400,
+    "sealMs": 400,
+    "totalMs": 1120
+  },
+  "geometry": {
+    "stageMaxWidthPx": 400,
+    "cardWidthPx": 220,
+    "cardMinHeightPx": 140,
+    "cardClipCornerPx": 12,
+    "photoWidthPx": 52,
+    "photoHeightPx": 62,
+    "sealSizePx": 52,
+    "sealRingInsetPx": 4,
+    "sealRingBorderPx": 3,
+    "sealOuterClip": "octagon (8-point scallop)",
+    "sealRestRotationDeg": -6
+  },
+  "api": {
+    "run": "runLicenseCardIssue()",
+    "reset": "resetLicenseCardIssue()",
+    "replay": "replayLicenseCardIssue()"
+  },
+  "reducedMotion": {
+    "behaviour": "Full card appears immediately without staged photo/data/seal construction"
+  },
+  "acceptance": [
+    "Idle: blank card slot; polite live region reads blank credential",
+    "ISSUE: photo frame pops in (320ms), then three data lines slide in (400ms staggered)",
+    "Seal phase: octagonal outer + circular ring stamp VALID with impact overshoot (400ms)",
+    "Done: ISSUE disabled; RESET shown; live announces provisional license issued",
+    "RESET clears card to idle and re-enables ISSUE",
+    "Reduced motion (prefers or data-force) skips staged construction",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Credential field strings and VALID seal geometry (octagon + ring) frozen in contract"
 }
