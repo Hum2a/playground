@@ -124,9 +124,9 @@
   border: 1.5px solid var(--olive);
   background: rgb(16 19 24 / 0.92);
   color: var(--off);
-  font-size: 0.65rem;
+  font-size: 0.5rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   cursor: pointer;
   opacity: 0;
   transform: translate(0, 0) scale(0.5);
@@ -141,15 +141,15 @@
 }
 
 .srm__sector--e {
-  transition-delay: 40ms;
+  transition-delay: var(--srm-stagger-ms);
 }
 
 .srm__sector--s {
-  transition-delay: 80ms;
+  transition-delay: calc(var(--srm-stagger-ms) * 2);
 }
 
 .srm__sector--w {
-  transition-delay: 120ms;
+  transition-delay: calc(var(--srm-stagger-ms) * 3);
 }
 
 .srm[data-phase='opening'] .srm__sector,

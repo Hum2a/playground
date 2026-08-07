@@ -4,7 +4,7 @@
  * iframe-safe; no storage / parent / network.
  */
 
-const OPEN_MS = 260
+const OPEN_MS = 280
 const SETTLE_MS = 40
 const TOTAL_MS = OPEN_MS + SETTLE_MS
 
@@ -77,20 +77,20 @@ function showOpen() {
   open = true
   rootEl()?.setAttribute('data-phase', 'open')
   setSectorsReachable(true)
-  setHubLabel('Close action menu')
+  setHubLabel('Close tool palette')
   setStatus('OPEN')
-  setHint('Four actions available.')
-  setLive('Menu open. Four actions available.')
+  setHint('Four tools available: CUT, BIND, SEAL, TRACK.')
+  setLive('Tool palette open. Four tools available.')
 }
 
 function resetVisual() {
   open = false
   rootEl()?.setAttribute('data-phase', 'closed')
   setSectorsReachable(false)
-  setHubLabel('Open action menu')
+  setHubLabel('Open tool palette')
   setStatus('CLOSED')
-  setHint('Press Run to open the radial menu.')
-  setLive('Menu closed.')
+  setHint('Press Run to open the tool palette.')
+  setLive('Tool palette closed.')
 }
 
 /**
@@ -156,10 +156,12 @@ function bindUi() {
     if (open) resetShurikenRadialMenu()
     else void runShurikenRadialMenu()
   })
-  sectors().forEach((sector, i) => {
+  sectors().forEach((sector) => {
     sector.addEventListener('click', () => {
       if (busy || !open) return
-      setLive(`Action ${i + 1} selected. Menu closing.`)
+      const tool = sector.getAttribute('data-tool') || sector.textContent || 'TOOL'
+      setStatus(tool)
+      setLive(`Tool ${tool} selected. Palette closing.`)
       resetShurikenRadialMenu()
     })
   })

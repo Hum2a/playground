@@ -8,7 +8,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×380+).',
-    'Import demo.css verbatim; freeze openMs 260 / radius 3.6rem / anglesDeg [0,90,180,270] / sectorCount 4 from contract.json.',
+    'Import demo.css verbatim; freeze openMs 280 / radiusRem 3.6 / anglesDeg [0,90,180,270] / sectorCount 4 from contract.json.',
     'Wire runShurikenRadialMenu / resetShurikenRadialMenu / replayShurikenRadialMenu.',
     'Honour both reduced-motion triggers — sectors open immediately.',
   ],

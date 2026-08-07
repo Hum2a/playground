@@ -1,28 +1,28 @@
 <div class="srm" data-srm data-phase="closed">
   <p class="srm__live" data-srm-live aria-live="polite">
-    Menu closed.
+    Tool palette closed.
   </p>
 
-  <p class="srm__system">MENU // RADIAL</p>
+  <p class="srm__system">TOOLS // SHURIKEN</p>
 
   <div class="srm__stage" data-srm-stage>
     <div class="srm__wheel" data-srm-wheel>
-      <button type="button" class="srm__hub" data-srm-hub aria-label="Open action menu">
+      <button type="button" class="srm__hub" data-srm-hub aria-label="Open tool palette">
         <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
           <path fill="currentColor" d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" />
         </svg>
       </button>
 
       <div class="srm__sectors" data-srm-sectors aria-hidden="true">
-        <button type="button" class="srm__sector srm__sector--n" data-srm-sector tabindex="-1" aria-label="Action north">N</button>
-        <button type="button" class="srm__sector srm__sector--e" data-srm-sector tabindex="-1" aria-label="Action east">E</button>
-        <button type="button" class="srm__sector srm__sector--s" data-srm-sector tabindex="-1" aria-label="Action south">S</button>
-        <button type="button" class="srm__sector srm__sector--w" data-srm-sector tabindex="-1" aria-label="Action west">W</button>
+        <button type="button" class="srm__sector srm__sector--n" data-srm-sector data-tool="CUT" tabindex="-1" aria-label="Tool CUT">CUT</button>
+        <button type="button" class="srm__sector srm__sector--e" data-srm-sector data-tool="BIND" tabindex="-1" aria-label="Tool BIND">BIND</button>
+        <button type="button" class="srm__sector srm__sector--s" data-srm-sector data-tool="SEAL" tabindex="-1" aria-label="Tool SEAL">SEAL</button>
+        <button type="button" class="srm__sector srm__sector--w" data-srm-sector data-tool="TRACK" tabindex="-1" aria-label="Tool TRACK">TRACK</button>
       </div>
     </div>
 
     <p class="srm__status" data-srm-status>CLOSED</p>
-    <p class="srm__hint" data-srm-hint>Press Run to open the radial menu.</p>
+    <p class="srm__hint" data-srm-hint>Press Run to open the tool palette.</p>
   </div>
 
   <div class="srm__controls">
