@@ -31,5 +31,12 @@
     ],
     "behaviour": "Planes and alert appear immediately over host UI"
   },
-  "waveC": "Frozen diagonal plane angles; host UI scaffold visible under takeover"
+  "waveC": "Frozen diagonal plane angles; host UI scaffold visible under takeover",
+  "acceptance": [
+    "Two diagonal planes sweep at frozen -22deg / -14deg over 420ms",
+    "EMERGENCY takeover copy appears over visible host UI scaffold",
+    "Settle locks planes and alert at 1070ms total",
+    "Reduced motion (prefers or data-force) shows planes and alert immediately",
+    "No network; takeover clipped to host"
+  ]
 }
