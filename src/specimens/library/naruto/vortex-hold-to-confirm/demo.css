@@ -6,6 +6,8 @@
   --chakra: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --vhc-core-px: 108;
+  --vhc-ring-spin-ms: 900ms;
   --vhc-hold-ms: 900ms;
   --vhc-cancel-ms: 200ms;
   --vhc-confirm-pulse-ms: 180ms;

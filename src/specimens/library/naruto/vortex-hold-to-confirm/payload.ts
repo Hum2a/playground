@@ -8,7 +8,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze holdMs 900 / cancelMs 200 / confirmPulseMs 180 / ringCount 3 from contract.json (CSS: --vhc-hold-ms etc).',
+    'Import demo.css verbatim; freeze holdMs 900 / cancelMs 200 / confirmPulseMs 180 / ringCount 3 from contract.json.',
     'Wire runVortexHoldToConfirm / resetVortexHoldToConfirm / replayVortexHoldToConfirm.',
     'Core button supports real pointer and Space-key holds; early release must cancel.',
     'Honour both reduced-motion triggers — manual holds keep the threshold; Run/Replay resolve immediately.',

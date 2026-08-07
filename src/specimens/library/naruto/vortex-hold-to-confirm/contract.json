@@ -1,9 +1,12 @@
 {
   "name": "vortex-hold-to-confirm",
-  "intent": "Hold a central core 900ms to build three rotating rings; early release cancels — never confirms before threshold.",
-  "catalogue": { "nr": "NR-139", "ref": "SPX-2482" },
+  "intent": "Hold builds three concentric rotating rings over holdMs 900; early release cancels in cancelMs 200; full hold confirms.",
+  "catalogue": {
+    "nr": "NR-139",
+    "ref": "SPX-2482"
+  },
   "copy": {
-    "system": "HOLD // VORTEX",
+    "system": "HOLD // VORTEX CONFIRM",
     "idle": "IDLE",
     "holding": "HOLDING",
     "cancelled": "CANCELLED",
@@ -11,12 +14,18 @@
   },
   "geometry": {
     "ringCount": 3,
-    "corePx": 108
+    "corePx": 108,
+    "ringRadiiPx": [
+      52,
+      72,
+      94
+    ]
   },
   "timing": {
     "holdMs": 900,
     "cancelMs": 200,
-    "confirmPulseMs": 180
+    "confirmPulseMs": 180,
+    "ringSpinMs": 900
   },
   "colours": {
     "ink": "#070B0E",
@@ -35,16 +44,17 @@
     "--vhc-hold-ms",
     "--vhc-cancel-ms",
     "--vhc-confirm-pulse-ms",
-    "--vhc-ring-count"
+    "--vhc-ring-count",
+    "--vhc-core-px",
+    "--vhc-ring-spin-ms"
   ],
   "reducedMotion": {
-    "behaviour": "Manual holds still require holdMs 900 but skip rotating rings; Run/Replay resolve immediately to CONFIRMED"
+    "behaviour": "Manual holds still require 900ms without ring spin; Run auto-confirms immediately"
   },
   "acceptance": [
-    "Early release before holdMs 900 never confirms — status CANCELLED and rings retreat in cancelMs 200",
-    "Full hold of holdMs 900 builds ringCount 3 then CONFIRMED with confirmPulseMs 180",
-    "CSS exposes --vhc-hold-ms / --vhc-cancel-ms / --vhc-confirm-pulse-ms matching timing consts",
-    "Replay resets to IDLE before another hold cycle",
-    "Reduced motion (prefers or data-force) keeps the 900ms threshold on manual hold; Run/Replay resolve immediately"
+    "Early release before holdMs 900 never reaches CONFIRMED (cancelMs 200 unwind)",
+    "Full hold builds exactly 3 rings then CONFIRMED after confirmPulseMs 180",
+    "Run auto-hold uses the same holdMs 900 threshold",
+    "Reduced motion (prefers or data-force): Run jumps to CONFIRMED; manual holds skip spin but keep threshold"
   ]
 }
