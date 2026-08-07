@@ -146,3 +146,6 @@ function bindUi() {
 
 bindUi()
 resetWaterWavePageTransition()
+requestAnimationFrame(() => {
+  void runWaterWavePageTransition()
+})

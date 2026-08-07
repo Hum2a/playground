@@ -8,7 +8,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze totalMs 650 / swapAtMs 320 / settleMs 150 / startX -108% from contract.json.',
+    'Import demo.css verbatim; freeze totalMs 650 / swapAtMs 320 / settleMs 150 / clipSteps (2 polygons) from contract.json.',
     'Wire runWaterWavePageTransition / resetWaterWavePageTransition / replayWaterWavePageTransition.',
     'Content swap fires while the wave fully covers the stage; honour both reduced-motion triggers.',
   ],
