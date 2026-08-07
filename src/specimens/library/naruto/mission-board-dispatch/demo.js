@@ -3,8 +3,8 @@
  * iframe-safe; no storage / parent / network.
  */
 
-const TRAVEL_MS = 260
-const SETTLE_MS = 200
+const TRAVEL_MS = 280
+const SETTLE_MS = 160
 const TOTAL_MS = TRAVEL_MS + SETTLE_MS // ~460ms principal sequence
 
 let busy = false
@@ -77,7 +77,9 @@ function measureOffset() {
 
 function applyOffset() {
   const card = cardEl()
-  const { dx, dy } = measureOffset()
+  const measured = measureOffset()
+  const dx = Number.isFinite(measured.dx) && measured.dx !== 0 ? measured.dx : TRAVEL_DX_PX
+  const dy = Number.isFinite(measured.dy) ? measured.dy : TRAVEL_DY_PX
   card?.style.setProperty('--mbd-dx', `${dx}px`)
   card?.style.setProperty('--mbd-dy', `${dy}px`)
 }
