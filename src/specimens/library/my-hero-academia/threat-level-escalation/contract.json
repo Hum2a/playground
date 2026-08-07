@@ -32,5 +32,12 @@
     ],
     "behaviour": "Jump directly to LEVEL 5 CRITICAL plate"
   },
-  "waveC": "Discrete plate geometry per level; CRITICAL halftone maximal without strobing"
+  "waveC": "Discrete plate geometry per level; CRITICAL halftone maximal without strobing",
+  "acceptance": [
+    "Five discrete threat plates escalate LOW → CRITICAL at 200ms per step",
+    "Each level uses unique frozen plate geometry (rect, angled, hatch, ticks, halftone)",
+    "CRITICAL maximal halftone plate holds without strobing",
+    "Reduced motion (prefers or data-force) jumps to LEVEL 5 CRITICAL immediately",
+    "No network; plates clipped to host"
+  ]
 }
