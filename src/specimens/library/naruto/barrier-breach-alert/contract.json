@@ -2,12 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/barrier-breach-alert.schema.json",
   "title": "BarrierBreachAlert",
-  "description": "An intact perimeter fractures at one fixed point, flashing the field and edge red with a bounded alarm pulse.",
+  "description": "Single −18° fracture with one alarm beat, then BREACHED latch.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "name",
+    "fractureDeg",
     "alarmMs",
+    "flashCount",
     "colours",
     "reducedMotion"
   ],
@@ -16,13 +18,17 @@
       "type": "string",
       "const": "barrier-breach-alert"
     },
+    "fractureDeg": {
+      "type": "number",
+      "const": -18
+    },
     "alarmMs": {
       "type": "number",
-      "const": 700
+      "const": 280
     },
-    "settleMs": {
+    "flashCount": {
       "type": "number",
-      "const": 60
+      "const": 1
     },
     "colours": {
       "type": "object",
@@ -31,9 +37,10 @@
         "ink",
         "parchment",
         "chakra",
-        "alert",
         "olive",
-        "off"
+        "off",
+        "alert",
+        "danger"
       ],
       "properties": {
         "ink": {
@@ -48,10 +55,6 @@
           "type": "string",
           "const": "#3DCEA8"
         },
-        "alert": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
         "olive": {
           "type": "string",
           "const": "#1A6B58"
@@ -59,6 +62,14 @@
         "off": {
           "type": "string",
           "const": "#D7F5EC"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#D94A38"
+        },
+        "danger": {
+          "type": "string",
+          "const": "#D94A38"
         }
       }
     },
@@ -74,18 +85,6 @@
           "const": true
         }
       }
-    },
-    "fractureDeg": {
-      "type": "number",
-      "const": -18
-    },
-    "fractureCount": {
-      "type": "number",
-      "const": 1
-    },
-    "noLoopFlash": {
-      "type": "boolean",
-      "const": true
     }
   }
 }

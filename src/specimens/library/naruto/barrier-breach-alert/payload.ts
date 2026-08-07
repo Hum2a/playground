@@ -7,22 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; barrier starts intact/secure, then fractures at the fixed breach point on trigger.',
-    'Wire runBarrierBreachAlert / resetBarrierBreachAlert / replayBarrierBreachAlert.',
-    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
+    'Mount with preview.scaffold host.',
+    'Import demo.css verbatim; freeze fractureDeg −18 / alarm 280ms / flashCount 1 from contract.json.',
+    'Wire runBarrierBreachAlert / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Barrier starts fully intact (SECURE) with a filled protected field',
-    'Breach fractures at one exact fixed point on the perimeter, not a random one',
-    'Field and edge recolour to the alert colour once breached; a bounded (non-looping) alarm flash plays once',
-    'Idle, breaching, and resolved states are visually distinct',
-    'Replay resets to the intact SECURE state before rerunning',
-    'Reduced motion shows the breached/alert state immediately with no flash animation',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Single −18° fracture appears once; no looping flash',
+    'Alert latches BREACHED after 280ms alarm beat',
+    'Replay returns to SECURE before rerunning',
+    'Reduced motion shows BREACHED with static fracture immediately',
+    'preview.scaffold hosts the overlay',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),

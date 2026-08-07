@@ -5,7 +5,7 @@ export const barrierBreachAlert: Specimen = {
   ref: 'SPX-2525',
   title: 'Barrier Breach Alert',
   blurb:
-    'An intact perimeter fractures at one exact point, flashing the breach location red while the whole field pulses an alert.',
+    'A barrier takes a single −18° fracture and one alarm beat, then latches BREACHED with no loop flash.',
   origin: {
     project: 'Original',
     surface: 'Naruto / barrier-interfaces — perimeter failure overlays',
@@ -25,12 +25,14 @@ export const barrierBreachAlert: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the fracture and alert state appear immediately without the pulse animation.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, BREACHED shows immediately with a static −18° fracture.',
   },
-  acceptance: [
-    'Exactly one fracture at frozen angle; alert latches',
-    'No looping flash after latch',
-    'Reduced motion shows fracture/alert without pulse',
+    acceptance: [
+    'Single −18° fracture appears once; no looping flash',
+    'Alert latches BREACHED after 280ms alarm beat',
+    'Replay returns to SECURE before rerunning',
+    'Reduced motion shows BREACHED with static fracture immediately',
+    'preview.scaffold hosts the overlay',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

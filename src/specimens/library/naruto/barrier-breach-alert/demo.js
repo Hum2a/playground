@@ -3,7 +3,9 @@
  * iframe-safe; no storage / parent / network.
  */
 
-const ALARM_MS = 700
+const ALARM_MS = 280
+const FRACTURE_DEG = -18
+const FLASH_COUNT = 1
 const SETTLE_MS = 60
 const TOTAL_MS = ALARM_MS + SETTLE_MS
 
@@ -140,3 +142,6 @@ function bindUi() {
 void TOTAL_MS
 bindUi()
 resetBarrierBreachAlert()
+
+void FRACTURE_DEG
+void FLASH_COUNT
