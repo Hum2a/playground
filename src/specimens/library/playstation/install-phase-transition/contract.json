@@ -9,10 +9,25 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "downloadSteps": 14,
+    "installSteps": 14,
+    "stepMs": 40,
+    "phaseMorphMs": 320
+  },
+  "api": {
+    "run": "runInstallPhaseTransition()",
+    "reset": "resetInstallPhaseTransition()",
+    "replay": "replayInstallPhaseTransition()"
+  },
+  "acceptance": [
+    "Download phase fills a circular ring on the same card",
+    "Phase label changes DOWNLOAD → INSTALL; geometry morphs ring → four install bars",
+    "Install continues on bars without resetting the card",
+    "Done state shows READY; reduced motion jumps to installed"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "Run jumps directly to READY / installed with bars full"
   }
 }

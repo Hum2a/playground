@@ -1,21 +1,29 @@
 <div class="ipt" data-ipt data-phase="download" data-progress="0">
   <p class="ipt__live" data-ipt-live aria-live="polite">Download phase idle.</p>
   <p class="ipt__system">INSTALL // PHASE TRANSITION</p>
+
   <div class="ipt__stage">
     <div class="ipt__card">
       <p class="ipt__phase" data-ipt-phase>DOWNLOAD</p>
-      <div class="ipt__ring-wrap" aria-hidden="true">
-        <svg viewBox="0 0 100 100" width="100" height="100">
+      <div class="ipt__geom" data-ipt-geom aria-hidden="true">
+        <svg class="ipt__ring" viewBox="0 0 100 100" width="96" height="96">
           <circle class="ipt__ring-track" cx="50" cy="50" r="40" fill="none" stroke-width="5" />
           <circle class="ipt__ring-fill" cx="50" cy="50" r="40" fill="none" stroke-width="5"
             stroke-linecap="round" transform="rotate(-90 50 50)" data-ipt-fill />
         </svg>
+        <div class="ipt__bars" data-ipt-bars>
+          <span class="ipt__bar" data-ipt-bar="0"></span>
+          <span class="ipt__bar" data-ipt-bar="1"></span>
+          <span class="ipt__bar" data-ipt-bar="2"></span>
+          <span class="ipt__bar" data-ipt-bar="3"></span>
+        </div>
       </div>
       <p class="ipt__pct" data-ipt-pct>0%</p>
     </div>
     <p class="ipt__status" data-ipt-status>DOWNLOADING</p>
-    <p class="ipt__hint" data-ipt-hint>Press Run for phase transition.</p>
+    <p class="ipt__hint" data-ipt-hint>Run morphs download ring → install bars.</p>
   </div>
+
   <div class="ipt__controls">
     <button type="button" class="ipt__btn ipt__btn--primary" data-ipt-run>Run</button>
     <button type="button" class="ipt__btn" data-ipt-replay>Replay</button>

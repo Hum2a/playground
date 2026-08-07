@@ -8,8 +8,15 @@
   --olive: #6a5e4e;
   --off: #f7f2e8;
   --tpcf-snap-ms: 260ms;
+  --tpcf-link-ms: 180ms;
+  --tpcf-lead-top: 14%;
+  --tpcf-lead-left: 50%;
+  --tpcf-scout-top: 78%;
+  --tpcf-scout-left: 24%;
+  --tpcf-support-top: 78%;
+  --tpcf-support-left: 76%;
+  --tpcf-snap-ms: 260ms;
   --tpcf-link-ms: 200ms;
-  /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -58,7 +65,7 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(184 50 40 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -116,8 +123,8 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   transition:
-    top 260ms cubic-bezier(0.32, 0.1, 0.2, 1.2),
-    left 260ms cubic-bezier(0.32, 0.1, 0.2, 1.2),
+    top var(--tpcf-snap-ms) cubic-bezier(0.32, 0.1, 0.2, 1.2),
+    left var(--tpcf-snap-ms) cubic-bezier(0.32, 0.1, 0.2, 1.2),
     color 160ms ease-out,
     border-color 160ms ease-out;
   transform: translate(-50%, -50%);
@@ -139,21 +146,24 @@
 }
 
 .tpcf[data-phase='active'] .tpcf__node--lead,
+.tpcf[data-phase='linking'] .tpcf__node--lead,
 .tpcf[data-phase='done'] .tpcf__node--lead {
-  top: 14%;
-  left: 50%;
+  top: var(--tpcf-lead-top);
+  left: var(--tpcf-lead-left);
 }
 
 .tpcf[data-phase='active'] .tpcf__node--scout,
+.tpcf[data-phase='linking'] .tpcf__node--scout,
 .tpcf[data-phase='done'] .tpcf__node--scout {
-  top: 78%;
-  left: 24%;
+  top: var(--tpcf-scout-top);
+  left: var(--tpcf-scout-left);
 }
 
 .tpcf[data-phase='active'] .tpcf__node--support,
+.tpcf[data-phase='linking'] .tpcf__node--support,
 .tpcf[data-phase='done'] .tpcf__node--support {
-  top: 78%;
-  left: 76%;
+  top: var(--tpcf-support-top);
+  left: var(--tpcf-support-left);
 }
 
 .tpcf[data-phase='done'] .tpcf__node {
@@ -167,10 +177,10 @@
 
 @keyframes tpcf-pulse {
   0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--chakra) 45%, transparent);
+    box-shadow: 0 0 0 0 rgb(184 50 40 / 0.45);
   }
   100% {
-    box-shadow: 0 0 0 10px color-mix(in srgb, var(--chakra) 45%, transparent);
+    box-shadow: 0 0 0 10px rgb(184 50 40 / 0.45);
   }
 }
 
@@ -217,7 +227,7 @@
 
 .tpcf__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(184 50 40 / 0.45);
 }
 
 .tpcf__btn:hover:not(:disabled) {

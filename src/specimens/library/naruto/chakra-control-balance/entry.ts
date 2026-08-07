@@ -5,7 +5,7 @@ export const chakraControlBalance: Specimen = {
   ref: 'SPX-2358',
   title: 'Chakra Control Balance',
   blurb:
-    'Dual inputs drive a needle into a ±0.08 centre band; hold 380ms to lock balanced control.',
+    'Dual chakra inputs draw a needle into a ±0.08 centre band (wobble 0.035) and lock.',
   origin: {
     project: 'Original',
     surface: 'Naruto / chakra training — control balance',
@@ -25,12 +25,14 @@ export const chakraControlBalance: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Chakra Control Balance state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the needle appears LOCKED in the centre band immediately.',
   },
-  acceptance: [
-    'Needle must stay inside ±band 0.08 for lockHoldMs 380 to reach LOCKED',
-    'Wobble uses halfLifeMs 90 before settling; lock pulse is lockPulseMs 150 one-shot',
-    'Leaving the band before lock cancels the hold timer',
+    acceptance: [
+    'Needle must settle within lock threshold ±0.08 and hold lockHoldMs 380',
+    'Auto-run applies frozen wobble amplitude 0.035 while seeking centre',
+    'Resolved latches LOCKED with lock pulse 150ms',
+    'Replay restores unbalanced needle before rerunning',
+    'Reduced motion shows LOCKED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

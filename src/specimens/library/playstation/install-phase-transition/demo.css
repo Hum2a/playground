@@ -1,18 +1,18 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3357 Install Phase Transition — portable contract. */
 
 .ipt {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --phase-ms: 320ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   width: 100%;
-  min-height: 340px;
+  min-height: 360px;
   padding: 0.85rem 0.7rem;
   background: var(--ps-ink);
   color: var(--ps-chalk);
@@ -118,38 +118,112 @@
 
 .ipt__card {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.55rem;
   justify-items: center;
-  padding: 0.75rem;
-  border: 1px solid rgb(46 144 255 / 0.3);
   width: 100%;
-  max-width: 200px;
+  max-width: 220px;
+  padding: 0.9rem 0.85rem;
+  border: 1px solid rgb(46 144 255 / 0.35);
+  background: rgb(244 246 248 / 0.03);
+  transition: border-color 280ms ease, border-radius 320ms ease;
+}
+
+.ipt[data-phase='install'] .ipt__card,
+.ipt[data-phase='done'] .ipt__card {
+  border-color: var(--ps-sky);
+  border-radius: 2px;
 }
 
 .ipt__phase {
   margin: 0;
+  min-height: 1.1em;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   color: var(--ps-sky);
-  transition: color 280ms ease, opacity 280ms ease;
+  transition: color 280ms ease, letter-spacing 280ms ease;
 }
 
-.ipt[data-phase='install'] .ipt__phase,
-.ipt[data-phase='done'] .ipt__phase {
+.ipt[data-phase='install'] .ipt__phase {
   color: var(--ps-blue);
+  letter-spacing: 0.22em;
 }
 
-.ipt__ring-track { stroke: rgb(244 246 248 / 0.15); }
+.ipt[data-phase='done'] .ipt__phase {
+  color: var(--ps-chalk);
+}
+
+.ipt__geom {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+}
+
+.ipt__ring {
+  position: absolute;
+  inset: 0;
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+.ipt__ring-track {
+  stroke: rgb(244 246 248 / 0.15);
+}
+
 .ipt__ring-fill {
   stroke: var(--ps-blue);
   stroke-dasharray: 251.33;
   stroke-dashoffset: 251.33;
-  transition: stroke-dashoffset 40ms linear, stroke 280ms ease;
+  transition: stroke-dashoffset 40ms linear;
 }
 
-.ipt[data-phase='install'] .ipt__ring-fill {
-  stroke: var(--ps-sky);
+.ipt__bars {
+  position: absolute;
+  inset: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  align-items: end;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 320ms ease, transform 320ms ease;
+  pointer-events: none;
+}
+
+.ipt__bar {
+  display: block;
+  width: 100%;
+  height: 0%;
+  min-height: 0;
+  background: var(--ps-sky);
+  transition: height 60ms linear;
+}
+
+.ipt[data-phase='download'] .ipt__ring {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ipt[data-phase='download'] .ipt__bars {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.ipt[data-phase='install'] .ipt__ring,
+.ipt[data-phase='done'] .ipt__ring {
+  opacity: 0;
+  transform: scale(0.55);
+}
+
+.ipt[data-phase='install'] .ipt__bars,
+.ipt[data-phase='done'] .ipt__bars {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ipt[data-phase='done'] .ipt__bar {
+  background: var(--ps-blue);
 }
 
 .ipt__pct {
@@ -157,30 +231,31 @@
   font-size: 1rem;
   font-weight: 800;
   color: var(--ps-blue);
+  font-variant-numeric: tabular-nums;
+}
+
+.ipt[data-phase='install'] .ipt__pct {
+  color: var(--ps-sky);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ipt__ring-track,
+  .ipt__card,
+  .ipt__phase,
+  .ipt__ring,
   .ipt__ring-fill,
-  .ipt__pulse,
-  .ipt__wave,
-  .ipt__sync-beam,
-  .ipt__morph,
-  .ipt__fill,
-  .ipt__notch-glow {
+  .ipt__bars,
+  .ipt__bar {
     transition: none !important;
     animation: none !important;
   }
 }
 
-html[data-force-reduced-motion='true'] .ipt__ring-track,
-html[data-force-reduced-motion='true'] .ipt__ring-fill,
-html[data-force-reduced-motion='true'] .ipt__pulse,
-html[data-force-reduced-motion='true'] .ipt__wave,
-html[data-force-reduced-motion='true'] .ipt__sync-beam,
-html[data-force-reduced-motion='true'] .ipt__morph,
-html[data-force-reduced-motion='true'] .ipt__fill,
-html[data-force-reduced-motion='true'] .ipt__notch-glow {
+[data-force-reduced-motion='true'] .ipt__card,
+[data-force-reduced-motion='true'] .ipt__phase,
+[data-force-reduced-motion='true'] .ipt__ring,
+[data-force-reduced-motion='true'] .ipt__ring-fill,
+[data-force-reduced-motion='true'] .ipt__bars,
+[data-force-reduced-motion='true'] .ipt__bar {
   transition: none !important;
   animation: none !important;
 }

@@ -1,17 +1,94 @@
 {
-  "name": "card-to-details-morph",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "morphMs": 260
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/card-to-details-morph.schema.json",
+  "title": "CardToDetailsMorph",
+  "description": "Shared-element morph from compact tile bounds to details surface with frozen timings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "card-to-details-morph" },
+    "intent": {
+      "type": "string",
+      "const": "A compact tile becomes a larger information surface with spatial continuity."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-074" },
+        "ref": { "type": "string", "const": "SPX-3380" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 440 },
+        "heightPx": { "type": "number", "const": 320 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tileWidthPx", "tileHeightPx", "detailsWidthPx", "detailsHeightPx"],
+      "properties": {
+        "tileWidthPx": { "type": "number", "const": 100 },
+        "tileHeightPx": { "type": "number", "const": 120 },
+        "detailsWidthPx": { "type": "number", "const": 280 },
+        "detailsHeightPx": { "type": "number", "const": 168 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["morphMs", "bodyMs", "bodyDelayMs", "borderMs", "easing"],
+      "properties": {
+        "morphMs": { "type": "number", "const": 260 },
+        "bodyMs": { "type": "number", "const": 200 },
+        "bodyDelayMs": { "type": "number", "const": 80 },
+        "borderMs": { "type": "number", "const": 200 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.4, 0, 0.2, 1)" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable .ctdm__surface and .ctdm__body transitions; morph end states snap."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blue", "ink", "chalk", "sky"],
+      "properties": {
+        "blue": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "chalk": { "type": "string", "const": "#F4F6F8" },
+        "sky": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "surface", "body"],
+      "properties": {
+        "root": { "type": "string", "const": "ctdm" },
+        "surface": { "type": "string", "const": "ctdm__surface" },
+        "body": { "type": "string", "const": "ctdm__body" }
+      }
+    }
+  }
 }

@@ -52,6 +52,37 @@ function setButtons(on) {
 
 const CIRC = 251.33
 const STEP_MS = 40
+const PHASE_MS = 320
+const DL_STEPS = 14
+const INST_STEPS = 14
+
+function setRing(pct) {
+  const fill = document.querySelector('[data-ipt-fill]')
+  if (fill) fill.style.strokeDashoffset = String(CIRC * (1 - pct / 100))
+}
+
+function setBars(pct) {
+  const heights = [0.55, 0.75, 1, 0.65]
+  ;[0, 1, 2, 3].forEach((i) => {
+    const bar = document.querySelector(`[data-ipt-bar="${i}"]`)
+    if (!bar) return
+    const h = Math.min(100, Math.round(pct * heights[i]))
+    bar.style.height = `${h}%`
+  })
+}
+
+function setPctLabel(pct) {
+  const pctEl = document.querySelector('[data-ipt-pct]')
+  if (pctEl) pctEl.textContent = `${pct}%`
+}
+
+function setPhaseLabel(phase) {
+  const phaseEl = document.querySelector('[data-ipt-phase]')
+  if (!phaseEl) return
+  if (phase === 'download') phaseEl.textContent = 'DOWNLOAD'
+  else if (phase === 'install') phaseEl.textContent = 'INSTALL'
+  else phaseEl.textContent = 'READY'
+}
 
 function setProgress(pct, phase) {
   const root = rootEl()
@@ -59,27 +90,34 @@ function setProgress(pct, phase) {
     root.setAttribute('data-progress', String(pct))
     if (phase) root.setAttribute('data-phase', phase)
   }
-  const fill = document.querySelector('[data-ipt-fill]')
-  const pctEl = document.querySelector('[data-ipt-pct]')
-  const phaseEl = document.querySelector('[data-ipt-phase]')
-  if (fill) fill.style.strokeDashoffset = String(CIRC * (1 - pct / 100))
-  if (pctEl) pctEl.textContent = `${pct}%`
-  if (phaseEl && phase) phaseEl.textContent = phase === 'download' ? 'DOWNLOAD' : 'INSTALL'
+  if (phase) setPhaseLabel(phase)
+  setPctLabel(pct)
+  if (phase === 'download') {
+    setRing(pct)
+    setBars(0)
+  } else if (phase === 'install') {
+    setRing(100)
+    setBars(pct)
+  } else if (phase === 'done') {
+    setRing(100)
+    setBars(100)
+  }
 }
 
 function resetVisual() {
   setProgress(0, 'download')
+  setRing(0)
+  setBars(0)
   setStatus('DOWNLOADING')
-  setHint('Press Run for phase transition.')
+  setHint('Run morphs download ring → install bars.')
   setLive('Download phase idle.')
 }
 
 function showDone() {
   setProgress(100, 'done')
-  document.querySelector('[data-ipt-phase]').textContent = 'READY'
   setStatus('INSTALLED')
-  setHint('Install complete on same card.')
-  setLive('Install complete. Same card context preserved.')
+  setHint('Install complete — same card context.')
+  setLive('Install complete. Geometry morph finished.')
 }
 
 export function runInstallPhaseTransition() {
@@ -100,31 +138,36 @@ export function runInstallPhaseTransition() {
 
   return new Promise((resolve) => {
     let step = 0
-    const dlSteps = 12
     const tickDl = () => {
-      if (step > dlSteps) {
+      if (step > DL_STEPS) {
+        setProgress(100, 'download')
+        setStatus('MORPHING')
+        setLive('Morphing download ring into install bars.')
         root.setAttribute('data-phase', 'install')
-        setStatus('INSTALLING')
-        setLive('Phase transition to install.')
-        setProgress(0, 'install')
-        let inst = 0
-        const instSteps = 12
-        const tickInst = () => {
-          if (inst > instSteps) {
-            showDone()
-            busy = false
-            setButtons(true)
-            resolve()
-            return
+        setPhaseLabel('install')
+        setPctLabel(0)
+        setBars(0)
+        later(PHASE_MS, () => {
+          setStatus('INSTALLING')
+          setLive('Install phase on segmented bars.')
+          let inst = 0
+          const tickInst = () => {
+            if (inst > INST_STEPS) {
+              showDone()
+              busy = false
+              setButtons(true)
+              resolve()
+              return
+            }
+            setProgress(Math.round((inst / INST_STEPS) * 100), 'install')
+            inst += 1
+            later(STEP_MS, tickInst)
           }
-          setProgress(Math.round((inst / instSteps) * 100), 'install')
-          inst += 1
-          later(STEP_MS, tickInst)
-        }
-        tickInst()
+          tickInst()
+        })
         return
       }
-      setProgress(Math.round((step / dlSteps) * 100), 'download')
+      setProgress(Math.round((step / DL_STEPS) * 100), 'download')
       step += 1
       later(STEP_MS, tickDl)
     }

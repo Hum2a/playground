@@ -7,13 +7,16 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inline; import demo.css verbatim.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Wire cards to focusNeighbourCard(index).',
+    'Keep frozen push distances via CSS custom properties.',
+    'Import demo.css verbatim.',
+    'Preserve RM override on .pnpo__card.',
   ],
   acceptance: [
-    'Focused card expands while adjacent tiles translate aside',
-    'Three TITLE A/B/C tiles cycle on click',
-    'Reduced motion: semantic end states without transition',
+    'Focused card expands to 112px width at scale 1.06.',
+    'Neighbours yield by 20/24/36px push distances matching focus index.',
+    'Changing focus restores previous neighbours and pushes the new ones.',
+    'Reduced motion applies expand and offsets instantly with no transition.',
   ],
   scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

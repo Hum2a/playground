@@ -6,6 +6,7 @@
 
 const INITIAL_VALUE = -0.68
 const BAND = 0.08
+const WOBBLE = 0.035
 const LOCK_THRESHOLD = 0.08
 const WOBBLE_AMP = 0.04
 const HALF_LIFE_MS = 90
@@ -101,7 +102,7 @@ function lockBalance() {
   setNeedle(0)
   root.setAttribute('data-phase', 'done')
   root.setAttribute('data-pulse', 'true')
-  setStatus('BALANCED')
+  setStatus('LOCKED')
   setHint('Balance locked.')
   setLive('Chakra inputs balanced and locked.')
   later(LOCK_PULSE_MS, () => {

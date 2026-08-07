@@ -1,20 +1,21 @@
 /**
- * Three-Person Cell Formation — three scattered nodes snap into a triangular cell and link.
+ * Three-Person Cell Formation — freeze snap positions then draw links.
  * iframe-safe; no storage / parent / network.
  */
 
 const SNAP_MS = 260
-const LINK_DRAW_MS = 200
+const LINK_MS = 180
 const NODE_COUNT = 3
-const NODE_POSITIONS = [
-  { id: 'lead', x: 100, y: 28 },
-  { id: 'scout', x: 52, y: 122 },
-  { id: 'support', x: 148, y: 122 },
-]
-const LINK_MS = LINK_DRAW_MS
-const TOTAL_MS = SNAP_MS + LINK_MS // ~460ms principal sequence
+const FORMED = {
+  lead: { top: '14%', left: '50%' },
+  scout: { top: '78%', left: '24%' },
+  support: { top: '78%', left: '76%' },
+}
+const TOTAL_MS = SNAP_MS + LINK_MS
 
 let busy = false
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -30,8 +31,6 @@ function rootEl() {
 function nodes() {
   return Array.from(document.querySelectorAll('[data-tpcf-node]'))
 }
-
-let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -73,7 +72,7 @@ function showResolved() {
   })
   setStatus('FORMED')
   setHint('Cell formed and linked.')
-  setLive('Three-person cell formed and linked.')
+  setLive('Three-person cell formed at frozen triangle positions with links drawn.')
 }
 
 function resetVisual() {
@@ -84,10 +83,6 @@ function resetVisual() {
   setLive('Cell scattered. Three profiles unformed.')
 }
 
-/**
- * Auto-run the full formation sequence.
- * @returns {Promise<void>}
- */
 export function runThreePersonCellFormation() {
   const root = rootEl()
   if (!root || busy || root.getAttribute('data-phase') === 'done') {
@@ -109,10 +104,13 @@ export function runThreePersonCellFormation() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('FORMING')
-  setLive('Profiles snapping into formation.')
+  setLive('Profiles snapping into frozen triangle positions.')
 
   return new Promise((resolve) => {
     later(SNAP_MS, () => {
+      root.setAttribute('data-phase', 'linking')
+      setStatus('LINKING')
+      setLive('Drawing cell links.')
       later(LINK_MS, () => {
         showResolved()
         busy = false
@@ -131,7 +129,6 @@ export function resetThreePersonCellFormation() {
   void rootEl()?.offsetWidth
 }
 
-/** @returns {Promise<void>} */
 export async function replayThreePersonCellFormation() {
   if (busy) return
   resetThreePersonCellFormation()
@@ -155,6 +152,6 @@ function bindUi() {
 
 void TOTAL_MS
 void NODE_COUNT
-void NODE_POSITIONS
+void FORMED
 bindUi()
 resetThreePersonCellFormation()

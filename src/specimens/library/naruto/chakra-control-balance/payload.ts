@@ -6,10 +6,10 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
+    integration: [
     'Mount inside a relative host (~420×300+).',
-    'Import demo.css verbatim; freeze lockThreshold 0.08 / band 12% from contract.json.',
-    'Wire dual-hold inputs plus runChakraControlBalance / reset / replay.',
+    'Import demo.css verbatim; freeze lockThreshold 0.08 / wobble 0.035 / lockHoldMs 380 from contract.json.',
+    'Wire runChakraControlBalance / resetChakraControlBalance / replayChakraControlBalance.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: contract.acceptance,

@@ -1,40 +1,85 @@
 {
-  "name": "chakra-control-balance",
-  "intent": "Dual inputs drive a needle into a ±0.08 centre band; hold 380ms to lock balanced control.",
-  "catalogue": {
-    "nr": "NR-015",
-    "ref": "SPX-2358"
-  },
-  "geometry": {
-    "band": 0.08,
-    "initialValue": -0.68
-  },
-  "timing": {
-    "lockHoldMs": 380,
-    "lockPulseMs": 150,
-    "halfLifeMs": 90
-  },
-  "colours": {
-    "ink": "#070B0E",
-    "parchment": "#C8E8DC",
-    "chakra": "#3DCEA8",
-    "alert": "#3DCEA8",
-    "olive": "#1A6B58",
-    "off": "#D7F5EC",
-    "palette": "sensor-phosphor"
-  },
-  "api": {
-    "run": "runChakraControlBalance()",
-    "reset": "resetChakraControlBalance()",
-    "replay": "replayChakraControlBalance()"
-  },
-  "reducedMotion": {
-    "behaviour": "Resolved Chakra Control Balance state immediately"
-  },
-  "acceptance": [
-    "Needle must stay inside ±band 0.08 for lockHoldMs 380 to reach LOCKED",
-    "Wobble uses halfLifeMs 90 before settling; lock pulse is lockPulseMs 150 one-shot",
-    "Leaving the band before lock cancels the hold timer",
-    "Reduced motion jumps needle to centred LOCKED immediately"
-  ]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/chakra-control-balance.schema.json",
+  "title": "ChakraControlBalance",
+  "description": "Needle/dual fill seeks centre band and locks within frozen threshold.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "lockThreshold",
+    "wobble",
+    "lockHoldMs",
+    "lockPulseMs",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "chakra-control-balance"
+    },
+    "lockThreshold": {
+      "type": "number",
+      "const": 0.08
+    },
+    "wobble": {
+      "type": "number",
+      "const": 0.035
+    },
+    "lockHoldMs": {
+      "type": "number",
+      "const": 380
+    },
+    "lockPulseMs": {
+      "type": "number",
+      "const": 150
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immediateLocked"
+      ],
+      "properties": {
+        "immediateLocked": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
 }
