@@ -1,15 +1,16 @@
 # Exam Start Seal
 
-A test panel stays locked and desaturated behind a central seal until it cracks open — the panel brightens and its timer begins counting (Run auto-play or Replay).
+A locked exam panel unlocks when the central seal **crack-strokes** then **splits into two halves** that fly apart. The timer starts on **ACTIVE**.
 
 ## Behaviour
 
-- Idle: panel dim/locked, seal intact, status `LOCKED`, timer `00:00`.
-- Active: seal cracks (~160ms) then flies open (~260ms), panel brightens.
-- Resolved: panel active, timer counting up, status `ACTIVE`, held until reset/replay.
-- Reduced motion: jump straight to ACTIVE with the timer already running.
+- Locked: dim panel, intact seal, timer `00:00`, status `LOCKED`.
+- Unsealing: crack stroke 160ms, then halves fly to (−28,−18)/−28° and (28,18)/28°.
+- Active: seal removed, panel brightens, timer runs, status `ACTIVE`.
+- Reduced motion: ACTIVE immediately.
 
 ## Freeze
 
-- Crack: 160ms · open: 260ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`
+- Crack: 160ms · break: 260ms · surface: 220ms
+- Half A: (−28, −18) / −28° · Half B: (28, 18) / 28°
+- Palette (seal lacquer): `#140C0C` / `#E8DCC8` / `#C43C2E` / `#6B5048` / `#F3EBE0`

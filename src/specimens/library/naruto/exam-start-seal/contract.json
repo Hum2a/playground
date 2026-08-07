@@ -1,35 +1,47 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/exam-start-seal.schema.json",
-  "title": "ExamStartSeal",
-  "description": "A locked test panel unlocks and its timer starts when the central seal cracks open.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "crackMs", "openMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "exam-start-seal" },
-    "crackMs": { "type": "number", "const": 160 },
-    "openMs": { "type": "number", "const": 260 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#140C0C" },
-        "parchment": { "type": "string", "const": "#E8DCC8" },
-        "chakra": { "type": "string", "const": "#C43C2E" },
-        "alarm": { "type": "string", "const": "#C43C2E" },
-        "olive": { "type": "string", "const": "#6B5048" },
-        "off": { "type": "string", "const": "#F3EBE0" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateActive"],
-      "properties": {
-        "immediateActive": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "exam-start-seal",
+  "intent": "A locked exam surface unlocks when the central seal crack-strokes then splits into two halves that fly apart; timer starts on ACTIVE.",
+  "catalogue": { "nr": "NR-208", "ref": "SPX-2551" },
+  "copy": {
+    "system": "GATE // EXAM START",
+    "locked": "LOCKED",
+    "unsealing": "UNSEALING",
+    "active": "ACTIVE",
+    "panelTitle": "Written Section 1"
+  },
+  "geometry": {
+    "halfA": { "xPx": -28, "yPx": -18, "rotDeg": -28 },
+    "halfB": { "xPx": 28, "yPx": 18, "rotDeg": 28 },
+    "crackDash": 80
+  },
+  "timing": {
+    "crackMs": 160,
+    "breakMs": 260,
+    "surfaceMs": 220,
+    "totalMs": 640
+  },
+  "colours": {
+    "ink": "#140C0C",
+    "parchment": "#E8DCC8",
+    "chakra": "#C43C2E",
+    "alarm": "#C43C2E",
+    "olive": "#6B5048",
+    "off": "#F3EBE0",
+    "palette": "seal-lacquer"
+  },
+  "api": {
+    "run": "runExamStartSeal()",
+    "reset": "resetExamStartSeal()",
+    "replay": "replayExamStartSeal()"
+  },
+  "reducedMotion": {
+    "behaviour": "Panel appears ACTIVE with timer running; seal already removed; no crack or break motion"
+  },
+  "acceptance": [
+    "Crack stroke draws over crackMs 160 (dash 80→0) before halves move",
+    "Halves translate to (−28,−18)/−28° and (28,18)/28° over breakMs 260 — not opacity fade as primary",
+    "On done, seal hidden and panel surface brightens over surfaceMs 220; timer starts at 00:00",
+    "Replay resets to LOCKED with intact seal and timer 00:00",
+    "Reduced motion (prefers or data-force) shows ACTIVE immediately"
+  ]
 }

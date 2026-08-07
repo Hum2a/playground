@@ -1,15 +1,19 @@
 /**
- * Exam Start Seal — a locked test panel unlocks when a central seal cracks open.
+ * Exam Start Seal — crack stroke, halves fly apart, exam surface activates.
  * iframe-safe; no storage / parent / network.
  */
 
 const CRACK_MS = 160
-const OPEN_MS = 260
-const TOTAL_MS = CRACK_MS + OPEN_MS // ~420ms principal sequence
+const BREAK_MS = 260
+const SURFACE_MS = 220
+const HALF_A = { x: -28, y: -18, rot: -28 }
+const HALF_B = { x: 28, y: 18, rot: 28 }
 
 let busy = false
 let tickHandle = null
 let seconds = 0
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -21,8 +25,6 @@ function prefersReducedMotion() {
 function rootEl() {
   return document.querySelector('[data-ess]')
 }
-
-let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -119,15 +121,20 @@ export function runExamStartSeal() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('UNSEALING')
-  setLive('Seal cracking open.')
+  setLive('Seal crack stroke drawing.')
 
   return new Promise((resolve) => {
     later(CRACK_MS, () => {
-      later(OPEN_MS, () => {
+      setLive(
+        `Seal halves flying apart (${HALF_A.x},${HALF_A.y}) / (${HALF_B.x},${HALF_B.y}).`,
+      )
+      later(BREAK_MS, () => {
         showResolved()
-        busy = false
-        setButtons(true)
-        resolve()
+        later(SURFACE_MS, () => {
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -163,6 +170,5 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
 bindUi()
 resetExamStartSeal()

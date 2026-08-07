@@ -7,7 +7,15 @@
   --alarm: #c43c2e;
   --olive: #6b5048;
   --off: #f3ebe0;
-  /* wave2 timing surface */
+  --ess-crack-ms: 160ms;
+  --ess-break-ms: 260ms;
+  --ess-surface-ms: 220ms;
+  --ess-half-a-x: -28px;
+  --ess-half-a-y: -18px;
+  --ess-half-a-rot: -28deg;
+  --ess-half-b-x: 28px;
+  --ess-half-b-y: 18px;
+  --ess-half-b-rot: 28deg;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -56,8 +64,8 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(196 60 46 / 0.45);
+  background: rgb(243 235 224 / 0.04);
 }
 
 .ess__panel {
@@ -69,15 +77,20 @@
   max-width: 18rem;
   min-height: 9rem;
   padding: 1rem;
-  border: 1.5px solid var(--parchment);
-  background: rgb(231 221 199 / 0.08);
+  border: 1.5px solid var(--olive);
+  background: rgb(232 220 200 / 0.06);
   filter: brightness(0.55) saturate(0.4);
-  transition: filter 220ms ease-out;
+  transition:
+    filter var(--ess-surface-ms) ease-out,
+    border-color var(--ess-surface-ms) ease-out,
+    background-color var(--ess-surface-ms) ease-out;
 }
 
 .ess[data-phase='active'] .ess__panel,
 .ess[data-phase='done'] .ess__panel {
   filter: brightness(1) saturate(1);
+  border-color: var(--parchment);
+  background: rgb(232 220 200 / 0.12);
 }
 
 .ess__panel-title {
@@ -106,26 +119,39 @@
   display: grid;
   place-items: center;
   color: var(--alarm);
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-  transition:
-    opacity 200ms ease-out 160ms,
-    transform 260ms cubic-bezier(0.4, 0, 0.2, 1) 160ms;
+  pointer-events: none;
+}
+
+.ess__seal-half {
+  transform-origin: 50px 50px;
+  transition: transform var(--ess-break-ms) cubic-bezier(0.35, 0.05, 0.7, 0.2);
 }
 
 .ess__seal-crack {
-  opacity: 0;
-  transition: opacity 160ms ease-out;
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  transition: stroke-dashoffset var(--ess-crack-ms) linear;
 }
 
-.ess[data-phase='active'] .ess__seal-crack {
-  opacity: 1;
+.ess[data-phase='active'] .ess__seal-crack,
+.ess[data-phase='done'] .ess__seal-crack {
+  stroke-dashoffset: 0;
 }
 
-.ess[data-phase='active'] .ess__seal,
+.ess[data-phase='active'] .ess__seal-half--a,
+.ess[data-phase='done'] .ess__seal-half--a {
+  transform: translate(var(--ess-half-a-x), var(--ess-half-a-y))
+    rotate(var(--ess-half-a-rot)) scale(0.92);
+}
+
+.ess[data-phase='active'] .ess__seal-half--b,
+.ess[data-phase='done'] .ess__seal-half--b {
+  transform: translate(var(--ess-half-b-x), var(--ess-half-b-y))
+    rotate(var(--ess-half-b-rot)) scale(0.92);
+}
+
 .ess[data-phase='done'] .ess__seal {
-  opacity: 0;
-  transform: scale(1.6) rotate(24deg);
+  visibility: hidden;
 }
 
 .ess__status {
@@ -171,7 +197,7 @@
 
 .ess__btn--primary {
   border-color: var(--alarm);
-  background: rgb(217 74 56 / 0.14);
+  background: rgb(196 60 46 / 0.14);
 }
 
 .ess__btn:hover:not(:disabled) {
@@ -191,7 +217,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ess__panel,
   .ess__timer,
-  .ess__seal,
+  .ess__seal-half,
   .ess__seal-crack {
     transition: none !important;
     animation: none !important;
@@ -200,7 +226,7 @@
 
 html[data-force-reduced-motion='true'] .ess__panel,
 html[data-force-reduced-motion='true'] .ess__timer,
-html[data-force-reduced-motion='true'] .ess__seal,
+html[data-force-reduced-motion='true'] .ess__seal-half,
 html[data-force-reduced-motion='true'] .ess__seal-crack {
   transition: none !important;
   animation: none !important;

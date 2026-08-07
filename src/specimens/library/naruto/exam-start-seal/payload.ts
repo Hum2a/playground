@@ -8,20 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze crack/unlock timings from contract.json.',
+    'Import demo.css verbatim; freeze crackMs 160 / breakMs 260 / half offsets from contract.json.',
     'Wire runExamStartSeal / resetExamStartSeal / replayExamStartSeal.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Listen for postMessage `{ type: "restart" }`; honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Idle panel is locked behind an intact seal, status LOCKED',
-    'Active phase cracks the seal open and dims it',
-    'Resolved phase shows the panel active with the timer state running, status ACTIVE',
-    'Replay resets the seal to locked before rerunning',
-    'Reduced motion shows the active state immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#140C0C;">
   {{specimen}}
 </div>
 `.trim(),
