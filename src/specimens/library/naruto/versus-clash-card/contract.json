@@ -1,90 +1,49 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/versus-clash-card.schema.json",
-  "title": "VersusClashCard",
-  "description": "Opposing cards slam 28px inward, hold clash, then lock.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "travelPx",
-    "closeMs",
-    "clashHoldMs",
-    "flashMs",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "versus-clash-card"
-    },
-    "travelPx": {
-      "type": "number",
-      "const": 28
-    },
-    "closeMs": {
-      "type": "number",
-      "const": 240
-    },
-    "clashHoldMs": {
-      "type": "number",
-      "const": 180
-    },
-    "flashMs": {
-      "type": "number",
-      "const": 200
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "alarm",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#1A1612"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#EBE2D0"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "alarm": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#6A5E4E"
-        },
-        "off": {
-          "type": "string",
-          "const": "#F7F2E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateClash"
-      ],
-      "properties": {
-        "immediateClash": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "versus-clash-card",
+  "intent": "PROFILE A and B slam inward 28px over 220ms, then VS flashes once for a 220ms clash hold.",
+  "catalogue": {
+    "nr": "NR-217",
+    "ref": "SPX-2560"
+  },
+  "geometry": {
+    "travelPx": 28,
+    "overlapPx": 4
+  },
+  "timing": {
+    "closeMs": 220,
+    "flashMs": 220,
+    "totalMs": 440
+  },
+  "copy": {
+    "system": "CLASH // VERSUS",
+    "left": "PROFILE A",
+    "right": "PROFILE B",
+    "idle": "STANDBY",
+    "active": "CLOSING",
+    "done": "CLASH"
+  },
+  "colours": {
+    "ink": "#1A1612",
+    "parchment": "#EBE2D0",
+    "chakra": "#B83228",
+    "olive": "#6A5E4E",
+    "off": "#F7F2E8",
+    "palette": "mission-paper",
+    "alarm": "#B83228",
+    "alert": "#B83228"
+  },
+  "api": {
+    "run": "runVersusClashCard()",
+    "reset": "resetVersusClashCard()",
+    "replay": "replayVersusClashCard()"
+  },
+  "reducedMotion": {
+    "behaviour": "Resolved Versus Clash Card state immediately"
+  },
+  "acceptance": [
+    "Left/right cards travel travelPx 28 toward centre over closeMs 220",
+    "VS flash runs once for flashMs 220; status becomes CLASH after",
+    "Replay returns cards to ±28px standby before rerunning",
+    "Reduced motion shows clashed cards + CLASH immediately"
+  ]
 }

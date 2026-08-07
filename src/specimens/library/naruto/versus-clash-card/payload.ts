@@ -12,13 +12,7 @@ const payload: SpecimenPayload = {
     'Wire runVersusClashCard / resetVersusClashCard / replayVersusClashCard.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Idle cards sit 28px apart from centre (STANDBY)',
-    'Cards slam inward over 240ms then hold clash 180ms',
-    'VS flash 200ms then CLASH locks with alarm borders',
-    'Replay returns cards to 28px apart before rerunning',
-    'Reduced motion shows CLASH locked immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}

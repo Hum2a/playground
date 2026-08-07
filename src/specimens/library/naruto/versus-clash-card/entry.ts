@@ -5,10 +5,10 @@ export const versusClashCard: Specimen = {
   ref: 'SPX-2560',
   title: 'Versus Clash Card',
   blurb:
-    'Two profile cards slam 28px inward, hold clash for 180ms, then lock CLASH with a VS flash.',
+    'PROFILE A and B slam inward 28px over 220ms, then VS flashes once for a 220ms clash hold.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction motion UI language',
+    surface: 'Naruto / matchmaking — versus clash',
   },
   facets: {
     kind: 'transition',
@@ -19,20 +19,18 @@ export const versusClashCard: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['versus', 'clash', 'match'],
+  tags: ["versus","clash","impact"],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, both cards appear already locked in CLASH with no slam.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Versus Clash Card state appears immediately.',
   },
   acceptance: [
-    'Idle cards sit 28px apart from centre (STANDBY)',
-    'Cards slam inward over 240ms then hold clash 180ms',
-    'VS flash 200ms then CLASH locks with alarm borders',
-    'Replay returns cards to 28px apart before rerunning',
-    'Reduced motion shows CLASH locked immediately',
+    'Left/right cards travel travelPx 28 toward centre over closeMs 220',
+    'VS flash runs once for flashMs 220; status becomes CLASH after',
+    'Replay returns cards to ±28px standby before rerunning',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

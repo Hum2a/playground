@@ -1,7 +1,8 @@
 # Versus Clash Card
 
-Cards travel **28px** inward over **240ms**, hold clash **180ms**, VS flash **200ms**.
+PROFILE A and B slam inward 28px over 220ms, then VS flashes once for a 220ms clash hold.
 
 ## Freeze
 
-- travelPx: 28 · closeMs: 240 · clashHoldMs: 180 · flashMs: 200
+- Travel: 28px · closeMs: 220 · flashMs: 220 · overlap: 4px
+- Palette (mission paper): `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`
