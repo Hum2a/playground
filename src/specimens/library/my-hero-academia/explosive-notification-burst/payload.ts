@@ -9,17 +9,17 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount in relative overflow-hidden host.',
-    'Burst 420ms; total 1070ms with settle.',
-    'Wire Trigger / Replay to runExplosiveNotificationBurst.',
+    'Mount in relative overflow-hidden host; import demo.css verbatim.',
+    'Frozen burst polygon via --enb-burst-clip/--enb-burst-scale-max; no radial bloom.',
+    'Burst 420ms + card delay 120ms; wire Trigger / Replay.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Centre core expands then fades',
-    'Jagged notification card scales in',
+    'Jagged ALERT polygon scales to 11× over 420ms — no soft radial bloom',
+    'Notification card scales in with frozen jagged clip-path',
     'ALERT badge readable at settle',
     'Replay clears card to idle',
-    'Reduced motion: instant card',
+    'Reduced motion: instant card without burst',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101820;">

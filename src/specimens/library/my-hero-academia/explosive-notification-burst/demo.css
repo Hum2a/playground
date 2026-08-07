@@ -1,10 +1,18 @@
-/* explosive-notification-burst — portable specimen styles. Do not restyle to host tokens. */
+/* SPX-2143 Explosive Notification Burst — portable contract. */
 
 .enb {
   --enb-primary: #38a3ff;
   --enb-ink: #101820;
   --enb-paper: #f4f7fa;
   --enb-accent: #ff4d35;
+  --enb-ease: cubic-bezier(0.15, 0.9, 0.25, 1);
+  --enb-burst-ms: 420;
+  --enb-card-delay-ms: 120;
+  --enb-settle-ms: 650;
+  --enb-burst-size-px: 28;
+  --enb-burst-scale-max: 11;
+  --enb-burst-clip: polygon(50% 0%, 94% 14%, 100% 48%, 72% 100%, 28% 100%, 0% 48%, 6% 14%);
+  --enb-card-clip: polygon(0 8%, 8% 0, 92% 0, 100% 10%, 100% 88%, 92% 100%, 10% 100%, 0 90%);
 
   box-sizing: border-box;
   position: relative;
@@ -45,13 +53,14 @@
   border: 3px solid var(--enb-paper);
 }
 
-.enb__core {
+.enb__burst {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+  width: calc(var(--enb-burst-size-px) * 1px);
+  height: calc(var(--enb-burst-size-px) * 1px);
   background: var(--enb-accent);
-  border: 2px solid var(--enb-paper);
+  border: 3px solid var(--enb-paper);
+  clip-path: var(--enb-burst-clip);
+  transform: scale(0);
   opacity: 1;
 }
 
@@ -63,7 +72,7 @@
   border: 3px solid var(--enb-ink);
   background: var(--enb-paper);
   color: var(--enb-ink);
-  clip-path: polygon(0 8%, 8% 0, 92% 0, 100% 10%, 100% 88%, 92% 100%, 10% 100%, 0 90%);
+  clip-path: var(--enb-card-clip);
   box-shadow: 5px 5px 0 var(--enb-accent);
   transform: scale(0);
 }
@@ -132,8 +141,8 @@
   cursor: not-allowed;
 }
 
-.enb[data-phase='burst'] .enb__core {
-  animation: enb-core 420ms cubic-bezier(0.15, 0.9, 0.25, 1) both;
+.enb[data-phase='burst'] .enb__burst {
+  animation: enb-burst calc(var(--enb-burst-ms) * 1ms) var(--enb-ease) both;
 }
 
 .enb[data-phase='burst'] .enb__card,
@@ -142,10 +151,11 @@
 }
 
 .enb[data-phase='burst'] .enb__card {
-  animation: enb-card 420ms cubic-bezier(0.15, 0.85, 0.25, 1) 120ms both;
+  animation: enb-card calc(var(--enb-burst-ms) * 1ms) var(--enb-ease)
+    calc(var(--enb-card-delay-ms) * 1ms) both;
 }
 
-.enb[data-phase='done'] .enb__core {
+.enb[data-phase='done'] .enb__burst {
   opacity: 0;
   transform: scale(0);
 }
@@ -154,18 +164,18 @@
   transform: scale(1);
 }
 
-@keyframes enb-core {
+@keyframes enb-burst {
   0% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(0);
   }
-  40% {
-    opacity: 0.8;
-    transform: scale(6);
+  42% {
+    opacity: 1;
+    transform: scale(var(--enb-burst-scale-max));
   }
   100% {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(calc(var(--enb-burst-scale-max) * 0.85));
   }
 }
 
@@ -185,20 +195,20 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .enb[data-phase='burst'] .enb__core,
+  .enb[data-phase='burst'] .enb__burst,
   .enb[data-phase='burst'] .enb__card {
     animation: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .enb[data-phase='burst'] .enb__core,
+[data-force-reduced-motion='true'] .enb[data-phase='burst'] .enb__burst,
 [data-force-reduced-motion='true'] .enb[data-phase='burst'] .enb__card {
   animation: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .enb[data-phase='done'] .enb__core,
-  .enb[data-phase='burst'] .enb__core {
+  .enb[data-phase='done'] .enb__burst,
+  .enb[data-phase='burst'] .enb__burst {
     opacity: 0;
     transform: scale(0);
   }
@@ -210,8 +220,8 @@
   }
 }
 
-[data-force-reduced-motion='true'] .enb[data-phase='done'] .enb__core,
-[data-force-reduced-motion='true'] .enb[data-phase='burst'] .enb__core {
+[data-force-reduced-motion='true'] .enb[data-phase='done'] .enb__burst,
+[data-force-reduced-motion='true'] .enb[data-phase='burst'] .enb__burst {
   opacity: 0;
   transform: scale(0);
 }

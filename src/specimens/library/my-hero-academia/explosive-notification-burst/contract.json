@@ -1,10 +1,53 @@
 {
   "name": "explosive-notification-burst",
+  "intent": "Centre jagged ALERT polygon scales outward into a clipped notification card; no soft radial bloom.",
+  "catalogue": { "mha": "MHA-169", "ref": "SPX-2143" },
+  "copy": {
+    "badge": "ALERT",
+    "title": "Priority notice",
+    "body": "Response required — review dispatch.",
+    "trigger": "Trigger",
+    "replay": "Replay",
+    "liveClear": "Channel clear.",
+    "liveBurst": "Burst expanding.",
+    "liveActive": "Alert notification active."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "animation": { "burstMs": 420, "totalMs": 1070 }
+  "timing": {
+    "burstMs": 420,
+    "cardDelayMs": 120,
+    "settleMs": 650,
+    "totalMs": 1070
+  },
+  "geometry": {
+    "burstSizePx": 28,
+    "burstScaleMax": 11,
+    "burstClip": "polygon(50% 0%, 94% 14%, 100% 48%, 72% 100%, 28% 100%, 0% 48%, 6% 14%)",
+    "cardClip": "polygon(0 8%, 8% 0, 92% 0, 100% 10%, 100% 88%, 92% 100%, 10% 100%, 0 90%)",
+    "cardMaxWidthPx": 260,
+    "stageMinHeightPx": 180
+  },
+  "api": {
+    "run": "runExplosiveNotificationBurst()",
+    "reset": "resetExplosiveNotificationBurst()",
+    "replay": "replayExplosiveNotificationBurst()"
+  },
+  "reducedMotion": {
+    "behaviour": "Jagged burst skipped; ALERT card appears immediately at settle scale"
+  },
+  "acceptance": [
+    "Idle: centre burst hidden; card hidden; live region reads Channel clear",
+    "Trigger: jagged polygon scales to 11× over 420ms — angular clip-path, no radial bloom",
+    "Card scales in 120ms after burst start with frozen jagged clip-path",
+    "Done: burst hidden; ALERT badge and copy readable; Replay enabled",
+    "Replay clears card and reruns burst sequence",
+    "Reduced motion (prefers or data-force) shows card immediately without burst",
+    "No network; effect clipped to stage"
+  ],
+  "waveB": "Circular core replaced with frozen jagged polygon growth; radii/timings locked via CSS vars"
 }

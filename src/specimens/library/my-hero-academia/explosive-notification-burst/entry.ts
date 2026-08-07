@@ -1,13 +1,14 @@
 import type { Specimen } from '../../../types'
+
 export const explosiveNotificationBurst: Specimen = {
   id: 'explosive-notification-burst',
   ref: 'SPX-2143',
   title: 'Explosive Notification Burst',
   blurb:
-    'A compact centre point expands into a jagged ALERT notification card over 420ms.',
+    'A frozen jagged ALERT polygon scales outward into a clipped notification card over 420ms.',
   origin: {
     project: 'Original',
-    surface: 'anime/comic action language study',
+    surface: 'My Hero Academia–inspired alert notification UI',
   },
   facets: {
     kind: 'overlay',
@@ -24,7 +25,7 @@ export const explosiveNotificationBurst: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under reduced motion, notification card appears immediately without burst.',
+      'Under reduced motion, notification card appears immediately without jagged burst.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
