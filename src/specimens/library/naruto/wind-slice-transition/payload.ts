@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze swap-at (420ms) / total (600ms) / settle (150ms) from contract.json.',
+    'Import demo.css verbatim; freeze bladeCount 4 / skewDeg -16 / staggerMs 70 / swapAtMs 420 from contract.json.',
     'Wire runWindSliceTransition / resetWindSliceTransition / replayWindSliceTransition.',
     'Content swap fires once the last blade fully covers the stage; honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Four diagonal blades sweep across with a staggered 70ms offset each',
-    'Content swap is invisible to the viewer — it happens while covered',
-    'Replay resets to state one before rerunning',
-    'Reduced motion swaps state instantly with no blade sweep',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0C1014;">
   {{specimen}}
 </div>
 `.trim(),

@@ -5,7 +5,7 @@ export const windSliceTransition: Specimen = {
   ref: 'SPX-2458',
   title: 'Wind Slice Transition',
   blurb:
-    'Four staggered diagonal blades sweep across the stage, exchanging content mid-sweep — abstract graphic cuts, no copyrighted iconography.',
+    'Four clipped blades at -16° skew sweep with a 70ms stagger (380ms each); content swaps at 420ms — wind cut wipe, distinct from water wave.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — wind-style slice transitions',
@@ -28,8 +28,8 @@ export const windSliceTransition: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the state swaps immediately with no blade sweep.',
   },
   acceptance: [
-    'Blade sweeps at frozen angles with stagger',
-    'Content swaps under slices; blade count in contract',
+    '4 blades at -16° with 70ms stagger (380ms each)',
+    'Content swaps at 420ms; total 600ms',
     'Reduced motion instant swap',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

@@ -6,6 +6,13 @@
   --chakra: #8aa0b4;
   --olive: #5a6870;
   --off: #eef2f4;
+  --wst-total-ms: 600ms;
+  --wst-swap-at-ms: 420ms;
+  --wst-settle-ms: 150ms;
+  --wst-blade-ms: 380ms;
+  --wst-stagger-ms: 70ms;
+  --wst-blade-count: 4;
+  --wst-skew-deg: -16deg;
   /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;
@@ -117,7 +124,7 @@
   top: 0;
   width: 30%;
   height: 100%;
-  transform: skewX(-16deg) translateX(-220%);
+  transform: skewX(var(--wst-skew-deg)) translateX(-220%);
   opacity: 0;
 }
 
@@ -142,39 +149,39 @@
 }
 
 .wst[data-phase='run'] .wst__blade--1 {
-  animation: wst-slice 380ms cubic-bezier(0.6, 0, 0.35, 1) both;
+  animation: wst-slice var(--wst-blade-ms) cubic-bezier(0.6, 0, 0.35, 1) both;
   animation-delay: 0ms;
 }
 .wst[data-phase='run'] .wst__blade--2 {
-  animation: wst-slice 380ms cubic-bezier(0.6, 0, 0.35, 1) both;
-  animation-delay: 70ms;
+  animation: wst-slice var(--wst-blade-ms) cubic-bezier(0.6, 0, 0.35, 1) both;
+  animation-delay: var(--wst-stagger-ms);
 }
 .wst[data-phase='run'] .wst__blade--3 {
-  animation: wst-slice 380ms cubic-bezier(0.6, 0, 0.35, 1) both;
-  animation-delay: 140ms;
+  animation: wst-slice var(--wst-blade-ms) cubic-bezier(0.6, 0, 0.35, 1) both;
+  animation-delay: calc(var(--wst-stagger-ms) * 2);
 }
 .wst[data-phase='run'] .wst__blade--4 {
-  animation: wst-slice 380ms cubic-bezier(0.6, 0, 0.35, 1) both;
-  animation-delay: 210ms;
+  animation: wst-slice var(--wst-blade-ms) cubic-bezier(0.6, 0, 0.35, 1) both;
+  animation-delay: calc(var(--wst-stagger-ms) * 3);
 }
 
 @keyframes wst-slice {
   0% {
-    transform: skewX(-16deg) translateX(-220%);
+    transform: skewX(var(--wst-skew-deg)) translateX(-220%);
     opacity: 0;
   }
   12% {
     opacity: 1;
   }
   55% {
-    transform: skewX(-16deg) translateX(0%);
+    transform: skewX(var(--wst-skew-deg)) translateX(0%);
     opacity: 1;
   }
   88% {
     opacity: 1;
   }
   100% {
-    transform: skewX(-16deg) translateX(220%);
+    transform: skewX(var(--wst-skew-deg)) translateX(220%);
     opacity: 0;
   }
 }
