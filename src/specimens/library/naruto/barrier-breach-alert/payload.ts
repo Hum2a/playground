@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runBarrierBreachAlert / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Single −18° fracture appears once; no looping flash',
-    'Alert latches BREACHED after 280ms alarm beat',
-    'Replay returns to SECURE before rerunning',
-    'Reduced motion shows BREACHED with static fracture immediately',
-    'preview.scaffold hosts the overlay',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),
