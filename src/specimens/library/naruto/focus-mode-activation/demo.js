@@ -3,7 +3,8 @@
  * iframe-safe; no storage / parent / network.
  */
 
-const NARROW_MS = 320
+const NARROW_MS = 240
+const BRACKET_INSET_PX = 18
 const SETTLE_MS = 140
 
 let busy = false
@@ -94,14 +95,18 @@ export function runFocusModeActivation() {
     return Promise.resolve()
   }
 
-  setLive('Focus mode activating.')
-  showResolved()
+  setPhase('active')
+  setStatus('NARROWING')
+  setLive('Brackets converging on host content.')
 
   return new Promise((resolve) => {
-    later(NARROW_MS + SETTLE_MS, () => {
-      busy = false
-      setButtons(true)
-      resolve()
+    later(NARROW_MS, () => {
+      showResolved()
+      later(SETTLE_MS, () => {
+        busy = false
+        setButtons(true)
+        resolve()
+      })
     })
   })
 }
@@ -138,3 +143,5 @@ function bindUi() {
 
 bindUi()
 resetFocusModeActivation()
+
+void BRACKET_INSET_PX

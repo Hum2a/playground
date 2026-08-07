@@ -6,10 +6,10 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount with preview.scaffold relative overflow host.',
-    'Import demo.css verbatim; freeze bracketInsetPx 18 / narrow 240ms from contract.json.',
-    'Wire runFocusModeActivation / reset / replay.',
+    integration: [
+    'Mount inside preview.scaffold relative+overflow host.',
+    'Import demo.css verbatim; freeze bracketInsetPx 18 / narrowMs 240 from contract.json.',
+    'Wire runFocusModeActivation / resetFocusModeActivation / replayFocusModeActivation.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: contract.acceptance,

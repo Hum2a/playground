@@ -7,10 +7,9 @@
   --danger: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
-  --fma-narrow-ms: 320ms;
+  --fma-narrow-ms: 240ms;
   --fma-settle-ms: 140ms;
-  --fma-inset: 12px;
-  /* wave2 timing surface */
+  --fma-inset: 18px;
   --fma-inset: 18px;
   --fma-narrow-ms: 240ms;
   box-sizing: border-box;
@@ -69,7 +68,7 @@
   width: 100%;
   min-height: 190px;
   height: 190px;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(61 206 168 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -85,7 +84,7 @@
   border-radius: 50%;
   background: var(--parchment);
   opacity: 0.55;
-  transition: opacity 320ms ease-in-out;
+  transition: transform 240ms ease-out, filter 240ms ease-out;
 }
 
 .fma__dot--1 {
@@ -265,7 +264,7 @@
 
 .fma__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(61 206 168 / 0.45);
 }
 
 .fma__btn:hover:not(:disabled) {
