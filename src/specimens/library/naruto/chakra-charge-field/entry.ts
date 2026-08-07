@@ -24,7 +24,7 @@ export const chakraChargeField: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, jump to the final static outcome with no intermediate motion.',
   },
   acceptance: [
     'Boundary grows through frozen diameters to READY',
