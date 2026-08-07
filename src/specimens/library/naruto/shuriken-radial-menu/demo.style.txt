@@ -6,7 +6,15 @@
   --chakra: #8aa0b4;
   --olive: #5a6870;
   --off: #eef2f4;
-  /* wave2 timing surface */
+  --srm-open-ms: 280ms;
+  --srm-stagger-ms: 40ms;
+  --srm-settle-ms: 40ms;
+  --srm-sector-count: 4;
+  --srm-radius: 3.6rem;
+  --srm-sector-deg-n: 0deg;
+  --srm-sector-deg-e: 90deg;
+  --srm-sector-deg-s: 180deg;
+  --srm-sector-deg-w: 270deg;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -146,22 +154,26 @@
 .srm[data-phase='opening'] .srm__sector,
 .srm[data-phase='open'] .srm__sector {
   opacity: 1;
-  transform: translate(0, -3.6rem) scale(1);
+  transform: rotate(var(--srm-sector-deg-n)) translateY(calc(var(--srm-radius) * -1))
+    rotate(calc(var(--srm-sector-deg-n) * -1)) scale(1);
 }
 
 .srm[data-phase='opening'] .srm__sector--e,
 .srm[data-phase='open'] .srm__sector--e {
-  transform: translate(3.6rem, 0) scale(1);
+  transform: rotate(var(--srm-sector-deg-e)) translateY(calc(var(--srm-radius) * -1))
+    rotate(calc(var(--srm-sector-deg-e) * -1)) scale(1);
 }
 
 .srm[data-phase='opening'] .srm__sector--s,
 .srm[data-phase='open'] .srm__sector--s {
-  transform: translate(0, 3.6rem) scale(1);
+  transform: rotate(var(--srm-sector-deg-s)) translateY(calc(var(--srm-radius) * -1))
+    rotate(calc(var(--srm-sector-deg-s) * -1)) scale(1);
 }
 
 .srm[data-phase='opening'] .srm__sector--w,
 .srm[data-phase='open'] .srm__sector--w {
-  transform: translate(-3.6rem, 0) scale(1);
+  transform: rotate(var(--srm-sector-deg-w)) translateY(calc(var(--srm-radius) * -1))
+    rotate(calc(var(--srm-sector-deg-w) * -1)) scale(1);
 }
 
 .srm[data-phase='open'] .srm__sector {

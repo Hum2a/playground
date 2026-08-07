@@ -1,89 +1,56 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/shuriken-radial-menu.schema.json",
-  "title": "ShurikenRadialMenu",
-  "description": "An abstract four-point shuriken glyph rotates open into four radial action sectors.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "sectorCount",
-    "staggerMs",
-    "openMs",
-    "settleMs",
-    "colours",
-    "reducedMotion"
+  "name": "shuriken-radial-menu",
+  "intent": "Four-point hub rotates open into N/E/S/W sectors at 0/90/180/270° and radius 3.6rem.",
+  "catalogue": { "nr": "NR-072", "ref": "SPX-2415" },
+  "copy": {
+    "system": "MENU // SHURIKEN",
+    "idle": "CLOSED",
+    "opening": "OPENING",
+    "open": "OPEN"
+  },
+  "geometry": {
+    "sectorCount": 4,
+    "sectorDeg": [0, 90, 180, 270],
+    "sectorLabels": ["N", "E", "S", "W"],
+    "radiusRem": 3.6,
+    "hubRotateDeg": 135
+  },
+  "timing": {
+    "openMs": 280,
+    "staggerMs": 40,
+    "settleMs": 40
+  },
+  "colours": {
+    "ink": "#0C1014",
+    "parchment": "#D0D6DC",
+    "chakra": "#8AA0B4",
+    "olive": "#5A6870",
+    "off": "#EEF2F4",
+    "palette": "wind"
+  },
+  "api": {
+    "run": "runShurikenRadialMenu()",
+    "reset": "resetShurikenRadialMenu()",
+    "replay": "replayShurikenRadialMenu()"
+  },
+  "cssVars": [
+    "--srm-open-ms",
+    "--srm-stagger-ms",
+    "--srm-settle-ms",
+    "--srm-radius",
+    "--srm-sector-deg-n",
+    "--srm-sector-deg-e",
+    "--srm-sector-deg-s",
+    "--srm-sector-deg-w"
   ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "shuriken-radial-menu"
-    },
-    "sectorCount": {
-      "type": "number",
-      "const": 6
-    },
-    "staggerMs": {
-      "type": "number",
-      "const": 40
-    },
-    "openMs": {
-      "type": "number",
-      "const": 280
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 40
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#0C1014"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#D0D6DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#8AA0B4"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#5A6870"
-        },
-        "off": {
-          "type": "string",
-          "const": "#EEF2F4"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateOpen"
-      ],
-      "properties": {
-        "immediateOpen": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    },
-    "sectorDeg": {
-      "type": "number",
-      "const": 60
-    }
-  }
+  "reducedMotion": {
+    "behaviour": "All four sectors appear open immediately; no rotation"
+  },
+  "acceptance": [
+    "Exactly 4 sectors open to sectorDeg [0,90,180,270] at radiusRem 3.6",
+    "Sectors stagger by staggerMs 40 (N→E→S→W) within openMs 280",
+    "Hub rotates hubRotateDeg 135 while opening",
+    "Selecting a sector commits that label; replay closes then reopens",
+    "Reduced motion (prefers or data-force) shows all sectors open immediately"
+  ]
 }

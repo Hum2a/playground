@@ -8,20 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×380+).',
-    'Import demo.css verbatim; freeze rotate/stagger/settle timings from contract.json.',
+    'Import demo.css verbatim; freeze sectorDeg [0,90,180,270] / radiusRem 3.6 / openMs 280 / staggerMs 40 from contract.json.',
     'Wire runShurikenRadialMenu / resetShurikenRadialMenu / replayShurikenRadialMenu.',
-    'Sector buttons stay real, focusable elements; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers — sectors open immediately.',
   ],
-  acceptance: [
-    'Central glyph rotates and exactly four sectors emerge radially, staggered',
-    'Closed, opening, and open states are visually distinct',
-    'Sector buttons are keyboard-reachable only while open',
-    'Replay closes then reopens the menu',
-    'Reduced motion shows all four sectors open immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#0C1014;">
   {{specimen}}
 </div>
 `.trim(),

@@ -5,7 +5,7 @@ export const shurikenRadialMenu: Specimen = {
   ref: 'SPX-2415',
   title: 'Shuriken Radial Menu',
   blurb:
-    'An abstract four-point shuriken glyph rotates open into four radial action sectors, then folds back closed.',
+    'Four sectors open to 0°/90°/180°/270° at 3.6rem radius (40ms stagger) from a rotating hub — graphic tool palette.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — shuriken & projectile motion',
@@ -19,7 +19,7 @@ export const shurikenRadialMenu: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['menu', 'radial', 'rotation'],
+  tags: ['menu', 'radial', 'rotation', 'sectors'],
   deps: 'none',
   motion: {
     loops: false,
@@ -28,9 +28,9 @@ export const shurikenRadialMenu: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, all four sectors appear open immediately with no rotation.',
   },
   acceptance: [
-    'Sectors open to frozen angles and radii',
-    'No continuous rotation under reduced motion',
-    'Selection commits one sector',
+    'Sectors at 0/90/180/270° and radius 3.6rem',
+    '40ms stagger open within 280ms',
+    'Reduced motion shows sectors open immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

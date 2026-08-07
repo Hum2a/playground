@@ -1,16 +1,15 @@
 # Shuriken Radial Menu
 
-An abstract four-point shuriken glyph rotates open into four radial action sectors (N/E/S/W).
+Four-point hub rotates open into N/E/S/W action sectors.
 
 ## Behaviour
 
-- Closed: hub glyph centred, no sectors reachable, status `CLOSED`.
-- Opening: hub rotates 135°; four sectors emerge radially, staggered 40ms apart (~140ms each).
-- Open: all four sectors reachable by keyboard, status `OPEN`.
-- Selecting a sector, or clicking the hub again, closes the menu.
-- Reduced motion: all four sectors appear open immediately, no rotation.
+- Idle: hub closed, sectors collapsed.
+- Opening: hub rotates 135°; sectors fly to 0° / 90° / 180° / 270° at 3.6rem with 40ms stagger.
+- Open: sectors selectable; status `OPEN`.
+- Reduced motion: sectors open immediately.
 
 ## Freeze
 
-- Sector count: 4 · stagger: 40ms · open: 260ms · settle: 40ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Sectors: 4 @ [0, 90, 180, 270]° · radius: 3.6rem · open: 280ms · stagger: 40ms
+- Palette (wind): `#0C1014` / `#D0D6DC` / `#8AA0B4` / `#5A6870` / `#EEF2F4`
