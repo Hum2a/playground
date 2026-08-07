@@ -1,24 +1,30 @@
 # Quick Resume Snapshot
 
-A paused snapshot-like card expands into an active resumed state — compact frozen frame morphs to full play surface.
+Frozen still-frame snapshot (PAUSED stamp, grayscale frost) expands into a live play surface (LIVE badge, pulsing playhead).
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3336` / `PS-030` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | 96×54px snapshot → full inset active panel over 420ms. |
+| Frozen | `112×64` grayscale snap · PAUSED stamp · STILL meta |
+| Expand | width/height → inset panel over `480ms` |
+| Live | LIVE badge · green pulse · playhead animation |
+| Fade | snap opacity `0` / live opacity `1` over `260ms` |
 | Trigger | RESUME / RESET toggle |
+| Chrome | Unique `.qrs` namespace (no shared `.ps__stage`) |
+
+## Behaviour
+
+1. Frozen: compact desaturated still with PAUSED stamp.
+2. Resume: snap expands while live surface fades in.
+3. Live: saturated panel with LIVE badge and pulsing playhead.
+4. Reset: returns to frozen snapshot.
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
+`.qrs__snap`, `.qrs__live`, playhead, and pulse lose transitions/animations under both RM hooks.
 
 ## Accessibility
 
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
-
-## Porting
-
-Portable specimen CSS — no site chrome tokens. Isolation comes from the sandboxed iframe.
+Decorative stage uses `aria-hidden`; phase changes announce via `aria-live="polite"`.

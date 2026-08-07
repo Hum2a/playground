@@ -1,22 +1,42 @@
 /**
- * Quick Resume Snapshot (SPX-3336) — sandbox-safe PlayStation specimen.
+ * Quick Resume Snapshot (SPX-3336) — frozen still → live surface.
  */
 
-let resumed = false
-function root() { return document.querySelector('[data-ps="quick-resume-snapshot"]') }
+let phase = 'frozen'
+
+function root() {
+  return document.querySelector('[data-qrs]')
+}
+
 function paint() {
   const r = root()
-  const stage = r?.querySelector('[data-qrs-stage]')
-  const btn = r?.querySelector('[data-qrs-resume]')
-  const status = r?.querySelector('[data-qrs-status]')
-  stage?.classList.toggle('is-resumed', resumed)
-  if (btn) { btn.textContent = resumed ? 'RESET' : 'RESUME'; btn.disabled = false }
-  if (status) status.textContent = resumed ? 'Session resumed — snapshot expanded to active surface.' : 'Snapshot card ready — press RESUME to expand.'
+  if (!r) return
+  r.setAttribute('data-phase', phase)
+  const btn = r.querySelector('[data-qrs-resume]')
+  const status = r.querySelector('[data-qrs-status]')
+  if (btn) btn.textContent = phase === 'live' ? 'RESET' : 'RESUME'
+  if (status) {
+    status.textContent =
+      phase === 'live'
+        ? 'Live surface — playhead pulsing, LIVE badge on.'
+        : 'Frozen snapshot — still frame with PAUSED stamp.'
+  }
 }
-function reset() { resumed = false; paint() }
-function bind() {
-  root()?.querySelector('[data-qrs-resume]')?.addEventListener('click', () => { resumed = !resumed; paint() })
-  window.addEventListener('message', (e) => { if (e.data?.type === 'restart') reset() })
+
+function reset() {
+  phase = 'frozen'
   paint()
 }
+
+function bind() {
+  root()?.querySelector('[data-qrs-resume]')?.addEventListener('click', () => {
+    phase = phase === 'frozen' ? 'live' : 'frozen'
+    paint()
+  })
+  window.addEventListener('message', (e) => {
+    if (e.data?.type === 'restart') reset()
+  })
+  paint()
+}
+
 bind()

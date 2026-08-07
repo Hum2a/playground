@@ -7,19 +7,21 @@
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
-    "panel": "#121820",
-    "panel2": "#1a2330",
-    "rule": "#243044",
-    "pewter": "#8a9bb0"
+    "blueLight": "#7EB6FF"
   },
-  "behaviour": "96×54px snapshot → full inset active panel over 420ms.",
+  "timing": {
+    "expandMs": 480,
+    "fadeMs": 260
+  },
+  "phases": ["frozen", "live"],
+  "silhouette": "frozen PAUSED still vs LIVE play surface (unique .qrs chrome)",
+  "behaviour": "112×64 frozen snap → live surface over 480ms; PAUSED ≠ LIVE.",
   "trigger": "RESUME / RESET toggle",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; expand/fade and pulse animations removed"
   }
 }

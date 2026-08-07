@@ -10,18 +10,18 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative overflow-hidden host; import demo.css verbatim.',
-    '96×54px snapshot → full inset active panel over 420ms.',
-    'Honour both reduced-motion triggers — remove motion, keep end states.',
-    'Sandbox-safe: no parent access, storage, or navigation.',
+    'RESUME: frozen 112×64 PAUSED snap → live surface (480ms expand / 260ms fade).',
+    'Honour both reduced-motion triggers — remove motion, keep frozen/live end states.',
   ],
   acceptance: [
-    'Quick Resume Snapshot behaviour matches freeze table',
-    'Trigger: RESUME / RESET toggle',
-    'PlayStation palette: #2E90FF #0B0F14 #F4F6F8 #7EB6FF',
-    'Reduced motion: instant state changes, no travel or keyframes',
-    'Live status announces phase changes outside decorative roots',
+    'Frozen phase shows grayscale PAUSED stamp distinct from LIVE surface',
+    'Live phase shows LIVE badge, green pulse, and pulsing playhead',
+    'Uses unique .qrs chrome — no shared .ps__stage twinning',
+    'Expand duration 480ms; reduced motion snaps with no pulse animation',
+    'Status announces frozen vs live outside decorative roots',
   ],
-  scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
+  scaffold:
+    '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   files: { html, css, js },
   spec,
   contract,

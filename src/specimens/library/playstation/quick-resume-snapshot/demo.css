@@ -1,14 +1,15 @@
-/* PlayStation specimen — portable iframe-isolated CSS */
+/* SPX-3336 Quick Resume Snapshot — portable. Frozen still vs live surface. */
 
-.ps {
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-blue: #2E90FF;
-  --ps-blue-light: #7EB6FF;
+.qrs {
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-blue: #2e90ff;
+  --ps-blue-light: #7eb6ff;
   --ps-panel: #121820;
-  --ps-panel-2: #1a2330;
   --ps-rule: #243044;
   --ps-pewter: #8a9bb0;
+  --expand-ms: 480ms;
+  --fade-ms: 260ms;
 
   box-sizing: border-box;
   width: min(100%, 440px);
@@ -18,13 +19,13 @@
   color: var(--ps-chalk);
 }
 
-.ps *,
-.ps *::before,
-.ps *::after {
+.qrs *,
+.qrs *::before,
+.qrs *::after {
   box-sizing: border-box;
 }
 
-.ps__eyebrow {
+.qrs__eyebrow {
   margin: 0 0 10px;
   font: 10px/1.2 ui-monospace, 'Cascadia Code', monospace;
   letter-spacing: 0.14em;
@@ -32,16 +33,19 @@
   color: var(--ps-pewter);
 }
 
-.ps__stage {
+.qrs__stage {
   position: relative;
-  min-height: 200px;
+  min-height: 190px;
   border: 1px solid var(--ps-rule);
   border-radius: 4px;
-  background: var(--ps-panel);
+  background:
+    linear-gradient(180deg, #0e1520 0%, var(--ps-panel) 100%);
   overflow: hidden;
+  display: grid;
+  place-items: center;
 }
 
-.ps__btn {
+.qrs__btn {
   margin-top: 12px;
   padding: 8px 14px;
   font: 10px/1 ui-monospace, monospace;
@@ -54,122 +58,189 @@
   cursor: pointer;
 }
 
-.ps__btn:focus-visible {
+.qrs__btn:focus-visible {
   outline: 2px solid var(--ps-blue);
   outline-offset: 2px;
 }
 
-.ps__btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.ps__status {
+.qrs__status {
   margin: 10px 0 0;
   font: 10px/1.4 ui-monospace, monospace;
   letter-spacing: 0.06em;
   color: var(--ps-pewter);
 }
 
-.ps__grid {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 12px;
-  transition: opacity 600ms ease, filter 600ms ease;
-}
-
-.ps__card {
-  width: 72px;
-  height: 96px;
-  border: 1px solid var(--ps-rule);
-  border-radius: 3px;
-  background: linear-gradient(155deg, var(--ps-panel-2), var(--ps-rule));
-  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms ease, box-shadow 280ms ease;
-}
-
-.ps__card.is-focus {
-  border-color: var(--ps-blue);
-  box-shadow: 0 0 0 2px rgba(46, 144, 255, 0.35);
-}
-
-.ps__halo {
-  position: absolute;
-  inset: auto;
-  pointer-events: none;
-  border: 2px solid var(--ps-blue);
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 400ms ease, box-shadow 400ms ease;
-  box-shadow: 0 0 18px rgba(46, 144, 255, 0.45);
-}
-
-.ps [hidden] {
-  display: none !important;
-}
-
-
-.qrs__stage { min-height: 180px; display: grid; place-items: center; }
+/* Frozen snapshot card — desaturated still */
 .qrs__snap {
-  width: 96px;
-  height: 54px;
-  border: 1px solid var(--ps-blue);
+  position: relative;
+  width: 112px;
+  height: 64px;
+  border: 1px solid rgb(126 182 255 / 0.55);
   border-radius: 3px;
-  background: linear-gradient(135deg, #1e3a5f, var(--ps-panel-2));
+  background: linear-gradient(135deg, #2a3848, #1a2430);
+  filter: grayscale(0.55) brightness(0.85);
   display: grid;
   place-items: center;
-  transition: width 420ms cubic-bezier(0.4, 0, 0.2, 1), height 420ms cubic-bezier(0.4, 0, 0.2, 1), opacity 280ms ease, transform 420ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  z-index: 2;
+  transition:
+    width var(--expand-ms) cubic-bezier(0.4, 0, 0.2, 1),
+    height var(--expand-ms) cubic-bezier(0.4, 0, 0.2, 1),
+    opacity var(--fade-ms) ease,
+    filter var(--fade-ms) ease,
+    border-radius var(--expand-ms) ease;
 }
-.qrs__paused { font: 9px/1 ui-monospace, monospace; letter-spacing: 0.12em; color: var(--ps-blue-light); }
-.qrs__active {
+
+.qrs__frost {
   position: absolute;
-  inset: 12px;
-  border: 1px solid var(--ps-rule);
+  inset: 0;
+  background: repeating-linear-gradient(
+    -12deg,
+    transparent 0 6px,
+    rgb(255 255 255 / 0.03) 6px 7px
+  );
+  pointer-events: none;
+}
+
+.qrs__stamp {
+  position: relative;
+  z-index: 1;
+  padding: 3px 6px;
+  border: 1px solid rgb(126 182 255 / 0.5);
+  font: 9px/1 ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  color: var(--ps-blue-light);
+  background: rgb(11 15 20 / 0.55);
+}
+
+.qrs__frame-meta {
+  position: absolute;
+  left: 6px;
+  bottom: 4px;
+  font: 7px/1 ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  color: rgb(138 155 176 / 0.85);
+}
+
+/* Live surface — saturated, pulsing playhead */
+.qrs__live {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid var(--ps-blue);
   border-radius: 4px;
-  background: linear-gradient(160deg, #1a3050, var(--ps-panel));
+  background: linear-gradient(160deg, #1a3a5c, #122030);
   opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 320ms ease, transform 420ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0.94);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 12px;
+  gap: 6px;
+  padding: 14px;
+  z-index: 1;
+  transition:
+    opacity var(--fade-ms) ease,
+    transform var(--expand-ms) cubic-bezier(0.4, 0, 0.2, 1);
 }
-.qrs__label { font: 9px/1 ui-monospace, monospace; letter-spacing: 0.1em; color: var(--ps-blue-light); }
-.qrs__playbar { height: 3px; margin-top: 8px; background: var(--ps-rule); border-radius: 2px; overflow: hidden; }
-.qrs__playbar span { display: block; height: 100%; width: 62%; background: var(--ps-blue); }
-.qrs__stage.is-resumed .qrs__snap { width: 100%; height: 100%; opacity: 0; transform: scale(1.04); pointer-events: none; }
-.qrs__stage.is-resumed .qrs__active { opacity: 1; transform: scale(1); }
 
+.qrs__live-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 2px 6px;
+  font: 8px/1 ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  color: var(--ps-ink);
+  background: var(--ps-blue);
+  border-radius: 2px;
+}
+
+.qrs__live-title {
+  font: 10px/1 ui-monospace, monospace;
+  letter-spacing: 0.1em;
+  color: var(--ps-blue-light);
+}
+
+.qrs__playbar {
+  height: 4px;
+  background: var(--ps-rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.qrs__playbar span {
+  display: block;
+  height: 100%;
+  width: 62%;
+  background: var(--ps-blue);
+  transform-origin: left center;
+}
+
+.qrs[data-phase='live'] .qrs__playbar span {
+  animation: qrs-play 1.6s ease-in-out infinite;
+}
+
+.qrs__pulse {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3dff9a;
+  box-shadow: 0 0 8px rgb(61 255 154 / 0.6);
+}
+
+.qrs[data-phase='live'] .qrs__pulse {
+  animation: qrs-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes qrs-play {
+  0%,
+  100% {
+    transform: scaleX(0.62);
+  }
+  50% {
+    transform: scaleX(0.78);
+  }
+}
+
+@keyframes qrs-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.qrs[data-phase='live'] .qrs__snap {
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  opacity: 0;
+  filter: grayscale(0) brightness(1);
+  pointer-events: none;
+}
+
+.qrs[data-phase='live'] .qrs__live {
+  opacity: 1;
+  transform: scale(1);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .ps__stage,
-  .ps__card,
-  .ps__flash,
-  .ps__thumb,
-  .ps__notify,
-  .ps__overlay,
-  .ps__game,
-  .ps__grid,
-  .ps__halo,
-  .ps__error,
-  .ps__offline {
+  .qrs__snap,
+  .qrs__live,
+  .qrs__playbar span,
+  .qrs__pulse {
     transition: none !important;
     animation: none !important;
   }
 }
-[data-force-reduced-motion="true"] .ps__stage,
-[data-force-reduced-motion="true"] .ps__card,
-[data-force-reduced-motion="true"] .ps__flash,
-[data-force-reduced-motion="true"] .ps__thumb,
-[data-force-reduced-motion="true"] .ps__notify,
-[data-force-reduced-motion="true"] .ps__overlay,
-[data-force-reduced-motion="true"] .ps__game,
-[data-force-reduced-motion="true"] .ps__grid,
-[data-force-reduced-motion="true"] .ps__halo,
-[data-force-reduced-motion="true"] .ps__error,
-[data-force-reduced-motion="true"] .ps__offline {
+
+[data-force-reduced-motion='true'] .qrs__snap,
+[data-force-reduced-motion='true'] .qrs__live,
+[data-force-reduced-motion='true'] .qrs__playbar span,
+[data-force-reduced-motion='true'] .qrs__pulse {
   transition: none !important;
   animation: none !important;
 }
