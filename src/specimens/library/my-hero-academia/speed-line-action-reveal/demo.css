@@ -5,6 +5,15 @@
   --ink: #101820;
   --paper: #f4f7fa;
   --accent: #ff4d35;
+  --slar-burst-ms: 580;
+  --slar-settle-ms: 320;
+  --slar-angle-a: 0deg;
+  --slar-angle-b: 30deg;
+  --slar-angle-c: 60deg;
+  --slar-angle-d: 90deg;
+  --slar-angle-e: 120deg;
+  --slar-angle-f: 150deg;
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -43,7 +52,7 @@
 
 .slar__lines {
   position: absolute;
-  inset: -20%;
+  inset: -15%;
   z-index: 2;
   pointer-events: none;
 }
@@ -52,52 +61,52 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 140%;
-  height: 3px;
-  margin-top: -1.5px;
-  margin-left: -70%;
-  background: var(--ink);
-  opacity: 0.85;
+  width: 150%;
+  height: 5px;
+  margin-top: -2.5px;
+  margin-left: -75%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ink) 18%,
+    var(--ink) 82%,
+    transparent 100%
+  );
+  clip-path: polygon(0% 42%, 100% 0%, 100% 100%, 0% 58%);
+  opacity: 0.9;
   transform-origin: center center;
 }
 
-.slar__line--a { transform: rotate(0deg) scaleX(1); }
-.slar__line--b { transform: rotate(30deg) scaleX(1); }
-.slar__line--c { transform: rotate(60deg) scaleX(1); }
-.slar__line--d { transform: rotate(90deg) scaleX(1); }
-.slar__line--e { transform: rotate(120deg) scaleX(1); }
-.slar__line--f { transform: rotate(150deg) scaleX(1); }
+.slar__line--a { --r: var(--slar-angle-a); }
+.slar__line--b { --r: var(--slar-angle-b); }
+.slar__line--c { --r: var(--slar-angle-c); }
+.slar__line--d { --r: var(--slar-angle-d); }
+.slar__line--e { --r: var(--slar-angle-e); }
+.slar__line--f { --r: var(--slar-angle-f); }
 
 .slar[data-phase='idle'] .slar__line {
-  transform: rotate(var(--r, 0deg)) scaleX(0.55);
+  transform: rotate(var(--r)) scaleX(0.62);
   opacity: 1;
 }
 
-.slar__line--a { --r: 0deg; }
-.slar__line--b { --r: 30deg; }
-.slar__line--c { --r: 60deg; }
-.slar__line--d { --r: 90deg; }
-.slar__line--e { --r: 120deg; }
-.slar__line--f { --r: 150deg; }
-
 .slar[data-phase='burst'] .slar__line,
 .slar[data-phase='settle'] .slar__line {
-  animation: slar-burst 580ms cubic-bezier(0.15, 0.9, 0.2, 1) forwards;
+  animation: slar-burst calc(var(--slar-burst-ms) * 1ms) cubic-bezier(0.15, 0.9, 0.2, 1) forwards;
 }
 
-.slar[data-phase='burst'] .slar__line--b { animation-delay: 20ms; }
-.slar[data-phase='burst'] .slar__line--c { animation-delay: 35ms; }
-.slar[data-phase='burst'] .slar__line--d { animation-delay: 50ms; }
-.slar[data-phase='burst'] .slar__line--e { animation-delay: 65ms; }
-.slar[data-phase='burst'] .slar__line--f { animation-delay: 80ms; }
+.slar[data-phase='burst'] .slar__line--b { animation-delay: 18ms; }
+.slar[data-phase='burst'] .slar__line--c { animation-delay: 32ms; }
+.slar[data-phase='burst'] .slar__line--d { animation-delay: 46ms; }
+.slar[data-phase='burst'] .slar__line--e { animation-delay: 60ms; }
+.slar[data-phase='burst'] .slar__line--f { animation-delay: 74ms; }
 
 @keyframes slar-burst {
   0% {
-    transform: rotate(var(--r, 0deg)) scaleX(0.5);
+    transform: rotate(var(--r)) scaleX(0.62);
     opacity: 1;
   }
   100% {
-    transform: rotate(var(--r, 0deg)) scaleX(1.8) translateY(-40%);
+    transform: rotate(var(--r)) scaleX(2) translateY(-42%);
     opacity: 0;
   }
 }
@@ -124,7 +133,7 @@
 .slar[data-phase='burst'] .slar__reveal,
 .slar[data-phase='settle'] .slar__reveal,
 .slar[data-phase='done'] .slar__reveal {
-  animation: slar-reveal-in 580ms cubic-bezier(0.2, 1, 0.3, 1) forwards;
+  animation: slar-reveal-in calc(var(--slar-burst-ms) * 1ms) cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
 @keyframes slar-reveal-in {
@@ -205,8 +214,16 @@
   .slar__reveal {
     animation: none !important;
   }
+
   .slar[data-phase='idle'] .slar__lines {
     opacity: 0;
+  }
+
+  .slar[data-phase='done'] .slar__reveal,
+  .slar[data-phase='settle'] .slar__reveal,
+  .slar[data-phase='burst'] .slar__reveal {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -217,4 +234,11 @@
 
 [data-force-reduced-motion='true'] .slar[data-phase='idle'] .slar__lines {
   opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .slar[data-phase='done'] .slar__reveal,
+[data-force-reduced-motion='true'] .slar[data-phase='settle'] .slar__reveal,
+[data-force-reduced-motion='true'] .slar[data-phase='burst'] .slar__reveal {
+  opacity: 1;
+  transform: scale(1);
 }

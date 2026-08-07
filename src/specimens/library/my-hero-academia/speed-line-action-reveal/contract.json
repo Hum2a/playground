@@ -1,11 +1,14 @@
 {
   "name": "speed-line-action-reveal",
-  "intent": "Converging speed lines burst outward to reveal TARGET acquisition readout.",
-  "catalogue": { "mha": "MHA-002", "ref": "SPX-1976" },
+  "intent": "Six tapered converging speed lines at frozen 30deg intervals burst outward to reveal TARGET acquisition readout.",
+  "catalogue": { "mha": "MHA-002", "ref": "SPX-1976", "title": "Speed-Line Action Reveal" },
   "copy": {
     "headline": "TARGET",
     "eyebrow": "SCAN // RESULT",
-    "sub": "Acquisition complete."
+    "sub": "Acquisition complete.",
+    "liveIdle": "Target concealed.",
+    "liveBurst": "Burst reveal.",
+    "liveDone": "Target revealed."
   },
   "colours": {
     "primary": "#38A3FF",
@@ -13,11 +16,36 @@
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "timing": { "burstMs": 580, "settleMs": 320 },
+  "timing": {
+    "burstMs": 580,
+    "settleMs": 320,
+    "lineStaggerMs": [0, 18, 32, 46, 60, 74]
+  },
+  "geometry": {
+    "lineCount": 6,
+    "anglesDeg": [0, 30, 60, 90, 120, 150],
+    "idleScaleX": 0.62,
+    "burstScaleX": 2,
+    "taperClip": "polygon(0% 42%, 100% 0%, 100% 100%, 0% 58%)"
+  },
   "api": {
     "run": "runSpeedLineReveal()",
     "reset": "resetSpeedLineReveal()",
     "replay": "replaySpeedLineReveal()"
   },
-  "reducedMotion": { "behaviour": "Immediately show TARGET; hide lines" }
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "behaviour": "Immediately show TARGET; hide speed lines"
+  },
+  "acceptance": [
+    "Idle: six tapered lines at frozen 0/30/60/90/120/150deg converging at center",
+    "Burst: lines scaleX 0.62→2 and fade over 580ms with 18ms stagger ladder",
+    "TARGET reveal scales in after 45% of burst window",
+    "Done: lines hidden; TARGET and sub copy visible",
+    "Reduced motion (prefers or data-force) shows TARGET immediately"
+  ],
+  "waveC": "Tapered line clip-path; frozen angle ladder; polish-only burst timing"
 }
