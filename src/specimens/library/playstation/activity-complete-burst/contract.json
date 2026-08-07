@@ -1,17 +1,97 @@
 {
-  "name": "activity-complete-burst",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "burstMs": 520
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/activity-complete-burst.schema.json",
+  "title": "ActivityCompleteBurst",
+  "description": "Finite geometric PS-shape burst celebrates activity completion, then settles.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "activity-complete-burst" },
+    "intent": {
+      "type": "string",
+      "const": "Completed activity receives a finite geometric PS-shape burst before settling."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-034" },
+        "ref": { "type": "string", "const": "SPX-3340" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 400 },
+        "heightPx": { "type": "number", "const": 300 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["particleCount", "shapes"],
+      "properties": {
+        "particleCount": { "type": "number", "const": 8 },
+        "shapes": {
+          "type": "array",
+          "const": ["circle", "cross", "square", "triangle"]
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["burstMs", "settleMs", "phases"],
+      "properties": {
+        "burstMs": { "type": "number", "const": 560 },
+        "settleMs": { "type": "number", "const": 180 },
+        "phases": {
+          "type": "array",
+          "const": ["idle", "burst", "done"]
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Skip particle burst; show done card and DONE badge immediately."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "burst", "particle", "badge"],
+      "properties": {
+        "root": { "type": "string", "const": "acb" },
+        "burst": { "type": "string", "const": "acb__burst" },
+        "particle": { "type": "string", "const": "acb__particle" },
+        "badge": { "type": "string", "const": "acb__badge" }
+      }
+    }
+  }
 }

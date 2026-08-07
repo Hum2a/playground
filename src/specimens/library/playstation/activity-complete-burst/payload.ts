@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inside scaffold host; import demo.css verbatim.",
-      "Honour both reduced-motion triggers — end states remain visible.",
-      "Listen for `{ type: \"restart\" }` postMessage where applicable."
+    'Wire Complete to idle→burst→done with exactly 8 geometric particles.',
+    'Import demo.css verbatim; freeze burst 560ms / settle 180ms from contract.json.',
+    'Preserve circle/cross/square/triangle particle silhouettes.',
+    'Preserve both reduced-motion overrides on particles, card, and badge.',
   ],
   acceptance: [
-      "Uses PlayStation palette: #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF",
-      "No PS logos, glyphs, or game art",
-      "iframe-safe — no parent access, storage, or navigation",
-      "Reduced motion shows final states instantly"
+    'Complete fires exactly 8 finite particles (circle, cross, square, triangle ×2).',
+    'Burst lasts 560ms then settles with a visible DONE badge.',
+    'Particles do not loop after settling.',
+    'Reduced motion skips the burst and shows the done state immediately.',
   ],
-  scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">
+  scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}
-</div>
-`.trim(),
+</div>`.trim(),
   files: { html, css, js },
   spec,
   contract,

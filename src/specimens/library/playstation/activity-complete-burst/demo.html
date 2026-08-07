@@ -1,6 +1,6 @@
-<div class="ps acb" data-acb data-phase="idle">
-  <p class="ps__live" data-acb-live aria-live="polite">Activity idle.</p>
-  <p class="ps__eyebrow">ACTIVITY COMPLETE</p>
+<div class="acb" data-acb data-phase="idle">
+  <p class="acb__live" data-acb-live aria-live="polite">Activity idle.</p>
+  <p class="acb__eyebrow">ACTIVITY COMPLETE</p>
   <div class="acb__stage">
     <article class="acb__card" data-acb-card>
       <span class="acb__badge" aria-hidden="true">DONE</span>
@@ -8,9 +8,19 @@
       <p class="acb__meta">All tasks finished</p>
     </article>
     <div class="acb__burst" data-acb-burst aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span class="acb__particle acb__particle--circle" data-i="0"></span>
+      <span class="acb__particle acb__particle--cross" data-i="1"></span>
+      <span class="acb__particle acb__particle--square" data-i="2"></span>
+      <span class="acb__particle acb__particle--triangle" data-i="3"></span>
+      <span class="acb__particle acb__particle--circle" data-i="4"></span>
+      <span class="acb__particle acb__particle--cross" data-i="5"></span>
+      <span class="acb__particle acb__particle--square" data-i="6"></span>
+      <span class="acb__particle acb__particle--triangle" data-i="7"></span>
     </div>
   </div>
-  <button type="button" class="ps__btn" data-acb-run>Complete</button>
-  <p class="ps__status" data-acb-status>Press Complete to trigger burst.</p>
+  <div class="acb__controls">
+    <button type="button" class="acb__btn" data-acb-run>Complete</button>
+    <button type="button" class="acb__btn acb__btn--ghost" data-acb-reset>Reset</button>
+  </div>
+  <p class="acb__status" data-acb-status>Press Complete for a finite geometric burst.</p>
 </div>
