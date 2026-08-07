@@ -5,7 +5,7 @@ A radial seal **draw-strokes** itself (outer → inner → ticks), then a tool p
 ## Behaviour
 
 - Idle: undrawn rings, hidden panel, status `IDLE`.
-- Drawing: outer stroke 300ms, inner 260ms, ticks scale in.
+- Drawing: outer stroke 300ms, inner 260ms, 8 ticks scale in.
 - Materialising: panel expands from seal centre (clip circle + scale 0.2→1) over 300ms.
 - Done: status `MATERIALISED`.
 - Reduced motion: fully drawn + panel visible immediately.

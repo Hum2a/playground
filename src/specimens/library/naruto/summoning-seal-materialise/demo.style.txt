@@ -9,7 +9,8 @@
   --ssm-outer-ms: 300ms;
   --ssm-inner-ms: 260ms;
   --ssm-panel-ms: 300ms;
-  --ssm-expand-from: 0%;
+  --ssm-tick-ms: 180ms;
+  --ssm-panel-scale-from: 0.2;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -54,8 +55,9 @@
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 0.6rem;
+  gap: 0.55rem;
   justify-items: center;
+  align-content: end;
   width: 100%;
   min-height: 240px;
   padding: 0.75rem 0.75rem 1rem;
@@ -89,7 +91,7 @@
 .ssm__ticks {
   transform: scale(0);
   transform-origin: 100px 170px;
-  transition: transform 180ms cubic-bezier(0.2, 1.2, 0.3, 1);
+  transition: transform var(--ssm-tick-ms) cubic-bezier(0.2, 1.2, 0.3, 1);
 }
 
 .ssm__ticks[data-visible='true'] {
@@ -97,25 +99,26 @@
 }
 
 .ssm__ticks line {
-  stroke: var(--olive);
+  stroke: var(--parchment);
   stroke-width: 1.5;
 }
 
 .ssm__panel {
   position: absolute;
   left: 50%;
-  bottom: 42%;
+  bottom: 38%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
   padding: 0.6rem 0.9rem;
   border: 1.5px solid var(--chakra);
-  background: rgb(16 19 24 / 0.95);
+  background: rgb(20 12 12 / 0.96);
   color: var(--chakra);
-  transform: translate(-50%, 0) scale(0);
-  transform-origin: 50% 100%;
+  transform: translate(-50%, 0) scale(var(--ssm-panel-scale-from));
+  transform-origin: 50% 120%;
   clip-path: circle(0% at 50% 100%);
+  pointer-events: none;
   transition:
     transform var(--ssm-panel-ms) cubic-bezier(0.2, 0.9, 0.25, 1.05),
     clip-path var(--ssm-panel-ms) cubic-bezier(0.2, 0.9, 0.25, 1.05);
@@ -124,6 +127,7 @@
 .ssm__panel[data-visible='true'] {
   transform: translate(-50%, 0) scale(1);
   clip-path: circle(140% at 50% 100%);
+  pointer-events: auto;
 }
 
 .ssm__panel-label {

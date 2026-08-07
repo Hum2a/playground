@@ -1,20 +1,11 @@
 {
   "name": "summoning-seal-materialise",
-  "intent": "Seal rings draw via stroke, ticks snap in, then a panel expands from the seal center with clip/scale — not fade.",
-  "catalogue": { "nr": "NR-173", "ref": "SPX-2516" },
-  "copy": {
-    "system": "SEAL // MATERIALISE",
-    "idle": "IDLE",
-    "drawing": "DRAWING",
-    "materialising": "MATERIALISING",
-    "done": "MATERIALISED",
-    "hintIdle": "Press Run to draw the seal.",
-    "hintDone": "Panel materialised."
-  },
+  "intent": "Seal rings draw via stroke, ticks snap in, then a tool panel expands from the seal center with clip/scale — not fade.",
   "geometry": {
     "outerRadius": 70,
     "innerRadius": 46,
     "tickCount": 8,
+    "panelScaleFrom": 0.2,
     "panelExpandOrigin": "center-bottom-of-seal"
   },
   "timing": {
@@ -42,7 +33,7 @@
   },
   "acceptance": [
     "Outer then inner rings draw via stroke-dash over 300ms/260ms before panel expands",
-    "Panel uses clip-path circle + scale from seal center — not opacity fade",
+    "Panel uses clip-path circle + scale 0.2→1 from seal center — not opacity fade",
     "Exactly 8 ticks snap-scale in with the inner ring; reduced motion shows MATERIALISED immediately"
   ]
 }
