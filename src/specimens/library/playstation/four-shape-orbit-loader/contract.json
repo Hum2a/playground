@@ -1,11 +1,8 @@
 {
   "name": "four-shape-orbit-loader",
-  "intent": "Four original geometric symbols orbit and settle into a completion state.",
-  "primitives": [
-    "loader",
-    "orbit",
-    "shapes"
-  ],
+  "ref": "SPX-3317",
+  "intent": "Four original geometric symbols orbit a hub and settle onto a completion diamond.",
+  "primitives": ["circle", "cross", "square", "triangle"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
@@ -16,11 +13,19 @@
     "orbitMs": 2400,
     "settleMs": 400
   },
+  "settle": {
+    "frame": "diamond",
+    "vertices": ["N", "E", "S", "W"]
+  },
+  "api": {
+    "complete": "COMPLETE button / data-fso-complete",
+    "reset": "RESET button / data-fso-reset"
+  },
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "Settled frame shown instantly; no orbit animation"
+    "behaviour": "Settled diamond shown instantly; no orbit or counter-spin"
   }
 }

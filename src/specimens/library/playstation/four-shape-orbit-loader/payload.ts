@@ -7,15 +7,16 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inline; import demo.css verbatim.",
-      "COMPLETE toggles is-complete and injects settled corner shapes.",
-      "Honour both reduced-motion triggers by removing orbit animation."
+    'Mount inline; import demo.css verbatim.',
+    'COMPLETE sets data-phase=complete and reveals the diamond; RESET restores orbit.',
+    'Honour both reduced-motion triggers by removing orbit/counter-spin animations.',
   ],
   acceptance: [
-      "Four abstract shapes orbit a central hub in a continuous loop",
-      "COMPLETE stops orbit and shows shapes at frame corners",
-      "RESET clears completion and resumes orbit",
-      "Reduced motion shows settled frame instantly on COMPLETE"
+    'Four primitives (circle, upright cross, square, triangle) orbit a central hub on a dashed rail',
+    'COMPLETE stops the orbit and places shapes at N/E/S/W vertices of a diamond frame',
+    'RESET clears the diamond and resumes the continuous orbit',
+    'Settled layout is a diamond lock — not a scatter toward a destination panel',
+    'Reduced motion shows the settled diamond instantly on COMPLETE with no orbit',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#0B0F14;padding:12px;">

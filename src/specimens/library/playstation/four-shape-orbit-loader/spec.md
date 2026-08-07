@@ -1,22 +1,24 @@
 # Four-Shape Orbit Loader
 
-Four abstract primitives (circle, cross, square, triangle-like) orbit a center hub, then snap into a completion diamond.
+Four original primitives (circle, upright cross, square, triangle) orbit a hub on a dashed rail, then settle onto the four vertices of a completion diamond. Distinct from Shape Scatter Transition (source → burst → destination tokens).
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
-| Shapes | 4 original primitives |
-| Orbit duration | 2.4s loop |
-| Settle | 400ms snap on COMPLETE |
-| Trigger | PLAY / RESET |
+| ---- | ----- |
+| Ref | `SPX-3317` |
+| Primitives | circle · cross (+) · square · triangle |
+| Orbit duration | `2400ms` linear infinite |
+| Settle duration | `400ms` opacity snap into diamond |
+| Completion frame | rotated square (diamond) with shapes at N/E/S/W |
+| Triggers | COMPLETE / RESET |
 
 ## Behaviour
 
-1. Idle: shapes orbit evenly around the hub.
-2. COMPLETE stops the orbit and snaps shapes into corners of a completion frame.
-3. RESET restarts the orbit loop.
+1. Idle: shapes orbit evenly; counter-rotated so glyphs stay upright.
+2. COMPLETE stops the orbit, reveals the diamond, and places shapes at its four vertices.
+3. RESET clears completion and resumes the orbit loop.
 
 ## Reduced motion
 
-Orbit animation removed; COMPLETE shows the settled frame instantly.
+Orbit and counter-spin animations removed; COMPLETE shows the settled diamond instantly.

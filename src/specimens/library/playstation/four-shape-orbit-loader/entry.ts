@@ -4,7 +4,8 @@ export const fourShapeOrbitLoader: Specimen = {
   id: 'four-shape-orbit-loader',
   ref: 'SPX-3317',
   title: 'Four-Shape Orbit Loader',
-  blurb: 'Four original geometric symbols orbit a center point and settle into a completion lock.',
+  blurb:
+    'Four original primitives orbit a hub on a dashed rail, then lock onto a completion diamond at N/E/S/W.',
   origin: {
     project: 'Original',
     surface: 'PlayStation-inspired UI study — abstract shapes, no official glyphography',
@@ -17,13 +18,15 @@ export const fourShapeOrbitLoader: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
-  tags: ["loader","orbit","shapes"],
+  tags: ['loader', 'orbit', 'shapes'],
   deps: 'none',
   motion: {
     loops: true,
     respectsReducedMotion: true,
-    reducedMotionNote: 'Orbit animation removed; COMPLETE shows the settled frame instantly.',
+    reducedMotionNote:
+      'Orbit and counter-spin removed; COMPLETE reveals the settled diamond instantly.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

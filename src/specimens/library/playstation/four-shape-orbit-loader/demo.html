@@ -1,13 +1,28 @@
-<div class="fso" data-fso>
+<div class="fso" data-fso data-phase="orbit">
   <div class="fso__stage" data-fso-stage aria-hidden="true">
-    <div class="fso__hub"></div>
+    <div class="fso__rail"></div>
+    <div class="fso__hub" data-fso-hub></div>
     <div class="fso__orbit fso__anim" data-fso-orbit>
-      <span class="fso__shape fso__shape--circle" data-fso-shape="0"></span>
-      <span class="fso__shape fso__shape--cross" data-fso-shape="1"></span>
-      <span class="fso__shape fso__shape--square" data-fso-shape="2"></span>
-      <span class="fso__shape fso__shape--triangle" data-fso-shape="3"></span>
+      <span class="fso__arm" style="--i: 0">
+        <span class="fso__shape fso__shape--circle" data-fso-shape="0"></span>
+      </span>
+      <span class="fso__arm" style="--i: 1">
+        <span class="fso__shape fso__shape--cross" data-fso-shape="1"></span>
+      </span>
+      <span class="fso__arm" style="--i: 2">
+        <span class="fso__shape fso__shape--square" data-fso-shape="2"></span>
+      </span>
+      <span class="fso__arm" style="--i: 3">
+        <span class="fso__shape fso__shape--triangle" data-fso-shape="3"></span>
+      </span>
     </div>
-    <div class="fso__frame" data-fso-frame hidden></div>
+    <div class="fso__diamond" data-fso-diamond hidden>
+      <span class="fso__diamond-edge"></span>
+      <span class="fso__shape fso__shape--circle" data-fso-settled="0"></span>
+      <span class="fso__shape fso__shape--cross" data-fso-settled="1"></span>
+      <span class="fso__shape fso__shape--square" data-fso-settled="2"></span>
+      <span class="fso__shape fso__shape--triangle" data-fso-settled="3"></span>
+    </div>
   </div>
   <div class="fso__controls">
     <button type="button" class="fso__btn" data-fso-complete>COMPLETE</button>
