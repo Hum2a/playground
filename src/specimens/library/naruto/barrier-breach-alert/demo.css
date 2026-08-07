@@ -1,13 +1,13 @@
 /* SPX-2525 Barrier Breach Alert — portable contract. */
 
 .bba {
-  --ink: #070b0e;
-  --parchment: #c8e8dc;
-  --chakra: #3dcea8;
+  --ink: #0c0806;
+  --parchment: #c4b8a8;
+  --chakra: #c43c2e;
   --alert: #d94a38;
-  --olive: #1a6b58;
-  --off: #d7f5ec;
-  --bba-alarm-ms: 700ms;
+  --olive: #5a5048;
+  --off: #f4f1e8;
+  --bba-alarm-ms: 280ms;
   --bba-settle-ms: 60ms;
   --bba-fracture-deg: -18deg;
   box-sizing: border-box;
@@ -58,7 +58,7 @@
   justify-items: center;
   width: 100%;
   padding: 0.85rem 0.75rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(196 60 46 / 0.45);
   background: rgb(244 241 232 / 0.04);
   transition: border-color 200ms ease-out;
 }
@@ -75,12 +75,12 @@
 }
 
 .bba__fill {
-  fill: color-mix(in srgb, var(--chakra) 45%, transparent);
+  fill: rgb(196 60 46 / 0.45);
   transition: fill 260ms ease-out;
 }
 
 .bba[data-phase='breaching'] .bba__fill {
-  animation: bba-alarm 700ms ease-in-out 1;
+  animation: bba-alarm var(--bba-alarm-ms) ease-out 1;
 }
 
 .bba[data-phase='breached'] .bba__fill {
@@ -223,7 +223,7 @@
 
 .bba__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(196 60 46 / 0.45);
 }
 
 .bba__btn:hover:not(:disabled) {

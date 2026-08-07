@@ -1,41 +1,94 @@
 {
-  "name": "barrier-breach-alert",
-  "intent": "Perimeter fractures at a single -18° point; alert latches for 700ms with no loop flash.",
-  "catalogue": {
-    "nr": "NR-182",
-    "ref": "SPX-2525"
-  },
-  "geometry": {
-    "fractureCount": 1,
-    "fractureDeg": -18,
-    "noLoopFlash": true
-  },
-  "timing": {
-    "alarmMs": 700,
-    "settleMs": 60,
-    "totalMs": 760
-  },
-  "colours": {
-    "ink": "#070B0E",
-    "parchment": "#C8E8DC",
-    "chakra": "#3DCEA8",
-    "alert": "#D94A38",
-    "olive": "#1A6B58",
-    "off": "#D7F5EC",
-    "palette": "sensor-phosphor"
-  },
-  "api": {
-    "run": "runBarrierBreachAlert()",
-    "reset": "resetBarrierBreachAlert()",
-    "replay": "replayBarrierBreachAlert()"
-  },
-  "reducedMotion": {
-    "behaviour": "Resolved Barrier Breach Alert state immediately"
-  },
-  "acceptance": [
-    "Exactly one fracture appears at fractureDeg -18; no additional cracks",
-    "Alert pulse runs once for alarmMs 700 then latches BREACHED (noLoopFlash)",
-    "Replay clears fracture + alert before rerunning",
-    "Reduced motion shows fracture + BREACHED without pulse animation"
-  ]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/barrier-breach-alert.schema.json",
+  "title": "BarrierBreachAlert",
+  "description": "Single fracture + alert latch; no loop flash.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "fractureDeg",
+    "fractureCount",
+    "alarmMs",
+    "noLoopFlash",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "barrier-breach-alert"
+    },
+    "fractureDeg": {
+      "type": "number",
+      "const": -18
+    },
+    "fractureCount": {
+      "type": "number",
+      "const": 1
+    },
+    "alarmMs": {
+      "type": "number",
+      "const": 280
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 60
+    },
+    "noLoopFlash": {
+      "type": "boolean",
+      "const": true
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alert",
+        "olive",
+        "off"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#0C0806"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C4B8A8"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#C43C2E"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#D94A38"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#5A5048"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F4F1E8"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immediateBreached"
+      ],
+      "properties": {
+        "immediateBreached": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
 }

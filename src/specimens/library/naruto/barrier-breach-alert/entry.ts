@@ -5,7 +5,7 @@ export const barrierBreachAlert: Specimen = {
   ref: 'SPX-2525',
   title: 'Barrier Breach Alert',
   blurb:
-    'Perimeter fractures at a single -18° point; alert latches for 700ms with no loop flash.',
+    'A sealed perimeter takes one fracture at -18°, one alarm pulse, then latches BREACH DETECTED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / barrier interfaces — breach alert',
@@ -25,16 +25,18 @@ export const barrierBreachAlert: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Barrier Breach Alert state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, BREACH DETECTED appears immediately with no alarm pulse.',
   },
-  acceptance: [
-    'Exactly one fracture appears at fractureDeg -18; no additional cracks',
-    'Alert pulse runs once for alarmMs 700 then latches BREACHED (noLoopFlash)',
-    'Replay clears fracture + alert before rerunning',
+    acceptance: [
+    'Single fracture at frozen angle -18° (fractureCount 1)',
+    'One alarm pulse 280ms then BREACH DETECTED latches (no loop flash)',
+    'Seal lacquer palette',
+    'Replay restores SECURE before rerunning',
+    'Reduced motion shows BREACH DETECTED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070B0E;display:grid;place-items:center;padding:1rem;"><div style="position:relative;width:min(100%,280px);height:160px;border:1px solid #1a6b58;background:#0a1210;">{{specimen}}</div></div>`,
+    scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0c0806;display:grid;place-items:center;padding:1rem;"><div style="position:relative;width:min(100%,260px);min-height:180px;border:1px solid #5a5048;background:#140e0c;padding:1rem;color:#f4f1e8;font:600 12px ui-sans-serif,system-ui,sans-serif;">Secured zone{{specimen}}</div></div>`,
     width: 420,
     height: 340,
     background: 'dark',
