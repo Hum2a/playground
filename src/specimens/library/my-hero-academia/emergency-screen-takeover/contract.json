@@ -1,11 +1,18 @@
 {
   "name": "emergency-screen-takeover",
-  "intent": "Diagonal warning planes interrupt calm UI with emergency takeover.",
+  "intent": "Frozen-angle diagonal planes sweep over host UI scaffold; EMERGENCY takeover copy.",
+  "catalogue": { "mha": "MHA-101", "ref": "SPX-2065" },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
+  },
+  "geometry": {
+    "planeAAngleDeg": -22,
+    "planeBAngleDeg": -14,
+    "planeAOffset": "-120%",
+    "planeBOffset": "-130%"
   },
   "timing": {
     "planeMs": 420,
@@ -22,6 +29,7 @@
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "Planes and alert appear immediately"
-  }
+    "behaviour": "Planes and alert appear immediately over host UI"
+  },
+  "waveC": "Frozen diagonal plane angles; host UI scaffold visible under takeover"
 }

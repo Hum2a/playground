@@ -1,10 +1,14 @@
-/* emergency-screen-takeover — portable specimen styles */
+/* SPX-2065 Emergency Screen Takeover — portable contract. */
 
 .est {
   --est-primary: #38a3ff;
   --est-ink: #101820;
   --est-paper: #f4f7fa;
   --est-accent: #ff4d35;
+  --est-plane-a-angle: -22deg;
+  --est-plane-b-angle: -14deg;
+  --est-plane-a-offset: -120%;
+  --est-plane-b-offset: -130%;
 
   box-sizing: border-box;
   position: relative;
@@ -16,13 +20,63 @@
   font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
   color: var(--est-ink);
   background: var(--est-paper);
-  border: 2px solid var(--est-ink);
+  border: 4px solid var(--est-ink);
 }
 
 .est *,
 .est *::before,
 .est *::after {
   box-sizing: border-box;
+}
+
+.est__host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  padding: 0.5rem;
+  background:
+    radial-gradient(circle, var(--est-ink) 1px, transparent 1px) 0 0 / 8px 8px,
+    color-mix(in srgb, var(--est-primary) 8%, var(--est-paper));
+  pointer-events: none;
+}
+
+.est__host-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  border: 2px solid var(--est-ink);
+  background: var(--est-ink);
+  color: var(--est-paper);
+}
+
+.est__host-dot {
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--est-paper);
+  background: var(--est-primary);
+}
+
+.est__host-title {
+  margin-left: 0.25rem;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.est__host-body {
+  padding: 0.5rem 0.25rem;
+}
+
+.est__host-line {
+  margin: 0 0 0.25rem;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.est__host-line--muted {
+  color: color-mix(in srgb, var(--est-ink) 50%, transparent);
 }
 
 .est__calm {
@@ -33,6 +87,7 @@
   flex-direction: column;
   gap: 0.3rem;
   z-index: 1;
+  background: rgb(244 247 250 / 0.88);
 }
 
 .est__label {
@@ -57,13 +112,14 @@
   margin-top: auto;
   align-self: flex-start;
   padding: 0.4rem 0.7rem;
-  border: 2px solid var(--est-ink);
+  border: 3px solid var(--est-ink);
   background: var(--est-primary);
   color: var(--est-paper);
   font: 800 0.6rem/1.2 inherit;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
+  clip-path: polygon(0 0, 94% 0, 100% 28%, 100% 100%, 6% 100%, 0 72%);
 }
 
 .est__trigger:focus {
@@ -98,26 +154,30 @@
 
 .est__plane {
   position: absolute;
-  inset: -20%;
-  transform: translateX(-120%) rotate(-18deg);
+  inset: -25%;
+  transform: translateX(var(--est-plane-offset, -120%)) rotate(var(--est-plane-angle, -18deg));
   transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .est__plane--a {
+  --est-plane-angle: var(--est-plane-a-angle);
+  --est-plane-offset: var(--est-plane-a-offset);
   background: var(--est-accent);
-  clip-path: polygon(0 30%, 100% 0, 100% 55%, 0 85%);
+  clip-path: polygon(0 28%, 100% 0, 100% 52%, 0 82%);
   z-index: 1;
 }
 
 .est__plane--b {
+  --est-plane-angle: var(--est-plane-b-angle);
+  --est-plane-offset: var(--est-plane-b-offset);
   background: var(--est-ink);
-  clip-path: polygon(0 55%, 100% 25%, 100% 100%, 0 100%);
+  clip-path: polygon(0 58%, 100% 22%, 100% 100%, 0 100%);
   z-index: 2;
   transition-delay: 80ms;
 }
 
 .est--alert .est__plane {
-  transform: translateX(0) rotate(-18deg);
+  --est-plane-offset: 0%;
 }
 
 .est__alert {
@@ -146,6 +206,10 @@
   font-weight: 800;
   letter-spacing: 0.22em;
   color: var(--est-accent);
+  border: 2px solid var(--est-accent);
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  transform: rotate(-3deg);
 }
 
 .est__alert-title {
@@ -181,7 +245,7 @@
   }
 
   .est--alert .est__plane {
-    transform: translateX(0) rotate(-18deg);
+    --est-plane-offset: 0%;
   }
 
   .est--alert .est__alert {
@@ -196,7 +260,7 @@
 }
 
 [data-force-reduced-motion='true'] .est--alert .est__plane {
-  transform: translateX(0) rotate(-18deg);
+  --est-plane-offset: 0%;
 }
 
 [data-force-reduced-motion='true'] .est--alert .est__alert {
