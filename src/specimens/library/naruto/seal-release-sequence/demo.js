@@ -1,13 +1,15 @@
 /**
- * Seal Release Sequence — three concentric rings disengage in stagger.
+ * Seal Release Sequence — staggered outward ring disengage; open glyph last.
  * iframe-safe; no storage / parent / network.
  */
 
 const RING_COUNT = 3
-const RING_STAGGER_MS = 120
+/** Outer → inner stagger (ms). */
+const RING_STAGGER_MS = [0, 120, 240]
 const RING_ANIM_MS = 300
-const GLYPH_CROSSFADE_MS = 180
+const GLYPH_MS = 160
 const SETTLE_MS = 90
+const EXPAND = [1.38, 1.32, 1.26]
 
 let busy = false
 /** @type {number[]} */
@@ -25,7 +27,9 @@ function rootEl() {
 }
 
 function rings() {
-  return Array.from(document.querySelectorAll('[data-srs-ring]'))
+  return Array.from(document.querySelectorAll('[data-srs-ring]')).sort(
+    (a, b) => Number(a.getAttribute('data-index')) - Number(b.getAttribute('data-index')),
+  )
 }
 
 function clearTimers() {
@@ -65,7 +69,7 @@ function showResolved() {
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('UNLOCKED')
   setHint('Seal released.')
-  setLive('All seal rings disengaged. Seal unlocked.')
+  setLive('All seal rings disengaged outward. Open glyph latched.')
 }
 
 function resetVisual() {
@@ -101,19 +105,27 @@ export function runSealReleaseSequence() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('RELEASING')
-  setLive('Disengaging seal rings.')
+  setLive('Disengaging seal rings outward.')
 
   return new Promise((resolve) => {
-    rings().forEach((ring, i) => {
-      later(i * RING_STAGGER_MS, () => {
+    const list = rings()
+    list.forEach((ring, i) => {
+      later(RING_STAGGER_MS[i] ?? i * 120, () => {
         ring.setAttribute('data-disengaged', 'true')
+        setLive(
+          `Ring ${i + 1} of ${RING_COUNT} expanded to ×${EXPAND[i]} (stagger ${RING_STAGGER_MS[i]}ms).`,
+        )
       })
     })
 
-    const lastRingEnd = (RING_COUNT - 1) * RING_STAGGER_MS + RING_ANIM_MS
+    const lastRingEnd =
+      (RING_STAGGER_MS[RING_COUNT - 1] ?? 240) + RING_ANIM_MS
     later(lastRingEnd, () => {
-      showResolved()
-      later(GLYPH_CROSSFADE_MS + SETTLE_MS, () => {
+      root.setAttribute('data-phase', 'done')
+      setStatus('UNLOCKED')
+      setHint('Seal released.')
+      setLive('Open glyph latched after final ring disengage.')
+      later(GLYPH_MS + SETTLE_MS, () => {
         busy = false
         setButtons(true)
         resolve()

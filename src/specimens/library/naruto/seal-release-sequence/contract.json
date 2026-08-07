@@ -1,37 +1,49 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/seal-release-sequence.schema.json",
-  "title": "SealReleaseSequence",
-  "description": "Three concentric rings disengage in stagger while the core glyph crossfades from locked to open.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "ringCount", "ringStaggerMs", "ringAnimMs", "glyphCrossfadeMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "seal-release-sequence" },
-    "ringCount": { "type": "number", "const": 3 },
-    "ringStaggerMs": { "type": "number", "const": 120 },
-    "ringAnimMs": { "type": "number", "const": 300 },
-    "glyphCrossfadeMs": { "type": "number", "const": 180 },
-    "settleMs": { "type": "number", "const": 90 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#140C0C" },
-        "parchment": { "type": "string", "const": "#E8DCC8" },
-        "chakra": { "type": "string", "const": "#C43C2E" },
-        "olive": { "type": "string", "const": "#6B5048" },
-        "off": { "type": "string", "const": "#F3EBE0" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateUnlocked"],
-      "properties": {
-        "immediateUnlocked": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "seal-release-sequence",
+  "intent": "Three concentric rings disengage outward on a frozen stagger, then the locked glyph snaps to open last.",
+  "catalogue": { "nr": "NR-033", "ref": "SPX-2376" },
+  "copy": {
+    "system": "SEAL // RELEASE",
+    "engaged": "ENGAGED",
+    "releasing": "RELEASING",
+    "unlocked": "UNLOCKED",
+    "hintIdle": "Press Run to disengage the seal rings.",
+    "hintDone": "Seal released."
+  },
+  "geometry": {
+    "ringCount": 3,
+    "radii": [46, 34, 22],
+    "expandScales": [1.38, 1.32, 1.26],
+    "order": "outer-to-inner"
+  },
+  "timing": {
+    "staggerMs": [0, 120, 240],
+    "ringAnimMs": 300,
+    "glyphMs": 160,
+    "settleMs": 90,
+    "totalMs": 790
+  },
+  "colours": {
+    "ink": "#140C0C",
+    "parchment": "#E8DCC8",
+    "chakra": "#C43C2E",
+    "olive": "#6B5048",
+    "off": "#F3EBE0",
+    "palette": "seal-lacquer"
+  },
+  "api": {
+    "run": "runSealReleaseSequence()",
+    "reset": "resetSealReleaseSequence()",
+    "replay": "replaySealReleaseSequence()"
+  },
+  "reducedMotion": {
+    "behaviour": "All three rings appear already expanded and the open glyph is shown immediately"
+  },
+  "acceptance": [
+    "Exactly three rings at radii 46/34/22 disengage outer-to-inner on staggerMs [0,120,240]",
+    "Each ring expands to scales 1.38/1.32/1.26 with stroke thinning over ringAnimMs 300 — not opacity fade",
+    "Open glyph snaps after the last ring (glyphMs 160); locked glyph rotates out",
+    "Replay resets all data-disengaged before rerunning",
+    "Reduced motion (prefers or data-force) shows UNLOCKED with all rings expanded immediately"
+  ]
 }

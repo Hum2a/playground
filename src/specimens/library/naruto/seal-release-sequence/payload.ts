@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~320×300+).',
-    'Import demo.css verbatim; freeze the 120ms ring stagger / 300ms ring animation from contract.json.',
+    'Import demo.css verbatim; freeze staggerMs [0,120,240] and expand scales from contract.json.',
     'Wire runSealReleaseSequence / resetSealReleaseSequence / replaySealReleaseSequence.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Engaged and unlocked states are visually distinct',
-    'Rings disengage outer-to-inner in a visible stagger, not simultaneously',
-    'Replay resets all rings before rerunning',
-    'Reduced motion shows all rings disengaged and the open glyph immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#140C0C;">
   {{specimen}}
 </div>
 `.trim(),
