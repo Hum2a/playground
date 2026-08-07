@@ -34,5 +34,12 @@
     ],
     "behaviour": "Immediately show ACTIVE core and stamp; no wedge burst"
   },
-  "waveC": "Hard ink ray wedges at frozen angles, ACTIVE stamp on settle"
+  "waveC": "Hard ink ray wedges at frozen angles, ACTIVE stamp on settle",
+  "acceptance": [
+    "Eight triangular ray wedges burst at frozen 45deg intervals over 480ms",
+    "STANDBY swaps to ACTIVE with stamp on 280ms settle",
+    "Ray width 22px, length 46% from core center",
+    "Reduced motion (prefers or data-force) shows ACTIVE core and stamp immediately",
+    "No network; burst clipped to host"
+  ]
 }
