@@ -1,0 +1,200 @@
+/* manga-hit-stop-freeze — portable specimen styles. Do not restyle to host tokens. */
+
+.mhs {
+  --mhs-ink: #111111;
+  --mhs-paper: #f4f1e8;
+  --mhs-windup-ms: 120ms;
+  --mhs-impact-ms: 90ms;
+  --mhs-hitstop-ms: 110ms;
+  --mhs-recoil-ms: 90ms;
+  --mhs-settle-ms: 180ms;
+  --mhs-ease-snap: cubic-bezier(0.2, 0.9, 0.2, 1);
+  --mhs-ease-out: cubic-bezier(0.22, 0.8, 0.2, 1);
+  box-sizing: border-box;
+  width: 420px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  color: var(--mhs-ink);
+  background: var(--mhs-paper);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+}
+
+.mhs *,
+.mhs *::before,
+.mhs *::after {
+  box-sizing: border-box;
+}
+
+.mhs__plate {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  border: 4px solid var(--mhs-ink);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--mhs-ink) 6%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(0deg, color-mix(in srgb, var(--mhs-ink) 6%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--mhs-paper);
+}
+
+.mhs__strokes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.mhs[data-phase='hitstop'] .mhs__strokes,
+.mhs[data-phase='reduced'] .mhs__strokes {
+  opacity: 1;
+}
+
+.mhs__stroke {
+  position: absolute;
+  width: 18px;
+  height: 3px;
+  background: var(--mhs-ink);
+  border-radius: 0;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+}
+
+.mhs__stroke--1 { transform: translate(-50%, -50%) translate(0, -58px) rotate(0deg); }
+.mhs__stroke--2 { transform: translate(-50%, -50%) translate(50px, -29px) rotate(60deg); }
+.mhs__stroke--3 { transform: translate(-50%, -50%) translate(50px, 29px) rotate(120deg); }
+.mhs__stroke--4 { transform: translate(-50%, -50%) translate(0, 58px) rotate(180deg); }
+.mhs__stroke--5 { transform: translate(-50%, -50%) translate(-50px, 29px) rotate(240deg); }
+.mhs__stroke--6 { transform: translate(-50%, -50%) translate(-50px, -29px) rotate(300deg); }
+
+.mhs__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 168px;
+  height: 92px;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  border: 4px solid var(--mhs-ink);
+  border-radius: 0;
+  background: var(--mhs-paper);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: default;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  transform-origin: center center;
+  transition: transform var(--mhs-settle-ms) var(--mhs-ease-out);
+}
+
+.mhs[data-phase='windup'] .mhs__card {
+  transform: translate(-50%, -50%) scale(0.96) rotate(0deg);
+  transition-duration: var(--mhs-windup-ms);
+  transition-timing-function: linear;
+}
+
+.mhs[data-phase='impact'] .mhs__card,
+.mhs[data-phase='hitstop'] .mhs__card {
+  transform: translate(-50%, -50%) scale(1.08) rotate(-1.2deg);
+}
+
+.mhs[data-phase='impact'] .mhs__card {
+  transition-duration: var(--mhs-impact-ms);
+  transition-timing-function: var(--mhs-ease-snap);
+}
+
+.mhs[data-phase='hitstop'] .mhs__card {
+  /* Explicit freeze plateau — no transition during the 110ms hold. */
+  transition: none;
+}
+
+.mhs[data-phase='recoil'] .mhs__card {
+  transform: translate(-50%, -50%) scale(0.985) rotate(0.4deg);
+  transition-duration: var(--mhs-recoil-ms);
+  transition-timing-function: var(--mhs-ease-out);
+}
+
+.mhs[data-phase='settle'] .mhs__card,
+.mhs[data-phase='idle'] .mhs__card,
+.mhs[data-phase='done'] .mhs__card {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+}
+
+.mhs[data-phase='settle'] .mhs__card {
+  transition-duration: var(--mhs-settle-ms);
+  transition-timing-function: var(--mhs-ease-out);
+}
+
+.mhs[data-phase='reduced'] .mhs__card {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  transition: none;
+  box-shadow: inset 0 0 0 3px var(--mhs-ink);
+}
+
+.mhs__card-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.mhs__card-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.mhs__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 10px;
+}
+
+.mhs__trigger {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 3px solid var(--mhs-ink);
+  border-radius: 0;
+  background: var(--mhs-ink);
+  color: var(--mhs-paper);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.mhs__trigger:focus-visible {
+  outline: 2px solid var(--mhs-ink);
+  outline-offset: 3px;
+}
+
+.mhs__trigger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.mhs__status {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  opacity: 0.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mhs__card {
+    transition: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .mhs__card {
+  transition: none !important;
+}

@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/manga-hit-stop-freeze.schema.json",
+  "title": "MangaHitStopFreeze",
+  "description": "Portable contract for manga/anime hit-stop: wind-up, impact, an explicit 110ms motionless freeze with six strokes, recoil, and settle.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "preview",
+    "colors",
+    "phases",
+    "strokes",
+    "interaction",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "manga-hit-stop-freeze"
+    },
+    "intent": {
+      "type": "string",
+      "const": "Demonstrate manga/anime-style hit stop as a reusable software interaction: freeze motionless at the exact impact pose before release."
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "plateWidthPx",
+        "plateHeightPx"
+      ],
+      "properties": {
+        "plateWidthPx": {
+          "type": "number",
+          "const": 420
+        },
+        "plateHeightPx": {
+          "type": "number",
+          "const": 260
+        }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "paper"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#111111"
+        },
+        "paper": {
+          "type": "string",
+          "const": "#F4F1E8"
+        }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "windup",
+        "impact",
+        "hitStop",
+        "recoil",
+        "settle",
+        "totalApproxMs"
+      ],
+      "properties": {
+        "windup": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "durationMs",
+            "scale"
+          ],
+          "properties": {
+            "durationMs": {
+              "type": "number",
+              "const": 120
+            },
+            "scale": {
+              "type": "number",
+              "const": 0.96
+            }
+          }
+        },
+        "impact": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "durationMs",
+            "scale",
+            "rotateDeg"
+          ],
+          "properties": {
+            "durationMs": {
+              "type": "number",
+              "const": 90
+            },
+            "scale": {
+              "type": "number",
+              "const": 1.08
+            },
+            "rotateDeg": {
+              "type": "number",
+              "const": -1.2
+            }
+          }
+        },
+        "hitStop": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "durationMs",
+            "scale",
+            "rotateDeg",
+            "motionless"
+          ],
+          "properties": {
+            "durationMs": {
+              "type": "number",
+              "const": 110
+            },
+            "scale": {
+              "type": "number",
+              "const": 1.08
+            },
+            "rotateDeg": {
+              "type": "number",
+              "const": -1.2
+            },
+            "motionless": {
+              "type": "boolean",
+              "const": true
+            }
+          }
+        },
+        "recoil": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "durationMs",
+            "scale",
+            "rotateDeg"
+          ],
+          "properties": {
+            "durationMs": {
+              "type": "number",
+              "const": 90
+            },
+            "scale": {
+              "type": "number",
+              "const": 0.985
+            },
+            "rotateDeg": {
+              "type": "number",
+              "const": 0.4
+            }
+          }
+        },
+        "settle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "durationMs",
+            "scale",
+            "rotateDeg"
+          ],
+          "properties": {
+            "durationMs": {
+              "type": "number",
+              "const": 180
+            },
+            "scale": {
+              "type": "number",
+              "const": 1
+            },
+            "rotateDeg": {
+              "type": "number",
+              "const": 0
+            }
+          }
+        },
+        "totalApproxMs": {
+          "type": "number",
+          "const": 590
+        }
+      }
+    },
+    "strokes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "visibleDuring"
+      ],
+      "properties": {
+        "count": {
+          "type": "number",
+          "const": 6
+        },
+        "visibleDuring": {
+          "type": "string",
+          "const": "hitstop"
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "replayControl",
+        "lockWhileRunning"
+      ],
+      "properties": {
+        "replayControl": {
+          "type": "boolean",
+          "const": true
+        },
+        "lockWhileRunning": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "triggers",
+        "behavior",
+        "staticHoldMs"
+      ],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion",
+            "data-force-reduced-motion"
+          ]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Skip wind-up, scale impact, rotation and recoil; show six static strokes ~250ms with strong border."
+        },
+        "staticHoldMs": {
+          "type": "number",
+          "const": 250
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "plate",
+        "card",
+        "strokes",
+        "stroke",
+        "trigger"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "const": "mhs"
+        },
+        "plate": {
+          "type": "string",
+          "const": "mhs__plate"
+        },
+        "card": {
+          "type": "string",
+          "const": "mhs__card"
+        },
+        "strokes": {
+          "type": "string",
+          "const": "mhs__strokes"
+        },
+        "stroke": {
+          "type": "string",
+          "const": "mhs__stroke"
+        },
+        "trigger": {
+          "type": "string",
+          "const": "mhs__trigger"
+        }
+      }
+    }
+  }
+}

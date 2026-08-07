@@ -106,7 +106,7 @@ artist.
 
 # 4. Impact Frames
 
-- [ ] **MANGA-028** · `SPX-4097` · ★★★★★ **Black Impact Frame** — A single black/white contrast
+- [x] **MANGA-028** · `SPX-4097` · ★★★★★ **Black Impact Frame** — A single black/white contrast
     frame punctuates a consequential action.
 - [ ] **MANGA-029** · `SPX-4098` · ★★★☆☆ **White Impact Frame** — A portable manga-inspired
     specimen exploring white impact frame as a self-contained UI/motion
@@ -117,7 +117,7 @@ artist.
 - [ ] **MANGA-031** · `SPX-4100` · ★★★★☆ **Impact Zoom Punch** — A portable manga-inspired
     specimen exploring impact zoom punch as a self-contained UI/motion
     artifact.
-- [ ] **MANGA-032** · `SPX-4101` · ★★★★★ **Hit Stop Freeze** — Motion freezes briefly at the
+- [x] **MANGA-032** · `SPX-4101` · ★★★★★ **Hit Stop Freeze** — Motion freezes briefly at the
     exact instant an action commits.
 - [ ] **MANGA-033** · `SPX-4102` · ★★★☆☆ **Double Impact Beat** — A portable manga-inspired
     specimen exploring double impact beat as a self-contained UI/motion
@@ -937,13 +937,14 @@ The original ranked Top 50 and recommended build waves are retained below.
 | MANGA-004 | `SPX-4073` | `manga-panel-shatter-transition` | Manga Panel Shatter Transition |
 | MANGA-011 | `SPX-4080` | `manga-page-turn` | Manga Page Turn |
 | MANGA-020 | `SPX-4089` | `manga-directional-speed-wipe` | Directional Speed Wipe |
+| MANGA-028 | `SPX-4097` | `manga-black-impact-frame` | Black Impact Frame |
 
-- Progress: **5 / 270** complete.
+- Progress: **7 / 270** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 5 |
-| Open | 265 |
+| Done | 7 |
+| Open | 263 |
 
 ## Core first-wave / build queue
 
@@ -955,8 +956,8 @@ The original ranked Top 50 and recommended build waves are retained below.
 - [ ] **MANGA-013** · `SPX-4082` · **Double-Page Spread Open** · scaffold `double-page-spread-open`
 - [ ] **MANGA-019** · `SPX-4088` · **Radial Speed Burst** · scaffold `radial-speed-burst`
 - [x] **MANGA-020** · `SPX-4089` · **Directional Speed Wipe**
-- [ ] **MANGA-028** · `SPX-4097` · **Black Impact Frame** · scaffold `black-impact-frame`
-- [ ] **MANGA-032** · `SPX-4101` · **Hit Stop Freeze** · scaffold `hit-stop-freeze`
+- [x] **MANGA-028** · `SPX-4097` · **Black Impact Frame**
+- [x] **MANGA-032** · `SPX-4101` · **Hit Stop Freeze** · scaffold `hit-stop-freeze`
 - [ ] **MANGA-036** · `SPX-4105` · **Speech Balloon Pop** · scaffold `speech-balloon-pop`
 - [ ] **MANGA-037** · `SPX-4106` · **Shout Balloon Burst** · scaffold `shout-balloon-burst`
 - [ ] **MANGA-043** · `SPX-4112` · **Dialogue Choice Balloons** · scaffold `dialogue-choice-balloons`
