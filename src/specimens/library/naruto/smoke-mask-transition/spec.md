@@ -1,16 +1,16 @@
 # Smoke Mask Transition
 
-Six irregular smoke-blot clips billow in, swap content under cover, then disperse.
+Overlapping abstract circles billow in to cover the stage, a content swap happens under cover, then the circles disperse.
 
 ## Behaviour
 
-- Idle: STATE 01 / IN VIEW.
-- Run: polygon blot clips expand (cover at 300ms) → content identity swaps → disperse by 700ms.
-- Alternates STATE 01 ↔ STATE 02 with distinct titles.
-- Reduced motion: immediate swap.
+- Idle: STATE 01 visible.
+- Cover: 6 circles expand to full cover by 300ms.
+- Swap: under full cover, panel identity flips A↔B.
+- Disperse: circles clear by 700ms; settle 140ms.
+- Reduced motion: instant swap.
 
 ## Freeze
 
-- Cover at: 300ms · total: 700ms · settle: 140ms · puffs: 6
-- Clip language: irregular polygon blot (not circle scale/opacity)
-- Palette (water): `#071018` / `#C8D8E4` / `#3A9EC9` / `#4A6A78` / `#E8F2F8`
+- Total: 700ms · coverAt: 300ms · settle: 140ms · circles: 6 · coverScale: 2.4
+- Palette: `#071018` / `#C8D8E4` / `#3A9EC9` / `#4A6A78` / `#E8F2F8`
