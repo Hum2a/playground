@@ -1,0 +1,34 @@
+{
+  "name": "manga-panel-shatter-transition",
+  "ref": "SPX-4073",
+  "manga": "MANGA-004",
+  "intent": "Manga PAGE shatter: six existing comic panels become rigid fragments that fly outward after a gutter-emphasis anticipation, revealing a destination surface underneath — not a glass shatter.",
+  "colours": {
+    "paper": "#F4F1E8",
+    "ink": "#111111",
+    "destinationBg": "#1C1C1C",
+    "destinationFg": "#F4F1E8"
+  },
+  "geometry": {
+    "plate": { "width": 620, "height": 400 },
+    "panelCount": 6,
+    "gutterPx": 8,
+    "preShatterGutterEmphasisPx": 6,
+    "fragments": [
+      { "id": 1, "translatePx": [-120, -95], "rotateDeg": -6, "staggerMs": 0 },
+      { "id": 2, "translatePx": [10, -150], "rotateDeg": 3, "staggerMs": 20 },
+      { "id": 3, "translatePx": [140, -110], "rotateDeg": 7, "staggerMs": 40 },
+      { "id": 4, "translatePx": [-160, 45], "rotateDeg": -5, "staggerMs": 60 },
+      { "id": 5, "translatePx": [155, 70], "rotateDeg": 4, "staggerMs": 90 },
+      { "id": 6, "translatePx": [25, 180], "rotateDeg": -3, "staggerMs": 120 }
+    ]
+  },
+  "timing": {
+    "anticipationMs": 70,
+    "staggerRangeMs": [0, 120],
+    "fragmentFlightMs": 460,
+    "totalSequenceMsMax": 700,
+    "easing": "cubic-bezier(0.55, 0.05, 0.2, 1)"
+  },
+  "reducedMotion": "Skip fragmentation; display destination immediately with no flying pieces."
+}

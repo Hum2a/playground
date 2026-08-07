@@ -1,0 +1,305 @@
+/* Manga Panel Shatter Transition — portable. Do not restyle to host chrome. */
+
+.mps {
+  --mps-ink: #111111;
+  --mps-paper: #f4f1e8;
+  --mps-dest-bg: #1c1c1c;
+  --mps-dest-fg: #f4f1e8;
+  --mps-gutter: 8px;
+  --mps-emphasis: 6px;
+  --mps-anticipate: 70ms;
+  --mps-flight: 460ms;
+  --mps-ease: cubic-bezier(0.55, 0.05, 0.2, 1);
+
+  box-sizing: border-box;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  padding: 12px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: var(--mps-ink);
+  background: #cfc8b8;
+}
+
+.mps *,
+.mps *::before,
+.mps *::after {
+  box-sizing: border-box;
+}
+
+.mps__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mps__plate {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 620 / 400;
+  overflow: hidden;
+  background: var(--mps-ink);
+  border: 2px solid var(--mps-ink);
+}
+
+.mps__dest {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  background: var(--mps-dest-bg);
+  color: var(--mps-dest-fg);
+}
+
+.mps__page {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr 1.1fr;
+  grid-template-rows: 1.15fr 1fr 1.25fr;
+  gap: var(--mps-gutter);
+  padding: var(--mps-gutter);
+  background: var(--mps-ink);
+  transition: gap var(--mps-anticipate) linear, padding var(--mps-anticipate) linear;
+}
+
+.mps__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 10px 12px;
+  background: var(--mps-paper);
+  color: var(--mps-ink);
+  border: 2px solid var(--mps-ink);
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition:
+    transform var(--mps-flight) var(--mps-ease),
+    opacity var(--mps-flight) var(--mps-ease),
+    box-shadow var(--mps-anticipate) linear;
+}
+
+.mps__panel--1 {
+  grid-column: 1;
+  grid-row: 1;
+  background:
+    linear-gradient(160deg, #e8e2d4 0%, var(--mps-paper) 55%),
+    var(--mps-paper);
+}
+
+.mps__panel--2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.mps__panel--3 {
+  grid-column: 3;
+  grid-row: 1;
+  background:
+    linear-gradient(200deg, #ddd6c6 0%, var(--mps-paper) 60%),
+    var(--mps-paper);
+}
+
+.mps__panel--4 {
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+.mps__panel--5 {
+  grid-column: 3;
+  grid-row: 2;
+  background:
+    linear-gradient(20deg, #e4ddd0 0%, var(--mps-paper) 50%),
+    var(--mps-paper);
+}
+
+.mps__panel--6 {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  background:
+    linear-gradient(0deg, #d9d2c2 0%, var(--mps-paper) 45%),
+    var(--mps-paper);
+}
+
+.mps__label {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font: 700 11px/1 ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+}
+
+.mps__caption {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mps__kicker {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.mps__title {
+  margin: 0;
+  font-size: clamp(28px, 7vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.mps__body {
+  margin: 0;
+  max-width: 18rem;
+  font-size: 13px;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.mps__controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mps__btn {
+  appearance: none;
+  padding: 8px 12px;
+  border: 2px solid var(--mps-ink);
+  border-radius: 0;
+  background: var(--mps-paper);
+  color: var(--mps-ink);
+  font: 11px/1 ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mps__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.mps__btn:hover {
+  background: var(--mps-ink);
+  color: var(--mps-paper);
+}
+
+/* —— Anticipate: thicken gutter emphasis —— */
+.mps[data-state='anticipate'] .mps__page {
+  gap: var(--mps-emphasis);
+  padding: var(--mps-emphasis);
+}
+
+.mps[data-state='anticipate'] .mps__panel {
+  box-shadow: 0 0 0 var(--mps-emphasis) var(--mps-ink);
+}
+
+/* —— Shatter: predetermined rigid flights —— */
+.mps[data-state='shatter'] .mps__panel,
+.mps[data-state='done'] .mps__panel {
+  pointer-events: none;
+}
+
+.mps[data-state='shatter'] .mps__panel--1 {
+  transition-delay: 0ms;
+  transform: translate3d(-120px, -95px, 0) rotate(-6deg);
+  opacity: 0;
+}
+
+.mps[data-state='shatter'] .mps__panel--2 {
+  transition-delay: 20ms;
+  transform: translate3d(10px, -150px, 0) rotate(3deg);
+  opacity: 0;
+}
+
+.mps[data-state='shatter'] .mps__panel--3 {
+  transition-delay: 40ms;
+  transform: translate3d(140px, -110px, 0) rotate(7deg);
+  opacity: 0;
+}
+
+.mps[data-state='shatter'] .mps__panel--4 {
+  transition-delay: 60ms;
+  transform: translate3d(-160px, 45px, 0) rotate(-5deg);
+  opacity: 0;
+}
+
+.mps[data-state='shatter'] .mps__panel--5 {
+  transition-delay: 90ms;
+  transform: translate3d(155px, 70px, 0) rotate(4deg);
+  opacity: 0;
+}
+
+.mps[data-state='shatter'] .mps__panel--6 {
+  transition-delay: 120ms;
+  transform: translate3d(25px, 180px, 0) rotate(-3deg);
+  opacity: 0;
+}
+
+.mps[data-state='done'] .mps__page {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mps[data-state='done'] .mps__panel {
+  opacity: 0;
+  transform: translate3d(25px, 180px, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mps__page,
+  .mps__panel {
+    transition: none !important;
+  }
+
+  .mps[data-state='anticipate'] .mps__page,
+  .mps[data-state='shatter'] .mps__page,
+  .mps[data-state='done'] .mps__page {
+    visibility: hidden;
+  }
+
+  .mps[data-state='shatter'] .mps__panel,
+  .mps[data-state='done'] .mps__panel {
+    transform: none !important;
+    opacity: 0 !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .mps__page,
+[data-force-reduced-motion='true'] .mps__panel {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .mps[data-state='anticipate'] .mps__page,
+[data-force-reduced-motion='true'] .mps[data-state='shatter'] .mps__page,
+[data-force-reduced-motion='true'] .mps[data-state='done'] .mps__page {
+  visibility: hidden;
+}
+
+[data-force-reduced-motion='true'] .mps[data-state='shatter'] .mps__panel,
+[data-force-reduced-motion='true'] .mps[data-state='done'] .mps__panel {
+  transform: none !important;
+  opacity: 0 !important;
+}
