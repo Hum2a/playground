@@ -1,47 +1,112 @@
 {
-  "name": "four-point-barrier-construct",
-  "intent": "Four corners connect edge-by-edge (220ms each) then the barrier field fills (260ms).",
-  "catalogue": {
-    "nr": "NR-179",
-    "ref": "SPX-2522"
-  },
-  "geometry": {
-    "cornerCount": 4,
-    "edgeCount": 4,
-    "corners": [
-      "tl",
-      "tr",
-      "br",
-      "bl"
-    ]
-  },
-  "timing": {
-    "edgeMs": 220,
-    "fillMs": 260,
-    "settleMs": 90,
-    "totalMs": 1230
-  },
-  "colours": {
-    "ink": "#070B0E",
-    "parchment": "#C8E8DC",
-    "chakra": "#3DCEA8",
-    "alert": "#3DCEA8",
-    "olive": "#1A6B58",
-    "off": "#D7F5EC",
-    "palette": "sensor-phosphor"
-  },
-  "api": {
-    "run": "runFourPointBarrierConstruct()",
-    "reset": "resetFourPointBarrierConstruct()",
-    "replay": "replayFourPointBarrierConstruct()"
-  },
-  "reducedMotion": {
-    "behaviour": "Resolved Four-Point Barrier Construct state immediately"
-  },
-  "acceptance": [
-    "Four edges draw in order over edgeMs 220 each before field fill begins",
-    "Field fill runs fillMs 260 only after perimeter closes; SECURED after settleMs 90",
-    "Replay clears edges + fill before rerunning",
-    "Reduced motion shows connected filled barrier immediately"
-  ]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/four-point-barrier-construct.schema.json",
+  "title": "FourPointBarrierConstruct",
+  "description": "Corners → edges → fill with frozen corner coords and edge draw ms.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "corners",
+    "edgeCount",
+    "edgeMs",
+    "fillMs",
+    "settleMs",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "four-point-barrier-construct"
+    },
+    "corners": {
+      "type": "array",
+      "const": [
+        {
+          "x": 30,
+          "y": 30
+        },
+        {
+          "x": 170,
+          "y": 30
+        },
+        {
+          "x": 170,
+          "y": 170
+        },
+        {
+          "x": 30,
+          "y": 170
+        }
+      ]
+    },
+    "edgeCount": {
+      "type": "number",
+      "const": 4
+    },
+    "edgeMs": {
+      "type": "number",
+      "const": 160
+    },
+    "fillMs": {
+      "type": "number",
+      "const": 180
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 90
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alert",
+        "olive",
+        "off"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#0C0806"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C4B8A8"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#C43C2E"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#C43C2E"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#5A5048"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F4F1E8"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immediateSecured"
+      ],
+      "properties": {
+        "immediateSecured": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
 }

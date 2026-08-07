@@ -6,10 +6,10 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount with preview.scaffold host.',
-    'Import demo.css verbatim; freeze corner coords / edge 220ms / fill 260ms from contract.json.',
-    'Wire runFourPointBarrierConstruct / reset / replay.',
+    integration: [
+    'Mount inside preview.scaffold relative+overflow host.',
+    'Import demo.css verbatim; freeze corners and edgeMs 160 / fillMs 180 from contract.json.',
+    'Wire runFourPointBarrierConstruct / resetFourPointBarrierConstruct / replayFourPointBarrierConstruct.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: contract.acceptance,

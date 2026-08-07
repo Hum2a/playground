@@ -1,8 +1,9 @@
 # Four-Point Barrier Construct
 
-Four corners connect edge-by-edge (220ms each) then the barrier field fills (260ms).
+Corners → edges (160ms) → fill (180ms).
 
 ## Freeze
 
-- Corners/edges: 4 · edgeMs: 220 · fillMs: 260 · settleMs: 90
-- Palette (sensor phosphor): `#070B0E` / `#C8E8DC` / `#3DCEA8` / `#1A6B58` / `#D7F5EC`
+- corners: [{"x":30,"y":30},{"x":170,"y":30},{"x":170,"y":170},{"x":30,"y":170}]
+- edgeMs: 160 · fillMs: 180 · settleMs: 90
+- Palette: seal lacquer
