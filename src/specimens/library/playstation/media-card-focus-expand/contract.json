@@ -1,17 +1,96 @@
 {
-  "name": "media-card-focus-expand",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "focusScale": 1.04
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/media-card-focus-expand.schema.json",
+  "title": "MediaCardFocusExpand",
+  "description": "Focused media card expands and reveals frozen metadata with Play/Info actions.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "media-card-focus-expand" },
+    "intent": {
+      "type": "string",
+      "const": "Focused media card expands to reveal richer metadata and action affordances."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-073" },
+        "ref": { "type": "string", "const": "SPX-3379" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 480 },
+        "heightPx": { "type": "number", "const": 280 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardCount", "idleWidthPx", "idleHeightPx", "focusWidthPx", "focusHeightPx", "focusScale", "liftPx"],
+      "properties": {
+        "cardCount": { "type": "number", "const": 3 },
+        "idleWidthPx": { "type": "number", "const": 88 },
+        "idleHeightPx": { "type": "number", "const": 120 },
+        "focusWidthPx": { "type": "number", "const": 120 },
+        "focusHeightPx": { "type": "number", "const": 150 },
+        "focusScale": { "type": "number", "const": 1.04 },
+        "liftPx": { "type": "number", "const": 6 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expandMs", "metaRevealMs", "easing"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 200 },
+        "metaRevealMs": { "type": "number", "const": 180 },
+        "easing": { "type": "string", "const": "ease" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable .mcfe__card and .mcfe__meta transitions; expand and metadata snap."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blue", "ink", "chalk", "sky"],
+      "properties": {
+        "blue": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "chalk": { "type": "string", "const": "#F4F6F8" },
+        "sky": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "focus", "meta"],
+      "properties": {
+        "root": { "type": "string", "const": "mcfe" },
+        "card": { "type": "string", "const": "mcfe__card" },
+        "focus": { "type": "string", "const": "is-focus" },
+        "meta": { "type": "string", "const": "mcfe__meta" }
+      }
+    }
+  }
 }

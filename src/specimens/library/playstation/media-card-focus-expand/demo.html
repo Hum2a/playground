@@ -1,10 +1,22 @@
-<div class="ps mcfe" data-mcfe>
-  <p class="ps__live" data-mcfe-live aria-live="polite">No card focused.</p>
-  <p class="ps__eyebrow">MEDIA RAIL</p>
-  <div class="mcfe__rail" data-mcfe-rail>
-    <button type="button" class="mcfe__card" data-mcfe-card="0"><span class="mcfe__art"></span><span class="mcfe__label">Arc 01</span></button>
-    <button type="button" class="mcfe__card" data-mcfe-card="1"><span class="mcfe__art mcfe__art--b"></span><span class="mcfe__label">Arc 02</span></button>
-    <button type="button" class="mcfe__card" data-mcfe-card="2"><span class="mcfe__art mcfe__art--c"></span><span class="mcfe__label">Arc 03</span></button>
+<div class="mcfe" data-mcfe>
+  <p class="mcfe__live" data-mcfe-live aria-live="polite">No card focused.</p>
+  <p class="mcfe__eyebrow">MEDIA RAIL</p>
+  <div class="mcfe__rail" data-mcfe-rail role="group" aria-label="Media cards">
+    <button type="button" class="mcfe__card" data-mcfe-card="0" aria-pressed="false">
+      <span class="mcfe__art" aria-hidden="true"></span>
+      <span class="mcfe__meta">Action · 12h · Play · Info</span>
+      <span class="mcfe__label">Arc 01</span>
+    </button>
+    <button type="button" class="mcfe__card" data-mcfe-card="1" aria-pressed="false">
+      <span class="mcfe__art mcfe__art--b" aria-hidden="true"></span>
+      <span class="mcfe__meta">RPG · 40h · Play · Info</span>
+      <span class="mcfe__label">Arc 02</span>
+    </button>
+    <button type="button" class="mcfe__card" data-mcfe-card="2" aria-pressed="false">
+      <span class="mcfe__art mcfe__art--c" aria-hidden="true"></span>
+      <span class="mcfe__meta">Puzzle · 6h · Play · Info</span>
+      <span class="mcfe__label">Arc 03</span>
+    </button>
   </div>
-  <p class="ps__status" data-mcfe-status>Focus a card to expand metadata.</p>
+  <p class="mcfe__status" data-mcfe-status>Focus a card to expand metadata.</p>
 </div>

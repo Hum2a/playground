@@ -7,15 +7,15 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inside scaffold host; import demo.css verbatim.",
-      "Honour both reduced-motion triggers — end states remain visible.",
-      "Listen for `{ type: \"restart\" }` postMessage where applicable."
+    'Mount inside scaffold host; import demo.css verbatim.',
+    'Keep metadata spans in markup; toggle is-focus only.',
+    'Preserve RM overrides on .mcfe__card and .mcfe__meta.',
   ],
   acceptance: [
-      "Uses PlayStation palette: #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF",
-      "No PS logos, glyphs, or game art",
-      "iframe-safe — no parent access, storage, or navigation",
-      "Reduced motion shows final states instantly"
+    'Focused card grows from 88×120 to 120×150 with scale 1.04 and 6px lift.',
+    'Focused card reveals its metadata line (genre · hours · Play · Info) within 180ms.',
+    'Only one card is focused at a time; blur/toggle clears expand.',
+    'Reduced motion snaps expand and metadata with no transition.',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#0B0F14;display:grid;place-items:center;padding:16px;">
