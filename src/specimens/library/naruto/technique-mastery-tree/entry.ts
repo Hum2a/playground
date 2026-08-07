@@ -5,7 +5,7 @@ export const techniqueMasteryTree: Specimen = {
   ref: 'SPX-2767',
   title: 'Technique Mastery Tree',
   blurb:
-    'Four technique nodes unlock in order (150ms steps) with connecting path draw until MASTERED.',
+    'A sealed technique scroll unlocks ROOT→FORM→FLOW→PEAK with edge-draw cascade (140ms / 160ms) into MASTERED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / mentor training — technique mastery path',
@@ -25,12 +25,14 @@ export const techniqueMasteryTree: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Technique Mastery Tree state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four named nodes and edges appear MASTERED immediately.',
   },
-  acceptance: [
-    'Nodes unlock in order [0,1,2,3] at stepMs 150 with edge/path fill between',
-    'Status becomes MASTERED only after node 4 + settleMs 100',
-    'Replay locks all nodes and clears paths before rerunning',
+    acceptance: [
+    'Nodes unlock in frozen order ROOT→FORM→FLOW→PEAK (data-id)',
+    'Each unlock snaps with nodeMs 140; edges draw with edgeMs 160 via scaleX',
+    'Resolved shows MASTERED with all edges filled',
+    'Keys 1–4 unlock only in order; replay clears before rerun',
+    'Reduced motion shows MASTERED immediately with no snap/draw',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
