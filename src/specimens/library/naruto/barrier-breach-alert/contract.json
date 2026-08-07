@@ -90,5 +90,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Single fracture at frozen angle -18° (fractureCount 1)",
+    "One alarm pulse 280ms then BREACH DETECTED latches (no loop flash)",
+    "Seal lacquer palette",
+    "Replay restores SECURE before rerunning",
+    "Reduced motion shows BREACH DETECTED immediately"
+  ]
 }
