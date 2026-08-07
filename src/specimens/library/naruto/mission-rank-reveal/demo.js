@@ -1,12 +1,14 @@
 /**
- * Mission Rank Reveal — rank card slams in, then a stamp impacts to confirm it.
+ * Mission Rank Reveal — rank card lands, wax stamp overshoots then settles.
  * iframe-safe; no storage / parent / network.
  */
 
 const CARD_MS = 280
-const STAMP_MS = 240
-const SETTLE_MS = 100
-const TOTAL_MS = CARD_MS + STAMP_MS + SETTLE_MS
+const STAMP_IMPACT_MS = 180
+const STAMP_SETTLE_MS = 120
+const SETTLE_MS = 90
+const STAMP_OVERSHOOT_DEG = -22
+const STAMP_SETTLE_DEG = -12
 
 let busy = false
 /** @type {number[]} */
@@ -65,7 +67,9 @@ function stamp() {
 
 function showResolved() {
   card()?.setAttribute('data-visible', 'true')
-  stamp()?.setAttribute('data-visible', 'true')
+  const s = stamp()
+  s?.setAttribute('data-visible', 'true')
+  s?.setAttribute('data-phase', 'settle')
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('RANK CONFIRMED')
   setHint('Mission rank B confirmed.')
@@ -74,7 +78,9 @@ function showResolved() {
 
 function resetVisual() {
   card()?.setAttribute('data-visible', 'false')
-  stamp()?.setAttribute('data-visible', 'false')
+  const s = stamp()
+  s?.setAttribute('data-visible', 'false')
+  s?.removeAttribute('data-phase')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('PENDING')
   setHint('Press Run to reveal the mission rank.')
@@ -112,10 +118,13 @@ export function runMissionRankReveal() {
   return new Promise((resolve) => {
     later(CARD_MS, () => {
       setStatus('STAMPING')
-      setLive('Stamping mission rank.')
-      stamp()?.setAttribute('data-visible', 'true')
-      later(STAMP_MS, () => {
-        later(SETTLE_MS, () => {
+      setLive('Wax stamp impact.')
+      const s = stamp()
+      s?.setAttribute('data-visible', 'true')
+      s?.setAttribute('data-phase', 'impact')
+      later(STAMP_IMPACT_MS, () => {
+        s?.setAttribute('data-phase', 'settle')
+        later(STAMP_SETTLE_MS + SETTLE_MS, () => {
           showResolved()
           busy = false
           setButtons(true)
@@ -156,7 +165,6 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
 void STAMP_OVERSHOOT_DEG
 void STAMP_SETTLE_DEG
 bindUi()

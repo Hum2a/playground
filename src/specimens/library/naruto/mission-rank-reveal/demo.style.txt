@@ -7,6 +7,8 @@
   --alert: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
+  --mrr-stamp-overshoot: -22deg;
+  --mrr-stamp-settle: -12deg;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -57,8 +59,8 @@
   width: 100%;
   min-height: 210px;
   padding: 1.4rem 0.75rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(184 50 40 / 0.45);
+  background: rgb(247 242 232 / 0.04);
 }
 
 .mrr__card {
@@ -76,7 +78,7 @@
   transform: translateY(-70px) rotate(-6deg) scale(0.9);
   transition:
     opacity 220ms ease-out,
-    transform 220ms cubic-bezier(0.34, 1.4, 0.4, 1);
+    transform 280ms cubic-bezier(0.34, 1.4, 0.4, 1);
 }
 
 .mrr__card[data-visible='true'] {
@@ -109,15 +111,24 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0;
-  transform: translate(-50%, -50%) rotate(-14deg) scale(2.4);
-  transition:
-    opacity 180ms ease-out,
-    transform 180ms cubic-bezier(0.2, 0.9, 0.25, 1);
+  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-overshoot)) scale(2.4);
+  transition: none;
+  pointer-events: none;
 }
 
+.mrr__stamp[data-phase='impact'] {
+  opacity: 0.95;
+  transition:
+    opacity 80ms linear,
+    transform 180ms cubic-bezier(0.2, 0.9, 0.25, 1.35);
+  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-overshoot)) scale(1.08);
+}
+
+.mrr__stamp[data-phase='settle'],
 .mrr__stamp[data-visible='true'] {
   opacity: 0.92;
-  transform: translate(-50%, -50%) rotate(-12deg) scale(1);
+  transition: transform 120ms cubic-bezier(0.34, 1.2, 0.4, 1);
+  transform: translate(-50%, -50%) rotate(var(--mrr-stamp-settle)) scale(1);
 }
 
 .mrr__status {
@@ -163,7 +174,7 @@
 
 .mrr__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(184 50 40 / 0.14);
 }
 
 .mrr__btn:hover:not(:disabled) {
