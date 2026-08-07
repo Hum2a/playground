@@ -5,34 +5,99 @@
   "description": "Staggered diagonal blades sweep across the stage, exchanging content mid-sweep.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "bladeCount", "bladeMs", "staggerMs", "swapAtMs", "totalMs", "settleMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "bladeCount",
+    "bladeMs",
+    "staggerMs",
+    "swapAtMs",
+    "totalMs",
+    "settleMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "wind-slice-transition" },
-    "bladeCount": { "type": "number", "const": 4 },
-    "bladeMs": { "type": "number", "const": 380 },
-    "staggerMs": { "type": "number", "const": 70 },
-    "swapAtMs": { "type": "number", "const": 420 },
-    "totalMs": { "type": "number", "const": 600 },
-    "settleMs": { "type": "number", "const": 150 },
+    "name": {
+      "type": "string",
+      "const": "wind-slice-transition"
+    },
+    "bladeCount": {
+      "type": "number",
+      "const": 3
+    },
+    "bladeMs": {
+      "type": "number",
+      "const": 380
+    },
+    "staggerMs": {
+      "type": "number",
+      "const": 60
+    },
+    "swapAtMs": {
+      "type": "number",
+      "const": 420
+    },
+    "totalMs": {
+      "type": "number",
+      "const": 600
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 150
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#0C1014" },
-        "parchment": { "type": "string", "const": "#D0D6DC" },
-        "chakra": { "type": "string", "const": "#8AA0B4" },
-        "olive": { "type": "string", "const": "#5A6870" },
-        "off": { "type": "string", "const": "#EEF2F4" }
+        "ink": {
+          "type": "string",
+          "const": "#0C1014"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#D0D6DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#8AA0B4"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#5A6870"
+        },
+        "off": {
+          "type": "string",
+          "const": "#EEF2F4"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateSwap"],
+      "required": [
+        "immediateSwap"
+      ],
       "properties": {
-        "immediateSwap": { "type": "boolean", "const": true }
+        "immediateSwap": {
+          "type": "boolean",
+          "const": true
+        }
       }
+    },
+    "bladeDeg": {
+      "type": "array",
+      "const": [
+        -18,
+        0,
+        18
+      ]
     }
   }
 }

@@ -5,31 +5,91 @@
   "description": "A card compresses at a source aperture and reconstructs at a destination aperture, teleporting instantly while invisible.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "compressMs", "reconstructMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "compressMs",
+    "reconstructMs",
+    "colours",
+    "reducedMotion",
+    "midHoldMs",
+    "apertureFromPx",
+    "apertureToPx"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "teleport-card-transfer" },
-    "compressMs": { "type": "number", "const": 200 },
-    "reconstructMs": { "type": "number", "const": 220 },
+    "name": {
+      "type": "string",
+      "const": "teleport-card-transfer"
+    },
+    "compressMs": {
+      "type": "number",
+      "const": 200
+    },
+    "reconstructMs": {
+      "type": "number",
+      "const": 220
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alarm",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "alarm": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "alarm": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateArrived"],
+      "required": [
+        "immediateArrived"
+      ],
       "properties": {
-        "immediateArrived": { "type": "boolean", "const": true }
+        "immediateArrived": {
+          "type": "boolean",
+          "const": true
+        }
       }
+    },
+    "midHoldMs": {
+      "type": "number",
+      "const": 120
+    },
+    "apertureFromPx": {
+      "type": "number",
+      "const": 8
+    },
+    "apertureToPx": {
+      "type": "number",
+      "const": 72
     }
   }
 }

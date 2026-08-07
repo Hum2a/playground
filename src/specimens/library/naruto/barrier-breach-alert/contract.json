@@ -5,31 +5,87 @@
   "description": "An intact perimeter fractures at one fixed point, flashing the field and edge red with a bounded alarm pulse.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "alarmMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "alarmMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "barrier-breach-alert" },
-    "alarmMs": { "type": "number", "const": 700 },
-    "settleMs": { "type": "number", "const": 60 },
+    "name": {
+      "type": "string",
+      "const": "barrier-breach-alert"
+    },
+    "alarmMs": {
+      "type": "number",
+      "const": 700
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 60
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alert",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "alert": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateBreached"],
+      "required": [
+        "immediateBreached"
+      ],
       "properties": {
-        "immediateBreached": { "type": "boolean", "const": true }
+        "immediateBreached": {
+          "type": "boolean",
+          "const": true
+        }
       }
+    },
+    "fractureDeg": {
+      "type": "number",
+      "const": -18
+    },
+    "fractureCount": {
+      "type": "number",
+      "const": 1
+    },
+    "noLoopFlash": {
+      "type": "boolean",
+      "const": true
     }
   }
 }

@@ -2,33 +2,93 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/mission-complete-stamp.schema.json",
   "title": "MissionCompleteStamp",
-  "description": "A briefing card receives a large original completion seal that slams down and rings out into COMPLETE.",
+  "description": "Wax stamp overshoots then settles to -12deg with one ring pulse.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "slamMs", "ringMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "slamMs",
+    "settleMs",
+    "settleDeg",
+    "overshootDeg",
+    "ringPulseMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "mission-complete-stamp" },
-    "slamMs": { "type": "number", "const": 220 },
-    "ringMs": { "type": "number", "const": 260 },
+    "name": {
+      "type": "string",
+      "const": "mission-complete-stamp"
+    },
+    "slamMs": {
+      "type": "number",
+      "const": 220
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 140
+    },
+    "settleDeg": {
+      "type": "number",
+      "const": -12
+    },
+    "overshootDeg": {
+      "type": "number",
+      "const": -4
+    },
+    "ringPulseMs": {
+      "type": "number",
+      "const": 260
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alarm",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#1A1612" },
-        "parchment": { "type": "string", "const": "#EBE2D0" },
-        "chakra": { "type": "string", "const": "#B83228" },
-        "alarm": { "type": "string", "const": "#B83228" },
-        "olive": { "type": "string", "const": "#6A5E4E" },
-        "off": { "type": "string", "const": "#F7F2E8" }
+        "ink": {
+          "type": "string",
+          "const": "#1A1612"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#EBE2D0"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "alarm": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#6A5E4E"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F7F2E8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateComplete"],
+      "required": [
+        "immediateComplete"
+      ],
       "properties": {
-        "immediateComplete": { "type": "boolean", "const": true }
+        "immediateComplete": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }

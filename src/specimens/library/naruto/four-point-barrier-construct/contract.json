@@ -5,33 +5,89 @@
   "description": "Four corner nodes connect edge-by-edge around a protected region, then the field fills.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "edgeCount", "edgeMs", "fillMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "edgeCount",
+    "edgeMs",
+    "fillMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "four-point-barrier-construct" },
-    "edgeCount": { "type": "number", "const": 4 },
-    "edgeMs": { "type": "number", "const": 220 },
-    "fillMs": { "type": "number", "const": 260 },
-    "settleMs": { "type": "number", "const": 90 },
+    "name": {
+      "type": "string",
+      "const": "four-point-barrier-construct"
+    },
+    "edgeCount": {
+      "type": "number",
+      "const": 4
+    },
+    "edgeMs": {
+      "type": "number",
+      "const": 120
+    },
+    "fillMs": {
+      "type": "number",
+      "const": 160
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 90
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alert",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "alert": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateSecured"],
+      "required": [
+        "immediateSecured"
+      ],
       "properties": {
-        "immediateSecured": { "type": "boolean", "const": true }
+        "immediateSecured": {
+          "type": "boolean",
+          "const": true
+        }
       }
+    },
+    "cornerCount": {
+      "type": "number",
+      "const": 4
     }
   }
 }

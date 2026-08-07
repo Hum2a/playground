@@ -5,32 +5,85 @@
   "description": "An abstract four-point shuriken glyph rotates open into four radial action sectors.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "sectorCount", "staggerMs", "openMs", "settleMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "sectorCount",
+    "staggerMs",
+    "openMs",
+    "settleMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "shuriken-radial-menu" },
-    "sectorCount": { "type": "number", "const": 4 },
-    "staggerMs": { "type": "number", "const": 40 },
-    "openMs": { "type": "number", "const": 260 },
-    "settleMs": { "type": "number", "const": 40 },
+    "name": {
+      "type": "string",
+      "const": "shuriken-radial-menu"
+    },
+    "sectorCount": {
+      "type": "number",
+      "const": 6
+    },
+    "staggerMs": {
+      "type": "number",
+      "const": 40
+    },
+    "openMs": {
+      "type": "number",
+      "const": 280
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 40
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#0C1014" },
-        "parchment": { "type": "string", "const": "#D0D6DC" },
-        "chakra": { "type": "string", "const": "#8AA0B4" },
-        "olive": { "type": "string", "const": "#5A6870" },
-        "off": { "type": "string", "const": "#EEF2F4" }
+        "ink": {
+          "type": "string",
+          "const": "#0C1014"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#D0D6DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#8AA0B4"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#5A6870"
+        },
+        "off": {
+          "type": "string",
+          "const": "#EEF2F4"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateOpen"],
+      "required": [
+        "immediateOpen"
+      ],
       "properties": {
-        "immediateOpen": { "type": "boolean", "const": true }
+        "immediateOpen": {
+          "type": "boolean",
+          "const": true
+        }
       }
+    },
+    "sectorDeg": {
+      "type": "number",
+      "const": 60
     }
   }
 }

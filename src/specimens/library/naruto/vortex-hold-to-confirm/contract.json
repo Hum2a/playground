@@ -5,32 +5,93 @@
   "description": "Holding a central core builds concentric rotating rings; releasing early cancels, holding the full threshold confirms.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "holdMs", "cancelMs", "confirmPulseMs", "ringCount", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "holdMs",
+    "cancelMs",
+    "confirmPulseMs",
+    "ringCount",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "vortex-hold-to-confirm" },
-    "holdMs": { "type": "number", "const": 900 },
-    "cancelMs": { "type": "number", "const": 200 },
-    "confirmPulseMs": { "type": "number", "const": 180 },
-    "ringCount": { "type": "number", "const": 3 },
+    "name": {
+      "type": "string",
+      "const": "vortex-hold-to-confirm"
+    },
+    "holdMs": {
+      "type": "number",
+      "const": 900
+    },
+    "cancelMs": {
+      "type": "number",
+      "const": 200
+    },
+    "confirmPulseMs": {
+      "type": "number",
+      "const": 180
+    },
+    "ringCount": {
+      "type": "number",
+      "const": 3
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["thresholdRetained", "immediateAutoConfirm"],
+      "required": [
+        "thresholdRetained",
+        "immediateAutoConfirm"
+      ],
       "properties": {
-        "thresholdRetained": { "type": "boolean", "const": true },
-        "immediateAutoConfirm": { "type": "boolean", "const": true }
+        "thresholdRetained": {
+          "type": "boolean",
+          "const": true
+        },
+        "immediateAutoConfirm": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "cssVars": {
+      "type": "object",
+      "const": {
+        "holdMs": "900ms",
+        "cancelMs": "200ms",
+        "ringCount": 3
       }
     }
   }
