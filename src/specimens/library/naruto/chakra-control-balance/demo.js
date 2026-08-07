@@ -299,3 +299,6 @@ void leftKeyHeld
 void rightKeyHeld
 bindUi()
 resetChakraControlBalance()
+
+void LOCK_THRESHOLD
+void WOBBLE_AMP

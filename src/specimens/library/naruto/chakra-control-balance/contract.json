@@ -2,35 +2,93 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/chakra-control-balance.schema.json",
   "title": "ChakraControlBalance",
-  "description": "Needle driven by two opposing holds must settle inside a narrow centre band to lock a balanced state.",
+  "description": "Dual-input needle must enter lock threshold to settle LOCKED.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "sweepMs", "lockHoldMs", "lockPulseMs", "bandPct", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "lockThreshold",
+    "bandPct",
+    "wobbleAmp",
+    "sweepMs",
+    "lockHoldMs",
+    "lockPulseMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "chakra-control-balance" },
-    "sweepMs": { "type": "number", "const": 560 },
-    "lockHoldMs": { "type": "number", "const": 380 },
-    "lockPulseMs": { "type": "number", "const": 150 },
-    "bandPct": { "type": "number", "const": 8 },
+    "name": {
+      "type": "string",
+      "const": "chakra-control-balance"
+    },
+    "lockThreshold": {
+      "type": "number",
+      "const": 0.08
+    },
+    "bandPct": {
+      "type": "number",
+      "const": 12
+    },
+    "wobbleAmp": {
+      "type": "number",
+      "const": 0.04
+    },
+    "sweepMs": {
+      "type": "number",
+      "const": 900
+    },
+    "lockHoldMs": {
+      "type": "number",
+      "const": 220
+    },
+    "lockPulseMs": {
+      "type": "number",
+      "const": 180
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "alert": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["instantLock"],
+      "required": [
+        "immediateLocked"
+      ],
       "properties": {
-        "instantLock": { "type": "boolean", "const": true }
+        "immediateLocked": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }
