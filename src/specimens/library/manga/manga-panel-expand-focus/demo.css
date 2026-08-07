@@ -1,0 +1,232 @@
+/* manga-panel-expand-focus — portable specimen styles. Do not restyle to host tokens. */
+
+.mpe {
+  --mpe-paper: #f4f1e8;
+  --mpe-ink: #111111;
+  --mpe-gutter: 8px;
+  --mpe-half-gutter: 4px;
+  --mpe-border: 4px;
+  --mpe-ms: 520ms;
+  --mpe-ease: cubic-bezier(0.22, 0.8, 0.2, 1);
+  --mpe-dominant: 68%;
+  --mpe-secondary: 32%;
+  --mpe-heading-scale: 1.45;
+  --mpe-secondary-opacity: 0.42;
+  --mpe-sec-h: calc((100% - 16px) / 3);
+  box-sizing: border-box;
+  position: relative;
+  width: 620px;
+  height: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 10px 36px;
+  overflow: hidden;
+  background: var(--mpe-paper);
+  color: var(--mpe-ink);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+}
+
+.mpe *,
+.mpe *::before,
+.mpe *::after {
+  box-sizing: border-box;
+}
+
+.mpe__stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mpe__panel {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.7rem 0.75rem;
+  border: var(--mpe-border) solid var(--mpe-ink);
+  border-radius: 0;
+  background: var(--mpe-paper);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    top var(--mpe-ms) var(--mpe-ease),
+    left var(--mpe-ms) var(--mpe-ease),
+    width var(--mpe-ms) var(--mpe-ease),
+    height var(--mpe-ms) var(--mpe-ease);
+}
+
+.mpe__panel:focus-visible {
+  outline: 2px solid var(--mpe-ink);
+  outline-offset: 2px;
+  z-index: 2;
+}
+
+.mpe__kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.mpe__heading {
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  transform-origin: top left;
+  transition:
+    transform var(--mpe-ms) var(--mpe-ease),
+    opacity var(--mpe-ms) var(--mpe-ease);
+}
+
+.mpe__body {
+  max-width: 28ch;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  transition: opacity var(--mpe-ms) var(--mpe-ease);
+}
+
+.mpe__panel.is-active .mpe__heading {
+  transform: scale(var(--mpe-heading-scale));
+}
+
+.mpe[data-layout='focus'] .mpe__panel:not(.is-active) .mpe__body,
+.mpe[data-layout='focus'] .mpe__panel:not(.is-active) .mpe__kicker {
+  opacity: var(--mpe-secondary-opacity);
+}
+
+.mpe[data-layout='focus'] .mpe__panel:not(.is-active) .mpe__heading {
+  opacity: var(--mpe-secondary-opacity);
+  transform: none;
+}
+
+.mpe__status {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mpe[data-layout='equal'] .mpe__panel[data-panel='0'] {
+  top: 0;
+  left: 0;
+  width: calc(50% - var(--mpe-half-gutter));
+  height: calc(50% - var(--mpe-half-gutter));
+}
+
+.mpe[data-layout='equal'] .mpe__panel[data-panel='1'] {
+  top: 0;
+  left: calc(50% + var(--mpe-half-gutter));
+  width: calc(50% - var(--mpe-half-gutter));
+  height: calc(50% - var(--mpe-half-gutter));
+}
+
+.mpe[data-layout='equal'] .mpe__panel[data-panel='2'] {
+  top: calc(50% + var(--mpe-half-gutter));
+  left: 0;
+  width: calc(50% - var(--mpe-half-gutter));
+  height: calc(50% - var(--mpe-half-gutter));
+}
+
+.mpe[data-layout='equal'] .mpe__panel[data-panel='3'] {
+  top: calc(50% + var(--mpe-half-gutter));
+  left: calc(50% + var(--mpe-half-gutter));
+  width: calc(50% - var(--mpe-half-gutter));
+  height: calc(50% - var(--mpe-half-gutter));
+}
+
+.mpe[data-layout='focus'][data-active='0'] .mpe__panel[data-panel='0'],
+.mpe[data-layout='focus'][data-active='2'] .mpe__panel[data-panel='2'] {
+  top: 0;
+  left: 0;
+  width: calc(var(--mpe-dominant) - var(--mpe-half-gutter));
+  height: 100%;
+  z-index: 1;
+}
+
+.mpe[data-layout='focus'][data-active='1'] .mpe__panel[data-panel='1'],
+.mpe[data-layout='focus'][data-active='3'] .mpe__panel[data-panel='3'] {
+  top: 0;
+  left: calc(var(--mpe-secondary) + var(--mpe-half-gutter));
+  width: calc(var(--mpe-dominant) - var(--mpe-half-gutter));
+  height: 100%;
+  z-index: 1;
+}
+
+.mpe[data-layout='focus'][data-active='0'] .mpe__panel[data-panel='1'],
+.mpe[data-layout='focus'][data-active='2'] .mpe__panel[data-panel='0'] {
+  top: 0;
+  left: calc(var(--mpe-dominant) + var(--mpe-half-gutter));
+  width: calc(var(--mpe-secondary) - var(--mpe-half-gutter));
+  height: var(--mpe-sec-h);
+}
+
+.mpe[data-layout='focus'][data-active='0'] .mpe__panel[data-panel='2'],
+.mpe[data-layout='focus'][data-active='2'] .mpe__panel[data-panel='1'] {
+  top: calc(var(--mpe-sec-h) + var(--mpe-gutter));
+  left: calc(var(--mpe-dominant) + var(--mpe-half-gutter));
+  width: calc(var(--mpe-secondary) - var(--mpe-half-gutter));
+  height: var(--mpe-sec-h);
+}
+
+.mpe[data-layout='focus'][data-active='0'] .mpe__panel[data-panel='3'],
+.mpe[data-layout='focus'][data-active='2'] .mpe__panel[data-panel='3'] {
+  top: calc((var(--mpe-sec-h) + var(--mpe-gutter)) * 2);
+  left: calc(var(--mpe-dominant) + var(--mpe-half-gutter));
+  width: calc(var(--mpe-secondary) - var(--mpe-half-gutter));
+  height: var(--mpe-sec-h);
+}
+
+.mpe[data-layout='focus'][data-active='1'] .mpe__panel[data-panel='0'],
+.mpe[data-layout='focus'][data-active='3'] .mpe__panel[data-panel='0'] {
+  top: 0;
+  left: 0;
+  width: calc(var(--mpe-secondary) - var(--mpe-half-gutter));
+  height: var(--mpe-sec-h);
+}
+
+.mpe[data-layout='focus'][data-active='1'] .mpe__panel[data-panel='2'],
+.mpe[data-layout='focus'][data-active='3'] .mpe__panel[data-panel='1'] {
+  top: calc(var(--mpe-sec-h) + var(--mpe-gutter));
+  left: 0;
+  width: calc(var(--mpe-secondary) - var(--mpe-half-gutter));
+  height: var(--mpe-sec-h);
+}
+
+.mpe[data-layout='focus'][data-active='1'] .mpe__panel[data-panel='3'],
+.mpe[data-layout='focus'][data-active='3'] .mpe__panel[data-panel='2'] {
+  top: calc((var(--mpe-sec-h) + var(--mpe-gutter)) * 2);
+  left: 0;
+  width: calc(var(--mpe-secondary) - var(--mpe-half-gutter));
+  height: var(--mpe-sec-h);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mpe__panel,
+  .mpe__heading,
+  .mpe__body,
+  .mpe__kicker {
+    transition: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .mpe__panel,
+html[data-force-reduced-motion='true'] .mpe__heading,
+html[data-force-reduced-motion='true'] .mpe__body,
+html[data-force-reduced-motion='true'] .mpe__kicker {
+  transition: none !important;
+}

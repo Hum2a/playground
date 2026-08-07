@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/manga-panel-expand-focus.schema.json",
+  "title": "MangaPanelExpandFocus",
+  "description": "Portable contract for manga panel hierarchy drill-down: one of four panels expands to ~68% while the others compress into a visible ~32% stack.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "preview",
+    "layout",
+    "motion",
+    "interaction",
+    "reducedMotion",
+    "a11y",
+    "classNames"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "manga-panel-expand-focus"
+    },
+    "intent": {
+      "type": "string",
+      "const": "Demonstrate manga panel hierarchy as an interactive drill-down: selecting a panel replates the page so that frame dominates while neighbours compress but remain visible."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "headings"
+      ],
+      "properties": {
+        "headings": {
+          "type": "array",
+          "const": [
+            "INK",
+            "GUTTER",
+            "BLEED",
+            "TOME"
+          ]
+        }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "widthPx",
+        "heightPx",
+        "overflow",
+        "paper",
+        "ink"
+      ],
+      "properties": {
+        "widthPx": {
+          "type": "number",
+          "const": 620
+        },
+        "heightPx": {
+          "type": "number",
+          "const": 400
+        },
+        "overflow": {
+          "type": "string",
+          "const": "hidden"
+        },
+        "paper": {
+          "type": "string",
+          "const": "#F4F1E8"
+        },
+        "ink": {
+          "type": "string",
+          "const": "#111111"
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "panelCount",
+        "borderPx",
+        "gutterPx",
+        "borderRadiusPx",
+        "dominantPercent",
+        "secondaryPercent",
+        "selectedHeadingScale",
+        "secondaryOpacity"
+      ],
+      "properties": {
+        "panelCount": {
+          "type": "number",
+          "const": 4
+        },
+        "borderPx": {
+          "type": "number",
+          "const": 4
+        },
+        "gutterPx": {
+          "type": "number",
+          "const": 8
+        },
+        "borderRadiusPx": {
+          "type": "number",
+          "const": 0
+        },
+        "dominantPercent": {
+          "type": "number",
+          "const": 68
+        },
+        "secondaryPercent": {
+          "type": "number",
+          "const": 32
+        },
+        "selectedHeadingScale": {
+          "type": "number",
+          "const": 1.45
+        },
+        "secondaryOpacity": {
+          "type": "number",
+          "const": 0.42
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "durationMs",
+        "easing"
+      ],
+      "properties": {
+        "durationMs": {
+          "type": "number",
+          "const": 520
+        },
+        "easing": {
+          "type": "string",
+          "const": "cubic-bezier(0.22, 0.8, 0.2, 1)"
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activateOnClick",
+        "activateOnEnterSpace",
+        "oneActiveOnly"
+      ],
+      "properties": {
+        "activateOnClick": {
+          "type": "boolean",
+          "const": true
+        },
+        "activateOnEnterSpace": {
+          "type": "boolean",
+          "const": true
+        },
+        "oneActiveOnly": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "triggers",
+        "behavior"
+      ],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion",
+            "data-force-reduced-motion"
+          ]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable geometry transitions; switch layouts immediately."
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "panelsFocusable",
+        "ariaPressed",
+        "liveStatus"
+      ],
+      "properties": {
+        "panelsFocusable": {
+          "type": "boolean",
+          "const": true
+        },
+        "ariaPressed": {
+          "type": "boolean",
+          "const": true
+        },
+        "liveStatus": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "stage",
+        "panel",
+        "active",
+        "heading",
+        "body",
+        "status"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "const": "mpe"
+        },
+        "stage": {
+          "type": "string",
+          "const": "mpe__stage"
+        },
+        "panel": {
+          "type": "string",
+          "const": "mpe__panel"
+        },
+        "active": {
+          "type": "string",
+          "const": "is-active"
+        },
+        "heading": {
+          "type": "string",
+          "const": "mpe__heading"
+        },
+        "body": {
+          "type": "string",
+          "const": "mpe__body"
+        },
+        "status": {
+          "type": "string",
+          "const": "mpe__status"
+        }
+      }
+    }
+  }
+}
