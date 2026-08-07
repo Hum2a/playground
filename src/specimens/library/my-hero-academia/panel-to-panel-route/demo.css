@@ -6,6 +6,12 @@
   --ppr-paper: #f4f7fa;
   --ppr-accent: #ff4d35;
   --ppr-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+  --ppr-expand-ms: 740;
+  --ppr-selected-scale: 1.04;
+  --ppr-panel-offset-x: 10px;
+  --ppr-panel-offset-y: 10px;
+  --ppr-panel-width: calc(33.33% - 12px);
+  --ppr-panel-height: calc(100% - 20px);
 
   position: relative;
   display: flex;
@@ -46,6 +52,30 @@
   outline-offset: 3px;
 }
 
+.ppr__route-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 247, 250, 0.82);
+}
+
+.ppr__from {
+  color: var(--ppr-primary);
+}
+
+.ppr__arrow {
+  opacity: 0.55;
+}
+
+.ppr__to {
+  color: var(--ppr-accent);
+}
+
 .ppr__stage {
   position: relative;
   width: min(100%, 360px);
@@ -80,7 +110,7 @@
 
 .ppr__panel--selected {
   border-color: var(--ppr-primary);
-  transform: scale(1.04);
+  transform: scale(var(--ppr-selected-scale));
 }
 
 .ppr__panel:focus-visible {
@@ -141,36 +171,36 @@
   color: rgba(244, 247, 250, 0.75);
 }
 
+.ppr__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .ppr--routing .ppr__panel--selected {
   position: absolute;
   z-index: 3;
-  animation: ppr-expand 740ms var(--ppr-ease) forwards;
+  animation: ppr-expand calc(var(--ppr-expand-ms) * 1ms) var(--ppr-ease) forwards;
 }
 
-.ppr[data-selected='0'].ppr--routing .ppr__panel--a {
-  left: 10px;
-  top: 10px;
-  width: calc(33.33% - 12px);
-  height: calc(100% - 20px);
-}
-
-.ppr[data-selected='1'].ppr--routing .ppr__panel--b {
-  left: 10px;
-  top: 10px;
-  width: calc(33.33% - 12px);
-  height: calc(100% - 20px);
-}
-
+.ppr[data-selected='0'].ppr--routing .ppr__panel--a,
+.ppr[data-selected='1'].ppr--routing .ppr__panel--b,
 .ppr[data-selected='2'].ppr--routing .ppr__panel--c {
-  left: 10px;
-  top: 10px;
-  width: calc(33.33% - 12px);
-  height: calc(100% - 20px);
+  left: var(--ppr-panel-offset-x);
+  top: var(--ppr-panel-offset-y);
+  width: var(--ppr-panel-width);
+  height: var(--ppr-panel-height);
 }
 
 @keyframes ppr-expand {
   0% {
-    transform: scale(1.04);
+    transform: scale(var(--ppr-selected-scale));
   }
   100% {
     left: 0 !important;

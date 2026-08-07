@@ -10,15 +10,15 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount in a relative overflow-hidden frame.',
-    'Import demo.css verbatim; preserve 740ms expansion timing.',
+    'Import demo.css verbatim; preserve 740ms expansion and frozen selected scale/offset.',
     'Wire panel selection and Route trigger; reset via resetPanelToPanelRoute().',
-    'Honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers; aria-live announces route changes.',
   ],
   acceptance: [
-    'Panel selection is visually distinct before routing',
-    'Route trigger expands selected panel then reveals MISSION COMPLETE',
-    'Effect stays clipped to the stage',
-    'Replay resets grid and route layers deterministically',
+    'From→to label shows selected panel → MISSION COMPLETE before routing',
+    'Route expands selected panel from frozen scale 1.04 then reveals MISSION COMPLETE',
+    'aria-live announces route change on completion',
+    'Replay resets grid, labels, and live region deterministically',
     'Reduced motion shows final route state immediately',
   ],
   scaffold: `

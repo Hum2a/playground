@@ -1,16 +1,56 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "PanelToPanelRoute",
-  "type": "object",
-  "required": ["name", "animation"],
-  "properties": {
-    "name": { "type": "string", "const": "panel-to-panel-route" },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 740 },
-        "totalMs": { "type": "number", "const": 1390 }
-      }
-    }
-  }
+  "name": "panel-to-panel-route",
+  "intent": "Selected comic panel scales from frozen offset to fill the stage, then resolves into a routed MISSION COMPLETE state with clear from→to labels.",
+  "catalogue": { "mha": "MHA-237", "ref": "SPX-2211" },
+  "copy": {
+    "panels": ["01 ANALYSIS", "02 TARGET", "03 OUTPUT"],
+    "routeTo": "MISSION COMPLETE",
+    "routeKicker": "ROUTE LOCKED",
+    "routeTitle": "MISSION COMPLETE",
+    "routeMeta": "Panel expanded into next state.",
+    "trigger": "Route",
+    "statusIdle": "Select a panel, then Route.",
+    "statusRouting": "Panel expanding into next state…",
+    "statusComplete": "Route complete — MISSION COMPLETE.",
+    "liveSelected": "Panel {panel} selected.",
+    "liveRouted": "Route changed: {from} to {to}."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "expandMs": 740,
+    "settleMs": 650,
+    "totalMs": 1390,
+    "selectTransitionMs": 200
+  },
+  "geometry": {
+    "stageWidthPx": 360,
+    "stageHeightPx": 220,
+    "panelOffsetX": "10px",
+    "panelOffsetY": "10px",
+    "panelWidth": "calc(33.33% - 12px)",
+    "panelHeight": "calc(100% - 20px)",
+    "selectedScale": 1.04,
+    "gridGapPx": 8,
+    "gridPaddingPx": 10
+  },
+  "api": {
+    "run": "runPanelToPanelRoute()",
+    "reset": "resetPanelToPanelRoute()"
+  },
+  "reducedMotion": {
+    "behaviour": "Skip panel expansion; show MISSION COMPLETE route view immediately and announce route change via aria-live"
+  },
+  "acceptance": [
+    "Three panels with 02 TARGET selected by default; from→to label shows panel → MISSION COMPLETE",
+    "Route expands selected panel from frozen scale 1.04 and grid offset over 740ms",
+    "Completion reveals ROUTE LOCKED / MISSION COMPLETE and aria-live announces route change",
+    "Replay resets grid, labels, and live region to idle selection",
+    "Reduced motion (prefers or data-force) shows final route state immediately with live announcement",
+    "No network; effect stays clipped inside stage"
+  ]
 }
