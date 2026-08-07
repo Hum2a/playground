@@ -1,28 +1,20 @@
 {
   "name": "substitution-swap",
-  "intent": "Primary target collapses through a decoy-only mid-state (hold 180ms), then the failover target expands into place with puff flashes.",
+  "intent": "Primary puffs out to a log decoy-only mid-state, then puffs into the failover target.",
   "catalogue": { "nr": "NR-042", "ref": "SPX-2385" },
   "copy": {
     "system": "FAILOVER // SWAP",
     "primary": "PRIMARY",
     "decoy": "DECOY",
-    "active": "ACTIVE",
-    "primaryTitle": "Target Node",
-    "decoyTitle": "Proxy Decoy",
-    "resolvedTitle": "Failover Target"
-  },
-  "geometry": {
-    "layers": ["primary", "decoy", "resolved"],
-    "scaleFrom": 0,
-    "rotateCollapseDeg": 10
+    "active": "ACTIVE"
   },
   "timing": {
     "toDecoyMs": 100,
-    "decoyHoldMs": 180,
+    "decoyHoldMs": 220,
     "toResolvedMs": 140,
     "puffMs": 120,
     "settleMs": 90,
-    "totalMs": 510
+    "totalMs": 550
   },
   "colours": {
     "ink": "#12141A",
@@ -30,7 +22,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-ash"
+    "palette": "clone-violet"
   },
   "api": {
     "run": "runSubstitutionSwap()",
@@ -38,13 +30,11 @@
     "replay": "replaySubstitutionSwap()"
   },
   "reducedMotion": {
-    "behaviour": "Failover target ACTIVE immediately; no decoy mid-state"
+    "behaviour": "Jumps straight to failover ACTIVE with no decoy hold"
   },
   "acceptance": [
-    "Sequence is primary → decoy-only (data-active=decoy) → resolved; mid-state shows only the LOG decoy layer",
-    "Decoy hold lasts decoyHoldMs 180 after toDecoyMs 100 collapse",
-    "Layer transitions use scale 0↔1 with rotate, not opacity fade as primary language",
-    "Puff flash fires once on each swap (puffMs 120)",
-    "Reduced motion (prefers or data-force) shows ACTIVE failover immediately"
+    "Mid-sequence shows decoy-only for decoyHoldMs 220 after toDecoyMs 100",
+    "Swaps use clip-path + puff (not opacity crossfade); timings frozen",
+    "Reduced motion jumps to failover target immediately"
   ]
 }

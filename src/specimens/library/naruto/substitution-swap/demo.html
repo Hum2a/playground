@@ -1,32 +1,33 @@
-<div class="sbs" data-sbs data-phase="idle">
-  <p class="sbs__live" data-sbs-live aria-live="polite">
+<div class="ssw" data-ssw data-phase="idle">
+  <p class="ssw__live" data-ssw-live aria-live="polite">
     Substitution idle. Primary target active.
   </p>
 
-  <p class="sbs__system">FAILOVER // SWAP</p>
+  <p class="ssw__system">FAILOVER // SWAP</p>
 
-  <div class="sbs__stage" data-sbs-stage>
-    <div class="sbs__slot" data-sbs-slot>
-      <div class="sbs__layer sbs__layer--primary" data-sbs-layer="primary">
-        <span class="sbs__layer-eyebrow">PRIMARY</span>
-        <span class="sbs__layer-title">Target Node</span>
+  <div class="ssw__stage" data-ssw-stage>
+    <div class="ssw__slot" data-ssw-slot data-active="primary">
+      <div class="ssw__layer ssw__layer--primary" data-ssw-layer="primary">
+        <span class="ssw__layer-eyebrow">PRIMARY</span>
+        <span class="ssw__layer-title">Target Node</span>
       </div>
-      <div class="sbs__layer sbs__layer--decoy" data-sbs-layer="decoy" aria-hidden="true">
-        <span class="sbs__layer-eyebrow">LOG</span>
-        <span class="sbs__layer-title">Proxy Decoy</span>
+      <div class="ssw__layer ssw__layer--decoy" data-ssw-layer="decoy" aria-hidden="true">
+        <span class="ssw__grain" aria-hidden="true"></span>
+        <span class="ssw__layer-eyebrow">LOG</span>
+        <span class="ssw__layer-title">Proxy Decoy</span>
       </div>
-      <div class="sbs__layer sbs__layer--resolved" data-sbs-layer="resolved" aria-hidden="true">
-        <span class="sbs__layer-eyebrow">ACTIVE</span>
-        <span class="sbs__layer-title">Failover Target</span>
+      <div class="ssw__layer ssw__layer--resolved" data-ssw-layer="resolved" aria-hidden="true">
+        <span class="ssw__layer-eyebrow">ACTIVE</span>
+        <span class="ssw__layer-title">Failover Target</span>
       </div>
-      <span class="sbs__puff" data-sbs-puff aria-hidden="true"></span>
+      <span class="ssw__puff" data-ssw-puff aria-hidden="true"></span>
     </div>
-    <p class="sbs__status" data-sbs-status>PRIMARY</p>
-    <p class="sbs__hint" data-sbs-hint>Press Run to trigger the substitution.</p>
+    <p class="ssw__status" data-ssw-status>PRIMARY</p>
+    <p class="ssw__hint" data-ssw-hint>Press Run to trigger the substitution.</p>
   </div>
 
-  <div class="sbs__controls">
-    <button type="button" class="sbs__btn sbs__btn--primary" data-sbs-run>Run</button>
-    <button type="button" class="sbs__btn" data-sbs-replay>Replay</button>
+  <div class="ssw__controls">
+    <button type="button" class="ssw__btn ssw__btn--primary" data-ssw-run>Run</button>
+    <button type="button" class="ssw__btn" data-ssw-replay>Replay</button>
   </div>
 </div>

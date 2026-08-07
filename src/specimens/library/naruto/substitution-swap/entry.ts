@@ -5,7 +5,7 @@ export const substitutionSwap: Specimen = {
   ref: 'SPX-2385',
   title: 'Substitution Swap',
   blurb:
-    'Primary collapses into a decoy-only mid-hold (180ms), then the failover target expands in — scale swaps, not fades.',
+    'Primary puffs out into a log decoy-only mid-state for 220ms, then puffs into the real failover target.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction kawarimi study — substitution failover',
@@ -19,7 +19,7 @@ export const substitutionSwap: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['failover', 'swap', 'decoy', 'mid-state'],
+  tags: ['failover', 'swap', 'decoy'],
   deps: 'none',
   motion: {
     loops: false,
@@ -28,8 +28,8 @@ export const substitutionSwap: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the slot jumps straight to the resolved failover target with no decoy step or puff.',
   },
   acceptance: [
-    'Mid-sequence is decoy-only for 180ms',
-    'Layers scale 0↔1 (not opacity fade)',
+    'Mid-sequence is decoy-only for 220ms (log grain visible)',
+    'Swaps use clip-path + puff — not opacity crossfade; timings 100/220/140ms',
     'Reduced motion jumps to failover target',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

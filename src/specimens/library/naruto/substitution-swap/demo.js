@@ -1,11 +1,10 @@
 /**
- * Substitution Swap — primary target swaps through a proxy decoy to the
- * resolved failover target, with a puff flash at each swap point.
+ * Substitution Swap — primary → decoy-only mid → failover target.
  * iframe-safe; no storage / parent / network.
  */
 
 const TO_DECOY_MS = 100
-const DECOY_HOLD_MS = 180
+const DECOY_HOLD_MS = 220
 const TO_RESOLVED_MS = 140
 const PUFF_MS = 120
 const SETTLE_MS = 90
@@ -22,11 +21,11 @@ function prefersReducedMotion() {
 }
 
 function rootEl() {
-  return document.querySelector('[data-sbs]')
+  return document.querySelector('[data-ssw]')
 }
 
 function slotEl() {
-  return document.querySelector('[data-sbs-slot]')
+  return document.querySelector('[data-ssw-slot]')
 }
 
 function clearTimers() {
@@ -41,24 +40,29 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-sbs-live]')
+  const el = document.querySelector('[data-ssw-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-sbs-status]')
+  const el = document.querySelector('[data-ssw-status]')
   if (el) el.textContent = text
 }
 
 function setHint(text) {
-  const el = document.querySelector('[data-sbs-hint]')
+  const el = document.querySelector('[data-ssw-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-sbs-run], [data-sbs-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-ssw-run], [data-ssw-replay]').forEach((btn) => {
     btn.disabled = !on
   })
+}
+
+function setLayerHidden(name, hidden) {
+  const el = document.querySelector(`[data-ssw-layer="${name}"]`)
+  if (el) el.setAttribute('aria-hidden', hidden ? 'true' : 'false')
 }
 
 function pop(slot) {
@@ -70,6 +74,9 @@ function showResolved() {
   const slot = slotEl()
   if (!slot) return
   slot.setAttribute('data-active', 'resolved')
+  setLayerHidden('primary', true)
+  setLayerHidden('decoy', true)
+  setLayerHidden('resolved', false)
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('ACTIVE')
   setHint('Substitution resolved.')
@@ -80,6 +87,9 @@ function resetVisual() {
   const slot = slotEl()
   slot?.setAttribute('data-active', 'primary')
   slot?.removeAttribute('data-pop')
+  setLayerHidden('primary', false)
+  setLayerHidden('decoy', true)
+  setLayerHidden('resolved', true)
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('PRIMARY')
   setHint('Press Run to trigger the substitution.')
@@ -87,7 +97,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run the primary → decoy → resolved swap sequence (demo Run).
+ * Auto-run primary → decoy-only → resolved.
  * @returns {Promise<void>}
  */
 export function runSubstitutionSwap() {
@@ -112,16 +122,19 @@ export function runSubstitutionSwap() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('SUBSTITUTING')
-  setLive('Primary collapsing; decoy-only mid-state.')
+  setLive('Puff: primary → log decoy only.')
   pop(slot)
   slot.setAttribute('data-active', 'decoy')
+  setLayerHidden('primary', true)
+  setLayerHidden('decoy', false)
+  setLayerHidden('resolved', true)
   setStatus('DECOY')
+  setHint('Mid-state: decoy only.')
 
   return new Promise((resolve) => {
     later(TO_DECOY_MS + DECOY_HOLD_MS, () => {
       pop(slot)
-      setStatus('RESOLVING')
-      setLive('Swapping decoy for failover target.')
+      setLive('Puff: decoy → failover target.')
       later(TO_RESOLVED_MS, () => {
         showResolved()
         later(SETTLE_MS, () => {
@@ -151,10 +164,10 @@ export async function replaySubstitutionSwap() {
 }
 
 function bindUi() {
-  document.querySelector('[data-sbs-run]')?.addEventListener('click', () => {
+  document.querySelector('[data-ssw-run]')?.addEventListener('click', () => {
     void runSubstitutionSwap()
   })
-  document.querySelector('[data-sbs-replay]')?.addEventListener('click', () => {
+  document.querySelector('[data-ssw-replay]')?.addEventListener('click', () => {
     void replaySubstitutionSwap()
   })
   window.addEventListener('message', (event) => {
