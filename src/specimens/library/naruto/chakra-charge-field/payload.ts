@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire hold-to-charge plus runChakraChargeField / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Hold charges an irregular boundary through diameters 72→96→118→140px',
-    'Release commits current level; full charge settles READY',
-    'Run auto-charges to 100% over 620ms then commits 150ms',
-    'Replay returns to 0% / idle boundary before rerunning',
-    'Reduced motion shows READY at full diameter immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),

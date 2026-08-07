@@ -7,7 +7,6 @@ const CHARGE_MS = 620
 const COMMIT_MS = 150
 const DIAMETERS_PX = [72, 96, 118, 140]
 const STEP_THRESHOLDS = [0.25, 0.5, 0.75, 1]
-const COMMIT_MS = 150
 
 /** @type {'idle'|'charging'|'done'} */
 let phase = 'idle'

@@ -1,95 +1,43 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/chakra-charge-field.schema.json",
-  "title": "ChakraChargeField",
-  "description": "Irregular chakra boundary grows through frozen diameters to READY.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "chargeMs",
-    "commitMs",
-    "diametersPx",
-    "stepThresholds",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "chakra-charge-field"
-    },
-    "chargeMs": {
-      "type": "number",
-      "const": 620
-    },
-    "commitMs": {
-      "type": "number",
-      "const": 150
-    },
-    "diametersPx": {
-      "type": "array",
-      "const": [
-        72,
-        96,
-        118,
-        140
-      ]
-    },
-    "stepThresholds": {
-      "type": "array",
-      "const": [
-        0.25,
-        0.5,
-        0.75,
-        1
-      ]
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#070B0E"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8E8DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#1A6B58"
-        },
-        "off": {
-          "type": "string",
-          "const": "#D7F5EC"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateReady"
-      ],
-      "properties": {
-        "immediateReady": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "chakra-charge-field",
+  "intent": "Hold grows an irregular chakra boundary through frozen diameter steps over 620ms; release commits.",
+  "catalogue": {
+    "nr": "NR-011",
+    "ref": "SPX-2354"
+  },
+  "geometry": {
+    "diametersPct": [
+      42,
+      68,
+      100
+    ],
+    "irregularPolygon": true
+  },
+  "timing": {
+    "chargeMs": 620,
+    "commitMs": 150
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "alert": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor-phosphor"
+  },
+  "api": {
+    "run": "runChakraChargeField()",
+    "reset": "resetChakraChargeField()",
+    "replay": "replayChakraChargeField()"
+  },
+  "reducedMotion": {
+    "behaviour": "Resolved Chakra Charge Field state immediately"
+  },
+  "acceptance": [
+    "Boundary fill uses irregular clip-path growth driven by --p over chargeMs 620",
+    "Diameter steps pass through 42% / 68% / 100% before READY/COMMITTED",
+    "Release commits current level; early release below full still commits partial",
+    "Reduced motion jumps to committed READY state immediately on Run"
+  ]
 }

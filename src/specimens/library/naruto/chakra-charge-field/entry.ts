@@ -5,39 +5,37 @@ export const chakraChargeField: Specimen = {
   ref: 'SPX-2354',
   title: 'Chakra Charge Field',
   blurb:
-    'An irregular chakra boundary grows through frozen diameters 72→96→118→140px; release commits, full charge settles READY.',
+    'Hold grows an irregular chakra boundary through frozen diameter steps over 620ms; release commits.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study',
+    surface: 'Naruto / chakra training — charge field',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['charge'],
+  tags: ["charge","hold","field"],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the field appears READY at the full 140px diameter immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Chakra Charge Field state appears immediately.',
   },
-    acceptance: [
-    'Hold charges an irregular boundary through diameters 72→96→118→140px',
-    'Release commits current level; full charge settles READY',
-    'Run auto-charges to 100% over 620ms then commits 150ms',
-    'Replay returns to 0% / idle boundary before rerunning',
-    'Reduced motion shows READY at full diameter immediately',
+  acceptance: [
+    'Boundary fill uses irregular clip-path growth driven by --p over chargeMs 620',
+    'Diameter steps pass through 42% / 68% / 100% before READY/COMMITTED',
+    'Release commits current level; early release below full still commits partial',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
-    height: 320,
+    height: 340,
     background: 'dark',
     label: 'Chakra Charge Field',
   },

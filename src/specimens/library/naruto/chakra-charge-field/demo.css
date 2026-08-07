@@ -6,7 +6,8 @@
   --chakra: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
-  /* wave2 timing surface */
+  --ccf-charge-ms: 620ms;
+  --ccf-commit-ms: 150ms;
   --ccf-r0: 42% 58% 48% 52% / 52% 48% 55% 45%;
   --ccf-r1: 48% 52% 60% 40% / 45% 55% 42% 58%;
   --ccf-r2: 55% 45% 52% 48% / 58% 42% 50% 50%;
