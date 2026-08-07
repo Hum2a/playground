@@ -8,8 +8,6 @@ const COMPRESS_MS = 200
 const MID_HOLD_MS = 120
 const RECONSTRUCT_MS = 220
 const TOTAL_MS = COMPRESS_MS + MID_HOLD_MS + RECONSTRUCT_MS
-const APERTURE_FROM_PX = 8
-const APERTURE_TO_PX = 72
 
 let busy = false
 
