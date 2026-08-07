@@ -1,18 +1,94 @@
 {
-  "name": "objective-step-advance",
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ],
-    "instantEndStates": true
-  },
-  "steps": 3,
-  "pulseMs": 240
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/objective-step-advance.schema.json",
+  "title": "ObjectiveStepAdvance",
+  "description": "Completing a step hands focus and progress to the next objective via a pulsed connector.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "objective-step-advance" },
+    "intent": {
+      "type": "string",
+      "const": "One completed step sends focus and progress into the next objective."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-035" },
+        "ref": { "type": "string", "const": "SPX-3341" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 420 },
+        "heightPx": { "type": "number", "const": 320 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stepCount", "labels"],
+      "properties": {
+        "stepCount": { "type": "number", "const": 3 },
+        "labels": {
+          "type": "array",
+          "const": ["Scan route", "Secure node", "Extract data"]
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completeMs", "pulseMs", "focusMs"],
+      "properties": {
+        "completeMs": { "type": "number", "const": 160 },
+        "pulseMs": { "type": "number", "const": 280 },
+        "focusMs": { "type": "number", "const": 200 }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Each advance snaps focus to the next step with no pulse travel."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "step", "focus", "pulse"],
+      "properties": {
+        "root": { "type": "string", "const": "osa" },
+        "step": { "type": "string", "const": "osa__step" },
+        "focus": { "type": "string", "const": "osa__focus" },
+        "pulse": { "type": "string", "const": "osa__pulse" }
+      }
+    }
+  }
 }

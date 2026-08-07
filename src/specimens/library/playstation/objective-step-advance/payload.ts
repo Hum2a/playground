@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inside scaffold host; import demo.css verbatim.",
-      "Honour both reduced-motion triggers — end states remain visible.",
-      "Listen for `{ type: \"restart\" }` postMessage where applicable."
+    'Wire Advance to complete→pulse→focus handoff across three objectives.',
+    'Import demo.css verbatim; freeze complete 160ms / pulse 280ms / focus 200ms.',
+    'Keep exactly one is-current focus ring until the chain finishes.',
+    'Preserve both reduced-motion overrides on focus, dot, pulse, and rail fill.',
   ],
   acceptance: [
-      "Uses PlayStation palette: #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF",
-      "No PS logos, glyphs, or game art",
-      "iframe-safe — no parent access, storage, or navigation",
-      "Reduced motion shows final states instantly"
+    'Exactly one step shows the focus ring at a time.',
+    'Advancing completes the current step, pulses the connector (280ms), then focuses the next.',
+    'Connector rails stay filled after each handoff.',
+    'Reduced motion snaps each handoff with no pulse travel.',
   ],
-  scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0B0F14;display:grid;place-items:center;padding:16px;">
+  scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}
-</div>
-`.trim(),
+</div>`.trim(),
   files: { html, css, js },
   spec,
   contract,
