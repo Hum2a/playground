@@ -1,12 +1,22 @@
-<div class="ps tup" data-tup data-phase="idle">
-  <p class="ps__live" data-tup-live aria-live="polite">Waiting for unlock.</p>
-  <p class="ps__eyebrow">TROPHY UNLOCK</p>
+<div class="tup" data-tup data-phase="idle">
+  <p class="tup__live" data-tup-live aria-live="polite">Waiting for unlock.</p>
+  <p class="tup__eyebrow">TROPHY UNLOCK</p>
   <div class="tup__stage">
     <div class="tup__toast" data-tup-toast hidden>
-      <span class="tup__icon" aria-hidden="true"></span>
-      <div><strong>First Steps</strong><span>Bronze tier</span></div>
+      <span class="tup__icon" aria-hidden="true">
+        <span class="tup__cup"></span>
+        <span class="tup__base"></span>
+      </span>
+      <div class="tup__copy">
+        <strong>First Steps</strong>
+        <span>Bronze tier</span>
+      </div>
       <span class="tup__shine" aria-hidden="true"></span>
     </div>
   </div>
-  <button type="button" class="ps__btn" data-tup-run>Unlock</button>
+  <div class="tup__controls">
+    <button type="button" class="tup__btn" data-tup-run>Unlock</button>
+    <button type="button" class="tup__btn tup__btn--ghost" data-tup-reset>Reset</button>
+  </div>
+  <p class="tup__status" data-tup-status>Idle — press Unlock for enter → shine → settle.</p>
 </div>

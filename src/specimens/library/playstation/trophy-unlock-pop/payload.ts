@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Mount inside scaffold host; import demo.css verbatim.",
-      "Honour both reduced-motion triggers — end states remain visible.",
-      "Listen for `{ type: \"restart\" }` postMessage where applicable."
+    'Wire Unlock to idle→enter→shine→settled using frozen timings.',
+    'Import demo.css verbatim; freeze enter 320ms / shine 480ms / settle 200ms.',
+    'Keep a single shine sweep — do not loop.',
+    'Preserve both reduced-motion overrides on toast and shine.',
   ],
   acceptance: [
-      "Uses PlayStation palette: #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF",
-      "No PS logos, glyphs, or game art",
-      "iframe-safe — no parent access, storage, or navigation",
-      "Reduced motion shows final states instantly"
+    'Unlock plays phases enter (320ms) → shine (480ms) → settled (200ms).',
+    'Shine sweeps exactly once, then the toast holds with a settled border.',
+    'Status announces the active toast phase.',
+    'Reduced motion jumps to the settled toast with no enter/shine animation.',
   ],
-  scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">
+  scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}
-</div>
-`.trim(),
+</div>`.trim(),
   files: { html, css, js },
   spec,
   contract,
