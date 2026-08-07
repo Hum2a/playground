@@ -45,6 +45,14 @@ Total ≈ **595ms**. Brackets retract on complete. No travel path. No looping.
 
 `idle` → `lock` → `collapse` → `fade` → `residue` → `gap` → `arrive` → `complete`
 
+## Acceptance (origin / destination)
+
+| Checkpoint | Observable |
+| --- | --- |
+| Idle | Session occupies **A only**; B empty aside from lock chrome during transmit |
+| Complete | **A is VACANT** (label + no session); **B holds SESSION // 04** |
+| Between | Never a travel path across the gap — only the empty teleport window |
+
 ## Reduced motion
 
 Immediately place SESSION // 04 at B; A becomes VACANT. No collapse/reconstruction.
