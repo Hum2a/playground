@@ -1,17 +1,17 @@
 # Transformation Morph
 
-Profile A collapses through a bold silhouette intermediate and expands into profile B.
+Profile A (**Scout**) collapses into an **ink** intermediate, then expands into Profile B (**Sentinel**) with a visible **FROM SCOUT** inheritance mark.
 
 ## Behaviour
 
-- Idle: profile A card visible, status `PROFILE A`.
-- Collapsing: profile A shrinks away, silhouette block grows in its place (~140ms).
-- Silhouette: masked block holds and pulses briefly (~90ms).
-- Revealing: silhouette recedes as profile B expands out (~150ms).
-- Done: profile B settled, status `PROFILE B`.
-- Reduced motion: profile B appears immediately, no silhouette step.
+- Idle: Scout card visible.
+- Collapsing: Scout scales to 0; ink silhouette expands.
+- Ink: clipped polygon silhouette holds 120ms.
+- Expanding / Done: Sentinel expands; trait mark `FROM SCOUT`.
+- Reduced motion: Sentinel immediately.
 
 ## Freeze
 
-- Collapse: 140ms · hold: 90ms · reveal: 150ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Collapse: 140ms · ink hold: 120ms · expand: 150ms
+- Ink clip: hexagon polygon · trait inheritance: FROM SCOUT
+- Palette (clone ash): `#12141A` / `#D8D4E0` / `#7A6B9A` / `#6E6A78` / `#F0EEF4`

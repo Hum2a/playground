@@ -7,20 +7,14 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~380×320+).',
-    'Import demo.css verbatim; freeze collapse/hold/reveal timings from contract.json.',
+    'Mount inside a relative host (~340×300+).',
+    'Import demo.css verbatim; freeze collapseMs 140 / inkHoldMs 120 / expandMs 150 from contract.json.',
     'Wire runTransformationMorph / resetTransformationMorph / replayTransformationMorph.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Profile A collapses into a bold silhouette block before profile B expands out',
-    'Idle, collapsing, silhouette, revealing, and done states are visually distinct',
-    'Replay resets to profile A before rerunning',
-    'Reduced motion shows profile B immediately with no silhouette',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#12141A;">
   {{specimen}}
 </div>
 `.trim(),

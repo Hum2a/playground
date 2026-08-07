@@ -5,13 +5,13 @@ export const transformationMorph: Specimen = {
   ref: 'SPX-2402',
   title: 'Transformation Morph',
   blurb:
-    'One profile card collapses through a bold silhouette intermediate and expands into a second, distinct profile.',
+    'Scout collapses into an ink silhouette, then expands into Sentinel with a visible FROM SCOUT inheritance mark.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study — transformation & disguise',
+    surface: 'Naruto / ninja-fiction transformation study — identity morph',
   },
   facets: {
-    kind: 'interaction',
+    kind: 'transition',
     tech: 'tiny-js',
     scope: 'card',
     intensity: 'graphic',
@@ -19,23 +19,23 @@ export const transformationMorph: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['morph', 'identity', 'silhouette'],
+  tags: ['morph', 'ink', 'identity', 'inheritance'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the second profile appears immediately with no silhouette intermediate.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, Profile B appears immediately with no collapse or ink hold.',
   },
   acceptance: [
-    'Collapse → ink intermediate → expand with trait inheritance',
-    'Intermediate is not a simple crossfade',
-    'Reduced motion shows second profile immediately',
+    'Collapse → ink hold 120ms → expand Profile B',
+    'Resolved card shows FROM SCOUT trait inheritance',
+    'Reduced motion shows Profile B immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 380,
-    height: 340,
+    width: 340,
+    height: 320,
     background: 'dark',
     label: 'Transformation morph',
   },

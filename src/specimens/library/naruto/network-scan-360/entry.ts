@@ -4,7 +4,8 @@ export const networkScan360: Specimen = {
   id: 'network-scan-360',
   ref: 'SPX-2497',
   title: '360° Network Scan',
-  blurb: 'A 360° sweep discovers network nodes around a hub.',
+  blurb:
+    'A 360° sweep discovers five network nodes at 0/72/144/216/288° into a readable inventory log.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study',
@@ -13,7 +14,7 @@ export const networkScan360: Specimen = {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'graphic',
+    intensity: 'subtle',
   },
   inspiredBy: {
     franchise: 'naruto',
@@ -24,12 +25,14 @@ export const networkScan360: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, jump to the final static outcome with no intermediate motion.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all five nodes appear discovered immediately.',
   },
-  acceptance: [
-    'Sweep hits nodes at 0/72/144/216/288° with 150ms steps',
-    'Five links activate in order; final MAPPED',
-    'Reduced motion shows all five mapped immediately',
+    acceptance: [
+    'Five nodes at frozen bearings 0/72/144/216/288 discover in order',
+    'Sweep completes one revolution; discovery log marks each node',
+    'Resolved inventory shows all five nodes active',
+    'Replay clears nodes/log before rerunning',
+    'Reduced motion shows full inventory immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

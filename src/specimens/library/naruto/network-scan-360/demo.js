@@ -81,6 +81,8 @@ function paintNodes(count, pulseIndex) {
   nodes().forEach((node, i) => {
     const on = i < count
     node.setAttribute('data-active', on ? 'true' : 'false')
+    const log = document.querySelector(`[data-ns360-log-item][data-index="${i}"]`)
+    log?.setAttribute('data-active', on ? 'true' : 'false')
     node.setAttribute(
       'aria-label',
       on ? `Node ${i + 1} connected` : `Node ${i + 1} pending`,

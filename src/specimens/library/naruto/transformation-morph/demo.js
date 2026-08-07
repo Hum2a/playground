@@ -5,9 +5,11 @@
  */
 
 const COLLAPSE_MS = 140
-const HOLD_MS = 90
+const HOLD_MS = 120
 const REVEAL_MS = 150
 const TOTAL_MS = COLLAPSE_MS + HOLD_MS + REVEAL_MS
+const TRAIT_FROM = 'Scout'
+const TRAIT_TO = 'Sentinel'
 
 let busy = false
 let done = false
@@ -97,21 +99,21 @@ export function runTransformationMorph() {
   root.setAttribute('data-phase', 'collapsing')
   setStatus('COLLAPSING')
   setHint('Profile A collapsing.')
-  setLive('Profile A collapsing.')
+  setLive(`Profile A (${TRAIT_FROM}) collapsing into ink mask.`)
 
   return new Promise((resolve) => {
     later(COLLAPSE_MS, () => {
       root.setAttribute('data-phase', 'silhouette')
-      setStatus('MASKED')
-      setHint('Identity masked.')
-      setLive('Silhouette holding.')
+      setStatus('INK')
+      setHint('Identity inked.')
+      setLive('Ink intermediate holding; traits suspended.')
     })
 
     later(COLLAPSE_MS + HOLD_MS, () => {
       root.setAttribute('data-phase', 'revealing')
-      setStatus('REVEALING')
-      setHint('Profile B emerging.')
-      setLive('Profile B revealing.')
+      setStatus('EXPANDING')
+      setHint(`${TRAIT_TO} expanding.`)
+      setLive(`Expanding into Profile B (${TRAIT_TO}) with inherited Scout trait mark.`)
     })
 
     later(TOTAL_MS, () => {

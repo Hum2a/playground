@@ -234,3 +234,20 @@ html[data-force-reduced-motion='true'] .ns360__link,
 html[data-force-reduced-motion='true'] .ns360__node {
   transition: none !important;
 }
+
+.ns360__log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.2rem;
+  width: 100%;
+  max-width: 16rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--olive);
+}
+.ns360__log [data-active='true'] {
+  color: var(--chakra);
+}

@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative overflow-hidden host (~420×280+).',
-    'Import demo.css verbatim; freeze active 480ms + settle 160ms from contract.json.',
-    'Wire runNetworkScan360 / resetNetworkScan360 / replayNetworkScan360.',
-    'Honour prefers-reduced-motion and data-force-reduced-motion.',
+    'Mount inside a relative host (~420×340+).',
+    'Import demo.css verbatim; freeze angles 0/72/144/216/288 and step 160ms from contract.json.',
+    'Wire runNetworkScan360 / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Run produces one finite idle → active → done sequence',
-    'Resolved state remains until reset/replay',
-    'Replay restores idle before rerunning',
-    'Reduced motion jumps to done without motion',
-    'Sandbox-safe; no external assets',
+    'Five nodes at frozen bearings 0/72/144/216/288 discover in order',
+    'Sweep completes one revolution; discovery log marks each node',
+    'Resolved inventory shows all five nodes active',
+    'Replay clears nodes/log before rerunning',
+    'Reduced motion shows full inventory immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),
