@@ -7,21 +7,14 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×280+).',
-    'Import demo.css verbatim; freeze draw/settle timings from contract.json.',
+    'Mount inside a relative host (~400×280+).',
+    'Import demo.css verbatim; freeze pathLength 100 / drawMs 180 / snapMs 90 / settleMs 80 from contract.json.',
     'Wire runWireConnectionDraw / resetWireConnectionDraw / replayWireConnectionDraw.',
-    'Honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers — show LINKED immediately.',
   ],
-  acceptance: [
-    'A single thin line draws from node A to node B',
-    'Idle, drawing, and linked states are visually distinct',
-    'Both endpoints pulse once the wire completes',
-    'Replay retracts the wire before rerunning',
-    'Reduced motion shows the completed linked wire immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),

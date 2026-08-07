@@ -1,12 +1,13 @@
 /**
- * Wire Connection Draw — a thin wire rapidly connects two nodes, then both
- * endpoints pulse to confirm a linked connection.
+ * Wire Connection Draw — pathLength stroke draw then snap-pulse to LINKED.
  * iframe-safe; no storage / parent / network.
  */
 
 const DRAW_MS = 180
+const SNAP_MS = 90
 const SETTLE_MS = 80
-const TOTAL_MS = DRAW_MS + SETTLE_MS
+const TOTAL_MS = DRAW_MS + SNAP_MS + SETTLE_MS
+const PATH_LENGTH = 100
 
 let busy = false
 let linked = false
@@ -22,6 +23,10 @@ function prefersReducedMotion() {
 
 function rootEl() {
   return document.querySelector('[data-wcd]')
+}
+
+function wireEl() {
+  return document.querySelector('[data-wcd-wire]')
 }
 
 function clearTimers() {
@@ -63,6 +68,23 @@ function setNodeLabels(text) {
   })
 }
 
+function prepareWire() {
+  const wire = wireEl()
+  if (!wire) return
+  wire.setAttribute('pathLength', String(PATH_LENGTH))
+  // Prefer measured length when available; fall back to normalised pathLength.
+  if (typeof wire.getTotalLength === 'function') {
+    try {
+      const len = wire.getTotalLength()
+      if (len > 0) {
+        wire.style.setProperty('--wcd-path-length', String(PATH_LENGTH))
+      }
+    } catch {
+      wire.style.setProperty('--wcd-path-length', String(PATH_LENGTH))
+    }
+  }
+}
+
 function showLinked() {
   linked = true
   setNodeLabels('connected')
@@ -79,10 +101,11 @@ function resetVisual() {
   setStatus('UNLINKED')
   setHint('Press Run to draw the connection.')
   setLive('Idle. Nodes A and B are unconnected.')
+  prepareWire()
 }
 
 /**
- * Auto-run full draw → link choreography.
+ * Auto-run pathLength draw → snap → link.
  * @returns {Promise<void>}
  */
 export function runWireConnectionDraw() {
@@ -108,11 +131,16 @@ export function runWireConnectionDraw() {
   setLive('Drawing wire between nodes.')
 
   return new Promise((resolve) => {
-    later(TOTAL_MS, () => {
-      showLinked()
-      busy = false
-      setButtons(true)
-      resolve()
+    later(DRAW_MS, () => {
+      root.setAttribute('data-phase', 'linked')
+      setStatus('SNAP')
+      setLive('Wire snap confirm.')
+      later(SNAP_MS + SETTLE_MS, () => {
+        showLinked()
+        busy = false
+        setButtons(true)
+        resolve()
+      })
     })
   })
 }

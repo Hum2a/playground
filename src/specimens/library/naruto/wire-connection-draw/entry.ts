@@ -5,37 +5,37 @@ export const wireConnectionDraw: Specimen = {
   ref: 'SPX-2427',
   title: 'Wire Connection Draw',
   blurb:
-    'A thin wire rapidly draws between two nodes, then both endpoints pulse to confirm a linked connection.',
+    'A pathLength-100 stroke draws in 180ms between nodes A and B, then snaps (90ms) to LINKED.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction action-language study — ninja wire & connection systems',
+    surface: 'Naruto / ninja-fiction action-language study — wire / binding tools',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['connection', 'wire', 'linking'],
+  tags: ['wire', 'connection', 'stroke-draw', 'snap'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the wire appears fully drawn and LINKED immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the wire appears fully drawn as LINKED with no stroke animation.',
   },
   acceptance: [
-    'Wire draws via pathLength to LINKED then snaps',
-    'Path and duration frozen in contract',
-    'Reduced motion shows fully drawn LINKED',
+    'pathLength 100 stroke draws in 180ms then snap 90ms',
+    'Endpoints pulse on LINKED',
+    'Reduced motion shows LINKED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 420,
-    height: 300,
+    width: 400,
+    height: 280,
     background: 'dark',
     label: 'Wire connection draw',
   },

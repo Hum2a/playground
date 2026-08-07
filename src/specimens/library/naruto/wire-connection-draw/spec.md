@@ -1,15 +1,15 @@
 # Wire Connection Draw
 
-A thin wire rapidly draws between two nodes, then both endpoints pulse to confirm a linked connection.
+A thin wire stroke-draws via `pathLength` between two nodes, then snaps to LINKED.
 
 ## Behaviour
 
-- Idle: nodes A and B unconnected, status `UNLINKED`.
-- Drawing: the wire's stroke-dashoffset animates from full to zero (~180ms).
-- Linked: both node dots fill and pulse once (~80ms), status `LINKED`.
-- Reduced motion: the wire and LINKED state appear immediately.
+- Idle: wire undrawn (`stroke-dashoffset: 100`), status `UNLINKED`.
+- Drawing: dashoffset 100→0 over 180ms (`pathLength="100"`).
+- Snap: stroke-width pulse 90ms, endpoints pulse, status `LINKED`.
+- Reduced motion: LINKED immediately.
 
 ## Freeze
 
-- Draw: 180ms · settle: 80ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- pathLength: 100 · draw: 180ms · snap: 90ms · settle: 80ms
+- Palette (sensor): `#070B0E` / `#C8E8DC` / `#3DCEA8` / `#1A6B58` / `#D7F5EC`

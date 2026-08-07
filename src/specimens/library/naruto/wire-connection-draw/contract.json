@@ -1,34 +1,44 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/wire-connection-draw.schema.json",
-  "title": "WireConnectionDraw",
-  "description": "A thin wire rapidly connects two nodes, then both endpoints pulse to confirm a linked connection.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "drawMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "wire-connection-draw" },
-    "drawMs": { "type": "number", "const": 180 },
-    "settleMs": { "type": "number", "const": 80 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateLinked"],
-      "properties": {
-        "immediateLinked": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "wire-connection-draw",
+  "intent": "A wire stroke-draws via pathLength 100 in 180ms, then snaps with a width pulse to LINKED.",
+  "catalogue": { "nr": "NR-084", "ref": "SPX-2427" },
+  "copy": {
+    "system": "LINK // WIRE",
+    "idle": "UNLINKED",
+    "drawing": "DRAWING",
+    "linked": "LINKED"
+  },
+  "geometry": {
+    "pathLength": 100,
+    "endpoints": ["A", "B"],
+    "line": { "x1": 14, "y1": 20, "x2": 86, "y2": 20 }
+  },
+  "timing": {
+    "drawMs": 180,
+    "snapMs": 90,
+    "settleMs": 80
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor"
+  },
+  "api": {
+    "run": "runWireConnectionDraw()",
+    "reset": "resetWireConnectionDraw()",
+    "replay": "replayWireConnectionDraw()"
+  },
+  "cssVars": ["--wcd-draw-ms", "--wcd-snap-ms", "--wcd-settle-ms", "--wcd-path-length"],
+  "reducedMotion": {
+    "behaviour": "Wire appears fully drawn as LINKED immediately"
+  },
+  "acceptance": [
+    "SVG line uses pathLength 100; stroke-dashoffset animates 100→0 in drawMs 180",
+    "After draw, snapMs 90 width pulse then status LINKED with endpoint pulse",
+    "Replay resets dashoffset to full before redrawing",
+    "Reduced motion (prefers or data-force) shows LINKED immediately with animations disabled"
+  ]
 }
