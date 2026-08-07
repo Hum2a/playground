@@ -1,11 +1,5 @@
-const COLLAPSE_MS = 420
-const COLLAPSE_STAGGER_MS = 40
-const WIDGET_COUNT = 4
 const BURST_DELAY_MS = 400
 const STAMP_MS = 360
-
-const COLLAPSE_TOTAL_MS = (WIDGET_COUNT - 1) * COLLAPSE_STAGGER_MS + COLLAPSE_MS
-const TOTAL_MS = BURST_DELAY_MS + STAMP_MS
 
 let busy = false
 /** @type {number | null} */
@@ -65,8 +59,8 @@ export function runMissionCompleteBurst() {
         busy = false
         timer = null
         resolve()
-      }, TOTAL_MS)
-    }, COLLAPSE_TOTAL_MS)
+      }, STAMP_MS)
+    }, BURST_DELAY_MS)
   })
 }
 

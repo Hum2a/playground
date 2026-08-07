@@ -146,7 +146,7 @@
 
 .mcb[data-phase='burst'] .mcb__burst,
 .mcb[data-phase='done'] .mcb__burst {
-  animation: mcb-stamp calc(var(--stamp-ms) * 1ms) var(--ease) calc(var(--burst-delay-ms) * 1ms) forwards;
+  animation: mcb-stamp calc(var(--stamp-ms) * 1ms) var(--ease) forwards;
 }
 
 .mcb[data-phase='done'] .mcb__burst {
