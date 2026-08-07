@@ -5,6 +5,13 @@
   --ink: #101820;
   --paper: #f4f7fa;
   --accent: #ff4d35;
+  --pbt-break-ms: 480;
+  --pbt-settle-ms: 260;
+  --pbt-clip-a: polygon(0% 0%, 72% 0%, 48% 100%, 0% 88%);
+  --pbt-clip-b: polygon(58% 0%, 100% 4%, 100% 100%, 38% 100%);
+  --pbt-clip-c: polygon(0% 12%, 88% 0%, 100% 62%, 0% 100%);
+  --pbt-clip-d: polygon(42% 0%, 100% 0%, 100% 100%, 8% 92%);
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -103,54 +110,54 @@
 }
 
 .pbt__shard--a {
-  inset: 0 50% 50% 0;
-  clip-path: polygon(0 0, 100% 0, 55% 100%, 0 100%);
+  inset: 0 42% 38% 0;
+  clip-path: var(--pbt-clip-a);
 }
 .pbt__shard--b {
-  inset: 0 0 50% 50%;
-  clip-path: polygon(45% 0, 100% 0, 100% 100%, 0 100%);
+  inset: 0 0 32% 48%;
+  clip-path: var(--pbt-clip-b);
 }
 .pbt__shard--c {
-  inset: 50% 50% 0 0;
-  clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+  inset: 52% 45% 0 0;
+  clip-path: var(--pbt-clip-c);
 }
 .pbt__shard--d {
-  inset: 50% 0 0 50%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 45% 100%);
+  inset: 48% 0 0 42%;
+  clip-path: var(--pbt-clip-d);
 }
 
 .pbt[data-phase='break'] .pbt__shard--a,
 .pbt[data-phase='settle'] .pbt__shard--a,
 .pbt[data-phase='done'] .pbt__shard--a {
-  animation: pbt-shard-a 480ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: pbt-shard-a calc(var(--pbt-break-ms) * 1ms) cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 .pbt[data-phase='break'] .pbt__shard--b,
 .pbt[data-phase='settle'] .pbt__shard--b,
 .pbt[data-phase='done'] .pbt__shard--b {
-  animation: pbt-shard-b 480ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: pbt-shard-b calc(var(--pbt-break-ms) * 1ms) cubic-bezier(0.4, 0, 0.2, 1) 30ms forwards;
 }
 .pbt[data-phase='break'] .pbt__shard--c,
 .pbt[data-phase='settle'] .pbt__shard--c,
 .pbt[data-phase='done'] .pbt__shard--c {
-  animation: pbt-shard-c 480ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: pbt-shard-c calc(var(--pbt-break-ms) * 1ms) cubic-bezier(0.4, 0, 0.2, 1) 15ms forwards;
 }
 .pbt[data-phase='break'] .pbt__shard--d,
 .pbt[data-phase='settle'] .pbt__shard--d,
 .pbt[data-phase='done'] .pbt__shard--d {
-  animation: pbt-shard-d 480ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: pbt-shard-d calc(var(--pbt-break-ms) * 1ms) cubic-bezier(0.4, 0, 0.2, 1) 45ms forwards;
 }
 
 @keyframes pbt-shard-a {
-  to { transform: translate(-28%, -22%) rotate(-8deg); opacity: 0; }
+  to { transform: translate(-32%, -26%) rotate(-14deg); opacity: 0; }
 }
 @keyframes pbt-shard-b {
-  to { transform: translate(30%, -18%) rotate(6deg); opacity: 0; }
+  to { transform: translate(34%, -22%) rotate(10deg); opacity: 0; }
 }
 @keyframes pbt-shard-c {
-  to { transform: translate(-24%, 26%) rotate(5deg); opacity: 0; }
+  to { transform: translate(-28%, 30%) rotate(8deg); opacity: 0; }
 }
 @keyframes pbt-shard-d {
-  to { transform: translate(26%, 24%) rotate(-7deg); opacity: 0; }
+  to { transform: translate(30%, 28%) rotate(-11deg); opacity: 0; }
 }
 
 .pbt[data-phase='done'] .pbt__shards {
@@ -195,9 +202,11 @@
 @media (prefers-reduced-motion: reduce) {
   .pbt__shard { animation: none !important; }
   .pbt[data-phase='done'] .pbt__shards,
-  .pbt[data-phase='idle'] .pbt__shards { opacity: 0; }
+  .pbt[data-phase='break'] .pbt__shards,
+  .pbt[data-phase='settle'] .pbt__shards { opacity: 0; }
 }
 
 [data-force-reduced-motion='true'] .pbt__shard { animation: none !important; }
 [data-force-reduced-motion='true'] .pbt[data-phase='done'] .pbt__shards,
-[data-force-reduced-motion='true'] .pbt[data-phase='idle'] .pbt__shards { opacity: 0; }
+[data-force-reduced-motion='true'] .pbt[data-phase='break'] .pbt__shards,
+[data-force-reduced-motion='true'] .pbt[data-phase='settle'] .pbt__shards { opacity: 0; }
