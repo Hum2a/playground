@@ -8,13 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Wire runWeaknessDiscovered / resetWeaknessDiscovered.',
+    'Hit 420ms then WEAK reveal 280ms; state permanent until reset.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Strike flash then permanent WEAK label',
+    'Reduced motion shows WEAK immediately',
+    'Harness restart clears to unknown',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">

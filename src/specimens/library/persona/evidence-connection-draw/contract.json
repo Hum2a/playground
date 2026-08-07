@@ -8,5 +8,10 @@
     "paper": "#F7F3E8",
     "muted": "#E8E8E8"
   },
+  "timing": { "drawMs": 480 },
+  "api": {
+    "run": "select two clues (interactive)",
+    "reset": "resetConnection()"
+  },
   "reducedMotion": { "behaviour": "Line visible immediately without dash draw" }
 }

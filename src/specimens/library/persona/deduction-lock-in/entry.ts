@@ -2,7 +2,7 @@ import type { Specimen } from '../../../types'
 
 export const deductionLockIn: Specimen = {
   id: 'deduction-lock-in',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2954',
   title: 'Deduction Lock-In',
   blurb: 'Several observations converge into one conclusion card.',
   origin: { project: 'Original', surface: 'Persona 4 investigation / mystery visual language' },

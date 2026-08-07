@@ -1,10 +1,12 @@
 /**
  * VHS Tracking Scrub — slider introduces then removes horizontal tracking errors.
+ * Tear periods frozen: error 180ms, severe 100ms. Center 50, errorBand 18.
  * iframe-safe; no storage / parent / network.
  */
 
 const CENTER = 50
 const ERROR_BAND = 18
+const CLEAN_BAND = 4
 
 function rootEl() {
   return document.querySelector('[data-vts]')
@@ -21,7 +23,7 @@ function setLive(text) {
 
 function phaseForValue(value) {
   const dist = Math.abs(value - CENTER)
-  if (dist <= 4) return 'clean'
+  if (dist <= CLEAN_BAND) return 'clean'
   if (dist <= ERROR_BAND) return 'error'
   return 'severe'
 }
@@ -44,6 +46,12 @@ function applyValue(value) {
   }
 }
 
+export function resetVhsTracking() {
+  const range = rangeEl()
+  if (range) range.value = String(CENTER)
+  applyValue(CENTER)
+}
+
 function bindUi() {
   const range = rangeEl()
   if (!range) return
@@ -52,13 +60,12 @@ function bindUi() {
     applyValue(Number(range.value))
   })
 
+  document.querySelector('[data-vts-reset]')?.addEventListener('click', resetVhsTracking)
+
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') {
-      range.value = String(CENTER)
-      applyValue(CENTER)
-    }
+    if (data.type === 'restart') resetVhsTracking()
   })
 }
 

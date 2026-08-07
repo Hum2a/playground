@@ -7,15 +7,17 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    "Mount in overflow-hidden frame.",
-    "Wire All-Out / Reset."
-],
+    'Mount in overflow-hidden frame.',
+    'Wire runAllOutCompletionBurst / resetAllOutCompletionBurst.',
+    'Collapse 320ms → burst 460ms → VICTORY.',
+  ],
   acceptance: [
-    "Multiple targets visible",
-    "Burst collapses entities",
-    "Victory result readable",
-    "Reduced motion skips burst"
-],
+    'Three targets visible at idle',
+    'Entities collapse into one burst',
+    'VICTORY result readable',
+    'Reduced motion skips to done',
+    'Harness restart resets to idle',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101010;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

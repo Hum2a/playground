@@ -1,26 +1,28 @@
 import type { SpecimenPayload } from '../../../types'
 import html from './demo.html?raw'
 import css from './demo.style.txt?raw'
+import js from './demo.js?raw'
 import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Mount bond card in overflow-hidden stage.',
+    'Wire runSocialLinkMilestone / resetSocialLinkMilestone.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Nodes converge toward the bond card in a finite run',
+    'UNLOCKED badge and skill label appear at end',
+    'Portrait label reads BOND // 02 (no character names)',
+    'Reset and harness restart return to idle',
+    'Palette uses #F5C400 / #101010 / #F7F3E8 / #E8E8E8',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101010;display:grid;place-items:center;padding:0.75rem;">
   {{specimen}}
 </div>
 `.trim(),
-  files: { html, css },
+  files: { html, css, js },
   spec,
   contract,
 }

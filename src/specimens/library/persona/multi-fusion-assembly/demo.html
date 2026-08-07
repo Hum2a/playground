@@ -1,4 +1,28 @@
-<div class="mfa" aria-hidden="true">
-<div class="mfa__input mfa__input--a">Pixie</div><div class="mfa__input mfa__input--b">Angel</div><div class="mfa__input mfa__input--c">Jack Frost</div>
-<div class="mfa__core"><span class="mfa__label">FUSION</span><span class="mfa__name">Trumpeter</span></div>
+<div class="mfa" data-mfa data-phase="idle">
+  <p class="mfa__live" data-mfa-live aria-live="polite" role="status">Three models ready to assemble.</p>
+
+  <div class="mfa__stage" data-mfa-stage>
+    <div class="mfa__input mfa__input--a" data-mfa-input="a">
+      <span class="mfa__id">A</span>
+      <span class="mfa__name">MODEL A</span>
+    </div>
+    <div class="mfa__input mfa__input--b" data-mfa-input="b">
+      <span class="mfa__id">B</span>
+      <span class="mfa__name">MODEL B</span>
+    </div>
+    <div class="mfa__input mfa__input--c" data-mfa-input="c">
+      <span class="mfa__id">C</span>
+      <span class="mfa__name">MODEL C</span>
+    </div>
+
+    <div class="mfa__core" data-mfa-core aria-hidden="true">
+      <span class="mfa__label">FUSION</span>
+      <span class="mfa__result-name">OMEGA</span>
+    </div>
+  </div>
+
+  <div class="mfa__controls">
+    <button type="button" class="mfa__btn mfa__btn--primary" data-mfa-run>Assemble</button>
+    <button type="button" class="mfa__btn" data-mfa-reset>Reset</button>
+  </div>
 </div>

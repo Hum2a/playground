@@ -1,4 +1,17 @@
-<div class="rtu" data-rtu><p class="rtu__live" data-rtu-live aria-live="polite">Rank progress idle.</p>
-<p class="rtu__rank">RANK 4 → 5</p><div class="rtu__track" aria-hidden="true"><div class="rtu__fill" data-rtu-fill style="width:72%"></div><div class="rtu__threshold"></div></div>
-<p class="rtu__pct" data-rtu-pct>72%</p><div class="rtu__unlock" data-rtu-unlock hidden><span class="rtu__stamp">UNLOCKED</span><span class="rtu__tier">Assist Follow-Up</span></div>
-<button type="button" class="rtu__btn" data-rtu-run>Advance</button></div>
+<div class="rtu" data-rtu data-phase="idle">
+  <p class="rtu__live" data-rtu-live aria-live="polite">Rank progress idle.</p>
+  <p class="rtu__rank">RANK 4 → 5</p>
+  <div class="rtu__track" aria-hidden="true">
+    <div class="rtu__fill" data-rtu-fill></div>
+    <div class="rtu__threshold" data-rtu-threshold></div>
+  </div>
+  <p class="rtu__pct" data-rtu-pct>72%</p>
+  <div class="rtu__unlock" data-rtu-unlock>
+    <span class="rtu__stamp">UNLOCKED</span>
+    <span class="rtu__tier">Assist Follow-Up</span>
+  </div>
+  <div class="rtu__controls">
+    <button type="button" class="rtu__btn rtu__btn--primary" data-rtu-run>Advance</button>
+    <button type="button" class="rtu__btn" data-rtu-reset>Reset</button>
+  </div>
+</div>

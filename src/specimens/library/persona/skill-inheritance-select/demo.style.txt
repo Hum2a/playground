@@ -1,17 +1,151 @@
-/* SPX-2989 Skill Inheritance Select */
-.sis{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;box-sizing:border-box;display:grid;gap:.7rem;width:100%;min-height:280px;padding:.85rem;background:var(--ink);color:var(--cream);font-family:ui-sans-serif,system-ui,sans-serif}
-.sis__live{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.sis__sources{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
-.sis__card{display:grid;gap:.4rem;padding:.5rem;border:2px solid var(--gold);background:var(--cream);color:var(--ink)}
-.sis__card-name{font-size:.62rem;font-weight:800;letter-spacing:.12em}
-.sis__chip{appearance:none;padding:.3rem .55rem;border:2px solid var(--ink);background:var(--gold);color:var(--ink);font:inherit;font-size:.62rem;font-weight:800;letter-spacing:.08em;cursor:pointer}
-.sis__chip:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
-.sis__chip.is-sent{opacity:.35;pointer-events:none}
-.sis__result{display:grid;gap:.35rem;padding:.55rem;border:2px dashed var(--gold)}
-.sis__result-label{font-size:.58rem;font-weight:800;letter-spacing:.18em;color:var(--gold)}
-.sis__slots{display:flex;flex-wrap:wrap;gap:.35rem;min-height:1.6rem}
-.sis__slot{padding:.28rem .5rem;border:1px solid var(--gold);background:rgb(245 196 0/.15);font-size:.62rem;font-weight:800;letter-spacing:.08em;animation:sis-pop 320ms ease-out}
-@keyframes sis-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
-.sis__btn{justify-self:start;appearance:none;padding:.4rem .75rem;border:1px solid var(--gold);background:transparent;color:var(--gold);font:inherit;font-size:.62rem;font-weight:800;letter-spacing:.12em;cursor:pointer}
-@media (prefers-reduced-motion: reduce) { .sis__slot{animation:none} }
-[data-force-reduced-motion="true"] .sis__slot{animation:none}
+/* SPX-2989 Skill Inheritance Select — portable contract. */
+
+.sis {
+  --gold: #F5C400;
+  --ink: #101010;
+  --cream: #F7F3E8;
+  --gray: #E8E8E8;
+  --travel-ms: 320ms;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.85rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.sis *,
+.sis *::before,
+.sis *::after {
+  box-sizing: border-box;
+}
+
+.sis__live {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.7);
+}
+
+.sis__sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.sis__card {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  border: 2px solid var(--gold);
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.sis__card-name {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sis__chip {
+  appearance: none;
+  padding: 0.3rem 0.55rem;
+  border: 2px solid var(--ink);
+  background: var(--gold);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.sis__chip:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+.sis__chip.is-sent {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.sis__result {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.55rem;
+  border: 2px dashed var(--gold);
+  min-height: 4rem;
+}
+
+.sis__result-label {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+}
+
+.sis__slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-height: 1.6rem;
+}
+
+.sis__slot {
+  padding: 0.28rem 0.5rem;
+  border: 1px solid var(--gold);
+  background: rgb(245 196 0 / 0.15);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  animation: sis-travel var(--travel-ms) ease-out forwards;
+}
+
+.sis__btn {
+  justify-self: start;
+  appearance: none;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sis__btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@keyframes sis-travel {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sis__slot {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .sis__slot {
+  animation: none;
+}

@@ -1,53 +1,20 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "boss-introduction-freeze",
-  "description": "The interface freezes while an oversized threat identity card cuts across it.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "boss-introduction-freeze"
-    },
-    "intent": {
-      "type": "string",
-      "const": "The interface freezes while an oversized threat identity card cuts across it."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "name": "boss-introduction-freeze",
+  "intent": "The interface freezes while an oversized threat identity card cuts across it.",
+  "catalogue": { "p4": "P4-049", "ref": "SPX-2967" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "copy": { "threat": "THREAT // ALPHA" },
+  "timing": {
+    "freezeHoldMs": 400,
+    "slamMs": 520,
+    "holdMs": 700,
+    "totalMs": 1100
+  },
+  "api": { "run": "runBossIntroduction()", "reset": "resetBossIntroduction()" },
+  "reducedMotion": { "behaviour": "Threat card shown immediately on frozen UI" }
 }

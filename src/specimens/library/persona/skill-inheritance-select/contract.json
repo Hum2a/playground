@@ -1,9 +1,18 @@
 {
   "name": "skill-inheritance-select",
-  "palette": {
+  "intent": "Select HEAL-01 / SHOCK-02 chips from MODEL A/B; they travel into the RESULT slot.",
+  "catalogue": { "p4": "P4-071", "ref": "SPX-2989" },
+  "sources": ["MODEL A", "MODEL B"],
+  "skills": ["HEAL-01", "SHOCK-02"],
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": { "travelMs": 320 },
+  "api": {
+    "reset": "resetSkillInheritanceSelect()"
+  },
+  "reducedMotion": { "behaviour": "Inherited chips appear in RESULT immediately with no travel" }
 }

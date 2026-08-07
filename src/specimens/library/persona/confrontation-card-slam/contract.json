@@ -1,53 +1,14 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "confrontation-card-slam",
-  "description": "A hidden issue interrupts the interface with a high-impact challenge card.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "confrontation-card-slam"
-    },
-    "intent": {
-      "type": "string",
-      "const": "A hidden issue interrupts the interface with a high-impact challenge card."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "name": "confrontation-card-slam",
+  "intent": "A hidden issue interrupts the interface with a high-impact challenge card.",
+  "catalogue": { "p4": "P4-046", "ref": "SPX-2964" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "slamMs": 460, "holdMs": 0 },
+  "api": { "run": "runConfrontationSlam()", "reset": "resetConfrontationSlam()" },
+  "reducedMotion": { "behaviour": "Challenge card appears centred immediately" }
 }

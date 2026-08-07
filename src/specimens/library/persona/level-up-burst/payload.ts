@@ -8,13 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Wire runLevelUpBurst / resetLevelUpBurst.',
+    'Roll 120ms; stat stagger 120ms; stat transition 280ms; burst 700ms.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Level rolls once then stats reorder',
+    'Reduced motion shows finals immediately',
+    'Harness restart resets to level 12',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">

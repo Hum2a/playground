@@ -1,9 +1,15 @@
 {
   "name": "arcana-card-draw",
-  "palette": {
-    "gold": "#F5C400",
+  "intent": "A card rises from a deck, flips, and reveals a category/result.",
+  "catalogue": { "p4": "P4-062", "ref": "SPX-2980" },
+  "colours": {
+    "yellow": "#F5C400",
     "ink": "#101010",
-    "cream": "#F7F3E8",
-    "gray": "#E8E8E8"
-  }
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "card": { "category": "CATEGORY", "roman": "VII" },
+  "timing": { "riseMs": 480, "flipMs": 520, "totalMs": 1000 },
+  "api": { "run": "runArcanaCardDraw()", "reset": "resetArcanaCardDraw()" },
+  "reducedMotion": { "behaviour": "Card appears face-up at rest with no rise or flip" }
 }

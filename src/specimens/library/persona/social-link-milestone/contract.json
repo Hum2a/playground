@@ -1,9 +1,20 @@
 {
   "name": "social-link-milestone",
-  "palette": {
-    "gold": "#F5C400",
+  "intent": "Bond nodes converge into a newly unlocked capability badge.",
+  "catalogue": { "p4": "P4-053", "ref": "SPX-2971" },
+  "colours": {
+    "yellow": "#F5C400",
     "ink": "#101010",
-    "cream": "#F7F3E8",
-    "gray": "#E8E8E8"
-  }
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "bond": { "label": "BOND // 02", "skill": "Wind Slash" },
+  "timing": {
+    "orbitMs": 900,
+    "convergeMs": 720,
+    "unlockMs": 400,
+    "totalMs": 2020
+  },
+  "api": { "run": "runSocialLinkMilestone()", "reset": "resetSocialLinkMilestone()" },
+  "reducedMotion": { "behaviour": "Nodes rest near card; unlock badge visible immediately" }
 }

@@ -35,8 +35,9 @@ function setLive(text) {
 }
 
 function setButtons(on) {
-  const btn = document.querySelector('[data-bi-trigger]')
-  if (btn) btn.disabled = !on
+  document.querySelectorAll('[data-bi-trigger], [data-bi-reset]').forEach((btn) => {
+    btn.disabled = !on
+  })
 }
 
 function showUrgent() {
@@ -64,7 +65,7 @@ export function resetBroadcastInterruption() {
 
 export function runBroadcastInterruption() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'done') return
+  if (!root || busy) return
 
   busy = true
   clearTimers()
@@ -98,6 +99,7 @@ function bindUi() {
   document.querySelector('[data-bi-trigger]')?.addEventListener('click', () => {
     runBroadcastInterruption()
   })
+  document.querySelector('[data-bi-reset]')?.addEventListener('click', resetBroadcastInterruption)
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return

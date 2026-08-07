@@ -1,16 +1,181 @@
-/* SPX-3007 Level-Up Burst */
-.lub{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;box-sizing:border-box;position:relative;display:grid;gap:.6rem;place-items:center;width:100%;min-height:280px;padding:1rem;background:var(--ink);color:var(--cream);font-family:ui-sans-serif,system-ui,sans-serif;overflow:hidden}
-.lub__live{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.lub__burst{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgb(245 196 0/.35),transparent 65%);opacity:0;pointer-events:none}
-.lub__burst.is-active{animation:lub-burst 700ms ease-out}
-.lub__level{margin:0;font-size:1.6rem;font-weight:900;letter-spacing:.12em;color:var(--gold)}
-.lub__stats{list-style:none;margin:0;padding:0;display:grid;gap:.35rem;width:min(100%,14rem)}
-.lub__stats li{display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;letter-spacing:.1em;opacity:.55;transform:translateY(4px);transition:opacity 300ms ease,transform 300ms ease}
-.lub__stats li.is-up{opacity:1;transform:translateY(0);color:var(--cream)}
-.lub__stats li span:last-child{font-variant-numeric:tabular-nums;color:var(--gold)}
-.lub__btn{appearance:none;padding:.5rem 1rem;border:2px solid var(--gold);background:var(--gold);color:var(--ink);font:inherit;font-size:.66rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-.lub__btn:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
-.lub__btn:disabled{opacity:.45;cursor:default}
-@keyframes lub-burst{0%{opacity:0;transform:scale(.8)}40%{opacity:1}100%{opacity:.25;transform:scale(1.1)}}
-@media (prefers-reduced-motion: reduce) { .lub__burst.is-active{animation:none;opacity:.3}.lub__stats li{transition:none;opacity:1;transform:none} }
-[data-force-reduced-motion="true"] .lub__burst.is-active{animation:none;opacity:.3}[data-force-reduced-motion="true"] .lub__stats li{transition:none;opacity:1;transform:none}
+/* SPX-3007 Level-Up Burst — portable contract. */
+
+.lub {
+  --gold: #F5C400;
+  --ink: #101010;
+  --cream: #F7F3E8;
+  --gray: #E8E8E8;
+  --burst-ms: 700ms;
+  --stat-ms: 280ms;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+  place-items: center;
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  overflow: hidden;
+}
+
+.lub *,
+.lub *::before,
+.lub *::after {
+  box-sizing: border-box;
+}
+
+.lub__live {
+  margin: 0;
+  width: 100%;
+  max-width: 16rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.7);
+  text-align: center;
+}
+
+.lub__burst {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgb(245 196 0 / 0.35), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lub[data-phase='roll'] .lub__burst,
+.lub[data-phase='stats'] .lub__burst,
+.lub[data-phase='done'] .lub__burst {
+  animation: lub-burst var(--burst-ms) ease-out forwards;
+}
+
+.lub__level {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+}
+
+.lub__stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+  width: min(100%, 14rem);
+}
+
+.lub__stats li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.45;
+  transform: translateY(6px);
+  transition: opacity var(--stat-ms) ease, transform var(--stat-ms) ease, color var(--stat-ms) ease;
+}
+
+.lub__stats li.is-up {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--cream);
+}
+
+.lub__stats li span:last-child {
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+}
+
+.lub[data-phase='stats'] .lub__stats li[data-lub-stat='hp'],
+.lub[data-phase='done'] .lub__stats li[data-lub-stat='hp'] {
+  transition-delay: 0ms;
+}
+
+.lub[data-phase='stats'] .lub__stats li[data-lub-stat='sp'],
+.lub[data-phase='done'] .lub__stats li[data-lub-stat='sp'] {
+  transition-delay: 120ms;
+}
+
+.lub[data-phase='stats'] .lub__stats li[data-lub-stat='str'],
+.lub[data-phase='done'] .lub__stats li[data-lub-stat='str'] {
+  transition-delay: 240ms;
+}
+
+.lub__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lub__btn {
+  appearance: none;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lub__btn--primary {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.lub__btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.lub__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+@keyframes lub-burst {
+  0% { opacity: 0; transform: scale(0.8); }
+  40% { opacity: 1; }
+  100% { opacity: 0.25; transform: scale(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lub__burst {
+    animation: none !important;
+  }
+
+  .lub[data-phase='roll'] .lub__burst,
+  .lub[data-phase='stats'] .lub__burst,
+  .lub[data-phase='done'] .lub__burst {
+    opacity: 0.3;
+    transform: none;
+  }
+
+  .lub__stats li {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .lub__burst {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .lub[data-phase='roll'] .lub__burst,
+[data-force-reduced-motion='true'] .lub[data-phase='stats'] .lub__burst,
+[data-force-reduced-motion='true'] .lub[data-phase='done'] .lub__burst {
+  opacity: 0.3;
+  transform: none;
+}
+
+[data-force-reduced-motion='true'] .lub__stats li {
+  transition: none !important;
+}

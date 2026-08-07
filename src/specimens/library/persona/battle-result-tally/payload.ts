@@ -8,13 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Wire runBattleResultTally / resetBattleResultTally.',
+    'Row delay 180ms; tick 32ms; count XP 500 / SCORE 600 / TOTAL 400.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Rows keyframe in then values count up once',
+    'Reduced motion shows finals immediately',
+    'Harness restart resets to zeros',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">

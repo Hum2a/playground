@@ -13,5 +13,5 @@
     "run": "runContradictionFound()",
     "reset": "resetContradictionFound()"
   },
-  "reducedMotion": { "behaviour": "Collided state with highlights immediately" }
+  "reducedMotion": { "behaviour": "Collided state with highlights and banner immediately" }
 }

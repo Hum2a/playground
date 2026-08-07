@@ -14,9 +14,9 @@ const payload: SpecimenPayload = {
   ],
   acceptance: [
     'Card content hidden under fog on load',
-    'Pointer scrub visibly erases fog regions',
-    'Sufficient scrubbing reveals full card',
-    'Live region announces reveal progress',
+    'Pointer scrub visibly erases fog regions (brush 42px)',
+    'Reveal completes at ≥42% cleared (contract threshold)',
+    'Reset button and harness restart restore full fog',
     'Reduced motion reveals all on first contact',
   ],
   scaffold: `

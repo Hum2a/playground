@@ -1,14 +1,143 @@
-/* SPX-3005 Battle Result Tally */
-.brt{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;box-sizing:border-box;display:grid;gap:.65rem;width:100%;min-height:300px;padding:1.1rem;background:var(--ink);color:var(--cream);font-family:ui-sans-serif,system-ui,sans-serif}
-.brt__live{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.brt__header{margin:0;font-size:.75rem;font-weight:900;letter-spacing:.28em;color:var(--gold)}
-.brt__rows{display:grid;gap:.45rem}
-.brt__row{display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;letter-spacing:.1em;opacity:0;transform:translateY(4px);transition:opacity 220ms ease,transform 220ms ease}
-.brt__row.is-visible{opacity:1;transform:translateY(0)}
-.brt__row--total{margin-top:.35rem;padding-top:.5rem;border-top:1px solid var(--gold);color:var(--gold)}
-.brt__row span:last-child{font-variant-numeric:tabular-nums}
-.brt__btn{justify-self:start;appearance:none;padding:.45rem .9rem;border:2px solid var(--gold);background:transparent;color:var(--gold);font:inherit;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-.brt__btn:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
-.brt__btn:disabled{opacity:.45;cursor:default}
-@media (prefers-reduced-motion: reduce) { .brt__row{transition:none;opacity:1;transform:none} }
-[data-force-reduced-motion="true"] .brt__row{transition:none;opacity:1;transform:none}
+/* SPX-3005 Battle Result Tally — portable contract. */
+
+.brt {
+  --gold: #F5C400;
+  --ink: #101010;
+  --cream: #F7F3E8;
+  --gray: #E8E8E8;
+  --row-ms: 220ms;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 1.1rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.brt *,
+.brt *::before,
+.brt *::after {
+  box-sizing: border-box;
+}
+
+.brt__live {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.7);
+}
+
+.brt__header {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+}
+
+.brt__rows {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.brt__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.brt[data-phase='tally'] .brt__row,
+.brt[data-phase='done'] .brt__row {
+  animation: brt-row-in var(--row-ms) ease-out forwards;
+}
+
+.brt[data-phase='tally'] .brt__row[data-brt-row='exp'],
+.brt[data-phase='done'] .brt__row[data-brt-row='exp'] {
+  animation-delay: 0ms;
+}
+
+.brt[data-phase='tally'] .brt__row[data-brt-row='score'],
+.brt[data-phase='done'] .brt__row[data-brt-row='score'] {
+  animation-delay: 180ms;
+}
+
+.brt[data-phase='tally'] .brt__row[data-brt-row='total'],
+.brt[data-phase='done'] .brt__row[data-brt-row='total'] {
+  animation-delay: 360ms;
+}
+
+.brt__row--total {
+  margin-top: 0.35rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.brt__row span:last-child {
+  font-variant-numeric: tabular-nums;
+}
+
+.brt__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.brt__btn {
+  justify-self: start;
+  appearance: none;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.brt__btn--primary {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.brt__btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.brt__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+@keyframes brt-row-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brt__row {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .brt__row {
+  animation: none !important;
+  opacity: 1;
+  transform: none;
+}

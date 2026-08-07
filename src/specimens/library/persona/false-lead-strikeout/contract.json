@@ -1,4 +1,18 @@
 {
   "name": "false-lead-strikeout",
-  "intent": "Aggressive X strike demotes hypothesis card"
+  "intent": "Aggressive angled ink strike demotes hypothesis; FALSE LEAD remains readable.",
+  "catalogue": { "p4": "P4-037", "ref": "SPX-2955" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "strikeMs": 280, "labelMs": 200 },
+  "strike": { "angleDeg": -12, "weightPx": 6 },
+  "api": {
+    "run": "strike()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "Strike and FALSE LEAD appear instantly" }
 }

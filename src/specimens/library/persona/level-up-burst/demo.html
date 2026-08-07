@@ -1,7 +1,14 @@
-<div class="lub" data-lub><p class="lub__live" data-lub-live aria-live="polite">Level 12.</p>
-<div class="lub__burst" data-lub-burst aria-hidden="true"></div>
-<p class="lub__level">LV <span data-lub-lv>12</span></p>
-<ul class="lub__stats" data-lub-stats>
-<li><span>HP</span><span data-lub-hp>320</span></li><li><span>SP</span><span data-lub-sp>180</span></li><li><span>STR</span><span data-lub-str>14</span></li>
-</ul>
-<button type="button" class="lub__btn" data-lub-run>Level Up</button></div>
+<div class="lub" data-lub data-phase="idle">
+  <p class="lub__live" data-lub-live aria-live="polite" role="status">Level 12.</p>
+  <div class="lub__burst" data-lub-burst aria-hidden="true"></div>
+  <p class="lub__level">LV <span data-lub-lv>12</span></p>
+  <ul class="lub__stats" data-lub-stats>
+    <li data-lub-stat="hp"><span>HP</span><span data-lub-hp>320</span></li>
+    <li data-lub-stat="sp"><span>SP</span><span data-lub-sp>180</span></li>
+    <li data-lub-stat="str"><span>STR</span><span data-lub-str>14</span></li>
+  </ul>
+  <div class="lub__controls">
+    <button type="button" class="lub__btn lub__btn--primary" data-lub-run>Level Up</button>
+    <button type="button" class="lub__btn" data-lub-reset>Reset</button>
+  </div>
+</div>

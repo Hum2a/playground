@@ -113,6 +113,16 @@
   cursor: pointer;
 }
 
+.bi__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bi__btn--ghost {
+  background: transparent;
+  color: var(--bi-yellow);
+}
+
 .bi__btn:focus-visible {
   outline: 2px solid var(--bi-yellow);
   outline-offset: 2px;

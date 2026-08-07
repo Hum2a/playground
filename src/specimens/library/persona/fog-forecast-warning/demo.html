@@ -1,9 +1,14 @@
-<div class="ffw" aria-hidden="true">
-  <div class="ffw__frame">
-    <p class="ffw__eyebrow">FOG FORECAST</p>
+<div class="ffw" data-ffw data-stage="idle">
+  <p class="ffw__live" data-ffw-live aria-live="polite">Fog forecast idle.</p>
+  <div class="ffw__frame" aria-hidden="true">
+    <p class="ffw__eyebrow" data-ffw-eyebrow>FOG FORECAST</p>
     <p class="ffw__date">RAIN — 3 DAYS</p>
-    <p class="ffw__warn">Visibility dropping. Plan ahead.</p>
+    <p class="ffw__warn" data-ffw-warn>Visibility dropping. Plan ahead.</p>
+    <p class="ffw__stage" data-ffw-stage-label>WATCH</p>
     <div class="ffw__hazard"></div>
   </div>
+  <div class="ffw__controls">
+    <button type="button" class="ffw__btn ffw__btn--primary" data-ffw-run>Escalate</button>
+    <button type="button" class="ffw__btn" data-ffw-reset>Reset</button>
+  </div>
 </div>
-<p class="ffw__sr" aria-live="polite">Fog forecast: rain in three days.</p>

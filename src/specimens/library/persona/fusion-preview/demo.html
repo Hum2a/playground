@@ -1,6 +1,27 @@
-<div class="fpr" aria-hidden="true">
-<div class="fpr__input fpr__input--a"><span>Pixie</span></div>
-<div class="fpr__input fpr__input--b"><span>Angel</span></div>
-<div class="fpr__ghost"><span class="fpr__ghost-label">PREVIEW</span><span class="fpr__ghost-name">Sandman</span></div>
-<div class="fpr__beam fpr__beam--a"></div><div class="fpr__beam fpr__beam--b"></div>
+<div class="fpr" data-fpr data-phase="idle">
+  <p class="fpr__live" data-fpr-live aria-live="polite" role="status">Select two models, then preview.</p>
+
+  <div class="fpr__stage" data-fpr-stage>
+    <button type="button" class="fpr__input fpr__input--a" data-fpr-input="a" aria-pressed="false">
+      <span class="fpr__id">A</span>
+      <span class="fpr__name">MODEL A</span>
+    </button>
+    <button type="button" class="fpr__input fpr__input--b" data-fpr-input="b" aria-pressed="false">
+      <span class="fpr__id">B</span>
+      <span class="fpr__name">MODEL B</span>
+    </button>
+
+    <div class="fpr__beam fpr__beam--a" data-fpr-beam="a" aria-hidden="true"></div>
+    <div class="fpr__beam fpr__beam--b" data-fpr-beam="b" aria-hidden="true"></div>
+
+    <div class="fpr__ghost" data-fpr-ghost aria-hidden="true">
+      <span class="fpr__ghost-label">PREVIEW</span>
+      <span class="fpr__ghost-name">SIGMA</span>
+    </div>
+  </div>
+
+  <div class="fpr__controls">
+    <button type="button" class="fpr__btn fpr__btn--primary" data-fpr-run disabled>Preview</button>
+    <button type="button" class="fpr__btn" data-fpr-reset>Reset</button>
+  </div>
 </div>

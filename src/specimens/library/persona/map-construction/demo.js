@@ -1,4 +1,7 @@
 (() => {
+  const SEGMENT_DRAW_MS = 520
+  const SEGMENT_TOTAL_MS = 540
+
   const root = document.querySelector('[data-mc]')
   if (!root) return
   const live = root.querySelector('[data-mc-live]')
@@ -30,7 +33,9 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
     document.documentElement.dataset.forceReducedMotion === 'true'
   let running = false
-  function announce(msg) { if (live) live.textContent = msg }
+  function announce(msg) {
+    if (live) live.textContent = msg
+  }
   function clearPaths() {
     while (paths.firstChild) paths.removeChild(paths.firstChild)
     fogCells.forEach((c) => c.setAttribute('opacity', '0.35'))
@@ -54,7 +59,12 @@
     exploreBtn.disabled = true
     clearPaths()
     announce('Exploring corridors…')
-    if (reduced()) { drawAll(); running = false; exploreBtn.disabled = false; return }
+    if (reduced()) {
+      drawAll()
+      running = false
+      exploreBtn.disabled = false
+      return
+    }
     for (let i = 0; i < segments.length; i++) {
       const p = document.createElementNS('http://www.w3.org/2000/svg', 'path')
       p.setAttribute('d', segments[i])
@@ -63,9 +73,9 @@
       paths.appendChild(p)
       fogCells.slice(i * 3, i * 3 + 3).forEach((c) => c.setAttribute('opacity', '0.12'))
       await new Promise((r) => {
-        p.style.transition = 'stroke-dashoffset 520ms ease-out'
+        p.style.transition = `stroke-dashoffset ${SEGMENT_DRAW_MS}ms ease-out`
         p.style.strokeDashoffset = '0'
-        setTimeout(r, 540)
+        setTimeout(r, SEGMENT_TOTAL_MS)
       })
       const nums = segments[i].match(/\d+/g).map(Number)
       player.setAttribute('cx', String(nums[nums.length - 2]))
@@ -75,7 +85,16 @@
     running = false
     exploreBtn.disabled = false
   }
+  function reset() {
+    running = false
+    exploreBtn.disabled = false
+    clearPaths()
+    announce('Dungeon map — unexplored.')
+  }
   exploreBtn.addEventListener('click', explore)
-  resetBtn.addEventListener('click', () => { clearPaths(); announce('Dungeon map — unexplored.') })
+  resetBtn.addEventListener('click', reset)
+  window.addEventListener('message', (event) => {
+    if (event.data?.type === 'restart') reset()
+  })
   clearPaths()
 })()

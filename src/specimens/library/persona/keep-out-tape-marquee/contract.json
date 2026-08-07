@@ -10,5 +10,5 @@
   "colours": { "yellow": "#F5C400", "ink": "#101010" },
   "layout": { "angleDegrees": -28, "widthPercent": 170 },
   "animation": { "name": "kout-marquee", "durationSeconds": 8 },
-  "reducedMotion": { "stopMarquee": true }
+  "reducedMotion": { "behaviour": "Marquee stops; tape copy remains readable", "stopMarquee": true }
 }

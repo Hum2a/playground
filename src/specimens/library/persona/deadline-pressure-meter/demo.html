@@ -1,6 +1,13 @@
-<div class="dpm" aria-hidden="true">
+<div class="dpm" data-dpm data-step="0">
+  <p class="dpm__live" data-dpm-live aria-live="polite">Fourteen days until deadline.</p>
   <div class="dpm__label">DAYS LEFT</div>
-  <div class="dpm__rail"><div class="dpm__segments"></div><div class="dpm__marker"></div></div>
-  <div class="dpm__count">03</div>
+  <div class="dpm__rail" aria-hidden="true">
+    <div class="dpm__segments" data-dpm-segments></div>
+    <div class="dpm__marker" data-dpm-marker></div>
+  </div>
+  <div class="dpm__count" data-dpm-count>14</div>
+  <div class="dpm__controls">
+    <button type="button" class="dpm__btn dpm__btn--primary" data-dpm-run>Compress</button>
+    <button type="button" class="dpm__btn" data-dpm-reset>Reset</button>
+  </div>
 </div>
-<p class="dpm__sr" aria-live="polite">Three days until deadline.</p>

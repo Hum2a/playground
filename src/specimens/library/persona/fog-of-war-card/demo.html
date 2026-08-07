@@ -1,14 +1,17 @@
 <div class="fow" data-fow>
   <p class="fow__live" data-fow-live aria-live="polite">Card obscured. Scrub to reveal.</p>
 
-  <div class="fow__card" data-fow-card>
+  <div class="fow__card" data-fow-card tabindex="0">
     <div class="fow__content">
       <span class="fow__tag">Clue</span>
       <h2 class="fow__title">Hidden Lead</h2>
-      <p class="fow__copy">Subject seen near the shopping district at midnight.</p>
+      <p class="fow__copy">Subject sighted near Sector 4 transit hub at midnight signal.</p>
     </div>
     <canvas class="fow__fog" data-fow-canvas aria-hidden="true"></canvas>
   </div>
 
   <p class="fow__hint">Move pointer across the card to clear fog.</p>
+  <div class="fow__controls">
+    <button type="button" class="fow__btn" data-fow-reset>Reset</button>
+  </div>
 </div>

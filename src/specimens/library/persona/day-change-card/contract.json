@@ -1,53 +1,14 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "day-change-card",
-  "description": "The current date peels/slides away and the next day locks into place.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "day-change-card"
-    },
-    "intent": {
-      "type": "string",
-      "const": "The current date peels/slides away and the next day locks into place."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "name": "day-change-card",
+  "intent": "The current date peels/slides away and the next day locks into place.",
+  "catalogue": { "p4": "P4-100", "ref": "SPX-3018" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "peelMs": 600 },
+  "api": { "run": "runDayChange()", "reset": "resetDayChange()" },
+  "reducedMotion": { "behaviour": "Next day appears immediately without peel animation" }
 }

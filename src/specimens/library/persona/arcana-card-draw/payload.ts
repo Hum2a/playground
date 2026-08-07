@@ -7,17 +7,18 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Mount deck stage in overflow-hidden host with perspective.',
+    'Wire runArcanaCardDraw / resetArcanaCardDraw; rise 480ms then flip 520ms.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Card rises from deck then flips via keyframes (finite)',
+    'Face shows CATEGORY / VII (abstract labels)',
+    'Reset and harness restart return card face-down in deck',
+    'Reduced motion shows face-up end state immediately',
+    'Palette uses #F5C400 / #101010 / #F7F3E8 / #E8E8E8',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101010;">
   {{specimen}}
 </div>
 `.trim(),

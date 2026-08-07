@@ -7,15 +7,16 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    "Mount in overflow-hidden frame.",
-    "Wire Complete / Reset."
-],
+    'Mount progression card in overflow-hidden frame.',
+    'Wire runMaxRankCompletion / resetMaxRankCompletion.',
+  ],
   acceptance: [
-    "Card transforms to max rank",
-    "Golden completion state visible",
-    "Rank label updates",
-    "Reduced motion shows final state"
-],
+    'Whole card transforms (border, background, colour, seal) to max state',
+    'Rank label becomes MAX and fill reaches 100%',
+    'MAX COMPLETE seal visible at end',
+    'Reset and harness restart return to rank 9',
+    'Palette uses #F5C400 / #101010 / #F7F3E8 / #E8E8E8',
+  ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101010;display:grid;place-items:center;padding:1rem;">
   {{specimen}}

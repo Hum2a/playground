@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const shadowSelfReveal: Specimen = {
   id: 'shadow-self-reveal',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2962',
   title: 'Shadow Self Reveal',
   blurb:
     'A polished public profile fractures to expose a darker underlying DENIED SIGNAL shadow state.',

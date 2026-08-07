@@ -1,4 +1,17 @@
 {
   "name": "timeline-reconstruction",
-  "intent": "Events sort chronologically"
+  "intent": "Scattered event cards slide into chronological order with stagger.",
+  "catalogue": { "p4": "P4-040", "ref": "SPX-2958" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "slideMs": 620, "staggerMs": 90 },
+  "api": {
+    "run": "sort()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "Cards jump to sorted positions immediately" }
 }

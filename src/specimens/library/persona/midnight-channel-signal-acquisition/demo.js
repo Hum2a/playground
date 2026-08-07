@@ -58,7 +58,7 @@ function applyTune(value) {
   }
 }
 
-function resetTune() {
+export function resetMidnightChannel() {
   const input = document.querySelector('[data-mcsa-tune]')
   if (input) input.value = '0'
   setPhase('idle')
@@ -71,13 +71,13 @@ function bindUi() {
   input?.addEventListener('input', (e) => {
     applyTune(e.target.value)
   })
-  document.querySelector('[data-mcsa-reset]')?.addEventListener('click', resetTune)
+  document.querySelector('[data-mcsa-reset]')?.addEventListener('click', resetMidnightChannel)
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') resetTune()
+    if (data.type === 'restart') resetMidnightChannel()
   })
 }
 
 bindUi()
-resetTune()
+resetMidnightChannel()

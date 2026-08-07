@@ -183,3 +183,25 @@
 [data-force-reduced-motion='true'] .vts[data-phase='severe'] .vts__content {
   transform: translateX(4px);
 }
+
+.vts__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.vts__btn {
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--vts-paper, #F7F3E8);
+  background: transparent;
+  color: var(--vts-paper, #F7F3E8);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.vts__btn:focus-visible {
+  outline: 2px solid var(--vts-yellow, #F5C400);
+  outline-offset: 2px;
+}

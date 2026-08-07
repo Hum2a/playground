@@ -1,10 +1,17 @@
-<div class="dme" aria-hidden="true">
-  <div class="dme__header"><span class="dme__label">DANGER</span><span class="dme__level">CRITICAL</span></div>
-  <div class="dme__track">
+<div class="dme" data-dme data-level="0">
+  <p class="dme__live" data-dme-live aria-live="polite">Danger level clear.</p>
+  <div class="dme__header">
+    <span class="dme__label">DANGER</span>
+    <span class="dme__level" data-dme-level-label>CLEAR</span>
+  </div>
+  <div class="dme__track" aria-hidden="true">
     <div class="dme__bar dme__bar--1"></div>
     <div class="dme__bar dme__bar--2"></div>
     <div class="dme__bar dme__bar--3"></div>
   </div>
-  <div class="dme__stripe"></div>
+  <div class="dme__stripe" aria-hidden="true"></div>
+  <div class="dme__controls">
+    <button type="button" class="dme__btn dme__btn--primary" data-dme-run>Escalate</button>
+    <button type="button" class="dme__btn" data-dme-reset>Reset</button>
+  </div>
 </div>
-<p class="dme__sr" aria-live="polite">Danger level escalating.</p>

@@ -1,5 +1,6 @@
 /**
  * No Signal Card — broadcast-style fallback for unavailable content.
+ * Snow loops while unavailable; toggle is one-shot state swap.
  * iframe-safe; no storage / parent / network.
  */
 
@@ -34,20 +35,26 @@ function setState(state) {
   }
 }
 
+export function resetNoSignal() {
+  setState('unavailable')
+}
+
+export function toggleNoSignal() {
+  const root = rootEl()
+  if (!root) return
+  const next = root.getAttribute('data-state') === 'available' ? 'unavailable' : 'available'
+  setState(next)
+}
+
 function bindUi() {
-  document.querySelector('[data-nsc-toggle]')?.addEventListener('click', () => {
-    const root = rootEl()
-    if (!root) return
-    const next = root.getAttribute('data-state') === 'available' ? 'unavailable' : 'available'
-    setState(next)
-  })
+  document.querySelector('[data-nsc-toggle]')?.addEventListener('click', toggleNoSignal)
 
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') setState('unavailable')
+    if (data.type === 'restart') resetNoSignal()
   })
 }
 
 bindUi()
-setState('unavailable')
+resetNoSignal()

@@ -1,10 +1,12 @@
 /**
  * Channel Tuning Scrub — dial through unstable fragments before signal lock.
+ * Acquire band frozen: partial 42%, locked 78%. Static stops when locked (CSS).
  * iframe-safe; no storage / parent / network.
  */
 
 const LOCK_THRESHOLD = 78
 const PARTIAL_THRESHOLD = 42
+const DEFAULT_VALUE = 12
 
 function rootEl() {
   return document.querySelector('[data-cts]')
@@ -43,6 +45,12 @@ function applyValue(value) {
   }
 }
 
+export function resetChannelTuning() {
+  const range = rangeEl()
+  if (range) range.value = String(DEFAULT_VALUE)
+  applyValue(DEFAULT_VALUE)
+}
+
 function bindUi() {
   const range = rangeEl()
   if (!range) return
@@ -51,15 +59,14 @@ function bindUi() {
     applyValue(Number(range.value))
   })
 
+  document.querySelector('[data-cts-reset]')?.addEventListener('click', resetChannelTuning)
+
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') {
-      range.value = '12'
-      applyValue(12)
-    }
+    if (data.type === 'restart') resetChannelTuning()
   })
 }
 
 bindUi()
-applyValue(Number(rangeEl()?.value ?? 12))
+applyValue(Number(rangeEl()?.value ?? DEFAULT_VALUE))

@@ -3,7 +3,7 @@ import type { Specimen } from '../../../types'
 
 export const caseBreakthrough: Specimen = {
   id: 'case-breakthrough',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2949',
   title: 'Case Breakthrough',
   blurb: 'A chaotic evidence board reorganises into a solved relationship graph.',
   origin: {
@@ -27,6 +27,10 @@ export const caseBreakthrough: Specimen = {
     respectsReducedMotion: true,
     reducedMotionNote: 'Board jumps instantly to solved graph layout under both reduced-motion triggers.',
   },
+  acceptance: [
+    'SOLVE reorganises nodes (680ms) then draws links (520ms)',
+    'Visible status announces solved / scattered',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 400,

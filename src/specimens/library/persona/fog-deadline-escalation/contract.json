@@ -1,20 +1,20 @@
 {
   "name": "fog-deadline-escalation",
-  "ref": "SPX-2943",
-  "catalogueId": "P4-025",
+  "intent": "Denser fog and warning geometry as the deadline closes.",
+  "catalogue": { "p4": "P4-025", "ref": "SPX-2943" },
   "colours": {
     "yellow": "#F5C400",
     "ink": "#101010",
     "paper": "#F7F3E8",
-    "gray": "#E8E8E8"
+    "muted": "#E8E8E8"
   },
-  "phases": {
-    "calm": { "minDays": 8 },
-    "pressure": { "minDays": 4, "maxDays": 7 },
-    "critical": { "minDays": 1, "maxDays": 3 },
-    "expired": { "minDays": 0, "maxDays": 0 }
+  "thresholds": {
+    "calm": { "minDays": 8, "fogOpacity": 0, "warningOpacity": 0 },
+    "pressure": { "minDays": 4, "maxDays": 7, "fogOpacity": 0.45, "warningOpacity": 0 },
+    "critical": { "minDays": 1, "maxDays": 3, "fogOpacity": 0.75, "warningOpacity": 0.28 },
+    "expired": { "minDays": 0, "maxDays": 0, "fogOpacity": 0.9, "warningOpacity": 0.42 }
   },
-  "reducedMotion": {
-    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-  }
+  "range": { "minDays": 0, "maxDays": 14 },
+  "api": { "reset": "resetFogDeadline()" },
+  "reducedMotion": { "behaviour": "Phase densities apply without warning pulse" }
 }

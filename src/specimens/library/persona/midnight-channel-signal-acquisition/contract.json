@@ -14,7 +14,14 @@
     "paper": "#F7F3E8",
     "muted": "#E8E8E8"
   },
-  "timing": { "lockThresholdPercent": 88 },
+  "timing": {
+    "lockThresholdPercent": 88,
+    "contentFadeMs": 320,
+    "contentRiseMs": 420,
+    "lockBadgeMs": 280,
+    "staticFlickerMs": 120
+  },
+  "api": { "reset": "resetMidnightChannel()" },
   "reducedMotion": {
     "behaviour": "Static stops; locked content visible without flicker"
   }

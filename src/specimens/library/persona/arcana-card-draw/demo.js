@@ -1,5 +1,113 @@
-let busy=false;function rm(){return document.documentElement.getAttribute('data-force-reduced-motion')==='true'||matchMedia('(prefers-reduced-motion: reduce)').matches}
-function live(t){const e=document.querySelector('[data-acd-live]');if(e)e.textContent=t}
-function draw(){if(busy)return;busy=true;const c=document.querySelector('[data-acd-card]'),b=document.querySelector('[data-acd-draw]');if(!c)return;if(b)b.disabled=true;c.classList.remove('is-rise','is-flip');live('Drawing card.');if(rm()){c.classList.add('is-rise','is-flip');live('Chariot revealed.');busy=false;return}requestAnimationFrame(()=>{c.classList.add('is-rise');setTimeout(()=>{c.classList.add('is-flip');live('Chariot revealed.');busy=false},720)})}
-document.querySelector('[data-acd-draw]')?.addEventListener('click',draw)
-addEventListener('message',e=>{if(e.data?.type==='restart')draw()})
+/**
+ * Arcana Card Draw — deck rise then flip to CATEGORY VII.
+ * iframe-safe; no storage / parent / network.
+ */
+
+const RISE_MS = 480
+const FLIP_MS = 520
+
+let busy = false
+/** @type {number[]} */
+let timers = []
+
+function prefersReducedMotion() {
+  const forced =
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
+  return forced || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+function rootEl() {
+  return document.querySelector('[data-acd]')
+}
+
+function clearTimers() {
+  for (const id of timers) window.clearTimeout(id)
+  timers = []
+}
+
+function later(ms, fn) {
+  const id = window.setTimeout(fn, ms)
+  timers.push(id)
+}
+
+function setPhase(phase) {
+  rootEl()?.setAttribute('data-phase', phase)
+}
+
+function setLive(text) {
+  const el = document.querySelector('[data-acd-live]')
+  if (el) el.textContent = text
+}
+
+function setButtons(on) {
+  document.querySelectorAll('[data-acd-draw], [data-acd-reset]').forEach((btn) => {
+    btn.disabled = !on
+  })
+}
+
+function showDone() {
+  setPhase('done')
+  setLive('Category VII revealed.')
+}
+
+function resetVisual() {
+  setPhase('idle')
+  setLive('Deck ready.')
+}
+
+export function runArcanaCardDraw() {
+  const root = rootEl()
+  if (!root || busy) return Promise.resolve()
+
+  busy = true
+  clearTimers()
+  resetVisual()
+  setButtons(false)
+  void root.offsetWidth
+
+  if (prefersReducedMotion()) {
+    showDone()
+    busy = false
+    setButtons(true)
+    return Promise.resolve()
+  }
+
+  setPhase('rise')
+  setLive('Card rising from deck.')
+
+  return new Promise((resolve) => {
+    later(RISE_MS, () => {
+      setPhase('flip')
+      setLive('Card flipping.')
+
+      later(FLIP_MS, () => {
+        showDone()
+        busy = false
+        setButtons(true)
+        resolve()
+      })
+    })
+  })
+}
+
+export function resetArcanaCardDraw() {
+  clearTimers()
+  busy = false
+  resetVisual()
+  setButtons(true)
+}
+
+function bindUi() {
+  document.querySelector('[data-acd-draw]')?.addEventListener('click', () => {
+    void runArcanaCardDraw()
+  })
+  document.querySelector('[data-acd-reset]')?.addEventListener('click', resetArcanaCardDraw)
+  window.addEventListener('message', (event) => {
+    const data = event.data
+    if (!data || typeof data !== 'object') return
+    if (data.type === 'restart') resetArcanaCardDraw()
+  })
+}
+
+bindUi()
+resetArcanaCardDraw()

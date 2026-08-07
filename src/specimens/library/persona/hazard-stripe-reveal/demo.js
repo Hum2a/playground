@@ -49,9 +49,12 @@ export function resetHazardStripeReveal() {
 
 export function runHazardStripeReveal() {
   const root = rootEl()
-  if (!root || busy || root.getAttribute('data-phase') === 'revealed') return
+  if (!root || busy) return
 
   busy = true
+  clearTimers()
+  root.setAttribute('data-phase', 'covered')
+  void root.offsetWidth
   setButton(false)
 
   if (prefersReducedMotion()) {

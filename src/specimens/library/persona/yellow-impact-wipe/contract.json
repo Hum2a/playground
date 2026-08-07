@@ -1,15 +1,15 @@
 {
   "name": "yellow-impact-wipe",
-  "ref": "SPX-3030",
-  "catalogueId": "P4-112",
+  "intent": "A saturated yellow plane cuts across the preview to exchange scenes.",
+  "catalogue": { "p4": "P4-112", "ref": "SPX-3030" },
   "colours": {
     "yellow": "#F5C400",
     "ink": "#101010",
     "paper": "#F7F3E8",
-    "gray": "#E8E8E8"
+    "muted": "#E8E8E8"
   },
-  "animation": { "wipeInMs": 320, "wipeOutMs": 280 },
-  "reducedMotion": {
-    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-  }
+  "timing": { "wipeInMs": 320, "wipeOutMs": 280, "totalMs": 600 },
+  "coverage": { "fullBleed": true, "axis": "horizontal" },
+  "api": { "run": "runYellowImpactWipe()", "reset": "resetYellowImpactWipe()" },
+  "reducedMotion": { "behaviour": "Scenes swap instantly without wipe plane" }
 }

@@ -8,7 +8,15 @@
     "paper": "#F7F3E8",
     "muted": "#E8E8E8"
   },
-  "timing": { "clearMs": 1400 },
+  "timing": {
+    "clearMs": 1400,
+    "checkpoints": [
+      { "atMs": 0, "fogOpacity": 0.92, "barPercent": 0 },
+      { "atMs": 460, "fogOpacity": 0.55, "barPercent": 33 },
+      { "atMs": 920, "fogOpacity": 0.28, "barPercent": 66 },
+      { "atMs": 1400, "fogOpacity": 0, "barPercent": 100 }
+    ]
+  },
   "api": { "run": "runFogClearing()", "reset": "resetFogClearing()" },
-  "reducedMotion": { "behaviour": "Fog removed immediately" }
+  "reducedMotion": { "behaviour": "Fog removed immediately; data fully readable" }
 }

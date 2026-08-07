@@ -1,9 +1,19 @@
 {
   "name": "fusion-preview",
-  "palette": {
+  "intent": "Select MODEL A + MODEL B; beams project a finite SIGMA ghost preview.",
+  "catalogue": { "p4": "P4-070", "ref": "SPX-2988" },
+  "inputs": ["MODEL A", "MODEL B"],
+  "output": "SIGMA",
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": { "beamMs": 480, "settleMs": 420, "beamStaggerMs": 120 },
+  "api": {
+    "run": "runFusionPreview()",
+    "reset": "resetFusionPreview()"
+  },
+  "reducedMotion": { "behaviour": "SIGMA preview visible immediately when both models selected and run" }
 }

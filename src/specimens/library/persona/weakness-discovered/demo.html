@@ -1,3 +1,17 @@
-<div class="wkd" data-wkd><p class="wkd__live" data-wkd-live aria-live="polite">Enemy unknown.</p>
-<div class="wkd__enemy" data-wkd-enemy><span class="wkd__name">Shadow</span><span class="wkd__trait" data-wkd-trait>???</span></div>
-<button type="button" class="wkd__btn" data-wkd-strike>Strike</button></div>
+<div class="wkd" data-wkd data-phase="idle">
+  <p class="wkd__live" data-wkd-live aria-live="polite" role="status">Target affinity unknown.</p>
+
+  <div class="wkd__stage">
+    <div class="wkd__enemy" data-wkd-enemy>
+      <span class="wkd__tag">TARGET</span>
+      <span class="wkd__name">ENTITY-07</span>
+      <span class="wkd__trait" data-wkd-trait>???</span>
+      <span class="wkd__flash" data-wkd-flash aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="wkd__controls">
+    <button type="button" class="wkd__btn wkd__btn--primary" data-wkd-strike>Strike</button>
+    <button type="button" class="wkd__btn" data-wkd-reset>Reset</button>
+  </div>
+</div>

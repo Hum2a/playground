@@ -1,53 +1,19 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "all-out-completion-burst",
-  "description": "Multiple active entities collapse into a single explosive completion/result state.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "all-out-completion-burst"
-    },
-    "intent": {
-      "type": "string",
-      "const": "Multiple active entities collapse into a single explosive completion/result state."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "name": "all-out-completion-burst",
+  "intent": "Three active entities collapse into one explosive completion burst and VICTORY result.",
+  "catalogue": { "p4": "P4-083", "ref": "SPX-3001" },
+  "entities": 3,
+  "result": "VICTORY",
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "gray": "#E8E8E8"
+  },
+  "timing": { "collapseMs": 320, "burstMs": 460, "resultMs": 320 },
+  "api": {
+    "run": "runAllOutCompletionBurst()",
+    "reset": "resetAllOutCompletionBurst()"
+  },
+  "reducedMotion": { "behaviour": "VICTORY result and collapsed entities appear immediately" }
 }

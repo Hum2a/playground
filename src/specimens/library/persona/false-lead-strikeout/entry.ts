@@ -2,7 +2,7 @@ import type { Specimen } from '../../../types'
 
 export const falseLeadStrikeout: Specimen = {
   id: 'false-lead-strikeout',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2955',
   title: 'False Lead Strikeout',
   blurb: 'An invalid hypothesis is aggressively crossed out and demoted.',
   origin: { project: 'Original', surface: 'Persona 4 investigation / mystery visual language' },

@@ -8,12 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount stage relative; SVG line connects clue button centers.',
-    'Two-click selection: first clue then second draws link.',
+    'Two-click selection: first clue then second draws link (480ms).',
   ],
   acceptance: [
-    'Two clues selected show yellow connection line',
-    'Status updates to Relationship: linked',
-    'Reduced motion shows line without dash animation',
+    'Selecting two clues draws a yellow line over 480ms',
+    'Visible status reads Relationship: linked when connected',
+    'Reset clears selection and line; harness restart resets',
+    'Reduced motion shows full line without dash draw',
     'Palette uses #F5C400 / #101010 / #F7F3E8 / #E8E8E8',
   ],
   scaffold: `

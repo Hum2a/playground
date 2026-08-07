@@ -1,15 +1,23 @@
 {
   "name": "broadcast-interruption",
-  "ref": "SPX-2923",
-  "catalogueId": "P4-005",
+  "intent": "Normal programming is replaced by an urgent finite transmission interrupt.",
+  "catalogue": { "p4": "P4-005", "ref": "SPX-2923" },
   "colours": {
     "yellow": "#F5C400",
     "ink": "#101010",
     "paper": "#F7F3E8",
-    "gray": "#E8E8E8"
+    "muted": "#E8E8E8"
   },
-  "animation": { "interruptMs": 620 },
-  "reducedMotion": {
-    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-  }
+  "timing": {
+    "interruptMs": 620,
+    "normalOutMs": 280,
+    "urgentInMs": 420,
+    "urgentInDelayMs": 180,
+    "flashMs": 180
+  },
+  "api": {
+    "run": "runBroadcastInterruption()",
+    "reset": "resetBroadcastInterruption()"
+  },
+  "reducedMotion": { "behaviour": "Urgent transmission appears immediately" }
 }

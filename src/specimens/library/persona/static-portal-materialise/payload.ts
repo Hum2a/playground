@@ -14,9 +14,10 @@ const payload: SpecimenPayload = {
   ],
   acceptance: [
     'Idle state shows full static noise field',
-    'Trigger condenses static into centred panel',
-    'Panel exposes title, copy, and action affordance',
-    'Reduced motion shows panel instantly',
+    'Trigger condenses static into centred panel (condenseMs 760)',
+    'Noise field ends after condense (done phase opacity 0 / animation none)',
+    'Portal panel remains readable at end',
+    'Reduced motion shows panel immediately with noise off',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">

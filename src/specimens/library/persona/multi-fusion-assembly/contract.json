@@ -1,9 +1,23 @@
 {
   "name": "multi-fusion-assembly",
-  "palette": {
+  "intent": "MODEL A/B/C converge into one OMEGA fusion result.",
+  "catalogue": { "p4": "P4-078", "ref": "SPX-2996" },
+  "inputs": ["MODEL A", "MODEL B", "MODEL C"],
+  "output": "OMEGA",
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": {
+    "convergeMs": 720,
+    "staggerMs": 80,
+    "mergeMs": 480
+  },
+  "api": {
+    "run": "runMultiFusionAssembly()",
+    "reset": "resetMultiFusionAssembly()"
+  },
+  "reducedMotion": { "behaviour": "OMEGA result visible immediately; inputs hidden" }
 }

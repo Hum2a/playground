@@ -1,12 +1,164 @@
-/* SPX-2998 Knockdown Chain */
-.kdc{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;position:relative;width:100%;min-height:220px;overflow:hidden;background:var(--ink);font-family:ui-sans-serif,system-ui,sans-serif}
-.kdc__target{position:absolute;width:3.2rem;height:3.2rem;display:grid;place-items:center;border:2px solid var(--gray);background:rgb(247 243 232/.08);color:var(--cream);font-size:.78rem;font-weight:900;transition:border-color 200ms ease,transform 200ms ease}
-.kdc__target--a{left:14%;top:50%;transform:translateY(-50%)}.kdc__target--b{left:50%;top:50%;transform:translate(-50%,-50%)}.kdc__target--c{right:14%;top:50%;transform:translateY(-50%)}
-.kdc__pulse{position:absolute;top:50%;left:14%;width:72%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold) 40%,transparent);transform:translateY(-50%) scaleX(0);transform-origin:left center;animation:kdc-pulse 2.8s ease-in-out infinite}
-.kdc__target--a{animation:kdc-down-a 2.8s ease-in-out infinite}.kdc__target--b{animation:kdc-down-b 2.8s ease-in-out infinite}.kdc__target--c{animation:kdc-down-c 2.8s ease-in-out infinite}
-@keyframes kdc-pulse{0%,12%{transform:translateY(-50%) scaleX(0);opacity:0}25%,55%{transform:translateY(-50%) scaleX(1);opacity:1}70%,100%{opacity:0}}
-@keyframes kdc-down-a{0%,15%{border-color:var(--gray);transform:translateY(-50%) rotate(0)}22%,80%{border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}100%{border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}}
-@keyframes kdc-down-b{0%,30%{border-color:var(--gray);transform:translate(-50%,-50%) rotate(0)}38%,80%{border-color:var(--gold);transform:translate(-50%,-35%) rotate(-12deg)}100%{border-color:var(--gold);transform:translate(-50%,-35%) rotate(-12deg)}}
-@keyframes kdc-down-c{0%,45%{border-color:var(--gray);transform:translateY(-50%) rotate(0)}52%,80%{border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}100%{border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}}
-@media (prefers-reduced-motion: reduce) { .kdc__pulse{animation:none;opacity:.5;transform:translateY(-50%) scaleX(1)}.kdc__target--a,.kdc__target--b,.kdc__target--c{animation:none;border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}.kdc__target--b{transform:translate(-50%,-35%) rotate(-12deg)} }
-[data-force-reduced-motion="true"] .kdc__pulse{animation:none;opacity:.5;transform:translateY(-50%) scaleX(1)}[data-force-reduced-motion="true"] .kdc__target--a{animation:none;border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}[data-force-reduced-motion="true"] .kdc__target--b{animation:none;border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}[data-force-reduced-motion="true"] .kdc__target--c{animation:none;border-color:var(--gold);transform:translateY(-35%) rotate(-12deg)}[data-force-reduced-motion="true"] .kdc__target--b{transform:translate(-50%,-35%) rotate(-12deg)}
+/* SPX-2998 Knockdown Chain — portable contract. */
+
+.kdc {
+  --gold: #F5C400;
+  --ink: #101010;
+  --cream: #F7F3E8;
+  --gray: #E8E8E8;
+  --down-ms: 220ms;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 260px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.kdc *,
+.kdc *::before,
+.kdc *::after {
+  box-sizing: border-box;
+}
+
+.kdc__live {
+  margin: 0;
+  width: 100%;
+  max-width: 340px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.7);
+  text-align: center;
+}
+
+.kdc__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 340px);
+  min-height: 160px;
+  border: 2px solid var(--gray);
+  background: rgb(247 243 232 / 0.04);
+}
+
+.kdc__target {
+  position: absolute;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--gray);
+  background: rgb(247 243 232 / 0.08);
+  color: var(--cream);
+  font-size: 0.78rem;
+  font-weight: 900;
+  transition: border-color var(--down-ms) ease, transform var(--down-ms) ease, background var(--down-ms) ease;
+}
+
+.kdc__target--a {
+  left: 14%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.kdc__target--b {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.kdc__target--c {
+  right: 14%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.kdc__target.is-down {
+  border-color: var(--gold);
+  background: rgb(245 196 0 / 0.12);
+}
+
+.kdc__target--a.is-down {
+  transform: translateY(-35%) rotate(-12deg);
+}
+
+.kdc__target--b.is-down {
+  transform: translate(-50%, -35%) rotate(-12deg);
+}
+
+.kdc__target--c.is-down {
+  transform: translateY(-35%) rotate(-12deg);
+}
+
+.kdc__pulse {
+  position: absolute;
+  top: 50%;
+  left: 14%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kdc[data-phase='chain'] .kdc__pulse,
+.kdc[data-phase='done'] .kdc__pulse {
+  opacity: 1;
+  width: 72%;
+  transition: width 660ms linear;
+}
+
+.kdc[data-phase='done'] .kdc__pulse {
+  opacity: 0.45;
+}
+
+.kdc__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.kdc__btn {
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.kdc__btn--primary {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.kdc__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.kdc__btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kdc__target,
+  .kdc__pulse {
+    transition: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .kdc__target,
+[data-force-reduced-motion='true'] .kdc__pulse {
+  transition: none !important;
+}

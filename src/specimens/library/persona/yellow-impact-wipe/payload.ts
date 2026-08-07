@@ -14,8 +14,8 @@ const payload: SpecimenPayload = {
   ],
   acceptance: [
     'Scene A visible in idle state',
-    'Yellow plane sweeps across stage',
-    'Scene B revealed after wipe completes',
+    'Yellow plane fully covers stage during wipe-in (100% width)',
+    'Scene B revealed after wipe-out completes',
     'Live region announces scene change',
     'Reduced motion swaps scenes instantly',
   ],

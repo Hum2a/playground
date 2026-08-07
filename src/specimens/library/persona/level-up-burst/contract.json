@@ -1,9 +1,24 @@
 {
   "name": "level-up-burst",
-  "palette": {
+  "intent": "Level rolls 12→13 then HP/SP/STR reorder with frozen cadence.",
+  "catalogue": { "p4": "P4-089", "ref": "SPX-3007" },
+  "from": { "lv": 12, "hp": 320, "sp": 180, "str": 14 },
+  "to": { "lv": 13, "hp": 348, "sp": 195, "str": 16 },
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": {
+    "rollMs": 120,
+    "statStaggerMs": 120,
+    "statMs": 280,
+    "burstMs": 700
+  },
+  "api": {
+    "run": "runLevelUpBurst()",
+    "reset": "resetLevelUpBurst()"
+  },
+  "reducedMotion": { "behaviour": "Final level and stats appear immediately with static burst" }
 }

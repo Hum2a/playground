@@ -1,4 +1,17 @@
 {
   "name": "redaction-reveal",
-  "intent": "Redaction bars sweep away left to right"
+  "intent": "Redaction bars sweep away left to right revealing authorised text.",
+  "catalogue": { "p4": "P4-043", "ref": "SPX-2961" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "sweepMs": 480, "delayMs": 180 },
+  "api": {
+    "run": "sweep()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "Bars retract instantly" }
 }

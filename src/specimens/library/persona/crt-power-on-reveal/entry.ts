@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const crtPowerOnReveal: Specimen = {
   id: 'crt-power-on-reveal',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2920',
   title: 'CRT Power-On Reveal',
   blurb:
     'A dead CRT screen collapses to a bright line, blooms, and resolves into a SIGNAL READY interface.',

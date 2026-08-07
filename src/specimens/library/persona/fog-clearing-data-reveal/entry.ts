@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const fogClearingDataReveal: Specimen = {
   id: 'fog-clearing-data-reveal',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2939',
   title: 'Fog-Clearing Data Reveal',
   blurb:
     'Obscured case data progressively becomes readable as a fog overlay clears to completion.',

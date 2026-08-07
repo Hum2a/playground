@@ -5,6 +5,7 @@
   --ink: #101010;
   --paper: #F7F3E8;
   --muted: #E8E8E8;
+  --ecd-draw-ms: 480ms;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -13,29 +14,28 @@
   width: 100%;
   min-height: 280px;
   padding: 0.75rem;
-  background: var(--ink);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 11px,
+      rgb(232 232 232 / 0.04) 11px,
+      rgb(232 232 232 / 0.04) 12px
+    ),
+    var(--ink);
   color: var(--paper);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
-}
-
-.ecd__live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 .ecd__stage {
   position: relative;
   width: min(100%, 320px);
   height: 200px;
-  border: 3px solid var(--yellow);
+  border: 3px solid var(--ink);
+  outline: 2px solid var(--yellow);
+  outline-offset: -6px;
   background: var(--paper);
+  box-shadow: inset 0 0 0 1px rgb(16 16 16 / 0.12);
 }
 
 .ecd__svg {
@@ -57,7 +57,7 @@
 .ecd[data-phase='drawing'] .ecd__line,
 .ecd[data-phase='linked'] .ecd__line {
   opacity: 1;
-  animation: ecd-draw 480ms ease-out forwards;
+  animation: ecd-draw var(--ecd-draw-ms) ease-out forwards;
 }
 
 @keyframes ecd-draw {
@@ -83,6 +83,7 @@
   color: var(--ink);
   text-align: left;
   cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .ecd__clue--a {
@@ -100,7 +101,7 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgb(16 16 16 / 0.45);
 }
 
 .ecd__clue-text {
@@ -111,9 +112,10 @@
 }
 
 .ecd__clue[data-selected='true'] {
-  border-color: var(--yellow);
-  background: var(--ink);
-  color: var(--yellow);
+  border-color: var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
 .ecd__clue:focus-visible {
@@ -123,10 +125,12 @@
 
 .ecd__status {
   margin: 0;
+  min-height: 1.1em;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--muted);
 }
 
 .ecd__btn {
@@ -148,13 +152,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ecd__line {
+  .ecd,
+  .ecd * {
     animation: none !important;
     transition: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .ecd__line {
+[data-force-reduced-motion='true'] .ecd,
+[data-force-reduced-motion='true'] .ecd * {
   animation: none !important;
   transition: none !important;
 }

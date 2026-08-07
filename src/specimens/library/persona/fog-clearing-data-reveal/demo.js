@@ -1,10 +1,9 @@
 /**
- * Fog-Clearing Data Reveal — fog overlay clears as process completes.
+ * Fog-Clearing Data Reveal — staged fog clear via keyframes.
  * iframe-safe; no storage / parent / network.
  */
 
 const CLEAR_MS = 1400
-const STEP_MS = 80
 
 let busy = false
 /** @type {number[]} */
@@ -39,11 +38,6 @@ function setLive(text) {
   if (el) el.textContent = text
 }
 
-function setBar(pct) {
-  const bar = document.querySelector('[data-fcdr-bar]')
-  if (bar) bar.style.width = `${pct}%`
-}
-
 function setButtons(on) {
   document.querySelectorAll('[data-fcdr-run], [data-fcdr-reset]').forEach((btn) => {
     btn.disabled = !on
@@ -52,13 +46,11 @@ function setButtons(on) {
 
 function showClear() {
   setPhase('done')
-  setBar(100)
   setLive('Data fully readable.')
 }
 
 function resetVisual() {
   setPhase('idle')
-  setBar(0)
   setLive('Data obscured by fog.')
 }
 
@@ -82,24 +74,14 @@ export function runFogClearing() {
   setPhase('clearing')
   setLive('Clearing fog.')
 
-  const steps = Math.ceil(CLEAR_MS / STEP_MS)
-  let step = 0
-
-  const tick = () => {
-    step += 1
-    const pct = Math.min(100, Math.round((step / steps) * 100))
-    setBar(pct)
-    if (step >= steps) {
+  return new Promise((resolve) => {
+    later(CLEAR_MS, () => {
       showClear()
       busy = false
       setButtons(true)
-      return
-    }
-    later(STEP_MS, tick)
-  }
-
-  tick()
-  return Promise.resolve()
+      resolve()
+    })
+  })
 }
 
 export function resetFogClearing() {

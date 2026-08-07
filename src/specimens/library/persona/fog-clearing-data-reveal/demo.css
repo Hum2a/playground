@@ -85,15 +85,22 @@
     radial-gradient(circle at 80% 60%, var(--paper) 0%, transparent 50%),
     linear-gradient(180deg, var(--muted) 0%, var(--paper) 100%);
   opacity: 0.92;
-  transition: opacity 600ms ease;
 }
 
 .fcdr[data-phase='clearing'] .fcdr__fog {
-  opacity: 0.35;
+  animation: fcdr-clear 1400ms linear forwards;
 }
 
 .fcdr[data-phase='done'] .fcdr__fog {
   opacity: 0;
+  animation: none;
+}
+
+@keyframes fcdr-clear {
+  0% { opacity: 0.92; }
+  33% { opacity: 0.55; }
+  66% { opacity: 0.28; }
+  100% { opacity: 0; }
 }
 
 .fcdr__progress {
@@ -111,11 +118,22 @@
   height: 100%;
   width: 0%;
   background: var(--yellow);
-  transition: width 80ms linear;
+}
+
+.fcdr[data-phase='clearing'] .fcdr__bar {
+  animation: fcdr-bar 1400ms linear forwards;
 }
 
 .fcdr[data-phase='done'] .fcdr__bar {
   width: 100%;
+  animation: none;
+}
+
+@keyframes fcdr-bar {
+  0% { width: 0%; }
+  33% { width: 33%; }
+  66% { width: 66%; }
+  100% { width: 100%; }
 }
 
 .fcdr__controls {
@@ -155,11 +173,11 @@
 @media (prefers-reduced-motion: reduce) {
   .fcdr__fog,
   .fcdr__bar {
-    transition: none !important;
+    animation: none !important;
   }
 }
 
 [data-force-reduced-motion='true'] .fcdr__fog,
 [data-force-reduced-motion='true'] .fcdr__bar {
-  transition: none !important;
+  animation: none !important;
 }

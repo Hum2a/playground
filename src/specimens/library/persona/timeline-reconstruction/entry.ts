@@ -2,7 +2,7 @@ import type { Specimen } from '../../../types'
 
 export const timelineReconstruction: Specimen = {
   id: 'timeline-reconstruction',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2958',
   title: 'Timeline Reconstruction',
   blurb: 'Disconnected event cards slide into chronological order.',
   origin: { project: 'Original', surface: 'Persona 4 investigation / mystery visual language' },

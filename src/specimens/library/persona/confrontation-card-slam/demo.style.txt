@@ -1,26 +1,135 @@
-/* SPX-2964 Confrontation Card Slam */
+/* SPX-2964 Confrontation Card Slam — portable contract. */
+
 .ccs {
-  --ccs-yellow: #F5C400; --ccs-ink: #101010; --ccs-paper: #F7F3E8; --ccs-gray: #E8E8E8;
-  position: relative; box-sizing: border-box; width: 100%; min-height: 280px; padding: 0.75rem;
-  background: var(--ccs-ink); font-family: ui-sans-serif, system-ui, sans-serif; overflow: hidden;
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.75rem;
+  background: var(--ink);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  overflow: hidden;
 }
-.ccs__live { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-.ccs__bg { padding: 1rem; border: 2px solid var(--ccs-gray); color: var(--ccs-paper); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em; opacity: 0.85; }
-.ccs__card { position: absolute; left: 50%; top: 50%; z-index: 2; width: 78%; margin: 0; padding: 0.85rem;
-  border: 4px solid var(--ccs-yellow); background: var(--ccs-paper); color: var(--ccs-ink);
-  transform: translate(-50%, -180%) scale(1.08); opacity: 0; pointer-events: none; }
-.ccs[data-phase='slam'] .ccs__card { animation: ccs-slam 460ms cubic-bezier(0.2,1.1,0.3,1) forwards; pointer-events: auto; }
-.ccs[data-phase='shown'] .ccs__card { transform: translate(-50%, -50%); opacity: 1; pointer-events: auto; }
-.ccs__label { margin: 0; font-size: 0.55rem; font-weight: 900; letter-spacing: 0.2em; color: var(--ccs-yellow); background: var(--ccs-ink); display: inline-block; padding: 0.15rem 0.35rem; }
-.ccs__title { margin: 0.35rem 0 0; font-size: 1rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
-.ccs__body { margin: 0.35rem 0 0; font-size: 0.68rem; font-weight: 600; }
-.ccs__controls { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
-.ccs__btn { padding: 0.4rem 0.7rem; border: 2px solid var(--ccs-paper); background: transparent; color: var(--ccs-paper); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
-.ccs__btn--primary { border-color: var(--ccs-yellow); background: var(--ccs-yellow); color: var(--ccs-ink); }
-.ccs__btn:focus-visible { outline: 2px solid var(--ccs-yellow); outline-offset: 2px; }
-@keyframes ccs-slam { 0% { transform: translate(-50%, -180%) scale(1.08); opacity: 0; } 70% { transform: translate(-50%, -48%) scale(1.02); opacity: 1; } 100% { transform: translate(-50%, -50%); opacity: 1; } }
+
+.ccs__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ccs__bg {
+  padding: 1rem;
+  border: 2px solid var(--muted);
+  color: var(--paper);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+
+.ccs__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 78%;
+  margin: 0;
+  padding: 0.85rem;
+  border: 4px solid var(--yellow);
+  background: var(--paper);
+  color: var(--ink);
+  transform: translate(-50%, -180%) scale(1.08);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ccs[data-phase='slam'] .ccs__card {
+  animation: ccs-slam 460ms cubic-bezier(0.2, 1.1, 0.3, 1) forwards;
+  pointer-events: auto;
+}
+
+.ccs[data-phase='shown'] .ccs__card {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  pointer-events: auto;
+  animation: none;
+}
+
+.ccs__label {
+  margin: 0;
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  background: var(--ink);
+  display: inline-block;
+  padding: 0.15rem 0.35rem;
+}
+
+.ccs__title {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ccs__body {
+  margin: 0.35rem 0 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.ccs__controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.ccs__btn {
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ccs__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.ccs__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@keyframes ccs-slam {
+  0% { transform: translate(-50%, -180%) scale(1.08); opacity: 0; }
+  70% { transform: translate(-50%, -48%) scale(1.02); opacity: 1; }
+  100% { transform: translate(-50%, -50%); opacity: 1; }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .ccs [data-phase="slam"] .ccs__card { animation: none !important; transition: none !important; }
+  .ccs[data-phase='slam'] .ccs__card {
+    animation: none !important;
+  }
 }
-[data-force-reduced-motion="true"] .ccs [data-phase="slam"] .ccs__card { animation: none !important; transition: none !important; }
+
+[data-force-reduced-motion='true'] .ccs[data-phase='slam'] .ccs__card {
+  animation: none !important;
+}

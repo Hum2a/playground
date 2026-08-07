@@ -1,16 +1,25 @@
 {
   "name": "tracking-error-recovery",
-  "ref": "SPX-2925",
-  "catalogueId": "P4-007",
+  "intent": "Horizontal tearing until calibration recovers a stable feed.",
+  "catalogue": { "p4": "P4-007", "ref": "SPX-2925" },
   "colours": {
     "yellow": "#F5C400",
     "ink": "#101010",
     "paper": "#F7F3E8",
-    "gray": "#E8E8E8"
+    "muted": "#E8E8E8"
   },
-  "animation": { "recoverMs": 520 },
+  "tear": {
+    "amplitudePx": [12, 10, 8],
+    "periodMs": [160, 200, 140]
+  },
+  "timing": {
+    "recoverMs": 520,
+    "bandOutMs": 480
+  },
   "phases": ["error", "recover", "stable"],
-  "reducedMotion": {
-    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-  }
+  "api": {
+    "run": "runTrackingErrorRecovery()",
+    "reset": "resetTrackingErrorRecovery()"
+  },
+  "reducedMotion": { "behaviour": "Stable feed shown immediately; tear amplitude held static" }
 }

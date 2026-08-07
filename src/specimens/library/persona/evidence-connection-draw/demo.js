@@ -3,8 +3,12 @@
  * iframe-safe; no storage / parent / network.
  */
 
+const DRAW_MS = 480
+
 /** @type {string | null} */
 let first = null
+/** @type {number | null} */
+let drawTimer = null
 
 function prefersReducedMotion() {
   const forced =
@@ -18,11 +22,6 @@ function rootEl() {
 
 function setPhase(phase) {
   rootEl()?.setAttribute('data-phase', phase)
-}
-
-function setLive(text) {
-  const el = document.querySelector('[data-ecd-live]')
-  if (el) el.textContent = text
 }
 
 function setStatus(text) {
@@ -65,8 +64,7 @@ function selectClue(id) {
     first = id
     btn.setAttribute('data-selected', 'true')
     setPhase('selecting')
-    setLive(`Selected ${btn.getAttribute('data-ecd-label')}.`)
-    setStatus('Relationship: selecting…')
+    setStatus(`Selected ${btn.getAttribute('data-ecd-label')}.`)
     return
   }
 
@@ -78,17 +76,21 @@ function selectClue(id) {
     setPhase('linked')
   } else {
     setPhase('drawing')
-    window.setTimeout(() => setPhase('linked'), 480)
+    if (drawTimer != null) window.clearTimeout(drawTimer)
+    drawTimer = window.setTimeout(() => setPhase('linked'), DRAW_MS)
   }
 
   const aLabel = document.querySelector('[data-ecd-clue="a"]')?.getAttribute('data-ecd-label')
   const bLabel = document.querySelector('[data-ecd-clue="b"]')?.getAttribute('data-ecd-label')
-  setLive(`Linked ${aLabel} and ${bLabel}.`)
-  setStatus('Relationship: linked')
+  setStatus(`Linked ${aLabel} and ${bLabel}.`)
 }
 
-function resetConnection() {
+export function resetConnection() {
   first = null
+  if (drawTimer != null) {
+    window.clearTimeout(drawTimer)
+    drawTimer = null
+  }
   document.querySelectorAll('[data-ecd-clue]').forEach((btn) => {
     btn.setAttribute('data-selected', 'false')
   })
@@ -100,7 +102,6 @@ function resetConnection() {
     line.setAttribute('y2', '0')
   }
   setPhase('idle')
-  setLive('Select two clues to connect.')
   setStatus('Relationship: none')
 }
 

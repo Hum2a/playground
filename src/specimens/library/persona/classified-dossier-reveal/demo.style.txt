@@ -1,17 +1,231 @@
-/* classified-dossier-reveal */
-.cdr{--p4-yellow:#F5C400;--p4-black:#101010;--p4-cream:#F7F3E8;--p4-gray:#E8E8E8;box-sizing:border-box;position:relative;width:100%;height:100%;min-height:240px;padding:0.65rem;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--p4-cream);background:var(--p4-black);}
-.cdr *,.cdr *::before,.cdr *::after{box-sizing:border-box}
-.cdr__file{position:relative;padding:0.85rem;border:2px solid var(--p4-gray);background:color-mix(in srgb,var(--p4-cream) 10%,var(--p4-black))}
-.cdr__stamp{position:absolute;right:0.5rem;top:0.5rem;padding:0.25rem 0.45rem;border:2px solid var(--p4-yellow);background:var(--p4-yellow);color:var(--p4-black);font-size:0.55rem;font-weight:900;letter-spacing:0.12em;transform:rotate(-6deg);transition:opacity 280ms ease,transform 280ms ease}
-.cdr__line{position:relative;margin:0.45rem 0;font-size:0.78rem;font-weight:700;letter-spacing:0.04em}
-.cdr__bar{position:absolute;left:0;top:0;width:100%;height:1.1em;background:var(--p4-black);transition:transform 400ms ease,opacity 320ms ease}
-.cdr[data-state="revealed"] .cdr__stamp{opacity:0;transform:rotate(-6deg) scale(0.8)}
-.cdr[data-state="revealed"] .cdr__bar{transform:translateX(105%);opacity:0}
+/* SPX-3074 Classified Dossier Reveal — portable contract. */
 
-.specimen__demo { position:absolute;left:0.5rem;bottom:0.4rem;z-index:10;display:flex;gap:0.35rem; }
-.specimen__demo-btn { padding:0.28rem 0.5rem;border:2px solid var(--p4-yellow);background:var(--p4-yellow);color:var(--p4-black);font:800 0.58rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer; }
-.specimen__demo-btn:focus-visible { outline:2px solid var(--p4-cream);outline-offset:2px; }
-.specimen__status { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+.cdr {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  --cdr-stamp-ms: 420ms;
+  --cdr-clear-ms: 400ms;
+  --cdr-stagger-ms: 100ms;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 260px;
+  padding: 0.65rem 0.65rem 2.6rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--ink);
+}
 
-@media (prefers-reduced-motion: reduce) { .spec *, .spec * { animation:none!important;transition:none!important; } }
-[data-force-reduced-motion="true"] .spec *, [data-force-reduced-motion="true"] .spec * { animation:none!important;transition:none!important; }
+.cdr *,
+.cdr *::before,
+.cdr *::after {
+  box-sizing: border-box;
+}
+
+.cdr__file {
+  position: relative;
+  padding: 0.85rem 1rem 1rem;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+  min-height: 9.5rem;
+}
+
+.cdr__stamp {
+  position: absolute;
+  right: 0.65rem;
+  top: 0.55rem;
+  z-index: 2;
+  padding: 0.35rem 0.55rem;
+  border: 3px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  transform: rotate(-8deg) scale(1);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.cdr__seal {
+  position: absolute;
+  right: 1.1rem;
+  top: 2.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, var(--yellow) 35%, transparent 36%),
+    var(--paper);
+  box-shadow: inset 0 0 0 3px var(--ink);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cdr__line {
+  position: relative;
+  margin: 0.55rem 0;
+  overflow: hidden;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  max-width: 70%;
+}
+
+.cdr__bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1.15em;
+  background: var(--ink);
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.cdr[data-state='revealed'] .cdr__stamp {
+  animation: cdr-stamp-lift var(--cdr-stamp-ms) ease-out forwards;
+}
+
+.cdr[data-state='revealed'] .cdr__seal {
+  animation: cdr-seal-pop var(--cdr-stamp-ms) ease-out forwards;
+}
+
+.cdr[data-state='revealed'] .cdr__bar--1 {
+  animation: cdr-bar-clear var(--cdr-clear-ms) ease forwards;
+}
+
+.cdr[data-state='revealed'] .cdr__bar--2 {
+  animation: cdr-bar-clear var(--cdr-clear-ms) ease forwards;
+  animation-delay: var(--cdr-stagger-ms);
+}
+
+.cdr[data-state='revealed'] .cdr__bar--3 {
+  animation: cdr-bar-clear var(--cdr-clear-ms) ease forwards;
+  animation-delay: calc(var(--cdr-stagger-ms) * 2);
+}
+
+.cdr__cleared {
+  position: absolute;
+  left: 50%;
+  bottom: 0.55rem;
+  margin: 0;
+  padding: 0.15rem 0.4rem;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--yellow);
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  transform: translateX(-50%) scale(0.9);
+}
+
+.cdr[data-state='revealed'] .cdr__cleared {
+  animation: cdr-cleared-in 280ms ease-out 280ms forwards;
+}
+
+@keyframes cdr-stamp-lift {
+  0% { opacity: 1; transform: rotate(-8deg) scale(1); }
+  40% { opacity: 1; transform: rotate(-14deg) scale(1.08) translateY(-4px); }
+  100% { opacity: 0; transform: rotate(-22deg) scale(0.85) translate(18px, -28px); }
+}
+
+@keyframes cdr-seal-pop {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.4) translateY(-12px); }
+}
+
+@keyframes cdr-bar-clear {
+  to { transform: translateX(105%); opacity: 0; }
+}
+
+@keyframes cdr-cleared-in {
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+.cdr__status {
+  margin: 0;
+  min-height: 1.1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cdr__demo {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.4rem;
+  z-index: 10;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.cdr__btn {
+  padding: 0.28rem 0.5rem;
+  border: 2px solid var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+  font: 800 0.58rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cdr__btn:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdr,
+  .cdr * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .cdr[data-state='revealed'] .cdr__stamp,
+  .cdr[data-state='revealed'] .cdr__seal {
+    opacity: 0;
+  }
+
+  .cdr[data-state='revealed'] .cdr__bar {
+    transform: translateX(105%);
+    opacity: 0;
+  }
+
+  .cdr[data-state='revealed'] .cdr__cleared {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .cdr,
+[data-force-reduced-motion='true'] .cdr * {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .cdr[data-state='revealed'] .cdr__stamp,
+[data-force-reduced-motion='true'] .cdr[data-state='revealed'] .cdr__seal {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .cdr[data-state='revealed'] .cdr__bar {
+  transform: translateX(105%);
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .cdr[data-state='revealed'] .cdr__cleared {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}

@@ -1,53 +1,20 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "danger-meter-escalation",
-  "description": "Threat rises through discrete structural states as exploration continues.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
+  "name": "danger-meter-escalation",
+  "intent": "Threat rises through discrete structural states as exploration continues.",
+  "catalogue": { "p4": "P4-094", "ref": "SPX-3012" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "levels": [
+    { "id": 0, "label": "CLEAR", "bars": 0 },
+    { "id": 1, "label": "CAUTION", "bars": 1 },
+    { "id": 2, "label": "WARNING", "bars": 2 },
+    { "id": 3, "label": "CRITICAL", "bars": 3, "stripe": true }
   ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "danger-meter-escalation"
-    },
-    "intent": {
-      "type": "string",
-      "const": "Threat rises through discrete structural states as exploration continues."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "timing": { "stepMs": 500 },
+  "api": { "run": "runDangerMeter()", "reset": "resetDangerMeter()" },
+  "reducedMotion": { "behaviour": "Meter holds at CRITICAL statically" }
 }

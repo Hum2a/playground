@@ -2,7 +2,7 @@ import type { Specimen } from '../../../types'
 
 export const redactionReveal: Specimen = {
   id: 'redaction-reveal',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2961',
   title: 'Redaction Reveal',
   blurb: 'Authorised content removes black bars in a deterministic sweep.',
   origin: { project: 'Original', surface: 'Persona 4 investigation / mystery visual language' },

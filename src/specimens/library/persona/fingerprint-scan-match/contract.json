@@ -1,4 +1,17 @@
 {
   "name": "fingerprint-scan-match",
-  "intent": "Ridge lines align; MATCH label appears"
+  "intent": "Scan aligns ridge lines then MATCH beat confirms.",
+  "catalogue": { "p4": "P4-157", "ref": "SPX-3075" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "scanMs": 900, "matchMs": 320 },
+  "api": {
+    "run": "scan()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "Aligned MATCH state appears immediately" }
 }

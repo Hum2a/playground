@@ -1,4 +1,17 @@
 {
   "name": "classified-dossier-reveal",
-  "intent": "CLASSIFIED stamp and redactions clear on verify"
+  "intent": "CLASSIFIED seal stamps then lifts; dossier lines clear after verify.",
+  "catalogue": { "p4": "P4-156", "ref": "SPX-3074" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "stampMs": 420, "clearMs": 400, "staggerMs": 100 },
+  "api": {
+    "run": "verify()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "Stamp CLEARED and lines visible immediately" }
 }

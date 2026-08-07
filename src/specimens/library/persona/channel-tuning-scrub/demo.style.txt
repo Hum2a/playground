@@ -181,3 +181,25 @@
 [data-force-reduced-motion='true'] .cts__content {
   transition: none;
 }
+
+.cts__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cts__btn {
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--cts-paper, #F7F3E8);
+  background: transparent;
+  color: var(--cts-paper, #F7F3E8);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cts__btn:focus-visible {
+  outline: 2px solid var(--cts-yellow, #F5C400);
+  outline-offset: 2px;
+}

@@ -1,10 +1,17 @@
 {
   "name": "suspect-card-reveal",
   "intent": "Identity card redaction bars slide away as confidence meter fills.",
+  "catalogue": { "p4": "P4-034", "ref": "SPX-2952" },
   "colours": {
     "yellow": "#F5C400",
-    "black": "#101010",
-    "cream": "#F7F3E8",
-    "gray": "#E8E8E8"
-  }
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "barMs": 420, "meterMs": 680 },
+  "api": {
+    "run": "reveal()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "Bars and meter jump to revealed state immediately" }
 }

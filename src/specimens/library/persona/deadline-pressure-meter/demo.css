@@ -1,21 +1,123 @@
-/* SPX-3021 Deadline Pressure Meter */
+/* SPX-3021 Deadline Pressure Meter — portable contract. */
+
 .dpm {
-  --dpm-yellow: #F5C400; --dpm-ink: #101010; --dpm-paper: #F7F3E8; --dpm-gray: #E8E8E8;
-  box-sizing: border-box; width: min(100%, 320px); padding: 0.75rem;
-  background: var(--dpm-ink); color: var(--dpm-paper); font-family: ui-sans-serif, system-ui, sans-serif;
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: min(100%, 320px);
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
 }
-.dpm__label { font-size: 0.55rem; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dpm-yellow); margin-bottom: 0.4rem; }
-.dpm__rail { position: relative; height: 18px; border: 2px solid var(--dpm-paper); background: var(--dpm-gray); overflow: hidden; }
-.dpm__segments { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, var(--dpm-paper) 0 2px, transparent 2px 28px); animation: dpm-compress 5s ease-in-out infinite alternate; transform-origin: right; }
-.dpm__marker { position: absolute; right: 0; top: 0; bottom: 0; width: 18%; background: var(--dpm-yellow); opacity: 0.85; animation: dpm-marker 5s ease-in-out infinite alternate; }
-.dpm__count { margin-top: 0.45rem; font-size: 1.4rem; font-weight: 900; letter-spacing: 0.08em; animation: dpm-count 5s steps(1) infinite; }
-.dpm__sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-@keyframes dpm-compress { from { transform: scaleX(1); } to { transform: scaleX(0.35); } }
-@keyframes dpm-marker { from { width: 8%; } to { width: 42%; } }
-@keyframes dpm-count { 0%,40% { content: '14'; } 60%,100% { } }
+
+.dpm__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dpm__label {
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.dpm__rail {
+  position: relative;
+  height: 18px;
+  border: 2px solid var(--paper);
+  background: var(--muted);
+  overflow: hidden;
+}
+
+.dpm__segments {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, var(--paper) 0 2px, transparent 2px 28px);
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 400ms ease;
+}
+
+.dpm__marker {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  background: var(--yellow);
+  opacity: 0.85;
+  transition: width 400ms ease;
+}
+
+.dpm[data-step='1'] .dpm__segments { transform: scaleX(0.7); }
+.dpm[data-step='1'] .dpm__marker { width: 20%; }
+.dpm[data-step='2'] .dpm__segments { transform: scaleX(0.45); }
+.dpm[data-step='2'] .dpm__marker { width: 32%; }
+.dpm[data-step='3'] .dpm__segments { transform: scaleX(0.35); }
+.dpm[data-step='3'] .dpm__marker { width: 42%; }
+
+.dpm__count {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.dpm__controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.dpm__btn {
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dpm__btn--primary {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.dpm__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.dpm__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .dpm__segments, .dpm__marker { animation: none; transform: scaleX(0.35); }
-  .dpm__marker { width: 42%; }
+  .dpm__segments,
+  .dpm__marker {
+    transition: none !important;
+  }
 }
-[data-force-reduced-motion="true"] .dpm__segments { animation: none; transform: scaleX(0.35); }
-[data-force-reduced-motion="true"] .dpm__marker { animation: none; width: 42%; }
+
+[data-force-reduced-motion='true'] .dpm__segments,
+[data-force-reduced-motion='true'] .dpm__marker {
+  transition: none !important;
+}

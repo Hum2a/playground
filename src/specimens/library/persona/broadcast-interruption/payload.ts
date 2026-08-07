@@ -14,9 +14,9 @@ const payload: SpecimenPayload = {
   ],
   acceptance: [
     'Normal bulletin visible in idle state',
-    'Trigger replaces content with urgent transmission card',
+    'Finite interrupt replaces content with urgent card (620ms)',
     'Yellow flash punctuates the interruption',
-    'Live region announces urgent state',
+    'Reset / harness restart restores normal programming for replay',
     'Reduced motion swaps instantly without animation',
   ],
   scaffold: `

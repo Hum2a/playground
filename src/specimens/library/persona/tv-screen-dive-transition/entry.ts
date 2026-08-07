@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const tvScreenDiveTransition: Specimen = {
   id: 'tv-screen-dive-transition',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2931',
   title: 'TV Screen Dive Transition',
   blurb:
     'Current UI bends inward toward a screen aperture and a TV-world destination emerges from the other side.',

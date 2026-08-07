@@ -2,7 +2,7 @@ import type { Specimen } from '../../../types'
 
 export const channelTuningScrub: Specimen = {
   id: 'channel-tuning-scrub',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2921',
   title: 'Channel Tuning Scrub',
   blurb:
     'Dragging a tuning dial moves through unstable analogue fragments before a target broadcast locks into place.',

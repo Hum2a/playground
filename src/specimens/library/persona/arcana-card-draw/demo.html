@@ -1,3 +1,17 @@
-<div class="acd" data-acd><p class="acd__live" data-acd-live aria-live="polite">Deck ready.</p>
-<div class="acd__stage"><div class="acd__deck" aria-hidden="true"></div><div class="acd__card" data-acd-card><div class="acd__face acd__face--back"></div><div class="acd__face acd__face--front"><span class="acd__arcana">Chariot</span><span class="acd__roman">VII</span></div></div></div>
-<button type="button" class="acd__btn" data-acd-draw>Draw</button></div>
+<div class="acd" data-acd data-phase="idle">
+  <p class="acd__live" data-acd-live aria-live="polite">Deck ready.</p>
+  <div class="acd__stage" aria-hidden="true">
+    <div class="acd__deck"></div>
+    <div class="acd__card" data-acd-card>
+      <div class="acd__face acd__face--back"></div>
+      <div class="acd__face acd__face--front">
+        <span class="acd__arcana">CATEGORY</span>
+        <span class="acd__roman">VII</span>
+      </div>
+    </div>
+  </div>
+  <div class="acd__controls">
+    <button type="button" class="acd__btn acd__btn--primary" data-acd-draw>Draw</button>
+    <button type="button" class="acd__btn" data-acd-reset>Reset</button>
+  </div>
+</div>

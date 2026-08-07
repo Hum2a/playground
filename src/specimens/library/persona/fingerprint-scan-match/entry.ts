@@ -2,7 +2,7 @@ import type { Specimen } from '../../../types'
 
 export const fingerprintScanMatch: Specimen = {
   id: 'fingerprint-scan-match',
-  ref: 'SPX-TODO',
+  ref: 'SPX-3075',
   title: 'Fingerprint Scan Match',
   blurb: 'Abstract print-like lines align into match/no-match.',
   origin: { project: 'Original', surface: 'Persona 4 investigation / mystery visual language' },

@@ -1,53 +1,20 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "deadline-pressure-meter",
-  "description": "Days remaining compress visually as a deadline approaches.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
+  "name": "deadline-pressure-meter",
+  "intent": "Days remaining compress visually as a deadline approaches.",
+  "catalogue": { "p4": "P4-103", "ref": "SPX-3021" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "steps": [
+    { "days": 14, "compress": 1, "markerPercent": 8 },
+    { "days": 7, "compress": 0.7, "markerPercent": 20 },
+    { "days": 3, "compress": 0.45, "markerPercent": 32 },
+    { "days": 1, "compress": 0.35, "markerPercent": 42 }
   ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "deadline-pressure-meter"
-    },
-    "intent": {
-      "type": "string",
-      "const": "Days remaining compress visually as a deadline approaches."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "timing": { "stepMs": 500 },
+  "api": { "run": "runDeadlinePressure()", "reset": "resetDeadlinePressure()" },
+  "reducedMotion": { "behaviour": "Meter holds at final 1-day compressed state" }
 }

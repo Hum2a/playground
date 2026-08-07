@@ -7,17 +7,18 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Mount progress bar in overflow-hidden stage.',
+    'Wire runRankThresholdUnlock / resetRankThresholdUnlock; threshold frozen at 80%.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Fill animates from 72% to 100% past the 80% threshold mark',
+    'UNLOCKED flash keyframe plays once after fill',
+    'Assist Follow-Up tier remains visible at end',
+    'Reset and harness restart return to 72%',
+    'Palette uses #F5C400 / #101010 / #F7F3E8 / #E8E8E8',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#F7F3E8;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#F7F3E8;">
   {{specimen}}
 </div>
 `.trim(),

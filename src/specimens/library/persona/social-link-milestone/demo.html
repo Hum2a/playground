@@ -1,8 +1,25 @@
-<div class="slm" aria-hidden="true">
-  <div class="slm__card"><div class="slm__portrait"></div><p class="slm__name">Yosuke</p></div>
-  <div class="slm__nodes">
-    <span class="slm__node slm__node--a"></span><span class="slm__node slm__node--b"></span>
-    <span class="slm__node slm__node--c"></span><span class="slm__node slm__node--d"></span>
+<div class="slm" data-slm data-phase="idle">
+  <p class="slm__live" data-slm-live aria-live="polite">Bond nodes idle.</p>
+
+  <div class="slm__stage" aria-hidden="true">
+    <div class="slm__card">
+      <div class="slm__portrait"></div>
+      <p class="slm__name">BOND // 02</p>
+    </div>
+    <div class="slm__nodes">
+      <span class="slm__node slm__node--a"></span>
+      <span class="slm__node slm__node--b"></span>
+      <span class="slm__node slm__node--c"></span>
+      <span class="slm__node slm__node--d"></span>
+    </div>
+    <div class="slm__unlock" data-slm-unlock>
+      <span class="slm__unlock-label">UNLOCKED</span>
+      <span class="slm__unlock-skill">Wind Slash</span>
+    </div>
   </div>
-  <div class="slm__unlock"><span class="slm__unlock-label">UNLOCKED</span><span class="slm__unlock-skill">Wind Slash</span></div>
+
+  <div class="slm__controls">
+    <button type="button" class="slm__btn slm__btn--primary" data-slm-run>Converge</button>
+    <button type="button" class="slm__btn" data-slm-reset>Reset</button>
+  </div>
 </div>

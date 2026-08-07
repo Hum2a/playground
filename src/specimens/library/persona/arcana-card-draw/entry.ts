@@ -4,7 +4,7 @@ export const arcanaCardDraw: Specimen = {
   id: 'arcana-card-draw',
   ref: 'SPX-2980',
   title: 'Arcana Card Draw',
-  blurb: 'A tarot card rises from a deck, flips, and reveals its arcana category.',
+  blurb: 'A card rises from a deck, flips, and reveals an abstract category result.',
   origin: { project: 'Original', surface: 'Persona 4 — tarot / arcana cards' },
   facets: { kind: 'interaction', tech: 'tiny-js', scope: 'card', intensity: 'graphic' },
   inspiredBy: { franchise: 'persona', works: ['persona-4'] },

@@ -1,26 +1,28 @@
 import type { SpecimenPayload } from '../../../types'
 import html from './demo.html?raw'
 import css from './demo.style.txt?raw'
+import js from './demo.js?raw'
 import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Wire runFusionPreview / resetFusionPreview.',
+    'Select MODEL A + MODEL B, then Preview; beam 480ms then settle 420ms.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Both inputs must be selected before Preview enables',
+    'Beams fire once into a SIGMA ghost preview',
+    'Reduced motion shows preview immediately on run',
+    'Harness restart resets selection and preview',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">
   {{specimen}}
 </div>
 `.trim(),
-  files: { html, css },
+  files: { html, css, js },
   spec,
   contract,
 }

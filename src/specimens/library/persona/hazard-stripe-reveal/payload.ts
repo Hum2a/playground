@@ -14,9 +14,10 @@ const payload: SpecimenPayload = {
   ],
   acceptance: [
     'Content hidden under diagonal hazard stripes on load',
-    'Reveal sweeps stripes off-stage',
+    'Reveal sweeps stripes off-stage in 620ms',
     'Unlocked content visible in revealed state',
-    'Live region announces reveal progress',
+    'Reset / harness restart restores covered phase',
+    'Stripe angle/band and revealMs frozen in contract',
     'Reduced motion reveals content instantly',
   ],
   scaffold: `

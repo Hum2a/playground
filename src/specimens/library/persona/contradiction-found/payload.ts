@@ -8,12 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount cards in relative overflow-hidden stage.',
-    'Wire runContradictionFound / resetContradictionFound.',
+    'Wire runContradictionFound / resetContradictionFound (420ms collide, 360ms flash).',
   ],
   acceptance: [
-    'Collide brings cards together',
-    'Conflicting time values flash yellow',
-    'CONTRADICTION banner appears at end',
+    'Collide brings cards together over 420ms',
+    'Conflicting time values flash yellow for 360ms',
+    'CONTRADICTION banner visible at end with status announcement',
+    'Harness restart resets to idle review state',
     'Palette uses #F5C400 / #101010 / #F7F3E8 / #E8E8E8',
   ],
   scaffold: `

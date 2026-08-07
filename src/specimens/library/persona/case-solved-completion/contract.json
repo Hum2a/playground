@@ -1,4 +1,17 @@
 {
   "name": "case-solved-completion",
-  "intent": "Clue chips collapse into solved title card"
+  "intent": "Clue chips collapse into loud finite CASE SOLVED flourish.",
+  "catalogue": { "p4": "P4-170", "ref": "SPX-3088" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "timing": { "collapseMs": 520, "flourishMs": 480 },
+  "api": {
+    "run": "solve()",
+    "reset": "reset()"
+  },
+  "reducedMotion": { "behaviour": "CASE SOLVED title appears immediately; clues hidden" }
 }

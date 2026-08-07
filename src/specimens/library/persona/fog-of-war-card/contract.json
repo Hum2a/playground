@@ -1,16 +1,15 @@
 {
   "name": "fog-of-war-card",
-  "ref": "SPX-2940",
-  "catalogueId": "P4-022",
+  "intent": "Pointer scrub erases fog until hidden content is revealed.",
+  "catalogue": { "p4": "P4-022", "ref": "SPX-2940" },
   "colours": {
     "yellow": "#F5C400",
     "ink": "#101010",
     "paper": "#F7F3E8",
-    "gray": "#E8E8E8"
+    "muted": "#E8E8E8"
   },
-  "brushRadius": 42,
+  "brush": { "radiusPx": 42 },
   "revealThreshold": 0.42,
-  "reducedMotion": {
-    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-  }
+  "api": { "reset": "resetFogOfWar()" },
+  "reducedMotion": { "behaviour": "Fog clears fully on first pointer contact" }
 }

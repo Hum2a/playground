@@ -2,9 +2,10 @@ import type { Specimen } from '../../../types'
 
 export const suspectCardReveal: Specimen = {
   id: 'suspect-card-reveal',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2952',
   title: 'Suspect Card Reveal',
-  blurb: 'A partially redacted identity card opens as confidence rises.',
+  blurb:
+    'A partially redacted identity card opens as confidence rises — abstract SECTOR 7 locale, no town names.',
   origin: {
     project: 'Original',
     surface: 'Persona 4 investigation / mystery visual language',

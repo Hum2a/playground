@@ -1,9 +1,19 @@
 {
   "name": "weakness-discovered",
-  "palette": {
+  "intent": "Strike ENTITY-07; hit flash locks a permanent WEAK affinity label.",
+  "catalogue": { "p4": "P4-079", "ref": "SPX-2997" },
+  "target": "ENTITY-07",
+  "result": "WEAK",
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": { "hitMs": 420, "revealMs": 280 },
+  "api": {
+    "run": "runWeaknessDiscovered()",
+    "reset": "resetWeaknessDiscovered()"
+  },
+  "reducedMotion": { "behaviour": "WEAK label and gold border appear immediately" }
 }

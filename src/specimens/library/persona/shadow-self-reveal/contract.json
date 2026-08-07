@@ -8,7 +8,20 @@
     "paper": "#F7F3E8",
     "muted": "#E8E8E8"
   },
-  "timing": { "fractureMs": 520 },
+  "crack": {
+    "count": 3,
+    "geometry": [
+      { "id": 1, "topPercent": 18, "leftPercent": 20, "widthPercent": 55, "rotateDeg": -24, "heightPx": 3 },
+      { "id": 2, "topPercent": 48, "leftPercent": 12, "widthPercent": 70, "rotateDeg": 12, "heightPx": 3 },
+      { "id": 3, "topPercent": 72, "leftPercent": 28, "widthPercent": 45, "rotateDeg": -8, "heightPx": 3 }
+    ]
+  },
+  "timing": {
+    "fractureMs": 520,
+    "shadowInMs": 480,
+    "crackMs": 280,
+    "crackDelaysMs": [0, 80, 140]
+  },
   "api": {
     "run": "runShadowSelfReveal()",
     "reset": "resetShadowSelfReveal()"

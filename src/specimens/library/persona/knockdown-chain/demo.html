@@ -1,6 +1,15 @@
-<div class="kdc" aria-hidden="true">
-<div class="kdc__target kdc__target--a" data-kdc="a">A</div>
-<div class="kdc__target kdc__target--b" data-kdc="b">B</div>
-<div class="kdc__target kdc__target--c" data-kdc="c">C</div>
-<div class="kdc__pulse"></div>
+<div class="kdc" data-kdc data-phase="idle">
+  <p class="kdc__live" data-kdc-live aria-live="polite" role="status">Targets standing. Run chain.</p>
+
+  <div class="kdc__stage" aria-hidden="true">
+    <div class="kdc__target kdc__target--a" data-kdc-target="a">A</div>
+    <div class="kdc__target kdc__target--b" data-kdc-target="b">B</div>
+    <div class="kdc__target kdc__target--c" data-kdc-target="c">C</div>
+    <div class="kdc__pulse" data-kdc-pulse></div>
+  </div>
+
+  <div class="kdc__controls">
+    <button type="button" class="kdc__btn kdc__btn--primary" data-kdc-run>Chain</button>
+    <button type="button" class="kdc__btn" data-kdc-reset>Reset</button>
+  </div>
 </div>

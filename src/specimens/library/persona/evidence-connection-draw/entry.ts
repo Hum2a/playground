@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const evidenceConnectionDraw: Specimen = {
   id: 'evidence-connection-draw',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2947',
   title: 'Evidence Connection Draw',
   blurb:
     'Selecting two clues draws a physical yellow connection line and establishes a linked relationship state.',

@@ -1,7 +1,7 @@
 import type { Specimen } from '../../../types'
 export const contradictionFound: Specimen = {
   id: 'contradiction-found',
-  ref: 'SPX-TODO',
+  ref: 'SPX-2948',
   title: 'Contradiction Found',
   blurb:
     'Two evidence cards collide and highlight the exact timestamp values that conflict.',

@@ -1,6 +1,7 @@
 /**
  * Fog-of-War Card — pointer scrub erases fog to reveal hidden content.
  * iframe-safe; no storage / parent / network.
+ * BRUSH / REVEAL_THRESHOLD frozen in contract.json.
  */
 
 const BRUSH = 42
@@ -96,6 +97,12 @@ function revealAll() {
   setLive('Card fully revealed.')
 }
 
+export function resetFogOfWar() {
+  document.querySelector('[data-fow]')?.removeAttribute('data-revealed')
+  resizeCanvas()
+  setLive('Card obscured. Scrub to reveal.')
+}
+
 function pointerHandler(event) {
   if (prefersReducedMotion()) {
     revealAll()
@@ -120,14 +127,12 @@ function bindUi() {
     pointerHandler(event)
   })
 
+  document.querySelector('[data-fow-reset]')?.addEventListener('click', resetFogOfWar)
+
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') {
-      document.querySelector('[data-fow]')?.removeAttribute('data-revealed')
-      resizeCanvas()
-      setLive('Card obscured. Scrub to reveal.')
-    }
+    if (data.type === 'restart') resetFogOfWar()
   })
 }
 

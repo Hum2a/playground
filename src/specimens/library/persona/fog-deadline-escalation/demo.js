@@ -1,7 +1,16 @@
 /**
- * Fog Deadline Escalation — denser fog and warning geometry as deadline closes.
+ * Fog Deadline Escalation — denser fog as deadline closes.
+ * Day→density thresholds frozen in contract.json.
  * iframe-safe; no storage / parent / network.
  */
+
+const THRESHOLDS = {
+  calm: { minDays: 8 },
+  pressure: { minDays: 4, maxDays: 7 },
+  critical: { minDays: 1, maxDays: 3 },
+  expired: { minDays: 0, maxDays: 0 },
+}
+const MAX_DAYS = 14
 
 function rootEl() {
   return document.querySelector('[data-fde]')
@@ -17,9 +26,9 @@ function setLive(text) {
 }
 
 function phaseForDays(days) {
-  if (days <= 0) return 'expired'
-  if (days <= 3) return 'critical'
-  if (days <= 7) return 'pressure'
+  if (days <= THRESHOLDS.expired.maxDays) return 'expired'
+  if (days <= THRESHOLDS.critical.maxDays) return 'critical'
+  if (days <= THRESHOLDS.pressure.maxDays) return 'pressure'
   return 'calm'
 }
 
@@ -35,7 +44,7 @@ function applyDays(days) {
   range.setAttribute('aria-valuenow', String(days))
 
   if (meter) {
-    meter.style.transform = `scaleX(${days / 14})`
+    meter.style.transform = `scaleX(${days / MAX_DAYS})`
   }
 
   if (daysEl) {
@@ -53,6 +62,12 @@ function applyDays(days) {
   }
 }
 
+export function resetFogDeadline() {
+  const range = rangeEl()
+  if (range) range.value = String(MAX_DAYS)
+  applyDays(MAX_DAYS)
+}
+
 function bindUi() {
   const range = rangeEl()
   if (!range) return
@@ -64,12 +79,9 @@ function bindUi() {
   window.addEventListener('message', (event) => {
     const data = event.data
     if (!data || typeof data !== 'object') return
-    if (data.type === 'restart') {
-      range.value = '14'
-      applyDays(14)
-    }
+    if (data.type === 'restart') resetFogDeadline()
   })
 }
 
 bindUi()
-applyDays(Number(rangeEl()?.value ?? 14))
+applyDays(Number(rangeEl()?.value ?? MAX_DAYS))

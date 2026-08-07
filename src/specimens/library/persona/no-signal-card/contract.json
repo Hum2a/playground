@@ -1,15 +1,22 @@
 {
   "name": "no-signal-card",
-  "ref": "SPX-3045",
-  "catalogueId": "P4-127",
+  "intent": "Broadcast-style NO SIGNAL fallback for unavailable content; snow loops until restored.",
+  "catalogue": { "p4": "P4-127", "ref": "SPX-3045" },
   "colours": {
     "yellow": "#F5C400",
     "ink": "#101010",
     "paper": "#F7F3E8",
-    "gray": "#E8E8E8"
+    "muted": "#E8E8E8"
   },
   "states": ["unavailable", "available"],
-  "reducedMotion": {
-    "triggers": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
-  }
+  "motion": {
+    "mode": "loop-while-unavailable",
+    "note": "Snow/static loops only while data-state=unavailable; one-shot toggle restores available (no snow)."
+  },
+  "timing": {
+    "snowStepMs": 160,
+    "snowTranslatePx": 2
+  },
+  "api": { "toggle": "toggleNoSignal()", "reset": "resetNoSignal()" },
+  "reducedMotion": { "behaviour": "Snow animation stops; unavailable/available states still toggle" }
 }

@@ -1,53 +1,15 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "p4-max-rank-completion",
-  "description": "The final rank transforms the entire progression card into a completed state.",
-  "type": "object",
-  "required": [
-    "name",
-    "intent",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "p4-max-rank-completion"
-    },
-    "intent": {
-      "type": "string",
-      "const": "The final rank transforms the entire progression card into a completed state."
-    },
-    "colours": {
-      "type": "object",
-      "properties": {
-        "yellow": {
-          "const": "#F5C400"
-        },
-        "ink": {
-          "const": "#101010"
-        },
-        "paper": {
-          "const": "#F7F3E8"
-        },
-        "gray": {
-          "const": "#E8E8E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "properties": {
-        "triggers": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    }
-  }
+  "name": "p4-max-rank-completion",
+  "intent": "The final rank transforms the entire progression card into a completed state.",
+  "catalogue": { "p4": "P4-059", "ref": "SPX-2977" },
+  "colours": {
+    "yellow": "#F5C400",
+    "ink": "#101010",
+    "paper": "#F7F3E8",
+    "muted": "#E8E8E8"
+  },
+  "ranks": { "start": 9, "end": "MAX" },
+  "timing": { "transformMs": 700, "holdMs": 0 },
+  "api": { "run": "runMaxRankCompletion()", "reset": "resetMaxRankCompletion()" },
+  "reducedMotion": { "behaviour": "Completed card state shows immediately" }
 }

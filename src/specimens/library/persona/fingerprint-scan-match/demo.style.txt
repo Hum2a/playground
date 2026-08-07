@@ -1,24 +1,212 @@
-/* fingerprint-scan-match */
-.fsm{--p4-yellow:#F5C400;--p4-black:#101010;--p4-cream:#F7F3E8;--p4-gray:#E8E8E8;box-sizing:border-box;position:relative;width:100%;height:100%;min-height:240px;padding:0.65rem;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--p4-cream);background:var(--p4-black);}
-.fsm *,.fsm *::before,.fsm *::after{box-sizing:border-box}
-.fsm__panels{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-top:0.5rem}
-.fsm__print{width:5.5rem;height:7rem;border:2px solid var(--p4-gray);padding:0.35rem;position:relative}
-.fsm__svg{width:100%;height:100%}
-.fsm__ridge{fill:none;stroke:var(--p4-gray);stroke-width:2.5;stroke-linecap:round;transition:stroke 320ms ease,transform 480ms ease}
-.fsm__svg--offset .fsm__ridge{transform:translate(3px,2px)}
-.fsm__panel-label{position:absolute;bottom:0.2rem;left:0.25rem;font-size:0.45rem;font-weight:800;letter-spacing:0.1em;color:var(--p4-gray)}
-.fsm__scan{width:2px;height:7rem;background:var(--p4-yellow);opacity:0;transform:scaleY(0);transform-origin:top}
-.fsm[data-state="scanning"] .fsm__scan{opacity:1;animation:fsm-scan 900ms ease forwards}
-.fsm[data-state="match"] .fsm__ridge,.fsm[data-state="scanning"] .fsm__ridge{stroke:var(--p4-yellow)}
-.fsm[data-state="match"] .fsm__svg--offset .fsm__ridge{transform:translate(0,0)}
-.fsm__result{margin:0.65rem 0 0;text-align:center;font-size:1.1rem;font-weight:900;letter-spacing:0.2em;color:var(--p4-yellow);opacity:0;transform:scale(0.9)}
-.fsm[data-state="match"] .fsm__result{opacity:1;transform:scale(1);transition:opacity 320ms ease,transform 320ms ease}
-@keyframes fsm-scan{0%{transform:scaleY(0)}100%{transform:scaleY(1)}}
+/* SPX-3075 Fingerprint Scan Match — portable contract. */
 
-.specimen__demo { position:absolute;left:0.5rem;bottom:0.4rem;z-index:10;display:flex;gap:0.35rem; }
-.specimen__demo-btn { padding:0.28rem 0.5rem;border:2px solid var(--p4-yellow);background:var(--p4-yellow);color:var(--p4-black);font:800 0.58rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer; }
-.specimen__demo-btn:focus-visible { outline:2px solid var(--p4-cream);outline-offset:2px; }
-.specimen__status { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+.fsm {
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
+  --fsm-scan-ms: 900ms;
+  --fsm-match-ms: 320ms;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.65rem 0.65rem 2.6rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--ink);
+}
 
-@media (prefers-reduced-motion: reduce) { .spec *, .spec * { animation:none!important;transition:none!important; } }
-[data-force-reduced-motion="true"] .spec *, [data-force-reduced-motion="true"] .spec * { animation:none!important;transition:none!important; }
+.fsm *,
+.fsm *::before,
+.fsm *::after {
+  box-sizing: border-box;
+}
+
+.fsm__panels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.65rem;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 2px var(--yellow);
+}
+
+.fsm__print {
+  position: relative;
+  width: 5.5rem;
+  height: 7rem;
+  border: 2px solid var(--ink);
+  padding: 0.35rem;
+  background: #efe8d6;
+}
+
+.fsm__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fsm__ridge {
+  fill: none;
+  stroke: rgb(16 16 16 / 0.45);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition:
+    stroke 320ms ease,
+    transform var(--fsm-scan-ms) ease;
+}
+
+.fsm__svg--offset .fsm__ridge {
+  transform: translate(3px, 2px);
+}
+
+.fsm__panel-label {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0.25rem;
+  font-size: 0.45rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgb(16 16 16 / 0.45);
+}
+
+.fsm__scan {
+  width: 3px;
+  height: 7rem;
+  background: var(--yellow);
+  border: 1px solid var(--ink);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.fsm[data-state='scanning'] .fsm__scan {
+  opacity: 1;
+  animation: fsm-scan var(--fsm-scan-ms) ease forwards;
+}
+
+.fsm[data-state='scanning'] .fsm__ridge,
+.fsm[data-state='match'] .fsm__ridge {
+  stroke: var(--ink);
+}
+
+.fsm[data-state='match'] .fsm__svg--offset .fsm__ridge,
+.fsm[data-state='scanning'] .fsm__svg--offset .fsm__ridge {
+  transform: translate(0, 0);
+}
+
+.fsm__result {
+  margin: 0.35rem auto 0;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 3px solid var(--ink);
+  padding: 0.25rem 0.7rem;
+  width: fit-content;
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+.fsm[data-state='match'] .fsm__result {
+  animation: fsm-match-beat var(--fsm-match-ms) ease-out forwards;
+}
+
+@keyframes fsm-scan {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes fsm-match-beat {
+  0% { opacity: 0; transform: scale(0.7) rotate(-3deg); }
+  60% { opacity: 1; transform: scale(1.08) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.fsm__status {
+  margin: 0;
+  min-height: 1.1em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fsm__demo {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.4rem;
+  z-index: 10;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.fsm__btn {
+  padding: 0.28rem 0.5rem;
+  border: 2px solid var(--yellow);
+  background: var(--yellow);
+  color: var(--ink);
+  font: 800 0.58rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fsm__btn:focus-visible {
+  outline: 2px solid var(--paper);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fsm,
+  .fsm * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fsm[data-state='match'] .fsm__svg--offset .fsm__ridge,
+  .fsm[data-state='scanning'] .fsm__svg--offset .fsm__ridge {
+    transform: translate(0, 0);
+  }
+
+  .fsm[data-state='match'] .fsm__result {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .fsm[data-state='scanning'] .fsm__scan,
+  .fsm[data-state='match'] .fsm__scan {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .fsm,
+[data-force-reduced-motion='true'] .fsm * {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='match'] .fsm__svg--offset .fsm__ridge,
+[data-force-reduced-motion='true'] .fsm[data-state='scanning'] .fsm__svg--offset .fsm__ridge {
+  transform: translate(0, 0);
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='match'] .fsm__result {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-force-reduced-motion='true'] .fsm[data-state='scanning'] .fsm__scan,
+[data-force-reduced-motion='true'] .fsm[data-state='match'] .fsm__scan {
+  opacity: 1;
+  transform: scaleY(1);
+}

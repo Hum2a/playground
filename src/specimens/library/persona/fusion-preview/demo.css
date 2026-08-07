@@ -1,13 +1,264 @@
-/* SPX-2988 Fusion Preview */
-.fpr{--gold:#F5C400;--ink:#101010;--cream:#F7F3E8;--gray:#E8E8E8;position:relative;width:100%;min-height:240px;overflow:hidden;background:var(--ink);font-family:ui-sans-serif,system-ui,sans-serif}
-.fpr__input{position:absolute;top:50%;width:5.5rem;padding:.45rem;border:2px solid var(--gold);background:var(--cream);color:var(--ink);font-size:.62rem;font-weight:800;letter-spacing:.1em;text-align:center;transform:translateY(-50%)}
-.fpr__input--a{left:8%}.fpr__input--b{right:8%}
-.fpr__ghost{position:absolute;left:50%;top:50%;z-index:2;display:grid;gap:.2rem;padding:.55rem .85rem;border:2px dashed var(--gold);background:rgb(16 16 16/.75);text-align:center;transform:translate(-50%,-50%);animation:fpr-pulse 2.4s ease-in-out infinite}
-.fpr__ghost-label{font-size:.52rem;font-weight:800;letter-spacing:.2em;color:var(--gold)}
-.fpr__ghost-name{font-size:.82rem;font-weight:800;letter-spacing:.1em;color:var(--cream)}
-.fpr__beam{position:absolute;top:50%;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;animation:fpr-beam 2.4s ease-in-out infinite}
-.fpr__beam--a{left:22%;width:28%;transform-origin:left center}.fpr__beam--b{right:22%;width:28%;transform-origin:right center;animation-delay:.3s}
-@keyframes fpr-pulse{0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(.94)}50%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
-@keyframes fpr-beam{0%,20%{opacity:0;transform:scaleX(0)}45%,70%{opacity:1;transform:scaleX(1)}100%{opacity:.2;transform:scaleX(1)}}
-@media (prefers-reduced-motion: reduce) { .fpr__ghost{animation:none;opacity:1;transform:translate(-50%,-50%) scale(1)}.fpr__beam{animation:none;opacity:.65;transform:scaleX(1)} }
-[data-force-reduced-motion="true"] .fpr__ghost{animation:none;opacity:1;transform:translate(-50%,-50%) scale(1)}[data-force-reduced-motion="true"] .fpr__beam{animation:none;opacity:.65;transform:scaleX(1)}
+/* SPX-2988 Fusion Preview — portable contract. */
+
+.fpr {
+  --gold: #F5C400;
+  --ink: #101010;
+  --cream: #F7F3E8;
+  --gray: #E8E8E8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 280px;
+  padding: 0.75rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.fpr *,
+.fpr *::before,
+.fpr *::after {
+  box-sizing: border-box;
+}
+
+.fpr__live {
+  margin: 0;
+  width: 100%;
+  max-width: 340px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(247 243 232 / 0.7);
+  text-align: center;
+}
+
+.fpr__stage {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 340px);
+  min-height: 200px;
+  border: 3px solid var(--gold);
+  background: var(--cream);
+}
+
+.fpr__input {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  gap: 0.15rem;
+  width: 5.5rem;
+  padding: 0.45rem;
+  border: 2px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.fpr__input--a { left: 8%; }
+.fpr__input--b { right: 8%; }
+
+.fpr__input[aria-pressed='true'] {
+  border-color: var(--gold);
+  background: var(--ink);
+  color: var(--gold);
+}
+
+.fpr__input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.fpr__input:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.fpr__id {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.fpr__name {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.fpr__ghost {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.55rem 0.85rem;
+  border: 2px dashed var(--gold);
+  background: rgb(16 16 16 / 0.88);
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.fpr[data-phase='beam'] .fpr__ghost,
+.fpr[data-phase='done'] .fpr__ghost {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.fpr[data-phase='beam'] .fpr__ghost {
+  animation: fpr-settle 420ms ease-out forwards;
+}
+
+.fpr__ghost-label {
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.fpr__ghost-name {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+}
+
+.fpr__beam {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.fpr__beam--a {
+  left: 22%;
+  width: 28%;
+}
+
+.fpr__beam--b {
+  right: 22%;
+  width: 28%;
+  background: linear-gradient(270deg, var(--gold), transparent);
+  transform-origin: right center;
+}
+
+.fpr[data-phase='beam'] .fpr__beam--a {
+  animation: fpr-beam-a 480ms ease-out forwards;
+}
+
+.fpr[data-phase='beam'] .fpr__beam--b {
+  animation: fpr-beam-b 480ms ease-out 120ms forwards;
+}
+
+.fpr[data-phase='done'] .fpr__beam {
+  opacity: 0.55;
+  transform: scaleX(1);
+}
+
+.fpr__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fpr__btn {
+  padding: 0.4rem 0.65rem;
+  border: 2px solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fpr__btn--primary {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.fpr__btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fpr__btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@keyframes fpr-settle {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.88); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes fpr-beam-a {
+  0% { opacity: 0; transform: scaleX(0); }
+  40% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0.55; transform: scaleX(1); }
+}
+
+@keyframes fpr-beam-b {
+  0% { opacity: 0; transform: scaleX(0); }
+  40% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0.55; transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fpr__input,
+  .fpr__ghost,
+  .fpr__beam {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fpr[data-phase='beam'] .fpr__ghost,
+  .fpr[data-phase='done'] .fpr__ghost {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .fpr[data-phase='beam'] .fpr__beam,
+  .fpr[data-phase='done'] .fpr__beam {
+    opacity: 0.55;
+    transform: scaleX(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .fpr__input,
+[data-force-reduced-motion='true'] .fpr__ghost,
+[data-force-reduced-motion='true'] .fpr__beam {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .fpr[data-phase='beam'] .fpr__ghost,
+[data-force-reduced-motion='true'] .fpr[data-phase='done'] .fpr__ghost {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+[data-force-reduced-motion='true'] .fpr[data-phase='beam'] .fpr__beam,
+[data-force-reduced-motion='true'] .fpr[data-phase='done'] .fpr__beam {
+  opacity: 0.55;
+  transform: scaleX(1);
+}

@@ -34,8 +34,8 @@ function setPhase(phase) {
   rootEl()?.setAttribute('data-phase', phase)
 }
 
-function setLive(text) {
-  const el = document.querySelector('[data-cf-live]')
+function setStatus(text) {
+  const el = document.querySelector('[data-cf-status]')
   if (el) el.textContent = text
 }
 
@@ -49,14 +49,14 @@ function showDone() {
   setPhase('done')
   const banner = document.querySelector('[data-cf-banner]')
   if (banner) banner.setAttribute('aria-hidden', 'false')
-  setLive('Contradiction found. Times conflict.')
+  setStatus('Contradiction found. Times conflict.')
 }
 
 function resetVisual() {
   setPhase('idle')
   const banner = document.querySelector('[data-cf-banner]')
   if (banner) banner.setAttribute('aria-hidden', 'true')
-  setLive('Review evidence for conflicts.')
+  setStatus('Review evidence for conflicts.')
 }
 
 export function runContradictionFound() {
@@ -77,12 +77,12 @@ export function runContradictionFound() {
   }
 
   setPhase('collide')
-  setLive('Cards colliding.')
+  setStatus('Cards colliding.')
 
   return new Promise((resolve) => {
     later(COLLIDE_MS, () => {
       setPhase('flash')
-      setLive('Highlighting conflict.')
+      setStatus('Highlighting conflict.')
 
       later(FLASH_MS, () => {
         showDone()

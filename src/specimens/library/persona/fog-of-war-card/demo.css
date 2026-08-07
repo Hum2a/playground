@@ -1,10 +1,10 @@
 /* fog-of-war-card — portable specimen styles. Do not restyle to host tokens. */
 
 .fow {
-  --fow-yellow: #f5c400;
-  --fow-ink: #101010;
-  --fow-paper: #f7f3e8;
-  --fow-gray: #e8e8e8;
+  --yellow: #F5C400;
+  --ink: #101010;
+  --paper: #F7F3E8;
+  --muted: #E8E8E8;
 
   box-sizing: border-box;
   display: flex;
@@ -14,8 +14,8 @@
   min-height: 280px;
   padding: 1rem;
   overflow: hidden;
-  background: var(--fow-ink);
-  color: var(--fow-paper);
+  background: var(--ink);
+  color: var(--paper);
   font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
@@ -38,7 +38,7 @@
   position: relative;
   min-height: 180px;
   overflow: hidden;
-  border: 3px solid var(--fow-gray);
+  border: 3px solid var(--muted);
   cursor: crosshair;
   touch-action: none;
 }
@@ -51,14 +51,14 @@
   justify-content: center;
   gap: 0.4rem;
   padding: 1rem;
-  background: var(--fow-paper);
-  color: var(--fow-ink);
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .fow__tag {
   align-self: flex-start;
   padding: 0.1rem 0.35rem;
-  border: 2px solid var(--fow-ink);
+  border: 2px solid var(--ink);
   font-size: 0.58rem;
   font-weight: 900;
   letter-spacing: 0.16em;
@@ -90,11 +90,33 @@
   margin: 0;
   font-size: 0.62rem;
   letter-spacing: 0.08em;
-  color: var(--fow-gray);
+  color: var(--muted);
+}
+
+.fow__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fow__btn {
+  padding: 0.4rem 0.7rem;
+  border: 2px solid var(--paper);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fow__btn:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
 }
 
 .fow__card:focus-visible {
-  outline: 2px solid var(--fow-yellow);
+  outline: 2px solid var(--yellow);
   outline-offset: 2px;
 }
 

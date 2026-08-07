@@ -5,11 +5,11 @@ export const deadlinePressureMeter: Specimen = {
   ref: 'SPX-3021',
   title: 'Deadline Pressure Meter',
   blurb:
-    'Days remaining compress visually as a deadline approaches — segments squeeze toward a yellow warning zone.',
+    'Days remaining compress through discrete states (14→7→3→1) as the deadline approaches.',
   origin: { project: 'Specimen Archive', surface: 'Persona 4–inspired motion language' },
   facets: {
-    kind: 'loop',
-    tech: 'css-only',
+    kind: 'interaction',
+    tech: 'tiny-js',
     scope: 'inline',
     intensity: 'subtle',
   },
@@ -17,18 +17,17 @@ export const deadlinePressureMeter: Specimen = {
     franchise: 'persona',
     works: ['persona-4'],
   },
-  tags: ["deadline","calendar","pressure","meter"],
+  tags: ['deadline', 'calendar', 'pressure', 'meter'],
   deps: 'none',
   motion: {
-    loops: true,
+    loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote:
-      'Meter holds at minimum-days state under reduced motion.',
+    reducedMotionNote: 'Meter holds at the final 1-day compressed state.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,
-    height: 200,
+    height: 240,
     background: 'dark',
     label: 'Deadline meter',
   },

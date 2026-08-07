@@ -5,11 +5,11 @@ export const fogForecastWarning: Specimen = {
   ref: 'SPX-3023',
   title: 'Fog Forecast Warning',
   blurb:
-    'Upcoming fog/deadline creates a prominent forecast alert with pulsing hazard framing.',
+    'Upcoming fog/deadline escalates through WATCH → ADVISORY → ALERT stages on a forecast card.',
   origin: { project: 'Specimen Archive', surface: 'Persona 4–inspired motion language' },
   facets: {
-    kind: 'overlay',
-    tech: 'css-only',
+    kind: 'interaction',
+    tech: 'tiny-js',
     scope: 'card',
     intensity: 'graphic',
   },
@@ -17,18 +17,17 @@ export const fogForecastWarning: Specimen = {
     franchise: 'persona',
     works: ['persona-4'],
   },
-  tags: ["fog","forecast","warning","deadline"],
+  tags: ['fog', 'forecast', 'warning', 'deadline'],
   deps: 'none',
   motion: {
-    loops: true,
+    loops: false,
     respectsReducedMotion: true,
-    reducedMotionNote:
-      'Static warning card under reduced motion; pulse stops.',
+    reducedMotionNote: 'Final ALERT stage shown immediately under reduced motion.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,
-    height: 260,
+    height: 300,
     background: 'dark',
     label: 'Fog forecast',
   },

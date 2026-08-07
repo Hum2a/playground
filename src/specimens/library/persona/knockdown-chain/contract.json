@@ -1,9 +1,18 @@
 {
   "name": "knockdown-chain",
-  "palette": {
+  "intent": "Finite A→B→C knockdown chain with frozen stagger; pulse travels once.",
+  "catalogue": { "p4": "P4-080", "ref": "SPX-2998" },
+  "targets": ["A", "B", "C"],
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": { "staggerMs": 220, "downMs": 220, "pulseMs": 660 },
+  "api": {
+    "run": "runKnockdownChain()",
+    "reset": "resetKnockdownChain()"
+  },
+  "reducedMotion": { "behaviour": "All three targets show knocked-down state immediately" }
 }

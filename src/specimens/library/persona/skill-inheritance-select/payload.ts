@@ -8,13 +8,14 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host with overflow: hidden.',
-    'Import demo.css verbatim; do not restyle to host tokens.',
-    'Honour both prefers-reduced-motion and data-force-reduced-motion.',
+    'Wire resetSkillInheritanceSelect; click chips to inherit.',
+    'Chip travel frozen at 320ms.',
   ],
   acceptance: [
-    'Effect completes its visual story within the stage',
-    'Reduced motion shows the resolved end state immediately',
-    'No external assets; sandbox-safe; clipped to host',
+    'Selecting a chip travels it into RESULT once',
+    'Reset restores chips and clears slots',
+    'Reduced motion skips travel animation',
+    'Harness restart resets selection',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#101010;">

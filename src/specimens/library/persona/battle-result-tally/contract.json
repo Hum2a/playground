@@ -1,9 +1,22 @@
 {
   "name": "battle-result-tally",
-  "palette": {
+  "intent": "Keyframed XP / SCORE / TOTAL rows count up with frozen tick rate and row delays.",
+  "catalogue": { "p4": "P4-087", "ref": "SPX-3005" },
+  "targets": { "exp": 420, "score": 1250, "total": 1670 },
+  "colours": {
     "gold": "#F5C400",
     "ink": "#101010",
     "cream": "#F7F3E8",
     "gray": "#E8E8E8"
-  }
+  },
+  "timing": {
+    "rowDelayMs": 180,
+    "tickMs": 32,
+    "countMs": { "exp": 500, "score": 600, "total": 400 }
+  },
+  "api": {
+    "run": "runBattleResultTally()",
+    "reset": "resetBattleResultTally()"
+  },
+  "reducedMotion": { "behaviour": "Final values appear immediately with rows visible" }
 }
