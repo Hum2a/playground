@@ -7,12 +7,15 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-      "Build grid tiles in JS; track row/col focus index."
+    'Build 4×3 tiles in JS; track row/col focus index.',
+    'Import demo.css verbatim — no mega-kit shape selectors.',
+    'Preserve RM override on .lgf__tile.',
   ],
   acceptance: [
-      "Arrow controls move focus within a 4×3 grid",
-      "Focused tile scales with blue ring emphasis",
-      "Status reports row and column"
+    'Arrow controls move focus within a 4×3 dense library grid.',
+    'Focused tile scales to 1.06 with a blue ring within 180ms travel.',
+    'Status reports the current row and column.',
+    'Reduced motion snaps focus with no tile transition.',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#0B0F14;padding:12px;">

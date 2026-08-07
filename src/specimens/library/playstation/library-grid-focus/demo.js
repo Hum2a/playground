@@ -15,6 +15,7 @@ function buildGrid() {
     const d = document.createElement('div')
     d.className = 'lgf__tile'
     d.setAttribute('data-lgf-tile', String(i))
+    d.setAttribute('data-idx', String(i + 1).padStart(2, '0'))
     grid.appendChild(d)
   }
 }
@@ -41,7 +42,11 @@ function bind() {
   document.querySelector('[data-lgf-left]')?.addEventListener('click', () => move(0, -1))
   document.querySelector('[data-lgf-right]')?.addEventListener('click', () => move(0, 1))
   addEventListener('message', (e) => {
-    if (e.data?.type === 'restart') { row = 0; col = 0; render() }
+    if (e.data?.type === 'restart') {
+      row = 0
+      col = 0
+      render()
+    }
   })
 }
 

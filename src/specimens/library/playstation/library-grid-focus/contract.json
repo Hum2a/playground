@@ -1,14 +1,93 @@
 {
-  "name": "library-grid-focus",
-  "intent": "Focus moves through a dense game grid with strong controller readability.",
-  "primitives": [
-    "grid",
-    "focus"
-  ],
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/library-grid-focus.schema.json",
+  "title": "LibraryGridFocus",
+  "description": "Dense 4×3 library silhouette with frozen focus travel and controller-readable emphasis.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "library-grid-focus" },
+    "intent": {
+      "type": "string",
+      "const": "Focus moves through a dense game library grid with strong controller readability."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-088" },
+        "ref": { "type": "string", "const": "SPX-3394" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 420 },
+        "heightPx": { "type": "number", "const": 340 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cols", "rows", "gapPx", "focusScale", "aspect"],
+      "properties": {
+        "cols": { "type": "number", "const": 4 },
+        "rows": { "type": "number", "const": 3 },
+        "gapPx": { "type": "number", "const": 8 },
+        "focusScale": { "type": "number", "const": 1.06 },
+        "aspect": { "type": "string", "const": "3 / 4" }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusTravelMs", "easing"],
+      "properties": {
+        "focusTravelMs": { "type": "number", "const": 180 },
+        "easing": { "type": "string", "const": "ease" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable .lgf__tile transitions; focus ring and scale snap."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blue", "ink", "chalk", "sky"],
+      "properties": {
+        "blue": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "chalk": { "type": "string", "const": "#F4F6F8" },
+        "sky": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "grid", "tile", "focus"],
+      "properties": {
+        "root": { "type": "string", "const": "lgf" },
+        "grid": { "type": "string", "const": "lgf__grid" },
+        "tile": { "type": "string", "const": "lgf__tile" },
+        "focus": { "type": "string", "const": "is-focus" }
+      }
+    }
   }
 }
