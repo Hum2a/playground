@@ -7,6 +7,8 @@
   --alarm: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
+  --tpcf-snap-ms: 260ms;
+  --tpcf-link-ms: 200ms;
   /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;

@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runThreePersonCellFormation / resetThreePersonCellFormation / replayThreePersonCellFormation.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Exactly 3 nodes (LEAD/SCOUT/SUPPORT) snap from scattered positions',
-    'Snap completes in 260ms then 3 links draw over 200ms',
-    'Resolved shows FORMED with links fully drawn',
-    'Replay returns nodes to scattered before rerunning',
-    'Reduced motion shows FORMED with links drawn immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}
 </div>
 `.trim(),
