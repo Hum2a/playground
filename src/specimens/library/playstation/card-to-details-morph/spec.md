@@ -22,6 +22,12 @@ continuity, not a separate overlay.
 - Click the surface to toggle `data-phase`.
 - `aria-expanded` tracks details open state.
 
+## Acceptance
+
+- Same surface morphs 100×120 → 280×168 over 260ms.
+- Details body reveals after 80ms delay within the morph.
+- Reduced motion snaps size and body with no transition.
+
 ## Reduced motion
 
 Both triggers disable `.ctdm__surface` and `.ctdm__body` transitions.
