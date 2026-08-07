@@ -3,9 +3,9 @@
  */
 
 const PRIMARY_MS = 660
-const TOTAL_MS = 1310
 
 let busy = false
+/** @type {number | null} */
 let timer = null
 
 function prefersReducedMotion() {
@@ -23,13 +23,29 @@ function setStatus(text) {
   if (el) el.textContent = text
 }
 
+function setMeta(text) {
+  const el = document.querySelector('[data-afb-meta]')
+  if (el) el.textContent = text
+}
+
+function applyLocked() {
+  const el = root()
+  if (!el) return
+  el.classList.add('afb--focused', 'afb--locked')
+  el.setAttribute('data-phase', 'locked')
+  setMeta('LOCK ENGAGED')
+  setStatus('Focus locked — TARGET READY.')
+}
+
 export function resetAngularFocusBrackets() {
   if (timer !== null) window.clearTimeout(timer)
+  timer = null
   busy = false
   const el = root()
   if (!el) return
   el.classList.remove('afb--focused', 'afb--locked')
   el.setAttribute('data-phase', 'idle')
+  setMeta('Awaiting focus lock.')
   setStatus('Brackets retracted.')
 }
 
@@ -39,9 +55,7 @@ export function runAngularFocusBrackets() {
   busy = true
 
   if (prefersReducedMotion()) {
-    el.classList.add('afb--focused', 'afb--locked')
-    el.setAttribute('data-phase', 'locked')
-    setStatus('Focus locked — TARGET READY.')
+    applyLocked()
     busy = false
     return Promise.resolve()
   }
@@ -52,9 +66,7 @@ export function runAngularFocusBrackets() {
 
   return new Promise((resolve) => {
     timer = window.setTimeout(() => {
-      el.classList.add('afb--locked')
-      el.setAttribute('data-phase', 'locked')
-      setStatus('Focus locked — TARGET READY.')
+      applyLocked()
       busy = false
       timer = null
       resolve()

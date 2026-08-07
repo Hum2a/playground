@@ -4,7 +4,7 @@ export const angularFocusBrackets: Specimen = {
   ref: 'SPX-2298',
   title: 'Angular Focus Brackets',
   blurb:
-    'Four angular comic brackets snap from outside corners onto a target card and lock focus with an accent outline.',
+    'Four angular brackets snap onto a TARGET card; lock engages LOCK ENGAGED meta and accent slash.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia-inspired comic/anime action language',

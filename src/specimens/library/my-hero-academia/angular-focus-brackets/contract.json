@@ -1,15 +1,55 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AngularFocusBrackets",
-  "type": "object",
-  "required": ["name"],
-  "properties": {
-    "name": { "type": "string", "const": "angular-focus-brackets" },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 660 }
-      }
-    }
-  }
+  "name": "angular-focus-brackets",
+  "intent": "Four angular comic brackets snap onto a TARGET card; lock engages accent brackets, meta LOCK ENGAGED, and accent slash.",
+  "catalogue": {
+    "mha": "MHA-324",
+    "ref": "SPX-2298"
+  },
+  "copy": {
+    "trigger": "Focus",
+    "kicker": "TARGET",
+    "title": "READY",
+    "metaIdle": "Awaiting focus lock.",
+    "metaLocked": "LOCK ENGAGED",
+    "statusIdle": "Brackets retracted.",
+    "statusFocusing": "Brackets snapping in…",
+    "statusLocked": "Focus locked — TARGET READY."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "primaryMs": 660,
+    "slashMs": 280
+  },
+  "geometry": {
+    "bracketSizePx": 22,
+    "bracketBorderPx": 4,
+    "bracketOffsetPx": 14,
+    "bracketTravelPx": 18,
+    "slashWidthPx": 28,
+    "slashHeightPx": 4,
+    "slashRotateDeg": -32,
+    "stageWidthPx": 340,
+    "stageHeightPx": 200,
+    "targetWidthPercent": 72
+  },
+  "api": {
+    "run": "runAngularFocusBrackets()",
+    "reset": "resetAngularFocusBrackets()"
+  },
+  "reducedMotion": {
+    "behaviour": "Brackets, slash, and LOCK ENGAGED meta appear immediately with accent colour"
+  },
+  "acceptance": [
+    "Idle: brackets retracted off-card; meta reads Awaiting focus lock; polite aria-live on status",
+    "Focus: brackets snap in over 660ms with primary colour",
+    "Lock: brackets turn accent; meta becomes LOCK ENGAGED; accent slash scales in; status announces locked",
+    "Second Focus click resets to idle",
+    "Reduced motion (prefers or data-force) shows locked composition immediately",
+    "No network; effect stays inside stage"
+  ]
 }
