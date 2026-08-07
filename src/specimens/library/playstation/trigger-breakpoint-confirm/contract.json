@@ -9,10 +9,25 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "holdMs": 1100,
+    "tickMs": 50,
+    "notchPct": 68,
+    "resistBandPct": [48, 68]
+  },
+  "api": {
+    "run": "runTriggerBreakpointConfirm()",
+    "reset": "resetTriggerBreakpointConfirm()",
+    "replay": "replayTriggerBreakpointConfirm()"
+  },
+  "acceptance": [
+    "Notch labelled 68% is visible before hold begins",
+    "Hatched resistance band (48–68%) is readable before commit",
+    "Release before full hold cancels; past-notch then full hold confirms",
+    "Status reports CANCELLED vs CONFIRMED in text"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "Full 1100ms hold still required; fill/glow transitions removed"
   }
 }

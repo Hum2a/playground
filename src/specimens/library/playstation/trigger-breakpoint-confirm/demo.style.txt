@@ -1,18 +1,19 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3369 Trigger Breakpoint Confirm — portable contract. */
 
 .tbc {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --notch-pct: 68%;
+  --hold-ms: 1100ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
   width: 100%;
-  min-height: 300px;
+  min-height: 320px;
   padding: 0.85rem 0.7rem;
   background: var(--ps-ink);
   color: var(--ps-chalk);
@@ -50,7 +51,7 @@
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 0.75rem;
+  gap: 0.7rem;
   justify-items: center;
   align-content: center;
   width: 100%;
@@ -116,55 +117,76 @@
   cursor: default;
 }
 
-.tbc__bar {
+.tbc__travel {
   position: relative;
-  width: 300px;
-  height: 44px;
-  margin: 0;
-  padding: 0;
-  border: 1px solid rgb(46 144 255 / 0.4);
-  border-radius: 6px;
-  background: rgb(244 246 248 / 0.04);
-  cursor: pointer;
-  touch-action: none;
+  width: min(100%, 340px);
+  height: 56px;
   overflow: hidden;
+  border: 1.5px solid rgb(46 144 255 / 0.4);
+  border-radius: 4px;
+  background: rgb(11 15 20 / 0.85);
 }
 
-.tbc__bar:focus-visible {
-  outline: 2px solid var(--ps-blue);
-  outline-offset: 3px;
+.tbc__zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.tbc__zone--travel {
+  left: 0;
+  width: 48%;
+  background: rgb(126 182 255 / 0.06);
+}
+
+.tbc__zone--resist {
+  left: 48%;
+  width: 20%;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(46 144 255 / 0.18),
+    rgb(46 144 255 / 0.18) 3px,
+    rgb(46 144 255 / 0.06) 3px,
+    rgb(46 144 255 / 0.06) 7px
+  );
+  border-left: 1px dashed rgb(126 182 255 / 0.35);
+}
+
+.tbc__zone--commit {
+  left: 68%;
+  right: 0;
+  background: rgb(46 144 255 / 0.1);
 }
 
 .tbc__notch {
   position: absolute;
-  left: 68%;
-  top: 4px;
-  bottom: 4px;
-  width: 3px;
-  background: var(--ps-sky);
-  z-index: 2;
-}
-
-.tbc__notch-glow {
-  position: absolute;
-  left: 66%;
+  left: var(--notch-pct);
   top: 0;
   bottom: 0;
-  width: 8%;
-  background: rgb(126 182 255 / 0);
-  transition: background 200ms ease;
-  z-index: 1;
+  width: 0;
+  z-index: 3;
+  pointer-events: none;
 }
 
-.tbc[data-phase='past-notch'] .tbc__notch-glow,
-.tbc[data-phase='confirmed'] .tbc__notch-glow {
-  background: rgb(126 182 255 / 0.25);
-  animation: tbc-glow 400ms ease-out;
+.tbc__notch-mark {
+  position: absolute;
+  left: -1.5px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ps-sky);
+  box-shadow: 0 0 8px rgb(126 182 255 / 0.5);
 }
 
-@keyframes tbc-glow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+.tbc__notch-label {
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--ps-sky);
 }
 
 .tbc__fill {
@@ -173,33 +195,70 @@
   top: 0;
   bottom: 0;
   width: 0%;
-  background: var(--ps-blue);
+  z-index: 2;
+  background: linear-gradient(90deg, rgb(46 144 255 / 0.45), rgb(46 144 255 / 0.85));
   transition: width 50ms linear;
-  opacity: 0.7;
+  pointer-events: none;
+}
+
+.tbc[data-phase='past-notch'] .tbc__zone--commit,
+.tbc[data-phase='confirmed'] .tbc__zone--commit {
+  background: rgb(46 144 255 / 0.28);
+}
+
+.tbc[data-phase='past-notch'] .tbc__notch-mark,
+.tbc[data-phase='confirmed'] .tbc__notch-mark {
+  background: var(--ps-blue);
+  box-shadow: 0 0 14px rgb(46 144 255 / 0.85);
+}
+
+.tbc[data-phase='holding'] .tbc__zone--resist {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgb(46 144 255 / 0.32),
+    rgb(46 144 255 / 0.32) 3px,
+    rgb(46 144 255 / 0.1) 3px,
+    rgb(46 144 255 / 0.1) 7px
+  );
+}
+
+.tbc[data-phase='confirmed'] .tbc__fill {
+  background: var(--ps-blue);
+}
+
+.tbc__grip {
+  appearance: none;
+  margin: 0;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--ps-blue);
+  background: rgb(46 144 255 / 0.12);
+  color: var(--ps-chalk);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.tbc__grip:focus-visible {
+  outline: 2px solid var(--ps-blue);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tbc__ring-track,
-  .tbc__ring-fill,
-  .tbc__pulse,
-  .tbc__wave,
-  .tbc__sync-beam,
-  .tbc__morph,
   .tbc__fill,
-  .tbc__notch-glow {
+  .tbc__zone--resist,
+  .tbc__notch-mark {
     transition: none !important;
     animation: none !important;
   }
 }
 
-html[data-force-reduced-motion='true'] .tbc__ring-track,
-html[data-force-reduced-motion='true'] .tbc__ring-fill,
-html[data-force-reduced-motion='true'] .tbc__pulse,
-html[data-force-reduced-motion='true'] .tbc__wave,
-html[data-force-reduced-motion='true'] .tbc__sync-beam,
-html[data-force-reduced-motion='true'] .tbc__morph,
-html[data-force-reduced-motion='true'] .tbc__fill,
-html[data-force-reduced-motion='true'] .tbc__notch-glow {
+[data-force-reduced-motion='true'] .tbc__fill,
+[data-force-reduced-motion='true'] .tbc__zone--resist,
+[data-force-reduced-motion='true'] .tbc__notch-mark {
   transition: none !important;
   animation: none !important;
 }

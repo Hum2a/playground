@@ -52,20 +52,38 @@ function setButtons(on) {
 
 const HOLD_MS = 1100
 const NOTCH = 68
+const TICK_MS = 50
 let holding = false
+
+/** Map elapsed (0–1) → fill % with slowdown in resistance band (48–68%). */
+function easedPct(raw) {
+  const linear = raw * 100
+  if (linear < 48) return linear
+  if (linear < 68) {
+    const t = (linear - 48) / 20
+    return 48 + t * t * 20
+  }
+  return linear
+}
 
 function setFill(pct) {
   const fill = document.querySelector('[data-tbc-fill]')
   if (fill) fill.style.width = `${pct}%`
   const root = rootEl()
-  if (root && pct >= NOTCH) root.setAttribute('data-phase', 'past-notch')
+  if (!root) return
+  if (pct >= NOTCH && root.getAttribute('data-phase') === 'holding') {
+    root.setAttribute('data-phase', 'past-notch')
+    setStatus('PAST NOTCH')
+    setLive('Past 68% resistance notch.')
+    setHint('Commit zone — keep holding to confirm.')
+  }
 }
 
 function resetVisual() {
   rootEl()?.setAttribute('data-phase', 'idle')
   setFill(0)
   setStatus('IDLE')
-  setHint('Hold past notch to confirm.')
+  setHint('Resistance rises before 68% notch.')
   setLive('Trigger breakpoint idle.')
 }
 
@@ -75,43 +93,60 @@ function confirm() {
   setFill(100)
   setStatus('CONFIRMED')
   setHint('Breakpoint crossed and confirmed.')
-  setLive('Trigger breakpoint confirmed.')
+  setLive('Trigger breakpoint confirmed past 68%.')
 }
 
 function startHold() {
   if (holding || busy) return
+  if (rootEl()?.getAttribute('data-phase') === 'confirmed') return
   holding = true
   rootEl()?.setAttribute('data-phase', 'holding')
   setStatus('HOLDING')
+  setLive('Building toward 68% resistance notch.')
+  setHint('Hatched band = rising resistance.')
   setButtons(false)
   const start = performance.now()
   const tick = () => {
     if (!holding) return
     const elapsed = performance.now() - start
-    const pct = Math.min((elapsed / HOLD_MS) * 100, 100)
-    setFill(Math.round(pct))
+    const raw = Math.min(elapsed / HOLD_MS, 1)
+    const pct = Math.min(Math.round(easedPct(raw)), 100)
+    setFill(pct)
     if (elapsed >= HOLD_MS) {
       confirm()
       busy = false
       setButtons(true)
       return
     }
-    later(50, tick)
+    later(TICK_MS, tick)
   }
   if (prefersReducedMotion()) {
-    later(HOLD_MS, () => { if (holding) confirm(); busy = false; setButtons(true) })
-  } else tick()
+    later(HOLD_MS, () => {
+      if (holding) confirm()
+      busy = false
+      setButtons(true)
+    })
+  } else {
+    tick()
+  }
 }
 
 function cancelHold() {
   if (!holding) return
   holding = false
+  const phase = rootEl()?.getAttribute('data-phase')
   rootEl()?.setAttribute('data-phase', 'cancelled')
   setFill(0)
-  setStatus('CANCELLED')
-  setHint('Released before confirm.')
-  setLive('Cancelled before breakpoint confirm.')
-  later(200, resetVisual)
+  if (phase === 'past-notch') {
+    setStatus('CANCELLED')
+    setHint('Released in commit zone — not confirmed.')
+    setLive('Cancelled after notch; confirm requires full hold.')
+  } else {
+    setStatus('CANCELLED')
+    setHint('Released before 68% notch.')
+    setLive('Cancelled before breakpoint confirm.')
+  }
+  later(280, resetVisual)
   setButtons(true)
 }
 
@@ -142,6 +177,9 @@ document.querySelector('[data-tbc-bar]')?.addEventListener('pointerdown', (e) =>
   if (e.button === 0 && !busy) startHold()
 })
 document.querySelector('[data-tbc-bar]')?.addEventListener('pointerup', () => {
+  if (holding && rootEl()?.getAttribute('data-phase') !== 'confirmed') cancelHold()
+})
+document.querySelector('[data-tbc-bar]')?.addEventListener('pointercancel', () => {
   if (holding && rootEl()?.getAttribute('data-phase') !== 'confirmed') cancelHold()
 })
 
