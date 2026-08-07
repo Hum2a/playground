@@ -9,10 +9,23 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "holdMs": 1000,
+    "fillTickMs": 60,
+    "softZonePct": [0, 34],
+    "firmZonePct": [34, 67],
+    "lockZonePct": [67, 100]
+  },
+  "api": {
+    "run": "runAdaptiveTriggerMeter()",
+    "reset": "resetAdaptiveTriggerMeter()",
+    "replay": "replayAdaptiveTriggerMeter()"
+  },
   "reducedMotion": {
     "triggers": [
       "prefers-reduced-motion",
       "data-force-reduced-motion"
-    ]
+    ],
+    "behaviour": "Full 1000ms hold still required; fill/zone/shell transitions removed"
   }
 }

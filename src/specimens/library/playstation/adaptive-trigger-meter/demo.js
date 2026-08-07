@@ -56,7 +56,7 @@ let activePointerId = null
 
 function setFill(pct) {
   const fill = document.querySelector('[data-atm-fill]')
-  if (fill) fill.style.width = `${pct}%`
+  if (fill) fill.style.height = `${pct}%`
 }
 
 function resetVisual() {

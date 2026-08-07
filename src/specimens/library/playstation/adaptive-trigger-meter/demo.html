@@ -1,16 +1,24 @@
 <div class="atm" data-atm data-phase="idle">
   <p class="atm__live" data-atm-live aria-live="polite">Trigger meter idle.</p>
-  <p class="atm__system">DUALSENSE // ADAPTIVE TRIGGER</p>
+  <p class="atm__system">ADAPTIVE TRIGGER // L2</p>
+
   <div class="atm__stage">
-    <button type="button" class="atm__trigger" data-atm-trigger aria-label="Hold adaptive trigger">
-      <span class="atm__band atm__band--1" aria-hidden="true"></span>
-      <span class="atm__band atm__band--2" aria-hidden="true"></span>
-      <span class="atm__band atm__band--3" aria-hidden="true"></span>
-      <span class="atm__fill" data-atm-fill aria-hidden="true"></span>
-    </button>
+    <div class="atm__silhouette" aria-hidden="true">
+      <div class="atm__pad-body"></div>
+      <button type="button" class="atm__trigger" data-atm-trigger aria-label="Hold adaptive trigger">
+        <span class="atm__trigger-shell">
+          <span class="atm__zone atm__zone--soft" data-atm-zone="soft"></span>
+          <span class="atm__zone atm__zone--firm" data-atm-zone="firm"></span>
+          <span class="atm__zone atm__zone--lock" data-atm-zone="lock"></span>
+          <span class="atm__fill" data-atm-fill></span>
+          <span class="atm__notch"></span>
+        </span>
+      </button>
+    </div>
     <p class="atm__status" data-atm-status>IDLE</p>
     <p class="atm__hint" data-atm-hint>Hold trigger or press Run.</p>
   </div>
+
   <div class="atm__controls">
     <button type="button" class="atm__btn atm__btn--primary" data-atm-run>Run</button>
     <button type="button" class="atm__btn" data-atm-replay>Replay</button>

@@ -1,11 +1,11 @@
-
-/* Portable PlayStation specimen — palette contract. */
+/* SPX-3364 Adaptive Trigger Meter — portable contract. */
 
 .atm {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
+  --hold-ms: 1000ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -116,18 +116,58 @@
   cursor: default;
 }
 
-.atm__trigger {
+/* DualSense-ish silhouette: pad body + hanging L2 trigger. */
+.atm__silhouette {
   position: relative;
-  width: 280px;
-  height: 48px;
+  width: 220px;
+  height: 118px;
+}
+
+.atm__pad-body {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 8px;
+  height: 52px;
+  border: 1.5px solid rgb(126 182 255 / 0.35);
+  border-radius: 18px 18px 10px 10px;
+  background:
+    radial-gradient(circle at 28% 55%, rgb(46 144 255 / 0.2), transparent 42%),
+    radial-gradient(circle at 72% 55%, rgb(46 144 255 / 0.12), transparent 42%),
+    rgb(244 246 248 / 0.04);
+}
+
+.atm__pad-body::before,
+.atm__pad-body::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid rgb(126 182 255 / 0.4);
+  border-radius: 50%;
+}
+
+.atm__pad-body::before {
+  left: 18px;
+}
+
+.atm__pad-body::after {
+  right: 18px;
+}
+
+.atm__trigger {
+  position: absolute;
+  left: 28px;
+  top: 52px;
+  width: 72px;
+  height: 58px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgb(46 144 255 / 0.4);
-  border-radius: 6px;
-  background: rgb(244 246 248 / 0.04);
+  border: 0;
+  background: transparent;
   cursor: pointer;
   touch-action: none;
-  overflow: hidden;
 }
 
 .atm__trigger:focus-visible {
@@ -135,62 +175,117 @@
   outline-offset: 3px;
 }
 
-.atm__band {
+.atm__trigger-shell {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 33.33%;
-  border-right: 1px dashed rgb(126 182 255 / 0.25);
-  opacity: 0.4;
-  transition: opacity 200ms ease, background-color 200ms ease;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border: 1.5px solid rgb(46 144 255 / 0.55);
+  border-radius: 4px 4px 14px 10px;
+  background: rgb(11 15 20 / 0.85);
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 88%);
+  transform-origin: 50% 0;
+  transition: transform 120ms ease, border-color 200ms ease;
 }
 
-.atm__band--1 { left: 0; }
-.atm__band--2 { left: 33.33%; }
-.atm__band--3 { left: 66.66%; border-right: 0; }
+.atm[data-phase='holding'] .atm__trigger-shell {
+  transform: rotate(4deg) translateY(3px);
+  border-color: var(--ps-sky);
+}
+
+.atm[data-phase='engaged'] .atm__trigger-shell {
+  transform: rotate(7deg) translateY(5px);
+  border-color: var(--ps-blue);
+}
+
+.atm__zone {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0.35;
+  transition: opacity 200ms ease, background-color 200ms ease;
+  pointer-events: none;
+}
+
+.atm__zone--soft {
+  top: 0;
+  height: 34%;
+  background: rgb(126 182 255 / 0.12);
+  border-bottom: 1px dashed rgb(126 182 255 / 0.25);
+}
+
+.atm__zone--firm {
+  top: 34%;
+  height: 33%;
+  background: rgb(46 144 255 / 0.1);
+  border-bottom: 1px dashed rgb(126 182 255 / 0.3);
+}
+
+.atm__zone--lock {
+  top: 67%;
+  bottom: 0;
+  background: rgb(46 144 255 / 0.08);
+}
 
 .atm__fill {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
-  bottom: 0;
-  width: 0%;
-  background: linear-gradient(90deg, rgb(46 144 255 / 0.35), rgb(46 144 255 / 0.75));
-  transition: width 60ms linear;
+  height: 0%;
+  background: linear-gradient(180deg, rgb(46 144 255 / 0.25), rgb(46 144 255 / 0.85));
+  transition: height 60ms linear;
+  pointer-events: none;
 }
 
-.atm[data-phase='holding'] .atm__band--3,
-.atm[data-phase='engaged'] .atm__band--3 {
+.atm__notch {
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  width: 18px;
+  height: 3px;
+  margin-left: -9px;
+  border-radius: 1px;
+  background: var(--ps-sky);
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 200ms ease, box-shadow 200ms ease;
+}
+
+.atm[data-phase='holding'] .atm__zone--firm {
+  opacity: 0.85;
+  background: rgb(46 144 255 / 0.22);
+}
+
+.atm[data-phase='holding'] .atm__zone--lock,
+.atm[data-phase='engaged'] .atm__zone--lock {
   opacity: 1;
-  background: rgb(46 144 255 / 0.15);
+  background: rgb(46 144 255 / 0.28);
 }
 
 .atm[data-phase='engaged'] .atm__fill {
   background: var(--ps-blue);
 }
 
+.atm[data-phase='engaged'] .atm__notch {
+  opacity: 1;
+  box-shadow: 0 0 10px rgb(46 144 255 / 0.7);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .atm__ring-track,
-  .atm__ring-fill,
-  .atm__pulse,
-  .atm__wave,
-  .atm__sync-beam,
-  .atm__morph,
   .atm__fill,
-  .atm__notch-glow {
+  .atm__zone,
+  .atm__trigger-shell,
+  .atm__notch {
     transition: none !important;
     animation: none !important;
   }
 }
 
-html[data-force-reduced-motion='true'] .atm__ring-track,
-html[data-force-reduced-motion='true'] .atm__ring-fill,
-html[data-force-reduced-motion='true'] .atm__pulse,
-html[data-force-reduced-motion='true'] .atm__wave,
-html[data-force-reduced-motion='true'] .atm__sync-beam,
-html[data-force-reduced-motion='true'] .atm__morph,
-html[data-force-reduced-motion='true'] .atm__fill,
-html[data-force-reduced-motion='true'] .atm__notch-glow {
+[data-force-reduced-motion='true'] .atm__fill,
+[data-force-reduced-motion='true'] .atm__zone,
+[data-force-reduced-motion='true'] .atm__trigger-shell,
+[data-force-reduced-motion='true'] .atm__notch {
   transition: none !important;
   animation: none !important;
 }

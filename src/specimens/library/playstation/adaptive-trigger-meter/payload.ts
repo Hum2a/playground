@@ -6,17 +6,18 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration:   [
-    "Hold target supports pointer and Space; Run auto-holds.",
-    "Resistance bands brighten as fill approaches 100%.",
-    "Wire runAdaptiveTriggerMeter / resetAdaptiveTriggerMeter / replayAdaptiveTriggerMeter."
+  integration: [
+    'Mount inline; import demo.css verbatim.',
+    'Pointer-hold on the L2 silhouette or Run auto-holds for 1000ms.',
+    'Wire runAdaptiveTriggerMeter / resetAdaptiveTriggerMeter / replayAdaptiveTriggerMeter.',
   ],
-  acceptance:   [
-    "Meter fill slows visually near the top third",
-    "Resistance bands intensify with fill level",
-    "Full hold reaches ENGAGED state",
-    "Early release returns to idle",
-    "Reduced motion keeps threshold but drops resistance animation"
+  acceptance: [
+    'L2 trigger silhouette hangs from a DualSense-shaped pad body',
+    'Fill grows downward through soft → firm → lock zones over 1000ms',
+    'Fill visibly slows past ~66% before ENGAGED',
+    'Firm/lock zones intensify while holding; notch glows when engaged',
+    'Early release before threshold returns fill and status to idle',
+    'Reduced motion keeps the 1000ms threshold but removes fill/zone transitions',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;">
