@@ -17,6 +17,7 @@ export const systemNotificationSlide: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["notification","toast","slide"],
   deps: 'none',

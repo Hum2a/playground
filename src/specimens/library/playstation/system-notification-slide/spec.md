@@ -1,23 +1,27 @@
 # System Notification Slide
 
-A compact notification slides into the top edge, dwells, and times out cleanly — system toast with finite entry and exit.
+A compact top-right system toast slides in from the edge, dwells, then exits. Edge identity only — not a full-stage clone of the home surface.
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3408` / `PS-102` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | Toast slides from -120% Y; dwell 2600ms; exit slide up. |
+| Entry | `320ms` translateY from `-130%` |
+| Dwell | `2600ms` |
+| Exit | `280ms` slide up |
+| Placement | top-right · max `220px` wide · blue leading accent |
 | Trigger | SHOW NOTIFICATION |
+
+## Acceptance
+
+1. Toast enters from above the top-right edge and becomes readable.
+2. After `2600ms` dwell it exits upward and hides.
+3. Home tiles remain visible behind; toast never fills the stage.
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
-
-## Accessibility
-
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
+Toast appears/disappears without slide transitions under both RM hooks; dwell timeout still applies.
 
 ## Porting
 

@@ -3,23 +3,38 @@
   "ref": "SPX-3408",
   "ps": "PS-102",
   "title": "System Notification Slide",
+  "intent": "Compact top-right system toast with finite entry, dwell, and exit.",
   "palette": {
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
+    "sky": "#7EB6FF",
     "panel": "#121820",
     "panel2": "#1a2330",
     "rule": "#243044",
     "pewter": "#8a9bb0"
   },
-  "behaviour": "Toast slides from -120% Y; dwell 2600ms; exit slide up.",
+  "timing": {
+    "entryMs": 320,
+    "dwellMs": 2600,
+    "exitMs": 280
+  },
+  "toast": {
+    "edge": "top-right",
+    "maxWidthPx": 220,
+    "fromTranslateY": "-130%"
+  },
+  "acceptance": [
+    "Toast slides in from top-right over 320ms",
+    "Dwells 2600ms then exits over 280ms",
+    "Toast width stays edge-bound; stage home remains visible"
+  ],
   "trigger": "SHOW NOTIFICATION",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "Toast shows/hides without slide; dwell timeout remains"
   }
 }

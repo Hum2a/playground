@@ -1,38 +1,40 @@
-/* PlayStation specimen — portable iframe-isolated CSS */
+/* SPX-3408 System Notification Slide — portable. Edge toast; not a full-stage twin. */
 
-.ps {
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-blue: #2E90FF;
-  --ps-blue-light: #7EB6FF;
+.sns {
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-blue: #2e90ff;
+  --ps-sky: #7eb6ff;
   --ps-panel: #121820;
   --ps-panel-2: #1a2330;
   --ps-rule: #243044;
   --ps-pewter: #8a9bb0;
+  --entry-ms: 320ms;
+  --exit-ms: 280ms;
 
   box-sizing: border-box;
   width: min(100%, 440px);
   margin: 0 auto;
   padding: 14px;
-  font-family: system-ui, 'Segoe UI', sans-serif;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
   color: var(--ps-chalk);
 }
 
-.ps *,
-.ps *::before,
-.ps *::after {
+.sns *,
+.sns *::before,
+.sns *::after {
   box-sizing: border-box;
 }
 
-.ps__eyebrow {
+.sns__eyebrow {
   margin: 0 0 10px;
-  font: 10px/1.2 ui-monospace, 'Cascadia Code', monospace;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ps-pewter);
 }
 
-.ps__stage {
+.sns__stage {
   position: relative;
   min-height: 200px;
   border: 1px solid var(--ps-rule);
@@ -41,10 +43,91 @@
   overflow: hidden;
 }
 
-.ps__btn {
+.sns__home {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ps-pewter);
+}
+
+.sns__tiles {
+  display: flex;
+  gap: 8px;
+}
+
+.sns__tiles i {
+  width: 44px;
+  height: 58px;
+  border-radius: 3px;
+  border: 1px solid var(--ps-rule);
+  background: linear-gradient(160deg, #1a2330, #121820);
+}
+
+.sns__toast {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: min(72%, 220px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 10px 0;
+  border: 1px solid var(--ps-rule);
+  border-radius: 4px;
+  background: var(--ps-panel-2);
+  box-shadow: 0 10px 28px rgb(0 0 0 / 0.45);
+  transform: translateY(-130%);
+  opacity: 0;
+  transition:
+    transform var(--entry-ms) cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 240ms ease;
+  z-index: 2;
+}
+
+.sns__accent {
+  width: 3px;
+  align-self: stretch;
+  margin-right: 2px;
+  border-radius: 2px 0 0 2px;
+  background: var(--ps-blue);
+  flex-shrink: 0;
+}
+
+.sns__icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ps-blue);
+  flex-shrink: 0;
+}
+
+.sns__text {
+  font: 11px/1.3 system-ui, 'Segoe UI', sans-serif;
+  color: var(--ps-chalk);
+}
+
+.sns__toast.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.sns__toast.is-exit {
+  transform: translateY(-130%);
+  opacity: 0;
+  transition-duration: var(--exit-ms), 200ms;
+}
+
+.sns__btn {
   margin-top: 12px;
   padding: 8px 14px;
-  font: 10px/1 ui-monospace, monospace;
+  font: inherit;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ps-ink);
@@ -54,129 +137,30 @@
   cursor: pointer;
 }
 
-.ps__btn:focus-visible {
+.sns__btn:focus-visible {
   outline: 2px solid var(--ps-blue);
   outline-offset: 2px;
 }
 
-.ps__btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.ps__status {
+.sns__status {
   margin: 10px 0 0;
-  font: 10px/1.4 ui-monospace, monospace;
+  font-size: 10px;
   letter-spacing: 0.06em;
   color: var(--ps-pewter);
 }
 
-.ps__grid {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 12px;
-  transition: opacity 600ms ease, filter 600ms ease;
-}
-
-.ps__card {
-  width: 72px;
-  height: 96px;
-  border: 1px solid var(--ps-rule);
-  border-radius: 3px;
-  background: linear-gradient(155deg, var(--ps-panel-2), var(--ps-rule));
-  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms ease, box-shadow 280ms ease;
-}
-
-.ps__card.is-focus {
-  border-color: var(--ps-blue);
-  box-shadow: 0 0 0 2px rgba(46, 144, 255, 0.35);
-}
-
-.ps__halo {
-  position: absolute;
-  inset: auto;
-  pointer-events: none;
-  border: 2px solid var(--ps-blue);
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 400ms ease, box-shadow 400ms ease;
-  box-shadow: 0 0 18px rgba(46, 144, 255, 0.45);
-}
-
-.ps [hidden] {
+.sns [hidden] {
   display: none !important;
 }
 
-
-.sns__stage { min-height: 200px; }
-.sns__body {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font: 10px/1 ui-monospace, monospace;
-  letter-spacing: 0.14em;
-  color: var(--ps-pewter);
-}
-.ps__notify {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  left: 10px;
-  max-width: 280px;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--ps-rule);
-  border-radius: 4px;
-  background: var(--ps-panel-2);
-  transform: translateY(-120%);
-  opacity: 0;
-  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1), opacity 240ms ease;
-}
-.sns__icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--ps-blue);
-  flex-shrink: 0;
-}
-.sns__text { font-size: 11px; color: var(--ps-chalk); }
-.ps__notify.is-visible { transform: translateY(0); opacity: 1; }
-.ps__notify.is-exit { transform: translateY(-120%); opacity: 0; }
-
-
 @media (prefers-reduced-motion: reduce) {
-  .ps__stage,
-  .ps__card,
-  .ps__flash,
-  .ps__thumb,
-  .ps__notify,
-  .ps__overlay,
-  .ps__game,
-  .ps__grid,
-  .ps__halo,
-  .ps__error,
-  .ps__offline {
+  .sns__toast {
     transition: none !important;
     animation: none !important;
   }
 }
-[data-force-reduced-motion="true"] .ps__stage,
-[data-force-reduced-motion="true"] .ps__card,
-[data-force-reduced-motion="true"] .ps__flash,
-[data-force-reduced-motion="true"] .ps__thumb,
-[data-force-reduced-motion="true"] .ps__notify,
-[data-force-reduced-motion="true"] .ps__overlay,
-[data-force-reduced-motion="true"] .ps__game,
-[data-force-reduced-motion="true"] .ps__grid,
-[data-force-reduced-motion="true"] .ps__halo,
-[data-force-reduced-motion="true"] .ps__error,
-[data-force-reduced-motion="true"] .ps__offline {
+
+[data-force-reduced-motion='true'] .sns__toast {
   transition: none !important;
   animation: none !important;
 }
