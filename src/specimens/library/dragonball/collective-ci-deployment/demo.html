@@ -1,92 +1,102 @@
 <div class="cci" data-collective-ci data-phase="idle" data-ready="0">
   <p class="cci__pipeline">RELEASE // 2.4.0</p>
 
-  <div class="cci__stage" data-cci-stage>
+  <div class="cci__arena" data-cci-stage>
+    <span class="cci__ring cci__ring--outer" aria-hidden="true"></span>
+    <span class="cci__ring cci__ring--inner" aria-hidden="true"></span>
+
     <svg
       class="cci__svg"
-      viewBox="0 0 400 320"
+      viewBox="0 0 400 400"
       width="400"
-      height="320"
+      height="400"
       aria-hidden="true"
       focusable="false"
     >
       <path
         class="cci__link"
         data-cci-link="lint"
-        d="M 60 58 C 110 90, 160 140, 200 160"
+        d="M 120 61 C 150 90, 175 140, 200 200"
         fill="none"
       />
       <path
         class="cci__link"
         data-cci-link="unit"
-        d="M 60 160 C 110 160, 150 160, 200 160"
+        d="M 40 200 C 90 200, 140 200, 200 200"
         fill="none"
       />
       <path
         class="cci__link"
         data-cci-link="build"
-        d="M 60 262 C 110 230, 160 180, 200 160"
+        d="M 120 339 C 150 290, 175 240, 200 200"
         fill="none"
       />
       <path
         class="cci__link"
         data-cci-link="e2e"
-        d="M 340 58 C 290 90, 240 140, 200 160"
+        d="M 280 61 C 250 90, 225 140, 200 200"
         fill="none"
       />
       <path
         class="cci__link"
         data-cci-link="security"
-        d="M 340 160 C 290 160, 250 160, 200 160"
+        d="M 360 200 C 310 200, 260 200, 200 200"
         fill="none"
       />
       <path
         class="cci__link"
         data-cci-link="package"
-        d="M 340 262 C 290 230, 240 180, 200 160"
+        d="M 280 339 C 250 290, 225 240, 200 200"
         fill="none"
       />
     </svg>
 
-    <article class="cci__job cci__job--lint" data-cci-job="lint" data-status="idle">
-      <h3 class="cci__job-name">LINT</h3>
-      <p class="cci__job-status" data-cci-job-status>IDLE</p>
+    <article class="cci__node cci__node--lint" data-cci-job="lint" data-status="idle">
+      <span class="cci__node-orbit" aria-hidden="true"></span>
+      <h3 class="cci__node-name">LINT</h3>
+      <p class="cci__node-status" data-cci-job-status>IDLE</p>
       <span class="cci__pulse" aria-hidden="true"></span>
     </article>
 
-    <article class="cci__job cci__job--unit" data-cci-job="unit" data-status="idle">
-      <h3 class="cci__job-name">UNIT</h3>
-      <p class="cci__job-status" data-cci-job-status>IDLE</p>
+    <article class="cci__node cci__node--unit" data-cci-job="unit" data-status="idle">
+      <span class="cci__node-orbit" aria-hidden="true"></span>
+      <h3 class="cci__node-name">UNIT</h3>
+      <p class="cci__node-status" data-cci-job-status>IDLE</p>
       <span class="cci__pulse" aria-hidden="true"></span>
     </article>
 
-    <article class="cci__job cci__job--build" data-cci-job="build" data-status="idle">
-      <h3 class="cci__job-name">BUILD</h3>
-      <p class="cci__job-status" data-cci-job-status>IDLE</p>
+    <article class="cci__node cci__node--build" data-cci-job="build" data-status="idle">
+      <span class="cci__node-orbit" aria-hidden="true"></span>
+      <h3 class="cci__node-name">BUILD</h3>
+      <p class="cci__node-status" data-cci-job-status>IDLE</p>
       <span class="cci__pulse" aria-hidden="true"></span>
     </article>
 
-    <article class="cci__job cci__job--e2e" data-cci-job="e2e" data-status="idle">
-      <h3 class="cci__job-name">E2E</h3>
-      <p class="cci__job-status" data-cci-job-status>IDLE</p>
+    <article class="cci__node cci__node--e2e" data-cci-job="e2e" data-status="idle">
+      <span class="cci__node-orbit" aria-hidden="true"></span>
+      <h3 class="cci__node-name">E2E</h3>
+      <p class="cci__node-status" data-cci-job-status>IDLE</p>
       <span class="cci__pulse" aria-hidden="true"></span>
     </article>
 
-    <article class="cci__job cci__job--security" data-cci-job="security" data-status="idle">
-      <h3 class="cci__job-name">SECURITY</h3>
-      <p class="cci__job-status" data-cci-job-status>IDLE</p>
+    <article class="cci__node cci__node--security" data-cci-job="security" data-status="idle">
+      <span class="cci__node-orbit" aria-hidden="true"></span>
+      <h3 class="cci__node-name">SECURITY</h3>
+      <p class="cci__node-status" data-cci-job-status>IDLE</p>
       <span class="cci__pulse" aria-hidden="true"></span>
     </article>
 
-    <article class="cci__job cci__job--package" data-cci-job="package" data-status="idle">
-      <h3 class="cci__job-name">PACKAGE</h3>
-      <p class="cci__job-status" data-cci-job-status>IDLE</p>
+    <article class="cci__node cci__node--package" data-cci-job="package" data-status="idle">
+      <span class="cci__node-orbit" aria-hidden="true"></span>
+      <h3 class="cci__node-name">PACKAGE</h3>
+      <p class="cci__node-status" data-cci-job-status>IDLE</p>
       <span class="cci__pulse" aria-hidden="true"></span>
     </article>
 
-    <div class="cci__release" data-cci-release aria-hidden="true">
+    <div class="cci__mass" data-cci-release aria-hidden="true">
+      <span class="cci__mass-halo"></span>
       <span class="cci__artifact" data-cci-artifact></span>
-      <p class="cci__release-label">RELEASE</p>
+      <p class="cci__mass-label">RELEASE</p>
     </div>
 
     <div class="cci__tokens" data-cci-tokens aria-hidden="true"></div>
@@ -94,7 +104,7 @@
 
   <div class="cci__meta">
     <p class="cci__readiness">
-      <span class="cci__meta-key">READY</span>
+      <span class="cci__meta-key">CHARGE</span>
       <span class="cci__meta-val" data-cci-count>0 / 6</span>
     </p>
     <p class="cci__deploy-state">

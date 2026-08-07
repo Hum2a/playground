@@ -1,29 +1,31 @@
 # Collective CI Deployment (portable recreation spec)
 
-Distributed CI completion: six independent jobs finish on a frozen schedule.
-Each emits one diamond result token into a central RELEASE artifact that grows
-only on token arrival. DEPLOY unlocks at 6/6 — readiness, not auto-deploy.
-No images, audio, network, or storage.
+Distributed CI completion as a radial charge: six job nodes orbit a central
+deployment mass. Each PASSED job emits one charge orb along a frozen curved
+path; the RELEASE sphere grows only on arrival. DEPLOY unlocks at 6/6 —
+readiness, not auto-deploy.
 
 ## Visual intent
 
-Parallel RUNNING jobs → staggered PASSED → token travel → aggregation →
-6/6 READY. PACKAGE contributes last. Final state is fully static.
+Circular arena with dashed inner ring and outer orbit. Job nodes are round
+capsules on the perimeter — not rectangular checklist cards. A luminous
+central sphere accumulates charge; paths light green on connection. Final
+state is fully static gold mass at 6/6.
 
 ## DOM structure
 
 ```html
 <div class="cci" data-collective-ci data-phase="idle" data-ready="0">
   <p>RELEASE // 2.4.0</p>
-  <div class="cci__stage">
-    <svg><!-- 6 frozen link paths --></svg>
-    <!-- 6 jobs: LINT UNIT BUILD E2E SECURITY PACKAGE -->
-    <div class="cci__release">RELEASE artifact</div>
+  <div class="cci__arena">
+    <span class="cci__ring">…</span>
+    <svg><!-- 6 radial link paths --></svg>
+    <!-- 6 cci__node orbit capsules -->
+    <div class="cci__mass"><span data-cci-artifact></span></div>
     <div class="cci__tokens"></div>
   </div>
-  <p>READY 0 / 6 · DEPLOYMENT LOCKED</p>
+  <p>CHARGE 0 / 6 · DEPLOYMENT LOCKED</p>
   <button data-cci-run>RUN PIPELINE</button>
-  <button data-cci-deploy disabled>DEPLOY</button>
 </div>
 ```
 
@@ -37,6 +39,7 @@ Parallel RUNNING jobs → staggered PASSED → token travel → aggregation →
 | Passed | `PASSED` |
 | Deploy locked | `LOCKED` |
 | Deploy ready | `READY` |
+| Charge counter | `CHARGE 0 / 6` → `6 / 6` |
 | Trigger | `RUN PIPELINE` |
 | Action | `DEPLOY` (disabled until 6/6) |
 
@@ -44,13 +47,13 @@ Parallel RUNNING jobs → staggered PASSED → token travel → aggregation →
 
 | Token | Hex |
 | ----- | --- |
-| Ink | `#0c1218` |
+| Void | `#080c14` |
 | Cream | `#e8eef4` |
-| Muted | `#7a8b9c` |
-| Blue | `#3d8fd1` |
-| Cyan | `#6ec8f0` |
+| Muted | `#6a7d94` |
+| Charge | `#5ec8f0` |
+| Core | `#3d8fd1` |
 | Pass | `#4a9e6e` |
-| Ready | `#c4a035` |
+| Ready | `#e8c040` |
 
 ## Job schedule (from RUN, frozen)
 
@@ -63,45 +66,36 @@ Parallel RUNNING jobs → staggered PASSED → token travel → aggregation →
 | SECURITY | 1510ms |
 | PACKAGE | 1780ms |
 
-No random durations. RUNNING may show a restrained pulse; it stops on PASSED.
-Reduced motion removes the pulse entirely.
-
 ## Completion → aggregation
 
 1. Job status: `RUNNING → PASSED`
-2. Exactly one diamond token emerges
-3. Token travels ~240ms along its frozen path
-4. Only on arrival: artifact grows and readiness increments
+2. Exactly one charge orb emerges
+3. Orb travels 240ms along its frozen radial path
+4. Only on arrival: deployment mass grows and CHARGE increments
 
-## Artifact sizes (px)
+## Deployment mass sizes (px)
 
 `34 → 42 → 50 → 58 → 66 → 74 → 86`
 
-Initial 34; six arrivals reach 86. Growth happens only on token arrival —
-PASSED alone does not grow the artifact.
+Initial 34; six arrivals reach 86. Growth happens only on orb arrival.
 
-## Readiness & deploy
-
-- Counter: `0 / 6` → `6 / 6`
-- After PACKAGE token arrives: six connection lines lit, `LOCKED → READY`
-- DEPLOY enables only at 6/6; clicking does not execute deploy
-
-## Frozen paths (viewBox 400×320)
+## Frozen paths (viewBox 400×400, centre 200,200)
 
 | Job | `d` |
 | --- | --- |
-| lint | `M 60 58 C 110 90, 160 140, 200 160` |
-| unit | `M 60 160 C 110 160, 150 160, 200 160` |
-| build | `M 60 262 C 110 230, 160 180, 200 160` |
-| e2e | `M 340 58 C 290 90, 240 140, 200 160` |
-| security | `M 340 160 C 290 160, 250 160, 200 160` |
-| package | `M 340 262 C 290 230, 240 180, 200 160` |
+| lint | `M 120 61 C 150 90, 175 140, 200 200` |
+| unit | `M 40 200 C 90 200, 140 200, 200 200` |
+| build | `M 120 339 C 150 290, 175 240, 200 200` |
+| e2e | `M 280 61 C 250 90, 225 140, 200 200` |
+| security | `M 360 200 C 310 200, 260 200, 200 200` |
+| package | `M 280 339 C 250 290, 225 240, 200 200` |
 
 ## API
 
 - `runCollectiveCi()`
 - `resetCollectiveCi()`
 - `replayCollectiveCi()`
+- `COLLECTIVE_CI_TIMING` export
 
 ## Reduced motion
 
@@ -109,5 +103,5 @@ Immediately show all jobs PASSED, `6 / 6`, deployment READY, six links, DEPLOY e
 
 ## Accessibility
 
-Every job state is normal text. Readiness and deployment state are readable.
-Polite status announces idle / running / ready — not each intermediate token.
+Every job state is normal text. CHARGE and deployment state are readable.
+Polite status announces idle / running / ready.

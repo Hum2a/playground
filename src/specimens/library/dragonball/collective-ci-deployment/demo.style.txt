@@ -1,14 +1,15 @@
-/* collective-ci-deployment — portable specimen styles. Do not restyle to host tokens. */
+/* collective-ci-deployment — radial charge into deployment mass */
 
 .cci {
-  --cci-ink: #0c1218;
+  --cci-void: #080c14;
+  --cci-plate: #101828;
   --cci-cream: #e8eef4;
-  --cci-muted: #7a8b9c;
-  --cci-line: #243040;
-  --cci-blue: #3d8fd1;
-  --cci-cyan: #6ec8f0;
+  --cci-muted: #6a7d94;
+  --cci-line: #243048;
+  --cci-charge: #5ec8f0;
+  --cci-core: #3d8fd1;
   --cci-pass: #4a9e6e;
-  --cci-ready: #c4a035;
+  --cci-ready: #e8c040;
   --cci-artifact: 34px;
   --cci-travel: 240ms;
   box-sizing: border-box;
@@ -16,11 +17,11 @@
   width: 100%;
   max-width: 440px;
   margin: 0 auto;
-  min-height: 420px;
+  min-height: 460px;
   padding: 0.75rem 0.75rem 2.4rem;
-  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, monospace;
+  font-family: 'Archivo', 'Segoe UI', system-ui, sans-serif;
   color: var(--cci-cream);
-  background: var(--cci-ink);
+  background: radial-gradient(ellipse 90% 55% at 50% 20%, #142038 0%, var(--cci-void) 70%);
 }
 
 .cci *,
@@ -32,23 +33,42 @@
 .cci__pipeline {
   margin: 0 0 0.65rem;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  color: var(--cci-cyan);
+  letter-spacing: 0.18em;
+  color: var(--cci-charge);
 }
 
-.cci__stage {
+.cci__arena {
   position: relative;
   width: 400px;
   max-width: 100%;
-  aspect-ratio: 400 / 320;
+  aspect-ratio: 1;
   margin: 0 auto;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse 55% 50% at 50% 50%, color-mix(in srgb, var(--cci-blue) 14%, transparent), transparent 70%),
-    #101820;
-  border: 1px solid var(--cci-line);
+}
+
+.cci__ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--cci-line) 80%, transparent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cci__ring--outer {
+  width: 88%;
+  height: 88%;
+  opacity: 0.55;
+}
+
+.cci__ring--inner {
+  width: 42%;
+  height: 42%;
+  border-style: dashed;
+  opacity: 0.35;
 }
 
 .cci__svg {
@@ -57,122 +77,146 @@
   width: 100%;
   height: 100%;
   display: block;
+  z-index: 1;
 }
 
 .cci__link {
   stroke: var(--cci-line);
-  stroke-width: 1.25;
+  stroke-width: 1.5;
   stroke-linecap: round;
-  opacity: 0.35;
-  transition: stroke 120ms ease, opacity 120ms ease;
+  opacity: 0.3;
+  transition: stroke 140ms ease, opacity 140ms ease, stroke-width 140ms ease;
 }
 
 .cci__link.is-connected {
   stroke: var(--cci-pass);
-  opacity: 0.85;
-  stroke-width: 1.75;
+  opacity: 0.9;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--cci-pass) 50%, transparent));
 }
 
-/* Jobs — two columns around centre */
-
-.cci__job {
+.cci__node {
   position: absolute;
   z-index: 3;
-  width: 92px;
-  padding: 0.35rem 0.4rem 0.4rem;
-  border: 1px solid var(--cci-line);
-  background: color-mix(in srgb, var(--cci-ink) 88%, transparent);
+  width: 72px;
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
-.cci__job-name {
+.cci__node-orbit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--cci-cream) 25%, transparent);
+  background: color-mix(in srgb, var(--cci-plate) 85%, transparent);
+}
+
+.cci__node-name {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--cci-cream);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
 }
 
-.cci__job-status {
+.cci__node-status {
+  position: relative;
+  z-index: 1;
   margin: 0.15rem 0 0;
-  font-size: 0.58rem;
-  letter-spacing: 0.1em;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--cci-muted);
+  line-height: 1;
 }
 
 .cci__pulse {
   display: none;
   position: absolute;
-  right: 6px;
-  top: 8px;
-  width: 6px;
-  height: 6px;
+  inset: -4px;
   border-radius: 50%;
-  background: var(--cci-cyan);
+  border: 2px solid var(--cci-charge);
+  opacity: 0.6;
 }
 
-.cci__job[data-status='running'] .cci__job-status {
-  color: var(--cci-cyan);
+.cci__node[data-status='running'] .cci__node-orbit {
+  border-color: var(--cci-charge);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--cci-charge) 45%, transparent);
 }
 
-.cci__job[data-status='running'] .cci__pulse {
+.cci__node[data-status='running'] .cci__node-status {
+  color: var(--cci-charge);
+}
+
+.cci__node[data-status='running'] .cci__pulse {
   display: block;
   animation: cci-pulse 900ms ease-in-out infinite;
 }
 
-.cci__job[data-status='passed'] {
-  border-color: color-mix(in srgb, var(--cci-pass) 65%, var(--cci-line));
+.cci__node[data-status='passed'] .cci__node-orbit {
+  border-color: color-mix(in srgb, var(--cci-pass) 70%, var(--cci-line));
+  background: color-mix(in srgb, var(--cci-pass) 12%, var(--cci-plate));
 }
 
-.cci__job[data-status='passed'] .cci__job-status {
+.cci__node[data-status='passed'] .cci__node-status {
   color: var(--cci-pass);
 }
 
-.cci__job[data-status='passed'] .cci__pulse {
+.cci__node[data-status='passed'] .cci__pulse {
   display: none;
   animation: none;
 }
 
-.cci__job--lint {
-  left: 15%;
-  top: 18%;
+.cci__node--lint {
+  left: 30%;
+  top: 15%;
 }
-.cci__job--unit {
-  left: 15%;
+
+.cci__node--unit {
+  left: 10%;
   top: 50%;
 }
-.cci__job--build {
-  left: 15%;
-  top: 82%;
+
+.cci__node--build {
+  left: 30%;
+  top: 85%;
 }
-.cci__job--e2e {
-  left: 85%;
-  top: 18%;
+
+.cci__node--e2e {
+  left: 70%;
+  top: 15%;
 }
-.cci__job--security {
-  left: 85%;
+
+.cci__node--security {
+  left: 90%;
   top: 50%;
 }
-.cci__job--package {
-  left: 85%;
-  top: 82%;
+
+.cci__node--package {
+  left: 70%;
+  top: 85%;
 }
 
 @keyframes cci-pulse {
   0%,
   100% {
-    opacity: 0.35;
-    transform: scale(0.85);
+    opacity: 0.25;
+    transform: scale(0.92);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.15);
+    opacity: 0.85;
+    transform: scale(1.08);
   }
 }
 
-/* Central RELEASE artifact */
-
-.cci__release {
+.cci__mass {
   position: absolute;
   z-index: 4;
   left: 50%;
@@ -181,36 +225,53 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.35rem;
   pointer-events: none;
 }
 
+.cci__mass-halo {
+  position: absolute;
+  width: calc(var(--cci-artifact) + 36px);
+  height: calc(var(--cci-artifact) + 36px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--cci-charge) 35%, transparent) 0%,
+    transparent 72%
+  );
+  opacity: 0.7;
+  transition: width 90ms linear, height 90ms linear;
+}
+
 .cci__artifact {
+  position: relative;
   display: block;
   width: var(--cci-artifact);
   height: var(--cci-artifact);
+  border-radius: 50%;
   background:
-    radial-gradient(circle at 35% 30%, var(--cci-cyan), var(--cci-blue) 55%, #1a4a72 100%);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cci-cyan) 40%, transparent);
-  transition: width 90ms linear, height 90ms linear;
+    radial-gradient(circle at 35% 30%, #b8ecff, var(--cci-charge) 45%, var(--cci-core) 78%, #1a3a5c 100%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--cci-charge) 40%, transparent),
+    0 0 calc(8px + var(--cci-artifact) * 0.15) color-mix(in srgb, var(--cci-charge) 50%, transparent);
+  transition: width 90ms linear, height 90ms linear, box-shadow 90ms linear;
 }
 
 .cci[data-phase='ready'] .cci__artifact {
   background:
-    radial-gradient(circle at 35% 30%, #f0d978, var(--cci-ready) 55%, #8a6a18 100%);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cci-ready) 55%, transparent);
+    radial-gradient(circle at 35% 30%, #fff0b0, var(--cci-ready) 50%, #9a7018 100%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--cci-ready) 55%, transparent),
+    0 0 calc(12px + var(--cci-artifact) * 0.2) color-mix(in srgb, var(--cci-ready) 55%, transparent);
 }
 
-.cci__release-label {
+.cci__mass-label {
   margin: 0;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
   color: var(--cci-cream);
 }
-
-/* Tokens */
 
 .cci__tokens {
   position: absolute;
@@ -223,11 +284,12 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 8px;
-  height: 8px;
-  margin: -4px;
-  background: var(--cci-cyan);
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  width: 10px;
+  height: 10px;
+  margin: -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--cci-charge) 70%, var(--cci-core));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--cci-charge) 80%, transparent);
   offset-path: var(--cci-path);
   offset-distance: 0%;
   offset-rotate: 0deg;
@@ -248,8 +310,6 @@
   }
 }
 
-/* Meta */
-
 .cci__meta {
   display: flex;
   justify-content: space-between;
@@ -267,14 +327,15 @@
 }
 
 .cci__meta-key {
-  font-size: 0.58rem;
+  font-size: 0.56rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--cci-muted);
 }
 
 .cci__meta-val {
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.84rem;
+  font-weight: 800;
   letter-spacing: 0.06em;
   color: var(--cci-cream);
 }
@@ -287,8 +348,6 @@
   color: var(--cci-pass);
 }
 
-/* Controls */
-
 .cci__controls {
   display: flex;
   flex-wrap: wrap;
@@ -298,24 +357,24 @@
 
 .cci__btn {
   appearance: none;
-  border: 2px solid var(--cci-blue);
-  background: color-mix(in srgb, var(--cci-blue) 28%, var(--cci-ink));
+  border: 2px solid var(--cci-core);
+  background: color-mix(in srgb, var(--cci-core) 22%, var(--cci-void));
   color: var(--cci-cream);
   font: inherit;
-  font-size: 0.68rem;
-  font-weight: 700;
+  font-size: 0.66rem;
+  font-weight: 800;
   letter-spacing: 0.1em;
   padding: 0.42rem 0.75rem;
   cursor: pointer;
 }
 
 .cci__btn:hover:not(:disabled) {
-  background: var(--cci-blue);
-  color: var(--cci-ink);
+  background: var(--cci-core);
+  color: var(--cci-void);
 }
 
 .cci__btn:focus-visible {
-  outline: 2px solid var(--cci-cyan);
+  outline: 2px solid var(--cci-charge);
   outline-offset: 2px;
 }
 
@@ -326,12 +385,12 @@
 
 .cci__btn--deploy {
   border-color: var(--cci-ready);
-  background: color-mix(in srgb, var(--cci-ready) 22%, var(--cci-ink));
+  background: color-mix(in srgb, var(--cci-ready) 18%, var(--cci-void));
 }
 
 .cci__btn--deploy:hover:not(:disabled) {
   background: var(--cci-ready);
-  color: var(--cci-ink);
+  color: var(--cci-void);
 }
 
 .cci__btn--ghost {
@@ -347,27 +406,29 @@
 
 .cci__status {
   margin: 0.55rem 0 0;
-  font-size: 0.65rem;
+  font-size: 0.64rem;
   letter-spacing: 0.03em;
   color: var(--cci-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cci__job[data-status='running'] .cci__pulse,
+  .cci__node[data-status='running'] .cci__pulse,
   .cci__token.is-travelling {
     animation: none !important;
   }
 
-  .cci__artifact {
+  .cci__artifact,
+  .cci__mass-halo {
     transition: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .cci__job[data-status='running'] .cci__pulse,
+[data-force-reduced-motion='true'] .cci__node[data-status='running'] .cci__pulse,
 [data-force-reduced-motion='true'] .cci__token.is-travelling {
   animation: none !important;
 }
 
-[data-force-reduced-motion='true'] .cci__artifact {
+[data-force-reduced-motion='true'] .cci__artifact,
+[data-force-reduced-motion='true'] .cci__mass-halo {
   transition: none !important;
 }

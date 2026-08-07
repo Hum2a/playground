@@ -4,8 +4,8 @@
  *
  * Deterministic job completion (ms from RUN):
  *   LINT 420 · UNIT 680 · BUILD 920 · E2E 1240 · SECURITY 1510 · PACKAGE 1780
- * Each PASSED job emits one diamond token (240ms travel). Artifact grows only
- * on token arrival: 34 → 42 → 50 → 58 → 66 → 74 → 86. DEPLOY enables at 6/6.
+ * Each PASSED job emits one charge orb (240ms travel). Deployment mass grows only
+ * on orb arrival: 34 → 42 → 50 → 58 → 66 → 74 → 86. DEPLOY enables at 6/6.
  */
 
 const TRAVEL_MS = 240
@@ -17,37 +17,37 @@ const JOBS = [
     id: 'lint',
     label: 'LINT',
     completeAt: 420,
-    path: 'M 60 58 C 110 90, 160 140, 200 160',
+    path: 'M 120 61 C 150 90, 175 140, 200 200',
   },
   {
     id: 'unit',
     label: 'UNIT',
     completeAt: 680,
-    path: 'M 60 160 C 110 160, 150 160, 200 160',
+    path: 'M 40 200 C 90 200, 140 200, 200 200',
   },
   {
     id: 'build',
     label: 'BUILD',
     completeAt: 920,
-    path: 'M 60 262 C 110 230, 160 180, 200 160',
+    path: 'M 120 339 C 150 290, 175 240, 200 200',
   },
   {
     id: 'e2e',
     label: 'E2E',
     completeAt: 1240,
-    path: 'M 340 58 C 290 90, 240 140, 200 160',
+    path: 'M 280 61 C 250 90, 225 140, 200 200',
   },
   {
     id: 'security',
     label: 'SECURITY',
     completeAt: 1510,
-    path: 'M 340 160 C 290 160, 250 160, 200 160',
+    path: 'M 360 200 C 310 200, 260 200, 200 200',
   },
   {
     id: 'package',
     label: 'PACKAGE',
     completeAt: 1780,
-    path: 'M 340 262 C 290 230, 240 180, 200 160',
+    path: 'M 280 339 C 250 290, 225 240, 200 200',
   },
 ]
 
