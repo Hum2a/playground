@@ -1,16 +1,15 @@
 # Substitution Swap
 
-Primary collapses through a **decoy-only** mid-hold, then the failover target expands into place.
+**Log → decoy-only → true target.** Each swap uses clip/scale + puff, not opacity crossfade.
 
 ## Behaviour
 
-- Primary: Target Node visible.
-- Decoy: only LOG / Proxy Decoy for 180ms (`data-active=decoy`).
-- Active: Failover Target settled; status `ACTIVE`.
-- Reduced motion: ACTIVE immediately.
+- Idle: Log layer active, status `LOG`.
+- Substituting: puff; Log clips away; decoy expands and holds 200ms (decoy-only mid-state).
+- Target: second puff; decoy clips away; true failover expands, status `TARGET`.
+- Reduced motion: true target immediately.
 
 ## Freeze
 
-- toDecoy: 100ms · hold: 180ms · toResolved: 140ms · puff: 120ms
-- Layers scale 0↔1 with ±10° rotate — not opacity fade
+- To decoy: 120ms · decoy hold: 200ms · to target: 140ms · puff: 120ms · settle: 90ms
 - Palette (clone ash): `#12141A` / `#D8D4E0` / `#7A6B9A` / `#6E6A78` / `#F0EEF4`

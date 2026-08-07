@@ -1,11 +1,12 @@
 /**
- * Substitution Swap — primary → decoy-only mid → failover target.
+ * Substitution Swap — Log → decoy-only mid-state → true target, via clip/scale
+ * and puff at each swap (not opacity crossfade).
  * iframe-safe; no storage / parent / network.
  */
 
-const TO_DECOY_MS = 100
-const DECOY_HOLD_MS = 220
-const TO_RESOLVED_MS = 140
+const TO_DECOY_MS = 120
+const DECOY_HOLD_MS = 200
+const TO_TARGET_MS = 140
 const PUFF_MS = 120
 const SETTLE_MS = 90
 
@@ -21,11 +22,11 @@ function prefersReducedMotion() {
 }
 
 function rootEl() {
-  return document.querySelector('[data-ssw]')
+  return document.querySelector('[data-sbs]')
 }
 
 function slotEl() {
-  return document.querySelector('[data-ssw-slot]')
+  return document.querySelector('[data-sbs-slot]')
 }
 
 function clearTimers() {
@@ -40,29 +41,31 @@ function later(ms, fn) {
 }
 
 function setLive(text) {
-  const el = document.querySelector('[data-ssw-live]')
+  const el = document.querySelector('[data-sbs-live]')
   if (el) el.textContent = text
 }
 
 function setStatus(text) {
-  const el = document.querySelector('[data-ssw-status]')
+  const el = document.querySelector('[data-sbs-status]')
   if (el) el.textContent = text
 }
 
 function setHint(text) {
-  const el = document.querySelector('[data-ssw-hint]')
+  const el = document.querySelector('[data-sbs-hint]')
   if (el) el.textContent = text
 }
 
 function setButtons(on) {
-  document.querySelectorAll('[data-ssw-run], [data-ssw-replay]').forEach((btn) => {
+  document.querySelectorAll('[data-sbs-run], [data-sbs-replay]').forEach((btn) => {
     btn.disabled = !on
   })
 }
 
 function setLayerHidden(name, hidden) {
-  const el = document.querySelector(`[data-ssw-layer="${name}"]`)
-  if (el) el.setAttribute('aria-hidden', hidden ? 'true' : 'false')
+  const el = document.querySelector(`[data-sbs-layer="${name}"]`)
+  if (!el) return
+  if (hidden) el.setAttribute('aria-hidden', 'true')
+  else el.removeAttribute('aria-hidden')
 }
 
 function pop(slot) {
@@ -73,31 +76,31 @@ function pop(slot) {
 function showResolved() {
   const slot = slotEl()
   if (!slot) return
-  slot.setAttribute('data-active', 'resolved')
-  setLayerHidden('primary', true)
+  slot.setAttribute('data-active', 'target')
+  setLayerHidden('log', true)
   setLayerHidden('decoy', true)
-  setLayerHidden('resolved', false)
+  setLayerHidden('target', false)
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('ACTIVE')
-  setHint('Substitution resolved.')
-  setLive('Substitution resolved. Failover target active.')
+  setStatus('TARGET')
+  setHint('True failover settled.')
+  setLive('Substitution resolved. True target active.')
 }
 
 function resetVisual() {
   const slot = slotEl()
-  slot?.setAttribute('data-active', 'primary')
+  slot?.setAttribute('data-active', 'log')
   slot?.removeAttribute('data-pop')
-  setLayerHidden('primary', false)
+  setLayerHidden('log', false)
   setLayerHidden('decoy', true)
-  setLayerHidden('resolved', true)
+  setLayerHidden('target', true)
   rootEl()?.setAttribute('data-phase', 'idle')
-  setStatus('PRIMARY')
+  setStatus('LOG')
   setHint('Press Run to trigger the substitution.')
-  setLive('Substitution idle. Primary target active.')
+  setLive('Substitution idle. Log target active.')
 }
 
 /**
- * Auto-run primary → decoy-only → resolved.
+ * Auto-run Log → decoy → true target swap sequence.
  * @returns {Promise<void>}
  */
 export function runSubstitutionSwap() {
@@ -122,20 +125,19 @@ export function runSubstitutionSwap() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('SUBSTITUTING')
-  setLive('Puff: primary → log decoy only.')
+  setLive('Swapping Log for decoy stand-in.')
   pop(slot)
   slot.setAttribute('data-active', 'decoy')
-  setLayerHidden('primary', true)
+  setLayerHidden('log', true)
   setLayerHidden('decoy', false)
-  setLayerHidden('resolved', true)
+  setLayerHidden('target', true)
   setStatus('DECOY')
-  setHint('Mid-state: decoy only.')
 
   return new Promise((resolve) => {
     later(TO_DECOY_MS + DECOY_HOLD_MS, () => {
       pop(slot)
-      setLive('Puff: decoy → failover target.')
-      later(TO_RESOLVED_MS, () => {
+      setLive('Decoy-only mid-state ending; revealing true target.')
+      later(TO_TARGET_MS, () => {
         showResolved()
         later(SETTLE_MS, () => {
           busy = false
@@ -164,10 +166,10 @@ export async function replaySubstitutionSwap() {
 }
 
 function bindUi() {
-  document.querySelector('[data-ssw-run]')?.addEventListener('click', () => {
+  document.querySelector('[data-sbs-run]')?.addEventListener('click', () => {
     void runSubstitutionSwap()
   })
-  document.querySelector('[data-ssw-replay]')?.addEventListener('click', () => {
+  document.querySelector('[data-sbs-replay]')?.addEventListener('click', () => {
     void replaySubstitutionSwap()
   })
   window.addEventListener('message', (event) => {

@@ -1,17 +1,14 @@
 {
   "name": "substitution-swap",
-  "intent": "Primary puffs out to a log decoy-only mid-state, then puffs into the failover target.",
-  "catalogue": { "nr": "NR-042", "ref": "SPX-2385" },
-  "copy": {
-    "system": "FAILOVER // SWAP",
-    "primary": "PRIMARY",
-    "decoy": "DECOY",
-    "active": "ACTIVE"
+  "intent": "Log target swaps to a decoy-only mid-state then settles on the true failover target via clip/scale + puff.",
+  "geometry": {
+    "phases": ["log", "decoy", "target"],
+    "swapLanguage": "clip-scale"
   },
   "timing": {
-    "toDecoyMs": 100,
-    "decoyHoldMs": 220,
-    "toResolvedMs": 140,
+    "toDecoyMs": 120,
+    "decoyHoldMs": 200,
+    "toTargetMs": 140,
     "puffMs": 120,
     "settleMs": 90,
     "totalMs": 550
@@ -22,7 +19,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "clone-ash"
   },
   "api": {
     "run": "runSubstitutionSwap()",
@@ -30,11 +27,11 @@
     "replay": "replaySubstitutionSwap()"
   },
   "reducedMotion": {
-    "behaviour": "Jumps straight to failover ACTIVE with no decoy hold"
+    "behaviour": "True target shown immediately; no decoy mid-state"
   },
   "acceptance": [
-    "Mid-sequence shows decoy-only for decoyHoldMs 220 after toDecoyMs 100",
-    "Swaps use clip-path + puff (not opacity crossfade); timings frozen",
-    "Reduced motion jumps to failover target immediately"
+    "Sequence Log → decoy-only mid-state (hold 200ms) → true target via clip/scale",
+    "Swap timings frozen: toDecoy 120 / hold 200 / toTarget 140 / puff 120",
+    "Reduced motion jumps straight to true target"
   ]
 }
