@@ -45,3 +45,11 @@ A: rectangular + horizontal bars. B: clipped parallelogram + diagonals. C: both 
 
 - `runLinkedFusion()`
 - `resetLinkedFusion()`
+
+## Differentiation vs Synchronous Fusion (`SPX-1021`)
+
+| | Linked (this) | Synchronous |
+| --- | --- | --- |
+| Driver | Midpoint link / diamond tension | Self-sync segments + mirrored motion |
+| Trigger copy | `LINK` / `LINK ACTIVE` | `FUSE` |
+| End chrome | Permanent diamond core in C | Hybrid crown + A/B provenance ticks |
