@@ -6,6 +6,8 @@
 const BAR_COUNT = 5
 const STEP_MS = 170
 const SETTLE_MS = 100
+const ALIGN_THRESHOLD = 0.92
+const SAMPLE_POINTS = [0.12, 0.28, 0.5, 0.72, 0.88]
 const TOTAL_MS = BAR_COUNT * STEP_MS + SETTLE_MS
 
 let busy = false
