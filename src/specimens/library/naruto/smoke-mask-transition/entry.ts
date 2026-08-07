@@ -5,7 +5,7 @@ export const smokeMaskTransition: Specimen = {
   ref: 'SPX-2439',
   title: 'Smoke Mask Transition',
   blurb:
-    'Six smoke circles billow to full cover by 300ms, swap state identity under the mask, then disperse by 700ms — graphic CSS smoke, no photographic assets.',
+    'Six irregular smoke-blot clips billow to full cover by 300ms, swap content identity under cover, then disperse by 700ms — not a round fade.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — smoke-concealment transitions',
@@ -28,9 +28,9 @@ export const smokeMaskTransition: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the state swaps immediately with no puff cover/disperse choreography.',
   },
   acceptance: [
-    '6 circles fully cover by 300ms before A↔B swap',
-    'After 700ms revealed identity differs (A≠B)',
-    'Reduced motion instant swaps without choreography',
+    'Six irregular polygon blot clips cover then disperse',
+    'Content swaps only under cover at 300ms',
+    'Reduced motion swaps immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

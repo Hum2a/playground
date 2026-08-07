@@ -1,22 +1,18 @@
 {
   "name": "smoke-mask-transition",
-  "intent": "Six overlapping circles billow to full cover by coverAtMs 300, swap A↔B under mask, then disperse by totalMs 700.",
-  "catalogue": {
-    "nr": "NR-096",
-    "ref": "SPX-2439"
-  },
+  "intent": "Six irregular smoke-blot clips billow to full cover by coverAtMs 300, swap A↔B under mask, then disperse by totalMs 700.",
+  "catalogue": { "nr": "NR-096", "ref": "SPX-2439" },
   "copy": {
     "system": "COVER // SMOKE MASK",
     "stateA": "STATE 01",
     "stateB": "STATE 02"
   },
   "geometry": {
-    "circleCount": 6,
-    "coverScale": 2.4,
-    "hostPx": [
-      null,
-      190
-    ]
+    "puffCount": 6,
+    "clipLanguage": "irregular polygon blot (not circle scale/fade)",
+    "coverKeyframePct": 34,
+    "disperseKeyframePct": 100,
+    "coverScale": 2.05
   },
   "timing": {
     "totalMs": 700,
@@ -40,16 +36,16 @@
     "--smt-total-ms",
     "--smt-cover-at-ms",
     "--smt-settle-ms",
-    "--smt-circle-count",
-    "--smt-cover-scale"
+    "--smt-puff-count"
   ],
   "reducedMotion": {
-    "behaviour": "Instant A↔B swap; no circle billow/disperse"
+    "behaviour": "Instant A↔B swap; no blot cover/disperse"
   },
   "acceptance": [
-    "Exactly 6 circles cover the host by coverAtMs 300 before content identity swaps",
-    "After totalMs 700 the revealed panel identity differs from pre-cover (A≠B)",
-    "Replay re-runs cover → swap → disperse; settleMs 140 after disperse",
-    "Reduced motion (prefers or data-force) swaps instantly with animations disabled"
+    "Exactly 6 smoke blots use irregular polygon clip-path (not round opacity fades)",
+    "Content identity swaps only at coverAtMs 300 while blots are at coverKeyframePct 34",
+    "Full cycle totalMs 700 then settleMs 140; panels keep distinct titles IN VIEW / CONCEALED",
+    "Keyframe freeze: 0% tight blot → 34% expanded cover → 100% dispersed open clip",
+    "Reduced motion (prefers or data-force) swaps immediately with animations disabled"
   ]
 }

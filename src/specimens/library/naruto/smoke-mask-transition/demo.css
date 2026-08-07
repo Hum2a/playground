@@ -7,8 +7,8 @@
   --olive: #4a6a78;
   --off: #e8f2f8;
   --smt-circle-count: 6;
-  --smt-cover-scale: 2.4;
-  --smt-total-ms: var(--smt-total-ms);
+  --smt-cover-scale: 2.05;
+  --smt-total-ms: 700ms;
   --smt-cover-at-ms: 300ms;
   --smt-settle-ms: 140ms;
   --smt-puff-count: 6;
