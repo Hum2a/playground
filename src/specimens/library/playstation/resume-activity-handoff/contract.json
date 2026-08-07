@@ -1,21 +1,32 @@
 {
   "name": "resume-activity-handoff",
-  "intent": "Activity card morphs into full active state.",
-  "catalogue": {
-    "ps": "PS-027",
-    "ref": "SPX-3333"
-  },
-  "colours": {
+  "ref": "SPX-3333",
+  "ps": "PS-027",
+  "title": "Resume Activity Handoff",
+  "palette": {
     "primary": "#2E90FF",
     "ink": "#0B0F14",
     "paper": "#F4F6F8",
     "soft": "#7EB6FF"
   },
+  "timing": {
+    "handoffMs": 580,
+    "revealMs": 280,
+    "revealDelayMs": 300
+  },
+  "motion": "spatial-box (left/bottom/width/height) — not scale()",
+  "phases": ["card", "handoff", "done"],
   "api": {
     "run": "runResumeActivityHandoff()",
     "reset": "resetResumeActivityHandoff()"
   },
+  "behaviour": "Card 148×72 → full task over 580ms; RESUMED reveals after 300ms.",
+  "trigger": "Resume / Reset",
   "reducedMotion": {
-    "behaviour": "Active state shown immediately"
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Card and task-layer transitions removed (fixes active-surface RM leak)"
   }
 }

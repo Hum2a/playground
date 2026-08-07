@@ -1,16 +1,24 @@
 <div class="rah" data-rah data-phase="card">
-  <p class="rah__live" data-rah-live aria-live="polite">Activity card idle.</p>
+  <p class="rah__live" data-rah-live aria-live="polite">Activity card idle in tray.</p>
+
   <div class="rah__stage" data-rah-stage>
-    <div class="rah__card" data-rah-card data-animate>
+    <div class="rah__tray" aria-hidden="true">
+      <span class="rah__tray-label">ACTIVITY</span>
+    </div>
+
+    <div class="rah__card" data-rah-card aria-hidden="true">
       <span class="rah__card-label">OBJECTIVE A</span>
       <span class="rah__card-pct">62%</span>
+      <span class="rah__card-bar"><i style="width:62%"></i></span>
     </div>
-    <div class="rah__active" data-rah-active>
-      <p class="rah__active-title">OBJECTIVE A</p>
-      <p class="rah__active-status">RESUMED</p>
-      <span class="rah__active-geo" aria-hidden="true"></span>
+
+    <div class="rah__task" data-rah-task aria-hidden="true">
+      <p class="rah__task-title">OBJECTIVE A</p>
+      <p class="rah__task-status">RESUMED</p>
+      <span class="rah__task-mark" aria-hidden="true"></span>
     </div>
   </div>
+
   <div class="rah__controls">
     <button type="button" class="rah__btn rah__btn--primary" data-rah-run>Resume</button>
     <button type="button" class="rah__btn" data-rah-reset>Reset</button>

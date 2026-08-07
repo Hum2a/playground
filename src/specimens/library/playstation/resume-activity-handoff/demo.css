@@ -1,10 +1,13 @@
-/* portable contract — PlayStation palette */
+/* SPX-3333 Resume Activity Handoff — portable. Card→task spatial handoff. */
 
 .rah {
-  --primary: #2E90FF;
-  --ink: #0B0F14;
-  --paper: #F4F6F8;
-  --soft: #7EB6FF;
+  --primary: #2e90ff;
+  --ink: #0b0f14;
+  --paper: #f4f6f8;
+  --soft: #7eb6ff;
+  --handoff-ms: 580ms;
+  --reveal-ms: 280ms;
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -15,34 +18,228 @@
   padding: 0.85rem 0.65rem;
   background: var(--ink);
   color: var(--paper);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.rah__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-.rah__btn {
-  padding: 0.45rem 0.75rem; border: 2px solid var(--soft); background: transparent;
-  color: var(--paper); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em;
-  text-transform: uppercase; cursor: pointer;
-}
-.rah__btn--primary { border-color: var(--primary); background: var(--primary); color: var(--ink); }
-.rah__btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
-.rah__stage { position: relative; width: min(100%, 360px); height: 200px; border-radius: 6px; overflow: hidden; border: 1px solid rgb(126 182 255 / 0.2); }
-.rah__card { position: absolute; left: 1rem; bottom: 1rem; width: 140px; padding: 0.75rem; border: 1px solid var(--primary); border-radius: 6px; background: rgb(46 144 255 / 0.15); transition: transform 560ms cubic-bezier(0.2,1,0.3,1), opacity 320ms ease; }
-.rah__card-label { display: block; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.12em; }
-.rah__card-pct { display: block; margin-top: 0.35rem; font-size: 0.5rem; color: var(--soft); }
-.rah[data-phase='handoff'] .rah__card { transform: scale(2.4) translate(40px, -60px); opacity: 0; }
-.rah__active { position: absolute; inset: 0; display: grid; place-content: center; gap: 0.35rem; opacity: 0; background: linear-gradient(145deg, #15202c, var(--ink)); transition: opacity 420ms ease 200ms; }
-.rah[data-phase='handoff'] .rah__active, .rah[data-phase='done'] .rah__active { opacity: 1; }
-.rah__active-title { margin: 0; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em; color: var(--soft); text-align: center; }
-.rah__active-status { margin: 0; font-size: 1.1rem; font-weight: 900; letter-spacing: 0.1em; text-align: center; }
-.rah__active-geo { width: 48px; height: 48px; margin: 0.5rem auto 0; border: 2px solid var(--primary); border-radius: 50%; opacity: 0.4; }
-.rah__controls { display: flex; gap: 0.5rem; }
+.rah *,
+.rah *::before,
+.rah *::after {
+  box-sizing: border-box;
+}
+
+.rah__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.rah__btn {
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--soft);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.rah__btn--primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--ink);
+}
+
+.rah__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.rah__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rah__stage {
+  position: relative;
+  width: min(100%, 360px);
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgb(126 182 255 / 0.22);
+  background: #0c121a;
+}
+
+.rah__tray {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 78px;
+  border: 1px dashed rgb(126 182 255 / 0.2);
+  border-radius: 6px;
+  pointer-events: none;
+  transition: opacity var(--reveal-ms) ease;
+}
+
+.rah__tray-label {
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  padding: 0 4px;
+  font: 8px/1 ui-monospace, monospace;
+  letter-spacing: 0.14em;
+  color: rgb(138 155 176 / 0.8);
+  background: #0c121a;
+}
+
+.rah[data-phase='handoff'] .rah__tray,
+.rah[data-phase='done'] .rah__tray {
+  opacity: 0;
+}
+
+/* Spatial handoff: card geometry travels to full stage */
+.rah__card {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 148px;
+  height: 72px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  background: rgb(46 144 255 / 0.16);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  transition:
+    left var(--handoff-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    bottom var(--handoff-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    width var(--handoff-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    height var(--handoff-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    border-radius var(--handoff-ms) ease,
+    opacity var(--reveal-ms) ease,
+    padding var(--handoff-ms) ease;
+}
+
+.rah__card-label {
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.rah__card-pct {
+  font-size: 0.5rem;
+  color: var(--soft);
+}
+
+.rah__card-bar {
+  display: block;
+  height: 3px;
+  margin-top: 4px;
+  background: rgb(36 48 68 / 0.9);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rah__card-bar i {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+}
+
+.rah[data-phase='handoff'] .rah__card,
+.rah[data-phase='done'] .rah__card {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  opacity: 0;
+  padding: 1.5rem;
+  pointer-events: none;
+}
+
+.rah__task {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  opacity: 0;
+  background: linear-gradient(145deg, #15202c, var(--ink));
+  transition: opacity var(--reveal-ms) ease;
+}
+
+.rah[data-phase='handoff'] .rah__task,
+.rah[data-phase='done'] .rah__task {
+  opacity: 1;
+}
+
+.rah[data-phase='handoff'] .rah__task {
+  transition-delay: 300ms;
+}
+
+.rah[data-phase='done'] .rah__task {
+  transition-delay: 0ms;
+}
+
+.rah__task-title {
+  margin: 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--soft);
+  text-align: center;
+}
+
+.rah__task-status {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.rah__task-mark {
+  width: 48px;
+  height: 48px;
+  margin: 0.5rem auto 0;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0.45;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .rah [data-animate], .rah__animated { animation: none !important; transition: none !important; }
+  .rah__card,
+  .rah__task,
+  .rah__tray {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .rah[data-phase='handoff'] .rah__task {
+    transition-delay: 0ms !important;
+  }
 }
-[data-force-reduced-motion='true'] .rah [data-animate],
-[data-force-reduced-motion='true'] .rah__animated { animation: none !important; transition: none !important; }
+
+[data-force-reduced-motion='true'] .rah__card,
+[data-force-reduced-motion='true'] .rah__task,
+[data-force-reduced-motion='true'] .rah__tray {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .rah[data-phase='handoff'] .rah__task {
+  transition-delay: 0ms !important;
+}
