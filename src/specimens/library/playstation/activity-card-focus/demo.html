@@ -1,8 +1,38 @@
 <div class="acf" data-acf>
-  <p class="acf__live" data-acf-live aria-live="polite">Objective B focused.</p>
-  <div class="acf__rail">
-    <button type="button" class="acf__card" data-acf-card="0" data-animate><span class="acf__title">OBJECTIVE A</span><span class="acf__meta">12%</span></button>
-    <button type="button" class="acf__card is-focused" data-acf-card="1" data-animate style="--pct:48%"><span class="acf__title">OBJECTIVE B</span><span class="acf__meta">48%</span></button>
-    <button type="button" class="acf__card" data-acf-card="2" data-animate><span class="acf__title">OBJECTIVE C</span><span class="acf__meta">76%</span></button>
+  <p class="acf__live" data-acf-live aria-live="polite">Objective B focused · 48%.</p>
+  <div class="acf__rail" role="group" aria-label="Activity cards">
+    <button type="button" class="acf__card" data-acf-card="0" aria-pressed="false">
+      <span class="acf__title">OBJECTIVE A</span>
+      <span class="acf__meta">
+        <span class="acf__pct" data-acf-pct>12%</span>
+        <span class="acf__bar" style="--pct:12%" aria-hidden="true"></span>
+      </span>
+      <span class="acf__actions" aria-hidden="true">
+        <span class="acf__chip">RESUME</span>
+        <span class="acf__chip">INFO</span>
+      </span>
+    </button>
+    <button type="button" class="acf__card is-focused" data-acf-card="1" aria-pressed="true">
+      <span class="acf__title">OBJECTIVE B</span>
+      <span class="acf__meta">
+        <span class="acf__pct" data-acf-pct>48%</span>
+        <span class="acf__bar" style="--pct:48%" aria-hidden="true"></span>
+      </span>
+      <span class="acf__actions" aria-hidden="true">
+        <span class="acf__chip">RESUME</span>
+        <span class="acf__chip">INFO</span>
+      </span>
+    </button>
+    <button type="button" class="acf__card" data-acf-card="2" aria-pressed="false">
+      <span class="acf__title">OBJECTIVE C</span>
+      <span class="acf__meta">
+        <span class="acf__pct" data-acf-pct>76%</span>
+        <span class="acf__bar" style="--pct:76%" aria-hidden="true"></span>
+      </span>
+      <span class="acf__actions" aria-hidden="true">
+        <span class="acf__chip">RESUME</span>
+        <span class="acf__chip">INFO</span>
+      </span>
+    </button>
   </div>
 </div>

@@ -1,17 +1,98 @@
 {
-  "name": "activity-card-focus",
-  "intent": "Focused activity card scales and reveals progress.",
-  "catalogue": {
-    "ps": "PS-002",
-    "ref": "SPX-3308"
-  },
-  "colours": {
-    "primary": "#2E90FF",
-    "ink": "#0B0F14",
-    "paper": "#F4F6F8",
-    "soft": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "behaviour": "Focus and metadata appear instantly without scale transition"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/activity-card-focus.schema.json",
+  "title": "ActivityCardFocus",
+  "description": "Focused activity card scales, reveals a progress chip/bar, and shows secondary action chips without becoming a full page.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "activity-card-focus" },
+    "intent": {
+      "type": "string",
+      "const": "Focused activity card scales and reveals progress chip, fill bar, and secondary actions."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-002" },
+        "ref": { "type": "string", "const": "SPX-3308" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 420 },
+        "heightPx": { "type": "number", "const": 280 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cardCount", "focusScale", "focusFlex", "progressPercents"],
+      "properties": {
+        "cardCount": { "type": "number", "const": 3 },
+        "focusScale": { "type": "number", "const": 1.06 },
+        "focusFlex": { "type": "number", "const": 1.35 },
+        "progressPercents": {
+          "type": "array",
+          "const": [12, 48, 76]
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusTravelMs", "metaRevealMs", "borderMs", "easing"],
+      "properties": {
+        "focusTravelMs": { "type": "number", "const": 320 },
+        "metaRevealMs": { "type": "number", "const": 240 },
+        "borderMs": { "type": "number", "const": 280 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.2, 1, 0.3, 1)" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable card/meta/actions transitions; focus and chips appear instantly."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "card", "focused", "meta", "actions"],
+      "properties": {
+        "root": { "type": "string", "const": "acf" },
+        "card": { "type": "string", "const": "acf__card" },
+        "focused": { "type": "string", "const": "is-focused" },
+        "meta": { "type": "string", "const": "acf__meta" },
+        "actions": { "type": "string", "const": "acf__actions" }
+      }
+    }
   }
 }
