@@ -70,6 +70,20 @@
 
 .cec.is-charging .cec__path {
   opacity: 0.85;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 3px rgba(61, 184, 255, 0.35));
+  animation: cec-path-glow 520ms ease-in-out infinite alternate;
+}
+
+@keyframes cec-path-glow {
+  from {
+    opacity: 0.65;
+    stroke-width: 2;
+  }
+  to {
+    opacity: 0.95;
+    stroke-width: 3;
+  }
 }
 
 .cec.is-armed .cec__path {
@@ -127,6 +141,53 @@
   transition: width 80ms linear, height 80ms linear;
 }
 
+.cec__nozzle {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 225deg at 42% 50%,
+      transparent 0deg,
+      rgba(126, 224, 255, 0.15) 40deg,
+      rgba(126, 224, 255, 0.35) 80deg,
+      transparent 120deg
+    );
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 120ms ease, transform 120ms ease;
+  pointer-events: none;
+}
+
+.cec.is-charging .cec__nozzle {
+  opacity: 1;
+  transform: scale(1);
+  animation: cec-nozzle-pulse 280ms ease-in-out infinite alternate;
+}
+
+.cec.is-armed .cec__nozzle {
+  opacity: 0.55;
+  background:
+    conic-gradient(
+      from 225deg at 42% 50%,
+      transparent 0deg,
+      rgba(240, 193, 74, 0.2) 50deg,
+      rgba(240, 193, 74, 0.45) 90deg,
+      transparent 130deg
+    );
+}
+
+@keyframes cec-nozzle-pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
 .cec__core {
   position: absolute;
   inset: 0;
@@ -182,16 +243,54 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  border-radius: 50%;
-  background: var(--cec-energy-hot);
-  box-shadow: 0 0 8px rgba(126, 224, 255, 0.85);
+  width: 20px;
+  height: 5px;
+  margin: -2.5px 0 0 -2px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(61, 184, 255, 0.35) 25%,
+    var(--cec-energy-hot) 55%,
+    #fff 100%
+  );
+  box-shadow:
+    -8px 0 10px rgba(61, 184, 255, 0.45),
+    0 0 8px rgba(126, 224, 255, 0.85);
   opacity: 0;
   offset-path: var(--cec-path);
   offset-distance: 0%;
-  offset-rotate: 0deg;
+  offset-rotate: auto;
+}
+
+.cec__packet--build {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(61, 184, 255, 0.35) 25%,
+    var(--cec-energy-hot) 55%,
+    #fff 100%
+  );
+}
+
+.cec__packet--test {
+  box-shadow:
+    -8px 0 10px rgba(61, 184, 255, 0.4),
+    0 0 6px rgba(126, 224, 255, 0.75);
+}
+
+.cec__packet--package,
+.cec__packet--sign {
+  background: linear-gradient(
+    270deg,
+    transparent 0%,
+    rgba(61, 184, 255, 0.35) 25%,
+    var(--cec-energy-hot) 55%,
+    #fff 100%
+  );
+  box-shadow:
+    8px 0 10px rgba(61, 184, 255, 0.45),
+    0 0 8px rgba(126, 224, 255, 0.85);
 }
 
 .cec__packet.is-travelling {
@@ -266,10 +365,16 @@
   from {
     offset-distance: 0%;
     opacity: 1;
+    filter: brightness(1);
+  }
+  85% {
+    opacity: 1;
+    filter: brightness(1.15);
   }
   to {
     offset-distance: 100%;
-    opacity: 1;
+    opacity: 0.35;
+    filter: brightness(0.9);
   }
 }
 
@@ -305,6 +410,8 @@
 @media (prefers-reduced-motion: reduce) {
   .cec__packet,
   .cec__packet.is-travelling,
+  .cec.is-charging .cec__path,
+  .cec.is-charging .cec__nozzle,
   .cec.is-stabilising .cec__node,
   .cec.is-stabilising .cec__ring {
     animation: none !important;
@@ -329,6 +436,8 @@
 
 [data-force-reduced-motion='true'] .cec__packet,
 [data-force-reduced-motion='true'] .cec__packet.is-travelling,
+[data-force-reduced-motion='true'] .cec.is-charging .cec__path,
+[data-force-reduced-motion='true'] .cec.is-charging .cec__nozzle,
 [data-force-reduced-motion='true'] .cec.is-stabilising .cec__node,
 [data-force-reduced-motion='true'] .cec.is-stabilising .cec__ring {
   animation: none !important;

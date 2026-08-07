@@ -134,7 +134,8 @@
         "packetTravelMs",
         "packetSpacingMs",
         "stabiliseMs",
-        "stabiliseScale"
+        "stabiliseScale",
+        "packetGeometry"
       ],
       "properties": {
         "sourceDelaysMs": {
@@ -156,6 +157,17 @@
         "stabiliseScale": {
           "type": "array",
           "const": [1, 1.08, 0.96, 1.03, 1]
+        },
+        "packetGeometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["widthPx", "heightPx", "offsetRotate", "shape"],
+          "properties": {
+            "widthPx": { "type": "integer", "const": 20 },
+            "heightPx": { "type": "integer", "const": 5 },
+            "offsetRotate": { "type": "string", "const": "auto" },
+            "shape": { "type": "string", "const": "elongated-capsule-streak" }
+          }
         },
         "noAutoRelease": { "type": "boolean", "const": true },
         "finalStatic": { "type": "boolean", "const": true }

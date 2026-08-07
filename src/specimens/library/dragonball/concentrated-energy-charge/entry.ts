@@ -4,7 +4,7 @@ export const concentratedEnergyCharge: Specimen = {
   ref: 'SPX-968',
   title: 'Concentrated Energy Charge',
   blurb:
-    'BUILD TEST PACKAGE SIGN send twelve packets along four frozen paths into a central node that grows 26→72px, stabilises, then sits ARMED without releasing.',
+    'Four sources send beam-streak packets along frozen channels into a growing node with nozzle flare; stabilises to static ARMED without releasing.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball–inspired Kamehameha charge / convergence (abstract)',

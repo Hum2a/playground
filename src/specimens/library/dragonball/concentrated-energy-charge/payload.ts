@@ -16,7 +16,8 @@ const payload: SpecimenPayload = {
     'Announce that the deploy action is prepared but not executed; honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Exactly four named sources and four paths; three packets each (12 total)',
+    'Packets are elongated beam streaks (20×5px) with path-aligned rotation, not circular dots.',
+    'Path channels pulse during charge; conic nozzle flare opens at execution node.',
     'Deterministic stagger BUILD 0 / TEST 80 / PACKAGE 160 / SIGN 240',
     'Central node grows 26→72px as packets arrive, then stabilises before ARMED',
     'Final state static with subdued provenance paths; CHARGE becomes RELEASE without auto-release',
