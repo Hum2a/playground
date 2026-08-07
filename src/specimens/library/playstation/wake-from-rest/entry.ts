@@ -4,7 +4,8 @@ export const wakeFromRest: Specimen = {
   id: 'wake-from-rest',
   ref: 'SPX-3436',
   title: 'Wake from Rest',
-  blurb: 'Previous state restores from darkness with focus intact — black rest surface lifts to reveal the last focused tile unchanged.',
+  blurb:
+    'Black rest veil lifts (700ms) over a framed home shelf with focus intact — inverse of Rest Mode Dim, not a focus-restore brighten.',
   origin: {
     project: 'Original',
     surface: 'PlayStation-inspired system UI motion (abstract)',
@@ -17,14 +18,15 @@ export const wakeFromRest: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
-  tags: ["wake","rest","focus"],
+  tags: ['wake', 'rest', 'focus'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, transitions and animations are removed; semantic end states remain.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, veil lift transitions are removed; awake end state remains.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
@@ -32,6 +34,7 @@ export const wakeFromRest: Specimen = {
     height: 320,
     background: 'dark',
     label: 'Wake from Rest demo',
-    scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
+    scaffold:
+      '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   },
 }

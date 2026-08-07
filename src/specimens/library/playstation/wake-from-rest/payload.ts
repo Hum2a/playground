@@ -10,18 +10,19 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative overflow-hidden host; import demo.css verbatim.',
-    'Black veil opacity 1 → 0; grid fades in; centre focus tile keeps halo.',
+    'WAKE: black veil 1 → 0.28 (700ms rise) → 0; framed home shelf revealed.',
     'Honour both reduced-motion triggers — remove motion, keep end states.',
-    'Sandbox-safe: no parent access, storage, or navigation.',
   ],
   acceptance: [
-    'Wake from Rest behaviour matches freeze table',
-    'Trigger: WAKE button',
-    'PlayStation palette: #2E90FF #0B0F14 #F4F6F8 #7EB6FF',
-    'Reduced motion: instant state changes, no travel or keyframes',
-    'Live status announces phase changes outside decorative roots',
+    'Dark phase is a full black veil with REST mark (not a dimmed console)',
+    'Lifting raises/thins the veil over 700ms while home shelf emerges',
+    'Awake clears black; focus tile on framed shelf keeps ring',
+    'Silhouette is framed home shelf — distinct from rest-mode-dim console',
+    'Distinct from resume-from-rest-wake (focus restore on visible dim dock)',
+    'Reduced motion snaps dark→awake with no veil travel',
   ],
-  scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
+  scaffold:
+    '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   files: { html, css, js },
   spec,
   contract,

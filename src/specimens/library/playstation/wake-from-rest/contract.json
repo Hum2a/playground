@@ -7,19 +7,25 @@
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
-    "panel": "#121820",
-    "panel2": "#1a2330",
-    "rule": "#243044",
-    "pewter": "#8a9bb0"
+    "blueLight": "#7EB6FF"
   },
-  "behaviour": "Black veil opacity 1 → 0; grid fades in; centre focus tile keeps halo.",
-  "trigger": "WAKE button",
+  "timing": {
+    "liftMs": 700,
+    "revealMs": 320,
+    "darkOpacity": 1,
+    "liftingOpacity": 0.28,
+    "awakeOpacity": 0
+  },
+  "phases": ["dark", "lifting", "awake"],
+  "story": "black-veil-lift (inverse of rest-mode-dim; ≠ focus-restore resume-from-rest-wake)",
+  "silhouette": "framed home shelf under black veil (≠ console dim)",
+  "behaviour": "Black veil 1 → 0.28 (700ms, rises) → 0; home shelf + focus intact.",
+  "trigger": "WAKE",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; veil lift and home reveal transitions removed"
   }
 }

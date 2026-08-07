@@ -1,13 +1,21 @@
-<div class="ps" data-ps="wake-from-rest">
-  <p class="ps__eyebrow">Wake from Rest</p>
-  <div class="ps__stage wfr__stage" data-wfr-stage data-phase="dark">
-    <div class="ps__grid" aria-hidden="true">
-      <div class="ps__card"></div>
-      <div class="ps__card is-focus" data-wfr-focus></div>
-      <div class="ps__card"></div>
+<div class="wfr" data-wfr data-phase="dark">
+  <p class="wfr__eyebrow">Wake from Rest</p>
+
+  <div class="wfr__stage" data-wfr-stage>
+    <div class="wfr__home" data-wfr-home aria-hidden="true">
+      <div class="wfr__shelf">
+        <span class="wfr__tile"></span>
+        <span class="wfr__tile wfr__tile--focus" data-wfr-focus></span>
+        <span class="wfr__tile"></span>
+      </div>
+      <p class="wfr__home-label">HOME</p>
     </div>
-    <div class="wfr__black" data-wfr-black aria-hidden="true"></div>
+
+    <div class="wfr__black" data-wfr-black aria-hidden="true">
+      <span class="wfr__sleep-mark">REST</span>
+    </div>
   </div>
-  <button type="button" class="ps__btn" data-wfr-wake>WAKE</button>
-  <p class="ps__status" data-wfr-status aria-live="polite">Resting — screen dark, focus memory held.</p>
+
+  <button type="button" class="wfr__btn" data-wfr-wake>WAKE</button>
+  <p class="wfr__status" data-wfr-status aria-live="polite">Resting — full black veil; home held underneath.</p>
 </div>
