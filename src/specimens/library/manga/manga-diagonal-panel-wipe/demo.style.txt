@@ -1,0 +1,281 @@
+/* Manga Diagonal Panel Wipe — portable. Do not restyle to host chrome tokens. */
+
+.mdp {
+  --mdp-ink: #111111;
+  --mdp-paper: #f4f1e8;
+  --mdp-out-bg: #1a1a1a;
+  --mdp-out-fg: #e8e4d8;
+  --mdp-in-bg: #f4f1e8;
+  --mdp-in-fg: #111111;
+  --mdp-angle: -12deg;
+  --mdp-gutter: 18px;
+  --mdp-rule: 5px;
+  --mdp-duration: 620ms;
+  --mdp-ease: cubic-bezier(0.65, 0, 0.2, 1);
+  --mdp-travel: 140%;
+
+  box-sizing: border-box;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  padding: 12px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: var(--mdp-ink);
+  background: #d8d2c4;
+}
+
+.mdp *,
+.mdp *::before,
+.mdp *::after {
+  box-sizing: border-box;
+}
+
+.mdp__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mdp__plate {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 620 / 360;
+  height: auto;
+  overflow: hidden;
+  background: var(--mdp-ink);
+  border: 2px solid var(--mdp-ink);
+}
+
+.mdp__surface {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 32px;
+  margin: 0;
+}
+
+.mdp__surface--in {
+  z-index: 1;
+  background: var(--mdp-in-bg);
+  color: var(--mdp-in-fg);
+}
+
+.mdp__surface--out {
+  z-index: 2;
+  background: var(--mdp-out-bg);
+  color: var(--mdp-out-fg);
+  /* Keep left of the travelling diagonal; start fully covering. */
+  clip-path: polygon(0% 0%, 140% 0%, 128% 100%, 0% 100%);
+}
+
+.mdp__kicker {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mdp__title {
+  margin: 0;
+  font-size: clamp(28px, 8vw, 48px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.mdp__body {
+  margin: 0;
+  max-width: 16rem;
+  font-size: 13px;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+.mdp__wipe {
+  position: absolute;
+  inset: -40% -50%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.mdp__gutter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--mdp-gutter);
+  height: 220%;
+  margin-top: -110%;
+  /* Start past the right edge; travel left across ~140% of plate width. */
+  transform: translate3d(70%, 0, 0) rotate(var(--mdp-angle));
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.mdp__strip {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--mdp-paper);
+}
+
+/* Trailing rule sits on the right of the gutter (behind R→L travel). */
+.mdp__rule {
+  position: absolute;
+  top: 0;
+  right: calc(var(--mdp-rule) * -1);
+  width: var(--mdp-rule);
+  height: 100%;
+  background: var(--mdp-ink);
+}
+
+.mdp__speed {
+  position: absolute;
+  top: 28%;
+  right: calc(100% + 10px);
+  width: 42px;
+  height: 44%;
+  opacity: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--mdp-ink) 0 2px,
+      transparent 2px 9px
+    );
+  transform: skewY(-4deg);
+  pointer-events: none;
+}
+
+.mdp__controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.mdp__btn {
+  appearance: none;
+  padding: 8px 12px;
+  border: 2px solid var(--mdp-ink);
+  border-radius: 0;
+  background: var(--mdp-paper);
+  color: var(--mdp-ink);
+  font: 11px/1 ui-monospace, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mdp__btn:focus-visible {
+  outline: 2px solid #4e9e8f;
+  outline-offset: 2px;
+}
+
+.mdp__btn:hover {
+  background: var(--mdp-ink);
+  color: var(--mdp-paper);
+}
+
+/* —— Playing —— */
+.mdp[data-state='playing'] .mdp__wipe {
+  opacity: 1;
+}
+
+.mdp[data-state='playing'] .mdp__surface--out {
+  animation: mdp-out-clip var(--mdp-duration) var(--mdp-ease) forwards;
+}
+
+.mdp[data-state='playing'] .mdp__gutter {
+  animation: mdp-gutter-travel var(--mdp-duration) var(--mdp-ease) forwards;
+}
+
+.mdp[data-state='playing'] .mdp__speed {
+  animation: mdp-speed-flash var(--mdp-duration) linear forwards;
+}
+
+.mdp[data-state='done'] .mdp__surface--out {
+  clip-path: polygon(0% 0%, -20% 0%, -32% 100%, 0% 100%);
+  visibility: hidden;
+}
+
+.mdp[data-state='done'] .mdp__wipe {
+  opacity: 0;
+}
+
+@keyframes mdp-out-clip {
+  from {
+    clip-path: polygon(0% 0%, 140% 0%, 128% 100%, 0% 100%);
+  }
+  to {
+    clip-path: polygon(0% 0%, -20% 0%, -32% 100%, 0% 100%);
+  }
+}
+
+@keyframes mdp-gutter-travel {
+  from {
+    transform: translate3d(70%, 0, 0) rotate(var(--mdp-angle));
+  }
+  to {
+    transform: translate3d(-70%, 0, 0) rotate(var(--mdp-angle));
+  }
+}
+
+/* Visible roughly 160–460ms of 620ms ≈ 26%–74% */
+@keyframes mdp-speed-flash {
+  0%,
+  25% {
+    opacity: 0;
+  }
+  26%,
+  74% {
+    opacity: 0.55;
+  }
+  75%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mdp[data-state='playing'] .mdp__surface--out,
+  .mdp[data-state='playing'] .mdp__gutter,
+  .mdp[data-state='playing'] .mdp__speed {
+    animation: none !important;
+  }
+
+  .mdp[data-state='playing'] .mdp__surface--out,
+  .mdp[data-state='done'] .mdp__surface--out {
+    clip-path: polygon(0% 0%, -20% 0%, -32% 100%, 0% 100%);
+    visibility: hidden;
+  }
+
+  .mdp[data-state='playing'] .mdp__wipe {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .mdp[data-state='playing'] .mdp__surface--out,
+[data-force-reduced-motion='true'] .mdp[data-state='playing'] .mdp__gutter,
+[data-force-reduced-motion='true'] .mdp[data-state='playing'] .mdp__speed {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .mdp[data-state='playing'] .mdp__surface--out,
+[data-force-reduced-motion='true'] .mdp[data-state='done'] .mdp__surface--out {
+  clip-path: polygon(0% 0%, -20% 0%, -32% 100%, 0% 100%);
+  visibility: hidden;
+}
+
+[data-force-reduced-motion='true'] .mdp[data-state='playing'] .mdp__wipe {
+  opacity: 0;
+}

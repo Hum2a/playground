@@ -26,7 +26,7 @@ artist.
 
 - [ ] **MANGA-001** · `SPX-4070` · ★★★★★ **Panel Grid Assemble** — Irregular bordered panels snap
     together into a complete manga-page composition.
-- [ ] **MANGA-002** · `SPX-4071` · ★★★★★ **Panel Expand Focus** — One panel grows into the
+- [x] **MANGA-002** · `SPX-4071` · ★★★★★ **Panel Expand Focus** — One panel grows into the
     dominant frame while neighbours compress around it.
 - [x] **MANGA-003** · `SPX-4072` · ★★★★★ **Diagonal Panel Wipe** — A hard diagonal gutter sweeps
     across the preview to reveal the destination.
@@ -78,7 +78,7 @@ artist.
 
 - [ ] **MANGA-019** · `SPX-4088` · ★★★★★ **Radial Speed Burst** — Dense black motion lines
     radiate from a focal point during a priority action.
-- [ ] **MANGA-020** · `SPX-4089` · ★★★★★ **Directional Speed Wipe** — Parallel speed lines carry
+- [x] **MANGA-020** · `SPX-4089` · ★★★★★ **Directional Speed Wipe** — Parallel speed lines carry
     the current surface away in a chosen direction.
 - [ ] **MANGA-021** · `SPX-4090` · ★★★☆☆ **Tunnel Speed Lines** — A portable manga-inspired
     specimen exploring tunnel speed lines as a self-contained UI/motion
@@ -932,25 +932,27 @@ The original ranked Top 50 and recommended build waves are retained below.
 
 | MANGA | SPX | Specimen id | Title |
 | --- | --- | --- | --- |
-| MANGA-011 | SPX-4080 | `manga-page-turn` | Manga Page Turn |
+| MANGA-003 | `SPX-4072` | `manga-diagonal-panel-wipe` | Manga Diagonal Panel Wipe |
+| MANGA-011 | `SPX-4080` | `manga-page-turn` | Manga Page Turn |
+| MANGA-020 | `SPX-4089` | `manga-directional-speed-wipe` | Directional Speed Wipe |
 
-- Progress: **1 / 270** complete.
+- Progress: **3 / 270** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 1 |
-| Open | 269 |
+| Done | 3 |
+| Open | 267 |
 
 ## Core first-wave / build queue
 
 - [ ] **MANGA-001** · `SPX-4070` · **Panel Grid Assemble** · scaffold `panel-grid-assemble`
-- [ ] **MANGA-002** · `SPX-4071` · **Panel Expand Focus** · scaffold `panel-expand-focus`
+- [x] **MANGA-002** · `SPX-4071` · **Panel Expand Focus** · scaffold `panel-expand-focus`
 - [x] **MANGA-003** · `SPX-4072` · **Diagonal Panel Wipe** · scaffold `manga-diagonal-panel-wipe`
 - [ ] **MANGA-004** · `SPX-4073` · **Panel Shatter Transition** · scaffold `panel-shatter-transition`
 - [x] **MANGA-011** · `SPX-4080` · **Manga Page Turn**
 - [ ] **MANGA-013** · `SPX-4082` · **Double-Page Spread Open** · scaffold `double-page-spread-open`
 - [ ] **MANGA-019** · `SPX-4088` · **Radial Speed Burst** · scaffold `radial-speed-burst`
-- [ ] **MANGA-020** · `SPX-4089` · **Directional Speed Wipe** · scaffold `directional-speed-wipe`
+- [x] **MANGA-020** · `SPX-4089` · **Directional Speed Wipe** · scaffold `manga-directional-speed-wipe`
 - [ ] **MANGA-028** · `SPX-4097` · **Black Impact Frame** · scaffold `black-impact-frame`
 - [ ] **MANGA-032** · `SPX-4101` · **Hit Stop Freeze** · scaffold `hit-stop-freeze`
 - [ ] **MANGA-036** · `SPX-4105` · **Speech Balloon Pop** · scaffold `speech-balloon-pop`

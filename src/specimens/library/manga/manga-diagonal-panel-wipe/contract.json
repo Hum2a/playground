@@ -1,0 +1,29 @@
+{
+  "name": "manga-diagonal-panel-wipe",
+  "ref": "SPX-4072",
+  "manga": "MANGA-003",
+  "intent": "Reusable page transition where a manga-style diagonal panel gutter physically separates outgoing and incoming content while travelling right to left.",
+  "colours": {
+    "ink": "#111111",
+    "paper": "#F4F1E8",
+    "outgoingBg": "#1A1A1A",
+    "outgoingFg": "#E8E4D8",
+    "incomingBg": "#F4F1E8",
+    "incomingFg": "#111111"
+  },
+  "geometry": {
+    "plate": { "width": 620, "height": 360 },
+    "wipeAngleDeg": -12,
+    "gutterWidthPx": 18,
+    "trailingRulePx": 5,
+    "travelOfPlateWidth": 1.4,
+    "gutterStartTranslateX": "70%",
+    "gutterEndTranslateX": "-70%"
+  },
+  "timing": {
+    "durationMs": 620,
+    "easing": "cubic-bezier(0.65, 0, 0.2, 1)",
+    "speedLinesVisibleMs": [160, 460]
+  },
+  "reducedMotion": "Show destination immediately; no moving gutter or speed strokes."
+}
