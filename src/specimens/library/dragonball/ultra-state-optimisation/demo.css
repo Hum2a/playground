@@ -12,9 +12,9 @@
   min-height: 320px;
   height: 100%;
   padding: 0.85rem 0.6rem;
-  background: #12141a;
+  background: #0a0c10;
   color: #e8e4dc;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
 }
 
 .uso-demo__live {
@@ -35,9 +35,9 @@
   --warm-3: #8b3a1a;
   --ink: #1a1c22;
   --panel: #ebe6dc;
-  --quiet-1: #1e2430;
-  --quiet-2: #c8d0dc;
-  --quiet-3: #6a7a90;
+  --quiet-1: #121820;
+  --quiet-2: #d8e0ec;
+  --quiet-3: #5a6a80;
   box-sizing: border-box;
   width: min(100%, 340px);
 }
@@ -50,8 +50,19 @@
   box-sizing: border-box;
   min-height: 240px;
   padding: 1rem 0.5rem;
-  border: 1px solid rgba(232, 228, 220, 0.18);
-  background: #0e1014;
+  border: 1px solid rgba(196, 92, 38, 0.35);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 35%, #2a1810 0%, #0e1014 72%);
+  transition: border-color 200ms ease-out, background 200ms ease-out;
+}
+
+.uso[data-phase='ultra'] ~ .uso-demo__controls,
+.uso-demo:has(.uso[data-phase='ultra']) .uso__stage {
+  border-color: rgba(200, 208, 220, 0.22);
+}
+
+.uso-demo:has(.uso[data-phase='ultra']) .uso__stage {
+  background: #080a0e;
 }
 
 .uso__core {
@@ -61,10 +72,15 @@
   padding: 1.05rem 1.1rem 1.15rem;
   background: var(--panel);
   color: var(--ink);
-  border: 1px solid rgba(26, 28, 34, 0.35);
+  border: 2px solid rgba(196, 92, 38, 0.55);
   transform-origin: 50% 50%;
-  /* Subtle vibration — max 1px */
   animation: uso-vibrate 0.9s ease-in-out infinite;
+  overflow: hidden;
+  transition:
+    transform 200ms ease-out,
+    background 200ms ease-out,
+    color 200ms ease-out,
+    border-color 200ms ease-out;
 }
 
 .uso[data-phase='pause'] .uso__core,
@@ -77,7 +93,59 @@
   transform: scale(0.92);
   background: var(--quiet-1);
   color: var(--quiet-2);
-  border-color: rgba(200, 208, 220, 0.35);
+  border: 1px solid rgba(200, 208, 220, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(200, 208, 220, 0.08);
+}
+
+/* Noisy-phase grain + scanlines — stripped in ultra */
+.uso__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgb(139 58 26 / 0.12) 2px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 3px,
+      rgb(196 92 38 / 0.08) 3px 4px
+    );
+}
+
+.uso__scanlines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 3px,
+    rgb(26 28 34 / 0.15) 3px 4px
+  );
+  animation: uso-scan 2.4s linear infinite;
+}
+
+@keyframes uso-scan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 8px;
+  }
+}
+
+.uso[data-phase='pause'] .uso__scanlines,
+.uso[data-phase='subtract'] .uso__scanlines,
+.uso[data-phase='ultra'] .uso__scanlines,
+.uso[data-phase='pause'] .uso__grain,
+.uso[data-phase='subtract'] .uso__grain,
+.uso[data-phase='ultra'] .uso__grain {
+  opacity: 0;
+  animation: none;
 }
 
 @keyframes uso-vibrate {
@@ -97,6 +165,8 @@
 }
 
 .uso__runtime {
+  position: relative;
+  z-index: 1;
   margin: 0 0 0.55rem;
   font-size: 0.68rem;
   font-weight: 800;
@@ -104,8 +174,17 @@
   text-transform: uppercase;
 }
 
+.uso[data-phase='noisy'] .uso__runtime {
+  color: var(--warm-3);
+}
+
+.uso[data-phase='ultra'] .uso__runtime {
+  color: var(--quiet-3);
+}
+
 .uso__mode {
   position: relative;
+  z-index: 1;
   overflow: hidden;
   height: 1.15em;
   margin-bottom: 0.75rem;
@@ -140,6 +219,8 @@
 }
 
 .uso__metrics {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 0.35rem;
   margin: 0 0 0.75rem;
@@ -161,16 +242,25 @@
   color: rgba(26, 28, 34, 0.55);
 }
 
+.uso[data-phase='noisy'] .uso__metric dd {
+  color: var(--warm-3);
+}
+
 .uso[data-phase='ultra'] .uso__metric dt {
   color: var(--quiet-3);
+}
+
+.uso[data-phase='ultra'] .uso__metric dd {
+  color: var(--quiet-2);
 }
 
 .uso__metric dd {
   margin: 0;
 }
 
-/* Exactly 3 activity bars */
 .uso__bars {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -220,6 +310,7 @@
   width: 42%;
   background: var(--quiet-3);
   opacity: 0.85;
+  height: 3px;
 }
 
 @keyframes uso-bar {
@@ -233,7 +324,6 @@
   }
 }
 
-/* Diamond — final only, static */
 .uso__diamond {
   position: absolute;
   left: 50%;
@@ -246,6 +336,7 @@
   opacity: 0;
   transform: translateY(0);
   pointer-events: none;
+  z-index: 2;
 }
 
 .uso[data-phase='ultra'] .uso__diamond {
@@ -253,7 +344,6 @@
   transform: translateY(-4px);
 }
 
-/* 6 peripheral structures */
 .uso__peri {
   position: absolute;
   width: 10px;
@@ -281,7 +371,6 @@
   transform: scale(0.4);
 }
 
-/* Exactly 2 rotating indicators */
 .uso__spin {
   position: absolute;
   width: 16px;
@@ -330,7 +419,6 @@
   transform: scale(0.2) !important;
 }
 
-/* Exactly 12 activity markers */
 .uso__markers {
   position: absolute;
   inset: 0;
@@ -425,19 +513,53 @@
   outline-offset: 3px;
 }
 
-/* Reduced motion: no loops; ultra state is static */
 @media (prefers-reduced-motion: reduce) {
   .uso__core,
   .uso__bar,
   .uso__spin,
-  .uso__mark {
+  .uso__mark,
+  .uso__scanlines {
     animation: none !important;
+  }
+
+  .uso[data-phase='ultra'] .uso__core {
+    transform: scale(0.92);
+    background: var(--quiet-1);
+    color: var(--quiet-2);
+    border-color: rgba(200, 208, 220, 0.45);
+  }
+
+  .uso[data-phase='ultra'] .uso__grain,
+  .uso[data-phase='ultra'] .uso__scanlines {
+    opacity: 0;
+  }
+
+  .uso[data-phase='ultra'] .uso__diamond {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+
+  .uso[data-phase='ultra'] .uso__bar--a {
+    width: 42%;
+    opacity: 0.85;
   }
 }
 
-[data-force-reduced-motion='true'] .uso__core,
-[data-force-reduced-motion='true'] .uso__bar,
-[data-force-reduced-motion='true'] .uso__spin,
-[data-force-reduced-motion='true'] .uso__mark {
+html[data-force-reduced-motion='true'] .uso__core,
+html[data-force-reduced-motion='true'] .uso__bar,
+html[data-force-reduced-motion='true'] .uso__spin,
+html[data-force-reduced-motion='true'] .uso__mark,
+html[data-force-reduced-motion='true'] .uso__scanlines {
   animation: none !important;
+}
+
+html[data-force-reduced-motion='true'] .uso[data-phase='ultra'] .uso__core {
+  transform: scale(0.92);
+  background: var(--quiet-1);
+  color: var(--quiet-2);
+}
+
+html[data-force-reduced-motion='true'] .uso[data-phase='ultra'] .uso__diamond {
+  opacity: 1;
+  transform: translateY(-4px);
 }

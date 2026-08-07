@@ -1,60 +1,168 @@
 {
-  "name": "ultra-state-optimisation",
-  "intent": "Noisy high-activity runtime optimises into a calmer high-performance state by subtracting wasted motion and overhead while keeping useful work (TASKS=42) constant.",
-  "catalogue": {
-    "db": "DB-027",
-    "ref": "SPX-992",
-    "checklistTitle": "Ultra Instinct Activation",
-    "specimenTitle": "Ultra State Optimisation"
-  },
-  "counts": {
-    "activityMarkers": 12,
-    "markerGroups": 3,
-    "markersPerGroup": 4,
-    "rotatingIndicators": 2,
-    "activityBarsInitial": 3,
-    "activityBarsFinal": 1,
-    "peripheralStructuresInitial": 6,
-    "peripheralStructuresFinal": 2,
-    "finalDiamond": 1
-  },
-  "timing": {
-    "pauseMs": 90,
-    "subtractMs": 360,
-    "groupStaggerMs": 90
-  },
-  "metrics": {
-    "cpuSequence": [84, 67, 49, 38, 31],
-    "queueSequence": [17, 11, 6, 2, 0],
-    "tasksConstant": 42
-  },
-  "geometry": {
-    "coreScaleFinal": 0.92,
-    "vibrationMaxPx": 1,
-    "diamondPx": 8,
-    "diamondLiftPx": 4
-  },
-  "mode": {
-    "from": "STANDARD",
-    "to": "ULTRA",
-    "technique": "clipped replacement"
-  },
-  "palette": {
-    "initialWarm": ["#c45c26", "#e0a15a", "#8b3a1a", "#ebe6dc", "#1a1c22"],
-    "finalDominant": ["#1e2430", "#c8d0dc", "#6a7a90"]
-  },
-  "constraints": {
-    "noFranchiseNamesInUi": true,
-    "noLoopingInFinal": true,
-    "noGlowAura": true,
-    "noSeizureMotion": true
-  },
-  "api": {
-    "optimise": "runUltraOptimise()",
-    "reset": "resetUltraOptimise()",
-    "restartMessage": "restart"
-  },
-  "reducedMotion": {
-    "behaviour": "Immediately show final ULTRA state"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/ultra-state-optimisation.schema.json",
+  "title": "UltraStateOptimisation",
+  "description": "Portable contract for noisy runtime → calm ultra optimisation with sharp palette and geometry contrast.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "counts",
+    "timing",
+    "metrics",
+    "phases",
+    "geometry",
+    "palette",
+    "a11y",
+    "reducedMotion",
+    "api"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "ultra-state-optimisation" },
+    "intent": {
+      "type": "string",
+      "const": "Noisy high-activity runtime optimises into a calmer high-performance state by subtracting wasted motion; palette and geometry contrast sharply between phases."
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activityMarkers",
+        "markerGroups",
+        "rotatingIndicators",
+        "activityBarsInitial",
+        "activityBarsFinal",
+        "peripheralStructuresInitial",
+        "peripheralStructuresFinal",
+        "finalDiamond"
+      ],
+      "properties": {
+        "activityMarkers": { "type": "integer", "const": 12 },
+        "markerGroups": { "type": "integer", "const": 3 },
+        "markersPerGroup": { "type": "integer", "const": 4 },
+        "rotatingIndicators": { "type": "integer", "const": 2 },
+        "activityBarsInitial": { "type": "integer", "const": 3 },
+        "activityBarsFinal": { "type": "integer", "const": 1 },
+        "peripheralStructuresInitial": { "type": "integer", "const": 6 },
+        "peripheralStructuresFinal": { "type": "integer", "const": 2 },
+        "finalDiamond": { "type": "integer", "const": 1 }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pauseMs", "subtractMs", "groupStaggerMs"],
+      "properties": {
+        "pauseMs": { "type": "number", "const": 90 },
+        "subtractMs": { "type": "number", "const": 360 },
+        "groupStaggerMs": { "type": "number", "const": 90 }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpuSequence", "queueSequence", "tasksConstant"],
+      "properties": {
+        "cpuSequence": {
+          "type": "array",
+          "const": [84, 67, 49, 38, 31]
+        },
+        "queueSequence": {
+          "type": "array",
+          "const": [17, 11, 6, 2, 0]
+        },
+        "tasksConstant": { "type": "integer", "const": 42 }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noisy", "ultra"],
+      "properties": {
+        "noisy": {
+          "type": "object",
+          "required": ["grain", "scanlines", "warmBorder", "vibrationMaxPx"],
+          "properties": {
+            "grain": { "type": "boolean", "const": true },
+            "scanlines": { "type": "boolean", "const": true },
+            "warmBorder": { "type": "string", "const": "2px rgba(196,92,38,.55)" },
+            "vibrationMaxPx": { "type": "number", "const": 1 }
+          }
+        },
+        "ultra": {
+          "type": "object",
+          "required": ["noGrain", "noScanlines", "coreScale", "quietPalette"],
+          "properties": {
+            "noGrain": { "type": "boolean", "const": true },
+            "noScanlines": { "type": "boolean", "const": true },
+            "coreScale": { "type": "number", "const": 0.92 },
+            "quietPalette": {
+              "type": "array",
+              "const": ["#121820", "#d8e0ec", "#5a6a80"]
+            }
+          }
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coreScaleFinal", "diamondPx", "diamondLiftPx"],
+      "properties": {
+        "coreScaleFinal": { "type": "number", "const": 0.92 },
+        "diamondPx": { "type": "number", "const": 8 },
+        "diamondLiftPx": { "type": "number", "const": 4 }
+      }
+    },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initialWarm", "finalDominant"],
+      "properties": {
+        "initialWarm": {
+          "type": "array",
+          "const": ["#c45c26", "#e0a15a", "#8b3a1a", "#ebe6dc", "#1a1c22"]
+        },
+        "finalDominant": {
+          "type": "array",
+          "const": ["#121820", "#d8e0ec", "#5a6a80"]
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metricsAreText", "liveRegion"],
+      "properties": {
+        "metricsAreText": { "type": "boolean", "const": true },
+        "liveRegion": { "type": "string", "const": "polite" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateUltra", "triggers"],
+      "properties": {
+        "immediateUltra": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["optimise", "reset"],
+      "properties": {
+        "optimise": { "type": "string", "const": "runUltraOptimise()" },
+        "reset": { "type": "string", "const": "resetUltraOptimise()" },
+        "restartMessage": { "type": "string", "const": "restart" }
+      }
+    }
   }
 }
