@@ -17,6 +17,7 @@ export const dwellToSelectRing: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["dwell","ring","select"],
   deps: 'none',

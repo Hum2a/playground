@@ -1,10 +1,17 @@
 <div class="dts" data-dts>
-  <button type="button" class="dts__target" data-dts-target aria-label="Dwell to select">
+  <p class="dts__eyebrow">Dwell-to-Select Ring</p>
+  <div class="dts__space" aria-hidden="true">
+    <span class="dts__depth"></span>
+    <span class="dts__depth dts__depth--2"></span>
+  </div>
+  <button type="button" class="dts__target" data-dts-target aria-label="Dwell to select for 1.8 seconds">
     <svg class="dts__ring" viewBox="0 0 100 100" aria-hidden="true">
       <circle class="dts__track" cx="50" cy="50" r="44" />
       <circle class="dts__progress" data-dts-progress cx="50" cy="50" r="44" />
     </svg>
+    <span class="dts__gaze" aria-hidden="true"></span>
     <span class="dts__label">HOLD</span>
   </button>
+  <p class="dts__hint">Gaze / hold · 1.8s dwell</p>
   <p class="dts__status" data-dts-status aria-live="polite">Ready — press and hold target</p>
 </div>

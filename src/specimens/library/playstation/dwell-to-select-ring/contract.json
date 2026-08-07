@@ -1,10 +1,10 @@
 {
   "name": "dwell-to-select-ring",
-  "intent": "A radial timer fills around a target before activation.",
-  "primitives": [
-    "dwell",
-    "ring"
-  ],
+  "ref": "SPX-3463",
+  "ps": "PS-157",
+  "title": "Dwell-to-Select Ring",
+  "intent": "Spatial gaze target fills a radial ring before activation.",
+  "primitives": ["dwell", "ring", "gaze"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
@@ -13,5 +13,21 @@
   },
   "timing": {
     "dwellMs": 1800
+  },
+  "spatial": {
+    "depthRings": 2,
+    "gazeCrosshair": true
+  },
+  "acceptance": [
+    "Hold fills ring over 1800ms; early release cancels",
+    "Full dwell announces Selected",
+    "Depth rings and gaze crosshair remain visible"
+  ],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Dwell completes instantly on pointer down"
   }
 }
