@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runHealingProgressField / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    '25 tiles heal by ring order 0→1→2 (centre outward) with 160ms steps',
-    'Idle shows DAMAGED; done shows RESTORED with all tiles healed',
-    'Replay returns all tiles damaged before rerunning',
-    'Reduced motion shows RESTORED immediately',
-    'Effect stays inside clipped stage / scaffold host',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),
