@@ -1,15 +1,16 @@
 # Substitution Swap
 
-A single slot cross-fades through three stacked layers: the primary target, a proxy log decoy, then the resolved failover target — a puff flashes at each swap point.
+Primary collapses through a **decoy-only** mid-hold, then the failover target expands into place.
 
 ## Behaviour
 
-- Idle: primary layer visible, status `PRIMARY`.
-- Swapping: primary fades out with a puff (100ms), decoy fades in and holds (~180ms), a second puff marks the decoy-to-resolved swap.
-- Resolved: failover target layer visible, status `ACTIVE`.
-- Reduced motion: jumps straight to the resolved failover target; no decoy step or puff plays.
+- Primary: Target Node visible.
+- Decoy: only LOG / Proxy Decoy for 180ms (`data-active=decoy`).
+- Active: Failover Target settled; status `ACTIVE`.
+- Reduced motion: ACTIVE immediately.
 
 ## Freeze
 
-- Primary→decoy: 100ms · decoy hold: 180ms · decoy→resolved: 140ms · puff: 120ms each · settle: 90ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- toDecoy: 100ms · hold: 180ms · toResolved: 140ms · puff: 120ms
+- Layers scale 0↔1 with ±10° rotate — not opacity fade
+- Palette (clone ash): `#12141A` / `#D8D4E0` / `#7A6B9A` / `#6E6A78` / `#F0EEF4`

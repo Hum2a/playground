@@ -112,14 +112,16 @@ export function runSubstitutionSwap() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('SUBSTITUTING')
-  setLive('Substituting primary target with a proxy decoy.')
+  setLive('Primary collapsing; decoy-only mid-state.')
   pop(slot)
   slot.setAttribute('data-active', 'decoy')
+  setStatus('DECOY')
 
   return new Promise((resolve) => {
     later(TO_DECOY_MS + DECOY_HOLD_MS, () => {
       pop(slot)
-      setLive('Swapping proxy decoy for the failover target.')
+      setStatus('RESOLVING')
+      setLive('Swapping decoy for failover target.')
       later(TO_RESOLVED_MS, () => {
         showResolved()
         later(SETTLE_MS, () => {
