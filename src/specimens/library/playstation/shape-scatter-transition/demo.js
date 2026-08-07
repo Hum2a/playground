@@ -1,15 +1,33 @@
-const SHAPES = ['sst__shape--circle', 'sst__shape--cross', 'sst__shape--square', 'sst__shape--triangle']
-const DEST = [
-  { x: 0.12, y: 0.35 },
-  { x: 0.88, y: 0.35 },
-  { x: 0.12, y: 0.72 },
-  { x: 0.88, y: 0.72 },
+/**
+ * Shape Scatter Transition (SPX-3319) — source → midfield burst → destination reform.
+ */
+
+const SHAPES = [
+  'sst__shape--circle',
+  'sst__shape--cross',
+  'sst__shape--square',
+  'sst__shape--triangle',
 ]
+const DEST = [
+  { x: 0.18, y: 0.32 },
+  { x: 0.78, y: 0.32 },
+  { x: 0.18, y: 0.7 },
+  { x: 0.78, y: 0.7 },
+]
+const MID = [
+  { x: 0.42, y: 0.28 },
+  { x: 0.58, y: 0.28 },
+  { x: 0.38, y: 0.7 },
+  { x: 0.62, y: 0.7 },
+]
+const TRAVEL_MS = 720
 let busy = false
 
 function rm() {
-  return document.documentElement.getAttribute('data-force-reduced-motion') === 'true'
-    || matchMedia('(prefers-reduced-motion: reduce)').matches
+  return (
+    document.documentElement.getAttribute('data-force-reduced-motion') === 'true' ||
+    matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
 }
 
 function status(t) {
@@ -22,13 +40,13 @@ function ensureTokens(root) {
   if (!burst || burst.childElementCount) return
   SHAPES.forEach((cls, i) => {
     const t = document.createElement('span')
-    t.className = 'sst__token sst__shape ' + cls
+    t.className = 'sst__token ' + cls
     t.setAttribute('data-sst-token', String(i))
     burst.appendChild(t)
   })
 }
 
-function placeTokens(root, atDest) {
+function placeTokens(root, mode) {
   const stage = root.querySelector('.sst__stage')
   const source = root.querySelector('[data-sst-source]')
   const dest = root.querySelector('[data-sst-dest]')
@@ -42,12 +60,16 @@ function placeTokens(root, atDest) {
   root.querySelectorAll('[data-sst-token]').forEach((token, i) => {
     let x = sx
     let y = sy
-    if (atDest && dRect) {
+    if (mode === 'mid') {
+      x = sr.width * MID[i].x
+      y = sr.height * MID[i].y
+    } else if (mode === 'dest' && dRect) {
       x = dRect.left - sr.left + dRect.width * DEST[i].x
       y = dRect.top - sr.top + dRect.height * DEST[i].y
     }
-    token.style.transform = 'translate(' + (x - 6) + 'px, ' + (y - 6) + 'px)'
-    token.style.opacity = atDest || root.classList.contains('is-scattering') ? '1' : '0'
+    token.style.transform = 'translate(' + (x - 7) + 'px, ' + (y - 7) + 'px)'
+    token.style.opacity =
+      mode !== 'source' || root.classList.contains('is-scattering') ? '1' : '0'
   })
 }
 
@@ -59,20 +81,30 @@ function run() {
   if (btn) btn.disabled = true
   root.classList.remove('is-arrived')
   ensureTokens(root)
-  placeTokens(root, false)
+  placeTokens(root, 'source')
   root.classList.add('is-scattering')
-  status('Scattering tokens…')
+  status('Bursting into midfield…')
 
   const finish = () => {
-    placeTokens(root, true)
+    placeTokens(root, 'dest')
     root.classList.add('is-arrived')
-    status('Tokens reformed around destination')
+    status('Tokens reformed at destination')
     busy = false
     if (btn) btn.disabled = false
   }
 
-  if (rm()) finish()
-  else requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(finish, 900)))
+  if (rm()) {
+    finish()
+    return
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      placeTokens(root, 'mid')
+      status('Traveling across scatter field…')
+      setTimeout(finish, TRAVEL_MS)
+    })
+  })
 }
 
 function reset() {
@@ -93,7 +125,9 @@ function bind() {
   if (!root) return
   ensureTokens(root)
   root.querySelector('[data-sst-run]')?.addEventListener('click', run)
-  addEventListener('message', (e) => { if (e.data?.type === 'restart') reset() })
+  addEventListener('message', (e) => {
+    if (e.data?.type === 'restart') reset()
+  })
 }
 
 bind()

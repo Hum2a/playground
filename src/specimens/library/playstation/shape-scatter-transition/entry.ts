@@ -17,6 +17,7 @@ export const shapeScatterTransition: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ['scatter', 'shapes', 'tokens'],
   deps: 'none',

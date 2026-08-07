@@ -1,11 +1,10 @@
 {
   "name": "shape-scatter-transition",
-  "intent": "Small geometric tokens scatter from the selected control and reform around destination content.",
-  "primitives": [
-    "scatter",
-    "shapes",
-    "transition"
-  ],
+  "ref": "SPX-3319",
+  "ps": "PS-013",
+  "title": "Shape Scatter Transition",
+  "intent": "Geometric tokens burst through a midfield scatter ring and reform at a destination panel.",
+  "primitives": ["circle", "cross", "square", "triangle"],
   "colours": {
     "blue": "#2E90FF",
     "ink": "#0B0F14",
@@ -13,6 +12,23 @@
     "sky": "#7EB6FF"
   },
   "timing": {
-    "scatterMs": 900
+    "burstMs": 280,
+    "travelMs": 720,
+    "reformMs": 360
+  },
+  "path": {
+    "stages": ["source", "midfield", "destination"]
+  },
+  "acceptance": [
+    "Tokens leave SOURCE into a midfield burst ring",
+    "Tokens reform at DESTINATION over 720ms travel",
+    "Destination border solidifies on arrival"
+  ],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Tokens snap to destination; burst/travel transitions removed"
   }
 }

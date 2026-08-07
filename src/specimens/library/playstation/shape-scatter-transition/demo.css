@@ -1,13 +1,16 @@
-/* Portable specimen CSS (iframe-isolated). */
+/* SPX-3319 Shape Scatter Transition — portable. Midfield burst field; distinct from orbit loader & controller alert. */
 
 .sst {
-  --ps-blue: #2E90FF;
-  --ps-ink: #0B0F14;
-  --ps-chalk: #F4F6F8;
-  --ps-sky: #7EB6FF;
+  --ps-blue: #2e90ff;
+  --ps-ink: #0b0f14;
+  --ps-chalk: #f4f6f8;
+  --ps-sky: #7eb6ff;
   --ps-panel: #121820;
   --ps-rule: #1e2a38;
   --ps-pewter: #8a9aad;
+  --burst-ms: 280ms;
+  --travel-ms: 720ms;
+  --reform-ms: 360ms;
 
   box-sizing: border-box;
   width: min(100%, 480px);
@@ -23,7 +26,17 @@
   box-sizing: border-box;
 }
 
+.sst__eyebrow {
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ps-pewter);
+}
+
 .sst__btn {
+  display: block;
+  margin: 0 auto;
   padding: 8px 14px;
   font: inherit;
   font-size: 11px;
@@ -39,7 +52,8 @@
   background: #fff;
 }
 
-.sst__btn:focus-visible {
+.sst__btn:focus-visible,
+.sst__source:focus-visible {
   outline: 2px solid var(--ps-blue);
   outline-offset: 2px;
 }
@@ -57,11 +71,118 @@
   color: var(--ps-pewter);
 }
 
-.sst__shape {
+.sst__stage {
+  position: relative;
+  height: 210px;
+  margin-bottom: 14px;
+  background:
+    radial-gradient(circle at 50% 50%, rgb(46 144 255 / 0.08), transparent 50%),
+    var(--ps-panel);
+  border: 1px solid var(--ps-rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sst__field {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border: 1px dashed rgb(126 182 255 / 0.35);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity var(--burst-ms) ease,
+    transform var(--burst-ms) ease;
+  pointer-events: none;
+}
+
+.sst.is-scattering .sst__field {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.sst.is-arrived .sst__field {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.sst__source {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ps-ink);
+  background: var(--ps-chalk);
+  border: 1px solid var(--ps-sky);
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.sst__dest {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 140px;
+  height: 124px;
+  padding: 10px;
+  border: 1px dashed var(--ps-rule);
+  border-radius: 4px;
+  opacity: 0.5;
+  transition:
+    opacity var(--reform-ms) ease,
+    border-color var(--reform-ms) ease;
+}
+
+.sst.is-arrived .sst__dest {
+  opacity: 1;
+  border-color: var(--ps-sky);
+  border-style: solid;
+}
+
+.sst__dest-label {
   display: block;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--ps-pewter);
+  margin-bottom: 8px;
+}
+
+.sst__burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.sst__token-field {
+  position: relative;
+  height: 70px;
+}
+
+.sst__token {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 14px;
   height: 14px;
-  flex-shrink: 0;
+  opacity: 0;
+  transition:
+    transform var(--travel-ms) cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease;
+}
+
+.sst.is-scattering .sst__token {
+  opacity: 1;
 }
 
 .sst__shape--circle {
@@ -110,124 +231,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sst__anim,
-  .sst__orbit,
-  .sst__shape,
-  .sst__scan,
-  .sst__rift,
-  .sst__ring,
-  .sst__tile,
-  .sst__card,
-  .sst__slab,
   .sst__token,
-  .sst__panel,
-  .sst__overlay {
-    animation: none !important;
+  .sst__field,
+  .sst__dest {
     transition: none !important;
+    animation: none !important;
   }
 }
 
-[data-force-reduced-motion='true'] .sst__anim,
-[data-force-reduced-motion='true'] .sst__orbit,
-[data-force-reduced-motion='true'] .sst__shape,
-[data-force-reduced-motion='true'] .sst__scan,
-[data-force-reduced-motion='true'] .sst__rift,
-[data-force-reduced-motion='true'] .sst__ring,
-[data-force-reduced-motion='true'] .sst__tile,
-[data-force-reduced-motion='true'] .sst__card,
-[data-force-reduced-motion='true'] .sst__slab,
 [data-force-reduced-motion='true'] .sst__token,
-[data-force-reduced-motion='true'] .sst__panel,
-[data-force-reduced-motion='true'] .sst__overlay {
-  animation: none !important;
+[data-force-reduced-motion='true'] .sst__field,
+[data-force-reduced-motion='true'] .sst__dest {
   transition: none !important;
-}
-
-.sst__stage {
-  position: relative;
-  height: 200px;
-  margin-bottom: 14px;
-  background: var(--ps-panel);
-  border: 1px solid var(--ps-rule);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.sst__source {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px 14px;
-  font: inherit;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: var(--ps-ink);
-  background: var(--ps-chalk);
-  border: 1px solid var(--ps-sky);
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.sst__source:focus-visible {
-  outline: 2px solid var(--ps-blue);
-  outline-offset: 2px;
-}
-
-.sst__dest {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 140px;
-  height: 120px;
-  padding: 10px;
-  border: 1px dashed var(--ps-rule);
-  border-radius: 4px;
-  opacity: 0.5;
-  transition: opacity 400ms ease, border-color 400ms ease;
-}
-
-.sst.is-arrived .sst__dest {
-  opacity: 1;
-  border-color: var(--ps-sky);
-  border-style: solid;
-}
-
-.sst__dest-label {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  color: var(--ps-pewter);
-  margin-bottom: 8px;
-}
-
-.sst__burst {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.sst__token-field {
-  position: relative;
-  height: 70px;
-}
-
-.sst__token {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  opacity: 0;
-  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
-}
-
-.sst.is-scattering .sst__token {
-  opacity: 1;
-}
-
-.sst__btn {
-  display: block;
-  margin: 0 auto;
+  animation: none !important;
 }
