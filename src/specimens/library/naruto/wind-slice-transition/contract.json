@@ -1,18 +1,23 @@
 {
   "name": "wind-slice-transition",
-  "intent": "Four clipped blades at skewDeg -16 sweep with staggerMs 70; content swaps at swapAtMs 420.",
+  "intent": "Four clipped steel blades at skewDeg [-22,-16,-10,-4] sweep with staggerMs 70; content swaps at swapAtMs 420.",
   "catalogue": {
     "nr": "NR-115",
     "ref": "SPX-2458"
   },
   "copy": {
     "system": "CUT // WIND SLICE",
-    "pageA": "PAGE // 01",
-    "pageB": "PAGE // 02"
+    "stateA": "STATE 01",
+    "stateB": "STATE 02"
   },
   "geometry": {
     "bladeCount": 4,
-    "skewDeg": -16,
+    "bladeDeg": [
+      -22,
+      -16,
+      -10,
+      -4
+    ],
     "bladeWidthPct": 30,
     "staggerStartsMs": [
       0,
@@ -48,15 +53,18 @@
     "--wst-blade-ms",
     "--wst-stagger-ms",
     "--wst-blade-count",
-    "--wst-skew-deg"
+    "--wst-skew-1",
+    "--wst-skew-2",
+    "--wst-skew-3",
+    "--wst-skew-4"
   ],
   "reducedMotion": {
     "behaviour": "Instant content swap; blades suppressed"
   },
   "acceptance": [
-    "Exactly 4 blades at skewDeg -16 with staggerMs 70 (starts 0/70/140/210)",
-    "Each blade runs bladeMs 380; content swaps at swapAtMs 420 within totalMs 600",
-    "Blade geometry uses clip-path polygon (not opacity fade as primary)",
+    "Exactly bladeCount 4 blades at bladeDeg [-22,-16,-10,-4] with staggerMs 70",
+    "Each blade runs bladeMs 380 with clip-path polygon; content swaps at swapAtMs 420",
+    "Wind steel palette distinct from water cyan; motion is blade travel not fade",
     "Reduced motion (prefers or data-force) swaps instantly with animations disabled"
   ]
 }

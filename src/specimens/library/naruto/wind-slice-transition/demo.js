@@ -146,3 +146,6 @@ function bindUi() {
 
 bindUi()
 resetWindSliceTransition()
+requestAnimationFrame(() => {
+  void runWindSliceTransition()
+})

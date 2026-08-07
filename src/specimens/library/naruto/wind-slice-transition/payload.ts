@@ -8,7 +8,7 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze bladeCount 4 / skewDeg -16 / staggerMs 70 / swapAtMs 420 from contract.json.',
+    'Import demo.css verbatim; freeze bladeCount 4 / bladeDeg [-22,-16,-10,-4] / staggerMs 70 / swapAtMs 420 from contract.json.',
     'Wire runWindSliceTransition / resetWindSliceTransition / replayWindSliceTransition.',
     'Content swap fires once the last blade fully covers the stage; honour both reduced-motion triggers.',
   ],
