@@ -5,33 +5,90 @@
   "description": "Each completed checkpoint in a four-step chain sends a pulse to activate the next.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "checkpointCount", "completeMs", "pulseMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "checkpointCount",
+    "completeMs",
+    "pulseMs",
+    "colours",
+    "reducedMotion",
+    "nodeCount"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "objective-chain-advance" },
-    "checkpointCount": { "type": "number", "const": 4 },
-    "completeMs": { "type": "number", "const": 200 },
-    "pulseMs": { "type": "number", "const": 220 },
-    "settleMs": { "type": "number", "const": 100 },
+    "name": {
+      "type": "string",
+      "const": "objective-chain-advance"
+    },
+    "checkpointCount": {
+      "type": "number",
+      "const": 4
+    },
+    "completeMs": {
+      "type": "number",
+      "const": 200
+    },
+    "pulseMs": {
+      "type": "number",
+      "const": 220
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 100
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alert",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#1A1612" },
-        "parchment": { "type": "string", "const": "#EBE2D0" },
-        "chakra": { "type": "string", "const": "#B83228" },
-        "alert": { "type": "string", "const": "#B83228" },
-        "olive": { "type": "string", "const": "#6A5E4E" },
-        "off": { "type": "string", "const": "#F7F2E8" }
+        "ink": {
+          "type": "string",
+          "const": "#1A1612"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#EBE2D0"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#6A5E4E"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F7F2E8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateClear"],
+      "required": [
+        "immediateClear"
+      ],
       "properties": {
-        "immediateClear": { "type": "boolean", "const": true }
+        "immediateClear": {
+          "type": "boolean",
+          "const": true
+        }
       }
+    },
+    "nodeCount": {
+      "type": "number",
+      "const": 4
     }
   }
 }
