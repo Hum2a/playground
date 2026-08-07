@@ -174,7 +174,7 @@
 
 .mcs__btn--primary {
   border-color: var(--alarm);
-  background: rgb(217 74 56 / 0.14);
+  background: rgb(184 50 40 / 0.14);
 }
 
 .mcs__btn:hover:not(:disabled) {

@@ -4,8 +4,11 @@
  */
 
 const SLAM_MS = 220
+const SETTLE_MS = 100
 const RING_MS = 260
-const TOTAL_MS = SLAM_MS + RING_MS // ~480ms principal sequence
+const STAMP_OVERSHOOT_DEG = -18
+const STAMP_SETTLE_DEG = -14
+const TOTAL_MS = SLAM_MS + SETTLE_MS + RING_MS
 
 let busy = false
 
@@ -105,11 +108,14 @@ export function runMissionCompleteStamp() {
 
   return new Promise((resolve) => {
     later(SLAM_MS, () => {
-      later(RING_MS, () => {
-        showResolved()
-        busy = false
-        setButtons(true)
-        resolve()
+      root.setAttribute('data-phase', 'done')
+      later(SETTLE_MS, () => {
+        later(RING_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -146,5 +152,7 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void STAMP_OVERSHOOT_DEG
+void STAMP_SETTLE_DEG
 bindUi()
 resetMissionCompleteStamp()

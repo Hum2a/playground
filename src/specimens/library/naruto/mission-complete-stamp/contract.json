@@ -2,16 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/mission-complete-stamp.schema.json",
   "title": "MissionCompleteStamp",
-  "description": "Wax stamp overshoots then settles to -12deg with one ring pulse.",
+  "description": "COMPLETE wax stamp slams at −18° then settles to −14° with one ring pulse.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "name",
     "slamMs",
     "settleMs",
-    "settleDeg",
-    "overshootDeg",
-    "ringPulseMs",
+    "ringMs",
+    "stampOvershootDeg",
+    "stampSettleDeg",
     "colours",
     "reducedMotion"
   ],
@@ -26,19 +26,19 @@
     },
     "settleMs": {
       "type": "number",
-      "const": 140
+      "const": 100
     },
-    "settleDeg": {
-      "type": "number",
-      "const": -12
-    },
-    "overshootDeg": {
-      "type": "number",
-      "const": -4
-    },
-    "ringPulseMs": {
+    "ringMs": {
       "type": "number",
       "const": 260
+    },
+    "stampOvershootDeg": {
+      "type": "number",
+      "const": -18
+    },
+    "stampSettleDeg": {
+      "type": "number",
+      "const": -14
     },
     "colours": {
       "type": "object",
