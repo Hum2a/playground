@@ -221,7 +221,7 @@
 
 .wst__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .wst__btn:hover:not(:disabled) {

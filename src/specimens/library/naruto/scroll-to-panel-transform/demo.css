@@ -54,7 +54,7 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid rgb(58 155 217 / 0.45);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -64,7 +64,7 @@
   height: 64px;
   overflow: hidden;
   border-radius: 50%;
-  background: rgb(58 155 217 / 0.16);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
   border: 1.5px solid var(--chakra);
   transition:
     width 480ms cubic-bezier(0.2, 0.8, 0.25, 1),
@@ -173,7 +173,7 @@
 
 .stp__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .stp__btn:hover:not(:disabled) {

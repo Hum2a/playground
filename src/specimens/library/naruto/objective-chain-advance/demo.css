@@ -55,7 +55,7 @@
   justify-items: center;
   width: 100%;
   padding: 1.4rem 0.75rem 1rem;
-  border: 1px solid rgb(58 155 217 / 0.45);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -95,7 +95,7 @@
 
 .oca__node[data-state='current'] .oca__node-dot {
   border-color: var(--chakra);
-  box-shadow: 0 0 0 3px rgb(58 155 217 / 0.18);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .oca__node[data-state='complete'] .oca__node-dot {
@@ -150,7 +150,7 @@
   height: 8px;
   border-radius: 999px;
   background: var(--chakra);
-  box-shadow: 0 0 6px 1px rgb(58 155 217 / 0.7);
+  box-shadow: 0 0 6px 1px color-mix(in srgb, var(--chakra) 45%, transparent);
   opacity: 0;
   transform: translate(-50%, -50%);
   transition:
@@ -205,7 +205,7 @@
 
 .oca__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .oca__btn:hover:not(:disabled) {

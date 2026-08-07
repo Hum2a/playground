@@ -58,7 +58,7 @@
   width: 100%;
   flex: 1;
   padding: 1.1rem 0.75rem;
-  border: 1px solid rgb(58 155 217 / 0.4);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -115,7 +115,7 @@
   position: absolute;
   inset: -25%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(58 155 217 / 0.85), rgb(58 155 217 / 0) 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--chakra) 45%, transparent), color-mix(in srgb, var(--chakra) 45%, transparent) 68%);
   opacity: 0;
   transform: scale(0.4);
   pointer-events: none;
@@ -269,7 +269,7 @@
 
 .vhc__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .vhc__btn:hover:not(:disabled) {

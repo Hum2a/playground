@@ -54,7 +54,7 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.75rem;
-  border: 1px solid rgb(58 155 217 / 0.45);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -102,7 +102,7 @@
 .mks__node[data-armed='true'] {
   background: var(--chakra);
   border-color: var(--chakra);
-  box-shadow: 0 0 8px 2px rgb(58 155 217 / 0.55);
+  box-shadow: 0 0 8px 2px color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .mks__seal {
@@ -112,7 +112,7 @@
 }
 
 .mks__petal path {
-  fill: rgb(58 155 217 / 0.2);
+  fill: color-mix(in srgb, var(--chakra) 45%, transparent);
   stroke: var(--olive);
   stroke-width: 1.5;
 }
@@ -128,7 +128,7 @@
 }
 
 .mks[data-phase='done'] .mks__petal path {
-  fill: rgb(58 155 217 / 0.32);
+  fill: color-mix(in srgb, var(--chakra) 45%, transparent);
   stroke: var(--chakra);
 }
 
@@ -161,10 +161,10 @@
 
 @keyframes mks-pulse {
   0% {
-    filter: drop-shadow(0 0 0 rgb(58 155 217 / 0.7));
+    filter: drop-shadow(0 0 0 color-mix(in srgb, var(--chakra) 45%, transparent));
   }
   100% {
-    filter: drop-shadow(0 0 10px rgb(58 155 217 / 0));
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--chakra) 45%, transparent));
   }
 }
 
@@ -211,7 +211,7 @@
 
 .mks__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .mks__btn:hover:not(:disabled) {

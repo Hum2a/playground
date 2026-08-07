@@ -56,7 +56,7 @@
   width: 100%;
   min-height: 240px;
   padding: 1rem 0.75rem;
-  border: 1px solid rgb(58 155 217 / 0.45);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -79,7 +79,7 @@
   place-items: center;
   border-radius: 50%;
   border: 1.5px solid var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
   color: var(--chakra);
   cursor: pointer;
   transition: transform 160ms cubic-bezier(0.3, 0.7, 0.3, 1);
@@ -211,7 +211,7 @@
 
 .srm__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .srm__btn:hover:not(:disabled) {

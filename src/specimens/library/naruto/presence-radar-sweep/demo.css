@@ -55,7 +55,7 @@
   justify-items: center;
   width: 100%;
   padding: 0.7rem 0.75rem 0.85rem;
-  border: 1px solid rgb(58 155 217 / 0.45);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -92,7 +92,7 @@
 .prs__sweep line {
   stroke: var(--chakra);
   stroke-width: 2;
-  filter: drop-shadow(0 0 3px rgb(58 155 217 / 0.85));
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--chakra) 45%, transparent));
 }
 
 .prs[data-phase='idle'] .prs__sweep {
@@ -120,7 +120,7 @@
 }
 
 .prs__blip[data-active='true'] {
-  fill: rgb(58 155 217 / 0.35);
+  fill: color-mix(in srgb, var(--chakra) 45%, transparent);
   stroke: var(--chakra);
   transform: scale(1.1);
 }
@@ -217,7 +217,7 @@
 
 .prs__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .prs__btn:hover:not(:disabled) {

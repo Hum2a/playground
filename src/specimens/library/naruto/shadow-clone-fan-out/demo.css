@@ -55,7 +55,7 @@
   width: 100%;
   min-height: 210px;
   padding: 1rem 0.75rem 0.9rem;
-  border: 1px solid rgb(58 155 217 / 0.45);
+  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -208,7 +208,7 @@
 
 .scf__btn--primary {
   border-color: var(--chakra);
-  background: rgb(58 155 217 / 0.14);
+  background: color-mix(in srgb, var(--chakra) 45%, transparent);
 }
 
 .scf__btn:hover:not(:disabled) {
