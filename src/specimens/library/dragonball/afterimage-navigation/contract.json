@@ -101,7 +101,7 @@
     "afterimages": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["count", "lifetimesMs", "outlineOnly"],
+      "required": ["count", "lifetimesMs", "outlineOnly", "opacityOffsetTable"],
       "properties": {
         "count": { "type": "number", "const": 4 },
         "lifetimesMs": {
@@ -115,7 +115,30 @@
             "review": { "type": "number", "const": 150 }
           }
         },
-        "outlineOnly": { "type": "boolean", "const": true }
+        "outlineOnly": { "type": "boolean", "const": true },
+        "opacityOffsetTable": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["home", "search", "build", "review"],
+          "properties": {
+            "home": {
+              "type": "object",
+              "const": { "opacityStart": 0.85, "offsetX": "-6px", "offsetY": "3px", "borderWeightPx": 2, "borderStyle": "dashed" }
+            },
+            "search": {
+              "type": "object",
+              "const": { "opacityStart": 0.7, "offsetX": "5px", "offsetY": "-4px", "borderWeightPx": 1.5, "borderStyle": "dotted" }
+            },
+            "build": {
+              "type": "object",
+              "const": { "opacityStart": 0.55, "offsetX": "-3px", "offsetY": "5px", "borderWeightPx": 1.5, "borderStyle": "dashed" }
+            },
+            "review": {
+              "type": "object",
+              "const": { "opacityStart": 0.38, "offsetX": "4px", "offsetY": "2px", "borderWeightPx": 1, "borderStyle": "solid" }
+            }
+          }
+        }
       }
     },
     "ticks": {

@@ -72,14 +72,16 @@ Older afterimages use longer lifetimes from leave; trail cleans up after arrival
 
 ## Afterimages (exactly 4)
 
-Spawned when leaving a destination. Outline/dashed only — no ACTIVE text.
+Spawned when leaving a destination. Outline only — no ACTIVE text. Each ghost
+uses a frozen opacity/offset profile so the trail reads as distinct silhouettes,
+not clones.
 
-| Left from | Lifetime |
-| --------- | -------- |
-| HOME | 420ms |
-| SEARCH | 330ms |
-| BUILD | 240ms |
-| REVIEW | 150ms |
+| Left from | Lifetime | Opacity start | Offset (x, y) | Border |
+| --------- | -------- | ------------- | ------------- | ------ |
+| HOME | 420ms | 0.85 | −6px, +3px | 2px dashed |
+| SEARCH | 330ms | 0.70 | +5px, −4px | 1.5px dotted |
+| BUILD | 240ms | 0.55 | −3px, +5px | 1.5px dashed (pale) |
+| REVIEW | 150ms | 0.38 | +4px, +2px | 1px solid (muted) |
 
 ## Ticks
 

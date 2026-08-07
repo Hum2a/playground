@@ -21,6 +21,14 @@ const SEGMENT_MS = [90, 70, 65, 80]
 const ARRIVAL_MS = 305
 const CLEANUP_MS = ARRIVAL_MS + 420 + 40
 
+/** Frozen opacity + offset table — each ghost is visually distinct. */
+const GHOST_PROFILES = {
+  home: { opacityStart: 0.85, ox: '-6px', oy: '3px', weight: 2 },
+  search: { opacityStart: 0.7, ox: '5px', oy: '-4px', weight: 1.5 },
+  build: { opacityStart: 0.55, ox: '-3px', oy: '5px', weight: 1.5 },
+  review: { opacityStart: 0.38, ox: '4px', oy: '2px', weight: 1 },
+}
+
 /** @type {number[]} */
 let timers = []
 let busy = false
@@ -131,11 +139,18 @@ function spawnGhost(id, lifeMs) {
   const host = document.querySelector('[data-ain-ghosts]')
   if (!dest || !host) return
 
+  const profile = GHOST_PROFILES[/** @type {keyof typeof GHOST_PROFILES} */ (id)]
   const ghost = document.createElement('span')
   ghost.className = `ain__ghost ain__ghost--${id}`
   ghost.style.setProperty('--ain-gx', dest.x)
   ghost.style.setProperty('--ain-gy', dest.y)
   ghost.style.setProperty('--ain-ghost-ms', `${lifeMs}ms`)
+  if (profile) {
+    ghost.style.setProperty('--ain-g-start', String(profile.opacityStart))
+    ghost.style.setProperty('--ain-g-ox', profile.ox)
+    ghost.style.setProperty('--ain-g-oy', profile.oy)
+    ghost.style.setProperty('--ain-g-weight', `${profile.weight}px`)
+  }
   host.appendChild(ghost)
   void ghost.offsetWidth
   ghost.classList.add('is-alive')
@@ -273,6 +288,7 @@ export const AFTERIMAGE_NAV_CONTRACT = {
     leaveMs,
     ghostMs,
   })),
+  GHOST_PROFILES,
   SEGMENT_MS,
   ARRIVAL_MS,
 }
