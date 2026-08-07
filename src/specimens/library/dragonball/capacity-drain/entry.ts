@@ -4,7 +4,7 @@ export const capacityDrain: Specimen = {
   ref: 'SPX-1210',
   title: 'Capacity Drain',
   blurb:
-    'Process B initiates a drain against Service A: six 10-capacity packets move A→B until A hits SAFE MIN 30 (B reaches 70), then the line breaks into five segments retracting to B.',
+    'Process B locks an extraction beam on Service A: donor vessel depletes and dims while six capacity packets travel into the sink until SAFE MIN 30 stops the drain.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball–inspired hostile capacity extraction (abstract)',
@@ -24,15 +24,13 @@ export const capacityDrain: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, immediately shows final 30/70 distribution with DRAIN STOPPED.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, immediately shows final 30/70 vessel levels with DRAIN STOPPED.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 520,
-    height: 360,
+    height: 380,
     background: 'dark',
-
-    label: 'Capacity drain A→B to safe min',
+    label: 'Capacity drain vessel + beam',
   },
-
 }

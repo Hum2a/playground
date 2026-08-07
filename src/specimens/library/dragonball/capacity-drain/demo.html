@@ -2,26 +2,26 @@
   <p class="cdr__status" data-cdr-status>IDLE</p>
 
   <div class="cdr__stage" data-cdr-stage>
-    <article class="cdr__node cdr__node--a" data-cdr-a>
+    <article class="cdr__node cdr__node--donor" data-cdr-a>
       <p class="cdr__role">SOURCE</p>
       <h2 class="cdr__name">SERVICE // A</h2>
+
+      <div class="cdr__vessel" data-cdr-vessel-a aria-hidden="true">
+        <span class="cdr__vessel-rim"></span>
+        <span class="cdr__vessel-fill" data-cdr-fill-a></span>
+        <span class="cdr__vessel-min"></span>
+        <span class="cdr__vessel-grid">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </span>
+      </div>
+
       <p class="cdr__cap">
         CAPACITY
         <span data-cdr-cap-a>90</span>
       </p>
       <p class="cdr__safe" data-cdr-safe>SAFE MIN // 30</p>
-      <div class="cdr__bars cdr__bars--a" data-cdr-bars-a aria-hidden="true">
-        <span class="cdr__bar" data-cdr-bar-a="0"></span>
-        <span class="cdr__bar" data-cdr-bar-a="1"></span>
-        <span class="cdr__bar" data-cdr-bar-a="2"></span>
-        <span class="cdr__bar" data-cdr-bar-a="3"></span>
-        <span class="cdr__bar" data-cdr-bar-a="4"></span>
-        <span class="cdr__bar" data-cdr-bar-a="5"></span>
-        <span class="cdr__bar" data-cdr-bar-a="6"></span>
-        <span class="cdr__bar" data-cdr-bar-a="7"></span>
-        <span class="cdr__bar" data-cdr-bar-a="8"></span>
-      </div>
-      <span class="cdr__min-mark" aria-hidden="true"></span>
+
       <span class="cdr__brackets" aria-hidden="true">
         <span class="cdr__br cdr__br--tl"></span>
         <span class="cdr__br cdr__br--tr"></span>
@@ -31,7 +31,9 @@
     </article>
 
     <div class="cdr__channel" data-cdr-channel aria-hidden="true">
+      <span class="cdr__beam-sheath" data-cdr-beam-sheath></span>
       <span class="cdr__line" data-cdr-line></span>
+      <span class="cdr__beam" data-cdr-beam></span>
       <span class="cdr__break cdr__break--1" data-cdr-break="1"></span>
       <span class="cdr__break cdr__break--2" data-cdr-break="2"></span>
       <span class="cdr__break cdr__break--3" data-cdr-break="3"></span>
@@ -40,22 +42,23 @@
       <span class="cdr__packet" data-cdr-packet hidden></span>
     </div>
 
-    <article class="cdr__node cdr__node--b" data-cdr-b>
+    <article class="cdr__node cdr__node--sink" data-cdr-b>
       <p class="cdr__role">RECEIVER</p>
       <h2 class="cdr__name">PROCESS // B</h2>
+
+      <div class="cdr__vessel cdr__vessel--sink" data-cdr-vessel-b aria-hidden="true">
+        <span class="cdr__vessel-rim"></span>
+        <span class="cdr__vessel-fill" data-cdr-fill-b></span>
+        <span class="cdr__vessel-grid">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </span>
+      </div>
+
       <p class="cdr__cap">
         CAPACITY
         <span data-cdr-cap-b>10</span>
       </p>
-      <div class="cdr__bars cdr__bars--b" data-cdr-bars-b aria-hidden="true">
-        <span class="cdr__bar" data-cdr-bar-b="0"></span>
-        <span class="cdr__bar" data-cdr-bar-b="1"></span>
-        <span class="cdr__bar" data-cdr-bar-b="2"></span>
-        <span class="cdr__bar" data-cdr-bar-b="3"></span>
-        <span class="cdr__bar" data-cdr-bar-b="4"></span>
-        <span class="cdr__bar" data-cdr-bar-b="5"></span>
-        <span class="cdr__bar" data-cdr-bar-b="6"></span>
-      </div>
     </article>
   </div>
 

@@ -6,7 +6,7 @@
  *   0–180       connection line B→A
  *   180         four brackets lock; A CONNECTED
  *   packets:    6 × 10 capacity, travel 240ms, spacing 110ms
- *   on arrival: metrics + strip A bar / grow B bar
+ *   on arrival: metrics + vessel drain/fill + donor dim
  *   after last: brackets detach; line breaks into 5 segments → B (140ms)
  *
  * Metrics after arrivals: 80/20 … 30/70. Total always 100.
@@ -17,8 +17,9 @@ const TRAVEL_MS = 240
 const SPACING_MS = 110
 const DISCONNECT_MS = 140
 const PACKET_COUNT = 6
-const PACKET_VALUE = 10
 const SAFE_MIN = 30
+const INITIAL_A = 90
+const INITIAL_B = 10
 
 const METRICS = [
   [80, 20],
@@ -33,8 +34,6 @@ const METRICS = [
 let timers = []
 let busy = false
 let done = false
-let capA = 90
-let capB = 10
 
 function prefersReducedMotion() {
   const forced =
@@ -71,13 +70,28 @@ function setStatus(root, text) {
   if (el) el.textContent = text
 }
 
+function vesselPct(capacity, max) {
+  return `${(capacity / max) * 100}%`
+}
+
+function donorDimness(a) {
+  const span = INITIAL_A - SAFE_MIN
+  const drained = INITIAL_A - a
+  return 1 - (drained / span) * 0.45
+}
+
+function setVessels(root, a, b) {
+  root.style.setProperty('--cdr-fill-a', vesselPct(a, INITIAL_A))
+  root.style.setProperty('--cdr-fill-b', vesselPct(b, 70))
+  root.style.setProperty('--cdr-donor-dimness', String(donorDimness(a)))
+}
+
 function setCaps(root, a, b) {
-  capA = a
-  capB = b
   const ea = root.querySelector('[data-cdr-cap-a]')
   const eb = root.querySelector('[data-cdr-cap-b]')
   if (ea) ea.textContent = String(a)
   if (eb) eb.textContent = String(b)
+  setVessels(root, a, b)
 }
 
 function setControls(root, { start, resetVisible }) {
@@ -85,20 +99,6 @@ function setControls(root, { start, resetVisible }) {
   const r = root.querySelector('[data-cdr-reset]')
   if (s) s.disabled = !start
   if (r) r.hidden = !resetVisible
-}
-
-function syncBars(root, a, b) {
-  // A: 9 bars for 90; visible count = a/10
-  const aCount = Math.round(a / 10)
-  root.querySelectorAll('[data-cdr-bar-a]').forEach((bar, i) => {
-    bar.classList.toggle('is-on', i < aCount)
-    bar.classList.toggle('is-safe', i < SAFE_MIN / 10)
-  })
-  // B: up to 7 bars for 70
-  const bCount = Math.round(b / 10)
-  root.querySelectorAll('[data-cdr-bar-b]').forEach((bar, i) => {
-    bar.classList.toggle('is-on', i < bCount)
-  })
 }
 
 function clearPhases(root) {
@@ -115,8 +115,7 @@ function clearPhases(root) {
 function applyIdle(root) {
   clearPhases(root)
   root.dataset.state = 'idle'
-  setCaps(root, 90, 10)
-  syncBars(root, 90, 10)
+  setCaps(root, INITIAL_A, INITIAL_B)
   setStatus(root, 'IDLE')
   const packet = root.querySelector('[data-cdr-packet]')
   if (packet) {
@@ -129,8 +128,7 @@ function applyFinal(root) {
   clearPhases(root)
   root.classList.add('is-complete')
   root.dataset.state = 'complete'
-  setCaps(root, 30, 70)
-  syncBars(root, 30, 70)
+  setCaps(root, SAFE_MIN, 70)
   setStatus(root, 'DRAIN STOPPED')
   setAnnounce(
     root,
@@ -152,8 +150,7 @@ export function runCapacityDrain() {
   busy = true
   clearTimers()
   clearPhases(root)
-  setCaps(root, 90, 10)
-  syncBars(root, 90, 10)
+  setCaps(root, INITIAL_A, INITIAL_B)
   root.dataset.state = 'running'
   setControls(root, { start: false, resetVisible: false })
   setStatus(root, 'CONNECTING')
@@ -197,13 +194,9 @@ export function runCapacityDrain() {
           packet.hidden = true
         }
         setCaps(root, nextA, nextB)
-        syncBars(root, nextA, nextB)
         if (nextA === SAFE_MIN) {
           setStatus(root, 'SOURCE LIMIT REACHED')
-          setAnnounce(
-            root,
-            'Source safe minimum reached. Stopping drain.',
-          )
+          setAnnounce(root, 'Source safe minimum reached. Stopping drain.')
         }
       })
     }

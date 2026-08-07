@@ -4,7 +4,7 @@
 
 ## Intent
 
-Receiver-initiated resource extraction. Source does not volunteer capacity. Drain stops at source SAFE MIN.
+Receiver-initiated resource extraction with visible geometry: donor vessel depletes and dims while an extraction beam pulls capacity into the sink. Drain stops at source SAFE MIN.
 
 ## Scaffold
 
@@ -16,6 +16,17 @@ Receiver-initiated resource extraction. Source does not volunteer capacity. Drai
 | Trigger | `START DRAIN` |
 | Final | A `30` · B `70` · `DRAIN STOPPED` |
 | Announce | `Process B drained 60 capacity from Service A. Drain stopped at source safe minimum of 30.` |
+
+## Visual contract (frozen)
+
+| Element | Spec |
+| --- | --- |
+| Donor vessel | 9-cell grid tank; fill height tracks capacity; SAFE MIN line at 33.33% |
+| Sink vessel | 7-cell grid tank; fill height tracks capacity (max 70) |
+| Donor dim | opacity/brightness scales as capacity drains toward SAFE MIN |
+| Extraction beam | gradient sheath + pulsing core line A→B while draining |
+| Brackets | 4 corner locks on donor during drain |
+| Packets | 6 diamond pulses along beam |
 
 ## Geometry / timing (frozen)
 
@@ -38,3 +49,7 @@ Receiver-initiated resource extraction. Source does not volunteer capacity. Drai
 
 - `runCapacityDrain()`
 - `resetCapacityDrain()`
+
+## Reduced motion
+
+Immediate final 30/70 vessels + DRAIN STOPPED. No beam or packet motion.
