@@ -16,6 +16,8 @@
   --ccf-d1: 96px;
   --ccf-d2: 118px;
   --ccf-d3: 140px;
+  --ccf-step-ms: 140ms;
+  --ccf-ready-hold-ms: 180ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -64,7 +66,7 @@
   justify-items: center;
   width: 100%;
   padding: 1.1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(61 206 168 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -92,7 +94,9 @@
 
 .ccf__boundary {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   overflow: hidden;
   background: rgb(16 19 24 / 0.9);
   border: 1.5px solid var(--olive);
@@ -112,7 +116,7 @@
   width: var(--ccf-d0);
   height: var(--ccf-d0);
   border-radius: var(--ccf-r0);
-  transition: width 80ms linear, height 80ms linear, border-radius 80ms linear;
+  transition: width var(--ccf-step-ms) cubic-bezier(0.2, 0.85, 0.25, 1), height var(--ccf-step-ms) cubic-bezier(0.2, 0.85, 0.25, 1), border-radius var(--ccf-step-ms) ease-out;
 }
 
 .ccf[data-phase='done'] .ccf__boundary {
@@ -125,10 +129,10 @@
 
 @keyframes ccf-pulse {
   0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--chakra) 45%, transparent);
+    box-shadow: 0 0 0 0 rgb(61 206 168 / 0.45);
   }
   100% {
-    box-shadow: 0 0 26px 8px color-mix(in srgb, var(--chakra) 45%, transparent);
+    box-shadow: 0 0 26px 8px rgb(61 206 168 / 0.45);
   }
 }
 
@@ -137,11 +141,11 @@
   inset: 0;
   transform: scaleY(var(--p, 0));
   transform-origin: bottom center;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--chakra) 45%, transparent), color-mix(in srgb, var(--chakra) 45%, transparent));
+  background: linear-gradient(180deg, rgb(61 206 168 / 0.45), rgb(61 206 168 / 0.45));
 }
 
 .ccf[data-phase='done'] .ccf__fill {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--chakra) 45%, transparent), rgb(217 74 56 / 0.55));
+  background: linear-gradient(180deg, rgb(61 206 168 / 0.45), rgb(217 74 56 / 0.55));
 }
 
 .ccf__pct {
@@ -198,7 +202,7 @@
 
 .ccf__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(61 206 168 / 0.45);
 }
 
 .ccf__btn:hover:not(:disabled) {

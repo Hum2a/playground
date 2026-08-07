@@ -5,7 +5,7 @@ export const chakraChargeField: Specimen = {
   ref: 'SPX-2354',
   title: 'Chakra Charge Field',
   blurb:
-    'Hold grows an irregular chakra boundary through frozen diameter steps over 620ms; release commits.',
+    'An irregular chakra boundary grows through frozen diameters 72→96→118→140px into READY.',
   origin: {
     project: 'Original',
     surface: 'Naruto / chakra training — charge field',
@@ -25,12 +25,14 @@ export const chakraChargeField: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Chakra Charge Field state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the field appears READY at 140px immediately.',
   },
-  acceptance: [
-    'Boundary fill uses irregular clip-path growth driven by --p over chargeMs 620',
-    'Diameter steps pass through 42% / 68% / 100% before READY/COMMITTED',
-    'Release commits current level; early release below full still commits partial',
+    acceptance: [
+    'Boundary grows through frozen diameters 72→96→118→140px (data-step)',
+    'Each step takes stepMs 140; final READY with readyHoldMs 180',
+    'Motion language is width/height growth, not opacity fade',
+    'Replay resets to 72px idle before rerunning',
+    'Reduced motion shows READY at 140px immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

@@ -6,9 +6,12 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount inside a relative host (~360×300+).',
-    'Import demo.css verbatim; freeze diameters [72,96,118,140] and charge 620ms from contract.json.',
+    integration: [
+    'Mount inside a relative host (~420×320+).',
+    'Import demo.css verbatim; freeze diametersPx [72,96,118,140] and stepMs 140 from contract.json.',
+    'Wire runChakraChargeField / resetChakraChargeField / replayChakraChargeField.',
+    'Honour both reduced-motion triggers.',
+  ], and charge 620ms from contract.json.',
     'Wire hold-to-charge plus runChakraChargeField / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
