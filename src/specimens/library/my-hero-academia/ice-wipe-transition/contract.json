@@ -1,10 +1,77 @@
 {
   "name": "ice-wipe-transition",
+  "intent": "Frost leading edge sweeps across stage; crystalline facets grow then fracture to reveal destination scene.",
+  "catalogue": {
+    "mha": "MHA-158",
+    "ref": "SPX-2132"
+  },
+  "copy": {
+    "sceneA": "ALPHA",
+    "sceneACopy": "Current view",
+    "sceneB": "BETA",
+    "sceneBCopy": "Destination",
+    "transition": "Transition",
+    "replay": "Replay",
+    "liveA": "Scene A active.",
+    "liveFrost": "Frost edge advancing.",
+    "liveGrow": "Ice facets growing.",
+    "liveFracture": "Fracturing away.",
+    "liveB": "Scene B active."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "animation": { "growMs": 740, "fractureMs": 380, "totalMs": 1390 }
+  "iceTokens": {
+    "frost": "#C8E8F8",
+    "crystal": "rgb(56 163 255 / 0.55)",
+    "edge": "#E8F6FC",
+    "shadow": "rgb(16 24 32 / 0.18)"
+  },
+  "timing": {
+    "frostMs": 480,
+    "growMs": 520,
+    "fractureMs": 380,
+    "settleMs": 270,
+    "totalMs": 1650
+  },
+  "shards": {
+    "count": 6,
+    "polygons": {
+      "1": "polygon(0 0, 100% 0, 70% 100%, 0 80%)",
+      "2": "polygon(20% 0, 100% 0, 100% 100%, 0 70%)",
+      "3": "polygon(0 15%, 100% 0, 85% 100%, 0 85%)",
+      "4": "polygon(15% 0, 100% 20%, 80% 100%, 0 75%)",
+      "5": "polygon(0 25%, 100% 0, 75% 100%, 0 100%)",
+      "6": "polygon(30% 0, 100% 0, 100% 100%, 0 85%)"
+    },
+    "fractureVectors": {
+      "1": { "dxPx": -14, "dyPx": -10 },
+      "2": { "dxPx": 16, "dyPx": -8 },
+      "3": { "dxPx": -6, "dyPx": 12 },
+      "4": { "dxPx": 12, "dyPx": 14 },
+      "5": { "dxPx": -18, "dyPx": 10 },
+      "6": { "dxPx": 10, "dyPx": 16 }
+    }
+  },
+  "api": {
+    "run": "runIceWipeTransition()",
+    "reset": "resetIceWipeTransition()",
+    "replay": "replayIceWipeTransition()"
+  },
+  "reducedMotion": {
+    "behaviour": "Scene B appears immediately; no frost sweep or shard animation"
+  },
+  "acceptance": [
+    "Idle: Scene A (ALPHA) visible; live reads Scene A active",
+    "Frost: leading edge sweeps left-to-right (480ms)",
+    "Grow: six crystalline shards scale in with stagger (520ms)",
+    "Fracture: shards scatter and fade; Scene B revealed (380ms)",
+    "Replay resets to Scene A",
+    "Reduced motion (prefers or data-force) skips frost/shard animation",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Effect-local ice tokens and six shard clip-path polygons frozen in contract"
 }

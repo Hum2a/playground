@@ -1,12 +1,13 @@
 /**
- * Ice Wipe Transition — crystalline facets grow then fracture away.
+ * Ice Wipe Transition — frost leading edge sweeps, facets grow, then fracture away.
  * iframe-safe; no storage / parent / network.
  */
 
-const GROW_MS = 740
+const FROST_MS = 480
+const GROW_MS = 520
 const FRACTURE_MS = 380
 const SETTLE_MS = 270
-const TOTAL_MS = GROW_MS + FRACTURE_MS + SETTLE_MS
+const TOTAL_MS = FROST_MS + GROW_MS + FRACTURE_MS + SETTLE_MS
 
 let busy = false
 /** @type {number[]} */
@@ -87,20 +88,26 @@ export function runIceWipeTransition() {
     return Promise.resolve()
   }
 
-  setPhase('grow')
-  setLive('Ice facets growing.')
+  setPhase('frost')
+  setLive('Frost edge advancing.')
 
   return new Promise((resolve) => {
-    later(GROW_MS, () => {
-      setPhase('fracture')
-      setLive('Fracturing away.')
-      showSceneB()
-      later(FRACTURE_MS, () => {
-        setPhase('done')
-        later(SETTLE_MS, () => {
-          busy = false
-          setButtons(true)
-          resolve()
+    later(FROST_MS, () => {
+      setPhase('grow')
+      setLive('Ice facets growing.')
+
+      later(GROW_MS, () => {
+        setPhase('fracture')
+        setLive('Fracturing away.')
+        showSceneB()
+
+        later(FRACTURE_MS, () => {
+          setPhase('done')
+          later(SETTLE_MS, () => {
+            busy = false
+            setButtons(true)
+            resolve()
+          })
         })
       })
     })

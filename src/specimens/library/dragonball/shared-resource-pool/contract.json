@@ -1,1 +1,154 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"SharedResourcePool","type":"object","properties":{"name":{"const":"shared-resource-pool"},"pool":{"const":{"capacity":100,"unitCount":20,"unitCapacity":5}},"allocations":{"const":{"build":{"units":8,"capacity":40},"test":{"units":7,"capacity":35},"ship":{"units":3,"capacity":15},"remaining":{"units":2,"capacity":10}}},"paths":{"const":3},"thresholds":{"const":{"25":{"ticks":2},"10":{"status":"LOW"}}},"reducedMotion":{"const":"Immediate final allocation."}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/shared-resource-pool.schema.json",
+  "title": "SharedResourcePool",
+  "description": "Portable contract for a collective central pool drained by three orbiting consumer nodes along fixed contribution arcs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "pool",
+    "allocations",
+    "timing",
+    "thresholds",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "shared-resource-pool" },
+    "intent": {
+      "type": "string",
+      "const": "Twenty fixed five-capacity units orbit a central luminous pool mass; ALLOCATE sends units along three frozen arcs to BUILD/TEST/SHIP nodes until pool reaches 10 LOW."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system", "trigger", "reset", "consumers", "states"],
+      "properties": {
+        "system": { "type": "string", "const": "COLLECTIVE // POOL" },
+        "trigger": { "type": "string", "const": "ALLOCATE" },
+        "reset": { "type": "string", "const": "RESET" },
+        "consumers": {
+          "type": "array",
+          "const": ["BUILD", "TEST", "SHIP"]
+        },
+        "states": {
+          "type": "array",
+          "const": ["AVAILABLE", "LOW"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["void", "gold", "core", "warn", "orbit"],
+      "properties": {
+        "void": { "type": "string", "const": "#0a0e1c" },
+        "gold": { "type": "string", "const": "#f5d76e" },
+        "core": { "type": "string", "const": "#fff6c8" },
+        "warn": { "type": "string", "const": "#d4723f" },
+        "orbit": { "type": "string", "const": "#4a5f9a" }
+      }
+    },
+    "pool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initial", "unitCount", "unitCapacity", "commits"],
+      "properties": {
+        "initial": { "type": "number", "const": 100 },
+        "unitCount": { "type": "number", "const": 20 },
+        "unitCapacity": { "type": "number", "const": 5 },
+        "commits": {
+          "type": "array",
+          "const": [100, 60, 25, 10]
+        }
+      }
+    },
+    "allocations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["build", "test", "ship", "remaining"],
+      "properties": {
+        "build": {
+          "type": "object",
+          "const": { "units": 8, "capacity": 40 }
+        },
+        "test": {
+          "type": "object",
+          "const": { "units": 7, "capacity": 35 }
+        },
+        "ship": {
+          "type": "object",
+          "const": { "units": 3, "capacity": 15 }
+        },
+        "remaining": {
+          "type": "object",
+          "const": { "units": 2, "capacity": 10 }
+        }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unitMs", "groupStartMs", "dockSettleMs"],
+      "properties": {
+        "unitMs": { "type": "number", "const": 60 },
+        "groupStartMs": {
+          "type": "object",
+          "const": { "build": 0, "test": 180, "ship": 300 }
+        },
+        "dockSettleMs": { "type": "number", "const": 240 }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["warningAt", "lowAt", "warningTicks"],
+      "properties": {
+        "warningAt": { "type": "number", "const": 25 },
+        "lowAt": { "type": "number", "const": 10 },
+        "warningTicks": { "type": "number", "const": 2 }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["politeStatus", "ledgerText"],
+      "properties": {
+        "politeStatus": { "type": "boolean", "const": true },
+        "ledgerText": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediateFinal", "triggers"],
+      "properties": {
+        "immediateFinal": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": [
+            "prefers-reduced-motion: reduce",
+            "data-force-reduced-motion=true"
+          ]
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "core", "unit", "consumer", "arc"],
+      "properties": {
+        "root": { "type": "string", "const": "srp" },
+        "core": { "type": "string", "const": "srp__core" },
+        "unit": { "type": "string", "const": "srp__unit" },
+        "consumer": { "type": "string", "const": "srp__consumer" },
+        "arc": { "type": "string", "const": "srp__arc" }
+      }
+    }
+  }
+}

@@ -1,14 +1,70 @@
-<div class="srp" data-shared-resource>
-  <header><h2>ENERGY // <b data-srp-pool>100</b></h2><p data-srp-state>AVAILABLE</p></header>
-  <div class="srp__stage">
-    <div class="srp__consumer srp__consumer--build"><b>BUILD // <span data-srp-build>0</span></b></div>
-    <div class="srp__consumer srp__consumer--test"><b>TEST // <span data-srp-test>0</span></b></div>
-    <div class="srp__consumer srp__consumer--ship"><b>SHIP // <span data-srp-ship>0</span></b></div>
-    <span class="srp__path srp__path--build"></span><span class="srp__path srp__path--test"></span><span class="srp__path srp__path--ship"></span>
-    <div class="srp__pool" data-srp-units aria-hidden="true"></div>
-    <span class="srp__tick srp__tick--a"></span><span class="srp__tick srp__tick--b"></span>
+<div class="srp" data-shared-resource data-phase="idle">
+  <p class="srp__system">COLLECTIVE // POOL</p>
+
+  <div class="srp__arena" aria-hidden="true">
+    <div class="srp__sky"></div>
+    <span class="srp__orbit-ring"></span>
+
+    <div class="srp__consumer srp__consumer--build" data-srp-node="build">
+      <span class="srp__node-glow"></span>
+      <span class="srp__node-core"></span>
+      <b class="srp__node-label">BUILD</b>
+      <span class="srp__node-val" data-srp-build>0</span>
+    </div>
+
+    <div class="srp__consumer srp__consumer--test" data-srp-node="test">
+      <span class="srp__node-glow"></span>
+      <span class="srp__node-core"></span>
+      <b class="srp__node-label">TEST</b>
+      <span class="srp__node-val" data-srp-test>0</span>
+    </div>
+
+    <div class="srp__consumer srp__consumer--ship" data-srp-node="ship">
+      <span class="srp__node-glow"></span>
+      <span class="srp__node-core"></span>
+      <b class="srp__node-label">SHIP</b>
+      <span class="srp__node-val" data-srp-ship>0</span>
+    </div>
+
+    <svg class="srp__arcs" viewBox="0 0 320 320" width="320" height="320" focusable="false">
+      <path class="srp__arc srp__arc--build" d="M 160 88 C 150 118, 142 138, 132 152" />
+      <path class="srp__arc srp__arc--test" d="M 228 160 C 205 160, 188 160, 172 160" />
+      <path class="srp__arc srp__arc--ship" d="M 160 232 C 150 202, 142 182, 132 168" />
+    </svg>
+
+    <div class="srp__core" data-srp-core>
+      <span class="srp__core-halo"></span>
+      <span class="srp__core-mass"></span>
+      <span class="srp__core-sheen"></span>
+    </div>
+
+    <div class="srp__units" data-srp-units></div>
+
+    <span class="srp__tick srp__tick--a"></span>
+    <span class="srp__tick srp__tick--b"></span>
   </div>
-  <p class="srp__remaining">POOL <b data-srp-remaining>100</b></p>
-  <div class="srp__actions"><button type="button" data-srp-allocate>ALLOCATE</button><button type="button" data-srp-reset hidden>RESET</button></div>
-  <p class="srp__status" role="status" aria-live="polite" data-srp-status>Pool 100. Build 0, Test 0, Ship 0.</p>
+
+  <dl class="srp__ledger">
+    <div class="srp__ledger-row">
+      <dt>POOL</dt>
+      <dd data-srp-pool>100</dd>
+    </div>
+    <div class="srp__ledger-row">
+      <dt>RESERVE</dt>
+      <dd data-srp-remaining>100</dd>
+    </div>
+    <div class="srp__ledger-row srp__ledger-row--state">
+      <dt>STATE</dt>
+      <dd data-srp-state>AVAILABLE</dd>
+    </div>
+  </dl>
+
+  <div class="srp__actions">
+    <button type="button" class="srp__btn" data-srp-allocate>ALLOCATE</button>
+    <button type="button" class="srp__btn srp__btn--ghost" data-srp-reset hidden>RESET</button>
+  </div>
+
+  <p class="srp__status" role="status" aria-live="polite" data-srp-status>
+    Pool 100. Build 0, Test 0, Ship 0.
+  </p>
 </div>
