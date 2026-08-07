@@ -20,13 +20,16 @@ const TICK_MS = 90
  * @type {{ id: string, r: number, hitAt: number }[]}
  */
 const NODES = [
-  { id: 'a', r: 70, hitAt: Math.round(ROOT_MS + RING_MS * (70 / RING_MAX_R)) },
-  { id: 'b', r: 88, hitAt: Math.round(ROOT_MS + RING_MS * (88 / RING_MAX_R)) },
-  { id: 'c', r: 105, hitAt: Math.round(ROOT_MS + RING_MS * (105 / RING_MAX_R)) },
-  { id: 'd', r: 126, hitAt: Math.round(ROOT_MS + RING_MS * (126 / RING_MAX_R)) },
-  { id: 'e', r: 144, hitAt: Math.round(ROOT_MS + RING_MS * (144 / RING_MAX_R)) },
-  { id: 'f', r: 166, hitAt: Math.round(ROOT_MS + RING_MS * (166 / RING_MAX_R)) },
+  { id: 'a', r: 70, angle: -15, hitAt: Math.round(ROOT_MS + RING_MS * (70 / RING_MAX_R)) },
+  { id: 'b', r: 88, angle: 45, hitAt: Math.round(ROOT_MS + RING_MS * (88 / RING_MAX_R)) },
+  { id: 'c', r: 105, angle: 105, hitAt: Math.round(ROOT_MS + RING_MS * (105 / RING_MAX_R)) },
+  { id: 'd', r: 126, angle: 165, hitAt: Math.round(ROOT_MS + RING_MS * (126 / RING_MAX_R)) },
+  { id: 'e', r: 144, angle: 225, hitAt: Math.round(ROOT_MS + RING_MS * (144 / RING_MAX_R)) },
+  { id: 'f', r: 166, angle: 285, hitAt: Math.round(ROOT_MS + RING_MS * (166 / RING_MAX_R)) },
 ]
+
+const SPOKE_CX = 200
+const SPOKE_CY = 200
 
 /** Ring 3 finishes last: ROOT + RING3_DELAY + RING_MS */
 const COMPLETE_MS = ROOT_MS + RING3_DELAY + RING_MS
@@ -82,12 +85,30 @@ function setRootPropagated(on) {
   if (to) to.setAttribute('aria-hidden', on ? 'false' : 'true')
 }
 
+function pulseSpoke(id, r, angleDeg) {
+  const spoke = document.querySelector(`[data-psw-spoke="${id}"]`)
+  if (!spoke) return
+  const rad = (angleDeg * Math.PI) / 180
+  const x2 = SPOKE_CX + r * Math.cos(rad)
+  const y2 = SPOKE_CY + r * Math.sin(rad)
+  spoke.setAttribute('x1', String(SPOKE_CX))
+  spoke.setAttribute('y1', String(SPOKE_CY))
+  spoke.setAttribute('x2', String(x2))
+  spoke.setAttribute('y2', String(y2))
+  spoke.classList.remove('psw__spoke--lit')
+  void node.offsetWidth
+  spoke.classList.add('psw__spoke--lit')
+}
+
 function updateNode(id) {
   if (updated.has(id)) return
   updated.add(id)
 
+  const meta = NODES.find((n) => n.id === id)
   const node = document.querySelector(`[data-psw-node="${id}"]`)
   if (!node) return
+
+  if (meta) pulseSpoke(id, meta.r, meta.angle)
 
   node.setAttribute('data-status', 'updating')
   void node.offsetWidth
@@ -192,6 +213,8 @@ export function resetPropagatedShockwave() {
     const to = node.querySelector('.psw__clip--to')
     if (from) from.setAttribute('aria-hidden', 'false')
     if (to) to.setAttribute('aria-hidden', 'true')
+    const spoke = document.querySelector(`[data-psw-spoke="${n.id}"]`)
+    if (spoke) spoke.classList.remove('psw__spoke--lit')
   }
 
   const root = rootEl()

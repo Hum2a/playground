@@ -1,52 +1,130 @@
 {
-  "name": "propagated-shockwave",
-  "intent": "Root config impact emits three concentric shockwave rings; six dependents update when Ring 1 reaches each fixed radial distance (A→F).",
-  "catalogue": {
-    "db": "DB-123",
-    "ref": "SPX-1088",
-    "catalogueTitle": "Punch Shockwave"
-  },
-  "root": {
-    "label": "CONFIG // ROOT",
-    "compress": { "scale": [1, 0.92, 1.04, 1], "durationMs": 140 },
-    "finalStatus": "PROPAGATED"
-  },
-  "rings": {
-    "count": 3,
-    "startsMs": [0, 90, 180],
-    "durationMs": 520,
-    "maxDiameterPx": 380,
-    "maxRadiusPx": 190,
-    "style": "thin structural outline; no glow; finite"
-  },
-  "nodes": [
-    { "id": "a", "label": "A", "rPx": 70, "angleDeg": -15, "hitAtMsFromApply": 332 },
-    { "id": "b", "label": "B", "rPx": 88, "angleDeg": 45, "hitAtMsFromApply": 381 },
-    { "id": "c", "label": "C", "rPx": 105, "angleDeg": 105, "hitAtMsFromApply": 427 },
-    { "id": "d", "label": "D", "rPx": 126, "angleDeg": 165, "hitAtMsFromApply": 485 },
-    { "id": "e", "label": "E", "rPx": 144, "angleDeg": 225, "hitAtMsFromApply": 534 },
-    { "id": "f", "label": "F", "rPx": 166, "angleDeg": 285, "hitAtMsFromApply": 594 }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/propagated-shockwave.schema.json",
+  "title": "PropagatedShockwave",
+  "description": "Portable contract for root impact → three staggered rings → distance-ordered dependent updates with dependency spokes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "root",
+    "rings",
+    "nodes",
+    "spokes",
+    "hitFormula",
+    "nodeUpdate",
+    "api",
+    "reducedMotion",
+    "constraints"
   ],
-  "hitFormula": "hitAt = ROOT_MS + RING_MS * (r / RING_MAX_R)",
-  "nodeUpdate": {
-    "radialBumpPx": 3,
-    "durationMs": 100,
-    "status": "STALE → UPDATED via clip",
-    "ticks": { "count": 2, "visibleMs": 90 }
-  },
-  "completionMsFromApply": 840,
-  "api": {
-    "execute": "runPropagatedShockwave()",
-    "reset": "resetPropagatedShockwave()",
-    "restartMessage": "restart"
-  },
-  "reducedMotion": {
-    "behaviour": "Immediately ROOT PROPAGATED and all six UPDATED"
-  },
-  "constraints": {
-    "noLooping": true,
-    "noPermanentGlow": true,
-    "noRandomPositions": true,
-    "updateOncePerNode": true
+  "properties": {
+    "name": { "type": "string", "const": "propagated-shockwave" },
+    "intent": {
+      "type": "string",
+      "const": "Root config impact emits three concentric shockwave rings; six dependents update in radial order (A→F) with root→node spokes making dependency order obvious."
+    },
+    "root": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "compress", "finalStatus"],
+      "properties": {
+        "label": { "type": "string", "const": "CONFIG // ROOT" },
+        "compress": {
+          "type": "object",
+          "required": ["scale", "durationMs"],
+          "properties": {
+            "scale": { "type": "array", "const": [1, 0.92, 1.04, 1] },
+            "durationMs": { "type": "number", "const": 140 }
+          }
+        },
+        "finalStatus": { "type": "string", "const": "PROPAGATED" }
+      }
+    },
+    "rings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "startsMs", "durationMs", "maxDiameterPx", "style"],
+      "properties": {
+        "count": { "type": "integer", "const": 3 },
+        "startsMs": { "type": "array", "const": [0, 90, 180] },
+        "durationMs": { "type": "number", "const": 520 },
+        "maxDiameterPx": { "type": "number", "const": 380 },
+        "maxRadiusPx": { "type": "number", "const": 190 },
+        "style": { "type": "string", "const": "2px double-outline; no glow; finite" }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "const": [
+        { "id": "a", "order": 1, "rPx": 70, "angleDeg": -15, "hitAtMsFromApply": 332 },
+        { "id": "b", "order": 2, "rPx": 88, "angleDeg": 45, "hitAtMsFromApply": 381 },
+        { "id": "c", "order": 3, "rPx": 105, "angleDeg": 105, "hitAtMsFromApply": 427 },
+        { "id": "d", "order": 4, "rPx": 126, "angleDeg": 165, "hitAtMsFromApply": 485 },
+        { "id": "e", "order": 5, "rPx": 144, "angleDeg": 225, "hitAtMsFromApply": 534 },
+        { "id": "f", "order": 6, "rPx": 166, "angleDeg": 285, "hitAtMsFromApply": 594 }
+      ]
+    },
+    "spokes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "durationMs", "from", "to"],
+      "properties": {
+        "count": { "type": "integer", "const": 6 },
+        "durationMs": { "type": "number", "const": 200 },
+        "from": { "type": "string", "const": "ROOT centre (200,200)" },
+        "to": { "type": "string", "const": "node polar position at hit" }
+      }
+    },
+    "hitFormula": {
+      "type": "string",
+      "const": "hitAt = ROOT_MS + RING_MS * (r / RING_MAX_R)"
+    },
+    "nodeUpdate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["radialBumpPx", "durationMs", "status", "ticks", "orderBadge"],
+      "properties": {
+        "radialBumpPx": { "type": "number", "const": 3 },
+        "durationMs": { "type": "number", "const": 100 },
+        "status": { "type": "string", "const": "STALE → UPDATED via clip" },
+        "ticks": { "type": "object", "required": ["count", "visibleMs"], "properties": { "count": { "type": "integer", "const": 2 }, "visibleMs": { "type": "number", "const": 90 } } },
+        "orderBadge": { "type": "string", "const": "1–6 visible on each node; pops on update" }
+      }
+    },
+    "completionMsFromApply": { "type": "number", "const": 840 },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execute", "reset"],
+      "properties": {
+        "execute": { "type": "string", "const": "runPropagatedShockwave()" },
+        "reset": { "type": "string", "const": "resetPropagatedShockwave()" },
+        "restartMessage": { "type": "string", "const": "restart" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["behaviour", "triggers"],
+      "properties": {
+        "behaviour": { "type": "string", "const": "Immediately ROOT PROPAGATED and all six UPDATED" },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noLooping", "noPermanentGlow", "updateOncePerNode"],
+      "properties": {
+        "noLooping": { "type": "boolean", "const": true },
+        "noPermanentGlow": { "type": "boolean", "const": true },
+        "noRandomPositions": { "type": "boolean", "const": true },
+        "updateOncePerNode": { "type": "boolean", "const": true }
+      }
+    }
   }
 }

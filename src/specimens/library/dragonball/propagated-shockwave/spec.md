@@ -36,7 +36,9 @@ Thin structural outlines only. No permanent glow. No infinite ripple.
 
 ## Dependency response
 
-Each node updates when **Ring 1**’s leading edge reaches its radius:
+Each node updates when **Ring 1**’s leading edge reaches its radius. A **root→node
+spoke** pulses at the same moment; order badges **1–6** make the dependency sequence
+readable at a glance.
 
 `hitAt = 140 + 520 × (r / 190)`
 

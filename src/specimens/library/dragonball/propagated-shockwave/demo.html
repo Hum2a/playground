@@ -3,6 +3,15 @@
 
   <div class="psw" data-psw data-phase="idle">
     <div class="psw__stage" data-psw-stage>
+      <svg class="psw__spokes" data-psw-spokes aria-hidden="true" viewBox="0 0 400 400">
+        <line class="psw__spoke" data-psw-spoke="a" x1="200" y1="200" x2="200" y2="200" />
+        <line class="psw__spoke" data-psw-spoke="b" x1="200" y1="200" x2="200" y2="200" />
+        <line class="psw__spoke" data-psw-spoke="c" x1="200" y1="200" x2="200" y2="200" />
+        <line class="psw__spoke" data-psw-spoke="d" x1="200" y1="200" x2="200" y2="200" />
+        <line class="psw__spoke" data-psw-spoke="e" x1="200" y1="200" x2="200" y2="200" />
+        <line class="psw__spoke" data-psw-spoke="f" x1="200" y1="200" x2="200" y2="200" />
+      </svg>
+
       <span class="psw__ring" data-psw-ring="1" aria-hidden="true"></span>
       <span class="psw__ring" data-psw-ring="2" aria-hidden="true"></span>
       <span class="psw__ring" data-psw-ring="3" aria-hidden="true"></span>
@@ -22,7 +31,7 @@
         data-status="stale"
         style="--angle: -15deg; --r: 70px"
       >
-        <span class="psw__node-id">A</span>
+        <span class="psw__node-id">A<span class="psw__order">1</span></span>
         <span class="psw__node-state">
           <span class="psw__clip psw__clip--from">STALE</span>
           <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
@@ -39,7 +48,7 @@
         data-status="stale"
         style="--angle: 45deg; --r: 88px"
       >
-        <span class="psw__node-id">B</span>
+        <span class="psw__node-id">B<span class="psw__order">2</span></span>
         <span class="psw__node-state">
           <span class="psw__clip psw__clip--from">STALE</span>
           <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
@@ -56,7 +65,7 @@
         data-status="stale"
         style="--angle: 105deg; --r: 105px"
       >
-        <span class="psw__node-id">C</span>
+        <span class="psw__node-id">C<span class="psw__order">3</span></span>
         <span class="psw__node-state">
           <span class="psw__clip psw__clip--from">STALE</span>
           <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
@@ -73,7 +82,7 @@
         data-status="stale"
         style="--angle: 165deg; --r: 126px"
       >
-        <span class="psw__node-id">D</span>
+        <span class="psw__node-id">D<span class="psw__order">4</span></span>
         <span class="psw__node-state">
           <span class="psw__clip psw__clip--from">STALE</span>
           <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
@@ -90,7 +99,7 @@
         data-status="stale"
         style="--angle: 225deg; --r: 144px"
       >
-        <span class="psw__node-id">E</span>
+        <span class="psw__node-id">E<span class="psw__order">5</span></span>
         <span class="psw__node-state">
           <span class="psw__clip psw__clip--from">STALE</span>
           <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
@@ -107,7 +116,7 @@
         data-status="stale"
         style="--angle: 285deg; --r: 166px"
       >
-        <span class="psw__node-id">F</span>
+        <span class="psw__node-id">F<span class="psw__order">6</span></span>
         <span class="psw__node-state">
           <span class="psw__clip psw__clip--from">STALE</span>
           <span class="psw__clip psw__clip--to" aria-hidden="true">UPDATED</span>
