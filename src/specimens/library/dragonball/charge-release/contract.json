@@ -108,7 +108,29 @@
           "type": "array",
           "const": [0, 4, -2, 0]
         },
-        "impactRingCount": { "type": "integer", "const": 1 }
+        "impactRingCount": { "type": "integer", "const": 1 },
+        "residue": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["diameterPx", "colour", "persist"],
+          "properties": {
+            "diameterPx": { "type": "integer", "const": 52 },
+            "colour": { "type": "string", "const": "#6ecf8e" },
+            "persist": { "type": "boolean", "const": true }
+          }
+        },
+        "deployMark": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["diameterPx", "colour", "settleMs", "persist"],
+          "properties": {
+            "diameterPx": { "type": "integer", "const": 16 },
+            "colour": { "type": "string", "const": "#6ecf8e" },
+            "settleMs": { "type": "integer", "const": 200 },
+            "persist": { "type": "boolean", "const": true }
+          }
+        },
+        "laneTrailMs": { "type": "integer", "const": 340 }
       }
     },
     "a11y": {

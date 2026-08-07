@@ -169,6 +169,42 @@
   opacity: 0.55;
 }
 
+.crl__trail {
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  width: 84%;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(61, 184, 255, 0.15),
+    rgba(154, 230, 255, 0.45) 60%,
+    rgba(240, 193, 74, 0.25)
+  );
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.crl.is-travelling .crl__trail {
+  opacity: 1;
+  animation: crl-trail-grow var(--crl-travel) linear forwards;
+}
+
+@keyframes crl-trail-grow {
+  from {
+    transform: scaleX(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 .crl__ghost {
   position: absolute;
   top: 50%;
@@ -207,6 +243,58 @@
   letter-spacing: 0.14em;
   font-weight: 700;
   color: var(--crl-muted);
+}
+
+.crl__residue {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(110, 207, 142, 0.42) 0%,
+    rgba(110, 207, 142, 0.12) 45%,
+    transparent 72%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.crl__mark {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid var(--crl-done);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--crl-done) 25%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.crl.is-complete .crl__residue {
+  opacity: 1;
+}
+
+.crl.is-complete .crl__mark {
+  opacity: 1;
+  animation: crl-mark-settle 200ms ease-out both;
+}
+
+@keyframes crl-mark-settle {
+  from {
+    transform: scale(0.35);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .crl.is-complete .crl__target-status {
@@ -388,20 +476,36 @@
   .crl__node,
   .crl.is-compressing .crl__node,
   .crl.is-travelling .crl__card--source .crl__node,
+  .crl.is-travelling .crl__trail,
   .crl.is-impacting .crl__card--target,
   .crl.is-impacting .crl__ring,
+  .crl.is-complete .crl__mark,
   .crl__ghost {
     animation: none !important;
     transition: none !important;
+  }
+
+  .crl.is-complete .crl__residue,
+  .crl.is-complete .crl__mark {
+    opacity: 1;
+    transform: none;
   }
 }
 
 [data-force-reduced-motion='true'] .crl__node,
 [data-force-reduced-motion='true'] .crl.is-compressing .crl__node,
 [data-force-reduced-motion='true'] .crl.is-travelling .crl__card--source .crl__node,
+[data-force-reduced-motion='true'] .crl.is-travelling .crl__trail,
 [data-force-reduced-motion='true'] .crl.is-impacting .crl__card--target,
 [data-force-reduced-motion='true'] .crl.is-impacting .crl__ring,
+[data-force-reduced-motion='true'] .crl.is-complete .crl__mark,
 [data-force-reduced-motion='true'] .crl__ghost {
   animation: none !important;
   transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .crl.is-complete .crl__residue,
+[data-force-reduced-motion='true'] .crl.is-complete .crl__mark {
+  opacity: 1;
+  transform: none;
 }

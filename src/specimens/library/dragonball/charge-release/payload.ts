@@ -18,7 +18,8 @@ const payload: SpecimenPayload = {
   acceptance: [
     'RELEASE disabled below 70%; available at 70%+ with READY TO RELEASE',
     'Canonical release at 85%; node grows through frozen sizes',
-    'Release compresses, travels ~340ms with exactly three afterimages, one impact ring',
+    'Release compresses, lane trail grows, travels ~340ms with three afterimages, one impact ring',
+    'Impact leaves persistent residue glow and 16px deploy mark on PRODUCTION',
     'Metadata REVERSIBLE → COMMITTED; target DEPLOYED; charge resets to 0%',
     'Final state static; reduced motion skips travel on release',
   ],

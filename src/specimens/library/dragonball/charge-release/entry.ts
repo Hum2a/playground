@@ -4,7 +4,7 @@ export const chargeRelease: Specimen = {
   ref: 'SPX-969',
   title: 'Charge Release',
   blurb:
-    'LOCAL charges DEPLOY through a frozen ladder; RELEASE unlocks at 70%, launches at 85% with three afterimages, and commits PRODUCTION to DEPLOYED.',
+    'LOCAL charges through a frozen ladder; RELEASE at 85% launches a lane trail and beam with afterimages, impact settles a deploy mark and residue on PRODUCTION.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball–inspired charge → release / commit (abstract)',

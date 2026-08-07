@@ -4,7 +4,9 @@
 
 ## Intent
 
-Prepared charge becomes a committed travelling deploy. Before RELEASE: **REVERSIBLE**. After RELEASE begins: **COMMITTED**.
+Prepared charge becomes a committed travelling deploy. Before RELEASE: **REVERSIBLE**.
+After RELEASE begins: **COMMITTED**. Impact leaves a persistent residue glow and
+deploy mark on PRODUCTION — not a clean reset.
 
 ## Copy
 
@@ -37,11 +39,31 @@ Prepared charge becomes a committed travelling deploy. Before RELEASE: **REVERSI
 | Phase | Duration |
 | --- | --- |
 | Horizontal compress `scaleX(1→.72)` | 70ms |
-| Travel + 3 afterimages | ~340ms |
+| Lane trail grows + travel + 3 afterimages | ~340ms |
 | Target shake + one impact ring | 120ms |
+| Residue + deploy mark settle | 200ms (static after) |
+
+## Commit residue
+
+After impact, PRODUCTION retains:
+
+| Element | Geometry | Colour |
+| --- | --- | --- |
+| Residue glow | 52px radial at 58% vertical | `#6ecf8e` at 42% → transparent |
+| Deploy mark | 16px ring + fill at impact point | `#6ecf8e` border |
+
+Both persist in final static state alongside `DEPLOYED` / `COMMITTED`.
 
 ## API
 
 - `runChargeSequence(stopAt?)`
 - `runChargeRelease()` — charge to 85% then release
 - `resetChargeRelease()`
+
+## Reduced motion
+
+On RELEASE: immediately `DEPLOYED`, charge `0%`, `COMMITTED`, residue + mark visible.
+
+## Accessibility
+
+RELEASE disabled below 70%. Live announce on commit. `:focus-visible` on controls.
