@@ -48,22 +48,26 @@ function setControls({ run, resetVisible }) {
 function applyReceived() {
   const target = document.querySelector('.etr__node--to')
   const status = document.querySelector('[data-etr-status]')
+  const stamp = document.querySelector('[data-etr-stamp]')
   if (target) target.classList.add('is-received')
   if (status) {
     status.textContent = 'TRANSFERRED'
     status.classList.remove('etr__badge--idle')
   }
+  if (stamp) stamp.removeAttribute('hidden')
   setLive('Energy transferred to target.')
 }
 
 function resetVisual() {
   const target = document.querySelector('.etr__node--to')
   const status = document.querySelector('[data-etr-status]')
+  const stamp = document.querySelector('[data-etr-stamp]')
   if (target) target.classList.remove('is-received')
   if (status) {
     status.textContent = 'IDLE'
     status.classList.add('etr__badge--idle')
   }
+  if (stamp) stamp.setAttribute('hidden', '')
   setLive('Source charged. Target idle.')
 }
 

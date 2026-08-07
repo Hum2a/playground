@@ -1,6 +1,6 @@
 # Energy Transfer (portable recreation spec)
 
-Luminous energy packet travels along an angular path from a charged source node to an idle target; target receives **TRANSFERRED** state on arrival.
+Chevron energy packet travels a **hard zigzag ink conduit** from a charged source node to an idle target. On arrival, **impact wedges** pop and a rotated **TRANSFERRED** stamp slams onto the target.
 
 **Ref:** SPX-2011 · **Catalogue:** MHA-037
 
@@ -11,7 +11,17 @@ Luminous energy packet travels along an angular path from a charged source node 
 | Source badge | `CHARGED` |
 | Target idle | `IDLE` |
 | Target done | `TRANSFERRED` |
+| Stamp | `TRANSFERRED` |
 | Trigger | `TRANSFER` |
+
+## Geometry (frozen)
+
+| Element | Value |
+| ------- | ----- |
+| Conduit segments | 4 |
+| Zig angles (deg) | −14, 18, −11, 9 |
+| Ink weight | 4px hard stroke + primary outline |
+| Impact wedges | 3 triangular pops |
 
 ## Colours
 
@@ -26,9 +36,9 @@ Luminous energy packet travels along an angular path from a charged source node 
 
 | Phase | Duration |
 | ----- | -------- |
-| Path illuminate | 280ms |
+| Path illuminate (staggered) | 280ms |
 | Packet travel | 500ms |
-| Target hit | 320ms |
+| Impact + stamp | 320ms |
 
 ## API
 
@@ -40,4 +50,4 @@ replayEnergyTransfer()
 
 ## Reduced motion
 
-Immediately show path lit and target **TRANSFERRED**; no packet travel or scale hit.
+Immediately show lit zigzag conduit, impact wedges, and TRANSFERRED stamp; no packet travel or wedge pop animation.

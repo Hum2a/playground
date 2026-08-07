@@ -1,18 +1,25 @@
 {
   "name": "energy-transfer",
-  "intent": "Luminous energy packet travels from charged source node to idle target; target becomes TRANSFERRED on arrival.",
+  "intent": "Chevron packet travels a hard zigzag ink conduit from charged source to idle target; impact wedges and TRANSFERRED stamp on arrival.",
   "catalogue": { "mha": "MHA-037", "ref": "SPX-2011" },
   "copy": {
     "sourceBadge": "CHARGED",
     "targetIdle": "IDLE",
     "targetDone": "TRANSFERRED",
-    "trigger": "TRANSFER"
+    "trigger": "TRANSFER",
+    "stamp": "TRANSFERRED"
   },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
+  },
+  "geometry": {
+    "conduitSegments": 4,
+    "zigAnglesDeg": [-14, 18, -11, 9],
+    "inkWeightPx": 4,
+    "impactWedges": 3
   },
   "timing": { "pathMs": 280, "travelMs": 500, "hitMs": 320 },
   "api": {
@@ -21,6 +28,11 @@
     "replay": "replayEnergyTransfer()"
   },
   "reducedMotion": {
-    "behaviour": "Immediate TRANSFERRED target with lit path; no packet or hit animation"
-  }
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Lit zigzag conduit, impact wedges, and TRANSFERRED stamp appear immediately; no packet travel"
+  },
+  "waveC": "Zigzag ink conduit, chevron packet, target impact wedges, TRANSFERRED stamp"
 }
