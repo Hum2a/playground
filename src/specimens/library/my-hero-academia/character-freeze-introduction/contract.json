@@ -1,11 +1,16 @@
 {
   "name": "character-freeze-introduction",
-  "intent": "Abstract silhouette approaches, freezes, and profile card slides in.",
-  "catalogue": { "mha": "MHA-016", "ref": "SPX-1990" },
+  "intent": "Angular silhouette approaches, freezes for 140ms with profile-lock brackets, then ANALYST card slides in.",
+  "catalogue": { "mha": "MHA-016", "ref": "SPX-1990", "title": "Character Freeze Introduction" },
   "copy": {
     "title": "ANALYST",
     "eyebrow": "PROFILE // LOCK",
-    "meta": "RANK B · READY"
+    "meta": "RANK B · READY",
+    "liveApproach": "Subject approaching.",
+    "liveBlur": "Motion blur.",
+    "liveFreeze": "Freeze hold.",
+    "liveCard": "Card reveal.",
+    "liveDone": "Profile locked."
   },
   "colours": {
     "primary": "#38A3FF",
@@ -19,10 +24,32 @@
     "cardMs": 420,
     "settleMs": 230
   },
+  "geometry": {
+    "silhouetteClip": "polygon(28% 0%, 72% 0%, 84% 14%, 80% 32%, 96% 48%, 88% 68%, 72% 100%, 28% 100%, 12% 68%, 4% 48%, 20% 32%, 16% 14%)",
+    "bracketSizePx": 20,
+    "bracketBorderPx": 3,
+    "bracketInsetPx": 18,
+    "bracketStaggerMs": [0, 40, 80, 120]
+  },
   "api": {
     "run": "runCharacterFreezeIntro()",
     "reset": "resetCharacterFreezeIntro()",
     "replay": "replayCharacterFreezeIntro()"
   },
-  "reducedMotion": { "behaviour": "Immediately show frozen silhouette and card" }
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "behaviour": "Immediately show frozen silhouette, brackets, and card"
+  },
+  "acceptance": [
+    "Silhouette enters from left over 280ms with angular 12-point clip-path",
+    "Freeze hold lasts exactly 140ms before card phase",
+    "Four profile-lock brackets snap inward on 0/40/80/120ms stagger",
+    "ANALYST card slides from right over 420ms",
+    "Done state shows silhouette + brackets + card without animation",
+    "Reduced motion (prefers or data-force) shows final composition immediately"
+  ],
+  "waveC": "Angular silhouette; profile-lock corner brackets; frozen freezeMs"
 }

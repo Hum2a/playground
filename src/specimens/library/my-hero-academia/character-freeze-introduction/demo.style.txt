@@ -5,6 +5,14 @@
   --ink: #101820;
   --paper: #f4f7fa;
   --accent: #ff4d35;
+  --cfi-approach-ms: 280;
+  --cfi-freeze-ms: 140;
+  --cfi-card-ms: 420;
+  --cfi-settle-ms: 230;
+  --cfi-br-size: 20px;
+  --cfi-br-border: 3px;
+  --cfi-br-inset: 18px;
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -55,7 +63,7 @@
 }
 
 .cfi[data-phase='approach'] .cfi__motion {
-  animation: cfi-blur 280ms linear forwards;
+  animation: cfi-blur calc(var(--cfi-approach-ms) * 1ms) linear forwards;
 }
 
 @keyframes cfi-blur {
@@ -66,19 +74,23 @@
 .cfi__silhouette {
   position: absolute;
   left: 50%;
-  bottom: 18%;
+  bottom: 16%;
   z-index: 2;
-  width: 88px;
-  height: 128px;
-  margin-left: -44px;
+  width: 92px;
+  height: 136px;
+  margin-left: -46px;
   background: var(--ink);
-  clip-path: polygon(30% 0, 70% 0, 82% 18%, 78% 38%, 92% 52%, 86% 72%, 68% 100%, 32% 100%, 14% 72%, 8% 52%, 22% 38%, 18% 18%);
+  clip-path: polygon(
+    28% 0%, 72% 0%, 84% 14%, 80% 32%,
+    96% 48%, 88% 68%, 72% 100%, 28% 100%,
+    12% 68%, 4% 48%, 20% 32%, 16% 14%
+  );
   transform: translateX(-120%);
   opacity: 0;
 }
 
 .cfi[data-phase='approach'] .cfi__silhouette {
-  animation: cfi-enter 280ms ease-out forwards;
+  animation: cfi-enter calc(var(--cfi-approach-ms) * 1ms) ease-out forwards;
 }
 
 @keyframes cfi-enter {
@@ -92,15 +104,98 @@
 .cfi[data-phase='done'] .cfi__silhouette {
   transform: translateX(0);
   opacity: 1;
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
+}
+
+.cfi__brackets {
+  position: absolute;
+  left: 50%;
+  bottom: 16%;
+  z-index: 3;
+  width: 108px;
+  height: 152px;
+  margin-left: -54px;
+  pointer-events: none;
+}
+
+.cfi__br {
+  position: absolute;
+  width: var(--cfi-br-size);
+  height: var(--cfi-br-size);
+  border: var(--cfi-br-border) solid var(--accent);
+  opacity: 0;
+  transform: scale(1.5);
+}
+
+.cfi__br--tl {
+  top: var(--cfi-br-inset);
+  left: var(--cfi-br-inset);
+  border-right: none;
+  border-bottom: none;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.cfi__br--tr {
+  top: var(--cfi-br-inset);
+  right: var(--cfi-br-inset);
+  border-left: none;
+  border-bottom: none;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.cfi__br--bl {
+  bottom: var(--cfi-br-inset);
+  left: var(--cfi-br-inset);
+  border-right: none;
+  border-top: none;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+.cfi__br--br {
+  bottom: var(--cfi-br-inset);
+  right: var(--cfi-br-inset);
+  border-left: none;
+  border-top: none;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.cfi[data-phase='freeze'] .cfi__br,
+.cfi[data-phase='card'] .cfi__br,
+.cfi[data-phase='settle'] .cfi__br,
+.cfi[data-phase='done'] .cfi__br {
+  animation: cfi-br-snap 220ms cubic-bezier(0.2, 1.1, 0.3, 1) forwards;
+}
+
+.cfi[data-phase='freeze'] .cfi__br--tr,
+.cfi[data-phase='card'] .cfi__br--tr,
+.cfi[data-phase='settle'] .cfi__br--tr,
+.cfi[data-phase='done'] .cfi__br--tr { animation-delay: 40ms; }
+
+.cfi[data-phase='freeze'] .cfi__br--bl,
+.cfi[data-phase='card'] .cfi__br--bl,
+.cfi[data-phase='settle'] .cfi__br--bl,
+.cfi[data-phase='done'] .cfi__br--bl { animation-delay: 80ms; }
+
+.cfi[data-phase='freeze'] .cfi__br--br,
+.cfi[data-phase='card'] .cfi__br--br,
+.cfi[data-phase='settle'] .cfi__br--br,
+.cfi[data-phase='done'] .cfi__br--br { animation-delay: 120ms; }
+
+@keyframes cfi-br-snap {
+  from { opacity: 0; transform: scale(1.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.cfi[data-phase='done'] .cfi__br {
+  opacity: 1;
+  transform: scale(1);
+  animation: none;
 }
 
 .cfi__card {
   position: absolute;
   right: 12px;
   top: 50%;
-  z-index: 3;
+  z-index: 4;
   box-sizing: border-box;
   width: min(58%, 200px);
   padding: 0.65rem 0.7rem;
@@ -115,7 +210,7 @@
 .cfi[data-phase='card'] .cfi__card,
 .cfi[data-phase='settle'] .cfi__card,
 .cfi[data-phase='done'] .cfi__card {
-  animation: cfi-card 420ms cubic-bezier(0.2, 1, 0.25, 1) forwards;
+  animation: cfi-card calc(var(--cfi-card-ms) * 1ms) cubic-bezier(0.2, 1, 0.25, 1) forwards;
 }
 
 @keyframes cfi-card {
@@ -191,23 +286,59 @@
 @media (prefers-reduced-motion: reduce) {
   .cfi__motion,
   .cfi__silhouette,
-  .cfi__card { animation: none !important; }
+  .cfi__card,
+  .cfi__br { animation: none !important; }
+
+  .cfi[data-phase='done'] .cfi__silhouette,
+  .cfi[data-phase='freeze'] .cfi__silhouette,
+  .cfi[data-phase='card'] .cfi__silhouette,
+  .cfi[data-phase='settle'] .cfi__silhouette {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .cfi[data-phase='done'] .cfi__br,
+  .cfi[data-phase='freeze'] .cfi__br,
+  .cfi[data-phase='card'] .cfi__br,
+  .cfi[data-phase='settle'] .cfi__br {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .cfi[data-phase='done'] .cfi__card,
+  .cfi[data-phase='freeze'] .cfi__card,
+  .cfi[data-phase='card'] .cfi__card,
+  .cfi[data-phase='settle'] .cfi__card {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
 }
 
 [data-force-reduced-motion='true'] .cfi__motion,
 [data-force-reduced-motion='true'] .cfi__silhouette,
-[data-force-reduced-motion='true'] .cfi__card { animation: none !important; }
+[data-force-reduced-motion='true'] .cfi__card,
+[data-force-reduced-motion='true'] .cfi__br { animation: none !important; }
 
 [data-force-reduced-motion='true'] .cfi[data-phase='done'] .cfi__silhouette,
-.cfi[data-phase='done'] .cfi__silhouette {
+[data-force-reduced-motion='true'] .cfi[data-phase='freeze'] .cfi__silhouette,
+[data-force-reduced-motion='true'] .cfi[data-phase='card'] .cfi__silhouette,
+[data-force-reduced-motion='true'] .cfi[data-phase='settle'] .cfi__silhouette {
   transform: translateX(0);
   opacity: 1;
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
+}
+
+[data-force-reduced-motion='true'] .cfi[data-phase='done'] .cfi__br,
+[data-force-reduced-motion='true'] .cfi[data-phase='freeze'] .cfi__br,
+[data-force-reduced-motion='true'] .cfi[data-phase='card'] .cfi__br,
+[data-force-reduced-motion='true'] .cfi[data-phase='settle'] .cfi__br {
+  opacity: 1;
+  transform: scale(1);
 }
 
 [data-force-reduced-motion='true'] .cfi[data-phase='done'] .cfi__card,
-.cfi[data-phase='done'] .cfi__card {
+[data-force-reduced-motion='true'] .cfi[data-phase='freeze'] .cfi__card,
+[data-force-reduced-motion='true'] .cfi[data-phase='card'] .cfi__card,
+[data-force-reduced-motion='true'] .cfi[data-phase='settle'] .cfi__card {
   transform: translate(0, -50%);
   opacity: 1;
 }
