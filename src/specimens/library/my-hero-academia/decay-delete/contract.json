@@ -1,6 +1,15 @@
 {
   "name": "decay-delete",
-  "intent": "Target record crumbles outward on destructive delete.",
+  "intent": "Target record shows pre-crack lines, then crumbles into six irregular accent shards; void dashed stamp settles.",
+  "catalogue": { "mha": "MHA-102", "ref": "SPX-2076" },
+  "copy": {
+    "label": "TARGET RECORD",
+    "title": "FILE // 09",
+    "meta": "Sector archive entry",
+    "delete": "DELETE",
+    "void": "RECORD REMOVED",
+    "liveRemoved": "Target record removed by decay delete."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
@@ -8,20 +17,53 @@
     "accent": "#FF4D35"
   },
   "timing": {
+    "crackMs": 220,
     "decayMs": 580,
-    "settleMs": 1230
+    "settleMs": 1230,
+    "totalMs": 1230
+  },
+  "shards": {
+    "count": 6,
+    "polygons": {
+      "1": "polygon(0 0, 100% 8%, 78% 100%, 0 82%)",
+      "2": "polygon(18% 0, 100% 0, 100% 88%, 0 72%)",
+      "3": "polygon(0 12%, 100% 0, 88% 100%, 0 90%)",
+      "4": "polygon(0 0, 92% 18%, 100% 100%, 8% 88%)",
+      "5": "polygon(22% 0, 100% 12%, 82% 100%, 0 78%)",
+      "6": "polygon(0 0, 100% 22%, 72% 100%, 12% 88%)"
+    },
+    "vectors": {
+      "1": { "dxPx": -18, "dyPx": 28, "rotDeg": -14, "delayMs": 0 },
+      "2": { "dxPx": 22, "dyPx": 24, "rotDeg": 12, "delayMs": 60 },
+      "3": { "dxPx": -8, "dyPx": 32, "rotDeg": -8, "delayMs": 120 },
+      "4": { "dxPx": -24, "dyPx": 18, "rotDeg": 16, "delayMs": 180 },
+      "5": { "dxPx": 16, "dyPx": 30, "rotDeg": -10, "delayMs": 240 },
+      "6": { "dxPx": 10, "dyPx": 26, "rotDeg": 8, "delayMs": 300 }
+    }
+  },
+  "preCrack": {
+    "lines": 3,
+    "anglesDeg": [-18, 12, 42],
+    "staggerMs": [0, 60, 110]
+  },
+  "voidStamp": {
+    "rotateDeg": -4,
+    "border": "3px dashed"
   },
   "api": {
     "run": "runDecayDelete()",
     "reset": "resetDecayDelete()",
-    "replay": "replayDecayDelete()",
-    "sandboxSafe": true
+    "replay": "replayDecayDelete()"
   },
   "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Target vanishes; void appears immediately"
-  }
+    "behaviour": "Cracks visible; target vanishes; void stamp appears immediately"
+  },
+  "acceptance": [
+    "Delete: three pre-crack lines draw over 220ms",
+    "Six irregular shard polygons crumble with frozen vectors",
+    "Void shows dashed RECORD REMOVED stamp at -4deg",
+    "Reduced motion (prefers or data-force) skips crumble animation",
+    "No network; effect clipped to host"
+  ],
+  "waveC": "Shard table, pre-crack angles, and void stamp geometry frozen in contract"
 }

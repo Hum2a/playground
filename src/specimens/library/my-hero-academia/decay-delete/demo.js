@@ -2,6 +2,7 @@
  * Decay Delete — target crumbles from contact point outward.
  */
 
+const CRACK_MS = 220
 const DECAY_MS = 580
 const SETTLE_MS = 1230
 
@@ -47,16 +48,22 @@ export function runDecayDelete() {
   const shards = el.querySelector('[data-dcd-shards]')
   if (trigger) trigger.disabled = true
 
-  if (shards && !prefersReducedMotion()) {
-    shards.removeAttribute('hidden')
+  const reduced = prefersReducedMotion()
+
+  if (!reduced) {
+    el.classList.add('dcd--crack')
+    later(CRACK_MS, () => {
+      if (shards) shards.removeAttribute('hidden')
+      el.classList.add('dcd--decay')
+    })
+  } else {
+    el.classList.add('dcd--crack', 'dcd--decay')
   }
 
-  el.classList.add('dcd--decay')
-
-  const settleDelay = prefersReducedMotion() ? 0 : SETTLE_MS
+  const settleDelay = reduced ? 0 : SETTLE_MS
 
   return new Promise((resolve) => {
-    later(prefersReducedMotion() ? 0 : DECAY_MS, () => {
+    later(reduced ? 0 : CRACK_MS + DECAY_MS, () => {
       el.classList.add('dcd--settled')
       const voidEl = el.querySelector('[data-dcd-void]')
       if (voidEl) voidEl.removeAttribute('hidden')
@@ -77,7 +84,7 @@ export function resetDecayDelete() {
   clearTimers()
   settled = false
   busy = false
-  el.classList.remove('dcd--decay', 'dcd--settled')
+  el.classList.remove('dcd--crack', 'dcd--decay', 'dcd--settled')
 
   const trigger = el.querySelector('[data-dcd-trigger]')
   const shards = el.querySelector('[data-dcd-shards]')
