@@ -31,3 +31,9 @@ Immediate READY baseline.
 
 - `runPostBurstRecovery()`
 - `runPostBurstReset()`
+
+## Porting
+
+1. Copy `demo.html`, `demo.css`, `demo.js` verbatim; keep the cooldown ring conic settle.
+2. Freeze capacity ladder `38→46→59→74→89→100` and stage holds; READY only at 100%.
+3. Honour both reduced-motion triggers with immediate READY baseline.
