@@ -7,6 +7,14 @@
   --htx-accent: #ff4d35;
   --htx-ox: 50%;
   --htx-oy: 50%;
+  --htx-scale-rest: 0;
+  --htx-scale-max: 3.2;
+  --htx-dot-size: 24vmax;
+  --htx-dot-pitch: 14px;
+  --htx-primary-ms: 420ms;
+  --htx-cover-ms: 220ms;
+  --htx-exit-ms: 320ms;
+  --htx-fade-ms: 180ms;
   --htx-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
 
   position: relative;
@@ -23,6 +31,18 @@
 .htx *::before,
 .htx *::after {
   box-sizing: border-box;
+}
+
+.htx__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .htx__state {
@@ -46,6 +66,14 @@
   margin: 0;
   font-size: 30px;
   font-weight: 900;
+}
+
+.htx__meta {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(244, 247, 250, 0.78);
 }
 
 .htx__btn {
@@ -81,15 +109,15 @@
   position: absolute;
   left: var(--htx-ox);
   top: var(--htx-oy);
-  width: 24vmax;
-  height: 24vmax;
-  transform: translate(-50%, -50%) scale(0);
+  width: var(--htx-dot-size);
+  height: var(--htx-dot-size);
+  transform: translate(-50%, -50%) scale(var(--htx-scale-rest));
   border-radius: 50%;
   background:
-    radial-gradient(circle, var(--htx-paper) 18%, transparent 19%) 0 0 / 14px 14px,
-    radial-gradient(circle, var(--htx-primary) 22%, transparent 23%) 7px 7px / 14px 14px;
+    radial-gradient(circle, var(--htx-paper) 18%, transparent 19%) 0 0 / var(--htx-dot-pitch) var(--htx-dot-pitch),
+    radial-gradient(circle, var(--htx-primary) 22%, transparent 23%) 7px 7px / var(--htx-dot-pitch) var(--htx-dot-pitch);
   background-color: var(--htx-accent);
-  transition: transform 420ms var(--htx-ease), opacity 180ms ease;
+  transition: transform var(--htx-primary-ms) var(--htx-ease), opacity var(--htx-fade-ms) ease;
 }
 
 .htx__mask--active {
@@ -98,13 +126,13 @@
 }
 
 .htx__mask--active .htx__dots {
-  transform: translate(-50%, -50%) scale(3.2);
+  transform: translate(-50%, -50%) scale(var(--htx-scale-max));
 }
 
 .htx__mask--exit .htx__dots {
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(var(--htx-scale-rest));
   opacity: 0;
-  transition-duration: 320ms;
+  transition-duration: var(--htx-exit-ms);
 }
 
 @media (prefers-reduced-motion: reduce) {

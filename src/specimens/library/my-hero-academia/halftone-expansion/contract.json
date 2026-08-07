@@ -1,16 +1,52 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "HalftoneExpansion",
-  "type": "object",
-  "required": ["name"],
-  "properties": {
-    "name": { "type": "string", "const": "halftone-expansion" },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 420 },
-        "totalMs": { "type": "number", "const": 1070 }
-      }
-    }
-  }
+  "name": "halftone-expansion",
+  "intent": "Halftone dot field expands from trigger origin as a transition mask while swapping STANDBY zone A to COMPLETE zone B (and reverse on reset).",
+  "catalogue": { "mha": "MHA-007", "ref": "SPX-1981" },
+  "copy": {
+    "standbyKicker": "ZONE A · STANDBY",
+    "standbyTitle": "STANDBY",
+    "standbyMeta": "Output idle — awaiting activation pulse.",
+    "completeKicker": "ZONE B · COMPLETE",
+    "completeTitle": "COMPLETE",
+    "completeMeta": "Output engaged — transition cycle finished.",
+    "liveStandby": "Standby zone ready. Activate to expand.",
+    "liveExpanding": "Halftone mask expanding…",
+    "liveContracting": "Halftone mask contracting…",
+    "liveComplete": "Complete zone active. Output engaged.",
+    "liveReset": "Standby zone restored. Output idle."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "primaryMs": 420,
+    "coverMs": 220,
+    "exitMs": 320,
+    "totalMs": 1070
+  },
+  "geometry": {
+    "originDefaultPct": { "x": 50, "y": 50 },
+    "dotSize": "24vmax",
+    "dotPitchPx": 14,
+    "scaleRest": 0,
+    "scaleMax": 3.2
+  },
+  "api": {
+    "run": "runHalftoneExpansion(target, originX?, originY?)",
+    "reset": "resetHalftoneExpansion()"
+  },
+  "reducedMotion": {
+    "behaviour": "Instant zone swap from trigger click; no halftone mask travel"
+  },
+  "acceptance": [
+    "Activate expands halftone mask from button origin toward scaleMax 3.2 and swaps STANDBY to COMPLETE at coverMs 220",
+    "Reset reverses mask from button origin and restores ZONE A STANDBY copy",
+    "Origin vars --htx-ox/--htx-oy set from trigger centroid; scale frozen via --htx-scale-rest/--htx-scale-max",
+    "Mask remains clipped inside specimen bounds; polite aria-live announces expanding, contracting, and settled zone",
+    "Reduced motion (prefers or data-force) swaps zones instantly with no mask visibility",
+    "Restart message resets to standby deterministically"
+  ]
 }

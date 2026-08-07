@@ -1,12 +1,16 @@
-<div class="htx" data-halftone-expansion>
+<div class="htx" data-halftone-expansion data-phase="standby">
+  <p class="htx__live" role="status" aria-live="polite" data-htx-live>Standby zone ready. Activate to expand.</p>
+
   <section class="htx__state htx__state--a" data-htx-state="a">
-    <p class="htx__kicker">ZONE A</p>
-    <h2 class="htx__title">STANDBY</h2>
+    <p class="htx__kicker">ZONE A · STANDBY</p>
+    <h2 class="htx__title" data-htx-title-a>STANDBY</h2>
+    <p class="htx__meta">Output idle — awaiting activation pulse.</p>
     <button type="button" class="htx__btn" data-htx-trigger data-target="b">Activate</button>
   </section>
   <section class="htx__state htx__state--b" data-htx-state="b" hidden>
-    <p class="htx__kicker">ZONE B</p>
-    <h2 class="htx__title">COMPLETE</h2>
+    <p class="htx__kicker">ZONE B · COMPLETE</p>
+    <h2 class="htx__title" data-htx-title-b>COMPLETE</h2>
+    <p class="htx__meta">Output engaged — transition cycle finished.</p>
     <button type="button" class="htx__btn" data-htx-trigger data-target="a">Reset</button>
   </section>
   <div class="htx__mask" aria-hidden="true" data-htx-mask>

@@ -4,10 +4,10 @@ export const halftoneExpansion: Specimen = {
   ref: 'SPX-1981',
   title: 'Halftone Expansion',
   blurb:
-    'Halftone dots expand from the trigger point as a transition mask while swapping between two content states.',
+    'Halftone dots expand from the trigger point as a transition mask while swapping STANDBY and COMPLETE content zones.',
   origin: {
     project: 'Original',
-    surface: 'My Hero Academia-inspired comic/anime action language',
+    surface: 'Comic action UI — halftone wipe between output states',
   },
   facets: {
     kind: 'transition',
@@ -24,15 +24,13 @@ export const halftoneExpansion: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under reduced motion, content swaps instantly with no halftone expansion.',
+      'Under reduced motion, zones swap instantly with no halftone mask travel.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,
     height: 300,
     background: 'dark',
-
     label: 'Halftone expansion',
   },
-
 }
