@@ -4,9 +4,19 @@
   --ink: #070b0e;
   --parchment: #c8e8dc;
   --chakra: #3dcea8;
-  --danger: #3dcea8;
+  --danger: #d94a38;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --lta-snap-ms: 440ms;
+  --lta-flicker-ms: 180ms;
+  --lta-flicker-at-ms: 300ms;
+  --lta-settle-ms: 150ms;
+  --lta-reticle-px: 58;
+  --lta-approach-x: -92px;
+  --lta-approach-y: -58px;
+  --lta-bolt-deg-1: 18deg;
+  --lta-bolt-deg-2: -24deg;
+  --lta-bolt-deg-3: 8deg;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -44,7 +54,7 @@
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--off);
+  color: var(--chakra);
 }
 
 .lta__stage {
@@ -63,8 +73,8 @@
   width: 100%;
   min-height: 190px;
   height: 190px;
-  border: 1px solid rgb(244 241 232 / 0.25);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(215 245 236 / 0.2);
+  background: rgb(215 245 236 / 0.04);
 }
 
 .lta__target {
@@ -82,23 +92,24 @@
 
 .lta[data-phase='locked'] .lta__target {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: color-mix(in srgb, var(--chakra) 35%, transparent);
+  box-shadow: 0 0 0 3px rgb(61 206 168 / 0.25);
 }
 
 .lta__reticle {
   position: absolute;
   left: 62%;
   top: 42%;
-  width: 58px;
-  height: 58px;
-  margin-left: -29px;
-  margin-top: -29px;
-  transform: translate(-92px, -58px) scale(1.5);
+  width: calc(var(--lta-reticle-px) * 1px);
+  height: calc(var(--lta-reticle-px) * 1px);
+  margin-left: calc(var(--lta-reticle-px) * -0.5px);
+  margin-top: calc(var(--lta-reticle-px) * -0.5px);
+  transform: translate(var(--lta-approach-x), var(--lta-approach-y)) scale(1.5);
   opacity: 0.5;
 }
 
 .lta[data-phase='run'] .lta__reticle {
-  animation: lta-snap 440ms cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
+  animation: lta-snap var(--lta-snap-ms) cubic-bezier(0.2, 0.85, 0.25, 1) forwards;
 }
 
 .lta[data-phase='locked'] .lta__reticle {
@@ -108,7 +119,7 @@
 
 @keyframes lta-snap {
   0% {
-    transform: translate(-92px, -58px) scale(1.5);
+    transform: translate(var(--lta-approach-x), var(--lta-approach-y)) scale(1.5);
     opacity: 0.5;
   }
   70% {
@@ -160,31 +171,36 @@
 
 .lta__bolt {
   position: absolute;
-  width: 20px;
-  height: 3px;
-  background: var(--off);
+  width: 22px;
+  height: 10px;
+  background: linear-gradient(90deg, var(--off), var(--chakra));
   opacity: 0;
-  clip-path: polygon(0% 50%, 45% 0%, 55% 40%, 100% 0%, 60% 100%, 50% 55%, 0% 100%);
+  clip-path: polygon(0% 55%, 38% 0%, 48% 38%, 100% 5%, 62% 100%, 48% 62%, 0% 100%);
+  filter: drop-shadow(0 0 2px rgb(61 206 168 / 0.8));
 }
 
 .lta__bolt--1 {
-  top: -14px;
-  left: 60%;
-  transform: rotate(18deg);
+  top: -16px;
+  left: 58%;
+  transform: rotate(var(--lta-bolt-deg-1));
 }
 .lta__bolt--2 {
-  bottom: -12px;
-  left: -18px;
-  transform: rotate(-24deg);
+  bottom: -14px;
+  left: -20px;
+  transform: rotate(var(--lta-bolt-deg-2));
 }
 .lta__bolt--3 {
-  top: 55%;
-  right: -22px;
-  transform: rotate(8deg);
+  top: 52%;
+  right: -24px;
+  transform: rotate(var(--lta-bolt-deg-3));
 }
 
 .lta[data-phase='run'] .lta__bolt {
-  animation: lta-flicker 180ms steps(1, end) 300ms forwards;
+  animation: lta-flicker var(--lta-flicker-ms) steps(1, end) var(--lta-flicker-at-ms) forwards;
+}
+
+.lta[data-phase='locked'] .lta__bolt {
+  opacity: 0;
 }
 
 @keyframes lta-flicker {
@@ -197,7 +213,7 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.3;
+    opacity: 0.25;
   }
 }
 
@@ -244,7 +260,7 @@
 
 .lta__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: color-mix(in srgb, var(--chakra) 28%, transparent);
 }
 
 .lta__btn:hover:not(:disabled) {

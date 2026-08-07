@@ -8,20 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze snap (440ms) / settle (150ms) from contract.json.',
+    'Import demo.css verbatim; freeze snapMs 440 / flickerMs 180 / flickerAtMs 300 / settleMs 150 / boltDeg [18,-24,8] from contract.json.',
     'Wire runLightningTargetAcquisition / resetLightningTargetAcquisition / replayLightningTargetAcquisition.',
     'Honour both reduced-motion triggers — resolve straight to LOCKED.',
   ],
-  acceptance: [
-    'Idle, acquiring, and locked phases are visually distinct',
-    'Reticle visibly travels from an offset position onto the target',
-    'Branch marks flicker briefly just before lock, then disappear',
-    'Replay resets the reticle before rerunning',
-    'Reduced motion shows LOCKED immediately with no snap/flicker',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),

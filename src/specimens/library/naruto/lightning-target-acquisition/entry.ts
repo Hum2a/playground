@@ -5,7 +5,7 @@ export const lightningTargetAcquisition: Specimen = {
   ref: 'SPX-2464',
   title: 'Lightning Target Acquisition',
   blurb:
-    'A loose reticle snaps onto a target with brief branching marks at the corners, then locks solid — abstract graphic lightning, no copyrighted iconography.',
+    'A reticle snaps from [-92,-58] in 440ms while three branch-bolts (18°/−24°/8°) flicker, then LOCKED — abstract graphic lightning.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — lightning-style target lock',
@@ -19,7 +19,7 @@ export const lightningTargetAcquisition: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['targeting', 'lock-on', 'acquisition'],
+  tags: ['targeting', 'lock-on', 'acquisition', 'bolt'],
   deps: 'none',
   motion: {
     loops: false,
@@ -28,8 +28,8 @@ export const lightningTargetAcquisition: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the reticle resolves directly to LOCKED with no snap/flicker choreography.',
   },
   acceptance: [
-    'Branch-bolt reticle acquires then LOCKED',
-    'Branch geometry frozen in contract',
+    'Branch-bolts at 18/−24/8° flicker before LOCKED',
+    'Snap from [-92,-58] in 440ms then settle 150ms',
     'Reduced motion shows LOCKED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

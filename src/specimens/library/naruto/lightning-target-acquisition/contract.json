@@ -1,35 +1,57 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/lightning-target-acquisition.schema.json",
-  "title": "LightningTargetAcquisition",
-  "description": "A loose reticle snaps onto a fixed target with branching marks that flicker just before locking solid.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "snapMs", "settleMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "lightning-target-acquisition" },
-    "snapMs": { "type": "number", "const": 440 },
-    "settleMs": { "type": "number", "const": 150 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "danger", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#070B0E" },
-        "parchment": { "type": "string", "const": "#C8E8DC" },
-        "chakra": { "type": "string", "const": "#3DCEA8" },
-        "danger": { "type": "string", "const": "#3DCEA8" },
-        "olive": { "type": "string", "const": "#1A6B58" },
-        "off": { "type": "string", "const": "#D7F5EC" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateLock"],
-      "properties": {
-        "immediateLock": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "lightning-target-acquisition",
+  "intent": "A loose reticle snaps onto a fixed target; three branch-bolts flicker at frozen angles, then status LOCKED.",
+  "catalogue": { "nr": "NR-121", "ref": "SPX-2464" },
+  "copy": {
+    "system": "LOCK // LIGHTNING",
+    "idle": "IDLE",
+    "acquiring": "ACQUIRING",
+    "locked": "LOCKED"
+  },
+  "geometry": {
+    "reticlePx": 58,
+    "approachOffsetPx": [-92, -58],
+    "boltCount": 3,
+    "boltDeg": [18, -24, 8],
+    "targetAtPct": [62, 42]
+  },
+  "timing": {
+    "snapMs": 440,
+    "flickerMs": 180,
+    "flickerAtMs": 300,
+    "settleMs": 150
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "danger": "#D94A38",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor"
+  },
+  "api": {
+    "run": "runLightningTargetAcquisition()",
+    "reset": "resetLightningTargetAcquisition()",
+    "replay": "replayLightningTargetAcquisition()"
+  },
+  "cssVars": [
+    "--lta-snap-ms",
+    "--lta-flicker-ms",
+    "--lta-flicker-at-ms",
+    "--lta-settle-ms",
+    "--lta-bolt-deg-1",
+    "--lta-bolt-deg-2",
+    "--lta-bolt-deg-3"
+  ],
+  "reducedMotion": {
+    "behaviour": "Reticle resolves directly to LOCKED; no snap or bolt flicker"
+  },
+  "acceptance": [
+    "Reticle starts at approachOffsetPx [-92,-58] and snaps onto target in snapMs 440",
+    "Exactly 3 branch-bolts at boltDeg [18,-24,8] flicker for flickerMs 180 starting at flickerAtMs 300",
+    "After settleMs 150 status reads LOCKED and bolts are gone",
+    "Replay resets to IDLE offset before re-acquiring",
+    "Reduced motion (prefers or data-force) shows LOCKED immediately with animations disabled"
+  ]
 }
