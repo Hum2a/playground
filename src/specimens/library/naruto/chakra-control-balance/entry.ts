@@ -5,40 +5,38 @@ export const chakraControlBalance: Specimen = {
   ref: 'SPX-2358',
   title: 'Chakra Control Balance',
   blurb:
-    'Hold both chakra inputs to draw the needle into an ±8% lock threshold; early release cancels before LOCKED.',
+    'Dual inputs drive a needle into a ±0.08 centre band; hold 380ms to lock balanced control.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction chakra-control training — equilibrium',
+    surface: 'Naruto / chakra training — control balance',
   },
   facets: {
     kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
-    intensity: 'subtle',
+    intensity: 'graphic',
   },
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['balance', 'hold', 'equilibrium'],
+  tags: ["balance","hold","equilibrium"],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the needle appears LOCKED in the centre band immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Chakra Control Balance state appears immediately.',
   },
-    acceptance: [
-    'Needle must enter ±8% lock threshold inside the centre band to lock',
-    'Hold both inputs; early release cancels before lock',
-    'Lock holds then pulses LOCKED',
-    'Replay returns needle unbalanced before rerunning',
-    'Reduced motion shows LOCKED immediately',
+  acceptance: [
+    'Needle must stay inside ±band 0.08 for lockHoldMs 380 to reach LOCKED',
+    'Wobble uses halfLifeMs 90 before settling; lock pulse is lockPulseMs 150 one-shot',
+    'Leaving the band before lock cancels the hold timer',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 380,
-    height: 320,
+    width: 420,
+    height: 340,
     background: 'dark',
-    label: 'Chakra control balance',
+    label: 'Chakra Control Balance',
   },
 }

@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire dual-hold inputs plus runChakraControlBalance / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Needle must enter ±8% lock threshold inside the centre band to lock',
-    'Hold both inputs; early release cancels before lock',
-    'Lock holds then pulses LOCKED',
-    'Replay returns needle unbalanced before rerunning',
-    'Reduced motion shows LOCKED immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),

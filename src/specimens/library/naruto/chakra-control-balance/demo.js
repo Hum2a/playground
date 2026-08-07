@@ -82,7 +82,7 @@ function setNeedle(v) {
   const root = rootEl()
   root?.style.setProperty('--x', String(v))
   const track = trackEl()
-  if (track) track.dataset.inband = String(Math.abs(v) <= BAND)
+  if (track) track.dataset.inband = String(Math.abs(v) <= LOCK_THRESHOLD)
 }
 
 function clamp(min, max, v) {
