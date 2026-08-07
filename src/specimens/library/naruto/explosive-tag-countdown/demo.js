@@ -7,6 +7,7 @@ const ARM_MS = 220
 const STEP_MS = 480
 const BURST_MS = 240
 const SETTLE_MS = 200
+const CLEAR_HOLD_MS = 220
 
 let busy = false
 /** @type {number[]} */
@@ -67,12 +68,19 @@ function setPhase(phase, level) {
   root.setAttribute('data-level', String(level ?? 0))
 }
 
-function showResolved() {
+function showResolved(withHold) {
   setPhase('done', 0)
   setDigit('\u2713')
   setStatus('CLEAR')
   setHint('Tag cleared. Press Replay to arm again.')
   setLive('Tag cleared.')
+  const root = rootEl()
+  if (withHold && root && !prefersReducedMotion()) {
+    root.setAttribute('data-clear-hold', 'true')
+    later(CLEAR_HOLD_MS, () => root.removeAttribute('data-clear-hold'))
+  } else {
+    root?.removeAttribute('data-clear-hold')
+  }
 }
 
 function resetVisual() {
@@ -100,7 +108,7 @@ export function runExplosiveTagCountdown() {
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
-    showResolved()
+    showResolved(false)
     busy = false
     setButtons(true)
     return Promise.resolve()
@@ -129,7 +137,7 @@ export function runExplosiveTagCountdown() {
             setLive('Detonation.')
             later(BURST_MS, () => {
               later(SETTLE_MS, () => {
-                showResolved()
+                showResolved(true)
                 busy = false
                 setButtons(true)
                 resolve()

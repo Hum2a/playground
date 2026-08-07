@@ -6,11 +6,11 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount inside a relative host (~380×380+).',
-    'Import demo.css verbatim; freeze armMs 220 / stepMs 480 / burstMs 240 / settleMs 200 from contract.json.',
+    integration: [
+    'Mount inside a relative host (~420×320+).',
+    'Import demo.css verbatim; freeze arm/step/burst/clearHold timings from contract.json.',
     'Wire runExplosiveTagCountdown / resetExplosiveTagCountdown / replayExplosiveTagCountdown.',
-    'Honour both reduced-motion triggers — resolve straight to CLEAR.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: contract.acceptance,
   scaffold: `

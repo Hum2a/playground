@@ -1,65 +1,112 @@
 {
-  "name": "explosive-tag-countdown",
-  "intent": "Tag arms 220ms, counts 3→2→1 at 480ms each with escalating pulse, bursts 240ms, settles CLEAR 200ms.",
-  "catalogue": {
-    "nr": "NR-090",
-    "ref": "SPX-2433"
-  },
-  "copy": {
-    "system": "TAG // COUNTDOWN",
-    "idle": "IDLE",
-    "armed": "ARMED",
-    "clear": "CLEAR",
-    "digits": [
-      "3",
-      "2",
-      "1"
-    ]
-  },
-  "geometry": {
-    "digitCount": 3,
-    "pulseScaleByLevel": [
-      1.04,
-      1.08,
-      1.14
-    ]
-  },
-  "timing": {
-    "armMs": 220,
-    "stepMs": 480,
-    "burstMs": 240,
-    "settleMs": 200,
-    "totalMs": 2100
-  },
-  "colours": {
-    "ink": "#0C0806",
-    "parchment": "#C4B8A8",
-    "ember": "#E07030",
-    "danger": "#D94A38",
-    "soot": "#5A5048",
-    "off": "#F4F1E8",
-    "palette": "fire"
-  },
-  "api": {
-    "run": "runExplosiveTagCountdown()",
-    "reset": "resetExplosiveTagCountdown()",
-    "replay": "replayExplosiveTagCountdown()"
-  },
-  "cssVars": [
-    "--etc-arm-ms",
-    "--etc-step-ms",
-    "--etc-burst-ms",
-    "--etc-settle-ms",
-    "--etc-digits",
-    "--etc-pulse-scale"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/explosive-tag-countdown.schema.json",
+  "title": "ExplosiveTagCountdown",
+  "description": "Warning tag arms, counts 3-2-1 with rising intensity, detonates, CLEAR hold.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "armMs",
+    "stepMs",
+    "burstMs",
+    "settleMs",
+    "clearHoldMs",
+    "digits",
+    "colours",
+    "reducedMotion"
   ],
-  "reducedMotion": {
-    "behaviour": "CLEAR immediately; no arm/count/burst"
-  },
-  "acceptance": [
-    "Arm armMs 220 then digits 3→2→1 each stepMs 480 with escalating pulseScale 1.04/1.08/1.14",
-    "Burst burstMs 240 then CLEAR after settleMs 200",
-    "Replay returns to IDLE before re-arming",
-    "Reduced motion (prefers or data-force) shows CLEAR immediately with animations disabled"
-  ]
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "explosive-tag-countdown"
+    },
+    "armMs": {
+      "type": "number",
+      "const": 220
+    },
+    "stepMs": {
+      "type": "number",
+      "const": 480
+    },
+    "burstMs": {
+      "type": "number",
+      "const": 240
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 200
+    },
+    "clearHoldMs": {
+      "type": "number",
+      "const": 220
+    },
+    "digits": {
+      "type": "array",
+      "const": [
+        3,
+        2,
+        1
+      ]
+    },
+    "pulseMsByLevel": {
+      "type": "object",
+      "const": {
+        "1": 220,
+        "2": 340,
+        "3": 480
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "parchment",
+        "ember",
+        "danger",
+        "soot",
+        "off"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#0C0806"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C4B8A8"
+        },
+        "ember": {
+          "type": "string",
+          "const": "#E07030"
+        },
+        "danger": {
+          "type": "string",
+          "const": "#D94A38"
+        },
+        "soot": {
+          "type": "string",
+          "const": "#5A5048"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F4F1E8"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immediateClear"
+      ],
+      "properties": {
+        "immediateClear": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
 }
