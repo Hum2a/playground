@@ -34,5 +34,12 @@
     ],
     "behaviour": "Lit zigzag conduit, impact wedges, and TRANSFERRED stamp appear immediately; no packet travel"
   },
-  "waveC": "Zigzag ink conduit, chevron packet, target impact wedges, TRANSFERRED stamp"
+  "waveC": "Zigzag ink conduit, chevron packet, target impact wedges, TRANSFERRED stamp",
+  "acceptance": [
+    "Four-segment zigzag conduit draws with frozen angles over 280ms",
+    "Chevron packet travels conduit over 500ms",
+    "Three impact wedges + TRANSFERRED stamp on target arrival (320ms)",
+    "Reduced motion (prefers or data-force) shows lit conduit and stamp immediately",
+    "No network; effect clipped to host"
+  ]
 }
