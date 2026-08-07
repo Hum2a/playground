@@ -7,21 +7,14 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~440×320+).',
-    'Import demo.css verbatim; freeze fail-at/finish/settle timings from contract.json.',
+    'Mount inside a relative host (~440×340+).',
+    'Import demo.css verbatim; freeze failAtMs 150 / popMs 160 / residueCount 5 / clearMs 180 from contract.json.',
     'Wire runCloneFailurePop / resetCloneFailurePop / replayCloneFailurePop.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Exactly one of three workers pops and shows FAILED mid-run',
-    'The remaining two workers complete normally to DONE',
-    'A summary line reports 2 succeeded and 1 failed',
-    'Replay resets all three workers before rerunning',
-    'Reduced motion shows the final succeeded/failed states immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#12141A;">
   {{specimen}}
 </div>
 `.trim(),

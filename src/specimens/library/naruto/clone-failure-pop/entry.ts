@@ -5,7 +5,7 @@ export const cloneFailurePop: Specimen = {
   ref: 'SPX-2397',
   title: 'Clone Failure Pop',
   blurb:
-    'One of three workers pops mid-run, leaves five residue fragments that clear, while the survivors finish.',
+    'Worker 2 pops at 150ms (160ms burst), leaves 5 ash residue dots for 220ms, then clears — survivors finish at 320ms.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — clone & duplication systems',
@@ -25,12 +25,12 @@ export const cloneFailurePop: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the failed worker is already cleared and the two completed workers appear immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, final failed/complete states appear with residue already cleared.',
   },
   acceptance: [
-    'Worker 2 fails at 150ms with a 140ms pop; 5 residue fragments hold 200ms then clear in 180ms',
-    'Survivors remain DONE; residue is scale fragments — not opacity fade as primary',
-    'Reduced motion shows final cleared/complete states',
+    'Failed clone pops (160ms) leaving 5 residue dots, then clears (180ms)',
+    'Survivors finish; pop/residue timings frozen in contract',
+    'Reduced motion shows final failed/complete states',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

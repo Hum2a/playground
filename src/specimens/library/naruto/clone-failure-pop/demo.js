@@ -1,16 +1,17 @@
 /**
- * Clone Failure Pop — failed clone leaves residue then clears.
+ * Clone Failure Pop — mid-run one clone pops (scale burst), leaves 5 ash residue
+ * dots, then residue clears while survivors finish.
  * iframe-safe; no storage / parent / network.
  */
 
 const FAIL_INDEX = 1
 const FAIL_AT_MS = 150
-const POP_MS = 140
-const RESIDUE_COUNT = 5
-const RESIDUE_HOLD_MS = 200
-const RESIDUE_CLEAR_MS = 180
+const POP_MS = 160
+const RESIDUE_HOLD_MS = 220
+const CLEAR_MS = 180
 const FINISH_MS = 320
-const SETTLE_MS = 80
+const RESIDUE_COUNT = 5
+const TOTAL_MS = FINISH_MS + CLEAR_MS
 
 let busy = false
 let done = false
@@ -68,6 +69,10 @@ function bars() {
   return Array.from(document.querySelectorAll('[data-cfp-bar]'))
 }
 
+function failWorker() {
+  return workers()[FAIL_INDEX]
+}
+
 function setWorkerState(i, outcome, label) {
   const worker = workers()[i]
   if (!worker) return
@@ -80,24 +85,28 @@ function setWorkerState(i, outcome, label) {
 function showDone() {
   done = true
   setWorkerState(0, 'succeeded', 'DONE')
-  setWorkerState(FAIL_INDEX, 'cleared', 'CLEARED')
+  setWorkerState(FAIL_INDEX, 'failed', 'FAILED')
   setWorkerState(2, 'succeeded', 'DONE')
-  const failed = workers()[FAIL_INDEX]
+  const failed = failWorker()
+  failed?.removeAttribute('data-pop')
+  failed?.setAttribute('data-cleared', 'true')
   failed?.removeAttribute('data-residue')
   bars().forEach((bar, i) => {
-    bar.style.width = i === FAIL_INDEX ? '0%' : '100%'
+    bar.style.width = i === FAIL_INDEX ? '38%' : '100%'
   })
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('2 SUCCEEDED · 1 CLEARED')
-  setHint('Worker 2 popped; residue cleared.')
-  setLive(`Run complete. Failed clone left ${RESIDUE_COUNT} residue then cleared.`)
+  setStatus('2 SUCCEEDED · 1 FAILED')
+  setHint(`Worker 2 popped; ${RESIDUE_COUNT} residue dots cleared.`)
+  setLive('Run complete. Failed clone residue cleared; two workers succeeded.')
 }
 
 function resetVisual() {
   done = false
   workers().forEach((worker, i) => {
     worker.removeAttribute('data-outcome')
+    worker.removeAttribute('data-pop')
     worker.removeAttribute('data-residue')
+    worker.removeAttribute('data-cleared')
     worker.setAttribute('aria-label', `Worker ${i + 1} pending`)
     const state = worker.querySelector('[data-cfp-worker-state]')
     if (state) state.textContent = 'PENDING'
@@ -113,7 +122,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run parallel work → pop + residue → clear → complete.
+ * Auto-run full parallel-work → failure pop → residue clear choreography.
  * @returns {Promise<void>}
  */
 export function runCloneFailurePop() {
@@ -146,24 +155,25 @@ export function runCloneFailurePop() {
 
   return new Promise((resolve) => {
     later(FAIL_AT_MS, () => {
-      const failed = workers()[FAIL_INDEX]
+      const failed = failWorker()
       setWorkerState(FAIL_INDEX, 'failed', 'FAILED')
-      bars()[FAIL_INDEX].style.transition = `width ${POP_MS}ms linear`
+      failed?.setAttribute('data-pop', 'true')
+      bars()[FAIL_INDEX].style.transition = 'width 60ms linear'
       bars()[FAIL_INDEX].style.width = '38%'
-      failed?.setAttribute('data-residue', 'true')
-      root.setAttribute('data-phase', 'residue')
-      setLive(`Worker 2 popped. ${RESIDUE_COUNT} residue fragments present.`)
-      later(RESIDUE_HOLD_MS, () => {
-        failed?.setAttribute('data-residue', 'clearing')
-        setLive('Residue clearing.')
-        later(RESIDUE_CLEAR_MS, () => {
-          setWorkerState(FAIL_INDEX, 'cleared', 'CLEARED')
+      setLive(`Worker 2 popping (${POP_MS}ms).`)
+      later(POP_MS, () => {
+        failed?.removeAttribute('data-pop')
+        failed?.setAttribute('data-residue', 'true')
+        setLive(`${RESIDUE_COUNT} ash residue dots left behind.`)
+        later(RESIDUE_HOLD_MS, () => {
+          failed?.setAttribute('data-cleared', 'true')
           failed?.removeAttribute('data-residue')
+          setLive('Residue clearing.')
         })
       })
     })
 
-    later(FINISH_MS + SETTLE_MS + RESIDUE_HOLD_MS + RESIDUE_CLEAR_MS, () => {
+    later(Math.max(TOTAL_MS, FAIL_AT_MS + POP_MS + RESIDUE_HOLD_MS + CLEAR_MS), () => {
       showDone()
       busy = false
       setButtons(true)

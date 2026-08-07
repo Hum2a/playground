@@ -1,26 +1,18 @@
 {
   "name": "clone-failure-pop",
-  "intent": "One of three workers pops mid-run, leaves five residue fragments, then clears while survivors finish.",
-  "catalogue": { "nr": "NR-054", "ref": "SPX-2397" },
-  "copy": {
-    "system": "CLONE // FAILURE",
-    "idle": "IDLE",
-    "running": "RUNNING",
-    "done": "2 SUCCEEDED · 1 CLEARED"
-  },
+  "intent": "One of three workers pops mid-run, leaves ash residue dots, then residue clears while survivors finish.",
   "geometry": {
     "workerCount": 3,
     "failIndex": 1,
     "residueCount": 5,
-    "failBarWidthPct": 38
+    "failBarPct": 38
   },
   "timing": {
     "failAtMs": 150,
-    "popMs": 140,
-    "residueHoldMs": 200,
-    "residueClearMs": 180,
-    "finishMs": 320,
-    "settleMs": 80
+    "popMs": 160,
+    "residueHoldMs": 220,
+    "clearMs": 180,
+    "finishMs": 320
   },
   "colours": {
     "ink": "#12141A",
@@ -29,7 +21,7 @@
     "danger": "#A85868",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "clone-ash"
   },
   "api": {
     "run": "runCloneFailurePop()",
@@ -37,11 +29,11 @@
     "replay": "replayCloneFailurePop()"
   },
   "reducedMotion": {
-    "behaviour": "Final states: workers 1+3 DONE, worker 2 CLEARED"
+    "behaviour": "Final states: two succeeded, one failed/cleared — no pop choreography"
   },
   "acceptance": [
-    "Worker index 1 fails at failAtMs 150 with popMs 140 scale collapse",
-    "Exactly 5 residue fragments hold residueHoldMs 200 then clear over residueClearMs 180",
-    "Survivors reach DONE; reduced motion shows final failed/cleared states"
+    "Worker 2 pops at 150ms over 160ms then leaves exactly 5 residue dots",
+    "Residue holds 220ms then clears over 180ms; survivors finish at 320ms",
+    "Reduced motion shows final failed/complete states immediately"
   ]
 }

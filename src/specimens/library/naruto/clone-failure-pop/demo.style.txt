@@ -7,9 +7,9 @@
   --danger: #a85868;
   --olive: #6e6a78;
   --off: #f0eef4;
-  --cfp-pop-ms: 140ms;
-  --cfp-residue-hold-ms: 200ms;
-  --cfp-residue-clear-ms: 180ms;
+  --cfp-pop-ms: 160ms;
+  --cfp-residue-ms: 220ms;
+  --cfp-clear-ms: 180ms;
   --cfp-finish-ms: 320ms;
   box-sizing: border-box;
   position: relative;
@@ -60,7 +60,7 @@
   width: 100%;
   padding: 1rem 0.75rem;
   border: 1px solid rgb(122 107 154 / 0.45);
-  background: rgb(240 238 244 / 0.04);
+  background: rgb(240 238 244 / 0.03);
 }
 
 .cfp__workers {
@@ -82,7 +82,7 @@
   background: rgb(16 19 24 / 0.85);
   transform: scale(1);
   transition:
-    transform var(--cfp-pop-ms) ease-in,
+    transform var(--cfp-pop-ms) cubic-bezier(0.2, 0.9, 0.3, 1.2),
     border-color 140ms ease-out;
 }
 
@@ -120,33 +120,43 @@
 }
 
 .cfp[data-phase='running'] .cfp__bar-fill,
-.cfp[data-phase='residue'] .cfp__bar-fill,
 .cfp[data-phase='done'] .cfp__bar-fill {
   width: 100%;
+}
+
+.cfp__worker[data-outcome='failed'] {
+  border-color: var(--danger);
+}
+
+.cfp__worker[data-outcome='failed'][data-pop='true'] {
+  animation: cfp-pop var(--cfp-pop-ms) cubic-bezier(0.15, 0.95, 0.35, 1.1) forwards;
+}
+
+@keyframes cfp-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12) rotate(-3deg);
+  }
+  100% {
+    transform: scale(0);
+  }
 }
 
 .cfp__worker[data-outcome='failed'] .cfp__bar-fill {
   background: var(--danger);
   width: 38% !important;
-}
-
-.cfp__worker[data-outcome='failed'] {
-  border-color: var(--danger);
-  transform: scale(0.82) rotate(-3deg);
+  transition: width 60ms linear;
 }
 
 .cfp__worker[data-outcome='failed'] .cfp__worker-state {
   color: var(--danger);
 }
 
-.cfp__worker[data-outcome='cleared'] {
-  border-color: rgb(110 106 120 / 0.35);
-  transform: scale(0.55);
-}
-
-.cfp__worker[data-outcome='cleared'] .cfp__bar-fill,
-.cfp__worker[data-outcome='cleared'] .cfp__worker-label,
-.cfp__worker[data-outcome='cleared'] .cfp__worker-state {
+.cfp__worker[data-outcome='failed'] .cfp__worker-label,
+.cfp__worker[data-outcome='failed'] .cfp__bar,
+.cfp__worker[data-outcome='failed'] .cfp__worker-state {
   visibility: hidden;
 }
 
@@ -164,43 +174,42 @@
   pointer-events: none;
 }
 
-.cfp__residue i {
+.cfp__residue span {
   position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 0.45rem;
+  height: 0.45rem;
   background: var(--danger);
   transform: scale(0);
-  transition: transform var(--cfp-pop-ms) cubic-bezier(0.2, 1.2, 0.3, 1);
+  transition: transform 90ms cubic-bezier(0.2, 1.2, 0.3, 1);
 }
 
-.cfp__residue i:nth-child(1) {
-  top: 18%;
-  left: 22%;
-}
-.cfp__residue i:nth-child(2) {
-  top: 28%;
-  right: 18%;
-}
-.cfp__residue i:nth-child(3) {
-  top: 55%;
-  left: 40%;
-}
-.cfp__residue i:nth-child(4) {
-  bottom: 22%;
-  left: 16%;
-}
-.cfp__residue i:nth-child(5) {
-  bottom: 18%;
-  right: 24%;
-}
+.cfp__residue span[data-cfp-ash='0'] { left: 18%; top: 28%; }
+.cfp__residue span[data-cfp-ash='1'] { left: 48%; top: 18%; }
+.cfp__residue span[data-cfp-ash='2'] { left: 72%; top: 36%; }
+.cfp__residue span[data-cfp-ash='3'] { left: 30%; top: 62%; }
+.cfp__residue span[data-cfp-ash='4'] { left: 62%; top: 68%; }
 
-.cfp__worker[data-residue='true'] .cfp__residue i {
+.cfp__worker[data-residue='true'] .cfp__residue span {
   transform: scale(1);
 }
 
-.cfp__worker[data-residue='clearing'] .cfp__residue i {
-  transform: scale(0) translateY(8px);
-  transition-duration: var(--cfp-residue-clear-ms);
+.cfp__worker[data-residue='true'] .cfp__residue span[data-cfp-ash='1'] {
+  transition-delay: 30ms;
+}
+.cfp__worker[data-residue='true'] .cfp__residue span[data-cfp-ash='2'] {
+  transition-delay: 50ms;
+}
+.cfp__worker[data-residue='true'] .cfp__residue span[data-cfp-ash='3'] {
+  transition-delay: 70ms;
+}
+.cfp__worker[data-residue='true'] .cfp__residue span[data-cfp-ash='4'] {
+  transition-delay: 90ms;
+}
+
+.cfp__worker[data-cleared='true'] .cfp__residue span {
+  transform: scale(0);
+  transition-delay: 0ms;
+  transition-duration: var(--cfp-clear-ms);
 }
 
 .cfp__status {
@@ -212,7 +221,6 @@
 }
 
 .cfp[data-phase='running'] .cfp__status,
-.cfp[data-phase='residue'] .cfp__status,
 .cfp[data-phase='done'] .cfp__status {
   color: var(--chakra);
 }
@@ -248,7 +256,7 @@
 
 .cfp__btn--primary {
   border-color: var(--chakra);
-  background: rgb(122 107 154 / 0.18);
+  background: rgb(122 107 154 / 0.22);
 }
 
 .cfp__btn:hover:not(:disabled) {
@@ -268,13 +276,35 @@
 @media (prefers-reduced-motion: reduce) {
   .cfp__worker,
   .cfp__bar-fill,
-  .cfp__residue i {
+  .cfp__residue span,
+  .cfp__worker[data-outcome='failed'][data-pop='true'] {
     transition: none !important;
+    animation: none !important;
+  }
+
+  .cfp__worker[data-outcome='failed'] {
+    transform: scale(0);
+  }
+
+  .cfp__worker[data-cleared='true'] .cfp__residue span,
+  .cfp[data-phase='done'] .cfp__residue span {
+    transform: scale(0);
   }
 }
 
 html[data-force-reduced-motion='true'] .cfp__worker,
 html[data-force-reduced-motion='true'] .cfp__bar-fill,
-html[data-force-reduced-motion='true'] .cfp__residue i {
+html[data-force-reduced-motion='true'] .cfp__residue span,
+html[data-force-reduced-motion='true'] .cfp__worker[data-outcome='failed'][data-pop='true'] {
   transition: none !important;
+  animation: none !important;
+}
+
+html[data-force-reduced-motion='true'] .cfp__worker[data-outcome='failed'] {
+  transform: scale(0);
+}
+
+html[data-force-reduced-motion='true'] .cfp__worker[data-cleared='true'] .cfp__residue span,
+html[data-force-reduced-motion='true'] .cfp[data-phase='done'] .cfp__residue span {
+  transform: scale(0);
 }
