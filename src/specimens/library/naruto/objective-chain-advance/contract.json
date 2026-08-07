@@ -1,85 +1,47 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/objective-chain-advance.schema.json",
-  "title": "ObjectiveChainAdvance",
-  "description": "Four checkpoints latch in sequence with pulse advance into CLEAR.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "checkpointCount",
-    "latchMs",
-    "pulseMs",
-    "settleMs",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "objective-chain-advance"
-    },
-    "checkpointCount": {
-      "type": "number",
-      "const": 4
-    },
-    "latchMs": {
-      "type": "number",
-      "const": 200
-    },
-    "pulseMs": {
-      "type": "number",
-      "const": 220
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 100
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#1A1612"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#EBE2D0"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#B83228"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#6A5E4E"
-        },
-        "off": {
-          "type": "string",
-          "const": "#F7F2E8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateClear"
-      ],
-      "properties": {
-        "immediateClear": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "objective-chain-advance",
+  "intent": "Four objective checkpoints latch in sequence (200ms complete + 220ms pulse) until MISSION CLEAR.",
+  "catalogue": {
+    "nr": "NR-193",
+    "ref": "SPX-2536"
+  },
+  "geometry": {
+    "checkpointCount": 4
+  },
+  "timing": {
+    "completeMs": 200,
+    "pulseMs": 220,
+    "settleMs": 100,
+    "totalMs": 1360
+  },
+  "copy": {
+    "system": "CHAIN // OBJECTIVES",
+    "idle": "IN PROGRESS",
+    "done": "MISSION CLEAR"
+  },
+  "colours": {
+    "ink": "#1A1612",
+    "parchment": "#EBE2D0",
+    "chakra": "#B83228",
+    "olive": "#6A5E4E",
+    "off": "#F7F2E8",
+    "palette": "mission-paper",
+    "alarm": "#B83228",
+    "alert": "#B83228"
+  },
+  "api": {
+    "run": "runObjectiveChainAdvance()",
+    "reset": "resetObjectiveChainAdvance()",
+    "replay": "replayObjectiveChainAdvance()"
+  },
+  "reducedMotion": {
+    "behaviour": "Resolved Objective Chain Advance state immediately"
+  },
+  "acceptance": [
+    "Exactly 4 checkpoints latch with completeMs 200 between nodes",
+    "Inter-node pulse runs pulseMs 220 before next checkpoint activates",
+    "Status becomes MISSION CLEAR only after last checkpoint + settleMs 100",
+    "Replay resets all nodes to pending/current before rerunning",
+    "Reduced motion shows all checkpoints complete as MISSION CLEAR"
+  ]
 }

@@ -106,9 +106,9 @@ function showResolved() {
     pulse.style.left = '100%'
   })
   rootEl()?.setAttribute('data-phase', 'done')
-  setStatus('MISSION CLEAR')
-  setHint('All objectives complete.')
-  setLive('Objective chain complete. Mission clear.')
+  setStatus('CLEAR')
+  setHint('All checkpoints latched. CLEAR.')
+  setLive('Objective chain complete. CLEAR.')
 }
 
 function resetVisual() {

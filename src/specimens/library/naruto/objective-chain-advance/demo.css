@@ -7,7 +7,10 @@
   --alert: #b83228;
   --olive: #6a5e4e;
   --off: #f7f2e8;
-  /* wave2 timing surface */
+  --oca-complete-ms: 200ms;
+  --oca-pulse-ms: 220ms;
+  --oca-settle-ms: 100ms;
+  --oca-node-count: 4;
   --oca-latch-ms: 200ms;
   --oca-pulse-ms: 220ms;
   box-sizing: border-box;
@@ -58,7 +61,7 @@
   justify-items: center;
   width: 100%;
   padding: 1.4rem 0.75rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(184 50 40 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -98,7 +101,7 @@
 
 .oca__node[data-state='current'] .oca__node-dot {
   border-color: var(--chakra);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chakra) 45%, transparent);
+  box-shadow: 0 0 0 3px rgb(184 50 40 / 0.45);
 }
 
 .oca__node[data-state='complete'] .oca__node-dot {
@@ -108,7 +111,7 @@
 }
 
 .oca__node[data-pulse='true'] .oca__node-dot {
-  animation: oca-pulse 200ms ease-out;
+  animation: oca-pulse var(--oca-complete-ms) ease-out;
 }
 
 @keyframes oca-pulse {
@@ -153,16 +156,15 @@
   height: 8px;
   border-radius: 999px;
   background: var(--chakra);
-  box-shadow: 0 0 6px 1px color-mix(in srgb, var(--chakra) 45%, transparent);
-  opacity: 0;
-  transform: translate(-50%, -50%);
+  box-shadow: 0 0 6px 1px rgb(184 50 40 / 0.45);
+  transform: translate(-50%, -50%) scale(0);
   transition:
-    left 220ms linear,
-    opacity 120ms ease-out;
+    left var(--oca-pulse-ms) linear,
+    transform 80ms ease-out;
 }
 
 .oca__pulse[data-active='true'] {
-  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .oca__status {
@@ -208,7 +210,7 @@
 
 .oca__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(184 50 40 / 0.45);
 }
 
 .oca__btn:hover:not(:disabled) {
