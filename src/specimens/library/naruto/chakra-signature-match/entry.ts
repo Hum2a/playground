@@ -5,7 +5,7 @@ export const chakraSignatureMatch: Specimen = {
   ref: 'SPX-2510',
   title: 'Chakra Signature Match',
   blurb:
-    'Five signature bars rise to frozen sample heights on 170ms steps until MATCH latches.',
+    'Five frozen sample points (40/70/55/85/50) rise to align past threshold 0.92 into MATCH.',
   origin: {
     project: 'Original',
     surface: 'Naruto / sensory detection — signature match',
@@ -25,10 +25,15 @@ export const chakraSignatureMatch: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the resolved Chakra Signature Match state appears immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the signature appears MATCH immediately.',
   },
-  acceptance: [
-    'Exactly 5 bars rise in order to frozen sampleTargetsPct [40,70,55,85,60]',
+    acceptance: [
+    'Five sample points [40,70,55,85,50] rise to meet the reference waveform',
+    'Alignment crosses threshold 0.92 then latches MATCH',
+    'Bars grow by height transform, not opacity fade',
+    'Replay clears fills before rerunning',
+    'Reduced motion shows MATCH immediately',
+  ],',
     'Each bar advances on stepMs 170; MATCH only after bar 5 + settleMs 100',
     'Replay zeros all bar heights before rerunning',
   ],

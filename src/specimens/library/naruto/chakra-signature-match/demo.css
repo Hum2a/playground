@@ -7,9 +7,11 @@
   --alert: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --csm-align-threshold: 0.92;
   --csm-step-ms: 170ms;
   --csm-settle-ms: 100ms;
-  /* wave2 timing surface */
+  --csm-step-ms: 170ms;
+  --csm-settle-ms: 100ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -58,7 +60,7 @@
   justify-items: center;
   width: 100%;
   padding: 1rem 0.85rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
+  border: 1px solid rgb(61 206 168 / 0.45);
   background: rgb(244 241 232 / 0.04);
 }
 
@@ -113,7 +115,7 @@
 
 .csm__bar-fill[data-active='true'] {
   background: var(--chakra);
-  box-shadow: 0 0 8px 1px color-mix(in srgb, var(--chakra) 45%, transparent) inset;
+  box-shadow: 0 0 8px 1px rgb(61 206 168 / 0.45) inset;
 }
 
 .csm__bar[data-pulse='true'] {
@@ -175,7 +177,7 @@
 
 .csm__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(61 206 168 / 0.45);
 }
 
 .csm__btn:hover:not(:disabled) {

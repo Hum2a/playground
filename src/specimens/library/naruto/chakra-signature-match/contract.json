@@ -1,46 +1,91 @@
 {
-  "name": "chakra-signature-match",
-  "intent": "Five signature bars rise to frozen sample heights on 170ms steps until MATCH latches.",
-  "catalogue": {
-    "nr": "NR-167",
-    "ref": "SPX-2510"
-  },
-  "geometry": {
-    "barCount": 5,
-    "sampleTargetsPct": [
-      40,
-      70,
-      55,
-      85,
-      60
-    ]
-  },
-  "timing": {
-    "stepMs": 170,
-    "settleMs": 100,
-    "totalMs": 950
-  },
-  "colours": {
-    "ink": "#070B0E",
-    "parchment": "#C8E8DC",
-    "chakra": "#3DCEA8",
-    "alert": "#3DCEA8",
-    "olive": "#1A6B58",
-    "off": "#D7F5EC",
-    "palette": "sensor-phosphor"
-  },
-  "api": {
-    "run": "runChakraSignatureMatch()",
-    "reset": "resetChakraSignatureMatch()",
-    "replay": "replayChakraSignatureMatch()"
-  },
-  "reducedMotion": {
-    "behaviour": "Resolved Chakra Signature Match state immediately"
-  },
-  "acceptance": [
-    "Exactly 5 bars rise in order to frozen sampleTargetsPct [40,70,55,85,60]",
-    "Each bar advances on stepMs 170; MATCH only after bar 5 + settleMs 100",
-    "Replay zeros all bar heights before rerunning",
-    "Reduced motion shows all bars at targets with MATCH immediately"
-  ]
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/chakra-signature-match.schema.json",
+  "title": "ChakraSignatureMatch",
+  "description": "Waveform sample points align to a reference profile until MATCH.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "samplePoints",
+    "alignThreshold",
+    "stepMs",
+    "settleMs",
+    "colours",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "chakra-signature-match"
+    },
+    "samplePoints": {
+      "type": "array",
+      "const": [
+        40,
+        70,
+        55,
+        85,
+        50
+      ]
+    },
+    "alignThreshold": {
+      "type": "number",
+      "const": 0.92
+    },
+    "stepMs": {
+      "type": "number",
+      "const": 170
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 100
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "olive",
+        "off"
+      ],
+      "properties": {
+        "ink": {
+          "type": "string",
+          "const": "#070B0E"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#C8E8DC"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#3DCEA8"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#1A6B58"
+        },
+        "off": {
+          "type": "string",
+          "const": "#D7F5EC"
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immediateMatch"
+      ],
+      "properties": {
+        "immediateMatch": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    }
+  }
 }

@@ -6,10 +6,10 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
-    'Mount with preview.scaffold overlay host.',
-    'Import demo.css verbatim; freeze alignThreshold 0.92 / samplePoints from contract.json.',
-    'Wire runChakraSignatureMatch / reset / replay.',
+    integration: [
+    'Mount inside a relative host (~420×300+).',
+    'Import demo.css verbatim; freeze samplePoints and alignThreshold 0.92 from contract.json.',
+    'Wire runChakraSignatureMatch / resetChakraSignatureMatch / replayChakraSignatureMatch.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: contract.acceptance,
