@@ -1,12 +1,23 @@
 <div class="glz" data-glz data-phase="idle">
-  <p class="glz__live" data-glz-live aria-live="polite">Tile idle.</p>
+  <p class="glz__live" data-glz-live aria-live="polite">Tile idle in dock slot.</p>
+
   <div class="glz__stage" data-glz-stage>
-    <button type="button" class="glz__tile" data-glz-tile data-animate>TITLE A</button>
+    <div class="glz__dock" aria-hidden="true">
+      <span class="glz__slot"></span>
+      <span class="glz__slot glz__slot--origin"></span>
+      <span class="glz__slot"></span>
+    </div>
+
+    <div class="glz__tile" data-glz-tile aria-hidden="true">
+      <span class="glz__tile-label">TITLE A</span>
+    </div>
+
     <div class="glz__launch" data-glz-launch aria-hidden="true">
       <p class="glz__launch-label">TITLE A</p>
       <p class="glz__launch-ready">READY</p>
     </div>
   </div>
+
   <div class="glz__controls">
     <button type="button" class="glz__btn glz__btn--primary" data-glz-run>Launch</button>
     <button type="button" class="glz__btn" data-glz-reset>Reset</button>

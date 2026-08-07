@@ -1,10 +1,13 @@
-/* portable contract — PlayStation palette */
+/* SPX-3332 Game Launch Zoom — portable contract. Tile→viewport spatial zoom. */
 
 .glz {
-  --primary: #2E90FF;
-  --ink: #0B0F14;
-  --paper: #F4F6F8;
-  --soft: #7EB6FF;
+  --primary: #2e90ff;
+  --ink: #0b0f14;
+  --paper: #f4f6f8;
+  --soft: #7eb6ff;
+  --zoom-ms: 640ms;
+  --handoff-ms: 280ms;
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -15,32 +18,197 @@
   padding: 0.85rem 0.65rem;
   background: var(--ink);
   color: var(--paper);
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
-.glz__live {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-}
-.glz__btn {
-  padding: 0.45rem 0.75rem; border: 2px solid var(--soft); background: transparent;
-  color: var(--paper); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.12em;
-  text-transform: uppercase; cursor: pointer;
-}
-.glz__btn--primary { border-color: var(--primary); background: var(--primary); color: var(--ink); }
-.glz__btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
-.glz__stage { position: relative; width: min(100%, 360px); height: 200px; overflow: hidden; border-radius: 6px; background: var(--ink); }
-.glz__tile { position: absolute; left: 50%; bottom: 1rem; width: 100px; height: 130px; margin-left: -50px; border: 2px solid var(--primary); border-radius: 4px; background: linear-gradient(160deg, rgb(46 144 255 / 0.35), var(--ink)); color: var(--paper); font-size: 0.52rem; font-weight: 800; letter-spacing: 0.1em; cursor: pointer; transform-origin: center bottom; transition: transform 620ms cubic-bezier(0.2,1,0.3,1), opacity 320ms ease; }
-.glz[data-phase='zoom'] .glz__tile { transform: scale(3.6) translateY(-20px); opacity: 0; }
-.glz__launch { position: absolute; inset: 0; display: grid; place-content: center; gap: 0.35rem; opacity: 0; background: linear-gradient(180deg, #1a2840, var(--ink)); transition: opacity 400ms ease 280ms; }
-.glz[data-phase='zoom'] .glz__launch, .glz[data-phase='done'] .glz__launch { opacity: 1; }
-.glz__launch-label { margin: 0; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em; color: var(--soft); text-align: center; }
-.glz__launch-ready { margin: 0; font-size: 1.2rem; font-weight: 900; letter-spacing: 0.12em; text-align: center; }
-.glz__controls { display: flex; gap: 0.5rem; }
-.glz__tile:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.glz *,
+.glz *::before,
+.glz *::after {
+  box-sizing: border-box;
+}
+
+.glz__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.glz__btn {
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--soft);
+  background: transparent;
+  color: var(--paper);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.glz__btn--primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--ink);
+}
+
+.glz__btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.glz__controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.glz__stage {
+  position: relative;
+  width: min(100%, 360px);
+  height: 200px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #0a1018;
+  border: 1px solid rgb(126 182 255 / 0.2);
+}
+
+.glz__dock {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity var(--handoff-ms) ease;
+}
+
+.glz[data-phase='zoom'] .glz__dock,
+.glz[data-phase='done'] .glz__dock {
+  opacity: 0;
+}
+
+.glz__slot {
+  width: 72px;
+  height: 96px;
+  border: 1px dashed rgb(126 182 255 / 0.22);
+  border-radius: 4px;
+}
+
+.glz__slot--origin {
+  border-color: rgb(46 144 255 / 0.45);
+  background: rgb(46 144 255 / 0.06);
+}
+
+/* Spatial zoom: animate box geometry, not scale() */
+.glz__tile {
+  position: absolute;
+  left: calc(50% - 36px);
+  top: calc(100% - 106px);
+  width: 72px;
+  height: 96px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  background: linear-gradient(160deg, rgb(46 144 255 / 0.45), #121820);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  transition:
+    left var(--zoom-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    top var(--zoom-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    width var(--zoom-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    height var(--zoom-ms) cubic-bezier(0.2, 1, 0.3, 1),
+    border-radius var(--zoom-ms) ease,
+    opacity var(--handoff-ms) ease;
+}
+
+.glz__tile-label {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--paper);
+}
+
+.glz[data-phase='zoom'] .glz__tile,
+.glz[data-phase='done'] .glz__tile {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glz__launch {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-content: center;
+  gap: 0.35rem;
+  opacity: 0;
+  background: linear-gradient(180deg, #1a2840, var(--ink));
+  transition: opacity var(--handoff-ms) ease;
+}
+
+.glz[data-phase='zoom'] .glz__launch,
+.glz[data-phase='done'] .glz__launch {
+  opacity: 1;
+}
+
+.glz[data-phase='zoom'] .glz__launch {
+  transition-delay: 360ms;
+}
+
+.glz[data-phase='done'] .glz__launch {
+  transition-delay: 0ms;
+}
+
+.glz__launch-label {
+  margin: 0;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--soft);
+  text-align: center;
+}
+
+.glz__launch-ready {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .glz [data-animate], .glz__animated { animation: none !important; transition: none !important; }
+  .glz__tile,
+  .glz__launch,
+  .glz__dock {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .glz[data-phase='zoom'] .glz__launch {
+    transition-delay: 0ms !important;
+  }
 }
-[data-force-reduced-motion='true'] .glz [data-animate],
-[data-force-reduced-motion='true'] .glz__animated { animation: none !important; transition: none !important; }
+
+[data-force-reduced-motion='true'] .glz__tile,
+[data-force-reduced-motion='true'] .glz__launch,
+[data-force-reduced-motion='true'] .glz__dock {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .glz[data-phase='zoom'] .glz__launch {
+  transition-delay: 0ms !important;
+}

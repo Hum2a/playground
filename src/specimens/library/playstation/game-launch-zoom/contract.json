@@ -1,21 +1,32 @@
 {
   "name": "game-launch-zoom",
-  "intent": "Tile zooms to fill stage into launch view.",
-  "catalogue": {
-    "ps": "PS-026",
-    "ref": "SPX-3332"
-  },
-  "colours": {
+  "ref": "SPX-3332",
+  "ps": "PS-026",
+  "title": "Game Launch Zoom",
+  "palette": {
     "primary": "#2E90FF",
     "ink": "#0B0F14",
     "paper": "#F4F6F8",
     "soft": "#7EB6FF"
   },
+  "timing": {
+    "zoomMs": 640,
+    "handoffMs": 280,
+    "handoffDelayMs": 360
+  },
+  "motion": "spatial-box (left/top/width/height) — not scale()",
+  "phases": ["idle", "zoom", "done"],
   "api": {
     "run": "runGameLaunchZoom()",
     "reset": "resetGameLaunchZoom()"
   },
+  "behaviour": "Tile 72×96 → full viewport over 640ms; launch READY hands off.",
+  "trigger": "Launch / Reset",
   "reducedMotion": {
-    "behaviour": "Launch view appears at full size instantly"
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Tile and launch-layer transitions removed; READY at full size instantly"
   }
 }
