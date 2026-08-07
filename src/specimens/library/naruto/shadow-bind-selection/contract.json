@@ -1,21 +1,21 @@
 {
   "name": "shadow-bind-selection",
-  "intent": "Three shadow tendrils extend from source to target on a stagger, then lock the selection.",
+  "intent": "Three ash/seal tendrils extend from source to target in extendMs 260, then lock selection in lockMs 220.",
   "catalogue": { "nr": "NR-301", "ref": "SPX-2644" },
   "copy": {
     "system": "BIND // SELECTION",
-    "free": "FREE",
+    "idle": "FREE",
     "binding": "BINDING",
     "bound": "BOUND"
   },
   "geometry": {
-    "bindCount": 3
+    "bindCount": 3,
+    "tendrilStaggerMs": [0, 40, 80]
   },
   "timing": {
     "extendMs": 260,
-    "staggerMs": 60,
     "lockMs": 220,
-    "totalMs": 600
+    "totalMs": 480
   },
   "colours": {
     "ink": "#12141A",
@@ -24,19 +24,21 @@
     "alarm": "#A85868",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "seal"
   },
   "api": {
     "run": "runShadowBindSelection()",
     "reset": "resetShadowBindSelection()",
     "replay": "replayShadowBindSelection()"
   },
+  "cssVars": ["--sbs-extend-ms", "--sbs-lock-ms", "--sbs-bind-count"],
   "reducedMotion": {
-    "behaviour": "Source and target appear already BOUND with tendrils extended"
+    "behaviour": "Source and target appear already BOUND"
   },
   "acceptance": [
-    "Exactly bindCount 3 tendrils extend with staggerMs 60 over extendMs 260",
-    "Target locks for lockMs 220 with scale lock pulse — not opacity fade",
-    "Reduced motion shows already BOUND"
+    "Exactly bindCount 3 tendrils scaleX-extend in extendMs 260 (stagger 0/40/80)",
+    "Target locks with lockMs 220 pulse; status BOUND",
+    "Replay returns to FREE before rebinding",
+    "Reduced motion (prefers or data-force) shows BOUND immediately with animations disabled"
   ]
 }

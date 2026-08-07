@@ -1,15 +1,15 @@
 # Shadow Bind Selection
 
-A dark tendril extends from a shadow source to a target card and locks both together as one bound selection (Run auto-play or Replay).
+Three seal-lacquer tendrils travel from a source anchor to a target card and lock both as one bound selection.
 
 ## Behaviour
 
-- Idle: source and target apart, no tendril, status `FREE`.
-- Active: tendril extends across the lane toward the target (~260ms).
-- Resolved: target locked with a bound outline and settle pulse, status `BOUND`, held until reset/replay.
-- Reduced motion: jump straight to the bound state.
+- Idle: FREE, tendrils retracted.
+- Binding: 3 tendrils scaleX-extend over 260ms (stagger 0/40/80).
+- Bound: lock pulse 220ms, status BOUND.
+- Reduced motion: already BOUND.
 
 ## Freeze
 
-- Extend: 260ms · lock: 220ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#D94A38` / `#69745A` / `#F4F1E8`
+- Extend: 260ms · lock: 220ms · binds: 3
+- Palette: `#12141A` / `#D8D4E0` / `#7A6B9A` / `#A85868` / `#6E6A78` / `#F0EEF4`

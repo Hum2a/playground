@@ -7,21 +7,14 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze extend/lock timings from contract.json.',
+    'Mount inside a relative host (~420×340+).',
+    'Import demo.css verbatim; freeze bindCount 3 / extendMs 260 / lockMs 220 from contract.json.',
     'Wire runShadowBindSelection / resetShadowBindSelection / replayShadowBindSelection.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers — already BOUND.',
   ],
-  acceptance: [
-    'Idle shows source and target apart and unbound, status FREE',
-    'Active phase extends a shadow tendril from source to target',
-    'Resolved phase locks both cards with a shared bound outline, status BOUND',
-    'Replay releases the bind before rerunning',
-    'Reduced motion shows the bound state immediately',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#12141A;">
   {{specimen}}
 </div>
 `.trim(),
