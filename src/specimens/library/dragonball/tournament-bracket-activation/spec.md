@@ -52,3 +52,4 @@ Participant names are visible text. Matchup relationships listed as text. Status
 2. Keep pair stagger 70ms, path 140ms, eight segments, four junctions.
 3. Call `openTournamentBracket()` / `resetTournamentBracket()`.
 4. Honour both reduced-motion triggers.
+5. Bracket must build as structure (clip-reveal nodes/paths) — never a simple fade-in list.
