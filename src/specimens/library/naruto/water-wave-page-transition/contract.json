@@ -1,92 +1,53 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/water-wave-page-transition.schema.json",
-  "title": "WaterWavePageTransition",
-  "description": "A jagged wave mask sweeps horizontally across the stage, exchanging page content mid-sweep.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "swapAtMs",
-    "totalMs",
-    "settleMs",
-    "colours",
-    "reducedMotion"
+  "name": "water-wave-page-transition",
+  "intent": "Jagged water clip-path wave sweeps -108%→108% in totalMs 650; page identity swaps at swapAtMs 320.",
+  "catalogue": {
+    "nr": "NR-108",
+    "ref": "SPX-2451"
+  },
+  "copy": {
+    "system": "WIPE // WATER WAVE",
+    "pageA": "PAGE // 01",
+    "pageB": "PAGE // 02"
+  },
+  "geometry": {
+    "startX": "-108%",
+    "endX": "108%",
+    "clipSteps": 10,
+    "foamWidthPx": 6
+  },
+  "timing": {
+    "totalMs": 650,
+    "swapAtMs": 320,
+    "settleMs": 150
+  },
+  "colours": {
+    "ink": "#071018",
+    "parchment": "#C8D8E4",
+    "chakra": "#3A9EC9",
+    "olive": "#4A6A78",
+    "off": "#E8F2F8",
+    "palette": "water"
+  },
+  "api": {
+    "run": "runWaterWavePageTransition()",
+    "reset": "resetWaterWavePageTransition()",
+    "replay": "replayWaterWavePageTransition()"
+  },
+  "cssVars": [
+    "--wwt-total-ms",
+    "--wwt-swap-at-ms",
+    "--wwt-settle-ms",
+    "--wwt-start-x",
+    "--wwt-end-x"
   ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "water-wave-page-transition"
-    },
-    "swapAtMs": {
-      "type": "number",
-      "const": 320
-    },
-    "totalMs": {
-      "type": "number",
-      "const": 650
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 150
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#071018"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8D8E4"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3A9EC9"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#4A6A78"
-        },
-        "off": {
-          "type": "string",
-          "const": "#E8F2F8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateSwap"
-      ],
-      "properties": {
-        "immediateSwap": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    },
-    "wipeMs": {
-      "type": "number",
-      "const": 420
-    },
-    "clipSteps": {
-      "type": "array",
-      "const": [
-        "inset(0 100% 0 0)",
-        "inset(0 40% 0 0)",
-        "inset(0 0 0 0)"
-      ]
-    }
-  }
+  "reducedMotion": {
+    "behaviour": "Instant page swap; wave hidden"
+  },
+  "acceptance": [
+    "Wave body+foam travel startX -108% → endX 108% over totalMs 650",
+    "Page identity swaps at swapAtMs 320 mid-sweep; settleMs 150 after",
+    "Clip-path uses frozen jagged polygon (10 steps), not a soft fade",
+    "Reduced motion (prefers or data-force) swaps instantly with wave animations disabled"
+  ]
 }

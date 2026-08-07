@@ -5,7 +5,7 @@ export const waterWavePageTransition: Specimen = {
   ref: 'SPX-2451',
   title: 'Water Wave Page Transition',
   blurb:
-    'A jagged blue wave mask sweeps horizontally across the stage, exchanging page content mid-sweep — graphic CSS water, not a fluid simulation.',
+    'A jagged water clip-path sweeps -108%→108% in 650ms, swapping page identity at 320ms mid-wipe — CSS water wipe, distinct from wind blades.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — water-style page transitions',
@@ -28,8 +28,8 @@ export const waterWavePageTransition: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the page swaps immediately with no wave sweep.',
   },
   acceptance: [
-    'Wave wipe uses frozen clip-path steps',
-    'Page B identity visible after wipe completes',
+    'Wave sweeps -108%→108% in 650ms with frozen jagged clip',
+    'Page B identity visible after swap at 320ms',
     'Reduced motion instant page swap',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

@@ -6,6 +6,11 @@
   --chakra: #3a9ec9;
   --olive: #4a6a78;
   --off: #e8f2f8;
+  --wwt-total-ms: 650ms;
+  --wwt-swap-at-ms: 320ms;
+  --wwt-settle-ms: 150ms;
+  --wwt-start-x: -108%;
+  --wwt-end-x: 108%;
   /* wave2 timing surface */
   box-sizing: border-box;
   position: relative;
@@ -133,7 +138,7 @@
     64% 100%,
     0% 100%
   );
-  transform: translateX(-108%);
+  transform: translateX(var(--wwt-start-x));
 }
 
 .wwt__wave-foam {
@@ -157,7 +162,7 @@
     0% 100%,
     0% 0%
   );
-  transform: translateX(-108%);
+  transform: translateX(var(--wwt-start-x));
   mix-blend-mode: screen;
 }
 
@@ -166,32 +171,32 @@
 }
 
 .wwt[data-phase='run'] .wwt__wave-body {
-  animation: wwt-sweep 650ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation: wwt-sweep var(--wwt-total-ms) cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .wwt[data-phase='run'] .wwt__wave-foam {
-  animation: wwt-sweep-foam 650ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation: wwt-sweep-foam var(--wwt-total-ms) cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 @keyframes wwt-sweep {
   0% {
-    transform: translateX(-108%);
+    transform: translateX(var(--wwt-start-x));
   }
   100% {
-    transform: translateX(108%);
+    transform: translateX(var(--wwt-end-x));
   }
 }
 
 @keyframes wwt-sweep-foam {
   0% {
-    transform: translateX(-108%);
+    transform: translateX(var(--wwt-start-x));
     opacity: 0;
   }
   8% {
     opacity: 1;
   }
   100% {
-    transform: translateX(108%);
+    transform: translateX(var(--wwt-end-x));
     opacity: 0.4;
   }
 }

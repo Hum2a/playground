@@ -1,15 +1,16 @@
 # Water Wave Page Transition
 
-A jagged blue wave mask sweeps horizontally across the stage (Run auto-play), exchanging page content while fully covered.
+A jagged blue wave mask sweeps horizontally across the stage, exchanging page content mid-sweep.
 
 ## Behaviour
 
-- Idle: page one visible, status `PAGE 01`.
-- Run: wave sweeps left to right over 650ms; content swaps at ~320ms while covered.
-- Settled: new page visible and held until reset/replay.
-- Reduced motion: swap instantly, no wave sweep.
+- Idle: PAGE 01 visible.
+- Sweep: wave + foam travel -108% → 108% (650ms).
+- Swap: at 320ms under the wave, page identity flips.
+- Settled: PAGE 02 (or back) visible after settle 150ms.
+- Reduced motion: instant swap.
 
 ## Freeze
 
-- Swap-at: 320ms · total: 650ms · settle: 150ms
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Total: 650ms · swapAt: 320ms · settle: 150ms · travel: -108%→108%
+- Palette: `#071018` / `#C8D8E4` / `#3A9EC9` / `#4A6A78` / `#E8F2F8`

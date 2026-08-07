@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze swap-at (320ms) / total (650ms) / settle (150ms) from contract.json.',
+    'Import demo.css verbatim; freeze totalMs 650 / swapAtMs 320 / settleMs 150 / startX -108% from contract.json.',
     'Wire runWaterWavePageTransition / resetWaterWavePageTransition / replayWaterWavePageTransition.',
     'Content swap fires while the wave fully covers the stage; honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Jagged wave mask sweeps fully across the stage left to right',
-    'Content swap is invisible to the viewer — it happens while covered',
-    'Replay resets to page one before rerunning',
-    'Reduced motion swaps state instantly with no wave sweep',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#071018;">
   {{specimen}}
 </div>
 `.trim(),
