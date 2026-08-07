@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Unbuilt ideas are pre-assigned `SPX-966`–`SPX-1209` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), open DB rows, or IOS (`SPX-1300`–`SPX-1557`); prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+ (AND reserves SPX-1558–SPX-1974)`; also reserve MHA (SPX-1975–SPX-2343), NR (SPX-2344–SPX-2918), and P4 (SPX-2919–SPX-3109); leftover beyond that is SPX-3110+.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **33 / 244** complete.
+- Progress: **35 / 244** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 33 |
-| Open | 211 |
+| Done | 35 |
+| Open | 209 |
 
 ## Visual grammar
 
@@ -27,7 +27,7 @@
 | Beam / clash | competing operations, commit |
 | Spirit Bomb | collective / distributed completion |
 | Dragon Radar | search, discovery, collection |
-| Capsule | compact storage ??? deploy |
+| Capsule | compact storage → deploy |
 | Hakai / regeneration | irreversible delete; recovery |
 
 ## Shipped (mapped to live specimens)
@@ -63,10 +63,22 @@
 | DB-123 | `SPX-1088` | `propagated-shockwave` | Propagated Shockwave |
 | DB-095 | `SPX-1060` | `sector-radar-search` | Sector Radar Search |
 | DB-184 | `SPX-1149` | `capsule-collapse` | Capsule Collapse |
+| DB-185 | `SPX-1150` | `capsule-deploy` | Capsule Deploy |
 | DB-163 | `SPX-1128` | `core-seed-regeneration` | Core Seed Regeneration |
 | DB-195 | `SPX-1160` | `temporal-undo` | Temporal Undo |
 | DB-182 | `SPX-1147` | `champion-resolution` | Champion Resolution |
 | DB-134 | `SPX-1099` | `high-speed-dash-navigation` | High-Speed Dash Navigation |
+| DB-154 | `SPX-1119` | `erasure-delete` | Erasure Delete |
+
+### Non-checklist (free refs outside DB-001…244)
+
+| SPX | Specimen id | Title |
+| --- | --- | --- |
+| `SPX-1210` | `capacity-drain` | Capacity Drain |
+| `SPX-1211` | `adaptive-recovery` | Adaptive Recovery |
+| `SPX-1212` | `post-burst-recovery` | Post-Burst Recovery |
+
+These three live in `library/dragonball/` with Dragon Ball grammar but use leftover free refs (`SPX-1210`–`SPX-1212`), not reserved DB checklist rows.
 
 ## Core first-wave
 
@@ -95,7 +107,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 - [ ] **DB-106** ?? `SPX-1071` ?? **Final Item Acquired** ??? dragon-balls-collection-completion
 - [x] **DB-184** ?? `SPX-1149` ?? **Capsule Collapse** ??? capsule-corp-compact-storage
 - [x] **DB-185** ?? `SPX-1150` ?? **Capsule Deploy** ??? capsule-corp-compact-storage
-- [ ] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? destruction-deletion
+- [x] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? destruction-deletion
 - [ ] **DB-162** ?? `SPX-1127` ?? **Namekian Regeneration** ??? regeneration-recovery
 - [x] **DB-163** ?? `SPX-1128` ?? **Cell Regeneration** ??? regeneration-recovery
 - [x] **DB-195** ?? `SPX-1160` ?? **Whis Rewind** ??? time-manipulation
@@ -297,7 +309,7 @@ Curated implementation priority (from the former Priority Queue). Same checkbox 
 
 ## Destruction / Deletion
 
-- [ ] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? selected object progressively disintegrates into upward-moving fragments.
+- [x] **DB-154** ?? `SPX-1119` ?? **Hakai Delete** ??? selected object progressively disintegrates into upward-moving fragments.
 - [ ] **DB-155** ?? `SPX-1120` ?? **Energy Erasure** ??? deletion boundary travels through object and leaves empty space behind.
 - [ ] **DB-156** ?? `SPX-1121` ?? **Planet-Break Delete Confirmation** ??? destructive operation creates visible irreversible structural fracture before execution.
 - [ ] **DB-157** ?? `SPX-1122` ?? **Disintegration** ??? object breaks into deterministic square/diamond fragments.
