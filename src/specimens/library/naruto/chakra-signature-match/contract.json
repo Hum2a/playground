@@ -87,5 +87,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Five sample points [40,70,55,85,50] rise to meet the reference waveform",
+    "Each bar advances on stepMs 170; alignment crosses threshold 0.92 then latches MATCH",
+    "MATCH only after bar 5 + settleMs 100; bars grow by height transform, not opacity fade",
+    "Replay zeros all bar heights before rerunning",
+    "Reduced motion shows MATCH immediately"
+  ]
 }
