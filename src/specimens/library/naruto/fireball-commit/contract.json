@@ -1,38 +1,57 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/fireball-commit.schema.json",
-  "title": "FireballCommit",
-  "description": "A charge grows at a source node, launches across a track, and impacts a target to confirm.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "chargeMs", "launchMs", "impactMs", "settleMs", "travelPx", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "fireball-commit" },
-    "chargeMs": { "type": "number", "const": 380 },
-    "launchMs": { "type": "number", "const": 220 },
-    "impactMs": { "type": "number", "const": 200 },
-    "settleMs": { "type": "number", "const": 150 },
-    "travelPx": { "type": "number", "const": 216 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "danger", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#0C0806" },
-        "parchment": { "type": "string", "const": "#C4B8A8" },
-        "chakra": { "type": "string", "const": "#E07030" },
-        "danger": { "type": "string", "const": "#D94A38" },
-        "olive": { "type": "string", "const": "#5A5048" },
-        "off": { "type": "string", "const": "#F4F1E8" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateConfirm"],
-      "properties": {
-        "immediateConfirm": { "type": "boolean", "const": true }
-      }
-    }
-  }
+  "name": "fireball-commit",
+  "intent": "Ember charge grows at a source node, launches 216px across a track, and impacts a target to confirm — progressive fire commit, not a fade.",
+  "catalogue": { "nr": "NR-101", "ref": "SPX-2444" },
+  "copy": {
+    "system": "FLAME // COMMIT",
+    "idle": "IDLE",
+    "charging": "CHARGING",
+    "launched": "LAUNCHED",
+    "impact": "IMPACT",
+    "confirmed": "CONFIRMED"
+  },
+  "geometry": {
+    "travelPx": 216,
+    "trackPx": 250,
+    "orbPx": 26,
+    "emberCount": 4
+  },
+  "timing": {
+    "chargeMs": 380,
+    "launchMs": 220,
+    "impactMs": 200,
+    "settleMs": 150,
+    "totalMs": 950
+  },
+  "colours": {
+    "ink": "#0C0806",
+    "parchment": "#C4B8A8",
+    "chakra": "#E07030",
+    "danger": "#D94A38",
+    "olive": "#5A5048",
+    "off": "#F4F1E8",
+    "palette": "fire"
+  },
+  "api": {
+    "run": "runFireballCommit()",
+    "reset": "resetFireballCommit()",
+    "replay": "replayFireballCommit()"
+  },
+  "cssVars": [
+    "--fbc-charge-ms",
+    "--fbc-launch-ms",
+    "--fbc-impact-ms",
+    "--fbc-settle-ms",
+    "--fbc-travel-px"
+  ],
+  "reducedMotion": {
+    "behaviour": "Target resolves directly to CONFIRMED; no ember charge, launch, or impact"
+  },
+  "acceptance": [
+    "Idle shows no orb; Run enters CHARGING with 4 ember sparks at source for chargeMs 380",
+    "After charge, LAUNCHED travels travelPx 216 in launchMs 220; mid-flight orb is visible on track",
+    "Impact flash plays impactMs 200 then settleMs 150 before CONFIRMED lights the target ring",
+    "Replay resets to IDLE then re-runs the full charge→launch→impact chain",
+    "Reduced motion (prefers or data-force) shows CONFIRMED immediately with animations disabled"
+  ]
 }

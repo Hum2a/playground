@@ -5,7 +5,7 @@ export const fireballCommit: Specimen = {
   ref: 'SPX-2444',
   title: 'Fireball Commit',
   blurb:
-    'A compact charge grows at a source node, launches across a track, and impacts a target to confirm — abstract graphic fire, no copyrighted iconography.',
+    'Four embers charge a compact orb at the source (380ms), it launches 216px across the track (220ms), then impacts to confirm — progressive fire commit, no copyrighted iconography.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction action-language study — fire-style commit gestures',
@@ -19,18 +19,18 @@ export const fireballCommit: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['commit', 'projectile', 'confirmation'],
+  tags: ['commit', 'projectile', 'confirmation', 'ember'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the target resolves directly to CONFIRMED with no charge/launch/impact choreography.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the target resolves directly to CONFIRMED with no ember/charge/launch/impact choreography.',
   },
   acceptance: [
-    'Charge → launch → impact confirm with frozen ms',
-    'Target shows CONFIRMED after impact',
-    'Reduced motion shows CONFIRMED without charge/launch',
+    'Ember charge (4 sparks, 380ms) precedes launch',
+    'Orb travels 216px then impact flash before CONFIRMED',
+    'Reduced motion shows CONFIRMED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
