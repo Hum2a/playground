@@ -5,7 +5,7 @@ export const missionScrollUnroll: Specimen = {
   ref: 'SPX-2365',
   title: 'Mission Scroll Unroll',
   blurb:
-    'A rolled parchment scroll unrolls between its caps, revealing a mission briefing panel line by line.',
+    'A rolled parchment expands from 16px to 190px between caps, then four briefing lines unclip in a 70ms stagger into BRIEFED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / ninja-fiction mission-briefing language — scroll reveal',
@@ -25,12 +25,14 @@ export const missionScrollUnroll: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the scroll appears fully unrolled with all briefing lines visible immediately.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the scroll appears fully unrolled at 190px with all four briefing lines visible immediately.',
   },
   acceptance: [
-    'Scroll unrolls by frozen height/clip ms',
-    'Briefing lines visible when fully unrolled',
-    'Reduced motion fully unrolled immediately',
+    'Idle body height is 16px (rolled); done body height is 190px (open)',
+    'Unroll expands height over 480ms before line unclip starts at 280ms',
+    'Exactly four briefing lines unclip with 70ms stagger into BRIEFED',
+    'Replay collapses to 16px then re-runs',
+    'Reduced motion shows 190px open scroll with all lines immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
