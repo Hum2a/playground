@@ -33,5 +33,12 @@
     ],
     "behaviour": "Instant torn frame at 108% with BREAKTHROUGH stamp"
   },
-  "waveC": "Cap tear geometry past 100%, BREAKTHROUGH as torn meter frame stamp"
+  "waveC": "Cap tear geometry past 100%, BREAKTHROUGH as torn meter frame stamp",
+  "acceptance": [
+    "Meter surges from 92% past 100% cap to 108% over 500ms",
+    "Three tear pieces separate at overshoot; BREAKTHROUGH stamp settles",
+    "Settle phase locks torn frame at 300ms after surge",
+    "Reduced motion (prefers or data-force) shows 108% torn frame and stamp immediately",
+    "No network; meter clipped to host"
+  ]
 }
