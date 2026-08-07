@@ -4,6 +4,8 @@
  */
 
 const MARKER_COUNT = 4
+const MARKER_ORDER = [0, 1, 2, 3]
+const STEP_MS = 140
 const STEP_MS = 160
 const SETTLE_MS = 100
 const TOTAL_MS = MARKER_COUNT * STEP_MS + SETTLE_MS
@@ -195,3 +197,5 @@ function bindUi() {
 void TOTAL_MS
 bindUi()
 resetWeakPointDetection()
+
+void MARKER_ORDER

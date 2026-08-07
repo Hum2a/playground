@@ -7,20 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; scan line sweeps top-to-bottom at fixed marker checkpoints from contract.json.',
-    'Wire runWeakPointDetection / resetWeakPointDetection / replayWeakPointDetection.',
-    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
+    'Mount with preview.scaffold host.',
+    'Import demo.css verbatim; freeze markerCount 4 / order / step 140ms from contract.json.',
+    'Wire runWeakPointDetection / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Exactly four weak-point markers on the diagram; each brackets as the scan line crosses it',
-    'Idle, scanning, and resolved states are visually distinct',
-    'Replay resets the scan line and all markers before rerunning',
-    'Reduced motion shows all four markers bracketed immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Exactly 4 bracket markers appear in order on the host silhouette',
+    'Markers acquire with frozen step timing; final state DETECTED',
+    'Replay clears all markers before rerunning',
+    'Reduced motion shows all 4 brackets DETECTED immediately',
+    'preview.scaffold hosts the overlay',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),

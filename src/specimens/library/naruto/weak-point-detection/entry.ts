@@ -5,7 +5,7 @@ export const weakPointDetection: Specimen = {
   ref: 'SPX-2490',
   title: 'Weak-Point Detection',
   blurb:
-    'A vertical scan sweeps a wireframe diagram and brackets four weak points as it crosses them, resolving to a fully annotated readout.',
+    'Four bracket markers lock onto weak points on a host silhouette in order 0→3.',
   origin: {
     project: 'Original',
     surface: 'Naruto / dojutsu-inspired focus-vision language — analysis overlays',
@@ -25,12 +25,14 @@ export const weakPointDetection: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, all four weak points appear bracketed immediately with the scan line parked at the base.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all four brackets appear DETECTED immediately.',
   },
-  acceptance: [
-    'Exactly N weak points bracket in frozen order',
-    'Host content remains visible under brackets',
-    'Reduced motion shows all points bracketed',
+    acceptance: [
+    'Exactly 4 bracket markers appear in order on the host silhouette',
+    'Markers acquire with frozen step timing; final state DETECTED',
+    'Replay clears all markers before rerunning',
+    'Reduced motion shows all 4 brackets DETECTED immediately',
+    'preview.scaffold hosts the overlay',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
