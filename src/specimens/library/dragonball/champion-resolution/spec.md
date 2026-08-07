@@ -17,9 +17,9 @@ Equal finalists **ATLAS // 92** and **NOVA // 87** under `MODEL ARENA // 08`
 | Scores | Rails construct to 92 / 87 | 300ms |
 | Hold | Both scores held | 120ms |
 | Delta | `+05` constructs | ~140ms |
-| Resolve | NOVA −4px / 92% + RUNNER-UP; ATLAS +26px, frame +4px, **8** rays | ~280ms |
+| Resolve | NOVA −4px / 92% + RUNNER-UP; ATLAS +26px, frame +4px, **8** thin rays (simultaneous) | ~280ms |
 | Converge | 6 paths to ATLAS, stagger 25ms | |
-| Stamp | Angular outline; FINAL→CHAMPION; ACTIVE→COMPLETE | ~180ms |
+| Stamp | Angular outline fades in (no scale bounce); FINAL→CHAMPION; ACTIVE→COMPLETE | ~120ms |
 
 ## Final
 

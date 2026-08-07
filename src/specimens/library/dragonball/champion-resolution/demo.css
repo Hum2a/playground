@@ -347,9 +347,9 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 14px;
+  width: 11px;
   height: 1px;
-  background: var(--atlas);
+  background: color-mix(in srgb, var(--atlas) 72%, transparent);
   transform-origin: 0 50%;
   opacity: 0;
 }
@@ -390,8 +390,8 @@
 .cr[data-phase='converge'] .cr__rays i,
 .cr[data-phase='stamp'] .cr__rays i,
 .cr[data-phase='done'] .cr__rays i {
-  animation: cr-ray 200ms ease-out forwards;
-  animation-delay: calc(40ms + var(--i, 0) * 18ms);
+  animation: cr-ray 220ms ease-out forwards;
+  animation-delay: 48ms;
 }
 
 .cr__rays i:nth-child(1) {
@@ -425,15 +425,15 @@
     width: 0;
   }
   to {
-    opacity: 0.85;
-    width: 14px;
+    opacity: 0.58;
+    width: 11px;
   }
 }
 
 .cr[data-phase='done'] .cr__rays i {
   animation: none;
-  opacity: 0.85;
-  width: 14px;
+  opacity: 0.58;
+  width: 11px;
 }
 
 /* Angular completion stamp — not a trophy */
@@ -448,17 +448,15 @@
 
 .cr[data-phase='stamp'] .cr__stamp,
 .cr[data-phase='done'] .cr__stamp {
-  animation: cr-stamp 180ms ease-out forwards;
+  animation: cr-stamp 120ms linear forwards;
 }
 
 @keyframes cr-stamp {
   from {
     opacity: 0;
-    transform: scale(0.94);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }
 

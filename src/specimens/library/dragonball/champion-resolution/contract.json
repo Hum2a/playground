@@ -33,7 +33,8 @@
     "title": "FINAL → CHAMPION",
     "tournament": "ACTIVE → COMPLETE",
     "resultCopy": "CHAMPION // ATLAS",
-    "stamp": "angular outline — no trophy"
+    "stamp": "angular outline — no trophy; opacity only, no scale bounce",
+    "rays": "8 thin structural spokes; simultaneous reveal, low opacity"
   },
   "api": {
     "execute": "runChampionResolution()",
