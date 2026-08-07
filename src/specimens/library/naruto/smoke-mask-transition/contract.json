@@ -1,36 +1,59 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/smoke-mask-transition.schema.json",
-  "title": "SmokeMaskTransition",
-  "description": "Overlapping circles cover the stage, a content swap happens under cover, then the circles disperse to reveal the new state.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "circleCount", "coverAtMs", "totalMs", "settleMs", "colours", "reducedMotion"],
+  "name": "smoke-mask-transition",
+  "intent": "Six irregular smoke blot clips billow in, content identity swaps under full cover at 300ms, then blots disperse.",
+  "catalogue": {
+    "nr": "NR-096",
+    "ref": "SPX-2439"
+  },
+  "copy": {
+    "system": "COVER // SMOKE MASK",
+    "stateA": "STATE 01",
+    "stateB": "STATE 02"
+  },
+  "geometry": {
+    "puffCount": 6,
+    "clipLanguage": "irregular polygon blot (not circle scale/fade)",
+    "coverKeyframePct": 34,
+    "disperseKeyframePct": 100
+  },
+  "timing": {
+    "coverAtMs": 300,
+    "totalMs": 700,
+    "settleMs": 140
+  },
+  "colours": {
+    "ink": "#071018",
+    "parchment": "#C8D8E4",
+    "chakra": "#3A9EC9",
+    "olive": "#4A6A78",
+    "off": "#E8F2F8",
+    "palette": "water"
+  },
+  "api": {
+    "run": "runSmokeMaskTransition()",
+    "reset": "resetSmokeMaskTransition()",
+    "replay": "replaySmokeMaskTransition()"
+  },
+  "cssVars": [
+    "--smt-total-ms",
+    "--smt-cover-at-ms",
+    "--smt-settle-ms",
+    "--smt-puff-count"
+  ],
+  "reducedMotion": {
+    "behaviour": "State swaps immediately; no puff cover/disperse"
+  },
+  "acceptance": [
+    "Exactly 6 smoke blots use irregular polygon clip-path (not round opacity fades)",
+    "Content identity swaps only at coverAtMs 300 while blots are at coverKeyframePct 34",
+    "Full cycle totalMs 700 then settleMs 140; panels keep distinct titles IN VIEW / CONCEALED",
+    "Keyframe freeze: 0% tight blot → 34% expanded cover → 100% dispersed open clip",
+    "Reduced motion (prefers or data-force) swaps immediately with animations disabled"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "smoke-mask-transition" },
-    "circleCount": { "type": "number", "const": 6 },
-    "coverAtMs": { "type": "number", "const": 300 },
-    "totalMs": { "type": "number", "const": 700 },
-    "settleMs": { "type": "number", "const": 140 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#071018" },
-        "parchment": { "type": "string", "const": "#C8D8E4" },
-        "chakra": { "type": "string", "const": "#3A9EC9" },
-        "olive": { "type": "string", "const": "#4A6A78" },
-        "off": { "type": "string", "const": "#E8F2F8" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateSwap"],
-      "properties": {
-        "immediateSwap": { "type": "boolean", "const": true }
-      }
+    "settleMs": {
+      "type": "number",
+      "const": 140
     }
   }
 }

@@ -8,19 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~380×360+).',
-    'Import demo.css verbatim; freeze cover-at (300ms) / total (700ms) / settle (140ms) from contract.json.',
+    'Import demo.css verbatim; freeze coverAtMs 300 / totalMs 700 / settleMs 140 / puffCount 6 from contract.json.',
     'Wire runSmokeMaskTransition / resetSmokeMaskTransition / replaySmokeMaskTransition.',
-    'Content swap fires mid-animation while circles are at maximum cover; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers — swap immediately.',
   ],
-  acceptance: [
-    'Six overlapping circles animate in, fully obscure the panel, then disperse',
-    'Content swap is invisible to the viewer — it happens only while fully covered',
-    'Replay resets to state one before rerunning',
-    'Reduced motion swaps state instantly with no circle choreography',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#071018;">
   {{specimen}}
 </div>
 `.trim(),
