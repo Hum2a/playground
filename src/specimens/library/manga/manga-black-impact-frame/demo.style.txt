@@ -1,0 +1,211 @@
+/* SPX-4097 Black Impact Frame — portable contract. Finite. Never loops. */
+
+.mbif {
+  --ink: #111111;
+  --paper: #f7f5ef;
+  --mute: #6a6558;
+  --mid: #3a3a3a;
+  --anticipate: 60ms;
+  --impact: 72ms;
+  --inverse: 44ms;
+  --recover: 120ms;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 300px;
+  padding: 0.85rem 0.7rem;
+  background: #e4e0d4;
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.mbif *,
+.mbif *::before,
+.mbif *::after {
+  box-sizing: border-box;
+}
+
+.mbif__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mbif__system {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.mbif__plate {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 188px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.mbif__card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.35rem;
+  align-content: center;
+  min-height: 188px;
+  padding: 1.15rem 1.2rem;
+  background: var(--paper);
+  transition: border-color 0ms linear;
+}
+
+.mbif__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.mbif__title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.mbif__copy {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: var(--mid);
+}
+
+.mbif__badge {
+  margin: 0.45rem 0 0;
+  width: fit-content;
+  padding: 0.28rem 0.55rem;
+  border: 1.5px solid var(--ink);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.mbif__badge[hidden] {
+  display: none;
+}
+
+.mbif__impact {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--ink);
+}
+
+.mbif__sil {
+  width: min(78%, 260px);
+  height: 112px;
+  border: 3px solid var(--paper);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper) 35%, transparent);
+}
+
+/* Phases — driven by data-phase; no CSS animation loops. */
+
+.mbif[data-phase='impact'] .mbif__impact {
+  opacity: 1;
+  background: var(--ink);
+}
+
+.mbif[data-phase='impact'] .mbif__sil {
+  border-color: var(--paper);
+}
+
+.mbif[data-phase='inverse'] .mbif__impact {
+  opacity: 1;
+  background: var(--paper);
+}
+
+.mbif[data-phase='inverse'] .mbif__sil {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 28%, transparent);
+}
+
+.mbif[data-phase='recover'] .mbif__impact {
+  opacity: 0;
+  transition: opacity var(--recover) linear;
+  background: var(--paper);
+}
+
+.mbif[data-phase='done'][data-rm='true'] .mbif__card {
+  outline: 6px solid var(--ink);
+  outline-offset: -6px;
+}
+
+.mbif__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.mbif__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mbif__btn--primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.mbif__btn:hover:not(:disabled) {
+  outline: 1px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.mbif__btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.mbif__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbif[data-phase='recover'] .mbif__impact {
+    transition: none !important;
+  }
+}
+
+html[data-force-reduced-motion='true'] .mbif[data-phase='recover'] .mbif__impact {
+  transition: none !important;
+}

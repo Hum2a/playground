@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/manga-black-impact-frame.schema.json",
+  "title": "MangaBlackImpactFrame",
+  "description": "Finite single-trigger black/white manga impact frame for consequential confirms. Never loops.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "anticipateMs",
+    "impactMs",
+    "inverseMs",
+    "recoverMs",
+    "totalMsMax",
+    "black",
+    "white",
+    "loops",
+    "runtimeRandomness",
+    "reducedMotion"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "manga-black-impact-frame" },
+    "anticipateMs": { "type": "number", "const": 60 },
+    "impactMs": { "type": "number", "const": 72 },
+    "inverseMs": { "type": "number", "const": 44 },
+    "recoverMs": { "type": "number", "const": 120 },
+    "totalMsMax": { "type": "number", "const": 296 },
+    "black": { "type": "string", "const": "#111111" },
+    "white": { "type": "string", "const": "#F7F5EF" },
+    "loops": { "type": "boolean", "const": false },
+    "runtimeRandomness": { "type": "boolean", "const": false },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noFullSurfaceFlash", "staticBorderPx"],
+      "properties": {
+        "noFullSurfaceFlash": { "type": "boolean", "const": true },
+        "staticBorderPx": { "type": "number", "const": 6 }
+      }
+    }
+  }
+}
