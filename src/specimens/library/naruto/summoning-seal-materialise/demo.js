@@ -1,5 +1,5 @@
 /**
- * Summoning Seal Materialise — seal draws in two ring stages, then a panel rises.
+ * Summoning Seal Materialise — draw-stroke then panel expands from seal center.
  * iframe-safe; no storage / parent / network.
  */
 
@@ -7,7 +7,9 @@ const RING_OUTER_MS = 300
 const RING_INNER_MS = 260
 const PANEL_MS = 300
 const SETTLE_MS = 100
-const TOTAL_MS = RING_OUTER_MS + RING_INNER_MS + PANEL_MS + SETTLE_MS
+const OUTER_R = 70
+const INNER_R = 46
+const TICK_COUNT = 8
 
 let busy = false
 /** @type {number[]} */
@@ -80,16 +82,14 @@ function showResolved() {
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('MATERIALISED')
   setHint('Panel materialised.')
-  setLive('Summoning complete. Panel materialised.')
+  setLive('Summoning complete. Panel expanded from seal center.')
 }
 
 function resetVisual() {
   ringOuter()?.setAttribute('data-drawn', 'false')
   ringInner()?.setAttribute('data-drawn', 'false')
   ticks()?.setAttribute('data-visible', 'false')
-  const p = panel()
-  p?.setAttribute('data-visible', 'false')
-  p?.removeAttribute('data-pulse')
+  panel()?.setAttribute('data-visible', 'false')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('IDLE')
   setHint('Press Run to draw the seal.')
@@ -97,7 +97,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run the full summon sequence (Run / replay).
+ * Auto-run draw-stroke then center expand.
  * @returns {Promise<void>}
  */
 export function runSummoningSealMaterialise() {
@@ -121,28 +121,23 @@ export function runSummoningSealMaterialise() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('DRAWING')
-  setLive('Drawing the summoning seal.')
+  setLive(`Drawing outer ring r=${OUTER_R}.`)
 
   return new Promise((resolve) => {
     ringOuter()?.setAttribute('data-drawn', 'true')
     later(RING_OUTER_MS, () => {
       ringInner()?.setAttribute('data-drawn', 'true')
       ticks()?.setAttribute('data-visible', 'true')
-      setLive('Seal drawn. Preparing materialisation.')
+      setLive(`Inner ring r=${INNER_R} drawn; ${TICK_COUNT} ticks latched.`)
       later(RING_INNER_MS, () => {
         setStatus('MATERIALISING')
-        const p = panel()
-        p?.setAttribute('data-visible', 'true')
-        p?.setAttribute('data-pulse', 'true')
-        setLive('Panel materialising.')
-        later(PANEL_MS, () => {
-          p?.removeAttribute('data-pulse')
-          later(SETTLE_MS, () => {
-            showResolved()
-            busy = false
-            setButtons(true)
-            resolve()
-          })
+        panel()?.setAttribute('data-visible', 'true')
+        setLive('Panel expanding from seal center via clip/scale.')
+        later(PANEL_MS + SETTLE_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
         })
       })
     })
@@ -179,6 +174,5 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
 bindUi()
 resetSummoningSealMaterialise()

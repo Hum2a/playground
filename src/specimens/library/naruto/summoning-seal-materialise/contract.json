@@ -1,28 +1,21 @@
 {
   "name": "summoning-seal-materialise",
-  "intent": "Draw-stroke a radial seal (outer then inner), snap ticks, then expand a tool panel from the seal centre via clip/scale — not fade.",
-  "catalogue": {
-    "nr": "NR-173",
-    "ref": "SPX-2516"
-  },
+  "intent": "Seal rings draw via stroke, ticks snap in, then a panel expands from the seal center with clip/scale — not fade.",
+  "catalogue": { "nr": "NR-173", "ref": "SPX-2516" },
   "copy": {
     "system": "SEAL // MATERIALISE",
     "idle": "IDLE",
     "drawing": "DRAWING",
     "materialising": "MATERIALISING",
     "done": "MATERIALISED",
-    "panelLabel": "TOOL"
+    "hintIdle": "Press Run to draw the seal.",
+    "hintDone": "Panel materialised."
   },
   "geometry": {
     "outerRadius": 70,
     "innerRadius": 46,
     "tickCount": 8,
-    "sealCenter": {
-      "x": 100,
-      "y": 170
-    },
-    "panelClipOrigin": "50% 100%",
-    "panelScaleFrom": 0.2
+    "panelExpandOrigin": "center-bottom-of-seal"
   },
   "timing": {
     "ringOuterMs": 300,
@@ -35,7 +28,6 @@
     "ink": "#140C0C",
     "parchment": "#E8DCC8",
     "chakra": "#C43C2E",
-    "alert": "#C43C2E",
     "olive": "#6B5048",
     "off": "#F3EBE0",
     "palette": "seal-lacquer"
@@ -46,19 +38,11 @@
     "replay": "replaySummoningSealMaterialise()"
   },
   "reducedMotion": {
-    "behaviour": "Seal fully drawn and panel materialised immediately; no draw or expand motion"
+    "behaviour": "Seal fully drawn and panel already expanded"
   },
   "acceptance": [
-    "Outer ring draw-stroke completes in ringOuterMs 300 before inner ring starts (ringInnerMs 260)",
-    "Eight ticks scale in after inner ring; panel remains clip-path circle(0%) until seal complete",
-    "Panel expands from seal centre via clip-path + scale 0.2→1 over panelMs 300 (not opacity)",
-    "Replay resets data-drawn/data-visible before rerunning",
-    "Reduced motion (prefers or data-force) shows MATERIALISED immediately"
-  ],
-  "properties": {
-    "settleMs": {
-      "type": "number",
-      "const": 100
-    }
-  }
+    "Outer then inner rings draw via stroke-dash over 300ms/260ms before panel expands",
+    "Panel uses clip-path circle + scale from seal center — not opacity fade",
+    "Exactly 8 ticks snap-scale in with the inner ring; reduced motion shows MATERIALISED immediately"
+  ]
 }

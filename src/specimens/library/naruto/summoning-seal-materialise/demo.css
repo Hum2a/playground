@@ -4,13 +4,12 @@
   --ink: #140c0c;
   --parchment: #e8dcc8;
   --chakra: #c43c2e;
-  --alert: #c43c2e;
   --olive: #6b5048;
   --off: #f3ebe0;
   --ssm-outer-ms: 300ms;
   --ssm-inner-ms: 260ms;
   --ssm-panel-ms: 300ms;
-  --ssm-settle-ms: 100ms;
+  --ssm-expand-from: 0%;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -58,6 +57,7 @@
   gap: 0.6rem;
   justify-items: center;
   width: 100%;
+  min-height: 240px;
   padding: 0.75rem 0.75rem 1rem;
   border: 1px solid rgb(196 60 46 / 0.45);
   background: rgb(243 235 224 / 0.04);
@@ -75,8 +75,7 @@
   stroke-width: 1.5;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  transition: stroke-dashoffset var(--ssm-outer-ms) linear;
-  filter: drop-shadow(0 0 3px rgb(196 60 46 / 0.45));
+  transition: stroke-dashoffset var(--ssm-outer-ms) ease-out;
 }
 
 .ssm__ring--inner {
@@ -88,9 +87,9 @@
 }
 
 .ssm__ticks {
-  transform: scale(0.4);
+  transform: scale(0);
   transform-origin: 100px 170px;
-  transition: transform 200ms cubic-bezier(0.2, 0.9, 0.25, 1.1);
+  transition: transform 180ms cubic-bezier(0.2, 1.2, 0.3, 1);
 }
 
 .ssm__ticks[data-visible='true'] {
@@ -105,49 +104,26 @@
 .ssm__panel {
   position: absolute;
   left: 50%;
-  bottom: 44%;
+  bottom: 42%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
   padding: 0.6rem 0.9rem;
-  border: 1.5px solid var(--olive);
-  background: rgb(20 12 12 / 0.92);
-  color: var(--olive);
-  clip-path: circle(0% at 50% 100%);
-  transform: translate(-50%, 12px) scale(0.2);
+  border: 1.5px solid var(--chakra);
+  background: rgb(16 19 24 / 0.95);
+  color: var(--chakra);
+  transform: translate(-50%, 0) scale(0);
   transform-origin: 50% 100%;
+  clip-path: circle(0% at 50% 100%);
   transition:
-    transform var(--ssm-panel-ms) cubic-bezier(0.2, 0.85, 0.25, 1.05),
-    clip-path var(--ssm-panel-ms) cubic-bezier(0.2, 0.85, 0.25, 1.05),
-    color 200ms ease-out,
-    border-color 200ms ease-out;
+    transform var(--ssm-panel-ms) cubic-bezier(0.2, 0.9, 0.25, 1.05),
+    clip-path var(--ssm-panel-ms) cubic-bezier(0.2, 0.9, 0.25, 1.05);
 }
 
 .ssm__panel[data-visible='true'] {
-  color: var(--chakra);
-  border-color: var(--chakra);
-  clip-path: circle(140% at 50% 100%);
   transform: translate(-50%, 0) scale(1);
-}
-
-.ssm__panel[data-pulse='true'] {
-  animation: ssm-expand var(--ssm-panel-ms) cubic-bezier(0.2, 0.9, 0.25, 1.1);
-}
-
-@keyframes ssm-expand {
-  0% {
-    transform: translate(-50%, 12px) scale(0.2);
-    clip-path: circle(0% at 50% 100%);
-  }
-  70% {
-    transform: translate(-50%, -2px) scale(1.06);
-    clip-path: circle(120% at 50% 100%);
-  }
-  100% {
-    transform: translate(-50%, 0) scale(1);
-    clip-path: circle(140% at 50% 100%);
-  }
+  clip-path: circle(140% at 50% 100%);
 }
 
 .ssm__panel-label {
@@ -220,17 +196,25 @@
 @media (prefers-reduced-motion: reduce) {
   .ssm__ring,
   .ssm__ticks,
-  .ssm__panel,
-  .ssm__panel[data-pulse='true'] {
+  .ssm__panel {
     transition: none !important;
     animation: none !important;
+  }
+
+  .ssm__panel[data-visible='true'] {
+    clip-path: none;
+    transform: translate(-50%, 0) scale(1);
   }
 }
 
 html[data-force-reduced-motion='true'] .ssm__ring,
 html[data-force-reduced-motion='true'] .ssm__ticks,
-html[data-force-reduced-motion='true'] .ssm__panel,
-html[data-force-reduced-motion='true'] .ssm__panel[data-pulse='true'] {
+html[data-force-reduced-motion='true'] .ssm__panel {
   transition: none !important;
   animation: none !important;
+}
+
+html[data-force-reduced-motion='true'] .ssm__panel[data-visible='true'] {
+  clip-path: none;
+  transform: translate(-50%, 0) scale(1);
 }
