@@ -99,5 +99,12 @@
         }
       }
     }
-  }
+  },
+  "acceptance": [
+    "Three nodes snap to frozen formed positions (lead 14%/50%, scout 78%/24%, support 78%/76%) over snapMs 260",
+    "Links draw via stroke-dashoffset over linkMs 180 after snap",
+    "Resolved latches FORMED",
+    "Replay restores scattered positions before rerunning",
+    "Reduced motion shows formed+linked immediately"
+  ]
 }
