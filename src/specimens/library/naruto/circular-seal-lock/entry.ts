@@ -27,6 +27,11 @@ export const circularSealLock: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, the ring appears already aligned at 0° and locked with no rotation.',
   },
+  acceptance: [
+    'Twelve ticks and six marks rotate from −42° to 0° lock over 520ms',
+    'Engage stroke fills the rim in 180ms then core locks with a 150ms pulse',
+    'Reduced motion shows LOCKED at 0° immediately with no rotation',
+  ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 320,
