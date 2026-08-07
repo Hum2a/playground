@@ -1,11 +1,59 @@
 {
   "name": "all-clear-reset",
-  "ref": "SPX-2073",
-  "catalogue": { "mha": "MHA-099" },
+  "intent": "ALL CLEAR retracts threat ALERT geometry, stamps ALL CLEAR, then quietly rebuilds the operations panel.",
+  "catalogue": {
+    "mha": "MHA-099",
+    "ref": "SPX-2073"
+  },
+  "copy": {
+    "panelTitle": "OPERATIONS PANEL",
+    "line1": "Sector 4 — nominal",
+    "line2": "Teams deployed — 12",
+    "alert": "ALERT",
+    "alertSub": "THREAT DETECTED",
+    "stamp": "ALL CLEAR",
+    "liveAlert": "Threat alert active.",
+    "liveRetract": "Retracting alert geometry…",
+    "liveStamp": "All clear stamped.",
+    "liveRebuild": "Rebuilding operations panel…",
+    "liveDone": "All clear. Operations restored."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "retractMs": 420,
+    "stampMs": 280,
+    "stampDelayMs": 360,
+    "rebuildMs": 500,
+    "rebuildDelayMs": 120
+  },
+  "geometry": {
+    "stageMaxWidthPx": 400,
+    "hostMinHeightPx": 140,
+    "hostClipCornerPx": 12,
+    "stampClipCornerPx": 8
+  },
+  "api": {
+    "run": "runAllClearReset()",
+    "reset": "resetAllClearReset()",
+    "replay": "replayAllClearReset()"
+  },
+  "reducedMotion": {
+    "behaviour": "Operations panel appears immediately; no retract, stamp, or rebuild animation"
+  },
+  "acceptance": [
+    "Alert: ALERT overlay covers host; operations panel hidden",
+    "ALL CLEAR retracts alert geometry to centre point over 420ms",
+    "ALL CLEAR stamp slams at 360ms delay over 280ms then fades before rebuild",
+    "Operations panel rebuilds quietly (500ms, 120ms delay) without alert visible",
+    "Done: nominal ops copy visible; RESET shown",
+    "RESET restores ALERT overlay and idle live copy",
+    "Reduced motion (prefers or data-force) shows ops panel immediately",
+    "No network; effect stays inside host panel"
+  ],
+  "waveB": "Frozen retract/stamp/rebuild timings; dedicated ALL CLEAR stamp phase before quiet panel rebuild"
 }

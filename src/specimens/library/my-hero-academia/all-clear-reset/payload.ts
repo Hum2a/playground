@@ -7,13 +7,13 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Starts in alert state; ALL CLEAR triggers runAllClearReset.',
+    'ALL CLEAR triggers runAllClearReset; host clips overflow.',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Alert retracts and operations panel rebuilds',
-    'RESET restores ALERT overlay',
-    'Reduced motion shows operations immediately',
+    'ALERT retracts then ALL CLEAR stamp before quiet ops panel rebuild',
+    'Done state shows nominal operations copy',
+    'Reduced motion shows ops panel immediately',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101820;display:grid;place-items:center;padding:1rem;">
