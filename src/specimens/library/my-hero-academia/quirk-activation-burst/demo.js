@@ -49,16 +49,20 @@ function setButtons(on) {
 function showActive() {
   const label = document.querySelector('[data-qab-label]')
   const sub = document.querySelector('[data-qab-sublabel]')
+  const stamp = document.querySelector('[data-qab-stamp]')
   if (label) label.textContent = 'ACTIVE'
   if (sub) sub.textContent = 'Output engaged'
+  if (stamp) stamp.removeAttribute('hidden')
   setLive('Ability active.')
 }
 
 function resetCopy() {
   const label = document.querySelector('[data-qab-label]')
   const sub = document.querySelector('[data-qab-sublabel]')
+  const stamp = document.querySelector('[data-qab-stamp]')
   if (label) label.textContent = 'STANDBY'
   if (sub) sub.textContent = 'Awaiting activation'
+  if (stamp) stamp.setAttribute('hidden', '')
   setLive('Ability standby.')
 }
 

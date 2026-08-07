@@ -1,10 +1,11 @@
 {
   "name": "quirk-activation-burst",
-  "intent": "Radial ray burst swaps STANDBY core to ACTIVE.",
+  "intent": "Eight hard triangular ray wedges burst from core; STANDBY swaps to ACTIVE with stamp.",
   "catalogue": { "mha": "MHA-023", "ref": "SPX-1997" },
   "copy": {
     "standby": "STANDBY",
     "active": "ACTIVE",
+    "stamp": "ACTIVE",
     "subIdle": "Awaiting activation",
     "subActive": "Output engaged"
   },
@@ -14,12 +15,24 @@
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
-  "timing": { "burstMs": 500, "settleMs": 280 },
-  "rays": 8,
+  "geometry": {
+    "rayCount": 8,
+    "rayAnglesDeg": [0, 45, 90, 135, 180, 225, 270, 315],
+    "rayWidthPx": 22,
+    "rayLengthPct": 46
+  },
+  "timing": { "burstMs": 480, "settleMs": 280 },
   "api": {
     "run": "runQuirkActivationBurst()",
     "reset": "resetQuirkActivationBurst()",
     "replay": "replayQuirkActivationBurst()"
   },
-  "reducedMotion": { "behaviour": "Immediately show ACTIVE; no rays" }
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show ACTIVE core and stamp; no wedge burst"
+  },
+  "waveC": "Hard ink ray wedges at frozen angles, ACTIVE stamp on settle"
 }
