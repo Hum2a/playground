@@ -1,14 +1,15 @@
 /**
- * Seal Stamp Confirmation — descent, impact squash, overshoot settle, one ring pulse.
+ * Seal Stamp Confirmation — overshoot settle + single ring pulse; wax lacquer.
  * iframe-safe; no storage / parent / network.
  */
 
 const DESCENT_MS = 220
 const IMPACT_MS = 90
-const SETTLE_MS = 180
-const RING_MS = 280
+const SETTLE_MS = 160
+const PULSE_MS = 280
 const OVERSHOOT_DEG = -14
-const SETTLE_DEG = -6
+const SETTLE_DEG = 4
+const FINAL_DEG = 0
 
 let busy = false
 /** @type {number[]} */
@@ -57,33 +58,33 @@ function setButtons(on) {
   })
 }
 
-function showResolved(withRing) {
+function showResolved() {
   const root = rootEl()
   root?.setAttribute('data-phase', 'done')
   root?.removeAttribute('data-impact')
+  root?.removeAttribute('data-settle')
+  root?.setAttribute('data-pulse', 'true')
   setStatus('FILED')
-  setHint(`Stamped at ${SETTLE_DEG}°.`)
-  setLive(`Document stamped. Seal settled at ${SETTLE_DEG}°.`)
-  if (withRing && root && !prefersReducedMotion()) {
-    root.setAttribute('data-ring', 'true')
-    later(RING_MS, () => root.removeAttribute('data-ring'))
-  } else {
-    root?.removeAttribute('data-ring')
-  }
+  setHint('Stamped and filed.')
+  setLive(
+    `Document stamped. Mark settled ${OVERSHOOT_DEG}° → ${SETTLE_DEG}° → ${FINAL_DEG}° with one ring pulse.`,
+  )
+  later(PULSE_MS, () => root?.removeAttribute('data-pulse'))
 }
 
 function resetVisual() {
   const root = rootEl()
   root?.setAttribute('data-phase', 'idle')
   root?.removeAttribute('data-impact')
-  root?.removeAttribute('data-ring')
+  root?.removeAttribute('data-settle')
+  root?.removeAttribute('data-pulse')
   setStatus('PENDING')
   setHint('Press Run to strike the seal stamp.')
   setLive('Document pending. No stamp applied.')
 }
 
 /**
- * Auto-run the stamp descent, impact, settle, and one ring pulse.
+ * Auto-run the stamp descent, impact overshoot, settle, and ring pulse.
  * @returns {Promise<void>}
  */
 export function runSealStampConfirmation() {
@@ -99,7 +100,7 @@ export function runSealStampConfirmation() {
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
-    showResolved(false)
+    showResolved()
     busy = false
     setButtons(true)
     return Promise.resolve()
@@ -107,22 +108,25 @@ export function runSealStampConfirmation() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('STRIKING')
-  setLive('Stamp descending.')
+  setLive(`Stamp descending toward ${OVERSHOOT_DEG}° overshoot.`)
 
   return new Promise((resolve) => {
     later(DESCENT_MS, () => {
       root.setAttribute('data-impact', 'true')
-      setLive('Stamp struck the document.')
+      setLive('Stamp struck. Wax mark blooming.')
       later(IMPACT_MS, () => {
         root.removeAttribute('data-impact')
-        showResolved(true)
-        setLive(
-          `Ink mark overshot ${OVERSHOOT_DEG}° then settled to ${SETTLE_DEG}°; ring pulsed once.`,
-        )
-        later(SETTLE_MS + RING_MS, () => {
-          busy = false
-          setButtons(true)
-          resolve()
+        root.setAttribute('data-phase', 'done')
+        root.setAttribute('data-settle', 'true')
+        setStatus('SETTLING')
+        later(SETTLE_MS, () => {
+          root.removeAttribute('data-settle')
+          showResolved()
+          later(PULSE_MS + 40, () => {
+            busy = false
+            setButtons(true)
+            resolve()
+          })
         })
       })
     })

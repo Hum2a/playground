@@ -1,36 +1,37 @@
 {
   "name": "seal-stamp-confirmation",
-  "intent": "A stamp descends and strikes a briefing card; the ink mark overshoots then settles to a frozen angle while a confirmation ring pulses once.",
+  "intent": "Stamp descends with angle overshoot, settles to 0°, then a single confirmation ring pulses on a wax-lacquer mark.",
   "catalogue": { "nr": "NR-036", "ref": "SPX-2379" },
   "copy": {
     "system": "SEAL // STAMP CONFIRM",
     "pending": "PENDING",
     "striking": "STRIKING",
+    "settling": "SETTLING",
     "filed": "FILED",
-    "docTitle": "MISSION REPORT",
-    "docSub": "Status: pending review"
+    "hintIdle": "Press Run to strike the seal stamp.",
+    "hintDone": "Stamped and filed."
   },
   "geometry": {
     "overshootDeg": -14,
-    "settleDeg": -6,
-    "markScaleFrom": 0,
-    "ringScaleTo": 1.55
+    "settleDeg": 4,
+    "finalDeg": 0,
+    "markScalePeak": 1.12
   },
   "timing": {
     "descentMs": 220,
     "impactMs": 90,
-    "settleMs": 180,
-    "ringMs": 280,
-    "totalMs": 770
+    "settleMs": 160,
+    "pulseMs": 280,
+    "totalMs": 750
   },
   "colours": {
     "ink": "#140C0C",
     "parchment": "#E8DCC8",
     "chakra": "#C43C2E",
-    "alert": "#C43C2E",
+    "wax": "#9E1C1C",
     "olive": "#6B5048",
     "off": "#F3EBE0",
-    "palette": "seal-lacquer"
+    "palette": "wax-lacquer"
   },
   "api": {
     "run": "runSealStampConfirmation()",
@@ -38,13 +39,11 @@
     "replay": "replaySealStampConfirmation()"
   },
   "reducedMotion": {
-    "behaviour": "Mark appears already settled at −6° FILED; no descent, impact, or ring pulse"
+    "behaviour": "Mark appears settled at 0° with ring complete; no descent"
   },
   "acceptance": [
-    "Stamp descends over descentMs 220 then squashes for impactMs 90",
-    "Ink mark scales from 0 with overshootDeg −14 and settles to settleDeg −6 over settleMs 180",
-    "Confirmation ring pulses exactly once for ringMs 280 (data-ring) then clears",
-    "Replay resets to PENDING with no mark before rerunning",
-    "Reduced motion (prefers or data-force) shows FILED mark at −6° immediately"
+    "Stamp descends over descentMs 220 then overshoots to −14° before settling 4° → 0° over settleMs 160",
+    "Wax mark blooms via scale (not opacity fade); confirmation ring pulses exactly once for pulseMs 280",
+    "Replay resets to PENDING with no mark; reduced motion shows FILED settled immediately"
   ]
 }
