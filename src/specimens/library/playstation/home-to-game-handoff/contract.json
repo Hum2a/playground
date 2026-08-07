@@ -1,21 +1,109 @@
 {
-  "name": "home-to-game-handoff",
-  "intent": "Tile expands then hands off to launch surface.",
-  "catalogue": {
-    "ps": "PS-009",
-    "ref": "SPX-3315"
-  },
-  "colours": {
-    "primary": "#2E90FF",
-    "ink": "#0B0F14",
-    "paper": "#F4F6F8",
-    "soft": "#7EB6FF"
-  },
-  "api": {
-    "run": "runHomeToGameHandoff()",
-    "reset": "resetHomeToGameHandoff()"
-  },
-  "reducedMotion": {
-    "behaviour": "Launch state appears immediately"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/home-to-game-handoff.schema.json",
+  "title": "HomeToGameHandoff",
+  "description": "SELECT expands the home tile spatially, then hands off to a LAUNCHING surface.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "phases", "api", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "home-to-game-handoff" },
+    "intent": {
+      "type": "string",
+      "const": "Tile expands spatially then hands off to a launch surface."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-009" },
+        "ref": { "type": "string", "const": "SPX-3315" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 400 },
+        "heightPx": { "type": "number", "const": 320 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expandScale", "expandLiftPx", "launchStartScale", "stageHeightPx"],
+      "properties": {
+        "expandScale": { "type": "number", "const": 1.35 },
+        "expandLiftPx": { "type": "number", "const": 12 },
+        "launchStartScale": { "type": "number", "const": 0.92 },
+        "stageHeightPx": { "type": "number", "const": 200 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expandMs", "railMs", "launchOpacityMs", "launchTransformMs", "handoffDelayMs", "easing"],
+      "properties": {
+        "expandMs": { "type": "number", "const": 480 },
+        "railMs": { "type": "number", "const": 320 },
+        "launchOpacityMs": { "type": "number", "const": 400 },
+        "launchTransformMs": { "type": "number", "const": 520 },
+        "handoffDelayMs": { "type": "number", "const": 520 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.2, 1, 0.3, 1)" }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "const": ["idle", "select", "expand", "launch"]
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run", "reset"],
+      "properties": {
+        "run": { "type": "string", "const": "runHomeToGameHandoff()" },
+        "reset": { "type": "string", "const": "resetHomeToGameHandoff()" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable rail/tile/launch transitions; JS skips expand delay and jumps to launch."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "rail", "tile", "launch"],
+      "properties": {
+        "root": { "type": "string", "const": "htgh" },
+        "rail": { "type": "string", "const": "htgh__rail" },
+        "tile": { "type": "string", "const": "htgh__tile" },
+        "launch": { "type": "string", "const": "htgh__launch" }
+      }
+    }
   }
 }
