@@ -1,24 +1,29 @@
 # Game Close Return
 
-Exiting a game reconstructs its original home tile and focus position — full-screen play surface collapses back into the library grid slot.
+Full-screen game surface reconstructs spatially into its origin home-rail tile (box geometry collapse, not fade).
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3337` / `PS-031` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | Full game overlay scale 1 → 0.22; grid fades in; origin tile gains focus ring. |
+| Playing | Game fills stage · rail dimmed underneath |
+| Returning | Game `left/top/width/height` → origin tile slot over `520ms` |
+| Home | Game opacity `0` · origin tile focus ring · rail full luminance |
+| Focus settle | `240ms` |
 | Trigger | CLOSE GAME / RELAUNCH |
+| Chrome | Unique `.gcr` namespace (close chrome, not shared `.ps`) |
+
+## Behaviour
+
+1. Playing: full-bleed IN GAME surface; home rail visible but dimmed under it.
+2. Returning: game box collapses into centre origin tile slot.
+3. Home: game gone; origin tile lifts with focus ring.
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
+`.gcr__game`, `.gcr__rail`, and `.gcr__tile` lose transitions under both RM hooks — home end state snaps.
 
 ## Accessibility
 
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
-
-## Porting
-
-Portable specimen CSS — no site chrome tokens. Isolation comes from the sandboxed iframe.
+Decorative stage uses `aria-hidden`; phase changes announce via `aria-live="polite"`.

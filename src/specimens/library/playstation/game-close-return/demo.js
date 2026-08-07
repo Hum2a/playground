@@ -1,26 +1,48 @@
 /**
- * Game Close Return (SPX-3337) — sandbox-safe PlayStation specimen.
+ * Game Close Return (SPX-3337) — spatial reconstruct-to-tile (520ms).
  */
 
 let phase = 'playing'
-function root() { return document.querySelector('[data-ps="game-close-return"]') }
+let timer = 0
+
+function root() {
+  return document.querySelector('[data-gcr]')
+}
+
 function setPhase(p) {
   phase = p
-  const stage = root()?.querySelector('[data-gcr-stage]')
-  const status = root()?.querySelector('[data-gcr-status]')
-  const btn = root()?.querySelector('[data-gcr-close]')
-  if (stage) stage.setAttribute('data-phase', p)
-  const copy = { playing: 'Full-screen session active.', returning: 'Collapsing to origin tile…', home: 'Home grid restored — origin tile focused.' }
+  const r = root()
+  if (!r) return
+  r.setAttribute('data-phase', p)
+  const status = r.querySelector('[data-gcr-status]')
+  const btn = r.querySelector('[data-gcr-close]')
+  const copy = {
+    playing: 'Full-screen session active.',
+    returning: 'Reconstructing into origin tile…',
+    home: 'Home rail restored — origin tile focused.',
+  }
   if (status) status.textContent = copy[p] || p
   if (btn) btn.textContent = p === 'home' ? 'RELAUNCH' : 'CLOSE GAME'
 }
-function reset() { setPhase('playing') }
+
+function reset() {
+  if (timer) clearTimeout(timer)
+  setPhase('playing')
+}
+
 function bind() {
   root()?.querySelector('[data-gcr-close]')?.addEventListener('click', () => {
-    if (phase === 'playing') { setPhase('returning'); setTimeout(() => setPhase('home'), 440) }
-    else { setPhase('playing') }
+    if (phase === 'playing') {
+      setPhase('returning')
+      timer = setTimeout(() => setPhase('home'), 520)
+    } else {
+      reset()
+    }
   })
-  window.addEventListener('message', (e) => { if (e.data?.type === 'restart') reset() })
+  window.addEventListener('message', (e) => {
+    if (e.data?.type === 'restart') reset()
+  })
   reset()
 }
+
 bind()

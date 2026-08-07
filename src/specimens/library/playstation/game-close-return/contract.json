@@ -7,19 +7,22 @@
     "ink": "#0B0F14",
     "chalk": "#F4F6F8",
     "blue": "#2E90FF",
-    "blueLight": "#7EB6FF",
-    "panel": "#121820",
-    "panel2": "#1a2330",
-    "rule": "#243044",
-    "pewter": "#8a9bb0"
+    "blueLight": "#7EB6FF"
   },
-  "behaviour": "Full game overlay scale 1 → 0.22; grid fades in; origin tile gains focus ring.",
+  "timing": {
+    "closeMs": 520,
+    "focusMs": 240
+  },
+  "motion": "spatial-box collapse into origin tile — not fade",
+  "phases": ["playing", "returning", "home"],
+  "silhouette": "unique .gcr close chrome + home rail",
+  "behaviour": "Full game → origin 64×88 tile over 520ms; rail brightens; focus ring.",
   "trigger": "CLOSE GAME / RELAUNCH",
   "reducedMotion": {
     "triggers": [
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "End states remain; transitions and animations removed"
+    "behaviour": "End states remain; spatial collapse transitions removed"
   }
 }

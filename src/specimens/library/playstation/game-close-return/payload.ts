@@ -10,18 +10,18 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative overflow-hidden host; import demo.css verbatim.',
-    'Full game overlay scale 1 → 0.22; grid fades in; origin tile gains focus ring.',
+    'CLOSE: game left/top/width/height → origin tile over 520ms; then home focus.',
     'Honour both reduced-motion triggers — remove motion, keep end states.',
-    'Sandbox-safe: no parent access, storage, or navigation.',
   ],
   acceptance: [
-    'Game Close Return behaviour matches freeze table',
-    'Trigger: CLOSE GAME / RELAUNCH',
-    'PlayStation palette: #2E90FF #0B0F14 #F4F6F8 #7EB6FF',
-    'Reduced motion: instant state changes, no travel or keyframes',
-    'Live status announces phase changes outside decorative roots',
+    'Game surface collapses spatially into origin tile slot (not opacity-only fade)',
+    'Home rail is visible under the game and brightens on return',
+    'At home: origin tile has focus ring; game surface is gone',
+    'Uses unique .gcr chrome — not shared .ps twinning',
+    'Reduced motion snaps playing→home with no travel',
   ],
-  scaffold: '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
+  scaffold:
+    '<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:16px;">{{specimen}}</div>',
   files: { html, css, js },
   spec,
   contract,

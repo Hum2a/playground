@@ -1,15 +1,21 @@
-<div class="ps" data-ps="game-close-return">
-  <p class="ps__eyebrow">Game Close Return</p>
-  <div class="ps__stage gcr__stage" data-gcr-stage data-phase="playing">
-    <div class="ps__grid gcr__grid" data-gcr-grid aria-hidden="true">
-      <div class="ps__card"></div>
-      <div class="ps__card is-focus" data-gcr-origin></div>
-      <div class="ps__card"></div>
+<div class="gcr" data-gcr data-phase="playing">
+  <p class="gcr__eyebrow">Game Close Return</p>
+
+  <div class="gcr__stage" data-gcr-stage>
+    <div class="gcr__rail" data-gcr-rail aria-hidden="true">
+      <span class="gcr__tile"></span>
+      <span class="gcr__tile gcr__tile--origin" data-gcr-origin>
+        <span class="gcr__tile-mark">A</span>
+      </span>
+      <span class="gcr__tile"></span>
     </div>
-    <div class="ps__game gcr__game" data-gcr-game aria-hidden="true">
+
+    <div class="gcr__game" data-gcr-game aria-hidden="true">
       <span class="gcr__game-label">IN GAME</span>
+      <span class="gcr__game-chrome"></span>
     </div>
   </div>
-  <button type="button" class="ps__btn" data-gcr-close>CLOSE GAME</button>
-  <p class="ps__status" data-gcr-status aria-live="polite">Full-screen session active.</p>
+
+  <button type="button" class="gcr__btn" data-gcr-close>CLOSE GAME</button>
+  <p class="gcr__status" data-gcr-status aria-live="polite">Full-screen session active.</p>
 </div>
