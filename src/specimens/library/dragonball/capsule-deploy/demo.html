@@ -1,13 +1,58 @@
-<div class="cdp" data-capsule-deploy>
+<div class="cdp" data-capsule-deploy data-state="idle" data-phase="idle">
+  <p class="cdp__system">STORAGE // 03 <b data-cdp-rail-status>STORED</b></p>
+
   <div class="cdp__stage">
-    <div class="cdp__rail" data-cdp-rail>STORAGE // 03 <b>STORED</b></div>
+    <div class="cdp__rail">
+      <span class="cdp__rail-label">DOCK // BAY-03</span>
+      <div class="cdp__dock" data-cdp-dock>
+        <span class="cdp__dock-slot"></span>
+      </div>
+    </div>
+
+    <div class="cdp__hardware" data-cdp-hardware aria-hidden="true">
+      <div class="cdp__shell" data-cdp-shell>
+        <span class="cdp__cap cdp__cap--l"></span>
+        <span class="cdp__band">
+          <span class="cdp__seam"></span>
+          <span class="cdp__stamp" data-cdp-stamp>API-07</span>
+        </span>
+        <span class="cdp__cap cdp__cap--r"></span>
+        <span class="cdp__lid" data-cdp-lid></span>
+      </div>
+    </div>
+
     <section class="cdp__card" data-cdp-card aria-label="Service API-07">
-      <span class="cdp__token" data-cdp-token>API-07</span>
-      <span class="cdp__decode cdp__decode--t"></span><span class="cdp__decode cdp__decode--r"></span><span class="cdp__decode cdp__decode--b"></span><span class="cdp__decode cdp__decode--l"></span>
-      <header>SERVICE // <b>API-07</b></header>
-      <div class="cdp__rows"><span>STATUS <b>HEALTHY</b></span><span>REGION <b>LONDON</b></span><span>LATENCY <b>24ms</b></span><span>WORKERS <b>8</b></span></div>
-      <i class="cdp__corner cdp__corner--a"></i><i class="cdp__corner cdp__corner--b"></i><i class="cdp__corner cdp__corner--c"></i><i class="cdp__corner cdp__corner--d"></i>
+      <span class="cdp__bracket cdp__bracket--tl" aria-hidden="true"></span>
+      <span class="cdp__bracket cdp__bracket--tr" aria-hidden="true"></span>
+      <span class="cdp__bracket cdp__bracket--bl" aria-hidden="true"></span>
+      <span class="cdp__bracket cdp__bracket--br" aria-hidden="true"></span>
+
+      <header class="cdp__title">SERVICE // <strong>API-07</strong></header>
+
+      <div class="cdp__rows">
+        <span data-cdp-row="status">STATUS <b>HEALTHY</b></span>
+        <span data-cdp-row="region">REGION <b>LONDON</b></span>
+        <span data-cdp-row="latency">LATENCY <b>24ms</b></span>
+        <span data-cdp-row="workers">WORKERS <b>8</b></span>
+      </div>
+
+      <footer class="cdp__footer">ACTIVE SERVICE</footer>
+
+      <span class="cdp__decode cdp__decode--t" aria-hidden="true"></span>
+      <span class="cdp__decode cdp__decode--r" aria-hidden="true"></span>
+      <span class="cdp__decode cdp__decode--b" aria-hidden="true"></span>
+      <span class="cdp__decode cdp__decode--l" aria-hidden="true"></span>
     </section>
   </div>
-  <p data-cdp-text>Stored API-07. Status: stored.</p><button type="button" data-cdp-deploy>DEPLOY</button><div class="cdp__status" role="status" aria-live="polite"></div>
+
+  <p class="cdp__message" data-cdp-text>Stored API-07. Status: stored.</p>
+
+  <div class="cdp__controls">
+    <button type="button" class="cdp__button" data-cdp-deploy>DEPLOY</button>
+    <button type="button" class="cdp__button cdp__button--ghost" data-cdp-reset>RESET</button>
+  </div>
+
+  <p class="cdp__status" role="status" aria-live="polite" data-cdp-status>
+    Stored API-07. Status: stored.
+  </p>
 </div>
