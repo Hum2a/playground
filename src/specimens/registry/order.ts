@@ -267,6 +267,7 @@ export const specimenOrder: string[] = [
   'manga-diagonal-panel-wipe',
   'manga-directional-speed-wipe',
   'manga-double-page-spread-open',
+  'manga-cut-in-notification',
   'manga-hit-stop-freeze',
   'manga-page-turn',
   'manga-panel-expand-focus',
