@@ -1,12 +1,20 @@
 {
   "name": "threat-level-escalation",
-  "intent": "Threat meter steps through five levels to CRITICAL.",
+  "intent": "Five discrete threat plates with unique clip geometry escalate to maximal CRITICAL (non-strobing).",
+  "catalogue": { "mha": "MHA-102", "ref": "SPX-2066" },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
   },
+  "levels": [
+    { "step": 1, "label": "LOW", "plate": "rect" },
+    { "step": 2, "label": "GUARDED", "plate": "angled-top" },
+    { "step": 3, "label": "ELEVATED", "plate": "diagonal-cut + hatch" },
+    { "step": 4, "label": "HIGH", "plate": "speed-ticks" },
+    { "step": 5, "label": "CRITICAL", "plate": "halftone maximal" }
+  ],
   "timing": {
     "stepMs": 200,
     "settleMs": 1150
@@ -22,6 +30,7 @@
       "@media (prefers-reduced-motion: reduce)",
       "[data-force-reduced-motion=\"true\"]"
     ],
-    "behaviour": "Jump directly to LEVEL 5 CRITICAL"
-  }
+    "behaviour": "Jump directly to LEVEL 5 CRITICAL plate"
+  },
+  "waveC": "Discrete plate geometry per level; CRITICAL halftone maximal without strobing"
 }

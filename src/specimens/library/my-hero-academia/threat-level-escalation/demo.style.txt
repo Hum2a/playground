@@ -1,4 +1,4 @@
-/* threat-level-escalation — portable specimen styles */
+/* SPX-2066 Threat Level Escalation — portable contract. */
 
 .tle {
   --tle-primary: #38a3ff;
@@ -14,7 +14,8 @@
   font-family: ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
   color: var(--tle-ink);
   background: var(--tle-paper);
-  border: 2px solid var(--tle-ink);
+  border: 4px solid var(--tle-ink);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
 }
 
 .tle *,
@@ -39,13 +40,14 @@
 
 .tle__trigger {
   padding: 0.4rem 0.7rem;
-  border: 2px solid var(--tle-ink);
+  border: 3px solid var(--tle-ink);
   background: var(--tle-accent);
   color: var(--tle-paper);
   font: 800 0.6rem/1.2 inherit;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
+  clip-path: polygon(0 0, 94% 0, 100% 28%, 100% 100%, 6% 100%, 0 72%);
 }
 
 .tle__trigger:focus {
@@ -73,9 +75,9 @@
 
 .tle__level {
   position: relative;
-  min-height: 72px;
+  min-height: 76px;
   padding: 0.35rem 0.2rem;
-  border: 2px solid var(--tle-ink);
+  border: 3px solid var(--tle-ink);
   background: var(--tle-paper);
   display: flex;
   flex-direction: column;
@@ -87,6 +89,42 @@
     background 200ms ease,
     transform 200ms ease,
     box-shadow 200ms ease;
+}
+
+.tle__level--1 {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.tle__level--2 {
+  clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+}
+
+.tle__level--3 {
+  clip-path: polygon(0 0, 92% 6%, 100% 100%, 8% 100%);
+  background:
+    repeating-linear-gradient(-45deg, transparent 0 3px, rgb(16 24 32 / 0.04) 3px 4px),
+    var(--tle-paper);
+}
+
+.tle__level--4 {
+  clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 94%);
+  min-height: 80px;
+}
+
+.tle__level--4::after {
+  content: '';
+  position: absolute;
+  inset: auto 4px 4px 4px;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--tle-ink) 0 4px, transparent 4px 7px);
+  opacity: 0;
+}
+
+.tle__level--5 {
+  clip-path: polygon(0 12%, 18% 0, 100% 4%, 88% 100%, 0 88%);
+  background:
+    radial-gradient(circle, var(--tle-ink) 1px, transparent 1px) 0 0 / 5px 5px,
+    var(--tle-paper);
 }
 
 .tle__level span {
@@ -105,7 +143,7 @@
   background: var(--tle-primary);
   color: var(--tle-paper);
   transform: scale(1.04);
-  box-shadow: 3px 3px 0 var(--tle-ink);
+  box-shadow: 4px 4px 0 var(--tle-ink);
   z-index: 1;
 }
 
@@ -116,7 +154,7 @@
   background: var(--tle-primary);
   color: var(--tle-paper);
   transform: scale(1.04);
-  box-shadow: 3px 3px 0 var(--tle-ink);
+  box-shadow: 4px 4px 0 var(--tle-ink);
   z-index: 1;
 }
 
@@ -126,23 +164,32 @@
 .tle--step-5 .tle__level[data-level='2'],
 .tle--step-5 .tle__level[data-level='3'],
 .tle--step-5 .tle__level[data-level='4'] {
-  background: color-mix(in srgb, var(--tle-accent) 35%, var(--tle-paper));
+  background: color-mix(in srgb, var(--tle-accent) 30%, var(--tle-paper));
   color: var(--tle-ink);
   transform: none;
   box-shadow: none;
 }
 
+.tle--step-4 .tle__level[data-level='4']::after,
+.tle--step-5 .tle__level[data-level='4']::after {
+  opacity: 0.5;
+}
+
 .tle--step-5 .tle__level[data-level='5'] {
-  background: var(--tle-accent);
-  transform: scale(1.08);
-  box-shadow: 4px 4px 0 var(--tle-ink);
+  background:
+    radial-gradient(circle, var(--tle-paper) 1px, transparent 1px) 0 0 / 4px 4px,
+    var(--tle-accent);
+  color: var(--tle-paper);
+  transform: scale(1.1);
+  box-shadow: 5px 5px 0 var(--tle-ink);
+  border-width: 4px;
 }
 
 .tle--step-2 .tle__level--active:not([data-level='2']),
 .tle--step-3 .tle__level--active:not([data-level='3']),
 .tle--step-4 .tle__level--active:not([data-level='4']),
 .tle--step-5 .tle__level--active:not([data-level='5']) {
-  background: color-mix(in srgb, var(--tle-accent) 35%, var(--tle-paper));
+  background: color-mix(in srgb, var(--tle-accent) 30%, var(--tle-paper));
   color: var(--tle-ink);
   transform: none;
   box-shadow: none;
