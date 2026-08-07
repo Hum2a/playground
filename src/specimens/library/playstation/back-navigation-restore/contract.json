@@ -1,14 +1,100 @@
 {
-  "name": "back-navigation-restore",
-  "intent": "Returning from details restores the exact previous focus target.",
-  "primitives": [
-    "navigation",
-    "focus"
-  ],
-  "colours": {
-    "blue": "#2E90FF",
-    "ink": "#0B0F14",
-    "chalk": "#F4F6F8",
-    "sky": "#7EB6FF"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/back-navigation-restore.schema.json",
+  "title": "BackNavigationRestore",
+  "description": "Returning from details restores the exact prior focus index and DOM focus.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "interaction", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "back-navigation-restore" },
+    "intent": {
+      "type": "string",
+      "const": "Returning from details restores the exact previous focus target index."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-071" },
+        "ref": { "type": "string", "const": "SPX-3377" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 400 },
+        "heightPx": { "type": "number", "const": 300 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tileCount", "columns"],
+      "properties": {
+        "tileCount": { "type": "number", "const": 4 },
+        "columns": { "type": "number", "const": 2 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["focusMs"],
+      "properties": {
+        "focusMs": { "type": "number", "const": 200 }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["restoreExactIndex", "restoreDomFocus", "views"],
+      "properties": {
+        "restoreExactIndex": { "type": "boolean", "const": true },
+        "restoreDomFocus": { "type": "boolean", "const": true },
+        "views": { "type": "array", "const": ["list", "detail"] }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable .bnr__tile transitions; focus restore is instant."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blue", "ink", "chalk", "sky"],
+      "properties": {
+        "blue": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "chalk": { "type": "string", "const": "#F4F6F8" },
+        "sky": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "tile", "focused", "detail", "back"],
+      "properties": {
+        "root": { "type": "string", "const": "bnr" },
+        "tile": { "type": "string", "const": "bnr__tile" },
+        "focused": { "type": "string", "const": "is-focused" },
+        "detail": { "type": "string", "const": "bnr__detail" },
+        "back": { "type": "string", "const": "bnr__btn" }
+      }
+    }
   }
 }

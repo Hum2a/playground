@@ -1,4 +1,4 @@
-/* Portable specimen CSS (iframe-isolated). */
+/* Back Navigation Restore — portable contract */
 
 .bnr {
   --ps-blue: #2E90FF;
@@ -8,13 +8,15 @@
   --ps-panel: #121820;
   --ps-rule: #1e2a38;
   --ps-pewter: #8a9aad;
-
+  --focus-ms: 200ms;
+  --tile-count: 4;
   box-sizing: border-box;
   width: min(100%, 480px);
   margin: 0 auto;
   padding: 16px;
   font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Menlo, Consolas, monospace;
   color: var(--ps-chalk);
+  background: var(--ps-ink);
 }
 
 .bnr *,
@@ -44,103 +46,12 @@
   outline-offset: 2px;
 }
 
-.bnr__btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
 .bnr__status {
   margin: 10px 0 0;
   font-size: 10px;
   letter-spacing: 0.08em;
   text-align: center;
   color: var(--ps-pewter);
-}
-
-.bnr__shape {
-  display: block;
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.bnr__shape--circle {
-  border-radius: 50%;
-  background: var(--ps-sky);
-}
-
-.bnr__shape--square {
-  border-radius: 2px;
-  background: var(--ps-blue);
-}
-
-.bnr__shape--cross {
-  position: relative;
-  background: transparent;
-}
-
-.bnr__shape--cross::before,
-.bnr__shape--cross::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 12px;
-  height: 3px;
-  margin: -1.5px 0 0 -6px;
-  background: var(--ps-chalk);
-  border-radius: 1px;
-}
-
-.bnr__shape--cross::before {
-  transform: rotate(45deg);
-}
-
-.bnr__shape--cross::after {
-  transform: rotate(-45deg);
-}
-
-.bnr__shape--triangle {
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 12px solid var(--ps-blue);
-  background: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bnr__anim,
-  .bnr__orbit,
-  .bnr__shape,
-  .bnr__scan,
-  .bnr__rift,
-  .bnr__ring,
-  .bnr__tile,
-  .bnr__card,
-  .bnr__slab,
-  .bnr__token,
-  .bnr__panel,
-  .bnr__overlay {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-[data-force-reduced-motion='true'] .bnr__anim,
-[data-force-reduced-motion='true'] .bnr__orbit,
-[data-force-reduced-motion='true'] .bnr__shape,
-[data-force-reduced-motion='true'] .bnr__scan,
-[data-force-reduced-motion='true'] .bnr__rift,
-[data-force-reduced-motion='true'] .bnr__ring,
-[data-force-reduced-motion='true'] .bnr__tile,
-[data-force-reduced-motion='true'] .bnr__card,
-[data-force-reduced-motion='true'] .bnr__slab,
-[data-force-reduced-motion='true'] .bnr__token,
-[data-force-reduced-motion='true'] .bnr__panel,
-[data-force-reduced-motion='true'] .bnr__overlay {
-  animation: none !important;
-  transition: none !important;
 }
 
 .bnr__list {
@@ -160,7 +71,9 @@
   border: 1px solid var(--ps-rule);
   border-radius: 3px;
   cursor: pointer;
-  transition: border-color 200ms ease, box-shadow 200ms ease;
+  transition:
+    border-color var(--focus-ms) ease,
+    box-shadow var(--focus-ms) ease;
 }
 
 .bnr__tile:hover {
@@ -196,4 +109,16 @@
   font-size: 10px;
   color: var(--ps-pewter);
   line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bnr__tile {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .bnr__tile {
+  transition: none !important;
+  animation: none !important;
 }
