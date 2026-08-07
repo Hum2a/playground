@@ -127,7 +127,7 @@ function tick(now) {
   }
   setNeedle(value)
 
-  const inBand = Math.abs(value) <= BAND
+  const inBand = Math.abs(value) <= LOCK_THRESHOLD
   if (inBand) {
     if (bandEnteredAt == null) bandEnteredAt = now
     if (now - bandEnteredAt >= LOCK_HOLD_MS) {
