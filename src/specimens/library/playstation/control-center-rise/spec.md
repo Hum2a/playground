@@ -1,22 +1,17 @@
 # Control Center Rise (portable recreation spec)
 
-A compact control strip rises from the bottom while the active game surface stays visible behind it. Original PlayStation home-language study — no franchise assets.
+A compact control strip rises from the bottom while a layered game plane stays visible behind it (blurred when open). Original PlayStation home-language study — no franchise assets.
 
-## Copy
+## Freeze
 
-| Role | Text |
-| ---- | ---- |
+| Item | Value |
+| ---- | ----- |
+| Ref | `SPX-3307` / `PS-001` |
+| Rise duration | `420ms` |
+| Rise easing | `cubic-bezier(0.2, 1, 0.3, 1)` |
+| Game blur (open) | `5px` on `.ccr__game` |
+| Strip slots | Friends · Media · Party · Store · Settings |
 | Game label | `TITLE A` |
-| Strip status | `READY` |
-
-## Colours
-
-| Token | Hex |
-| ----- | --- |
-| Primary | `#2E90FF` |
-| Ink | `#0B0F14` |
-| Paper | `#F4F6F8` |
-| Soft | `#7EB6FF` |
 
 ## API
 
@@ -26,6 +21,12 @@ dismissControlCenter()
 toggleControlCenter()
 ```
 
+## Behaviour
+
+1. Closed: strip translated fully below the playfield; game plane sharp.
+2. Open: strip covers the bottom of the playfield; game stays visible under a soft blur; top-edge bloom on the strip.
+3. Dismiss restores the full sharp game view.
+
 ## Reduced motion
 
-Strip appears at its final raised position instantly with no slide transition.
+Strip and blur snap to their final open/closed states instantly — no slide or filter transition.

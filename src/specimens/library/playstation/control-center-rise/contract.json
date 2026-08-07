@@ -4,7 +4,7 @@
   "catalogue": { "ps": "PS-001", "ref": "SPX-3307" },
   "copy": {
     "game": "TITLE A",
-    "strip": "READY"
+    "slots": ["Friends", "Media", "Party", "Store", "Settings"]
   },
   "colours": {
     "primary": "#2E90FF",
@@ -12,12 +12,17 @@
     "paper": "#F4F6F8",
     "soft": "#7EB6FF"
   },
+  "timing": {
+    "riseMs": 420,
+    "riseEasing": "cubic-bezier(0.2, 1, 0.3, 1)",
+    "gameBlurPx": 5
+  },
   "api": {
     "open": "openControlCenter()",
     "dismiss": "dismissControlCenter()",
     "toggle": "toggleControlCenter()"
   },
   "reducedMotion": {
-    "behaviour": "Strip appears at final position instantly; no slide animation"
+    "behaviour": "Strip and game blur snap instantly; no slide or filter transition"
   }
 }

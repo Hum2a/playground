@@ -12,10 +12,11 @@ const payload: SpecimenPayload = {
     'Honour both prefers-reduced-motion and data-force-reduced-motion.',
   ],
   acceptance: [
-    'Open raises bottom strip; dismiss restores full game view',
-    'TITLE A game surface remains visible while strip is open',
-    'Reduced motion shows strip instantly at final position',
-    'Palette uses #2E90FF / #0B0F14 / #F4F6F8 / #7EB6FF',
+    'Open raises the strip so it covers the bottom of the playfield',
+    'Dismiss restores the full sharp game view',
+    'TITLE A layered game plane stays visible (blurred) while the strip is open',
+    'Strip shows five labeled slots: Friends, Media, Party, Store, Settings',
+    'Reduced motion snaps strip and blur to final states with no transition',
   ],
   scaffold: `
 <div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">

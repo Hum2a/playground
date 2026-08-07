@@ -5,7 +5,7 @@ export const controlCenterRise: Specimen = {
   ref: 'SPX-3307',
   title: 'Control Center Rise',
   blurb:
-    'A compact control strip rises from the bottom while the active game remains visually present behind it.',
+    'Home control strip rises over a layered game plane — five labeled slots, soft top-edge bloom, game blurs but stays present.',
   origin: {
     project: 'Original',
     surface: 'PlayStation-inspired home / control center language',
@@ -18,6 +18,7 @@ export const controlCenterRise: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ['control-center', 'strip'],
   deps: 'none',
@@ -25,7 +26,7 @@ export const controlCenterRise: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the strip appears instantly with no slide.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, strip position and game blur snap instantly — no 420ms rise.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

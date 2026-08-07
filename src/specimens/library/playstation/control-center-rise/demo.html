@@ -2,16 +2,38 @@
   <p class="ccr__live" data-ccr-live aria-live="polite">Control center closed.</p>
 
   <div class="ccr__stage" data-ccr-stage>
-    <div class="ccr__game" aria-hidden="true">
-      <span class="ccr__game-label">TITLE A</span>
-      <span class="ccr__game-geo"></span>
+    <div class="ccr__game" data-ccr-game aria-hidden="true">
+      <div class="ccr__game-plane ccr__game-plane--far"></div>
+      <div class="ccr__game-plane ccr__game-plane--mid"></div>
+      <div class="ccr__game-plane ccr__game-plane--near">
+        <span class="ccr__game-label">TITLE A</span>
+        <span class="ccr__game-geo"></span>
+      </div>
     </div>
+
     <div class="ccr__strip" data-ccr-strip data-animate>
+      <div class="ccr__strip-bloom" aria-hidden="true"></div>
       <div class="ccr__strip-inner">
-        <span class="ccr__chip" aria-hidden="true"></span>
-        <span class="ccr__chip ccr__chip--b" aria-hidden="true"></span>
-        <span class="ccr__chip ccr__chip--c" aria-hidden="true"></span>
-        <span class="ccr__chip-label">READY</span>
+        <button type="button" class="ccr__slot" tabindex="-1" aria-hidden="true">
+          <span class="ccr__slot-icon ccr__slot-icon--friends"></span>
+          <span class="ccr__slot-label">Friends</span>
+        </button>
+        <button type="button" class="ccr__slot" tabindex="-1" aria-hidden="true">
+          <span class="ccr__slot-icon ccr__slot-icon--media"></span>
+          <span class="ccr__slot-label">Media</span>
+        </button>
+        <button type="button" class="ccr__slot" tabindex="-1" aria-hidden="true">
+          <span class="ccr__slot-icon ccr__slot-icon--party"></span>
+          <span class="ccr__slot-label">Party</span>
+        </button>
+        <button type="button" class="ccr__slot" tabindex="-1" aria-hidden="true">
+          <span class="ccr__slot-icon ccr__slot-icon--store"></span>
+          <span class="ccr__slot-label">Store</span>
+        </button>
+        <button type="button" class="ccr__slot" tabindex="-1" aria-hidden="true">
+          <span class="ccr__slot-icon ccr__slot-icon--settings"></span>
+          <span class="ccr__slot-label">Settings</span>
+        </button>
       </div>
     </div>
   </div>
