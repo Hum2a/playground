@@ -1,27 +1,41 @@
 <div class="dqa" data-dqa data-phase="idle">
-  <p class="dqa__live" data-dqa-live aria-live="polite">Queue idle. Item one active.</p>
+  <p class="dqa__live" data-dqa-live aria-live="polite">Queue idle. Slot one downloading.</p>
   <p class="dqa__system">DOWNLOAD // QUEUE</p>
+
   <div class="dqa__stage">
-    <ol class="dqa__queue" aria-label="Download queue">
-      <li class="dqa__item" data-dqa-item data-index="0" data-state="active">
-        <span class="dqa__item-label">Title A</span>
-        <span class="dqa__item-bar"><span class="dqa__item-fill" data-fill></span></span>
-        <span class="dqa__item-state">ACTIVE</span>
+    <ol class="dqa__stack" aria-label="Download queue">
+      <li class="dqa__slot" data-dqa-item data-index="0" data-state="active">
+        <span class="dqa__rank">01</span>
+        <div class="dqa__body">
+          <span class="dqa__name">Title A</span>
+          <span class="dqa__meta" data-dqa-meta>Queued · 2.4 GB</span>
+          <span class="dqa__rail"><span class="dqa__fill" data-fill></span></span>
+        </div>
+        <span class="dqa__chip" data-dqa-chip>NOW</span>
       </li>
-      <li class="dqa__item" data-dqa-item data-index="1" data-state="waiting">
-        <span class="dqa__item-label">Title B</span>
-        <span class="dqa__item-bar"><span class="dqa__item-fill" data-fill></span></span>
-        <span class="dqa__item-state">WAITING</span>
+      <li class="dqa__slot" data-dqa-item data-index="1" data-state="waiting">
+        <span class="dqa__rank">02</span>
+        <div class="dqa__body">
+          <span class="dqa__name">Title B</span>
+          <span class="dqa__meta" data-dqa-meta>Waiting · 1.1 GB</span>
+          <span class="dqa__rail"><span class="dqa__fill" data-fill></span></span>
+        </div>
+        <span class="dqa__chip" data-dqa-chip>NEXT</span>
       </li>
-      <li class="dqa__item" data-dqa-item data-index="2" data-state="waiting">
-        <span class="dqa__item-label">Title C</span>
-        <span class="dqa__item-bar"><span class="dqa__item-fill" data-fill></span></span>
-        <span class="dqa__item-state">WAITING</span>
+      <li class="dqa__slot" data-dqa-item data-index="2" data-state="waiting">
+        <span class="dqa__rank">03</span>
+        <div class="dqa__body">
+          <span class="dqa__name">Title C</span>
+          <span class="dqa__meta" data-dqa-meta>Waiting · 860 MB</span>
+          <span class="dqa__rail"><span class="dqa__fill" data-fill></span></span>
+        </div>
+        <span class="dqa__chip" data-dqa-chip>QUEUED</span>
       </li>
     </ol>
     <p class="dqa__status" data-dqa-status>IN QUEUE</p>
-    <p class="dqa__hint" data-dqa-hint>Press Run to advance queue.</p>
+    <p class="dqa__hint" data-dqa-hint>Run advances active → next handoff.</p>
   </div>
+
   <div class="dqa__controls">
     <button type="button" class="dqa__btn dqa__btn--primary" data-dqa-run>Run</button>
     <button type="button" class="dqa__btn" data-dqa-replay>Replay</button>

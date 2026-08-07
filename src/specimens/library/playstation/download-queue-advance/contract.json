@@ -9,10 +9,25 @@
     "chalk": "#F4F6F8",
     "sky": "#7EB6FF"
   },
+  "timing": {
+    "fillMs": 900,
+    "handoffMs": 280,
+    "stepMs": 40,
+    "items": 3
+  },
+  "api": {
+    "run": "runDownloadQueueAdvance()",
+    "reset": "resetDownloadQueueAdvance()",
+    "replay": "replayDownloadQueueAdvance()"
+  },
+  "acceptance": [
+    "Three ranked queue slots; only one NOW active at a time",
+    "Completion hands off to next slot with HANDOFF chip before NOW",
+    "Completed slots keep DONE state during subsequent fills",
+    "Live region announces each handoff; reduced motion completes all immediately"
+  ],
   "reducedMotion": {
-    "triggers": [
-      "prefers-reduced-motion",
-      "data-force-reduced-motion"
-    ]
+    "triggers": ["prefers-reduced-motion", "data-force-reduced-motion"],
+    "behaviour": "All three slots resolve to DONE immediately on Run"
   }
 }

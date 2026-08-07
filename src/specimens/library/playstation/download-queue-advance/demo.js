@@ -55,6 +55,12 @@ const FILL_MS = 900
 const HANDOFF_MS = 280
 const STEP_MS = 40
 
+const META = [
+  { wait: 'Queued · 2.4 GB', active: 'Downloading · 2.4 GB', done: 'Complete · 2.4 GB' },
+  { wait: 'Waiting · 1.1 GB', active: 'Downloading · 1.1 GB', done: 'Complete · 1.1 GB' },
+  { wait: 'Waiting · 860 MB', active: 'Downloading · 860 MB', done: 'Complete · 860 MB' },
+]
+
 function items() {
   return Array.from(document.querySelectorAll('[data-dqa-item]'))
 }
@@ -63,9 +69,15 @@ function setItemState(idx, state) {
   const item = items()[idx]
   if (!item) return
   item.setAttribute('data-state', state)
-  const stateEl = item.querySelector('.dqa__item-state')
-  if (stateEl) {
-    stateEl.textContent = state === 'done' ? 'DONE' : state === 'active' ? 'ACTIVE' : 'WAITING'
+  const chip = item.querySelector('[data-dqa-chip]')
+  const meta = item.querySelector('[data-dqa-meta]')
+  if (chip) {
+    chip.textContent =
+      state === 'done' ? 'DONE' : state === 'active' ? 'NOW' : state === 'handoff' ? 'HANDOFF' : idx === 0 ? 'QUEUED' : 'NEXT'
+  }
+  if (meta && META[idx]) {
+    meta.textContent =
+      state === 'done' ? META[idx].done : state === 'active' ? META[idx].active : META[idx].wait
   }
 }
 
@@ -80,9 +92,12 @@ function resetVisual() {
     setItemState(i, i === 0 ? 'active' : 'waiting')
     setFill(i, 0)
   })
+  const chips = items()
+  if (chips[1]) chips[1].querySelector('[data-dqa-chip]').textContent = 'NEXT'
+  if (chips[2]) chips[2].querySelector('[data-dqa-chip]').textContent = 'QUEUED'
   setStatus('IN QUEUE')
-  setHint('Press Run to advance queue.')
-  setLive('Queue idle. Item one active.')
+  setHint('Run advances active → next handoff.')
+  setLive('Queue idle. Slot one downloading.')
 }
 
 function showDone() {
@@ -93,7 +108,7 @@ function showDone() {
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('QUEUE CLEAR')
   setHint('All downloads complete.')
-  setLive('Queue clear. All items done.')
+  setLive('Queue clear. All three slots done.')
 }
 
 export function runDownloadQueueAdvance() {
@@ -125,19 +140,25 @@ export function runDownloadQueueAdvance() {
         if (step > steps) {
           setItemState(active, 'done')
           setFill(active, 100)
-          setLive(`Item ${active + 1} complete.`)
-          later(HANDOFF_MS, () => {
-            active += 1
-            if (active >= ITEMS) {
-              showDone()
-              busy = false
-              setButtons(true)
-              resolve()
-            } else {
-              setItemState(active, 'active')
-              setLive(`Handoff to item ${active + 1}.`)
-              fillItem()
+          setLive(`Slot ${active + 1} complete.`)
+          later(HANDOFF_MS / 2, () => {
+            if (active + 1 < ITEMS) {
+              items()[active + 1]?.setAttribute('data-state', 'handoff')
+              setLive(`Handoff to slot ${active + 2}.`)
             }
+            later(HANDOFF_MS / 2, () => {
+              active += 1
+              if (active >= ITEMS) {
+                showDone()
+                busy = false
+                setButtons(true)
+                resolve()
+              } else {
+                setItemState(active, 'active')
+                setStatus(`SLOT ${active + 1}`)
+                fillItem()
+              }
+            })
           })
           return
         }
