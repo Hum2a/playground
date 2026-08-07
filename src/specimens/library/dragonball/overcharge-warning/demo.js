@@ -85,6 +85,7 @@ function applyValue(root, pct, { status } = {}) {
   if (statusEl && status) statusEl.textContent = status
 
   root.classList.toggle('is-overflowing', pct > SAFE_MAX)
+  root.classList.toggle('is-ruptured', pct > SAFE_MAX)
   root.classList.toggle('is-at-max', pct === SAFE_MAX)
   root.classList.toggle('has-warn-marks', pct >= 106)
   root.classList.toggle('has-frame-shift', pct >= 112)
@@ -131,7 +132,13 @@ export function runOverchargeWarning() {
   void root.offsetWidth
 
   if (prefersReducedMotion()) {
-    root.classList.add('is-overflowing', 'has-warn-marks', 'has-frame-shift', 'has-hatch')
+    root.classList.add(
+      'is-overflowing',
+      'is-ruptured',
+      'has-warn-marks',
+      'has-frame-shift',
+      'has-hatch',
+    )
     finish(root)
     return Promise.resolve()
   }
@@ -207,6 +214,7 @@ export function resetOverchargeWarning() {
   root.classList.remove(
     'is-running',
     'is-overflowing',
+    'is-ruptured',
     'is-at-max',
     'is-unfolding',
     'has-warn-marks',

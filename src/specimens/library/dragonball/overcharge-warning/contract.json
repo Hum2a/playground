@@ -21,7 +21,7 @@
     "name": { "type": "string", "const": "overcharge-warning" },
     "intent": {
       "type": "string",
-      "const": "COMPUTE RESERVE from 72% through a calm climb to 100%, then unfolds a dedicated 100–125% overflow region ending at 118% OVERCHARGED without crossing 125%."
+      "const": "COMPUTE RESERVE climbs to 100%, ruptures at the seam, unfolds a 100–125% overflow bay with energy bleed past the frame, and ends at 118% OVERCHARGED with structural alert band — not colour alone."
     },
     "copy": {
       "type": "object",
@@ -38,6 +38,7 @@
         "trigger": { "type": "string", "const": "INCREASE LOAD" },
         "nominal": { "type": "string", "const": "NOMINAL MAXIMUM" },
         "overcharged": { "type": "string", "const": "OVERCHARGED" },
+        "alertBand": { "type": "string", "const": "OVERFLOW RUPTURE" },
         "announceFinal": {
           "type": "string",
           "const": "118%, above safe capacity of 100%, hard limit 125%."
@@ -102,6 +103,9 @@
         "frameShiftAt": { "type": "integer", "const": 112 },
         "hatchAt": { "type": "integer", "const": 118 },
         "frameShiftPx": { "type": "integer", "const": 1 },
+        "ruptureMs": { "type": "integer", "const": 120 },
+        "crackCount": { "type": "integer", "const": 3 },
+        "bleedBandCount": { "type": "integer", "const": 2 },
         "warnMarkCount": { "type": "integer", "const": 2 },
         "noLoopingShake": { "type": "boolean", "const": true },
         "noStrobe": { "type": "boolean", "const": true }
@@ -151,6 +155,7 @@
         "warnMarks": { "type": "string", "const": "has-warn-marks" },
         "frameShift": { "type": "string", "const": "has-frame-shift" },
         "hatch": { "type": "string", "const": "has-hatch" },
+        "ruptured": { "type": "string", "const": "is-ruptured" },
         "overcharged": { "type": "string", "const": "is-overcharged" }
       }
     },

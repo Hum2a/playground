@@ -4,7 +4,7 @@ export const overchargeWarning: Specimen = {
   ref: 'SPX-970',
   title: 'Overcharge Warning',
   blurb:
-    'COMPUTE RESERVE climbs 72→100, holds as NOMINAL MAXIMUM, then unfolds a 100–125% overflow bay ending at 118% OVERCHARGED without crossing the hard limit.',
+    'COMPUTE RESERVE climbs to 100%, ruptures at the seam with crack lines and energy bleed past the frame, unfolds a 100–125% overflow bay, and ends at 118% with OVERFLOW RUPTURE alert — not just a label.',
   origin: {
     project: 'Original',
     surface: 'Dragon Ball–inspired overcharge / capacity overflow (abstract)',
