@@ -1,24 +1,35 @@
 {
   "name": "high-speed-card-relocation",
-  "intent": "Card vanishes mid-travel while two afterimages mark the path; card reappears docked in slot B.",
-  "catalogue": { "nr": "NR-067", "ref": "SPX-2410" },
+  "intent": "Card leaves two afterimages at 0%/25% along the path during travelMs 200, absent mid-travel, then docks in slot B.",
+  "catalogue": {
+    "nr": "NR-067",
+    "ref": "SPX-2410"
+  },
   "copy": {
-    "system": "MOVE // CARD RELOCATE",
-    "idle": "SLOT A",
-    "travelling": "TRAVELLING",
-    "arrived": "SLOT B"
+    "system": "RELOCATE // HIGH SPEED",
+    "slotA": "SLOT A",
+    "slotB": "SLOT B"
   },
   "geometry": {
     "ghostCount": 2,
-    "ghostLeftPct": [0, 25],
-    "pathPct": 50,
-    "cardAbsentMidTravel": true
+    "ghostLeftPct": [
+      0,
+      25
+    ],
+    "ghostSpawnAtMs": [
+      0,
+      60
+    ],
+    "ghostLifeMs": [
+      220,
+      150
+    ],
+    "pathPct": 50
   },
   "timing": {
     "travelMs": 200,
-    "ghostLifeMs": [220, 150],
-    "ghostSpawnAtMs": [0, 60],
-    "settleMs": 40
+    "settleMs": 40,
+    "totalMs": 240
   },
   "colours": {
     "ink": "#0C1014",
@@ -33,15 +44,19 @@
     "reset": "resetHighSpeedCardRelocation()",
     "replay": "replayHighSpeedCardRelocation()"
   },
-  "cssVars": ["--hcr-travel-ms", "--hcr-settle-ms", "--hcr-ghost-count", "--hcr-path-pct"],
+  "cssVars": [
+    "--hcr-travel-ms",
+    "--hcr-settle-ms",
+    "--hcr-ghost-count",
+    "--hcr-path-pct"
+  ],
   "reducedMotion": {
-    "behaviour": "Card appears directly in slot B; no travel or afterimages"
+    "behaviour": "Card appears in slot B immediately; no afterimages"
   },
   "acceptance": [
-    "During travelling phase the live card is opacity 0 / hidden — only ghostCount 2 afterimages are visible",
-    "Ghosts spawn at ghostLeftPct [0,25] with lifeMs [220,150] and spawnAt [0,60]",
-    "After travelMs 200 card is visible docked in slot B; slot A empty",
-    "Replay returns card to slot A before rerunning",
+    "Exactly 2 afterimages at leftPct 0 and 25 during travelMs 200",
+    "Card is absent from both slots mid-travel; docks in slot B after settleMs 40",
+    "Replay returns card to slot A before relocating",
     "Reduced motion (prefers or data-force) places card in slot B immediately"
   ]
 }
