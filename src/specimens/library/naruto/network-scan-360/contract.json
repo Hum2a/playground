@@ -1,96 +1,48 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/network-scan-360.schema.json",
-  "title": "NetworkScan360",
-  "description": "360° sweep discovers five nodes at frozen bearings with a discovery log.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "nodeCount",
-    "anglesDeg",
-    "stepMs",
-    "settleMs",
-    "closeDeg",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "network-scan-360"
-    },
-    "nodeCount": {
-      "type": "number",
-      "const": 5
-    },
-    "anglesDeg": {
-      "type": "array",
-      "const": [
-        0,
-        72,
-        144,
-        216,
-        288
-      ]
-    },
-    "stepMs": {
-      "type": "number",
-      "const": 160
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 100
-    },
-    "closeDeg": {
-      "type": "number",
-      "const": 360
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#070B0E"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8E8DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#1A6B58"
-        },
-        "off": {
-          "type": "string",
-          "const": "#D7F5EC"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateInventory"
-      ],
-      "properties": {
-        "immediateInventory": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "network-scan-360",
+  "intent": "A 360° phosphor sweep wires five nodes at 0/72/144/216/288° on 150ms discovery steps.",
+  "catalogue": {
+    "nr": "NR-154",
+    "ref": "SPX-2497"
+  },
+  "geometry": {
+    "nodeCount": 5,
+    "anglesDeg": [
+      0,
+      72,
+      144,
+      216,
+      288
+    ],
+    "radiusPx": 52,
+    "closeDeg": 330
+  },
+  "timing": {
+    "stepMs": 150,
+    "settleMs": 100,
+    "totalMs": 850
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "alert": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor-phosphor"
+  },
+  "api": {
+    "run": "runNetworkScan360()",
+    "reset": "resetNetworkScan360()",
+    "replay": "replayNetworkScan360()"
+  },
+  "reducedMotion": {
+    "behaviour": "Resolved 360° Network Scan state immediately"
+  },
+  "acceptance": [
+    "Sweep discovers nodes at anglesDeg [0,72,144,216,288] in order at stepMs 150",
+    "Links activate with nodes; inventory complete only after node 5 + settleMs 100",
+    "Replay deactivates all five nodes/links before rerunning",
+    "Reduced motion shows all five nodes mapped immediately"
+  ]
 }

@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runNetworkScan360 / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Five nodes at frozen bearings 0/72/144/216/288 discover in order',
-    'Sweep completes one revolution; discovery log marks each node',
-    'Resolved inventory shows all five nodes active',
-    'Replay clears nodes/log before rerunning',
-    'Reduced motion shows full inventory immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:280px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),

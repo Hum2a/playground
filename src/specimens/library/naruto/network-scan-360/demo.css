@@ -6,6 +6,9 @@
   --phosphor-dim: #1a6b58;
   --grid: #1a3030;
   --off: #d7f5ec;
+  --ns360-step-ms: 150ms;
+  --ns360-settle-ms: 100ms;
+  --ns360-radius: 52px;
   --mute: #6a9a8c;
   --radius: 52px;
   --step-ms: 150ms;
