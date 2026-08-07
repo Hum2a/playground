@@ -2,7 +2,13 @@
  * SPX-2018 Weakness Highlight Sweep
  */
 ;(function () {
-  const TOTAL_MS = 950
+  /** Frozen sweep duration — matches contract.timing.sweepMs */
+  const SWEEP_MS = 500
+  const HIGHLIGHT_DELAY_MS = 420
+  const HIGHLIGHT_MS = 350
+  const TOTAL_MS = HIGHLIGHT_DELAY_MS + HIGHLIGHT_MS + 80
+  const WEAK_SECTOR = 'GUARD'
+
   const IDLE = 'idle'
   const SWEEP = 'sweep'
   const FOUND = 'found'
@@ -46,7 +52,7 @@
 
     if (prefersReducedMotion(root)) {
       root.dataset.phase = FOUND
-      setStatus(root, 'Weakness: GUARD sector.')
+      setStatus(root, `Weakness: ${WEAK_SECTOR} sector.`)
       ctx.busy = false
       return
     }
@@ -56,7 +62,7 @@
 
     ctx.timer = window.setTimeout(() => {
       root.dataset.phase = FOUND
-      setStatus(root, 'Weakness: GUARD sector.')
+      setStatus(root, `Weakness: ${WEAK_SECTOR} sector.`)
       ctx.busy = false
       ctx.timer = null
     }, TOTAL_MS)
@@ -85,4 +91,7 @@
   } else {
     initAll()
   }
+
+  void SWEEP_MS
+  void WEAK_SECTOR
 })()
