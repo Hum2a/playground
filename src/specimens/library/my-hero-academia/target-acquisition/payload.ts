@@ -10,10 +10,12 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Select target then SCAN; wire runTargetAcquisition / resetTargetAcquisition.',
+    'Frozen bracket stagger (0/80/160/240ms) and confidence ladder (24→92%).',
     'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Three targets; pick then scan produces brackets + confidence meter',
+    'Three targets; pick then scan produces brackets on stagger ladder',
+    'Confidence meter fills in four discrete steps to 92%',
     'LOCKED label visible at end state',
     'Reduced motion shows locked state immediately',
   ],

@@ -1,4 +1,4 @@
-/* SPX-2028 Target Acquisition — portable contract. */
+/* SPX-2028 Training Target Acquisition — portable contract. */
 
 .tac {
   --primary: #38a3ff;
@@ -6,6 +6,19 @@
   --paper: #f4f7fa;
   --accent: #ff4d35;
   --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
+  --tac-scan-ms: 660;
+  --tac-conf-show-delay-ms: 120;
+  --tac-bracket-scale-start: 1.4;
+  --tac-bracket-size-px: 18;
+  --tac-bracket-border-px: 3;
+  --tac-bracket-delay-tl-ms: 0;
+  --tac-bracket-delay-tr-ms: 80;
+  --tac-bracket-delay-bl-ms: 160;
+  --tac-bracket-delay-br-ms: 240;
+  --tac-conf-final-pct: 92;
+  --tac-conf-step-1-pct: 24;
+  --tac-conf-step-2-pct: 48;
+  --tac-conf-step-3-pct: 72;
 
   box-sizing: border-box;
   display: flex;
@@ -99,11 +112,11 @@
 
 .tac__br {
   position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 3px solid var(--primary);
+  width: calc(var(--tac-bracket-size-px) * 1px);
+  height: calc(var(--tac-bracket-size-px) * 1px);
+  border: calc(var(--tac-bracket-border-px) * 1px) solid var(--primary);
   opacity: 0;
-  transform: scale(1.4);
+  transform: scale(var(--tac-bracket-scale-start));
 }
 
 .tac__br--tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
@@ -146,8 +159,24 @@
   opacity: 1;
 }
 
-.tac[data-phase='scan'] .tac__card.is-picked .tac__br {
-  animation: tac-bracket 660ms var(--ease) forwards;
+.tac[data-phase='scan'] .tac__card.is-picked .tac__br--tl {
+  animation: tac-bracket calc(var(--tac-scan-ms) * 1ms) var(--ease)
+    calc(var(--tac-bracket-delay-tl-ms) * 1ms) forwards;
+}
+
+.tac[data-phase='scan'] .tac__card.is-picked .tac__br--tr {
+  animation: tac-bracket calc(var(--tac-scan-ms) * 1ms) var(--ease)
+    calc(var(--tac-bracket-delay-tr-ms) * 1ms) forwards;
+}
+
+.tac[data-phase='scan'] .tac__card.is-picked .tac__br--bl {
+  animation: tac-bracket calc(var(--tac-scan-ms) * 1ms) var(--ease)
+    calc(var(--tac-bracket-delay-bl-ms) * 1ms) forwards;
+}
+
+.tac[data-phase='scan'] .tac__card.is-picked .tac__br--br {
+  animation: tac-bracket calc(var(--tac-scan-ms) * 1ms) var(--ease)
+    calc(var(--tac-bracket-delay-br-ms) * 1ms) forwards;
 }
 
 .tac[data-phase='scan'] .tac__card.is-picked .tac__conf {
@@ -156,7 +185,8 @@
 }
 
 .tac[data-phase='scan'] .tac__card.is-picked .tac__conf-fill {
-  animation: tac-conf-fill 660ms var(--ease) 120ms forwards;
+  animation: tac-conf-ladder calc(var(--tac-scan-ms) * 1ms) var(--ease)
+    calc(var(--tac-conf-show-delay-ms) * 1ms) forwards;
 }
 
 .tac[data-phase='locked'] .tac__card.is-picked .tac__br {
@@ -169,7 +199,7 @@
 }
 
 .tac[data-phase='locked'] .tac__card.is-picked .tac__conf-fill {
-  width: 92%;
+  width: calc(var(--tac-conf-final-pct) * 1%);
 }
 
 .tac[data-phase='locked'] .tac__card.is-picked .tac__locked {
@@ -184,8 +214,12 @@
   to { opacity: 1; }
 }
 
-@keyframes tac-conf-fill {
-  to { width: 92%; }
+@keyframes tac-conf-ladder {
+  0% { width: 0; }
+  25% { width: calc(var(--tac-conf-step-1-pct) * 1%); }
+  50% { width: calc(var(--tac-conf-step-2-pct) * 1%); }
+  75% { width: calc(var(--tac-conf-step-3-pct) * 1%); }
+  100% { width: calc(var(--tac-conf-final-pct) * 1%); }
 }
 
 .tac__btn {
@@ -238,7 +272,7 @@
 
   .tac[data-phase='scan'] .tac__card.is-picked .tac__conf-fill,
   .tac[data-phase='locked'] .tac__card.is-picked .tac__conf-fill {
-    width: 92%;
+    width: calc(var(--tac-conf-final-pct) * 1%);
   }
 }
 
@@ -250,5 +284,5 @@
 
 [data-force-reduced-motion='true'] .tac[data-phase='scan'] .tac__card.is-picked .tac__conf-fill,
 [data-force-reduced-motion='true'] .tac[data-phase='locked'] .tac__card.is-picked .tac__conf-fill {
-  width: 92%;
+  width: calc(var(--tac-conf-final-pct) * 1%);
 }

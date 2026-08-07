@@ -1,10 +1,11 @@
 import type { Specimen } from '../../../types'
+
 export const targetAcquisition: Specimen = {
   id: 'target-acquisition',
   ref: 'SPX-2028',
-  title: 'Target Acquisition',
+  title: 'Training Target Acquisition',
   blurb:
-    'Pick a training target; SCAN snaps brackets inward and fills a confidence meter to LOCKED.',
+    'Pick a training target; SCAN snaps brackets on a frozen stagger ladder and fills confidence in four steps to LOCKED.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia–inspired training target tracking UI',

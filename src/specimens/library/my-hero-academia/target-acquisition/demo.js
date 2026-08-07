@@ -1,4 +1,7 @@
+/** Frozen scan duration — matches contract timing.scanMs */
 const SCAN_MS = 660
+/** Frozen final confidence — matches contract confidenceLadder.finalPct */
+const CONF_FINAL_PCT = 92
 
 let selected = -1
 let busy = false
@@ -44,7 +47,7 @@ function applyLocked() {
   if (!r) return
   r.dataset.phase = 'locked'
   const name = cards()[selected]?.querySelector('.tac__name')?.textContent || 'TARGET'
-  setLive(`${name} locked. Confidence 92%.`)
+  setLive(`${name} locked. Confidence ${CONF_FINAL_PCT}%.`)
   const scan = document.querySelector('[data-tac-scan]')
   if (scan) scan.disabled = true
 }

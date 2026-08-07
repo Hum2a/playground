@@ -1,12 +1,55 @@
 {
   "name": "target-acquisition",
-  "ref": "SPX-2028",
-  "catalogue": { "mha": "MHA-054", "title": "Training Target Acquisition" },
-  "confidencePct": 92,
+  "intent": "Pick a training target; SCAN snaps four angular brackets inward on a frozen stagger ladder and fills confidence in four discrete steps to LOCKED.",
+  "catalogue": { "mha": "MHA-054", "ref": "SPX-2028", "title": "Training Target Acquisition" },
+  "copy": {
+    "heading": "TRAINING TARGETS",
+    "scan": "SCAN",
+    "locked": "LOCKED",
+    "targets": ["DRONE", "DUMMY", "BOT"],
+    "liveIdle": "Select a target to scan.",
+    "liveSelected": "Target {n} selected. Ready to scan.",
+    "liveScan": "Acquiring target…",
+    "liveLocked": "{name} locked. Confidence 92%."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "scanMs": 660,
+    "confShowDelayMs": 120
+  },
+  "geometry": {
+    "cardSizePx": 96,
+    "bracketSizePx": 18,
+    "bracketBorderPx": 3,
+    "bracketScaleStart": 1.4
+  },
+  "bracketLadder": {
+    "delaysMs": { "tl": 0, "tr": 80, "bl": 160, "br": 240 }
+  },
+  "confidenceLadder": {
+    "stepsPct": [24, 48, 72, 92],
+    "finalPct": 92
+  },
+  "api": {
+    "run": "runTargetAcquisition()",
+    "reset": "resetTargetAcquisition()",
+    "replay": "replayTargetAcquisition()"
+  },
+  "reducedMotion": {
+    "behaviour": "Brackets and confidence meter appear immediately at 92% with LOCKED label"
+  },
+  "acceptance": [
+    "Three training targets; pick one then SCAN",
+    "Brackets snap inward on frozen stagger ladder: 0/80/160/240ms per corner",
+    "Confidence fills in four discrete steps: 24% → 48% → 72% → 92%",
+    "LOCKED label visible at end state; SCAN disabled",
+    "Reduced motion (prefers or data-force) shows locked state immediately",
+    "No network; polite aria-live on status"
+  ],
+  "waveB": "Title aligned to catalogue; bracket/confidence ladders frozen via CSS vars"
 }
