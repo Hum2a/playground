@@ -6,22 +6,32 @@
   <p class="cmr__system">CLONE // MERGE</p>
 
   <div class="cmr__stage" data-cmr-stage>
-    <article class="cmr__clone cmr__clone--a" data-cmr-clone="0">
-      <p class="cmr__clone-kicker">CLONE A</p>
-      <p class="cmr__clone-value">7</p>
-    </article>
-    <article class="cmr__clone cmr__clone--b" data-cmr-clone="1">
-      <p class="cmr__clone-kicker">CLONE B</p>
-      <p class="cmr__clone-value">4</p>
-    </article>
-    <article class="cmr__clone cmr__clone--c" data-cmr-clone="2">
-      <p class="cmr__clone-kicker">CLONE C</p>
-      <p class="cmr__clone-value">9</p>
-    </article>
+    <div class="cmr__field" data-cmr-field aria-hidden="true">
+      <article class="cmr__clone cmr__clone--a" data-cmr-clone="0">
+        <p class="cmr__clone-kicker">CLONE A</p>
+        <p class="cmr__clone-value">7</p>
+        <span class="cmr__chip" data-mark="peak" aria-hidden="true"></span>
+      </article>
+      <article class="cmr__clone cmr__clone--b" data-cmr-clone="1">
+        <p class="cmr__clone-kicker">CLONE B</p>
+        <p class="cmr__clone-value">4</p>
+        <span class="cmr__chip" data-mark="ring" aria-hidden="true"></span>
+      </article>
+      <article class="cmr__clone cmr__clone--c" data-cmr-clone="2">
+        <p class="cmr__clone-kicker">CLONE C</p>
+        <p class="cmr__clone-value">9</p>
+        <span class="cmr__chip" data-mark="bars" aria-hidden="true"></span>
+      </article>
+    </div>
 
     <article class="cmr__output" data-cmr-output>
       <p class="cmr__output-kicker">OUTPUT</p>
       <p class="cmr__output-value" data-cmr-output-value>—</p>
+      <ul class="cmr__inherited" data-cmr-inherited aria-label="Inherited marks" hidden>
+        <li data-mark="peak"></li>
+        <li data-mark="ring"></li>
+        <li data-mark="bars"></li>
+      </ul>
     </article>
 
     <p class="cmr__status" data-cmr-status>IDLE</p>

@@ -1,18 +1,19 @@
 /**
- * Clone Merge Result — inward reabsorption travel in frozen px.
+ * Clone Merge Result — three clone results travel inward by frozen px offsets,
+ * scale-collapse into one output that inherits their marks.
  * iframe-safe; no storage / parent / network.
  */
 
 const VALUES = [7, 4, 9]
 const MERGED_VALUE = VALUES.reduce((a, b) => a + b, 0)
-const TRAVEL_PX = [
-  [72, 48],
-  [-72, 48],
-  [0, -36],
-]
+const TRAVEL = {
+  a: { x: 72, y: 48 },
+  b: { x: -72, y: 48 },
+  c: { x: 0, y: -52 },
+}
 
-const CONVERGE_MS = 240
-const MERGE_MS = 120
+const CONVERGE_MS = 220
+const MERGE_MS = 140
 const EXPAND_MS = 140
 const TOTAL_MS = CONVERGE_MS + MERGE_MS + EXPAND_MS
 
@@ -69,18 +70,27 @@ function setButtons(on) {
   })
 }
 
+function setInherited(on) {
+  const el = document.querySelector('[data-cmr-inherited]')
+  if (!el) return
+  if (on) el.removeAttribute('hidden')
+  else el.setAttribute('hidden', '')
+}
+
 function showResolved() {
   resolved = true
   setOutputValue(String(MERGED_VALUE))
+  setInherited(true)
   rootEl()?.setAttribute('data-state', 'resolved')
   setStatus('MERGED')
-  setHint(`Combined output: ${MERGED_VALUE}.`)
-  setLive(`Clones reabsorbed by ${TRAVEL_PX.map((p) => p.join('×')).join(' / ')}px. Output ${MERGED_VALUE}.`)
+  setHint(`Combined output: ${MERGED_VALUE} with inherited marks.`)
+  setLive(`Clones reabsorbed. Output ${MERGED_VALUE} with peak/ring/bars.`)
 }
 
 function resetVisual() {
   resolved = false
   setOutputValue('—')
+  setInherited(false)
   rootEl()?.setAttribute('data-state', 'idle')
   setStatus('IDLE')
   setHint('Press Run to merge three clone results.')
@@ -88,7 +98,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run converge → merge → resolve with frozen travel px.
+ * Auto-run full converge → merge → resolve choreography.
  * @returns {Promise<void>}
  */
 export function runCloneMergeResult() {
@@ -110,17 +120,17 @@ export function runCloneMergeResult() {
 
   root.setAttribute('data-state', 'converging')
   setStatus('CONVERGING')
-  setHint('Clones traveling inward.')
+  setHint('Clones travelling inward.')
   setLive(
-    `Clones traveling ${TRAVEL_PX[0].join(',')} / ${TRAVEL_PX[1].join(',')} / ${TRAVEL_PX[2].join(',')} px.`,
+    `Inward travel A(${TRAVEL.a.x},${TRAVEL.a.y}) B(${TRAVEL.b.x},${TRAVEL.b.y}) C(${TRAVEL.c.x},${TRAVEL.c.y}).`,
   )
 
   return new Promise((resolve) => {
     later(CONVERGE_MS, () => {
       root.setAttribute('data-state', 'merging')
       setStatus('MERGING')
-      setHint('Reabsorbing into one output.')
-      setLive('Reabsorbing clones into output.')
+      setHint('Reabsorbing into one result.')
+      setLive('Clones scale-collapsing into output.')
     })
 
     later(CONVERGE_MS + MERGE_MS, () => {

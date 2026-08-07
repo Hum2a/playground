@@ -1,26 +1,19 @@
 {
   "name": "clone-merge-result",
-  "intent": "Three clone results travel inward by frozen px offsets and reabsorb into one summed output.",
-  "catalogue": { "nr": "NR-053", "ref": "SPX-2396" },
-  "copy": {
-    "system": "CLONE // MERGE",
-    "idle": "IDLE",
-    "converging": "CONVERGING",
-    "merging": "MERGING",
-    "merged": "MERGED"
-  },
+  "intent": "Three clone results travel inward by frozen px offsets and scale-collapse into one output that inherits their marks.",
   "geometry": {
     "values": [7, 4, 9],
     "mergedValue": 20,
-    "travelPx": [
-      [72, 48],
-      [-72, 48],
-      [0, -36]
-    ]
+    "travelPx": {
+      "a": { "x": 72, "y": 48 },
+      "b": { "x": -72, "y": 48 },
+      "c": { "x": 0, "y": -52 }
+    },
+    "marks": ["peak", "ring", "bars"]
   },
   "timing": {
-    "convergeMs": 240,
-    "mergeMs": 120,
+    "convergeMs": 220,
+    "mergeMs": 140,
     "expandMs": 140,
     "totalMs": 500
   },
@@ -30,7 +23,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-violet"
+    "palette": "clone-ash"
   },
   "api": {
     "run": "runCloneMergeResult()",
@@ -38,11 +31,11 @@
     "replay": "replayCloneMergeResult()"
   },
   "reducedMotion": {
-    "behaviour": "Output shows 20 immediately; clones hidden"
+    "behaviour": "Merged output 20 already shown with inherited marks"
   },
   "acceptance": [
-    "Clones travel inward by travelPx [[72,48],[-72,48],[0,-36]] over convergeMs 240",
-    "Reabsorption uses translate+scale (not opacity fade) then output expands to 20",
-    "Reduced motion shows merged result 20 immediately"
+    "Clones travel inward by frozen px (A 72/48, B −72/48, C 0/−52) then scale-collapse",
+    "Output expands to 20 and inherits peak/ring/bars — not a card stack fade",
+    "Reduced motion shows MERGED result immediately"
   ]
 }
