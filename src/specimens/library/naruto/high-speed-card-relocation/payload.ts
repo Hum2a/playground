@@ -8,20 +8,13 @@ import contract from './contract.json'
 const payload: SpecimenPayload = {
   integration: [
     'Mount inside a relative host (~440×280+).',
-    'Import demo.css verbatim; freeze travel/ghost-life timings from contract.json.',
+    'Import demo.css verbatim; freeze travelMs 200 / ghostLifeMs [220,150] / ghostCount 2 from contract.json.',
     'Wire runHighSpeedCardRelocation / resetHighSpeedCardRelocation / replayHighSpeedCardRelocation.',
-    'Honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers — card appears in slot B immediately.',
   ],
-  acceptance: [
-    'Card relocates from slot A to slot B leaving exactly two afterimages',
-    'Slot A shows an EMPTY placeholder once the card has left',
-    'Idle, travelling, and arrived states are visually distinct',
-    'Replay resets the card to slot A before rerunning',
-    'Reduced motion places the card in slot B immediately with no afterimages',
-    'No external assets; sandbox-safe; clipped to stage',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:260px;background:#0C1014;">
   {{specimen}}
 </div>
 `.trim(),
