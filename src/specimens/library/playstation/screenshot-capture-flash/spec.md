@@ -1,23 +1,26 @@
 # Screenshot Capture Flash
 
-A single controlled shutter-like flash confirms capture — brief white overlay without obscuring the scene afterward.
+A shutter blade close plus white flash confirms capture. No thumbnail travel — that belongs to Capture Thumbnail Flyout.
 
 ## Freeze
 
 | Item | Value |
-| --- | --- |
+| ---- | ----- |
 | Ref | `SPX-3416` / `PS-110` |
-| Palette | `#2E90FF` `#0B0F14` `#F4F6F8` `#7EB6FF` |
-| Behaviour | White flash peaks at 92% opacity at 12% of 420ms keyframe. |
-| Trigger | CAPTURE button |
+| Flash duration | `360ms` |
+| White peak | `~95%` opacity at `14%` of keyframe |
+| Blades | top/bottom scaleY open→close within same `360ms` |
+| Trigger | CAPTURE |
+
+## Acceptance
+
+1. CAPTURE fires a brief full-stage flash with closing blades.
+2. Scene returns to readable play after `360ms`; no dock thumbnail appears.
+3. Status announces shutter flash (not flyout).
 
 ## Reduced motion
 
-Same semantic states apply — CSS transitions and keyframe animations are disabled under both `prefers-reduced-motion: reduce` and `[data-force-reduced-motion="true"]`.
-
-## Accessibility
-
-Decorative stage content uses `aria-hidden`; phase changes are announced via an `aria-live="polite"` status line so colour is never the only signal.
+Keyframe animations removed; a static mid-opacity flash marks the capture under both RM hooks.
 
 ## Porting
 

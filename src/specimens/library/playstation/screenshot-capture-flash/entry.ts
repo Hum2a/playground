@@ -17,6 +17,7 @@ export const screenshotCaptureFlash: Specimen = {
   },
   inspiredBy: {
     franchise: 'playstation',
+    works: ['ps5'],
   },
   tags: ["capture","screenshot","flash"],
   deps: 'none',

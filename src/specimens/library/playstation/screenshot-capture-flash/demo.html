@@ -1,12 +1,16 @@
-<div class="ps" data-ps="screenshot-capture-flash">
-  <p class="ps__eyebrow">Screenshot Capture Flash</p>
-  <div class="ps__stage scf__stage">
+<div class="scf" data-ps="screenshot-capture-flash">
+  <p class="scf__eyebrow">Screenshot Capture Flash</p>
+  <div class="scf__stage">
     <div class="scf__scene" aria-hidden="true">
       <span>IN GAME</span>
       <div class="scf__bars"><i></i><i></i><i></i></div>
     </div>
-    <div class="ps__flash scf__flash" data-scf-flash aria-hidden="true"></div>
+    <div class="scf__shutter" data-scf-shutter aria-hidden="true">
+      <span class="scf__blade scf__blade--top"></span>
+      <span class="scf__blade scf__blade--bottom"></span>
+    </div>
+    <div class="scf__flash" data-scf-flash aria-hidden="true"></div>
   </div>
-  <button type="button" class="ps__btn" data-scf-capture>CAPTURE</button>
-  <p class="ps__status" data-scf-status aria-live="polite">Ready — press CAPTURE for shutter flash.</p>
+  <button type="button" class="scf__btn" data-scf-capture>CAPTURE</button>
+  <p class="scf__status" data-scf-status aria-live="polite">Ready — shutter flash only (no flyout).</p>
 </div>
