@@ -1,43 +1,51 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/clone-merge-result.schema.json",
-  "title": "CloneMergeResult",
-  "description": "Three parallel clone result cards converge and combine into a single output card.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "values", "mergedValue", "convergeMs", "mergeMs", "expandMs", "colours", "reducedMotion"],
-  "properties": {
-    "name": { "type": "string", "const": "clone-merge-result" },
-    "values": {
-      "type": "array",
-      "items": { "type": "number" },
-      "minItems": 3,
-      "maxItems": 3,
-      "const": [7, 4, 9]
-    },
-    "mergedValue": { "type": "number", "const": 20 },
-    "convergeMs": { "type": "number", "const": 220 },
-    "mergeMs": { "type": "number", "const": 100 },
-    "expandMs": { "type": "number", "const": 140 },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "olive", "off"],
-      "properties": {
-        "ink": { "type": "string", "const": "#12141A" },
-        "parchment": { "type": "string", "const": "#D8D4E0" },
-        "chakra": { "type": "string", "const": "#7A6B9A" },
-        "olive": { "type": "string", "const": "#6E6A78" },
-        "off": { "type": "string", "const": "#F0EEF4" }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["immediateMerged"],
-      "properties": {
-        "immediateMerged": { "type": "boolean", "const": true }
-      }
+  "name": "clone-merge-result",
+  "intent": "Three clone result cards reabsorb inward by frozen travel px, scale to zero at the merge point, then the combined output expands.",
+  "catalogue": { "nr": "NR-053", "ref": "SPX-2396" },
+  "copy": {
+    "system": "CLONE // MERGE",
+    "idle": "IDLE",
+    "converging": "CONVERGING",
+    "merging": "MERGING",
+    "merged": "MERGED"
+  },
+  "geometry": {
+    "cloneCount": 3,
+    "values": [7, 4, 9],
+    "mergedValue": 20,
+    "travelPx": {
+      "a": { "x": 72, "y": 48 },
+      "b": { "x": -72, "y": 48 },
+      "c": { "x": 0, "y": -28 }
     }
-  }
+  },
+  "timing": {
+    "convergeMs": 220,
+    "mergeMs": 140,
+    "expandMs": 140,
+    "totalMs": 500
+  },
+  "colours": {
+    "ink": "#12141A",
+    "parchment": "#D8D4E0",
+    "chakra": "#7A6B9A",
+    "olive": "#6E6A78",
+    "off": "#F0EEF4",
+    "palette": "clone-ash"
+  },
+  "api": {
+    "run": "runCloneMergeResult()",
+    "reset": "resetCloneMergeResult()",
+    "replay": "replayCloneMergeResult()"
+  },
+  "reducedMotion": {
+    "behaviour": "Output shows merged value 20 immediately; clones hidden; no travel"
+  },
+  "acceptance": [
+    "Clones A/B/C travel inward by (72,48)/(-72,48)/(0,-28) px over convergeMs 220",
+    "At merge point clones scale to 0 over mergeMs 140 (reabsorption, not fade-as-primary)",
+    "Output expands from scale 0.72 to 1.06 showing mergedValue 20 over expandMs 140",
+    "Replay resets clones to idle positions and output to —",
+    "Reduced motion (prefers or data-force) shows MERGED 20 immediately"
+  ]
 }

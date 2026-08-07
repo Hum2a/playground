@@ -6,7 +6,15 @@
   --chakra: #7a6b9a;
   --olive: #6e6a78;
   --off: #f0eef4;
-  /* wave2 timing surface */
+  --cmr-converge-ms: 220ms;
+  --cmr-merge-ms: 140ms;
+  --cmr-expand-ms: 140ms;
+  --cmr-travel-a-x: 72px;
+  --cmr-travel-a-y: 48px;
+  --cmr-travel-b-x: -72px;
+  --cmr-travel-b-y: 48px;
+  --cmr-travel-c-x: 0px;
+  --cmr-travel-c-y: -28px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -57,8 +65,8 @@
   width: 100%;
   min-height: 220px;
   padding: 1rem 0.75rem;
-  border: 1px solid color-mix(in srgb, var(--chakra) 45%, transparent);
-  background: rgb(244 241 232 / 0.04);
+  border: 1px solid rgb(122 107 154 / 0.45);
+  background: rgb(240 238 244 / 0.04);
 }
 
 .cmr__clone {
@@ -66,13 +74,12 @@
   width: 5.4rem;
   padding: 0.4rem 0.55rem;
   border: 1.5px solid var(--olive);
-  background: rgb(16 19 24 / 0.92);
+  background: rgb(18 20 26 / 0.95);
   text-align: center;
+  transform: translate(0, 0) scale(1);
   transition:
-    left 220ms ease-in,
-    top 220ms ease-in,
-    opacity 150ms ease-in,
-    transform 220ms ease-in;
+    transform var(--cmr-converge-ms) cubic-bezier(0.35, 0.1, 0.25, 1),
+    border-color 120ms ease-out;
 }
 
 .cmr__clone--a {
@@ -106,39 +113,58 @@
   color: var(--off);
 }
 
-.cmr[data-state='converging'] .cmr__clone,
-.cmr[data-state='merging'] .cmr__clone {
-  left: 39%;
-  top: 38%;
+.cmr[data-state='converging'] .cmr__clone--a {
+  transform: translate(var(--cmr-travel-a-x), var(--cmr-travel-a-y)) scale(0.92);
+  border-color: var(--chakra);
 }
 
-.cmr[data-state='merging'] .cmr__clone {
-  opacity: 0;
-  transform: scale(0.6);
+.cmr[data-state='converging'] .cmr__clone--b {
+  transform: translate(var(--cmr-travel-b-x), var(--cmr-travel-b-y)) scale(0.92);
+  border-color: var(--chakra);
+}
+
+.cmr[data-state='converging'] .cmr__clone--c {
+  transform: translate(var(--cmr-travel-c-x), var(--cmr-travel-c-y)) scale(0.92);
+  border-color: var(--chakra);
+}
+
+.cmr[data-state='merging'] .cmr__clone--a {
+  transform: translate(var(--cmr-travel-a-x), var(--cmr-travel-a-y)) scale(0);
+  transition-duration: var(--cmr-merge-ms);
+}
+
+.cmr[data-state='merging'] .cmr__clone--b {
+  transform: translate(var(--cmr-travel-b-x), var(--cmr-travel-b-y)) scale(0);
+  transition-duration: var(--cmr-merge-ms);
+}
+
+.cmr[data-state='merging'] .cmr__clone--c {
+  transform: translate(var(--cmr-travel-c-x), var(--cmr-travel-c-y)) scale(0);
+  transition-duration: var(--cmr-merge-ms);
 }
 
 .cmr[data-state='resolved'] .cmr__clone {
-  opacity: 0;
+  transform: translate(0, 0) scale(0);
+  visibility: hidden;
 }
 
 .cmr__output {
+  margin-top: 5.5rem;
   padding: 0.55rem 1rem;
   border: 1.5px solid var(--olive);
-  background: rgb(16 19 24 / 0.9);
+  background: rgb(18 20 26 / 0.95);
   text-align: center;
-  opacity: 0.4;
-  transform: scale(0.9);
+  transform: scale(0.72);
   transition:
-    opacity 140ms ease-out,
-    transform 140ms cubic-bezier(0.2, 0.85, 0.25, 1),
-    border-color 140ms ease-out;
+    transform var(--cmr-expand-ms) cubic-bezier(0.2, 0.9, 0.25, 1.15),
+    border-color 140ms ease-out,
+    box-shadow 140ms ease-out;
 }
 
 .cmr[data-state='resolved'] .cmr__output {
-  opacity: 1;
   transform: scale(1.06);
   border-color: var(--chakra);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--chakra) 45%, transparent);
+  box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.45);
 }
 
 .cmr__output-kicker {
@@ -210,7 +236,7 @@
 
 .cmr__btn--primary {
   border-color: var(--chakra);
-  background: color-mix(in srgb, var(--chakra) 45%, transparent);
+  background: rgb(122 107 154 / 0.18);
 }
 
 .cmr__btn:hover:not(:disabled) {

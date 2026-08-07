@@ -1,17 +1,17 @@
 # Clone Merge Result
 
-Three parallel clone result cards (A, B, C) converge toward the centre and combine into one output card.
+Three clone result cards **reabsorb inward** by frozen travel px, scale to zero at the merge point, then the combined output expands to **20**.
 
 ## Behaviour
 
-- Idle: three clone cards at fixed corners, output card faint, status `IDLE`.
-- Converging: all three clones slide toward the centre (~220ms).
-- Merging: converged clones shrink and fade out (~100ms).
-- Resolved: output card scales up to reveal the combined value, status `MERGED`.
-- Reduced motion: the merged output appears immediately.
+- Idle: clones at corners with values 7 / 4 / 9; output `—`.
+- Converging: travel (72,48) / (−72,48) / (0,−28) over 220ms.
+- Merging: scale to 0 over 140ms at the merge point.
+- Merged: output expands to 20; status `MERGED`.
+- Reduced motion: MERGED 20 immediately.
 
 ## Freeze
 
-- Converge: 220ms · merge: 100ms · expand: 140ms
-- Values: A=7, B=4, C=9 → output=20
-- Palette: `#101318` / `#E7DDC7` / `#3A9BD9` / `#69745A` / `#F4F1E8`
+- Travel px: A(72,48) B(−72,48) C(0,−28)
+- Converge: 220ms · merge: 140ms · expand: 140ms · sum: 20
+- Palette (clone ash): `#12141A` / `#D8D4E0` / `#7A6B9A` / `#6E6A78` / `#F0EEF4`

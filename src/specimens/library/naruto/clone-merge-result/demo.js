@@ -8,9 +8,14 @@ const VALUES = [7, 4, 9]
 const MERGED_VALUE = VALUES.reduce((a, b) => a + b, 0)
 
 const CONVERGE_MS = 220
-const MERGE_MS = 100
+const MERGE_MS = 140
 const EXPAND_MS = 140
 const TOTAL_MS = CONVERGE_MS + MERGE_MS + EXPAND_MS
+const TRAVEL_PX = {
+  a: { x: 72, y: 48 },
+  b: { x: -72, y: 48 },
+  c: { x: 0, y: -28 },
+}
 
 let busy = false
 let resolved = false
@@ -107,7 +112,9 @@ export function runCloneMergeResult() {
   root.setAttribute('data-state', 'converging')
   setStatus('CONVERGING')
   setHint('Clone results converging.')
-  setLive('Clone results converging.')
+  setLive(
+    `Clones traveling inward A(${TRAVEL_PX.a.x},${TRAVEL_PX.a.y}) B(${TRAVEL_PX.b.x},${TRAVEL_PX.b.y}) C(${TRAVEL_PX.c.x},${TRAVEL_PX.c.y}).`,
+  )
 
   return new Promise((resolve) => {
     later(CONVERGE_MS, () => {
