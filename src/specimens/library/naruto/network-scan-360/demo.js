@@ -82,10 +82,15 @@ function paintNodes(count, pulseIndex) {
     const on = i < count
     node.setAttribute('data-active', on ? 'true' : 'false')
     const log = document.querySelector(`[data-ns360-log-item][data-index="${i}"]`)
-    log?.setAttribute('data-active', on ? 'true' : 'false')
+    if (log) {
+      log.setAttribute('data-active', on ? 'true' : 'false')
+      log.textContent = on
+        ? `NODE ${ANGLES[i]}° · FOUND`
+        : `NODE ${ANGLES[i]}° · STANDBY`
+    }
     node.setAttribute(
       'aria-label',
-      on ? `Node ${i + 1} connected` : `Node ${i + 1} pending`,
+      on ? `Node ${i + 1} found` : `Node ${i + 1} standby`,
     )
     if (pulseIndex === i) {
       node.setAttribute('data-pulse', 'true')
