@@ -1,21 +1,16 @@
 ---
-description: Catalogue contact sheet, plates, and detail route
+description: Catalogue filters, plates, and detail route
 globs: src/catalogue/**
 alwaysApply: false
 ---
 
 # Catalogue
 
-## Contact sheet (signature)
+## Catalogue landing
 
-- First thing on `/`: every specimen live at reduced scale in a tight grid
-- No headline card, no gradient, no stats — two lines of copy beneath the sheet
-- Everything around it stays grey so the sheet lands
-- Content is near full-bleed (`--content-max: none`); `--plate-min` / `--sheet-min` densify above `90rem` / `120rem`
-- Filters sync to the URL (`?kind=&q=`…); sticky filter bar + skip link; result count + clear
-- Contact sheet cells and plate cards use a **windowed grid** (`useGridWindow`) so off-screen React nodes are not mounted; within the window, iframes still lazy-mount via IntersectionObserver (`useFrameVisibility`) and link to `/s/:id`
-- Placeholders and `PreviewFrame` reserve the specimen aspect-ratio; frame scale uses CSS `cqw`/`cqi` (no post-paint JS resize)
-- Previews call `resolvePayload` only when visible — HTML/CSS/JS chunks are not in the initial catalogue graph
+- `/` begins with the filter bar and its filtered plate results; do not render an unfiltered preview grid above it.
+- Content is near full-bleed (`--content-max: none`); `--plate-min` densifies above `90rem` / `120rem`.
+- Filters sync to the URL (`?kind=&q=`…); sticky filter bar + skip link; result count + clear.
 
 ## Plates
 
@@ -23,12 +18,12 @@ Anatomy: mono ref (left) + origin (right) → framed preview → display title �
 
 - Primary copy action only on plates; detail route shows Full / Code / Contract
 - `Playground →` forks via `/playground?fork=<id>` (same seed as detail “Open in playground”)
-- Mount frames with `IntersectionObserver` (same hook as the sheet; start not-visible, sync above-fold); unmount when outside the expanded margin
+- Mount frames with `IntersectionObserver` (start not-visible, sync above-fold); unmount when outside the expanded margin
 - Build copy prompts lazily on click (`CopyButton getText`) — never on every plate render
 
 ## Filters
 
-Catalogue plate list filters by required facets (AND) plus optional Inspiration franchise / Title chips, plus text search. Contact sheet stays unfiltered. Taxonomy: `35_taxonomy` / `taxonomy.ts` / `inspiration.ts`.
+Catalogue plate list filters by required facets (AND) plus optional Inspiration franchise / Title chips, plus text search. Taxonomy: `35_taxonomy` / `taxonomy.ts` / `inspiration.ts`.
 
 ## Detail `/s/:id`
 

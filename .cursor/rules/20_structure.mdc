@@ -8,7 +8,7 @@ alwaysApply: true
 ```
 src/
   app/          routes, Shell, layout
-  catalogue/    contact sheet, plates, detail
+  catalogue/    filters, plates, detail
   playground/   editor, drafts, export
   harness/      composeSrcDoc, PreviewFrame, ControlStrip
   prompt/       buildPrompt, CopyButton

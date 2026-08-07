@@ -216,20 +216,15 @@ body text it sits beside, and always uppercase with `0.08em` tracking for refs a
 ### Layout
 
 Content is near full-bleed inside shared gutters (`--gutter-inline`). Catalogue, detail, and
-playground have no narrow page max-width (`--content-max: none`). Plate and contact-sheet grids
-use `auto-fill` with `--plate-min` / `--sheet-min`, which densify above `90rem` and `120rem`.
-Intro copy and detail blurbs keep a short prose measure so text does not stretch wall-to-wall.
+playground have no narrow page max-width (`--content-max: none`). The filtered plate grid uses
+`auto-fill` with `--plate-min`, which densifies above `90rem` and `120rem`. Intro copy and detail
+blurbs keep a short prose measure so text does not stretch wall-to-wall.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ SPECIMEN ARCHIVE                          [ catalogue ] [ playground ]        │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
-│  ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ …                        │  ← contact sheet
-│  └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘                           │    full-bleed band
-│  Twelve motion artifacts, pulled out of shipped projects…                    │  ← short measure
-│                                                                              │
-├──────────────────────────────────────────────────────────────────────────────┤
 │ [ all ] [ overlay ] [ marquee ] …                                  ⌕ filter  │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ …          │  ← plates densify
@@ -243,16 +238,12 @@ Detail route `/s/:id` is a two-column plate: sticky preview with its control str
 (`--detail-preview-col`, grows on wide viewports), tabbed source (Spec / Markup / Styles /
 Contract / Prompt) on the right. Collapses to stacked on mobile with the preview pinned to the top.
 
-### Signature
+### Catalogue entry
 
-**The hero is the archive running.** No headline card, no gradient, no stat. The first thing on
-the page is a tiled contact sheet of every specimen animating simultaneously, at reduced scale,
-in silence. It states the entire product in one frame, and it is the one thing the site will be
-remembered by. Everything else on the page is grey and quiet so that it lands.
-
-Under `prefers-reduced-motion`, the contact sheet renders as static first frames with a single
-"Play the sheet" control. Same for individual plates — an animation library that assaults
-motion-sensitive visitors is a badly built animation library. Per-plate play is always available.
+The catalogue begins with its filters and filtered plate grid. This keeps the first viewport
+purposeful: visitors can immediately narrow the archive rather than loading an unfiltered
+duplicate of every preview. Per-plate play is always available, and motion-sensitive visitors
+can keep individual previews static.
 
 ### Restraint list
 

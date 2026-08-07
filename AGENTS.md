@@ -33,7 +33,7 @@ After a new specimen is registered and verified, agents auto-commit it (`Add SPX
 
 ## Load performance
 
-Catalogue registry entries are **metadata only**. HTML/CSS/JS/spec/contract live in each folder’s `payload.ts` and load via explicit `loadPayload` (never `import.meta.glob`). Routes are code-split so Shell paints before specimen meta; contact-sheet/plate lists are windowed and iframes start unmounted until near the viewport. See `.cursor/rules/20_structure.mdc` / `55_catalogue.mdc` / `60_testing.mdc`.
+Catalogue registry entries are **metadata only**. HTML/CSS/JS/spec/contract live in each folder’s `payload.ts` and load via explicit `loadPayload` (never `import.meta.glob`). Routes are code-split so Shell paints before specimen meta; the filtered plate grid is windowed and its iframes start unmounted until near the viewport. See `.cursor/rules/20_structure.mdc` / `55_catalogue.mdc` / `60_testing.mdc`.
 
 ## Inspiration checklists
 

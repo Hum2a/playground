@@ -13,7 +13,6 @@ import {
 } from '../specimens/taxonomy'
 import type { Specimen } from '../specimens/types'
 import { useDocumentTitle } from '../app/useDocumentTitle'
-import { ContactSheet } from './ContactSheet'
 import {
   EMPTY_FILTERS,
   FilterBar,
@@ -223,13 +222,6 @@ export function Catalogue() {
     setSearchParams({}, { replace: true })
   }
 
-  // Defer plate list until after the contact sheet's first paint (LCP/TBT).
-  const [platesReady, setPlatesReady] = useState(false)
-  useEffect(() => {
-    const id = window.requestAnimationFrame(() => setPlatesReady(true))
-    return () => window.cancelAnimationFrame(id)
-  }, [])
-
   const platesRef = useRef<HTMLDivElement>(null)
   const [plateMin, setPlateMin] = useState(280)
   useEffect(() => {
@@ -238,23 +230,20 @@ export function Catalogue() {
     const raw = getComputedStyle(el).getPropertyValue('--plate-min').trim()
     const px = Number.parseFloat(raw)
     if (Number.isFinite(px) && px > 0) setPlateMin(px)
-  }, [platesReady])
+  }, [])
 
   const plateWin = useGridWindow({
     containerRef: platesRef,
-    itemCount: platesReady ? filtered.length : 0,
+    itemCount: filtered.length,
     minTrackPx: plateMin,
     gapPx: 16,
     estimateRowHeight: 420,
     overscanRows: 2,
   })
-  const plateSlice = platesReady
-    ? filtered.slice(plateWin.start, plateWin.end)
-    : []
+  const plateSlice = filtered.slice(plateWin.start, plateWin.end)
 
   return (
     <div className="catalogue">
-      <ContactSheet specimens={specimens} />
       <FilterBar
         filters={filters}
         franchises={usedFranchises}
@@ -276,12 +265,10 @@ export function Catalogue() {
         className="catalogue__plates"
         id="catalogue-plates"
         style={
-          platesReady
-            ? {
-                paddingTop: plateWin.padTop,
-                paddingBottom: plateWin.padBottom,
-              }
-            : undefined
+          {
+            paddingTop: plateWin.padTop,
+            paddingBottom: plateWin.padBottom,
+          }
         }
       >
         {plateSlice.map((specimen) => (
@@ -300,7 +287,7 @@ export function Catalogue() {
           />
         ))}
       </div>
-      {platesReady && filtered.length === 0 ? (
+      {filtered.length === 0 ? (
         <div className="catalogue__empty" role="status">
           <p>No specimens match that filter.</p>
           <button type="button" className="catalogue__empty-clear" onClick={onClear}>
