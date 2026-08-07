@@ -1,3 +1,8 @@
 # Chakra Signature Match
 
-Align threshold **0.92** across samples **[0.12, 0.28, 0.5, 0.72, 0.88]**.
+Five signature bars rise to frozen sample heights on 170ms steps until MATCH latches.
+
+## Freeze
+
+- Bars: 5 · targets%: 40/70/55/85/60 · stepMs: 170 · settleMs: 100
+- Palette (sensor phosphor): `#070B0E` / `#C8E8DC` / `#3DCEA8` / `#1A6B58` / `#D7F5EC`

@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runChakraSignatureMatch / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Five waveform sample points must reach align threshold 0.92 to MATCH',
-    'Bands acquire in frozen order with step timing from contract',
-    'Resolved shows MATCH with aligned signature',
-    'Replay misaligns samples before rerunning',
-    'Reduced motion shows MATCH immediately',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),
