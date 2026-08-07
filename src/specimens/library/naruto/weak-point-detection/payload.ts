@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runWeakPointDetection / reset / replay.',
     'Honour both reduced-motion triggers.',
   ],
-  acceptance: [
-    'Exactly 4 bracket markers appear in order on the host silhouette',
-    'Markers acquire with frozen step timing; final state DETECTED',
-    'Replay clears all markers before rerunning',
-    'Reduced motion shows all 4 brackets DETECTED immediately',
-    'preview.scaffold hosts the overlay',
-  ],
+  acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070B0E;">
   {{specimen}}
 </div>
 `.trim(),
