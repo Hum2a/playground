@@ -1,17 +1,90 @@
 {
-  "name": "focus-halo-settle",
-  "intent": "Halo overshoots then settles on focused tile.",
-  "catalogue": {
-    "ps": "PS-067",
-    "ref": "SPX-3373"
-  },
-  "colours": {
-    "primary": "#2E90FF",
-    "ink": "#0B0F14",
-    "paper": "#F4F6F8",
-    "soft": "#7EB6FF"
-  },
-  "reducedMotion": {
-    "behaviour": "Halo appears directly on target with no overshoot"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/focus-halo-settle.schema.json",
+  "title": "FocusHaloSettle",
+  "description": "Shared focus halo travels with spring overshoot then settles on the selected tile.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "intent", "catalogue", "preview", "layout", "motion", "reducedMotion", "colours", "classNames"],
+  "properties": {
+    "name": { "type": "string", "const": "focus-halo-settle" },
+    "intent": {
+      "type": "string",
+      "const": "Halo with soft bloom catches up to the focused tile and settles with spring overshoot."
+    },
+    "catalogue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ps", "ref"],
+      "properties": {
+        "ps": { "type": "string", "const": "PS-067" },
+        "ref": { "type": "string", "const": "SPX-3373" }
+      }
+    },
+    "preview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["widthPx", "heightPx", "overflow"],
+      "properties": {
+        "widthPx": { "type": "number", "const": 420 },
+        "heightPx": { "type": "number", "const": 280 },
+        "overflow": { "type": "string", "const": "hidden" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tileCount", "gapRem", "haloBorderPx"],
+      "properties": {
+        "tileCount": { "type": "number", "const": 3 },
+        "gapRem": { "type": "number", "const": 0.55 },
+        "haloBorderPx": { "type": "number", "const": 2 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["settleMs", "easing"],
+      "properties": {
+        "settleMs": { "type": "number", "const": 420 },
+        "easing": { "type": "string", "const": "cubic-bezier(0.34, 1.45, 0.48, 1)" }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggers", "behavior"],
+      "properties": {
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion", "data-force-reduced-motion"]
+        },
+        "behavior": {
+          "type": "string",
+          "const": "Disable .fhs__halo transform transition; halo snaps to target with no overshoot."
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "ink", "paper", "soft"],
+      "properties": {
+        "primary": { "type": "string", "const": "#2E90FF" },
+        "ink": { "type": "string", "const": "#0B0F14" },
+        "paper": { "type": "string", "const": "#F4F6F8" },
+        "soft": { "type": "string", "const": "#7EB6FF" }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "halo", "tile"],
+      "properties": {
+        "root": { "type": "string", "const": "fhs" },
+        "halo": { "type": "string", "const": "fhs__halo" },
+        "tile": { "type": "string", "const": "fhs__tile" }
+      }
+    }
   }
 }
