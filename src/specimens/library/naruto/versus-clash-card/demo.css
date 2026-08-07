@@ -81,25 +81,32 @@
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 240ms cubic-bezier(0.2, 0.8, 0.25, 1);
 }
 
 .vcc__card--left {
-  transform: translateX(-1.4rem);
+  transform: translateX(-28px);
 }
 
 .vcc__card--right {
-  transform: translateX(1.4rem);
+  transform: translateX(28px);
 }
 
 .vcc[data-phase='active'] .vcc__card--left,
+.vcc[data-phase='clash'] .vcc__card--left,
 .vcc[data-phase='done'] .vcc__card--left {
-  transform: translateX(0.15rem);
+  transform: translateX(4px);
 }
 
 .vcc[data-phase='active'] .vcc__card--right,
+.vcc[data-phase='clash'] .vcc__card--right,
 .vcc[data-phase='done'] .vcc__card--right {
-  transform: translateX(-0.15rem);
+  transform: translateX(-4px);
+}
+
+.vcc[data-phase='clash'] .vcc__card--left,
+.vcc[data-phase='clash'] .vcc__card--right {
+  border-color: var(--alarm);
 }
 
 .vcc[data-phase='done'] .vcc__card--left,
@@ -134,14 +141,14 @@
 
 @keyframes vcc-flash {
   0% {
-    box-shadow: 0 0 0 0 rgb(217 74 56 / 0.7);
+    box-shadow: 0 0 0 0 rgb(184 50 40 / 0.7);
     transform: scale(1);
   }
   40% {
     transform: scale(1.35);
   }
   100% {
-    box-shadow: 0 0 0 16px rgb(217 74 56 / 0);
+    box-shadow: 0 0 0 16px rgb(184 50 40 / 0);
     transform: scale(1);
   }
 }
@@ -189,7 +196,7 @@
 
 .vcc__btn--primary {
   border-color: var(--alarm);
-  background: rgb(217 74 56 / 0.14);
+  background: rgb(184 50 40 / 0.14);
 }
 
 .vcc__btn:hover:not(:disabled) {

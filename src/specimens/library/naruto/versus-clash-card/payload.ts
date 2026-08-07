@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze close/flash timings from contract.json.',
+    'Mount inside a relative host (~420×300+).',
+    'Import demo.css verbatim; freeze travel 28px / close 240ms / clash hold 180ms from contract.json.',
     'Wire runVersusClashCard / resetVersusClashCard / replayVersusClashCard.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Idle shows two cards apart with a VS badge between them, status STANDBY',
-    'Active phase closes both cards together toward the centre',
-    'Resolved phase shows an impact flash and locked CLASH state',
-    'Replay resets both cards apart before rerunning',
-    'Reduced motion shows the clashed state immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Idle cards sit 28px apart from centre (STANDBY)',
+    'Cards slam inward over 240ms then hold clash 180ms',
+    'VS flash 200ms then CLASH locks with alarm borders',
+    'Replay returns cards to 28px apart before rerunning',
+    'Reduced motion shows CLASH locked immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}
 </div>
 `.trim(),

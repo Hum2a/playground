@@ -1,13 +1,17 @@
 /**
- * Versus Clash Card — two competitor cards close in and clash into a locked state.
+ * Versus Clash Card — opposing cards slam 28px inward, hold clash, then lock.
  * iframe-safe; no storage / parent / network.
  */
 
-const CLOSE_MS = 220
-const FLASH_MS = 220
-const TOTAL_MS = CLOSE_MS + FLASH_MS // ~440ms principal sequence
+const CLOSE_MS = 240
+const CLASH_HOLD_MS = 180
+const FLASH_MS = 200
+const TRAVEL_PX = 28
+const CLASH_GAP_PX = 4
 
 let busy = false
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -23,8 +27,6 @@ function rootEl() {
 function vsEl() {
   return document.querySelector('[data-vcc-vs]')
 }
-
-let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -76,10 +78,6 @@ function resetVisual() {
   setLive('Match standby. Competitors apart.')
 }
 
-/**
- * Auto-run the full clash sequence.
- * @returns {Promise<void>}
- */
 export function runVersusClashCard() {
   const root = rootEl()
   if (!root || busy || root.getAttribute('data-phase') === 'done') {
@@ -105,11 +103,16 @@ export function runVersusClashCard() {
 
   return new Promise((resolve) => {
     later(CLOSE_MS, () => {
-      later(FLASH_MS, () => {
-        showResolved()
-        busy = false
-        setButtons(true)
-        resolve()
+      root.setAttribute('data-phase', 'clash')
+      setStatus('IMPACT')
+      setLive('Clash hold.')
+      later(CLASH_HOLD_MS, () => {
+        later(FLASH_MS, () => {
+          showResolved()
+          busy = false
+          setButtons(true)
+          resolve()
+        })
       })
     })
   })
@@ -123,7 +126,6 @@ export function resetVersusClashCard() {
   void rootEl()?.offsetWidth
 }
 
-/** @returns {Promise<void>} */
 export async function replayVersusClashCard() {
   if (busy) return
   resetVersusClashCard()
@@ -145,6 +147,7 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
+void TRAVEL_PX
+void CLASH_GAP_PX
 bindUi()
 resetVersusClashCard()
