@@ -2,33 +2,97 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/target-dossier-reveal.schema.json",
   "title": "TargetDossierReveal",
-  "description": "A restricted dossier peels its redaction layer and breaks its seal to reveal target intel.",
+  "description": "Three redaction bands lift in frozen order to reveal dossier intel.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "peelMs", "revealMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "bandCount",
+    "bandOrder",
+    "bandStaggerMs",
+    "bandLiftMs",
+    "revealMs",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "target-dossier-reveal" },
-    "peelMs": { "type": "number", "const": 260 },
-    "revealMs": { "type": "number", "const": 220 },
+    "name": {
+      "type": "string",
+      "const": "target-dossier-reveal"
+    },
+    "bandCount": {
+      "type": "number",
+      "const": 3
+    },
+    "bandOrder": {
+      "type": "array",
+      "const": [
+        0,
+        1,
+        2
+      ]
+    },
+    "bandStaggerMs": {
+      "type": "number",
+      "const": 110
+    },
+    "bandLiftMs": {
+      "type": "number",
+      "const": 160
+    },
+    "revealMs": {
+      "type": "number",
+      "const": 180
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alarm", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alarm",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#1A1612" },
-        "parchment": { "type": "string", "const": "#EBE2D0" },
-        "chakra": { "type": "string", "const": "#B83228" },
-        "alarm": { "type": "string", "const": "#B83228" },
-        "olive": { "type": "string", "const": "#6A5E4E" },
-        "off": { "type": "string", "const": "#F7F2E8" }
+        "ink": {
+          "type": "string",
+          "const": "#1A1612"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#EBE2D0"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "alarm": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#6A5E4E"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F7F2E8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateRevealed"],
+      "required": [
+        "immediateRevealed"
+      ],
       "properties": {
-        "immediateRevealed": { "type": "boolean", "const": true }
+        "immediateRevealed": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }

@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; freeze seal/peel timings from contract.json.',
+    'Mount inside a relative host (~420×300+) with preview.scaffold dossier host.',
+    'Import demo.css verbatim; freeze bandCount 3 / stagger 110ms / lift 160ms from contract.json.',
     'Wire runTargetDossierReveal / resetTargetDossierReveal / replayTargetDossierReveal.',
-    'Listen for a postMessage `{ type: "restart" }` to replay; honour both reduced-motion triggers.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Idle dossier is sealed with a redaction layer over the intel, status CLASSIFIED',
-    'Active phase breaks the seal and peels the redaction layer away',
-    'Resolved phase shows the intel fully readable, status REVEALED',
-    'Replay reseals the dossier before rerunning',
-    'Reduced motion shows the revealed state immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    'Idle shows three redaction bands covering intel with SEALED mark',
+    'Bands lift in order 0→1→2 with 110ms stagger (160ms lift each)',
+    'Resolved shows REVEALED intel with bands gone',
+    'Replay restores all three bands before rerunning',
+    'Reduced motion shows all bands lifted / REVEALED immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}
 </div>
 `.trim(),

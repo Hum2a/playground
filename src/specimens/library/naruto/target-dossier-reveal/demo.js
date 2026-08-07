@@ -1,13 +1,17 @@
 /**
- * Target Dossier Reveal — a restricted dossier peels its redaction layer and seal to reveal intel.
+ * Target Dossier Reveal — three redaction bands lift in order, then intel reveals.
  * iframe-safe; no storage / parent / network.
  */
 
-const PEEL_MS = 260
-const REVEAL_MS = 220
-const TOTAL_MS = PEEL_MS + REVEAL_MS // ~480ms principal sequence
+const BAND_COUNT = 3
+const BAND_STAGGER_MS = 110
+const BAND_LIFT_MS = 160
+const REVEAL_MS = 180
+const BAND_ORDER = [0, 1, 2]
 
 let busy = false
+/** @type {number[]} */
+let timers = []
 
 function prefersReducedMotion() {
   const forced =
@@ -20,11 +24,13 @@ function rootEl() {
   return document.querySelector('[data-tdr]')
 }
 
+function bands() {
+  return Array.from(document.querySelectorAll('[data-tdr-band]'))
+}
+
 function intelEl() {
   return document.querySelector('[data-tdr-intel]')
 }
-
-let timers = []
 
 function clearTimers() {
   for (const id of timers) window.clearTimeout(id)
@@ -59,27 +65,27 @@ function setButtons(on) {
 }
 
 function showResolved() {
+  bands().forEach((b) => b.setAttribute('data-lifted', 'true'))
   const intel = intelEl()
   rootEl()?.setAttribute('data-phase', 'done')
   intel?.setAttribute('data-reveal', 'true')
+  document.querySelector('[data-tdr-seal]')?.style.setProperty('opacity', '0')
   setStatus('REVEALED')
   setHint('Intel declassified.')
-  setLive('Dossier declassified. Intel revealed.')
+  setLive('Dossier declassified. Three bands lifted. Intel revealed.')
 }
 
 function resetVisual() {
-  const intel = intelEl()
-  intel?.removeAttribute('data-reveal')
+  bands().forEach((b) => b.removeAttribute('data-lifted'))
+  intelEl()?.removeAttribute('data-reveal')
+  const seal = document.querySelector('[data-tdr-seal]')
+  if (seal) seal.style.opacity = ''
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('CLASSIFIED')
   setHint('Press Run to declassify the dossier.')
-  setLive('Dossier classified. Intel redacted.')
+  setLive('Dossier classified. Three redaction bands sealed.')
 }
 
-/**
- * Auto-run the full declassification sequence.
- * @returns {Promise<void>}
- */
 export function runTargetDossierReveal() {
   const root = rootEl()
   if (!root || busy || root.getAttribute('data-phase') === 'done') {
@@ -101,16 +107,23 @@ export function runTargetDossierReveal() {
 
   root.setAttribute('data-phase', 'active')
   setStatus('DECLASSIFYING')
-  setLive('Seal broken. Redaction layer peeling.')
+  setLive('Lifting redaction bands in order.')
+  const seal = document.querySelector('[data-tdr-seal]')
+  if (seal) seal.style.opacity = '0'
 
   return new Promise((resolve) => {
-    later(PEEL_MS, () => {
-      later(REVEAL_MS, () => {
-        showResolved()
-        busy = false
-        setButtons(true)
-        resolve()
+    const list = bands()
+    BAND_ORDER.forEach((idx, i) => {
+      later(i * BAND_STAGGER_MS, () => {
+        list[idx]?.setAttribute('data-lifted', 'true')
       })
+    })
+    const total = (BAND_COUNT - 1) * BAND_STAGGER_MS + BAND_LIFT_MS + REVEAL_MS
+    later(total, () => {
+      showResolved()
+      busy = false
+      setButtons(true)
+      resolve()
     })
   })
 }
@@ -123,7 +136,6 @@ export function resetTargetDossierReveal() {
   void rootEl()?.offsetWidth
 }
 
-/** @returns {Promise<void>} */
 export async function replayTargetDossierReveal() {
   if (busy) return
   resetTargetDossierReveal()
@@ -145,6 +157,5 @@ function bindUi() {
   })
 }
 
-void TOTAL_MS
 bindUi()
 resetTargetDossierReveal()

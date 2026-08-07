@@ -87,22 +87,32 @@
   color: var(--off);
 }
 
-.tdr__redaction {
+.tdr__bands {
   position: absolute;
-  inset: 2.1rem 0 0 0;
+  inset: 2.1rem 0.75rem 0.75rem;
+  display: grid;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.tdr__band {
+  display: block;
+  height: 100%;
   background: repeating-linear-gradient(
     135deg,
     var(--ink) 0 8px,
     #05070a 8px 16px
   );
-  transform-origin: top;
-  transform: scaleY(1);
-  transition: transform 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+  opacity: 1;
+  transition:
+    transform 160ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 120ms ease-out;
 }
 
-.tdr[data-phase='active'] .tdr__redaction,
-.tdr[data-phase='done'] .tdr__redaction {
-  transform: scaleY(0);
+.tdr__band[data-lifted='true'] {
+  transform: translateX(108%);
+  opacity: 0;
 }
 
 .tdr__seal {
@@ -202,7 +212,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tdr__redaction,
+  .tdr__band,
   .tdr__seal,
   .tdr__intel[data-reveal='true'] {
     transition: none !important;
@@ -210,7 +220,7 @@
   }
 }
 
-html[data-force-reduced-motion='true'] .tdr__redaction,
+html[data-force-reduced-motion='true'] .tdr__band,
 html[data-force-reduced-motion='true'] .tdr__seal,
 html[data-force-reduced-motion='true'] .tdr__intel[data-reveal='true'] {
   transition: none !important;
