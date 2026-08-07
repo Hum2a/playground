@@ -5,7 +5,7 @@ export const healingProgressField: Specimen = {
   ref: 'SPX-2527',
   title: 'Healing Progress Field',
   blurb:
-    'A damaged tile grid reconstructs ring-by-ring from the centre outward until the whole field reads stable and restored.',
+    'A 5×5 damage field restores centre-out through rings 0→1→2 with 160ms steps into RESTORED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / medical-ninja recovery UI — field restoration overlays',
@@ -25,12 +25,14 @@ export const healingProgressField: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, every tile appears healed immediately as RESTORED.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, all tiles appear RESTORED immediately.',
   },
-  acceptance: [
-    'Tiles restore in frozen order/stagger',
-    'All tiles RESTORED at end',
-    'Reduced motion shows all RESTORED',
+    acceptance: [
+    '25 tiles heal by ring order 0→1→2 (centre outward) with 160ms steps',
+    'Idle shows DAMAGED; done shows RESTORED with all tiles healed',
+    'Replay returns all tiles damaged before rerunning',
+    'Reduced motion shows RESTORED immediately',
+    'Effect stays inside clipped stage / scaffold host',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {

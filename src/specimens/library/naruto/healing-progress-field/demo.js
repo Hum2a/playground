@@ -4,6 +4,9 @@
  */
 
 const RING_COUNT = 3
+const TILE_COUNT = 25
+const HEAL_ORDER = [0, 1, 2]
+const STEP_MS = 160
 const STEP_MS = 220
 const SETTLE_MS = 100
 const TOTAL_MS = RING_COUNT * STEP_MS + SETTLE_MS
@@ -173,3 +176,6 @@ function bindUi() {
 void TOTAL_MS
 bindUi()
 resetHealingProgressField()
+
+void HEAL_ORDER
+void TILE_COUNT

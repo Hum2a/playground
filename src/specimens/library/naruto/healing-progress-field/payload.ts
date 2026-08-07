@@ -7,21 +7,20 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-    'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; 5×5 tile grid heals ring-by-ring outward from the centre tile, timings from contract.json.',
-    'Wire runHealingProgressField / resetHealingProgressField / replayHealingProgressField.',
-    'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
+    'Mount with preview.scaffold host.',
+    'Import demo.css verbatim; freeze healOrder [0,1,2] / 25 tiles / 160ms from contract.json.',
+    'Wire runHealingProgressField / reset / replay.',
+    'Honour both reduced-motion triggers.',
   ],
   acceptance: [
-    'Damaged 5×5 field heals in three concentric rings starting from the centre tile',
-    'Each ring transitions as a group before the next ring outward begins',
-    'Idle, healing, and resolved states are visually distinct',
-    'Replay resets every tile to damaged before rerunning',
-    'Reduced motion shows every tile healed immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    '25 tiles heal by ring order 0→1→2 (centre outward) with 160ms steps',
+    'Idle shows DAMAGED; done shows RESTORED with all tiles healed',
+    'Replay returns all tiles damaged before rerunning',
+    'Reduced motion shows RESTORED immediately',
+    'Effect stays inside clipped stage / scaffold host',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#070b0e;">
   {{specimen}}
 </div>
 `.trim(),
