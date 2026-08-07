@@ -7,6 +7,8 @@
   --accent: #ff4d35;
   --ease: cubic-bezier(0.22, 0.9, 0.28, 1);
   --circ: 326.73;
+  --hold-ms: 1200;
+  --tick-ms: 40;
 
   box-sizing: border-box;
   display: flex;
@@ -44,23 +46,64 @@
 
 .htm__ring-track {
   fill: none;
-  stroke: rgb(244 247 250 / 0.2);
-  stroke-width: 6;
+  stroke: rgb(244 247 250 / 0.15);
+  stroke-width: 5;
+  stroke-dasharray: 6 10;
 }
 
 .htm__ring-fill {
   fill: none;
   stroke: var(--primary);
-  stroke-width: 6;
-  stroke-linecap: square;
+  stroke-width: 7;
+  stroke-linecap: butt;
   stroke-dasharray: var(--circ);
   stroke-dashoffset: var(--circ);
   transition: stroke-dashoffset 80ms linear, stroke 200ms ease;
 }
 
+.htm__notches {
+  opacity: 0.9;
+}
+
+.htm__notch--q1,
+.htm__notch--q2,
+.htm__notch--q3,
+.htm__notch--q4 {
+  opacity: 0.45;
+}
+
+.htm[data-phase='charging'] .htm__notch--q1,
+.htm[data-phase='charging'] .htm__notch--q2,
+.htm[data-phase='charging'] .htm__notch--q3,
+.htm[data-phase='charging'] .htm__notch--q4 {
+  opacity: 0.75;
+}
+
+.htm[data-fill='75'] .htm__notch--q1,
+.htm[data-fill='100'] .htm__notch--q1,
+.htm[data-fill='75'] .htm__notch--q2,
+.htm[data-fill='100'] .htm__notch--q2,
+.htm[data-fill='75'] .htm__notch--q3,
+.htm[data-fill='100'] .htm__notch--q3,
+.htm[data-fill='75'] .htm__notch--q4,
+.htm[data-fill='100'] .htm__notch--q4 {
+  opacity: 1;
+}
+
+.htm__overload {
+  fill: var(--accent);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.htm[data-overload='true'] .htm__overload {
+  opacity: 1;
+}
+
 .htm[data-fill='100'] .htm__ring-fill,
 .htm[data-phase='done'] .htm__ring-fill {
   stroke: var(--accent);
+  stroke-width: 8;
 }
 
 .htm__output {
@@ -140,11 +183,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .htm__ring-fill {
+  .htm__ring-fill,
+  .htm__overload {
     transition: none;
   }
 }
 
-[data-force-reduced-motion='true'] .htm__ring-fill {
+[data-force-reduced-motion='true'] .htm__ring-fill,
+[data-force-reduced-motion='true'] .htm__overload {
   transition: none;
 }

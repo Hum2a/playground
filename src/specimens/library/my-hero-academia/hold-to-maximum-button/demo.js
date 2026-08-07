@@ -28,6 +28,7 @@ function applyFill(pct) {
   const r = root()
   if (!r) return
   r.dataset.fill = String(pct)
+  r.dataset.overload = pct >= 90 ? 'true' : 'false'
   const ring = document.querySelector('[data-htm-ring]')
   if (ring) {
     ring.style.strokeDashoffset = String(CIRC - (pct / 100) * CIRC)
@@ -58,7 +59,10 @@ function stopCharge() {
   charging = false
   if (!done) {
     const r = root()
-    if (r) r.dataset.phase = 'idle'
+    if (r) {
+      r.dataset.phase = 'idle'
+      r.dataset.overload = 'false'
+    }
     setLive('Charge released.')
   }
 }
@@ -93,7 +97,10 @@ export function resetHoldToMaximumButton() {
   done = false
   fill = 0
   const r = root()
-  if (r) r.dataset.phase = 'idle'
+  if (r) {
+    r.dataset.phase = 'idle'
+    r.dataset.overload = 'false'
+  }
   applyFill(0)
   setLive('Ready to charge.')
   const hint = document.querySelector('[data-htm-hint]')
@@ -105,20 +112,35 @@ export function resetHoldToMaximumButton() {
   void r?.offsetWidth
 }
 
+function bindHold(btn) {
+  const onDown = (e) => {
+    e.preventDefault()
+    startCharge()
+  }
+  const onUp = () => {
+    if (!done && fill < 100) stopCharge()
+  }
+
+  btn.addEventListener('pointerdown', onDown)
+  btn.addEventListener('pointerup', onUp)
+  btn.addEventListener('pointerleave', onUp)
+  btn.addEventListener('keydown', (e) => {
+    if (e.code !== 'Space' && e.code !== 'Enter') return
+    if (e.repeat) return
+    e.preventDefault()
+    startCharge()
+  })
+  btn.addEventListener('keyup', (e) => {
+    if (e.code !== 'Space' && e.code !== 'Enter') return
+    if (!done && fill < 100) stopCharge()
+  })
+}
+
 function bind() {
   const btn = document.querySelector('[data-htm-btn]')
   if (!btn) return
 
-  btn.addEventListener('pointerdown', (e) => {
-    e.preventDefault()
-    startCharge()
-  })
-  btn.addEventListener('pointerup', () => {
-    if (!done && fill < 100) stopCharge()
-  })
-  btn.addEventListener('pointerleave', () => {
-    if (!done && fill < 100) stopCharge()
-  })
+  bindHold(btn)
 
   document.querySelector('[data-htm-reset]')?.addEventListener('click', () => {
     resetHoldToMaximumButton()

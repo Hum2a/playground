@@ -5,7 +5,7 @@ export const holdToMaximumButton: Specimen = {
   ref: 'SPX-2267',
   title: 'Hold-to-Maximum Button',
   blurb:
-    'Hold OUTPUT to fill a boundary ring; reaching 100% commits maximum output.',
+    'Hold OUTPUT to fill a notched charge ring; overload ticks commit maximum output at 100%.',
   origin: {
     project: 'Original',
     surface: 'My Hero Academia–inspired maximum output charge UI',

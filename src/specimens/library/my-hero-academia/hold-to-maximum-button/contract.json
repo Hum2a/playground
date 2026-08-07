@@ -1,12 +1,59 @@
 {
   "name": "hold-to-maximum-button",
-  "ref": "SPX-2267",
-  "catalogue": { "mha": "MHA-293" },
-  "holdMs": 1200,
+  "intent": "Hold OUTPUT to fill a dashed-track charge ring with notches; at 100% accent overload ticks commit maximum output.",
+  "catalogue": {
+    "mha": "MHA-293",
+    "ref": "SPX-2267"
+  },
+  "copy": {
+    "button": "OUTPUT",
+    "hintIdle": "Hold OUTPUT to charge.",
+    "hintDone": "MAXIMUM OUTPUT",
+    "liveReady": "Ready to charge.",
+    "liveCharging": "Charging output…",
+    "liveReleased": "Charge released.",
+    "liveDone": "Maximum output committed."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
     "paper": "#F4F7FA",
     "accent": "#FF4D35"
-  }
+  },
+  "timing": {
+    "holdMs": 1200,
+    "tickMs": 40,
+    "circ": 326.73
+  },
+  "geometry": {
+    "viewBox": "0 0 120 120",
+    "radius": 52,
+    "circumference": 326.73,
+    "trackStrokeWidth": 5,
+    "fillStrokeWidth": 7,
+    "overloadStrokeWidth": 8,
+    "wrapSizePx": 140,
+    "cardinalNotches": 4,
+    "quadrantNotches": 4,
+    "overloadTicks": 4
+  },
+  "input": {
+    "hold": "Pointer hold or Space/Enter key hold on OUTPUT button"
+  },
+  "api": {
+    "reset": "resetHoldToMaximumButton()"
+  },
+  "reducedMotion": {
+    "behaviour": "Skip charge ramp; immediately show 100% accent ring and MAXIMUM OUTPUT"
+  },
+  "acceptance": [
+    "Idle: 0% with dashed track, cardinal notches, empty primary ring",
+    "Hold (pointer or Space/Enter) fills ring over 1200ms with 40ms percent ticks",
+    "Quadrant notches brighten from 75%; overload accent ticks appear at 90%+",
+    "Release before 100% resets to idle and announces charge released",
+    "100% commits accent ring, overload ticks, MAXIMUM OUTPUT, disabled button",
+    "Visually distinct from cooldown ring: dashed track, butt caps, charge notches (not drain)",
+    "Reduced motion (prefers or data-force) jumps to committed state",
+    "No network; effect stays inside host"
+  ]
 }
