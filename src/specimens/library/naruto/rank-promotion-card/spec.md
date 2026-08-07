@@ -1,8 +1,9 @@
 # Rank Promotion Card
 
-GENIN → CHUNIN via **collapse 140ms → expand 180ms → glow 280ms**.
+Profile badge collapses **Genin** then expands to **Chunin** with a one-shot settle glow.
 
 ## Freeze
 
-- fromRank: GENIN · toRank: CHUNIN
-- Palette: mission paper
+- collapseMs: 140 · expandMs: 180 · glowMs: 280 · midFlip: 90° · scale: 0.92
+- Ranks: GENIN → CHUNIN
+- Palette (mission paper): `#1A1612` / `#EBE2D0` / `#B83228` / `#6A5E4E` / `#F7F2E8`

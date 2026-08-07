@@ -12,15 +12,9 @@ const payload: SpecimenPayload = {
     'Wire runRankPromotionCard / resetRankPromotionCard / replayRankPromotionCard.',
     'Honour both reduced-motion triggers.',
   ],
-    acceptance: [
-    'Idle shows GENIN badge only (CURRENT)',
-    'Morph phases: collapse 140ms → expand CHUNIN 180ms → glow 280ms',
-    'Resolved shows CHUNIN with PROMOTED status',
-    'Replay restores GENIN before rerunning',
-    'Reduced motion shows CHUNIN / PROMOTED immediately',
-  ],
+    acceptance: contract.acceptance,
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1A1612;">
   {{specimen}}
 </div>
 `.trim(),
