@@ -1,85 +1,40 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/focus-mode-activation.schema.json",
-  "title": "FocusModeActivation",
-  "description": "Corner brackets converge to a frozen inset on host content.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "bracketInsetPx",
-    "narrowMs",
-    "settleMs",
-    "colours",
-    "reducedMotion"
-  ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "focus-mode-activation"
-    },
-    "bracketInsetPx": {
-      "type": "number",
-      "const": 18
-    },
-    "narrowMs": {
-      "type": "number",
-      "const": 240
-    },
-    "settleMs": {
-      "type": "number",
-      "const": 120
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "olive",
-        "off",
-        "alert"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#070B0E"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8E8DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#1A6B58"
-        },
-        "off": {
-          "type": "string",
-          "const": "#D7F5EC"
-        },
-        "alert": {
-          "type": "string",
-          "const": "#3DCEA8"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateFocused"
-      ],
-      "properties": {
-        "immediateFocused": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    }
-  }
+  "name": "focus-mode-activation",
+  "intent": "Four corner brackets converge to a 12px inset over 320ms while periphery dims into focus mode.",
+  "catalogue": {
+    "nr": "NR-145",
+    "ref": "SPX-2488"
+  },
+  "geometry": {
+    "bracketCount": 4,
+    "insetPx": 12
+  },
+  "timing": {
+    "narrowMs": 320,
+    "settleMs": 140,
+    "totalMs": 460
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "alert": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor-phosphor"
+  },
+  "api": {
+    "run": "runFocusModeActivation()",
+    "reset": "resetFocusModeActivation()",
+    "replay": "replayFocusModeActivation()"
+  },
+  "reducedMotion": {
+    "behaviour": "Resolved Focus Mode Activation state immediately"
+  },
+  "acceptance": [
+    "Four brackets converge to insetPx 12 over narrowMs 320 on host content",
+    "Periphery dims; focus latches after settleMs 140 with no continuous loop",
+    "Replay returns brackets to outer corners before rerunning",
+    "Reduced motion shows focused inset state immediately"
+  ]
 }

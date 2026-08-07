@@ -7,6 +7,9 @@
   --danger: #3dcea8;
   --olive: #1a6b58;
   --off: #d7f5ec;
+  --fma-narrow-ms: 320ms;
+  --fma-settle-ms: 140ms;
+  --fma-inset: 12px;
   /* wave2 timing surface */
   --fma-inset: 18px;
   --fma-narrow-ms: 240ms;
