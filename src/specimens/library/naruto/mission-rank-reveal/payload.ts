@@ -6,22 +6,21 @@ import spec from './spec.md?raw'
 import contract from './contract.json'
 
 const payload: SpecimenPayload = {
-  integration: [
+    integration: [
     'Mount inside a relative host (~420×320+).',
-    'Import demo.css verbatim; rank card slams in, then the stamp impacts on top, timings from contract.json.',
+    'Import demo.css verbatim; freeze card 280ms / stamp impact 180ms / settle −22°→−12° from contract.json.',
     'Wire runMissionRankReveal / resetMissionRankReveal / replayMissionRankReveal.',
     'Honour both reduced-motion triggers; listen for `{ type: "restart" }` postMessage.',
   ],
-  acceptance: [
-    'Rank card slams into the briefing panel before the stamp appears',
-    'Stamp only impacts after the rank card has fully settled',
-    'Idle, revealing, and resolved states are visually distinct',
-    'Replay resets card and stamp before rerunning',
-    'Reduced motion shows the settled card and stamp immediately',
-    'No external assets; sandbox-safe; clipped to stage',
+    acceptance: [
+    'Rank B card lands over 280ms before the wax stamp appears',
+    'Stamp impacts at −22° overshoot then settles to −12° over 120ms',
+    'Resolved shows RANK CONFIRMED with settled stamp angle',
+    'Replay clears card and stamp before rerunning',
+    'Reduced motion shows settled card + −12° stamp immediately',
   ],
   scaffold: `
-<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#101318;">
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#1a1612;">
   {{specimen}}
 </div>
 `.trim(),

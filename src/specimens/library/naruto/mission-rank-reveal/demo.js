@@ -157,5 +157,7 @@ function bindUi() {
 }
 
 void TOTAL_MS
+void STAMP_OVERSHOOT_DEG
+void STAMP_SETTLE_DEG
 bindUi()
 resetMissionRankReveal()

@@ -2,35 +2,102 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/mission-rank-reveal.schema.json",
   "title": "MissionRankReveal",
-  "description": "A generic rank card slams into the briefing panel, then a stamp impacts to confirm it.",
+  "description": "Rank B card lands, then a wax stamp impacts at −22° and settles to −12°.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "rank", "cardMs", "stampMs", "colours", "reducedMotion"],
+  "required": [
+    "name",
+    "rank",
+    "cardMs",
+    "stampImpactMs",
+    "stampSettleMs",
+    "stampOvershootDeg",
+    "stampSettleDeg",
+    "colours",
+    "reducedMotion"
+  ],
   "properties": {
-    "name": { "type": "string", "const": "mission-rank-reveal" },
-    "rank": { "type": "string", "const": "B" },
-    "cardMs": { "type": "number", "const": 280 },
-    "stampMs": { "type": "number", "const": 240 },
-    "settleMs": { "type": "number", "const": 100 },
+    "name": {
+      "type": "string",
+      "const": "mission-rank-reveal"
+    },
+    "rank": {
+      "type": "string",
+      "const": "B"
+    },
+    "cardMs": {
+      "type": "number",
+      "const": 280
+    },
+    "stampImpactMs": {
+      "type": "number",
+      "const": 180
+    },
+    "stampSettleMs": {
+      "type": "number",
+      "const": 120
+    },
+    "settleMs": {
+      "type": "number",
+      "const": 90
+    },
+    "stampOvershootDeg": {
+      "type": "number",
+      "const": -22
+    },
+    "stampSettleDeg": {
+      "type": "number",
+      "const": -12
+    },
     "colours": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ink", "parchment", "chakra", "alert", "olive", "off"],
+      "required": [
+        "ink",
+        "parchment",
+        "chakra",
+        "alert",
+        "olive",
+        "off"
+      ],
       "properties": {
-        "ink": { "type": "string", "const": "#1A1612" },
-        "parchment": { "type": "string", "const": "#EBE2D0" },
-        "chakra": { "type": "string", "const": "#B83228" },
-        "alert": { "type": "string", "const": "#B83228" },
-        "olive": { "type": "string", "const": "#6A5E4E" },
-        "off": { "type": "string", "const": "#F7F2E8" }
+        "ink": {
+          "type": "string",
+          "const": "#1A1612"
+        },
+        "parchment": {
+          "type": "string",
+          "const": "#EBE2D0"
+        },
+        "chakra": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "alert": {
+          "type": "string",
+          "const": "#B83228"
+        },
+        "olive": {
+          "type": "string",
+          "const": "#6A5E4E"
+        },
+        "off": {
+          "type": "string",
+          "const": "#F7F2E8"
+        }
       }
     },
     "reducedMotion": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["immediateConfirmed"],
+      "required": [
+        "immediateConfirmed"
+      ],
       "properties": {
-        "immediateConfirmed": { "type": "boolean", "const": true }
+        "immediateConfirmed": {
+          "type": "boolean",
+          "const": true
+        }
       }
     }
   }

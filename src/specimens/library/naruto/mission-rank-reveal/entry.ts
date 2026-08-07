@@ -5,7 +5,7 @@ export const missionRankReveal: Specimen = {
   ref: 'SPX-2534',
   title: 'Mission Rank Reveal',
   blurb:
-    'A generic D-through-S tier card slams into the briefing panel and a rubber stamp impacts down to confirm the assigned rank.',
+    'A Rank B card lands in the briefing, then a wax stamp impacts at −22° and settles to −12° CONFIRMED.',
   origin: {
     project: 'Original',
     surface: 'Naruto / mission system — briefing rank reveal overlays',
@@ -25,13 +25,15 @@ export const missionRankReveal: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, the rank card and stamp appear already settled with CONFIRMED shown.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, Rank B and the −12° CONFIRMED stamp appear already settled.',
   },
-  acceptance: [
-    'Rank glyph + stamp settle with frozen overshoot angle',
-    'Final CONFIRMED static',
-    'Reduced motion shows settled rank immediately',
-  ],
+    acceptance: [
+    'Rank B card lands over 280ms before the wax stamp appears',
+    'Stamp impacts at −22° overshoot then settles to −12° over 120ms',
+    'Resolved shows RANK CONFIRMED with settled stamp angle',
+    'Replay clears card and stamp before rerunning',
+    'Reduced motion shows settled card + −12° stamp immediately',
+  ],,
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 420,
