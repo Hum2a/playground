@@ -1,6 +1,17 @@
 {
   "name": "incident-dispatch-card",
-  "intent": "Urgent incident card tears into calm ops dashboard.",
+  "intent": "Calm ops dashboard is interrupted when a torn incident card slides in from the edge with a heavy CRITICAL badge.",
+  "catalogue": { "mha": "MHA-082", "ref": "SPX-2056" },
+  "copy": {
+    "dashboardLabel": "OPS DASHBOARD",
+    "statusReady": "READY",
+    "meta": "All sectors nominal",
+    "dispatch": "DISPATCH",
+    "cardTag": "INCIDENT",
+    "cardTitle": "SECTOR 7 BREACH",
+    "priorityBadge": "CRITICAL",
+    "liveDispatched": "Critical incident dispatched to Sector 7."
+  },
   "colours": {
     "primary": "#38A3FF",
     "ink": "#101820",
@@ -9,19 +20,33 @@
   },
   "timing": {
     "slideMs": 660,
-    "settleMs": 1310
+    "settleMs": 1310,
+    "totalMs": 1310
+  },
+  "geometry": {
+    "slideFrom": "calc(100% + 28px)",
+    "slideTo": "10px",
+    "cardRotateRestDeg": 4,
+    "cardRotateEndDeg": -2,
+    "tearPath": "polygon(0 100%, 16% 18%, 34% 82%, 52% 12%, 70% 78%, 88% 22%, 100% 100%)",
+    "cardPath": "polygon(5% 0, 100% 0, 100% 84%, 92% 100%, 0 100%, 0 11%)"
   },
   "api": {
     "run": "runIncidentDispatch()",
     "reset": "resetIncidentDispatch()",
-    "replay": "replayIncidentDispatch()",
-    "sandboxSafe": true
+    "replay": "replayIncidentDispatch()"
   },
   "reducedMotion": {
-    "triggers": [
-      "@media (prefers-reduced-motion: reduce)",
-      "[data-force-reduced-motion=\"true\"]"
-    ],
-    "behaviour": "Card appears in final position immediately"
-  }
+    "behaviour": "Card appears in final position immediately; dashboard dims without slide"
+  },
+  "acceptance": [
+    "Idle: calm dashboard with DISPATCH enabled",
+    "Dispatch: card slides from frozen off-screen distance over 660ms",
+    "Tear edge uses frozen jagged polygon path",
+    "CRITICAL badge is ink block with 3px border — not text-only",
+    "Dashboard desaturates while card overlays",
+    "Reduced motion (prefers or data-force) shows card in final pose immediately",
+    "No network; effect clipped to host"
+  ],
+  "waveC": "Torn edge + slide distance frozen via CSS vars; CRITICAL badge given heavy stamp weight"
 }

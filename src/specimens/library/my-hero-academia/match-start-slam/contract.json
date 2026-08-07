@@ -1,70 +1,52 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/match-start-slam.schema.json",
-  "title": "MatchStartSlam",
-  "description": "Portable contract for START overlay slam and tear reveal.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": ["name", "intent", "colours", "phases", "reducedMotion", "classNames"],
-  "properties": {
-    "name": { "type": "string", "const": "match-start-slam" },
-    "intent": {
-      "type": "string",
-      "examples": ["Giant START slams then tears away to reveal match."]
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
-    },
-    "phases": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["slamMs", "tearMs"],
-      "properties": {
-        "slamMs": { "type": "number", "const": 500 },
-        "tearMs": { "type": "number", "const": 380 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["instantLive", "triggers"],
-      "properties": {
-        "instantLive": { "type": "boolean", "const": true },
-        "triggers": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    },
-    "classNames": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["root", "overlay", "start"],
-      "properties": {
-        "root": { "type": "string", "const": "mss" },
-        "overlay": { "type": "string", "const": "mss__overlay" },
-        "start": { "type": "string", "const": "mss__start" }
-      }
-    },
-    "behaviour": {
-      "type": "object",
-      "properties": {
-        "api": { "type": "string", "const": "matchStartSlam" }
-      }
-    }
-  }
+  "name": "match-start-slam",
+  "intent": "Giant START slams over the host, holds, then tears away along frozen diagonal clip halves to reveal MATCH LIVE.",
+  "catalogue": { "mha": "MHA-066", "ref": "SPX-2040", "title": "Match Start Slam" },
+  "copy": {
+    "round": "ROUND 04",
+    "match": "MATCH LIVE",
+    "start": "START",
+    "liveIdle": "Match pending.",
+    "liveSlam": "START slam.",
+    "liveTear": "Overlay clearing…",
+    "liveDone": "Match live."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "slamMs": 500,
+    "tearMs": 380,
+    "liveDelayMs": 100
+  },
+  "geometry": {
+    "tearClipLeft": "polygon(0% 0%, 100% 0%, 58% 100%, 0% 100%)",
+    "tearClipRight": "polygon(42% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    "tearExitLeft": { "translateX": "-115%", "translateY": "12%", "rotateDeg": -12 },
+    "tearExitRight": { "translateX": "115%", "translateY": "-10%", "rotateDeg": 11 }
+  },
+  "api": {
+    "run": "matchStartSlam.run(root)",
+    "reset": "matchStartSlam.reset(root)",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "behaviour": "Skip overlay; MATCH LIVE panel at full opacity immediately"
+  },
+  "acceptance": [
+    "START overlay slams from scale 3.2 to 1 over 500ms with overshoot settle",
+    "Tear halves use frozen clip-paths at 58%/42% diagonal seam",
+    "Halves exit at frozen translate/rotate deltas over 380ms",
+    "MATCH LIVE content reaches full opacity after tear completes",
+    "Replay resets to idle pending state",
+    "Reduced motion (prefers or data-force) skips slam and tear"
+  ],
+  "waveC": "Frozen tear clip-paths and exit deltas; stronger slam overshoot"
 }

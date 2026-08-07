@@ -2,16 +2,17 @@
 
 ## Visual intent
 
-Calm ops dashboard receives an urgent incident card that tears/slides in from the right with CRITICAL priority styling.
+Calm ops dashboard receives an urgent incident card that tears/slides in from the right with a heavy CRITICAL priority badge.
 
-## Colour contract
+## Frozen geometry
 
-| Token | Hex |
+| Token | Value |
 | --- | --- |
-| Primary | `#38A3FF` |
-| Ink | `#101820` |
-| Paper | `#F4F7FA` |
-| Accent | `#FF4D35` |
+| Slide from | `calc(100% + 28px)` |
+| Slide to | `10px` |
+| Tear path | 7-point jagged polygon |
+| Card path | 6-point torn corner polygon |
+| Rotate rest → end | `4deg` → `-2deg` |
 
 ## Timing
 
@@ -25,3 +26,5 @@ Calm ops dashboard receives an urgent incident card that tears/slides in from th
 - `runIncidentDispatch()`
 - `resetIncidentDispatch()`
 - `replayIncidentDispatch()`
+
+Wave C: torn edge path, slide distance, and badge weight frozen in contract — not colour-only.
