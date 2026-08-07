@@ -1,12 +1,12 @@
 /* SPX-2569 Mission Board Dispatch — portable contract. */
 
 .mbd {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --alarm: #d94a38;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #1a1612;
+  --parchment: #ebe2d0;
+  --chakra: #b83228;
+  --alarm: #b83228;
+  --olive: #6a5e4e;
+  --off: #f7f2e8;
   --mbd-dx: 0px;
   --mbd-dy: 0px;
   box-sizing: border-box;

@@ -16,11 +16,11 @@
       "additionalProperties": false,
       "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": { "type": "string", "const": "#101318" },
-        "parchment": { "type": "string", "const": "#E7DDC7" },
-        "chakra": { "type": "string", "const": "#3A9BD9" },
-        "olive": { "type": "string", "const": "#69745A" },
-        "off": { "type": "string", "const": "#F4F1E8" }
+        "ink": { "type": "string", "const": "#071018" },
+        "parchment": { "type": "string", "const": "#C8D8E4" },
+        "chakra": { "type": "string", "const": "#3A9EC9" },
+        "olive": { "type": "string", "const": "#4A6A78" },
+        "off": { "type": "string", "const": "#E8F2F8" }
       }
     },
     "reducedMotion": {

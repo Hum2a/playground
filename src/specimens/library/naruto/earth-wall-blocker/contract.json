@@ -18,10 +18,10 @@
       "additionalProperties": false,
       "required": ["ink", "parchment", "chakra", "olive", "off"],
       "properties": {
-        "ink": { "type": "string", "const": "#101318" },
-        "parchment": { "type": "string", "const": "#E7DDC7" },
-        "chakra": { "type": "string", "const": "#3A9BD9" },
-        "olive": { "type": "string", "const": "#69745A" },
+        "ink": { "type": "string", "const": "#0C0806" },
+        "parchment": { "type": "string", "const": "#C4B8A8" },
+        "chakra": { "type": "string", "const": "#E07030" },
+        "olive": { "type": "string", "const": "#5A5048" },
         "off": { "type": "string", "const": "#F4F1E8" }
       }
     },

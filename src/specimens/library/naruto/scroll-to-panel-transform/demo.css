@@ -1,11 +1,11 @@
 /* SPX-2366 Scroll-to-Panel Transform — portable contract. */
 
 .stp {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #1a1612;
+  --parchment: #ebe2d0;
+  --chakra: #b83228;
+  --olive: #6a5e4e;
+  --off: #f7f2e8;
   box-sizing: border-box;
   position: relative;
   display: flex;

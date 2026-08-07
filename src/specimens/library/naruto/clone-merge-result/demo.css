@@ -1,11 +1,11 @@
 /* SPX-2396 Clone Merge Result — portable contract. */
 
 .cmr {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #12141a;
+  --parchment: #d8d4e0;
+  --chakra: #7a6b9a;
+  --olive: #6e6a78;
+  --off: #f0eef4;
   box-sizing: border-box;
   position: relative;
   display: flex;

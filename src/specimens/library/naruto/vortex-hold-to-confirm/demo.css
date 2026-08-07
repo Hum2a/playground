@@ -1,11 +1,11 @@
 /* SPX-2482 Vortex Hold-to-Confirm — portable contract. */
 
 .vhc {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #070b0e;
+  --parchment: #c8e8dc;
+  --chakra: #3dcea8;
+  --olive: #1a6b58;
+  --off: #d7f5ec;
   --vhc-hold-ms: 900ms;
   --vhc-cancel-ms: 200ms;
   box-sizing: border-box;

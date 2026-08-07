@@ -29,6 +29,7 @@ export const missionCompleteStamp: Specimen = {
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
+    scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:340px;background:#1a1612;display:grid;place-items:center;padding:1rem;"><div style="position:relative;width:min(100%,300px);min-height:200px;border:1px solid #3a3228;background:#ebe2d0;padding:1.25rem;color:#1a1612;font:700 13px ui-serif,Georgia,serif;">Briefing complete{{specimen}}</div></div>`,
     width: 420,
     height: 340,
     background: 'dark',

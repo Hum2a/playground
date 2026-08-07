@@ -29,6 +29,7 @@ export const focusModeActivation: Specimen = {
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
+    scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:320px;background:#101418;display:grid;place-items:center;padding:1rem;"><div style="position:relative;width:min(100%,300px);min-height:160px;border:1px solid #2a3038;background:#0c1014;padding:1.25rem;color:#dce2e8;font:600 12px ui-sans-serif,system-ui,sans-serif;">Analysis host{{specimen}}</div></div>`,
     width: 380,
     height: 360,
     background: 'dark',

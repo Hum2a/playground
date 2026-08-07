@@ -29,6 +29,7 @@ export const targetDossierReveal: Specimen = {
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
+    scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#1a1612;display:grid;place-items:center;padding:1rem;">{{specimen}}</div>`,
     width: 420,
     height: 340,
     background: 'dark',

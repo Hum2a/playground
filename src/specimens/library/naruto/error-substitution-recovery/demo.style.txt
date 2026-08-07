@@ -4,9 +4,9 @@
   --ink: #12141a;
   --parchment: #d8d4e0;
   --ash: #7a6b9a;
-  --danger: #d94a38;
+  --danger: #a85868;
   --mute: #6e6a78;
-  --off: #f4f1e8;
+  --off: #f0eef4;
   box-sizing: border-box;
   position: relative;
   display: flex;

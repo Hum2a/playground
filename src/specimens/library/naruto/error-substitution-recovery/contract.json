@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://playground.humza-butt.space/contracts/error-substitution-recovery.schema.json",
   "title": "ErrorSubstitutionRecovery",
@@ -19,9 +19,9 @@
         "ink": { "type": "string", "const": "#12141A" },
         "parchment": { "type": "string", "const": "#D8D4E0" },
         "ash": { "type": "string", "const": "#7A6B9A" },
-        "danger": { "type": "string", "const": "#D94A38" },
+        "danger": { "type": "string", "const": "#A85868" },
         "mute": { "type": "string", "const": "#6E6A78" },
-        "off": { "type": "string", "const": "#F4F1E8" }
+        "off": { "type": "string", "const": "#F0EEF4" }
       }
     },
     "reducedMotion": {

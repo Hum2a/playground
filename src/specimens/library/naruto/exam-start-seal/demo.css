@@ -1,12 +1,12 @@
 /* SPX-2551 Exam Start Seal — portable contract. */
 
 .ess {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --alarm: #d94a38;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #140c0c;
+  --parchment: #e8dcc8;
+  --chakra: #c43c2e;
+  --alarm: #c43c2e;
+  --olive: #6b5048;
+  --off: #f3ebe0;
   box-sizing: border-box;
   position: relative;
   display: flex;

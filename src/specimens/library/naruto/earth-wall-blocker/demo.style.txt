@@ -1,10 +1,10 @@
 /* SPX-2470 Earth Wall Blocker — portable contract. */
 
 .ewb {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --olive: #69745a;
+  --ink: #0c0806;
+  --parchment: #c4b8a8;
+  --chakra: #e07030;
+  --olive: #5a5048;
   --off: #f4f1e8;
   box-sizing: border-box;
   position: relative;

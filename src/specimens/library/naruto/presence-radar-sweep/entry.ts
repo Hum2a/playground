@@ -29,6 +29,7 @@ export const presenceRadarSweep: Specimen = {
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
+    scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:360px;background:#070b0e;display:grid;place-items:center;padding:0.75rem;">{{specimen}}</div>`,
     width: 420,
     height: 340,
     background: 'dark',

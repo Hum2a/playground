@@ -1,12 +1,12 @@
 /* SPX-2464 Lightning Target Acquisition — portable contract. */
 
 .lta {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --danger: #d94a38;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #070b0e;
+  --parchment: #c8e8dc;
+  --chakra: #3dcea8;
+  --danger: #3dcea8;
+  --olive: #1a6b58;
+  --off: #d7f5ec;
   box-sizing: border-box;
   position: relative;
   display: flex;

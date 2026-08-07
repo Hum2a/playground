@@ -1,12 +1,12 @@
 /* SPX-2644 Shadow Bind Selection — portable contract. */
 
 .sbs {
-  --ink: #101318;
-  --parchment: #e7ddc7;
-  --chakra: #3a9bd9;
-  --alarm: #d94a38;
-  --olive: #69745a;
-  --off: #f4f1e8;
+  --ink: #12141a;
+  --parchment: #d8d4e0;
+  --chakra: #7a6b9a;
+  --alarm: #a85868;
+  --olive: #6e6a78;
+  --off: #f0eef4;
   box-sizing: border-box;
   position: relative;
   display: flex;
