@@ -19,7 +19,7 @@ export const networkScan360: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ["scan","network","radar"],
+  tags: ['scan', 'network', 'radar'],
   deps: 'none',
   motion: {
     loops: false,
@@ -27,15 +27,12 @@ export const networkScan360: Specimen = {
     reducedMotionNote:
       'Under prefers-reduced-motion or data-force-reduced-motion, all five nodes appear FOUND/MAPPED immediately.',
   },
-    acceptance: [
-    'Sweep wires five nodes at frozen bearings 0/72/144/216/288°',
+  acceptance: [
+    'Sweep wires five nodes at frozen bearings 0/72/144/216/288° in order at stepMs 150',
     'Discovery log flips STANDBY→FOUND per node as sweep crosses',
-    'Phosphor skin (ink/phosphor/phosphorDim)',
-    'Replay clears nodes and log before rerunning',
-    'Reduced motion shows all nodes FOUND / MAPPED immediately',
-  ], in order at stepMs 150',
     'Links activate with nodes; inventory complete only after node 5 + settleMs 100',
-    'Replay deactivates all five nodes/links before rerunning',
+    'Phosphor skin (ink/phosphor/phosphorDim); replay clears nodes and log before rerunning',
+    'Reduced motion shows all nodes FOUND / MAPPED immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
