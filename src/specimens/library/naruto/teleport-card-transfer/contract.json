@@ -1,95 +1,53 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.humza-butt.space/contracts/teleport-card-transfer.schema.json",
-  "title": "TeleportCardTransfer",
-  "description": "A card compresses at a source aperture and reconstructs at a destination aperture, teleporting instantly while invisible.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "compressMs",
-    "reconstructMs",
-    "colours",
-    "reducedMotion",
-    "midHoldMs",
-    "apertureFromPx",
-    "apertureToPx"
+  "name": "teleport-card-transfer",
+  "intent": "Card compresses into a 44px aperture at source (compressMs 200), mid empty hold, then reconstructs from matching aperture at destination (reconstructMs 220).",
+  "catalogue": {
+    "nr": "NR-334",
+    "ref": "SPX-2677"
+  },
+  "copy": {
+    "system": "TRANSFER // TELEPORT",
+    "source": "SOURCE",
+    "destination": "DESTINATION"
+  },
+  "geometry": {
+    "apertureOpenPx": 44,
+    "apertureClosedPx": 0
+  },
+  "timing": {
+    "compressMs": 200,
+    "emptyHoldMs": 80,
+    "reconstructMs": 220,
+    "totalMs": 420
+  },
+  "colours": {
+    "ink": "#070B0E",
+    "parchment": "#C8E8DC",
+    "chakra": "#3DCEA8",
+    "alarm": "#3DCEA8",
+    "olive": "#1A6B58",
+    "off": "#D7F5EC",
+    "palette": "sensor"
+  },
+  "api": {
+    "run": "runTeleportCardTransfer()",
+    "reset": "resetTeleportCardTransfer()",
+    "replay": "replayTeleportCardTransfer()"
+  },
+  "cssVars": [
+    "--tct-compress-ms",
+    "--tct-reconstruct-ms",
+    "--tct-aperture-open-px",
+    "--tct-aperture-closed-px",
+    "--tct-empty-hold-ms"
   ],
-  "properties": {
-    "name": {
-      "type": "string",
-      "const": "teleport-card-transfer"
-    },
-    "compressMs": {
-      "type": "number",
-      "const": 200
-    },
-    "reconstructMs": {
-      "type": "number",
-      "const": 220
-    },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "ink",
-        "parchment",
-        "chakra",
-        "alarm",
-        "olive",
-        "off"
-      ],
-      "properties": {
-        "ink": {
-          "type": "string",
-          "const": "#070B0E"
-        },
-        "parchment": {
-          "type": "string",
-          "const": "#C8E8DC"
-        },
-        "chakra": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "alarm": {
-          "type": "string",
-          "const": "#3DCEA8"
-        },
-        "olive": {
-          "type": "string",
-          "const": "#1A6B58"
-        },
-        "off": {
-          "type": "string",
-          "const": "#D7F5EC"
-        }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "immediateArrived"
-      ],
-      "properties": {
-        "immediateArrived": {
-          "type": "boolean",
-          "const": true
-        }
-      }
-    },
-    "midHoldMs": {
-      "type": "number",
-      "const": 120
-    },
-    "apertureFromPx": {
-      "type": "number",
-      "const": 8
-    },
-    "apertureToPx": {
-      "type": "number",
-      "const": 72
-    }
-  }
+  "reducedMotion": {
+    "behaviour": "Card reconstructed at destination immediately"
+  },
+  "acceptance": [
+    "Source aperture opens to apertureOpenPx 44 during compressMs 200; card gone mid-hold",
+    "Destination reconstructs only after reconstructMs 220 following empty hold",
+    "Both apertures close to 0px when transfer completes",
+    "Reduced motion (prefers or data-force) shows reconstructed destination immediately"
+  ]
 }

@@ -5,7 +5,7 @@ export const teleportCardTransfer: Specimen = {
   ref: 'SPX-2677',
   title: 'Teleport Card Transfer',
   blurb:
-    'A card compresses into a circular aperture at its source slot and reconstructs out of a matching aperture at the destination.',
+    'A card compresses into a 44px aperture (200ms), holds empty, then reconstructs from a matching aperture at the destination (220ms) — phosphor teleport transfer.',
   origin: {
     project: 'Original',
     surface: 'Naruto / space-time-teleportation-interfaces — card transfer',
@@ -28,8 +28,8 @@ export const teleportCardTransfer: Specimen = {
       'Under prefers-reduced-motion or data-force-reduced-motion, the card appears already reconstructed at the destination.',
   },
   acceptance: [
-    'Mid-transfer empty hold with frozen aperture diameters',
-    'Card reconstructs at destination only after aperture closes',
+    'Source aperture 44px compress 200ms; mid-transfer empty',
+    'Destination reconstructs in 220ms after empty hold',
     'Reduced motion shows reconstructed destination',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),

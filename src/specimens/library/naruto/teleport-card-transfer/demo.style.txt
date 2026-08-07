@@ -5,9 +5,14 @@
   --parchment: #c8e8dc;
   --chakra: #3dcea8;
   --alarm: #3dcea8;
+  --tct-compress-ms: 200ms;
+  --tct-reconstruct-ms: 220ms;
+  --tct-aperture-open-px: 44;
+  --tct-aperture-closed-px: 0;
+  --tct-empty-hold-ms: 80ms;
   --olive: #1a6b58;
   --off: #d7f5ec;
-  /* wave2 timing surface */
+  /* frozen aperture transfer */
   --tct-dx: 0px;
   --tct-dy: 0px;
   --tct-scale: 1;
