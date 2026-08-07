@@ -7,14 +7,17 @@ import contract from './contract.json'
 
 const payload: SpecimenPayload = {
   integration: [
-  "Two stacked bg layers; toggle data-layer on root.",
-  "Import demo.css verbatim."
-],
+    'Wire tiles to setContextFocus(index); keep three stacked .cbc__bg planes.',
+    'Toggle is-active by opacity only — do not unmount layers mid-crossfade.',
+    'Import demo.css verbatim.',
+    'Preserve RM override on .cbc__bg.',
+  ],
   acceptance: [
-  "Background crossfades between two abstract gradients",
-  "Tile focus updates context label",
-  "Reduced motion shows final layer only"
-],
+    'Each of the three tiles activates a distinct title-keyed background plane.',
+    'A→B (and B→C) crossfades opacity over 600ms without flashing ink.',
+    'Context label matches the focused title.',
+    'Reduced motion snaps the active plane with no opacity transition.',
+  ],
   scaffold: `<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:300px;background:#0B0F14;display:grid;place-items:center;padding:1rem;">
   {{specimen}}
 </div>`.trim(),

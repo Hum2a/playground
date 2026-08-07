@@ -1,13 +1,16 @@
 <div class="cbc" data-cbc data-layer="a">
   <p class="cbc__live" data-cbc-live aria-live="polite">Context: TITLE A.</p>
-  <div class="cbc__bg cbc__bg--a" data-animate aria-hidden="true"></div>
-  <div class="cbc__bg cbc__bg--b" data-animate aria-hidden="true"></div>
+  <div class="cbc__stage" aria-hidden="true">
+    <div class="cbc__bg cbc__bg--a is-active" data-cbc-bg="a"></div>
+    <div class="cbc__bg cbc__bg--b" data-cbc-bg="b"></div>
+    <div class="cbc__bg cbc__bg--c" data-cbc-bg="c"></div>
+  </div>
   <div class="cbc__content">
     <p class="cbc__label" data-cbc-label>TITLE A</p>
-    <div class="cbc__tiles">
-      <button type="button" class="cbc__tile is-focused" data-cbc-tile="0">A</button>
-      <button type="button" class="cbc__tile" data-cbc-tile="1">B</button>
-      <button type="button" class="cbc__tile" data-cbc-tile="2">C</button>
+    <div class="cbc__tiles" role="group" aria-label="Context titles">
+      <button type="button" class="cbc__tile is-focused" data-cbc-tile="0" aria-pressed="true">A</button>
+      <button type="button" class="cbc__tile" data-cbc-tile="1" aria-pressed="false">B</button>
+      <button type="button" class="cbc__tile" data-cbc-tile="2" aria-pressed="false">C</button>
     </div>
   </div>
 </div>
