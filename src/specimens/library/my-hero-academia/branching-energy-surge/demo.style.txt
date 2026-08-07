@@ -52,8 +52,10 @@
   fill: var(--bes-ink);
   stroke: var(--bes-primary);
   stroke-width: 3;
+  stroke-linejoin: miter;
   opacity: 0;
-  transform-origin: 180px 160px;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 .bes__flash {

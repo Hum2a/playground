@@ -1,95 +1,78 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://playground.local/docs/design/branching-energy-surge.schema.json",
-  "title": "BranchingEnergySurge",
-  "description": "Portable contract for corner-branch energy convergence. Not a database schema.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "name",
-    "intent",
-    "copy",
-    "colours",
-    "phases",
-    "reducedMotion",
-    "classNames"
-  ],
-  "properties": {
-    "name": { "type": "string", "const": "branching-energy-surge" },
-    "intent": {
-      "type": "string",
-      "examples": [
-        "Angular branches from four corners converge on a central action node."
-      ]
+  "name": "branching-energy-surge",
+  "intent": "Angular branches from four corners converge on a central ink-star core node.",
+  "catalogue": {
+    "mha": "MHA-034",
+    "ref": "SPX-2008",
+    "title": "Branching Energy Surge"
+  },
+  "copy": {
+    "activate": "ACTIVATE",
+    "standby": "STANDBY",
+    "surge": "SURGE",
+    "ready": "READY",
+    "statusIdle": "Energy dormant.",
+    "statusSurge": "Branches converging…",
+    "statusReady": "Output channel armed."
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "branchMs": 520,
+    "coreMs": 740,
+    "flashMs": 280,
+    "flashDelayMs": 520,
+    "totalMs": 900
+  },
+  "instances": {
+    "viewBox": "0 0 360 320",
+    "paths": {
+      "tl": "M 20 24 L 120 90 L 180 160",
+      "tr": "M 340 24 L 240 90 L 180 160",
+      "bl": "M 20 296 L 120 230 L 180 160",
+      "br": "M 340 296 L 240 230 L 180 160"
     },
-    "copy": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["activate", "standby", "surge", "ready"],
-      "properties": {
-        "activate": { "type": "string", "const": "ACTIVATE" },
-        "standby": { "type": "string", "const": "STANDBY" },
-        "surge": { "type": "string", "const": "SURGE" },
-        "ready": { "type": "string", "const": "READY" }
-      }
+    "staggersMs": {
+      "tl": 0,
+      "tr": 60,
+      "bl": 120,
+      "br": 180
     },
-    "colours": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["primary", "ink", "paper", "accent"],
-      "properties": {
-        "primary": { "type": "string", "const": "#38A3FF" },
-        "ink": { "type": "string", "const": "#101820" },
-        "paper": { "type": "string", "const": "#F4F7FA" },
-        "accent": { "type": "string", "const": "#FF4D35" }
-      }
+    "core": {
+      "type": "ink-star",
+      "points": "180,128 194,152 220,160 194,168 180,192 166,168 140,160 166,152",
+      "center": { "x": 180, "y": 160 },
+      "strokeWidthPx": 3
     },
-    "phases": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["branchMs", "coreMs", "flashMs", "totalMs"],
-      "properties": {
-        "branchMs": { "type": "number", "const": 520 },
-        "coreMs": { "type": "number", "const": 740 },
-        "flashMs": { "type": "number", "const": 280 },
-        "totalMs": { "type": "number", "const": 900 }
-      }
-    },
-    "reducedMotion": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["instantReady", "triggers"],
-      "properties": {
-        "instantReady": { "type": "boolean", "const": true },
-        "triggers": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string",
-            "enum": [
-              "prefers-reduced-motion: reduce",
-              "data-force-reduced-motion=true"
-            ]
-          }
-        }
-      }
-    },
-    "classNames": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["root", "branch", "core", "trigger"],
-      "properties": {
-        "root": { "type": "string", "const": "bes" },
-        "branch": { "type": "string", "const": "bes__branch" },
-        "core": { "type": "string", "const": "bes__core" },
-        "trigger": { "type": "string", "const": "bes__trigger" }
-      }
-    },
-    "behaviour": {
-      "type": "object",
-      "properties": {
-        "api": { "type": "string", "const": "branchingEnergySurge" }
-      }
+    "flash": {
+      "clipPath": "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
+      "sizePx": 120,
+      "delayMs": 520
     }
-  }
+  },
+  "api": {
+    "init": "branchingEnergySurge.init(scope)",
+    "run": "branchingEnergySurge.run(root)",
+    "reset": "branchingEnergySurge.reset(root)"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "behaviour": "Branches and ink-star core appear immediately in READY; no draw or flash"
+  },
+  "acceptance": [
+    "Four branch paths draw with frozen stagger 0/60/120/180ms over 520ms",
+    "Ink-star octagon core pulses at center (180,160) over 740ms",
+    "Pentagon flash scales at 520ms delay; no soft circle core",
+    "READY: branches lit, core filled primary, label READY",
+    "Reduced motion (prefers or data-force) skips draw/flash choreography",
+    "No network; SVG clipped to host surface"
+  ],
+  "waveD": "Published path/stagger instances; soft circle replaced with ink-star polygon"
 }
