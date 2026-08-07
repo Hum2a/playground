@@ -1,27 +1,23 @@
 {
   "name": "transformation-morph",
-  "intent": "Profile A collapses into an ink intermediate silhouette, then expands into Profile B with a visible inherited trait mark.",
+  "intent": "Profile A collapses into an ink blot intermediate, then expands into Profile B with inherited SPEED trait.",
   "catalogue": { "nr": "NR-059", "ref": "SPX-2402" },
   "copy": {
     "system": "IDENTITY // MORPH",
     "profileA": "PROFILE A",
-    "profileB": "PROFILE B",
-    "titleA": "Scout",
-    "titleB": "Sentinel",
-    "metaA": "RANK · GENIN",
-    "metaB": "RANK · CHUNIN",
-    "inkStatus": "INK"
+    "ink": "INK",
+    "profileB": "PROFILE B"
   },
   "geometry": {
-    "inkClip": "polygon(20% 8%, 80% 8%, 92% 50%, 80% 92%, 20% 92%, 8% 50%)",
-    "scaleCollapseTo": 0,
-    "traitInheritance": "FROM SCOUT"
+    "traitA": "SPEED",
+    "traitB": "SPEED · GUARD",
+    "inkHoldVisible": true
   },
   "timing": {
-    "collapseMs": 140,
+    "collapseMs": 160,
     "inkHoldMs": 120,
-    "expandMs": 150,
-    "totalMs": 410
+    "expandMs": 180,
+    "totalMs": 460
   },
   "colours": {
     "ink": "#12141A",
@@ -29,7 +25,7 @@
     "chakra": "#7A6B9A",
     "olive": "#6E6A78",
     "off": "#F0EEF4",
-    "palette": "clone-ash"
+    "palette": "clone-violet"
   },
   "api": {
     "run": "runTransformationMorph()",
@@ -37,13 +33,11 @@
     "replay": "replayTransformationMorph()"
   },
   "reducedMotion": {
-    "behaviour": "Profile B shown immediately with inherited trait mark; no collapse/ink/expand"
+    "behaviour": "Profile B appears immediately with inherited traits"
   },
   "acceptance": [
-    "Sequence is collapse (140ms) → ink intermediate hold (120ms) → expand Profile B (150ms)",
-    "Cards/silhouette use scale+visibility (not opacity fade as primary); ink uses clipped polygon silhouette",
-    "Resolved Profile B shows inherited trait mark FROM SCOUT",
-    "Replay resets to Profile A Scout before rerunning",
-    "Reduced motion (prefers or data-force) shows Profile B immediately"
+    "Sequence collapseMs 160 → inkHoldMs 120 → expandMs 180",
+    "Ink blot intermediate is scale/geometry — not opacity crossfade; B inherits SPEED",
+    "Reduced motion shows Profile B immediately"
   ]
 }

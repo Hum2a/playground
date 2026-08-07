@@ -5,13 +5,13 @@ export const transformationMorph: Specimen = {
   ref: 'SPX-2402',
   title: 'Transformation Morph',
   blurb:
-    'Scout collapses into an ink silhouette, then expands into Sentinel with a visible FROM SCOUT inheritance mark.',
+    'Profile A collapses into an ink blot, holds, then expands into Profile B — SPEED carries over as inherited trait.',
   origin: {
     project: 'Original',
-    surface: 'Naruto / ninja-fiction transformation study — identity morph',
+    surface: 'Naruto / ninja-fiction action-language study — transformation & disguise',
   },
   facets: {
-    kind: 'transition',
+    kind: 'interaction',
     tech: 'tiny-js',
     scope: 'card',
     intensity: 'graphic',
@@ -19,23 +19,23 @@ export const transformationMorph: Specimen = {
   inspiredBy: {
     franchise: 'naruto',
   },
-  tags: ['morph', 'ink', 'identity', 'inheritance'],
+  tags: ['morph', 'identity', 'silhouette'],
   deps: 'none',
   motion: {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under prefers-reduced-motion or data-force-reduced-motion, Profile B appears immediately with no collapse or ink hold.',
+      'Under prefers-reduced-motion or data-force-reduced-motion, the second profile appears immediately with no ink intermediate.',
   },
   acceptance: [
-    'Collapse → ink hold 120ms → expand Profile B',
-    'Resolved card shows FROM SCOUT trait inheritance',
+    'Collapse 160ms → ink hold 120ms → expand 180ms with SPEED trait inheritance',
+    'Intermediate is an ink blot (scale/geometry), not a simple crossfade',
     'Reduced motion shows Profile B immediately',
   ],
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
-    width: 340,
-    height: 320,
+    width: 380,
+    height: 340,
     background: 'dark',
     label: 'Transformation morph',
   },

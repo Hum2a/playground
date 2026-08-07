@@ -6,9 +6,9 @@
   --chakra: #7a6b9a;
   --olive: #6e6a78;
   --off: #f0eef4;
-  --trm-collapse-ms: 140ms;
-  --trm-ink-ms: 120ms;
-  --trm-expand-ms: 150ms;
+  --trm-collapse-ms: 160ms;
+  --trm-ink-hold-ms: 120ms;
+  --trm-expand-ms: 180ms;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -55,7 +55,9 @@
   display: grid;
   gap: 0.65rem;
   justify-items: center;
+  align-items: center;
   width: 100%;
+  min-height: 200px;
   padding: 1rem 0.75rem;
   border: 1px solid rgb(122 107 154 / 0.45);
   background: rgb(240 238 244 / 0.04);
@@ -67,18 +69,19 @@
   max-width: 220px;
   padding: 0.65rem 0.85rem;
   border: 1.5px solid var(--olive);
-  background: rgb(18 20 26 / 0.95);
+  background: rgb(16 19 24 / 0.9);
   text-align: center;
-  transform: scale(0);
-  visibility: hidden;
+  transform: scale(1);
+  clip-path: inset(0 0 0 0);
   transition:
-    transform var(--trm-collapse-ms) cubic-bezier(0.4, 0.05, 0.7, 0.2),
-    visibility 0ms linear;
+    transform var(--trm-collapse-ms) cubic-bezier(0.55, 0, 0.9, 0.4),
+    clip-path var(--trm-collapse-ms) ease-in;
 }
 
-.trm__card--a {
-  transform: scale(1);
-  visibility: visible;
+.trm__card--b {
+  transform: scale(0.2);
+  clip-path: circle(0% at 50% 50%);
+  pointer-events: none;
 }
 
 .trm__kicker {
@@ -97,77 +100,92 @@
   color: var(--off);
 }
 
-.trm__meta {
+.trm__meta,
+.trm__trait {
   margin: 0.1rem 0 0;
   font-size: 0.62rem;
   letter-spacing: 0.06em;
   color: var(--olive);
 }
 
-.trm__silhouette {
+.trm__trait {
+  color: var(--chakra);
+  font-weight: 700;
+}
+
+.trm__ink {
   grid-area: 1 / 1;
-  width: 6rem;
-  height: 6rem;
-  background:
-    radial-gradient(circle at 50% 35%, rgb(122 107 154 / 0.55), transparent 55%),
-    linear-gradient(180deg, rgb(122 107 154 / 0.35), rgb(18 20 26 / 0.95));
-  border: 2px solid var(--chakra);
-  clip-path: polygon(20% 8%, 80% 8%, 92% 50%, 80% 92%, 20% 92%, 8% 50%);
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
   transform: scale(0);
-  visibility: hidden;
-  transition:
-    transform var(--trm-ink-ms) cubic-bezier(0.2, 0.9, 0.25, 1.1),
-    visibility 0ms linear;
+  transition: transform var(--trm-collapse-ms) cubic-bezier(0.2, 1.1, 0.3, 1);
+}
+
+.trm__ink-blot {
+  position: absolute;
+  inset: 12%;
+  background: #05070a;
+  border-radius: 42% 58% 48% 52% / 48% 42% 58% 52%;
+  box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.35);
+}
+
+.trm__ink-rim {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--chakra);
+  border-radius: 50%;
+  transform: scale(0.7);
 }
 
 .trm[data-phase='collapsing'] .trm__card--a {
-  transform: scale(0);
-  visibility: hidden;
+  transform: scale(0.15);
+  clip-path: inset(35% 35% 35% 35%);
 }
 
-.trm[data-phase='collapsing'] .trm__silhouette,
-.trm[data-phase='silhouette'] .trm__silhouette {
+.trm[data-phase='collapsing'] .trm__ink,
+.trm[data-phase='ink'] .trm__ink {
   transform: scale(1);
-  visibility: visible;
 }
 
-.trm[data-phase='silhouette'] .trm__silhouette {
-  animation: trm-ink-pulse var(--trm-ink-ms) ease-in-out;
+.trm[data-phase='ink'] .trm__ink-rim {
+  animation: trm-ink-pulse var(--trm-ink-hold-ms) ease-in-out;
 }
 
 @keyframes trm-ink-pulse {
   0%,
   100% {
-    filter: drop-shadow(0 0 0 rgb(122 107 154 / 0));
+    transform: scale(0.7);
   }
   50% {
-    filter: drop-shadow(0 0 8px rgb(122 107 154 / 0.55));
+    transform: scale(1);
   }
 }
 
-.trm[data-phase='revealing'] .trm__silhouette,
-.trm[data-phase='done'] .trm__silhouette {
+.trm[data-phase='expanding'] .trm__ink,
+.trm[data-phase='done'] .trm__ink {
   transform: scale(0);
-  visibility: hidden;
-  transition-duration: var(--trm-expand-ms);
 }
 
-.trm[data-phase='revealing'] .trm__card--b,
+.trm[data-phase='expanding'] .trm__card--a,
+.trm[data-phase='done'] .trm__card--a {
+  transform: scale(0);
+  clip-path: inset(50% 50% 50% 50%);
+  pointer-events: none;
+}
+
+.trm[data-phase='expanding'] .trm__card--b,
 .trm[data-phase='done'] .trm__card--b {
   transform: scale(1);
-  visibility: visible;
+  clip-path: circle(140% at 50% 50%);
+  pointer-events: auto;
   transition-duration: var(--trm-expand-ms);
-  transition-timing-function: cubic-bezier(0.2, 0.9, 0.25, 1.1);
+  transition-timing-function: cubic-bezier(0.2, 0.95, 0.25, 1.05);
 }
 
 .trm[data-phase='done'] .trm__card--b {
   border-color: var(--chakra);
   box-shadow: inset 0 0 0 1px rgb(122 107 154 / 0.45);
-}
-
-.trm[data-phase='done'] .trm__card--b .trm__meta::after {
-  content: ' · FROM SCOUT';
-  color: var(--olive);
 }
 
 .trm__status {
@@ -232,14 +250,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .trm__card,
-  .trm__silhouette {
+  .trm__ink,
+  .trm__ink-rim {
     transition: none !important;
     animation: none !important;
   }
 }
 
 html[data-force-reduced-motion='true'] .trm__card,
-html[data-force-reduced-motion='true'] .trm__silhouette {
+html[data-force-reduced-motion='true'] .trm__ink,
+html[data-force-reduced-motion='true'] .trm__ink-rim {
   transition: none !important;
   animation: none !important;
 }

@@ -1,15 +1,14 @@
 /**
- * Transformation Morph — profile A collapses through a bold silhouette
- * intermediate and expands into profile B.
+ * Transformation Morph — collapse → ink intermediate → expand with traits.
  * iframe-safe; no storage / parent / network.
  */
 
-const COLLAPSE_MS = 140
-const HOLD_MS = 120
-const REVEAL_MS = 150
-const TOTAL_MS = COLLAPSE_MS + HOLD_MS + REVEAL_MS
-const TRAIT_FROM = 'Scout'
-const TRAIT_TO = 'Sentinel'
+const COLLAPSE_MS = 160
+const INK_HOLD_MS = 120
+const EXPAND_MS = 180
+const TOTAL_MS = COLLAPSE_MS + INK_HOLD_MS + EXPAND_MS
+const TRAIT_A = 'SPEED'
+const TRAIT_B = 'SPEED · GUARD'
 
 let busy = false
 let done = false
@@ -61,14 +60,22 @@ function setButtons(on) {
 
 function showDone() {
   done = true
+  const cardA = document.querySelector('[data-trm-card-a]')
+  const cardB = document.querySelector('[data-trm-card-b]')
+  cardA?.setAttribute('aria-hidden', 'true')
+  cardB?.setAttribute('aria-hidden', 'false')
   rootEl()?.setAttribute('data-phase', 'done')
   setStatus('PROFILE B')
-  setHint('Transformation complete.')
-  setLive('Transformation complete. Profile B active.')
+  setHint(`Transformation complete. Inherited ${TRAIT_A}.`)
+  setLive(`Profile B expanded with inherited traits ${TRAIT_B}.`)
 }
 
 function resetVisual() {
   done = false
+  const cardA = document.querySelector('[data-trm-card-a]')
+  const cardB = document.querySelector('[data-trm-card-b]')
+  cardA?.setAttribute('aria-hidden', 'false')
+  cardB?.setAttribute('aria-hidden', 'true')
   rootEl()?.setAttribute('data-phase', 'idle')
   setStatus('PROFILE A')
   setHint('Press Run to transform.')
@@ -76,7 +83,7 @@ function resetVisual() {
 }
 
 /**
- * Auto-run full collapse → silhouette → reveal choreography.
+ * Auto-run collapse → ink → expand.
  * @returns {Promise<void>}
  */
 export function runTransformationMorph() {
@@ -98,22 +105,22 @@ export function runTransformationMorph() {
 
   root.setAttribute('data-phase', 'collapsing')
   setStatus('COLLAPSING')
-  setHint('Profile A collapsing.')
-  setLive(`Profile A (${TRAIT_FROM}) collapsing into ink mask.`)
+  setHint('Profile A collapsing into ink.')
+  setLive('Profile A collapsing.')
 
   return new Promise((resolve) => {
     later(COLLAPSE_MS, () => {
-      root.setAttribute('data-phase', 'silhouette')
+      root.setAttribute('data-phase', 'ink')
       setStatus('INK')
-      setHint('Identity inked.')
-      setLive('Ink intermediate holding; traits suspended.')
+      setHint('Ink intermediate holding.')
+      setLive('Ink blot intermediate — not a crossfade.')
     })
 
-    later(COLLAPSE_MS + HOLD_MS, () => {
-      root.setAttribute('data-phase', 'revealing')
+    later(COLLAPSE_MS + INK_HOLD_MS, () => {
+      root.setAttribute('data-phase', 'expanding')
       setStatus('EXPANDING')
-      setHint(`${TRAIT_TO} expanding.`)
-      setLive(`Expanding into Profile B (${TRAIT_TO}) with inherited Scout trait mark.`)
+      setHint('Profile B expanding with traits.')
+      setLive(`Expanding Profile B; inheriting ${TRAIT_A}.`)
     })
 
     later(TOTAL_MS, () => {
