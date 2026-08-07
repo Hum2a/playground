@@ -1,12 +1,16 @@
-<div class="eyc" data-eyecatch-transition data-phase="a">
+<div class="eyc" data-eyecatch-transition data-phase="before">
+  <p class="eyc__live" role="status" aria-live="polite" data-eyc-live>Before scene: analysis ready.</p>
+
   <section class="eyc__state eyc__state--a" data-eyc-state="a">
-    <p class="eyc__kicker">STATE A</p>
+    <p class="eyc__kicker">BEFORE SCENE</p>
     <h2 class="eyc__title">ANALYSIS READY</h2>
+    <p class="eyc__meta">Pre-mission briefing — systems nominal.</p>
     <button type="button" class="eyc__btn" data-eyc-trigger data-target="b">Continue</button>
   </section>
   <section class="eyc__state eyc__state--b" data-eyc-state="b" hidden>
-    <p class="eyc__kicker">STATE B</p>
+    <p class="eyc__kicker">AFTER SCENE</p>
     <h2 class="eyc__title">MISSION ACTIVE</h2>
+    <p class="eyc__meta">Post-interstitial — field deployment live.</p>
     <button type="button" class="eyc__btn" data-eyc-trigger data-target="a">Return</button>
   </section>
   <div class="eyc__interstitial" aria-hidden="true" data-eyc-interstitial>

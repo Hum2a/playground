@@ -4,6 +4,7 @@
 
 const PRIMARY_MS = 500
 const TOTAL_MS = 1150
+const SWAP_MS = Math.round(PRIMARY_MS * 0.45)
 
 let busy = false
 
@@ -21,14 +22,30 @@ function interstitial() {
   return document.querySelector('[data-eyc-interstitial]')
 }
 
+function setLive(text) {
+  const el = document.querySelector('[data-eyc-live]')
+  if (el) el.textContent = text
+}
+
+function phaseFor(target) {
+  return target === 'b' ? 'after' : 'before'
+}
+
+function liveFor(target) {
+  return target === 'b'
+    ? 'After scene: mission active.'
+    : 'Before scene: analysis ready.'
+}
+
 function swapTo(target) {
   const demo = root()
   if (!demo) return
-  demo.setAttribute('data-phase', target)
+  demo.setAttribute('data-phase', phaseFor(target))
   demo.querySelectorAll('[data-eyc-state]').forEach((el) => {
     const match = el.getAttribute('data-eyc-state') === target
     el.toggleAttribute('hidden', !match)
   })
+  setLive(liveFor(target))
 }
 
 export function runEyecatchTransition(target) {
@@ -42,16 +59,18 @@ export function runEyecatchTransition(target) {
     return Promise.resolve()
   }
 
+  setLive('Eyecatch interstitial playing…')
   overlay.classList.remove('eyc__interstitial--exit')
   overlay.classList.add('eyc__interstitial--active')
 
   return new Promise((resolve) => {
     window.setTimeout(() => {
       swapTo(target)
-    }, PRIMARY_MS * 0.45)
+    }, SWAP_MS)
 
     window.setTimeout(() => {
       overlay.classList.add('eyc__interstitial--exit')
+      setLive('Eyecatch panels exiting…')
     }, PRIMARY_MS)
 
     window.setTimeout(() => {
@@ -60,6 +79,12 @@ export function runEyecatchTransition(target) {
       resolve()
     }, TOTAL_MS)
   })
+}
+
+export function resetEyecatchTransition() {
+  busy = false
+  interstitial()?.classList.remove('eyc__interstitial--active', 'eyc__interstitial--exit')
+  swapTo('a')
 }
 
 function bind() {
@@ -74,11 +99,10 @@ function bind() {
   window.addEventListener('message', (event) => {
     const data = event.data
     if (data && typeof data === 'object' && data.type === 'restart') {
-      busy = false
-      interstitial()?.classList.remove('eyc__interstitial--active', 'eyc__interstitial--exit')
-      swapTo('a')
+      resetEyecatchTransition()
     }
   })
 }
 
 bind()
+resetEyecatchTransition()

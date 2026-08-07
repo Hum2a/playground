@@ -5,6 +5,14 @@
   --eyc-ink: #101820;
   --eyc-paper: #f4f7fa;
   --eyc-accent: #ff4d35;
+  --eyc-split-a-path: polygon(0 0, 100% 0, 0 100%);
+  --eyc-split-b-path: polygon(100% 0, 100% 100%, 0 100%);
+  --eyc-primary-ms: 500ms;
+  --eyc-total-ms: 1150ms;
+  --eyc-swap-ratio: 0.45;
+  --eyc-brand-delay: 180ms;
+  --eyc-brand-scale-rest: 0.8;
+  --eyc-brand-scale-active: 1;
   --eyc-ease: cubic-bezier(0.22, 0.9, 0.28, 1);
 
   position: relative;
@@ -21,6 +29,18 @@
 .eyc *::before,
 .eyc *::after {
   box-sizing: border-box;
+}
+
+.eyc__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .eyc__state {
@@ -44,6 +64,14 @@
   margin: 0;
   font-size: 28px;
   font-weight: 900;
+}
+
+.eyc__meta {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(244, 247, 250, 0.78);
 }
 
 .eyc__btn {
@@ -80,18 +108,18 @@
 .eyc__split {
   position: absolute;
   inset: 0;
-  transition: transform 500ms var(--eyc-ease);
+  transition: transform var(--eyc-primary-ms) var(--eyc-ease);
 }
 
 .eyc__split--a {
   background: var(--eyc-primary);
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+  clip-path: var(--eyc-split-a-path);
   transform: translate(-100%, -100%);
 }
 
 .eyc__split--b {
   background: var(--eyc-accent);
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  clip-path: var(--eyc-split-b-path);
   transform: translate(100%, 100%);
 }
 
@@ -107,8 +135,8 @@
   font-weight: 900;
   letter-spacing: 0.14em;
   opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 220ms ease 180ms, transform 320ms var(--eyc-ease) 160ms;
+  transform: scale(var(--eyc-brand-scale-rest));
+  transition: opacity 220ms ease var(--eyc-brand-delay), transform 320ms var(--eyc-ease) 160ms;
 }
 
 .eyc__interstitial--active {
@@ -123,7 +151,7 @@
 
 .eyc__interstitial--active .eyc__brand {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(var(--eyc-brand-scale-active));
 }
 
 .eyc__interstitial--exit .eyc__split--a {

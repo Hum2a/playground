@@ -1,16 +1,51 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "EyecatchTransition",
-  "type": "object",
-  "required": ["name", "animation"],
-  "properties": {
-    "name": { "type": "string", "const": "eyecatch-transition" },
-    "animation": {
-      "type": "object",
-      "properties": {
-        "primaryMs": { "type": "number", "const": 500 },
-        "totalMs": { "type": "number", "const": 1150 }
-      }
-    }
-  }
+  "name": "eyecatch-transition",
+  "intent": "Diagonal-split eyecatch interstitial (ALERT // BRIEF) covers a swap between BEFORE SCENE (ANALYSIS READY) and AFTER SCENE (MISSION ACTIVE).",
+  "catalogue": { "mha": "MHA-244", "ref": "SPX-2218" },
+  "copy": {
+    "beforeKicker": "BEFORE SCENE",
+    "beforeTitle": "ANALYSIS READY",
+    "beforeMeta": "Pre-mission briefing — systems nominal.",
+    "afterKicker": "AFTER SCENE",
+    "afterTitle": "MISSION ACTIVE",
+    "afterMeta": "Post-interstitial — field deployment live.",
+    "interstitialBrand": "ALERT // BRIEF",
+    "liveBefore": "Before scene: analysis ready.",
+    "liveAfter": "After scene: mission active.",
+    "livePlaying": "Eyecatch interstitial playing…",
+    "liveExiting": "Eyecatch panels exiting…"
+  },
+  "colours": {
+    "primary": "#38A3FF",
+    "ink": "#101820",
+    "paper": "#F4F7FA",
+    "accent": "#FF4D35"
+  },
+  "timing": {
+    "primaryMs": 500,
+    "swapMs": 225,
+    "totalMs": 1150,
+    "brandDelayMs": 180
+  },
+  "geometry": {
+    "splitAPath": "polygon(0 0, 100% 0, 0 100%)",
+    "splitBPath": "polygon(100% 0, 100% 100%, 0 100%)",
+    "brandScaleRest": 0.8,
+    "brandScaleActive": 1
+  },
+  "api": {
+    "run": "runEyecatchTransition(target)",
+    "reset": "resetEyecatchTransition()"
+  },
+  "reducedMotion": {
+    "behaviour": "Instant scene swap; interstitial panels hidden with no travel"
+  },
+  "acceptance": [
+    "Continue runs diagonal split interstitial then reveals AFTER SCENE MISSION ACTIVE",
+    "Return reverses interstitial and restores BEFORE SCENE ANALYSIS READY",
+    "Split clip-paths frozen via --eyc-split-a-path/--eyc-split-b-path; duration via --eyc-primary-ms 500",
+    "Content swap at swapMs 225 while interstitial fully covers viewport",
+    "Polite aria-live announces before/after scene labels and interstitial progress",
+    "Reduced motion swaps scenes instantly; restart resets to before scene"
+  ]
 }

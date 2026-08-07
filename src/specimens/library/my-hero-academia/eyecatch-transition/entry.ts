@@ -4,10 +4,10 @@ export const eyecatchTransition: Specimen = {
   ref: 'SPX-2218',
   title: 'Eyecatch Transition',
   blurb:
-    'A short diagonal-split eyecatch interstitial separates two major application states during a content swap.',
+    'A diagonal-split eyecatch interstitial separates BEFORE SCENE and AFTER SCENE during a content swap.',
   origin: {
     project: 'Original',
-    surface: 'My Hero Academia-inspired comic/anime action language',
+    surface: 'Broadcast interstitial — branded wipe between major states',
   },
   facets: {
     kind: 'transition',
@@ -24,15 +24,13 @@ export const eyecatchTransition: Specimen = {
     loops: false,
     respectsReducedMotion: true,
     reducedMotionNote:
-      'Under reduced motion, state swaps instantly with no interstitial panels.',
+      'Under reduced motion, scenes swap instantly with no interstitial panels.',
   },
   loadPayload: () => import('./payload').then((m) => m.default),
   preview: {
     width: 360,
     height: 300,
     background: 'dark',
-
     label: 'Eyecatch transition',
   },
-
 }
