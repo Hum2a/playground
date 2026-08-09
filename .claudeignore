@@ -1,0 +1,54 @@
+# Synced from .cursorignore and .cursorindexingignore.
+# Generated dependencies, build artifacts, and local state are not useful
+# agent context and may contain machine-local output or credentials.
+.git/
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.vite/
+.wrangler/
+.lighthouseci/
+test-results/
+playwright-report/
+blob-report/
+
+# Local environment and editor state
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+.vscode/
+.idea/
+.DS_Store
+
+# Scratch work produced during specimen generation
+.wip-aside/
+*.tsbuildinfo
+*.log
+
+# Skip generated and machine-local material from semantic indexing. Unlike
+# .cursorignore, this leaves the files available on demand when necessary.
+.git/
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.vite/
+.wrangler/
+.lighthouseci/
+test-results/
+playwright-report/
+blob-report/
+.wip-aside/
+
+# Local secrets, logs, and editor metadata
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+.vscode/
+.idea/
+.DS_Store
+*.tsbuildinfo
+*.log
