@@ -1,0 +1,193 @@
+/* SPX-414 Liquid Toggle — portable contract. Do not restyle to host tokens. */
+
+.lt {
+  --lt-bg: #111827;
+  --lt-border: #c7cdd8;
+  --lt-off: #236b91;
+  --lt-on: #72d6e8;
+  --lt-text: #e9eef5;
+  --lt-on-ms: 460ms;
+  --lt-off-ms: 360ms;
+  --lt-on-ease: cubic-bezier(0.2, 0.85, 0.25, 1);
+  --lt-off-ease: cubic-bezier(0.65, 0, 0.3, 1);
+  --lt-line: 10px;
+  --lt-amp: 3px;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 280px;
+  height: 100%;
+  padding: 1.5rem 1.25rem;
+  overflow: hidden;
+  color: var(--lt-text);
+  background: var(--lt-bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.lt *,
+.lt *::before,
+.lt *::after {
+  box-sizing: border-box;
+}
+
+.lt__kicker {
+  margin: 0;
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: color-mix(in srgb, var(--lt-text) 62%, var(--lt-bg));
+}
+
+.lt__vessel {
+  position: relative;
+  overflow: hidden;
+  width: 180px;
+  height: 68px;
+  margin: 0 auto;
+  padding: 0;
+  border: 2px solid var(--lt-border);
+  border-radius: 4px;
+  background: var(--lt-bg);
+  color: var(--lt-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.lt__vessel:focus {
+  outline: none;
+}
+
+.lt__vessel:focus-visible {
+  outline: 2px solid var(--lt-on);
+  outline-offset: 3px;
+}
+
+.lt__liquid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 18%;
+  background: var(--lt-off);
+  transition:
+    height var(--lt-off-ms) var(--lt-off-ease),
+    background-color var(--lt-off-ms) var(--lt-off-ease);
+}
+
+.lt__vessel[aria-pressed='true'] .lt__liquid {
+  height: 82%;
+  background: var(--lt-on);
+  transition-duration: var(--lt-on-ms);
+  transition-timing-function: var(--lt-on-ease);
+}
+
+.lt__waterline {
+  position: absolute;
+  left: -6%;
+  top: calc(var(--lt-line) / -2);
+  width: 112%;
+  height: var(--lt-line);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--lt-text) 55%, var(--lt-off)) 0 2px,
+    color-mix(in srgb, var(--lt-off) 70%, var(--lt-text)) 2px 100%
+  );
+  clip-path: polygon(
+    0% 45%,
+    12% 20%,
+    28% 55%,
+    46% 15%,
+    63% 50%,
+    78% 22%,
+    91% 48%,
+    100% 30%,
+    100% 100%,
+    0% 100%
+  );
+  transform: translateY(0);
+}
+
+.lt__vessel[aria-pressed='true'] .lt__waterline {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--lt-text) 80%, var(--lt-on)) 0 2px,
+    color-mix(in srgb, var(--lt-on) 55%, #236b91) 2px 100%
+  );
+}
+
+.lt__vessel.is-waving .lt__waterline {
+  animation: lt-wave var(--lt-off-ms) var(--lt-off-ease) both;
+}
+
+.lt__vessel[aria-pressed='true'].is-waving .lt__waterline {
+  animation-duration: var(--lt-on-ms);
+  animation-timing-function: var(--lt-on-ease);
+}
+
+@keyframes lt-wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  22% {
+    transform: translateY(calc(var(--lt-amp) * -1));
+  }
+  48% {
+    transform: translateY(var(--lt-amp));
+  }
+  72% {
+    transform: translateY(calc(var(--lt-amp) * -0.6));
+  }
+}
+
+.lt__label {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  line-height: 64px;
+  text-align: center;
+  text-shadow:
+    0 1px 0 var(--lt-bg),
+    0 -1px 0 var(--lt-bg),
+    1px 0 0 var(--lt-bg),
+    -1px 0 0 var(--lt-bg);
+}
+
+.lt__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt__liquid,
+  .lt__waterline {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .lt__vessel.is-waving .lt__waterline {
+    animation: none !important;
+    transform: translateY(0);
+  }
+}
+
+[data-force-reduced-motion='true'] .lt__liquid,
+[data-force-reduced-motion='true'] .lt__waterline {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .lt__vessel.is-waving .lt__waterline {
+  animation: none !important;
+  transform: translateY(0);
+}

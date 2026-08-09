@@ -613,4 +613,5 @@ export const specimenOrder: string[] = [
   'experience-bar-fill',
   'spell-circle-draw',
   'ripple-selection',
+  'liquid-toggle',
 ]

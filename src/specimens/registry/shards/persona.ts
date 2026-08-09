@@ -74,6 +74,7 @@ import { knockdownChain } from '../../library/persona/knockdown-chain/entry'
 import { letterScatterAssemble } from '../../library/persona/letter-scatter-assemble/entry'
 import { levelUpBurst } from '../../library/persona/level-up-burst/entry'
 import { liquidSplitTransition } from '../../library/persona/liquid-split-transition/entry'
+import { liquidToggle } from '../../library/persona/liquid-toggle/entry'
 import { lockedChainBreak } from '../../library/persona/locked-chain-break/entry'
 import { mangaCutInNotification } from '../../library/persona/manga-cut-in-notification/entry'
 import { mapConstruction } from '../../library/persona/map-construction/entry'
@@ -202,6 +203,7 @@ export const shard: Specimen[] = [
   letterScatterAssemble,
   levelUpBurst,
   liquidSplitTransition,
+  liquidToggle,
   lockedChainBreak,
   mangaCutInNotification,
   mapConstruction,

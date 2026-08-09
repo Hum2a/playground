@@ -1,0 +1,64 @@
+{
+  "name": "liquid-toggle",
+  "intent": "Rectangular vessel toggle: muted navy liquid at 18% (OFF) fills to cyan 82% (ON). Not a pill switch.",
+  "geometry": {
+    "widthPx": 180,
+    "heightPx": 68,
+    "borderPx": 2,
+    "radiusPxMax": 4
+  },
+  "levels": {
+    "offPercent": 18,
+    "onPercent": 82
+  },
+  "waterline": {
+    "heightPx": 10,
+    "amplitudePx": 3,
+    "waveOnlyDuringTravel": true,
+    "settledStatic": true
+  },
+  "colours": {
+    "background": "#111827",
+    "border": "#C7CDD8",
+    "offLiquid": "#236B91",
+    "onLiquid": "#72D6E8",
+    "text": "#E9EEF5"
+  },
+  "timing": {
+    "onMs": 460,
+    "onEasing": "cubic-bezier(0.2, 0.85, 0.25, 1)",
+    "offMs": 360,
+    "offEasing": "cubic-bezier(0.65, 0, 0.3, 1)"
+  },
+  "copy": {
+    "kicker": "VESSEL // STATE",
+    "off": "OFF",
+    "on": "ON",
+    "statusOff": "Off.",
+    "statusOn": "On."
+  },
+  "api": {
+    "toggle": "window.liquidToggle.toggle(root)",
+    "set": "window.liquidToggle.set(root, on)",
+    "init": "window.liquidToggle.init(scope?)",
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "control": "button",
+    "pressed": "aria-pressed",
+    "keys": ["Space", "Enter"],
+    "focusVisible": "2px solid #72D6E8",
+    "status": "polite"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate 18% or 82% fill; no travel; no waterline wave"
+  },
+  "constraints": {
+    "notPillToggle": true,
+    "noExternalAssets": true
+  }
+}
