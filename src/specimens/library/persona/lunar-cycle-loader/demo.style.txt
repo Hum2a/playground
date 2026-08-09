@@ -1,0 +1,153 @@
+/* SPX-457 Lunar Cycle Loader — portable contract. Do not restyle to host tokens. */
+
+.lcl {
+  --lcl-void: #09111d;
+  --lcl-dark: #111827;
+  --lcl-lit: #c7cdd8;
+  --lcl-cyan: #72d6e8;
+  --lcl-mute: #236b91;
+  --lcl-ink: #c7cdd8;
+  --lcl-moon: 72px;
+  --lcl-cycle: 8s;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.15rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  color: var(--lcl-ink);
+  background: var(--lcl-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.lcl *,
+.lcl *::before,
+.lcl *::after {
+  box-sizing: border-box;
+}
+
+.lcl__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+}
+
+.lcl__orbit {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid var(--lcl-mute);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.lcl__moon {
+  position: relative;
+  width: var(--lcl-moon);
+  height: var(--lcl-moon);
+  border-radius: 50%;
+}
+
+.lcl__body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--lcl-dark);
+}
+
+.lcl__lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #e9eef5 0%,
+    var(--lcl-lit) 48%,
+    #9aa6b5 100%
+  );
+}
+
+.lcl__shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--lcl-dark);
+  animation: lcl-phase var(--lcl-cycle) ease-in-out infinite;
+}
+
+.lcl__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 1.5px rgb(114 214 232 / 0.55),
+    0 0 0 1px rgb(114 214 232 / 0.28);
+  pointer-events: none;
+}
+
+.lcl__label {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--lcl-cyan);
+}
+
+/*
+ * Full lunation via shade occlusion.
+ * 0 new → crescent → quarter → gibbous → full → wane → new.
+ * Midpoint jump -100% → +100% is visually identical (full).
+ */
+@keyframes lcl-phase {
+  0% {
+    transform: translateX(0);
+  }
+  12.5% {
+    transform: translateX(-25%);
+  }
+  25% {
+    transform: translateX(-50%);
+  }
+  37.5% {
+    transform: translateX(-75%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  50.01% {
+    transform: translateX(100%);
+  }
+  62.5% {
+    transform: translateX(75%);
+  }
+  75% {
+    transform: translateX(50%);
+  }
+  87.5% {
+    transform: translateX(25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lcl__shade {
+    animation: none;
+    transform: translateX(-50%);
+  }
+}
+
+[data-force-reduced-motion='true'] .lcl__shade {
+  animation: none;
+  transform: translateX(-50%);
+}

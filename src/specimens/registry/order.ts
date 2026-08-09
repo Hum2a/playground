@@ -623,4 +623,5 @@ export const specimenOrder: string[] = [
   'refraction-hover',
   'cracked-disabled-state',
   'glass-badge-assembly',
+  'lunar-cycle-loader',
 ]

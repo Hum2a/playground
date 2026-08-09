@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or IOS (`SPX-1300`–`SPX-1557`); prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+ (AND reserves SPX-1558–SPX-1974)`; also reserve MHA (SPX-1975–SPX-2343); leftover beyond that is SPX-3523+ (P4 reserves SPX-2919–SPX-3109; NF reserves SPX-3110–SPX-3306; PS reserves SPX-3307–SPX-3522); also reserve NR SPX-2344–SPX-2918.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **44 / 238** complete.
+- Progress: **45 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 44 |
-| Open | 194 |
+| Done | 45 |
+| Open | 193 |
 
 ## Visual grammar
 
@@ -74,6 +74,7 @@
 | P3-034 | `SPX-432` | `refraction-hover` | Refraction Hover |
 | P3-035 | `SPX-433` | `cracked-disabled-state` | Cracked Disabled State |
 | P3-036 | `SPX-434` | `glass-badge-assembly` | Glass Badge Assembly |
+| P3-060 | `SPX-457` | `lunar-cycle-loader` | Lunar Cycle Loader |
 
 | P3-124 | `SPX-521` | `blue-flame-button-hover` | Blue Flame Button Hover |
 | P3-125 | `SPX-522` | `energy-charge-confirmation` | Energy Charge Confirmation |
@@ -185,7 +186,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Moon / lunar cycle
 
 - [x] **P3-059** · `SPX-456` · **Moon Phase Progress** — moon.
-- [ ] **P3-060** · `SPX-457` · **Lunar Cycle Loader** — moon.
+- [x] **P3-060** · `SPX-457` · **Lunar Cycle Loader** — moon.
 - [ ] **P3-061** · `SPX-458` · **Moonrise Reveal** — moon.
 - [ ] **P3-062** · `SPX-459` · **Eclipse Transition** — moon.
 - [ ] **P3-063** · `SPX-460` · **Crescent Wipe** — moon.

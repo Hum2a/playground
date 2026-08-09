@@ -1,0 +1,48 @@
+{
+  "name": "lunar-cycle-loader",
+  "intent": "Looping lunar-phase loader: 72px geometric moon cycles new through full and back in 8s beside a static LOADING label.",
+  "surface": {
+    "widthPx": 420,
+    "heightPx": 300
+  },
+  "moon": {
+    "diameterPx": 72,
+    "lit": "#C7CDD8",
+    "dark": "#111827",
+    "rim": "#72D6E8"
+  },
+  "orbit": {
+    "strokePx": 1,
+    "colour": "#236B91"
+  },
+  "timing": {
+    "cycleMs": 8000,
+    "easing": "ease-in-out",
+    "loop": true
+  },
+  "phases": [
+    "NEW",
+    "CRESCENT",
+    "QUARTER",
+    "GIBBOUS",
+    "FULL",
+    "WANING GIBBOUS",
+    "LAST QUARTER",
+    "WANING CRESCENT"
+  ],
+  "label": "LOADING",
+  "colours": {
+    "void": "#09111D",
+    "dark": "#111827",
+    "lit": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Freeze shade at quarter (translateX -50%); orbit and LOADING remain visible"
+  }
+}
