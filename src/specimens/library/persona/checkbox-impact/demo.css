@@ -1,0 +1,185 @@
+/* SPX-147 Checkbox Impact — portable contract. Do not restyle to host tokens. */
+
+.ci {
+  --ci-void: #111827;
+  --ci-face: #111827;
+  --ci-paper: #e9eef5;
+  --ci-ok: #72d6e8;
+  --ci-back: #236b91;
+  --ci-line: #6a8499;
+  --ci-size: 34px;
+  --ci-border: 2px;
+  --ci-offset: 5px;
+  --ci-impact: 90ms;
+  --ci-check: 220ms;
+  --ci-settle: 100ms;
+  --ci-uncheck: 160ms;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  min-height: 240px;
+  height: 100%;
+  padding: 1.35rem 1.25rem;
+  overflow: hidden;
+  color: var(--ci-paper);
+  background: var(--ci-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.ci *,
+.ci *::before,
+.ci *::after {
+  box-sizing: border-box;
+}
+
+.ci__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+}
+
+.ci__control {
+  position: relative;
+  flex: 0 0 calc(var(--ci-size) + var(--ci-offset));
+  width: calc(var(--ci-size) + var(--ci-offset));
+  height: calc(var(--ci-size) + var(--ci-offset));
+}
+
+.ci__input {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: var(--ci-size);
+  height: var(--ci-size);
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ci__input:focus {
+  outline: none;
+}
+
+.ci__input:focus-visible + .ci__visual {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+.ci__visual {
+  position: relative;
+  display: block;
+  width: var(--ci-size);
+  height: var(--ci-size);
+}
+
+.ci__back {
+  position: absolute;
+  inset: 0;
+  background: var(--ci-back);
+  transform: translate(var(--ci-offset), var(--ci-offset));
+  border-radius: 1px;
+}
+
+.ci__face {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--ci-size);
+  height: var(--ci-size);
+  border: var(--ci-border) solid var(--ci-line);
+  border-radius: 1px;
+  background: var(--ci-face);
+}
+
+.ci__input:checked + .ci__visual .ci__face {
+  border-color: var(--ci-ok);
+  animation: ci-impact var(--ci-impact) ease-out both;
+}
+
+.ci__mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+}
+
+.ci__check {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  transition: stroke-dashoffset var(--ci-uncheck) ease;
+}
+
+.ci__input:checked + .ci__visual .ci__check {
+  stroke-dashoffset: 0;
+  transition-duration: var(--ci-check);
+}
+
+.ci__input:checked + .ci__visual .ci__mark {
+  animation: ci-settle var(--ci-settle) ease-out var(--ci-check) both;
+}
+
+.ci__text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+@keyframes ci-impact {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  55% {
+    transform: translate(3px, 3px) scale(0.94);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes ci-settle {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ci__face,
+  .ci__mark,
+  .ci__check {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ci__input:checked + .ci__visual .ci__check {
+    stroke-dashoffset: 0;
+  }
+
+  .ci__input:checked + .ci__visual .ci__mark {
+    transform: scale(1);
+  }
+}
+
+[data-force-reduced-motion='true'] .ci__face,
+[data-force-reduced-motion='true'] .ci__mark,
+[data-force-reduced-motion='true'] .ci__check {
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .ci__input:checked + .ci__visual .ci__check {
+  stroke-dashoffset: 0;
+}
+
+[data-force-reduced-motion='true'] .ci__input:checked + .ci__visual .ci__mark {
+  transform: scale(1);
+}

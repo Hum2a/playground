@@ -1,0 +1,39 @@
+{
+  "name": "checkbox-impact",
+  "intent": "Native checkbox with a 34×34 hard-backed square; checkmark draws on impact then settles.",
+  "box": {
+    "sizePx": 34,
+    "borderPx": 2,
+    "radiusPx": 1,
+    "backingOffsetPx": 5,
+    "foreground": "#111827",
+    "backing": "#236B91"
+  },
+  "checkmark": {
+    "strokePx": 2,
+    "colour": "#72D6E8",
+    "drawMs": 220,
+    "inlineSvg": true
+  },
+  "timing": {
+    "impactMs": 90,
+    "checkMs": 220,
+    "settleMs": 100,
+    "uncheckMs": 160
+  },
+  "copy": {
+    "label": "ACCEPT TERMS"
+  },
+  "semantics": {
+    "nativeCheckbox": true,
+    "spaceToggles": true,
+    "cssOnly": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Snap checked/unchecked immediately; no draw or scale"
+  }
+}

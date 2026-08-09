@@ -645,4 +645,5 @@ export const specimenOrder: string[] = [
   'graphic-finisher-completion',
   'invalid-field-slash',
   'successful-field-stamp',
+  'checkbox-impact',
 ]
