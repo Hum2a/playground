@@ -1,0 +1,39 @@
+{
+  "name": "lunar-calendar-change",
+  "intent": "JUNE 2026 heading stays while five deterministic dates slide L/R and a 64px moon crossfades in 360ms. No system clock.",
+  "surface": {
+    "widthPx": 420,
+    "heightPx": 360
+  },
+  "heading": "JUNE 2026",
+  "moon": {
+    "diameterPx": 64
+  },
+  "timing": {
+    "transitionMs": 360
+  },
+  "dates": [
+    { "day": 17, "month": "JUN", "weekday": "WEDNESDAY", "phase": "CRESCENT" },
+    { "day": 18, "month": "JUN", "weekday": "THURSDAY", "phase": "CRESCENT" },
+    { "day": 19, "month": "JUN", "weekday": "FRIDAY", "phase": "HALF" },
+    { "day": 20, "month": "JUN", "weekday": "SATURDAY", "phase": "GIBBOUS" },
+    { "day": 21, "month": "JUN", "weekday": "SUNDAY", "phase": "GIBBOUS" }
+  ],
+  "dateCount": 5,
+  "colours": {
+    "void": "#09111D",
+    "panel": "#13263A",
+    "moon": "#111827",
+    "ink": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91",
+    "denied": "#C94F58"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Instant date and moon; no slide or crossfade"
+  }
+}

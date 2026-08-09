@@ -1,0 +1,303 @@
+/* SPX-466 Lunar Calendar Change — portable contract. Do not restyle to host tokens. */
+
+.lcc {
+  --lcc-void: #09111d;
+  --lcc-panel: #13263a;
+  --lcc-dark: #111827;
+  --lcc-ink: #c7cdd8;
+  --lcc-cyan: #72d6e8;
+  --lcc-mute: #236b91;
+  --lcc-moon: 64px;
+  --lcc-move: 360ms;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 360px;
+  height: 100%;
+  padding: 1.15rem;
+  overflow: hidden;
+  color: var(--lcc-ink);
+  background: var(--lcc-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.lcc *,
+.lcc *::before,
+.lcc *::after {
+  box-sizing: border-box;
+}
+
+.lcc__heading {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--lcc-cyan);
+}
+
+.lcc__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lcc__stage {
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  width: min(100%, 280px);
+}
+
+.lcc__moons {
+  position: relative;
+  width: var(--lcc-moon);
+  height: var(--lcc-moon);
+}
+
+.lcc__moon {
+  position: absolute;
+  inset: 0;
+  width: var(--lcc-moon);
+  height: var(--lcc-moon);
+  border-radius: 50%;
+}
+
+.lcc__moon--current {
+  clip-path: inset(0 0 0 0);
+}
+
+.lcc__moon--next {
+  opacity: 0;
+  clip-path: inset(0 0 0 100%);
+}
+
+.lcc__body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--lcc-dark);
+}
+
+.lcc__lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #e9eef5 0%,
+    var(--lcc-ink) 48%,
+    #9aa6b5 100%
+  );
+}
+
+.lcc__shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--lcc-dark);
+  transform: translateX(-28%);
+}
+
+.lcc__moon[data-phase='crescent'] .lcc__shade {
+  transform: translateX(-28%);
+}
+
+.lcc__moon[data-phase='half'] .lcc__shade {
+  transform: translateX(-50%);
+}
+
+.lcc__moon[data-phase='gibbous'] .lcc__shade {
+  transform: translateX(-78%);
+}
+
+.lcc__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 1.5px rgb(114 214 232 / 0.5),
+    0 0 0 1px rgb(35 107 145 / 0.7);
+  pointer-events: none;
+}
+
+.lcc__dates {
+  position: relative;
+  width: 100%;
+  height: 5.4rem;
+  overflow: hidden;
+}
+
+.lcc__date {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.18rem;
+}
+
+.lcc__date--next {
+  transform: translateX(110%);
+  opacity: 0;
+}
+
+.lcc__day {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--lcc-ink);
+}
+
+.lcc__weekday {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lcc-cyan);
+}
+
+.lcc__phase {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--lcc-mute);
+}
+
+.lcc[data-phase='slide'][data-dir='next'] .lcc__date--current {
+  animation: lcc-out-left var(--lcc-move) ease both;
+}
+
+.lcc[data-phase='slide'][data-dir='next'] .lcc__date--next {
+  animation: lcc-in-right var(--lcc-move) ease both;
+}
+
+.lcc[data-phase='slide'][data-dir='prev'] .lcc__date--current {
+  animation: lcc-out-right var(--lcc-move) ease both;
+}
+
+.lcc[data-phase='slide'][data-dir='prev'] .lcc__date--next {
+  animation: lcc-in-left var(--lcc-move) ease both;
+}
+
+.lcc[data-phase='slide'] .lcc__moon--current {
+  animation: lcc-moon-out var(--lcc-move) ease both;
+}
+
+.lcc[data-phase='slide'] .lcc__moon--next {
+  animation: lcc-moon-in var(--lcc-move) ease both;
+}
+
+.lcc__controls {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.lcc__btn {
+  min-width: 7.2rem;
+  padding: 0.48rem 0.75rem;
+  border: 1px solid var(--lcc-mute);
+  background: var(--lcc-panel);
+  color: var(--lcc-ink);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lcc__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.lcc__btn:focus {
+  outline: none;
+}
+
+.lcc__btn:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 2px;
+}
+
+@keyframes lcc-out-left {
+  to {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+}
+
+@keyframes lcc-in-right {
+  from {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes lcc-out-right {
+  to {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
+
+@keyframes lcc-in-left {
+  from {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes lcc-moon-out {
+  to {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
+@keyframes lcc-moon-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lcc[data-phase='slide'] .lcc__date--current,
+  .lcc[data-phase='slide'] .lcc__date--next,
+  .lcc[data-phase='slide'] .lcc__moon--current,
+  .lcc[data-phase='slide'] .lcc__moon--next {
+    animation: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .lcc[data-phase='slide'] .lcc__date--current,
+[data-force-reduced-motion='true'] .lcc[data-phase='slide'] .lcc__date--next,
+[data-force-reduced-motion='true'] .lcc[data-phase='slide'] .lcc__moon--current,
+[data-force-reduced-motion='true'] .lcc[data-phase='slide'] .lcc__moon--next {
+  animation: none;
+}
