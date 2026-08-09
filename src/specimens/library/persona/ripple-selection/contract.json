@@ -1,0 +1,90 @@
+{
+  "name": "ripple-selection",
+  "intent": "Selecting a row disturbs a dark blue liquid surface with three thin geometric cyan rings from the row centre, then locks the choice.",
+  "copy": {
+    "kicker": "SURFACE // SELECT",
+    "options": ["OPTION A", "OPTION B", "OPTION C"],
+    "status": "{name} selected."
+  },
+  "options": {
+    "count": 3,
+    "labels": ["OPTION A", "OPTION B", "OPTION C"],
+    "selectedOpacity": 1,
+    "unselectedOpacity": 0.55,
+    "rowBorderPx": 2,
+    "marker": "angular-chevron"
+  },
+  "colours": {
+    "void": "#041018",
+    "plate": "#071A2C",
+    "row": "#08182A",
+    "edge": "#163A58",
+    "mid": "#236B91",
+    "cyan": "#72D6E8",
+    "ink": "#D7EEF6"
+  },
+  "ripple": {
+    "ringCount": 3,
+    "strokePx": 2,
+    "initialScale": 0.1,
+    "finalScale": 2.4,
+    "durationMs": 520,
+    "staggerMs": 45,
+    "origin": "selected-row-centre",
+    "clip": "row-and-plate",
+    "aesthetic": "graphic-geometric",
+    "notMaterialInk": true,
+    "noRandomDistortion": true,
+    "rings": [
+      {
+        "id": 1,
+        "stroke": "#72D6E8",
+        "delayMs": 0,
+        "points": "0,-22 13,-17 21,-6 20,9 10,20 -1,22 -14,17 -21,4 -18,-10 -9,-20"
+      },
+      {
+        "id": 2,
+        "stroke": "#236B91",
+        "delayMs": 45,
+        "points": "1,-20 14,-15 20,-4 19,11 8,21 -3,21 -16,14 -21,1 -16,-12 -7,-20"
+      },
+      {
+        "id": 3,
+        "stroke": "#236B91",
+        "delayMs": 90,
+        "points": "-1,-21 11,-19 20,-8 21,7 12,19 0,23 -13,18 -22,5 -19,-9 -10,-19"
+      }
+    ]
+  },
+  "timing": {
+    "selectionMs": 120,
+    "emphasisMs": 180,
+    "rippleMs": 520,
+    "staggerMs": 45,
+    "totalMaxMs": 700,
+    "easing": "cubic-bezier(0.22, 0.61, 0.36, 1)"
+  },
+  "preview": {
+    "width": 620,
+    "height": 400
+  },
+  "api": {
+    "select": "window.rippleSelection.select(root, index)",
+    "init": "window.rippleSelection.init(scope?)",
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "control": "button[role=radio]",
+    "group": "radiogroup",
+    "keys": ["ArrowUp", "ArrowDown", "Enter"],
+    "status": "polite",
+    "focusVisible": "2px solid #72D6E8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate selection; no expanding ripple; static cyan geometric ring plus stronger border"
+  }
+}

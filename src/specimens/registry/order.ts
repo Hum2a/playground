@@ -612,4 +612,5 @@ export const specimenOrder: string[] = [
   'gil-counter-roll',
   'experience-bar-fill',
   'spell-circle-draw',
+  'ripple-selection',
 ]

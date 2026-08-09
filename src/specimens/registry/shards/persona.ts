@@ -104,6 +104,7 @@ import { ransomNoteReveal } from '../../library/persona/ransom-note-reveal/entry
 import { redactedContentLock } from '../../library/persona/redacted-content-lock/entry'
 import { redactionReveal } from '../../library/persona/redaction-reveal/entry'
 import { ripplePortalTransition } from '../../library/persona/ripple-portal-transition/entry'
+import { rippleSelection } from '../../library/persona/ripple-selection/entry'
 import { scannerSearch } from '../../library/persona/scanner-search/entry'
 import { shadowSelfReveal } from '../../library/persona/shadow-self-reveal/entry'
 import { skillInheritanceSelect } from '../../library/persona/skill-inheritance-select/entry'
@@ -231,6 +232,7 @@ export const shard: Specimen[] = [
   redactedContentLock,
   redactionReveal,
   ripplePortalTransition,
+  rippleSelection,
   scannerSearch,
   shadowSelfReveal,
   skillInheritanceSelect,

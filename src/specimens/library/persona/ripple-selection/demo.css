@@ -1,0 +1,289 @@
+/* SPX-411 Ripple Selection — portable contract. Do not restyle to host tokens. */
+
+.rs {
+  --rs-void: #041018;
+  --rs-plate: #071a2c;
+  --rs-navy: #0a2238;
+  --rs-row: #08182a;
+  --rs-edge: #163a58;
+  --rs-mid: #236b91;
+  --rs-cyan: #72d6e8;
+  --rs-ink: #d7eef6;
+  --rs-mute: #6a8aa3;
+  --rs-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --rs-select-ms: 120ms;
+  --rs-ripple-ms: 520ms;
+  --rs-emphasis-ms: 180ms;
+  --rs-stagger: 45ms;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  gap: 0.85rem;
+  padding: 1.5rem 1.25rem;
+  overflow: hidden;
+  color: var(--rs-ink);
+  background:
+    radial-gradient(120% 80% at 50% 0%, #0b2a44 0%, transparent 55%),
+    var(--rs-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.rs *,
+.rs *::before,
+.rs *::after {
+  box-sizing: border-box;
+}
+
+.rs__kicker {
+  margin: 0;
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--rs-mute);
+}
+
+.rs__plate {
+  position: relative;
+  overflow: hidden;
+  width: min(420px, 100%);
+  padding: 1rem 0.9rem 1.05rem;
+  border: 2px solid var(--rs-edge);
+  background:
+    linear-gradient(180deg, rgba(35, 107, 145, 0.18), transparent 42%),
+    var(--rs-plate);
+}
+
+.rs__fluid {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.rs__line {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: color-mix(in srgb, var(--rs-cyan) 18%, transparent);
+}
+
+.rs__line--1 {
+  top: 22%;
+}
+.rs__line--2 {
+  top: 44%;
+}
+.rs__line--3 {
+  top: 66%;
+}
+.rs__line--4 {
+  top: 84%;
+}
+
+.rs__list {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.rs__row {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 52px;
+  margin: 0;
+  padding: 0 0.9rem 0 0.85rem;
+  border: 2px solid var(--rs-edge);
+  background: var(--rs-row);
+  color: var(--rs-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    opacity var(--rs-select-ms) var(--rs-ease),
+    border-color var(--rs-select-ms) var(--rs-ease),
+    background-color var(--rs-emphasis-ms) var(--rs-ease),
+    color var(--rs-select-ms) var(--rs-ease);
+}
+
+.rs__row.is-selected {
+  opacity: 1;
+  border-color: var(--rs-cyan);
+  color: #eefaff;
+}
+
+.rs__row.is-flash {
+  background: color-mix(in srgb, var(--rs-cyan) 16%, var(--rs-row));
+}
+
+.rs__row:focus {
+  outline: none;
+}
+
+.rs__row:focus-visible {
+  outline: 2px solid var(--rs-cyan);
+  outline-offset: 2px;
+}
+
+.rs__ripple {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 160px;
+  height: 160px;
+  margin: -80px 0 0 -80px;
+  overflow: visible;
+}
+
+.rs__ring {
+  fill: none;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  transform: scale(0.1);
+  opacity: 0;
+}
+
+.rs__ring--1 {
+  stroke: var(--rs-cyan);
+}
+
+.rs__ring--2,
+.rs__ring--3 {
+  stroke: var(--rs-mid);
+}
+
+.rs__row.is-rippling .rs__ring--1 {
+  animation: rs-ripple var(--rs-ripple-ms) var(--rs-ease) forwards;
+}
+
+.rs__row.is-rippling .rs__ring--2 {
+  animation: rs-ripple var(--rs-ripple-ms) var(--rs-ease) var(--rs-stagger)
+    forwards;
+}
+
+.rs__row.is-rippling .rs__ring--3 {
+  animation: rs-ripple var(--rs-ripple-ms) var(--rs-ease)
+    calc(var(--rs-stagger) * 2) forwards;
+}
+
+@keyframes rs-ripple {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.95;
+  }
+  62% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.rs__mark {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 10px;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  background: var(--rs-cyan);
+  opacity: 0;
+  transform: translateX(-2px);
+  transition:
+    opacity var(--rs-select-ms) var(--rs-ease),
+    transform var(--rs-select-ms) var(--rs-ease);
+}
+
+.rs__row.is-selected .rs__mark {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.rs__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.rs__static {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border: 2px solid var(--rs-cyan);
+  clip-path: polygon(
+    50% 0%,
+    86% 14%,
+    100% 50%,
+    86% 86%,
+    50% 100%,
+    14% 86%,
+    0% 50%,
+    14% 14%
+  );
+  opacity: 0;
+}
+
+.rs__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rs__row {
+    transition: none;
+  }
+
+  .rs__row.is-rippling .rs__ring,
+  .rs__ring {
+    animation: none !important;
+    transform: scale(0.1);
+    opacity: 0;
+  }
+
+  .rs__row.is-selected .rs__static {
+    opacity: 0.9;
+  }
+
+  .rs__mark {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .rs__row {
+  transition: none;
+}
+
+[data-force-reduced-motion='true'] .rs__row.is-rippling .rs__ring,
+[data-force-reduced-motion='true'] .rs__ring {
+  animation: none !important;
+  transform: scale(0.1);
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .rs__row.is-selected .rs__static {
+  opacity: 0.9;
+}
+
+[data-force-reduced-motion='true'] .rs__mark {
+  transition: none;
+}
