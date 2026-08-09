@@ -1,0 +1,154 @@
+/* SPX-465 Moon Orbit Selection — portable contract. Do not restyle to host tokens. */
+
+.mos {
+  --mos-void: #09111d;
+  --mos-panel: #13263a;
+  --mos-dark: #111827;
+  --mos-ink: #c7cdd8;
+  --mos-cyan: #72d6e8;
+  --mos-mute: #236b91;
+  --mos-orbit: 260px;
+  --mos-moon: 34px;
+  --mos-move: 420ms;
+  --mos-angle: 0deg;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 420px;
+  height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  color: var(--mos-ink);
+  background: var(--mos-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.mos *,
+.mos *::before,
+.mos *::after {
+  box-sizing: border-box;
+}
+
+.mos__kicker {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mos-mute);
+}
+
+.mos__field {
+  position: relative;
+  width: 420px;
+  height: 420px;
+}
+
+.mos__orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--mos-orbit);
+  height: var(--mos-orbit);
+  margin: -130px 0 0 -130px;
+  border: 1px solid var(--mos-mute);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mos__marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--mos-moon);
+  height: var(--mos-moon);
+  margin: -17px 0 0 -17px;
+  transform: rotate(var(--mos-angle)) translateY(-130px) rotate(calc(-1 * var(--mos-angle)));
+  transition: transform var(--mos-move) ease-in-out;
+  pointer-events: none;
+}
+
+.mos__crescent {
+  display: block;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--mos-ink);
+  box-shadow: 0 0 10px rgb(114 214 232 / 0.35);
+  overflow: hidden;
+  position: relative;
+}
+
+.mos__crescent::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 11px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--mos-void);
+}
+
+.mos__opt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  padding: 0.28rem 0.4rem;
+  border: 0;
+  background: transparent;
+  color: rgb(199 205 216 / 0.62);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--slot)) translateY(-178px)
+    rotate(calc(-1 * var(--slot)));
+}
+
+.mos__opt::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0.9em;
+  height: 2px;
+  background: var(--mos-cyan);
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.mos__opt[aria-checked='true'] {
+  color: var(--mos-cyan);
+  text-shadow: 0 0 12px rgb(114 214 232 / 0.45);
+}
+
+.mos__opt[aria-checked='true']::after {
+  opacity: 1;
+}
+
+.mos__opt:focus {
+  outline: none;
+}
+
+.mos__opt:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mos__marker {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .mos__marker {
+  transition: none;
+}

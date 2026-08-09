@@ -630,4 +630,5 @@ export const specimenOrder: string[] = [
   'lunar-deadline',
   'moon-phase-pagination',
   'eclipse-loading-state',
+  'moon-orbit-selection',
 ]

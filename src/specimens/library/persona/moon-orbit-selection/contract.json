@@ -1,0 +1,43 @@
+{
+  "name": "moon-orbit-selection",
+  "intent": "Five fixed orbit options; a 34px crescent travels the shortest ±180° arc on a 260px 1px orbit in 420ms. Menu does not rotate.",
+  "surface": {
+    "widthPx": 620,
+    "heightPx": 420
+  },
+  "options": ["HOME", "STATUS", "MAP", "ARCHIVE", "SETTINGS"],
+  "optionCount": 5,
+  "orbit": {
+    "diameterPx": 260,
+    "strokePx": 1,
+    "colour": "#236B91"
+  },
+  "moon": {
+    "diameterPx": 34
+  },
+  "timing": {
+    "movementMs": 420,
+    "easing": "ease-in-out"
+  },
+  "keyboard": {
+    "clockwise": ["ArrowRight", "ArrowDown"],
+    "counterclockwise": ["ArrowLeft", "ArrowUp"],
+    "confirm": ["Enter"]
+  },
+  "colours": {
+    "void": "#09111D",
+    "panel": "#13263A",
+    "moon": "#111827",
+    "ink": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91",
+    "denied": "#C94F58"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Moon jumps to target; no travel"
+  }
+}
