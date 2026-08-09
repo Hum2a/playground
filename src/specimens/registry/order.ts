@@ -644,4 +644,5 @@ export const specimenOrder: string[] = [
   'filter-slash',
   'graphic-finisher-completion',
   'invalid-field-slash',
+  'successful-field-stamp',
 ]

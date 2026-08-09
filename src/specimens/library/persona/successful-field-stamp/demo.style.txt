@@ -1,0 +1,269 @@
+/* SPX-146 Successful Field Stamp — portable contract. Do not restyle to host tokens. */
+
+.sfs {
+  --sfs-void: #111827;
+  --sfs-paper: #e9eef5;
+  --sfs-ink: #111827;
+  --sfs-mute: #6a8499;
+  --sfs-line: #2a3a4d;
+  --sfs-ok: #72d6e8;
+  --sfs-back: #236b91;
+  --sfs-stamp-w: 76px;
+  --sfs-stamp-h: 46px;
+  --sfs-entry: 280ms;
+  --sfs-settle: 120ms;
+  --sfs-ease: cubic-bezier(0.15, 0.85, 0.25, 1);
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  min-height: 240px;
+  height: 100%;
+  padding: 1.25rem 1.2rem;
+  overflow: hidden;
+  color: var(--sfs-paper);
+  background: var(--sfs-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.sfs *,
+.sfs *::before,
+.sfs *::after {
+  box-sizing: border-box;
+}
+
+.sfs__label {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+}
+
+.sfs__row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 100%;
+}
+
+.sfs__field {
+  width: 280px;
+  max-width: calc(100% - 92px);
+  height: 52px;
+}
+
+.sfs__input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0.9rem;
+  border: 2px solid var(--sfs-line);
+  background: var(--sfs-paper);
+  color: var(--sfs-ink);
+  font: 700 0.95rem/1.2 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.sfs__input:focus {
+  outline: none;
+}
+
+.sfs__input:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+.sfs[data-phase='enter'] .sfs__input,
+.sfs[data-phase='success'] .sfs__input {
+  border-color: var(--sfs-ok);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--sfs-ok) 45%, transparent);
+}
+
+.sfs__stamp {
+  position: relative;
+  flex: 0 0 84px;
+  width: 84px;
+  height: 54px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(24px, -8px) rotate(-18deg);
+}
+
+.sfs__stamp-scale {
+  display: block;
+  width: var(--sfs-stamp-w);
+  height: var(--sfs-stamp-h);
+  transform: scale(0.75);
+  transform-origin: center center;
+}
+
+.sfs__stamp-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--sfs-stamp-w);
+  height: var(--sfs-stamp-h);
+  background: var(--sfs-back);
+  transform: translate(4px, 4px);
+  opacity: 0;
+}
+
+.sfs__stamp-face {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--sfs-stamp-w);
+  height: var(--sfs-stamp-h);
+  border: 3px solid var(--sfs-ok);
+  background: var(--sfs-void);
+  color: var(--sfs-ok);
+  font: 800 0.92rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.16em;
+}
+
+.sfs[data-phase='enter'] .sfs__stamp,
+.sfs[data-phase='success'] .sfs__stamp {
+  opacity: 1;
+}
+
+.sfs[data-phase='enter'] .sfs__stamp {
+  animation: sfs-travel var(--sfs-entry) var(--sfs-ease) both;
+}
+
+.sfs[data-phase='enter'] .sfs__stamp-scale {
+  animation: sfs-scale 340ms var(--sfs-ease) both;
+}
+
+.sfs[data-phase='enter'] .sfs__stamp-back {
+  animation: sfs-back 1ms linear 220ms both;
+}
+
+.sfs[data-phase='success'] .sfs__stamp {
+  transform: translate(0, 0) rotate(-8deg);
+}
+
+.sfs[data-phase='success'] .sfs__stamp-scale {
+  transform: scale(1);
+}
+
+.sfs[data-phase='success'] .sfs__stamp-back {
+  opacity: 1;
+}
+
+.sfs__btn {
+  margin: 0.2rem 0 0;
+  padding: 0.5rem 0.95rem;
+  border: 2px solid var(--sfs-line);
+  background: transparent;
+  color: var(--sfs-paper);
+  font: 800 0.68rem/1.2 inherit;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+}
+
+.sfs__btn:focus {
+  outline: none;
+}
+
+.sfs__btn:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+.sfs__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.sfs__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes sfs-travel {
+  from {
+    transform: translate(24px, -8px) rotate(-18deg);
+  }
+  to {
+    transform: translate(0, 0) rotate(-8deg);
+  }
+}
+
+@keyframes sfs-scale {
+  0% {
+    transform: scale(0.75);
+  }
+  65% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sfs-back {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sfs__stamp,
+  .sfs__stamp-scale,
+  .sfs__stamp-back {
+    animation: none !important;
+  }
+
+  .sfs[data-phase='enter'] .sfs__stamp,
+  .sfs[data-phase='success'] .sfs__stamp {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-8deg);
+  }
+
+  .sfs[data-phase='enter'] .sfs__stamp-scale,
+  .sfs[data-phase='success'] .sfs__stamp-scale {
+    transform: scale(1);
+  }
+
+  .sfs[data-phase='enter'] .sfs__stamp-back,
+  .sfs[data-phase='success'] .sfs__stamp-back {
+    opacity: 1;
+  }
+}
+
+[data-force-reduced-motion='true'] .sfs__stamp,
+[data-force-reduced-motion='true'] .sfs__stamp-scale,
+[data-force-reduced-motion='true'] .sfs__stamp-back {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .sfs[data-phase='enter'] .sfs__stamp,
+[data-force-reduced-motion='true'] .sfs[data-phase='success'] .sfs__stamp {
+  opacity: 1;
+  transform: translate(0, 0) rotate(-8deg);
+}
+
+[data-force-reduced-motion='true'] .sfs[data-phase='enter'] .sfs__stamp-scale,
+[data-force-reduced-motion='true'] .sfs[data-phase='success'] .sfs__stamp-scale {
+  transform: scale(1);
+}
+
+[data-force-reduced-motion='true'] .sfs[data-phase='enter'] .sfs__stamp-back,
+[data-force-reduced-motion='true'] .sfs[data-phase='success'] .sfs__stamp-back {
+  opacity: 1;
+}

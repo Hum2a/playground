@@ -1,0 +1,50 @@
+{
+  "name": "successful-field-stamp",
+  "intent": "Editorial success: a 76×46 OK stamp lands beside a valid email field, overshoots once, and settles with a cyan success border.",
+  "surface": {
+    "previewWidthPx": 480,
+    "previewHeightPx": 240
+  },
+  "stamp": {
+    "widthPx": 76,
+    "heightPx": 46,
+    "borderPx": 3,
+    "text": "OK",
+    "initialScale": 0.75,
+    "finalScale": 1,
+    "overshootScale": 1.05,
+    "rotateFromDeg": -18,
+    "rotateToDeg": -8,
+    "travelXPx": 24,
+    "travelYPx": -8,
+    "entryMs": 280,
+    "settleMs": 120,
+    "overshootAtMs": 220,
+    "easing": "cubic-bezier(.15,.85,.25,1)",
+    "backingColour": "#236B91"
+  },
+  "copy": {
+    "label": "EMAIL",
+    "value": "user@example.com",
+    "trigger": "VALIDATE"
+  },
+  "colours": {
+    "background": "#111827",
+    "input": "#E9EEF5",
+    "inputText": "#111827",
+    "accent": "#72D6E8",
+    "backing": "#236B91"
+  },
+  "a11y": {
+    "ariaInvalid": false,
+    "stampDecorative": true,
+    "politeStatus": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate settled stamp and success border; no rotation or scale travel"
+  }
+}

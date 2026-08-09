@@ -1,0 +1,31 @@
+<section class="sfs" data-successful-field-stamp data-phase="idle">
+  <label class="sfs__label" for="sfs-input">EMAIL</label>
+
+  <div class="sfs__row">
+    <div class="sfs__field">
+      <input
+        class="sfs__input"
+        id="sfs-input"
+        type="email"
+        value="user@example.com"
+        autocomplete="off"
+        spellcheck="false"
+        aria-invalid="false"
+        data-sfs-input
+      />
+    </div>
+
+    <span class="sfs__stamp" aria-hidden="true">
+      <span class="sfs__stamp-scale">
+        <span class="sfs__stamp-back"></span>
+        <span class="sfs__stamp-face">OK</span>
+      </span>
+    </span>
+  </div>
+
+  <button type="button" class="sfs__btn" data-sfs-validate>VALIDATE</button>
+
+  <p class="sfs__status" role="status" aria-live="polite" data-sfs-status>
+    Email ready to validate.
+  </p>
+</section>
