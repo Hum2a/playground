@@ -1,0 +1,43 @@
+{
+  "name": "moonrise-reveal",
+  "intent": "Cinematic moonrise: 120px moon rises once from +110px below a 72% horizon to −15px, revealing NIGHT PHASE.",
+  "surface": {
+    "widthPx": 620,
+    "heightPx": 400
+  },
+  "moon": {
+    "diameterPx": 120,
+    "colour": "#C7CDD8",
+    "rim": "#72D6E8",
+    "initialOffsetPx": 110,
+    "finalOffsetPx": -15,
+    "initialOpacity": 0.35,
+    "finalOpacity": 1
+  },
+  "horizon": {
+    "topPercent": 72,
+    "highlightMs": 220
+  },
+  "stars": {
+    "count": 18,
+    "pulseMax": 5,
+    "deterministic": true
+  },
+  "label": {
+    "text": "NIGHT PHASE",
+    "delayMs": 750,
+    "transitionMs": 320,
+    "risePx": 8
+  },
+  "timing": {
+    "riseMs": 1100,
+    "easing": "cubic-bezier(.2,.8,.2,1)"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Final moon position, horizon, stars, and label immediately; no rise"
+  }
+}

@@ -78,6 +78,7 @@ import { liquidSplitTransition } from '../../library/persona/liquid-split-transi
 import { liquidToggle } from '../../library/persona/liquid-toggle/entry'
 import { lockedChainBreak } from '../../library/persona/locked-chain-break/entry'
 import { lunarCycleLoader } from '../../library/persona/lunar-cycle-loader/entry'
+import { moonriseReveal } from '../../library/persona/moonrise-reveal/entry'
 import { mangaCutInNotification } from '../../library/persona/manga-cut-in-notification/entry'
 import { mapConstruction } from '../../library/persona/map-construction/entry'
 import { maxRankCompletion } from '../../library/persona/max-rank-completion/entry'
@@ -217,6 +218,7 @@ export const shard: Specimen[] = [
   liquidToggle,
   lockedChainBreak,
   lunarCycleLoader,
+  moonriseReveal,
   mangaCutInNotification,
   mapConstruction,
   maxRankCompletion,
