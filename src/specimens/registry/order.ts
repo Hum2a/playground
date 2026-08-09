@@ -646,4 +646,5 @@ export const specimenOrder: string[] = [
   'invalid-field-slash',
   'successful-field-stamp',
   'checkbox-impact',
+  'radio-target-selector',
 ]

@@ -1,0 +1,38 @@
+{
+  "name": "radio-target-selector",
+  "intent": "Three native radios as corner-bracket targets; selection converges 6px, stamps a diamond, and rings once.",
+  "options": {
+    "count": 3,
+    "labels": ["OPTION A", "OPTION B", "OPTION C"],
+    "sharedName": true,
+    "nativeRadios": true
+  },
+  "target": {
+    "brackets": 4,
+    "convergePx": 6,
+    "convergeMs": 320,
+    "diamondScaleFrom": 0,
+    "diamondScaleTo": 1,
+    "ringScaleFrom": 0.7,
+    "ringScaleTo": 1.5,
+    "ringMs": 260,
+    "ringOnce": true
+  },
+  "colours": {
+    "background": "#111827",
+    "target": "#236B91",
+    "active": "#72D6E8",
+    "text": "#E9EEF5"
+  },
+  "semantics": {
+    "cssOnly": true,
+    "keyboard": "native radio arrows and Space"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Selected target and diamond appear immediately; no converge or ring"
+  }
+}
