@@ -1,0 +1,52 @@
+{
+  "name": "submit-blackout",
+  "intent": "Submit compresses, a #09111D overlay expands from the button centre, fields become silhouettes, then PROCESSING holds and the form restores.",
+  "surface": {
+    "previewWidthPx": 620,
+    "previewHeightPx": 420
+  },
+  "copy": {
+    "name": "NAME",
+    "email": "EMAIL",
+    "message": "MESSAGE",
+    "submit": "SUBMIT",
+    "processing": "PROCESSING"
+  },
+  "overlay": {
+    "colour": "#09111D",
+    "origin": "button centre",
+    "expandMs": 420,
+    "expandEasing": "cubic-bezier(.2,.8,.2,1)",
+    "holdMs": 900,
+    "revealMs": 360
+  },
+  "button": {
+    "compressScale": 0.86,
+    "compressMs": 90
+  },
+  "silhouettes": {
+    "valuesPreserved": true,
+    "textVisuallyHidden": true,
+    "labelsDisappear": true,
+    "geometricBlocks": true
+  },
+  "processing": {
+    "colour": "#72D6E8",
+    "line": "static 1px",
+    "spinner": false
+  },
+  "a11y": {
+    "ariaBusy": true,
+    "roleStatus": true,
+    "disableSubmitDuringRun": true,
+    "blockDuplicateSubmit": true,
+    "focusTrap": false
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Instant processing, same 900ms hold, instant restore; no overlay expansion"
+  }
+}

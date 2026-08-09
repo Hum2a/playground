@@ -650,4 +650,5 @@ export const specimenOrder: string[] = [
   'textarea-paper-expansion',
   'label-ejection',
   'password-reveal-cutout',
+  'submit-blackout',
 ]

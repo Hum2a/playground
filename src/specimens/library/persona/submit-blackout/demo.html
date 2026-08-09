@@ -1,0 +1,62 @@
+<section class="sb" data-submit-blackout data-phase="idle">
+  <form class="sb__form" data-sb-form aria-busy="false">
+    <div class="sb__field">
+      <label class="sb__label" for="sb-name">NAME</label>
+      <div class="sb__well">
+        <input
+          class="sb__control"
+          id="sb-name"
+          name="name"
+          type="text"
+          value="Ada Locke"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span class="sb__sil sb__sil--name" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="sb__field">
+      <label class="sb__label" for="sb-email">EMAIL</label>
+      <div class="sb__well">
+        <input
+          class="sb__control"
+          id="sb-email"
+          name="email"
+          type="email"
+          value="ada@archive.test"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <span class="sb__sil sb__sil--email" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="sb__field">
+      <label class="sb__label" for="sb-msg">MESSAGE</label>
+      <div class="sb__well sb__well--area">
+        <textarea
+          class="sb__control sb__control--area"
+          id="sb-msg"
+          name="message"
+          autocomplete="off"
+          spellcheck="false"
+        >Requesting archive clearance.</textarea>
+        <span class="sb__sil sb__sil--msg" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <button type="submit" class="sb__submit" data-sb-submit>SUBMIT</button>
+
+    <div class="sb__overlay" aria-hidden="true" data-sb-overlay></div>
+
+    <p class="sb__hud" aria-hidden="true" data-sb-hud>
+      <span class="sb__processing">PROCESSING</span>
+      <span class="sb__line"></span>
+    </p>
+  </form>
+
+  <p class="sb__status" role="status" aria-live="polite" data-sb-status>
+    Form ready to submit.
+  </p>
+</section>
