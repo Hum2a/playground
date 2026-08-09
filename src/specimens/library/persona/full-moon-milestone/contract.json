@@ -60,8 +60,8 @@
       "properties": {
         "bg": { "type": "string", "const": "#020912" },
         "dark": { "type": "string", "const": "#071627" },
-        "edge": { "type": "string", "const": "#4aa7d4" },
-        "lit": { "type": "string", "const": "#ccefff" },
+        "edge": { "type": "string", "const": "#72D6E8" },
+        "lit": { "type": "string", "const": "#C7CDD8" },
         "white": { "type": "string", "const": "#f4fbff" }
       }
     },
@@ -188,8 +188,8 @@
       "colours": {
         "bg": "#020912",
         "dark": "#071627",
-        "edge": "#4aa7d4",
-        "lit": "#ccefff",
+        "edge": "#72D6E8",
+        "lit": "#C7CDD8",
         "white": "#f4fbff"
       },
       "moon": {

@@ -4,8 +4,8 @@
   --fmm-bg: #020912;
   --fmm-dark: #071627;
   --fmm-deep: #0a2a44;
-  --fmm-edge: #4aa7d4;
-  --fmm-lit: #ccefff;
+  --fmm-edge: #72d6e8;
+  --fmm-lit: #c7cdd8;
   --fmm-white: #f4fbff;
   --fmm-ease: cubic-bezier(0.33, 0.9, 0.35, 1);
   --fmm-size: 130px;
@@ -111,8 +111,8 @@
   inset: 0;
   border-radius: 50%;
   box-shadow:
-    inset 0 0 0 1.5px rgb(74 167 212 / 0.55),
-    0 0 0 1px rgb(74 167 212 / 0.35);
+    inset 0 0 0 1.5px rgb(114 214 232 / 0.55),
+    0 0 0 1px rgb(114 214 232 / 0.35);
   pointer-events: none;
 }
 
@@ -120,7 +120,7 @@
   position: absolute;
   inset: -7px;
   border-radius: 50%;
-  border: 1.5px solid rgb(74 167 212 / 0.85);
+  border: 1.5px solid rgb(114 214 232 / 0.85);
   opacity: 0;
   transform: scale(0.94);
   pointer-events: none;
@@ -274,7 +274,7 @@
 }
 
 .fmm__btn:hover {
-  background: rgb(74 167 212 / 0.14);
+  background: rgb(114 214 232 / 0.14);
 }
 
 .fmm__btn:focus-visible {
