@@ -1,0 +1,43 @@
+<div class="cw" data-crescent-wipe data-phase="idle">
+  <p class="cw__kicker">LUNAR // PHASE</p>
+
+  <div class="cw__stage" aria-label="Crescent wipe">
+    <section class="cw__page cw__page--b" data-cw-page="b" aria-hidden="true">
+      <p class="cw__label">PAGE B</p>
+      <h2 class="cw__title">PHASE 02</h2>
+      <p class="cw__meta">ORBIT</p>
+    </section>
+
+    <section class="cw__page cw__page--a" data-cw-page="a">
+      <p class="cw__label">PAGE A</p>
+      <h2 class="cw__title">PHASE 01</h2>
+      <p class="cw__meta">DOCK</p>
+    </section>
+
+    <svg class="cw__masksvg" aria-hidden="true" focusable="false">
+      <defs>
+        <mask id="cw-mask" maskUnits="userSpaceOnUse">
+          <rect width="100%" height="100%" fill="white" />
+          <g class="cw__mask-g">
+            <rect x="-4000" y="-800" width="4000" height="1600" fill="black" />
+            <circle cx="0" cy="0" r="260" fill="black" />
+            <circle cx="92" cy="0" r="228" fill="white" />
+          </g>
+        </mask>
+      </defs>
+    </svg>
+
+    <div class="cw__wipe" aria-hidden="true">
+      <div class="cw__crescent">
+        <span class="cw__disc"></span>
+        <span class="cw__cut"></span>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="cw__trigger" data-cw-trigger>NEXT PHASE</button>
+
+  <p class="cw__status" role="status" aria-live="polite" data-cw-status>
+    Page A visible.
+  </p>
+</div>

@@ -1,0 +1,60 @@
+{
+  "name": "crescent-wipe",
+  "intent": "PAGE A over PAGE B wiped by a 520px geometric crescent (circle minus offset cut) with a 2px cyan leading edge travelling left -420px to calc(100% + 420px) in 900ms. Must read as a crescent, not a rectangular wipe. Never auto-loops.",
+  "surface": {
+    "widthPx": 620,
+    "heightPx": 360
+  },
+  "crescent": {
+    "diameterPx": 520,
+    "construction": "large-circle-minus-offset-dark-circle",
+    "startLeft": "-420px",
+    "endLeft": "calc(100% + 420px)",
+    "leadingEdgePx": 2,
+    "leadingEdgeColour": "#72D6E8",
+    "ariaHidden": true
+  },
+  "timing": {
+    "durationMs": 900,
+    "easing": "cubic-bezier(.65, 0, .25, 1)",
+    "loops": false
+  },
+  "phases": ["idle", "run", "done"],
+  "pages": {
+    "aInitiallyVisible": true,
+    "bUnderneath": true
+  },
+  "colours": {
+    "void": "#09111D",
+    "card": "#13263A",
+    "lit": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91"
+  },
+  "behaviour": {
+    "trigger": "NEXT PHASE resets to PAGE A then wipes once",
+    "busyIgnoresRetrigger": true,
+    "noAutoLoop": true,
+    "noStacking": true
+  },
+  "api": {
+    "trigger": "window.crescentWipe.trigger(root)",
+    "reset": "window.crescentWipe.reset(root)",
+    "init": "window.crescentWipe.init(scope?)",
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "stageLabel": "Crescent wipe",
+    "statusIdle": "Page A visible.",
+    "statusDone": "Page B visible.",
+    "focusVisible": "2px solid #72D6E8",
+    "crescentDecorative": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Instant PAGE B; no crescent motion"
+  }
+}
