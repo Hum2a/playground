@@ -653,4 +653,5 @@ export const specimenOrder: string[] = [
   'submit-blackout',
   'error-headline-intrusion',
   'form-completion-strike',
+  'required-marker-impact',
 ]

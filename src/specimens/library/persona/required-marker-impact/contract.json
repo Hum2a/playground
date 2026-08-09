@@ -1,0 +1,43 @@
+{
+  "name": "required-marker-impact",
+  "intent": "A compact required marker slams in beside an EMAIL label without moving the label, then settles with a short backing shift.",
+  "preview": {
+    "widthPx": 420,
+    "heightPx": 240
+  },
+  "marker": {
+    "widthPx": 18,
+    "heightPx": 18,
+    "glyph": "*",
+    "backing": "#C94F58",
+    "text": "#E9EEF5",
+    "ariaHidden": true,
+    "initialTranslateXPx": -18,
+    "initialScale": 1.8,
+    "initialRotateDeg": -12,
+    "finalScale": 1,
+    "entryMs": 180,
+    "easing": "cubic-bezier(.1,.9,.2,1)",
+    "settleMs": 100,
+    "settleScale": 1.08,
+    "backingOffsetPx": 3
+  },
+  "colours": {
+    "background": "#111827",
+    "text": "#E9EEF5",
+    "backing": "#C94F58",
+    "focus": "#72D6E8"
+  },
+  "a11y": {
+    "ariaRequired": true,
+    "visuallyHiddenRequiredText": true,
+    "markerAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Marker appears instantly; no scale or translation"
+  }
+}

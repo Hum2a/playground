@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use gaps not reserved by open P5, P3, PK, DB, or IOS rows (see `37_persona-catalogue`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **38 / 301** complete.
+- Progress: **39 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 38 |
-| Open | 263 |
+| Done | 39 |
+| Open | 262 |
 
 ## Shipped (mapped to live specimens)
 
@@ -56,6 +56,7 @@
 | P5-141 | `SPX-152` | `submit-blackout` | Submit Blackout |
 | P5-142 | `SPX-153` | `error-headline-intrusion` | Error Headline Intrusion |
 | P5-143 | `SPX-154` | `form-completion-strike` | Form Completion Strike |
+| P5-144 | `SPX-155` | `required-marker-impact` | Required Marker Impact |
 
 ## Core first-wave
 
@@ -259,7 +260,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P5-141** · `SPX-152` · **Submit Blackout** — Form becomes graphic silhouette during submission.
 - [x] **P5-142** · `SPX-153` · **Error Headline Intrusion** — Giant ERROR text enters behind form.
 - [x] **P5-143** · `SPX-154` · **Form Completion Strike** — Final valid field triggers small success burst.
-- [ ] **P5-144** · `SPX-155` · **Required Marker Impact** — Required marker slams beside label.
+- [x] **P5-144** · `SPX-155` · **Required Marker Impact** — Required marker slams beside label.
 
 ## Progress and XP
 

@@ -1,0 +1,35 @@
+<section class="rmi" data-required-marker-impact data-phase="idle">
+  <div class="rmi__field">
+    <div class="rmi__head">
+      <span class="rmi__slot">
+        <span class="rmi__marker" aria-hidden="true" data-rmi-marker>
+          <span class="rmi__spin">
+            <span class="rmi__backing"></span>
+            <span class="rmi__star">*</span>
+          </span>
+        </span>
+      </span>
+      <label class="rmi__label" for="rmi-email">
+        EMAIL
+        <span class="rmi__sr" data-rmi-sr hidden>required</span>
+      </label>
+    </div>
+    <input
+      class="rmi__input"
+      id="rmi-email"
+      name="email"
+      type="email"
+      value="ada@archive.test"
+      autocomplete="off"
+      spellcheck="false"
+      aria-required="false"
+      data-rmi-input
+    />
+  </div>
+
+  <button type="button" class="rmi__btn" data-rmi-trigger>MARK REQUIRED</button>
+
+  <p class="rmi__status" role="status" aria-live="polite" data-rmi-status>
+    Email is optional.
+  </p>
+</section>
