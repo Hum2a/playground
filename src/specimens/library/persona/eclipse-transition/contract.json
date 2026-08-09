@@ -1,0 +1,68 @@
+{
+  "name": "eclipse-transition",
+  "intent": "Stacked CURRENT→NEXT panel transition: 180px moon enters from the left, smaller dark disc crosses into a central crescent, overlay peaks at 0.92 for the swap, then next state reveals as the moon exits. Never auto-loops.",
+  "surface": {
+    "widthPx": 620,
+    "heightPx": 380
+  },
+  "moon": {
+    "diameterPx": 180,
+    "rimPx": 2,
+    "rimColour": "#72D6E8",
+    "lit": "#C7CDD8",
+    "occluder": "smaller-dark-disc",
+    "ariaHidden": true
+  },
+  "overlay": {
+    "maxOpacity": 0.92,
+    "notInstantCut": true,
+    "colour": "#09111D"
+  },
+  "timing": {
+    "entryMs": 350,
+    "eclipseMs": 300,
+    "darkMs": 200,
+    "revealMs": 350,
+    "totalMs": 1200,
+    "loops": false
+  },
+  "phases": ["idle", "enter", "eclipse", "dark", "reveal", "done"],
+  "panels": {
+    "currentInitiallyVisible": true,
+    "nextUnderneath": true,
+    "nextExposedDuringDark": true
+  },
+  "colours": {
+    "void": "#09111D",
+    "card": "#13263A",
+    "lit": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91"
+  },
+  "behaviour": {
+    "trigger": "TRIGGER resets to current then plays once",
+    "busyIgnoresRetrigger": true,
+    "noAutoLoop": true,
+    "noStacking": true
+  },
+  "api": {
+    "trigger": "window.eclipseTransition.trigger(root)",
+    "reset": "window.eclipseTransition.reset(root)",
+    "init": "window.eclipseTransition.init(scope?)",
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "stageLabel": "Eclipse transition",
+    "statusIdle": "Current state visible.",
+    "statusDone": "Next state visible.",
+    "focusVisible": "2px solid #72D6E8",
+    "moonDecorative": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Skip moon; immediately show NEXT STATE"
+  }
+}

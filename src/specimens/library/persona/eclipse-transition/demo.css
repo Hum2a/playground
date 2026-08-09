@@ -1,0 +1,309 @@
+/* SPX-459 Eclipse Transition — portable contract. Do not restyle to host tokens. */
+
+.et {
+  --et-void: #09111d;
+  --et-card: #13263a;
+  --et-lit: #c7cdd8;
+  --et-cyan: #72d6e8;
+  --et-mute: #236b91;
+  --et-moon: 180px;
+  --et-rim: 2px;
+  --et-overlay: 0.92;
+  --et-enter: 350ms;
+  --et-eclipse: 300ms;
+  --et-dark: 200ms;
+  --et-reveal: 350ms;
+  --et-ease: cubic-bezier(0.45, 0, 0.2, 1);
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 380px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  color: var(--et-lit);
+  background: var(--et-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.et *,
+.et *::before,
+.et *::after {
+  box-sizing: border-box;
+}
+
+.et__kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--et-mute);
+}
+
+.et__stage {
+  position: relative;
+  overflow: hidden;
+  width: 520px;
+  max-width: 100%;
+  height: 220px;
+  border: 2px solid #1c3144;
+  background: var(--et-card);
+}
+
+.et__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.25rem 1.35rem;
+}
+
+.et__panel--next {
+  z-index: 1;
+  background:
+    linear-gradient(160deg, rgb(114 214 232 / 0.1), transparent 48%),
+    var(--et-card);
+}
+
+.et__panel--current {
+  z-index: 2;
+  background:
+    linear-gradient(160deg, rgb(35 107 145 / 0.18), transparent 48%),
+    var(--et-card);
+}
+
+.et[data-phase='dark'] .et__panel--current,
+.et[data-phase='reveal'] .et__panel--current,
+.et[data-phase='done'] .et__panel--current {
+  visibility: hidden;
+}
+
+.et__label {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--et-mute);
+}
+
+.et__panel--next .et__label {
+  color: var(--et-cyan);
+}
+
+.et__title {
+  margin: 0;
+  font-size: clamp(1.45rem, 5vw, 1.9rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--et-lit);
+}
+
+.et__meta {
+  margin: 0.35rem 0 0;
+  padding-top: 0.45rem;
+  border-top: 1px solid rgb(35 107 145 / 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--et-mute);
+}
+
+.et__panel--next .et__meta {
+  border-top-color: rgb(114 214 232 / 0.35);
+  color: var(--et-cyan);
+}
+
+.et__overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--et-void);
+  opacity: 0;
+}
+
+.et[data-phase='eclipse'] .et__overlay {
+  opacity: 0.55;
+  transition: opacity var(--et-eclipse) linear;
+}
+
+.et[data-phase='dark'] .et__overlay {
+  opacity: var(--et-overlay);
+  transition: opacity var(--et-dark) linear;
+}
+
+.et[data-phase='reveal'] .et__overlay {
+  opacity: 0;
+  transition: opacity var(--et-reveal) linear;
+}
+
+.et__astro {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.et[data-phase='idle'] .et__moon,
+.et[data-phase='idle'] .et__occluder,
+.et[data-phase='idle'] .et__overlay {
+  transition: none;
+}
+
+.et__moon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--et-moon);
+  height: var(--et-moon);
+  margin: calc(var(--et-moon) / -2) 0 0 calc(var(--et-moon) / -2);
+  overflow: hidden;
+  border-radius: 50%;
+  transform: translateX(-240%);
+}
+
+.et[data-phase='enter'] .et__moon {
+  transform: translateX(0);
+  transition: transform var(--et-enter) var(--et-ease);
+}
+
+.et[data-phase='eclipse'] .et__moon,
+.et[data-phase='dark'] .et__moon {
+  transform: translateX(0);
+}
+
+.et[data-phase='reveal'] .et__moon {
+  transform: translateX(240%);
+  transition: transform var(--et-reveal) var(--et-ease);
+}
+
+.et[data-phase='done'] .et__moon {
+  transform: translateX(240%);
+  opacity: 0;
+}
+
+.et__lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #e9eef5 0%,
+    var(--et-lit) 48%,
+    #9aa6b5 100%
+  );
+}
+
+.et__occluder {
+  position: absolute;
+  top: 12px;
+  left: -78%;
+  width: 156px;
+  height: 156px;
+  border-radius: 50%;
+  background: var(--et-void);
+}
+
+.et[data-phase='eclipse'] .et__occluder {
+  left: 22%;
+  transition: left var(--et-eclipse) var(--et-ease);
+}
+
+.et[data-phase='dark'] .et__occluder,
+.et[data-phase='reveal'] .et__occluder,
+.et[data-phase='done'] .et__occluder {
+  left: 12px;
+  transition: left var(--et-dark) linear;
+}
+
+.et__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 var(--et-rim) var(--et-cyan);
+  pointer-events: none;
+}
+
+.et__trigger {
+  margin: 0;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid #2a4156;
+  background: transparent;
+  color: var(--et-lit);
+  font: 700 0.68rem ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+}
+
+.et__trigger:focus {
+  outline: none;
+}
+
+.et__trigger:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+.et__trigger:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.et__status {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--et-mute);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .et__moon,
+  .et__occluder,
+  .et__overlay {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .et__astro {
+    visibility: hidden;
+  }
+
+  .et__overlay {
+    opacity: 0 !important;
+  }
+
+  .et[data-phase='done'] .et__panel--current,
+  .et[data-phase='dark'] .et__panel--current,
+  .et[data-phase='reveal'] .et__panel--current {
+    visibility: hidden;
+  }
+}
+
+[data-force-reduced-motion='true'] .et__moon,
+[data-force-reduced-motion='true'] .et__occluder,
+[data-force-reduced-motion='true'] .et__overlay {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .et__astro {
+  visibility: hidden;
+}
+
+[data-force-reduced-motion='true'] .et__overlay {
+  opacity: 0 !important;
+}
+
+[data-force-reduced-motion='true'] .et[data-phase='done'] .et__panel--current,
+[data-force-reduced-motion='true'] .et[data-phase='dark'] .et__panel--current,
+[data-force-reduced-motion='true'] .et[data-phase='reveal'] .et__panel--current {
+  visibility: hidden;
+}

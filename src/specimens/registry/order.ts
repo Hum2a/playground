@@ -625,4 +625,5 @@ export const specimenOrder: string[] = [
   'glass-badge-assembly',
   'lunar-cycle-loader',
   'moonrise-reveal',
+  'eclipse-transition',
 ]
