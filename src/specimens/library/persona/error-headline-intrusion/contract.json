@@ -1,0 +1,48 @@
+{
+  "name": "error-headline-intrusion",
+  "intent": "Giant decorative ERROR slides in behind an invalid contact form; the card recoils once and semantic field errors settle.",
+  "preview": {
+    "widthPx": 620,
+    "heightPx": 420
+  },
+  "headline": {
+    "copy": "ERROR",
+    "fontSize": "clamp(72px, 18vw, 180px)",
+    "maxPx": 180,
+    "weight": 900,
+    "colour": "#C94F58",
+    "opacity": 0.16,
+    "entryMs": 420,
+    "easing": "cubic-bezier(.15,.85,.25,1)",
+    "from": { "translateX": "100%", "scale": 0.92 },
+    "to": { "translateX": "0", "scale": 1 },
+    "ariaHidden": true,
+    "pointerEvents": "none"
+  },
+  "recoil": {
+    "translateXPx": -3
+  },
+  "form": {
+    "fields": ["NAME", "EMAIL", "MESSAGE"],
+    "intentionallyInvalid": true
+  },
+  "colours": {
+    "background": "#111827",
+    "text": "#E9EEF5",
+    "error": "#C94F58",
+    "focus": "#72D6E8"
+  },
+  "a11y": {
+    "headlineAriaHidden": true,
+    "inlineErrors": true,
+    "ariaInvalid": true,
+    "ariaDescribedby": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Final ERROR headline immediately; no slide; no form movement"
+  }
+}

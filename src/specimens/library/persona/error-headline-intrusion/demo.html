@@ -1,0 +1,62 @@
+<section class="ehi" data-error-headline-intrusion data-phase="idle">
+  <div class="ehi__stage">
+    <p class="ehi__headline" aria-hidden="true">ERROR</p>
+
+    <form class="ehi__form" novalidate data-ehi-form>
+      <p class="ehi__kicker">CONTACT</p>
+
+      <div class="ehi__field">
+        <label class="ehi__label" for="ehi-name">NAME</label>
+        <input
+          class="ehi__input"
+          id="ehi-name"
+          name="name"
+          type="text"
+          value="???"
+          autocomplete="off"
+          spellcheck="false"
+          aria-invalid="false"
+          aria-describedby="ehi-err-name"
+        />
+        <p class="ehi__err" id="ehi-err-name" data-ehi-err hidden>Enter a real name.</p>
+      </div>
+
+      <div class="ehi__field">
+        <label class="ehi__label" for="ehi-email">EMAIL</label>
+        <input
+          class="ehi__input"
+          id="ehi-email"
+          name="email"
+          type="email"
+          value="not-an-email"
+          autocomplete="off"
+          spellcheck="false"
+          aria-invalid="false"
+          aria-describedby="ehi-err-email"
+        />
+        <p class="ehi__err" id="ehi-err-email" data-ehi-err hidden>Enter a valid email.</p>
+      </div>
+
+      <div class="ehi__field">
+        <label class="ehi__label" for="ehi-message">MESSAGE</label>
+        <textarea
+          class="ehi__input ehi__input--area"
+          id="ehi-message"
+          name="message"
+          rows="3"
+          autocomplete="off"
+          spellcheck="false"
+          aria-invalid="false"
+          aria-describedby="ehi-err-message"
+        ></textarea>
+        <p class="ehi__err" id="ehi-err-message" data-ehi-err hidden>Enter a message.</p>
+      </div>
+    </form>
+  </div>
+
+  <button type="button" class="ehi__btn" data-ehi-trigger>SHOW ERROR</button>
+
+  <p class="ehi__status" role="status" aria-live="polite" data-ehi-status>
+    Contact form ready.
+  </p>
+</section>

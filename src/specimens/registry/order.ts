@@ -651,4 +651,5 @@ export const specimenOrder: string[] = [
   'label-ejection',
   'password-reveal-cutout',
   'submit-blackout',
+  'error-headline-intrusion',
 ]

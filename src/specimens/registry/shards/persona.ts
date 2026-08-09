@@ -157,6 +157,7 @@ import { textareaPaperExpansion } from '../../library/persona/textarea-paper-exp
 import { labelEjection } from '../../library/persona/label-ejection/entry'
 import { passwordRevealCutout } from '../../library/persona/password-reveal-cutout/entry'
 import { submitBlackout } from '../../library/persona/submit-blackout/entry'
+import { errorHeadlineIntrusion } from '../../library/persona/error-headline-intrusion/entry'
 import { confidantRankUp } from '../../library/persona/confidant-rank-up/entry'
 import { xpCounterSlam } from '../../library/persona/xp-counter-slam/entry'
 import { jaggedSpeechTooltip } from '../../library/persona/jagged-speech-tooltip/entry'
@@ -323,6 +324,7 @@ export const shard: Specimen[] = [
   labelEjection,
   passwordRevealCutout,
   submitBlackout,
+  errorHeadlineIntrusion,
   confidantRankUp,
   xpCounterSlam,
   jaggedSpeechTooltip,
