@@ -1,0 +1,45 @@
+{
+  "name": "invalid-field-slash",
+  "intent": "Editorial rejection: a 350×8 slash cuts once underneath a readable 320×58 username field, then INVALID VALUE settles.",
+  "surface": {
+    "inputWidthPx": 320,
+    "inputHeightPx": 58
+  },
+  "slash": {
+    "widthPx": 350,
+    "heightPx": 8,
+    "angleDeg": -7,
+    "durationMs": 220,
+    "delayMs": 40,
+    "easing": "cubic-bezier(.15,.8,.25,1)",
+    "colour": "#C94F58"
+  },
+  "recoil": {
+    "translateXPx": -3,
+    "durationMs": 90
+  },
+  "copy": {
+    "label": "USERNAME",
+    "value": "humza_123",
+    "error": "INVALID VALUE",
+    "trigger": "VALIDATE"
+  },
+  "colours": {
+    "background": "#111827",
+    "input": "#E9EEF5",
+    "inputText": "#111827",
+    "slash": "#C94F58",
+    "errorText": "#C94F58"
+  },
+  "a11y": {
+    "ariaInvalid": true,
+    "ariaDescribedby": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate final slash and INVALID VALUE; no recoil"
+  }
+}

@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use gaps not reserved by open P5, P3, PK, DB, or IOS rows (see `37_persona-catalogue`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **28 / 301** complete.
+- Progress: **29 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 28 |
-| Open | 273 |
+| Done | 29 |
+| Open | 272 |
 
 ## Shipped (mapped to live specimens)
 
@@ -46,6 +46,7 @@
 | P5-221 | `SPX-232` | `overlapping-newspaper-tabs` | Overlapping Newspaper Tabs |
 | P5-233 | `SPX-244` | `filter-slash` | Filter Slash |
 | P5-301 | `SPX-312` | `graphic-finisher-completion` | Graphic Finisher Completion |
+| P5-134 | `SPX-145` | `invalid-field-slash` | Invalid Field Slash |
 
 ## Core first-wave
 
@@ -239,7 +240,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Form interactions
 
 - [x] **P5-133** · `SPX-144` · **Input Focus Attack** — Angular graphics converge around focused input.
-- [ ] **P5-134** · `SPX-145` · **Invalid Field Slash** — Error literally crosses underneath input.
+- [x] **P5-134** · `SPX-145` · **Invalid Field Slash** — Error literally crosses underneath input.
 - [ ] **P5-135** · `SPX-146` · **Successful Field Stamp** — `OK` stamp lands beside valid field.
 - [ ] **P5-136** · `SPX-147` · **Checkbox Impact** — Checkmark lands with hard offset backing.
 - [ ] **P5-137** · `SPX-148` · **Radio Target Selector** — Selection markers converge on chosen option.

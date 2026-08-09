@@ -1,0 +1,27 @@
+<section class="ifs" data-invalid-field-slash data-phase="idle">
+  <label class="ifs__label" for="ifs-input">USERNAME</label>
+
+  <div class="ifs__field">
+    <span class="ifs__plate" aria-hidden="true"></span>
+    <span class="ifs__slash" aria-hidden="true"></span>
+    <input
+      class="ifs__input"
+      id="ifs-input"
+      type="text"
+      value="humza_123"
+      autocomplete="off"
+      spellcheck="false"
+      aria-describedby="ifs-error"
+      aria-invalid="false"
+      data-ifs-input
+    />
+  </div>
+
+  <p class="ifs__error" id="ifs-error" data-ifs-error hidden>INVALID VALUE</p>
+
+  <button type="button" class="ifs__btn" data-ifs-validate>VALIDATE</button>
+
+  <p class="ifs__status" role="status" aria-live="polite" data-ifs-status>
+    Username ready to validate.
+  </p>
+</section>

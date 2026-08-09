@@ -149,6 +149,7 @@ import { redStampUnlock } from '../../library/persona/red-stamp-unlock/entry'
 import { typographicImpact } from '../../library/persona/typographic-impact/entry'
 import { radialCommandSnap } from '../../library/persona/radial-command-snap/entry'
 import { inputFocusAttack } from '../../library/persona/input-focus-attack/entry'
+import { invalidFieldSlash } from '../../library/persona/invalid-field-slash/entry'
 import { confidantRankUp } from '../../library/persona/confidant-rank-up/entry'
 import { xpCounterSlam } from '../../library/persona/xp-counter-slam/entry'
 import { jaggedSpeechTooltip } from '../../library/persona/jagged-speech-tooltip/entry'
@@ -307,6 +308,7 @@ export const shard: Specimen[] = [
   typographicImpact,
   radialCommandSnap,
   inputFocusAttack,
+  invalidFieldSlash,
   confidantRankUp,
   xpCounterSlam,
   jaggedSpeechTooltip,

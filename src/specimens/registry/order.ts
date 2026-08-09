@@ -643,4 +643,5 @@ export const specimenOrder: string[] = [
   'overlapping-newspaper-tabs',
   'filter-slash',
   'graphic-finisher-completion',
+  'invalid-field-slash',
 ]
