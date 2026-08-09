@@ -1,0 +1,48 @@
+{
+  "name": "new-moon-locked-state",
+  "intent": "Non-interactive 280×180 night-access card. ATTEMPT ACCESS runs 80ms emphasis, 180ms cyan rim flash, 2px / 120ms recoil, ACCESS DENIED 600ms, return UNAVAILABLE 220ms.",
+  "surface": {
+    "widthPx": 420,
+    "heightPx": 360
+  },
+  "card": {
+    "widthPx": 280,
+    "heightPx": 180
+  },
+  "moon": {
+    "diameterPx": 82,
+    "fill": "#111827",
+    "rim": "#236B91"
+  },
+  "timing": {
+    "emphasisMs": 80,
+    "rimFlashMs": 180,
+    "recoilPx": 2,
+    "recoilMs": 120,
+    "deniedMs": 600,
+    "returnMs": 220
+  },
+  "copy": {
+    "titleIdle": "UNAVAILABLE",
+    "titleDenied": "ACCESS DENIED",
+    "kicker": "NIGHT ACCESS",
+    "restricted": "ACCESS RESTRICTED",
+    "action": "ATTEMPT ACCESS"
+  },
+  "colours": {
+    "void": "#09111D",
+    "panel": "#13263A",
+    "moon": "#111827",
+    "ink": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91",
+    "denied": "#C94F58"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "No moon movement or rim animation; immediately ACCESS DENIED; static new moon; return UNAVAILABLE after 600ms + 220ms"
+  }
+}

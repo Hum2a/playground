@@ -86,6 +86,7 @@ import { moonPhasePagination } from '../../library/persona/moon-phase-pagination
 import { eclipseLoadingState } from '../../library/persona/eclipse-loading-state/entry'
 import { moonOrbitSelection } from '../../library/persona/moon-orbit-selection/entry'
 import { lunarCalendarChange } from '../../library/persona/lunar-calendar-change/entry'
+import { newMoonLockedState } from '../../library/persona/new-moon-locked-state/entry'
 import { mangaCutInNotification } from '../../library/persona/manga-cut-in-notification/entry'
 import { mapConstruction } from '../../library/persona/map-construction/entry'
 import { maxRankCompletion } from '../../library/persona/max-rank-completion/entry'
@@ -233,6 +234,7 @@ export const shard: Specimen[] = [
   eclipseLoadingState,
   moonOrbitSelection,
   lunarCalendarChange,
+  newMoonLockedState,
   mangaCutInNotification,
   mapConstruction,
   maxRankCompletion,

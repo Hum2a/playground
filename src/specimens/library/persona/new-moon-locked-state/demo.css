@@ -1,0 +1,207 @@
+/* SPX-467 New Moon Locked State — portable contract. Do not restyle to host tokens. */
+
+.nmls {
+  --nmls-void: #09111d;
+  --nmls-panel: #13263a;
+  --nmls-moon: #111827;
+  --nmls-ink: #c7cdd8;
+  --nmls-cyan: #72d6e8;
+  --nmls-mute: #236b91;
+  --nmls-denied: #c94f58;
+  --nmls-size: 82px;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 360px;
+  height: 100%;
+  padding: 1.15rem;
+  overflow: hidden;
+  color: var(--nmls-ink);
+  background: var(--nmls-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.nmls *,
+.nmls *::before,
+.nmls *::after {
+  box-sizing: border-box;
+}
+
+.nmls__card {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 0.35rem;
+  width: 280px;
+  height: 180px;
+  padding: 0.7rem 0.85rem 0.75rem;
+  border: 1px solid var(--nmls-mute);
+  background: var(--nmls-panel);
+  pointer-events: none;
+  user-select: none;
+}
+
+.nmls__title {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--nmls-ink);
+}
+
+.nmls__moon {
+  position: relative;
+  width: var(--nmls-size);
+  height: var(--nmls-size);
+  margin: 0.15rem 0 0.1rem;
+}
+
+.nmls__disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--nmls-moon);
+  box-shadow: inset 0 0 0 2px var(--nmls-mute);
+}
+
+.nmls__glint {
+  position: absolute;
+  top: 11px;
+  right: 13px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: rgb(199 205 216 / 0.22);
+  clip-path: inset(0 0 0 55%);
+  pointer-events: none;
+}
+
+.nmls__restricted {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(199 205 216 / 0.45);
+}
+
+.nmls__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.1rem 0 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nmls-mute);
+}
+
+.nmls__marker {
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.nmls__btn {
+  min-width: 10.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--nmls-cyan);
+  background: transparent;
+  color: var(--nmls-cyan);
+  font: inherit;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nmls__btn:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.nmls__btn:focus {
+  outline: none;
+}
+
+.nmls__btn:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 2px;
+}
+
+.nmls[data-phase='emphasis'] .nmls__disc {
+  filter: brightness(1.2);
+  box-shadow:
+    inset 0 0 0 2px rgb(114 214 232 / 0.55),
+    0 0 10px rgb(114 214 232 / 0.2);
+}
+
+.nmls[data-phase='flash'] .nmls__disc {
+  animation: nmls-rim-flash 180ms ease-out forwards;
+}
+
+.nmls[data-phase='recoil'] .nmls__moon {
+  transform: translateX(2px);
+}
+
+.nmls[data-phase='denied'] .nmls__status {
+  color: var(--nmls-denied);
+}
+
+.nmls[data-phase='denied'] .nmls__disc {
+  box-shadow: inset 0 0 0 2px var(--nmls-mute);
+}
+
+.nmls[data-phase='return'] .nmls__status {
+  color: var(--nmls-mute);
+}
+
+@keyframes nmls-rim-flash {
+  0% {
+    box-shadow: inset 0 0 0 2px var(--nmls-mute);
+  }
+  40% {
+    box-shadow:
+      inset 0 0 0 2px var(--nmls-cyan),
+      0 0 16px rgb(114 214 232 / 0.75);
+  }
+  100% {
+    box-shadow: inset 0 0 0 2px var(--nmls-mute);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nmls[data-phase='emphasis'] .nmls__disc {
+    filter: none;
+    box-shadow: inset 0 0 0 2px var(--nmls-mute);
+  }
+
+  .nmls[data-phase='flash'] .nmls__disc {
+    animation: none;
+  }
+
+  .nmls[data-phase='recoil'] .nmls__moon {
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .nmls[data-phase='emphasis'] .nmls__disc {
+  filter: none;
+  box-shadow: inset 0 0 0 2px var(--nmls-mute);
+}
+
+[data-force-reduced-motion='true'] .nmls[data-phase='flash'] .nmls__disc {
+  animation: none;
+}
+
+[data-force-reduced-motion='true'] .nmls[data-phase='recoil'] .nmls__moon {
+  transform: none;
+}

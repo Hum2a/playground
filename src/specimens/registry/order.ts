@@ -632,4 +632,5 @@ export const specimenOrder: string[] = [
   'eclipse-loading-state',
   'moon-orbit-selection',
   'lunar-calendar-change',
+  'new-moon-locked-state',
 ]
