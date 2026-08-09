@@ -1,0 +1,43 @@
+{
+  "name": "password-reveal-cutout",
+  "intent": "Dark rectangular mask with a deterministic jagged right edge tears off a real password field; HIDE slams it back from the right.",
+  "surface": {
+    "previewWidthPx": 520,
+    "previewHeightPx": 240,
+    "maskCoverage": "100%"
+  },
+  "copy": {
+    "label": "PASSWORD",
+    "value": "archive-key-77",
+    "reveal": "REVEAL",
+    "hide": "HIDE"
+  },
+  "tear": {
+    "deterministic": true,
+    "edgePx": 2,
+    "edgeColour": "#72D6E8",
+    "clipPath": "polygon(0% 0%, 93% 0%, 96% 7%, 91% 14%, 97% 22%, 92% 31%, 98% 40%, 90% 49%, 96% 58%, 91% 67%, 98% 76%, 93% 85%, 97% 93%, 92% 100%, 0% 100%)"
+  },
+  "timing": {
+    "revealMs": 520,
+    "revealEasing": "cubic-bezier(.2,.8,.2,1)",
+    "revealTranslateX": "0 → 110%",
+    "hideMs": 360,
+    "hideMotion": "slam from right (not literal reverse)"
+  },
+  "visibility": {
+    "truth": "input.type password ↔ text",
+    "mask": "visual only"
+  },
+  "a11y": {
+    "ariaPressed": true,
+    "roleStatus": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Instant reveal/hide mask pose plus type swap; no travel"
+  }
+}

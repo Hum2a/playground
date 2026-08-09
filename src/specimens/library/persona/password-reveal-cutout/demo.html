@@ -1,0 +1,35 @@
+<section class="prc" data-password-reveal-cutout data-phase="hidden">
+  <label class="prc__label" for="prc-pass">PASSWORD</label>
+
+  <div class="prc__row">
+    <div class="prc__well">
+      <input
+        class="prc__input"
+        id="prc-pass"
+        type="password"
+        name="password"
+        value="archive-key-77"
+        autocomplete="off"
+        spellcheck="false"
+        data-prc-input
+      />
+      <div class="prc__mask" aria-hidden="true" data-prc-mask>
+        <span class="prc__fill"></span>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="prc__btn"
+      aria-pressed="false"
+      aria-controls="prc-pass"
+      data-prc-toggle
+    >
+      REVEAL
+    </button>
+  </div>
+
+  <p class="prc__status" role="status" aria-live="polite" data-prc-status>
+    Password hidden.
+  </p>
+</section>

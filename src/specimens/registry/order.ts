@@ -649,4 +649,5 @@ export const specimenOrder: string[] = [
   'radio-target-selector',
   'textarea-paper-expansion',
   'label-ejection',
+  'password-reveal-cutout',
 ]
