@@ -1,0 +1,175 @@
+/* current-direction-indicator — portable specimen styles. */
+
+.current {
+  --current-ink: #061826;
+  --current-deep: #0a314b;
+  --current-mid: #14688a;
+  --current-bright: #7ce4f2;
+  --current-pale: #d8fbff;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  width: 480px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid rgb(124 228 242 / 0.56);
+  background: linear-gradient(105deg, #061826, #09243a 48%, #061826);
+  color: var(--current-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.current *,
+.current *::before,
+.current *::after {
+  box-sizing: border-box;
+}
+
+.current__channel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgb(124 228 242 / 0.04), transparent 30%, rgb(124 228 242 / 0.08) 70%, transparent),
+    linear-gradient(180deg, rgb(124 228 242 / 0.06), transparent 48%, rgb(124 228 242 / 0.08));
+}
+
+.current__flow {
+  position: absolute;
+  left: -7%;
+  width: 114%;
+  height: 18px;
+  border-top: 1px solid rgb(124 228 242 / 0.58);
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.current__flow--one {
+  top: 9px;
+  transform: rotate(-1.7deg);
+}
+
+.current__flow--two {
+  top: 30px;
+  transform: rotate(1.2deg);
+  border-color: rgb(124 228 242 / 0.38);
+}
+
+.current__flow--three {
+  top: 52px;
+  transform: rotate(-1.1deg);
+  border-color: rgb(124 228 242 / 0.48);
+}
+
+.current__markers {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 41px;
+  width: calc(100% + 65px);
+  animation: current-travel 1.8s linear infinite;
+  will-change: transform;
+}
+
+.current__chevron {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  border-top: 3px solid var(--current-bright);
+  border-right: 3px solid var(--current-bright);
+  filter: drop-shadow(0 0 4px rgb(124 228 242 / 0.35));
+  transform: rotate(45deg);
+}
+
+.current__readout {
+  z-index: 1;
+  align-self: center;
+  margin-left: 18px;
+  padding: 4px 8px 5px;
+  border-left: 2px solid var(--current-bright);
+  background: rgb(6 24 38 / 0.82);
+  text-transform: uppercase;
+}
+
+.current__eyebrow {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  color: var(--current-bright);
+}
+
+.current__direction {
+  display: block;
+  margin-top: 3px;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.09em;
+}
+
+.current__reverse {
+  z-index: 1;
+  align-self: end;
+  margin: 0 9px 8px 0;
+  padding: 5px 7px;
+  border: 1px solid rgb(216 251 255 / 0.7);
+  border-radius: 0;
+  background: rgb(6 24 38 / 0.88);
+  color: var(--current-pale);
+  font: 800 9px/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.current__reverse:hover {
+  background: var(--current-pale);
+  color: var(--current-ink);
+}
+
+.current__reverse:focus-visible {
+  outline: 2px solid var(--current-bright);
+  outline-offset: 2px;
+}
+
+.current__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.current[data-direction='west'] .current__markers {
+  animation-direction: reverse;
+}
+
+.current[data-direction='west'] .current__chevron {
+  transform: rotate(-135deg);
+}
+
+@keyframes current-travel {
+  from {
+    transform: translateX(-65px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .current__markers {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
+[data-force-reduced-motion='true'] .current__markers {
+  animation: none;
+  transform: translateX(0);
+}

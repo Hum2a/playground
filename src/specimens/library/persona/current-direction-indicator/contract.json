@@ -1,0 +1,47 @@
+{
+  "name": "current-direction-indicator",
+  "intent": "A Persona 3 Reload-inspired current channel with static curved flow lines and travelling directional chevrons.",
+  "layout": {
+    "widthPx": 480,
+    "heightPx": 72,
+    "flowLineCount": 3,
+    "chevronCount": 7,
+    "chevronSizePx": 24
+  },
+  "direction": {
+    "default": "east",
+    "eastTravel": "left-to-right",
+    "westTravel": "right-to-left",
+    "reverseControl": true,
+    "reverseChanges": ["label", "chevronOrientation", "animationDirection"],
+    "reverseWithoutAnimationReset": true
+  },
+  "motion": {
+    "durationSeconds": 1.8,
+    "timingFunction": "linear",
+    "iterations": "infinite",
+    "seamless": true,
+    "flowLinesStatic": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "markerTravel": "none",
+    "directionRemainsClear": true
+  },
+  "a11y": {
+    "decorativeChannelHidden": true,
+    "directionChangeAnnounced": true,
+    "reverseControlFocusVisible": true
+  },
+  "constraints": {
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noStorage": true,
+    "noParentAccess": true,
+    "noCanvas": true,
+    "noSvg": true
+  }
+}

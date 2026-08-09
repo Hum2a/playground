@@ -1,0 +1,48 @@
+{
+  "name": "waveform-loading-indicator",
+  "intent": "A cyan technical waveform travels continuously through a cool dark loading field while a scanline inspects its stable signal.",
+  "lineage": "Persona 3 Reload-inspired tactical loading language",
+  "dimensions": {
+    "preview": [620, 300],
+    "waveform": [440, 80]
+  },
+  "signal": {
+    "samplesPerSegment": 32,
+    "segments": 2,
+    "segmentOffsetPx": 440,
+    "motion": {
+      "durationSeconds": 1.4,
+      "timing": "linear",
+      "iterationCount": "infinite",
+      "translationPx": -440
+    }
+  },
+  "scanline": {
+    "colour": "#64e7ff",
+    "durationSeconds": 2.2,
+    "timing": "linear",
+    "iterationCount": "infinite"
+  },
+  "colours": {
+    "cyan": "#64e7ff",
+    "field": "#07131d"
+  },
+  "accessibility": {
+    "regionLabel": "Loading",
+    "waveformDecorative": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "prefers-reduced-motion: reduce",
+      "data-force-reduced-motion=true"
+    ],
+    "staticWaveformVisible": true
+  },
+  "classNames": {
+    "root": "wli",
+    "display": "wli__display",
+    "waveform": "wli__waveform",
+    "track": "wli__track",
+    "scanline": "wli__scanline"
+  }
+}
