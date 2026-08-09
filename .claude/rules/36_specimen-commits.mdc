@@ -1,0 +1,43 @@
+---
+description: Auto-commit after adding a new specimen (SPX-NNN)
+alwaysApply: true
+---
+
+# Auto-commit new specimens
+
+When you **finish adding a new specimen** (new `src/specimens/library/<franchise>/<id>/` + shard import + `order.ts` id with a real `ref: 'SPX-NNN'`), **create a git commit without waiting for the user to ask**.
+
+This is an intentional project exception to “only commit when asked.” It applies **only** to new-specimen additions, not routine edits.
+
+Prefer `npm run spec:ship -- … --commit` after authoring under `.wip-aside/<id>/` so registry edits are atomic and parallel-agent-safe.
+
+## When to commit
+
+Do commit after all of the following:
+
+1. Specimen folder under `library/<franchise>/<id>/` + registered in `registry/shards/<franchise>.ts` + `registry/order.ts`
+2. `ref` is assigned (`SPX-NNN`, not `SPX-TODO`)
+3. Verification you would normally run has passed (`npm run build`, `npm run spec:check`, and `npm run test` when practical)
+
+## When not to auto-commit
+
+- Edits to an **existing** specimen (unless the user asked to commit)
+- Chrome, harness, taxonomy-system, or docs-only work
+- Incomplete scaffolds (`SPX-TODO`, empty demo, failing checks)
+- Unrelated dirty files mixed in — either leave them unstaged or ask before a mixed commit
+
+## Commit protocol
+
+Follow the user’s git safety rules:
+
+- Never update git config; never `--no-verify`; never force-push; do not push unless asked
+- Parallel: `git status`, `git diff`, `git log -5 --oneline` (match message style)
+- Stage **only** `library/<franchise>/<id>/`, the matching `registry/shards/<franchise>.ts`, `registry/order.ts`, and checklist mark-off when applicable (`37_persona-catalogue`) — **not** unrelated shards or a regenerated mega-file
+- Message: concise, why-focused; prefer `Add SPX-NNN <title>` (1–2 sentences max)
+- Use a HEREDOC for the message; run `git status` after to confirm
+- If a hook fails, fix and make a **new** commit — do not amend unless the user’s amend rules all apply
+- Never commit secrets (`.env`, credentials, etc.)
+
+## One specimen per commit
+
+If multiple new specimens were added in one session, prefer **one commit per specimen** unless the user asked otherwise.

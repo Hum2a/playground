@@ -1,0 +1,17 @@
+---
+description: Accessibility quality floor for chrome and previews
+alwaysApply: true
+---
+
+# Accessibility
+
+- Visible `:focus-visible` ring in `--verdigris` on every interactive control
+- Nothing focusable without a focus style
+- Every iframe: descriptive `title` (`Preview: …`)
+- Copy announcements reach an `aria-live="polite"` region
+- Colour is never the only signal for state (pair with label / border / text)
+- Plate keyboard order: preview → copy → open → playground
+- Detail tabs: real tab semantics + arrow keys (see `55_catalogue`)
+- Decorative specimen roots: `aria-hidden`; announce lock/state outside the tape
+
+When in doubt, prefer the quality floor in `docs/design-spec.md` §8.

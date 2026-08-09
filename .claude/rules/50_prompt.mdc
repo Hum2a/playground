@@ -1,0 +1,25 @@
+---
+description: Recreation prompt builder and copy affordances
+globs: src/prompt/**
+alwaysApply: false
+---
+
+# Prompt builder
+
+`buildPrompt(specimen, mode)` with modes `'full' | 'code' | 'contract'`.
+
+## Output rules (assert in tests)
+
+- Never mention this site, this repo, or the word “playground”
+- Imperative second person, present tense
+- When `motion.respectsReducedMotion`, always include a reduced-motion clause
+- Outer fences are 3 backticks; escalate to 4 if content contains ```
+- Acceptance → `- [ ]` checklist; integration → numbered steps
+
+## CopyButton
+
+- `navigator.clipboard.writeText` with `execCommand` fallback
+- 1.6s confirm: verdigris border + label swap — no toast, no icon animation
+- `aria-live="polite"`: `Prompt copied — {n} characters`
+- Failure: label → `Copy failed — select the prompt below` + selected read-only textarea
+- Errors state what happened and what to do; they do not apologise

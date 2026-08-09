@@ -1,0 +1,24 @@
+---
+description: Reduced-motion and animation respect across the site
+alwaysApply: true
+---
+
+# Motion
+
+An animation catalogue that assaults motion-sensitive visitors is badly built.
+
+## Site chrome
+
+- Per-plate play remains available regardless
+- Never rely on motion alone to communicate state (locks, copy success, filters)
+
+## Specimens
+
+Every new specimen CSS must include **both** triggers:
+
+```css
+@media (prefers-reduced-motion: reduce) { /* animation: none */ }
+[data-force-reduced-motion="true"] /* same */ { /* animation: none */ }
+```
+
+Keep the static effect visible when motion stops. Playground starter seed already satisfies this — preserve it on export.

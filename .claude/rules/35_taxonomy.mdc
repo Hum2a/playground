@@ -1,0 +1,53 @@
+---
+description: Specimen facets, free tags, and inspiration directory
+globs: src/specimens/**
+alwaysApply: false
+---
+
+# Specimen taxonomy
+
+Sources of truth:
+
+- Facets / free-tag rules → [`src/specimens/taxonomy.ts`](src/specimens/taxonomy.ts)
+- Inspiration directory → [`src/specimens/inspiration.ts`](src/specimens/inspiration.ts)
+- Human mirror → [`docs/inspiration-directory.md`](docs/inspiration-directory.md)
+
+Every specimen **must** set `facets`. Optionally set `inspiredBy` and freeform `tags`.
+
+## Facets (required)
+
+| Facet | Values |
+| --- | --- |
+| `kind` | `overlay` · `transition` · `loop` · `interaction` |
+| `tech` | `css-only` · `tiny-js` |
+| `scope` | `card` · `fullscreen` · `inline` |
+| `intensity` | `subtle` · `graphic` · `maximal` |
+
+## Inspiration (optional, preferred for game lineage)
+
+```ts
+inspiredBy: {
+  franchise: 'persona',      // category — Persona, Zelda, …
+  works: ['persona-5'],      // optional specific titles
+}
+```
+
+- Franchise = category chip (e.g. **Persona**)
+- Works = specific labels (e.g. **Persona 5**)
+- Omit `works` when the language is franchise-wide
+- **Never** put franchise/work ids (or “persona-inspired”) in `tags` — use `inspiredBy`
+- Adding a game: extend `INSPIRATION_DIRECTORY` + update `docs/inspiration-directory.md` in the same change
+
+## Free tags (effect flavor)
+
+Kebab-case, short, specific: `marquee`, `comic`, `wipe`, `glitch`.  
+Suggested list: `SUGGESTED_FREE_TAGS` in `inspiration.ts`.  
+Do not repeat facet values or inspiration ids.
+
+## Assignment rules
+
+- `tech: 'css-only'` ↔ no `demo.js` / no `files.js`; `tech: 'tiny-js'` ↔ JS present
+- Extending facet vocab → edit `taxonomy.ts`, `spec-check.mjs`, and this rule together
+- Extending inspiration → edit `inspiration.ts`, docs mirror, this rule if semantics change
+
+Catalogue: facet AND filters + Inspiration/Title chips; plates show facets → inspiredBy → tags. See `55_catalogue`.

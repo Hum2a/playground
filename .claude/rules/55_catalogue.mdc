@@ -1,0 +1,33 @@
+---
+description: Catalogue filters, plates, and detail route
+globs: src/catalogue/**
+alwaysApply: false
+---
+
+# Catalogue
+
+## Catalogue landing
+
+- `/` begins with the filter bar and its filtered plate results; do not render an unfiltered preview grid above it.
+- Content is near full-bleed (`--content-max: none`); `--plate-min` densifies above `90rem` / `120rem`.
+- Filters sync to the URL (`?kind=&q=`…); sticky filter bar + skip link; result count + clear.
+- The always-visible `View` chooser supports compact, standard, large, and extra-large plates; store a non-default selection in `?view=` and recalibrate the windowed grid with that size.
+
+## Plates
+
+Anatomy: mono ref (left) + origin (right) → framed preview → display title → mono **facets** → optional **inspiration** (`Persona · Persona 5`) → optional free tags → `[Copy prompt]` + `[Open →]` + `[Playground →]`.
+
+- Primary copy action only on plates; detail route shows Full / Code / Contract
+- `Playground →` forks via `/playground?fork=<id>` (same seed as detail “Open in playground”)
+- Mount frames with `IntersectionObserver` (start not-visible, sync above-fold); unmount when outside the expanded margin
+- Build copy prompts lazily on click (`CopyButton getText`) — never on every plate render
+
+## Filters
+
+Catalogue plate list filters by required facets (AND) plus optional Inspiration franchise / Title chips, plus text search. Taxonomy: `35_taxonomy` / `taxonomy.ts` / `inspiration.ts`.
+
+## Detail `/s/:id`
+
+- Sticky preview + ControlStrip | tabs Spec / Markup / Styles / Contract / Prompt
+- Real `role="tablist"` with arrow-key navigation
+- Unknown id: empty state linking back to the catalogue with a next step

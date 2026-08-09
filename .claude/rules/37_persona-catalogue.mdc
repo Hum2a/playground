@@ -1,0 +1,130 @@
+---
+description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / MHA / Naruto / Persona 4 / Netflix / PlayStation / Newspaper / Music / Manga catalogue checklists when a listed specimen ships
+alwaysApply: true
+---
+
+# Specimen inspiration catalogues
+
+| Catalogue | Path |
+| --- | --- |
+| Persona 5 | [`docs/catalogue/persona-5-specimen-catalogue.md`](docs/catalogue/persona-5-specimen-catalogue.md) |
+| Persona 3 | [`docs/catalogue/persona-3-specimen-catalogue.md`](docs/catalogue/persona-3-specimen-catalogue.md) |
+| Pokémon | [`docs/catalogue/pokemon-specimen-catalogue.md`](docs/catalogue/pokemon-specimen-catalogue.md) |
+| Dragon Ball | [`docs/catalogue/dragonball-specimen-catalogue.md`](docs/catalogue/dragonball-specimen-catalogue.md) |
+| iOS & macOS | [`docs/catalogue/ios-macos-specimen-catalogue.md`](docs/catalogue/ios-macos-specimen-catalogue.md) |
+| Android | [`docs/catalogue/android-specimen-catalogue.md`](docs/catalogue/android-specimen-catalogue.md) |
+| My Hero Academia | [`docs/catalogue/my-hero-academia-specimen-catalogue.md`](docs/catalogue/my-hero-academia-specimen-catalogue.md) |
+| Naruto | [`docs/catalogue/naruto-specimen-catalogue.md`](docs/catalogue/naruto-specimen-catalogue.md) |
+| Persona 4 | [`docs/catalogue/persona-4-specimen-catalogue.md`](docs/catalogue/persona-4-specimen-catalogue.md) |
+| Netflix | [`docs/catalogue/netflix-specimen-catalogue.md`](docs/catalogue/netflix-specimen-catalogue.md) |
+| PlayStation | [`docs/catalogue/playstation-specimen-catalogue.md`](docs/catalogue/playstation-specimen-catalogue.md) |
+| Newspaper & Editorial | [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md) |
+| Music Equipment | [`docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md`](docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md) |
+| Manga | [`docs/catalogue/manga_motion_ui_specimen_catalogue.md`](docs/catalogue/manga_motion_ui_specimen_catalogue.md) |
+
+## IDs
+
+| Id | Role |
+| --- | --- |
+| `P5-NNN` | Stable idea id in the P5 checklist (001–301) |
+| `P3-NNN` | Stable idea id in the P3 checklist (001–238) |
+| `PK-NNN` | Stable idea id in the Pokémon checklist (001–266) |
+| `DB-NNN` | Stable idea id in the Dragon Ball checklist (001–244) |
+| `IOS-NNN` | Stable idea id in the iOS & macOS checklist (001–258) |
+| `AND-NNN` | Stable idea id in the Android checklist (001–417) |
+| `MHA-NNN` | Stable idea id in the My Hero Academia checklist (001–369) |
+| `NR-NNN` | Stable idea id in the Naruto checklist (001–575) |
+| `P4-NNN` | Stable idea id in the Persona 4 checklist (001–191) |
+| `NF-NNN` | Stable idea id in the Netflix checklist (001–197) |
+| `PS-NNN` | Stable idea id in the PlayStation checklist (001–216) |
+| `NEWS-NNN` | Stable idea id in the Newspaper & Editorial checklist (001–237) |
+| `MUSIC-NNN` | Stable idea id in the Music Equipment checklist (001–310) |
+| `MANGA-NNN` | Stable idea id in the Manga checklist (001–270) |
+| `SPX-NNN` | Registry `ref` in `entry.ts` / shard + `order.ts` |
+
+### Persona 5 refs
+
+- Shipped P5 effects keep their **existing** refs (`P5-001`→`SPX-003`, `P5-002`→`SPX-012`, `P5-013`→`SPX-002`).
+- Unbuilt P5 ideas are **pre-assigned** `SPX-015`…`SPX-312` — use that ref when implementing; do not invent a different number.
+
+### Persona 3 refs
+
+- Shipped P3 effects keep their **existing** refs (`P3-019` Blue Glass → `SPX-005`, `P3-037` Evoker Menu Snap → `SPX-006`).
+- Unbuilt P3 ideas are **pre-assigned** `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
+
+### Pokémon refs
+
+- Unbuilt PK ideas are **pre-assigned** `SPX-700`…`SPX-965` — use that ref when implementing; do not invent a different number.
+
+### Dragon Ball refs
+
+- Unbuilt DB ideas are **pre-assigned** `SPX-966`…`SPX-1209` — use that ref when implementing; do not invent a different number.
+
+### iOS & macOS refs
+
+- Unbuilt IOS ideas are **pre-assigned** `SPX-1300`…`SPX-1557` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/ios_macos_effects_catalogue.md`](docs/catalogue/ios_macos_effects_catalogue.md) redirects to the canonical checklist.
+
+### Android refs
+
+- Unbuilt AND ideas are **pre-assigned** `SPX-1558`…`SPX-1974` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/android_animation_effects_catalogue.md`](docs/catalogue/android_animation_effects_catalogue.md) redirects to the canonical checklist.
+
+### My Hero Academia refs
+
+- Unbuilt MHA ideas are **pre-assigned** `SPX-1975`…`SPX-2343` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/my_hero_academia_motion_ui_catalogue.md`](docs/catalogue/my_hero_academia_motion_ui_catalogue.md) redirects to the canonical checklist.
+
+### Naruto refs
+
+- Unbuilt NR ideas are **pre-assigned** `SPX-2344`…`SPX-2918` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/naruto_motion_ui_specimen_catalogue.md`](docs/catalogue/naruto_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
+### Persona 4 refs
+
+- Unbuilt P4 ideas are **pre-assigned** `SPX-2919`…`SPX-3109` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/persona_4_motion_ui_specimen_catalogue.md`](docs/catalogue/persona_4_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
+### Netflix refs
+
+- Unbuilt NF ideas are **pre-assigned** `SPX-3110`…`SPX-3306` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/netflix_motion_ui_specimen_catalogue.md`](docs/catalogue/netflix_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
+### PlayStation refs
+
+- Unbuilt PS ideas are **pre-assigned** `SPX-3307`…`SPX-3522` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/playstation_motion_ui_specimen_catalogue.md`](docs/catalogue/playstation_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
+### Newspaper & Editorial refs
+
+- Unbuilt Newspaper & Editorial ideas are pre-assigned `SPX-3523`…`SPX-3759` — use that ref when implementing; do not invent a different number.
+
+### Music Equipment refs
+
+- Unbuilt Music Equipment ideas are pre-assigned `SPX-3760`…`SPX-4069` — use that ref when implementing; do not invent a different number.
+
+### Manga refs
+
+- Unbuilt Manga ideas are pre-assigned `SPX-4070`…`SPX-4339` — use that ref when implementing; do not invent a different number.
+
+### Outside these catalogues
+
+Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, MHA, NR, P4, NF, PS, NEWS, MUSIC, or MANGA row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210`–`SPX-1299`.
+
+## When a specimen ships
+
+After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
+
+1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / `NR-NNN` / `P4-NNN` / `NF-NNN` / `PS-NNN` / `NEWS-NNN` / `MUSIC-NNN` / `MANGA-NNN` / title / assigned `SPX-NNN`).
+2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
+3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / total`).
+4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
+5. Include the checklist edit in the specimen commit (or the same change set).
+
+Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
+
+Library folder franchise must match the checklist’s inspiration key (`persona`, `pokemon`, `netflix`, `editorial`, …) — see `20_structure`.
+
+## Scope
+
+Only applies to ideas listed in these fifteen catalogue files. Other inspiration lineages do not use them.

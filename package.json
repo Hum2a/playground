@@ -17,6 +17,7 @@
     "spec:new": "node scripts/spec-new.mjs",
     "spec:check": "node scripts/spec-check.mjs",
     "spec:ship": "node scripts/spec-ship.mjs",
+    "rules:sync": "node scripts/sync-cursor-rules.mjs",
     "deploy:preview": "npm run build && wrangler pages deploy --branch=preview",
     "deploy:prod": "npm run build && wrangler pages deploy"
   },
