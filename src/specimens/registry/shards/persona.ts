@@ -124,6 +124,7 @@ import { trackingErrorRecovery } from '../../library/persona/tracking-error-reco
 import { tvScreenDiveTransition } from '../../library/persona/tv-screen-dive-transition/entry'
 import { velvetDoorTransition } from '../../library/persona/velvet-door-transition/entry'
 import { vhsTrackingScrub } from '../../library/persona/vhs-tracking-scrub/entry'
+import { waterDisturbanceHover } from '../../library/persona/water-disturbance-hover/entry'
 import { waterlinePageWipe } from '../../library/persona/waterline-page-wipe/entry'
 import { weaknessDiscovered } from '../../library/persona/weakness-discovered/entry'
 import { yellowImpactWipe } from '../../library/persona/yellow-impact-wipe/entry'
@@ -254,6 +255,7 @@ export const shard: Specimen[] = [
   tvScreenDiveTransition,
   velvetDoorTransition,
   vhsTrackingScrub,
+  waterDisturbanceHover,
   waterlinePageWipe,
   weaknessDiscovered,
   yellowImpactWipe,

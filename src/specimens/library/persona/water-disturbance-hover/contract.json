@@ -1,0 +1,54 @@
+{
+  "name": "water-disturbance-hover",
+  "intent": "Local pointer/focus disturbs a calm 460×260 liquid plate: highlight, ≤8px line nudges, three reused rings. Not a glow card.",
+  "geometry": {
+    "widthPx": 460,
+    "heightPx": 260
+  },
+  "colours": {
+    "background": "#09111D",
+    "surface": "#12304A",
+    "wave": "#236B91",
+    "highlight": "#72D6E8",
+    "text": "#C7CDD8"
+  },
+  "disturbance": {
+    "customProperties": ["--disturb-x", "--disturb-y"],
+    "units": "px",
+    "relativeTo": "local-surface",
+    "noRandom": true,
+    "maxDisplacementPx": 8
+  },
+  "ripple": {
+    "ringCount": 3,
+    "strokePx": 2,
+    "durationMs": 520,
+    "restartTravelPx": 18,
+    "reuseNodes": true
+  },
+  "timing": {
+    "idle": "static",
+    "rippleMs": 520,
+    "surfaceMs": 300
+  },
+  "pointer": {
+    "events": ["pointerenter", "pointermove", "pointerleave"],
+    "target": "local specimen surface",
+    "noParentAccess": true
+  },
+  "keyboard": {
+    "focusable": true,
+    "staticPointPx": [230, 130]
+  },
+  "api": {
+    "init": "window.waterDisturbanceHover.init(scope?)",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "No expanding ripples or line travel; static cyan circle at pointer or focus"
+  }
+}

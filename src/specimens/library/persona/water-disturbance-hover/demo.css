@@ -1,0 +1,254 @@
+/* SPX-416 Water Disturbance Hover — portable contract. Do not restyle to host tokens. */
+
+.wdh {
+  --wdh-bg: #09111d;
+  --wdh-surface: #12304a;
+  --wdh-wave: #236b91;
+  --wdh-hi: #72d6e8;
+  --wdh-text: #c7cdd8;
+  --wdh-ripple: 520ms;
+  --wdh-surface-ms: 300ms;
+  --wdh-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  padding: 1.15rem 1rem;
+  overflow: hidden;
+  color: var(--wdh-text);
+  background: var(--wdh-bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.wdh *,
+.wdh *::before,
+.wdh *::after {
+  box-sizing: border-box;
+}
+
+.wdh__kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: color-mix(in srgb, var(--wdh-text) 55%, var(--wdh-bg));
+}
+
+.wdh__surface {
+  --disturb-x: 230px;
+  --disturb-y: 130px;
+  position: relative;
+  overflow: hidden;
+  width: 460px;
+  max-width: 100%;
+  height: 260px;
+  border: 2px solid color-mix(in srgb, var(--wdh-wave) 55%, var(--wdh-bg));
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--wdh-wave) 22%, var(--wdh-surface)) 0%,
+      var(--wdh-surface) 42%,
+      #0d2236 100%
+    );
+  cursor: crosshair;
+  transition: filter var(--wdh-surface-ms) var(--wdh-ease);
+}
+
+.wdh__surface[data-state='live'],
+.wdh__surface[data-state='focus'] {
+  filter: brightness(1.12);
+}
+
+.wdh__surface:focus {
+  outline: none;
+}
+
+.wdh__surface:focus-visible {
+  outline: 2px solid var(--wdh-hi);
+  outline-offset: 3px;
+}
+
+.wdh__lines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.wdh__line {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: color-mix(in srgb, var(--wdh-wave) 70%, transparent);
+  transform: translateX(0);
+  transition: transform var(--wdh-surface-ms) var(--wdh-ease);
+}
+
+.wdh__glow {
+  pointer-events: none;
+  position: absolute;
+  left: var(--disturb-x);
+  top: var(--disturb-y);
+  width: 148px;
+  height: 148px;
+  margin: -74px 0 0 -74px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--wdh-hi) 28%, transparent) 0%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity var(--wdh-surface-ms) var(--wdh-ease);
+}
+
+.wdh__surface[data-state='live'] .wdh__glow,
+.wdh__surface[data-state='focus'] .wdh__glow {
+  opacity: 1;
+}
+
+.wdh__static {
+  pointer-events: none;
+  position: absolute;
+  left: var(--disturb-x);
+  top: var(--disturb-y);
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border: 2px solid var(--wdh-hi);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.wdh__rings {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.wdh__ring {
+  position: absolute;
+  left: var(--disturb-x);
+  top: var(--disturb-y);
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border: 2px solid var(--wdh-hi);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.18);
+}
+
+.wdh__rings.is-rippling .wdh__ring--1 {
+  animation: wdh-ring var(--wdh-ripple) var(--wdh-ease) forwards;
+}
+
+.wdh__rings.is-rippling .wdh__ring--2 {
+  animation: wdh-ring var(--wdh-ripple) var(--wdh-ease) 70ms forwards;
+}
+
+.wdh__rings.is-rippling .wdh__ring--3 {
+  animation: wdh-ring var(--wdh-ripple) var(--wdh-ease) 140ms forwards;
+}
+
+@keyframes wdh-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.18);
+  }
+  62% {
+    opacity: 0.22;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.15);
+  }
+}
+
+.wdh__label {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding-top: 6.4rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-align: center;
+  color: var(--wdh-text);
+}
+
+.wdh__hint {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--wdh-text) 62%, var(--wdh-bg));
+}
+
+.wdh__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wdh__surface,
+  .wdh__line,
+  .wdh__glow {
+    transition: none;
+    filter: none;
+  }
+
+  .wdh__ring {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .wdh__line {
+    transform: none !important;
+  }
+
+  .wdh__surface[data-state='live'] .wdh__static,
+  .wdh__surface[data-state='focus'] .wdh__static {
+    opacity: 0.8;
+  }
+
+  .wdh__surface[data-state='live'],
+  .wdh__surface[data-state='focus'] {
+    filter: none;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--wdh-hi) 35%, transparent);
+  }
+}
+
+[data-force-reduced-motion='true'] .wdh__surface,
+[data-force-reduced-motion='true'] .wdh__line,
+[data-force-reduced-motion='true'] .wdh__glow {
+  transition: none;
+  filter: none;
+}
+
+[data-force-reduced-motion='true'] .wdh__ring {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
+[data-force-reduced-motion='true'] .wdh__line {
+  transform: none !important;
+}
+
+[data-force-reduced-motion='true'] .wdh__surface[data-state='live'] .wdh__static,
+[data-force-reduced-motion='true'] .wdh__surface[data-state='focus'] .wdh__static {
+  opacity: 0.8;
+}
+
+[data-force-reduced-motion='true'] .wdh__surface[data-state='live'],
+[data-force-reduced-motion='true'] .wdh__surface[data-state='focus'] {
+  filter: none;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--wdh-hi) 35%, transparent);
+}
