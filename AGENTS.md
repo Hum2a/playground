@@ -51,7 +51,8 @@ Catalogue registry entries are **metadata only**. HTML/CSS/JS/spec/contract live
 - **Newspaper & Editorial:** [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md) — open rows reserve `SPX-3523`–`SPX-3759`.
 - **Music Equipment:** [`docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md`](docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md) — open rows reserve `SPX-3760`–`SPX-4069`.
 - **Manga:** [`docs/catalogue/manga_motion_ui_specimen_catalogue.md`](docs/catalogue/manga_motion_ui_specimen_catalogue.md) — open rows reserve `SPX-4070`–`SPX-4339`.
+- **Final Fantasy:** [`docs/catalogue/final-fantasy-specimen-catalogue.md`](docs/catalogue/final-fantasy-specimen-catalogue.md) — open rows reserve `SPX-4340`–`SPX-4547` (`FF-012` Victory Results Tally keeps `SPX-014`).
 
-When a listed specimen ships, mark it `[x]` in the matching checklist in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Non-catalogue specimens use gaps not reserved by those ranges (typically `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-3523+`).
+When a listed specimen ships, mark it `[x]` in the matching checklist in the same change (`.cursor/rules/37_persona-catalogue.mdc`). Non-catalogue specimens use gaps not reserved by those ranges (typically `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-4548+`).
 
 See `docs/design-spec.md` for the full product contract.

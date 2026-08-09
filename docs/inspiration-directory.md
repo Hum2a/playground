@@ -39,6 +39,8 @@ inspiredBy: {
 | `ff-vii` | Final Fantasy VII |
 | `ff-x` | Final Fantasy X |
 
+Backlog: [`docs/catalogue/final-fantasy-specimen-catalogue.md`](catalogue/final-fantasy-specimen-catalogue.md) (`FF-NNN` / `SPX-4340`…`SPX-4547`; shipped `FF-012` keeps `SPX-014`).
+
 ### The Legend of Zelda (`zelda`)
 
 | Work id | Label |

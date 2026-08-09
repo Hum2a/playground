@@ -1,5 +1,5 @@
 ---
-description: Mark Persona 5 / Persona 3 / Pokémon / Dragon Ball / iOS·macOS / Android / MHA / Naruto / Persona 4 / Netflix / PlayStation / Newspaper / Music / Manga catalogue checklists when a listed specimen ships
+description: Mark P5 / P3 / PK / DB / IOS / AND / MHA / NR / P4 / NF / PS / NEWS / MUSIC / MANGA / FF catalogue checklists when a listed specimen ships
 alwaysApply: true
 ---
 
@@ -21,6 +21,7 @@ alwaysApply: true
 | Newspaper & Editorial | [`docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md`](docs/catalogue/newspaper_editorial_motion_ui_specimen_catalogue.md) |
 | Music Equipment | [`docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md`](docs/catalogue/music_equipment_motion_ui_specimen_catalogue.md) |
 | Manga | [`docs/catalogue/manga_motion_ui_specimen_catalogue.md`](docs/catalogue/manga_motion_ui_specimen_catalogue.md) |
+| Final Fantasy | [`docs/catalogue/final-fantasy-specimen-catalogue.md`](docs/catalogue/final-fantasy-specimen-catalogue.md) |
 
 ## IDs
 
@@ -40,6 +41,7 @@ alwaysApply: true
 | `NEWS-NNN` | Stable idea id in the Newspaper & Editorial checklist (001–237) |
 | `MUSIC-NNN` | Stable idea id in the Music Equipment checklist (001–310) |
 | `MANGA-NNN` | Stable idea id in the Manga checklist (001–270) |
+| `FF-NNN` | Stable idea id in the Final Fantasy checklist (001–208) |
 | `SPX-NNN` | Registry `ref` in `entry.ts` / shard + `order.ts` |
 
 ### Persona 5 refs
@@ -107,15 +109,21 @@ alwaysApply: true
 
 - Unbuilt Manga ideas are pre-assigned `SPX-4070`…`SPX-4339` — use that ref when implementing; do not invent a different number.
 
+### Final Fantasy refs
+
+- Shipped FF effects keep their **existing** refs (`FF-012` Victory Results Tally → `SPX-014`).
+- Unbuilt FF ideas are pre-assigned `SPX-4340`…`SPX-4547` — use that ref when implementing; do not invent a different number.
+- Legacy path [`docs/catalogue/final_fantasy_motion_ui_specimen_catalogue.md`](docs/catalogue/final_fantasy_motion_ui_specimen_catalogue.md) redirects to the canonical checklist.
+
 ### Outside these catalogues
 
-Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, MHA, NR, P4, NF, PS, NEWS, MUSIC, or MANGA row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, or `SPX-1210`–`SPX-1299`.
+Non-catalogue specimens (other franchises / originals) take a free ref **not** reserved by an open `[ ]` P5, P3, PK, DB, IOS, AND, MHA, NR, P4, NF, PS, NEWS, MUSIC, MANGA, or FF row — typically leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-4548+`.
 
 ## When a specimen ships
 
 After a new specimen is registered with a real `ref` (same bar as `36_specimen-commits`):
 
-1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / `NR-NNN` / `P4-NNN` / `NF-NNN` / `PS-NNN` / `NEWS-NNN` / `MUSIC-NNN` / `MANGA-NNN` / title / assigned `SPX-NNN`).
+1. Find its row in the matching checklist (`P5-NNN` / `P3-NNN` / `PK-NNN` / `DB-NNN` / `IOS-NNN` / `AND-NNN` / `MHA-NNN` / `NR-NNN` / `P4-NNN` / `NF-NNN` / `PS-NNN` / `NEWS-NNN` / `MUSIC-NNN` / `MANGA-NNN` / `FF-NNN` / title / assigned `SPX-NNN`).
 2. Flip **both** the master-list checkbox and the Core first-wave checkbox (if present) from `[ ]` to `[x]`.
 3. Update the **Shipped** table and the **Progress** counts (`Done` / `Open` / `N / total`).
 4. Remove a `· scaffold \`…\`` note once the specimen is fully registered.
@@ -123,8 +131,8 @@ After a new specimen is registered with a real `ref` (same bar as `36_specimen-c
 
 Do **not** mark `[x]` for scaffolds (`SPX-TODO`) or unregistered folders.
 
-Library folder franchise must match the checklist’s inspiration key (`persona`, `pokemon`, `netflix`, `editorial`, …) — see `20_structure`.
+Library folder franchise must match the checklist’s inspiration key (`persona`, `pokemon`, `netflix`, `editorial`, `final-fantasy`, …) — see `20_structure`.
 
 ## Scope
 
-Only applies to ideas listed in these fifteen catalogue files. Other inspiration lineages do not use them.
+Only applies to ideas listed in these sixteen catalogue files. Other inspiration lineages do not use them.
