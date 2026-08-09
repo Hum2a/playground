@@ -1,0 +1,42 @@
+{
+  "name": "textarea-paper-expansion",
+  "intent": "Native MESSAGE textarea unfolds like three-layer paper on focus and stays tall after blur if it still holds text.",
+  "surface": {
+    "widthPx": 360,
+    "heightCollapsedPx": 76,
+    "heightExpandedPx": 190,
+    "previewWidthPx": 420,
+    "previewHeightPx": 320
+  },
+  "layers": {
+    "count": 3,
+    "main": "#E9EEF5",
+    "mid": "#C7CDD8",
+    "midOffsetPx": 4,
+    "back": "#72D6E8",
+    "backOffsetPx": 7,
+    "foldPx": 18
+  },
+  "timing": {
+    "focusMs": 420,
+    "blurMs": 320,
+    "easing": "cubic-bezier(.2,.8,.2,1)",
+    "collapseOnlyIfEmpty": true
+  },
+  "copy": {
+    "label": "MESSAGE"
+  },
+  "semantics": {
+    "cssOnly": true,
+    "nativeTextarea": true,
+    "placeholderShownEmpty": true,
+    "doNotMoveFocus": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Instant expand/collapse; all three paper layers remain visible"
+  }
+}

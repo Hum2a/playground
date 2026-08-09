@@ -153,6 +153,7 @@ import { invalidFieldSlash } from '../../library/persona/invalid-field-slash/ent
 import { successfulFieldStamp } from '../../library/persona/successful-field-stamp/entry'
 import { checkboxImpact } from '../../library/persona/checkbox-impact/entry'
 import { radioTargetSelector } from '../../library/persona/radio-target-selector/entry'
+import { textareaPaperExpansion } from '../../library/persona/textarea-paper-expansion/entry'
 import { confidantRankUp } from '../../library/persona/confidant-rank-up/entry'
 import { xpCounterSlam } from '../../library/persona/xp-counter-slam/entry'
 import { jaggedSpeechTooltip } from '../../library/persona/jagged-speech-tooltip/entry'
@@ -315,6 +316,7 @@ export const shard: Specimen[] = [
   successfulFieldStamp,
   checkboxImpact,
   radioTargetSelector,
+  textareaPaperExpansion,
   confidantRankUp,
   xpCounterSlam,
   jaggedSpeechTooltip,

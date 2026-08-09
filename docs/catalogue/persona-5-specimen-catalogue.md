@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use gaps not reserved by open P5, P3, PK, DB, or IOS rows (see `37_persona-catalogue`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **32 / 301** complete.
+- Progress: **33 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 32 |
-| Open | 269 |
+| Done | 33 |
+| Open | 268 |
 
 ## Shipped (mapped to live specimens)
 
@@ -50,6 +50,7 @@
 | P5-135 | `SPX-146` | `successful-field-stamp` | Successful Field Stamp |
 | P5-136 | `SPX-147` | `checkbox-impact` | Checkbox Impact |
 | P5-137 | `SPX-148` | `radio-target-selector` | Radio Target Selector |
+| P5-138 | `SPX-149` | `textarea-paper-expansion` | Textarea Paper Expansion |
 
 ## Core first-wave
 
@@ -247,7 +248,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P5-135** · `SPX-146` · **Successful Field Stamp** — `OK` stamp lands beside valid field.
 - [x] **P5-136** · `SPX-147` · **Checkbox Impact** — Checkmark lands with hard offset backing.
 - [x] **P5-137** · `SPX-148` · **Radio Target Selector** — Selection markers converge on chosen option.
-- [ ] **P5-138** · `SPX-149` · **Textarea Paper Expansion** — Input grows like unfolding paper.
+- [x] **P5-138** · `SPX-149` · **Textarea Paper Expansion** — Input grows like unfolding paper.
 - [ ] **P5-139** · `SPX-150` · **Label Ejection** — Floating label shoots upward rather than gliding.
 - [ ] **P5-140** · `SPX-151` · **Password Reveal Cutout** — Black mask tears away to expose characters.
 - [ ] **P5-141** · `SPX-152` · **Submit Blackout** — Form becomes graphic silhouette during submission.
