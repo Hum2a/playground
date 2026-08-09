@@ -608,4 +608,5 @@ export const specimenOrder: string[] = [
   'automation-point-draw',
   'jrpg-command-wheel-fan',
   'jrpg-target-menu-acquire',
+  'jrpg-turn-order-assemble',
 ]

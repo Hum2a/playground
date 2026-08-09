@@ -7,6 +7,7 @@ import { enhancedStateReversion } from '../../library/original/enhanced-state-re
 import { instantFullRecovery } from '../../library/original/instant-full-recovery/entry'
 import { jrpgCommandWheelFan } from '../../library/original/jrpg-command-wheel-fan/entry'
 import { jrpgTargetMenuAcquire } from '../../library/original/jrpg-target-menu-acquire/entry'
+import { jrpgTurnOrderAssemble } from '../../library/original/jrpg-turn-order-assemble/entry'
 import { timeSkip } from '../../library/original/time-skip/entry'
 
 export const shard: Specimen[] = [
@@ -18,5 +19,6 @@ export const shard: Specimen[] = [
   instantFullRecovery,
   jrpgCommandWheelFan,
   jrpgTargetMenuAcquire,
+  jrpgTurnOrderAssemble,
   timeSkip,
 ]
