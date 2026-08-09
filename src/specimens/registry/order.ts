@@ -648,4 +648,5 @@ export const specimenOrder: string[] = [
   'checkbox-impact',
   'radio-target-selector',
   'textarea-paper-expansion',
+  'label-ejection',
 ]

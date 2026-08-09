@@ -1,0 +1,155 @@
+/* SPX-150 Label Ejection — portable contract. Do not restyle to host tokens. */
+
+.le {
+  --le-void: #111827;
+  --le-paper: #e9eef5;
+  --le-mute: #8a9bb0;
+  --le-back: #236b91;
+  --le-cyan: #72d6e8;
+  --le-focus: 180ms;
+  --le-blur: 140ms;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 240px;
+  height: 100%;
+  padding: 2.4rem 1.25rem 1.35rem;
+  overflow: hidden;
+  color: var(--le-paper);
+  background: var(--le-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.le *,
+.le *::before,
+.le *::after {
+  box-sizing: border-box;
+}
+
+.le__field {
+  position: relative;
+  width: 280px;
+  max-width: 100%;
+  height: 52px;
+}
+
+.le__input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0.85rem;
+  border: 2px solid #2a3a4d;
+  border-radius: 0;
+  background: #0d141f;
+  color: var(--le-paper);
+  font: 700 0.95rem/1.2 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.le__input::placeholder {
+  color: transparent;
+}
+
+.le__input:focus {
+  outline: none;
+  border-color: var(--le-cyan);
+}
+
+.le__input:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+.le__label {
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  width: 90px;
+  height: 22px;
+  margin: -11px 0 0;
+  transform: translateY(0) scale(1);
+  transform-origin: left center;
+  cursor: text;
+  transition: transform var(--le-blur) linear;
+}
+
+.le__back {
+  position: absolute;
+  inset: 0;
+  width: 90px;
+  height: 22px;
+  background: var(--le-back);
+  transform: rotate(-3deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--le-blur) linear;
+}
+
+.le__text {
+  position: relative;
+  z-index: 1;
+  color: var(--le-mute);
+  font: 800 0.62rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.2em;
+  transition: color var(--le-blur) linear;
+}
+
+.le__input:focus + .le__label,
+.le__input:not(:placeholder-shown) + .le__label {
+  animation: le-eject var(--le-focus) linear both;
+  transition: none;
+}
+
+.le__input:focus + .le__label .le__back,
+.le__input:not(:placeholder-shown) + .le__label .le__back {
+  opacity: 1;
+}
+
+.le__input:focus + .le__label .le__text,
+.le__input:not(:placeholder-shown) + .le__label .le__text {
+  color: #e9eef5;
+}
+
+@keyframes le-eject {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(0.82);
+  }
+  100% {
+    transform: translateY(-34px) scale(0.72);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .le__label,
+  .le__back,
+  .le__text {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .le__input:focus + .le__label,
+  .le__input:not(:placeholder-shown) + .le__label {
+    transform: translateY(-34px) scale(0.72);
+  }
+}
+
+[data-force-reduced-motion='true'] .le__label,
+[data-force-reduced-motion='true'] .le__back,
+[data-force-reduced-motion='true'] .le__text {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .le__input:focus + .le__label,
+[data-force-reduced-motion='true'] .le__input:not(:placeholder-shown) + .le__label {
+  transform: translateY(-34px) scale(0.72);
+}

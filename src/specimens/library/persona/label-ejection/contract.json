@@ -1,0 +1,41 @@
+{
+  "name": "label-ejection",
+  "intent": "EMAIL label sits inside the field, then ejects in two hard stages (not a float curve) onto a 90×22 angled backing.",
+  "surface": {
+    "previewWidthPx": 420,
+    "previewHeightPx": 240,
+    "fieldWidthPx": 280,
+    "fieldHeightPx": 52
+  },
+  "label": {
+    "copy": "EMAIL",
+    "forId": "le-email",
+    "finalTranslateYPx": -34,
+    "finalScale": 0.72,
+    "stage1TranslateYPx": -20,
+    "stage1Scale": 0.82,
+    "stage1Ms": 90,
+    "focusDurationMs": 180,
+    "blurDurationMs": 140,
+    "easing": "linear",
+    "textColour": "#E9EEF5"
+  },
+  "backing": {
+    "widthPx": 90,
+    "heightPx": 22,
+    "rotateDeg": -3,
+    "colour": "#236B91"
+  },
+  "focus": {
+    "inputBorder": "#72D6E8",
+    "outline": "2px solid #72D6E8"
+  },
+  "stayEjectedWhen": [":focus", ":not(:placeholder-shown)"],
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Jump to final ejected or rest pose; no travel"
+  }
+}
