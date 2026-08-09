@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or IOS (`SPX-1300`–`SPX-1557`); prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+ (AND reserves SPX-1558–SPX-1974)`; also reserve MHA (SPX-1975–SPX-2343); leftover beyond that is SPX-3523+ (P4 reserves SPX-2919–SPX-3109; NF reserves SPX-3110–SPX-3306; PS reserves SPX-3307–SPX-3522); also reserve NR SPX-2344–SPX-2918.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **49 / 238** complete.
+- Progress: **50 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 49 |
-| Open | 189 |
+| Done | 50 |
+| Open | 188 |
 
 ## Visual grammar
 
@@ -79,6 +79,7 @@
 | P3-062 | `SPX-459` | `eclipse-transition` | Eclipse Transition |
 | P3-063 | `SPX-460` | `crescent-wipe` | Crescent Wipe |
 | P3-065 | `SPX-462` | `lunar-deadline` | Lunar Deadline |
+| P3-066 | `SPX-463` | `moon-phase-pagination` | Moon Phase Pagination |
 
 | P3-124 | `SPX-521` | `blue-flame-button-hover` | Blue Flame Button Hover |
 | P3-125 | `SPX-522` | `energy-charge-confirmation` | Energy Charge Confirmation |
@@ -196,7 +197,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [x] **P3-063** · `SPX-460` · **Crescent Wipe** — moon.
 - [x] **P3-064** · `SPX-461` · **Full Moon Milestone** — moon.
 - [x] **P3-065** · `SPX-462` · **Lunar Deadline** — moon.
-- [ ] **P3-066** · `SPX-463` · **Moon Phase Pagination** — moon.
+- [x] **P3-066** · `SPX-463` · **Moon Phase Pagination** — moon.
 - [ ] **P3-067** · `SPX-464` · **Eclipse Loading State** — moon.
 - [ ] **P3-068** · `SPX-465` · **Moon Orbit Selection** — moon.
 - [ ] **P3-069** · `SPX-466` · **Lunar Calendar Change** — moon.

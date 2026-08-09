@@ -1,0 +1,196 @@
+/* SPX-463 Moon Phase Pagination — portable contract. Do not restyle to host tokens. */
+
+.mpp {
+  --mpp-void: #09111d;
+  --mpp-dark: #111827;
+  --mpp-lit: #c7cdd8;
+  --mpp-cyan: #72d6e8;
+  --mpp-mute: #236b91;
+  --mpp-active: 32px;
+  --mpp-idle: 24px;
+  --mpp-orbit: 2px;
+  --mpp-ms: 280ms;
+  --mpp-ease: cubic-bezier(0.2, 0.8, 0.25, 1);
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.5rem 1.25rem;
+  overflow: hidden;
+  color: var(--mpp-lit);
+  background: var(--mpp-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.mpp *,
+.mpp *::before,
+.mpp *::after {
+  box-sizing: border-box;
+}
+
+.mpp__track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 560px;
+}
+
+.mpp__marker {
+  appearance: none;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.mpp__disc {
+  position: relative;
+  width: var(--mpp-idle);
+  height: var(--mpp-idle);
+}
+
+.mpp__marker[aria-current='page'] .mpp__disc {
+  width: var(--mpp-active);
+  height: var(--mpp-active);
+}
+
+.mpp__orbit {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: var(--mpp-orbit) solid var(--mpp-cyan);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mpp__marker--tween .mpp__disc {
+  transition:
+    width var(--mpp-ms) var(--mpp-ease),
+    height var(--mpp-ms) var(--mpp-ease);
+}
+
+.mpp__marker--tween .mpp__orbit {
+  transition: opacity var(--mpp-ms) var(--mpp-ease);
+}
+
+.mpp__marker[aria-current='page'] .mpp__orbit {
+  opacity: 1;
+}
+
+.mpp__moon {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--mpp-dark);
+  box-shadow: inset 0 0 0 1px rgb(35 107 145 / 0.55);
+}
+
+.mpp__lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #e9eef5 0%,
+    var(--mpp-lit) 48%,
+    #9aa6b5 100%
+  );
+}
+
+.mpp__shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--mpp-dark);
+  transform: translateX(0);
+}
+
+.mpp__moon[data-phase='new'] .mpp__shade {
+  transform: translateX(0);
+}
+
+.mpp__moon[data-phase='crescent'] .mpp__shade {
+  transform: translateX(-25%);
+}
+
+.mpp__moon[data-phase='quarter'] .mpp__shade {
+  transform: translateX(-50%);
+}
+
+.mpp__moon[data-phase='gibbous'] .mpp__shade {
+  transform: translateX(-75%);
+}
+
+.mpp__moon[data-phase='full'] .mpp__shade {
+  transform: translateX(-100%);
+}
+
+.mpp__moon[data-phase='waning-gibbous'] .mpp__shade {
+  transform: translateX(75%);
+}
+
+.mpp__moon[data-phase='last-quarter'] .mpp__shade {
+  transform: translateX(50%);
+}
+
+.mpp__moon[data-phase='waning-crescent'] .mpp__shade {
+  transform: translateX(25%);
+}
+
+.mpp__marker:focus {
+  outline: none;
+}
+
+.mpp__marker:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 3px;
+}
+
+.mpp__label,
+.mpp__phase {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.mpp__label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: var(--mpp-cyan);
+}
+
+.mpp__phase {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--mpp-mute);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mpp__marker--tween .mpp__disc,
+  .mpp__marker--tween .mpp__orbit {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .mpp__marker--tween .mpp__disc,
+[data-force-reduced-motion='true'] .mpp__marker--tween .mpp__orbit {
+  transition: none;
+}

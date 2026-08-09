@@ -1,0 +1,48 @@
+{
+  "name": "moon-phase-pagination",
+  "intent": "Eight-page lunar pagination: geometric moon markers grow an orbit on the active page.",
+  "surface": {
+    "widthPx": 620,
+    "heightPx": 300
+  },
+  "pages": 8,
+  "pageMap": [
+    { "page": "01", "phase": "NEW" },
+    { "page": "02", "phase": "CRESCENT" },
+    { "page": "03", "phase": "QUARTER" },
+    { "page": "04", "phase": "GIBBOUS" },
+    { "page": "05", "phase": "FULL" },
+    { "page": "06", "phase": "WANING GIBBOUS" },
+    { "page": "07", "phase": "LAST QUARTER" },
+    { "page": "08", "phase": "WANING CRESCENT" }
+  ],
+  "markers": {
+    "activePx": 32,
+    "inactivePx": 24,
+    "orbitRingPx": 2,
+    "construction": "lit disc + offset shade circle"
+  },
+  "timing": {
+    "transitionMs": 280
+  },
+  "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End"],
+  "colours": {
+    "void": "#09111D",
+    "lit": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91",
+    "urgency": "#C94F58"
+  },
+  "a11y": {
+    "role": "navigation",
+    "ariaCurrent": "page",
+    "focusVisible": "2px #72D6E8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Active marker and PHASE label snap immediately; no scale or orbit animation"
+  }
+}
