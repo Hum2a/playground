@@ -1,0 +1,207 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/typographic-impact.schema.json",
+  "title": "TypographicImpact",
+  "description": "Portable visual/component contract for a Persona-inspired giant-word emphasis overlay with a misregistered ghost layer. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "typographic-impact" },
+    "intent": {
+      "type": "string",
+      "const": "Oversized headline word slams in behind a small readable callout, trailed by a misregistered red ghost duplicate, for emphasis / attention overlays."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["giantWord", "eyebrow", "message"],
+      "properties": {
+        "giantWord": { "type": "string", "const": "CRITICAL" },
+        "eyebrow": { "type": "string", "const": "ALERT" },
+        "message": { "type": "string", "const": "Weak point exposed" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["giantFontSize", "ghostOffsetPx", "finalRotationDegrees", "parentRequirements"],
+      "properties": {
+        "giantFontSize": { "type": "string", "const": "clamp(2.6rem, 15vw, 5.4rem)" },
+        "ghostOffsetPx": {
+          "type": "object",
+          "required": ["x", "y"],
+          "properties": {
+            "x": { "type": "number", "const": 6 },
+            "y": { "type": "number", "const": 4 }
+          }
+        },
+        "finalRotationDegrees": { "type": "number", "const": -2 },
+        "parentRequirements": {
+          "type": "array",
+          "items": { "type": "string" },
+          "const": ["position:relative", "overflow:hidden"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "ghostRed", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d0d0d" },
+        "ghostRed": { "type": "string", "const": "#d71920" },
+        "paper": { "type": "string", "const": "#f2eee3" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enter", "ghostDelayMs", "foregroundRise", "exit"],
+      "properties": {
+        "enter": {
+          "type": "object",
+          "required": ["name", "durationMs", "timingFunction", "keyframes"],
+          "properties": {
+            "name": { "type": "string", "const": "type-impact-slam" },
+            "durationMs": { "type": "number", "const": 480 },
+            "timingFunction": { "type": "string", "const": "cubic-bezier(0.15, 0.85, 0.2, 1.2)" },
+            "keyframes": {
+              "type": "object",
+              "required": ["from", "impact", "to"],
+              "properties": {
+                "from": {
+                  "type": "object",
+                  "const": { "translateX": "-135%", "rotate": "-6deg", "scale": 1.18, "opacity": 0 }
+                },
+                "impact": {
+                  "type": "object",
+                  "const": { "atPercent": 58, "translateX": "4%", "rotate": "1deg", "scale": 0.97, "opacity": 1 }
+                },
+                "to": {
+                  "type": "object",
+                  "const": { "translateX": "0", "rotate": "-2deg", "scale": 1, "opacity": 1 }
+                }
+              }
+            }
+          }
+        },
+        "ghostDelayMs": { "type": "number", "const": 35 },
+        "foregroundRise": {
+          "type": "object",
+          "required": ["name", "durationMs", "delayMs"],
+          "properties": {
+            "name": { "type": "string", "const": "type-impact-rise" },
+            "durationMs": { "type": "number", "const": 320 },
+            "delayMs": { "type": "number", "const": 300 }
+          }
+        },
+        "exit": {
+          "type": "object",
+          "required": ["name", "durationMs", "timingFunction", "keyframes"],
+          "properties": {
+            "name": { "type": "string", "const": "type-impact-crush" },
+            "durationMs": { "type": "number", "const": 260 },
+            "timingFunction": { "type": "string", "const": "ease-in" },
+            "keyframes": {
+              "type": "object",
+              "required": ["from", "to"],
+              "properties": {
+                "from": { "type": "object", "const": { "translateX": "0", "rotate": "-2deg", "scale": 1, "opacity": 1 } },
+                "to": { "type": "object", "const": { "translateX": "130%", "rotate": "5deg", "scale": 0.85, "opacity": 0 } }
+              }
+            }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "type-impact" },
+            "dataAttr": { "type": "string", "const": "data-type-impact" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": ["giantGhost", "giantMain", "foreground", "eyebrow", "message", "replay"]
+              },
+              "className": { "type": "string" },
+              "ariaHidden": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["giantWordDecorative", "foregroundCarriesMessage", "doNotRelyOnMotionAlone"],
+      "properties": {
+        "giantWordDecorative": { "type": "boolean", "const": true },
+        "foregroundCarriesMessage": { "type": "boolean", "const": true },
+        "doNotRelyOnMotionAlone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticSettled", "triggers"],
+      "properties": {
+        "showStaticSettled": {
+          "type": "boolean",
+          "const": true,
+          "description": "Skip slam/crush; show final -2deg composition with ghost offset immediately."
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "enum": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"] }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "giantMain", "giantGhost", "foreground", "eyebrow", "message", "replay"],
+      "properties": {
+        "root": { "type": "string", "const": "type-impact" },
+        "giantMain": { "type": "string", "const": "type-impact__giant--main" },
+        "giantGhost": { "type": "string", "const": "type-impact__giant--ghost" },
+        "foreground": { "type": "string", "const": "type-impact__foreground" },
+        "eyebrow": { "type": "string", "const": "type-impact__eyebrow" },
+        "message": { "type": "string", "const": "type-impact__message" },
+        "replay": { "type": "string", "const": "type-impact-replay" },
+        "stateEnter": { "type": "string", "const": "type-impact--enter" },
+        "stateExit": { "type": "string", "const": "type-impact--exit" },
+        "stateSettled": { "type": "string", "const": "type-impact--settled" },
+        "stateReduced": { "type": "string", "const": "type-impact--reduced" }
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/filter-slash.schema.json",
+  "title": "FilterSlash",
+  "description": "Portable visual/component contract for a Persona-inspired filter-apply moment: a diagonal blade sweeps once, non-matching rows are struck through and collapse in a staggered sequence. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "colours",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "filter-slash" },
+    "intent": {
+      "type": "string",
+      "const": "Activating a filter sweeps a one-shot diagonal blade across the list; non-matching rows are struck through and collapse in a staggered cascade."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["toggleLabel", "items"],
+      "properties": {
+        "toggleLabel": { "type": "string", "const": "URGENT ONLY" },
+        "items": {
+          "type": "array",
+          "const": [
+            { "text": "Server migration", "tag": "urgent" },
+            { "text": "Update changelog", "tag": "normal" },
+            { "text": "Rotate API keys", "tag": "urgent" },
+            { "text": "Design review", "tag": "normal" },
+            { "text": "Patch CVE-2024-1147", "tag": "urgent" },
+            { "text": "Refresh screenshots", "tag": "normal" }
+          ]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d0d0d" },
+        "paper": { "type": "string", "const": "#f2eee3" },
+        "accent": { "type": "string", "const": "#d71920" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bladeSweep", "strikeGrowth", "rowCollapse", "rowStaggerMs"],
+      "properties": {
+        "bladeSweep": {
+          "type": "object",
+          "required": ["name", "durationMs", "timingFunction", "oneShot"],
+          "properties": {
+            "name": { "type": "string", "const": "filter-slash-sweep" },
+            "durationMs": { "type": "number", "const": 360 },
+            "timingFunction": { "type": "string", "const": "ease-in-out" },
+            "oneShot": { "type": "boolean", "const": true }
+          }
+        },
+        "strikeGrowth": {
+          "type": "object",
+          "required": ["durationMs", "timingFunction"],
+          "properties": {
+            "durationMs": { "type": "number", "const": 180 },
+            "timingFunction": { "type": "string", "const": "ease" }
+          }
+        },
+        "rowCollapse": {
+          "type": "object",
+          "required": ["durationMs", "baseDelayMs"],
+          "properties": {
+            "durationMs": { "type": "number", "const": 260 },
+            "baseDelayMs": { "type": "number", "const": 260 }
+          }
+        },
+        "rowStaggerMs": {
+          "type": "object",
+          "required": ["strikeIncrementMs", "collapseIncrementMs"],
+          "properties": {
+            "strikeIncrementMs": { "type": "number", "const": 60 },
+            "collapseIncrementMs": { "type": "number", "const": 60 }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "filter-slash" },
+            "dataAttr": { "type": "string", "const": "data-filter-slash" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": ["toolbar", "toggle", "field", "blade", "list", "item", "strike", "text", "tag"]
+              },
+              "className": { "type": "string" },
+              "ariaHidden": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bladeAndStrikeDecorative", "realToggleButton", "removedRowsLeaveA11yTree"],
+      "properties": {
+        "bladeAndStrikeDecorative": { "type": "boolean", "const": true },
+        "realToggleButton": {
+          "type": "boolean",
+          "const": true,
+          "description": "aria-pressed reflects filter state on a real <button>."
+        },
+        "removedRowsLeaveA11yTree": {
+          "type": "boolean",
+          "const": true,
+          "description": "Collapsed rows reach zero height/opacity, removing them from the accessible reading order."
+        }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dropBladeAndStagger", "collapseToOpacityOnly", "triggers"],
+      "properties": {
+        "dropBladeAndStagger": { "type": "boolean", "const": true },
+        "collapseToOpacityOnly": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "enum": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"] }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "toolbar", "toggle", "field", "blade", "list", "item", "strike", "text", "tag", "stateActive", "stateSweep"],
+      "properties": {
+        "root": { "type": "string", "const": "filter-slash" },
+        "toolbar": { "type": "string", "const": "filter-slash__toolbar" },
+        "toggle": { "type": "string", "const": "filter-slash__chip" },
+        "field": { "type": "string", "const": "filter-slash__field" },
+        "blade": { "type": "string", "const": "filter-slash__blade" },
+        "list": { "type": "string", "const": "filter-slash__list" },
+        "item": { "type": "string", "const": "filter-slash__item" },
+        "strike": { "type": "string", "const": "filter-slash__strike" },
+        "text": { "type": "string", "const": "filter-slash__text" },
+        "tag": { "type": "string", "const": "filter-slash__tag" },
+        "stateActive": { "type": "string", "const": "filter-slash--active" },
+        "stateSweep": { "type": "string", "const": "filter-slash--sweep" }
+      }
+    }
+  }
+}

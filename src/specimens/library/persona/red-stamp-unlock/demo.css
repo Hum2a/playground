@@ -1,0 +1,258 @@
+/* red-stamp-unlock — portable specimen styles. Do not restyle to host tokens. */
+
+.stamp-unlock {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.stamp-unlock--enter,
+.stamp-unlock--settled,
+.stamp-unlock--exit,
+.stamp-unlock--reduced {
+  visibility: visible;
+}
+
+.stamp-unlock__ink {
+  grid-area: 1 / 1;
+  width: min(58%, 210px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 19, 36, 0.55) 0%, rgba(200, 19, 36, 0.18) 45%, rgba(200, 19, 36, 0) 72%);
+  opacity: 0;
+  transform: scale(0.4);
+  pointer-events: none;
+}
+
+.stamp-unlock__mark {
+  grid-area: 1 / 1;
+  width: min(62%, 230px);
+  aspect-ratio: 1;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stamp-unlock--settled .stamp-unlock__mark,
+.stamp-unlock--reduced .stamp-unlock__mark {
+  opacity: 1;
+  transform: rotate(-8deg) scale(1);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.stamp-unlock__ring {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  border: 5px solid #c81324;
+  box-sizing: border-box;
+}
+
+.stamp-unlock__ring--outer {
+  border-radius: 48% 52% 51% 49% / 53% 47% 52% 48%;
+  mix-blend-mode: multiply;
+}
+
+.stamp-unlock__ring--inner {
+  width: 82%;
+  height: 82%;
+  border-width: 3px;
+  border-radius: 51% 49% 47% 53% / 49% 53% 46% 51%;
+  opacity: 0.85;
+}
+
+.stamp-unlock__word {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.95rem, 5.4vw, 1.5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c81324;
+  transform: translateY(-0.35em);
+  text-align: center;
+}
+
+.stamp-unlock__sub {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.5rem, 2vw, 0.62rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c81324;
+  transform: translateY(1.1em);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.stamp-unlock__particles {
+  grid-area: 1 / 1;
+  position: relative;
+  width: min(62%, 230px);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.stamp-unlock__particle {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c81324;
+  opacity: 0;
+}
+
+.stamp-unlock__particle--1 { top: 4%; left: 10%; --dx: -22px; --dy: -16px; }
+.stamp-unlock__particle--2 { top: -2%; right: 14%; --dx: 18px; --dy: -20px; }
+.stamp-unlock__particle--3 { bottom: 8%; right: -4%; --dx: 26px; --dy: 8px; width: 5px; height: 5px; }
+.stamp-unlock__particle--4 { bottom: -4%; left: 22%; --dx: -14px; --dy: 22px; }
+.stamp-unlock__particle--5 { top: 46%; left: -6%; --dx: -24px; --dy: 2px; width: 5px; height: 5px; background: #0d0d0d; }
+
+/* Entrance */
+.stamp-unlock--enter .stamp-unlock__mark {
+  animation: stamp-unlock-slam 520ms cubic-bezier(0.16, 0.9, 0.24, 1.14) both;
+}
+
+@keyframes stamp-unlock-slam {
+  0% {
+    opacity: 0;
+    transform: translate(58%, -68%) rotate(38deg) scale(1.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-14deg) scale(1.06);
+  }
+  78% {
+    transform: translate(0, 0) rotate(-4deg) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-8deg) scale(1);
+  }
+}
+
+.stamp-unlock--enter .stamp-unlock__ink {
+  animation: stamp-unlock-ink 380ms ease-out 260ms both;
+}
+
+@keyframes stamp-unlock-ink {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  30% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+
+.stamp-unlock--enter .stamp-unlock__particle {
+  animation: stamp-unlock-particle 220ms cubic-bezier(0.2, 0.8, 0.3, 1) 280ms both;
+}
+
+@keyframes stamp-unlock-particle {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translate(0, 0);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1) translate(var(--dx), var(--dy));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate(calc(var(--dx) * 1.7), calc(var(--dy) * 1.7));
+  }
+}
+
+/* Exit — ink lifts away */
+.stamp-unlock--exit .stamp-unlock__mark {
+  animation: stamp-unlock-lift 240ms ease-in both;
+}
+
+@keyframes stamp-unlock-lift {
+  0% {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-16deg) scale(0.6) translateY(-14%);
+  }
+}
+
+.stamp-unlock-replay {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  z-index: 4;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 2px solid #0d0d0d;
+  border-radius: 0;
+  background: #f2eee3;
+  color: #0d0d0d;
+  font: 700 0.65rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.stamp-unlock-replay:focus-visible {
+  outline: 2px solid #c81324;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp-unlock--enter .stamp-unlock__mark,
+  .stamp-unlock--enter .stamp-unlock__ink,
+  .stamp-unlock--enter .stamp-unlock__particle,
+  .stamp-unlock--exit .stamp-unlock__mark {
+    animation: none !important;
+  }
+
+  .stamp-unlock--enter .stamp-unlock__mark,
+  .stamp-unlock--reduced .stamp-unlock__mark {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+
+  .stamp-unlock--enter .stamp-unlock__ink,
+  .stamp-unlock--enter .stamp-unlock__particle {
+    opacity: 0;
+  }
+}
+
+[data-force-reduced-motion='true'] .stamp-unlock--enter .stamp-unlock__mark,
+[data-force-reduced-motion='true'] .stamp-unlock--enter .stamp-unlock__ink,
+[data-force-reduced-motion='true'] .stamp-unlock--enter .stamp-unlock__particle,
+[data-force-reduced-motion='true'] .stamp-unlock--exit .stamp-unlock__mark {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .stamp-unlock--enter .stamp-unlock__mark,
+[data-force-reduced-motion='true'] .stamp-unlock--reduced .stamp-unlock__mark {
+  opacity: 1;
+  transform: rotate(-8deg) scale(1);
+}
+
+[data-force-reduced-motion='true'] .stamp-unlock--enter .stamp-unlock__ink,
+[data-force-reduced-motion='true'] .stamp-unlock--enter .stamp-unlock__particle {
+  opacity: 0;
+}

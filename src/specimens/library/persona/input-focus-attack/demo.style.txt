@@ -1,0 +1,134 @@
+/* input-focus-attack — portable specimen styles. Do not restyle to host tokens. */
+
+.focus-attack {
+  width: 100%;
+  max-width: 280px;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.focus-attack__label {
+  display: block;
+  margin: 0 0 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0d0d0d;
+}
+
+.focus-attack__wrap {
+  position: relative;
+  padding: 10px;
+}
+
+.focus-attack__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 3px solid #0d0d0d;
+  border-radius: 0;
+  background: #f2eee3;
+  color: #0d0d0d;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 160ms ease;
+}
+
+.focus-attack__input:focus {
+  border-color: #d71920;
+}
+
+.focus-attack__bracket {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+  transform: scale(0.5) rotate(-6deg);
+  transition: transform 260ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 180ms ease;
+  pointer-events: none;
+}
+
+.focus-attack__bracket--tl {
+  top: -4px;
+  left: -4px;
+  border-top: 3px solid #d71920;
+  border-left: 3px solid #d71920;
+  transform: translate(-14px, -14px) scale(0.5) rotate(-6deg);
+}
+
+.focus-attack__bracket--tr {
+  top: -4px;
+  right: -4px;
+  border-top: 3px solid #d71920;
+  border-right: 3px solid #d71920;
+  transform: translate(14px, -14px) scale(0.5) rotate(6deg);
+}
+
+.focus-attack__bracket--bl {
+  bottom: -4px;
+  left: -4px;
+  border-bottom: 3px solid #d71920;
+  border-left: 3px solid #d71920;
+  transform: translate(-14px, 14px) scale(0.5) rotate(6deg);
+}
+
+.focus-attack__bracket--br {
+  bottom: -4px;
+  right: -4px;
+  border-bottom: 3px solid #d71920;
+  border-right: 3px solid #d71920;
+  transform: translate(14px, 14px) scale(0.5) rotate(-6deg);
+}
+
+.focus-attack--active .focus-attack__bracket {
+  opacity: 1;
+  transform: translate(0, 0) scale(1) rotate(0deg);
+}
+
+.focus-attack__underline {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 4px;
+  background: #d71920;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 240ms ease-out 80ms;
+}
+
+.focus-attack--active .focus-attack__underline {
+  transform: scaleX(1);
+  transition: transform 220ms ease-out;
+}
+
+.focus-attack-replay {
+  margin-top: 0.65rem;
+  padding: 0.35rem 0.55rem;
+  border: 2px solid #0d0d0d;
+  border-radius: 0;
+  background: #f2eee3;
+  color: #0d0d0d;
+  font: 700 0.65rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.focus-attack-replay:focus-visible {
+  outline: 2px solid #d71920;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focus-attack__bracket,
+  .focus-attack__underline {
+    transition: opacity 160ms ease !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .focus-attack__bracket,
+[data-force-reduced-motion='true'] .focus-attack__underline {
+  transition: opacity 160ms ease !important;
+}

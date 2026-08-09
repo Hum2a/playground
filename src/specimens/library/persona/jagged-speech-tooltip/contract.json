@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/jagged-speech-tooltip.schema.json",
+  "title": "JaggedSpeechTooltip",
+  "description": "Portable visual/component contract for a Persona-inspired CSS-only hover/focus tooltip shaped as an irregular speech bubble. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "jagged-speech-tooltip" },
+    "intent": {
+      "type": "string",
+      "const": "CSS-only hover/focus tooltip shaped as an irregular clip-path speech bubble that pops out with overshoot and snaps back quickly on dismiss."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "bubble"],
+      "properties": {
+        "trigger": { "type": "string", "const": "?" },
+        "bubble": { "type": "string", "const": "New: hold to charge a stronger hit." }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["triggerSizePx", "triggerBorderPx", "bubbleMaxWidthPx", "bubbleClipPath"],
+      "properties": {
+        "triggerSizePx": { "type": "number", "const": 34 },
+        "triggerBorderPx": { "type": "number", "const": 3 },
+        "bubbleMaxWidthPx": { "type": "number", "const": 190 },
+        "bubbleClipPath": {
+          "type": "string",
+          "const": "polygon(3% 4%, 97% 0%, 100% 74%, 60% 78%, 52% 100%, 45% 76%, 0% 82%)"
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d0d0d" },
+        "paper": { "type": "string", "const": "#f2eee3" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["restTransform", "show", "hide"],
+      "properties": {
+        "restTransform": {
+          "type": "string",
+          "const": "translate(-50%, 6px) scale(0.4) rotate(-6deg)"
+        },
+        "show": {
+          "type": "object",
+          "required": ["transformDurationMs", "transformTimingFunction", "opacityDurationMs", "settledTransform"],
+          "properties": {
+            "transformDurationMs": { "type": "number", "const": 240 },
+            "transformTimingFunction": { "type": "string", "const": "cubic-bezier(0.3, 1.5, 0.35, 1.05)" },
+            "opacityDurationMs": { "type": "number", "const": 160 },
+            "settledTransform": { "type": "string", "const": "translate(-50%, 0) scale(1) rotate(-2deg)" }
+          }
+        },
+        "hide": {
+          "type": "object",
+          "required": ["transformDurationMs", "opacityDurationMs"],
+          "properties": {
+            "transformDurationMs": { "type": "number", "const": 160 },
+            "opacityDurationMs": { "type": "number", "const": 140 }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "speech-tooltip" },
+            "dataAttr": { "type": "string", "const": "data-speech-tooltip" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": { "type": "string", "enum": ["trigger", "bubble"] },
+              "className": { "type": "string" },
+              "ariaRole": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["realTooltipPattern", "keyboardOperable", "noScriptedPositioning"],
+      "properties": {
+        "realTooltipPattern": {
+          "type": "boolean",
+          "const": true,
+          "description": "role=tooltip on the bubble, aria-describedby on the trigger."
+        },
+        "keyboardOperable": {
+          "type": "boolean",
+          "const": true,
+          "description": "Shown via :focus-within on the trigger, not pointer-only :hover."
+        },
+        "noScriptedPositioning": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collapseToOpacityOnly", "triggers"],
+      "properties": {
+        "collapseToOpacityOnly": {
+          "type": "boolean",
+          "const": true,
+          "description": "Both show and hide become a plain opacity transition; the settled transform still applies but without motion."
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "enum": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"] }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "trigger", "bubble"],
+      "properties": {
+        "root": { "type": "string", "const": "speech-tooltip" },
+        "trigger": { "type": "string", "const": "speech-tooltip__trigger" },
+        "bubble": { "type": "string", "const": "speech-tooltip__bubble" }
+      }
+    }
+  }
+}

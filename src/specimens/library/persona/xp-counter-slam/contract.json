@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/xp-counter-slam.schema.json",
+  "title": "XpCounterSlam",
+  "description": "Portable visual/component contract for a Persona-inspired earned-value counter update where a delta chip travels in and slams into the total. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "xp-counter-slam" },
+    "intent": {
+      "type": "string",
+      "const": "A delta chip flies in on a dipped arc and slams into the existing total, which punches out the old value and punches in the new one with overshoot."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "oldTotal", "newTotal", "delta"],
+      "properties": {
+        "eyebrow": { "type": "string", "const": "EXPERIENCE" },
+        "oldTotal": { "type": "string", "const": "1,240" },
+        "newTotal": { "type": "string", "const": "1,480" },
+        "delta": { "type": "string", "const": "+240" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalFontSize", "particleCount"],
+      "properties": {
+        "totalFontSize": { "type": "string", "const": "clamp(1.9rem, 9vw, 2.6rem)" },
+        "particleCount": { "type": "integer", "const": 3 }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "accent", "muted"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d0d0d" },
+        "accent": { "type": "string", "const": "#d71920" },
+        "muted": { "type": "string", "const": "#767e8c" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deltaTravel", "oldTotalOut", "newTotalIn", "particles"],
+      "properties": {
+        "deltaTravel": {
+          "type": "object",
+          "required": ["name", "durationMs", "timingFunction", "keyframes"],
+          "properties": {
+            "name": { "type": "string", "const": "xp-slam-delta-travel" },
+            "durationMs": { "type": "number", "const": 360 },
+            "timingFunction": { "type": "string", "const": "cubic-bezier(0.25, 0.7, 0.2, 1)" },
+            "keyframes": {
+              "type": "object",
+              "required": ["from", "peak", "arrive", "to"],
+              "properties": {
+                "from": { "type": "object", "const": { "translate": "160% -50%", "rotate": "10deg", "scale": 0.85, "opacity": 0 } },
+                "peak": { "type": "object", "const": { "atPercent": 55, "translate": "20% -68%", "rotate": "-4deg", "scale": 1.05, "opacity": 1 } },
+                "arrive": { "type": "object", "const": { "atPercent": 82, "translate": "0% -50%", "rotate": "0deg", "scale": 1, "opacity": 1 } },
+                "to": { "type": "object", "const": { "translate": "-6% -50%", "rotate": "-4deg", "scale": 0.4, "opacity": 0 } }
+              }
+            }
+          }
+        },
+        "oldTotalOut": {
+          "type": "object",
+          "required": ["name", "durationMs", "delayMs"],
+          "properties": {
+            "name": { "type": "string", "const": "xp-slam-old-out" },
+            "durationMs": { "type": "number", "const": 160 },
+            "delayMs": { "type": "number", "const": 300 }
+          }
+        },
+        "newTotalIn": {
+          "type": "object",
+          "required": ["name", "durationMs", "delayMs", "timingFunction"],
+          "properties": {
+            "name": { "type": "string", "const": "xp-slam-new-in" },
+            "durationMs": { "type": "number", "const": 260 },
+            "delayMs": { "type": "number", "const": 320 },
+            "timingFunction": { "type": "string", "const": "cubic-bezier(0.2, 0.85, 0.25, 1.25)" }
+          }
+        },
+        "particles": {
+          "type": "object",
+          "required": ["name", "count", "durationMs", "delayMs"],
+          "properties": {
+            "name": { "type": "string", "const": "xp-slam-particle" },
+            "count": { "type": "integer", "const": 3 },
+            "durationMs": { "type": "number", "const": 220 },
+            "delayMs": { "type": "number", "const": 320 }
+          }
+        }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "xp-slam" },
+            "dataAttr": { "type": "string", "const": "data-xp-slam" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": ["eyebrow", "totalWrap", "totalOld", "totalNew", "delta", "particles", "particle", "replay"]
+              },
+              "className": { "type": "string" },
+              "ariaHidden": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deltaChipDecorative", "particlesDecorative", "totalsAreRealText", "doNotRelyOnMotionAlone"],
+      "properties": {
+        "deltaChipDecorative": { "type": "boolean", "const": true },
+        "particlesDecorative": { "type": "boolean", "const": true },
+        "totalsAreRealText": { "type": "boolean", "const": true },
+        "doNotRelyOnMotionAlone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["showStaticSettled", "triggers"],
+      "properties": {
+        "showStaticSettled": {
+          "type": "boolean",
+          "const": true,
+          "description": "Skip delta travel and punch swap; show the new total immediately."
+        },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "enum": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"] }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "eyebrow", "totalWrap", "totalOld", "totalNew", "delta", "particles", "particle", "replay", "stateEnter", "stateSettled", "stateReset"],
+      "properties": {
+        "root": { "type": "string", "const": "xp-slam" },
+        "eyebrow": { "type": "string", "const": "xp-slam__eyebrow" },
+        "totalWrap": { "type": "string", "const": "xp-slam__total-wrap" },
+        "totalOld": { "type": "string", "const": "xp-slam__total--old" },
+        "totalNew": { "type": "string", "const": "xp-slam__total--new" },
+        "delta": { "type": "string", "const": "xp-slam__delta" },
+        "particles": { "type": "string", "const": "xp-slam__particles" },
+        "particle": { "type": "string", "const": "xp-slam__particle" },
+        "replay": { "type": "string", "const": "xp-slam-replay" },
+        "stateEnter": { "type": "string", "const": "xp-slam--enter" },
+        "stateSettled": { "type": "string", "const": "xp-slam--settled" },
+        "stateReset": { "type": "string", "const": "xp-slam--reset" }
+      }
+    }
+  }
+}

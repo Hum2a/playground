@@ -145,6 +145,16 @@ import { glassTabSwitcher } from '../../library/persona/glass-tab-switcher/entry
 import { refractionHover } from '../../library/persona/refraction-hover/entry'
 import { crackedDisabledState } from '../../library/persona/cracked-disabled-state/entry'
 import { glassBadgeAssembly } from '../../library/persona/glass-badge-assembly/entry'
+import { redStampUnlock } from '../../library/persona/red-stamp-unlock/entry'
+import { typographicImpact } from '../../library/persona/typographic-impact/entry'
+import { radialCommandSnap } from '../../library/persona/radial-command-snap/entry'
+import { inputFocusAttack } from '../../library/persona/input-focus-attack/entry'
+import { confidantRankUp } from '../../library/persona/confidant-rank-up/entry'
+import { xpCounterSlam } from '../../library/persona/xp-counter-slam/entry'
+import { jaggedSpeechTooltip } from '../../library/persona/jagged-speech-tooltip/entry'
+import { overlappingNewspaperTabs } from '../../library/persona/overlapping-newspaper-tabs/entry'
+import { filterSlash } from '../../library/persona/filter-slash/entry'
+import { graphicFinisherCompletion } from '../../library/persona/graphic-finisher-completion/entry'
 
 export const shard: Specimen[] = [
   allOutCompletionBurst,
@@ -293,4 +303,14 @@ export const shard: Specimen[] = [
   refractionHover,
   crackedDisabledState,
   glassBadgeAssembly,
+  redStampUnlock,
+  typographicImpact,
+  radialCommandSnap,
+  inputFocusAttack,
+  confidantRankUp,
+  xpCounterSlam,
+  jaggedSpeechTooltip,
+  overlappingNewspaperTabs,
+  filterSlash,
+  graphicFinisherCompletion,
 ]

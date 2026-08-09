@@ -1,0 +1,147 @@
+/* radial-command-snap — portable specimen styles. Do not restyle to host tokens. */
+
+.radial-command {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.radial-command__field {
+  position: relative;
+  width: 224px;
+  height: 224px;
+  border: 2px solid #0d0d0d;
+  border-radius: 50%;
+  background: #f2eee3;
+}
+
+.radial-command__option {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 30px;
+  margin: -15px 0 0 -32px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #0d0d0d;
+  border-radius: 0;
+  background: #f2eee3;
+  color: #0d0d0d;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 420ms cubic-bezier(0.2, 0.9, 0.15, 1.15), background 160ms ease, color 160ms ease;
+}
+
+.radial-command__option[aria-checked='true'] {
+  background: #0d0d0d;
+  color: #f2eee3;
+  border-color: #d71920;
+}
+
+.radial-command__option:focus-visible {
+  outline: 2px solid #d71920;
+  outline-offset: 2px;
+}
+
+.radial-command__hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 96px;
+  height: 96px;
+  margin: -48px 0 0 -48px;
+  border-radius: 50%;
+  background: #0d0d0d;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.radial-command__hub-label {
+  display: inline-block;
+  color: #f2eee3;
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.radial-command__hub-label--punch {
+  animation: radial-command-hub-punch 200ms cubic-bezier(0.2, 0.85, 0.25, 1.2) both;
+}
+
+@keyframes radial-command-hub-punch {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-8deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.15) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.radial-command__pointer {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid #d71920;
+  pointer-events: none;
+}
+
+.radial-command-replay {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  z-index: 4;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border: 2px solid #0d0d0d;
+  border-radius: 0;
+  background: #f2eee3;
+  color: #0d0d0d;
+  font: 700 0.65rem/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.radial-command-replay:focus-visible {
+  outline: 2px solid #d71920;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radial-command__option {
+    transition: background 160ms ease, color 160ms ease;
+  }
+
+  .radial-command__hub-label--punch {
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .radial-command__option {
+  transition: background 160ms ease, color 160ms ease !important;
+}
+
+[data-force-reduced-motion='true'] .radial-command__hub-label--punch {
+  animation: none !important;
+}

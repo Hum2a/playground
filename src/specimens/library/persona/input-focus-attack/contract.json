@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.humza-butt.space/contracts/input-focus-attack.schema.json",
+  "title": "InputFocusAttack",
+  "description": "Portable visual/component contract for a Persona-inspired form focus state where angular brackets converge on a text input. Not a database schema. No copyrighted assets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "intent",
+    "copy",
+    "layout",
+    "colours",
+    "animation",
+    "dom",
+    "a11y",
+    "reducedMotion",
+    "classNames"
+  ],
+  "properties": {
+    "name": { "type": "string", "const": "input-focus-attack" },
+    "intent": {
+      "type": "string",
+      "const": "Four angular brackets converge onto a text input's corners on real focus, with a red underline shooting in beneath it."
+    },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "placeholder"],
+      "properties": {
+        "label": { "type": "string", "const": "Codename" },
+        "placeholder": { "type": "string", "const": "Enter alias" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bracketSizePx", "bracketBorderPx", "bracketRestOffsetPx", "underlineHeightPx"],
+      "properties": {
+        "bracketSizePx": { "type": "number", "const": 16 },
+        "bracketBorderPx": { "type": "number", "const": 3 },
+        "bracketRestOffsetPx": { "type": "number", "const": 14 },
+        "underlineHeightPx": { "type": "number", "const": 4 }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ink", "paper", "accent"],
+      "properties": {
+        "ink": { "type": "string", "const": "#0d0d0d" },
+        "paper": { "type": "string", "const": "#f2eee3" },
+        "accent": { "type": "string", "const": "#d71920" }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bracketConverge", "underlineSweep", "borderFlipMs"],
+      "properties": {
+        "bracketConverge": {
+          "type": "object",
+          "required": ["durationMs", "timingFunction"],
+          "properties": {
+            "durationMs": { "type": "number", "const": 260 },
+            "timingFunction": { "type": "string", "const": "cubic-bezier(0.34, 1.56, 0.64, 1)" }
+          }
+        },
+        "underlineSweep": {
+          "type": "object",
+          "required": ["durationMs", "delayMs", "timingFunction"],
+          "properties": {
+            "durationMs": { "type": "number", "const": 240 },
+            "delayMs": { "type": "number", "const": 80 },
+            "timingFunction": { "type": "string", "const": "ease-out" }
+          }
+        },
+        "borderFlipMs": { "type": "number", "const": 160 }
+      }
+    },
+    "dom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "children"],
+      "properties": {
+        "root": {
+          "type": "object",
+          "required": ["tag", "className", "dataAttr"],
+          "properties": {
+            "tag": { "type": "string", "const": "div" },
+            "className": { "type": "string", "const": "focus-attack" },
+            "dataAttr": { "type": "string", "const": "data-focus-attack" }
+          }
+        },
+        "children": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["role", "className"],
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": ["label", "wrap", "bracket", "input", "underline", "replay"]
+              },
+              "className": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["realFocusEvents", "bracketsDecorative", "borderColourSufficientAlone"],
+      "properties": {
+        "realFocusEvents": {
+          "type": "boolean",
+          "const": true,
+          "description": "Driven by native focus/blur events on a real <input>, never simulated hover."
+        },
+        "bracketsDecorative": { "type": "boolean", "const": true },
+        "borderColourSufficientAlone": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dropTransformFromTransition", "keepOpacityTransition", "triggers"],
+      "properties": {
+        "dropTransformFromTransition": {
+          "type": "boolean",
+          "const": true,
+          "description": "Brackets and underline appear/disappear instantly; only opacity still transitions softly."
+        },
+        "keepOpacityTransition": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "type": "string", "enum": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"] }
+        }
+      }
+    },
+    "classNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "label", "wrap", "bracket", "input", "underline", "replay", "stateActive"],
+      "properties": {
+        "root": { "type": "string", "const": "focus-attack" },
+        "label": { "type": "string", "const": "focus-attack__label" },
+        "wrap": { "type": "string", "const": "focus-attack__wrap" },
+        "bracket": { "type": "string", "const": "focus-attack__bracket" },
+        "input": { "type": "string", "const": "focus-attack__input" },
+        "underline": { "type": "string", "const": "focus-attack__underline" },
+        "replay": { "type": "string", "const": "focus-attack-replay" },
+        "stateActive": { "type": "string", "const": "focus-attack--active" }
+      }
+    }
+  }
+}

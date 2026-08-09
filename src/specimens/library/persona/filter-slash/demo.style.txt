@@ -1,0 +1,201 @@
+/* filter-slash — portable specimen styles. Do not restyle to host tokens. */
+
+.filter-slash {
+  width: 100%;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.filter-slash__toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.filter-slash__chip {
+  padding: 0.35rem 0.7rem;
+  border: 2px solid #0d0d0d;
+  border-radius: 0;
+  background: #f2eee3;
+  color: #0d0d0d;
+  font-weight: 800;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+.filter-slash__chip[aria-pressed='true'] {
+  background: #0d0d0d;
+  color: #f2eee3;
+  border-color: #d71920;
+}
+
+.filter-slash__chip:focus-visible {
+  outline: 2px solid #d71920;
+  outline-offset: 2px;
+}
+
+.filter-slash__field {
+  position: relative;
+  border: 2px solid #0d0d0d;
+  background: #f2eee3;
+  overflow: hidden;
+}
+
+.filter-slash__blade {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.filter-slash__blade::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 46px;
+  height: 180%;
+  background: #d71920;
+  opacity: 0;
+  transform: translateX(-260%) rotate(18deg);
+}
+
+.filter-slash--sweep .filter-slash__blade::before {
+  animation: filter-slash-sweep 360ms ease-in-out both;
+}
+
+@keyframes filter-slash-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-260%) rotate(18deg);
+  }
+  14% {
+    opacity: 0.85;
+  }
+  86% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(760%) rotate(18deg);
+  }
+}
+
+.filter-slash__list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.filter-slash__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  max-height: 52px;
+  overflow: hidden;
+  opacity: 1;
+  border-bottom: 1px solid #0d0d0d;
+  transition: max-height 260ms ease 260ms, opacity 220ms ease 260ms, padding 260ms ease 260ms;
+}
+
+.filter-slash__item:last-child {
+  border-bottom: none;
+}
+
+.filter-slash__text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0d0d0d;
+}
+
+.filter-slash__tag {
+  flex: none;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #767e8c;
+  border: 1px solid #767e8c;
+}
+
+.filter-slash__tag--urgent {
+  color: #d71920;
+  border-color: #d71920;
+}
+
+.filter-slash__strike {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 50%;
+  height: 3px;
+  background: #0d0d0d;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 180ms ease;
+  pointer-events: none;
+}
+
+/* Active filter: strike then collapse non-matching items, staggered */
+.filter-slash--active .filter-slash__item[data-tag='normal'] .filter-slash__strike {
+  transform: scaleX(1);
+}
+
+.filter-slash--active .filter-slash__item[data-tag='normal'] {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom-color: transparent;
+}
+
+.filter-slash--active .filter-slash__item:nth-child(2) .filter-slash__strike {
+  transition-delay: 0ms;
+}
+
+.filter-slash--active .filter-slash__item:nth-child(2) {
+  transition-delay: 180ms;
+}
+
+.filter-slash--active .filter-slash__item:nth-child(4) .filter-slash__strike {
+  transition-delay: 60ms;
+}
+
+.filter-slash--active .filter-slash__item:nth-child(4) {
+  transition-delay: 240ms;
+}
+
+.filter-slash--active .filter-slash__item:nth-child(6) .filter-slash__strike {
+  transition-delay: 120ms;
+}
+
+.filter-slash--active .filter-slash__item:nth-child(6) {
+  transition-delay: 300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-slash--sweep .filter-slash__blade::before {
+    animation: none !important;
+  }
+
+  .filter-slash__item,
+  .filter-slash__strike {
+    transition: opacity 160ms ease !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .filter-slash--sweep .filter-slash__blade::before {
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .filter-slash__item,
+[data-force-reduced-motion='true'] .filter-slash__strike {
+  transition: opacity 160ms ease !important;
+  transition-delay: 0ms !important;
+}

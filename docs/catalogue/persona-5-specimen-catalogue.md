@@ -7,12 +7,12 @@
 - **P5-NNN** — stable catalogue id (this list).
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs; everything else is pre-assigned from the next free number after `SPX-014` (`SPX-015`…`SPX-312`). Non-catalogue specimens use gaps not reserved by open P5, P3, PK, DB, or IOS rows (see `37_persona-catalogue`).
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **18 / 301** complete.
+- Progress: **28 / 301** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 18 |
-| Open | 283 |
+| Done | 28 |
+| Open | 273 |
 
 ## Shipped (mapped to live specimens)
 
@@ -36,6 +36,16 @@
 | P5-268 | `SPX-279` | `cross-out-status-swap` | Cross-Out Status Swap |
 | P5-156 | `SPX-167` | `progress-milestone-breakthrough` | Progress Milestone Breakthrough |
 | P5-294 | `SPX-305` | `deadline-panic` | Deadline Panic |
+| P5-009 | `SPX-030` | `red-stamp-unlock` | Red Stamp Unlock |
+| P5-029 | `SPX-040` | `typographic-impact` | Typographic Impact |
+| P5-046 | `SPX-057` | `radial-command-snap` | Radial Command Snap |
+| P5-133 | `SPX-144` | `input-focus-attack` | Input Focus Attack |
+| P5-145 | `SPX-156` | `confidant-rank-up` | Confidant Rank Up |
+| P5-146 | `SPX-157` | `xp-counter-slam` | XP Counter Slam |
+| P5-177 | `SPX-188` | `jagged-speech-tooltip` | Jagged Speech Tooltip |
+| P5-221 | `SPX-232` | `overlapping-newspaper-tabs` | Overlapping Newspaper Tabs |
+| P5-233 | `SPX-244` | `filter-slash` | Filter Slash |
+| P5-301 | `SPX-312` | `graphic-finisher-completion` | Graphic Finisher Completion |
 
 ## Core first-wave
 
@@ -43,29 +53,29 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 - [x] **P5-001** · `SPX-003` · **Calling Card Slam** — announcement
 - [ ] **P5-004** · `SPX-016` · **Paper Rip Unlock** — reveal
-- [ ] **P5-009** · `SPX-021` · **Red Stamp Unlock** — status
+- [x] **P5-009** · `SPX-030` · **Red Stamp Unlock** — status
 - [x] **P5-013** · `SPX-002` · **Comic Panel Wipe** — navigation
 - [ ] **P5-014** · `SPX-025` · **Panel Collapse Navigation** — navigation
 - [ ] **P5-015** · `SPX-026` · **Panel Explosion Reveal** — reveal
-- [ ] **P5-029** · `SPX-040` · **Typographic Impact** — emphasis
+- [x] **P5-029** · `SPX-040` · **Typographic Impact** — emphasis
 - [x] **P5-044** · `SPX-055` · **Cross-Out Replacement** — value change
 - [x] **P5-045** · `SPX-056` · **Crooked Menu Stack** — navigation
-- [ ] **P5-046** · `SPX-057` · **Radial Command Snap** — selection
+- [x] **P5-046** · `SPX-057` · **Radial Command Snap** — selection
 - [ ] **P5-065** · `SPX-076` · **Graphic Burst Hover** — hover
 - [ ] **P5-082** · `SPX-093` · **Hold-to-Charge Button** — confirmation
 - [x] **P5-093** · `SPX-104` · **Manga Cut-In Notification** — notification
 - [x] **P5-122** · `SPX-133` · **Redacted Content Lock** — locked state
 - [ ] **P5-123** · `SPX-134` · **Calling Card Lock** — locked state
-- [ ] **P5-133** · `SPX-144` · **Input Focus Attack** — form
-- [ ] **P5-145** · `SPX-156` · **Confidant Rank Up** — progression
-- [ ] **P5-146** · `SPX-157` · **XP Counter Slam** — progression
+- [x] **P5-133** · `SPX-144` · **Input Focus Attack** — form
+- [x] **P5-145** · `SPX-156` · **Confidant Rank Up** — progression
+- [x] **P5-146** · `SPX-157` · **XP Counter Slam** — progression
 - [x] **P5-165** · `SPX-176` · **Comic Card Selection** — cards
-- [ ] **P5-177** · `SPX-188` · **Jagged Speech Tooltip** — tooltip
+- [x] **P5-177** · `SPX-188` · **Jagged Speech Tooltip** — tooltip
 - [x] **P5-185** · `SPX-196` · **Decision Showdown** — confirmation
 - [x] **P5-201** · `SPX-212` · **Comic Panel Scroll Reveal** — scroll
-- [ ] **P5-221** · `SPX-232` · **Overlapping Newspaper Tabs** — tabs
-- [ ] **P5-233** · `SPX-244` · **Filter Slash** — filtering
-- [ ] **P5-301** · `SPX-312` · **Graphic Finisher Completion** — major completion
+- [x] **P5-221** · `SPX-232` · **Overlapping Newspaper Tabs** — tabs
+- [x] **P5-233** · `SPX-244` · **Filter Slash** — filtering
+- [x] **P5-301** · `SPX-312` · **Graphic Finisher Completion** — major completion
 
 ## Calling cards, paper and print
 
@@ -77,7 +87,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-006** · `SPX-018` · **Newspaper Headline Drop** — Giant headline strip drops over content. · scaffold `newspaper-headline-drop`
 - [ ] **P5-007** · `SPX-019` · **Misprint Notification** — CMYK-ish offset layers snap into registration. · scaffold `misprint-notification`
 - [ ] **P5-008** · `SPX-020` · **Paper Stack Shuffle** — Several sheets rapidly shuffle before settling on selected one.
-- [ ] **P5-009** · `SPX-021` · **Red Stamp Unlock** — Giant angular `UNLOCKED` stamp smashes onto a card.
+- [x] **P5-009** · `SPX-030` · **Red Stamp Unlock** — Giant angular `UNLOCKED` stamp smashes onto a card.
 - [ ] **P5-010** · `SPX-022` · **Stamped Approval** — Circular approval mark rotates and impacts into place.
 - [ ] **P5-011** · `SPX-023` · **Paper Scrap Tooltip** — Tiny irregular paper scrap unfolds beside hovered content.
 - [ ] **P5-012** · `SPX-024` · **Torn Label Badge** — Badge appears by ripping outward from its centre.
@@ -103,7 +113,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Typography behaving badly
 
-- [ ] **P5-029** · `SPX-040` · **Typographic Impact** — Giant word slams behind foreground content.
+- [x] **P5-029** · `SPX-040` · **Typographic Impact** — Giant word slams behind foreground content.
 - [ ] **P5-030** · `SPX-041` · **Crooked Heading Entrance** — Heading pieces arrive at different rotations.
 - [x] **P5-031** · `SPX-042` · **Letter Scatter Assemble** — Individual letters fly in and snap into a word.
 - [ ] **P5-032** · `SPX-043` · **Headline Overshoot** — Huge heading flies past position then recoils.
@@ -123,7 +133,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 ## Menu and navigation interactions
 
 - [x] **P5-045** · `SPX-056` · **Crooked Menu Stack** — Menu options overlap and selected item jumps forward.
-- [ ] **P5-046** · `SPX-057` · **Radial Command Snap** — Commands rotate/snap around a focal point.
+- [x] **P5-046** · `SPX-057` · **Radial Command Snap** — Commands rotate/snap around a focal point.
 - [ ] **P5-047** · `SPX-058` · **Menu Punch Forward** — Selected option scales/rotates toward viewer.
 - [ ] **P5-048** · `SPX-059` · **Selection Slash** — Red slash shoots behind newly selected option.
 - [ ] **P5-049** · `SPX-060` · **Jagged Selection Plate** — Irregular background polygon morphs between items.
@@ -228,7 +238,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Form interactions
 
-- [ ] **P5-133** · `SPX-144` · **Input Focus Attack** — Angular graphics converge around focused input.
+- [x] **P5-133** · `SPX-144` · **Input Focus Attack** — Angular graphics converge around focused input.
 - [ ] **P5-134** · `SPX-145` · **Invalid Field Slash** — Error literally crosses underneath input.
 - [ ] **P5-135** · `SPX-146` · **Successful Field Stamp** — `OK` stamp lands beside valid field.
 - [ ] **P5-136** · `SPX-147` · **Checkbox Impact** — Checkmark lands with hard offset backing.
@@ -243,8 +253,8 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Progress and XP
 
-- [ ] **P5-145** · `SPX-156` · **Confidant Rank Up** — Giant rank transition with concentric graphic impact.
-- [ ] **P5-146** · `SPX-157` · **XP Counter Slam** — Earned XP attacks existing counter.
+- [x] **P5-145** · `SPX-156` · **Confidant Rank Up** — Giant rank transition with concentric graphic impact.
+- [x] **P5-146** · `SPX-157` · **XP Counter Slam** — Earned XP attacks existing counter.
 - [ ] **P5-147** · `SPX-158` · **Progress Slash Fill** — Jagged shape consumes progress track.
 - [ ] **P5-148** · `SPX-159` · **Level Number Collision** — Old/new numbers collide and replacement survives.
 - [ ] **P5-149** · `SPX-160` · **Milestone Stamp** — Achievement threshold receives graphic stamp.
@@ -284,7 +294,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Tooltips / popovers
 
-- [ ] **P5-177** · `SPX-188` · **Jagged Speech Tooltip** — Irregular speech shape punches outward.
+- [x] **P5-177** · `SPX-188` · **Jagged Speech Tooltip** — Irregular speech shape punches outward.
 - [ ] **P5-178** · `SPX-189` · **Annotation Arrow Tooltip** — Huge graphic arrow points at target.
 - [ ] **P5-179** · `SPX-190` · **Paper Scrap Tooltip** — Crooked note appears pinned to target.
 - [ ] **P5-180** · `SPX-191` · **Black Cutout Tooltip** — White text appears in black irregular silhouette.
@@ -343,7 +353,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Tabs
 
-- [ ] **P5-221** · `SPX-232` · **Overlapping Newspaper Tabs** — Selected tab climbs above paper stack.
+- [x] **P5-221** · `SPX-232` · **Overlapping Newspaper Tabs** — Selected tab climbs above paper stack.
 - [ ] **P5-222** · `SPX-233` · **Diagonal Slash Tabs** — Selection marker cuts between tabs.
 - [ ] **P5-223** · `SPX-234` · **Comic Cell Tabs** — Tab widths physically recompose.
 - [ ] **P5-224** · `SPX-235` · **Blackout Tabs** — Selected tab becomes negative-space cutout.
@@ -358,7 +368,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 - [ ] **P5-230** · `SPX-241` · **Search Blackout** — Everything except matching text becomes graphic black.
 - [ ] **P5-231** · `SPX-242` · **Query Stamp** — Search term stamps itself over results.
 - [ ] **P5-232** · `SPX-243` · **Result Number Slam** — Count changes with impact.
-- [ ] **P5-233** · `SPX-244` · **Filter Slash** — Active filter slices irrelevant content away.
+- [x] **P5-233** · `SPX-244` · **Filter Slash** — Active filter slices irrelevant content away.
 - [ ] **P5-234** · `SPX-245` · **Search Reveal Cutout** — Matches become holes through dark overlay.
 - [ ] **P5-235** · `SPX-246` · **No Results Interruption** — Giant `NOTHING!` composition interrupts empty state.
 - [ ] **P5-236** · `SPX-247` · **Search Suggestions Fan** — Suggestions fan out like paper strips.
@@ -453,7 +463,7 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ## Core collection extras
 
-- [ ] **P5-301** · `SPX-312` · **Graphic Finisher Completion** — Major completion finisher — full graphic punctuation for a finished arc.
+- [x] **P5-301** · `SPX-312` · **Graphic Finisher Completion** — Major completion finisher — full graphic punctuation for a finished arc.
 
 ## Suggested primitive taxonomy
 
