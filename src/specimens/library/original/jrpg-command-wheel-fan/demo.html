@@ -1,0 +1,34 @@
+<section class="jrpg-wheel" data-jrpg-wheel aria-label="Battle command menu">
+  <p class="jrpg-wheel__status" data-jrpg-status aria-live="polite">Command menu ready</p>
+
+  <div class="jrpg-wheel__field">
+    <button
+      class="jrpg-wheel__cursor"
+      type="button"
+      data-jrpg-toggle
+      aria-expanded="false"
+      aria-controls="jrpg-wheel-commands"
+    >
+      <span class="jrpg-wheel__cursor-mark" aria-hidden="true"></span>
+      <span class="jrpg-wheel__cursor-label">COMMAND</span>
+    </button>
+
+    <div class="jrpg-wheel__commands" id="jrpg-wheel-commands" role="group" aria-label="Battle commands">
+      <button class="jrpg-wheel__command" type="button" data-command="ATTACK" style="--x: 58px; --y: -122px">
+        ATTACK
+      </button>
+      <button class="jrpg-wheel__command" type="button" data-command="MAGIC" style="--x: 116px; --y: -74px">
+        MAGIC
+      </button>
+      <button class="jrpg-wheel__command" type="button" data-command="ITEM" style="--x: 136px; --y: 0px">
+        ITEM
+      </button>
+      <button class="jrpg-wheel__command" type="button" data-command="GUARD" style="--x: 116px; --y: 74px">
+        GUARD
+      </button>
+      <button class="jrpg-wheel__command" type="button" data-command="SPECIAL" style="--x: 58px; --y: 122px">
+        SPECIAL
+      </button>
+    </div>
+  </div>
+</section>

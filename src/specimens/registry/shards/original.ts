@@ -5,6 +5,7 @@ import { connectionSevered } from '../../library/original/connection-severed/ent
 import { deletionGuillotine } from '../../library/original/deletion-guillotine/entry'
 import { enhancedStateReversion } from '../../library/original/enhanced-state-reversion/entry'
 import { instantFullRecovery } from '../../library/original/instant-full-recovery/entry'
+import { jrpgCommandWheelFan } from '../../library/original/jrpg-command-wheel-fan/entry'
 import { timeSkip } from '../../library/original/time-skip/entry'
 
 export const shard: Specimen[] = [
@@ -14,5 +15,6 @@ export const shard: Specimen[] = [
   deletionGuillotine,
   enhancedStateReversion,
   instantFullRecovery,
+  jrpgCommandWheelFan,
   timeSkip,
 ]

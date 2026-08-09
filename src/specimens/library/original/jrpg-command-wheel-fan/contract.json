@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/jrpg-command-wheel-fan.schema.json",
+  "title": "JrpgCommandWheelFan",
+  "description": "Portable contract for an original five-command JRPG-inspired fan menu. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "copy", "colours", "layout", "motion", "interaction", "reducedMotion"],
+  "properties": {
+    "name": { "type": "string", "const": "jrpg-command-wheel-fan" },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cursor", "commands"],
+      "properties": {
+        "cursor": { "type": "string", "const": "COMMAND" },
+        "commands": {
+          "type": "array",
+          "const": ["ATTACK", "MAGIC", "ITEM", "GUARD", "SPECIAL"]
+        }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["navy", "silver", "cyan"],
+      "properties": {
+        "navy": { "type": "string", "const": "#111827" },
+        "silver": { "type": "string", "const": "#C7CDD8" },
+        "cyan": { "type": "string", "const": "#72D6E8" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commandCount", "cursorPx", "panelPx", "panelBorderPx", "anglesDeg", "cornerRadiusPx"],
+      "properties": {
+        "commandCount": { "type": "integer", "const": 5 },
+        "cursorPx": { "type": "array", "const": [72, 72] },
+        "panelPx": { "type": "array", "const": [130, 42] },
+        "panelBorderPx": { "type": "integer", "const": 2 },
+        "anglesDeg": { "type": "array", "const": [-62, -31, 0, 31, 62] },
+        "cornerRadiusPx": { "type": "integer", "const": 2 }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entranceMs", "staggerMs", "initialScale", "activeScale", "easing", "runtimeRandomness"],
+      "properties": {
+        "entranceMs": { "type": "integer", "const": 260 },
+        "staggerMs": { "type": "integer", "const": 55 },
+        "initialScale": { "type": "number", "const": 0.82 },
+        "activeScale": { "type": "number", "const": 1.06 },
+        "easing": { "type": "string", "const": "steps(4, end)" },
+        "runtimeRandomness": { "type": "boolean", "const": false }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["arrowKeys", "activationKeys", "pointerSelection", "focusVisible"],
+      "properties": {
+        "arrowKeys": { "type": "boolean", "const": true },
+        "activationKeys": { "type": "array", "const": ["Enter", "Space"] },
+        "pointerSelection": { "type": "boolean", "const": true },
+        "focusVisible": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finalPositionsImmediately", "triggers", "interactionPreserved"],
+      "properties": {
+        "finalPositionsImmediately": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        },
+        "interactionPreserved": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

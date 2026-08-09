@@ -606,4 +606,5 @@ export const specimenOrder: string[] = [
   'crossfade-overlap',
   'quantize-sweep',
   'automation-point-draw',
+  'jrpg-command-wheel-fan',
 ]
