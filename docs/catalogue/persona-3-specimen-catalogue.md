@@ -8,12 +8,12 @@
 - **SPX-NNN** — specimen registry ref. Existing shipped effects keep their live refs (`Blue Glass Shard Transition` → `SPX-005`, `Evoker Menu Snap` → `SPX-006`). Unbuilt ideas are pre-assigned `SPX-400`…`SPX-635` — use that ref when implementing; do not invent a different number.
 - Non-catalogue specimens (other franchises / originals) use gaps not reserved by open P5 (`SPX-015`–`SPX-312`), P3 (`SPX-400`–`SPX-635`), PK (`SPX-700`–`SPX-965`), DB (`SPX-966`–`SPX-1209`), or IOS (`SPX-1300`–`SPX-1557`); prefer leftover `SPX-313`–`SPX-399`, `SPX-636`–`SPX-699`, `SPX-1210`–`SPX-1299`, or `SPX-1975+ (AND reserves SPX-1558–SPX-1974)`; also reserve MHA (SPX-1975–SPX-2343); leftover beyond that is SPX-3523+ (P4 reserves SPX-2919–SPX-3109; NF reserves SPX-3110–SPX-3306; PS reserves SPX-3307–SPX-3522); also reserve NR SPX-2344–SPX-2918.
 - Mark **`[x]`** only when the specimen is registered in `src/specimens/index.ts` with a real `ref` (not `SPX-TODO`) and verified. Agents must update this file in the same change — see `.cursor/rules/37_persona-catalogue.mdc`.
-- Progress: **37 / 238** complete.
+- Progress: **44 / 238** complete.
 
 | Status | Count |
 | --- | --- |
-| Done | 37 |
-| Open | 201 |
+| Done | 44 |
+| Open | 194 |
 
 ## Visual grammar
 
@@ -67,6 +67,13 @@
 | P3-015 | `SPX-414` | `liquid-toggle` | Liquid Toggle |
 | P3-016 | `SPX-415` | `droplet-notification` | Droplet Notification |
 | P3-017 | `SPX-416` | `water-disturbance-hover` | Water Disturbance Hover |
+| P3-029 | `SPX-427` | `shard-hover` | Shard Hover |
+| P3-030 | `SPX-428` | `glass-focus-frame` | Glass Focus Frame |
+| P3-032 | `SPX-430` | `shard-burst-button` | Shard Burst Button |
+| P3-033 | `SPX-431` | `glass-tab-switcher` | Glass Tab Switcher |
+| P3-034 | `SPX-432` | `refraction-hover` | Refraction Hover |
+| P3-035 | `SPX-433` | `cracked-disabled-state` | Cracked Disabled State |
+| P3-036 | `SPX-434` | `glass-badge-assembly` | Glass Badge Assembly |
 
 | P3-124 | `SPX-521` | `blue-flame-button-hover` | Blue Flame Button Hover |
 | P3-125 | `SPX-522` | `energy-charge-confirmation` | Energy Charge Confirmation |
@@ -138,14 +145,14 @@ Curated implementation priority. Same checkbox as the master list — checking e
 
 ### Interaction
 
-- [ ] **P3-029** · `SPX-427` · **Shard Hover** — interaction.
-- [ ] **P3-030** · `SPX-428` · **Glass Focus Frame** — interaction.
+- [x] **P3-029** · `SPX-427` · **Shard Hover** — interaction.
+- [x] **P3-030** · `SPX-428` · **Glass Focus Frame** — interaction.
 - [x] **P3-031** · `SPX-429` · **Crystallised Selection** — interaction.
-- [ ] **P3-032** · `SPX-430` · **Shard Burst Button** — interaction.
-- [ ] **P3-033** · `SPX-431` · **Glass Tab Switcher** — interaction.
-- [ ] **P3-034** · `SPX-432` · **Refraction Hover** — interaction.
-- [ ] **P3-035** · `SPX-433` · **Cracked Disabled State** — interaction.
-- [ ] **P3-036** · `SPX-434` · **Glass Badge Assembly** — interaction.
+- [x] **P3-032** · `SPX-430` · **Shard Burst Button** — interaction.
+- [x] **P3-033** · `SPX-431` · **Glass Tab Switcher** — interaction.
+- [x] **P3-034** · `SPX-432` · **Refraction Hover** — interaction.
+- [x] **P3-035** · `SPX-433` · **Cracked Disabled State** — interaction.
+- [x] **P3-036** · `SPX-434` · **Glass Badge Assembly** — interaction.
 
 ## Evoker / trigger / decisive action
 

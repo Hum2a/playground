@@ -1,0 +1,218 @@
+/* cracked-disabled-state — portable specimen styles. */
+
+.cracked-disabled {
+  --cds-ink: #e9eff8;
+  --cds-muted: #8290a3;
+  --cds-blue: #78c7f0;
+  --cds-panel: #101a29;
+  --cds-line: #40516a;
+  box-sizing: border-box;
+  display: grid;
+  align-content: center;
+  min-height: 250px;
+  padding: 1.35rem;
+  background:
+    linear-gradient(135deg, transparent 49.8%, rgb(120 199 240 / 8%) 50%, transparent 50.2%),
+    #080d16;
+  color: var(--cds-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.cracked-disabled *,
+.cracked-disabled *::before,
+.cracked-disabled *::after {
+  box-sizing: border-box;
+}
+
+.cracked-disabled__eyebrow,
+.cracked-disabled__hint {
+  margin: 0;
+  color: var(--cds-muted);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.cracked-disabled__title {
+  margin: 0.35rem 0 1.15rem;
+  font-size: clamp(1rem, 4.5vw, 1.35rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.cracked-disabled__rejection {
+  position: relative;
+  width: min(100%, 300px);
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.cracked-disabled__module {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 76px;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--cds-line);
+  border-radius: 0;
+  background: var(--cds-panel);
+  color: var(--cds-muted);
+  font: inherit;
+  text-align: left;
+  opacity: 1;
+}
+
+.cracked-disabled__module:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cracked-disabled__module-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.cracked-disabled__module-state {
+  padding: 0.22rem 0.36rem;
+  border: 1px solid var(--cds-line);
+  color: var(--cds-muted);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.cracked-disabled__fracture {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 76px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.cracked-disabled__fracture path {
+  fill: none;
+  stroke: var(--cds-blue);
+  stroke-width: 1.5;
+  stroke-linecap: square;
+  stroke-dasharray: 82;
+  stroke-dashoffset: 82;
+  opacity: 0;
+}
+
+.cracked-disabled__notice {
+  position: absolute;
+  right: 0.55rem;
+  bottom: -0.58rem;
+  z-index: 3;
+  margin: 0;
+  padding: 0.18rem 0.35rem;
+  border: 1px solid var(--cds-blue);
+  background: #080d16;
+  color: var(--cds-blue);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.cracked-disabled__hint {
+  margin-top: 1rem;
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__module,
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__module {
+  border-color: var(--cds-blue);
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__fracture path,
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path {
+  animation: cds-crack 180ms steps(2, end) both;
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__fracture path:nth-child(2),
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path:nth-child(2) {
+  animation-delay: 25ms;
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__fracture path:nth-child(3),
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path:nth-child(3) {
+  animation-delay: 45ms;
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__fracture path:nth-child(4),
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path:nth-child(4) {
+  animation-delay: 65ms;
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__fracture path:nth-child(5),
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path:nth-child(5) {
+  animation-delay: 85ms;
+}
+
+.cracked-disabled__rejection:active .cracked-disabled__notice,
+.cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__notice {
+  animation: cds-notice 180ms steps(2, end) 85ms both;
+}
+
+@keyframes cds-crack {
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes cds-notice {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cracked-disabled__rejection:active .cracked-disabled__fracture path,
+  .cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  .cracked-disabled__rejection:active .cracked-disabled__notice,
+  .cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__notice {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-force-reduced-motion='true'] .cracked-disabled__rejection:active .cracked-disabled__fracture path,
+[data-force-reduced-motion='true'] .cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__fracture path {
+  animation: none;
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .cracked-disabled__rejection:active .cracked-disabled__notice,
+[data-force-reduced-motion='true'] .cracked-disabled__rejection[data-rejected='true'] .cracked-disabled__notice {
+  animation: none;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cracked-disabled__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

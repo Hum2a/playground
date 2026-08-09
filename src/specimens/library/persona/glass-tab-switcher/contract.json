@@ -1,0 +1,52 @@
+{
+  "name": "glass-tab-switcher",
+  "intent": "A Persona 3-inspired three-tab navigation control with a translucent glass indicator and matching content panels.",
+  "structure": {
+    "tabCount": 3,
+    "tabLabels": ["Status", "Records", "System"],
+    "tabRole": "tab",
+    "tablistRole": "tablist",
+    "tabpanelRole": "tabpanel"
+  },
+  "visuals": {
+    "background": "#101522",
+    "ink": "#EEF5FB",
+    "muted": "#AAB8C7",
+    "glass": "rgba(204, 235, 255, 0.18)",
+    "glassEdge": "rgba(236, 249, 255, 0.66)",
+    "railRadiusPx": 7,
+    "indicatorRadiusPx": 4
+  },
+  "motion": {
+    "indicatorMs": 280,
+    "indicatorEasing": "cubic-bezier(0.2, 0.8, 0.25, 1)",
+    "panelMs": 240,
+    "panelTranslateYPx": 5
+  },
+  "a11y": {
+    "selection": "Exactly one tab has aria-selected=true and tabindex=0",
+    "relationships": "Each tab aria-controls a role=tabpanel labelled by that tab",
+    "inactivePanels": "hidden",
+    "keys": ["ArrowRight", "ArrowLeft", "Home", "End", "Space", "Enter"],
+    "arrowBehaviour": "Arrow keys wrap and both focus and activate their destination",
+    "focusVisible": "2px solid #72D6E8"
+  },
+  "api": {
+    "init": "window.glassTabSwitcher.init(scope?)",
+    "set": "window.glassTabSwitcher.set(root, index)",
+    "sandboxSafe": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Selected tab, glass indicator, and panel update immediately without transitions or animation."
+  },
+  "constraints": {
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noStorage": true,
+    "noParentAccess": true
+  }
+}

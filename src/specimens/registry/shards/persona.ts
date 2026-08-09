@@ -128,6 +128,13 @@ import { waterDisturbanceHover } from '../../library/persona/water-disturbance-h
 import { waterlinePageWipe } from '../../library/persona/waterline-page-wipe/entry'
 import { weaknessDiscovered } from '../../library/persona/weakness-discovered/entry'
 import { yellowImpactWipe } from '../../library/persona/yellow-impact-wipe/entry'
+import { shardHover } from '../../library/persona/shard-hover/entry'
+import { glassFocusFrame } from '../../library/persona/glass-focus-frame/entry'
+import { shardBurstButton } from '../../library/persona/shard-burst-button/entry'
+import { glassTabSwitcher } from '../../library/persona/glass-tab-switcher/entry'
+import { refractionHover } from '../../library/persona/refraction-hover/entry'
+import { crackedDisabledState } from '../../library/persona/cracked-disabled-state/entry'
+import { glassBadgeAssembly } from '../../library/persona/glass-badge-assembly/entry'
 
 export const shard: Specimen[] = [
   allOutCompletionBurst,
@@ -259,4 +266,11 @@ export const shard: Specimen[] = [
   waterlinePageWipe,
   weaknessDiscovered,
   yellowImpactWipe,
+  shardHover,
+  glassFocusFrame,
+  shardBurstButton,
+  glassTabSwitcher,
+  refractionHover,
+  crackedDisabledState,
+  glassBadgeAssembly,
 ]

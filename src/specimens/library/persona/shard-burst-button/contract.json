@@ -1,0 +1,61 @@
+{
+  "name": "shard-burst-button",
+  "ref": "SPX-430",
+  "ideaId": "P3-032",
+  "intent": "A semantic CONFIRM button releases a deterministic blue-glass shard burst and settles into an explicit confirmed state.",
+  "copy": {
+    "kicker": "COMMAND // COMMIT",
+    "action": "CONFIRM",
+    "confirmed": "CONFIRMED",
+    "readyStatus": "Ready to confirm.",
+    "confirmedStatus": "Confirmed."
+  },
+  "shards": {
+    "count": 12,
+    "deterministic": true,
+    "origin": "button centre",
+    "shape": "triangular glass fragment",
+    "vectors": [
+      [-86, -34, -42],
+      [-62, -60, -18],
+      [-23, -68, 8],
+      [24, -64, 32],
+      [65, -49, 57],
+      [91, -15, 82],
+      [84, 30, 111],
+      [47, 55, 142],
+      [9, 64, 168],
+      [-36, 59, 206],
+      [-74, 36, 235],
+      [-96, 3, 274]
+    ]
+  },
+  "motion": {
+    "durationMs": 420,
+    "easing": "cubic-bezier(0.16, 0.78, 0.3, 1)",
+    "loops": false,
+    "retrigger": "Remove burst class, force reflow, then re-add; clear prior completion timer."
+  },
+  "a11y": {
+    "control": "button",
+    "semanticAction": "confirm",
+    "decorativeShardsHidden": true,
+    "status": "polite",
+    "focusVisible": "2px solid #B9E7FF"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "No shard travel; immediate confirmed label, status, and button state."
+  },
+  "constraints": {
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noStorage": true,
+    "noParentAccess": true,
+    "noCanvas": true,
+    "noSvg": true
+  }
+}

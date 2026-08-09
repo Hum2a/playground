@@ -1,0 +1,41 @@
+{
+  "name": "glass-focus-frame",
+  "intent": "A shared glass frame with exactly four corner brackets visibly surrounds whichever of three native controls has pointer or keyboard focus.",
+  "controls": {
+    "count": 3,
+    "element": "button",
+    "labels": ["Archive", "Inspect", "Proceed"],
+    "nativeActivation": ["Space", "Enter"]
+  },
+  "frame": {
+    "bracketCount": 4,
+    "bracketSizePx": 22,
+    "decorative": true,
+    "pointerEvents": "none",
+    "visibleOn": ":focus-within"
+  },
+  "a11y": {
+    "pointerFocus": "Shared frame becomes visible",
+    "keyboardFocus": "Shared frame plus 2px #70D8E8 focus-visible outline",
+    "colourOnly": false,
+    "decorativeFrame": "aria-hidden"
+  },
+  "motion": {
+    "loops": false,
+    "focusTransitionMs": 160,
+    "cornerShiftPx": 3
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Keep focus state visible; remove transitions and corner shifts"
+  },
+  "constraints": {
+    "noJavaScript": true,
+    "noExternalAssets": true,
+    "noSvg": true,
+    "noCanvas": true
+  }
+}

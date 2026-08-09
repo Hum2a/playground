@@ -1,0 +1,51 @@
+{
+  "name": "shard-hover",
+  "intent": "Persona 3 Reload–inspired blue-glass access panel that fractures into exactly seven deterministic shards on hover or keyboard focus.",
+  "geometry": {
+    "widthPx": 330,
+    "heightPx": 196,
+    "borderPx": 1,
+    "radiusPx": 0,
+    "shardCount": 7
+  },
+  "visuals": {
+    "background": "#061422",
+    "panelBlue": "#0A2B45",
+    "cyan": "#76E5F2",
+    "pale": "#E2F7FA",
+    "shardsDecorative": true
+  },
+  "interaction": {
+    "control": "button",
+    "triggers": ["hover", "focus-visible"],
+    "effect": "Each of seven shards moves outward along a unique fixed vector.",
+    "deterministic": true,
+    "javascriptRequired": false
+  },
+  "motion": {
+    "loops": false,
+    "durationMs": 380,
+    "easing": "cubic-bezier(0.16, 0.92, 0.28, 1)"
+  },
+  "a11y": {
+    "focusVisible": "2px solid #76E5F2 with 4px offset",
+    "decorativeShards": "aria-hidden",
+    "effectDescription": "aria-describedby"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Hover/focus maintains the seven-shard separated state immediately with no transition."
+  },
+  "constraints": {
+    "exactShardCount": 7,
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noStorage": true,
+    "noParentAccess": true,
+    "noCanvas": true,
+    "noSvg": true
+  }
+}

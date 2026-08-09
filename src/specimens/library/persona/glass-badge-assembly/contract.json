@@ -1,0 +1,52 @@
+{
+  "name": "glass-badge-assembly",
+  "ref": "SPX-434",
+  "intent": "Nine deterministic glass fragments assemble into a Persona 3-inspired diamond badge.",
+  "fragments": {
+    "count": 9,
+    "deterministic": true,
+    "shape": "clipped 42px glass tiles",
+    "sourceTransforms": "fixed per fragment",
+    "delaysMs": [0, 55, 110, 165, 220, 275, 330, 385, 440]
+  },
+  "badge": {
+    "widthPx": 122,
+    "heightPx": 122,
+    "rotationDegrees": 45,
+    "completedText": ["P3", "ASSEMBLED"]
+  },
+  "motion": {
+    "fragmentDurationMs": 620,
+    "easing": "cubic-bezier(0.18, 0.86, 0.22, 1)",
+    "completionMs": 1060,
+    "loops": false,
+    "retriggerSafe": true
+  },
+  "control": {
+    "element": "button",
+    "label": "ASSEMBLE",
+    "api": "window.glassBadgeAssembly.assemble(root)",
+    "retriggerBehaviour": "Cancels only the target root's pending frame and timer, then restarts from idle."
+  },
+  "a11y": {
+    "stageDecorative": true,
+    "status": "polite",
+    "focusVisible": "2px solid #67D4EF",
+    "completionSignal": ["P3", "ASSEMBLED", "assembled silhouette"]
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately show all nine fragments in the completed badge; no motion."
+  },
+  "constraints": {
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noStorage": true,
+    "noParentAccess": true,
+    "noCanvas": true,
+    "noSvg": true
+  }
+}

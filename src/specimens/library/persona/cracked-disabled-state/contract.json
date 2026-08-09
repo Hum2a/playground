@@ -1,0 +1,51 @@
+{
+  "name": "cracked-disabled-state",
+  "ref": "SPX-433",
+  "inspiration": {
+    "work": "persona-3",
+    "idea": "P3-035"
+  },
+  "intent": "A disabled ACCESS MODULE stays unavailable while its wrapper visualises one compact rejection fracture.",
+  "copy": {
+    "eyebrow": "ACCESS // 03",
+    "title": "RESTRICTED SYSTEM",
+    "module": "ACCESS MODULE",
+    "state": "UNAVAILABLE",
+    "rejection": "ACCESS REJECTED",
+    "unavailableDescription": "Access Module is unavailable."
+  },
+  "semantics": {
+    "moduleElement": "button",
+    "nativeDisabled": true,
+    "describedByUnavailableText": true,
+    "wrapperIsVisualDemoOnly": true,
+    "rejectionDoesNotGrantAccess": true
+  },
+  "fracture": {
+    "element": "svg",
+    "pathCount": 5,
+    "decorative": true,
+    "stroke": "#78c7f0",
+    "drawDurationMs": 180,
+    "finalPathDelayMs": 85
+  },
+  "motion": {
+    "loops": false,
+    "noticeDelayMs": 85,
+    "trigger": "wrapper:active or data-rejected=true"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediately reveal all five fracture paths and ACCESS REJECTED with no draw animation."
+  },
+  "constraints": {
+    "noJavaScript": true,
+    "noExternalAssets": true,
+    "noNetwork": true,
+    "noLoopingMotion": true,
+    "exactlyFiveSvgPaths": true
+  }
+}

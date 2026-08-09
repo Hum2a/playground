@@ -1,0 +1,184 @@
+/* SPX-428 Glass Focus Frame — portable contract. Do not restyle to host tokens. */
+
+.gff {
+  --gff-bg: #101924;
+  --gff-panel: #1a2b3a;
+  --gff-glass: #b9e8f3;
+  --gff-ink: #eef7fa;
+  --gff-muted: #92aab4;
+  --gff-active: #70d8e8;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 220px;
+  height: 100%;
+  padding: 1.5rem;
+  overflow: hidden;
+  color: var(--gff-ink);
+  background:
+    linear-gradient(135deg, rgb(185 232 243 / 6%), transparent 42%),
+    var(--gff-bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.gff *,
+.gff *::before,
+.gff *::after {
+  box-sizing: border-box;
+}
+
+.gff__kicker,
+.gff__hint {
+  margin: 0;
+  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.gff__kicker {
+  color: var(--gff-glass);
+}
+
+.gff__hint {
+  color: var(--gff-muted);
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+
+.gff__group {
+  position: relative;
+  display: flex;
+  gap: 0.55rem;
+  padding: 1rem;
+}
+
+.gff__control {
+  position: relative;
+  z-index: 1;
+  min-width: 86px;
+  min-height: 42px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgb(185 232 243 / 38%);
+  border-radius: 0;
+  background: linear-gradient(135deg, rgb(185 232 243 / 12%), rgb(185 232 243 / 3%));
+  color: var(--gff-ink);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.gff__control:hover,
+.gff__control:active {
+  border-color: var(--gff-active);
+  background-color: rgb(112 216 232 / 17%);
+  color: #ffffff;
+}
+
+.gff__control:focus {
+  outline: none;
+}
+
+.gff__control:focus-visible {
+  outline: 2px solid var(--gff-active);
+  outline-offset: 3px;
+}
+
+.gff__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  transition: opacity 160ms ease;
+}
+
+.gff__group:focus-within .gff__frame {
+  opacity: 1;
+}
+
+.gff__bracket {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--gff-glass);
+  border-style: solid;
+  border-width: 0;
+  filter: drop-shadow(0 0 5px rgb(185 232 243 / 45%));
+  transition: transform 160ms ease;
+}
+
+.gff__bracket--top-left {
+  top: 0;
+  left: 0;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+
+.gff__bracket--top-right {
+  top: 0;
+  right: 0;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.gff__bracket--bottom-right {
+  right: 0;
+  bottom: 0;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+}
+
+.gff__bracket--bottom-left {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+
+.gff__group:focus-within .gff__bracket--top-left {
+  transform: translate(-3px, -3px);
+}
+
+.gff__group:focus-within .gff__bracket--top-right {
+  transform: translate(3px, -3px);
+}
+
+.gff__group:focus-within .gff__bracket--bottom-right {
+  transform: translate(3px, 3px);
+}
+
+.gff__group:focus-within .gff__bracket--bottom-left {
+  transform: translate(-3px, 3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gff__control,
+  .gff__frame,
+  .gff__bracket {
+    transition: none !important;
+  }
+
+  .gff__group:focus-within .gff__bracket {
+    transform: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .gff__control,
+[data-force-reduced-motion='true'] .gff__frame,
+[data-force-reduced-motion='true'] .gff__bracket {
+  transition: none !important;
+}
+
+[data-force-reduced-motion='true'] .gff__group:focus-within .gff__bracket {
+  transform: none;
+}

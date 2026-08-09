@@ -1,0 +1,158 @@
+/* SPX-430 Shard Burst Button — portable contract. Do not restyle to host tokens. */
+
+.sbb {
+  --sbb-navy: #071525;
+  --sbb-panel: #0b2f52;
+  --sbb-glass: #49a9e8;
+  --sbb-pale: #b9e7ff;
+  --sbb-white: #eef8ff;
+  --sbb-ink: #d7ecf8;
+  --sbb-burst: 420ms;
+  box-sizing: border-box;
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  padding: 1.5rem;
+  overflow: hidden;
+  color: var(--sbb-ink);
+  background: var(--sbb-navy);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.sbb *,
+.sbb *::before,
+.sbb *::after {
+  box-sizing: border-box;
+}
+
+.sbb__kicker {
+  margin: 0;
+  text-align: center;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  color: color-mix(in srgb, var(--sbb-pale) 62%, transparent);
+}
+
+.sbb__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 210px;
+  height: 116px;
+}
+
+.sbb__button {
+  position: relative;
+  z-index: 1;
+  min-width: 152px;
+  min-height: 52px;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid var(--sbb-glass);
+  border-radius: 0;
+  background: var(--sbb-panel);
+  color: var(--sbb-white);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sbb-pale) 18%, transparent);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition:
+    background-color 120ms linear,
+    border-color 120ms linear;
+}
+
+.sbb__button:hover {
+  border-color: var(--sbb-pale);
+}
+
+.sbb__button:focus-visible {
+  outline: 2px solid var(--sbb-pale);
+  outline-offset: 4px;
+}
+
+.sbb.is-confirmed .sbb__button {
+  background: color-mix(in srgb, var(--sbb-glass) 36%, var(--sbb-panel));
+  border-color: var(--sbb-pale);
+}
+
+.sbb__shards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sbb__shard {
+  --x: 0px;
+  --y: 0px;
+  --turn: 0deg;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 11px;
+  height: 7px;
+  opacity: 0;
+  background: linear-gradient(135deg, var(--sbb-white), var(--sbb-glass) 55%, transparent 56%);
+  clip-path: polygon(0 50%, 72% 0, 100% 100%);
+  transform: translate(-50%, -50%) rotate(0deg) scale(0.45);
+}
+
+/* Twelve fixed vectors make each confirmation repeatable. */
+.sbb__shard--1 { --x: -86px; --y: -34px; --turn: -42deg; }
+.sbb__shard--2 { --x: -62px; --y: -60px; --turn: -18deg; }
+.sbb__shard--3 { --x: -23px; --y: -68px; --turn: 8deg; }
+.sbb__shard--4 { --x: 24px; --y: -64px; --turn: 32deg; }
+.sbb__shard--5 { --x: 65px; --y: -49px; --turn: 57deg; }
+.sbb__shard--6 { --x: 91px; --y: -15px; --turn: 82deg; }
+.sbb__shard--7 { --x: 84px; --y: 30px; --turn: 111deg; }
+.sbb__shard--8 { --x: 47px; --y: 55px; --turn: 142deg; }
+.sbb__shard--9 { --x: 9px; --y: 64px; --turn: 168deg; }
+.sbb__shard--10 { --x: -36px; --y: 59px; --turn: 206deg; }
+.sbb__shard--11 { --x: -74px; --y: 36px; --turn: 235deg; }
+.sbb__shard--12 { --x: -96px; --y: 3px; --turn: 274deg; }
+
+.sbb.is-bursting .sbb__shard {
+  animation: sbb-burst var(--sbb-burst) cubic-bezier(0.16, 0.78, 0.3, 1) both;
+}
+
+@keyframes sbb-burst {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.45);
+  }
+  14% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(var(--turn)) scale(1);
+  }
+}
+
+.sbb__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sbb__button,
+  .sbb.is-bursting .sbb__shard {
+    transition: none;
+    animation: none !important;
+  }
+}
+
+[data-force-reduced-motion='true'] .sbb__button,
+[data-force-reduced-motion='true'] .sbb.is-bursting .sbb__shard {
+  transition: none;
+  animation: none !important;
+}

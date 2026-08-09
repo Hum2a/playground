@@ -1,0 +1,73 @@
+<section class="gts" data-glass-tab-switcher>
+  <p class="gts__kicker">OPERATIONS // GLASS INDEX</p>
+
+  <div class="gts__tablist" role="tablist" aria-label="Interface sections">
+    <span class="gts__indicator" aria-hidden="true"></span>
+    <button
+      class="gts__tab"
+      id="gts-tab-status"
+      type="button"
+      role="tab"
+      aria-selected="true"
+      aria-controls="gts-panel-status"
+      tabindex="0"
+      data-gts-tab
+    >Status</button>
+    <button
+      class="gts__tab"
+      id="gts-tab-records"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="gts-panel-records"
+      tabindex="-1"
+      data-gts-tab
+    >Records</button>
+    <button
+      class="gts__tab"
+      id="gts-tab-system"
+      type="button"
+      role="tab"
+      aria-selected="false"
+      aria-controls="gts-panel-system"
+      tabindex="-1"
+      data-gts-tab
+    >System</button>
+  </div>
+
+  <div
+    class="gts__panel"
+    id="gts-panel-status"
+    role="tabpanel"
+    aria-labelledby="gts-tab-status"
+    data-gts-panel
+  >
+    <span class="gts__panel-index">01</span>
+    <p class="gts__panel-label">Status</p>
+    <p class="gts__panel-copy">All systems hold steady.</p>
+  </div>
+  <div
+    class="gts__panel"
+    id="gts-panel-records"
+    role="tabpanel"
+    aria-labelledby="gts-tab-records"
+    data-gts-panel
+    hidden
+  >
+    <span class="gts__panel-index">02</span>
+    <p class="gts__panel-label">Records</p>
+    <p class="gts__panel-copy">Three entries await review.</p>
+  </div>
+  <div
+    class="gts__panel"
+    id="gts-panel-system"
+    role="tabpanel"
+    aria-labelledby="gts-tab-system"
+    data-gts-panel
+    hidden
+  >
+    <span class="gts__panel-index">03</span>
+    <p class="gts__panel-label">System</p>
+    <p class="gts__panel-copy">Glass relay is nominal.</p>
+  </div>
+</section>

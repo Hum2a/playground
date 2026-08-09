@@ -616,4 +616,11 @@ export const specimenOrder: string[] = [
   'liquid-toggle',
   'droplet-notification',
   'water-disturbance-hover',
+  'shard-hover',
+  'glass-focus-frame',
+  'shard-burst-button',
+  'glass-tab-switcher',
+  'refraction-hover',
+  'cracked-disabled-state',
+  'glass-badge-assembly',
 ]

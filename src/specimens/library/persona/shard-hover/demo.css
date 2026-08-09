@@ -1,0 +1,190 @@
+/* shard-hover — portable specimen styles. */
+
+.shard-hover {
+  --shard-ink: #061422;
+  --shard-cyan: #76e5f2;
+  --shard-pale: #e2f7fa;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 330px;
+  height: 196px;
+  overflow: hidden;
+  border: 1px solid rgb(118 229 242 / 0.72);
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, rgb(118 229 242 / 0.08), transparent 42%),
+    linear-gradient(160deg, #0a2b45, var(--shard-ink) 72%);
+  color: var(--shard-pale);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+
+.shard-hover *,
+.shard-hover *::before,
+.shard-hover *::after {
+  box-sizing: border-box;
+}
+
+.shard-hover__shards,
+.shard-hover__content {
+  position: absolute;
+  inset: 0;
+}
+
+.shard-hover__shards {
+  pointer-events: none;
+}
+
+.shard-hover__shard {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(118 229 242 / 0.38);
+  background:
+    linear-gradient(115deg, rgb(226 247 250 / 0.24), transparent 34%),
+    linear-gradient(295deg, transparent 51%, rgb(118 229 242 / 0.18));
+  transform: translate(0, 0);
+  transition:
+    transform 380ms cubic-bezier(0.16, 0.92, 0.28, 1),
+    border-color 240ms ease,
+    background-color 240ms ease;
+  will-change: transform;
+}
+
+.shard-hover__shard--1 {
+  clip-path: polygon(0 0, 37% 0, 26% 42%, 0 57%);
+}
+
+.shard-hover__shard--2 {
+  clip-path: polygon(37% 0, 72% 0, 55% 37%, 26% 42%);
+}
+
+.shard-hover__shard--3 {
+  clip-path: polygon(72% 0, 100% 0, 100% 45%, 55% 37%);
+}
+
+.shard-hover__shard--4 {
+  clip-path: polygon(0 57%, 26% 42%, 48% 60%, 32% 100%, 0 100%);
+}
+
+.shard-hover__shard--5 {
+  clip-path: polygon(26% 42%, 55% 37%, 67% 65%, 48% 60%);
+}
+
+.shard-hover__shard--6 {
+  clip-path: polygon(55% 37%, 100% 45%, 100% 100%, 72% 100%, 67% 65%);
+}
+
+.shard-hover__shard--7 {
+  clip-path: polygon(48% 60%, 67% 65%, 72% 100%, 32% 100%);
+}
+
+.shard-hover__content {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 27px;
+  background: linear-gradient(90deg, rgb(6 20 34 / 0.64), transparent);
+  transition: transform 380ms cubic-bezier(0.16, 0.92, 0.28, 1);
+}
+
+.shard-hover__eyebrow,
+.shard-hover__prompt {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.shard-hover__eyebrow {
+  color: var(--shard-cyan);
+}
+
+.shard-hover__title {
+  margin-top: 7px;
+  font-size: 30px;
+  letter-spacing: 0.055em;
+  line-height: 0.95;
+}
+
+.shard-hover__prompt {
+  margin-top: 15px;
+  color: rgb(226 247 250 / 0.78);
+  letter-spacing: 0.1em;
+}
+
+.shard-hover:hover .shard-hover__shard,
+.shard-hover:focus-visible .shard-hover__shard {
+  border-color: rgb(226 247 250 / 0.8);
+}
+
+.shard-hover:hover .shard-hover__shard--1,
+.shard-hover:focus-visible .shard-hover__shard--1 {
+  transform: translate(-22px, -16px);
+}
+
+.shard-hover:hover .shard-hover__shard--2,
+.shard-hover:focus-visible .shard-hover__shard--2 {
+  transform: translate(3px, -23px);
+}
+
+.shard-hover:hover .shard-hover__shard--3,
+.shard-hover:focus-visible .shard-hover__shard--3 {
+  transform: translate(23px, -12px);
+}
+
+.shard-hover:hover .shard-hover__shard--4,
+.shard-hover:focus-visible .shard-hover__shard--4 {
+  transform: translate(-25px, 13px);
+}
+
+.shard-hover:hover .shard-hover__shard--5,
+.shard-hover:focus-visible .shard-hover__shard--5 {
+  transform: translate(-2px, 7px);
+}
+
+.shard-hover:hover .shard-hover__shard--6,
+.shard-hover:focus-visible .shard-hover__shard--6 {
+  transform: translate(25px, 14px);
+}
+
+.shard-hover:hover .shard-hover__shard--7,
+.shard-hover:focus-visible .shard-hover__shard--7 {
+  transform: translate(6px, 22px);
+}
+
+.shard-hover:hover .shard-hover__content,
+.shard-hover:focus-visible .shard-hover__content {
+  transform: translateX(5px);
+}
+
+.shard-hover:focus-visible {
+  outline: 2px solid var(--shard-cyan);
+  outline-offset: 4px;
+}
+
+.shard-hover__note {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shard-hover__shard,
+  .shard-hover__content {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .shard-hover__shard,
+[data-force-reduced-motion="true"] .shard-hover__content {
+  transition: none;
+}
