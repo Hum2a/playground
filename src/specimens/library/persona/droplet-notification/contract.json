@@ -1,0 +1,69 @@
+{
+  "name": "droplet-notification",
+  "intent": "Event-driven notification indicator: one geometric droplet falls onto a dark plate, two thin rings mark impact, badge becomes NEW. Never auto-loops.",
+  "surface": {
+    "widthPx": 320,
+    "heightPx": 180
+  },
+  "droplet": {
+    "widthPx": 18,
+    "heightPx": 24,
+    "colour": "#72D6E8",
+    "silhouette": "geometric-teardrop",
+    "ariaHidden": true
+  },
+  "ripple": {
+    "ringCount": 2,
+    "strokePx": 2,
+    "origin": "impact-point",
+    "durationMs": 320,
+    "staggerMs": 50,
+    "subtle": true
+  },
+  "timing": {
+    "appearMs": 80,
+    "fallMs": 260,
+    "impactPauseMs": 40,
+    "rippleMs": 320,
+    "badgeMs": 180,
+    "totalApproxMs": 600
+  },
+  "phases": ["idle", "appear", "fall", "impact", "ripple", "active"],
+  "badge": {
+    "idle": "muted",
+    "active": ["stronger-border", "cyan-marker", "NEW-label"],
+    "notToast": true
+  },
+  "colours": {
+    "void": "#0B1220",
+    "plate": "#111827",
+    "mute": "#236B91",
+    "cyan": "#72D6E8",
+    "ink": "#E9EEF5"
+  },
+  "behaviour": {
+    "trigger": "TRIGGER button outside surface",
+    "busyIgnoresRetrigger": true,
+    "noAutoLoop": true,
+    "noStacking": true
+  },
+  "api": {
+    "trigger": "window.dropletNotification.trigger(root)",
+    "reset": "window.dropletNotification.reset(root)",
+    "init": "window.dropletNotification.init(scope?)",
+    "sandboxSafe": true
+  },
+  "a11y": {
+    "surfaceLabel": "Notification indicator",
+    "statusIdle": "No new notification.",
+    "statusActive": "New notification.",
+    "focusVisible": "2px solid #72D6E8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Immediate active badge + NEW + static cyan ring; no fall or expanding ripple"
+  }
+}

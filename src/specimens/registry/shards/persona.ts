@@ -47,6 +47,7 @@ import { deadlinePressureMeter } from '../../library/persona/deadline-pressure-m
 import { decisionShowdown } from '../../library/persona/decision-showdown/entry'
 import { deductionLockIn } from '../../library/persona/deduction-lock-in/entry'
 import { discoveryTearOpen } from '../../library/persona/discovery-tear-open/entry'
+import { dropletNotification } from '../../library/persona/droplet-notification/entry'
 import { enemyScanReveal } from '../../library/persona/enemy-scan-reveal/entry'
 import { energyChargeConfirmation } from '../../library/persona/energy-charge-confirmation/entry'
 import { energyTransferSync } from '../../library/persona/energy-transfer-sync/entry'
@@ -176,6 +177,7 @@ export const shard: Specimen[] = [
   decisionShowdown,
   deductionLockIn,
   discoveryTearOpen,
+  dropletNotification,
   enemyScanReveal,
   energyChargeConfirmation,
   energyTransferSync,

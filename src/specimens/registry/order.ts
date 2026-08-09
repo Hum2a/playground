@@ -614,4 +614,5 @@ export const specimenOrder: string[] = [
   'spell-circle-draw',
   'ripple-selection',
   'liquid-toggle',
+  'droplet-notification',
 ]

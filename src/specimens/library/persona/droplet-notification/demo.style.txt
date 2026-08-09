@@ -1,0 +1,302 @@
+/* SPX-415 Droplet Notification — portable contract. Do not restyle to host tokens. */
+
+.dn {
+  --dn-void: #0b1220;
+  --dn-plate: #111827;
+  --dn-mute: #236b91;
+  --dn-cyan: #72d6e8;
+  --dn-ink: #e9eef5;
+  --dn-dim: #6a8499;
+  --dn-appear: 80ms;
+  --dn-fall: 260ms;
+  --dn-ripple: 320ms;
+  --dn-badge: 180ms;
+  --dn-ease: cubic-bezier(0.33, 0, 0.2, 1);
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  color: var(--dn-ink);
+  background: var(--dn-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.dn *,
+.dn *::before,
+.dn *::after {
+  box-sizing: border-box;
+}
+
+.dn__kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--dn-dim);
+}
+
+.dn__surface {
+  position: relative;
+  overflow: hidden;
+  width: 320px;
+  max-width: 100%;
+  height: 180px;
+  border: 2px solid #1c3144;
+  background:
+    linear-gradient(180deg, rgba(35, 107, 145, 0.12), transparent 46%),
+    var(--dn-plate);
+}
+
+.dn__stage {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.dn__drop {
+  position: absolute;
+  top: 8px;
+  right: 34px;
+  width: 18px;
+  height: 24px;
+  background: var(--dn-cyan);
+  clip-path: polygon(50% 0%, 92% 48%, 78% 100%, 22% 100%, 8% 48%);
+  opacity: 0;
+  transform: translateY(0) scale(0.88);
+}
+
+.dn[data-phase='appear'] .dn__drop {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity var(--dn-appear) linear,
+    transform var(--dn-appear) var(--dn-ease);
+}
+
+.dn[data-phase='fall'] .dn__drop,
+.dn[data-phase='impact'] .dn__drop {
+  opacity: 1;
+  transform: translateY(46px) scale(1);
+  transition: transform var(--dn-fall) cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.dn[data-phase='impact'] .dn__drop {
+  transform: translateY(46px) scale(1.06, 0.88);
+  transition-duration: 40ms;
+}
+
+.dn[data-phase='ripple'] .dn__drop,
+.dn[data-phase='active'] .dn__drop {
+  opacity: 0;
+  transform: translateY(46px) scale(0.4);
+  transition: opacity 80ms linear;
+}
+
+.dn__ripple {
+  position: absolute;
+  top: 66px;
+  right: 25px;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--dn-cyan);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+.dn[data-phase='ripple'] .dn__ripple--1 {
+  animation: dn-ring var(--dn-ripple) var(--dn-ease) forwards;
+}
+
+.dn[data-phase='ripple'] .dn__ripple--2 {
+  animation: dn-ring var(--dn-ripple) var(--dn-ease) 50ms forwards;
+}
+
+@keyframes dn-ring {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.2);
+  }
+  70% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+.dn__static {
+  position: absolute;
+  top: 54px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--dn-cyan);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.dn__badge {
+  position: absolute;
+  top: 52px;
+  right: 16px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 0.35rem;
+  min-width: 52px;
+  padding: 0.35rem 0.45rem 0.32rem 0.4rem;
+  border: 2px solid #2a4156;
+  background: #0e1a28;
+  color: var(--dn-dim);
+  transition:
+    border-color var(--dn-badge) var(--dn-ease),
+    color var(--dn-badge) var(--dn-ease),
+    background-color var(--dn-badge) var(--dn-ease);
+}
+
+.dn[data-phase='ripple'] .dn__badge,
+.dn[data-phase='active'] .dn__badge {
+  border-color: var(--dn-cyan);
+  color: var(--dn-ink);
+  background: #102636;
+}
+
+.dn__marker {
+  width: 8px;
+  height: 8px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: var(--dn-mute);
+  transition:
+    background-color var(--dn-badge) var(--dn-ease),
+    transform var(--dn-badge) var(--dn-ease);
+}
+
+.dn[data-phase='ripple'] .dn__marker,
+.dn[data-phase='active'] .dn__marker {
+  background: var(--dn-cyan);
+  transform: scale(1.1);
+}
+
+.dn__count {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.dn__new {
+  grid-column: 1 / -1;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--dn-cyan);
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity var(--dn-badge) var(--dn-ease),
+    transform var(--dn-badge) var(--dn-ease);
+}
+
+.dn[data-phase='ripple'] .dn__new,
+.dn[data-phase='active'] .dn__new {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dn__copy {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.9rem;
+  margin: 0;
+  max-width: 12rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--dn-dim);
+}
+
+.dn[data-phase='ripple'] .dn__copy,
+.dn[data-phase='active'] .dn__copy {
+  color: var(--dn-ink);
+}
+
+.dn__trigger {
+  margin: 0;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid #2a4156;
+  background: transparent;
+  color: var(--dn-ink);
+  font: 700 0.68rem ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+}
+
+.dn__trigger:focus {
+  outline: none;
+}
+
+.dn__trigger:focus-visible {
+  outline: 2px solid var(--dn-cyan);
+  outline-offset: 3px;
+}
+
+.dn__trigger:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.dn__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dn__drop,
+  .dn__ripple,
+  .dn__badge,
+  .dn__marker,
+  .dn__new,
+  .dn__copy {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .dn[data-phase='active'] .dn__drop,
+  .dn[data-phase='ripple'] .dn__drop {
+    opacity: 0;
+  }
+
+  .dn[data-phase='active'] .dn__static {
+    opacity: 0.85;
+  }
+}
+
+[data-force-reduced-motion='true'] .dn__drop,
+[data-force-reduced-motion='true'] .dn__ripple,
+[data-force-reduced-motion='true'] .dn__badge,
+[data-force-reduced-motion='true'] .dn__marker,
+[data-force-reduced-motion='true'] .dn__new,
+[data-force-reduced-motion='true'] .dn__copy {
+  transition: none !important;
+  animation: none !important;
+}
+
+[data-force-reduced-motion='true'] .dn[data-phase='active'] .dn__drop,
+[data-force-reduced-motion='true'] .dn[data-phase='ripple'] .dn__drop {
+  opacity: 0;
+}
+
+[data-force-reduced-motion='true'] .dn[data-phase='active'] .dn__static {
+  opacity: 0.85;
+}
