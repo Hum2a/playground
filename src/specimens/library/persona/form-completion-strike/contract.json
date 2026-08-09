@@ -1,0 +1,53 @@
+{
+  "name": "form-completion-strike",
+  "intent": "Completing a valid contact form brightens the card once, then a cyan slash and COMPLETE badge settle with four radial accents.",
+  "preview": {
+    "widthPx": 520,
+    "heightPx": 380
+  },
+  "strike": {
+    "widthPx": 180,
+    "heightPx": 6,
+    "angleDeg": -8,
+    "durationMs": 180,
+    "easing": "cubic-bezier(.15,.85,.25,1)",
+    "scaleX": [0, 1],
+    "colour": "#72D6E8"
+  },
+  "badge": {
+    "copy": "COMPLETE",
+    "durationMs": 220,
+    "entersAfterStrikeStarts": true
+  },
+  "accents": {
+    "count": 4,
+    "thicknessPx": 2,
+    "particles": false
+  },
+  "form": {
+    "fields": ["NAME", "EMAIL", "MESSAGE"],
+    "rest": {
+      "nameValid": true,
+      "emailValid": true,
+      "messageValid": false
+    },
+    "completeRequiresAllValid": true
+  },
+  "colours": {
+    "background": "#111827",
+    "text": "#E9EEF5",
+    "cyan": "#72D6E8",
+    "blue": "#236B91"
+  },
+  "a11y": {
+    "roleStatus": true,
+    "slashAriaHidden": true
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "COMPLETE and final slash immediately; no movement"
+  }
+}

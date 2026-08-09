@@ -158,6 +158,7 @@ import { labelEjection } from '../../library/persona/label-ejection/entry'
 import { passwordRevealCutout } from '../../library/persona/password-reveal-cutout/entry'
 import { submitBlackout } from '../../library/persona/submit-blackout/entry'
 import { errorHeadlineIntrusion } from '../../library/persona/error-headline-intrusion/entry'
+import { formCompletionStrike } from '../../library/persona/form-completion-strike/entry'
 import { confidantRankUp } from '../../library/persona/confidant-rank-up/entry'
 import { xpCounterSlam } from '../../library/persona/xp-counter-slam/entry'
 import { jaggedSpeechTooltip } from '../../library/persona/jagged-speech-tooltip/entry'
@@ -325,6 +326,7 @@ export const shard: Specimen[] = [
   passwordRevealCutout,
   submitBlackout,
   errorHeadlineIntrusion,
+  formCompletionStrike,
   confidantRankUp,
   xpCounterSlam,
   jaggedSpeechTooltip,

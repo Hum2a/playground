@@ -652,4 +652,5 @@ export const specimenOrder: string[] = [
   'password-reveal-cutout',
   'submit-blackout',
   'error-headline-intrusion',
+  'form-completion-strike',
 ]

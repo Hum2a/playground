@@ -1,0 +1,68 @@
+<section class="fcs" data-form-completion-strike data-phase="idle">
+  <form class="fcs__form" novalidate data-fcs-form>
+    <p class="fcs__kicker">CONTACT</p>
+
+    <div class="fcs__field">
+      <label class="fcs__label" for="fcs-name">NAME</label>
+      <input
+        class="fcs__input"
+        id="fcs-name"
+        name="name"
+        type="text"
+        value="Ada Lane"
+        required
+        autocomplete="off"
+        spellcheck="false"
+        data-fcs-name
+      />
+    </div>
+
+    <div class="fcs__field">
+      <label class="fcs__label" for="fcs-email">EMAIL</label>
+      <input
+        class="fcs__input"
+        id="fcs-email"
+        name="email"
+        type="email"
+        value="ada@archive.test"
+        required
+        autocomplete="off"
+        spellcheck="false"
+        data-fcs-email
+      />
+    </div>
+
+    <div class="fcs__field">
+      <label class="fcs__label" for="fcs-message">MESSAGE</label>
+      <textarea
+        class="fcs__input fcs__input--area"
+        id="fcs-message"
+        name="message"
+        rows="3"
+        required
+        autocomplete="off"
+        spellcheck="false"
+        data-fcs-message
+      ></textarea>
+      <p class="fcs__hint" data-fcs-hint>Message required to complete.</p>
+    </div>
+
+    <div class="fcs__bar">
+      <button type="button" class="fcs__btn" data-fcs-complete disabled>COMPLETE FORM</button>
+      <button type="button" class="fcs__btn fcs__btn--ghost" data-fcs-replay hidden>REPLAY</button>
+
+      <div class="fcs__burst" aria-hidden="true" data-fcs-burst>
+        <span class="fcs__spoke fcs__spoke--1"><span class="fcs__accent"></span></span>
+        <span class="fcs__spoke fcs__spoke--2"><span class="fcs__accent"></span></span>
+        <span class="fcs__spoke fcs__spoke--3"><span class="fcs__accent"></span></span>
+        <span class="fcs__spoke fcs__spoke--4"><span class="fcs__accent"></span></span>
+        <span class="fcs__slash"></span>
+        <span class="fcs__badge">COMPLETE</span>
+      </div>
+    </div>
+  </form>
+
+  <p class="fcs__status" role="status" aria-live="polite" data-fcs-status>
+    Form incomplete.
+  </p>
+</section>
