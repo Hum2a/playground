@@ -1,0 +1,28 @@
+<section class="jrpg-targeting" data-jrpg-targeting tabindex="0" aria-label="Battle target selection">
+  <p class="jrpg-targeting__status" data-target-status aria-live="polite">Targeting ready</p>
+  <p class="jrpg-targeting__heading">SELECT TARGET</p>
+
+  <div class="jrpg-targeting__scene" data-target-scene>
+    <button class="jrpg-targeting__target" type="button" data-target="0" style="--x: 78px; --y: 96px">
+      <span class="jrpg-targeting__object jrpg-targeting__object--a" aria-hidden="true"></span>
+      <span class="jrpg-targeting__label">TARGET A</span>
+    </button>
+    <button class="jrpg-targeting__target" type="button" data-target="1" style="--x: 180px; --y: 160px">
+      <span class="jrpg-targeting__object jrpg-targeting__object--b" aria-hidden="true"></span>
+      <span class="jrpg-targeting__label">TARGET B</span>
+    </button>
+    <button class="jrpg-targeting__target" type="button" data-target="2" style="--x: 282px; --y: 96px">
+      <span class="jrpg-targeting__object jrpg-targeting__object--c" aria-hidden="true"></span>
+      <span class="jrpg-targeting__label">TARGET C</span>
+    </button>
+
+    <div class="jrpg-targeting__reticle" data-target-reticle aria-hidden="true">
+      <span class="jrpg-targeting__corner jrpg-targeting__corner--nw"></span>
+      <span class="jrpg-targeting__corner jrpg-targeting__corner--ne"></span>
+      <span class="jrpg-targeting__corner jrpg-targeting__corner--se"></span>
+      <span class="jrpg-targeting__corner jrpg-targeting__corner--sw"></span>
+    </div>
+  </div>
+
+  <p class="jrpg-targeting__hint">ARROWS: TARGET · ENTER: CONFIRM · ESC: CANCEL</p>
+</section>

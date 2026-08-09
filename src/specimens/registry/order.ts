@@ -607,4 +607,5 @@ export const specimenOrder: string[] = [
   'quantize-sweep',
   'automation-point-draw',
   'jrpg-command-wheel-fan',
+  'jrpg-target-menu-acquire',
 ]
