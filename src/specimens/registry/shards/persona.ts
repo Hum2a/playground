@@ -81,6 +81,7 @@ import { lunarCycleLoader } from '../../library/persona/lunar-cycle-loader/entry
 import { moonriseReveal } from '../../library/persona/moonrise-reveal/entry'
 import { eclipseTransition } from '../../library/persona/eclipse-transition/entry'
 import { crescentWipe } from '../../library/persona/crescent-wipe/entry'
+import { lunarDeadline } from '../../library/persona/lunar-deadline/entry'
 import { mangaCutInNotification } from '../../library/persona/manga-cut-in-notification/entry'
 import { mapConstruction } from '../../library/persona/map-construction/entry'
 import { maxRankCompletion } from '../../library/persona/max-rank-completion/entry'
@@ -223,6 +224,7 @@ export const shard: Specimen[] = [
   moonriseReveal,
   eclipseTransition,
   crescentWipe,
+  lunarDeadline,
   mangaCutInNotification,
   mapConstruction,
   maxRankCompletion,

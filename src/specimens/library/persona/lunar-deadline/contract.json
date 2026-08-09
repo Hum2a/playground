@@ -1,0 +1,61 @@
+{
+  "name": "lunar-deadline",
+  "intent": "Discrete lunar deadline: four waning phases replace a wall clock. Illumination decreases as remaining phases drop.",
+  "surface": {
+    "widthPx": 620,
+    "heightPx": 340
+  },
+  "phases": ["FULL", "WANING GIBBOUS", "LAST QUARTER", "NEW"],
+  "phaseCount": 4,
+  "copy": {
+    "title": "DEADLINE",
+    "remaining": [
+      "03 PHASES REMAINING",
+      "02 PHASES REMAINING",
+      "01 PHASES REMAINING",
+      "00 PHASES REMAINING"
+    ],
+    "advance": "ADVANCE",
+    "reset": "RESET"
+  },
+  "urgency": {
+    "FULL": "normal",
+    "WANING GIBBOUS": "elevated",
+    "LAST QUARTER": "urgent",
+    "NEW": "critical",
+    "flashing": false
+  },
+  "moon": {
+    "construction": "lit disc + offset shade circle",
+    "shadeTranslateX": {
+      "FULL": "100%",
+      "WANING GIBBOUS": "75%",
+      "LAST QUARTER": "50%",
+      "NEW": "0"
+    },
+    "newBoundary": "static thin cyan/red"
+  },
+  "timing": {
+    "phaseMs": 620
+  },
+  "colours": {
+    "void": "#09111D",
+    "lit": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91",
+    "urgency": "#C94F58"
+  },
+  "a11y": {
+    "ariaLabelTemplate": "Deadline: three phases remaining",
+    "liveStatus": true,
+    "perFrameAnnouncements": false,
+    "focusVisible": "2px #72D6E8"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Snap phase, remaining count, and urgency immediately"
+  }
+}

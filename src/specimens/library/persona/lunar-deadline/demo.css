@@ -1,0 +1,256 @@
+/* SPX-462 Lunar Deadline — portable contract. Do not restyle to host tokens. */
+
+.ld {
+  --ld-void: #09111d;
+  --ld-dark: #111827;
+  --ld-lit: #c7cdd8;
+  --ld-cyan: #72d6e8;
+  --ld-mute: #236b91;
+  --ld-urgency: #c94f58;
+  --ld-moon: 96px;
+  --ld-shade: 100%;
+  --ld-accent: var(--ld-cyan);
+  --ld-remaining: var(--ld-lit);
+  --ld-tracking: 0.22em;
+  --ld-phase-ms: 620ms;
+  --ld-ease: cubic-bezier(0.4, 0.05, 0.2, 1);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.35rem;
+  width: 100%;
+  min-height: 340px;
+  height: 100%;
+  padding: 1.5rem 1.75rem;
+  overflow: hidden;
+  color: var(--ld-lit);
+  background: var(--ld-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.ld *,
+.ld *::before,
+.ld *::after {
+  box-sizing: border-box;
+}
+
+.ld[data-phase='full'] {
+  --ld-shade: 100%;
+  --ld-accent: var(--ld-cyan);
+  --ld-remaining: var(--ld-lit);
+  --ld-tracking: 0.22em;
+}
+
+.ld[data-phase='waning-gibbous'] {
+  --ld-shade: 75%;
+  --ld-accent: #7eb8c9;
+  --ld-remaining: #d4b4b7;
+  --ld-tracking: 0.16em;
+}
+
+.ld[data-phase='last-quarter'] {
+  --ld-shade: 50%;
+  --ld-accent: var(--ld-urgency);
+  --ld-remaining: var(--ld-urgency);
+  --ld-tracking: 0.1em;
+}
+
+.ld[data-phase='new'] {
+  --ld-shade: 0%;
+  --ld-accent: var(--ld-urgency);
+  --ld-remaining: var(--ld-urgency);
+  --ld-tracking: 0.06em;
+}
+
+.ld__row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.ld__moon {
+  position: relative;
+  flex: 0 0 var(--ld-moon);
+  width: var(--ld-moon);
+  height: var(--ld-moon);
+  border-radius: 50%;
+}
+
+.ld__body {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--ld-dark);
+}
+
+.ld__lit {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 38% 32%,
+    #e9eef5 0%,
+    var(--ld-lit) 48%,
+    #9aa6b5 100%
+  );
+}
+
+.ld__shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--ld-dark);
+  transform: translateX(var(--ld-shade));
+  transition: transform var(--ld-phase-ms) var(--ld-ease);
+}
+
+.ld__rim {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 1.5px rgb(114 214 232 / 0.45),
+    0 0 0 1px rgb(35 107 145 / 0.55);
+  pointer-events: none;
+}
+
+.ld[data-phase='last-quarter'] .ld__rim {
+  box-shadow:
+    inset 0 0 0 1.5px rgb(201 79 88 / 0.55),
+    0 0 0 1px rgb(201 79 88 / 0.4);
+}
+
+.ld[data-phase='new'] .ld__rim {
+  box-shadow:
+    inset 0 0 0 1px var(--ld-cyan),
+    0 0 0 1px var(--ld-urgency);
+}
+
+.ld__copy {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.ld__title,
+.ld__remaining,
+.ld__phase {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ld__title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  color: var(--ld-accent);
+  transition:
+    color var(--ld-phase-ms) var(--ld-ease),
+    letter-spacing var(--ld-phase-ms) var(--ld-ease);
+}
+
+.ld__remaining,
+.ld__phase {
+  transition:
+    color var(--ld-phase-ms) var(--ld-ease),
+    letter-spacing var(--ld-phase-ms) var(--ld-ease);
+}
+
+.ld[data-urgency='critical'] .ld__title {
+  color: var(--ld-urgency);
+}
+
+.ld__remaining {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: var(--ld-tracking);
+  color: var(--ld-remaining);
+}
+
+.ld__phase {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--ld-accent);
+}
+
+.ld__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: calc(var(--ld-moon) + 1.5rem);
+}
+
+.ld__btn {
+  appearance: none;
+  margin: 0;
+  padding: 0.48rem 0.9rem;
+  border: 1px solid var(--ld-mute);
+  background: #0d1826;
+  color: var(--ld-lit);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.ld__btn:hover:not(:disabled) {
+  border-color: var(--ld-cyan);
+  color: #fff;
+}
+
+.ld__btn:focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 2px;
+}
+
+.ld__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.ld__btn--ghost {
+  background: transparent;
+  color: var(--ld-cyan);
+}
+
+.ld__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ld--snap .ld__shade,
+.ld--snap .ld__title,
+.ld--snap .ld__remaining,
+.ld--snap .ld__phase {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ld__shade,
+  .ld__title,
+  .ld__remaining,
+  .ld__phase {
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion='true'] .ld__shade,
+[data-force-reduced-motion='true'] .ld__title,
+[data-force-reduced-motion='true'] .ld__remaining,
+[data-force-reduced-motion='true'] .ld__phase {
+  transition: none;
+}

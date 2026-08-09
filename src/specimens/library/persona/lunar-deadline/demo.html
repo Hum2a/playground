@@ -1,0 +1,32 @@
+<section
+  class="ld"
+  data-lunar-deadline
+  data-phase="full"
+  data-urgency="normal"
+  aria-label="Deadline: three phases remaining"
+>
+  <div class="ld__row">
+    <div class="ld__moon" aria-hidden="true">
+      <span class="ld__body">
+        <span class="ld__lit"></span>
+        <span class="ld__shade"></span>
+      </span>
+      <span class="ld__rim"></span>
+    </div>
+
+    <div class="ld__copy">
+      <p class="ld__title">DEADLINE</p>
+      <p class="ld__remaining" data-ld-remaining>03 PHASES REMAINING</p>
+      <p class="ld__phase" data-ld-phase>FULL</p>
+    </div>
+  </div>
+
+  <div class="ld__controls">
+    <button type="button" class="ld__btn" data-ld-advance>ADVANCE</button>
+    <button type="button" class="ld__btn ld__btn--ghost" data-ld-reset>RESET</button>
+  </div>
+
+  <p class="ld__live" role="status" aria-live="polite" data-ld-live>
+    Full. Three phases remaining.
+  </p>
+</section>
