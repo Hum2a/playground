@@ -1,0 +1,40 @@
+{
+  "name": "eclipse-loading-state",
+  "intent": "Looping eclipse loader: 120px ring with a moon travelling 140px in 1400ms alternate ease-in-out; 3px corona peaks .45 → .9 at centre over 180ms beside a static LOADING label.",
+  "surface": {
+    "widthPx": 420,
+    "heightPx": 300
+  },
+  "eclipse": {
+    "diameterPx": 120,
+    "travelPx": 140,
+    "travelEachWayPx": 70,
+    "coronaStrokePx": 3,
+    "coronaOpacityRest": 0.45,
+    "coronaOpacityPeak": 0.9,
+    "coronaPeakMs": 180
+  },
+  "timing": {
+    "loopMs": 1400,
+    "easing": "ease-in-out",
+    "direction": "alternate",
+    "loop": true
+  },
+  "label": "LOADING",
+  "colours": {
+    "void": "#09111D",
+    "panel": "#13263A",
+    "moon": "#111827",
+    "ink": "#C7CDD8",
+    "cyan": "#72D6E8",
+    "mute": "#236B91",
+    "denied": "#C94F58"
+  },
+  "reducedMotion": {
+    "triggers": [
+      "@media (prefers-reduced-motion: reduce)",
+      "[data-force-reduced-motion=\"true\"]"
+    ],
+    "behaviour": "Stop moon travel; moon centred; ring visible; static LOADING"
+  }
+}

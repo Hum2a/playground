@@ -1,0 +1,251 @@
+/* SPX-464 Eclipse Loading State — portable contract. Do not restyle to host tokens. */
+
+.els {
+  --els-void: #09111d;
+  --els-panel: #13263a;
+  --els-moon: #111827;
+  --els-ink: #c7cdd8;
+  --els-cyan: #72d6e8;
+  --els-mute: #236b91;
+  --els-size: 120px;
+  --els-travel: 70px;
+  --els-loop: 1400ms;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.15rem;
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  padding: 1.25rem;
+  overflow: hidden;
+  color: var(--els-ink);
+  background: var(--els-void);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.els *,
+.els *::before,
+.els *::after {
+  box-sizing: border-box;
+}
+
+.els :focus-visible {
+  outline: 2px solid #72d6e8;
+  outline-offset: 2px;
+}
+
+.els__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 280px;
+  height: 160px;
+}
+
+.els__veil {
+  position: absolute;
+  inset: -24px -12px;
+  background: #05080f;
+  opacity: 0;
+  pointer-events: none;
+  animation: els-veil var(--els-loop) ease-in-out infinite alternate;
+}
+
+.els__eclipse {
+  position: relative;
+  z-index: 1;
+  width: var(--els-size);
+  height: var(--els-size);
+  border-radius: 50%;
+}
+
+.els__glow {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(114 214 232 / 0.22) 0%,
+    rgb(114 214 232 / 0.08) 42%,
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: els-glow var(--els-loop) ease-in-out infinite alternate;
+}
+
+.els__corona {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--els-cyan);
+  opacity: 0.45;
+  pointer-events: none;
+  animation: els-corona var(--els-loop) ease-in-out infinite alternate;
+}
+
+.els__ring {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 2px solid rgb(114 214 232 / 0.55);
+  box-shadow:
+    0 0 12px rgb(114 214 232 / 0.28),
+    inset 0 0 10px rgb(114 214 232 / 0.12);
+  pointer-events: none;
+  animation: els-ring var(--els-loop) ease-in-out infinite alternate;
+}
+
+.els__moon {
+  position: absolute;
+  z-index: 2;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 30%, rgb(199 205 216 / 0.08) 0 18%, transparent 42%),
+    var(--els-moon);
+  box-shadow: inset 0 0 0 1px rgb(35 107 145 / 0.7);
+  animation: els-travel var(--els-loop) ease-in-out infinite alternate;
+}
+
+.els__label {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--els-cyan);
+}
+
+/*
+ * Travel −70px → +70px. Alternate + ease-in-out closes the loop with no jump.
+ * Corona peak is 180ms around 50% (90ms each side of centre).
+ */
+@keyframes els-travel {
+  0% {
+    transform: translateX(calc(var(--els-travel) * -1));
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--els-travel));
+  }
+}
+
+@keyframes els-corona {
+  0%,
+  43.571%,
+  56.429%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes els-ring {
+  0%,
+  100% {
+    border-color: rgb(114 214 232 / 0.55);
+    box-shadow:
+      0 0 12px rgb(114 214 232 / 0.28),
+      inset 0 0 10px rgb(114 214 232 / 0.12);
+  }
+  50% {
+    border-color: var(--els-cyan);
+    box-shadow:
+      0 0 22px rgb(114 214 232 / 0.72),
+      inset 0 0 14px rgb(114 214 232 / 0.28);
+  }
+}
+
+@keyframes els-glow {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes els-veil {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .els__veil,
+  .els__glow,
+  .els__corona,
+  .els__ring,
+  .els__moon {
+    animation: none;
+  }
+
+  .els__moon {
+    transform: translateX(0);
+  }
+
+  .els__corona {
+    opacity: 0.9;
+  }
+
+  .els__ring {
+    border-color: var(--els-cyan);
+    box-shadow:
+      0 0 22px rgb(114 214 232 / 0.72),
+      inset 0 0 14px rgb(114 214 232 / 0.28);
+  }
+
+  .els__glow {
+    opacity: 1;
+  }
+
+  .els__veil {
+    opacity: 0.28;
+  }
+}
+
+[data-force-reduced-motion='true'] .els__veil,
+[data-force-reduced-motion='true'] .els__glow,
+[data-force-reduced-motion='true'] .els__corona,
+[data-force-reduced-motion='true'] .els__ring,
+[data-force-reduced-motion='true'] .els__moon {
+  animation: none;
+}
+
+[data-force-reduced-motion='true'] .els__moon {
+  transform: translateX(0);
+}
+
+[data-force-reduced-motion='true'] .els__corona {
+  opacity: 0.9;
+}
+
+[data-force-reduced-motion='true'] .els__ring {
+  border-color: var(--els-cyan);
+  box-shadow:
+    0 0 22px rgb(114 214 232 / 0.72),
+    inset 0 0 14px rgb(114 214 232 / 0.28);
+}
+
+[data-force-reduced-motion='true'] .els__glow {
+  opacity: 1;
+}
+
+[data-force-reduced-motion='true'] .els__veil {
+  opacity: 0.28;
+}

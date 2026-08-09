@@ -629,4 +629,5 @@ export const specimenOrder: string[] = [
   'crescent-wipe',
   'lunar-deadline',
   'moon-phase-pagination',
+  'eclipse-loading-state',
 ]

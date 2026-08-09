@@ -83,6 +83,7 @@ import { eclipseTransition } from '../../library/persona/eclipse-transition/entr
 import { crescentWipe } from '../../library/persona/crescent-wipe/entry'
 import { lunarDeadline } from '../../library/persona/lunar-deadline/entry'
 import { moonPhasePagination } from '../../library/persona/moon-phase-pagination/entry'
+import { eclipseLoadingState } from '../../library/persona/eclipse-loading-state/entry'
 import { mangaCutInNotification } from '../../library/persona/manga-cut-in-notification/entry'
 import { mapConstruction } from '../../library/persona/map-construction/entry'
 import { maxRankCompletion } from '../../library/persona/max-rank-completion/entry'
@@ -227,6 +228,7 @@ export const shard: Specimen[] = [
   crescentWipe,
   lunarDeadline,
   moonPhasePagination,
+  eclipseLoadingState,
   mangaCutInNotification,
   mapConstruction,
   maxRankCompletion,
