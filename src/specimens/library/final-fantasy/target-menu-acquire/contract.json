@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://playground.local/docs/design/target-menu-acquire.schema.json",
+  "title": "TargetMenuAcquire",
+  "description": "Portable contract for an original JRPG-inspired three-target acquisition scene. Not a database schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "copy", "colours", "layout", "motion", "interaction", "reducedMotion"],
+  "properties": {
+    "name": { "type": "string", "const": "target-menu-acquire" },
+    "copy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["heading", "targets"],
+      "properties": {
+        "heading": { "type": "string", "const": "SELECT TARGET" },
+        "targets": { "type": "array", "const": ["TARGET A", "TARGET B", "TARGET C"] }
+      }
+    },
+    "colours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["navy", "silver", "cyan"],
+      "properties": {
+        "navy": { "type": "string", "const": "#111827" },
+        "silver": { "type": "string", "const": "#C7CDD8" },
+        "cyan": { "type": "string", "const": "#72D6E8" }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetCount", "reticlePx", "cornerStrokePx", "labelOffsetPx", "selectedTargetScale", "reticleShape"],
+      "properties": {
+        "targetCount": { "type": "integer", "const": 3 },
+        "reticlePx": { "type": "array", "const": [54, 54] },
+        "cornerStrokePx": { "type": "integer", "const": 3 },
+        "labelOffsetPx": { "type": "integer", "const": 12 },
+        "selectedTargetScale": { "type": "number", "const": 1.05 },
+        "reticleShape": { "type": "string", "const": "four-angular-corner-brackets" }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["acquisitionMs", "targetMovementMs", "easing", "runtimeRandomness"],
+      "properties": {
+        "acquisitionMs": { "type": "integer", "const": 280 },
+        "targetMovementMs": { "type": "integer", "const": 240 },
+        "easing": { "type": "string", "const": "steps(4, end)" },
+        "runtimeRandomness": { "type": "boolean", "const": false }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["arrowKeys", "confirmKey", "cancelKey", "pointerSelection"],
+      "properties": {
+        "arrowKeys": { "type": "boolean", "const": true },
+        "confirmKey": { "type": "string", "const": "Enter" },
+        "cancelKey": { "type": "string", "const": "Escape" },
+        "pointerSelection": { "type": "boolean", "const": true }
+      }
+    },
+    "reducedMotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directReticleJump", "triggers", "selectionPreserved"],
+      "properties": {
+        "directReticleJump": { "type": "boolean", "const": true },
+        "triggers": {
+          "type": "array",
+          "const": ["prefers-reduced-motion: reduce", "data-force-reduced-motion=true"]
+        },
+        "selectionPreserved": { "type": "boolean", "const": true }
+      }
+    }
+  }
+}

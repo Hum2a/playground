@@ -1,0 +1,231 @@
+/* SPX-4343 Target Menu Acquire — portable contract. Do not restyle to host tokens. */
+
+.jrpg-targeting {
+  --jta-navy: #111827;
+  --jta-silver: #c7cdd8;
+  --jta-cyan: #72d6e8;
+  --jta-ink: #070b12;
+
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  overflow: hidden;
+  background: var(--jta-navy);
+  color: var(--jta-silver);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  outline: none;
+}
+
+.jrpg-targeting *,
+.jrpg-targeting *::before,
+.jrpg-targeting *::after {
+  box-sizing: border-box;
+}
+
+.jrpg-targeting:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+.jrpg-targeting__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.jrpg-targeting__heading,
+.jrpg-targeting__hint {
+  position: absolute;
+  z-index: 3;
+  left: 1rem;
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.jrpg-targeting__heading {
+  top: 0.85rem;
+  color: var(--jta-cyan);
+}
+
+.jrpg-targeting__hint {
+  bottom: 0.85rem;
+  color: var(--jta-silver);
+  opacity: 0.75;
+}
+
+.jrpg-targeting__scene {
+  position: absolute;
+  inset: 2.5rem 0 2rem;
+  border-top: 1px solid rgb(199 205 216 / 0.32);
+  border-bottom: 1px solid rgb(199 205 216 / 0.32);
+}
+
+.jrpg-targeting__target {
+  appearance: none;
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--jta-silver);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.jrpg-targeting__target:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+
+.jrpg-targeting__object {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid currentColor;
+  background: var(--jta-ink);
+  transition: transform 240ms steps(4, end), color 120ms steps(2, end);
+}
+
+.jrpg-targeting__object--a {
+  transform: rotate(45deg);
+}
+
+.jrpg-targeting__object--b {
+  width: 32px;
+  height: 24px;
+  border-left-width: 5px;
+  border-right-width: 5px;
+}
+
+.jrpg-targeting__object--c {
+  clip-path: polygon(50% 0, 100% 82%, 50% 100%, 0 82%);
+}
+
+.jrpg-targeting__label {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  width: max-content;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 100ms steps(2, end);
+}
+
+.jrpg-targeting[data-state="open"] .jrpg-targeting__label {
+  opacity: 1;
+}
+
+.jrpg-targeting__target.is-selected {
+  color: var(--jta-cyan);
+}
+
+.jrpg-targeting__target.is-selected .jrpg-targeting__object {
+  transform: scale(1.05);
+}
+
+.jrpg-targeting__target.is-selected .jrpg-targeting__object--a {
+  transform: rotate(45deg) scale(1.05);
+}
+
+.jrpg-targeting__reticle {
+  position: absolute;
+  left: var(--reticle-x, 78px);
+  top: var(--reticle-y, 96px);
+  z-index: 2;
+  width: 54px;
+  height: 54px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: left 240ms steps(4, end), top 240ms steps(4, end);
+}
+
+.jrpg-targeting[data-state="open"] .jrpg-targeting__reticle {
+  animation: jrpg-target-acquire 280ms steps(4, end) both;
+}
+
+.jrpg-targeting[data-state="cancelled"] .jrpg-targeting__reticle {
+  opacity: 0;
+}
+
+.jrpg-targeting__corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--jta-cyan);
+}
+
+.jrpg-targeting__corner--nw {
+  left: 0;
+  top: 0;
+  border-left: 3px solid;
+  border-top: 3px solid;
+}
+
+.jrpg-targeting__corner--ne {
+  right: 0;
+  top: 0;
+  border-right: 3px solid;
+  border-top: 3px solid;
+}
+
+.jrpg-targeting__corner--se {
+  right: 0;
+  bottom: 0;
+  border-right: 3px solid;
+  border-bottom: 3px solid;
+}
+
+.jrpg-targeting__corner--sw {
+  left: 0;
+  bottom: 0;
+  border-left: 3px solid;
+  border-bottom: 3px solid;
+}
+
+@keyframes jrpg-target-acquire {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jrpg-targeting .jrpg-targeting__reticle,
+  .jrpg-targeting[data-state="open"] .jrpg-targeting__reticle,
+  .jrpg-targeting .jrpg-targeting__object,
+  .jrpg-targeting .jrpg-targeting__label {
+    animation: none;
+    transition: none;
+  }
+}
+
+[data-force-reduced-motion="true"] .jrpg-targeting .jrpg-targeting__reticle,
+[data-force-reduced-motion="true"] .jrpg-targeting[data-state="open"] .jrpg-targeting__reticle,
+[data-force-reduced-motion="true"] .jrpg-targeting .jrpg-targeting__object,
+[data-force-reduced-motion="true"] .jrpg-targeting .jrpg-targeting__label {
+  animation: none;
+  transition: none;
+}

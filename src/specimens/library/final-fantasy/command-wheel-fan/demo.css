@@ -1,0 +1,218 @@
+/* SPX-4340 Command Wheel Fan — portable contract. Do not restyle to host tokens. */
+
+.jrpg-wheel {
+  --jwf-navy: #111827;
+  --jwf-silver: #c7cdd8;
+  --jwf-cyan: #72d6e8;
+  --jwf-ink: #070b12;
+
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  width: 100%;
+  min-height: 320px;
+  height: 100%;
+  overflow: hidden;
+  background: var(--jwf-navy);
+  color: var(--jwf-silver);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+
+.jrpg-wheel *,
+.jrpg-wheel *::before,
+.jrpg-wheel *::after {
+  box-sizing: border-box;
+}
+
+.jrpg-wheel__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.jrpg-wheel__field {
+  position: absolute;
+  left: calc(50% - 136px);
+  top: 50%;
+  width: 272px;
+  height: 272px;
+  transform: translateY(-50%);
+}
+
+.jrpg-wheel__cursor {
+  appearance: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border: 2px solid var(--jwf-cyan);
+  border-radius: 2px;
+  background: var(--jwf-ink);
+  color: var(--jwf-cyan);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.jrpg-wheel__cursor::before,
+.jrpg-wheel__cursor::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--jwf-cyan);
+  pointer-events: none;
+}
+
+.jrpg-wheel__cursor::before {
+  left: 5px;
+  top: 5px;
+  border-left: 2px solid;
+  border-top: 2px solid;
+}
+
+.jrpg-wheel__cursor::after {
+  right: 5px;
+  bottom: 5px;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.jrpg-wheel__cursor-mark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.jrpg-wheel__cursor-label {
+  position: absolute;
+  bottom: 7px;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.jrpg-wheel__cursor:focus-visible,
+.jrpg-wheel__command:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.jrpg-wheel__commands {
+  position: absolute;
+  left: 36px;
+  top: 136px;
+  width: 1px;
+  height: 1px;
+}
+
+.jrpg-wheel__command {
+  appearance: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130px;
+  height: 42px;
+  padding: 0 0.8rem;
+  border: 2px solid var(--jwf-silver);
+  border-radius: 2px;
+  background: var(--jwf-ink);
+  color: var(--jwf-silver);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-align: left;
+  transform: translate(-50%, -50%) translate(var(--x), var(--y));
+  opacity: 0;
+  cursor: pointer;
+}
+
+.jrpg-wheel__command::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 0.55rem;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.jrpg-wheel[data-state="open"] .jrpg-wheel__command {
+  animation: jrpg-wheel-fan 260ms steps(4, end) both;
+  animation-delay: calc(var(--command-index) * 55ms);
+}
+
+.jrpg-wheel[data-state="open"] .jrpg-wheel__command:nth-child(1) {
+  --command-index: 0;
+}
+
+.jrpg-wheel[data-state="open"] .jrpg-wheel__command:nth-child(2) {
+  --command-index: 1;
+}
+
+.jrpg-wheel[data-state="open"] .jrpg-wheel__command:nth-child(3) {
+  --command-index: 2;
+}
+
+.jrpg-wheel[data-state="open"] .jrpg-wheel__command:nth-child(4) {
+  --command-index: 3;
+}
+
+.jrpg-wheel[data-state="open"] .jrpg-wheel__command:nth-child(5) {
+  --command-index: 4;
+}
+
+.jrpg-wheel.is-settled[data-state="open"] .jrpg-wheel__command.is-active {
+  border-color: var(--jwf-cyan);
+  color: var(--jwf-cyan);
+  transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1.06);
+}
+
+.jrpg-wheel[data-state="closed"] .jrpg-wheel__command {
+  pointer-events: none;
+}
+
+@keyframes jrpg-wheel-fan {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jrpg-wheel .jrpg-wheel__command,
+  .jrpg-wheel[data-state="open"] .jrpg-wheel__command {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(var(--x), var(--y));
+  }
+
+  .jrpg-wheel.is-settled[data-state="open"] .jrpg-wheel__command.is-active {
+    transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1.06);
+  }
+}
+
+[data-force-reduced-motion="true"] .jrpg-wheel .jrpg-wheel__command,
+[data-force-reduced-motion="true"] .jrpg-wheel[data-state="open"] .jrpg-wheel__command {
+  animation: none;
+  opacity: 1;
+  transform: translate(-50%, -50%) translate(var(--x), var(--y));
+}
+
+[data-force-reduced-motion="true"] .jrpg-wheel.is-settled[data-state="open"] .jrpg-wheel__command.is-active {
+  transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(1.06);
+}

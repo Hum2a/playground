@@ -1,0 +1,30 @@
+/* SPX-4346 Turn Order Assemble — portable contract. Do not restyle to host tokens. */
+.jrpg-turn-order {
+  --jto-navy: #111827; --jto-parchment: #e9e3d2; --jto-cyan: #72d6e8; --jto-ink: #070b12;
+  position: relative; box-sizing: border-box; display: grid; place-items: center; width: 100%; min-height: 260px; height: 100%; overflow: hidden; background: var(--jto-navy); color: var(--jto-parchment); font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+}
+.jrpg-turn-order *, .jrpg-turn-order *::before, .jrpg-turn-order *::after { box-sizing: border-box; }
+.jrpg-turn-order__status { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.jrpg-turn-order__heading { position: absolute; left: 1rem; top: 1rem; margin: 0; color: var(--jto-cyan); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; }
+.jrpg-turn-order__timeline { display: flex; align-items: center; gap: 10px; width: max-content; max-width: calc(100% - 18px); padding: 1.5rem 0 0; }
+.jrpg-turn-order__token { appearance: none; position: relative; display: grid; grid-template-rows: auto 42px auto; justify-items: center; flex: 0 0 42px; width: 42px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--jto-parchment); font: inherit; cursor: pointer; transform: translateY(0); }
+.jrpg-turn-order__token:not(:last-child)::after { content: ""; position: absolute; left: 42px; top: 33px; width: 10px; height: 2px; background: var(--jto-parchment); opacity: 0.6; }
+.jrpg-turn-order__marker { margin-bottom: 0.38rem; font-size: 0.5rem; font-weight: 700; letter-spacing: 0.04em; }
+.jrpg-turn-order__portrait { width: 42px; height: 42px; border: 2px solid var(--jto-parchment); background: var(--jto-ink); }
+.jrpg-turn-order__portrait--ally::before, .jrpg-turn-order__portrait--enemy::before { content: ""; display: block; width: 12px; height: 12px; margin: 13px; border: 2px solid currentColor; }
+.jrpg-turn-order__portrait--ally::before { transform: rotate(45deg); }
+.jrpg-turn-order__portrait--enemy::before { border-radius: 50%; }
+.jrpg-turn-order__label { width: max-content; margin-top: 0.42rem; font-size: 0.48rem; font-weight: 700; letter-spacing: 0.03em; white-space: nowrap; }
+.jrpg-turn-order__token:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token { animation: jrpg-turn-order-assemble 240ms steps(4, end) both; animation-delay: calc(var(--index) * 70ms); }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token:nth-child(1) { --index: 0; }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token:nth-child(2) { --index: 1; }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token:nth-child(3) { --index: 2; }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token:nth-child(4) { --index: 3; }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token:nth-child(5) { --index: 4; }
+.jrpg-turn-order[data-state="open"] .jrpg-turn-order__token:nth-child(6) { --index: 5; }
+.jrpg-turn-order.is-settled .jrpg-turn-order__token.is-active .jrpg-turn-order__portrait { border-color: var(--jto-cyan); color: var(--jto-cyan); transform: scale(1.15); }
+.jrpg-turn-order.is-settled .jrpg-turn-order__token.is-active .jrpg-turn-order__marker, .jrpg-turn-order.is-settled .jrpg-turn-order__token.is-active .jrpg-turn-order__label { color: var(--jto-cyan); }
+@keyframes jrpg-turn-order-assemble { from { opacity: 0; transform: translateY(var(--from-y)) scale(0.82); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .jrpg-turn-order .jrpg-turn-order__token, .jrpg-turn-order[data-state="open"] .jrpg-turn-order__token { animation: none; opacity: 1; transform: translateY(0); } }
+[data-force-reduced-motion="true"] .jrpg-turn-order .jrpg-turn-order__token, [data-force-reduced-motion="true"] .jrpg-turn-order[data-state="open"] .jrpg-turn-order__token { animation: none; opacity: 1; transform: translateY(0); }

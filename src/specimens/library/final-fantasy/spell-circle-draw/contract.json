@@ -1,0 +1,21 @@
+{
+  "name": "spell-circle-draw",
+  "copy": {
+    "label": "CAST",
+    "replay": "CAST"
+  },
+  "geometry": {
+    "svgPx": 220,
+    "ringCount": 2,
+    "strokePx": 2,
+    "fixedMarks": true
+  },
+  "motion": {
+    "drawMs": 620,
+    "completionMs": 180,
+    "loops": false,
+    "runtimeRandomness": false
+  },
+  "colours": ["#111827", "#A98BFF", "#72D6E8"],
+  "reducedMotion": "all strokes drawn immediately"
+}

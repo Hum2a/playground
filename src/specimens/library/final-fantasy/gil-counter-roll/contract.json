@@ -1,0 +1,10 @@
+{
+  "name": "gil-counter-roll",
+  "finalValue": 8500,
+  "intermediateValues": 18,
+  "rollMs": 720,
+  "settleMs": 140,
+  "finalScale": [1.06, 1],
+  "colours": ["#E5BE62", "#E9E3D2", "#111827"],
+  "reducedMotion": "8500 immediately"
+}

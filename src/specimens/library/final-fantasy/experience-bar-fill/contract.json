@@ -1,0 +1,24 @@
+{
+  "name": "experience-bar-fill",
+  "copy": {
+    "startLevel": 4,
+    "endLevel": 5,
+    "reward": "+35 XP"
+  },
+  "gauge": {
+    "startPercent": 82,
+    "thresholdPercent": 100,
+    "endPercent": 17,
+    "heightPx": 14,
+    "borderPx": 2
+  },
+  "motion": {
+    "fillMs": 390,
+    "fillEasing": "steps(6, end)",
+    "burstMs": 120,
+    "loops": false,
+    "runtimeRandomness": false
+  },
+  "colours": ["#111827", "#72D6E8", "#E5BE62", "#E9E3D2"],
+  "reducedMotion": "LEVEL 5 and 17 / 100 XP immediately"
+}
