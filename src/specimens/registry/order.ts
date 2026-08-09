@@ -609,4 +609,5 @@ export const specimenOrder: string[] = [
   'jrpg-command-wheel-fan',
   'jrpg-target-menu-acquire',
   'jrpg-turn-order-assemble',
+  'jrpg-victory-results-tally',
 ]
